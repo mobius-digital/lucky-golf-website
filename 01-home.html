@@ -241,8 +241,15 @@ button{font:inherit;color:inherit}
 .trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,44px);padding:18px var(--pad)}
 .trust .mono{color:var(--ink-58);font-size:.62rem;letter-spacing:.17em}
 .trust .div{width:1px;height:14px;background:var(--ink-14)}
-.stars{display:inline-flex;gap:3px;vertical-align:-.15em}
-.stars svg{width:13px;height:13px;fill:var(--gold)}
+.stars{position:relative;display:inline-block;line-height:0;vertical-align:-.15em}
+.stars .s-bg,.stars .s-fg{display:flex;gap:3px}
+.stars svg{width:13px;height:13px;flex:none}
+.stars .s-bg svg{fill:rgba(23,20,15,.17)}
+.stars .s-fg{position:absolute;left:0;top:0;width:var(--pct,100%);overflow:hidden}
+.stars .s-fg svg{fill:var(--gold)}
+.stars--dark .s-bg svg{fill:rgba(246,242,232,.22)}
+.card-rating{display:flex;align-items:center;gap:9px;color:var(--ink-58)}
+.card-rating .n{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em}
 .tok{color:var(--ink-58)}
 
 /* ==========================================================================
@@ -596,10 +603,8 @@ button{font:inherit;color:inherit}
 
 <div class="trust">
   <div class="trust-in">
-    <span class="stars" aria-hidden="true">
-      <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-    </span>
-    <span class="mono"><span class="tok">[REVIEW — AVG RATING]</span> · <span class="tok">[REVIEW COUNT]</span> verified reviews</span>
+    <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+    <span class="mono">4.78 average · 884 verified club reviews</span>
     <span class="div"></span>
     <span class="mono">60-day club returns</span>
     <span class="div"></span>
@@ -632,8 +637,8 @@ button{font:inherit;color:inherit}
             </div></div>
           </div>
           <div class="trust"><div class="trust-in">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <span class="mono"><span class="tok">[REVIEW]</span> verified reviews</span>
+            <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+            <span class="mono">4.78 · 884 reviews</span>
             <span class="div"></span><span class="mono">60-day club returns</span>
           </div></div>
         </div>
@@ -653,8 +658,8 @@ button{font:inherit;color:inherit}
             </div></div>
           </div>
           <div class="trust"><div class="trust-in">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <span class="mono"><span class="tok">[REVIEW]</span> verified reviews</span>
+            <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+            <span class="mono">4.78 · 884 reviews</span>
             <span class="div"></span><span class="mono">60-day club returns</span>
           </div></div>
         </div>
@@ -683,6 +688,7 @@ button{font:inherit;color:inherit}
         </div>
         <div class="card-body">
           <h3 class="disp d-m"><a class="stretch" href="#">Wedges</a></h3>
+          <div class="card-rating"><span class="stars" style="--pct:96.2%" role="img" aria-label="4.81 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.81 · 620 reviews</span></div>
           <p class="hook">1020 forged carbon steel with a dual-texture face that grabs the ball back. Six lofts on the Carver, and every one swings the same.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 50° 52° 54° 56° 58° 60°</div>
           <div class="card-foot">
@@ -699,6 +705,7 @@ button{font:inherit;color:inherit}
         </div>
         <div class="card-body">
           <h3 class="disp d-m"><a class="stretch" href="#">Putters</a></h3>
+          <div class="card-rating"><span class="stars" style="--pct:96.4%" role="img" aria-label="4.82 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.82 · 205 reviews</span></div>
           <p class="hook">Blade or mallet, both milled from a single block of stainless. No ping, no buzz, and honest feedback on the ones you miss.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 3.5° · 35" · Blade or mallet</div>
           <div class="card-foot">
@@ -715,6 +722,7 @@ button{font:inherit;color:inherit}
         </div>
         <div class="card-body">
           <h3 class="disp d-m"><a class="stretch" href="#">Hybrid</a></h3>
+          <div class="card-rating"><span class="stars" style="--pct:92.0%" role="img" aria-label="4.6 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.60 · 20 reviews</span></div>
           <p class="hook">Titanium at 19°, built for the yardage you keep guessing at. The Flex Channel face gets ball speed back on the strikes you don't catch.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 19° · 40.5" · Stiff flex</div>
           <div class="card-foot">
@@ -804,42 +812,42 @@ button{font:inherit;color:inherit}
       <span class="eyebrow centre">What golfers say</span>
       <h2 class="disp d-l">They're going to <span class="foil">ask</span> about it</h2>
       <div class="agg">
-        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-        <span class="mono"><span class="tok">[REVIEW — AVG RATING]</span> from <span class="tok">[REVIEW COUNT]</span> verified buyers</span>
+        <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+        <span class="mono">4.78 from 884 verified buyers on Judge.me</span>
       </div>
     </div>
 
     <div class="revs">
       <div class="rev rv">
-        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-        <p class="q">[REVIEW — SHORT QUOTE, FEEL AND SPIN, LGW02 CARVER GOLD]</p>
+        <span class="stars" style="--pct:100.0%" role="img" aria-label="5 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+        <p class="q">&ldquo;You don't even have to take it out of the bag and people ask you about it. Solid gold baby!&rdquo;</p>
         <div class="who">
           <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
-          <span class="mono">[REVIEWER NAME] · LGW02 Gold 56°</span>
+          <span class="mono">Michael P. · LGW02 Carver Gold</span>
         </div>
       </div>
       <div class="rev rv">
-        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-        <p class="q">[REVIEW — SHORT QUOTE, THE PRICE VS WHAT THEY EXPECTED]</p>
+        <span class="stars" style="--pct:100.0%" role="img" aria-label="5 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+        <p class="q">&ldquo;This club has been working wonders for me. I feel like I have full control of the ball with spin and trajectory.&rdquo;</p>
         <div class="who">
           <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
-          <span class="mono">[REVIEWER NAME] · LGW01 Carver</span>
+          <span class="mono">Dylan P. · LGW02 Carver Gold</span>
         </div>
       </div>
       <div class="rev rv">
-        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-        <p class="q">[REVIEW — SHORT QUOTE, ROLL AND SOUND, LGP01 TRACER BLADE]</p>
+        <span class="stars" style="--pct:100.0%" role="img" aria-label="5 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+        <p class="q">&ldquo;I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true.&rdquo;</p>
         <div class="who">
           <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
-          <span class="mono">[REVIEWER NAME] · LGP01 Tracer Blade</span>
+          <span class="mono">Jay S. · LGP01 Tracer Blade</span>
         </div>
       </div>
       <div class="rev rv">
-        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-        <p class="q">[REVIEW — SHORT QUOTE, PEOPLE ASKING ABOUT THE GOLD FINISH]</p>
+        <span class="stars" style="--pct:100.0%" role="img" aria-label="5 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+        <p class="q">&ldquo;Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now.&rdquo;</p>
         <div class="who">
           <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
-          <span class="mono">[REVIEWER NAME] · LGH01 Stryker</span>
+          <span class="mono">John L.L. · LGH01 Stryker</span>
         </div>
       </div>
     </div>
