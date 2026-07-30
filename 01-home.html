@@ -203,7 +203,8 @@ button{font:inherit;color:inherit}
 .nav a:hover::after{right:0}
 .hdr-act{display:flex;align-items:center;gap:4px;margin-left:auto}
 /* 44x44 hit areas without changing the optical icon size */
-.hdr-act > a{width:44px;height:44px;display:grid;place-items:center}
+.hdr-act > a,.hdr-act > .cart{width:44px;height:44px;display:grid;place-items:center;
+  background:none;border:0;cursor:pointer;position:relative;color:var(--ink)}
 .icn{width:19px;height:19px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cart{position:relative}
 .cart .dot{position:absolute;top:-3px;right:-4px;width:7px;height:7px;border-radius:50%;background:var(--green-br)}
@@ -587,6 +588,141 @@ button{font:inherit;color:inherit}
   align-items:center;padding:20px 0 26px;border-top:1px solid var(--cream-18)}
 .ftr-btm .mono{color:var(--cream-52);font-size:.6rem;letter-spacing:.15em}
 
+
+/* ==========================================================================
+   MARQUEE — no groove behind it (was fighting the type), 3x slower
+   ========================================================================== */
+.mq{position:relative;overflow:hidden;background:var(--ink);
+  border-block:2px solid var(--gold);padding:16px 0}
+.mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite}
+.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+.mq-set{display:flex;align-items:center;flex:none}
+.mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
+  font-size:.72rem;color:var(--gold-hi);padding:0 30px;white-space:nowrap}
+.mq-set .mk{width:14px;height:14px;color:var(--green-br);flex:none;opacity:.85}
+@keyframes mq-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+/* ==========================================================================
+   MEGA MENU
+   ========================================================================== */
+.nav{position:static}
+.nav-item{position:static;display:flex}
+.nav-trigger{background:none;border:0;cursor:pointer;padding:0;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
+  min-height:44px;display:flex;align-items:center;gap:6px;position:relative;color:var(--ink)}
+.nav-trigger::after{content:'';position:absolute;left:0;right:100%;bottom:12px;height:2px;
+  background:var(--gold);transition:right .28s}
+.nav-trigger:hover::after,.nav-item[data-open="true"] .nav-trigger::after{right:0}
+.nav-trigger .chev{width:8px;height:8px;stroke:currentColor;stroke-width:2.4;fill:none;
+  transition:transform .2s;margin-top:1px}
+.nav-item[data-open="true"] .chev{transform:rotate(180deg)}
+
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--white);
+  border-top:1px solid var(--ink-08);border-bottom:2px solid var(--ink-14);
+  box-shadow:0 24px 48px -24px rgba(23,20,15,.28);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:70}
+.nav-item[data-open="true"] .mega{opacity:1;visibility:visible;transform:none}
+.mega-in{max-width:1560px;margin:0 auto;padding:30px var(--pad) 34px;
+  display:grid;grid-template-columns:200px 1fr;gap:clamp(24px,3vw,56px)}
+.mega-side .eyebrow{margin-bottom:14px}
+.mega-side p{margin:0 0 18px;color:var(--ink-muted);font-size:.93rem;line-height:1.5;max-width:24ch}
+.mega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
+.mcard{position:relative;display:flex;align-items:stretch;gap:12px;background:var(--cream);
+  border:2px solid transparent;padding:14px 14px 14px 16px;transition:border-color .16s,background .16s}
+.mcard:hover{border-color:var(--ink);background:var(--white)}
+.mcard .mc-txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.mcard .sku{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.mcard .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;font-weight:800;
+  text-transform:uppercase;letter-spacing:.005em;font-size:1.18rem;line-height:.95;margin:5px 0 3px}
+.mcard .sub{font-size:.82rem;color:var(--ink-muted);line-height:1.35}
+.mcard .row{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:10px}
+.mcard .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.92rem}
+.mcard .mc-img{width:88px;height:88px;flex:none;object-fit:cover;background:var(--white)}
+.mcard .mc-ph{width:88px;height:88px;flex:none;display:grid;place-items:center;text-align:center;
+  background:repeating-linear-gradient(135deg,rgba(23,20,15,.055) 0 10px,rgba(23,20,15,.085) 10px 20px);
+  border:1px dashed rgba(23,20,15,.28)}
+.mcard .mc-ph span{font-family:'Space Mono',monospace;font-size:.45rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(23,20,15,.6);padding:3px}
+.badge-new{align-self:flex-start;background:var(--green);color:var(--white);
+  font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:3px 6px;margin-bottom:6px}
+.mega-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+  justify-content:space-between;border-top:1px solid var(--ink-08);padding-top:16px;margin-top:4px}
+.mega-foot .aside{color:var(--ink-muted);font-size:.95rem}
+@media (max-width:980px){.mega{display:none}}
+
+/* add-to-bag button */
+.btn-add{background:var(--ink);color:var(--cream);border:0;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;font-size:.7rem;
+  min-height:36px;padding:0 14px;display:inline-flex;align-items:center;gap:6px;
+  transition:background .12s,color .12s}
+.btn-add:hover{background:var(--gold);color:var(--ink)}
+.btn-add[data-added="true"]{background:var(--green);color:var(--white)}
+
+/* ==========================================================================
+   CART DRAWER
+   ========================================================================== */
+.cart-count{position:absolute;top:-2px;right:-2px;min-width:17px;height:17px;padding:0 4px;
+  border-radius:9px;background:var(--green-br);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.55rem;font-weight:700;
+  display:none;align-items:center;justify-content:center;line-height:1}
+.cart-count[data-n]:not([data-n="0"]){display:flex}
+
+.cd{position:fixed;inset:0;z-index:210}
+.cd[hidden]{display:none}
+.cd-bd{position:absolute;inset:0;background:rgba(23,20,15,.6);backdrop-filter:blur(2px);
+  opacity:0;transition:opacity .26s}
+.cd[data-open="true"] .cd-bd{opacity:1}
+.cd-panel{position:absolute;right:0;top:0;bottom:0;width:min(430px,100%);background:var(--white);
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.3,.8,.2,1);
+  border-left:2px solid var(--ink)}
+.cd[data-open="true"] .cd-panel{transform:none}
+.cd-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:18px 20px;border-bottom:2px solid var(--ink-14);flex:none}
+.cd-hd h2{margin:0}
+.cd-x{width:44px;height:44px;border:0;background:none;cursor:pointer;font-size:1.3rem;
+  display:grid;place-items:center;color:var(--ink)}
+.cd-x:hover{color:var(--gold-lo)}
+.cd-body{flex:1;overflow-y:auto;padding:6px 20px 20px;
+  scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.1)}
+.cd-empty{padding:36px 0;text-align:center;color:var(--ink-muted)}
+.cd-empty .mk{width:34px;height:34px;color:var(--green);margin:0 auto 14px;display:block}
+.ci{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--ink-08)}
+.ci img{width:76px;height:76px;object-fit:cover;flex:none;background:var(--cream)}
+.ci .info{flex:1;min-width:0}
+.ci .sku{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted);display:block}
+.ci .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;font-size:.9rem;display:block;margin:3px 0 6px}
+.ci .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.9rem}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--ink-14);margin-top:8px}
+.qty button{width:32px;height:32px;border:0;background:none;cursor:pointer;font-size:1rem;
+  line-height:1;color:var(--ink)}
+.qty button:hover{background:var(--ink);color:var(--cream)}
+.qty span{min-width:30px;text-align:center;font-family:'Space Mono',monospace;font-size:.72rem}
+.ci-rm{background:none;border:0;cursor:pointer;padding:0;margin-top:8px;
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-muted);text-decoration:underline}
+.ci-rm:hover{color:var(--ink)}
+.cd-foot{flex:none;border-top:2px solid var(--ink);padding:18px 20px 22px;background:var(--cream)}
+.cd-sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.cd-sub .l{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase}
+.cd-sub .v{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:1.5rem}
+.cd-note{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
+  color:var(--ink-muted);margin:0 0 14px;text-transform:uppercase}
+.cd-foot .btn{width:100%;justify-content:center}
+.cd-mock{margin:12px 0 0;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted);text-align:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  .cd-panel,.cd-bd{transition:none}
+}
+
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(20px)}
 .rv.in{opacity:1;transform:none;
@@ -658,20 +794,136 @@ button{font:inherit;color:inherit}
 <header class="hdr">
   <div class="hdr-in">
     <a href="#" class="logo logo--lucky" aria-label="Lucky Golf home"><svg><use href="#lg-lucky"/></svg></a>
-    <nav class="nav">
-      <a href="#families">Wedges</a>
-      <a href="#families">Putters</a>
-      <a href="#families">Hybrid</a>
-      <a href="#gear">Apparel</a>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-item" data-open="false">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-wedges">Wedges
+          <svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" id="mega-wedges">
+          <div class="mega-in">
+            <div class="mega-side">
+              <span class="eyebrow">Six lofts on the Carver</span>
+              <p>Forged 1020 carbon steel, dual-texture face, consistent 300g head across every loft.</p>
+              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
+            </div>
+            <div class="mega-grid">
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">LGW01</span><span class="nm">Carver</span><span class="sub">K Grind &middot; 50&deg;&ndash;60&deg;</span><span class="row"><span class="pr">$99</span><button type="button" class="btn-add" data-add data-sku="LGW01" data-name="Carver" data-price="$99" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" data-variant="56°"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">LGW02</span><span class="nm">Carver Gold</span><span class="sub">S Grind &middot; 52&deg; 56&deg; 60&deg;</span><span class="row"><span class="pr">$109</span><button type="button" class="btn-add" data-add data-sku="LGW02" data-name="Carver Gold" data-price="$109" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" data-variant="56°"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="badge-new">New</span><span class="sku">LGW02</span><span class="nm">Carver Black</span><span class="sub">K Grind &middot; 50&deg;&ndash;60&deg;</span><span class="row"><span class="pr">$109</span><span class="mono" style="font-size:.55rem;letter-spacing:.12em;color:var(--ink-muted)">Coming soon</span></span></span>
+          <span class="mc-ph"><span>Photo needed &mdash; LGW02 Black</span></span>
+        </div>
+            </div>
+            <div class="mega-foot">
+              <p class="aside">60-day club returns. Right and left hand.</p>
+              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item" data-open="false">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-putters">Putters
+          <svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" id="mega-putters">
+          <div class="mega-in">
+            <div class="mega-side">
+              <span class="eyebrow">Blade or mallet</span>
+              <p>Milled from a single block of stainless. No welds, no cavities, no ping.</p>
+              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
+            </div>
+            <div class="mega-grid">
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">LGP01</span><span class="nm">Tracer Blade</span><span class="sub">431 stainless &middot; 385g &middot; 35&quot;</span><span class="row"><span class="pr">$199</span><button type="button" class="btn-add" data-add data-sku="LGP01" data-name="Tracer Blade" data-price="$199" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" data-variant="35&quot; RH"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">LGP02</span><span class="nm">Tracer Mallet</span><span class="sub">304 stainless &middot; 365g &middot; 35&quot;</span><span class="row"><span class="pr">$229</span><button type="button" class="btn-add" data-add data-sku="LGP02" data-name="Tracer Mallet" data-price="$229" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" data-variant="35&quot; RH"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="" width="176" height="176" decoding="async">
+        </div>
+            </div>
+            <div class="mega-foot">
+              <p class="aside">60-day club returns. Right and left hand.</p>
+              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item" data-open="false">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-hybrid">Hybrid
+          <svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" id="mega-hybrid">
+          <div class="mega-in">
+            <div class="mega-side">
+              <span class="eyebrow">One loft, one job</span>
+              <p>Titanium at 19&deg;, Flex Channel face, Glide Sole. For the yardage you keep guessing at.</p>
+              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
+            </div>
+            <div class="mega-grid">
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">LGH01</span><span class="nm">Stryker</span><span class="sub">19&deg; &middot; 40.5&quot; &middot; Stiff flex</span><span class="row"><span class="pr">$209</span><button type="button" class="btn-add" data-add data-sku="LGH01" data-name="Stryker" data-price="$209" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" data-variant="19° RH"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="" width="176" height="176" decoding="async">
+        </div>
+            </div>
+            <div class="mega-foot">
+              <p class="aside">60-day club returns. Right and left hand.</p>
+              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item" data-open="false">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-apparel">Apparel
+          <svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" id="mega-apparel">
+          <div class="mega-in">
+            <div class="mega-side">
+              <span class="eyebrow">Polos and hats</span>
+              <p>Four-way stretch, UPF 50+, moisture-wicking. S&ndash;3XL.</p>
+              <a href="#gear" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
+            </div>
+            <div class="mega-grid">
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">POLO-MARBLE</span><span class="nm">Classic Polo</span><span class="sub">Marble</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-MARBLE" data-name="Classic Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" data-variant="Marble / M"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">POLO-CARN</span><span class="nm">Classic Polo</span><span class="sub">Gold Carnation</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-CARN" data-name="Classic Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" data-variant="Gold Carnation / M"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">POLO-SWIRL</span><span class="nm">Blade Polo</span><span class="sub">Swirl</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-SWIRL" data-name="Blade Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" data-variant="Swirl / M"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" alt="" width="176" height="176" decoding="async">
+        </div>
+        <div class="mcard">
+          <span class="mc-txt"><span class="sku">HAT-BLK</span><span class="nm">Five-Panel Snapback</span><span class="sub">Black / Gold</span><span class="row"><span class="pr">$29</span><button type="button" class="btn-add" data-add data-sku="HAT-BLK" data-name="Five-Panel Snapback" data-price="$29" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" data-variant="Black / Gold"><span>Add to bag</span></button></span></span>
+          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" alt="" width="176" height="176" decoding="async">
+        </div>
+            </div>
+            <div class="mega-foot">
+              <p class="aside">60-day club returns. Right and left hand.</p>
+              <a href="#gear" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
       <a href="#">Our Story</a>
       <a href="#">Trybe</a>
     </nav>
     <div class="hdr-act">
       <a href="#" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></a>
-      <a href="#" class="cart" aria-label="Cart">
+      <button type="button" class="cart" data-cart-open aria-label="Open bag">
         <svg class="icn" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg>
-        <span class="dot"></span>
-      </a>
+        <span class="cart-count" data-n="0" aria-hidden="true">0</span>
+      </button>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
     </div>
   </div>
@@ -719,6 +971,11 @@ button{font:inherit;color:inherit}
     <span class="div"></span>
     <span class="mono">Direct pricing, no middlemen</span>
   </div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-label="Lucky Golf product facts">
+  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
 </div>
 
 <!-- ============ HERO A/B EXPERIMENT ============ -->
@@ -1182,6 +1439,11 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-label="Lucky Golf product facts">
+  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
+</div>
+
 <!-- ============ APPAREL + GEAR ============ -->
 <section class="sec" id="gear">
   <div class="wrap">
@@ -1388,6 +1650,7 @@ button{font:inherit;color:inherit}
 
 
 
+
 <!-- ============ LIGHTBOX (reviews + social posts) ============ -->
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-who">
   <div class="lb-bd" data-lb-close></div>
@@ -1407,6 +1670,141 @@ button{font:inherit;color:inherit}
 var LG_REVIEWS = [{"n": "Michael P.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-07-24", "ttl": "The Midas touch", "co": "", "txt": "Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it’s total head turner. You don’t even have to take it out of the bag and people ask you about it. Solid gold baby!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "1981 C.o.M.", "r": 5, "p": "LGW01 Carver Gold", "d": "2026-06-10", "ttl": "As Good As Gold", "co": "", "txt": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Jimmy S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2023-12-05", "ttl": "Never had so much confidence on the green. Best bang for your buck in the putter market. Hands down.", "co": "", "txt": "I had the original Odyssey two ball with the soft insert face and found myself getting frustrated with how inaccurate my lag putting was. I started looking for a heavier putter with a milled face to try the opposite end of the spectrum and I hit the jackpot stumbling across this beauty. Stroke is minimal inside 5' which helps ensure im rolling the ball well because the putter weight does the work for me. Haven't averaged over 2 putts/hole during a round since delivery and my brother in law just bought himself one for Christmas because of he's seen the change a Lucky has made in my game!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Jay S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2026-03-06", "ttl": "Unexpected Greatness", "co": "", "txt": "When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style and a slightly heavier head. When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Scott B.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2024-10-12", "ttl": "Filled out my set!", "co": "", "txt": "Had a set of Ping irons, with Titleist woods but the irons didn’t come with a SW. so I purchased the 54 degree and the 60 degree wedges. I can’t tell you how much I love playing with them! Seems I’m always hitting whatever shot I need to put it in the hole or right up next to it! Was playing with a Scottie Cameron putter which was damaged by the airline, decided to get the Lucky putter as well and it seems like I’m still using the same putter! Cant tell you how many comments I get on the three and seeing the way I play with them only makes them ask more questions about where to get them!! Do yourself a favor and give them a try, you won’t regret it!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Chris C.", "r": 5, "p": "LGW01 Carver Gold", "d": "2024-06-06", "ttl": "Signature Gold 56/60 Wedge Review", "co": "", "txt": "These clubs are awesome! Shipping was quick. The material is great and they are very solid clubs. I get a lot of compliments for them on the course. Pretty forgiving as well and they hit how you would expect a high priced wedge to hit. Only thing for me, is they are a little heavier then most wedges I've used. Just something I've adjusted to a little. Otherwise, for the price, an awesome purchase!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Carter D.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-06-03", "ttl": "The best looking wedge you can find", "co": "", "txt": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all. I now own a putter and 2 wedges… already debating what I’m going to get next from Lucky golf ☘️", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "Nick F.", "r": 4, "p": "LGW01 Carver Gold", "d": "2026-06-20", "ttl": "Great club, Ok customer Service", "co": "", "txt": "The club itself, outstanding. Looks sharp, plays well, nice feel. Definitely a good addition to the bag. First club got lost in transit. Took forever to get a response from anyone. Like weeks. Actually got a notification of a replacement shipping before anyone actually replied to me. So, as long as it ships ok, you’ll love the club! But good luck if there’s an issue. Hope you have patience.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "John L.L.", "r": 5, "p": "LGH01 Stryker", "d": "2026-02-14", "ttl": "Best club in my bag", "co": "", "txt": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493", "sku": "LGH01", "price": "$209", "cta": "Fill the gap"}];
 var LG_POSTS   = [{"kind": "Creator reel still", "brief": "Gold Carver in the bag on a cart path, walking shot, vertical crop", "p": "LGW02 Carver Gold", "who": "creator", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462"}, {"kind": "Customer post", "brief": "First tee, LGW02 Gold in hand, morning light", "p": "LGW02 Carver Gold", "who": "customer", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462"}, {"kind": "Creator post", "brief": "Tracer Blade behind the ball on the green, ball rolling out", "p": "LGP01 Tracer Blade", "who": "creator", "sku": "LGP01", "price": "$199", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091"}, {"kind": "Customer post", "brief": "Full bag setup, gold clubs fanned, overhead", "p": "LGP02 Tracer Mallet", "who": "customer", "sku": "LGP02", "price": "$229", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134"}, {"kind": "Creator reel still", "brief": "Stryker off the deck, follow-through, mid-flight ball", "p": "LGH01 Stryker", "who": "creator", "sku": "LGH01", "price": "$209", "cta": "Fill the gap", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493"}, {"kind": "Customer post", "brief": "Classic Polo on course, three-quarter, clover visible", "p": "LGW01 Carver Gold", "who": "customer", "sku": "LGW01", "price": "$99", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869"}];
 </script>
+<script>
+(function(){
+  var lb = document.getElementById('lb'),
+      media = document.getElementById('lb-media'),
+      detail = document.getElementById('lb-detail'),
+      prev = lb.querySelector('[data-lb-prev]'),
+      next = lb.querySelector('[data-lb-next]');
+  var mode = 'rv', idx = 0, lastFocus = null;
+  var STAR = '<svg><use href="#star"/></svg>';
+  var FIVE = STAR + STAR + STAR + STAR + STAR;
+
+  function stars(sc){
+    return '<span class="stars" style="--pct:' + (sc / 5 * 100) + '%" role="img" aria-label="' + sc + ' out of 5">'
+         + '<span class="s-bg">' + FIVE + '</span><span class="s-fg">' + FIVE + '</span></span>';
+  }
+  function esc(s){
+    var d = document.createElement('div');
+    d.textContent = (s == null ? '' : s);
+    return d.innerHTML;
+  }
+  function fmtDate(iso){
+    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var p = String(iso).split('-');
+    if (p.length < 3) return esc(iso);
+    return p[2].replace(/^0/,'') + ' ' + m[parseInt(p[1],10)-1] + ' ' + p[0];
+  }
+  function buyBlock(o, label){
+    return '<span class="lb-shown">' + label + '</span>'
+      + '<div class="lb-buy">'
+      +   '<img src="' + o.img + '" alt="">'
+      +   '<span class="info"><span class="sku">' + esc(o.sku) + '</span>'
+      +     '<span class="nm">' + esc(o.p) + '</span><span class="pr">' + esc(o.price) + '</span></span>'
+      +   '<button type="button" class="btn btn-foil btn-sm" data-add data-sku="' + esc(o.sku) + '" data-name="' + esc(o.p) + '" data-price="' + esc(o.price) + '" data-img="' + o.img + '"><span>' + esc(o.cta) + '</span><span class="ar">&rarr;</span></button>'
+      + '</div>';
+  }
+  function clearMedia(){
+    var kids = media.children, i;
+    for (i = kids.length - 1; i >= 0; i--){
+      if (!kids[i].classList.contains('lb-nav')) media.removeChild(kids[i]);
+    }
+  }
+  function render(){
+    var list = (mode === 'rv') ? LG_REVIEWS : LG_POSTS;
+    var o = list[idx];
+    clearMedia();
+    if (mode === 'rv'){
+      var img = document.createElement('img');
+      img.src = o.img; img.alt = o.p;
+      media.insertBefore(img, media.firstChild);
+      detail.innerHTML =
+        '<div class="lb-row">' + stars(o.r)
+        + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified buyer</span></span>'
+        + '</div>'
+        + '<span class="lb-who" id="lb-who">' + esc(o.n) + '</span>'
+        + '<p class="lb-meta">' + (o.co ? esc(o.co) + ' &middot; ' : '') + fmtDate(o.d) + '</p>'
+        + (o.ttl ? '<h3 class="disp d-s lb-title">' + esc(o.ttl) + '</h3>' : '')
+        + '<p class="lb-text">' + esc(o.txt) + '</p>'
+        + (o.rep ? '<div class="lb-reply"><span class="who">Reply from Lucky Golf</span><p>' + esc(o.rep) + '</p></div>' : '')
+        + buyBlock(o, 'Reviewed product');
+    } else {
+      var ph = document.createElement('div');
+      ph.className = 'ph ph--dark';
+      ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
+        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
+      media.insertBefore(ph, media.firstChild);
+      detail.innerHTML =
+        '<div class="lb-row">'
+        + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>'
+        + (o.who === 'creator' ? 'Trybe creator' : 'Customer post') + '</span></span>'
+        + '</div>'
+        + '<span class="lb-who" id="lb-who">' + (o.who === 'creator' ? '@[CREATOR HANDLE]' : '@[CUSTOMER HANDLE]') + '</span>'
+        + '<p class="lb-meta">' + esc(o.kind) + '</p>'
+        + '<p class="lb-text">[POST CAPTION]</p>'
+        + buyBlock(o, 'Shown in this post');
+    }
+    prev.disabled = (idx <= 0);
+    next.disabled = (idx >= list.length - 1);
+  }
+  function openLb(m, i, trigger){
+    mode = m; idx = i;
+    lastFocus = trigger || document.activeElement;
+    render();
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lb-x').focus();
+  }
+  function closeLb(){
+    lb.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function step(d){
+    var list = (mode === 'rv') ? LG_REVIEWS : LG_POSTS;
+    var n = idx + d;
+    if (n < 0) n = 0;
+    if (n > list.length - 1) n = list.length - 1;
+    idx = n; render();
+  }
+  prev.addEventListener('click', function(){ step(-1); });
+  next.addEventListener('click', function(){ step(1); });
+  var closers = lb.querySelectorAll('[data-lb-close]');
+  for (var c = 0; c < closers.length; c++) closers[c].addEventListener('click', closeLb);
+
+  document.addEventListener('keydown', function(e){
+    if (lb.hidden) return;
+    if (e.key === 'Escape') { closeLb(); return; }
+    if (e.key === 'ArrowLeft')  { step(-1); return; }
+    if (e.key === 'ArrowRight') { step(1);  return; }
+    if (e.key === 'Tab'){
+      var f = lb.querySelectorAll('button:not([disabled]), a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+
+  function wire(sel, attr, m){
+    var els = document.querySelectorAll(sel);
+    for (var i = 0; i < els.length; i++){
+      (function(el){
+        var n = parseInt(el.getAttribute(attr), 10);
+        el.addEventListener('click', function(){ openLb(m, n, el); });
+        el.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLb(m, n, el); }
+        });
+      })(els[i]);
+    }
+  }
+  wire('[data-rv]', 'data-rv', 'rv');
+  wire('[data-po]', 'data-po', 'po');
+})();
+</script>
+
 <script>
 (function(){
   var lb = document.getElementById('lb'),
@@ -1540,6 +1938,190 @@ var LG_POSTS   = [{"kind": "Creator reel still", "brief": "Gold Carver in the ba
   wire('[data-rv]', 'data-rv', 'rv');
   wire('[data-po]', 'data-po', 'po');
 })();
+</script>
+
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cd" id="cd" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="cd-title">
+  <div class="cd-bd" data-cart-close></div>
+  <div class="cd-panel">
+    <div class="cd-hd">
+      <h2 class="disp d-s" id="cd-title">Your bag</h2>
+      <button type="button" class="cd-x" data-cart-close aria-label="Close bag">&times;</button>
+    </div>
+    <div class="cd-body" id="cd-list"></div>
+    <div class="cd-foot">
+      <div class="cd-sub"><span class="l">Subtotal</span><span class="v" id="cd-sub">$0</span></div>
+      <p class="cd-note">Shipping and tax calculated at checkout</p>
+      <a href="#" class="btn btn-foil"><span>Checkout</span><span class="ar">&rarr;</span></a>
+      <p class="cd-mock">Front-end demo &mdash; no live checkout wired up</p>
+    </div>
+  </div>
+</div>
+<p class="sr" id="cart-live" role="status" aria-live="polite"></p>
+<script>
+
+/* ==========================================================================
+   MEGA MENU — hover on pointer, click/Enter + arrow keys for keyboard,
+   Escape closes, focus leaving the item closes it.
+   ========================================================================== */
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
+  if (!items.length) return;
+  var hoverCapable = window.matchMedia('(hover:hover)').matches;
+  var closeTimer = null;
+
+  function setOpen(item, open){
+    item.setAttribute('data-open', open ? 'true' : 'false');
+    var t = item.querySelector('.nav-trigger');
+    if (t) t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeAll(except){
+    items.forEach(function(i){ if (i !== except) setOpen(i, false); });
+  }
+  items.forEach(function(item){
+    var trigger = item.querySelector('.nav-trigger');
+    if (!trigger) return;
+    if (hoverCapable){
+      item.addEventListener('mouseenter', function(){
+        clearTimeout(closeTimer); closeAll(item); setOpen(item, true);
+      });
+      item.addEventListener('mouseleave', function(){
+        closeTimer = setTimeout(function(){ setOpen(item, false); }, 140);
+      });
+    }
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      var open = item.getAttribute('data-open') === 'true';
+      closeAll(item); setOpen(item, !open);
+    });
+    trigger.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){
+        e.preventDefault(); closeAll(item); setOpen(item, true);
+        var f = item.querySelector('.mega a,.mega button');
+        if (f) f.focus();
+      }
+    });
+    item.addEventListener('focusout', function(e){
+      if (!item.contains(e.relatedTarget)) setOpen(item, false);
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      var open = document.querySelector('.nav-item[data-open="true"]');
+      if (open){ setOpen(open, false); var t = open.querySelector('.nav-trigger'); if (t) t.focus(); }
+    }
+  });
+})();
+
+/* ==========================================================================
+   CART — front-end only. Line items persist in localStorage; there is no
+   real checkout behind the button (see the note in the drawer footer).
+   ========================================================================== */
+(function(){
+  var KEY = 'lg-cart-v1';
+  var drawer = document.getElementById('cd');
+  var listEl = document.getElementById('cd-list');
+  var subEl  = document.getElementById('cd-sub');
+  var countEls = document.querySelectorAll('.cart-count');
+  var live = document.getElementById('cart-live');
+  var lastFocus = null;
+  var cart = [];
+
+  try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ cart = []; }
+  if (!Array.isArray(cart)) cart = [];
+
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch(e){} }
+  function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
+  function priceOf(s){ return parseFloat(String(s).replace(/[^0-9.]/g, '')) || 0; }
+  function units(){ return cart.reduce(function(a,i){ return a + i.q; }, 0); }
+  function total(){ return cart.reduce(function(a,i){ return a + priceOf(i.price) * i.q; }, 0); }
+  function esc(s){ var d = document.createElement('div'); d.textContent = (s==null?'':s); return d.innerHTML; }
+
+  function paintCount(){
+    var n = units();
+    countEls.forEach(function(el){
+      el.setAttribute('data-n', String(n));
+      el.textContent = n > 99 ? '99+' : String(n);
+    });
+  }
+  function render(){
+    paintCount();
+    if (!cart.length){
+      listEl.innerHTML = '<div class="cd-empty">'
+        + '<span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>'
+        + '<p class="aside">nothing in the bag yet.</p></div>';
+    } else {
+      listEl.innerHTML = cart.map(function(i, idx){
+        return '<div class="ci">'
+          + '<img src="' + i.img + '" alt="" width="152" height="152">'
+          + '<div class="info">'
+          +   '<span class="sku">' + esc(i.sku) + (i.variant ? ' &middot; ' + esc(i.variant) : '') + '</span>'
+          +   '<span class="nm">' + esc(i.name) + '</span>'
+          +   '<span class="pr">' + esc(i.price) + '</span>'
+          +   '<div class="qty" role="group" aria-label="Quantity for ' + esc(i.name) + '">'
+          +     '<button type="button" data-dec="' + idx + '" aria-label="Decrease quantity">&minus;</button>'
+          +     '<span>' + i.q + '</span>'
+          +     '<button type="button" data-inc="' + idx + '" aria-label="Increase quantity">+</button>'
+          +   '</div><br>'
+          +   '<button type="button" class="ci-rm" data-rm="' + idx + '">Remove</button>'
+          + '</div></div>';
+      }).join('');
+    }
+    subEl.textContent = money(total());
+  }
+  function announce(msg){ if (live) live.textContent = msg; }
+
+  function add(item){
+    var key = item.sku + '|' + (item.variant || '');
+    var found = null;
+    cart.forEach(function(i){ if (i.sku + '|' + (i.variant || '') === key) found = i; });
+    if (found) found.q += 1;
+    else cart.push({sku:item.sku,name:item.name,price:item.price,img:item.img,variant:item.variant||'',q:1});
+    save(); render();
+    announce(item.name + ' added to the bag. ' + units() + ' item' + (units()===1?'':'s') + ' in the bag.');
+  }
+  function open(trigger){
+    lastFocus = trigger || document.activeElement;
+    drawer.hidden = false;
+    requestAnimationFrame(function(){ drawer.setAttribute('data-open','true'); });
+    document.body.style.overflow = 'hidden';
+    drawer.querySelector('.cd-x').focus();
+  }
+  function close(){
+    drawer.setAttribute('data-open','false');
+    document.body.style.overflow = '';
+    setTimeout(function(){ drawer.hidden = true; }, 260);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  // add-to-bag buttons anywhere on the page
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-add]');
+    if (btn){
+      e.preventDefault();
+      add({sku:btn.getAttribute('data-sku'), name:btn.getAttribute('data-name'),
+           price:btn.getAttribute('data-price'), img:btn.getAttribute('data-img'),
+           variant:btn.getAttribute('data-variant') || ''});
+      var label = btn.querySelector('span') || btn;
+      var was = label.textContent;
+      btn.setAttribute('data-added','true'); label.textContent = 'Added';
+      setTimeout(function(){ btn.removeAttribute('data-added'); label.textContent = was; }, 1400);
+      return;
+    }
+    if (e.target.closest('[data-cart-open]')){ e.preventDefault(); open(e.target.closest('[data-cart-open]')); return; }
+    if (e.target.closest('[data-cart-close]')){ close(); return; }
+    var dec = e.target.closest('[data-dec]'), inc = e.target.closest('[data-inc]'), rm = e.target.closest('[data-rm]');
+    if (dec){ var i = +dec.getAttribute('data-dec'); cart[i].q -= 1; if (cart[i].q < 1) cart.splice(i,1); save(); render(); return; }
+    if (inc){ var j = +inc.getAttribute('data-inc'); cart[j].q += 1; save(); render(); return; }
+    if (rm){ var k = +rm.getAttribute('data-rm'); var nm = cart[k].name; cart.splice(k,1); save(); render(); announce(nm + ' removed.'); return; }
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !drawer.hidden && drawer.getAttribute('data-open') === 'true') close();
+  });
+  render();
+})();
+
 </script>
 
 </body>
