@@ -55,12 +55,12 @@
   --pad:clamp(20px,4.2vw,68px);
   --gut:clamp(16px,1.6vw,26px);
   --sec:clamp(64px,6.6vw,112px);
-  --r:3px;
+  --r:4px;
 }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;background:var(--cream);color:var(--ink);
+body{margin:0;background:var(--white);color:var(--ink);
   font-family:'Archivo',system-ui,sans-serif;font-variation-settings:'wdth' 100;
   font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
@@ -310,7 +310,7 @@ button{font:inherit;color:inherit}
 /* ==========================================================================
    WHY LUCKY — the one typographic moment
    ========================================================================== */
-.why{position:relative;background:var(--white);overflow:hidden}
+.why{position:relative;background:var(--cream);overflow:hidden}
 .why::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
 .why-in{position:relative;z-index:1}
 .why-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,80px);align-items:end}
@@ -702,11 +702,11 @@ button{font:inherit;color:inherit}
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
 .mega-wrap{max-width:700px;margin:0 auto}
 .mega-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.mtile{position:relative;overflow:hidden;background:var(--white);min-height:158px;
+.mtile{position:relative;overflow:hidden;background:var(--cream);min-height:158px;
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;
   padding:20px 150px 20px 22px;
   border:2px solid transparent;transition:border-color .14s,background .14s}
-.mtile:hover,.mtile:focus-visible{border-color:var(--ink);background:var(--cream)}
+.mtile:hover,.mtile:focus-visible{border-color:var(--ink);background:var(--white)}
 .mtile .mt-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
   text-transform:uppercase;letter-spacing:-.005em;font-size:1.7rem;line-height:.92;
   position:relative;z-index:2}
@@ -733,7 +733,7 @@ button{font:inherit;color:inherit}
    One tile per club, never a family. Price is the real price, no "from".
    ========================================================================== */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.ptile{position:relative;isolation:isolate;background:var(--white);overflow:hidden;
+.ptile{position:relative;isolation:isolate;background:var(--cream);overflow:hidden;
   display:flex;flex-direction:column;padding:30px 26px 0;text-align:center;
   border:2px solid transparent;transition:border-color .18s,transform .3s}
 .ptile:hover{border-color:var(--ink);transform:translateY(-3px)}
@@ -758,6 +758,25 @@ button{font:inherit;color:inherit}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
 @media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
 @media (max-width:620px){.pgrid{grid-template-columns:1fr}}
+
+
+/* ==========================================================================
+   STUDIO CUTOUTS
+   Every product shot is a club on white. mix-blend-mode:multiply turns that
+   white into the cream tile beneath, so the club floats the way Takomo's do
+   instead of sitting in a white box.
+   ========================================================================== */
+.ptile .pt-ph{margin:16px 0 0;aspect-ratio:1/1;position:relative;overflow:hidden}
+.ptile .pt-ph img{width:100%;height:100%;object-fit:contain;
+  mix-blend-mode:multiply;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ptile:hover .pt-ph img{transform:scale(1.045)}
+.ptile:hover{background:var(--white)}
+.mtile .mt-img{mix-blend-mode:multiply}
+
+/* emphasis tag — Takomo scale: small, tight, flush into the corner */
+.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;background:var(--gold);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 9px;border-radius:0 var(--r) 0 0}
 
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(20px)}
@@ -833,9 +852,9 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-wedges">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Carver</span><span class="mt-sub">K Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver Gold</span><span class="mt-sub">S Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver Black</span><span class="mt-sub">Blacked-out wedge</span><span class="mt-ph"><span>Photo needed &mdash; LGW02 Black</span></span></a>
+          <a class="mtile" href="#"><span class="mt-nm">Carver</span><span class="mt-sub">K Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Carver Gold</span><span class="mt-sub">S Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Carver Black</span><span class="mt-sub">Blacked-out wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
@@ -851,8 +870,8 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-putters">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Tracer Blade</span><span class="mt-sub">Blade putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Tracer Mallet</span><span class="mt-sub">Mallet putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Tracer Blade</span><span class="mt-sub">Blade putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Tracer Mallet</span><span class="mt-sub">Mallet putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
@@ -868,7 +887,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Stryker</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Stryker</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
@@ -967,7 +986,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Carver</span></a>
         <p class="pt-hook">Forged 1020 carbon steel with a dual-texture face. Six lofts, and every one swings the same.</p>
         <span class="pt-meta"><span class="pt-pr">$99</span><span class="pt-rt">4.81 &middot; 551 reviews</span></span>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Lucky Golf Carver in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="Lucky Golf Carver in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Clean</span>
       </article>
       <article class="ptile rv">
@@ -975,7 +994,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Carver Gold</span></a>
         <p class="pt-hook">The S Grind version. Slides under the ball on tight lies and opens up without fighting you.</p>
         <span class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">4.78 &middot; 69 reviews</span></span>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="Lucky Golf Carver Gold in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="Lucky Golf Carver Gold in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Filthy</span>
       </article>
       <article class="ptile rv">
@@ -983,7 +1002,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Carver Black</span></a>
         <p class="pt-hook">Blacked out with gold on the clover, wordmark and loft stamp. K Grind, six lofts.</p>
         <span class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">No reviews yet</span></span>
-        <div class="pt-ph"><div class="ph"><span class="lbl"><span class="mono k">Photo needed</span><span class="mono">LGW02 Black on course, gold accents catching light</span></span></div></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="Lucky Golf LGW02 Carver Black, blacked out with gold accents" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Solid</span>
       </article>
       <article class="ptile rv">
@@ -991,7 +1010,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Tracer Blade</span></a>
         <p class="pt-hook">Cut from one piece of 431 stainless. Planted through the stroke, muted off the face.</p>
         <span class="pt-meta"><span class="pt-pr">$199</span><span class="pt-rt">4.86 &middot; 147 reviews</span></span>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="Lucky Golf Tracer Blade in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="Lucky Golf Tracer Blade in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Pure</span>
       </article>
       <article class="ptile rv">
@@ -999,7 +1018,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Tracer Mallet</span></a>
         <p class="pt-hook">Milled 304 stainless built for the arc most golfers already have.</p>
         <span class="pt-meta"><span class="pt-pr">$229</span><span class="pt-rt">4.71 &middot; 58 reviews</span></span>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="Lucky Golf Tracer Mallet in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="Lucky Golf Tracer Mallet in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Smooth</span>
       </article>
       <article class="ptile rv">
@@ -1007,7 +1026,7 @@ button{font:inherit;color:inherit}
         <a class="stretch" href="#"><span class="pt-nm">Stryker</span></a>
         <p class="pt-hook">Titanium at 19&deg;. The Flex Channel face gets ball speed back on the ones you do not catch.</p>
         <span class="pt-meta"><span class="pt-pr">$209</span><span class="pt-rt">4.60 &middot; 20 reviews</span></span>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="Lucky Golf Stryker in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="Lucky Golf Stryker in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
         <span class="pt-tag">Money</span>
       </article>
     </div>
@@ -1077,13 +1096,6 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
-<!-- ============ ASIDE MOMENT — the Space Mono charm voice ============ -->
-<div class="asidebar">
-  <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-  <p class="aside">still using stock wedges?</p>
-  <p class="sig stamp">no judgment. mostly.</p>
-</div>
-
 <!-- ============ SOCIAL PROOF ============ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
@@ -1101,7 +1113,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="0" tabindex="0" role="button"
         aria-label="Read the full review from Michael P., 5 stars, LGW02 Carver Gold">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="LGW02 Carver Gold" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="LGW02 Carver Gold" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it’s total head turner. You don’t even have to take it out of the bag and…&rdquo;</p>
@@ -1114,7 +1126,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="1" tabindex="0" role="button"
         aria-label="Read the full review from 1981 C.o.M., 5 stars, LGW01 Carver Gold">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="LGW01 Carver Gold" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="LGW01 Carver Gold" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.&rdquo;</p>
@@ -1127,7 +1139,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="2" tabindex="0" role="button"
         aria-label="Read the full review from Jimmy S., 5 stars, LGP01 Tracer Blade">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="LGP01 Tracer Blade" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="LGP01 Tracer Blade" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;I had the original Odyssey two ball with the soft insert face and found myself getting frustrated with how inaccurate my lag putting was. I started looking for a heavier putter…&rdquo;</p>
@@ -1140,7 +1152,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="3" tabindex="0" role="button"
         aria-label="Read the full review from Jay S., 5 stars, LGP01 Tracer Blade">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="LGP01 Tracer Blade" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="LGP01 Tracer Blade" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style…&rdquo;</p>
@@ -1153,7 +1165,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="4" tabindex="0" role="button"
         aria-label="Read the full review from Scott B., 5 stars, LGP01 Tracer Blade">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="LGP01 Tracer Blade" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="LGP01 Tracer Blade" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;Had a set of Ping irons, with Titleist woods but the irons didn’t come with a SW. so I purchased the 54 degree and the 60 degree wedges. I can’t tell you how much I love…&rdquo;</p>
@@ -1166,7 +1178,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="5" tabindex="0" role="button"
         aria-label="Read the full review from Chris C., 5 stars, LGW01 Carver Gold">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="LGW01 Carver Gold" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="LGW01 Carver Gold" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;These clubs are awesome! Shipping was quick. The material is great and they are very solid clubs. I get a lot of compliments for them on the course. Pretty forgiving as well…&rdquo;</p>
@@ -1179,7 +1191,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="6" tabindex="0" role="button"
         aria-label="Read the full review from Carter D., 5 stars, LGW02 Carver Gold">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="LGW02 Carver Gold" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="LGW02 Carver Gold" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all. I now own a…&rdquo;</p>
@@ -1192,7 +1204,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="7" tabindex="0" role="button"
         aria-label="Read the full review from Nick F., 4 stars, LGW01 Carver Gold">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="LGW01 Carver Gold" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="LGW01 Carver Gold" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;The club itself, outstanding. Looks sharp, plays well, nice feel. Definitely a good addition to the bag. First club got lost in transit. Took forever to get a response from…&rdquo;</p>
@@ -1205,7 +1217,7 @@ button{font:inherit;color:inherit}
       <article class="rv-card" data-rv="8" tabindex="0" role="button"
         aria-label="Read the full review from John L.L., 5 stars, LGH01 Stryker">
         <div class="rv-ph">
-          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="LGH01 Stryker" loading="lazy">
+          <img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="LGH01 Stryker" loading="lazy">
           <span class="rv-exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg></span>
         </div>
         <p class="rv-q">&ldquo;Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now&rdquo;</p>
@@ -1578,8 +1590,8 @@ button{font:inherit;color:inherit}
 </div>
 
 <script>
-var LG_REVIEWS = [{"n": "Michael P.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-07-24", "ttl": "The Midas touch", "co": "", "txt": "Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it’s total head turner. You don’t even have to take it out of the bag and people ask you about it. Solid gold baby!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "1981 C.o.M.", "r": 5, "p": "LGW01 Carver Gold", "d": "2026-06-10", "ttl": "As Good As Gold", "co": "", "txt": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Jimmy S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2023-12-05", "ttl": "Never had so much confidence on the green. Best bang for your buck in the putter market. Hands down.", "co": "", "txt": "I had the original Odyssey two ball with the soft insert face and found myself getting frustrated with how inaccurate my lag putting was. I started looking for a heavier putter with a milled face to try the opposite end of the spectrum and I hit the jackpot stumbling across this beauty. Stroke is minimal inside 5' which helps ensure im rolling the ball well because the putter weight does the work for me. Haven't averaged over 2 putts/hole during a round since delivery and my brother in law just bought himself one for Christmas because of he's seen the change a Lucky has made in my game!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Jay S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2026-03-06", "ttl": "Unexpected Greatness", "co": "", "txt": "When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style and a slightly heavier head. When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Scott B.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2024-10-12", "ttl": "Filled out my set!", "co": "", "txt": "Had a set of Ping irons, with Titleist woods but the irons didn’t come with a SW. so I purchased the 54 degree and the 60 degree wedges. I can’t tell you how much I love playing with them! Seems I’m always hitting whatever shot I need to put it in the hole or right up next to it! Was playing with a Scottie Cameron putter which was damaged by the airline, decided to get the Lucky putter as well and it seems like I’m still using the same putter! Cant tell you how many comments I get on the three and seeing the way I play with them only makes them ask more questions about where to get them!! Do yourself a favor and give them a try, you won’t regret it!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Chris C.", "r": 5, "p": "LGW01 Carver Gold", "d": "2024-06-06", "ttl": "Signature Gold 56/60 Wedge Review", "co": "", "txt": "These clubs are awesome! Shipping was quick. The material is great and they are very solid clubs. I get a lot of compliments for them on the course. Pretty forgiving as well and they hit how you would expect a high priced wedge to hit. Only thing for me, is they are a little heavier then most wedges I've used. Just something I've adjusted to a little. Otherwise, for the price, an awesome purchase!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Carter D.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-06-03", "ttl": "The best looking wedge you can find", "co": "", "txt": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all. I now own a putter and 2 wedges… already debating what I’m going to get next from Lucky golf ☘️", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "Nick F.", "r": 4, "p": "LGW01 Carver Gold", "d": "2026-06-20", "ttl": "Great club, Ok customer Service", "co": "", "txt": "The club itself, outstanding. Looks sharp, plays well, nice feel. Definitely a good addition to the bag. First club got lost in transit. Took forever to get a response from anyone. Like weeks. Actually got a notification of a replacement shipping before anyone actually replied to me. So, as long as it ships ok, you’ll love the club! But good luck if there’s an issue. Hope you have patience.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "John L.L.", "r": 5, "p": "LGH01 Stryker", "d": "2026-02-14", "ttl": "Best club in my bag", "co": "", "txt": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493", "sku": "LGH01", "price": "$209", "cta": "Fill the gap"}];
-var LG_POSTS   = [{"kind": "Creator reel still", "brief": "Gold Carver in the bag on a cart path, walking shot, vertical crop", "p": "LGW02 Carver Gold", "who": "creator", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462"}, {"kind": "Customer post", "brief": "First tee, LGW02 Gold in hand, morning light", "p": "LGW02 Carver Gold", "who": "customer", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462"}, {"kind": "Creator post", "brief": "Tracer Blade behind the ball on the green, ball rolling out", "p": "LGP01 Tracer Blade", "who": "creator", "sku": "LGP01", "price": "$199", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091"}, {"kind": "Customer post", "brief": "Full bag setup, gold clubs fanned, overhead", "p": "LGP02 Tracer Mallet", "who": "customer", "sku": "LGP02", "price": "$229", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134"}, {"kind": "Creator reel still", "brief": "Stryker off the deck, follow-through, mid-flight ball", "p": "LGH01 Stryker", "who": "creator", "sku": "LGH01", "price": "$209", "cta": "Fill the gap", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493"}, {"kind": "Customer post", "brief": "Classic Polo on course, three-quarter, clover visible", "p": "LGW01 Carver Gold", "who": "customer", "sku": "LGW01", "price": "$99", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869"}];
+var LG_REVIEWS = [{"n": "Michael P.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-07-24", "ttl": "The Midas touch", "co": "", "txt": "Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it’s total head turner. You don’t even have to take it out of the bag and people ask you about it. Solid gold baby!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "1981 C.o.M.", "r": 5, "p": "LGW01 Carver Gold", "d": "2026-06-10", "ttl": "As Good As Gold", "co": "", "txt": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Jimmy S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2023-12-05", "ttl": "Never had so much confidence on the green. Best bang for your buck in the putter market. Hands down.", "co": "", "txt": "I had the original Odyssey two ball with the soft insert face and found myself getting frustrated with how inaccurate my lag putting was. I started looking for a heavier putter with a milled face to try the opposite end of the spectrum and I hit the jackpot stumbling across this beauty. Stroke is minimal inside 5' which helps ensure im rolling the ball well because the putter weight does the work for me. Haven't averaged over 2 putts/hole during a round since delivery and my brother in law just bought himself one for Christmas because of he's seen the change a Lucky has made in my game!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Jay S.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2026-03-06", "ttl": "Unexpected Greatness", "co": "", "txt": "When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style and a slightly heavier head. When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Scott B.", "r": 5, "p": "LGP01 Tracer Blade", "d": "2024-10-12", "ttl": "Filled out my set!", "co": "", "txt": "Had a set of Ping irons, with Titleist woods but the irons didn’t come with a SW. so I purchased the 54 degree and the 60 degree wedges. I can’t tell you how much I love playing with them! Seems I’m always hitting whatever shot I need to put it in the hole or right up next to it! Was playing with a Scottie Cameron putter which was damaged by the airline, decided to get the Lucky putter as well and it seems like I’m still using the same putter! Cant tell you how many comments I get on the three and seeing the way I play with them only makes them ask more questions about where to get them!! Do yourself a favor and give them a try, you won’t regret it!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Chris C.", "r": 5, "p": "LGW01 Carver Gold", "d": "2024-06-06", "ttl": "Signature Gold 56/60 Wedge Review", "co": "", "txt": "These clubs are awesome! Shipping was quick. The material is great and they are very solid clubs. I get a lot of compliments for them on the course. Pretty forgiving as well and they hit how you would expect a high priced wedge to hit. Only thing for me, is they are a little heavier then most wedges I've used. Just something I've adjusted to a little. Otherwise, for the price, an awesome purchase!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Carter D.", "r": 5, "p": "LGW02 Carver Gold", "d": "2026-06-03", "ttl": "The best looking wedge you can find", "co": "", "txt": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all. I now own a putter and 2 wedges… already debating what I’m going to get next from Lucky golf ☘️", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "Nick F.", "r": 4, "p": "LGW01 Carver Gold", "d": "2026-06-20", "ttl": "Great club, Ok customer Service", "co": "", "txt": "The club itself, outstanding. Looks sharp, plays well, nice feel. Definitely a good addition to the bag. First club got lost in transit. Took forever to get a response from anyone. Like weeks. Actually got a notification of a replacement shipping before anyone actually replied to me. So, as long as it ships ok, you’ll love the club! But good luck if there’s an issue. Hope you have patience.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "John L.L.", "r": 5, "p": "LGH01 Stryker", "d": "2026-02-14", "ttl": "Best club in my bag", "co": "", "txt": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493", "sku": "LGH01", "price": "$209", "cta": "Fill the gap"}];
+var LG_POSTS   = [{"kind": "Creator reel still", "brief": "Gold Carver in the bag on a cart path, walking shot, vertical crop", "p": "LGW02 Carver Gold", "who": "creator", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462"}, {"kind": "Customer post", "brief": "First tee, LGW02 Gold in hand, morning light", "p": "LGW02 Carver Gold", "who": "customer", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462"}, {"kind": "Creator post", "brief": "Tracer Blade behind the ball on the green, ball rolling out", "p": "LGP01 Tracer Blade", "who": "creator", "sku": "LGP01", "price": "$199", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090"}, {"kind": "Customer post", "brief": "Full bag setup, gold clubs fanned, overhead", "p": "LGP02 Tracer Mallet", "who": "customer", "sku": "LGP02", "price": "$229", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133"}, {"kind": "Creator reel still", "brief": "Stryker off the deck, follow-through, mid-flight ball", "p": "LGH01 Stryker", "who": "creator", "sku": "LGH01", "price": "$209", "cta": "Fill the gap", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493"}, {"kind": "Customer post", "brief": "Classic Polo on course, three-quarter, clover visible", "p": "LGW01 Carver Gold", "who": "customer", "sku": "LGW01", "price": "$99", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"}];
 </script>
 <script>
 (function(){
