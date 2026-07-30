@@ -83,7 +83,7 @@ button{font:inherit;color:inherit}
 .eyebrow{display:flex;align-items:center;gap:11px;color:var(--ink-58);margin:0 0 22px;
   font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;font-size:.66rem}
 .eyebrow::before{content:'';width:22px;height:2px;background:var(--gold);flex:none}
-.eyebrow.on-dark{color:var(--cream-52)}
+.eyebrow.on-dark{color:var(--cream-70)}
 .eyebrow.centre{justify-content:center}
 
 .body{font-size:1.0625rem;line-height:1.62;color:var(--ink-70);max-width:47ch;margin:0}
@@ -110,6 +110,13 @@ button{font:inherit;color:inherit}
 .band-cream{position:relative;background:var(--cream)}
 .band-cream::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none}
 .band-ink > *,.band-cream > *{position:relative;z-index:1}
+
+/* ---------- focus ---------- */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.feat :focus-visible,.close :focus-visible,.ftr :focus-visible,.hero :focus-visible,
+.life :focus-visible,.anno :focus-visible{outline-color:var(--gold-hi)}
+.card:has(.stretch:focus-visible),.tile:has(.stretch:focus-visible){outline:2px solid var(--gold);outline-offset:3px}
+.card .stretch:focus-visible,.tile .stretch:focus-visible{outline:none}
 
 /* ---------- buttons ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;gap:.6em;overflow:hidden;
@@ -199,6 +206,16 @@ button{font:inherit;color:inherit}
 .burger{display:none;width:24px;height:16px;position:relative;background:none;border:0;padding:0;cursor:pointer}
 .burger i{position:absolute;left:0;right:0;height:2px;background:var(--ink)}
 .burger i:nth-child(1){top:0}.burger i:nth-child(2){top:7px}.burger i:nth-child(3){top:14px}
+.burger[aria-expanded="true"] i:nth-child(1){top:7px;rotate:45deg}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){top:7px;rotate:-45deg}
+.mnav{display:none;border-top:1px solid var(--ink-08);background:var(--white);padding:8px var(--pad) 18px}
+.mnav[data-open="true"]{display:block}
+.mnav a{display:block;padding:13px 0;border-bottom:1px solid var(--ink-08);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;font-size:1rem}
+.mnav a:last-child{border-bottom:0}
+@media (min-width:981px){.mnav{display:none!important}}
 
 /* ==========================================================================
    HERO
@@ -226,7 +243,7 @@ button{font:inherit;color:inherit}
 .trust .div{width:1px;height:14px;background:var(--ink-14)}
 .stars{display:inline-flex;gap:3px;vertical-align:-.15em}
 .stars svg{width:13px;height:13px;fill:var(--gold)}
-.tok{color:var(--ink-38)}
+.tok{color:var(--ink-58)}
 
 /* ==========================================================================
    HERO A/B EXPERIMENT (delete once the background locks)
@@ -264,8 +281,11 @@ button{font:inherit;color:inherit}
   margin-bottom:clamp(28px,3.4vw,52px)}
 .sec-hd .l{max-width:56ch}
 .fam{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.card{background:var(--white);border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;
-  display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+.card{position:relative;background:var(--white);border:1px solid var(--ink-08);border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+/* one focusable link per card; its ::after makes the whole card clickable */
+.stretch{color:inherit}
+.stretch::after{content:'';position:absolute;inset:0;z-index:4}
 .card:hover{border-color:var(--ink-14);transform:translateY(-3px)}
 .card-ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--cream)}
 .card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -293,7 +313,7 @@ button{font:inherit;color:inherit}
 .feat h2{color:var(--cream);max-width:16ch}
 .feat .body{margin-top:22px}
 .feat-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-52)}
+.feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-70)}
 .feat-stamp .ln{height:1px;flex:1;background:var(--cream-18)}
 .plinth-wrap{position:relative}
 .glow{position:absolute;inset:-13%;border-radius:50%;
@@ -349,6 +369,34 @@ button{font:inherit;color:inherit}
 .vfd span{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.13em;text-transform:uppercase}
 
 /* ==========================================================================
+   SOCIAL RAIL — scrollable customer + creator posts
+   ========================================================================== */
+.rail-nav{display:flex;gap:9px}
+.rail-btn{width:44px;height:44px;border:1.5px solid var(--ink-38);border-radius:50%;background:transparent;
+  color:var(--ink);display:grid;place-items:center;cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.rail-btn:hover:not([disabled]){background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.rail-btn[disabled]{opacity:.28;cursor:default}
+.rail-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+.rail{display:flex;gap:var(--gut);overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:4px var(--pad) 24px;scroll-padding-left:var(--pad);
+  scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.10)}
+.rail::-webkit-scrollbar{height:4px}
+.rail::-webkit-scrollbar-track{background:rgba(23,20,15,.10)}
+.rail::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.rail:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.post{flex:0 0 clamp(228px,21vw,300px);scroll-snap-align:start}
+.post-ph{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden}
+.post-ph .ph{position:absolute;inset:0;border-radius:var(--r);padding:20px}
+.post-ph .ph .lbl .mono{font-size:.6rem;letter-spacing:.15em;line-height:1.7}
+.post-meta{display:flex;align-items:center;gap:7px;margin-top:12px;color:var(--ink-58)}
+.post-meta .mk{width:14px;height:14px;color:var(--green);flex:none}
+.post-meta .h{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:none}
+.ugc-foot{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-top:6px}
+
+/* ==========================================================================
    LABELLED PLACEHOLDER
    ========================================================================== */
 .ph{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;
@@ -380,8 +428,8 @@ button{font:inherit;color:inherit}
 .gear{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
 .gear .g-hero{grid-column:span 2;position:relative;border-radius:var(--r);overflow:hidden;display:flex}
 .gear .g-hero .ph{flex:1;border-radius:0;min-height:100%}
-.tile{border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;background:var(--white);
-  display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+.tile{position:relative;border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;
+  background:var(--white);display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
 .tile:hover{border-color:var(--ink-14);transform:translateY(-3px)}
 .tile-ph{aspect-ratio:1/1;background:var(--cream);overflow:hidden;position:relative}
 .tile-ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -410,7 +458,7 @@ button{font:inherit;color:inherit}
 .close-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 .close-trust{margin-top:38px;display:flex;flex-wrap:wrap;gap:clamp(14px,2.4vw,34px);
   justify-content:center;align-items:center}
-.close-trust .mono{color:var(--cream-52);font-size:.62rem;letter-spacing:.16em}
+.close-trust .mono{color:var(--cream-70);font-size:.62rem;letter-spacing:.16em}
 .close-trust .div{width:1px;height:13px;background:var(--cream-18)}
 
 /* ==========================================================================
@@ -436,7 +484,7 @@ button{font:inherit;color:inherit}
   transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none}
-  *{transition:none!important;animation:none!important}
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
 
 /* ==========================================================================
@@ -512,9 +560,17 @@ button{font:inherit;color:inherit}
         <svg class="icn" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg>
         <span class="dot"></span>
       </a>
-      <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
     </div>
   </div>
+  <nav class="mnav" id="mnav" data-open="false" aria-label="Mobile">
+    <a href="#families">Wedges</a>
+    <a href="#families">Putters</a>
+    <a href="#families">Hybrid</a>
+    <a href="#gear">Apparel</a>
+    <a href="#">Our Story</a>
+    <a href="#">Trybe</a>
+  </nav>
 </header>
 
 <!-- ============ HERO ============ -->
@@ -620,53 +676,53 @@ button{font:inherit;color:inherit}
     </div>
 
     <div class="fam">
-      <a href="#" class="card rv">
+      <article class="card rv">
         <div class="card-ph">
           <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_7d28d460-d8ba-4e34-823b-4969eedb3eaf.webp?v=1781012462" alt="Lucky Golf Carver wedge, gold finish, at address" style="object-position:66% 72%;scale:1.22;transform-origin:64% 74%">
           <span class="stamp">LGW01 / LGW02 · Carver</span>
         </div>
         <div class="card-body">
-          <h3 class="disp d-m">Wedges</h3>
+          <h3 class="disp d-m"><a class="stretch" href="#">Wedges</a></h3>
           <p class="hook">1020 forged carbon steel with a dual-texture face that grabs the ball back. Six lofts on the Carver, and every one swings the same.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 50° 52° 54° 56° 58° 60°</div>
           <div class="card-foot">
             <span class="price"><small>From</small>$99</span>
-            <span class="btn btn-ink btn-sm"><span>Go get one</span><span class="ar">→</span></span>
+            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Go get one</span><span class="ar">→</span></span>
           </div>
         </div>
-      </a>
+      </article>
 
-      <a href="#" class="card rv">
+      <article class="card rv">
         <div class="card-ph">
           <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="Lucky Golf LGP02 Tracer Mallet putter in gold">
           <span class="stamp">LGP01 / LGP02 · Tracer</span>
         </div>
         <div class="card-body">
-          <h3 class="disp d-m">Putters</h3>
+          <h3 class="disp d-m"><a class="stretch" href="#">Putters</a></h3>
           <p class="hook">Blade or mallet, both milled from a single block of stainless. No ping, no buzz, and honest feedback on the ones you miss.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 3.5° · 35" · Blade or mallet</div>
           <div class="card-foot">
             <span class="price"><small>From</small>$199</span>
-            <span class="btn btn-ink btn-sm"><span>Roll it pure</span><span class="ar">→</span></span>
+            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Roll it pure</span><span class="ar">→</span></span>
           </div>
         </div>
-      </a>
+      </article>
 
-      <a href="#" class="card rv">
+      <article class="card rv">
         <div class="card-ph">
           <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="Lucky Golf LGH01 Stryker titanium hybrid, gloss black crown with gold starburst">
           <span class="stamp">LGH01 · Stryker</span>
         </div>
         <div class="card-body">
-          <h3 class="disp d-m">Hybrid</h3>
+          <h3 class="disp d-m"><a class="stretch" href="#">Hybrid</a></h3>
           <p class="hook">Titanium at 19°, built for the yardage you keep guessing at. The Flex Channel face gets ball speed back on the strikes you don't catch.</p>
           <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 19° · 40.5" · Stiff flex</div>
           <div class="card-foot">
             <span class="price">$209</span>
-            <span class="btn btn-ink btn-sm"><span>Fill the gap</span><span class="ar">→</span></span>
+            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Fill the gap</span><span class="ar">→</span></span>
           </div>
         </div>
-      </a>
+      </article>
     </div>
   </div>
 </section>
@@ -790,6 +846,116 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
+<!-- ============ SOCIAL RAIL ============ -->
+<section class="sec ugc" data-rail style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="l">
+        <span class="eyebrow">From the Trybe</span>
+        <h2 class="disp d-l">Seen in the <span class="foil">wild</span></h2>
+      </div>
+      <div class="rail-nav">
+        <button class="rail-btn" data-rail-prev aria-label="Previous posts">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="rail-btn" data-rail-next aria-label="Next posts">
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="rail" role="region" aria-label="Customer and creator posts" tabindex="0">
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator reel still</span>
+              <span class="mono">Gold Carver in the bag on a cart path, walking shot, vertical crop</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">First tee, LGW02 Gold in hand, morning light</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator post</span>
+              <span class="mono">Tracer Blade behind the ball on the green, ball rolling out</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">Full bag setup, gold clubs fanned, overhead</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator reel still</span>
+              <span class="mono">Stryker off the deck, follow-through, mid-flight ball</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post-ph">
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">Classic Polo on course, three-quarter, clover visible</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+  </div>
+  <div class="wrap ugc-foot rv">
+    <p class="aside" style="color:var(--ink-58)">tag us and we'll probably repost it.</p>
+    <a href="#" class="btn btn-line btn-sm"><span>Join the Trybe</span><span class="ar">→</span></a>
+  </div>
+</section>
+
 <!-- ============ LIFESTYLE BREAK ============ -->
 <section class="life">
   <div class="ph ph--dark">
@@ -818,41 +984,41 @@ button{font:inherit;color:inherit}
     </div>
 
     <div class="gear">
-      <a href="#" class="tile rv">
+      <article class="tile rv">
         <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="Lucky Golf Classic Polo in Marble, white with gold veining and a gold collar"></div>
         <div class="tile-body">
-          <span class="nm">The Classic Polo</span>
+          <span class="nm"><a class="stretch" href="#">The Classic Polo</a></span>
           <span class="sub">Marble</span>
           <span class="pr">$67</span>
         </div>
-      </a>
+      </article>
 
-      <a href="#" class="tile rv">
+      <article class="tile rv">
         <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="Lucky Golf Classic Polo in Gold Carnation, gold with a white carnation print"></div>
         <div class="tile-body">
-          <span class="nm">The Classic Polo</span>
+          <span class="nm"><a class="stretch" href="#">The Classic Polo</a></span>
           <span class="sub">Gold Carnation</span>
           <span class="pr">$67</span>
         </div>
-      </a>
+      </article>
 
-      <a href="#" class="tile rv">
+      <article class="tile rv">
         <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" alt="Lucky Golf Blade Polo in Swirl, white with a tonal swirl print"></div>
         <div class="tile-body">
-          <span class="nm">The Blade Polo</span>
+          <span class="nm"><a class="stretch" href="#">The Blade Polo</a></span>
           <span class="sub">Swirl</span>
           <span class="pr">$67</span>
         </div>
-      </a>
+      </article>
 
-      <a href="#" class="tile rv">
+      <article class="tile rv">
         <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" alt="Lucky Golf five-panel rope snapback in black with gold Lucky wordmark"></div>
         <div class="tile-body">
-          <span class="nm">Five-Panel Snapback</span>
+          <span class="nm"><a class="stretch" href="#">Five-Panel Snapback</a></span>
           <span class="sub">Black / Gold</span>
           <span class="pr">$29</span>
         </div>
-      </a>
+      </article>
 
       <div class="g-hero rv">
         <div class="ph">
@@ -967,6 +1133,46 @@ button{font:inherit;color:inherit}
     });
   },{rootMargin:'0px 0px -12% 0px',threshold:0.08});
   document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+})();
+
+/* mobile nav */
+(function(){
+  var b=document.getElementById('burger'), n=document.getElementById('mnav');
+  if(!b||!n) return;
+  b.addEventListener('click',function(){
+    var open = b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded', String(!open));
+    n.setAttribute('data-open', String(!open));
+  });
+})();
+
+/* social rail */
+(function(){
+  document.querySelectorAll('[data-rail]').forEach(function(root){
+    var rail=root.querySelector('.rail');
+    var prev=root.querySelector('[data-rail-prev]');
+    var next=root.querySelector('[data-rail-next]');
+    if(!rail||!prev||!next) return;
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function step(){
+      var c=rail.querySelector('.post');
+      var gap=parseFloat(getComputedStyle(rail).columnGap)||22;
+      return c ? c.getBoundingClientRect().width + gap : 300;
+    }
+    function update(){
+      var max=rail.scrollWidth-rail.clientWidth;
+      prev.disabled = rail.scrollLeft <= 4;
+      next.disabled = rail.scrollLeft >= max-4;
+    }
+    function go(dir){
+      rail.scrollBy({left:dir*step(), behavior: reduce ? 'auto' : 'smooth'});
+    }
+    prev.addEventListener('click',function(){go(-1)});
+    next.addEventListener('click',function(){go(1)});
+    rail.addEventListener('scroll',update,{passive:true});
+    window.addEventListener('resize',update);
+    update();
+  });
 })();
 </script>
 
