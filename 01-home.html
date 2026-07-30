@@ -723,6 +723,71 @@ button{font:inherit;color:inherit}
   .cd-panel,.cd-bd{transition:none}
 }
 
+
+/* ==========================================================================
+   MEGA MENU v2 — Takomo pattern: centred, 2-up, name + category only,
+   product photo large and bleeding out of the tile. No price, no buy button.
+   ========================================================================== */
+.mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
+.mega-wrap{max-width:700px;margin:0 auto}
+.mega-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mtile{position:relative;overflow:hidden;background:var(--cream);min-height:158px;
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+  padding:20px 150px 20px 22px;
+  border:2px solid transparent;transition:border-color .14s,background .14s}
+.mtile:hover,.mtile:focus-visible{border-color:var(--ink);background:#FBF9F4}
+.mtile .mt-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
+  text-transform:uppercase;letter-spacing:-.005em;font-size:1.7rem;line-height:.92;
+  position:relative;z-index:2}
+.mtile .mt-sub{font-size:.84rem;color:var(--ink-muted);margin-top:5px;position:relative;z-index:2}
+.mtile .mt-img{position:absolute;right:-14px;bottom:-24px;width:172px;height:172px;
+  object-fit:contain;z-index:1;pointer-events:none;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.mtile:hover .mt-img{transform:scale(1.05) rotate(-2deg)}
+.mtile .mt-ph{position:absolute;right:10px;bottom:10px;width:124px;height:96px;z-index:1;
+  display:grid;place-items:center;text-align:center;
+  background:repeating-linear-gradient(135deg,rgba(23,20,15,.055) 0 10px,rgba(23,20,15,.085) 10px 20px);
+  border:1px dashed rgba(23,20,15,.28)}
+.mtile .mt-ph span{font-family:'Space Mono',monospace;font-size:.46rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(23,20,15,.62);padding:4px}
+.mtile .chip{align-self:flex-start;background:var(--green);color:var(--white);
+  font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 6px;margin-bottom:8px;position:relative;z-index:2}
+.mega-foot{max-width:700px;margin:18px auto 0;display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:space-between;border-top:1px solid var(--ink-08);padding-top:16px}
+.mega-foot .aside{color:var(--ink-muted);font-size:.92rem}
+
+/* ==========================================================================
+   PRODUCT TILES — Takomo pattern: text above, photo below, tag bottom-left.
+   One tile per club, never a family. Price is the real price, no "from".
+   ========================================================================== */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.ptile{position:relative;isolation:isolate;background:var(--cream);overflow:hidden;
+  display:flex;flex-direction:column;padding:30px 26px 0;text-align:center;
+  border:2px solid transparent;transition:border-color .18s,transform .3s}
+.ptile:hover{border-color:var(--ink);transform:translateY(-3px)}
+.ptile .pt-sku{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
+  font-weight:800;text-transform:uppercase;letter-spacing:-.008em;
+  font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:.92;margin:8px 0 10px;color:var(--ink)}
+.ptile .pt-hook{margin:0 auto;max-width:30ch;font-size:.93rem;line-height:1.5;color:var(--ink-muted)}
+.ptile .pt-meta{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px}
+.ptile .pt-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  font-size:1.02rem}
+.ptile .pt-rt{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink-muted)}
+.ptile .pt-ph{margin:18px -26px 0;aspect-ratio:1/1;overflow:hidden;position:relative}
+.ptile .pt-ph img{width:100%;height:100%;object-fit:cover;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.ptile:hover .pt-ph img{transform:scale(1.04)}
+.ptile .pt-ph .ph{position:absolute;inset:0;border:0}
+.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;background:var(--gold);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;padding:7px 12px}
+.ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
+@media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
+@media (max-width:620px){.pgrid{grid-template-columns:1fr}}
+
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(20px)}
 .rv.in{opacity:1;transform:none;
@@ -785,11 +850,6 @@ button{font:inherit;color:inherit}
   <symbol id="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></symbol>
 </svg>
 
-<!-- ============ ANNOUNCEMENT ============ -->
-<div class="anno">
-  <span class="mono">LGW02 Carver Gold — <b>52°, 56°, 60° in stock.</b> 50°, 54°, 58° in production.</span>
-</div>
-
 <!-- ============ HEADER ============ -->
 <header class="hdr">
   <div class="hdr-in">
@@ -801,28 +861,14 @@ button{font:inherit;color:inherit}
         </button>
         <div class="mega" id="mega-wedges">
           <div class="mega-in">
-            <div class="mega-side">
-              <span class="eyebrow">Six lofts on the Carver</span>
-              <p>Forged 1020 carbon steel, dual-texture face, consistent 300g head across every loft.</p>
-              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
-            </div>
-            <div class="mega-grid">
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">LGW01</span><span class="nm">Carver</span><span class="sub">K Grind &middot; 50&deg;&ndash;60&deg;</span><span class="row"><span class="pr">$99</span><button type="button" class="btn-add" data-add data-sku="LGW01" data-name="Carver" data-price="$99" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" data-variant="56°"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">LGW02</span><span class="nm">Carver Gold</span><span class="sub">S Grind &middot; 52&deg; 56&deg; 60&deg;</span><span class="row"><span class="pr">$109</span><button type="button" class="btn-add" data-add data-sku="LGW02" data-name="Carver Gold" data-price="$109" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" data-variant="56°"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="badge-new">New</span><span class="sku">LGW02</span><span class="nm">Carver Black</span><span class="sub">K Grind &middot; 50&deg;&ndash;60&deg;</span><span class="row"><span class="pr">$109</span><span class="mono" style="font-size:.55rem;letter-spacing:.12em;color:var(--ink-muted)">Coming soon</span></span></span>
-          <span class="mc-ph"><span>Photo needed &mdash; LGW02 Black</span></span>
-        </div>
-            </div>
+            <div class="mega-wrap"><div class="mega-grid">
+          <a class="mtile" href="#"><span class="mt-nm">Carver</span><span class="mt-sub">K Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Carver Gold</span><span class="mt-sub">S Grind wedge</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="chip">New</span><span class="mt-nm">Carver Black</span><span class="mt-sub">Blacked-out wedge</span><span class="mt-ph"><span>Photo needed &mdash; LGW02 Black</span></span></a>
+            </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
-              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+              <a href="#families" class="btn btn-line btn-sm"><span>All forged wedges</span><span class="ar">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -833,24 +879,13 @@ button{font:inherit;color:inherit}
         </button>
         <div class="mega" id="mega-putters">
           <div class="mega-in">
-            <div class="mega-side">
-              <span class="eyebrow">Blade or mallet</span>
-              <p>Milled from a single block of stainless. No welds, no cavities, no ping.</p>
-              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
-            </div>
-            <div class="mega-grid">
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">LGP01</span><span class="nm">Tracer Blade</span><span class="sub">431 stainless &middot; 385g &middot; 35&quot;</span><span class="row"><span class="pr">$199</span><button type="button" class="btn-add" data-add data-sku="LGP01" data-name="Tracer Blade" data-price="$199" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" data-variant="35&quot; RH"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">LGP02</span><span class="nm">Tracer Mallet</span><span class="sub">304 stainless &middot; 365g &middot; 35&quot;</span><span class="row"><span class="pr">$229</span><button type="button" class="btn-add" data-add data-sku="LGP02" data-name="Tracer Mallet" data-price="$229" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" data-variant="35&quot; RH"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="" width="176" height="176" decoding="async">
-        </div>
-            </div>
+            <div class="mega-wrap"><div class="mega-grid">
+          <a class="mtile" href="#"><span class="mt-nm">Tracer Blade</span><span class="mt-sub">Blade putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Tracer Mallet</span><span class="mt-sub">Mallet putter</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="" width="344" height="344" decoding="async"></a>
+            </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
-              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+              <a href="#families" class="btn btn-line btn-sm"><span>All milled putters</span><span class="ar">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -861,20 +896,12 @@ button{font:inherit;color:inherit}
         </button>
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
-            <div class="mega-side">
-              <span class="eyebrow">One loft, one job</span>
-              <p>Titanium at 19&deg;, Flex Channel face, Glide Sole. For the yardage you keep guessing at.</p>
-              <a href="#families" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
-            </div>
-            <div class="mega-grid">
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">LGH01</span><span class="nm">Stryker</span><span class="sub">19&deg; &middot; 40.5&quot; &middot; Stiff flex</span><span class="row"><span class="pr">$209</span><button type="button" class="btn-add" data-add data-sku="LGH01" data-name="Stryker" data-price="$209" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" data-variant="19° RH"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="" width="176" height="176" decoding="async">
-        </div>
-            </div>
+            <div class="mega-wrap"><div class="mega-grid">
+          <a class="mtile" href="#"><span class="mt-nm">Stryker</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+            </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
-              <a href="#families" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+              <a href="#families" class="btn btn-line btn-sm"><span>All titanium hybrid</span><span class="ar">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -885,32 +912,15 @@ button{font:inherit;color:inherit}
         </button>
         <div class="mega" id="mega-apparel">
           <div class="mega-in">
-            <div class="mega-side">
-              <span class="eyebrow">Polos and hats</span>
-              <p>Four-way stretch, UPF 50+, moisture-wicking. S&ndash;3XL.</p>
-              <a href="#gear" class="btn btn-line btn-sm"><span>Shop all</span><span class="ar">&rarr;</span></a>
-            </div>
-            <div class="mega-grid">
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">POLO-MARBLE</span><span class="nm">Classic Polo</span><span class="sub">Marble</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-MARBLE" data-name="Classic Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" data-variant="Marble / M"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">POLO-CARN</span><span class="nm">Classic Polo</span><span class="sub">Gold Carnation</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-CARN" data-name="Classic Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" data-variant="Gold Carnation / M"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">POLO-SWIRL</span><span class="nm">Blade Polo</span><span class="sub">Swirl</span><span class="row"><span class="pr">$67</span><button type="button" class="btn-add" data-add data-sku="POLO-SWIRL" data-name="Blade Polo" data-price="$67" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" data-variant="Swirl / M"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" alt="" width="176" height="176" decoding="async">
-        </div>
-        <div class="mcard">
-          <span class="mc-txt"><span class="sku">HAT-BLK</span><span class="nm">Five-Panel Snapback</span><span class="sub">Black / Gold</span><span class="row"><span class="pr">$29</span><button type="button" class="btn-add" data-add data-sku="HAT-BLK" data-name="Five-Panel Snapback" data-price="$29" data-img="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" data-variant="Black / Gold"><span>Add to bag</span></button></span></span>
-          <img class="mc-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" alt="" width="176" height="176" decoding="async">
-        </div>
-            </div>
+            <div class="mega-wrap"><div class="mega-grid">
+          <a class="mtile" href="#"><span class="mt-nm">Classic Polo</span><span class="mt-sub">Classic collar</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Blade Polo</span><span class="mt-sub">Blade collar</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Snapback</span><span class="mt-sub">Five-panel rope</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">Gold Carnation</span><span class="mt-sub">Classic Polo</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="" width="344" height="344" decoding="async"></a>
+            </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand.</p>
-              <a href="#gear" class="btn btn-ink btn-sm"><span>See the whole line</span><span class="ar">&rarr;</span></a>
+              <a href="#gear" class="btn btn-line btn-sm"><span>All apparel &amp; gear</span><span class="ar">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -937,6 +947,12 @@ button{font:inherit;color:inherit}
   </nav>
 </header>
 
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-label="Lucky Golf, at a glance">
+  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>4.78 from 884 verified reviews</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged carbon steel, milled stainless, titanium</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Right hand and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>No middlemen, no tour sponsorships</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Wedges from $99</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>4.78 from 884 verified reviews</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged carbon steel, milled stainless, titanium</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Right hand and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>No middlemen, no tour sponsorships</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Wedges from $99</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
+</div>
+
+
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-media">
@@ -960,23 +976,8 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
-<div class="trust">
-  <div class="trust-in">
-    <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
-    <span class="mono">4.78 average · 884 verified club reviews</span>
-    <span class="div"></span>
-    <span class="mono">60-day club returns</span>
-    <span class="div"></span>
-    <span class="mono">Right &amp; left hand</span>
-    <span class="div"></span>
-    <span class="mono">Direct pricing, no middlemen</span>
-  </div>
-</div>
 
-<!-- ============ MARQUEE ============ -->
-<div class="mq" aria-label="Lucky Golf product facts">
-  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
-</div>
+
 
 <!-- ============ HERO A/B EXPERIMENT ============ -->
 <section class="exp sec-tight">
@@ -1038,62 +1039,60 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="sec-hd rv">
       <div class="l">
-        <span class="eyebrow">Three families, one bag</span>
-        <h2 class="disp d-l">Six clubs. That's the <span class="foil">line</span></h2>
+        <span class="eyebrow">Wedges &middot; Putters &middot; Hybrid</span>
+        <h2 class="disp d-l">Every club we <span class="foil">make</span></h2>
       </div>
       <a href="#" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
     </div>
 
-    <div class="fam">
-      <article class="card rv">
-        <div class="card-ph">
-          <img loading="lazy" width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Lucky Golf Carver wedge in gold on the fairway behind a ball">
-          <span class="stamp">LGW01 / LGW02 · Carver</span>
-        </div>
-        <div class="card-body">
-          <h3 class="disp d-m"><a class="stretch" href="#">Wedges</a></h3>
-          <div class="card-rating"><span class="stars" style="--pct:96.2%" role="img" aria-label="4.81 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.81 · 620 reviews</span></div>
-          <p class="hook">1020 forged carbon steel with a dual-texture face that grabs the ball back. Six lofts on the Carver, and every one swings the same.</p>
-          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 50° 52° 54° 56° 58° 60°</div>
-          <div class="card-foot">
-            <span class="price"><small>From</small>$99</span>
-            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Go get one</span><span class="ar">→</span></span>
-          </div>
-        </div>
+    <div class="pgrid">
+      <article class="ptile rv">
+        <span class="pt-sku">LGW01</span>
+        <a class="stretch" href="#"><span class="pt-nm">Carver</span></a>
+        <p class="pt-hook">Forged 1020 carbon steel with a dual-texture face. Six lofts, and every one swings the same.</p>
+        <span class="pt-meta"><span class="pt-pr">$99</span><span class="pt-rt">4.81 &middot; 551 reviews</span></span>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Lucky Golf Carver in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <span class="pt-tag">Clean</span>
       </article>
-
-      <article class="card rv">
-        <div class="card-ph">
-          <img loading="lazy" width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="Lucky Golf LGP02 Tracer Mallet putter in gold on a green, flagstick behind">
-          <span class="stamp">LGP01 / LGP02 · Tracer</span>
-        </div>
-        <div class="card-body">
-          <h3 class="disp d-m"><a class="stretch" href="#">Putters</a></h3>
-          <div class="card-rating"><span class="stars" style="--pct:96.4%" role="img" aria-label="4.82 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.82 · 205 reviews</span></div>
-          <p class="hook">Blade or mallet, both milled from a single block of stainless. No ping, no buzz, and honest feedback on the ones you miss.</p>
-          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 3.5° · 35" · Blade or mallet</div>
-          <div class="card-foot">
-            <span class="price"><small>From</small>$199</span>
-            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Roll it pure</span><span class="ar">→</span></span>
-          </div>
-        </div>
+      <article class="ptile rv">
+        <span class="pt-sku">LGW02</span>
+        <a class="stretch" href="#"><span class="pt-nm">Carver Gold</span></a>
+        <p class="pt-hook">The S Grind version. Slides under the ball on tight lies and opens up without fighting you.</p>
+        <span class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">4.78 &middot; 69 reviews</span></span>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462" alt="Lucky Golf Carver Gold in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <span class="pt-tag">Filthy</span>
       </article>
-
-      <article class="card rv">
-        <div class="card-ph">
-          <img loading="lazy" width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="Lucky Golf LGH01 Stryker titanium hybrid in gold behind a ball in the rough">
-          <span class="stamp">LGH01 · Stryker</span>
-        </div>
-        <div class="card-body">
-          <h3 class="disp d-m"><a class="stretch" href="#">Hybrid</a></h3>
-          <div class="card-rating"><span class="stars" style="--pct:92.0%" role="img" aria-label="4.6 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span><span class="n">4.60 · 20 reviews</span></div>
-          <p class="hook">Titanium at 19°, built for the yardage you keep guessing at. The Flex Channel face gets ball speed back on the strikes you don't catch.</p>
-          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 19° · 40.5" · Stiff flex</div>
-          <div class="card-foot">
-            <span class="price">$209</span>
-            <span class="btn btn-ink btn-sm" aria-hidden="true"><span>Fill the gap</span><span class="ar">→</span></span>
-          </div>
-        </div>
+      <article class="ptile rv">
+        <span class="pt-sku">LGW02</span>
+        <a class="stretch" href="#"><span class="pt-nm">Carver Black</span></a>
+        <p class="pt-hook">Blacked out with gold on the clover, wordmark and loft stamp. K Grind, six lofts.</p>
+        <span class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">New</span></span>
+        <div class="pt-ph"><div class="ph"><span class="lbl"><span class="mono k">Photo needed</span><span class="mono">LGW02 Black on course, gold accents catching light</span></span></div></div>
+        <span class="pt-tag">Solid</span>
+      </article>
+      <article class="ptile rv">
+        <span class="pt-sku">LGP01</span>
+        <a class="stretch" href="#"><span class="pt-nm">Tracer Blade</span></a>
+        <p class="pt-hook">Cut from one piece of 431 stainless. Planted through the stroke, muted off the face.</p>
+        <span class="pt-meta"><span class="pt-pr">$199</span><span class="pt-rt">4.86 &middot; 147 reviews</span></span>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="Lucky Golf Tracer Blade in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <span class="pt-tag">Pure</span>
+      </article>
+      <article class="ptile rv">
+        <span class="pt-sku">LGP02</span>
+        <a class="stretch" href="#"><span class="pt-nm">Tracer Mallet</span></a>
+        <p class="pt-hook">Milled 304 stainless built for the arc most golfers already have.</p>
+        <span class="pt-meta"><span class="pt-pr">$229</span><span class="pt-rt">4.71 &middot; 58 reviews</span></span>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="Lucky Golf Tracer Mallet in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <span class="pt-tag">Smooth</span>
+      </article>
+      <article class="ptile rv">
+        <span class="pt-sku">LGH01</span>
+        <a class="stretch" href="#"><span class="pt-nm">Stryker</span></a>
+        <p class="pt-hook">Titanium at 19&deg;. The Flex Channel face gets ball speed back on the ones you do not catch.</p>
+        <span class="pt-meta"><span class="pt-pr">$209</span><span class="pt-rt">4.60 &middot; 20 reviews</span></span>
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="Lucky Golf Stryker in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+        <span class="pt-tag">Money</span>
       </article>
     </div>
   </div>
@@ -1113,7 +1112,7 @@ button{font:inherit;color:inherit}
         <p class="body on-dark">Putting is where the round quietly gets away from you, usually from six feet. The Tracer Blade is cut from one piece of 431 stainless, so there are no welds or cavities for the vibration to bounce around in. The ball comes off muted and true, and you feel exactly where you struck it without getting punished for it.</p>
         <div class="feat-cta">
           <a href="#" class="btn btn-foil"><span>Roll it pure</span><span class="ar">→</span></a>
-          <a href="#" class="btn btn-line-cream"><span>See both shapes</span></a>
+          <a href="#" class="btn btn-line-cream"><span>See the mallet</span></a>
         </div>
         <div class="feat-stamp">
           <span class="stamp">LGP01 · Tracer Blade · 431 stainless · $199</span>
@@ -1439,10 +1438,6 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
-<!-- ============ MARQUEE ============ -->
-<div class="mq" aria-label="Lucky Golf product facts">
-  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>LGW02 Carver Gold &middot; 52&deg; 56&deg; 60&deg;</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>1020 forged carbon steel</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>CNC-milled grooves</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>431 &amp; 304 stainless, milled from solid</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day club returns</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Direct pricing, no middlemen</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
-</div>
 
 <!-- ============ APPAREL + GEAR ============ -->
 <section class="sec" id="gear">
