@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky Golf — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   LUCKY GOLF — HOME  ·  Phase 1 mock, page 1 of 4  ·  rev 2
+   THE LOOK = six recurring devices, reused on every page:
+     1  FOIL          gold ramp as a surface; highlight sweeps right → left
+     2  MARK          clover-with-golfer as watermark / badge / breath mark
+     3  GROOVE        milled hairlines so ink + cream fields are never flat
+     4  STAMP         Space Mono SKU + loft stamps, uppercase wide-tracked
+     5  ASIDE         Space Mono lowercase — the charm voice (PROPOSED)
+     6  RULE-EYEBROW  short gold rule + mono label, leads every section
+   Nothing inherited from design system v1.
+   ========================================================================== */
+
+:root{
+  /* ---- locked palette ---- */
+  --ink:#17140F;
+  --cream:#F6F2E8;
+  --white:#FFFFFF;
+  --gold:#C29A2B;
+  --gold-hi:#EDD27C;
+  --gold-lo:#8A6A1C;
+  --green:#008340;
+  --green-br:#2ECC71;
+
+  /* ---- DEVICE 1 · FOIL · shadow → base → highlight → base → shadow ---- */
+  --lg-foil-h:linear-gradient(96deg,var(--gold-lo) 0%,var(--gold) 20%,var(--gold-hi) 50%,var(--gold) 80%,var(--gold-lo) 100%);
+  --lg-foil-v:linear-gradient(178deg,var(--gold-lo) 0%,var(--gold) 24%,var(--gold-hi) 50%,var(--gold) 76%,var(--gold-lo) 100%);
+  --lg-foil-v-dark:linear-gradient(178deg,var(--gold) 0%,var(--gold-hi) 46%,var(--gold-hi) 56%,var(--gold) 100%);
+
+  /* ---- DEVICE 3 · GROOVE ---- */
+  /* ink = option C from the ladder: 1px line on a 6px pitch, 2.4x the first pass.
+     cream = option G: deliberately near-invisible, it sits behind the longest copy. */
+  --groove-dark:repeating-linear-gradient(180deg,rgba(246,242,232,.13) 0 1px,rgba(246,242,232,0) 1px 6px);
+  --groove-light:repeating-linear-gradient(180deg,rgba(23,20,15,.032) 0 1px,rgba(23,20,15,0) 1px 6px);
+
+  --ink-70:rgba(23,20,15,.70);
+  --ink-58:rgba(23,20,15,.58);
+  --ink-38:rgba(23,20,15,.38);
+  --ink-14:rgba(23,20,15,.14);
+  --ink-08:rgba(23,20,15,.08);
+  --cream-70:rgba(246,242,232,.70);
+  --cream-52:rgba(246,242,232,.52);
+  --cream-18:rgba(246,242,232,.18);
+
+  --pad:clamp(20px,4.2vw,68px);
+  --gut:clamp(16px,1.6vw,26px);
+  --sec:clamp(64px,6.6vw,112px);
+  --r:3px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;font-variation-settings:'wdth' 100;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+
+/* ---------- type ---------- */
+.disp{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;
+  text-transform:uppercase;line-height:.85;letter-spacing:-.005em;margin:0}
+.d-xl{font-size:clamp(3.1rem,7.6vw,7.2rem)}
+.d-l {font-size:clamp(2.5rem,4.9vw,4.5rem)}
+.d-m {font-size:clamp(1.9rem,3.1vw,3rem);line-height:.9}
+.d-s {font-size:clamp(1.35rem,1.8vw,1.7rem);line-height:.94;font-variation-settings:'wdth' 70;font-weight:700}
+
+/* DEVICE 4 · STAMP */
+.mono{font-family:'Space Mono',ui-monospace,monospace;text-transform:uppercase;
+  letter-spacing:.2em;font-size:.66rem;line-height:1.5}
+.stamp{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:.6rem}
+
+/* DEVICE 6 · RULE-EYEBROW */
+.eyebrow{display:flex;align-items:center;gap:11px;color:var(--ink-58);margin:0 0 22px;
+  font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;font-size:.66rem}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--gold);flex:none}
+.eyebrow.on-dark{color:var(--cream-52)}
+.eyebrow.centre{justify-content:center}
+
+.body{font-size:1.0625rem;line-height:1.62;color:var(--ink-70);max-width:47ch;margin:0}
+.body.on-dark{color:var(--cream-70)}
+.body.lead{font-size:1.19rem;line-height:1.55}
+
+/* DEVICE 1 · FOIL on display type (vertical ramp = metal) */
+.foil{background:var(--lg-foil-v);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.foil.on-dark{background:var(--lg-foil-v-dark);-webkit-background-clip:text;background-clip:text}
+
+/* DEVICE 5 · ASIDE — Space Mono lowercase, the charm voice (PROPOSED ADDITION) */
+.aside{font-family:'Space Mono',monospace;text-transform:none;letter-spacing:.005em;
+  font-size:clamp(1.02rem,1.5vw,1.32rem);line-height:1.5;margin:0}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1560px;margin:0 auto;padding:0 var(--pad)}
+.sec{padding:var(--sec) 0}
+.sec-tight{padding:calc(var(--sec) * .62) 0}
+
+/* DEVICE 3 · GROOVE bands */
+.band-ink{position:relative;background:var(--ink);color:var(--cream)}
+.band-ink::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.band-cream{position:relative;background:var(--cream)}
+.band-cream::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none}
+.band-ink > *,.band-cream > *{position:relative;z-index:1}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.6em;overflow:hidden;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
+  text-transform:uppercase;letter-spacing:.045em;font-size:.86rem;
+  padding:15px 26px;border:1.5px solid transparent;border-radius:var(--r);cursor:pointer;
+  transition:background .22s,color .22s,border-color .22s}
+.btn > span{position:relative;z-index:2}
+.btn .ar{transition:transform .22s}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* DEVICE 1 · FOIL button
+   The highlight lives INSIDE the foil ramp and travels RIGHT → LEFT.
+   Mechanic: the 210%-wide ramp slides under a fixed window, so the #EDD27C
+   band crosses the face. Three locked golds only — no white wash. */
+.btn-foil{color:var(--ink);border-color:transparent;
+  background-image:var(--lg-foil-h);
+  background-size:210% 100%;
+  background-position:14% 0;
+  transition:background-position .82s cubic-bezier(.32,.76,.16,1)}
+.btn-foil:hover,.btn-foil:focus-visible{background-position:100% 0}
+/* specular glint — one narrow pass, seamless loop, primary CTA only */
+.btn-foil::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 60%);
+  transform:translateX(120%)}
+.btn-foil.sweep::after{animation:lg-glint 6s cubic-bezier(.4,.62,.3,1) 1.2s infinite}
+@keyframes lg-glint{
+  0%{transform:translateX(120%);opacity:0}
+  5%{opacity:1}
+  17%{transform:translateX(-120%);opacity:1}
+  19%{transform:translateX(-120%);opacity:0}
+  100%{transform:translateX(-120%);opacity:0}
+}
+
+.btn-ink{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn-ink:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--ink-38)}
+.btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.btn-line-cream{background:transparent;color:var(--cream);border-color:var(--cream-52)}
+.btn-line-cream:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn-sm{padding:11px 18px;font-size:.76rem}
+
+/* ---------- DEVICE 2 · THE MARK ---------- */
+.mk{display:inline-block;line-height:0}
+.mk svg{display:block;width:100%;height:100%}
+/* logo lockups */
+.logo{display:inline-block;color:var(--green)}
+.logo svg{display:block;width:100%;height:100%}
+.logo--lucky{width:132px;height:30.4px}
+.logo--stack{width:150px;height:48px}
+.logo--cream{color:var(--cream)}
+.logo--ink{color:var(--ink)}
+/* watermark */
+.wm{position:absolute;pointer-events:none;color:var(--cream);opacity:.05;z-index:0}
+.wm svg{display:block;width:100%;height:100%}
+/* breath mark between light sections */
+.breath{display:flex;align-items:center;justify-content:center;gap:18px;padding:0 var(--pad)}
+.breath .ln{height:1px;flex:1;max-width:200px;background:var(--ink-14)}
+.breath .mk{width:19px;height:19px;color:var(--green)}
+/* clover bullet */
+.cbul{width:15px;height:15px;color:var(--green);flex:none;transform:translateY(2px)}
+
+/* ==========================================================================
+   ANNOUNCEMENT
+   ========================================================================== */
+.anno{position:relative;background:var(--ink);color:var(--cream-70);text-align:center;padding:11px var(--pad);overflow:hidden}
+.anno::before{content:'';position:absolute;inset:0;background:var(--groove-dark)}
+.anno span{position:relative;z-index:1}
+.anno .mono{font-size:.62rem;letter-spacing:.18em}
+.anno b{color:var(--gold-hi);font-weight:700}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--ink-08)}
+.hdr-in{display:flex;align-items:center;gap:clamp(18px,3vw,46px);padding:15px var(--pad)}
+.nav{display:flex;gap:clamp(14px,1.7vw,28px);margin-left:auto}
+.nav a{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;padding:6px 0;position:relative}
+.nav a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--gold);transition:right .28s}
+.nav a:hover::after{right:0}
+.hdr-act{display:flex;align-items:center;gap:16px;margin-left:auto}
+.icn{width:19px;height:19px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cart{position:relative}
+.cart .dot{position:absolute;top:-3px;right:-4px;width:7px;height:7px;border-radius:50%;background:var(--green-br)}
+.burger{display:none;width:24px;height:16px;position:relative;background:none;border:0;padding:0;cursor:pointer}
+.burger i{position:absolute;left:0;right:0;height:2px;background:var(--ink)}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:7px}.burger i:nth-child(3){top:14px}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{position:relative;isolation:isolate;background:var(--ink)}
+.hero-media{position:relative;height:min(92vh,940px);min-height:520px;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:52% 48%}
+.hero-scrim{position:absolute;inset:0;background:
+    linear-gradient(96deg,rgba(23,20,15,.80) 0%,rgba(23,20,15,.54) 34%,rgba(23,20,15,.06) 62%,rgba(23,20,15,0) 100%),
+    linear-gradient(0deg,rgba(23,20,15,.46) 0%,rgba(23,20,15,0) 42%)}
+.hero-copy{position:absolute;inset:0;display:flex;align-items:flex-end;padding:0 0 clamp(44px,6vw,88px)}
+.hero-copy .wrap{width:100%}
+.hero-copy .eyebrow{color:var(--gold-hi);margin-bottom:20px}
+.hero h1{color:var(--cream);max-width:19ch;text-shadow:0 2px 40px rgba(23,20,15,.35)}
+.hero .body{margin-top:22px;max-width:44ch;color:var(--cream-70)}
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+/* DEVICE 4 · loft stamp on the photograph */
+.hero-stamp{position:absolute;right:var(--pad);bottom:clamp(44px,6vw,88px);text-align:right;
+  color:var(--cream-70);z-index:2;text-shadow:0 1px 14px rgba(23,20,15,.75)}
+.hero-stamp b{display:block;color:var(--gold-hi);font-weight:400}
+
+.trust{border-bottom:1px solid var(--ink-08)}
+.trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,44px);padding:18px var(--pad)}
+.trust .mono{color:var(--ink-58);font-size:.62rem;letter-spacing:.17em}
+.trust .div{width:1px;height:14px;background:var(--ink-14)}
+.stars{display:inline-flex;gap:3px;vertical-align:-.15em}
+.stars svg{width:13px;height:13px;fill:var(--gold)}
+.tok{color:var(--ink-38)}
+
+/* ==========================================================================
+   HERO A/B EXPERIMENT (delete once the background locks)
+   ========================================================================== */
+.exp{background:repeating-linear-gradient(135deg,rgba(23,20,15,.028) 0 12px,transparent 12px 24px);
+  border-block:1px solid var(--ink-14)}
+.exp-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:26px}
+.exp-hd .tag{background:var(--green);color:var(--white);padding:5px 9px;border-radius:2px;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut)}
+.exp-pane{border:1px solid var(--ink-14);border-radius:var(--r);overflow:hidden}
+.exp-pane .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;
+  border-bottom:1px solid var(--ink-14);background:var(--white)}
+.exp-pane .cap .mono{font-size:.6rem;letter-spacing:.15em;color:var(--ink-58)}
+.exp-pane .cap .sw{width:16px;height:16px;border-radius:2px;border:1px solid var(--ink-14)}
+.exp-stage{--pad:22px}
+.exp-stage.white{background:var(--white)}
+.exp-stage.cream{background:var(--cream)}
+.exp-stage .hero-media{height:300px;min-height:0}
+.exp-stage .hero-copy{padding-bottom:22px}
+.exp-stage .d-xl{font-size:1.72rem}
+.exp-stage .eyebrow{font-size:.54rem;letter-spacing:.15em;margin-bottom:10px}
+.exp-stage .eyebrow::before{width:14px}
+.exp-stage .hero .body,.exp-stage .hero-stamp{display:none}
+.exp-stage .hero-cta{margin-top:14px}
+.exp-stage .btn{padding:9px 14px;font-size:.66rem}
+.exp-stage .trust-in{padding:13px 22px;gap:16px}
+.exp-stage .trust .mono{font-size:.55rem;letter-spacing:.13em}
+.exp-note{margin-top:22px;max-width:64ch;color:var(--ink-58);font-size:.95rem}
+
+/* ==========================================================================
+   SHOP BY FAMILY
+   ========================================================================== */
+.sec-hd{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;
+  margin-bottom:clamp(28px,3.4vw,52px)}
+.sec-hd .l{max-width:56ch}
+.fam{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.card{background:var(--white);border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+.card:hover{border-color:var(--ink-14);transform:translateY(-3px)}
+.card-ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--cream)}
+.card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-ph img{transform:scale(1.035)}
+.card-ph .stamp{position:absolute;left:0;top:16px;background:var(--ink);color:var(--cream-70);
+  padding:6px 11px 6px 14px;border-radius:0 2px 2px 0}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;gap:10px}
+.card-body .hook{color:var(--ink-70);font-size:.99rem;line-height:1.5;flex:1}
+.card-lofts{display:flex;align-items:center;gap:8px;color:var(--ink-38)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:6px}
+.price{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;font-size:1.02rem}
+.price small{font-variation-settings:'wdth' 90;font-weight:500;font-size:.72rem;color:var(--ink-58);
+  letter-spacing:.04em;text-transform:uppercase;margin-right:.35em}
+
+/* ==========================================================================
+   FEATURED — DARK EVENT
+   ========================================================================== */
+.feat{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+.feat::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none;z-index:0}
+.feat .wm{width:min(58vw,760px);height:min(58vw,760px);left:-15%;top:-16%;opacity:.055}
+.feat .halo{position:absolute;left:38%;top:50%;translate:-50% -50%;width:min(900px,80%);aspect-ratio:1/1;
+  background:radial-gradient(closest-side,rgba(194,154,43,.20),rgba(194,154,43,0) 72%);pointer-events:none;z-index:0}
+.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:clamp(30px,4.4vw,72px);align-items:center}
+.feat h2{color:var(--cream);max-width:16ch}
+.feat .body{margin-top:22px}
+.feat-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-52)}
+.feat-stamp .ln{height:1px;flex:1;background:var(--cream-18)}
+.plinth-wrap{position:relative}
+.glow{position:absolute;inset:-13%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(237,210,124,.30),rgba(194,154,43,.10) 55%,rgba(194,154,43,0) 78%);
+  filter:blur(6px);z-index:0}
+.plinth{position:relative;z-index:1;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1;
+  background:linear-gradient(168deg,#fff 0%,var(--cream) 100%)}
+.plinth::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(194,154,43,.22)}
+.plinth img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+
+/* ==========================================================================
+   WHY LUCKY — the one typographic moment
+   ========================================================================== */
+.why{position:relative;background:var(--cream);overflow:hidden}
+.why::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none}
+.why-in{position:relative;z-index:1}
+.why-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,80px);align-items:end}
+.why h2{max-width:20ch}
+.why-rule{height:2px;background:var(--ink);margin:clamp(38px,4.4vw,64px) 0 0}
+.claims{display:grid;grid-template-columns:repeat(3,1fr)}
+.claim{padding:clamp(26px,2.8vw,42px) clamp(20px,2.4vw,38px) 8px;border-right:1px solid var(--ink-14)}
+.claim:first-child{padding-left:0}
+.claim:last-child{border-right:0;padding-right:0}
+.claim .num{display:flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:.66rem;
+  letter-spacing:.2em;color:var(--gold-lo);margin-bottom:14px}
+.claim h3{margin:0 0 10px}
+.claim p{margin:0;color:var(--ink-70);font-size:.99rem;line-height:1.55}
+
+/* ==========================================================================
+   DEVICE 5 · ASIDE MOMENT
+   ========================================================================== */
+.asidebar{text-align:center;padding:clamp(52px,5.2vw,84px) 0}
+.asidebar .mk{width:26px;height:26px;color:var(--green);margin:0 auto 20px}
+.asidebar .aside{color:var(--ink);max-width:34ch;margin:0 auto}
+.asidebar .sig{margin-top:16px;color:var(--ink-38)}
+
+/* ==========================================================================
+   SOCIAL PROOF
+   ========================================================================== */
+.proof-hd{text-align:center;max-width:min(820px,94%);margin:0 auto clamp(30px,3.6vw,52px)}
+.proof-hd .agg{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap}
+.proof-hd .agg .mono{color:var(--ink-58);font-size:.63rem}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
+.rev{border:1px solid var(--ink-08);border-radius:var(--r);padding:26px 24px 24px;
+  display:flex;flex-direction:column;gap:14px;background:var(--white)}
+.rev .q{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 84;font-weight:600;
+  font-size:1.02rem;line-height:1.42;flex:1}
+.rev .who{display:flex;align-items:center;gap:8px;border-top:1px solid var(--ink-08);padding-top:14px}
+.rev .who .mono{font-size:.6rem;letter-spacing:.13em;color:var(--ink-58)}
+/* clover verified badge */
+.vfd{display:inline-flex;align-items:center;gap:5px;color:var(--green);flex:none}
+.vfd .mk{width:15px;height:15px}
+.vfd span{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.13em;text-transform:uppercase}
+
+/* ==========================================================================
+   LABELLED PLACEHOLDER
+   ========================================================================== */
+.ph{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;
+  background:repeating-linear-gradient(135deg,rgba(23,20,15,.055) 0 14px,rgba(23,20,15,.085) 14px 28px);
+  border:1px dashed rgba(23,20,15,.28);border-radius:var(--r);overflow:hidden}
+.ph .lbl{max-width:46ch}
+.ph .lbl .mono{display:block;font-size:.66rem;letter-spacing:.18em;color:rgba(23,20,15,.62)}
+.ph .lbl .mono.k{color:var(--ink);font-weight:700;margin-bottom:10px}
+.ph--dark{background:repeating-linear-gradient(135deg,rgba(246,242,232,.07) 0 14px,rgba(246,242,232,.11) 14px 28px);
+  border-color:rgba(246,242,232,.3)}
+.ph--dark .lbl .mono{color:var(--cream-52)}
+.ph--dark .lbl .mono.k{color:var(--cream)}
+
+/* ==========================================================================
+   LIFESTYLE BREAK
+   ========================================================================== */
+.life{position:relative;background:var(--ink);overflow:hidden}
+.life .ph{height:min(60vh,600px);min-height:340px;border-radius:0;border-left:0;border-right:0;
+  align-items:flex-start;padding-top:clamp(38px,5vw,74px)}
+.life-line{position:absolute;left:0;right:0;bottom:clamp(28px,4vw,54px);z-index:2;pointer-events:none}
+.life-line .q{color:var(--cream);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,3rem);line-height:.92;
+  margin:0;max-width:22ch;text-shadow:0 2px 30px rgba(23,20,15,.5)}
+.life-line .aside{color:var(--cream-52);margin-top:14px}
+
+/* ==========================================================================
+   APPAREL + GEAR
+   ========================================================================== */
+.gear{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.gear .g-hero{grid-column:span 2;position:relative;border-radius:var(--r);overflow:hidden;display:flex}
+.gear .g-hero .ph{flex:1;border-radius:0;min-height:100%}
+.tile{border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;background:var(--white);
+  display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+.tile:hover{border-color:var(--ink-14);transform:translateY(-3px)}
+.tile-ph{aspect-ratio:1/1;background:var(--cream);overflow:hidden;position:relative}
+.tile-ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .tile-ph img{transform:scale(1.04)}
+.tile-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
+.tile-body .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;font-size:.92rem;line-height:1.15}
+.tile-body .sub{color:var(--ink-58);font-size:.85rem}
+.tile-body .pr{margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.95rem}
+.gear-foot{margin-top:clamp(26px,3vw,44px);display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:space-between}
+
+/* ==========================================================================
+   CLOSING CTA
+   ========================================================================== */
+.close{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);text-align:center}
+.close::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none;z-index:0}
+.close .wm{width:min(74vw,940px);height:min(74vw,940px);left:50%;top:48%;translate:-50% -50%;opacity:.05}
+.close .halo{position:absolute;left:50%;top:42%;translate:-50% -50%;width:min(1100px,120%);aspect-ratio:1/1;
+  background:radial-gradient(closest-side,rgba(194,154,43,.24),rgba(194,154,43,0) 70%);pointer-events:none;z-index:0}
+.close-in{position:relative;z-index:1;padding:clamp(76px,8vw,130px) 0}
+.close .logo--stack{width:clamp(132px,13vw,182px);height:auto;aspect-ratio:3.119;margin:0 auto 26px;color:var(--gold)}
+.close h2{color:var(--cream);max-width:22ch;margin:0 auto}
+.close .body{margin:22px auto 0;color:var(--cream-70);max-width:52ch}
+.close-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.close-trust{margin-top:38px;display:flex;flex-wrap:wrap;gap:clamp(14px,2.4vw,34px);
+  justify-content:center;align-items:center}
+.close-trust .mono{color:var(--cream-52);font-size:.62rem;letter-spacing:.16em}
+.close-trust .div{width:1px;height:13px;background:var(--cream-18)}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.ftr{position:relative;background:var(--ink);color:var(--cream);border-top:1px solid var(--cream-18);overflow:hidden}
+.ftr::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.ftr-in{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr repeat(4,1fr);
+  gap:clamp(24px,3vw,48px);padding:clamp(52px,6vw,84px) 0}
+.ftr .tag{color:var(--cream-52);margin-top:18px;max-width:30ch;font-size:.95rem}
+.ftr h4{margin:0 0 16px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);font-weight:700}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.ftr ul a{color:var(--cream-70);font-size:.93rem}
+.ftr ul a:hover{color:var(--cream)}
+.ftr-btm{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  align-items:center;padding:20px 0 26px;border-top:1px solid var(--cream-18)}
+.ftr-btm .mono{color:rgba(246,242,232,.38);font-size:.6rem;letter-spacing:.15em}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(20px)}
+.rv.in{opacity:1;transform:none;
+  transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  *{transition:none!important;animation:none!important}
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1180px){
+  .revs{grid-template-columns:repeat(2,1fr)}
+  .gear{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .nav{display:none}
+  .burger{display:block;margin-left:auto}
+  .hdr-act{margin-left:0}
+  .fam{grid-template-columns:1fr}
+  .feat-in{grid-template-columns:1fr}
+  .plinth-wrap{order:-1}
+  .why-top{grid-template-columns:1fr}
+  .claims{grid-template-columns:1fr}
+  .claim{border-right:0;border-bottom:1px solid var(--ink-14);padding-left:0;padding-right:0;padding-bottom:26px}
+  .claim:last-child{border-bottom:0}
+  .exp-grid{grid-template-columns:1fr}
+  .ftr-in{grid-template-columns:1fr 1fr}
+  .hero-stamp{display:none}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .hero-media{height:76vh}
+  .hero-scrim{background:linear-gradient(0deg,rgba(23,20,15,.86) 0%,rgba(23,20,15,.32) 55%,rgba(23,20,15,.1) 100%)}
+  .revs{grid-template-columns:1fr}
+  .gear{grid-template-columns:1fr}
+  .gear .g-hero{grid-column:auto}
+  .ftr-in{grid-template-columns:1fr}
+  .trust-in{gap:12px}
+  .trust .div{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     OFFICIAL LOGO KIT — tight viewBoxes, fill="currentColor" so each lockup is
+     always ONE flat colour (green / ink / cream / white / flat gold).
+     The foil gradient is never applied to a logo.
+     ========================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="lg-clover" viewBox="249.37 127.71 342.59 334.65" fill="currentColor" fill-rule="nonzero"><path d="M 407.070312 266.585938 C 405.578125 265.9375 404.273438 265.566406 403.257812 265.351562 C 413.703125 206.597656 399.175781 137.222656 359.113281 132.644531 C 315.953125 127.710938 320.269531 164.089844 303.007812 181.351562 C 285.742188 198.613281 249.367188 194.300781 254.300781 237.457031 C 258.472656 273.972656 316.492188 289.285156 371.222656 283.804688 L 357.480469 301.097656 C 307.179688 299.261719 258.125 314.910156 254.300781 348.378906 C 249.367188 391.535156 285.742188 387.21875 303.007812 404.484375 C 311.320312 412.796875 314.636719 425.535156 320.65625 435.96875 C 330.203125 450.804688 370.976562 433.75 378.824219 412.824219 C 386.671875 391.898438 369.015625 359.199219 372.9375 336.964844 C 351.359375 324.539062 351.996094 314.980469 357.898438 308.191406 C 358.367188 307.648438 358.9375 306.945312 359.546875 306.175781 C 359.671875 306.015625 359.796875 305.855469 359.929688 305.691406 C 360.503906 304.953125 361.121094 304.152344 361.789062 303.269531 C 362.160156 302.78125 362.570312 302.234375 362.96875 301.707031 C 363.054688 301.59375 363.128906 301.492188 363.21875 301.375 L 363.214844 301.375 C 367.910156 295.136719 374.195312 286.644531 380.261719 279.980469 C 384.300781 275.539062 388.226562 271.925781 391.464844 270.421875 C 392.558594 269.917969 393.632812 269.566406 394.695312 269.308594 L 394.707031 269.320312 C 395.996094 269 397.25 268.871094 398.472656 268.851562 C 398.699219 268.851562 398.921875 268.84375 399.144531 268.847656 C 399.671875 268.863281 400.195312 268.894531 400.703125 268.953125 C 400.914062 268.976562 401.113281 269.011719 401.320312 269.042969 C 409.527344 270.261719 415.445312 276.804688 415.445312 276.804688 C 415.445312 276.804688 413.878906 269.5625 407.070312 266.585938 "/><path d="M 462.964844 308.480469 C 465.089844 328.097656 453.15625 337.582031 438.660156 360.46875 C 429.472656 374.976562 438.902344 425.242188 451.125 445.011719 C 456.632812 449.488281 462.921875 452.378906 470.035156 453.191406 C 513.191406 458.125 508.875 421.746094 526.140625 404.484375 C 537.335938 393.285156 556.558594 391.15625 567.351562 379.273438 Z M 462.964844 308.480469 "/><path d="M 400.621094 290.277344 C 391.902344 285.917969 385.800781 297.253906 387.542969 300.929688 C 387.542969 300.929688 389.285156 301.613281 396.261719 300.929688 C 403.238281 300.25 406.246094 293.089844 400.621094 290.277344 "/><path d="M 578.132812 374.457031 C 577.132812 373.769531 575.042969 372.304688 572.71875 370.660156 C 574.992188 365.03125 575.929688 357.871094 574.847656 348.378906 C 570.804688 313.011719 516.257812 297.53125 463.101562 301.570312 L 570.722656 374.753906 C 570.730469 374.738281 570.738281 374.722656 570.75 374.703125 L 578.132812 379.726562 C 578.132812 379.726562 566.945312 397.761719 567.273438 399.40625 C 567.605469 401.054688 580.765625 403.683594 586.359375 393.8125 C 591.953125 383.941406 581.09375 376.484375 578.132812 374.457031 "/><path d="M 526.140625 181.351562 C 508.875 164.089844 513.191406 127.710938 470.035156 132.644531 C 434.234375 136.734375 418.828125 192.570312 423.402344 246.328125 C 418.386719 246.425781 416.542969 248.917969 416.542969 252.125 C 416.542969 254.703125 424.832031 259.421875 424.832031 259.421875 C 423.824219 258.535156 419.65625 254.761719 419.65625 252.632812 C 419.65625 250.207031 421.042969 248.652344 425.972656 248.652344 C 430.902344 248.652344 447.511719 246.058594 455.640625 254.273438 C 463.773438 262.492188 460.855469 274.171875 457.480469 277.027344 C 457.460938 277.03125 457.421875 277.007812 457.402344 277.007812 C 456.75 279.0625 455.894531 281.191406 454.636719 283.445312 C 510.308594 289.890625 570.589844 274.707031 574.847656 237.457031 C 579.777344 194.300781 543.402344 198.613281 526.140625 181.351562 "/><path d="M 548.875 430.296875 L 548.875 437.25 L 552.113281 437.25 C 554.816406 437.25 556.433594 435.898438 556.433594 433.804688 C 556.433594 431.445312 555.019531 430.296875 552.113281 430.296875 Z M 557.382812 440.894531 L 562.582031 450.417969 L 556.910156 450.417969 L 552.519531 441.972656 L 548.875 441.972656 L 548.875 450.417969 L 543.675781 450.417969 L 543.675781 425.4375 L 552.113281 425.4375 C 557.988281 425.4375 561.636719 428.945312 561.636719 433.535156 C 561.636719 437.050781 560.21875 439.476562 557.382812 440.894531 M 567.371094 453.792969 C 571.761719 449.402344 573.921875 444.132812 573.921875 437.929688 C 573.921875 431.714844 571.761719 426.449219 567.371094 422.058594 C 563.050781 417.667969 557.851562 415.507812 551.710938 415.507812 C 545.566406 415.507812 540.300781 417.667969 535.910156 422.058594 C 531.589844 426.449219 529.429688 431.714844 529.429688 437.929688 C 529.429688 444.132812 531.589844 449.402344 535.910156 453.792969 C 540.300781 458.179688 545.566406 460.34375 551.710938 460.34375 C 557.851562 460.34375 563.050781 458.179688 567.371094 453.792969 M 551.710938 413.488281 C 558.460938 413.488281 564.199219 415.851562 568.996094 420.644531 C 573.789062 425.4375 576.152344 431.171875 576.152344 437.929688 C 576.152344 444.679688 573.789062 450.417969 568.996094 455.210938 C 564.199219 460.007812 558.460938 462.363281 551.710938 462.363281 C 544.960938 462.363281 539.21875 460.007812 534.425781 455.210938 C 529.632812 450.417969 527.269531 444.679688 527.269531 437.929688 C 527.269531 431.171875 529.632812 425.4375 534.425781 420.644531 C 539.21875 415.851562 544.960938 413.488281 551.710938 413.488281 "/></symbol>
+<symbol id="lg-clover-plain" viewBox="249.37 127.71 342.59 330.41" fill="currentColor" fill-rule="nonzero"><path d="M 407.070312 266.585938 C 405.578125 265.9375 404.273438 265.566406 403.257812 265.351562 C 413.703125 206.597656 399.175781 137.222656 359.113281 132.644531 C 315.953125 127.710938 320.269531 164.089844 303.007812 181.351562 C 285.742188 198.613281 249.367188 194.300781 254.300781 237.457031 C 258.472656 273.972656 316.492188 289.285156 371.222656 283.804688 L 357.480469 301.097656 C 307.179688 299.261719 258.125 314.910156 254.300781 348.378906 C 249.367188 391.535156 285.742188 387.21875 303.007812 404.484375 C 311.320312 412.796875 314.636719 425.535156 320.65625 435.96875 C 330.203125 450.804688 370.976562 433.75 378.824219 412.824219 C 386.671875 391.898438 369.015625 359.199219 372.9375 336.964844 C 351.359375 324.539062 351.996094 314.980469 357.898438 308.191406 C 358.367188 307.648438 358.9375 306.945312 359.546875 306.175781 C 359.671875 306.015625 359.796875 305.855469 359.929688 305.691406 C 360.503906 304.953125 361.121094 304.152344 361.789062 303.269531 C 362.160156 302.78125 362.570312 302.234375 362.96875 301.707031 C 363.054688 301.59375 363.128906 301.492188 363.21875 301.375 L 363.214844 301.375 C 367.910156 295.136719 374.195312 286.644531 380.261719 279.980469 C 384.300781 275.539062 388.226562 271.925781 391.464844 270.421875 C 392.558594 269.917969 393.632812 269.566406 394.695312 269.308594 L 394.707031 269.320312 C 395.996094 269 397.25 268.871094 398.472656 268.851562 C 398.699219 268.851562 398.921875 268.84375 399.144531 268.847656 C 399.671875 268.863281 400.195312 268.894531 400.703125 268.953125 C 400.914062 268.976562 401.113281 269.011719 401.320312 269.042969 C 409.527344 270.261719 415.445312 276.804688 415.445312 276.804688 C 415.445312 276.804688 413.878906 269.5625 407.070312 266.585938 "/><path d="M 462.964844 308.480469 C 465.089844 328.097656 453.15625 337.582031 438.660156 360.46875 C 429.472656 374.976562 438.902344 425.242188 451.125 445.011719 C 456.632812 449.488281 462.921875 452.378906 470.035156 453.191406 C 513.191406 458.125 508.875 421.746094 526.140625 404.484375 C 537.335938 393.285156 556.558594 391.15625 567.351562 379.273438 Z M 462.964844 308.480469 "/><path d="M 400.621094 290.277344 C 391.902344 285.917969 385.800781 297.253906 387.542969 300.929688 C 387.542969 300.929688 389.285156 301.613281 396.261719 300.929688 C 403.238281 300.25 406.246094 293.089844 400.621094 290.277344 "/><path d="M 578.132812 374.457031 C 577.132812 373.769531 575.042969 372.304688 572.71875 370.660156 C 574.992188 365.03125 575.929688 357.871094 574.847656 348.378906 C 570.804688 313.011719 516.257812 297.53125 463.101562 301.570312 L 570.722656 374.753906 C 570.730469 374.738281 570.738281 374.722656 570.75 374.703125 L 578.132812 379.726562 C 578.132812 379.726562 566.945312 397.761719 567.273438 399.40625 C 567.605469 401.054688 580.765625 403.683594 586.359375 393.8125 C 591.953125 383.941406 581.09375 376.484375 578.132812 374.457031 "/><path d="M 526.140625 181.351562 C 508.875 164.089844 513.191406 127.710938 470.035156 132.644531 C 434.234375 136.734375 418.828125 192.570312 423.402344 246.328125 C 418.386719 246.425781 416.542969 248.917969 416.542969 252.125 C 416.542969 254.703125 424.832031 259.421875 424.832031 259.421875 C 423.824219 258.535156 419.65625 254.761719 419.65625 252.632812 C 419.65625 250.207031 421.042969 248.652344 425.972656 248.652344 C 430.902344 248.652344 447.511719 246.058594 455.640625 254.273438 C 463.773438 262.492188 460.855469 274.171875 457.480469 277.027344 C 457.460938 277.03125 457.421875 277.007812 457.402344 277.007812 C 456.75 279.0625 455.894531 281.191406 454.636719 283.445312 C 510.308594 289.890625 570.589844 274.707031 574.847656 237.457031 C 579.777344 194.300781 543.402344 198.613281 526.140625 181.351562 "/></symbol>
+<symbol id="lg-lucky" viewBox="164.15 237.42 513.48 118.24" fill="currentColor" fill-rule="nonzero"><path d="M 294.949219 282.929688 C 294.460938 282.714844 294.03125 282.59375 293.699219 282.523438 C 297.121094 263.269531 292.363281 240.539062 279.234375 239.039062 C 265.09375 237.421875 266.507812 249.339844 260.847656 254.996094 C 255.191406 260.65625 243.273438 259.242188 244.890625 273.382812 C 246.257812 285.347656 265.269531 290.367188 283.203125 288.570312 L 278.699219 294.238281 C 262.21875 293.636719 246.140625 298.761719 244.890625 309.730469 C 243.273438 323.871094 255.191406 322.457031 260.847656 328.113281 C 263.574219 330.835938 264.660156 335.011719 266.632812 338.429688 C 269.761719 343.292969 283.121094 337.703125 285.691406 330.847656 C 288.265625 323.988281 282.480469 313.277344 283.765625 305.988281 C 276.691406 301.917969 276.902344 298.785156 278.835938 296.5625 C 278.992188 296.382812 279.175781 296.152344 279.375 295.898438 C 279.417969 295.847656 279.457031 295.796875 279.5 295.742188 C 279.691406 295.5 279.890625 295.238281 280.109375 294.949219 C 280.234375 294.789062 280.367188 294.609375 280.496094 294.4375 C 280.523438 294.398438 280.550781 294.363281 280.578125 294.328125 C 282.117188 292.28125 284.175781 289.5 286.164062 287.316406 C 287.488281 285.863281 288.773438 284.675781 289.835938 284.183594 C 290.195312 284.019531 290.546875 283.90625 290.894531 283.820312 L 290.898438 283.824219 C 291.320312 283.71875 291.730469 283.675781 292.132812 283.671875 C 292.207031 283.667969 292.277344 283.667969 292.351562 283.667969 C 292.523438 283.671875 292.695312 283.683594 292.863281 283.703125 C 292.929688 283.710938 292.996094 283.722656 293.0625 283.734375 C 295.753906 284.132812 297.695312 286.277344 297.695312 286.277344 C 297.695312 286.277344 297.179688 283.902344 294.949219 282.929688 "/><path d="M 313.265625 296.65625 C 313.960938 303.082031 310.050781 306.191406 305.300781 313.691406 C 302.289062 318.445312 305.378906 334.914062 309.382812 341.394531 C 311.1875 342.859375 313.25 343.808594 315.582031 344.074219 C 329.722656 345.691406 328.308594 333.769531 333.964844 328.113281 C 337.632812 324.445312 343.933594 323.746094 347.46875 319.851562 Z M 313.265625 296.65625 "/><path d="M 292.835938 290.691406 C 289.980469 289.261719 287.980469 292.976562 288.550781 294.179688 C 288.550781 294.179688 289.121094 294.40625 291.40625 294.179688 C 293.691406 293.957031 294.679688 291.613281 292.835938 290.691406 "/><path d="M 351.003906 318.273438 C 350.675781 318.046875 349.992188 317.570312 349.226562 317.03125 C 349.972656 315.183594 350.28125 312.839844 349.925781 309.730469 C 348.601562 298.140625 330.726562 293.066406 313.308594 294.390625 L 348.574219 318.371094 C 348.578125 318.367188 348.582031 318.363281 348.582031 318.355469 L 351.003906 320 C 351.003906 320 347.335938 325.910156 347.445312 326.449219 C 347.550781 326.988281 351.863281 327.851562 353.699219 324.617188 C 355.53125 321.382812 351.972656 318.9375 351.003906 318.273438 "/><path d="M 333.964844 254.996094 C 328.308594 249.339844 329.722656 237.421875 315.582031 239.039062 C 303.851562 240.378906 298.800781 258.675781 300.300781 276.289062 C 298.65625 276.320312 298.054688 277.136719 298.054688 278.1875 C 298.054688 279.035156 300.769531 280.578125 300.769531 280.578125 C 300.4375 280.289062 299.074219 279.050781 299.074219 278.355469 C 299.074219 277.5625 299.527344 277.050781 301.144531 277.050781 C 302.757812 277.050781 308.199219 276.199219 310.863281 278.894531 C 313.53125 281.585938 312.574219 285.414062 311.46875 286.347656 C 311.460938 286.351562 311.449219 286.339844 311.441406 286.34375 C 311.230469 287.015625 310.949219 287.714844 310.535156 288.453125 C 328.777344 290.5625 348.53125 285.585938 349.925781 273.382812 C 351.542969 259.242188 339.621094 260.65625 333.964844 254.996094 "/><path d="M 177.238281 327.636719 L 219.746094 327.636719 L 219.746094 340.023438 L 164.148438 340.023438 L 164.148438 241.492188 L 177.238281 241.492188 Z M 177.238281 327.636719 "/><path d="M 393.703125 327.074219 C 383.992188 317.222656 379.207031 305.117188 379.207031 290.757812 C 379.207031 276.402344 383.992188 264.296875 393.703125 254.441406 C 403.417969 244.589844 415.804688 239.664062 430.726562 239.664062 C 448.742188 239.664062 464.789062 248.953125 473.234375 263.589844 L 461.832031 270.207031 C 456.203125 259.367188 444.238281 252.332031 430.726562 252.332031 C 419.324219 252.332031 410.03125 255.992188 402.855469 263.3125 C 395.675781 270.632812 392.15625 279.78125 392.15625 290.757812 C 392.15625 301.597656 395.675781 310.746094 402.855469 318.0625 C 410.03125 325.386719 419.324219 329.046875 430.726562 329.046875 C 444.238281 329.046875 456.203125 322.007812 461.832031 311.308594 L 473.234375 317.785156 C 469.152344 325.105469 463.242188 331.015625 455.636719 335.378906 C 448.035156 339.742188 439.734375 341.855469 430.726562 341.855469 C 415.804688 341.855469 403.417969 336.925781 393.703125 327.074219 "/><path d="M 569.875 340.023438 L 553.828125 340.023438 L 511.316406 292.726562 L 511.316406 340.023438 L 498.226562 340.023438 L 498.226562 241.492188 L 511.316406 241.492188 L 511.316406 285.972656 L 552.417969 241.492188 L 568.464844 241.492188 L 524.972656 289.351562 Z M 569.875 340.023438 "/><path d="M 677.632812 241.492188 L 642.726562 300.1875 L 642.726562 340.023438 L 629.632812 340.023438 L 629.632812 300.046875 L 594.867188 241.492188 L 609.503906 241.492188 L 636.25 287.664062 L 662.992188 241.492188 Z M 677.632812 241.492188 "/><path d="M 343.609375 338.0625 L 343.609375 341.878906 L 345.386719 341.878906 C 346.871094 341.878906 347.761719 341.136719 347.761719 339.988281 C 347.761719 338.695312 346.984375 338.0625 345.386719 338.0625 Z M 348.277344 343.878906 L 351.132812 349.109375 L 348.019531 349.109375 L 345.613281 344.472656 L 343.609375 344.472656 L 343.609375 349.109375 L 340.757812 349.109375 L 340.757812 335.394531 L 345.386719 335.394531 C 348.613281 335.394531 350.613281 337.320312 350.613281 339.839844 C 350.613281 341.769531 349.835938 343.101562 348.277344 343.878906 M 353.765625 350.960938 C 356.171875 348.550781 357.359375 345.660156 357.359375 342.25 C 357.359375 338.84375 356.171875 335.953125 353.765625 333.539062 C 351.390625 331.132812 348.539062 329.945312 345.167969 329.945312 C 341.792969 329.945312 338.902344 331.132812 336.492188 333.539062 C 334.121094 335.953125 332.9375 338.84375 332.9375 342.25 C 332.9375 345.660156 334.121094 348.550781 336.492188 350.960938 C 338.902344 353.367188 341.792969 354.554688 345.167969 354.554688 C 348.539062 354.554688 351.390625 353.367188 353.765625 350.960938 M 345.167969 328.835938 C 348.871094 328.835938 352.023438 330.132812 354.652344 332.765625 C 357.285156 335.394531 358.582031 338.542969 358.582031 342.25 C 358.582031 345.957031 357.285156 349.109375 354.652344 351.738281 C 352.023438 354.371094 348.871094 355.664062 345.167969 355.664062 C 341.460938 355.664062 338.3125 354.371094 335.679688 351.738281 C 333.046875 349.109375 331.75 345.957031 331.75 342.25 C 331.75 338.542969 333.046875 335.394531 335.679688 332.765625 C 338.3125 330.132812 341.460938 328.835938 345.167969 328.835938 "/></symbol>
+<symbol id="lg-luckygolf" viewBox="138.34 206.66 565.09 181.17" fill="currentColor" fill-rule="nonzero"><path d="M 281.976562 253.222656 C 281.476562 253.003906 281.039062 252.882812 280.699219 252.808594 C 284.199219 233.109375 279.328125 209.847656 265.898438 208.3125 C 251.425781 206.660156 252.871094 218.855469 247.085938 224.644531 C 241.296875 230.433594 229.101562 228.984375 230.753906 243.457031 C 232.152344 255.699219 251.605469 260.835938 269.957031 258.996094 L 265.347656 264.792969 C 248.484375 264.179688 232.035156 269.425781 230.753906 280.648438 C 229.101562 295.117188 241.296875 293.671875 247.085938 299.460938 C 249.871094 302.246094 250.984375 306.519531 253.003906 310.015625 C 256.203125 314.992188 269.875 309.273438 272.503906 302.257812 C 275.136719 295.238281 269.21875 284.277344 270.53125 276.820312 C 263.296875 272.65625 263.511719 269.449219 265.488281 267.171875 C 265.648438 266.992188 265.835938 266.757812 266.042969 266.496094 C 266.082031 266.445312 266.125 266.390625 266.167969 266.335938 C 266.363281 266.085938 266.570312 265.816406 266.792969 265.523438 C 266.917969 265.359375 267.054688 265.175781 267.1875 265 C 267.21875 264.960938 267.246094 264.925781 267.273438 264.886719 C 268.847656 262.796875 270.953125 259.949219 272.988281 257.714844 C 274.339844 256.226562 275.65625 255.011719 276.746094 254.511719 C 277.109375 254.339844 277.472656 254.222656 277.828125 254.136719 L 277.832031 254.140625 C 278.265625 254.035156 278.683594 253.988281 279.09375 253.984375 C 279.167969 253.984375 279.246094 253.980469 279.320312 253.980469 C 279.496094 253.984375 279.671875 253.996094 279.84375 254.015625 C 279.910156 254.023438 279.980469 254.035156 280.046875 254.046875 C 282.800781 254.457031 284.785156 256.648438 284.785156 256.648438 C 284.785156 256.648438 284.257812 254.222656 281.976562 253.222656 "/><path d="M 300.71875 267.269531 C 301.429688 273.847656 297.429688 277.027344 292.570312 284.703125 C 289.488281 289.566406 292.648438 306.417969 296.746094 313.050781 C 298.59375 314.550781 300.703125 315.519531 303.085938 315.792969 C 317.558594 317.445312 316.113281 305.25 321.898438 299.460938 C 325.652344 295.703125 332.097656 294.992188 335.71875 291.007812 Z M 300.71875 267.269531 "/><path d="M 279.8125 261.167969 C 276.890625 259.707031 274.84375 263.503906 275.429688 264.738281 C 275.429688 264.738281 276.015625 264.96875 278.351562 264.738281 C 280.691406 264.511719 281.699219 262.109375 279.8125 261.167969 "/><path d="M 339.332031 289.390625 C 339 289.160156 338.296875 288.667969 337.519531 288.121094 C 338.277344 286.230469 338.59375 283.828125 338.230469 280.648438 C 336.875 268.789062 318.585938 263.597656 300.765625 264.953125 L 336.847656 289.492188 C 336.851562 289.484375 336.855469 289.480469 336.855469 289.476562 L 339.332031 291.160156 C 339.332031 291.160156 335.582031 297.207031 335.691406 297.757812 C 335.800781 298.308594 340.214844 299.191406 342.089844 295.882812 C 343.964844 292.570312 340.324219 290.070312 339.332031 289.390625 "/><path d="M 321.898438 224.644531 C 316.113281 218.855469 317.558594 206.660156 303.089844 208.3125 C 291.085938 209.683594 285.917969 228.40625 287.453125 246.429688 C 285.769531 246.464844 285.152344 247.300781 285.152344 248.375 C 285.152344 249.238281 287.933594 250.820312 287.933594 250.820312 C 287.59375 250.523438 286.195312 249.257812 286.195312 248.542969 C 286.195312 247.734375 286.660156 247.210938 288.3125 247.210938 C 289.96875 247.210938 295.535156 246.339844 298.261719 249.09375 C 300.988281 251.851562 300.011719 255.765625 298.878906 256.722656 C 298.871094 256.726562 298.859375 256.714844 298.851562 256.71875 C 298.632812 257.40625 298.347656 258.121094 297.925781 258.875 C 316.59375 261.039062 336.804688 255.945312 338.230469 243.457031 C 339.882812 228.984375 327.6875 230.433594 321.898438 224.644531 "/><path d="M 148.035156 304.699219 L 148.035156 208.734375 L 138.34375 208.734375 L 138.34375 313.558594 L 195.359375 313.558594 L 195.359375 304.699219 Z M 148.035156 304.699219 "/><path d="M 468.335938 287.375 C 461.140625 299.074219 447.734375 306.265625 432.757812 306.265625 C 419.445312 306.265625 408.433594 301.910156 399.96875 293.296875 C 391.601562 284.734375 387.390625 273.917969 387.390625 261.144531 C 387.390625 248.273438 391.601562 237.410156 399.96875 228.894531 C 408.433594 220.28125 419.445312 215.925781 432.757812 215.925781 C 447.78125 215.925781 461.140625 223.121094 468.335938 234.914062 L 476.703125 230.070312 C 467.40625 215.585938 450.765625 206.726562 432.757812 206.726562 C 416.851562 206.726562 403.589844 212.011719 393.3125 222.433594 C 382.890625 232.957031 377.847656 245.632812 377.847656 261.144531 C 377.847656 276.660156 382.890625 289.335938 393.3125 299.902344 C 403.589844 310.328125 416.851562 315.613281 432.757812 315.613281 C 442.398438 315.613281 451.355469 313.3125 459.28125 308.714844 C 466.621094 304.554688 472.496094 298.972656 476.753906 292.171875 Z M 468.335938 287.375 "/><path d="M 534.449219 259.578125 L 580.648438 208.734375 L 569.394531 208.734375 L 522.414062 259.578125 L 570.960938 313.558594 L 582.3125 313.558594 Z M 510.421875 313.558594 L 520.0625 313.558594 L 520.0625 208.734375 L 510.421875 208.734375 Z M 510.421875 313.558594 "/><path d="M 692.863281 208.734375 L 661.640625 262.613281 L 630.46875 208.734375 L 619.898438 208.734375 L 656.746094 270.835938 L 656.746094 313.558594 L 666.4375 313.558594 L 666.4375 270.980469 L 703.433594 208.734375 Z M 692.863281 208.734375 "/><path d="M 234.367188 362.070312 L 234.367188 364.480469 C 234.367188 369.289062 232.761719 373.25 229.605469 376.304688 C 226.449219 379.359375 222.289062 380.867188 217.175781 380.867188 C 211.765625 380.867188 207.304688 379.113281 203.746094 375.601562 C 200.238281 372.09375 198.488281 367.785156 198.488281 362.675781 C 198.488281 357.609375 200.238281 353.304688 203.746094 349.792969 C 207.304688 346.234375 211.664062 344.480469 216.878906 344.480469 C 223.441406 344.480469 229.15625 347.742188 232.164062 352.800781 L 227.199219 355.65625 C 225.34375 352.300781 221.4375 350.09375 216.878906 350.09375 C 213.21875 350.09375 210.164062 351.300781 207.804688 353.703125 C 205.449219 356.109375 204.246094 359.117188 204.246094 362.722656 C 204.246094 366.332031 205.449219 369.339844 207.804688 371.695312 C 210.210938 374.046875 213.371094 375.25 217.226562 375.25 C 223.441406 375.25 227.5 372.09375 228.554688 367.234375 L 216.828125 367.234375 L 216.828125 362.070312 Z M 234.367188 362.070312 "/><path d="M 353.136719 375.253906 C 356.644531 375.253906 359.601562 374.046875 361.957031 371.691406 C 364.363281 369.289062 365.566406 366.28125 365.566406 362.675781 C 365.566406 359.066406 364.363281 356.058594 361.957031 353.703125 C 359.601562 351.300781 356.644531 350.09375 353.136719 350.09375 C 349.632812 350.09375 346.671875 351.300781 344.265625 353.703125 C 341.914062 356.058594 340.710938 359.066406 340.710938 362.675781 C 340.710938 366.28125 341.914062 369.289062 344.265625 371.691406 C 346.671875 374.046875 349.632812 375.253906 353.136719 375.253906 M 353.136719 380.867188 C 348.078125 380.867188 343.769531 379.109375 340.210938 375.601562 C 336.699219 372.042969 334.949219 367.734375 334.949219 362.675781 C 334.949219 357.613281 336.699219 353.300781 340.210938 349.792969 C 343.769531 346.234375 348.078125 344.480469 353.136719 344.480469 C 358.199219 344.480469 362.507812 346.234375 366.015625 349.792969 C 369.574219 353.300781 371.328125 357.613281 371.328125 362.675781 C 371.328125 367.734375 369.574219 372.042969 366.015625 375.601562 C 362.507812 379.109375 358.199219 380.867188 353.136719 380.867188 "/><path d="M 479.425781 374.699219 L 493.707031 374.699219 L 493.707031 380.214844 L 473.660156 380.214844 L 473.660156 345.132812 L 479.425781 345.132812 Z M 479.425781 374.699219 "/><path d="M 615.578125 350.644531 L 600.792969 350.644531 L 600.792969 360.46875 L 615.074219 360.46875 L 615.074219 365.980469 L 600.792969 365.980469 L 600.792969 380.214844 L 595.03125 380.214844 L 595.03125 345.132812 L 615.578125 345.132812 Z M 615.578125 350.644531 "/><path d="M 643.402344 377.835938 L 643.402344 380.003906 L 644.414062 380.003906 C 645.253906 380.003906 645.757812 379.582031 645.757812 378.929688 C 645.757812 378.195312 645.316406 377.835938 644.414062 377.835938 Z M 646.050781 381.140625 L 647.671875 384.105469 L 645.90625 384.105469 L 644.539062 381.476562 L 643.402344 381.476562 L 643.402344 384.105469 L 641.785156 384.105469 L 641.785156 376.324219 L 644.414062 376.324219 C 646.242188 376.324219 647.378906 377.417969 647.378906 378.847656 C 647.378906 379.941406 646.9375 380.699219 646.050781 381.140625 M 649.164062 385.15625 C 650.535156 383.789062 651.207031 382.148438 651.207031 380.214844 C 651.207031 378.277344 650.535156 376.636719 649.164062 375.269531 C 647.820312 373.902344 646.199219 373.230469 644.285156 373.230469 C 642.375 373.230469 640.730469 373.902344 639.363281 375.269531 C 638.019531 376.636719 637.347656 378.277344 637.347656 380.214844 C 637.347656 382.148438 638.019531 383.789062 639.363281 385.15625 C 640.730469 386.523438 642.375 387.195312 644.285156 387.195312 C 646.199219 387.195312 647.820312 386.523438 649.164062 385.15625 M 644.285156 372.601562 C 646.390625 372.601562 648.175781 373.335938 649.671875 374.828125 C 651.164062 376.324219 651.902344 378.109375 651.902344 380.214844 C 651.902344 382.316406 651.164062 384.105469 649.671875 385.597656 C 648.175781 387.09375 646.390625 387.828125 644.285156 387.828125 C 642.183594 387.828125 640.394531 387.09375 638.902344 385.597656 C 637.410156 384.105469 636.671875 382.316406 636.671875 380.214844 C 636.671875 378.109375 637.410156 376.324219 638.902344 374.828125 C 640.394531 373.335938 642.183594 372.601562 644.285156 372.601562 "/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></symbol>
+</svg>
+
+<!-- ============ ANNOUNCEMENT ============ -->
+<div class="anno">
+  <span class="mono">LGW02 Carver Gold — <b>52°, 56°, 60° in stock.</b> 50°, 54°, 58° in production.</span>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#" class="logo logo--lucky" aria-label="Lucky Golf home"><svg><use href="#lg-lucky"/></svg></a>
+    <nav class="nav">
+      <a href="#families">Wedges</a>
+      <a href="#families">Putters</a>
+      <a href="#families">Hybrid</a>
+      <a href="#gear">Apparel</a>
+      <a href="#">Our Story</a>
+      <a href="#">Trybe</a>
+    </nav>
+    <div class="hdr-act">
+      <a href="#" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></a>
+      <a href="#" class="cart" aria-label="Cart">
+        <svg class="icn" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg>
+        <span class="dot"></span>
+      </a>
+      <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_7d28d460-d8ba-4e34-823b-4969eedb3eaf.webp?v=1781012462" alt="Lucky Golf gold forged wedge at address behind a ball on the fairway">
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <span class="eyebrow">Wedges · Putters · Hybrid · $99–$229</span>
+      <h1 class="disp d-xl">Get used to the <span class="foil on-dark">attention</span></h1>
+      <p class="body on-dark">Forged wedges, milled putters, and a titanium hybrid, built to the standard the big brands charge triple for. We made the clubs first and priced them second.</p>
+      <div class="hero-cta">
+        <a href="#families" class="btn btn-foil sweep"><span>Shop the clubs</span><span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stamp stamp">
+    LGW02 · Carver Gold<b>52° · 56° · 60°</b>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-in">
+    <span class="stars" aria-hidden="true">
+      <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+    </span>
+    <span class="mono"><span class="tok">[REVIEW — AVG RATING]</span> · <span class="tok">[REVIEW COUNT]</span> verified reviews</span>
+    <span class="div"></span>
+    <span class="mono">60-day club returns</span>
+    <span class="div"></span>
+    <span class="mono">Right &amp; left hand</span>
+    <span class="div"></span>
+    <span class="mono">Direct pricing, no middlemen</span>
+  </div>
+</div>
+
+<!-- ============ HERO A/B EXPERIMENT ============ -->
+<section class="exp sec-tight">
+  <div class="wrap">
+    <div class="exp-hd">
+      <span class="tag">Decision needed</span>
+      <h2 class="disp d-s">Hero background — white vs cream</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-pane">
+        <div class="cap"><span class="mono">Option A — White #FFFFFF</span><span class="sw" style="background:#fff"></span></div>
+        <div class="exp-stage white">
+          <div class="hero">
+            <div class="hero-media">
+              <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_7d28d460-d8ba-4e34-823b-4969eedb3eaf.webp?v=1781012462" alt="">
+              <div class="hero-scrim"></div>
+            </div>
+            <div class="hero-copy"><div class="wrap">
+              <span class="eyebrow">Wedges · Putters · Hybrid</span>
+              <h3 class="disp d-xl" style="color:var(--cream)">Get used to the <span class="foil on-dark">attention</span></h3>
+              <div class="hero-cta"><span class="btn btn-foil"><span>Shop the clubs</span></span></div>
+            </div></div>
+          </div>
+          <div class="trust"><div class="trust-in">
+            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+            <span class="mono"><span class="tok">[REVIEW]</span> verified reviews</span>
+            <span class="div"></span><span class="mono">60-day club returns</span>
+          </div></div>
+        </div>
+      </div>
+      <div class="exp-pane">
+        <div class="cap"><span class="mono">Option B — Cream #F6F2E8</span><span class="sw" style="background:#F6F2E8"></span></div>
+        <div class="exp-stage cream">
+          <div class="hero">
+            <div class="hero-media">
+              <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_7d28d460-d8ba-4e34-823b-4969eedb3eaf.webp?v=1781012462" alt="">
+              <div class="hero-scrim"></div>
+            </div>
+            <div class="hero-copy"><div class="wrap">
+              <span class="eyebrow">Wedges · Putters · Hybrid</span>
+              <h3 class="disp d-xl" style="color:var(--cream)">Get used to the <span class="foil on-dark">attention</span></h3>
+              <div class="hero-cta"><span class="btn btn-foil"><span>Shop the clubs</span></span></div>
+            </div></div>
+          </div>
+          <div class="trust"><div class="trust-in">
+            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+            <span class="mono"><span class="tok">[REVIEW]</span> verified reviews</span>
+            <span class="div"></span><span class="mono">60-day club returns</span>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <p class="exp-note">Same hero, same photo, same type. The only variable is the field the photo sits on and the trust strip beneath it — which then sets the default background for every section that isn't cream, ink, or photography. Pick one and this block comes out of the file.</p>
+  </div>
+</section>
+
+<!-- ============ SHOP BY FAMILY ============ -->
+<section class="sec" id="families">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="l">
+        <span class="eyebrow">Three families, one bag</span>
+        <h2 class="disp d-l">Six clubs. That's the <span class="foil">line</span></h2>
+      </div>
+      <a href="#" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
+    </div>
+
+    <div class="fam">
+      <a href="#" class="card rv">
+        <div class="card-ph">
+          <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_7d28d460-d8ba-4e34-823b-4969eedb3eaf.webp?v=1781012462" alt="Lucky Golf Carver wedge, gold finish, at address" style="object-position:66% 72%;scale:1.22;transform-origin:64% 74%">
+          <span class="stamp">LGW01 / LGW02 · Carver</span>
+        </div>
+        <div class="card-body">
+          <h3 class="disp d-m">Wedges</h3>
+          <p class="hook">1020 forged carbon steel with a dual-texture face that grabs the ball back. Six lofts on the Carver, and every one swings the same.</p>
+          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 50° 52° 54° 56° 58° 60°</div>
+          <div class="card-foot">
+            <span class="price"><small>From</small>$99</span>
+            <span class="btn btn-ink btn-sm"><span>Go get one</span><span class="ar">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="card rv">
+        <div class="card-ph">
+          <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="Lucky Golf LGP02 Tracer Mallet putter in gold">
+          <span class="stamp">LGP01 / LGP02 · Tracer</span>
+        </div>
+        <div class="card-body">
+          <h3 class="disp d-m">Putters</h3>
+          <p class="hook">Blade or mallet, both milled from a single block of stainless. No ping, no buzz, and honest feedback on the ones you miss.</p>
+          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 3.5° · 35" · Blade or mallet</div>
+          <div class="card-foot">
+            <span class="price"><small>From</small>$199</span>
+            <span class="btn btn-ink btn-sm"><span>Roll it pure</span><span class="ar">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="card rv">
+        <div class="card-ph">
+          <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="Lucky Golf LGH01 Stryker titanium hybrid, gloss black crown with gold starburst">
+          <span class="stamp">LGH01 · Stryker</span>
+        </div>
+        <div class="card-body">
+          <h3 class="disp d-m">Hybrid</h3>
+          <p class="hook">Titanium at 19°, built for the yardage you keep guessing at. The Flex Channel face gets ball speed back on the strikes you don't catch.</p>
+          <div class="card-lofts stamp"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 19° · 40.5" · Stiff flex</div>
+          <div class="card-foot">
+            <span class="price">$209</span>
+            <span class="btn btn-ink btn-sm"><span>Fill the gap</span><span class="ar">→</span></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
+
+<!-- ============ FEATURED — DARK EVENT ============ -->
+<section class="feat sec">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <span class="halo" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="feat-in">
+      <div class="rv">
+        <span class="eyebrow on-dark">LGP01 · Tracer Blade</span>
+        <h2 class="disp d-l">No ping. No buzz. Just <span class="foil on-dark">roll</span></h2>
+        <p class="body on-dark">Putting is where the round quietly gets away from you, usually from six feet. The Tracer Blade is cut from one piece of 431 stainless, so there are no welds or cavities for the vibration to bounce around in. The ball comes off muted and true, and you feel exactly where you struck it without getting punished for it.</p>
+        <div class="feat-cta">
+          <a href="#" class="btn btn-foil"><span>Roll it pure</span><span class="ar">→</span></a>
+          <a href="#" class="btn btn-line-cream"><span>See both shapes</span></a>
+        </div>
+        <div class="feat-stamp">
+          <span class="stamp">LGP01 · Tracer Blade · 431 stainless · $199</span>
+          <span class="ln"></span>
+        </div>
+      </div>
+      <div class="plinth-wrap rv">
+        <span class="glow" aria-hidden="true"></span>
+        <div class="plinth">
+          <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="Lucky Golf LGP01 Tracer Blade putter in gold with the green clover mark">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY LUCKY — typographic moment (1 of 1) ============ -->
+<section class="why sec">
+  <div class="why-in wrap">
+    <div class="why-top rv">
+      <div>
+        <span class="eyebrow">Why it costs what it costs</span>
+        <h2 class="disp d-l">We made the clubs first. Priced them <span class="foil">second</span></h2>
+      </div>
+      <p class="body lead">There's no tour sponsorship built into a Lucky wedge, and no distributor taking a cut on the way to your bag. What's left is the club. Forged carbon steel, CNC-milled grooves, and a finish you'll get asked about on the first tee. A forged wedge for $99. That's the whole trick.</p>
+    </div>
+
+    <div class="why-rule"></div>
+    <div class="claims">
+      <div class="claim rv">
+        <span class="num"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 01</span>
+        <h3 class="disp d-s">No middlemen</h3>
+        <p>We sell direct. The savings aren't a promotion running until Sunday, they're just what the math comes out to.</p>
+      </div>
+      <div class="claim rv">
+        <span class="num"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 02</span>
+        <h3 class="disp d-s">Real materials</h3>
+        <p>1020 forged carbon steel. 431 and 304 stainless, milled from solid. Titanium. Nothing cast thin to hit a number.</p>
+      </div>
+      <div class="claim rv">
+        <span class="num"><span class="mk cbul"><svg><use href="#lg-clover-plain"/></svg></span> 03</span>
+        <h3 class="disp d-s">Sixty days</h3>
+        <p>Hit one wedge from the set on a mat and see what you think. Club returns run 60 days, with approval and inspection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASIDE MOMENT — the Space Mono charm voice ============ -->
+<div class="asidebar">
+  <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+  <p class="aside">still using stock wedges?</p>
+  <p class="sig stamp">no judgment. mostly.</p>
+</div>
+
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="proof-hd rv">
+      <span class="eyebrow centre">What golfers say</span>
+      <h2 class="disp d-l">They're going to <span class="foil">ask</span> about it</h2>
+      <div class="agg">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <span class="mono"><span class="tok">[REVIEW — AVG RATING]</span> from <span class="tok">[REVIEW COUNT]</span> verified buyers</span>
+      </div>
+    </div>
+
+    <div class="revs">
+      <div class="rev rv">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <p class="q">[REVIEW — SHORT QUOTE, FEEL AND SPIN, LGW02 CARVER GOLD]</p>
+        <div class="who">
+          <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
+          <span class="mono">[REVIEWER NAME] · LGW02 Gold 56°</span>
+        </div>
+      </div>
+      <div class="rev rv">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <p class="q">[REVIEW — SHORT QUOTE, THE PRICE VS WHAT THEY EXPECTED]</p>
+        <div class="who">
+          <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
+          <span class="mono">[REVIEWER NAME] · LGW01 Carver</span>
+        </div>
+      </div>
+      <div class="rev rv">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <p class="q">[REVIEW — SHORT QUOTE, ROLL AND SOUND, LGP01 TRACER BLADE]</p>
+        <div class="who">
+          <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
+          <span class="mono">[REVIEWER NAME] · LGP01 Tracer Blade</span>
+        </div>
+      </div>
+      <div class="rev rv">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <p class="q">[REVIEW — SHORT QUOTE, PEOPLE ASKING ABOUT THE GOLD FINISH]</p>
+        <div class="who">
+          <span class="vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Verified</span></span>
+          <span class="mono">[REVIEWER NAME] · LGH01 Stryker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFESTYLE BREAK ============ -->
+<section class="life">
+  <div class="ph ph--dark">
+    <span class="lbl">
+      <span class="mono k">Photo needed</span>
+      <span class="mono">On-course lifestyle · four golfers walking off a green, late light, gold Carver visible in the bag. Full-bleed, wide crop, room for type bottom-left.</span>
+    </span>
+  </div>
+  <div class="life-line">
+    <div class="wrap">
+      <p class="q">Luck helps. The club helps more.</p>
+      <p class="aside">bring both.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPAREL + GEAR ============ -->
+<section class="sec" id="gear">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="l">
+        <span class="eyebrow">Apparel &amp; gear</span>
+        <h2 class="disp d-l">The rest of the <span class="foil">kit</span></h2>
+        <p class="body" style="margin-top:18px">Polos that handle a hot back nine and a rope hat that holds its shape. Four-way stretch, UPF 50+, and the clover where it belongs.</p>
+      </div>
+    </div>
+
+    <div class="gear">
+      <a href="#" class="tile rv">
+        <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="Lucky Golf Classic Polo in Marble, white with gold veining and a gold collar"></div>
+        <div class="tile-body">
+          <span class="nm">The Classic Polo</span>
+          <span class="sub">Marble</span>
+          <span class="pr">$67</span>
+        </div>
+      </a>
+
+      <a href="#" class="tile rv">
+        <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="Lucky Golf Classic Polo in Gold Carnation, gold with a white carnation print"></div>
+        <div class="tile-body">
+          <span class="nm">The Classic Polo</span>
+          <span class="sub">Gold Carnation</span>
+          <span class="pr">$67</span>
+        </div>
+      </a>
+
+      <a href="#" class="tile rv">
+        <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?v=1779472637" alt="Lucky Golf Blade Polo in Swirl, white with a tonal swirl print"></div>
+        <div class="tile-body">
+          <span class="nm">The Blade Polo</span>
+          <span class="sub">Swirl</span>
+          <span class="pr">$67</span>
+        </div>
+      </a>
+
+      <a href="#" class="tile rv">
+        <div class="tile-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_dbcfe876-5303-497d-a60d-d0012da567ed.webp?v=1784585346" alt="Lucky Golf five-panel rope snapback in black with gold Lucky wordmark"></div>
+        <div class="tile-body">
+          <span class="nm">Five-Panel Snapback</span>
+          <span class="sub">Black / Gold</span>
+          <span class="pr">$29</span>
+        </div>
+      </a>
+
+      <div class="g-hero rv">
+        <div class="ph">
+          <span class="lbl">
+            <span class="mono k">Photo needed</span>
+            <span class="mono">On-body apparel · Classic Polo worn on course, three-quarter crop, walking or mid-swing. Wide 2:1 frame to fill this slot.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gear-foot rv">
+      <p class="body" style="max-width:52ch;font-size:.98rem">Apparel and gear return within 30 days, unworn with tags on.</p>
+      <a href="#" class="btn btn-line btn-sm"><span>Shop apparel &amp; gear</span><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="close">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <span class="halo" aria-hidden="true"></span>
+  <div class="close-in">
+    <div class="wrap">
+      <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
+      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <h2 class="disp d-l">Go put one in the <span class="foil on-dark">bag</span></h2>
+      <p class="body on-dark">Forged wedges from $99. Milled putters from $199. Titanium hybrid at $209. Sixty days to send a club back if it isn't the one.</p>
+      <div class="close-cta">
+        <a href="#families" class="btn btn-foil sweep"><span>Shop the clubs</span><span class="ar">→</span></a>
+        <a href="#" class="btn btn-line-cream"><span>Read our story</span></a>
+      </div>
+      <div class="close-trust">
+        <span class="mono">60-day club returns</span>
+        <span class="div"></span>
+        <span class="mono">Right &amp; left hand</span>
+        <span class="div"></span>
+        <span class="mono">Six lofts on the Carver</span>
+        <span class="div"></span>
+        <span class="mono">Direct pricing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-in">
+      <div>
+        <span class="logo logo--stack logo--cream"><svg><use href="#lg-luckygolf"/></svg></span>
+        <p class="tag">Clubs that perform at the level of the big brands, at prices set by people who chose not to pass the markup along.</p>
+      </div>
+      <div>
+        <h4>Clubs</h4>
+        <ul>
+          <li><a href="#">LGW01 Carver</a></li>
+          <li><a href="#">LGW02 Carver Gold</a></li>
+          <li><a href="#">LGW02 Carver Black</a></li>
+          <li><a href="#">LGP01 Tracer Blade</a></li>
+          <li><a href="#">LGP02 Tracer Mallet</a></li>
+          <li><a href="#">LGH01 Stryker</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Apparel</h4>
+        <ul>
+          <li><a href="#">The Classic Polo</a></li>
+          <li><a href="#">The Blade Polo</a></li>
+          <li><a href="#">Hats</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Trybe</a></li>
+          <li><a href="#">Ambassadors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Returns &amp; 60-day policy</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-btm">
+      <span class="mono">© 2026 Lucky Golf</span>
+      <span class="mono">It's better to be lucky.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var i = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
+        e.target.style.transitionDelay = Math.min(i,4) * 70 + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{rootMargin:'0px 0px -12% 0px',threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+})();
+</script>
+
+</body>
+</html>
