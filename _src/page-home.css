@@ -1,0 +1,334 @@
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{position:relative;isolation:isolate;background:var(--ink)}
+.hero-media{position:relative;height:min(92vh,940px);height:min(92dvh,940px);min-height:520px;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:52% 48%}
+.hero-scrim{position:absolute;inset:0;background:
+    linear-gradient(96deg,rgba(23,20,15,.80) 0%,rgba(23,20,15,.54) 34%,rgba(23,20,15,.06) 62%,rgba(23,20,15,0) 100%),
+    linear-gradient(0deg,rgba(23,20,15,.46) 0%,rgba(23,20,15,0) 42%)}
+.hero-copy{position:absolute;inset:0;display:flex;align-items:flex-end;padding:0 0 clamp(44px,6vw,88px)}
+.hero-copy .wrap{width:100%}
+.hero-copy .eyebrow{color:var(--gold-hi);margin-bottom:20px}
+.hero h1{color:var(--cream);max-width:19ch;text-shadow:0 2px 40px rgba(23,20,15,.35)}
+.hero .body{margin-top:22px;max-width:44ch;color:var(--cream-70)}
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+/* DEVICE 4 · loft stamp on the photograph */
+.hero-stamp{position:absolute;right:var(--pad);bottom:clamp(44px,6vw,88px);text-align:right;
+  color:var(--cream-70);z-index:2;text-shadow:0 1px 14px rgba(23,20,15,.75)}
+.hero-stamp b{display:block;color:var(--gold-hi);font-weight:400}
+
+.trust{border-bottom:1px solid var(--ink-08)}
+.trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,44px);padding:18px var(--pad)}
+.trust .mono{color:var(--ink-muted);font-size:.62rem;letter-spacing:.17em}
+.trust .div{width:1px;height:14px;background:var(--ink-14)}
+.stars{position:relative;display:inline-block;line-height:0;vertical-align:-.15em}
+.stars .s-bg,.stars .s-fg{display:flex;gap:3px}
+.stars svg{width:13px;height:13px;flex:none}
+.stars .s-bg svg{fill:rgba(23,20,15,.17)}
+.stars .s-fg{position:absolute;left:0;top:0;width:var(--pct,100%);overflow:hidden}
+.stars .s-fg svg{fill:var(--gold)}
+.stars--dark .s-bg svg{fill:rgba(246,242,232,.22)}
+.card-rating{display:flex;align-items:center;gap:9px;color:var(--ink-muted)}
+.card-rating .n{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em}
+.tok{color:var(--ink-muted)}
+
+/* ==========================================================================
+   SHOP BY FAMILY
+   ========================================================================== */
+.sec-hd{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;
+  margin-bottom:clamp(28px,3.4vw,52px)}
+.sec-hd .l{max-width:56ch}
+.fam{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.card{position:relative;background:var(--white);border:1px solid var(--ink-08);border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+/* one focusable link per card; its ::after makes the whole card clickable */
+.stretch{color:inherit}
+.stretch::after{content:'';position:absolute;inset:0;z-index:4}
+.card:hover{border-color:var(--ink-14);transform:translateY(-3px)}
+.card-ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--white)}
+.card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-ph img{transform:scale(1.035)}
+.card-ph .stamp{position:absolute;left:0;top:16px;background:var(--ink);color:var(--cream-70);
+  padding:6px 11px 6px 14px;border-radius:0 2px 2px 0}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;gap:10px}
+.card-body .hook{color:var(--ink-70);font-size:.99rem;line-height:1.5;flex:1}
+.card-lofts{display:flex;align-items:center;gap:8px;color:var(--ink-38)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:6px}
+.price{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;font-size:1.02rem}
+.price small{font-variation-settings:'wdth' 90;font-weight:500;font-size:.72rem;color:var(--ink-muted);
+  letter-spacing:.04em;text-transform:uppercase;margin-right:.35em}
+
+/* ==========================================================================
+   FEATURED — DARK EVENT
+   ========================================================================== */
+.feat{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+.feat::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none;z-index:0}
+.feat .wm{width:min(58vw,760px);height:min(58vw,760px);left:-15%;top:-16%;opacity:.055}
+.feat .halo{position:absolute;left:38%;top:50%;translate:-50% -50%;width:min(900px,80%);aspect-ratio:1/1;
+  background:radial-gradient(closest-side,rgba(194,154,43,.20),rgba(194,154,43,0) 72%);pointer-events:none;z-index:0}
+.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:clamp(30px,4.4vw,72px);align-items:center}
+.feat h2{color:var(--cream);max-width:16ch}
+.feat .body{margin-top:22px}
+.feat-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-70)}
+.feat-stamp .ln{height:2px;flex:1;background:var(--rule-on-dark)}
+.plinth-wrap{position:relative}
+.glow{position:absolute;inset:-13%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(237,210,124,.30),rgba(194,154,43,.10) 55%,rgba(194,154,43,0) 78%);
+  filter:blur(6px);z-index:0}
+.plinth{position:relative;z-index:1;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1;
+  background:linear-gradient(168deg,#fff 0%,var(--cream) 100%)}
+.plinth::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(194,154,43,.22)}
+.plinth img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+
+/* ==========================================================================
+   WHY LUCKY — the one typographic moment
+   ========================================================================== */
+.why{position:relative;background:var(--cream);overflow:hidden}
+.why::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
+.why-in{position:relative;z-index:1}
+.why-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,80px);align-items:end}
+.why h2{max-width:20ch}
+.why-rule{height:2px;background:var(--ink);margin:clamp(38px,4.4vw,64px) 0 0}
+.claims{display:grid;grid-template-columns:repeat(3,1fr)}
+.claim{padding:clamp(26px,2.8vw,42px) clamp(20px,2.4vw,38px) 8px;border-right:1px solid var(--ink-14)}
+.claim:first-child{padding-left:0}
+.claim:last-child{border-right:0;padding-right:0}
+.claim .num{display:flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:.66rem;
+  letter-spacing:.2em;color:var(--gold-lo);margin-bottom:14px}
+.claim h3{margin:0 0 10px}
+.claim p{margin:0;color:var(--ink-70);font-size:.99rem;line-height:1.55}
+
+/* ==========================================================================
+   DEVICE 5 · ASIDE MOMENT
+   ========================================================================== */
+.asidebar{text-align:center;padding:clamp(52px,5.2vw,84px) 0}
+.asidebar .mk{width:26px;height:26px;color:var(--green);margin:0 auto 20px}
+.asidebar .aside{color:var(--ink);max-width:34ch;margin:0 auto}
+.asidebar .sig{margin-top:16px;color:var(--ink-muted)}
+
+/* ==========================================================================
+   SOCIAL PROOF
+   ========================================================================== */
+.proof-hd{text-align:center;max-width:min(820px,94%);margin:0 auto clamp(30px,3.6vw,52px)}
+.proof-hd .agg{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap}
+.proof-hd .agg .mono{color:var(--ink-muted);font-size:.63rem}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
+.rev{border:1px solid var(--ink-08);border-radius:var(--r);padding:26px 24px 24px;
+  display:flex;flex-direction:column;gap:14px;background:var(--white)}
+.rev .q{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 84;font-weight:600;
+  font-size:1.02rem;line-height:1.42;flex:1}
+.rev .who{display:flex;align-items:center;gap:8px;border-top:1px solid var(--ink-08);padding-top:14px}
+.rev .who .mono{font-size:.6rem;letter-spacing:.13em;color:var(--ink-muted)}
+/* clover verified badge */
+.vfd{display:inline-flex;align-items:center;gap:5px;color:var(--green);flex:none}
+.vfd .mk{width:15px;height:15px}
+.vfd span{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.13em;text-transform:uppercase}
+
+/* ==========================================================================
+   LIFESTYLE BREAK
+   ========================================================================== */
+.life{position:relative;background:var(--ink);overflow:hidden}
+.life .ph{height:min(60vh,600px);height:min(60dvh,600px);min-height:340px;border-radius:0;border-left:0;border-right:0;
+  align-items:flex-start;padding-top:clamp(38px,5vw,74px)}
+.life-line{position:absolute;left:0;right:0;bottom:clamp(28px,4vw,54px);z-index:2;pointer-events:none}
+.life-line .q{color:var(--cream);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,3rem);line-height:.92;
+  margin:0;max-width:22ch;text-shadow:0 2px 30px rgba(23,20,15,.5)}
+.life-line .aside{color:var(--cream-52);margin-top:14px}
+
+/* ==========================================================================
+   APPAREL + GEAR
+   ========================================================================== */
+.gear{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.gear .g-hero{grid-column:span 2;position:relative;border-radius:var(--r);overflow:hidden;display:flex}
+.gear .g-hero .ph{flex:1;border-radius:0;min-height:100%}
+.tile{position:relative;border:1px solid var(--ink-08);border-radius:var(--r);overflow:hidden;
+  background:var(--white);display:flex;flex-direction:column;transition:border-color .25s,transform .35s}
+.tile:hover{border-color:var(--ink-14);transform:translateY(-3px)}
+.tile-ph{aspect-ratio:1/1;background:var(--white);overflow:hidden;position:relative}
+.tile-ph img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .tile-ph img{transform:scale(1.04)}
+.tile-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
+.tile-body .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;font-size:.92rem;line-height:1.15}
+.tile-body .sub{color:var(--ink-muted);font-size:.85rem}
+.tile-body .pr{margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.95rem}
+.gear-foot{margin-top:clamp(26px,3vw,44px);display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:space-between}
+
+/* ==========================================================================
+   VALUE PROPS  (OPEN D · 2) — dark band, icon props, photo collage.
+   Icons are gold-hi on ink: the gold accent survives here because the field is
+   ink, not green. Collage slots use the standard photo-needed device.
+   ========================================================================== */
+.vp{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+.vp::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.vp-in{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;
+  gap:clamp(30px,4.6vw,78px);align-items:center}
+.vp h2{color:var(--cream);max-width:13ch}
+/* Takomo runs a coloured second deck under the headline. Ours is gold. */
+.vp-sub{margin:16px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
+  font-weight:800;text-transform:uppercase;letter-spacing:.005em;line-height:1;
+  font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--gold-hi);max-width:20ch}
+.vp .body{margin-top:18px}
+.vp-cta{margin-top:clamp(26px,3vw,38px)}
+.vp-list{list-style:none;margin:clamp(28px,3.2vw,42px) 0 0;padding:0}
+.vp-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:2px solid var(--rule-on-dark)}
+.vp-item:last-child{border-bottom:2px solid var(--rule-on-dark)}
+.vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-hi);stroke-width:1.6;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.vp-item h3{margin:0 0 5px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
+  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:1.06rem;line-height:1;color:var(--cream)}
+.vp-item p{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:46ch}
+.vp-collage{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(148px,1fr);gap:var(--gut)}
+.vp-collage .ph{border-radius:var(--r);padding:20px}
+.vp-collage .ph .lbl .mono{font-size:.58rem;letter-spacing:.14em}
+.vp-collage > *:first-child{grid-row:span 2}
+@media (max-width:900px){.vp-in{grid-template-columns:1fr}}
+
+
+/* ==========================================================================
+   CLUB FINDER — the help-me-choose moment. Sits after "Why Lucky" so the
+   price objection is already answered before we ask anyone to pick.
+   ========================================================================== */
+.fnd{margin-top:clamp(28px,3.4vw,46px)}
+.fnd-tabs{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--ink-14)}
+.fnd-tab{background:none;border:0;cursor:pointer;padding:14px 22px;min-height:52px;position:relative;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;color:var(--ink-muted)}
+.fnd-tab[aria-selected="true"]{color:var(--ink)}
+.fnd-tab[aria-selected="true"]::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold)}
+.fnd-panel[hidden]{display:none}
+.fnd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gut);margin-top:clamp(24px,2.8vw,38px)}
+.fnd-c{position:relative;background:var(--cream);border-radius:var(--r);padding:24px 22px 0;
+  display:flex;flex-direction:column;text-align:center;overflow:hidden;transition:transform .3s}
+.fnd-c:hover{transform:translateY(-3px)}
+.fnd-c .sku{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+.fnd-c .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
+  text-transform:uppercase;font-size:1.5rem;line-height:.94;margin:7px 0 8px}
+.fnd-c .ln{margin:0 auto;font-size:.9rem;line-height:1.5;color:var(--ink-muted);max-width:28ch}
+.fnd-c .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:1.1rem;margin-top:12px}
+.fnd-c .im{margin:14px -22px 0;aspect-ratio:1/1;overflow:hidden}
+.fnd-c .im img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.fnd-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+  margin-top:clamp(24px,2.8vw,38px)}
+
+/* ==========================================================================
+   PULL QUOTE — one real review at scale, leading into the review rail.
+   Escalation, not repetition: the headline, then the evidence under it.
+   ========================================================================== */
+.pull{position:relative;background:var(--cream);overflow:hidden;text-align:center}
+.pull::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
+.pull .wm{width:min(70vw,760px);height:min(70vw,760px);left:50%;top:50%;translate:-50% -50%;color:var(--ink);opacity:.05}
+.pull-in{position:relative;z-index:1;max-width:1000px;margin:0 auto}
+.pull q{display:block;quotes:none;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
+  font-weight:800;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
+  font-size:clamp(1.6rem,3.4vw,3rem);margin:20px 0 0}
+.pull-by{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:26px}
+.pull-by .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:.95rem}
+.pull-by .p{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+
+/* ==========================================================================
+   THE FINISH — replaces the old lifestyle break, which was a photo and one
+   line with no job. Same weight and format, but says something ownable.
+   ========================================================================== */
+.spot{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+.spot::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.spot .wm{width:min(50vw,640px);height:min(50vw,640px);right:-12%;bottom:-18%;opacity:.05}
+.spot-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(28px,4.4vw,76px);align-items:center}
+.spot h2{color:var(--cream);max-width:14ch}
+.spot .body{margin-top:20px}
+.spot .ph{aspect-ratio:4/5;border-radius:var(--r)}
+.spot-cta{margin-top:clamp(24px,2.8vw,36px)}
+@media (max-width:900px){.spot-in{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   THE MINDSET — lower half of the value-props section.
+   Layout is the earlier image-left / text-right block (Cole preferred it);
+   only the subject changed. This is the brand argument, not the price one.
+   ========================================================================== */
+.vp-ed{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:clamp(28px,4.4vw,76px);align-items:center;margin-top:clamp(50px,5.6vw,92px)}
+.vp-ed .ph{aspect-ratio:3/4;border-radius:var(--r)}
+.vp-ed .eyebrow{margin-bottom:16px}
+.vp-ed h3{margin:0 0 20px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.96;color:var(--cream);
+  font-size:clamp(1.7rem,3vw,2.7rem);max-width:16ch}
+.vp-ed p{margin:0 0 15px;color:var(--cream-70);font-size:1rem;line-height:1.64;max-width:54ch}
+.vp-ed p:last-child{margin-bottom:0}
+.vp-ed .aside{margin-top:20px;color:var(--cream)}
+@media (max-width:900px){.vp-ed{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   THE ROSTER  (OPEN D · 3) — creator headshots on the homepage, feeds Trybe.
+   NO headshot assets exist yet, so every slot is a photo-needed placeholder
+   with a shot spec. Names/handles are bracketed, not invented.
+   ========================================================================== */
+.roster{position:relative;background:var(--cream);overflow:hidden}
+.roster::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
+.roster-in{position:relative;z-index:1}
+.rost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(188px,1fr));
+  gap:var(--gut);margin-top:clamp(30px,3.6vw,50px)}
+.rost .ph{aspect-ratio:4/5;padding:16px;background:repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 14px,rgba(23,20,15,.08) 14px 28px)}
+.rost .ph .lbl .mono{font-size:.55rem;letter-spacing:.13em}
+.rost-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
+  font-weight:800;text-transform:uppercase;font-size:1.02rem;line-height:1;margin:14px 0 5px}
+.rost-hd{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted)}
+
+/* ==========================================================================
+   COLLECTION TILES  (OPEN C) — image-led, Takomo-style.
+   Was product cards: photo box + text underneath. Now the photo IS the tile and
+   the text sits on it behind a scrim. One wide tile, two half tiles.
+   No lifestyle assets exist yet, so the placeholder label sits in the TOP of
+   the tile where the scrim is still transparent and stays readable.
+   ========================================================================== */
+.coll{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);margin-top:clamp(30px,3.6vw,50px)}
+.gtile{position:relative;display:flex;border-radius:var(--r);overflow:hidden;
+  min-height:clamp(310px,32vw,440px);background:var(--ink);
+  transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.gtile--wide{grid-column:1/-1;min-height:clamp(300px,26vw,400px)}
+.gtile:hover{transform:translateY(-3px)}
+.gtile > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gtile:hover > img{transform:scale(1.04)}
+.gtile .ph{position:absolute;inset:0;border-radius:0;border:0;align-items:flex-start;padding:26px 26px 0}
+.gtile-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(23,20,15,.86) 0%,rgba(23,20,15,.42) 40%,rgba(23,20,15,0) 74%)}
+.gtile-in{position:relative;z-index:2;margin-top:auto;width:100%;
+  padding:clamp(20px,2.2vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.gtile-ct{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cream-70)}
+.gtile-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
+  text-transform:uppercase;font-size:clamp(1.8rem,3vw,2.7rem);line-height:.9;margin:0;color:var(--cream)}
+.gtile-ln{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:44ch}
+.gtile .btn{margin-top:6px}
+@media (max-width:760px){.coll{grid-template-columns:1fr}.gtile--wide{grid-column:auto}}
+
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){
+  .gear{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .fam{grid-template-columns:1fr}
+  .feat-in{grid-template-columns:1fr}
+  .plinth-wrap{order:-1}
+  .why-top{grid-template-columns:1fr}
+  .claims{grid-template-columns:1fr}
+  .claim{border-right:0;border-bottom:1px solid var(--ink-14);padding-left:0;padding-right:0;padding-bottom:26px}
+  .claim:last-child{border-bottom:0}
+  .exp-grid{grid-template-columns:1fr}
+  .hero-stamp{display:none}
+}
+@media (max-width:620px){
+  .hero-media{height:76vh;height:76dvh}
+  .hero-scrim{background:linear-gradient(0deg,rgba(23,20,15,.86) 0%,rgba(23,20,15,.32) 55%,rgba(23,20,15,.1) 100%)}
+  .gear{grid-template-columns:1fr}
+  .gear .g-hero{grid-column:auto}
+}

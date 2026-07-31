@@ -1,0 +1,18 @@
+<!-- ============ CART DRAWER ============ -->
+<div class="cd" id="cd" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="cd-title">
+  <div class="cd-bd" data-cart-close></div>
+  <div class="cd-panel">
+    <div class="cd-hd">
+      <h2 class="disp d-s" id="cd-title">Your bag</h2>
+      <button type="button" class="cd-x" data-cart-close aria-label="Close bag">&times;</button>
+    </div>
+    <div class="cd-body" id="cd-list"></div>
+    <div class="cd-foot">
+      <div class="cd-sub"><span class="l">Subtotal</span><span class="v" id="cd-sub">$0</span></div>
+      <p class="cd-note">Shipping and tax calculated at checkout</p>
+      <a href="#" class="btn btn-foil"><span>Checkout</span><span class="ar">&rarr;</span></a>
+      <p class="cd-mock">Front-end demo &mdash; no live checkout wired up</p>
+    </div>
+  </div>
+</div>
+<p class="sr" id="cart-live" role="status" aria-live="polite"></p>

@@ -1,0 +1,375 @@
+/* ==========================================================================
+   PDP — LGW01 Carver Gold
+   Synthesised from five references. Takomo contributes the spec table and the
+   "others also viewed" rail directly under the fold; Dartee contributes the
+   pull-quote-above-price, the icon strip, the accordions and the curated
+   review grid. Everything else is core.
+
+   Contrast law applies unchanged: on --brand, only --white is legal for text.
+   FOIL IS NEVER USED ON WHITE — base gold is 2.64:1 there, so it fails even
+   the 3:1 large-text bar. Foil stays on ink and brand fields only.
+   ========================================================================== */
+
+/* ---------- breadcrumb ---------- */
+.crumb{padding:18px 0 0}
+.crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0;padding:0;list-style:none;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-muted)}
+.crumb li{display:flex;align-items:center;gap:9px}
+.crumb li + li::before{content:'';width:4px;height:4px;background:var(--gold);rotate:45deg;flex:none}
+.crumb a{min-height:44px;display:inline-flex;align-items:center}
+.crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumb [aria-current]{color:var(--ink)}
+
+/* ==========================================================================
+   THE FOLD — gallery + buy box
+   ========================================================================== */
+.pd-top{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);
+  gap:clamp(28px,3.4vw,64px);padding:clamp(22px,2.4vw,38px) 0 var(--sec)}
+
+/* ---------- gallery ---------- */
+.pd-gal{position:sticky;top:96px;align-self:start}
+.gal-stage{position:relative;background:var(--cream);border-radius:var(--r);overflow:hidden;
+  aspect-ratio:1/1}
+.gal-stage::before{content:'';position:absolute;inset:0;background:var(--groove-light);
+  pointer-events:none;z-index:1}
+.gal-stage .wm{width:56%;height:56%;left:-9%;bottom:-9%;color:var(--ink);opacity:.045}
+.gal-slide{position:absolute;inset:0;opacity:0;transition:opacity .3s;z-index:2}
+.gal-slide[data-on]{opacity:1}
+.gal-slide img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.gal-tag{position:absolute;left:0;top:0;z-index:4;background:var(--gold);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;padding:7px 13px}
+.gal-count{position:absolute;right:12px;bottom:12px;z-index:4;
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--ink-muted);
+  background:var(--white);padding:5px 9px;border-radius:2px}
+.gal-arw{position:absolute;top:50%;translate:0 -50%;z-index:5;width:42px;height:42px;
+  border:2px solid var(--ink-14);background:var(--white);border-radius:var(--r);cursor:pointer;
+  display:grid;place-items:center;transition:border-color .2s,background .2s}
+.gal-arw:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.gal-arw svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.gal-arw[data-p]{left:12px}
+.gal-arw[data-n]{right:12px}
+.gal-thumbs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:8px}
+.gal-th{position:relative;aspect-ratio:1/1;background:var(--cream);border:2px solid transparent;
+  border-radius:var(--r);overflow:hidden;cursor:pointer;padding:0;transition:border-color .2s}
+.gal-th img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.gal-th:hover{border-color:var(--ink-14)}
+.gal-th[aria-current="true"]{border-color:var(--gold)}
+
+/* ==========================================================================
+   BUY BOX
+   ========================================================================== */
+.pd-buy{max-width:560px}
+.bx-eye{display:flex;align-items:center;gap:10px;margin:0 0 14px;
+  font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
+  font-size:.62rem;color:var(--gold-lo)}
+.bx-eye::before{content:'';width:22px;height:2px;background:var(--gold);flex:none}
+.pd-h1{margin:0}
+.bx-sub{margin:10px 0 0;font-size:1.06rem;line-height:1.5;color:var(--ink-70);max-width:42ch}
+
+/* rating row — anchors down to the review section */
+.bx-rate{display:flex;align-items:center;gap:10px;margin:16px 0 0;min-height:44px}
+.bx-rate .stars{display:flex;gap:2px}
+.bx-rate .stars svg{width:15px;height:15px;fill:var(--gold)}
+.bx-rate a{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-muted);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-color:var(--ink-14)}
+.bx-rate a:hover{color:var(--ink);text-decoration-color:var(--gold)}
+
+/* DARTEE MOVE — one real review sits above the price, not below the fold */
+.pq{position:relative;background:var(--cream);border-radius:var(--r);
+  border-left:3px solid var(--gold);padding:20px 22px;margin:20px 0 0}
+.pq::before{content:'';position:absolute;inset:0;background:var(--groove-light);
+  pointer-events:none;border-radius:var(--r)}
+.pq > *{position:relative;z-index:1}
+.pq .stars{display:flex;gap:2px;margin-bottom:9px}
+.pq .stars svg{width:13px;height:13px;fill:var(--gold)}
+.pq-t{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.95rem;text-transform:uppercase;letter-spacing:.02em;margin:0 0 7px}
+.pq-q{margin:0;font-size:.97rem;line-height:1.55;color:var(--ink-70);font-style:italic}
+.pq-w{display:block;margin-top:11px;font-family:'Space Mono',monospace;font-size:.58rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
+
+/* price */
+.bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
+  font-size:clamp(2.1rem,3vw,2.7rem);line-height:1;letter-spacing:-.01em}
+.bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}
+
+/* four-up icon strip */
+.bx-four{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 0;
+  padding:20px 0;border-block:2px solid var(--ink-14)}
+.bx-four div{text-align:center}
+.bx-four .mk{width:19px;height:19px;color:var(--green);margin:0 auto 8px}
+.bx-four b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;line-height:1.2}
+.bx-four span{display:block;margin-top:4px;font-size:.74rem;line-height:1.35;color:var(--ink-muted)}
+
+/* ---------- variant pickers ---------- */
+.opt{margin:26px 0 0}
+.opt-hd{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 6px}
+.opt-hd .lbl{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink)}
+.opt-hd .val{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  color:var(--ink-muted)}
+.opt-hd .help{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted);text-decoration:underline;text-underline-offset:3px}
+.opt-hd .help:hover{color:var(--ink);text-decoration-color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.88rem;letter-spacing:.02em;color:var(--ink);
+  transition:border-color .18s,background .18s,color .18s}
+.chip:hover:not([disabled]){border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
+/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+.chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-12deg}
+.opt-note{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;
+  color:var(--ink-muted)}
+
+/* ---------- add to cart ---------- */
+.atc-row{display:flex;gap:10px;margin:26px 0 0}
+.bx-qty{display:flex;align-items:center;border:2px solid var(--ink-14);border-radius:var(--r);flex:none}
+.bx-qty button{width:44px;min-height:48px;background:transparent;border:0;cursor:pointer;
+  font-size:1.1rem;line-height:1;color:var(--ink)}
+.bx-qty button:hover{background:var(--cream)}
+.bx-qty input{width:38px;min-height:48px;border:0;text-align:center;background:transparent;
+  font-family:'Space Mono',monospace;font-size:.86rem;color:var(--ink);
+  -moz-appearance:textfield;appearance:textfield}
+.bx-qty input::-webkit-outer-spin-button,.bx-qty input::-webkit-inner-spin-button{
+  -webkit-appearance:none;margin:0}
+.atc-row .btn{flex:1;justify-content:center;min-height:52px}
+.atc-row .btn[disabled]{opacity:.45;cursor:not-allowed;pointer-events:none}
+
+/* stock + dispatch */
+.bx-stock{display:flex;align-items:center;gap:9px;margin:16px 0 0;
+  font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--ink-70)}
+.bx-stock .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
+.bx-stock[data-out] .dot{background:var(--ink-38)}
+.bx-terms{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0}
+.bx-terms span{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink-muted)}
+.bx-terms .cbul{width:13px;height:13px}
+
+/* ---------- accordions ---------- */
+.acc{margin:30px 0 0;border-top:2px solid var(--ink-14)}
+.acc-i{border-bottom:2px solid var(--ink-14)}
+.acc-hd{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:18px 0;min-height:56px;background:transparent;border:0;cursor:pointer;text-align:left;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.94rem;text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
+.acc-hd .pm{position:relative;width:13px;height:13px;flex:none}
+.acc-hd .pm::before,.acc-hd .pm::after{content:'';position:absolute;background:var(--gold);
+  transition:transform .22s,opacity .22s}
+.acc-hd .pm::before{left:0;top:5.5px;width:13px;height:2px}
+.acc-hd .pm::after{left:5.5px;top:0;width:2px;height:13px}
+.acc-hd[aria-expanded="true"] .pm::after{transform:scaleY(0);opacity:0}
+.acc-bd{padding:0 0 22px;font-size:.96rem;line-height:1.62;color:var(--ink-70);max-width:52ch}
+.acc-bd[hidden]{display:none}
+.acc-bd ul{margin:0;padding-left:1.1em}
+.acc-bd li{margin:0 0 6px}
+
+/* mobile sticky add-to-cart */
+.atc-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--white);border-top:2px solid var(--ink-14);padding:10px var(--pad);
+  gap:12px;align-items:center;box-shadow:0 -8px 26px rgba(23,20,15,.09)}
+.atc-bar .sum{flex:1;min-width:0}
+.atc-bar .sum b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
+  font-weight:700;font-size:.92rem;line-height:1.2}
+.atc-bar .sum span{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
+  color:var(--ink-muted)}
+
+/* ==========================================================================
+   "EVERY DETAIL, DIALED IN" — Dartee's band, on Lucky's brand field.
+   Deliberately about WHAT THE CLUB DOES, not what it is made of: there is no
+   verified spec sheet for LGW01, and the construction claims in the reviews
+   are customers' words, not the brand's. Construction lives in .spec below,
+   where the gaps are visible instead of invented.
+   ========================================================================== */
+.dial{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);
+  padding:clamp(56px,6.4vw,96px) 0;border-block:2px solid var(--brand-accent)}
+.dial::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
+.dial .wm{width:min(48vw,540px);height:min(48vw,540px);left:-10%;top:50%;translate:0 -50%;
+  color:var(--on-brand);opacity:.08}
+.dial-in{position:relative;z-index:1}
+.dial-hd{text-align:center;margin:0 0 clamp(34px,3.6vw,54px)}
+.dial-hd .eyebrow{justify-content:center;color:var(--on-brand-88)}
+.dial-hd .eyebrow::before{background:var(--brand-accent)}
+.dial-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.4vw,38px)}
+.dial-i{text-align:center}
+.dial-i .hex{width:42px;height:42px;margin:0 auto 15px;display:grid;place-items:center;
+  border:2px solid var(--brand-accent);border-radius:var(--r)}
+.dial-i .hex .mk{width:19px;height:19px;color:var(--brand-accent)}
+.dial-i b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
+  font-weight:800;text-transform:uppercase;font-size:1.05rem;letter-spacing:.01em;line-height:1;
+  margin:0 0 10px;color:var(--on-brand)}
+.dial-i p{margin:0;font-size:.92rem;line-height:1.55;color:var(--on-brand-88);
+  max-width:26ch;margin-inline:auto}
+
+/* ==========================================================================
+   SPECS — Takomo's tabbed table. Rows we can verify against Shopify are real;
+   rows we cannot are marked, not guessed.
+   ========================================================================== */
+.spec-tabs{display:inline-flex;gap:4px;padding:4px;background:var(--cream-18);
+  border-radius:var(--r);margin:0 0 26px}
+.spec-tab{min-height:44px;padding:10px 22px;background:transparent;border:0;border-radius:2px;
+  cursor:pointer;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--cream-70);transition:background .2s,color .2s}
+.spec-tab:hover{color:var(--cream)}
+.spec-tab[aria-selected="true"]{background:var(--cream);color:var(--ink)}
+.spec-panel[hidden]{display:none}
+.spec-wrap{overflow-x:auto}
+.spec-tbl{width:100%;border-collapse:collapse;min-width:560px}
+.spec-tbl th,.spec-tbl td{text-align:left;padding:14px 16px;font-size:.9rem;
+  border-bottom:2px solid var(--rule-on-dark)}
+.spec-tbl thead th{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cream-70);border-bottom-color:var(--brand-accent)}
+.spec-tbl tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.84rem;text-transform:uppercase;letter-spacing:.03em;
+  color:var(--cream);width:34%}
+.spec-tbl td{color:var(--cream-70);font-family:'Space Mono',monospace;font-size:.78rem}
+.spec-tbl tr:last-child th,.spec-tbl tr:last-child td{border-bottom:0}
+/* an unfilled cell must LOOK unfilled — this is the same contract as the
+   labelled photo placeholders on the homepage */
+.tbd{display:inline-block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-hi);border:1px dashed rgba(237,210,124,.5);
+  border-radius:2px;padding:3px 8px}
+.spec-note{margin:22px 0 0;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.06em;
+  line-height:1.7;color:var(--cream-70);max-width:74ch}
+
+/* ==========================================================================
+   WHICH LOFT — the section neither reference has, and the one this product
+   needs most. Pure gap arithmetic off the golfer's pitching wedge; no
+   product claims, no invented yardages.
+   ========================================================================== */
+.lf-hd{max-width:56ch}
+.lf-pick{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:26px 0 0}
+.lf-pick .lbl{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink);margin-right:6px}
+.lf-out{margin:30px 0 0}
+.lf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.lf-card{position:relative;background:var(--white);border:2px solid var(--ink-14);
+  border-radius:var(--r);padding:24px 22px;display:flex;flex-direction:column;gap:9px}
+.lf-card[data-rec]{border-color:var(--gold)}
+.lf-card .rank{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.lf-card[data-rec] .rank{color:var(--gold-lo)}
+.lf-card .lo{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  font-size:clamp(2rem,3.4vw,2.9rem);line-height:.9;letter-spacing:-.01em}
+.lf-card .rl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.86rem;text-transform:uppercase;letter-spacing:.03em}
+.lf-card p{margin:0;font-size:.92rem;line-height:1.55;color:var(--ink-70)}
+.lf-card .gap{margin-top:auto;padding-top:14px;font-family:'Space Mono',monospace;
+  font-size:.6rem;letter-spacing:.1em;color:var(--ink-muted)}
+.lf-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin:26px 0 0}
+
+/* ==========================================================================
+   REVIEWS — Dartee's curated grid, not Takomo's raw widget dump.
+   ========================================================================== */
+.rvh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);
+  gap:clamp(26px,3.4vw,60px);align-items:end;margin:0 0 clamp(30px,3.4vw,48px)}
+.rvh-score{display:flex;align-items:center;gap:18px;margin:18px 0 0}
+.rvh-score .num{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  font-size:clamp(3rem,5vw,4.4rem);line-height:.85;letter-spacing:-.02em}
+.rvh-score .stars{display:flex;gap:3px}
+.rvh-score .stars svg{width:17px;height:17px;fill:var(--gold)}
+.rvh-score .cnt{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted);margin-top:7px;display:block}
+.rvh-bars{display:flex;flex-direction:column;gap:7px}
+.rvh-bars .row{display:flex;align-items:center;gap:10px;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--ink-muted)}
+.rvh-bars .row .k{width:22px;flex:none;text-align:right}
+.rvh-bars .row .t{flex:1;height:7px;background:var(--ink-08);border-radius:2px;overflow:hidden}
+.rvh-bars .row .t i{display:block;height:100%;background:var(--gold)}
+.rvh-bars .row .v{width:42px;flex:none}
+.rvh-badges{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 0}
+.rvh-badges span{display:flex;align-items:center;gap:7px;background:var(--cream);
+  border-radius:var(--r);padding:8px 13px;
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-70)}
+.rvh-badges .cbul{width:12px;height:12px}
+.rsum{background:var(--cream);border-radius:var(--r);padding:22px 24px;position:relative;
+  margin:0 0 clamp(30px,3.4vw,44px)}
+.rsum::before{content:'';position:absolute;inset:0;background:var(--groove-light);
+  border-radius:var(--r);pointer-events:none}
+.rsum > *{position:relative;z-index:1}
+.rsum h3{margin:0 0 9px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.05em}
+.rsum p{margin:0;font-size:.94rem;line-height:1.6;color:var(--ink-70);max-width:88ch}
+.rsum .src{display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:.56rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
+
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.rcard{background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  padding:24px 22px;display:flex;flex-direction:column;gap:11px}
+.rcard .stars{display:flex;gap:2px}
+.rcard .stars svg{width:13px;height:13px;fill:var(--gold)}
+.rcard h4{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.25}
+.rcard p{margin:0;font-size:.93rem;line-height:1.58;color:var(--ink-70)}
+.rcard .who{margin-top:auto;padding-top:14px;border-top:2px solid var(--ink-08);
+  display:flex;align-items:center;gap:11px}
+/* must out-specify `.rcard .who span` below, which would otherwise repaint the
+   initial in --ink-muted: 3.78:1 on green, under the 4.5 bar */
+.rcard .who .av{width:31px;height:31px;border-radius:50%;background:var(--green);color:var(--white);
+  display:grid;place-items:center;flex:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.8rem}
+.rcard .who b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.rcard .who span{display:block;font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.rv-more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
+  margin:clamp(26px,3vw,40px) 0 0}
+
+/* ==========================================================================
+   COMPLETE THE SET — soft cross-sell. Real variants of this product at the
+   real price; no bundle discount is implied because none exists in Shopify.
+   ========================================================================== */
+.setgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.setcard{position:relative;background:var(--white);border:2px solid var(--ink-14);
+  border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:12px;
+  transition:border-color .2s,transform .3s}
+.setcard:hover{border-color:var(--gold);transform:translateY(-3px)}
+.setcard .lo{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  font-size:clamp(2.2rem,3.6vw,3rem);line-height:.88;letter-spacing:-.01em}
+.setcard .rl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.setcard p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-70)}
+.setcard .bot{margin-top:auto;padding-top:16px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px}
+.setcard .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  font-size:1.02rem}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){
+  .rgrid,.lf-grid,.setgrid{grid-template-columns:repeat(2,1fr)}
+  .dial-grid{grid-template-columns:repeat(2,1fr);row-gap:34px}
+}
+@media (max-width:980px){
+  .pd-top{grid-template-columns:1fr;gap:26px}
+  .pd-gal{position:static}
+  .pd-buy{max-width:none}
+  .rvh{grid-template-columns:1fr;align-items:start}
+  .gal-thumbs{grid-template-columns:repeat(6,1fr)}
+}
+@media (max-width:760px){
+  .atc-bar{display:flex}
+  body{padding-bottom:78px}
+  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
+}
+@media (max-width:620px){
+  .rgrid,.lf-grid,.setgrid{grid-template-columns:1fr}
+  .dial-grid{grid-template-columns:1fr;row-gap:30px}
+  .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .gal-thumbs{grid-template-columns:repeat(5,1fr)}
+  .spec-tabs{display:flex;width:100%}
+  .spec-tab{flex:1;padding:10px 8px}
+}

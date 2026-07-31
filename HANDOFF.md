@@ -70,17 +70,248 @@ Compared frame by frame. It is not craft — it is **where the brand devices sit
 
 Known bad asset: `59.webp` (white snapback) has inverted lettering. Do not use.
 
-## 7. OPEN — needs Cole
+## 7. RESOLVED — A–D are closed, all four are built
 
-- **A.** Green field in the header/top band, yes or no
-- **B.** Marquee: under the hero on green, or delete it
-- **C.** Gear section as collections (Polos / Hats / Gear) — confirm the three
-- **D.** Add the three missing Takomo-style sections (brand band, value props, creator roster)
+- **A. Green header field — YES.** Cole delegated the call; decided via the UI/UX skill.
+  `.hdr` is now solid `--green` with a groove, a 2px `--gold-hi` bottom rule, white
+  logo/nav/icons. Header is `position:sticky`, so green is now a rail down the whole page.
+- **B. Marquee moved under the hero, on green.** No longer the first thing on the page.
+- **C. Collections are Polos / Hats / Gear.** Individual-product tiles deleted.
+- **D. All three sections built:** brand band (green), value props (ink), Trybe roster (cream).
 
-## 8. Build notes
+### Green-field contrast law — measured, do not re-derive
 
-`01-home.html` is generated. Source of truth is
-`scratchpad/home_template.html` + `logo_symbols.svg` (spliced at `{{SYMBOLS}}`).
-Rebuild: `python -c "t=open('home_template.html',encoding='utf8').read();s=open('logo_symbols.svg',encoding='utf8').read();open(r'01-home.html','w',encoding='utf8').write(t.replace('{{SYMBOLS}}',s))"`
+Everything below is against `--green #008340`. This is the single most load-bearing
+constraint introduced in rev 3, and two of these would have shipped broken:
+
+| Foreground | Ratio | Verdict |
+|---|---|---|
+| `--white` #FFFFFF | **4.86:1** | PASS 4.5 — use for ALL text on green |
+| `--cream` #F6F2E8 | 4.35:1 | **FAIL** — never use for text on green |
+| `--gold` #C29A2B | 1.84:1 | **FAIL at any size** — never put gold on green |
+| `--gold-hi` #EDD27C | 3.27:1 | PASS 3:1 non-text only — rules, borders, marks, badges |
+
+Consequences already applied: nav hover underline gold → gold-hi; marquee text
+gold-hi → white (it is .72rem, so it needs 4.5); marquee clover marks `--green-br`
+→ gold-hi (green-on-green was invisible); cart badge `--green-br` → gold-hi.
+
+**Trap:** `.nav a` cannot be used as a selector — the mega panel lives inside `.nav`
+and sits on white, so a bare rule paints those tiles white-on-white. It is scoped
+`.nav > a`, and `.mega :focus-visible` is reset to base `--gold`. Keep it that way.
+
+### Rules vs groove — system rule
+
+The groove is 1px lines on a 6px pitch. **A 1px structural divider on a grooved
+field reads as one more groove line.** Every rule that sits on a grooved section
+is therefore 2px (which is the locked border weight anyway — 1px was violating it)
+and brighter than the groove: `--rule-on-dark` / `--rule-on-light`.
+
+Applied to `.vp-item`, `.feat-stamp .ln`, `.ftr`, `.ftr-btm`. Grooved sections are
+`.hdr .mq .bband .feat .why .vp .roster .close .ftr` — check this before adding any
+divider to one of them.
+
+### Full-bleed bands need the next section's top padding back
+
+`.sec` blocks carrying `style="padding-top:0"` assumed the section above was the
+same colour. Once the brand band and value props were inserted, a hard coloured
+edge butted straight into the next heading. Both were removed. **If you insert a
+full-bleed colour band, check the section under it has top padding.**
+
+### Brand field is tokenised — changing the colour is six variables
+
+`--brand --on-brand --on-brand-88 --on-brand-22 --brand-accent --brand-groove`
+drive the header, the marquee and the brand band together. **Current: Forest
+`#0B5130`** with base gold `#C29A2B` as the accent (3.56:1 — passes 3:1 non-text).
+`_brand-variants.html` is the same page with a live switcher over 12 candidates
+and a contrast readout; keep it in sync when the build changes.
+
+### Copy rules learned the hard way
+
+- **Never name a material, alloy or grind in homepage copy.** Spec dumps read as
+  a brochure. Construction belongs on the PDP, after the promise.
+- **Never single out one product or price in generic brand copy.** "A forged
+  wedge for $99" in a section about the whole company reads as though wedges are
+  all we sell. Same for "right and left hand" — table stakes, not a selling point.
+- **Review counts:** 884 is clubs-only. It is fine *inside* the review block,
+  where precision builds trust. It is not a boast. Elsewhere use "hundreds of
+  five-star reviews". "Thousands of Lucky golfers" is verified — Shopify reports
+  at least 10,000 customers and 10,000 orders.
+- Asides are sentence case, not lowercase (ruled 2026-07-30).
+
+### Section jobs — why "why" and "value props" both survive
+
+They were making the same argument twice, which is what made the page feel
+repetitive. They are now split by job and must stay that way:
+
+- **Why Lucky (cream)** owns the **price objection** — no middlemen, no tour
+  contracts, what's left is the club. No materials, no product names, no prices.
+- **Value props (ink)** owns **quality and guarantees** — built properly, the
+  whole bag, sixty days, backed by golfers.
+
+### New section order
+
+| # | Section | Field | Job |
+|---|---|---|---|
+| 1 | Header | brand | Brand field in the first 100px |
+| 2 | Hero | photo | — |
+| 3 | Marquee | brand | Brand hit #2 |
+| 4 | Shop by family | white | Show the line |
+| 5 | Featured — Tracer Blade | ink | Deep-dive one club |
+| 6 | Why Lucky | cream | **Price objection** |
+| 7 | **Club finder** | white | **Help me choose** (tabbed, keyboard-navigable) |
+| 8 | Brand band | brand | Brand punctuation |
+| 9 | **Pull quote** | cream | **One real review at scale** |
+| 10 | Social proof rail | white | The evidence |
+| 11 | Value props + mindset | ink | **Quality/trust**, then the brand argument |
+| 12 | Seen in the wild | white | Community |
+| 13 | **The finish** | ink | **Desire** — replaced the lifestyle break |
+| 14 | Trybe roster | cream | Community |
+| 15 | Apparel & gear | white | Breadth |
+| 16 | Closing CTA | dark | Convert |
+
+Brand colour lands three times — 0px, under the hero, and mid-page — which is what
+makes it read as the spine rather than an unused palette entry. Fields alternate
+ink/white/cream either side of every section, so no two dark bands touch.
+
+The finder sits *after* the price objection on purpose: answer "why is it this
+cheap" before asking anyone to pick. The pull quote leads *into* the review rail —
+headline, then evidence — and fixes there being no social proof until 60% down.
+
+## 7b. OPEN — needs Cole
+
+- **E.** There is **no "Gear" collection in Shopify.** Polos (`/collections/polos`, 13)
+  and Hats (`/collections/hats`, 13) are real and linked. Gear is split across Head Covers,
+  Gloves, Grips and a collection titled "Accessories" whose handle is confusingly
+  `most-popular`. The Gear tile is `href="#"` until you create one.
+- **F.** Collection tiles currently use **studio product shots**, not lifestyle. §3 asked
+  for lifestyle photo + name + one line + button; the copy, name and button are in, the
+  photo is the gap. Three lifestyle shots needed (polo on body, hat on body, gear flat-lay).
+- **G.** Roster is **five placeholder slots** — no headshot assets exist. Needs five
+  4:5 portraits plus real names and handles. Names are bracketed, not invented.
+- **H.** Value-props collage is three photo-needed slots (specs are in the markup).
+- **I.** Hat tile uses `39.webp` (Black patch hat). Deliberately avoids the known-bad
+  `59.webp`, which is the White Upside Down Hat with inverted lettering.
+
+## 8. Build notes — READ THIS, IT CHANGED
+
+The single-file `_src-home-template.html` is **retired**. Sources now live in
+`_src/`, and `tools/build.py` assembles each page:
+
+```
+_src/core.css          tokens, type, the six devices, buttons, header, footer,
+                       marquee, mega menu, cart, product tiles, review cards
+_src/core.js           reveal, mobile nav, rail, lightbox, mega menu, cart
+_src/partials/         symbols-host · header · footer · lightbox · cart
+_src/page-home.{css,html,js}
+_src/page-pdp.{css,html,js}
+tools/build.py         assembles -> 01-home.html, 02-pdp-lgw01.html
+```
+
+```bash
+python tools/build.py            # build every page
+python tools/build.py pdp        # build one
+python tools/build.py --check    # build to memory and diff against disk
+```
+
+`01-home.html` and `02-pdp-lgw01.html` are **generated — never edit them
+directly.** They stay single-file and dependency-free on purpose, which is what
+makes them easy to send for review. The build is reproducible: `--check`
+reports `identical` when sources and output agree.
+
+The split was verified content-preserving — every non-blank line of the old
+template survives in the rebuilt homepage, and the homepage re-passes the
+contrast sweep with zero failures.
+
+**`{{HOME}}`** in `partials/header.html` resolves to `""` on the homepage and
+to `01-home.html` everywhere else, so the shared nav's `#families` / `#gear`
+anchors work from any page. Add the token to any new homepage-only anchor.
+
+`_src-home-template.html` is kept in the tree only as the provenance record for
+that split. Do not edit it; it no longer builds anything.
+
+**Consequence for `_brand-variants.html` and `_why-options.html`:** both were
+generated from that retired template, so they are now frozen and will drift from
+the live homepage. They are still useful as the record of the colour-switcher
+and "why" explorations, but stop treating them as regenerable. If the brand
+field needs re-testing, rebuild the switcher over `_src/` instead.
 
 Git history is the rollback path: `git log --oneline`.
+
+---
+
+## 9. Page 2 — the PDP  ·  `02-pdp-lgw01.html`
+
+Built from all five PDP references. Subject is **LGW01 Carver Gold** — the most
+reviewed product (4.81 / 551), the most inventory, and the only one whose
+variant matrix exercises both option axes.
+
+### What came from where
+
+| Device | Source | Why |
+|---|---|---|
+| Pull-quote review **above the price** | Dartee | Strongest trust move in either reference, and we have 551 reviews to draw on |
+| 4-up icon strip in the buy box | Dartee | Construction summary without a spec dump |
+| Accordions | Dartee | Keeps the buy box short |
+| Full-bleed brand band, 4 columns | Dartee | Already Lucky's own device — this is where green field #3 lands |
+| Curated review **card grid** | Dartee | Takomo's raw Judge.me dump is three pages of ugly |
+| Tabbed spec table | Takomo | Wedges deserve the table; nothing else gives you per-loft data |
+| Cross-sell twice (under fold + bottom) | both | |
+
+### Section order and fields
+
+`brand(header) → white(crumb+fold) → brand(marquee) → white(story) →
+brand(build) → cream(which loft) → ink(specs) → white(reviews) →
+cream(the set) → white(also like) → ink(close+footer)`
+
+**"Which loft" sits between the green band and the ink spec table on purpose.**
+It was originally after the specs, which put green directly against ink — two
+dark fields touching, which breaks §7's alternation law. Moving it also pulls
+the conversion aid higher up the page. Don't move it back.
+
+### Verified facts on this page
+
+- **Flat pricing across lofts is confirmed**, not assumed. Every LGW01 loft
+  variant is $99 in Shopify; every LGW02 is $109. §4's assumption holds.
+- Variant availability is the real Shopify state as of 2026-07-31. **LH 50° and
+  LH 60° are genuinely out of stock** and render struck through. Switching hand
+  while holding a dead loft slides you to the nearest live one.
+- Per-variant stock drives the "Low stock — N left" line (fires under 25).
+- All nine review cards are verbatim Judge.me, 4★ and up, including **one
+  honest 4★** — a page of nothing but 5s reads fake.
+- Specs come from the copy skill's **Product Reference Guide**, which turned out
+  to hold real LGW01 data (1020 forged carbon steel, lie 63° all lofts, head
+  weight 300g all lofts, KBS Tour stiff). LGW01's Shopify `descriptionHtml` is
+  empty — the reference guide is the only source.
+
+### Still open on the PDP
+
+- **A. Spec gaps.** Bounce, grind, swing weight, playing length and grip sizes
+  are not published anywhere verifiable. They render as dashed **"Needs spec"**
+  chips rather than invented numbers. Nine cells. Fill them and the table is done.
+- **B. Judge.me's AI summary is live output, not written copy.** It currently
+  ends "…one customer reported the head separating from shaft on first swing,
+  and another noted slow customer service response times." It is rendered
+  verbatim because that is what the widget will actually emit. Turning it off is
+  a Judge.me setting and Cole's call — but decide deliberately, don't be
+  surprised by it later.
+- **C. Naming mismatch.** Shopify calls the product *"Lucky Golf LGW01 Gold"*;
+  the brand guide says lead with the family name, so the page says **"Carver
+  Gold"** with `LGW01` as a stamp. The Shopify titles should probably be renamed
+  to match.
+- **D. No set discount exists.** "Most golfers carry three" is a soft cross-sell
+  at full price, per Cole's call. If a bundle rule is ever added in Shopify, the
+  section is already shaped to carry tier pricing.
+- **E. No lifestyle or UGC on this page.** Both references run one. Blocked on
+  the same photography gap as the homepage (§7b F/H).
+
+### Two laws learned building it
+
+- **Foil is illegal on white.** The ramp peaks at `--gold-hi`, which is under
+  2:1 on white; base `--gold` is 2.64:1, so it fails even the 3:1 large-text
+  bar. Foil only ever runs on ink or the brand field. The contrast sweep
+  **cannot catch this** — it skips `background-clip:text` elements — so it has
+  to be checked by hand on every new headline.
+- **Check class names against `core.css` before inventing one.** The PDP's
+  quantity stepper was originally `.qty`, which is also the cart drawer's
+  stepper, so the PDP silently restyled the cart. It is now `.bx-qty`. Page
+  stylesheets load after core and will win.
