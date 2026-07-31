@@ -1330,3 +1330,68 @@ LGW02 Black has no reviews and correctly shows none.
   the detail the blade-vs-mallet advice leans on.
 - **LGW02 Gold's 50°, 54° and 58°** are listed as in production. When they land,
   add their manufacturer rows and the by-loft table extends itself.
+
+---
+
+## 19. Visual references Cole sent — described, because the images do not carry
+
+Screenshots die at the session boundary. These are the references behind the
+outstanding work, written down so the next session is not guessing.
+
+### 19a. Takomo "Iron Sets" collection page — the model for §13.3
+
+The club collection redesign is measured against this. What their page does that
+ours does not:
+
+1. **Products are grouped into labelled bands**, not one flat grid. Three bands,
+   each with a small centered heading above a 3-up row:
+   *New 2025 models* · *Forged players' irons* · *Whole strikers* (approx).
+   Each band is a different tier of the same category.
+2. **Every card carries a colored tag chip below it** — a short word in a
+   colored pill (their orange), sitting under the price rather than on the
+   photo. One per product, naming the character of the club rather than its
+   state.
+3. **A "WHAT'S THE DIFFERENCE" comparison section** below the grid: three
+   products side by side, each with its photo, name, price, and a stack of
+   **horizontal segmented spec bars** — forgiveness, distance, workability and
+   so on, each drawn as ~10 segments with some filled. Underneath each, a short
+   key/value list (handicap range, launch, offset, blade length, top-line
+   thickness, sole width). This is the single biggest thing ours lacks.
+4. **A "NEED HELP FINDING THE RIGHT CLUB?" CTA** in a colored button under the
+   comparison.
+5. **Then brand story sections** — a full-bleed photo band with a headline over
+   it, then three alternating image/text rows (photo left / copy right, then
+   reversed), then a testimonial over a dark course photo, then an email capture.
+
+The page is long and it is a *page*, not a product list. Ours currently ends at
+the grid.
+
+### 19b. Primo product cards — the model for the collection tile
+
+Cole sent their polo collection. Their card:
+
+- photo fills the card, no padding above it;
+- a **NEW** chip top-right, and a red **SOLD OUT** chip under it when relevant —
+  both small, both on the photo;
+- a **QUICK ADD** pill bottom-right of the photo with a small bag icon;
+- under the photo: **product name and price on one line**, name left, price
+  right;
+- under that, the **product type in small grey text** ("Classic Polo");
+- under that, a **row of small round color swatches** — the colorways available,
+  as circles, one of them ringed to show the current selection.
+
+Ours matches most of this now (§16). **Not yet done: the type line and the
+round color swatches on the card.** The swatch row exists in the buy box but
+not on the collection tile.
+
+### 19c. Primo PDP — the model for the swatch row (§16a, done)
+
+Colors as a grid of square thumbnails above the size picker, split into "Basic
+colors" and "Seasonal color", with an unavailable one struck through
+diagonally. A fit line ("Tapered-Fit") with an info icon, and a "Size Guide"
+link on the same row, right-aligned. A model-height note overlaid on the main
+photo: *"Wes is 6'1", weighs 225lbs, and wears Large."*
+
+**That last one is worth stealing** once apparel photography exists — it does
+more for sizing confidence than a measurement table, and it costs one line of
+copy per product.
