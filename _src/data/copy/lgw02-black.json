@@ -44,7 +44,7 @@
     },
     {
       "k": "Right hand",
-      "v": "No left-hand option yet"
+      "v": "Left hand coming soon"
     }
   ],
   "whatYouGet": [
@@ -58,7 +58,7 @@
     "This is the LGW02 with the volume turned down. Same forged body, same grind, same behavior out of the same lies &mdash; the only thing that changed is what it looks like at address.",
     "Blacked-out finish with gold on the clover and the loft stamp, and nothing else. At address it disappears against the grass, which some golfers find easier to aim and others find they miss the gold entirely.",
     "It is the full six-loft lineup, unlike the gold V2, which stops at three.",
-    "Right hand only at the moment. That is a real limitation and it is the reason this is not simply the better version of the gold."
+    "Right hand today. Left hand is on the way, so if that is what you need it is worth waiting rather than settling for the gold."
   ],
   "clubSpecs": [
     {
@@ -79,7 +79,7 @@
     },
     {
       "k": "Hand",
-      "v": "Right only."
+      "v": "Right today. Left hand is coming."
     },
     {
       "k": "For who",
@@ -89,57 +89,55 @@
   "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light — the club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
   "reelHeadline": "The Black, in the wild",
   "specHeadline": "The numbers",
-  "specSub": "Construction is the LGW02's, from the reference guide. The lie figures in the guide are for the three-loft gold lineup, so they are not carried across to six lofts here.",
+  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8. This club is built on the LGW01 platform, so its numbers are the LGW01's.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Carver LGW02 Black &mdash; club",
       "rows": [
         {
-          "k": "Body material",
-          "v": "Forged 1020 soft carbon steel"
+          "k": "Head material",
+          "v": "1020 forged carbon steel"
         },
         {
           "k": "Face",
-          "v": "CNC-milled grooves, micro-milled between grooves"
+          "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
         },
         {
-          "k": "Face finish",
-          "v": "Sandblasted"
+          "k": "Grind",
+          "v": "K Grind &mdash; the LGW01 platform, not the LGW02 Gold's S Grind"
         },
         {
           "k": "Head weight",
-          "v": "300 g, all lofts"
+          "v": "300 g (&plusmn;3 g), all lofts"
+        },
+        {
+          "k": "Lie",
+          "v": "63&deg;, all lofts"
         },
         {
           "k": "Finish",
-          "v": "Blacked out, gold clover and loft stamp"
+          "v": "Blacked out, gold on the clover, wordmark, loft stamp and forged stamp"
         },
         {
           "k": "Hand",
-          "v": "Right only"
+          "v": "Right &mdash; left hand <span class=\"soon\">Coming soon</span>"
         },
         {
           "k": "Lofts",
           "v": "50&deg;, 52&deg;, 54&deg;, 56&deg;, 58&deg;, 60&deg;"
         },
         {
-          "k": "Lie",
-          "tbd": true
-        },
-        {
-          "k": "Bounce",
-          "tbd": true
-        },
-        {
-          "k": "Grind",
-          "tbd": true
-        },
-        {
-          "k": "Swing weight",
-          "tbd": true
+          "k": "Headcover",
+          "v": "Not included"
         }
       ]
+    },
+    {
+      "label": "By loft",
+      "caption": "Carver LGW02 Black &mdash; by loft",
+      "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td>8</td><td>8</td><td>12</td><td>12</td><td>10</td><td>10</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Length (in)</th><td>35.25</td><td>35.25</td><td>35.125</td><td>35.125</td><td>35</td><td>35</td></tr><tr><th scope=\"row\">Price</th><td>$109</td><td>$109</td><td>$109</td><td>$109</td><td>$109</td><td>$109</td></tr></tbody></table>",
+      "aside": "Built on the LGW01 platform, so the lies, bounces and lengths are the LGW01's. The LGW02 name signals tier and price &mdash; it does not mean shared geometry with the LGW02 Gold."
     },
     {
       "label": "Shaft &amp; grip",
@@ -147,30 +145,30 @@
       "rows": [
         {
           "k": "Shaft, stock",
-          "v": "Lucky Golf stock steel"
+          "v": "Regular (R) flex, mid kick point"
         },
         {
-          "k": "Grip",
-          "v": "Lucky Golf grip"
+          "k": "Shaft length",
+          "v": "35&quot; original"
         },
         {
           "k": "Shaft weight",
-          "tbd": true
+          "v": "110 g original"
         },
         {
-          "k": "Flex options",
-          "tbd": true
+          "k": "Shaft, upgrade",
+          "v": "KBS <span class=\"soon\">Coming soon</span>"
         },
         {
-          "k": "Grip sizes",
-          "tbd": true
+          "k": "Grip",
+          "v": "Stock grip"
         },
         {
-          "k": "Playing length",
-          "tbd": true
+          "k": "Grip weight",
+          "v": "55 g (&plusmn;3 g)"
         }
       ],
-      "aside": "Right hand only. The guide documents the LGW02 as a three-loft club; this black finish runs all six, which is a difference worth confirming before the spec table is treated as final."
+      "aside": "Right hand today. Left hand is confirmed as coming; the buy box will pick it up as soon as the variants exist in Shopify."
     }
   ],
   "look": {

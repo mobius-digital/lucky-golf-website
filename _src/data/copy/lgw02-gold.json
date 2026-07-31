@@ -96,39 +96,27 @@
   "videoBrief": "16:9 product film, 40&ndash;60s. Shot to show the grind: sole through turf in slow motion, then the same shot from a bad lie. The whole argument for this club is what happens when the lie is wrong.",
   "reelHeadline": "The LGW02, in the wild",
   "specHeadline": "The numbers",
-  "specSub": "Every number below is from the Product Reference Guide. Lie changes with loft on this club, which it does not on the LGW01.",
+  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8. Lie and bounce both change with loft on this club, which they do not on the LGW01.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Carver LGW02 &mdash; club",
       "rows": [
         {
-          "k": "Body material",
-          "v": "Forged 1020 soft carbon steel"
+          "k": "Head material",
+          "v": "1020 forged carbon steel"
         },
         {
           "k": "Face",
-          "v": "CNC-milled grooves, micro-milled between grooves"
+          "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
         },
         {
-          "k": "Face finish",
-          "v": "Sandblasted"
+          "k": "Grind",
+          "v": "S Grind"
         },
         {
           "k": "Head weight",
-          "v": "300 g, all lofts"
-        },
-        {
-          "k": "Lie",
-          "v": "63.5&deg; (52&deg;) &middot; 64&deg; (56&deg; and 60&deg;)"
-        },
-        {
-          "k": "Leading edge",
-          "v": "Reshaped for cleaner turf entry"
-        },
-        {
-          "k": "Sole grind",
-          "v": "Softened"
+          "v": "300 g (&plusmn;3 g), all lofts"
         },
         {
           "k": "Finish",
@@ -140,17 +128,19 @@
         },
         {
           "k": "Lofts",
-          "v": "52&deg;, 56&deg;, 60&deg;"
+          "v": "52&deg;, 56&deg;, 60&deg; &mdash; 50&deg;, 54&deg; and 58&deg; <span class=\"soon\">In production</span>"
         },
         {
-          "k": "Bounce",
-          "tbd": true
-        },
-        {
-          "k": "Swing weight",
-          "tbd": true
+          "k": "Headcover",
+          "v": "Not included"
         }
       ]
+    },
+    {
+      "label": "By loft",
+      "caption": "Carver LGW02 Gold &mdash; by loft",
+      "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">52&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63.5</td><td>64</td><td>64</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td>10</td><td>12</td><td>12</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Length (in)</th><td>35.25</td><td>35.125</td><td>35</td></tr><tr><th scope=\"row\">Price</th><td>$109</td><td>$109</td><td>$109</td></tr></tbody></table>",
+      "aside": "Three lofts are in production. 50&deg;, 54&deg; and 58&deg; are coming and their manufacturer specs will be added when they land."
     },
     {
       "label": "Shaft &amp; grip",
@@ -158,7 +148,15 @@
       "rows": [
         {
           "k": "Shaft, stock",
-          "v": "Lucky Golf stock steel &mdash; what ships today"
+          "v": "Regular (R) flex, mid kick point"
+        },
+        {
+          "k": "Shaft length",
+          "v": "35&quot; original"
+        },
+        {
+          "k": "Shaft weight",
+          "v": "110 g original"
         },
         {
           "k": "Shaft, upgrade",
@@ -166,26 +164,14 @@
         },
         {
           "k": "Grip",
-          "v": "Lucky Golf grip"
+          "v": "Stock grip"
         },
         {
-          "k": "Stock shaft weight",
-          "tbd": true
-        },
-        {
-          "k": "Flex options",
-          "tbd": true
-        },
-        {
-          "k": "Grip sizes",
-          "tbd": true
-        },
-        {
-          "k": "Playing length",
-          "tbd": true
+          "k": "Grip weight",
+          "v": "57 g (&plusmn;3 g)"
         }
       ],
-      "aside": "The reference guide lists KBS Tour as the shaft. Cole confirmed 2026-07-31 that every wedge ships on the Lucky stock steel shaft today and KBS becomes a selectable upgrade &mdash; the documented exception where the guide is out of date."
+      "aside": "Head weight is &plusmn;3 g and length &plusmn;0.125&quot; from the manufacturer."
     }
   ],
   "look": {

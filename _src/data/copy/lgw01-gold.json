@@ -122,16 +122,16 @@
       "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
     },
     {
+      "k": "Grind",
+      "v": "K Grind."
+    },
+    {
       "k": "Weighting",
       "v": "Shifts by loft &mdash; toe-weighted high for finesse, lower CG low for full swings."
     },
     {
       "k": "For who",
       "v": "Anyone replacing a stock wedge that has stopped gripping the ball."
-    },
-    {
-      "k": "Handicap range",
-      "tbd": true
     }
   ],
   "videoBrief": "16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on. This is the slot Takomo runs beside their description.",
@@ -168,27 +168,27 @@
     "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
   },
   "specHeadline": "Same steel, same weight, same price. Six lofts.",
-  "specSub": "The only thing that changes across the lineup is the number stamped on the sole.",
+  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8. Bounce is the only thing that changes across the six.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Carver LGW01 &mdash; club",
       "rows": [
         {
-          "k": "Body material",
-          "v": "Forged 1020 soft carbon steel"
+          "k": "Head material",
+          "v": "1020 forged carbon steel"
         },
         {
           "k": "Face",
-          "v": "CNC-milled grooves, micro-milled between grooves"
+          "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
         },
         {
-          "k": "Face finish",
-          "v": "Sandblasted"
+          "k": "Grind",
+          "v": "K Grind"
         },
         {
           "k": "Head weight",
-          "v": "300 g, all lofts"
+          "v": "300 g (&plusmn;3 g), all lofts"
         },
         {
           "k": "Lie",
@@ -203,23 +203,19 @@
           "v": "Right and left"
         },
         {
-          "k": "Bounce",
-          "tbd": true
+          "k": "Lofts",
+          "v": "50&deg;, 52&deg;, 54&deg;, 56&deg;, 58&deg;, 60&deg;"
         },
         {
-          "k": "Grind",
-          "tbd": true
-        },
-        {
-          "k": "Swing weight",
-          "tbd": true
+          "k": "Headcover",
+          "v": "Not included"
         }
       ]
     },
     {
       "label": "By loft",
       "caption": "Carver LGW01 &mdash; by loft",
-      "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Price</th><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td colspan=\"6\"><span class=\"tbd tbd--light\">Needs spec &mdash; varies by loft</span></td></tr><tr><th scope=\"row\">Length (in)</th><td colspan=\"6\"><span class=\"tbd tbd--light\">Needs spec &mdash; varies by loft</span></td></tr></tbody></table>"
+      "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td>8</td><td>8</td><td>12</td><td>12</td><td>10</td><td>10</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Length (in)</th><td>35.25</td><td>35.25</td><td>35.125</td><td>35.125</td><td>35</td><td>35</td></tr><tr><th scope=\"row\">Price</th><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td></tr></tbody></table>"
     },
     {
       "label": "Shaft &amp; grip",
@@ -227,34 +223,30 @@
       "rows": [
         {
           "k": "Shaft, stock",
-          "v": "Lucky Golf stock steel &mdash; what ships today"
+          "v": "Regular (R) flex, mid kick point"
+        },
+        {
+          "k": "Shaft length",
+          "v": "35&quot; original"
+        },
+        {
+          "k": "Shaft weight",
+          "v": "110 g original"
         },
         {
           "k": "Shaft, upgrade",
           "v": "KBS <span class=\"soon\">Coming soon</span>"
         },
         {
-          "k": "Stock shaft weight",
-          "tbd": true
-        },
-        {
-          "k": "Flex options",
-          "tbd": true
-        },
-        {
           "k": "Grip",
-          "v": "Lucky Golf grip"
+          "v": "Stock grip"
         },
         {
-          "k": "Grip sizes",
-          "tbd": true
-        },
-        {
-          "k": "Playing length",
-          "tbd": true
+          "k": "Grip weight",
+          "v": "55 g (&plusmn;3 g)"
         }
       ],
-      "aside": "Every Carver ships on the Lucky stock shaft today. KBS becomes a selectable option at checkout once it lands &mdash; when it does, shaft joins hand and loft as a third choice in the buy box."
+      "aside": "Head weight is &plusmn;3 g and length &plusmn;0.125&quot; from the manufacturer. Every Carver ships on the Lucky stock shaft today; KBS becomes a selectable upgrade when it lands, and shaft joins hand and loft as a third choice in the buy box."
     }
   ],
   "look": {

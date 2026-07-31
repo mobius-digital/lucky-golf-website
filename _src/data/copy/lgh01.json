@@ -97,7 +97,7 @@
   "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is a distance, so film the distance: 210 yards from the fairway, ball tracked to the green, then the same shot struck off the toe to show what forgiveness actually means.",
   "reelHeadline": "The Stryker, in the wild",
   "specHeadline": "The numbers",
-  "specSub": "Every number below is from the Product Reference Guide, which is more complete on this club than Shopify is.",
+  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
   "specTabs": [
     {
       "label": "Club",
@@ -105,11 +105,11 @@
       "rows": [
         {
           "k": "Head material",
-          "v": "Premium titanium"
+          "v": "Titanium"
         },
         {
           "k": "Face",
-          "v": "Flex Channel titanium"
+          "v": "Flex Channel face"
         },
         {
           "k": "Sole",
@@ -125,27 +125,23 @@
         },
         {
           "k": "Head weight",
-          "v": "235 g"
+          "v": "235 g (&plusmn;3 g)"
         },
         {
-          "k": "Launch",
-          "v": "High"
-        },
-        {
-          "k": "Spin",
-          "v": "Mid"
-        },
-        {
-          "k": "Flight",
-          "v": "Neutral, forgiving"
+          "k": "Length",
+          "v": "40.5&quot;"
         },
         {
           "k": "Finish",
-          "v": "Gold face, gloss black crown"
+          "v": "Brushed satin gold face, polished mirror gold sole, gloss black crown with a gold starburst from the center, gold ferrule, clover on the crown"
         },
         {
           "k": "Hand",
           "v": "Right and left"
+        },
+        {
+          "k": "Headcover",
+          "v": "Not included"
         }
       ]
     },
@@ -155,34 +151,26 @@
       "rows": [
         {
           "k": "Shaft",
-          "v": "Lucky Graphite S"
+          "v": "Stiff (S) flex, mid kick point"
         },
         {
-          "k": "Flex",
-          "v": "Stiff"
-        },
-        {
-          "k": "Length",
-          "v": "40.5&quot;"
-        },
-        {
-          "k": "Kickpoint",
-          "v": "Mid"
-        },
-        {
-          "k": "Grip",
-          "v": "Natural black rubber"
+          "k": "Shaft length",
+          "v": "40&quot; original &mdash; 40.5&quot; built"
         },
         {
           "k": "Shaft weight",
-          "tbd": true
+          "v": "68 g original"
         },
         {
-          "k": "Other flexes",
-          "tbd": true
+          "k": "Grip",
+          "v": "Stock grip"
+        },
+        {
+          "k": "Grip weight",
+          "v": "58 g (&plusmn;3 g)"
         }
       ],
-      "aside": "Stiff is the only flex offered. For a club aimed at the average golfer that is a real constraint, and worth knowing before ordering."
+      "aside": "Stiff is the only flex offered, and it is the one club in the range that ships stiff &mdash; the wedges and putters are Regular."
     }
   ],
   "look": {

@@ -115,10 +115,6 @@
       "v": "Deep, fully milled texture — reduces skid and starts the roll cleanly."
     },
     {
-      "k": "Toe hang",
-      "v": "Slight, via a plumber neck. Works with a natural arc."
-    },
-    {
       "k": "Weighting",
       "v": "365 g head. Perimeter weighting keeps off-center strikes on line."
     },
@@ -206,31 +202,23 @@
     "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
   },
   "specHeadline": "The numbers",
-  "specSub": "All of it from the Product Reference Guide. One length, one head weight, right or left hand.",
+  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Tracer LGP02 &mdash; club",
       "rows": [
         {
-          "k": "Head style",
+          "k": "Head shape",
           "v": "Mallet"
         },
         {
           "k": "Construction",
-          "v": "100% CNC-milled"
+          "v": "Fully CNC-milled from a single block"
         },
         {
-          "k": "Head material",
+          "k": "Material",
           "v": "304 stainless steel"
-        },
-        {
-          "k": "Face",
-          "v": "Deep, fully milled texture"
-        },
-        {
-          "k": "Toe hang",
-          "v": "Slight (plumber neck)"
         },
         {
           "k": "Loft",
@@ -242,7 +230,7 @@
         },
         {
           "k": "Head weight",
-          "v": "365 g"
+          "v": "365 g (&plusmn;3 g)"
         },
         {
           "k": "Length",
@@ -255,6 +243,10 @@
         {
           "k": "Hand",
           "v": "Right and left"
+        },
+        {
+          "k": "Headcover",
+          "v": "Not included"
         }
       ]
     },
@@ -264,30 +256,26 @@
       "rows": [
         {
           "k": "Shaft",
-          "v": "Lucky Approved, 35&quot;"
+          "v": "Regular (R) flex, mid kick point"
         },
         {
-          "k": "Grip",
-          "v": "Oversized 3.0 putter grip, white and gold"
-        },
-        {
-          "k": "Grip supplied",
-          "v": "Fitted as standard, not an upgrade"
+          "k": "Shaft length",
+          "v": "35&quot; original"
         },
         {
           "k": "Shaft weight",
-          "tbd": true
+          "v": "110 g original"
         },
         {
-          "k": "Other lengths",
-          "tbd": true
+          "k": "Grip",
+          "v": "Oversized 3.0, white and gold"
         },
         {
-          "k": "Head cover",
-          "tbd": true
+          "k": "Grip weight",
+          "v": "63 g (&plusmn;3 g)"
         }
       ],
-      "aside": "Length is 35&quot; and there is only one. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that is right for them, which is a real answer either way &mdash; a taller golfer should know before ordering that there is no long option yet."
+      "aside": "One length, 35&quot;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way &mdash; a taller golfer should know there is no long option yet."
     }
   ],
   "look": {
