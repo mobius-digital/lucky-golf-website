@@ -81,20 +81,21 @@ var LG_CART_UPSELL = [
    img:'https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397'}
 ];
 
-/* Non-club cross-sell at the foot of the page. */
+/* Finish-the-look cross-sell: polos and hats only. Cole's call — gear is a
+   grab-bag, apparel completes the look and is the same voice as the club. */
 var PD_KIT = [
-  {sku:'HeadCover-Blade-SignatureWhite', nm:'Lucky Blade Cover', pr:'$29.95',
-   why:'Keeps cart rash off the finish.',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397'},
-  {sku:'HeadCover-Driver-SignatureWhite', nm:'Driver Head Cover', pr:'$40',
-   why:'Same signature white, for the big stick.',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799'},
-  {sku:'GRP-GRN-STD', nm:'Clover Grips', pr:'$9.95',
-   why:'Tour velvet, soft and tacky. Match the whole bag.',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0847.jpg?v=1701474055'},
   {sku:'LGA-CP-Contour-Large', nm:'Contour Classic Polo', pr:'$67',
-   why:'88/12 poly-spandex, UPF 50+, four-way stretch.',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'}
+   why:'Classic collar, tailored fit, UPF 50+.',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
+  {sku:'LGA-BP-Blackout-Large', nm:'Blackout Blade Polo', pr:'$67',
+   why:'Blade collar, no buttons. Quieter than it sounds.',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
+  {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',
+   why:'Five-panel, snapback, the line on the front.',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347'},
+  {sku:'HAT-5P-SB-CRSV-BBLU-MONO', nm:'Baby Blue Cursive Hat', pr:'$29',
+   why:'Monochrome script. Goes with the gold.',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347'}
 ];
 
 

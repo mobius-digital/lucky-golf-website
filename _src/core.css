@@ -764,3 +764,47 @@ button{font:inherit;color:inherit}
 .pull-by{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:26px}
 .pull-by .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:.95rem}
 .pull-by .p{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+
+/* ==========================================================================
+   MODAL — Takomo runs these for warranty/returns and for delivery time, both
+   opened from small links under the buy box. Generic on purpose: any page can
+   drop in <div class="md" id="x" hidden> and a [data-md-open="x"] trigger.
+   ========================================================================== */
+.md{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:var(--pad)}
+.md[hidden]{display:none}
+.md-bd{position:absolute;inset:0;background:rgba(23,20,15,.6);backdrop-filter:blur(2px);
+  opacity:0;transition:opacity .24s}
+.md[data-open="true"] .md-bd{opacity:1}
+.md-panel{position:relative;z-index:1;width:min(560px,100%);max-height:86vh;overflow-y:auto;
+  background:var(--white);border:2px solid var(--ink);border-radius:var(--r);
+  padding:clamp(24px,3vw,38px);opacity:0;translate:0 10px;
+  transition:opacity .24s,translate .24s cubic-bezier(.3,.8,.2,1);
+  scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.1)}
+.md[data-open="true"] .md-panel{opacity:1;translate:0 0}
+.md-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border:0;background:none;
+  cursor:pointer;font-size:1.3rem;display:grid;place-items:center;color:var(--ink-muted)}
+.md-x:hover{color:var(--ink)}
+.md-panel h2{margin:0 0 6px}
+.md-sec{margin-top:24px}
+.md-sec:first-of-type{margin-top:18px}
+.md-sec h3{margin:0 0 8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.03em}
+.md-sec p{margin:0 0 10px;font-size:.95rem;line-height:1.6;color:var(--ink-70)}
+.md-sec p:last-child{margin-bottom:0}
+.md-sec a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold);
+  display:inline-flex;align-items:center;min-height:44px}
+.md-sec a:hover{color:var(--ink)}
+.md-carriers{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.md-carriers span{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-70);border:2px solid var(--ink-14);
+  border-radius:var(--r);padding:8px 13px}
+.md-foot{margin-top:26px}
+.md-foot .btn{width:100%;justify-content:center}
+@media (prefers-reduced-motion:reduce){
+  .md-bd,.md-panel{transition:none}
+}
+
+/* the clover bullet carries a translateY(2px) nudge that suits it sitting
+   beside display type; inside a centre-aligned flex row it just reads as
+   misaligned, so these contexts opt out */
+.bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}

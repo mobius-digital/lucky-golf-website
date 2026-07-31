@@ -509,3 +509,49 @@
   });
   render();
 })();
+
+/* MODAL — generic. [data-md-open="id"] opens .md#id, [data-md-close] and Esc
+   close it. Focus moves in and returns to the trigger, and Tab is trapped
+   while open, same contract as the cart drawer. */
+(function(){
+  var open = null, lastFocus = null;
+  var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+  function show(id, trigger){
+    var md = document.getElementById(id);
+    if (!md) return;
+    lastFocus = trigger || document.activeElement;
+    md.hidden = false;
+    requestAnimationFrame(function(){ md.setAttribute('data-open', 'true'); });
+    document.body.style.overflow = 'hidden';
+    open = md;
+    var x = md.querySelector('.md-x');
+    if (x) x.focus();
+  }
+  function hide(){
+    if (!open) return;
+    var md = open;
+    md.setAttribute('data-open', 'false');
+    document.body.style.overflow = '';
+    setTimeout(function(){ md.hidden = true; }, 240);
+    open = null;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-md-open]');
+    if (t){ e.preventDefault(); show(t.getAttribute('data-md-open'), t); return; }
+    if (e.target.closest('[data-md-close]')) hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if (!open) return;
+    if (e.key === 'Escape'){ hide(); return; }
+    if (e.key !== 'Tab') return;
+    var f = [].slice.call(open.querySelectorAll(FOCUSABLE)).filter(function(n){
+      return n.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+})();

@@ -257,36 +257,61 @@ variant matrix exercises both option axes.
 | Tabbed spec table | Takomo | Wedges deserve the table; nothing else gives you per-loft data |
 | Cross-sell twice (under fold + bottom) | both | |
 
-### Section order and fields  ·  rev 2, after Cole's review
+### Section order and fields  ·  rev 3
 
 `brand(header) → white(crumb+fold) → brand(marquee) → cream(others also viewed)
-→ white(the club) → brand(where the money went) → cream(the argument) →
-white(which loft) → cream(the numbers) → ink(highlight reel) → cream(signature
-quote) → white(reviews) → cream(rest of the bag) → white(finish the setup) →
-ink(close+footer)`
+→ white(the club) → ink(highlight reel) → white(which loft) → cream(the numbers)
+→ brand(THE LOOK) → cream(signature quote) → white(reviews) → breath →
+white(rest of the bag) → cream(finish the look) → ink(close+footer)`
 
-**Rev 2 changed five things off Cole's feedback. Do not undo them without asking.**
+**Rev 3, off Cole's second review. The important one is the first item.**
 
-1. **The fold now hands off the way Takomo's does.** Takomo goes fold → upsell
-   rail → product description with a video beside it → bulleted spec summary.
-   Rev 1 went straight into the brand argument, which Cole flagged. So:
-   *Others also viewed* sits directly under the fold, then *The club* carries
-   the description, the video slot and the Takomo-style bullet list.
-2. **"Most rounds are decided inside a hundred yards" moved down.** It is good
-   copy in the wrong slot — it now sits after the build section and sets up the
-   loft picker. Problem, then solution.
-3. **The spec table came off the ink field.** It was on ink *with the groove*,
-   and 1px lines on a 6px pitch behind small mono figures made it hard to read
-   — Cole's exact complaint. Takomo's spec block is light grey with a white
-   bordered table and a black header row on the loft matrix. It now matches, on
-   cream, with no groove under the table. **The fix was the field, not the
-   lines.**
-4. **Reviews are now Judge.me's shape, not a curated grid.** Score, histogram,
-   AI summary, star filter, sort and paging all work. The signature quote moved
-   out into its own `.pull` section above it, which is the homepage's device.
-5. **Highlight reel added** (`ink`), six labelled video slots.
+1. **"Where the money went" is gone, and its green now carries the brand
+   moment.** Its four facts — forged / milled / sandblasted / weighted by loft —
+   were *already* the bullet list in "The club" directly above it. The section
+   had no job. The green field survives (Cole wanted the page broken up) but now
+   holds **`.look`**: a full-bleed image one side, brand-field copy the other,
+   about the gold finish and what it's like to pull the club out of the bag.
+   **Do not re-add a construction band. Check the bullets first.**
+2. **"Most rounds are decided inside a hundred yards" is gone too.** Its
+   pricing argument is one sentence inside the club copy now, with a link to the
+   homepage's Why Lucky, which is where the price objection is actually argued.
+3. **The highlight reel moved directly under "The club"** — social proof right
+   after the pitch, before the sizing and spec detail.
+4. **Takomo's description layout copied properly.** The bulleted summary sits
+   *inside the left copy column* under the prose, with the video beside both —
+   not full-width underneath. That is how the reference does it.
+5. **"The rest of the bag" moved to white.** `.ptile` is itself cream, so cream
+   tiles on a cream field had no edge. A `.breath` divider separates it from the
+   reviews above. **Any section using `.ptile` must be on white.**
+6. **"Finish the setup" → "Finish the look"**, and it is polos and hats now, not
+   gear. Cards went white so they read on the cream field.
+7. New club headline: *"The kind of wedge that makes a short-sided miss feel
+   survivable."*
 
-`.pull` moved from `page-home.css` into `core.css` — it is a two-page component now.
+### Buy box: trust row and the two policy modals
+
+The trust row now reads **thousands of satisfied golfers · sixty-day return
+window · fast, free US shipping**, and two links open modals the way Takomo
+does: **Warranty and returns** under the trust row, and **Estimate delivery
+time** on the stock line.
+
+`.md` is a **generic component in core** — `<div class="md" id="x" hidden>` plus
+a `[data-md-open="x"]` trigger anywhere. Focus moves in, Tab is trapped, Esc
+closes, focus returns to the trigger, body scroll locks. Same contract as the
+cart drawer. Other pages should reuse it rather than rolling their own.
+
+Both modals contain a **"Needs confirming"** chip: warranty period and who pays
+return shipping in one, warehouse locations and international duties in the
+other. Real policy detail, not invented.
+
+### The clover-bullet alignment bug
+
+`.cbul` carries `transform:translateY(2px)`, which suits it sitting beside
+display type but reads as misaligned inside a centre-aligned flex row — which is
+what Cole spotted. The nudge is now switched off in `.bx-terms`, `.jm-medals`,
+`.rvh-badges` and `.md-sec` only; the homepage keeps it. Measured offset from
+row centre is now exactly 0px.
 
 ### Reviews: the sample is deliberately not 4-star-and-up
 
