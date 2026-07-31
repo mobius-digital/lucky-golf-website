@@ -1,9 +1,9 @@
 <!-- ============ BREADCRUMB ============ -->
 <nav class="crumb wrap" aria-label="Breadcrumb">
   <ol>
-    <li><a href="01-home.html">Home</a></li>
-    <li><a href="01-home.html#families">Clubs</a></li>
-    <li><a href="01-home.html#families">Wedges</a></li>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><a href="{{link:c/clubs}}">Clubs</a></li>
+    <li><a href="{{link:c/wedges}}">Wedges</a></li>
     <li><span aria-current="page">LGW01 Carver Gold</span></li>
   </ol>
 </nav>
@@ -64,7 +64,7 @@
     </figure>
 
     <div class="bx-price">
-      <span class="amt">$99</span>
+      <span class="amt" id="bx-amt">$99</span>
       <span class="flat">Same price, every loft</span>
     </div>
 
@@ -89,23 +89,14 @@
       </div>
     </div>
 
-    <!-- ---- variant pickers. Availability is real, from Shopify. ---- -->
-    <div class="opt">
-      <div class="opt-hd">
-        <span class="lbl">Hand</span>
-        <span class="val" id="v-hand">Right hand</span>
-      </div>
-      <div class="chips" id="pick-hand" role="group" aria-label="Hand"></div>
-    </div>
+    <!-- ---- variant pickers ----
+         Generated from the product record's option axes, so the same markup
+         serves 0, 1 and 2 axes (GAMEPLAN 2a) and will serve the third when the
+         KBS shaft upgrade lands. Availability is real Shopify state.
 
-    <div class="opt">
-      <div class="opt-hd">
-        <span class="lbl">Loft</span>
-        <a class="help" href="#loft">Not sure? &rarr;</a>
-      </div>
-      <div class="chips" id="pick-loft" role="group" aria-label="Loft"></div>
-      <p class="opt-note" id="v-sku">LGW01-56-RH</p>
-    </div>
+         A Shopify theme would render these server-side in Liquid; here they
+         are painted by page-pdp.js, which is why the container is empty. -->
+    <div id="pickers"></div>
 
     <div class="atc-row">
       <div class="bx-qty">
@@ -117,7 +108,7 @@
     </div>
 
     <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span>
-      <a class="bx-eta" href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
+      <a class="bx-eta" href="{{link:none}}" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thousands of satisfied golfers</span>
@@ -125,7 +116,7 @@
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
 
-    <p class="bx-policy"><a href="#" data-md-open="md-returns">Warranty and returns</a></p>
+    <p class="bx-policy"><a href="{{link:none}}" data-md-open="md-returns">Warranty and returns</a></p>
 
     <div class="acc">
       <div class="acc-i">
@@ -182,7 +173,7 @@
       <div class="club-copy">
         <p class="body">Pick it up and it feels like a club that costs more. That's the forging — 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.</p>
         <p class="body">The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.</p>
-        <p class="body">It costs $99 because we sell it to you directly and we don’t pay anyone on tour to play it. That is the whole explanation, and there is <a class="ilink" href="01-home.html#why">more on the pricing</a> if you want it.</p>
+        <p class="body">It costs $99 because we sell it to you directly and we don’t pay anyone on tour to play it. That is the whole explanation, and there is <a class="ilink" href="{{link:home#why}}">more on the pricing</a> if you want it.</p>
         <p class="body">Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower centre of gravity for cleaner full swings. Same club, six jobs.</p>
 
     <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->
@@ -438,7 +429,7 @@
 
       <article class="ptile">
         <span class="pt-sku">LGW02</span>
-        <a class="pt-nm stretch" href="#">Carver Gold V2</a>
+        <a class="pt-nm stretch" href="{{link:p/lgw02-gold}}">Carver Gold V2</a>
         <p class="pt-hook">The same forged feel, with a reshaped edge and softer sole that handle more lies.</p>
         <div class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">4.78 &#9733; 69</span></div>
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="LGW02 Carver Gold wedge" loading="lazy" width="800" height="800"></div>
@@ -446,7 +437,7 @@
 
       <article class="ptile">
         <span class="pt-sku">LGW02 Black</span>
-        <a class="pt-nm stretch" href="#">Carver Shadow</a>
+        <a class="pt-nm stretch" href="{{link:p/lgw02-black}}">Carver Shadow</a>
         <p class="pt-hook">Everything the V2 does around the greens, in a finish that stays quiet in the bag.</p>
         <div class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">6 lofts</span></div>
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="LGW02 Black Carver wedge" loading="lazy" width="800" height="800"></div>
@@ -455,7 +446,7 @@
 
       <article class="ptile">
         <span class="pt-sku">LGH01</span>
-        <a class="pt-nm stretch" href="#">Stryker</a>
+        <a class="pt-nm stretch" href="{{link:p/lgh01}}">Stryker</a>
         <p class="pt-hook">Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover.</p>
         <div class="pt-meta"><span class="pt-pr">$209</span><span class="pt-rt">4.60 &#9733; 20</span></div>
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="LGH01 Stryker hybrid" loading="lazy" width="800" height="800"></div>
@@ -491,7 +482,7 @@
       <p class="body on-dark">The Carver is $99 in every loft, right hand or left. Sixty days to send it back if it isn't the one.</p>
       <div class="close-cta">
         <a href="#gal" class="btn btn-foil sweep"><span>Pick a loft</span><span class="ar">&rarr;</span></a>
-        <a href="01-home.html#families" class="btn btn-line-cream"><span>See the whole line</span></a>
+        <a href="{{link:c/clubs}}" class="btn btn-line-cream"><span>See the whole line</span></a>
       </div>
       <div class="close-trust">
         <span class="mono">60-day club returns</span>
@@ -539,7 +530,7 @@
     <div class="md-sec">
       <h3>Apparel and gear</h3>
       <p>Unworn, in original packaging, tags attached.</p>
-      <p><a href="#">Read the full returns policy</a></p>
+      <p><a href="{{link:returns}}">Read the full returns policy</a></p>
     </div>
 
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
@@ -566,7 +557,7 @@
     </div>
 
     <div class="md-sec">
-      <p><a href="#">Read the full shipping policy</a></p>
+      <p><a href="{{link:shipping}}">Read the full shipping policy</a></p>
     </div>
 
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>

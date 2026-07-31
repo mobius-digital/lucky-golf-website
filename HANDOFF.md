@@ -486,3 +486,166 @@ to 214px.
   quantity stepper was originally `.qty`, which is also the cart drawer's
   stepper, so the PDP silently restyled the cart. It is now `.bx-qty`. Page
   stylesheets load after core and will win.
+
+---
+
+## 10. Phase A — routing, the N-axis buy box, the data layer
+
+Built 2026-07-31. No new pages; this is the plumbing GAMEPLAN §5 said had to
+land before the other sixty.
+
+### 10a. The link registry — `tools/sitemap.py`
+
+Every page the site will ever have is declared in one place. Internal links are
+tokens, resolved by `build.py`:
+
+```
+{{link:home}}           -> 01-home.html   ({{link:home#families}} -> #families ON home)
+{{link:p/lgw01-gold}}   -> 02-pdp-lgw01.html
+{{link:c/wedges}}       -> "#"   — declared, not built yet
+{{link:none}}           -> "#"   — deliberately not a link
+```
+
+**Three things now fail the build**, all verified by breaking them on purpose:
+
+| Fault | Message |
+|---|---|
+| token naming an undeclared slug | `DANGLING LINKS — no such slug` |
+| a literal `href="#"` in `_src/` | names the `file:line` |
+| any `{{…}}` left after resolution | `unresolved template tokens` |
+
+`{{link:none}}` exists because of the middle one. Modal triggers and JS-driven
+controls are real anchors that genuinely go nowhere; without a way to say so
+there is no way to tell them apart from a link someone forgot to wire. Saying
+it costs one token and makes `href="#"` a build error everywhere else.
+
+**`{{HOME}}` is retired** — the registry subsumes it. Same behaviour, and now
+it works from every page rather than being a homepage special case.
+
+Pages declared but not built resolve to `#` and are **counted, not fatal**, so
+the build reports how much of the site is still stubbed instead of failing
+until all sixty exist. Right now: **62 pages, 2 built, 86 links stubbed.**
+`python tools/build.py --links` prints the whole map.
+
+**One page was added to GAMEPLAN §4's list:** `reviews` (`32-reviews.html`).
+The homepage's "Read all 884 reviews" needs a destination, and 884 is the
+clubs-wide count, so it cannot point at any single PDP's review block.
+
+**Breadcrumbs now point at collections** (`c/clubs`, `c/wedges`) rather than
+`01-home.html#families`. Correct destination, currently stubbed — Phase B
+builds them.
+
+### 10b. The product data layer
+
+```
+_src/data/shopify-raw.json    verbatim Shopify pull — provenance, do not hand-edit
+tools/normalize-products.py   raw + the EDITORIAL overlay (in the script) -> products.json
+_src/data/products.json       GENERATED. 44 products, 155 variants
+```
+
+Shopify owns prices, SKUs, options and availability. It owns **none** of the
+brand names, families or template assignments — so those live in the overlay,
+and re-pulling the catalogue never clobbers them. The script's docstring holds
+the four queries to re-run.
+
+`build.py` injects the whole product record into the page as `{{PRODUCT_JSON}}`,
+so `PD` is no longer hand-typed. Re-pull, re-normalise, rebuild, and the page
+reflects the store.
+
+**The real catalogue is 44 sellable products, not 45.** Wedges 3 · putters 3 ·
+hybrid 1 · driver 1 · polos 13 · **hats 10** · gear 13. GAMEPLAN §1's table had
+hats at 13 and gear at ~11.
+
+### 10c. The N-axis buy box — `_src/variants.js`
+
+`PD` is now
+`{options:[{key,name,values:[{k,label,sv}]}], variants:{"RH|56":{sku,price,avail,qty}}}`.
+Pickers are generated into `#pickers` from the axes, so **the same markup serves
+0, 1 and 2 axes**. Axis distribution across the store: **0-axis 15, 1-axis 25,
+2-axis 4** — exactly the spread GAMEPLAN §2a predicted.
+
+The rules live outside the page IIFE with no DOM, because the PDP renders one
+product and it is the two-axis one. `node tools/test-variants.js` runs them over
+all 44 products and 155 variants, asserting among other things that **choosing
+any offered value on any axis lands on a variant that is actually sellable.**
+
+**Two traps the old two-axis version got away with:**
+
+1. **`availableForSale` is not `inventoryQuantity > 0`.** The glove ships at
+   qty −3 and is sellable; the black clover grips sit at qty 0 and are
+   sellable; LGP01 is at −12 and is not. Availability drives whether a chip is
+   disabled; quantity only drives "Low stock — N left", which now requires
+   `qty > 0` as well as `< 25`. Keying off quantity would have disabled
+   sellable variants and sold dead ones.
+2. **Price is per variant.** Grips run $9.95 / $11.95 / $14.95 across
+   Standard / Midsize / Jumbo. The price repaints on selection (`#bx-amt`).
+
+**SKUs are never synthesised.** A pattern like `{code}-{loft}-{hand}` looks
+right on LGW01 and is wrong on the store: LGW02 Black's 50° and 52° are stamped
+`LGW03-BLK-…` while 54–60 are `LGW02-BLK-…`, and the mallet cover is
+`HeadCover-Mallet-SignatureWhite-RH` in one hand and
+`Putter-Cover-Mallet-Signature-White-LH` in the other. Every SKU is carried
+verbatim from Shopify.
+
+Cascading availability is unchanged in behaviour and now stated as a rule: a
+value on axis *i* is offered if some sellable variant matches it **and** matches
+what is already chosen on the axes to its **left**. That is what greys out
+"Left hand" only when no loft at all is available in it, while an individual
+loft greys out for the hand you are on. Switching to a hand where your loft is
+dead still slides you to the nearest live one.
+
+### 10d. What Phase A did NOT do
+
+GAMEPLAN §2b says "one template + products.json → `build.py` emits a page per
+product." The **data layer and the emitter wiring are in** — the registry
+declares a page and a filename for all 44, and `PD` comes from data. `build.py`
+does **not** yet emit 44 HTML files, because the club template cannot render a
+hat. That is Phase C's "prove the three templates", which is where the gameplan
+puts it. Flip `built=True` in the overlay as each one lands.
+
+### 10e. Findings for Cole — new, from the catalogue pull
+
+Nothing below was changed on a shipped page. These are decisions, not typos.
+
+- **Hats are 10, not 13.** Three are ARCHIVED older versions at $24.95/$29.95.
+  The `hats` collection still counts 13, and the mega menu says **"13 styles"** —
+  that number is wrong on the live homepage.
+- **LGW02 Gold has three lofts (52/56/60), not six.** Any "6 lofts" copy about
+  it is wrong. LGW02 Black has six, right hand only.
+- **LGW02 Black is right-hand only.** The wedges mega-panel aside says "Right
+  and left hand", which is false for one of the three tiles under it.
+- **Four names are in play for LGW02 Gold**: "Carver Gold" (mega menu),
+  "LGW02 Carver Gold" (PDP browse rail), "Carver Gold V2" (PDP cross-sell),
+  "Lucky Golf LGW02 Gold" (Shopify). And LGW02 Black is "Carver Black" in the
+  mega menu but "Carver Shadow" in the browse rail. This is §9 open item C and
+  it is now blocking: `products.json` had to pick one (`code + name`), and the
+  shipped pages still disagree with each other.
+- **SKU typo in Shopify:** LGW02 Black 50° and 52° are `LGW03-BLK-STOCK-RH-50/52`.
+- **`Lucky Golf Tees` has no image at all** — the only product in the store with
+  `featuredMedia: null`.
+- **LGW01 inventory drifted** since the last pull: RH 50/54/58 are 98/215/314,
+  not 99/216/315. Nothing rendered was wrong; the numbers are just live.
+- **The glove is nearly all dead stock** — only left-hand Small and Medium are
+  sellable, both oversold. A two-axis picker on a $17.95 item where six of eight
+  chips render disabled may not be worth a page.
+- **Entirely sold out:** both oversized putter grips, LGP01, the LGP02 Patriot,
+  and the Black | Gold Classic hat.
+- **Sale collection membership was not pulled.** `summer-warehouse-sale` holds 9
+  products; Phase B needs to know which nine before the Sale PLP can be built.
+- **Still no Gear collection** in Shopify — confirms §7b E. Gear is 13 products
+  spread across Head Covers, Gloves, Grips and `most-popular`.
+
+### 10f. Build commands, current
+
+```bash
+python tools/normalize-products.py          # Shopify raw -> products.json
+python tools/normalize-products.py --check  # is products.json stale?
+python tools/build.py                       # build every buildable page
+python tools/build.py --check               # diff against disk
+python tools/build.py --links               # print the registry
+node   tools/test-variants.js               # variant engine over all 44 products
+```
+
+**Adding a page:** declare it in `tools/sitemap.py`, point links at its slug,
+set `built=True` and give it a `src` when the sources exist. Until then every
+link to it resolves to `#` and shows up in the build report.

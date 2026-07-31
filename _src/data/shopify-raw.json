@@ -1,0 +1,349 @@
+{
+  "_": "VERBATIM Shopify Admin API pull. Provenance record — do not hand-edit.",
+  "_source": "lucky-wedges.myshopify.com via Shopify MCP (graphql_query)",
+  "_pulled": "2026-07-31",
+  "_regenerate": "Re-run the four product queries in tools/normalize-products.py's docstring, paste the results here, then: python tools/normalize-products.py",
+  "_imgBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+  "_excluded": [
+    "lucky-wedges-gift-card (Gift Card)",
+    "free-returns-package-protection (Checkout+ app product, 66 price variants)",
+    "polo-bundle (ARCHIVED)",
+    "white-lucky-hat, new-white-lucky-clover-patch-hat, new-black-lucky-clover-patch-hat (ARCHIVED older hats)",
+    "stiff-shaft-gold (UNLISTED)"
+  ],
+  "_counts": {"catalogueTotal": 51, "sellable": 44},
+
+  "collections": [
+    {"handle": "all-products",           "title": "All Products",           "count": 49},
+    {"handle": "non-clubs",              "title": "Non Clubs",              "count": 43},
+    {"handle": "lucky-golf-clubs",       "title": "Lucky Golf Clubs",       "count": 8},
+    {"handle": "polos",                  "title": "Polos",                  "count": 13},
+    {"handle": "classic-polos",          "title": "Classic Polos",          "count": 10},
+    {"handle": "blade-polos",            "title": "Blade Polos",            "count": 3},
+    {"handle": "hats",                   "title": "Hats",                   "count": 13},
+    {"handle": "grips",                  "title": "Grips",                  "count": 8},
+    {"handle": "performance-x2",         "title": "Tour Performance Grips", "count": 5},
+    {"handle": "putter-grips",           "title": "Putter Grips",           "count": 3},
+    {"handle": "head-covers",            "title": "Head Covers",            "count": 3},
+    {"handle": "putter-covers",          "title": "Putter Covers",          "count": 2},
+    {"handle": "gloves",                 "title": "Gloves",                 "count": 1},
+    {"handle": "most-popular",           "title": "Accessories",            "count": 6},
+    {"handle": "summer-warehouse-sale",  "title": "Summer Warehouse Sale",  "count": 9},
+    {"handle": "mothership-do-not-delete","title": "Mothership - DO NOT DELETE", "count": 1}
+  ],
+
+  "products": [
+    {"handle":"v1-gold-lucky-golf-wedge","title":"Lucky Golf LGW01 Gold","productType":"Wedges","img":"files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+     "options":[{"name":"Hand","values":["Right Hand","Left Hand"]},{"name":"Loft","values":["50°","52°","54°","56°","58°","60°"]}],
+     "variants":[
+      {"sku":"LGW01-50-RH","price":"99.00","avail":true,"qty":98,"opts":["Right Hand","50°"]},
+      {"sku":"LGW01-52-RH","price":"99.00","avail":true,"qty":577,"opts":["Right Hand","52°"]},
+      {"sku":"LGW01-54-RH","price":"99.00","avail":true,"qty":215,"opts":["Right Hand","54°"]},
+      {"sku":"LGW01-56-RH","price":"99.00","avail":true,"qty":163,"opts":["Right Hand","56°"]},
+      {"sku":"LGW01-58-RH","price":"99.00","avail":true,"qty":314,"opts":["Right Hand","58°"]},
+      {"sku":"LGW01-60-RH","price":"99.00","avail":true,"qty":686,"opts":["Right Hand","60°"]},
+      {"sku":"LGW01-50-LH","price":"99.00","avail":false,"qty":0,"opts":["Left Hand","50°"]},
+      {"sku":"LGW01-52-LH","price":"99.00","avail":true,"qty":275,"opts":["Left Hand","52°"]},
+      {"sku":"LGW01-54-LH","price":"99.00","avail":true,"qty":82,"opts":["Left Hand","54°"]},
+      {"sku":"LGW01-56-LH","price":"99.00","avail":true,"qty":104,"opts":["Left Hand","56°"]},
+      {"sku":"LGW01-58-LH","price":"99.00","avail":true,"qty":15,"opts":["Left Hand","58°"]},
+      {"sku":"LGW01-60-LH","price":"99.00","avail":false,"qty":0,"opts":["Left Hand","60°"]}]},
+
+    {"handle":"v2-signature-gold-wedge-1","title":"Lucky Golf LGW02 Gold","productType":"Wedges","img":"files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462",
+     "options":[{"name":"Hand","values":["Right Hand","Left Hand"]},{"name":"Loft","values":["52°","56°","60°"]}],
+     "variants":[
+      {"sku":"LGW02-52-RH","price":"109.00","avail":true,"qty":40,"opts":["Right Hand","52°"]},
+      {"sku":"LGW02-56-RH","price":"109.00","avail":true,"qty":25,"opts":["Right Hand","56°"]},
+      {"sku":"LGW02-60-RH","price":"109.00","avail":true,"qty":2,"opts":["Right Hand","60°"]},
+      {"sku":"LGW02-52-LH","price":"109.00","avail":true,"qty":96,"opts":["Left Hand","52°"]},
+      {"sku":"LGW02-56-LH","price":"109.00","avail":true,"qty":92,"opts":["Left Hand","56°"]},
+      {"sku":"LGW02-60-LH","price":"109.00","avail":true,"qty":71,"opts":["Left Hand","60°"]}]},
+
+    {"handle":"lucky-golf-lgw02-black","title":"Lucky Golf LGW02 Black","productType":"Wedges","img":"files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436",
+     "options":[{"name":"Hand","values":["Right Hand"]},{"name":"Loft","values":["50°","52°","54°","56°","58°","60°"]}],
+     "variants":[
+      {"sku":"LGW03-BLK-STOCK-RH-50","price":"109.00","avail":true,"qty":134,"opts":["Right Hand","50°"]},
+      {"sku":"LGW03-BLK-STOCK-RH-52","price":"109.00","avail":true,"qty":94,"opts":["Right Hand","52°"]},
+      {"sku":"LGW02-BLK-STOCK-RH-54","price":"109.00","avail":true,"qty":92,"opts":["Right Hand","54°"]},
+      {"sku":"LGW02-BLK-STOCK-RH-56","price":"109.00","avail":true,"qty":291,"opts":["Right Hand","56°"]},
+      {"sku":"LGW02-BLK-STOCK-RH-58","price":"109.00","avail":true,"qty":96,"opts":["Right Hand","58°"]},
+      {"sku":"LGW02-BLK-STOCK-RH-60","price":"109.00","avail":true,"qty":289,"opts":["Right Hand","60°"]}]},
+
+    {"handle":"signature-gold-putters","title":"Lucky Golf LGP01 Gold","productType":"Putter","img":"files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091",
+     "options":[{"name":"Hand","values":["Right"]}],
+     "variants":[{"sku":"LGP01-RH","price":"199.00","avail":false,"qty":-12,"opts":["Right"]}]},
+
+    {"handle":"limited-edition-mallet-putter","title":"Lucky Golf LGP02 Gold","productType":"Putter","img":"files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134",
+     "options":[{"name":"Hand","values":["Right","Left"]}],
+     "variants":[
+      {"sku":"LGP02-RH","price":"229.00","avail":true,"qty":367,"opts":["Right"]},
+      {"sku":"LGP02-LH","price":"229.00","avail":true,"qty":89,"opts":["Left"]}]},
+
+    {"handle":"lgp02-mallet-putter-patriot","title":"LGP02 Mallet Putter - Patriot","productType":"Putter","img":"files/3_97d00e2d-9a43-4970-bb65-a5fd30d3702c.webp?v=1782845523",
+     "options":[{"name":"Hand","values":["Right"]}],
+     "variants":[{"sku":"LGP02-Patriot-RH","price":"229.00","avail":false,"qty":0,"opts":["Right"]}]},
+
+    {"handle":"lucky-striker-hybrid-limited-edition","title":"Lucky Golf LGH01","productType":"Hybrids","img":"files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493",
+     "options":[{"name":"Hand","values":["Right","Left"]}],
+     "variants":[
+      {"sku":"LGH01-RH","price":"209.00","avail":true,"qty":50,"opts":["Right"]},
+      {"sku":"LGH01-LH","price":"209.00","avail":true,"qty":90,"opts":["Left"]}]},
+
+    {"handle":"lucky-gold-driver-pre-order_","title":"Lucky Golf LGD01","productType":"Driver","img":"products/PhotoRoom_20220428_103621.png?v=1703705639",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"LGD01-Right","price":"299.00","avail":true,"qty":86,"opts":["Default Title"]}]},
+
+    {"handle":"gold-dust-classic-polo","title":"Gold Dust Classic Polo","productType":"Apparel","img":"files/PaintSplatter1.webp?v=1779472856",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-GoldDust-Small","price":"67.00","avail":true,"qty":5,"opts":["Small"]},
+      {"sku":"LGA-CP-GoldDust-Medium","price":"67.00","avail":true,"qty":20,"opts":["Medium"]},
+      {"sku":"LGA-CP-GoldDust-Large","price":"67.00","avail":true,"qty":17,"opts":["Large"]},
+      {"sku":"LGA-CP-GoldDust-XL","price":"67.00","avail":true,"qty":5,"opts":["XL"]},
+      {"sku":"LGA-CP-GoldDust-XXL","price":"67.00","avail":true,"qty":1,"opts":["XXL"]},
+      {"sku":"LGA-CP-GoldDust-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"shadow-classic-polo","title":"Shadow Classic Polo","productType":"Apparel","img":"files/Graycamofour-leafclover1.webp?v=1779472823",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Shadow-Small","price":"67.00","avail":true,"qty":7,"opts":["Small"]},
+      {"sku":"LGA-CP-Shadow-Medium","price":"67.00","avail":true,"qty":23,"opts":["Medium"]},
+      {"sku":"LGA-CP-Shadow-Large","price":"67.00","avail":true,"qty":18,"opts":["Large"]},
+      {"sku":"LGA-CP-Shadow-XL","price":"67.00","avail":true,"qty":1,"opts":["XL"]},
+      {"sku":"LGA-CP-Shadow-XXL","price":"67.00","avail":false,"qty":0,"opts":["XXL"]},
+      {"sku":"LGA-CP-Shadow-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"signature-black-classic-polo","title":"Signature Black Classic Polo","productType":"Apparel","img":"files/Classicpolowithlogointhecollar1.webp?v=1779472786",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-SignatureBlack-Small","price":"67.00","avail":true,"qty":4,"opts":["Small"]},
+      {"sku":"LGA-CP-SignatureBlack-Medium","price":"67.00","avail":true,"qty":16,"opts":["Medium"]},
+      {"sku":"LGA-CP-SignatureBlack-Large","price":"67.00","avail":true,"qty":12,"opts":["Large"]},
+      {"sku":"LGA-CP-SignatureBlack-XL","price":"67.00","avail":true,"qty":3,"opts":["XL"]},
+      {"sku":"LGA-CP-SignatureBlack-XXL","price":"67.00","avail":true,"qty":3,"opts":["XXL"]},
+      {"sku":"LGA-CP-SignatureBlack-3XL","price":"67.00","avail":true,"qty":1,"opts":["3XL"]}]},
+
+    {"handle":"contour-classic-polo","title":"Contour Classic Polo","productType":"Apparel","img":"files/TopographyStyle1.webp?v=1779472755",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Contour-Small","price":"67.00","avail":true,"qty":5,"opts":["Small"]},
+      {"sku":"LGA-CP-Contour-Medium","price":"67.00","avail":true,"qty":20,"opts":["Medium"]},
+      {"sku":"LGA-CP-Contour-Large","price":"67.00","avail":true,"qty":10,"opts":["Large"]},
+      {"sku":"LGA-CP-Contour-XL","price":"67.00","avail":true,"qty":3,"opts":["XL"]},
+      {"sku":"LGA-CP-Contour-XXL","price":"67.00","avail":true,"qty":3,"opts":["XXL"]},
+      {"sku":"LGA-CP-Contour-3XL","price":"67.00","avail":true,"qty":3,"opts":["3XL"]}]},
+
+    {"handle":"marble-classic-polo","title":"Marble Classic Polo","productType":"Apparel","img":"files/GoldMirage1.webp?v=1779472719",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Marble-Small","price":"67.00","avail":true,"qty":7,"opts":["Small"]},
+      {"sku":"LGA-CP-Marble-Medium","price":"67.00","avail":true,"qty":24,"opts":["Medium"]},
+      {"sku":"LGA-CP-Marble-Large","price":"67.00","avail":true,"qty":20,"opts":["Large"]},
+      {"sku":"LGA-CP-Marble-XL","price":"67.00","avail":false,"qty":0,"opts":["XL"]},
+      {"sku":"LGA-CP-Marble-XXL","price":"67.00","avail":false,"qty":0,"opts":["XXL"]},
+      {"sku":"LGA-CP-Marble-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"gold-carnation-classic-polo","title":"Gold Carnation Classic Polo","productType":"Apparel","img":"files/WhiteCarnation1.webp?v=1779472693",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-GoldCarnation-Small","price":"67.00","avail":true,"qty":5,"opts":["Small"]},
+      {"sku":"LGA-CP-GoldCarnation-Medium","price":"67.00","avail":true,"qty":19,"opts":["Medium"]},
+      {"sku":"LGA-CP-GoldCarnation-Large","price":"67.00","avail":true,"qty":22,"opts":["Large"]},
+      {"sku":"LGA-CP-GoldCarnation-XL","price":"67.00","avail":true,"qty":10,"opts":["XL"]},
+      {"sku":"LGA-CP-GoldCarnation-XXL","price":"67.00","avail":false,"qty":0,"opts":["XXL"]},
+      {"sku":"LGA-CP-GoldCarnation-3XL","price":"67.00","avail":true,"qty":2,"opts":["3XL"]}]},
+
+    {"handle":"frost-classic-polo","title":"Frost Classic Polo","productType":"Apparel","img":"files/Whitecome1.webp?v=1779472662",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Frost-Small","price":"67.00","avail":true,"qty":7,"opts":["Small"]},
+      {"sku":"LGA-CP-Frost-Medium","price":"67.00","avail":true,"qty":21,"opts":["Medium"]},
+      {"sku":"LGA-CP-Frost-Large","price":"67.00","avail":true,"qty":20,"opts":["Large"]},
+      {"sku":"LGA-CP-Frost-XL","price":"67.00","avail":true,"qty":5,"opts":["XL"]},
+      {"sku":"LGA-CP-Frost-XXL","price":"67.00","avail":true,"qty":4,"opts":["XXL"]},
+      {"sku":"LGA-CP-Frost-3XL","price":"67.00","avail":true,"qty":3,"opts":["3XL"]}]},
+
+    {"handle":"cruiser-classic-polo","title":"Cruiser Classic Polo","productType":"Apparel","img":"files/Golfcart1.webp?v=1779472510",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Cruiser-Small","price":"67.00","avail":true,"qty":6,"opts":["Small"]},
+      {"sku":"LGA-CP-Cruiser-Medium","price":"67.00","avail":true,"qty":23,"opts":["Medium"]},
+      {"sku":"LGA-CP-Cruiser-Large","price":"67.00","avail":true,"qty":18,"opts":["Large"]},
+      {"sku":"LGA-CP-Cruiser-XL","price":"67.00","avail":true,"qty":5,"opts":["XL"]},
+      {"sku":"LGA-CP-Cruiser-XXL","price":"67.00","avail":true,"qty":1,"opts":["XXL"]},
+      {"sku":"LGA-CP-Cruiser-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"azalea-classic-polo","title":"Azalea Classic Polo","productType":"Apparel","img":"files/Flower1.webp?v=1779472480",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Azalea-Small","price":"67.00","avail":true,"qty":4,"opts":["Small"]},
+      {"sku":"LGA-CP-Azalea-Medium","price":"67.00","avail":true,"qty":16,"opts":["Medium"]},
+      {"sku":"LGA-CP-Azalea-Large","price":"67.00","avail":false,"qty":0,"opts":["Large"]},
+      {"sku":"LGA-CP-Azalea-XL","price":"67.00","avail":false,"qty":0,"opts":["XL"]},
+      {"sku":"LGA-CP-Azalea-XXL","price":"67.00","avail":false,"qty":0,"opts":["XXL"]},
+      {"sku":"LGA-CP-Azalea-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"nightshade-classic-polo","title":"Nightshade Classic Polo","productType":"Apparel","img":"files/Blackwhiteflower1.webp?v=1779472292",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-CP-Nightshade-Small","price":"67.00","avail":true,"qty":7,"opts":["Small"]},
+      {"sku":"LGA-CP-Nightshade-Medium","price":"67.00","avail":true,"qty":25,"opts":["Medium"]},
+      {"sku":"LGA-CP-Nightshade-Large","price":"67.00","avail":true,"qty":18,"opts":["Large"]},
+      {"sku":"LGA-CP-Nightshade-XL","price":"67.00","avail":true,"qty":10,"opts":["XL"]},
+      {"sku":"LGA-CP-Nightshade-XXL","price":"67.00","avail":true,"qty":4,"opts":["XXL"]},
+      {"sku":"LGA-CP-Nightshade-3XL","price":"67.00","avail":true,"qty":3,"opts":["3XL"]}]},
+
+    {"handle":"swirl-blade-polo","title":"Swirl Blade Polo","productType":"Apparel","img":"files/GoldTwist1.webp?v=1779472637",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-BP-Swirl-Small","price":"67.00","avail":true,"qty":6,"opts":["Small"]},
+      {"sku":"LGA-BP-Swirl-Medium","price":"67.00","avail":true,"qty":26,"opts":["Medium"]},
+      {"sku":"LGA-BP-Swirl-Large","price":"67.00","avail":true,"qty":22,"opts":["Large"]},
+      {"sku":"LGA-BP-Swirl-XL","price":"67.00","avail":true,"qty":9,"opts":["XL"]},
+      {"sku":"LGA-BP-Swirl-XXL","price":"67.00","avail":true,"qty":3,"opts":["XXL"]},
+      {"sku":"LGA-BP-Swirl-3XL","price":"67.00","avail":true,"qty":1,"opts":["3XL"]}]},
+
+    {"handle":"spot-blade-polo","title":"Spot Blade Polo","productType":"Apparel","img":"files/FreshMint1.webp?v=1779472603",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-BP-Spot-Small","price":"67.00","avail":true,"qty":7,"opts":["Small"]},
+      {"sku":"LGA-BP-Spot-Medium","price":"67.00","avail":true,"qty":18,"opts":["Medium"]},
+      {"sku":"LGA-BP-Spot-Large","price":"67.00","avail":true,"qty":18,"opts":["Large"]},
+      {"sku":"LGA-BP-Spot-XL","price":"67.00","avail":true,"qty":8,"opts":["XL"]},
+      {"sku":"LGA-BP-Spot-XXL","price":"67.00","avail":true,"qty":3,"opts":["XXL"]},
+      {"sku":"LGA-BP-Spot-3XL","price":"67.00","avail":true,"qty":1,"opts":["3XL"]}]},
+
+    {"handle":"blackout-blade-polo","title":"Blackout Blade Polo","productType":"Apparel","img":"files/StrokePlay1.webp?v=1779472570",
+     "options":[{"name":"Size","values":["Small","Medium","Large","XL","XXL","3XL"]}],
+     "variants":[
+      {"sku":"LGA-BP-Blackout-Small","price":"67.00","avail":true,"qty":4,"opts":["Small"]},
+      {"sku":"LGA-BP-Blackout-Medium","price":"67.00","avail":true,"qty":17,"opts":["Medium"]},
+      {"sku":"LGA-BP-Blackout-Large","price":"67.00","avail":true,"qty":11,"opts":["Large"]},
+      {"sku":"LGA-BP-Blackout-XL","price":"67.00","avail":true,"qty":2,"opts":["XL"]},
+      {"sku":"LGA-BP-Blackout-XXL","price":"67.00","avail":false,"qty":0,"opts":["XXL"]},
+      {"sku":"LGA-BP-Blackout-3XL","price":"67.00","avail":false,"qty":0,"opts":["3XL"]}]},
+
+    {"handle":"white-gold-classic-hat","title":"White | Gold Classic Hat","productType":"HAT","img":"files/79.webp?v=1784585346",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-CLSC-WHT-GLD","price":"29.00","avail":true,"qty":109,"opts":["Default Title"]}]},
+
+    {"handle":"white-its-better-to-be-lucky-patch-hat","title":"White \"IT'S BETTER TO BE LUCKY\" Patch Hat","productType":"HAT","img":"files/89.webp?v=1784585347",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-IBTBL-WHT","price":"29.00","avail":true,"qty":93,"opts":["Default Title"]}]},
+
+    {"handle":"cream-upside-down-hat","title":"Cream Upside Down Hat","productType":"HAT","img":"files/69.webp?v=1784585346",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-UPDN-CRM","price":"29.00","avail":true,"qty":97,"opts":["Default Title"]}]},
+
+    {"handle":"black-its-better-to-be-lucky-patch-hat","title":"Black \"IT'S BETTER TO BE LUCKY\" Patch Hat","productType":"HAT","img":"files/39.webp?v=1784585347",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-IBTBL-BL","price":"29.00","avail":true,"qty":101,"opts":["Default Title"]}]},
+
+    {"handle":"tan-cursive-hat","title":"Tan Cursive Hat","productType":"HAT","img":"files/1_9c446716-791d-48c1-be9d-9e805bda751a.webp?v=1784585347",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-CRSV-TAN","price":"29.00","avail":true,"qty":98,"opts":["Default Title"]}]},
+
+    {"handle":"black-gold-classic-lucky-hat","title":"Black | Gold Classic Lucky Hat","productType":"HAT","img":"files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?v=1784585346",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-CLSC-BLK-GLD","price":"29.00","avail":false,"qty":0,"opts":["Default Title"]}]},
+
+    {"handle":"white-black-upside-down-hat","title":"White/Black Upside Down Hat","productType":"HAT","img":"files/20.webp?v=1784585346",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-UPDN-WHTBLK","price":"29.00","avail":true,"qty":99,"opts":["Default Title"]}]},
+
+    {"handle":"white-upside-down-hat","title":"White Upside Down Hat","productType":"HAT","img":"files/59.webp?v=1784585346",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-UPDN-WHT","price":"29.00","avail":true,"qty":94,"opts":["Default Title"]}]},
+
+    {"handle":"white-cursive-hat","title":"White Cursive Hat","productType":"HAT","img":"files/49.webp?v=1784585347",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-CRSV-WHT","price":"29.00","avail":true,"qty":104,"opts":["Default Title"]}]},
+
+    {"handle":"baby-blue-cursive-hat","title":"Baby Blue Monochrome Cursive Hat","productType":"HAT","img":"files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HAT-5P-SB-CRSV-BBLU-MONO","price":"29.00","avail":true,"qty":130,"opts":["Default Title"]}]},
+
+    {"handle":"lucky-putter-head-cover-blade","title":"Lucky Blade Cover","productType":"Head Cover","img":"products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HeadCover-Blade-SignatureWhite","price":"29.95","avail":true,"qty":354,"opts":["Default Title"]}]},
+
+    {"handle":"driver-head-cover","title":"Driver Head Cover","productType":"Head Cover","img":"products/DriverHeadCover1.png?v=1676592799",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"HeadCover-Driver-SignatureWhite","price":"40.00","avail":true,"qty":67,"opts":["Default Title"]}]},
+
+    {"handle":"lucky-putter-head-cover-mallet-large","title":"Lucky Mallet Cover","productType":"Head Cover","img":"products/MalletCoverBottom.png?v=1612818851",
+     "options":[{"name":"Hand","values":["Right","Left"]}],
+     "variants":[
+      {"sku":"HeadCover-Mallet-SignatureWhite-RH","price":"29.95","avail":true,"qty":697,"opts":["Right"]},
+      {"sku":"Putter-Cover-Mallet-Signature-White-LH","price":"29.95","avail":true,"qty":50,"opts":["Left"]}]},
+
+    {"handle":"lucky-clover-tour-glove","title":"Lucky Tour Glove","productType":"Glove","img":"products/PhotoRoom_000_20220517_095432.png?v=1654540304",
+     "options":[{"name":"Hand","values":["Left","Right"]},{"name":"Size","values":["Small","Medium","Large","Extra Large"]}],
+     "variants":[
+      {"sku":"CLG1-WG-LH-S","price":"17.95","avail":true,"qty":-3,"opts":["Left","Small"]},
+      {"sku":"CLG1-WG-LH-M","price":"17.95","avail":true,"qty":-9,"opts":["Left","Medium"]},
+      {"sku":"CLG1-WG-LH-L","price":"17.95","avail":false,"qty":0,"opts":["Left","Large"]},
+      {"sku":"CLG1-WG-LH-XL","price":"17.95","avail":false,"qty":-1,"opts":["Left","Extra Large"]},
+      {"sku":"CLG1-WG-RH-S","price":"17.95","avail":false,"qty":0,"opts":["Right","Small"]},
+      {"sku":"CLG1-WG-RH-M","price":"17.95","avail":false,"qty":0,"opts":["Right","Medium"]},
+      {"sku":"CLG1-WG-RH-L","price":"17.95","avail":false,"qty":0,"opts":["Right","Large"]},
+      {"sku":"CLG1-WG-RH-XL","price":"17.95","avail":false,"qty":0,"opts":["Right","Extra Large"]}]},
+
+    {"handle":"copy-of-lucky-golf-clover-grips-green","title":"Lucky Golf Tour Performance Clover Grips (Green)","productType":"Grip","img":"files/3M6A0847.jpg?v=1701474055",
+     "options":[{"name":"Grip Size","values":["Standard","Midsize","Jumbo","Lady"]}],
+     "variants":[
+      {"sku":"GRP-GRN-STD","price":"9.95","avail":true,"qty":-2,"opts":["Standard"]},
+      {"sku":"GRP-GRN-MID","price":"11.95","avail":false,"qty":0,"opts":["Midsize"]},
+      {"sku":"GRP-GRN-JMB","price":"14.95","avail":false,"qty":0,"opts":["Jumbo"]},
+      {"sku":"GRP-GRN-LDY","price":"9.95","avail":false,"qty":0,"opts":["Lady"]}]},
+
+    {"handle":"lucky-golf-performance-x2-clover-grips-black","title":"Lucky Golf Tour Performance Clover Grips (Black)","productType":"Grip","img":"files/3M6A0848.jpg?v=1701474078",
+     "options":[{"name":"Grip Size","values":["Standard","Midsize","Jumbo"]}],
+     "variants":[
+      {"sku":"GRP-BLK-STD","price":"9.95","avail":true,"qty":0,"opts":["Standard"]},
+      {"sku":"GRP-BLK-MID","price":"11.95","avail":true,"qty":0,"opts":["Midsize"]},
+      {"sku":"GRP-BLK-JMB","price":"14.95","avail":true,"qty":0,"opts":["Jumbo"]}]},
+
+    {"handle":"copy-of-lucky-golf-performance-x2-clover-grips-white","title":"Lucky Golf Tour Performance Clover Grips (White)","productType":"Grip","img":"files/3M6A0853.jpg?v=1701474134",
+     "options":[{"name":"Grip Size","values":["Standard","Midsize","Jumbo"]}],
+     "variants":[
+      {"sku":"GRP-WHT-STD","price":"9.95","avail":true,"qty":-2,"opts":["Standard"]},
+      {"sku":"GRP-WHT-MID","price":"11.95","avail":true,"qty":-5,"opts":["Midsize"]},
+      {"sku":"GRP-WHT-JMB","price":"14.95","avail":true,"qty":-1,"opts":["Jumbo"]}]},
+
+    {"handle":"lucky-golf-performance-x2-clover-grips-blue","title":"Lucky Golf Tour Performance Clover Grips (Blue)","productType":"Grip","img":"files/3M6A0849.jpg?v=1701474094",
+     "options":[{"name":"Grip Size","values":["Standard","Midsize","Jumbo"]}],
+     "variants":[
+      {"sku":"GRP-BLU-STD","price":"9.95","avail":true,"qty":0,"opts":["Standard"]},
+      {"sku":"GRP-BLU-MID","price":"11.95","avail":true,"qty":0,"opts":["Midsize"]},
+      {"sku":"GRP-BLU-JMB","price":"14.95","avail":true,"qty":447,"opts":["Jumbo"]}]},
+
+    {"handle":"lucky-golf-performance-x2-clover-grips-pink","title":"Lucky Golf Tour Performance Clover Grips (Pink)","productType":"Grip","img":"files/3M6A0845.jpg?v=1701474111",
+     "options":[{"name":"Grip Size","values":["Lady"]}],
+     "variants":[{"sku":"GRP-PNK-LDY","price":"9.95","avail":true,"qty":151,"opts":["Lady"]}]},
+
+    {"handle":"lucky-golf-oversized-putter-grip","title":"Lucky Golf Green Oversized Putter Grip","productType":"Grip","img":"files/Green_Oversized_Grip_Lucky_Golf-Photoroom.png?v=1724359296",
+     "options":[{"name":"Size","values":["1.0","2.0","3.0","5.0"]}],
+     "variants":[
+      {"sku":"GRP-PUT-1.0-GRN","price":"19.95","avail":false,"qty":0,"opts":["1.0"]},
+      {"sku":"GRP-PUT-2.0-GRN","price":"22.95","avail":false,"qty":0,"opts":["2.0"]},
+      {"sku":"GRP-PUT-3.0-GRN","price":"24.95","avail":false,"qty":0,"opts":["3.0"]},
+      {"sku":"GRP-PUT-5.0-GRN","price":"26.95","avail":false,"qty":0,"opts":["5.0"]}]},
+
+    {"handle":"lucky-golf-clovers-oversized-putter-grip","title":"Lucky Golf Clovers Oversized Putter Grip","productType":"Grip","img":"files/Clovers_Oversized_Grip_Lucky_Golf-Photoroom.png?v=1724359224",
+     "options":[{"name":"Size","values":["1.0","2.0","3.0","5.0"]}],
+     "variants":[
+      {"sku":"GRP-PUT-1.0-CLOV","price":"19.95","avail":false,"qty":0,"opts":["1.0"]},
+      {"sku":"GRP-PUT-2.0-CLOV","price":"22.95","avail":false,"qty":0,"opts":["2.0"]},
+      {"sku":"GRP-PUT-3.0-CLOV","price":"24.95","avail":false,"qty":0,"opts":["3.0"]},
+      {"sku":"GRP-PUT-5.0-CLOV","price":"26.95","avail":false,"qty":0,"opts":["5.0"]}]},
+
+    {"handle":"stock-putter-grips","title":"Stock Putter Grips","productType":"Grips","img":"files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382",
+     "options":[{"name":"Title","values":["Default Title"]}],
+     "variants":[{"sku":"GRP-PUT-STCK","price":"19.95","avail":true,"qty":41,"opts":["Default Title"]}]},
+
+    {"handle":"lucky-golf-tees","title":"Lucky Golf Tees","productType":"Tees","img":null,
+     "options":[{"name":"Title","values":["25 Tees"]}],
+     "variants":[{"sku":"TEES-25","price":"9.95","avail":true,"qty":1257,"opts":["25 Tees"]}]}
+  ]
+}

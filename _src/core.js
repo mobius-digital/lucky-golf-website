@@ -221,7 +221,7 @@
       +   '<img src="' + o.img + '" alt="">'
       +   '<span class="info"><span class="sku">' + esc(o.sku) + '</span>'
       +     '<span class="nm">' + esc(o.p) + '</span><span class="pr">' + esc(o.price) + '</span></span>'
-      +   '<a class="btn btn-foil btn-sm" href="#"><span>' + esc(o.cta) + '</span><span class="ar">&rarr;</span></a>'
+      +   '<a class="btn btn-foil btn-sm" href="' + (o.href || '#') + '"><span>' + esc(o.cta) + '</span><span class="ar">&rarr;</span></a>'
       + '</div>';
   }
   function clearMedia(){

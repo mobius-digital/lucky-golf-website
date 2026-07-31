@@ -38,9 +38,11 @@ check by hand), gradients, decorative SVG.
 | Homepage | Done. 14 sections, verified. |
 | PDP — LGW01 Carver Gold | Done, 4 revisions. The club template. |
 | Build system | `_src/` + `tools/build.py`, smoke-tested |
+| **Phase A** | **Done 2026-07-31 — see HANDOFF §10** |
 | Everything else | Not started |
 
-**The store: 45 sellable products.**
+**The store: 44 sellable products**, counted from the catalogue pull, not
+estimated. Full data in `_src/data/products.json`.
 
 | Type | Count | Variant shape | Price |
 |---|---|---|---|
@@ -50,11 +52,13 @@ check by hand), gradients, decorative SVG.
 | Driver | 1 | none | $299 |
 | Classic Polos | 10 | Size | $67 |
 | Blade Polos | 3 | Size | $67 |
-| Hats | 13 | none | $29 |
-| Gear | ~11 | mixed | $9.95–40 |
+| Hats | **10** | none | $29 |
+| Gear | **13** | mixed | $9.95–40 |
 
+Corrections from the pull: **hats are 10, not 13** — three are archived, and
+the mega menu's "13 styles" is wrong on the live homepage. Gear is 13, not ~11.
 Ignore `Free Returns + Package Protection` — it is a checkout app product, not a
-page.
+page. More findings in HANDOFF §10e.
 
 ---
 
@@ -159,13 +163,22 @@ four are already linked in the footer and all four currently go nowhere.
 
 ## 5. Build order — what unlocks what
 
-**Phase A — routing and data.** Link registry in `build.py`: every page declares
-a slug, every internal link uses a token, **the build fails on a dangling
-link**. Plus §2a and §2b. Nothing else should be built first — retrofitting
-links across 60 files at the end is the expensive version of this.
+**Phase A — routing and data. DONE 2026-07-31.** Link registry in
+`tools/sitemap.py`, N-axis buy box in `_src/variants.js`, product data layer in
+`_src/data/`. 62 pages declared, 2 built, 86 links stubbed and counted. The
+build now fails on a dangling link, a literal `href="#"`, or an unresolved
+token — each verified by breaking it. **HANDOFF §10 is the record.**
+
+Carried into Phase C: §2b's "emit a page per product" has its data layer and
+emitter wiring, but `build.py` does not yet write 44 HTML files, because the
+club template cannot render a hat. That is Phase C's job anyway.
 
 **Phase B — PLP.** Unlocks the mega menu and every product link. Needs filter,
-sort and an empty state. Cheap now that tiles exist.
+sort and an empty state. Cheap now that tiles exist. Eight collections are
+already declared and routed (`c/clubs c/wedges c/putters c/hybrid-driver
+c/polos c/hats c/gear c/sale`) with their membership computed in
+`products.json` — **except Sale**, whose 9 members were not pulled. Pull that
+first.
 
 **Phase C — prove the three templates.** One putter (1 axis + a different
 help-me-choose), one polo (siblings + size guide), one head cover (short form).
@@ -205,8 +218,10 @@ From HANDOFF, still needing Cole:
 ## 7. Starting the next chat
 
 > Continuing Lucky Golf. Read `GAMEPLAN.md` then `HANDOFF.md` in
-> `C:\Users\wetzl\Lucky Golf\Website`. Homepage and the LGW01 PDP are done.
-> Start Phase A: the link registry, the N-axis buy box, and the product data
-> layer. Don't build new pages until routing is in.
+> `C:\Users\wetzl\Lucky Golf\Website`. Homepage, the LGW01 PDP and Phase A
+> (routing, N-axis buy box, product data) are done — HANDOFF §10 has the
+> details. Start Phase B: the collection/PLP template over the eight declared
+> collections. Pull the Sale collection's membership from Shopify first.
 
-Then Phase B in the same or the next session.
+Then Phase C — one putter, one polo, one head cover — to prove the three
+templates before generating the remaining forty PDPs.

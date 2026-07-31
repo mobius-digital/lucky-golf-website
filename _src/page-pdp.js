@@ -1,29 +1,33 @@
 /* ==========================================================================
-   PDP — LGW01 Carver Gold
+   PDP — the club template
    Variant matrix, gallery, spec tabs, accordions, loft finder, review grid.
-   Every price, SKU and availability flag below is the live Shopify state as
-   of 2026-07-31. LH 50 and LH 60 are genuinely out of stock.
    ========================================================================== */
-var PD = {
-  name: 'Carver Gold',
-  sku: 'LGW01',
-  price: 99,
-  img: 'https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868',
-  hands: [{k:'RH', label:'Right hand'}, {k:'LH', label:'Left hand'}],
-  lofts: [50, 52, 54, 56, 58, 60],
-  /* hand -> loft -> units on hand. 0 means the variant exists but is out. */
-  stock: {
-    RH: {50:99,  52:577, 54:216, 56:163, 58:315, 60:686},
-    LH: {50:0,   52:275, 54:82,  56:104, 58:15,  60:0}
-  },
-  role: {
-    50: ['Gap', 'Full swings from the yardage your pitching wedge can’t quite reach.'],
-    52: ['Gap', 'The most-bought loft in the lineup, and usually the first wedge people add.'],
-    54: ['Sand / gap', 'Full shots, longer bunker shots, anything that needs a little height.'],
-    56: ['Sand', 'Greenside and bunkers. The club most golfers reach for by default.'],
-    58: ['Lob', 'Higher, softer, lands quieter. For pins you can’t run the ball at.'],
-    60: ['Lob', 'Flop shots, short-sided, tight pins. The most specialist club in the bag.']
-  }
+
+/* The product record, injected by tools/build.py from _src/data/products.json,
+   which tools/normalize-products.py derives from a Shopify pull. Every price,
+   SKU, option axis and availability flag below is live store state — none of
+   it is typed by hand, so re-pulling the catalogue updates the page. */
+var PD = {{PRODUCT_JSON}};
+
+/* How each axis presents itself. This is page furniture, not catalogue data,
+   so it stays here rather than in products.json: `val` echoes the choice back
+   beside the label, `help` hangs a link off the right of the label row. */
+var PD_AXIS_UI = {
+  hand:     {val: true},
+  loft:     {help: {href: '#loft', text: 'Not sure? →'}},
+  size:     {help: {href: '#size', text: 'Size guide →'}},
+  gripsize: {val: true}
+};
+
+/* What each loft is FOR. Editorial — Shopify has no field for it, and the
+   answer is the same for every wedge we sell. */
+var PD_ROLE = {
+  50: ['Gap', 'Full swings from the yardage your pitching wedge can’t quite reach.'],
+  52: ['Gap', 'The most-bought loft in the lineup, and usually the first wedge people add.'],
+  54: ['Sand / gap', 'Full shots, longer bunker shots, anything that needs a little height.'],
+  56: ['Sand', 'Greenside and bunkers. The club most golfers reach for by default.'],
+  58: ['Lob', 'Higher, softer, lands quieter. For pins you can’t run the ball at.'],
+  60: ['Lob', 'Flop shots, short-sided, tight pins. The most specialist club in the bag.']
 };
 
 /* Hand-checked gapping table. Every gap lands between 4 and 6 degrees.
@@ -46,13 +50,13 @@ var PD_JM = [{"n":"David L.","r":5,"t":"Golden sw","d":"2026-07-19","q":"Love th
 /* Real store rows for the browse rail under the fold. Takomo mixes clubs and
    apparel here rather than showing only comparable products. */
 var PD_OAV = [
-  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'',
+  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'', href:'{{link:p/lgw02-gold}}',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462'},
-  {nm:'LGW02 Carver Shadow', pr:'$109', rt:'6 lofts', tag:'New',
+  {nm:'LGW02 Carver Shadow', pr:'$109', rt:'6 lofts', tag:'New', href:'{{link:p/lgw02-black}}',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436'},
-  {nm:'LGP01 Tracer Blade', pr:'$199', rt:'4.86 ★ 147', tag:'Sold out', out:true,
+  {nm:'LGP01 Tracer Blade', pr:'$199', rt:'4.86 ★ 147', tag:'Sold out', out:true, href:'{{link:p/lgp01-gold}}',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090'},
-  {nm:'LGH01 Stryker', pr:'$209', rt:'4.60 ★ 20', tag:'',
+  {nm:'LGH01 Stryker', pr:'$209', rt:'4.60 ★ 20', tag:'', href:'{{link:p/lgh01}}',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493'}
 ];
 
@@ -84,10 +88,10 @@ var LG_CART_UPSELL = [
 /* Finish-the-look cross-sell: polos and hats only. Cole's call — gear is a
    grab-bag, apparel completes the look and is the same voice as the club. */
 var PD_KIT = [
-  {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:true,
+  {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:'{{link:p/polo-contour}}',
    why:'Classic collar, tailored fit, UPF 50+.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:true,
+  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:'{{link:p/polo-blackout}}',
    why:'Blade collar, no buttons. Quieter than it sounds.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
   {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',
@@ -145,8 +149,31 @@ var PD_KIT = [
     });
   }
 
-  /* ------------------------------------------------------ variant selection */
-  var hand = 'RH', loft = 56;
+  /* ====================================================== variant selection
+     N axes, driven entirely by PD.options and PD.variants. The store needs
+     0, 1 and 2 axes today (GAMEPLAN 2a) and a third when the KBS shaft
+     upgrade lands, so nothing below knows what "hand" or "loft" mean.
+
+     Two things the old two-axis version got away with and this cannot:
+
+     * Availability is `avail`, never `qty > 0`. Shopify oversells some lines
+       (the glove ships at qty -3) and holds others at qty 0 while still
+       selling them. Quantity only drives the "Low stock" line.
+     * Price is per variant. Grips run $9.95 / $11.95 / $14.95 across
+       Standard / Midsize / Jumbo, so the price repaints on selection.
+     ======================================================================= */
+
+  /* The rules themselves live in _src/variants.js — no DOM, no page state, so
+     tools/test-variants.js can run them over all 44 products instead of only
+     the two-axis one this page renders. */
+  var V = LG_VARIANTS;
+  var AXES = PD.options || [];
+  var sel = V.selectionFor(PD);        /* one value key per axis; [''] if none */
+
+  function variant(){ return V.variantFor(PD, sel); }
+  function offered(i, val){ return V.offered(PD, sel, i, val); }
+  function chosenLabels(){ return V.labels(PD, sel); }
+  function labelOf(i){ return chosenLabels()[i] || ''; }
 
   var proxy = document.createElement('button');   /* lets core's [data-add]
     delegate do the actual cart work, so quantity is just N clicks and there
@@ -155,71 +182,77 @@ var PD_KIT = [
   proxy.setAttribute('aria-hidden', 'true'); proxy.tabIndex = -1;
   document.body.appendChild(proxy);
 
-  function chip(label, on, dis, attrs){
-    return '<button class="chip" type="button" aria-pressed="' + (on ? 'true' : 'false') + '"'
-      + (dis ? ' disabled aria-label="' + esc(label) + ', out of stock"' : '')
-      + ' ' + attrs + '>' + esc(label) + '</button>';
+  function paintPickers(){
+    var host = $('#pickers'); if (!host) return;
+    var out = '', i, n;
+    for (i = 0; i < AXES.length; i++){
+      var ax = AXES[i], ui = PD_AXIS_UI[ax.key] || {};
+      out += '<div class="opt"><div class="opt-hd"><span class="lbl">' + esc(ax.name) + '</span>';
+      if (ui.help) out += '<a class="help" href="' + esc(ui.help.href) + '">' + esc(ui.help.text) + '</a>';
+      else if (ui.val) out += '<span class="val">' + esc(labelOf(i)) + '</span>';
+      out += '</div><div class="chips" role="group" aria-label="' + esc(ax.name) + '">';
+      for (n = 0; n < ax.values.length; n++){
+        var v = ax.values[n], dead = !offered(i, v.k);
+        out += '<button class="chip" type="button"'
+          + ' aria-pressed="' + (v.k === sel[i] ? 'true' : 'false') + '"'
+          + (dead ? ' disabled aria-label="' + esc(v.label) + ', out of stock"' : '')
+          + ' data-axis="' + i + '" data-val="' + esc(v.k) + '">' + esc(v.label) + '</button>';
+      }
+      out += '</div>';
+      /* the SKU hangs off the last axis, the way it did when Loft was last */
+      if (i === AXES.length - 1) out += '<p class="opt-note" id="v-sku"></p>';
+      out += '</div>';
+    }
+    /* no axes at all: still show the SKU, just with nothing to choose */
+    if (!AXES.length) out = '<p class="opt-note" id="v-sku"></p>';
+    host.innerHTML = out;
   }
-  function paintHands(){
-    var el = $('#pick-hand'); if (!el) return;
-    el.innerHTML = PD.hands.map(function(h){
-      var any = PD.lofts.some(function(l){ return PD.stock[h.k][l] > 0; });
-      return chip(h.label, h.k === hand, !any, 'data-hand="' + h.k + '"');
-    }).join('');
-  }
-  function paintLofts(){
-    var el = $('#pick-loft'); if (!el) return;
-    el.innerHTML = PD.lofts.map(function(l){
-      return chip(l + '°', l === loft, PD.stock[hand][l] === 0, 'data-loft="' + l + '"');
-    }).join('');
-  }
+
   function sync(){
-    var units = PD.stock[hand][loft];
-    var handLabel = hand === 'RH' ? 'Right hand' : 'Left hand';
-    var variant = handLabel + ' · ' + loft + '°';
-    if ($('#v-hand')) $('#v-hand').textContent = handLabel;
-    if ($('#v-sku')) $('#v-sku').textContent = 'LGW01-' + loft + '-' + hand;
-    if ($('#atc-bar-v')) $('#atc-bar-v').textContent = variant;
+    var v = variant() || {sku: '', price: PD.price, avail: false, qty: 0};
+    var labels = chosenLabels();
+    var variantLabel = labels.join(' · ');
+    var money = '$' + v.price;
+
+    if ($('#v-sku')) $('#v-sku').textContent = v.sku;
+    if ($('#bx-amt')) $('#bx-amt').textContent = money;
+    if ($('#atc-bar-v')) $('#atc-bar-v').textContent = variantLabel || PD.title;
 
     var stock = $('#stock'), st = $('#stock-t');
     if (stock && st){
-      if (units === 0){
+      if (!v.avail){
         stock.setAttribute('data-out', '');
-        st.textContent = 'Out of stock in ' + handLabel.toLowerCase() + ' ' + loft + '°';
+        st.textContent = labels.length
+          ? 'Out of stock in ' + labels.join(' ').toLowerCase()
+          : 'Out of stock';
       } else {
         stock.removeAttribute('data-out');
-        st.textContent = units < 25
-          ? 'Low stock — ' + units + ' left. Ships in 1–2 business days'
+        /* qty can be zero or negative on a sellable variant — that is a
+           backorder, not low stock, so only a real positive count qualifies */
+        st.textContent = (v.qty > 0 && v.qty < 25)
+          ? 'Low stock — ' + v.qty + ' left. Ships in 1–2 business days'
           : 'In stock — ships in 1–2 business days';
       }
     }
-    [['#atc', 'Add to cart · $' + PD.price], ['#atc2', 'Add to cart']].forEach(function(p){
+    [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
       var b = $(p[0]); if (!b) return;
-      b.disabled = units === 0;
-      var s = b.querySelector('span'); if (s) s.textContent = units === 0 ? 'Out of stock' : p[1];
+      b.disabled = !v.avail;
+      var s = b.querySelector('span'); if (s) s.textContent = v.avail ? p[1] : 'Out of stock';
     });
-    proxy.setAttribute('data-sku', 'LGW01-' + loft + '-' + hand);
-    proxy.setAttribute('data-name', PD.name + ' ' + loft + '°');
-    proxy.setAttribute('data-price', '$' + PD.price);
+    proxy.setAttribute('data-sku', v.sku);
+    proxy.setAttribute('data-name', PD.name + (labels.length ? ' ' + labels[labels.length - 1] : ''));
+    proxy.setAttribute('data-price', money);
     proxy.setAttribute('data-img', PD.img);
-    proxy.setAttribute('data-variant', variant);
+    proxy.setAttribute('data-variant', variantLabel);
   }
 
   document.addEventListener('click', function(e){
-    var h = e.target.closest('[data-hand]'), l = e.target.closest('[data-loft]');
-    if (h && !h.disabled){
-      hand = h.getAttribute('data-hand');
-      /* if the chosen loft is dead in this hand, slide to the nearest live one */
-      if (PD.stock[hand][loft] === 0){
-        var live = PD.lofts.filter(function(x){ return PD.stock[hand][x] > 0; });
-        if (live.length){
-          live.sort(function(a, b){ return Math.abs(a - loft) - Math.abs(b - loft); });
-          loft = live[0];
-        }
-      }
-      paintHands(); paintLofts(); sync();
-    }
-    if (l && !l.disabled){ loft = +l.getAttribute('data-loft'); paintLofts(); sync(); }
+    var c = e.target.closest('[data-axis]');
+    if (!c || c.disabled) return;
+    var i = +c.getAttribute('data-axis');
+    sel[i] = c.getAttribute('data-val');
+    V.reconcile(PD, sel, i);
+    paintPickers(); sync();
   });
 
   var qty = $('#qty');
@@ -239,7 +272,7 @@ var PD_KIT = [
       s.textContent = 'Added'; setTimeout(function(){ s.textContent = was; }, 1400);
     });
   });
-  paintHands(); paintLofts(); sync();
+  paintPickers(); sync();
 
   /* ------------------------------------------------------------ accordions */
   [].forEach.call(document.querySelectorAll('.acc-hd'), function(h){
@@ -275,7 +308,7 @@ var PD_KIT = [
     var set = PD_GAPS[pw], prev = pw;
     grid.innerHTML = set.map(function(l, i){
       var gap = l - prev; prev = l;
-      var r = PD.role[l];
+      var r = PD_ROLE[l];
       return '<div class="lf-card"' + (i === 0 ? ' data-rec' : '') + '>'
         + '<span class="rank">' + (i === 0 ? 'Start here' : 'Then') + '</span>'
         + '<span class="lo">' + l + '°</span>'
@@ -307,7 +340,7 @@ var PD_KIT = [
       +   '<span class="oav-tag"' + (o.out ? ' data-out' : '') + '>' + esc(o.tag) + '</span>'
       +   '<img src="' + o.img + '" alt="' + esc(o.nm) + '" loading="lazy" width="600" height="600">'
       + '</div>'
-      + '<div class="oav-bd"><a class="oav-nm stretch" href="#">' + esc(o.nm) + '</a>'
+      + '<div class="oav-bd"><a class="oav-nm stretch" href="' + o.href + '">' + esc(o.nm) + '</a>'
       +   '<div class="oav-meta"><span class="oav-pr">' + esc(o.pr) + '</span>'
       +   '<span class="oav-rt">' + esc(o.rt) + '</span></div></div>'
       + '</article>';
@@ -339,7 +372,7 @@ var PD_KIT = [
       +   (o.sizes
           /* sized product: there is nothing sensible to add without a size,
              so it links to its own page instead of pretending to be one-click */
-          ? '<a class="btn btn-line btn-sm" href="#"><span>Choose size</span>'
+          ? '<a class="btn btn-line btn-sm" href="' + o.sizes + '"><span>Choose size</span>'
             + '<span class="ar">&rarr;</span></a>'
           : '<button class="btn btn-ink btn-sm" type="button" data-add data-sku="' + esc(o.sku)
             + '" data-name="' + esc(o.nm) + '" data-price="' + esc(o.pr) + '" data-img="' + o.img
