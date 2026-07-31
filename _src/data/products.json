@@ -2084,7 +2084,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-white-ibtbl",
@@ -2112,7 +2112,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-cream-updown",
@@ -2140,7 +2140,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-black-ibtbl",
@@ -2168,7 +2168,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-tan-cursive",
@@ -2196,7 +2196,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-black-gold-classic",
@@ -2224,7 +2224,7 @@
    "default": "",
    "summary": "",
    "inStock": false,
-   "built": false,
+   "built": true,
    "note": "Sold out."
   },
   {
@@ -2253,7 +2253,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-white-updown",
@@ -2282,7 +2282,7 @@
    "summary": "",
    "inStock": true,
    "built": false,
-   "note": "ASSET BROKEN: 59.webp has inverted lettering (HANDOFF 6). Needs a reshoot before this page ships."
+   "note": "NOT BUILT — its only photograph (59.webp) has inverted lettering (HANDOFF 6). A page whose single image is wrong is worse than no page. Needs a reshoot, then flip built=True."
   },
   {
    "id": "hat-white-cursive",
@@ -2310,7 +2310,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-baby-blue-cursive",
@@ -2338,7 +2338,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "cover-blade",

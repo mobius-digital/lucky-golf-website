@@ -1,0 +1,122 @@
+{
+  "_": "Shared editorial for all ten hats. Merged UNDER each hat's own file, which overrides any key it sets.",
+  "_specs": "Five-panel and snapback are visible in the product photography. Nothing else about construction is published anywhere verifiable — no fabric, no closure detail, no sizing — so the fit block says so rather than guessing.",
+  "_note": "Hats have zero variant axes, so the buy box renders no pickers. They are the simplest thing in the catalogue and the pages are deliberately short.",
+  "eyebrow": "Hats",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+  "priceNote": "One size",
+  "four": [
+    {
+      "k": "Five-panel",
+      "v": "Structured front, holds its shape"
+    },
+    {
+      "k": "Snapback",
+      "v": "One size, adjusts at the back"
+    },
+    {
+      "k": "$29",
+      "v": "The same as every other hat we make"
+    },
+    {
+      "k": "Thirty days",
+      "v": "Unworn, with the tag on"
+    }
+  ],
+  "fabric": [
+    {
+      "k": "Style",
+      "v": "Five-panel, structured front."
+    },
+    {
+      "k": "Closure",
+      "v": "Snapback. One size, adjustable."
+    },
+    {
+      "k": "Fabric",
+      "v": "<span class=\"tbd tbd--light\">Needs spec</span>"
+    },
+    {
+      "k": "Care",
+      "v": "<span class=\"tbd tbd--light\">Needs spec</span>"
+    }
+  ],
+  "marquee": [
+    "Five-panel, snapback",
+    "One size, adjustable",
+    "Thirty-day returns, unworn with tags",
+    "Free US shipping",
+    "Sold direct, never through a middleman",
+    "It's better to be lucky"
+  ],
+  "sizeHeadline": "One size, and it actually is",
+  "sizeSub": "Five-panel with a structured front and a snapback closure. It adjusts at the back and it holds its shape through a wet round and a hot car, which is more than most hats manage.",
+  "sizeCols": [
+    "One size"
+  ],
+  "sizeRows": [
+    {
+      "k": "Circumference (in)",
+      "cells": [
+        "—"
+      ]
+    },
+    {
+      "k": "Crown height (in)",
+      "cells": [
+        "—"
+      ]
+    },
+    {
+      "k": "Brim length (in)",
+      "cells": [
+        "—"
+      ]
+    }
+  ],
+  "sizeNote": "Hat measurements are not published anywhere we can verify, so they are left visibly empty rather than guessed at. A snapback fits nearly everyone, which is why this matters less here than it does on the polos — but it is still a real gap.",
+  "fitTitle": "How it fits",
+  "fitParas": [
+    "Snapback, so the back adjusts through the usual range and one size genuinely does cover most heads.",
+    "The front is structured rather than soft, which is what keeps the panel flat and the graphic readable instead of creasing across the middle by the back nine."
+  ],
+  "reviewHeadline": "Reviews",
+  "sibEyebrow": "The rest of them",
+  "sibHeadline": "Nine other hats",
+  "chooseCta": "Add it",
+  "closeHeadline": "Go put something on your",
+  "closeFoil": "head",
+  "closeBody": "$29, one size, five-panel snapback. Thirty days to send it back unworn if it isn't you.",
+  "closeTrust": [
+    "30-day apparel returns",
+    "Free US shipping",
+    "One size",
+    "Five-panel snapback"
+  ],
+  "bagHeadline": "The rest of the look",
+  "bag": [
+    {
+      "id": "polo-contour",
+      "name": "Contour Classic Polo",
+      "code": "LGA-CP",
+      "meta": "S–3XL",
+      "hook": "Classic collar, four-way stretch, UPF 50+. The one that goes with everything."
+    },
+    {
+      "id": "polo-blackout",
+      "name": "Blackout Blade Polo",
+      "code": "LGA-BP",
+      "meta": "S–3XL",
+      "hook": "Blade collar, no buttons. Quieter than it sounds."
+    },
+    {
+      "id": "lgw01-gold",
+      "name": "Carver Gold",
+      "code": "LGW01",
+      "meta": "4.81 &#9733; 551",
+      "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."
+    }
+  ],
+  "pieceEyebrow": "The hat"
+}

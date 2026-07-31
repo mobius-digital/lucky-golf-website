@@ -73,7 +73,15 @@
   --pad:clamp(20px,4.2vw,68px);
   --gut:clamp(16px,1.6vw,26px);
   --sec:clamp(64px,6.6vw,112px);
-  --r:4px;
+  /* ---- RADIUS SCALE ----
+     One radius does not fit a 48px chip and a 420px product card: at 4px a
+     card reads as a rectangle with a chamfer, which is what made the tiles
+     look rigid. Two steps, and the rule is about the SIZE of the surface:
+       --r       controls — chips, buttons, inputs, selects, small badges
+       --r-card  surfaces — product tiles, panels, image wells, modals
+     Supersedes the flat 4px locked in HANDOFF §4. Borders stay 2px. */
+  --r:6px;
+  --r-card:14px;
 }
 
 *{box-sizing:border-box}
@@ -611,8 +619,9 @@ button{font:inherit;color:inherit}
 .mega-wrap{max-width:700px;margin:0 auto}
 .mega-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .mtile{position:relative;overflow:hidden;background:var(--cream);min-height:158px;
+  border-radius:var(--r-card);
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;
-  padding:20px 150px 20px 22px;
+  padding:20px 156px 20px 22px;
   border:2px solid transparent;transition:border-color .14s,background .14s}
 /* no black hover border (HANDOFF §3). The cream -> white swap and the image
    nudge already carry the hover; the outline was the off-brand part.
@@ -622,8 +631,13 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;letter-spacing:-.005em;font-size:1.7rem;line-height:.92;
   position:relative;z-index:2}
 .mtile .mt-sub{font-size:.84rem;color:var(--ink-muted);margin-top:5px;position:relative;z-index:2}
-.mtile .mt-img{position:absolute;right:-14px;bottom:-24px;width:172px;height:172px;
-  object-fit:contain;z-index:1;pointer-events:none;
+/* The club used to sit at right:-14px bottom:-24px and bleed off the tile,
+   which with overflow:hidden meant the head was sliced down its right edge and
+   along the bottom — Cole spotted it on the LGW01. A wedge photographed on the
+   diagonal has no spare margin to give away. Fully inside the tile now, and
+   the hover nudge is what carries the movement the bleed was reaching for. */
+.mtile .mt-img{position:absolute;right:12px;bottom:12px;width:128px;height:128px;
+  object-fit:contain;object-position:center;z-index:1;pointer-events:none;
   transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .mtile:hover .mt-img{transform:scale(1.05) rotate(-2deg)}
 .mtile .mt-ph{position:absolute;right:10px;bottom:10px;width:124px;height:96px;z-index:1;
@@ -640,12 +654,17 @@ button{font:inherit;color:inherit}
 .mega-foot .aside{color:var(--ink-muted);font-size:.92rem}
 
 /* ==========================================================================
-   PRODUCT TILES — Takomo pattern: text above, photo below, tag bottom-left.
+   PRODUCT TILES — photo first, then name and price.
+   The first cut had text above the photo, from a misread of Takomo; their
+   cards lead with the image on a panel and put the name and price under it.
+   Cole caught it. The photo is the thing being shopped, so it goes first in
+   the markup as well as in the layout — DOM order matches reading order.
    One tile per club, never a family. Price is the real price, no "from".
    ========================================================================== */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
 .ptile{position:relative;isolation:isolate;background:var(--cream);overflow:hidden;
-  display:flex;flex-direction:column;padding:30px 26px 0;text-align:center;
+  border-radius:var(--r-card);
+  display:flex;flex-direction:column;padding:30px 26px 26px;text-align:center;
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s}
@@ -660,12 +679,13 @@ button{font:inherit;color:inherit}
 .ptile .pt-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
   font-size:1.02rem}
 .ptile .pt-rt{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink-muted)}
-.ptile .pt-ph{margin:18px -26px 0;aspect-ratio:1/1;overflow:hidden;position:relative}
+.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative;
+  background:var(--white)}
 .ptile .pt-ph img{width:100%;height:100%;object-fit:cover;
   transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .ptile:hover .pt-ph img{transform:scale(1.04)}
 .ptile .pt-ph .ph{position:absolute;inset:0;border:0}
-.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;background:var(--gold);color:var(--ink);
+.ptile .pt-tag{position:absolute;left:0;top:0;z-index:3;background:var(--gold);color:var(--ink);
   font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
   text-transform:uppercase;padding:7px 12px}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
@@ -905,7 +925,7 @@ button{font:inherit;color:inherit}
 
 /* ---------- gallery ---------- */
 .pd-gal{position:sticky;top:96px;align-self:start}
-.gal-stage{position:relative;background:var(--cream);border-radius:var(--r);overflow:hidden;
+.gal-stage{border-radius:var(--r-card);position:relative;background:var(--cream);border-radius:var(--r);overflow:hidden;
   aspect-ratio:1/1}
 .gal-stage::before{content:'';position:absolute;inset:0;background:var(--groove-light);
   pointer-events:none;z-index:1}
@@ -1063,7 +1083,7 @@ button{font:inherit;color:inherit}
   border:2px solid transparent;border-radius:var(--r);overflow:hidden;
   transition:border-color .2s,transform .3s}
 .oav-i:hover{border-color:var(--gold);transform:translateY(-3px)}
-.oav-ph{position:relative;aspect-ratio:1/1;background:var(--white);overflow:hidden}
+.oav-ph{border-radius:var(--r-card);position:relative;aspect-ratio:1/1;background:var(--white);overflow:hidden}
 .oav-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
   transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .oav-i:hover .oav-ph img{transform:scale(1.04)}
@@ -1167,7 +1187,7 @@ button{font:inherit;color:inherit}
   font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-muted)}
 .jm-list{padding:0 clamp(22px,2.4vw,32px)}
-.jr{padding:22px 0;border-bottom:1px solid var(--ink-08)}
+.jr{border-radius:var(--r-card);padding:22px 0;border-bottom:1px solid var(--ink-08)}
 .jr:last-child{border-bottom:0}
 .jr-top{display:flex;align-items:center;gap:11px;margin-bottom:9px}
 .jr-av{width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--white);
@@ -1198,7 +1218,7 @@ button{font:inherit;color:inherit}
    ========================================================================== */
 .kit{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
 .kit-i{position:relative;display:flex;flex-direction:column;background:var(--white);
-  border:2px solid var(--ink-08);border-radius:var(--r);overflow:hidden;
+  border:2px solid var(--ink-08);border-radius:var(--r-card);overflow:hidden;
   transition:transform .3s,border-color .2s}
 .kit-i:hover{border-color:var(--gold)}
 .kit-i:hover{transform:translateY(-3px)}
@@ -1312,9 +1332,9 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-wedges">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">Carver LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1329,8 +1349,8 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-putters">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Tracer LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">Tracer LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1345,7 +1365,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Stryker LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1436,20 +1456,20 @@ button{font:inherit;color:inherit}
       
     </div>
 
-    <p class="bx-body">A blade putter cover in signature white and gold. It stops the head knocking against everything else in the bag, which is the entire job and the reason reviewers keep bringing up cart rash.</p>
+    <p class="bx-body">It's a head cover. It goes on the putter, it stays on the putter, and a season later the club still looks like the one in the photos. That is the entire job. Cart rash is the thing reviewers bring up most about a nice putter, and thirty dollars is a cheaper fix than a new one.</p>
 
     <div class="bx-four">
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Blade fit</b><span>For blade-style putter heads</span>
+        <b>Blade fit</b><span>Cut for blade heads</span>
       </div>
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Signature</b><span>White and gold, clover mark</span>
+        <b>White and gold</b><span>Matches the rest of it</span>
       </div>
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Stops rash</b><span>The most-mentioned problem it solves</span>
+        <b>One job</b><span>Stops the bag chewing your putter</span>
       </div>
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
@@ -1490,20 +1510,21 @@ button{font:inherit;color:inherit}
     <div class="gr-two">
       <div class="gr-block">
         <span class="eyebrow">What it's for</span>
-        <h2 class="disp d-m">Cart rash is the most common complaint about a nice putter</h2>
-        <p class="body">A putter spends four hours a round bouncing off the other clubs in a bag that is being driven around a course. The head is the part you look at every green, and it is the part that picks up the marks.</p>
-        <p class="body">This is the fix, and it is the least interesting thing you will buy this year. It goes on the head, it stays there, and the club still looks new in a season.</p>
+        <h2 class="disp d-m">Your putter spends most of the round in the bag</h2>
+        <p class="body">Four hours of it, wedged against a set of irons, in a cart going over kerbs. The head is the part every playing partner sees on every green, and it is the part that collects the dings.</p>
+        <p class="body">Nobody has ever been thrilled to buy a head cover. Buy one anyway. It is the least interesting thirty dollars you will spend this season and the putter will thank you for it in about a year.</p>
 
         
       </div>
       <div class="gr-block">
         <span class="eyebrow">What it fits</span>
-        <h2 class="disp d-m">Blade heads</h2>
-        <p class="body">Made for a blade-style putter head &mdash; the Tracer LGP01 Blade, and most other blades. If you play a mallet, the Lucky Mallet Cover is the one you want and it comes in right and left hand.</p>
+        <h2 class="disp d-m">Blades. Not mallets.</h2>
+        <p class="body">Cut for a blade head &mdash; the Tracer LGP01, and most other blades. If you play a mallet this is the wrong one: the Lucky Mallet Cover is shaped for that head and comes in right and left hand.</p>
 
         
         <ul class="club-specs">
-          <li><b>Fits</b><span>Blade putter heads</span></li>
+          <li><b>Type</b><span>Blade putter cover</span></li>
+          <li><b>Fits</b><span>Blade heads, including the Tracer LGP01</span></li>
           <li><b>Colourway</b><span>Signature white and gold</span></li>
           <li><b>Closure</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
           <li><b>Material</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
@@ -1536,34 +1557,34 @@ button{font:inherit;color:inherit}
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Goes with</span>
-    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">The clubs it protects</h2>
+    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">What it goes on, and what else is missing</h2>
     <div class="pgrid msnap">
 
       <article class="ptile">
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851" alt="Lucky Mallet Cover" loading="lazy" width="800" height="800">
+          </div>
         <span class="pt-sku">HC</span>
         <a class="pt-nm stretch" href="#">Lucky Mallet Cover</a>
-        <p class="pt-hook">The same cover for a mallet head. Right or left hand.</p>
+        <p class="pt-hook">The mallet version. Same idea, different shape, and it knows which hand you play.</p>
         <div class="pt-meta"><span class="pt-pr">$29.95</span><span class="pt-rt">Right &amp; left hand</span></div>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851" alt="Lucky Mallet Cover" loading="lazy" width="800" height="800"></div>
-        
       </article>
 
       <article class="ptile">
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="Tracer LGP02 Mallet" loading="lazy" width="800" height="800">
+          </div>
         <span class="pt-sku">LGP02</span>
         <a class="pt-nm stretch" href="20-product-lgp02-gold.html">Tracer Mallet</a>
-        <p class="pt-hook">The mallet. Oversized 3.0 grip fitted, right or left hand.</p>
+        <p class="pt-hook">The mallet. Oversized 3.0 grip already fitted, right or left hand.</p>
         <div class="pt-meta"><span class="pt-pr">$229</span><span class="pt-rt">4.71 &#9733; 58</span></div>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134" alt="Tracer LGP02 Mallet" loading="lazy" width="800" height="800"></div>
-        
       </article>
 
       <article class="ptile">
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="Tracer LGP01 Blade" loading="lazy" width="800" height="800">
+          </div>
         <span class="pt-sku">LGP01</span>
         <a class="pt-nm stretch" href="#">Tracer Blade</a>
-        <p class="pt-hook">The blade this cover is cut for. Currently sold out.</p>
+        <p class="pt-hook">The blade this is cut for. Sold out at the moment, which is its own kind of review.</p>
         <div class="pt-meta"><span class="pt-pr">$199</span><span class="pt-rt">4.86 &#9733; 147</span></div>
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="Tracer LGP01 Blade" loading="lazy" width="800" height="800"></div>
-        
       </article>
 
     </div>
@@ -1835,7 +1856,7 @@ var PD_REEL = [];
 
 /* Cart cross-sell, from the copy file. Read by core's paintUpsell(); rows
    already in the bag are filtered out there. */
-var LG_CART_UPSELL = [{"sku": "HeadCover-Driver-SignatureWhite", "name": "Driver Head Cover", "price": "$40", "variant": "", "why": "Same signature white, for the big one.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"}, {"sku": "TEES-25", "name": "Lucky Golf Tees", "price": "$9.95", "variant": "25 tees", "why": "You are always out of tees.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"}];
+var LG_CART_UPSELL = [{"sku": "HeadCover-Driver-SignatureWhite", "name": "Driver Head Cover", "price": "$40", "variant": "", "why": "Same white and gold, considerably more surface area to protect.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"}, {"sku": "TEES-25", "name": "Lucky Golf Tees", "price": "$9.95", "variant": "25 tees", "why": "You are out of tees. You are always out of tees.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"}];
 
 /* Finish-the-look cross-sell: polos and hats only. Cole's call — gear is a
    grab-bag, apparel completes the look and is the same voice as the club. */

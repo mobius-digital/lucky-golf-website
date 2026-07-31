@@ -73,7 +73,15 @@
   --pad:clamp(20px,4.2vw,68px);
   --gut:clamp(16px,1.6vw,26px);
   --sec:clamp(64px,6.6vw,112px);
-  --r:4px;
+  /* ---- RADIUS SCALE ----
+     One radius does not fit a 48px chip and a 420px product card: at 4px a
+     card reads as a rectangle with a chamfer, which is what made the tiles
+     look rigid. Two steps, and the rule is about the SIZE of the surface:
+       --r       controls — chips, buttons, inputs, selects, small badges
+       --r-card  surfaces — product tiles, panels, image wells, modals
+     Supersedes the flat 4px locked in HANDOFF §4. Borders stay 2px. */
+  --r:6px;
+  --r-card:14px;
 }
 
 *{box-sizing:border-box}
@@ -611,8 +619,9 @@ button{font:inherit;color:inherit}
 .mega-wrap{max-width:700px;margin:0 auto}
 .mega-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .mtile{position:relative;overflow:hidden;background:var(--cream);min-height:158px;
+  border-radius:var(--r-card);
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;
-  padding:20px 150px 20px 22px;
+  padding:20px 156px 20px 22px;
   border:2px solid transparent;transition:border-color .14s,background .14s}
 /* no black hover border (HANDOFF §3). The cream -> white swap and the image
    nudge already carry the hover; the outline was the off-brand part.
@@ -622,8 +631,13 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;letter-spacing:-.005em;font-size:1.7rem;line-height:.92;
   position:relative;z-index:2}
 .mtile .mt-sub{font-size:.84rem;color:var(--ink-muted);margin-top:5px;position:relative;z-index:2}
-.mtile .mt-img{position:absolute;right:-14px;bottom:-24px;width:172px;height:172px;
-  object-fit:contain;z-index:1;pointer-events:none;
+/* The club used to sit at right:-14px bottom:-24px and bleed off the tile,
+   which with overflow:hidden meant the head was sliced down its right edge and
+   along the bottom — Cole spotted it on the LGW01. A wedge photographed on the
+   diagonal has no spare margin to give away. Fully inside the tile now, and
+   the hover nudge is what carries the movement the bleed was reaching for. */
+.mtile .mt-img{position:absolute;right:12px;bottom:12px;width:128px;height:128px;
+  object-fit:contain;object-position:center;z-index:1;pointer-events:none;
   transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .mtile:hover .mt-img{transform:scale(1.05) rotate(-2deg)}
 .mtile .mt-ph{position:absolute;right:10px;bottom:10px;width:124px;height:96px;z-index:1;
@@ -640,12 +654,17 @@ button{font:inherit;color:inherit}
 .mega-foot .aside{color:var(--ink-muted);font-size:.92rem}
 
 /* ==========================================================================
-   PRODUCT TILES — Takomo pattern: text above, photo below, tag bottom-left.
+   PRODUCT TILES — photo first, then name and price.
+   The first cut had text above the photo, from a misread of Takomo; their
+   cards lead with the image on a panel and put the name and price under it.
+   Cole caught it. The photo is the thing being shopped, so it goes first in
+   the markup as well as in the layout — DOM order matches reading order.
    One tile per club, never a family. Price is the real price, no "from".
    ========================================================================== */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
 .ptile{position:relative;isolation:isolate;background:var(--cream);overflow:hidden;
-  display:flex;flex-direction:column;padding:30px 26px 0;text-align:center;
+  border-radius:var(--r-card);
+  display:flex;flex-direction:column;padding:30px 26px 26px;text-align:center;
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s}
@@ -660,12 +679,13 @@ button{font:inherit;color:inherit}
 .ptile .pt-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
   font-size:1.02rem}
 .ptile .pt-rt{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink-muted)}
-.ptile .pt-ph{margin:18px -26px 0;aspect-ratio:1/1;overflow:hidden;position:relative}
+.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative;
+  background:var(--white)}
 .ptile .pt-ph img{width:100%;height:100%;object-fit:cover;
   transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .ptile:hover .pt-ph img{transform:scale(1.04)}
 .ptile .pt-ph .ph{position:absolute;inset:0;border:0}
-.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;background:var(--gold);color:var(--ink);
+.ptile .pt-tag{position:absolute;left:0;top:0;z-index:3;background:var(--gold);color:var(--ink);
   font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
   text-transform:uppercase;padding:7px 12px}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
@@ -1021,9 +1041,9 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-wedges">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">Carver LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Carver LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1038,8 +1058,8 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-putters">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Tracer LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">Tracer LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1054,7 +1074,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Stryker LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="#"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1375,13 +1395,6 @@ var PLP = {"id": "gear", "name": "Gear", "facets": [{"k": "headcover", "label": 
   function tile(p){
     var out = !p.inStock;
     return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
-      + '<span class="pt-sku">' + esc(p.code) + '</span>'
-      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
-        + esc(p.name) + '</span></a>'
-      + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
-      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
-      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
-      + '</span>'
       + '<div class="pt-ph">'
       + (p.img
           ? '<img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy"'
@@ -1390,8 +1403,15 @@ var PLP = {"id": "gear", "name": "Gear", "facets": [{"k": "headcover", "label": 
              so it gets a labelled slot rather than a broken image */
           : '<div class="ph"><span class="lbl"><span class="mono k">Photo needed</span>'
             + '<span class="mono">' + esc(p.title) + '</span></span></div>')
-      + '</div>'
       + (out ? '<span class="pt-tag">Sold out</span>' : '')
+      + '</div>'
+      + '<span class="pt-sku">' + esc(p.code) + '</span>'
+      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
+        + esc(p.name) + '</span></a>'
+      + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
+      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
+      + '</span>'
       + '</article>';
   }
 

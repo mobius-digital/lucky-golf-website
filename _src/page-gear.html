@@ -154,12 +154,12 @@
     <div class="pgrid msnap">
 {{#bag}}
       <article class="ptile">
+        <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800">
+          {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}</div>
         <span class="pt-sku">{{code}}</span>
         <a class="pt-nm stretch" href="{{href}}">{{name}}</a>
         <p class="pt-hook">{{hook}}</p>
         <div class="pt-meta"><span class="pt-pr">{{priceLabel}}</span><span class="pt-rt">{{meta}}</span></div>
-        <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800"></div>
-        {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}
       </article>
 {{/bag}}
     </div>

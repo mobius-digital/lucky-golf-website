@@ -14,7 +14,7 @@
 .sib-hd h2{margin:0}
 .sibs{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .sib{position:relative;display:flex;flex-direction:column;gap:8px;
-  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r-card);
   padding:12px 12px 14px;transition:border-color .18s,transform .3s}
 .sib:hover{border-color:var(--ink);transform:translateY(-2px)}
 .sib-ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);

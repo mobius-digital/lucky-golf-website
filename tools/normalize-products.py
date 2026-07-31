@@ -188,17 +188,17 @@ EDITORIAL = {
     "blackout-blade-polo": dict(id="polo-blackout", tpl="apparel", fam="polo-blade", code="LGA-BP", name="Blackout Blade Polo", coll="polos"),
 
     # --- hats. Zero axes, so they exercise the 0-axis buy box too. ---------
-    "white-gold-classic-hat":                 dict(id="hat-white-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="White | Gold Classic Hat", coll="hats"),
-    "white-its-better-to-be-lucky-patch-hat": dict(id="hat-white-ibtbl",         tpl="apparel", fam="hat", code="HAT", name="It's Better To Be Lucky Hat, white", coll="hats"),
-    "cream-upside-down-hat":                  dict(id="hat-cream-updown",        tpl="apparel", fam="hat", code="HAT", name="Cream Upside Down Hat",    coll="hats"),
-    "black-its-better-to-be-lucky-patch-hat": dict(id="hat-black-ibtbl",         tpl="apparel", fam="hat", code="HAT", name="It's Better To Be Lucky Hat, black", coll="hats"),
-    "tan-cursive-hat":                        dict(id="hat-tan-cursive",         tpl="apparel", fam="hat", code="HAT", name="Tan Cursive Hat",          coll="hats"),
-    "black-gold-classic-lucky-hat":           dict(id="hat-black-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="Black | Gold Classic Hat", coll="hats", note="Sold out."),
-    "white-black-upside-down-hat":            dict(id="hat-white-black-updown",  tpl="apparel", fam="hat", code="HAT", name="White/Black Upside Down Hat", coll="hats"),
+    "white-gold-classic-hat":                 dict(id="hat-white-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="White | Gold Classic Hat", coll="hats", built=True),
+    "white-its-better-to-be-lucky-patch-hat": dict(id="hat-white-ibtbl",         tpl="apparel", fam="hat", code="HAT", name="It's Better To Be Lucky Hat, white", coll="hats", built=True),
+    "cream-upside-down-hat":                  dict(id="hat-cream-updown",        tpl="apparel", fam="hat", code="HAT", name="Cream Upside Down Hat",    coll="hats", built=True),
+    "black-its-better-to-be-lucky-patch-hat": dict(id="hat-black-ibtbl",         tpl="apparel", fam="hat", code="HAT", name="It's Better To Be Lucky Hat, black", coll="hats", built=True),
+    "tan-cursive-hat":                        dict(id="hat-tan-cursive",         tpl="apparel", fam="hat", code="HAT", name="Tan Cursive Hat",          coll="hats", built=True),
+    "black-gold-classic-lucky-hat":           dict(id="hat-black-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="Black | Gold Classic Hat", coll="hats", built=True, note="Sold out."),
+    "white-black-upside-down-hat":            dict(id="hat-white-black-updown",  tpl="apparel", fam="hat", code="HAT", name="White/Black Upside Down Hat", coll="hats", built=True),
     "white-upside-down-hat":                  dict(id="hat-white-updown",        tpl="apparel", fam="hat", code="HAT", name="White Upside Down Hat",    coll="hats",
-                                                   note="ASSET BROKEN: 59.webp has inverted lettering (HANDOFF 6). Needs a reshoot before this page ships."),
-    "white-cursive-hat":                      dict(id="hat-white-cursive",       tpl="apparel", fam="hat", code="HAT", name="White Cursive Hat",        coll="hats"),
-    "baby-blue-cursive-hat":                  dict(id="hat-baby-blue-cursive",   tpl="apparel", fam="hat", code="HAT", name="Baby Blue Cursive Hat",    coll="hats"),
+                                                   note="NOT BUILT — its only photograph (59.webp) has inverted lettering (HANDOFF 6). A page whose single image is wrong is worse than no page. Needs a reshoot, then flip built=True."),
+    "white-cursive-hat":                      dict(id="hat-white-cursive",       tpl="apparel", fam="hat", code="HAT", name="White Cursive Hat",        coll="hats", built=True),
+    "baby-blue-cursive-hat":                  dict(id="hat-baby-blue-cursive",   tpl="apparel", fam="hat", code="HAT", name="Baby Blue Cursive Hat",    coll="hats", built=True),
 
     # --- gear --------------------------------------------------------------
     "lucky-putter-head-cover-blade":        dict(id="cover-blade",   tpl="gear", fam="headcover", code="HC", name="Lucky Blade Cover",  coll="gear", built=True),

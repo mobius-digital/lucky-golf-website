@@ -195,7 +195,18 @@ def product_copy(prod):
     if not os.path.exists(path):
         sys.exit("%s is marked built but has no editorial: _src/data/copy/%s.json"
                  % (prod["id"], prod["id"]))
-    copy = json.load(open(path, encoding="utf8"))
+
+    # Family defaults, merged UNDER the product's own file. Thirteen polos share
+    # one fabric, one fit note, one size guide and one returns line; writing
+    # that thirteen times is thirteen chances for it to drift. The product file
+    # carries only what is actually different about that product, and any key
+    # it does set wins outright — no deep merging, because a half-overridden
+    # list is harder to reason about than a repeated one.
+    fam_path = os.path.join(SRC, "data", "copy", "_family-%s.json" % prod["family"])
+    copy = {}
+    if os.path.exists(fam_path):
+        copy.update(json.load(open(fam_path, encoding="utf8")))
+    copy.update(json.load(open(path, encoding="utf8")))
 
     coll = sitemap.collection(prod["collection"])
     ctx = {k: v for k, v in copy.items() if not k.startswith("_")}

@@ -929,3 +929,68 @@ a page that looks right and does nothing.
 
 No template edits. The registry already routes all 44, and `product_copy()`
 fails the build if a product is marked built without an editorial file.
+
+---
+
+## 13. Cole's review notes, 2026-07-31 (rev after Phase C)
+
+Six notes off the first real look at the built pages. Five are done; one is not.
+
+**1. Mega-menu club photos were clipped.** `.mt-img` sat at `right:-14px;
+bottom:-24px` and bled off a tile with `overflow:hidden`, so the LGW01 head was
+sliced down its right edge. A wedge shot on the diagonal has no spare margin to
+give away. Now fully inside the tile (`right:12px; bottom:12px; 128px`), with
+the tile's right padding widened to 156px to match. The hover nudge carries the
+movement the bleed was reaching for.
+
+**2. Mega menu drops the family word.** Cole's call: the menu shows the code,
+not "Carver" in front of it — `LGW01 Gold`, `LGW02 Gold`, `LGW02 Black`,
+`LGP01 Blade`, `LGP02 Mallet`, `LGH01`. The finish stays because two of the
+wedges are both LGW02. Page H1s keep the full `Carver LGW01 Gold`.
+
+**3. Club collection pages — NOT DONE.** Cole sent Takomo's Iron Sets page as
+the reference: products grouped into labelled bands, a "what's the difference"
+comparison table with spec bars, a fitting CTA, then brand story sections. Ours
+is one flat filtered grid. This is a real piece of work and it is the largest
+outstanding item.
+
+**4. Gear copy was too serious — fixed on the cover.** Takomo's glove page is
+dry about what the thing is ("yeah, it's a glove") and then useful. The blade
+cover now opens "It's a head cover. It goes on the putter, it stays on the
+putter" and keeps the compact spec list. **This is the voice for the remaining
+twelve gear pages.**
+
+**5. Product cards were text-first.** They were built text-above-photo from a
+misread of Takomo, whose cards lead with the image. Reordered in the MARKUP, not
+with CSS `order`, so DOM sequence matches reading order — in all three places
+tiles are built (homepage, the PDP cross-sell grids, `page-plp.js`). The tag
+chip moved onto the photo.
+
+**6. Radius — there was no standard, and that was the problem.**
+`.ptile` had **no border-radius at all**; everything else used a flat 4px, which
+on a 420px card reads as a chamfer rather than a corner. Now a two-step scale,
+because one radius cannot serve a 48px chip and a 420px card:
+
+```
+--r        6px   controls  — chips, buttons, inputs, selects, small badges
+--r-card  14px   surfaces  — product tiles, panels, image wells, modals
+```
+
+Supersedes the flat 4px locked in §4. Borders stay 2px. **Rule: the radius
+follows the size of the surface, not the type of component.**
+
+### 13a. Phase D — family defaults
+
+`_src/data/copy/_family-<family>.json` merges **under** each product's own file.
+Thirteen polos share one fabric block, one fit note, one size guide and one
+returns line; writing that thirteen times is thirteen chances for it to drift.
+A product file carries only what is different about that product, and any key it
+sets wins outright — no deep merging, because a half-overridden list is harder
+to reason about than a repeated one.
+
+**Nine hat pages built this way.** Each file is a photo, a buy-box line, a
+design story and a lifestyle brief. Everything else comes from the family file.
+
+**The tenth hat is deliberately not built.** White Upside Down's only photograph
+is `59.webp`, which has inverted lettering (§6). A page whose single image is
+wrong is worse than no page. Reshoot, then flip `built=True`.

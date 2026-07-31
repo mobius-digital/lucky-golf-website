@@ -89,13 +89,6 @@ var PLP = {{COLLECTION_JSON}};
   function tile(p){
     var out = !p.inStock;
     return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
-      + '<span class="pt-sku">' + esc(p.code) + '</span>'
-      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
-        + esc(p.name) + '</span></a>'
-      + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
-      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
-      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
-      + '</span>'
       + '<div class="pt-ph">'
       + (p.img
           ? '<img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy"'
@@ -104,8 +97,15 @@ var PLP = {{COLLECTION_JSON}};
              so it gets a labelled slot rather than a broken image */
           : '<div class="ph"><span class="lbl"><span class="mono k">Photo needed</span>'
             + '<span class="mono">' + esc(p.title) + '</span></span></div>')
-      + '</div>'
       + (out ? '<span class="pt-tag">Sold out</span>' : '')
+      + '</div>'
+      + '<span class="pt-sku">' + esc(p.code) + '</span>'
+      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
+        + esc(p.name) + '</span></a>'
+      + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
+      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
+      + '</span>'
       + '</article>';
   }
 
