@@ -1,5 +1,5 @@
 {
-  "_": "Editorial for LGW01 Carver Gold. Catalogue facts (price, SKUs, stock, axes) come from products.json — never repeat them here.",
+  "_": "Editorial for Carver LGW01 Gold. Catalogue facts (price, SKUs, stock, axes) come from products.json — never repeat them here.",
   "_specs": "Numbers below are from the copy skill's Product Reference Guide, the only source for LGW01 (its Shopify descriptionHtml is empty). Shafts are the documented exception: the guide says KBS, Cole overrode it 2026-07-31. See HANDOFF §9.",
   "eyebrow": "The Carver &middot; Wedges",
   "galleryTag": "Best seller",
@@ -7,55 +7,55 @@
   "gallery": [
     [
       "11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
-      "LGW01 Carver Gold wedge, face on"
+      "Carver LGW01 Gold wedge, face on"
     ],
     [
       "9_e72fa738-81c3-4ee6-9013-c8ca2a153745.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, sole"
+      "Carver LGW01 Gold wedge, sole"
     ],
     [
       "12_5bea3d04-db05-40df-b68e-c408d3d70b9c.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, address position"
+      "Carver LGW01 Gold wedge, address position"
     ],
     [
       "1_8996f3e6-4df5-4a4c-9ac6-8a3528b59702.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, back"
+      "Carver LGW01 Gold wedge, back"
     ],
     [
       "6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, full club"
+      "Carver LGW01 Gold wedge, full club"
     ],
     [
       "2_b0f7ffdb-e65e-4c7e-ad97-79598e434ae9.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, toe profile"
+      "Carver LGW01 Gold wedge, toe profile"
     ],
     [
       "4_744b4c6e-a04c-4618-9d58-9a36314000d8.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, milled face detail"
+      "Carver LGW01 Gold wedge, milled face detail"
     ],
     [
       "5_8e9c3269-c2a3-4274-b027-b42c3c624532.webp?v=1782597869",
-      "LGW01 Carver Gold wedge, hosel"
+      "Carver LGW01 Gold wedge, hosel"
     ],
     [
       "8_b14a5dfe-6780-4ff8-ac59-70bb0b2e7a9e.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, heel profile"
+      "Carver LGW01 Gold wedge, heel profile"
     ],
     [
       "7_b0aefaca-bb58-4481-b70b-efd2a7a63d5e.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, grip"
+      "Carver LGW01 Gold wedge, grip"
     ],
     [
       "3_165e743e-727f-42cf-88c9-c3b834fccbea.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, three-quarter view"
+      "Carver LGW01 Gold wedge, three-quarter view"
     ],
     [
       "10_eb0cd992-4e1f-4285-8b83-8a351d94d640.webp?v=1782597868",
-      "LGW01 Carver Gold wedge, clover mark"
+      "Carver LGW01 Gold wedge, clover mark"
     ],
     [
       "13_e0814fc8-9c00-480c-9771-fe9a8847b5ff.webp?v=1782597869",
-      "LGW01 Carver Gold wedge, top line"
+      "Carver LGW01 Gold wedge, top line"
     ]
   ],
   "pullQuote": {
@@ -84,7 +84,7 @@
     }
   ],
   "whatYouGet": [
-    "One LGW01 Carver Gold wedge in the loft and hand you picked",
+    "One Carver LGW01 Gold wedge in the loft and hand you picked",
     "Lucky Golf stock steel shaft (KBS becomes an option soon)",
     "Lucky Golf grip",
     "Headcover: <span class=\"tbd tbd--light\">Confirm</span>"
@@ -173,7 +173,7 @@
   "specTabs": [
     {
       "label": "Club",
-      "caption": "LGW01 Carver &mdash; club",
+      "caption": "Carver LGW01 &mdash; club",
       "rows": [
         {
           "k": "Body material",
@@ -219,12 +219,12 @@
     },
     {
       "label": "By loft",
-      "caption": "LGW01 Carver &mdash; by loft",
+      "caption": "Carver LGW01 &mdash; by loft",
       "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Price</th><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td colspan=\"6\"><span class=\"tbd tbd--light\">Needs spec &mdash; varies by loft</span></td></tr><tr><th scope=\"row\">Length (in)</th><td colspan=\"6\"><span class=\"tbd tbd--light\">Needs spec &mdash; varies by loft</span></td></tr></tbody></table>"
     },
     {
       "label": "Shaft &amp; grip",
-      "caption": "LGW01 Carver &mdash; shaft &amp; grip",
+      "caption": "Carver LGW01 &mdash; shaft &amp; grip",
       "rows": [
         {
           "k": "Shaft, stock",
@@ -270,7 +270,7 @@
   "quote": {
     "q": "I have played 10 plus rounds with this club and I love it. I can confidently place the ball within 5ft of where I am aiming with this thing.",
     "name": "Dan T.",
-    "meta": "LGW01 Carver 60&deg; &middot; 5 stars &middot; verified buyer"
+    "meta": "Carver LGW01 60&deg; &middot; 5 stars &middot; verified buyer"
   },
   "reviewHeadline": "What 551 golfers said",
   "jmSummary": {
@@ -299,18 +299,18 @@
   "bag": [
     {
       "id": "lgw02-gold",
-      "name": "Carver Gold V2",
+      "name": "Carver Gold",
       "code": "LGW02",
       "meta": "4.78 &#9733; 69",
       "hook": "The same forged feel, with a reshaped edge and softer sole that handle more lies."
     },
     {
       "id": "lgw02-black",
-      "name": "Carver Shadow",
-      "code": "LGW02 Black",
+      "name": "Carver Black",
+      "code": "LGW02",
       "meta": "6 lofts",
       "tag": "New",
-      "hook": "Everything the V2 does around the greens, in a finish that stays quiet in the bag."
+      "hook": "Everything the LGW02 does around the greens, in a finish that stays quiet in the bag."
     },
     {
       "id": "lgh01",

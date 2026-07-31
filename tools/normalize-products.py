@@ -113,9 +113,10 @@ def norm_value(key, raw):
 #            so it is a routing identifier: renaming one moves a URL.
 #   tpl      which PDP template renders it — club | apparel | gear (GAMEPLAN 3)
 #   fam      family, drives the help-me-choose module and the breadcrumb
-#   name     display name. Brand guide leads with the family name, so the page
-#            H1 is `code + " " + name` -> "LGW01 Carver Gold", which is what
-#            the shipped PDP already says.
+#   name     short form for product tiles, where `code` is stamped beside it
+#   title    the full name: family, code, finish. Drives the H1, the page
+#            <title> and breadcrumbs. Clubs only; apparel and gear fall back
+#            to `name`. Locked by Cole 2026-07-31 — do not re-litigate.
 #   coll     our collection slug for the breadcrumb (see COLLECTIONS)
 #   rating   [average, count] from Judge.me (HANDOFF 5). Absent = no reviews.
 #   default  variant key to preselect. LGW01 is pinned to RH|56 because that is
@@ -128,35 +129,43 @@ EDITORIAL = {
     # --- clubs -------------------------------------------------------------
     "v1-gold-lucky-golf-wedge": dict(
         id="lgw01-gold", tpl="club", fam="wedge", code="LGW01", name="Carver Gold",
+        title="Carver LGW01 Gold",
         coll="wedges", rating=[4.81, 551], default="RH|56", built=True,
         file="02-pdp-lgw01.html"),
     "v2-signature-gold-wedge-1": dict(
         id="lgw02-gold", tpl="club", fam="wedge", code="LGW02", name="Carver Gold",
+        title="Carver LGW02 Gold",
         coll="wedges", rating=[4.78, 69],
         note="Only 3 lofts (52/56/60), not 6. Any '6 lofts' copy about this one is wrong."),
     "lucky-golf-lgw02-black": dict(
         id="lgw02-black", tpl="club", fam="wedge", code="LGW02", name="Carver Black",
+        title="Carver LGW02 Black",
         coll="wedges",
         note="RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — "
              "false for this one. Also called 'Carver Shadow' in the PDP's browse rail; "
              "see HANDOFF 9 open item C, naming is Cole's call."),
     "signature-gold-putters": dict(
         id="lgp01-gold", tpl="club", fam="putter", code="LGP01", name="Tracer Blade",
+        title="Tracer LGP01 Blade",
         coll="putters", rating=[4.86, 147],
         note="Sold out (qty -12, availableForSale false) and right hand only."),
     "limited-edition-mallet-putter": dict(
         id="lgp02-gold", tpl="club", fam="putter", code="LGP02", name="Tracer Mallet",
+        title="Tracer LGP02 Mallet",
         coll="putters", rating=[4.71, 58], built=True),
     "lgp02-mallet-putter-patriot": dict(
-        id="lgp02-patriot", tpl="club", fam="putter", code="LGP02", name="Tracer Mallet Patriot",
+        id="lgp02-patriot", tpl="club", fam="putter", code="LGP02", name="Tracer Patriot",
+        title="Tracer LGP02 Patriot",
         coll="putters",
         note="Sold out. A colourway of LGP02, not a separate model — the apparel "
              "template's sibling strip is the right pattern here, on a club page."),
     "lucky-striker-hybrid-limited-edition": dict(
         id="lgh01", tpl="club", fam="hybrid", code="LGH01", name="Stryker",
+        title="Stryker LGH01",
         coll="hybrid-driver", rating=[4.60, 20]),
     "lucky-gold-driver-pre-order_": dict(
         id="lgd01", tpl="club", fam="driver", code="LGD01", name="Lucky Driver",
+        title="Lucky Driver LGD01",
         coll="hybrid-driver", rating=[4.33, 39],
         note="Zero variant axes — the 0-axis case for the buy box. Shopify handle "
              "still says 'pre-order'; it is in stock (86)."),
@@ -378,7 +387,10 @@ def build_product(raw):
         "collection": ed["coll"],
         "code": ed["code"],
         "name": ed["name"],
-        "title": ("%s %s" % (ed["code"], ed["name"])) if ed["tpl"] == "club" else ed["name"],
+        # Cole locked this 2026-07-31: family, then code, then finish for
+        # clubs; apparel and gear keep their descriptive names. `name` stays
+        # the short form for tiles, where `code` is stamped alongside it.
+        "title": ed.get("title", ed["name"]),
         "shopifyHandle": raw["handle"],
         "shopifyTitle": raw["title"],
         "img": (IMG_BASE + raw["img"]) if raw["img"] else None,

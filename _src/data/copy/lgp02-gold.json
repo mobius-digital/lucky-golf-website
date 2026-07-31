@@ -1,5 +1,5 @@
 {
-  "_": "Editorial for LGP02 Tracer Mallet. Catalogue facts come from products.json.",
+  "_": "Editorial for Tracer LGP02 Mallet. Catalogue facts come from products.json.",
   "_specs": "Loft, lie, weight, length and grip are verbatim from the Shopify descriptionHtml, which for LGP02 actually has content (unlike LGW01). Head material is NOT stated for LGP02 — LGP01's description says 431 stainless, but that is a different head and is not assumed here.",
   "_proves": "This is the Phase C proof for the club template: one axis instead of two, blade-or-mallet instead of the loft ladder, and a spec table with no by-loft matrix. No template change was needed for any of it.",
 
@@ -7,17 +7,17 @@
   "galleryTag": "",
   "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
   "gallery": [
-    ["11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134", "LGP02 Tracer Mallet putter, face on"],
-    ["1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133", "LGP02 Tracer Mallet putter, full club"],
-    ["2_4518fe6e-f25e-4eca-a48e-688b1f09cf7e.webp?v=1782598133", "LGP02 Tracer Mallet putter, sole"],
-    ["3_ae5c4333-764f-45d4-9c66-e273bc69126a.webp?v=1782598134", "LGP02 Tracer Mallet putter, address position"],
-    ["4_ff40f8a6-5ea8-47ea-81e5-adc7b51adecc.webp?v=1782598134", "LGP02 Tracer Mallet putter, alignment lines"],
-    ["5_d4dc02e3-6a1a-4a7a-9a4e-d46c39c18bc2.webp?v=1782598134", "LGP02 Tracer Mallet putter, toe profile"],
-    ["6_b48ef32d-d670-47d7-ad36-4bf7a466e2f8.webp?v=1782598134", "LGP02 Tracer Mallet putter, heel profile"],
-    ["7_e54ccbdc-f5aa-4c78-ab50-b5cdfb104b2f.webp?v=1782598134", "LGP02 Tracer Mallet putter, oversized grip"],
-    ["8_a32edd17-2924-472d-8767-0919e47bff83.webp?v=1782598134", "LGP02 Tracer Mallet putter, three-quarter view"],
-    ["Copy_of_LGP02.webp?v=1782598471", "LGP02 Tracer Mallet putter, head detail"],
-    ["Copy_of_LGP02_1.webp?v=1782598471", "LGP02 Tracer Mallet putter, clover mark"]
+    ["11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134", "Tracer LGP02 Mallet putter, face on"],
+    ["1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133", "Tracer LGP02 Mallet putter, full club"],
+    ["2_4518fe6e-f25e-4eca-a48e-688b1f09cf7e.webp?v=1782598133", "Tracer LGP02 Mallet putter, sole"],
+    ["3_ae5c4333-764f-45d4-9c66-e273bc69126a.webp?v=1782598134", "Tracer LGP02 Mallet putter, address position"],
+    ["4_ff40f8a6-5ea8-47ea-81e5-adc7b51adecc.webp?v=1782598134", "Tracer LGP02 Mallet putter, alignment lines"],
+    ["5_d4dc02e3-6a1a-4a7a-9a4e-d46c39c18bc2.webp?v=1782598134", "Tracer LGP02 Mallet putter, toe profile"],
+    ["6_b48ef32d-d670-47d7-ad36-4bf7a466e2f8.webp?v=1782598134", "Tracer LGP02 Mallet putter, heel profile"],
+    ["7_e54ccbdc-f5aa-4c78-ab50-b5cdfb104b2f.webp?v=1782598134", "Tracer LGP02 Mallet putter, oversized grip"],
+    ["8_a32edd17-2924-472d-8767-0919e47bff83.webp?v=1782598134", "Tracer LGP02 Mallet putter, three-quarter view"],
+    ["Copy_of_LGP02.webp?v=1782598471", "Tracer LGP02 Mallet putter, head detail"],
+    ["Copy_of_LGP02_1.webp?v=1782598471", "Tracer LGP02 Mallet putter, clover mark"]
   ],
 
   "pullQuote": {
@@ -37,7 +37,7 @@
   ],
 
   "whatYouGet": [
-    "One LGP02 Tracer Mallet putter in the hand you picked",
+    "One Tracer LGP02 Mallet putter in the hand you picked",
     "Oversized 3.0 white and gold Lucky putter grip, fitted",
     "35&quot; Lucky Approved shaft",
     "Head cover: <span class=\"tbd tbd--light\">Confirm</span> &mdash; several reviewers expected one and it did not arrive"
@@ -122,7 +122,7 @@
   "specTabs": [
     {
       "label": "Club",
-      "caption": "LGP02 Tracer Mallet &mdash; club",
+      "caption": "Tracer LGP02 &mdash; club",
       "rows": [
         {"k": "Head style",    "v": "Mallet"},
         {"k": "Loft",          "v": "3.5&deg;"},
@@ -138,7 +138,7 @@
     },
     {
       "label": "Shaft &amp; grip",
-      "caption": "LGP02 Tracer Mallet &mdash; shaft &amp; grip",
+      "caption": "Tracer LGP02 &mdash; shaft &amp; grip",
       "rows": [
         {"k": "Shaft",         "v": "Lucky Approved, 35&quot;"},
         {"k": "Grip",          "v": "Oversized 3.0 putter grip, white and gold"},
@@ -164,7 +164,7 @@
   "quote": {
     "q": "Putter is well balanced and the weight is perfect. I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances.",
     "name": "Patrick S.",
-    "meta": "LGP02 Tracer Mallet &middot; 5 stars &middot; verified buyer"
+    "meta": "Tracer LGP02 Mallet &middot; 5 stars &middot; verified buyer"
   },
 
   "reviewHeadline": "What 58 golfers said",
