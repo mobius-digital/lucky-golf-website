@@ -1,0 +1,194 @@
+{
+ "_": "Verbatim Judge.me reviews for LGH01 Stryker. Real submissions only.",
+ "_complete": "All 20 — one widget page covers the set. Mean is 4.60 -> 4.6, matching the rating Shopify reports, so the histogram is exact rather than sampled.",
+ "_note": "Two themes worth knowing before reading the score: the single 1-star is a one-word complaint that there was no left-hand option, which the product now has, and the two sub-5 reviews that discuss play both flag the SHAFT as soft or twisty. That is the only recurring criticism of this club and the page offers one flex.",
+ "total": 20,
+ "totals": {
+  "5": 16,
+  "1": 1,
+  "4": 2,
+  "3": 1
+ },
+ "sample": [
+  {
+   "n": "Patricia B.",
+   "r": 5,
+   "t": "",
+   "d": "2026-06-25",
+   "q": "Lucky Golf LGH01",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 1,
+   "t": "Lefty??",
+   "d": "2026-04-09",
+   "q": "Lefty??",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Frank C.",
+   "r": 5,
+   "t": "",
+   "d": "2026-03-13",
+   "q": "Great feel and would match it with any other club.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "John L.L.",
+   "r": 5,
+   "t": "Best club in my bag",
+   "d": "2026-02-14",
+   "q": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Richard P.",
+   "r": 5,
+   "t": "Fantastic Clubs",
+   "d": "2026-02-10",
+   "q": "I just received the hybrid lucky gold golf club and it's fantastic, I have the 69 degree wedge and I plan on buying the driver, the weight of the clubs is great and the grip is the best I have have ever used.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 4,
+   "t": "Looks great but waiting to try it out",
+   "d": "2026-02-08",
+   "q": "The club looks fantastic, just as good as advertised! It feels solid too. Haven't got to take a swing with it yet so it's hard to give a true rating. I went with 4 stars until I can actually try it out.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Joanna W.",
+   "r": 5,
+   "t": "Awesome",
+   "d": "2026-01-24",
+   "q": "Got this as a Christmas present for my son. He absolutely loves it and uses it often",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Kyle M.",
+   "r": 5,
+   "t": "",
+   "d": "2026-01-15",
+   "q": "Lucky Golf LGH01",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jeff C.",
+   "r": 5,
+   "t": "Just received mine while it was on sale.",
+   "d": "2025-12-24",
+   "q": "This club is MONEY!!' Please make a 3 wood!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Gerald",
+   "r": 5,
+   "t": "",
+   "d": "2025-12-01",
+   "q": "great weight 220 ball flight so far",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Preston H.",
+   "r": 5,
+   "t": "Lucky hybrid and putter",
+   "d": "2025-11-28",
+   "q": "Both clubs work like a charm!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Blake B.",
+   "r": 5,
+   "t": "Hybrid",
+   "d": "2025-07-12",
+   "q": "It's great",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Dana S.",
+   "r": 5,
+   "t": "Fancy golden hybrid",
+   "d": "2025-05-28",
+   "q": "I really like this hybrid. I'm still getting used to hitting it but I played it last night and what a beautiful sound it made when I struck it right!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Ryan W.",
+   "r": 4,
+   "t": "Hybrid head HOT, the perfect upgrade to fill that gap in the bag",
+   "d": "2025-04-14",
+   "q": "Head performs well, and it looks amazing. The quality is there like the wedges. \nOnly complaint is the shaft, it's a little twisty with my swing speed. would love to be able to upgrade the shaft/grip at check out",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Kyle S.",
+   "r": 3,
+   "t": "Haven't used it yet being winter here",
+   "d": "2025-02-26",
+   "q": "Love the look shaft is pretty soft so I'll be able to shank it so far into the woods I won't even need to go look for my ball will update when I can",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Gregory C.",
+   "r": 5,
+   "t": "Lucky Striker Hybrid (Limited Edition)",
+   "d": "2025-02-22",
+   "q": "Absolutely gorgeous piece of art, can't wait to hit it!!!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "LB06",
+   "r": 5,
+   "t": "Gorgeous!",
+   "d": "2025-02-06",
+   "q": "I'm loving my new hybrid. The gold color is stunning and the performance is unmatched. This club has replaced my sorry 3 wood.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Glenn",
+   "r": 5,
+   "t": "",
+   "d": "2025-01-14",
+   "q": "Awesome looking club. Can't wait to hit it. No club head cover? Really?",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Chas. M.",
+   "r": 5,
+   "t": "Lucky Golf is amazing",
+   "d": "2025-01-12",
+   "q": "I own the 56, Driver, blade and mallet putters. Just got the 19 deg. 3 hybrid. Can't wait for spring. Sometimes a guy just needs to get Lucky. Great products, keep up the good work. Thanks.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "HTB",
+   "r": 5,
+   "t": "Beautiful",
+   "d": "2025-01-06",
+   "q": "Hubby loves it",
+   "v": true,
+   "rep": ""
+  }
+ ]
+}

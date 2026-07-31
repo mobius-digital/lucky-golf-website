@@ -732,8 +732,8 @@
    "default": "RH",
    "summary": "",
    "inStock": false,
-   "built": true,
-   "note": "Sold out. A colourway of LGP02, not a separate model — the apparel template's sibling strip is the right pattern here, on a club page."
+   "built": false,
+   "note": "DISCONTINUED 2026-07-31 (Cole). A fifty-unit run for America's 250th, sold out and being removed from Shopify. Page unbuilt."
   },
   {
    "id": "lgh01",
@@ -816,12 +816,12 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true,
+   "built": false,
    "rating": {
     "avg": 4.33,
     "count": 39
    },
-   "note": "Zero variant axes — the 0-axis case for the buy box. Shopify handle still says 'pre-order'; it is in stock (86)."
+   "note": "DISCONTINUED 2026-07-31 (Cole). This is an old driver that is being removed from Shopify; a new one is coming and its specs are not in the reference guide yet. Page unbuilt — do not rebuild until the new driver's data lands."
   },
   {
    "id": "polo-gold-dust",
@@ -2281,8 +2281,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false,
-   "note": "NOT BUILT — its only photograph (59.webp) has inverted lettering (HANDOFF 6). A page whose single image is wrong is worse than no page. Needs a reshoot, then flip built=True."
+   "built": true,
+   "note": "59.webp has inverted lettering (HANDOFF 6) and is EXCLUDED from the gallery. The product has ten photos; the other nine are fine and the page leads on 60.webp."
   },
   {
    "id": "hat-white-cursive",

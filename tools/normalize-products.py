@@ -157,8 +157,7 @@ EDITORIAL = {
         id="lgp02-patriot", tpl="club", fam="putter", code="LGP02", name="Tracer Patriot",
         title="Tracer LGP02 Patriot",
         coll="putters",
-        note="Sold out. A colourway of LGP02, not a separate model — the apparel "
-             "template's sibling strip is the right pattern here, on a club page.", built=True),
+        note="DISCONTINUED 2026-07-31 (Cole). A fifty-unit run for America's 250th, sold out and being removed from Shopify. Page unbuilt."),
     "lucky-striker-hybrid-limited-edition": dict(
         id="lgh01", tpl="club", fam="hybrid", code="LGH01", name="Stryker",
         title="Stryker LGH01",
@@ -167,8 +166,7 @@ EDITORIAL = {
         id="lgd01", tpl="club", fam="driver", code="LGD01", name="Lucky Driver",
         title="Lucky Driver LGD01",
         coll="hybrid-driver", rating=[4.33, 39],
-        note="Zero variant axes — the 0-axis case for the buy box. Shopify handle "
-             "still says 'pre-order'; it is in stock (86).", built=True),
+        note="DISCONTINUED 2026-07-31 (Cole). This is an old driver that is being removed from Shopify; a new one is coming and its specs are not in the reference guide yet. Page unbuilt — do not rebuild until the new driver's data lands."),
 
     # --- apparel: classic polos -------------------------------------------
     "gold-dust-classic-polo":      dict(id="polo-gold-dust",      tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Dust Classic Polo",      coll="polos", built=True),
@@ -195,8 +193,8 @@ EDITORIAL = {
     "tan-cursive-hat":                        dict(id="hat-tan-cursive",         tpl="apparel", fam="hat", code="HAT", name="Tan Cursive Hat",          coll="hats", built=True),
     "black-gold-classic-lucky-hat":           dict(id="hat-black-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="Black | Gold Classic Hat", coll="hats", built=True, note="Sold out."),
     "white-black-upside-down-hat":            dict(id="hat-white-black-updown",  tpl="apparel", fam="hat", code="HAT", name="White/Black Upside Down Hat", coll="hats", built=True),
-    "white-upside-down-hat":                  dict(id="hat-white-updown",        tpl="apparel", fam="hat", code="HAT", name="White Upside Down Hat",    coll="hats",
-                                                   note="NOT BUILT — its only photograph (59.webp) has inverted lettering (HANDOFF 6). A page whose single image is wrong is worse than no page. Needs a reshoot, then flip built=True."),
+    "white-upside-down-hat":                  dict(id="hat-white-updown",        tpl="apparel", fam="hat", code="HAT", name="White Upside Down Hat",    coll="hats", built=True,
+                                               note="59.webp has inverted lettering (HANDOFF 6) and is EXCLUDED from the gallery. The product has ten photos; the other nine are fine and the page leads on 60.webp."),
     "white-cursive-hat":                      dict(id="hat-white-cursive",       tpl="apparel", fam="hat", code="HAT", name="White Cursive Hat",        coll="hats", built=True),
     "baby-blue-cursive-hat":                  dict(id="hat-baby-blue-cursive",   tpl="apparel", fam="hat", code="HAT", name="Baby Blue Cursive Hat",    coll="hats", built=True),
 

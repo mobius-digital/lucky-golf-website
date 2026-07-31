@@ -1065,3 +1065,70 @@ requests.
 - **Apparel and gear lifestyle photography** — every page has a written brief
   and no image behind it.
 - Club collection redesign (§13.3), deferred by Cole to after Phase D.
+
+---
+
+## 15. Spec-sheet corrections and two discontinued products (2026-07-31)
+
+Cole confirmed the **Product Reference Guide is the authority on product facts**
+and Shopify is not. Reading it in full rather than grepping it turned up real
+errors on pages that had already shipped.
+
+| Club | Was (from Shopify) | Is (from the guide) |
+|---|---|---|
+| LGP02 | 385 g, "face-balanced", material unstated | **365 g**, **slight toe hang (plumber neck)**, 100% CNC-milled **304 stainless** |
+| LGP01 | "431 stainless casting" | **100% CNC-milled** 431 stainless, deep precision-milled face |
+| LGH01 | lie/weight/shaft all "Needs spec" | Lie 59&deg;, **235 g**, Lucky Graphite S stiff 40.5&Prime; mid kickpoint, Flex Channel face, Glide Sole, gold face + **gloss black crown**. Not forged, not CNC-milled |
+| LGW02 | mostly "Needs spec" | Forged 1020, sandblasted, 300 g, **lie 63.5&deg; at 52&deg; and 64&deg; at 56/60** |
+
+**The worst of these was fitting advice, not a number.** The blade-or-mallet
+module said the mallet was face-balanced and sent straight-back-straight-through
+strokes to it. The guide says **both Tracers suit an arc** — the blade is for
+players who release the head, the mallet has a slight toe hang and adds
+forgiveness. The real trade is feel against forgiveness, and the module on both
+putter pages now says so.
+
+**Lesson: read the reference guide end to end before writing club copy.** It is
+200 lines. Grepping it for the product you are working on misses the fact that
+it contradicts Shopify elsewhere.
+
+### 15a. Discontinued — pages removed
+
+- **LGD01 driver.** An old model Cole is deleting from Shopify. A new driver is
+  coming and **its specs are not in the guide** (v1.1 has no driver section at
+  all). `built=False`, page deleted, reason recorded in the overlay.
+- **LGP02 Patriot.** The fifty-unit run for America's 250th, sold out and being
+  removed. Same treatment.
+- **LGH01 is no longer a limited run.** The "100 units" claim is gone from the
+  copy and the marquee.
+
+### 15b. The white hat was an overcorrection
+
+`hat-white-updown` has **ten photographs in Shopify**, not one. §6 flags
+`59.webp` specifically; the other nine were never the problem. The page is built
+on `60.webp` with 59 excluded and the reason recorded in the copy file so nobody
+reinstates it. **42 of 44 products now have pages** — the two gaps are the
+discontinued ones.
+
+### 15c. Reviews
+
+LGH01's twenty are pulled — one widget page covers the set, so the histogram is
+exact. Its `_note` records the thing the score hides: **every sub-5 review that
+discusses play flags the shaft as soft or twisty**, and the club offers one flex.
+
+Still to pull, both straightforward — the widget URL is in §5 and takes the
+Shopify product id:
+
+- **LGP01** 147 reviews, id `8882491162901` (5 pages of 30)
+- **LGW02 Gold** 69 reviews, id `9282811232533` (3 pages)
+
+### 15d. What the guide does NOT have
+
+- **No driver at all** — so the new driver's specs must come from elsewhere.
+- **No polo or hat measurements** — the size tables stay dashes until Cole
+  supplies them. This was the one thing hoped for from the guide.
+- **No gear section** — head covers, grips, gloves and tees are unspecified,
+  which is why those pages carry so many marked rows.
+
+**Cole has offered a fuller MD file. Ask for it — it is the only route to the
+new driver and to apparel measurements.**

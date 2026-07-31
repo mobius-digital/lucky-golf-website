@@ -1,6 +1,6 @@
 {
   "_": "Editorial for lgw02-black. Shared keys come from _family-wedge.json.",
-  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
   "gallery": [
     [
       "1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436",
@@ -31,7 +31,7 @@
   "buyBody": "The LGW02 in shadow. Same forged body, same feel through the turf, same spin off the face, blacked out with gold only where it counts. Six lofts, right hand only, sixty days to decide.",
   "four": [
     {
-      "k": "Forged",
+      "k": "Forged 1020",
       "v": "Same body as the LGW02 Gold"
     },
     {
@@ -63,11 +63,15 @@
   "clubSpecs": [
     {
       "k": "Type",
-      "v": "Forged wedge, full six-loft lineup."
+      "v": "Forged players' wedge, full six-loft lineup."
     },
     {
       "k": "Feel",
-      "v": "Identical to the LGW02 Gold — same body."
+      "v": "Forged 1020 soft carbon steel — identical to the LGW02 Gold."
+    },
+    {
+      "k": "Face",
+      "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
     },
     {
       "k": "Finish",
@@ -80,28 +84,32 @@
     {
       "k": "For who",
       "v": "Anyone who wants the LGW02 without the gold."
-    },
-    {
-      "k": "Handicap range",
-      "tbd": true
     }
   ],
   "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light — the club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
   "reelHeadline": "The Black, in the wild",
   "specHeadline": "Six lofts. One finish.",
-  "specSub": "Shopify publishes prose for this club rather than figures. Unverified rows are marked rather than copied across from another head.",
+  "specSub": "Construction is the LGW02's, from the reference guide. The lie figures in the guide are for the three-loft gold lineup, so they are not carried across to six lofts here.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Carver LGW02 Black &mdash; club",
       "rows": [
         {
-          "k": "Construction",
-          "v": "Forged"
+          "k": "Body material",
+          "v": "Forged 1020 soft carbon steel"
         },
         {
-          "k": "Body",
-          "v": "Same as the LGW02 Gold"
+          "k": "Face",
+          "v": "CNC-milled grooves, micro-milled between grooves"
+        },
+        {
+          "k": "Face finish",
+          "v": "Sandblasted"
+        },
+        {
+          "k": "Head weight",
+          "v": "300 g, all lofts"
         },
         {
           "k": "Finish",
@@ -114,14 +122,6 @@
         {
           "k": "Lofts",
           "v": "50&deg;, 52&deg;, 54&deg;, 56&deg;, 58&deg;, 60&deg;"
-        },
-        {
-          "k": "Body material",
-          "tbd": true
-        },
-        {
-          "k": "Head weight",
-          "tbd": true
         },
         {
           "k": "Lie",
@@ -170,7 +170,7 @@
           "tbd": true
         }
       ],
-      "aside": "Right hand only. The wedges mega-menu says &ldquo;right and left hand, except the Black&rdquo; for this reason."
+      "aside": "Right hand only. The guide documents the LGW02 as a three-loft club; this black finish runs all six, which is a difference worth confirming before the spec table is treated as final."
     }
   ],
   "look": {

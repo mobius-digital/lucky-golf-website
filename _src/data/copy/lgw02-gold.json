@@ -1,6 +1,6 @@
 {
   "_": "Editorial for lgw02-gold. Shared keys come from _family-wedge.json.",
-  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
   "gallery": [
     [
       "15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462",
@@ -39,20 +39,20 @@
   "buyBody": "The second-generation Carver. A reshaped, more forgiving grind and a lower centre of gravity, which is the difference you feel out of the lies that are not perfect. Three lofts, right or left hand, sixty days to decide.",
   "four": [
     {
-      "k": "Forged",
-      "v": "For feel and feedback"
+      "k": "Forged 1020",
+      "v": "Soft carbon steel, sandblasted"
     },
     {
-      "k": "New grind",
-      "v": "More forgiving through the turf"
+      "k": "Reshaped edge",
+      "v": "Sits cleaner, slides through turf"
     },
     {
-      "k": "Lower CG",
-      "v": "Better flight from bad lies"
+      "k": "Softer sole",
+      "v": "More lies, more swing types"
     },
     {
-      "k": "Sixty days",
-      "v": "Send it back if it isn't the one"
+      "k": "Three lofts",
+      "v": "52, 56, 60 — a ready-made set"
     }
   ],
   "whatYouGet": [
@@ -71,49 +71,65 @@
   "clubSpecs": [
     {
       "k": "Type",
-      "v": "Forged wedge, three-loft lineup."
+      "v": "Forged players' wedge, curated three-loft lineup."
     },
     {
       "k": "Feel",
-      "v": "Forged. Reports back on every strike."
+      "v": "Forged 1020 soft carbon steel. Same feedback as the LGW01."
     },
     {
-      "k": "Grind",
-      "v": "Reshaped and more forgiving than the LGW01."
+      "k": "Face",
+      "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
     },
     {
-      "k": "Weighting",
-      "v": "Lower centre of gravity for flight out of poor lies."
+      "k": "Leading edge",
+      "v": "Reshaped — sits cleaner behind the ball and slides rather than catches."
+    },
+    {
+      "k": "Sole",
+      "v": "Softened grind for smoother turf interaction across more lies."
     },
     {
       "k": "For who",
-      "v": "Anyone who liked the LGW01 and wants more help from bad lies."
-    },
-    {
-      "k": "Handicap range",
-      "tbd": true
+      "v": "Anyone who wants the LGW01's feel and more help from imperfect lies."
     }
   ],
   "videoBrief": "16:9 product film, 40&ndash;60s. Shot to show the grind: sole through turf in slow motion, then the same shot from a bad lie. The whole argument for this club is what happens when the lie is wrong.",
   "reelHeadline": "The LGW02, in the wild",
   "specHeadline": "Three lofts. One grind.",
-  "specSub": "Numbers below are what Shopify publishes for this club. Anything unverified is marked rather than borrowed from the LGW01.",
+  "specSub": "Every number below is from the Product Reference Guide. Lie changes with loft on this club, which it does not on the LGW01.",
   "specTabs": [
     {
       "label": "Club",
       "caption": "Carver LGW02 &mdash; club",
       "rows": [
         {
-          "k": "Construction",
-          "v": "Forged"
+          "k": "Body material",
+          "v": "Forged 1020 soft carbon steel"
         },
         {
-          "k": "Grind",
-          "v": "Reshaped, more forgiving than the LGW01"
+          "k": "Face",
+          "v": "CNC-milled grooves, micro-milled between grooves"
         },
         {
-          "k": "Centre of gravity",
-          "v": "Lower than the LGW01"
+          "k": "Face finish",
+          "v": "Sandblasted"
+        },
+        {
+          "k": "Head weight",
+          "v": "300 g, all lofts"
+        },
+        {
+          "k": "Lie",
+          "v": "63.5&deg; (52&deg;) &middot; 64&deg; (56&deg; and 60&deg;)"
+        },
+        {
+          "k": "Leading edge",
+          "v": "Reshaped for cleaner turf entry"
+        },
+        {
+          "k": "Sole grind",
+          "v": "Softened"
         },
         {
           "k": "Finish",
@@ -126,18 +142,6 @@
         {
           "k": "Lofts",
           "v": "52&deg;, 56&deg;, 60&deg;"
-        },
-        {
-          "k": "Body material",
-          "tbd": true
-        },
-        {
-          "k": "Head weight",
-          "tbd": true
-        },
-        {
-          "k": "Lie",
-          "tbd": true
         },
         {
           "k": "Bounce",
@@ -155,14 +159,18 @@
       "rows": [
         {
           "k": "Shaft, stock",
-          "v": "Lucky Golf stock steel"
+          "v": "Lucky Golf stock steel &mdash; what ships today"
+        },
+        {
+          "k": "Shaft, upgrade",
+          "v": "KBS <span class=\"soon\">Coming soon</span>"
         },
         {
           "k": "Grip",
           "v": "Lucky Golf grip"
         },
         {
-          "k": "Shaft weight",
+          "k": "Stock shaft weight",
           "tbd": true
         },
         {
@@ -178,7 +186,7 @@
           "tbd": true
         }
       ],
-      "aside": "Shopify's description for this club is prose rather than a spec sheet, so most of the table is marked. The LGW01's numbers are not carried over &mdash; it is a different head."
+      "aside": "The reference guide lists KBS Tour as the shaft. Cole confirmed 2026-07-31 that every wedge ships on the Lucky stock steel shaft today and KBS becomes a selectable upgrade &mdash; the documented exception where the guide is out of date."
     }
   ],
   "look": {
