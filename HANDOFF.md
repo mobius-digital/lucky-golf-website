@@ -405,6 +405,56 @@ still is a video. Briefs are written on each card.
 - **E. No lifestyle or UGC on this page.** Both references run one. Blocked on
   the same photography gap as the homepage (§7b F/H).
 
+### Mobile card rails — `.msnap`
+
+Below 620px any grid carrying **`.msnap`** becomes a horizontal snap rail that
+bleeds to the page edge. Measured saving: **4 screens on the homepage, 1.5 on
+the PDP.** Applied to `.pgrid`, `.rost-grid`, `.coll` (home) and `.oav`,
+`.pgrid`, `.kit`, `.lf-grid` (PDP).
+
+Cards sit at **76%** so the next one is always half-visible. That peek is the
+only thing telling you it scrolls — do not take it to 100%.
+
+**The `!important` on `grid-template-columns` / `grid-auto-flow` is deliberate
+and load-bearing.** Page stylesheets load after core, and several set
+`grid-template-columns` on these grids at 980/1180px — those rules also match a
+390px phone, and the first attempt shipped two collapsed 4px columns with the
+rest overflowing. `.msnap` is a layout *mode*, not a tweak, so it has to win
+without every page remembering to scope its own breakpoints.
+
+### `tools/build.py --check` and the smoke test — why they exist
+
+A regex written to delete one dead CSS block ate the **entire PDP responsive
+section** instead: the mobile sticky add-to-cart, the single-column fold, the
+2-up icon strip, the gallery thumb counts. The page still built. It still passed
+a desktop sweep. It only showed as a broken phone layout.
+
+`build.py` now asserts a list of load-bearing selectors is present in each
+page's output and **exits non-zero** if any is missing. Verified by deleting one
+and watching it fail. When you add something whose absence would be invisible on
+desktop, add it to `REQUIRED`.
+
+**Lesson: never regex-delete a CSS block with a lookahead for the next banner.**
+The banner styles are not uniform (`/* ===` vs `/* ---`), so the match ran past
+the intended end.
+
+### Cart, second pass
+
+- **Panel edge is `--gold`, not ink** (Cole's call). It is the drawer's one
+  structural gold line and ties the edge to the foil checkout button.
+- **Adding to the bag opens the drawer.** `open()` is now idempotent — the PDP
+  calls the add path N times for quantity, and re-focusing N times was wrong.
+  It also ignores a hidden trigger: the PDP's add-to-cart proxy cannot take
+  focus back, so focus falls through to whatever the user actually clicked.
+
+### Dead CSS, verified but not yet removed
+
+`.fam`, `.gear`, `.revs` (page-home.css) and `.rgrid`, `.dial-grid`, `.rvh*`,
+`.rcard`, `.rsum`, `.rv-more`, `.setgrid` (page-pdp.css) appear in no markup —
+leftovers from replaced sections. **Left in place deliberately**; deleting CSS
+blind is what caused the incident above. Remove them in a dedicated pass, one at
+a time, rebuilding between each.
+
 ### Cart drawer — three bugs Cole caught in one screenshot
 
 All fixed in `core.css` / `core.js` / `partials/cart.html`, so both pages get them:

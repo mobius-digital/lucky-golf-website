@@ -470,7 +470,11 @@
     announce(item.name + ' added to the bag. ' + units() + ' item' + (units()===1?'':'s') + ' in the bag.');
   }
   function open(trigger){
-    lastFocus = trigger || document.activeElement;
+    if (drawer.getAttribute('data-open') === 'true') return;   /* PDP adds N
+      times for quantity; opening once is enough and re-focusing N times is not */
+    /* a hidden trigger (the PDP's add-to-cart proxy) cannot take focus back,
+       so fall through to whatever the user actually clicked */
+    lastFocus = (trigger && trigger.offsetParent !== null) ? trigger : document.activeElement;
     drawer.hidden = false;
     requestAnimationFrame(function(){ drawer.setAttribute('data-open','true'); });
     document.body.style.overflow = 'hidden';
@@ -495,6 +499,7 @@
       var was = label.textContent;
       btn.setAttribute('data-added','true'); label.textContent = 'Added';
       setTimeout(function(){ btn.removeAttribute('data-added'); label.textContent = was; }, 1400);
+      open(btn);          /* show the bag straight away, the way every store does */
       return;
     }
     if (e.target.closest('[data-cart-open]')){ e.preventDefault(); open(e.target.closest('[data-cart-open]')); return; }

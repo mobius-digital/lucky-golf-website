@@ -107,6 +107,36 @@ def build(slug):
     )
 
 
+# Cheap smoke test. A regex cleanup once silently deleted a whole responsive
+# block from page-pdp.css and the page still built, still passed a desktop
+# sweep, and only showed up as a broken phone layout. Anything load-bearing
+# enough that its absence is hard to see belongs here.
+REQUIRED = {
+    "home": [
+        ".msnap{",                       # mobile card rails
+        "@media (max-width:980px)",
+        ".hdr{", ".cd-panel{", ".mq{",
+    ],
+    "pdp": [
+        ".msnap{",
+        ".atc-bar{display:flex}",        # mobile sticky add-to-cart
+        ".bx-four{grid-template-columns:repeat(2,1fr)",
+        ".pd-top{grid-template-columns:1fr",
+        ".gal-thumbs{grid-template-columns:repeat(5,1fr)}",
+        ".spec-tab{flex:1",
+        ".md-panel{",                    # policy modals
+        "@media (max-width:760px)",
+    ],
+}
+
+
+def smoke(slug, html):
+    missing = [n for n in REQUIRED.get(slug, []) if n not in html]
+    if missing:
+        sys.exit("%s: build is missing required rules:\n  %s"
+                 % (slug, "\n  ".join(missing)))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("pages", nargs="*", help="page slugs; default all")
@@ -123,6 +153,7 @@ def main():
     for slug in slugs:
         out, _title = PAGES[slug]
         html = build(slug)
+        smoke(slug, html)
         path = os.path.join(ROOT, out)
 
         if a.check:

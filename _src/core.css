@@ -546,7 +546,9 @@ button{font:inherit;color:inherit}
 .cd[data-open="true"] .cd-bd{opacity:1}
 .cd-panel{position:absolute;right:0;top:0;bottom:0;width:min(430px,100%);background:var(--white);
   display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.3,.8,.2,1);
-  border-left:2px solid var(--ink)}
+  border-left:2px solid var(--gold)}   /* the drawer's one structural gold
+     line — it ties the panel edge to the foil checkout button and reads as
+     intentional, where the old ink edge just read as a black bar */
 .cd[data-open="true"] .cd-panel{transform:none}
 .cd-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:18px 20px;border-bottom:2px solid var(--ink-14);flex:none}
@@ -658,7 +660,7 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;padding:7px 12px}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
 @media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
-@media (max-width:620px){.pgrid{grid-template-columns:1fr}}
+/* .pgrid at <=620 is handled by .msnap; see MOBILE CARD RAILS */
 
 
 /* ==========================================================================
@@ -808,3 +810,35 @@ button{font:inherit;color:inherit}
    beside display type; inside a centre-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
+
+/* ==========================================================================
+   MOBILE CARD RAILS
+   A column of full-width cards makes these pages enormous on a phone — the
+   homepage product grid alone was six screens. Below 620px any grid carrying
+   .msnap turns into a horizontal snap rail that bleeds to the page edge, so
+   the same six tiles cost one screen and the section below stays reachable.
+
+   Cards sit at 76% so the next one is always half-visible: that peek is the
+   only affordance telling you it scrolls, so do not take it to 100%.
+   ========================================================================== */
+@media (max-width:620px){
+  /* !important is deliberate and load-bearing. Page stylesheets always load
+     after core, and several of them set grid-template-columns on these very
+     grids at 980/1180px — those rules also match a 390px phone and would leave
+     two collapsed 4px columns with the rest overflowing. .msnap is a layout
+     MODE switch, not a tweak, so it has to beat them without every page having
+     to remember to scope its own breakpoints. */
+  .msnap{display:grid;grid-template-columns:none !important;
+    grid-auto-flow:column !important;grid-auto-columns:76%;
+    overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);padding-bottom:14px;
+    scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.10)}
+  .msnap > *{scroll-snap-align:start}
+  .msnap::-webkit-scrollbar{height:4px}
+  .msnap::-webkit-scrollbar-track{background:rgba(23,20,15,.10)}
+  .msnap::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+  .band-ink .msnap,.close .msnap{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
+  .band-ink .msnap::-webkit-scrollbar-track{background:rgba(246,242,232,.14)}
+  /* .ptile bleeds its photo edge-to-edge, which needs the tile to own its box */
+  .msnap > .ptile{height:100%}
+}

@@ -1,3 +1,7 @@
+/* DEAD as of 2026-07-31: .fam, .gear and .revs are defined below but appear
+   in no markup on either page — leftovers from an earlier revision. Left in
+   place rather than removed blind; verify and delete in a cleanup pass. */
+
 /* ==========================================================================
    HERO
    ========================================================================== */
@@ -293,7 +297,10 @@
   text-transform:uppercase;font-size:clamp(1.8rem,3vw,2.7rem);line-height:.9;margin:0;color:var(--cream)}
 .gtile-ln{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:44ch}
 .gtile .btn{margin-top:6px}
-@media (max-width:760px){.coll{grid-template-columns:1fr}.gtile--wide{grid-column:auto}}
+@media (max-width:760px){.gtile--wide{grid-column:auto}}
+/* one column between 621 and 760; below that .coll becomes a .msnap rail,
+   and a grid-template-columns here would beat core's rule */
+@media (max-width:760px) and (min-width:621px){.coll{grid-template-columns:1fr}}
 
 
 /* ---------- responsive ---------- */
@@ -301,6 +308,7 @@
   .gear{grid-template-columns:1fr 1fr}
 }
 @media (max-width:980px){
+  /* .fam -> .msnap rail at <=620 */
   .fam{grid-template-columns:1fr}
   .feat-in{grid-template-columns:1fr}
   .plinth-wrap{order:-1}

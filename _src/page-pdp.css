@@ -343,51 +343,6 @@
   margin:clamp(26px,3vw,40px) 0 0}
 
 /* ==========================================================================
-   COMPLETE THE SET — soft cross-sell. Real variants of this product at the
-   real price; no bundle discount is implied because none exists in Shopify.
-   ========================================================================== */
-.setgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.setcard{position:relative;background:var(--white);border:2px solid var(--ink-14);
-  border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:12px;
-  transition:border-color .2s,transform .3s}
-.setcard:hover{border-color:var(--gold);transform:translateY(-3px)}
-.setcard .lo{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
-  font-size:clamp(2.2rem,3.6vw,3rem);line-height:.88;letter-spacing:-.01em}
-.setcard .rl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-muted)}
-.setcard p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-70)}
-.setcard .bot{margin-top:auto;padding-top:16px;display:flex;align-items:center;
-  justify-content:space-between;gap:12px}
-.setcard .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
-  font-size:1.02rem}
-
-/* ---------- responsive ---------- */
-@media (max-width:1180px){
-  .rgrid,.lf-grid,.setgrid{grid-template-columns:repeat(2,1fr)}
-  .dial-grid{grid-template-columns:repeat(2,1fr);row-gap:34px}
-}
-@media (max-width:980px){
-  .pd-top{grid-template-columns:1fr;gap:26px}
-  .pd-gal{position:static}
-  .pd-buy{max-width:none}
-  .rvh{grid-template-columns:1fr;align-items:start}
-  .gal-thumbs{grid-template-columns:repeat(6,1fr)}
-}
-@media (max-width:760px){
-  .atc-bar{display:flex}
-  body{padding-bottom:78px}
-  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
-}
-@media (max-width:620px){
-  .rgrid,.lf-grid,.setgrid{grid-template-columns:1fr}
-  .dial-grid{grid-template-columns:1fr;row-gap:30px}
-  .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
-  .gal-thumbs{grid-template-columns:repeat(5,1fr)}
-  .spec-tabs{display:flex;width:100%}
-  .spec-tab{flex:1;padding:10px 8px}
-}
-
-/* ==========================================================================
    OTHERS ALSO VIEWED — Takomo runs this immediately under the fold, before
    any storytelling. Compact on purpose: it is a browse rail, not a pitch.
    The big curated tiles live at the bottom of the page instead.
@@ -556,6 +511,31 @@
   justify-content:space-between;gap:10px}
 .kit-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.95rem}
 
+/* ---------- responsive ----------
+   RESTORED 2026-07-31 after a dead-code regex ate this block. The selectors
+   for sections that no longer exist (.rgrid .dial-grid .rvh .setgrid) were
+   dropped on the way back in; everything here targets live markup. */
+@media (max-width:1180px){
+  .lf-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:980px){
+  .pd-top{grid-template-columns:1fr;gap:26px}
+  .pd-gal{position:static}
+  .pd-buy{max-width:none}
+  .gal-thumbs{grid-template-columns:repeat(6,1fr)}
+}
+@media (max-width:760px){
+  .atc-bar{display:flex}
+  body{padding-bottom:78px}
+  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
+}
+@media (max-width:620px){
+  .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .gal-thumbs{grid-template-columns:repeat(5,1fr)}
+  .spec-tabs{display:flex;width:100%}
+  .spec-tab{flex:1;padding:10px 8px}
+}
+
 /* ---------- responsive for the new blocks ---------- */
 @media (max-width:1180px){
   .oav,.kit{grid-template-columns:repeat(2,1fr)}
@@ -568,7 +548,6 @@
   .club-media{order:-1}
 }
 @media (max-width:620px){
-  .oav,.kit{grid-template-columns:1fr}
   .club-specs li{grid-template-columns:1fr;gap:4px}
   .jm-hd{grid-template-columns:1fr}
   .jm-act{flex-direction:column;align-items:stretch}

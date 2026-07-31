@@ -556,7 +556,9 @@ button{font:inherit;color:inherit}
 .cd[data-open="true"] .cd-bd{opacity:1}
 .cd-panel{position:absolute;right:0;top:0;bottom:0;width:min(430px,100%);background:var(--white);
   display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.3,.8,.2,1);
-  border-left:2px solid var(--ink)}
+  border-left:2px solid var(--gold)}   /* the drawer's one structural gold
+     line — it ties the panel edge to the foil checkout button and reads as
+     intentional, where the old ink edge just read as a black bar */
 .cd[data-open="true"] .cd-panel{transform:none}
 .cd-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:18px 20px;border-bottom:2px solid var(--ink-14);flex:none}
@@ -668,7 +670,7 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;padding:7px 12px}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
 @media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
-@media (max-width:620px){.pgrid{grid-template-columns:1fr}}
+/* .pgrid at <=620 is handled by .msnap; see MOBILE CARD RAILS */
 
 
 /* ==========================================================================
@@ -818,6 +820,38 @@ button{font:inherit;color:inherit}
    beside display type; inside a centre-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
+
+/* ==========================================================================
+   MOBILE CARD RAILS
+   A column of full-width cards makes these pages enormous on a phone — the
+   homepage product grid alone was six screens. Below 620px any grid carrying
+   .msnap turns into a horizontal snap rail that bleeds to the page edge, so
+   the same six tiles cost one screen and the section below stays reachable.
+
+   Cards sit at 76% so the next one is always half-visible: that peek is the
+   only affordance telling you it scrolls, so do not take it to 100%.
+   ========================================================================== */
+@media (max-width:620px){
+  /* !important is deliberate and load-bearing. Page stylesheets always load
+     after core, and several of them set grid-template-columns on these very
+     grids at 980/1180px — those rules also match a 390px phone and would leave
+     two collapsed 4px columns with the rest overflowing. .msnap is a layout
+     MODE switch, not a tweak, so it has to beat them without every page having
+     to remember to scope its own breakpoints. */
+  .msnap{display:grid;grid-template-columns:none !important;
+    grid-auto-flow:column !important;grid-auto-columns:76%;
+    overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);padding-bottom:14px;
+    scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.10)}
+  .msnap > *{scroll-snap-align:start}
+  .msnap::-webkit-scrollbar{height:4px}
+  .msnap::-webkit-scrollbar-track{background:rgba(23,20,15,.10)}
+  .msnap::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+  .band-ink .msnap,.close .msnap{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
+  .band-ink .msnap::-webkit-scrollbar-track{background:rgba(246,242,232,.14)}
+  /* .ptile bleeds its photo edge-to-edge, which needs the tile to own its box */
+  .msnap > .ptile{height:100%}
+}
 
 /* ==========================================================================
    PDP — LGW01 Carver Gold
@@ -1164,51 +1198,6 @@ button{font:inherit;color:inherit}
   margin:clamp(26px,3vw,40px) 0 0}
 
 /* ==========================================================================
-   COMPLETE THE SET — soft cross-sell. Real variants of this product at the
-   real price; no bundle discount is implied because none exists in Shopify.
-   ========================================================================== */
-.setgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.setcard{position:relative;background:var(--white);border:2px solid var(--ink-14);
-  border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:12px;
-  transition:border-color .2s,transform .3s}
-.setcard:hover{border-color:var(--gold);transform:translateY(-3px)}
-.setcard .lo{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
-  font-size:clamp(2.2rem,3.6vw,3rem);line-height:.88;letter-spacing:-.01em}
-.setcard .rl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-muted)}
-.setcard p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-70)}
-.setcard .bot{margin-top:auto;padding-top:16px;display:flex;align-items:center;
-  justify-content:space-between;gap:12px}
-.setcard .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
-  font-size:1.02rem}
-
-/* ---------- responsive ---------- */
-@media (max-width:1180px){
-  .rgrid,.lf-grid,.setgrid{grid-template-columns:repeat(2,1fr)}
-  .dial-grid{grid-template-columns:repeat(2,1fr);row-gap:34px}
-}
-@media (max-width:980px){
-  .pd-top{grid-template-columns:1fr;gap:26px}
-  .pd-gal{position:static}
-  .pd-buy{max-width:none}
-  .rvh{grid-template-columns:1fr;align-items:start}
-  .gal-thumbs{grid-template-columns:repeat(6,1fr)}
-}
-@media (max-width:760px){
-  .atc-bar{display:flex}
-  body{padding-bottom:78px}
-  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
-}
-@media (max-width:620px){
-  .rgrid,.lf-grid,.setgrid{grid-template-columns:1fr}
-  .dial-grid{grid-template-columns:1fr;row-gap:30px}
-  .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
-  .gal-thumbs{grid-template-columns:repeat(5,1fr)}
-  .spec-tabs{display:flex;width:100%}
-  .spec-tab{flex:1;padding:10px 8px}
-}
-
-/* ==========================================================================
    OTHERS ALSO VIEWED — Takomo runs this immediately under the fold, before
    any storytelling. Compact on purpose: it is a browse rail, not a pitch.
    The big curated tiles live at the bottom of the page instead.
@@ -1377,6 +1366,31 @@ button{font:inherit;color:inherit}
   justify-content:space-between;gap:10px}
 .kit-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.95rem}
 
+/* ---------- responsive ----------
+   RESTORED 2026-07-31 after a dead-code regex ate this block. The selectors
+   for sections that no longer exist (.rgrid .dial-grid .rvh .setgrid) were
+   dropped on the way back in; everything here targets live markup. */
+@media (max-width:1180px){
+  .lf-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:980px){
+  .pd-top{grid-template-columns:1fr;gap:26px}
+  .pd-gal{position:static}
+  .pd-buy{max-width:none}
+  .gal-thumbs{grid-template-columns:repeat(6,1fr)}
+}
+@media (max-width:760px){
+  .atc-bar{display:flex}
+  body{padding-bottom:78px}
+  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
+}
+@media (max-width:620px){
+  .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .gal-thumbs{grid-template-columns:repeat(5,1fr)}
+  .spec-tabs{display:flex;width:100%}
+  .spec-tab{flex:1;padding:10px 8px}
+}
+
 /* ---------- responsive for the new blocks ---------- */
 @media (max-width:1180px){
   .oav,.kit{grid-template-columns:repeat(2,1fr)}
@@ -1389,7 +1403,6 @@ button{font:inherit;color:inherit}
   .club-media{order:-1}
 }
 @media (max-width:620px){
-  .oav,.kit{grid-template-columns:1fr}
   .club-specs li{grid-template-columns:1fr;gap:4px}
   .jm-hd{grid-template-columns:1fr}
   .jm-act{flex-direction:column;align-items:stretch}
@@ -1734,7 +1747,7 @@ button{font:inherit;color:inherit}
 <section class="sec-tight band-cream">
   <div class="wrap">
     <h2 class="disp d-s oav-hd">Others also viewed</h2>
-    <div class="oav" id="oav"></div>
+    <div class="oav msnap" id="oav"></div>
   </div>
 </section>
 
@@ -1816,7 +1829,7 @@ button{font:inherit;color:inherit}
     </div>
 
     <div class="lf-out">
-      <div class="lf-grid" id="lf-grid"></div>
+      <div class="lf-grid msnap" id="lf-grid"></div>
       <div class="lf-foot">
         <p class="aside" id="lf-note" style="color:var(--ink-70);max-width:52ch"></p>
       </div>
@@ -2000,7 +2013,7 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <span class="eyebrow">More from Lucky</span>
     <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">The rest of the bag</h2>
-    <div class="pgrid">
+    <div class="pgrid msnap">
 
       <article class="ptile">
         <span class="pt-sku">LGW02</span>
@@ -2037,7 +2050,7 @@ button{font:inherit;color:inherit}
     <span class="eyebrow">Complete your kit</span>
     <h2 class="disp d-l">You've got the club. Now get the rest.</h2>
     <p class="body" style="margin:16px 0 clamp(28px,3vw,42px)">Polos and hats that look like they belong with it, because they do.</p>
-    <div class="kit" id="kit"></div>
+    <div class="kit msnap" id="kit"></div>
     <div class="kit-foot">
       <a class="btn btn-line btn-sm" href="/collections/polos"><span>All polos</span><span class="ar">&rarr;</span></a>
       <a class="btn btn-line btn-sm" href="/collections/hats"><span>All hats</span><span class="ar">&rarr;</span></a>
@@ -3139,7 +3152,11 @@ var PD_KIT = [
     announce(item.name + ' added to the bag. ' + units() + ' item' + (units()===1?'':'s') + ' in the bag.');
   }
   function open(trigger){
-    lastFocus = trigger || document.activeElement;
+    if (drawer.getAttribute('data-open') === 'true') return;   /* PDP adds N
+      times for quantity; opening once is enough and re-focusing N times is not */
+    /* a hidden trigger (the PDP's add-to-cart proxy) cannot take focus back,
+       so fall through to whatever the user actually clicked */
+    lastFocus = (trigger && trigger.offsetParent !== null) ? trigger : document.activeElement;
     drawer.hidden = false;
     requestAnimationFrame(function(){ drawer.setAttribute('data-open','true'); });
     document.body.style.overflow = 'hidden';
@@ -3164,6 +3181,7 @@ var PD_KIT = [
       var was = label.textContent;
       btn.setAttribute('data-added','true'); label.textContent = 'Added';
       setTimeout(function(){ btn.removeAttribute('data-added'); label.textContent = was; }, 1400);
+      open(btn);          /* show the bag straight away, the way every store does */
       return;
     }
     if (e.target.closest('[data-cart-open]')){ e.preventDefault(); open(e.target.closest('[data-cart-open]')); return; }
