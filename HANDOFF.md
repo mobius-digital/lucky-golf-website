@@ -618,9 +618,33 @@ decision. **Don't re-raise these.**
   either one needs checking against the data first. The wedges mega-panel
   aside currently says "Right and left hand" above all three wedge tiles.
 
-### 10e-2. Still open for Cole
+### 10e-2. RESOLVED — club naming, locked by Cole 2026-07-31
 
-- **Four names are in play for LGW02 Gold**: "Carver Gold" (mega menu),
+**Family, then code, then finish.** This closes §9 open item C.
+
+```
+Carver LGW01 Gold     Tracer LGP01 Blade      Stryker LGH01
+Carver LGW02 Gold     Tracer LGP02 Mallet     Lucky Driver LGD01
+Carver LGW02 Black    Tracer LGP02 Patriot
+```
+
+Apparel and gear keep their descriptive names — those codes are SKU prefixes,
+not model numbers. `products.json` carries **`title`** (the full name, driving
+the H1, page title and breadcrumb) and **`name`** (the short form for tiles,
+where `code` is stamped beside it). **Do not re-litigate.**
+
+Dead names, now gone from every built page: "Carver Gold V2", "Carver Shadow",
+and the code-first "LGW01 Carver Gold" form — which also lived in image alt
+text, the homepage review rail's product labels and the UGC lightbox data.
+
+Two accuracy fixes found in the mega menu while doing it: the wedge tiles
+claimed **"K Grind" and "S Grind"** when grind is a "Needs spec" row (§9A), and
+the wedges aside said "Right and left hand" above the right-hand-only Black.
+
+### 10e-3. Still open for Cole
+
+- ~~Four names in play for LGW02 Gold~~ — **resolved above.** Historic detail:
+  it was "Carver Gold" (mega menu),
   "LGW02 Carver Gold" (PDP browse rail), "Carver Gold V2" (PDP cross-sell),
   "Lucky Golf LGW02 Gold" (Shopify). And LGW02 Black is "Carver Black" in the
   mega menu but "Carver Shadow" in the browse rail. This is §9 open item C and
