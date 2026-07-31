@@ -2049,12 +2049,24 @@ button{font:inherit;color:inherit}
       
 
       
-      <!-- Rating is real, but no reviews have been pulled into the repo for
-           this product yet. Score only — a filter over an empty list reads as
-           a bug, and inventing review text is forbidden (HANDOFF). -->
-      <p class="jm-none">The score is live from Judge.me. The individual reviews are not in this mock yet &mdash; the live site renders them from the widget.</p>
-      
 
+      
+      <!-- filter + sort -->
+      <div class="jm-bar">
+        <div class="jm-filters" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
+        <label class="jm-sort">
+          <span class="sr">Sort reviews</span>
+          <select id="jm-sort">
+            <option value="recent">Most recent</option>
+            <option value="high">Highest rating</option>
+            <option value="low">Lowest rating</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="jm-count" id="jm-count"></p>
+      <div class="jm-list" id="jm-list"></div>
+      <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
       
       <p class="jm-foot">Live site swaps this block for the Judge.me widget itself &mdash; same shape, same data, real submissions.</p>
     </div>
@@ -2419,7 +2431,7 @@ var PD_AXIS_UI = {
    Judge.me, spanning every rating so the star filter and the histogram agree.
    The curated 4-star-and-up rule governs the pull quotes, not this widget —
    a widget that hides its 1-stars is a widget nobody believes. */
-var PD_REVIEWS = {"total": 0, "totals": {}, "sample": []};
+var PD_REVIEWS = {"total": 147, "totals": {"5": 133, "4": 9, "3": 4, "2": 0, "1": 1}, "sample": [{"n": "Kristina J.", "r": 5, "t": "Gift for Husband", "d": "2026-06-29", "q": "I got the putter for my husband. He LOVES it!", "v": true, "rep": ""}, {"n": "Bryan", "r": 5, "t": "", "d": "2026-06-19", "q": "Im enjoying the feel and smoothness of my new Lucky putter!", "v": true, "rep": ""}, {"n": "Noah W.", "r": 5, "t": "", "d": "2026-05-17", "q": "Lucky Golf LGP01 Gold", "v": true, "rep": ""}, {"n": "William O.", "r": 4, "t": "Lucky Putter", "d": "2026-04-29", "q": "Shipping was great", "v": true, "rep": ""}, {"n": "C.G.", "r": 5, "t": "", "d": "2026-04-20", "q": "Super clean gold color coat i could see my reflection on the bottom side of the head. The weight of the putter was something that I really liked. The dimples on the face for gripping the ball are a really nice touch as well.", "v": true, "rep": ""}, {"n": "Jay S.", "r": 5, "t": "Unexpected Greatness", "d": "2026-03-06", "q": "When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style and a slightly heavier head. When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!", "v": true, "rep": ""}, {"n": "Marc Y.", "r": 5, "t": "Left handed", "d": "2026-02-23", "q": "If you start making left handed putter I could buy one for myself instead of for other people", "v": true, "rep": ""}, {"n": "Anonymous", "r": 5, "t": "Purchased for my son", "d": "2026-02-11", "q": "It's been cold and snowy here so he hasn't used it much but he's excited to use it when the weather turns. He loves the look of it and has practiced with it in the yard.", "v": true, "rep": ""}, {"n": "Michael M.", "r": 5, "t": "", "d": "2026-02-01", "q": "Lucky Golf LGP01 Gold", "v": true, "rep": ""}, {"n": "Trever S.", "r": 5, "t": "14 year old", "d": "2026-01-27", "q": "@gabbyelisegolf putt with this now and putts great. She is right eye dominant and can push putts right but the forward face has helped tremendously. She is very happy and ready for her tournaments this year. She is fresh off winning her junior club championship and she has many tournaments to come and she will feel her confident with the lucky putter.", "v": true, "rep": ""}, {"n": "Daniel G.O.", "r": 5, "t": "", "d": "2025-12-28", "q": "I haven't tried my new lucky putter yet, as I live in a cold climate. But the reason I bought it is because of all the good reviews I read. Christmas morning I held it in my hands and took some practice swings, and I love the weight of it. I'm excited to use it as soon as the courses open!", "v": true, "rep": ""}, {"n": "Michael M.", "r": 5, "t": "Golden blade", "d": "2025-10-18", "q": "The look alone is amazing!!! And I haven't putted this good in my life. I should have switched to blades years ago", "v": true, "rep": ""}, {"n": "Kindro", "r": 5, "t": "Great job lucky", "d": "2025-10-03", "q": "Love this simple design and happy with my purchase!", "v": true, "rep": ""}, {"n": "Colon,", "r": 5, "t": "Super good quality", "d": "2025-09-03", "q": "The quality and look on this putter is amzing . Everytime i play someone will ask where i bought it .", "v": true, "rep": ""}, {"n": "Beau", "r": 5, "t": "", "d": "2025-08-20", "q": "Looks great. Have yet to use it. Shortly!", "v": true, "rep": ""}, {"n": "Robert", "r": 5, "t": "Good Putter", "d": "2025-08-04", "q": "Super fast shipping and putter is extremely nice!", "v": true, "rep": ""}, {"n": "Ryan M.", "r": 5, "t": "Fantastic product Fantastic service", "d": "2025-08-01", "q": "It goes without saying the putter is not only stunning but it feels great in the hands too. I received my putter, but there was a small error. There was no head cover in the package. I emailed the service team that evening and by the very next morning they had it resolved. They had responded to my email; and already had a head cover on its way to me.", "v": true, "rep": ""}, {"n": "Megan D.", "r": 5, "t": "Great club", "d": "2025-08-01", "q": "I bought it because it's so pretty but it's a real step up from my old putter.", "v": true, "rep": ""}, {"n": "S.K.", "r": 5, "t": "", "d": "2025-07-27", "q": "Absolutely love this putter.", "v": true, "rep": ""}, {"n": "Jonathan S.", "r": 5, "t": "", "d": "2025-07-09", "q": "Great looking clubs!!", "v": true, "rep": ""}, {"n": "McKenzie", "r": 5, "t": "", "d": "2025-06-30", "q": "I bought this for my boyfriend for his birthday!! He absolutely loved it", "v": true, "rep": ""}, {"n": "James C.", "r": 5, "t": "Just too heavy", "d": "2025-06-25", "q": "Looked awesome not a shiny as I thought it was going to be but it's just too heavy I had to put it away 170 bucks just to put on my wall", "v": true, "rep": ""}]};
 
 /* The browse rail under the fold. Rows are product ids in the copy file;
    build.py resolves each to live price, rating and stock so a sold-out

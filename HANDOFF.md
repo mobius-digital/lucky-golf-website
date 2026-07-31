@@ -1267,3 +1267,66 @@ be used but must come back unmarked; hybrids must appear completely unused.
 **Lesson: the copy had drifted British throughout and nobody caught it for four
 phases.** Lucky is a US brand selling to US golfers. Check spelling on any new
 copy file.
+
+---
+
+## 18. Session close — where everything stands
+
+**50 pages built. 42 of 44 products.** The two gaps are the discontinued driver
+and Patriot putter.
+
+### 18a. Resolved this session
+
+- **v1.8 spec tables written in.** Zero "Needs spec" chips remain on any club
+  page — the LGW01 alone had nine. Per-loft lie, bounce, head weight and length;
+  shaft flex, kick point and grip weight for every club.
+- **Grinds restored to the mega menu** now that v1.8 publishes them. They were
+  pulled in §13 as unverifiable; the Black is K Grind, not the "blacked-out
+  wedge" the menu said before.
+- **LGW02 Black: right hand today, left hand coming** (Cole). Carries the
+  `.soon` pill rather than a flat "right hand only" — the buy box picks up left
+  hand automatically once the variants exist in Shopify.
+- **Returns policy rewritten from v1.8** across all three templates.
+- **American spelling** — 106 substitutions across 41 files.
+- **All five clubs that have reviews now have them.** LGH01 and LGP02 are
+  complete sets; LGW01, LGW02 Gold and LGP01 carry the **exact live histogram**
+  with a first-page sample, so the bars and the star filter agree with the live
+  widget.
+
+| Product | Live | In the page |
+|---|---|---|
+| LGW01 Carver Gold | 551 | 47 |
+| LGP01 Tracer Blade | 147 | 22 |
+| LGW02 Carver Gold | 69 | 30 |
+| LGP02 Tracer Mallet | 58 | **all 58** |
+| LGH01 Stryker | 20 | **all 20** |
+
+LGW02 Black has no reviews and correctly shows none.
+
+### 18b. Outstanding
+
+**Blocked on Cole:**
+- **Polo and hat measurements.** v1.8 does not carry them and says colorways
+  and hat SKUs are "not tracked here". Twelve polo pages show a table of
+  dashes. Cole has said these are coming.
+- **Apparel and hat lifestyle photography.** Every one of the 22 apparel pages
+  carries a written brief and no image. Still the largest asset gap on the site.
+- **The new driver.** v1.8 has no driver section at all.
+
+**Not blocked, not done:**
+- **The club collection redesign** (§13.3). Takomo groups irons into labelled
+  bands with a comparison table and a fitting CTA; ours is one filtered grid.
+  Cole deferred it to after Phase D, and Phase D is done. **This is the next
+  build.**
+- Phases E (Our Story, Trybe), F (support cluster, search, 404) and G (link
+  audit + the developer handoff doc). Ten pages remain unbuilt: `story`,
+  `trybe`, `reviews`, `returns`, `shipping`, `contact`, `faq`, `search`, `404`
+  and `c/sale`.
+
+### 18c. Two facts to verify when convenient
+
+- v1.8 drops the **"slight toe hang / plumber neck"** line v1.1 carried for the
+  LGP02. It is out of the copy until it reappears somewhere citable — but it is
+  the detail the blade-vs-mallet advice leans on.
+- **LGW02 Gold's 50°, 54° and 58°** are listed as in production. When they land,
+  add their manufacturer rows and the by-loft table extends itself.

@@ -41,6 +41,7 @@ check by hand), gradients, decorative SVG.
 | **Phase A** | **Done 2026-07-31 — see HANDOFF §10** |
 | **Phase B — collection pages** | **Done 2026-07-31 — 7 of 8 built, see HANDOFF §11** |
 | **Phase C — three PDP templates** | **Done 2026-07-31 — proven on a putter, a polo and a cover, see HANDOFF §12** |
+| **Phase D — all product pages** | **Done 2026-07-31 — 42 of 44, see HANDOFF §14 and §18** |
 | Everything else | Not started |
 
 **The store: 44 sellable products**, counted from the catalogue pull, not
@@ -238,11 +239,14 @@ From HANDOFF, still needing Cole:
 ## 7. Starting the next chat
 
 > Continuing Lucky Golf. Read `GAMEPLAN.md` then `HANDOFF.md` in
-> `C:\Users\wetzl\Lucky Golf\Website`. Phases A, B and C are done — routing,
-> the N-axis buy box, the product data layer, seven collection pages and all
-> three PDP templates, proven on LGP02, the Contour polo and the Blade Cover.
-> 12 of 62 pages built. HANDOFF §10–§12 have the details. Start Phase D:
-> generate the remaining PDPs from data, following the §12g checklist.
+> `C:\Users\wetzl\Lucky Golf\Website`. Phases A–D are done: routing, the N-axis
+> buy box, the product data layer, seven collection pages, all three PDP
+> templates and 42 of 44 product pages. **50 of 62 pages built.** HANDOFF
+> §10–§18 have the details and §18 is the current state.
+>
+> Next is the **club collection redesign** — HANDOFF §13.3. Takomo groups irons
+> into labelled bands with a comparison table and a fitting CTA; ours is one
+> filtered grid. Cole deferred it until Phase D finished, and it has.
 
 Then Phase E (Our Story, Trybe), F (support cluster, search, 404) and G (link
 audit plus the developer handoff doc).
