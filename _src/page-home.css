@@ -218,21 +218,6 @@
   margin-top:clamp(24px,2.8vw,38px)}
 
 /* ==========================================================================
-   PULL QUOTE — one real review at scale, leading into the review rail.
-   Escalation, not repetition: the headline, then the evidence under it.
-   ========================================================================== */
-.pull{position:relative;background:var(--cream);overflow:hidden;text-align:center}
-.pull::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
-.pull .wm{width:min(70vw,760px);height:min(70vw,760px);left:50%;top:50%;translate:-50% -50%;color:var(--ink);opacity:.05}
-.pull-in{position:relative;z-index:1;max-width:1000px;margin:0 auto}
-.pull q{display:block;quotes:none;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
-  font-weight:800;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
-  font-size:clamp(1.6rem,3.4vw,3rem);margin:20px 0 0}
-.pull-by{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:26px}
-.pull-by .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:.95rem}
-.pull-by .p{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
-
-/* ==========================================================================
    THE FINISH — replaces the old lifestyle break, which was a photo and one
    line with no job. Same weight and format, but says something ownable.
    ========================================================================== */

@@ -431,7 +431,32 @@
           + '</div></div>';
       }).join('');
     }
+    paintUpsell();
     subEl.textContent = money(total());
+  }
+
+  /* Cross-sell inside the drawer. Page supplies LG_CART_UPSELL; anything
+     already in the bag is dropped so we never offer what they just added. */
+  function paintUpsell(){
+    var box = document.getElementById('cd-up'), list = document.getElementById('cd-up-list');
+    if (!box || !list) return;
+    var pool = (typeof LG_CART_UPSELL !== 'undefined' && LG_CART_UPSELL) ? LG_CART_UPSELL : [];
+    var have = {};
+    cart.forEach(function(i){ have[i.sku] = 1; });
+    var offer = pool.filter(function(o){ return !have[o.sku]; }).slice(0, 3);
+    box.hidden = !cart.length || !offer.length;
+    if (box.hidden){ list.innerHTML = ''; return; }
+    list.innerHTML = offer.map(function(o){
+      return '<div class="cu">'
+        + '<img src="' + o.img + '" alt="" width="104" height="104">'
+        + '<div class="info"><span class="nm">' + esc(o.name) + '</span>'
+        +   '<span class="why">' + esc(o.why) + '</span></div>'
+        + '<span class="pr">' + esc(o.price) + '</span>'
+        + '<button type="button" data-add data-sku="' + esc(o.sku) + '" data-name="' + esc(o.name)
+        +   '" data-price="' + esc(o.price) + '" data-img="' + o.img
+        +   '" data-variant="' + esc(o.variant || '') + '"><span>Add</span></button>'
+        + '</div>';
+    }).join('');
   }
   function announce(msg){ if (live) live.textContent = msg; }
 

@@ -257,16 +257,53 @@ variant matrix exercises both option axes.
 | Tabbed spec table | Takomo | Wedges deserve the table; nothing else gives you per-loft data |
 | Cross-sell twice (under fold + bottom) | both | |
 
-### Section order and fields
+### Section order and fields  ·  rev 2, after Cole's review
 
-`brand(header) → white(crumb+fold) → brand(marquee) → white(story) →
-brand(build) → cream(which loft) → ink(specs) → white(reviews) →
-cream(the set) → white(also like) → ink(close+footer)`
+`brand(header) → white(crumb+fold) → brand(marquee) → cream(others also viewed)
+→ white(the club) → brand(where the money went) → cream(the argument) →
+white(which loft) → cream(the numbers) → ink(highlight reel) → cream(signature
+quote) → white(reviews) → cream(rest of the bag) → white(finish the setup) →
+ink(close+footer)`
 
-**"Which loft" sits between the green band and the ink spec table on purpose.**
-It was originally after the specs, which put green directly against ink — two
-dark fields touching, which breaks §7's alternation law. Moving it also pulls
-the conversion aid higher up the page. Don't move it back.
+**Rev 2 changed five things off Cole's feedback. Do not undo them without asking.**
+
+1. **The fold now hands off the way Takomo's does.** Takomo goes fold → upsell
+   rail → product description with a video beside it → bulleted spec summary.
+   Rev 1 went straight into the brand argument, which Cole flagged. So:
+   *Others also viewed* sits directly under the fold, then *The club* carries
+   the description, the video slot and the Takomo-style bullet list.
+2. **"Most rounds are decided inside a hundred yards" moved down.** It is good
+   copy in the wrong slot — it now sits after the build section and sets up the
+   loft picker. Problem, then solution.
+3. **The spec table came off the ink field.** It was on ink *with the groove*,
+   and 1px lines on a 6px pitch behind small mono figures made it hard to read
+   — Cole's exact complaint. Takomo's spec block is light grey with a white
+   bordered table and a black header row on the loft matrix. It now matches, on
+   cream, with no groove under the table. **The fix was the field, not the
+   lines.**
+4. **Reviews are now Judge.me's shape, not a curated grid.** Score, histogram,
+   AI summary, star filter, sort and paging all work. The signature quote moved
+   out into its own `.pull` section above it, which is the homepage's device.
+5. **Highlight reel added** (`ink`), six labelled video slots.
+
+`.pull` moved from `page-home.css` into `core.css` — it is a two-page component now.
+
+### Reviews: the sample is deliberately not 4-star-and-up
+
+The widget carries **47 real reviews spanning every rating**, in roughly the
+live proportion, so the histogram and the star filter tell the same story.
+Filtering to 1★ returns real 1★ reviews.
+
+This is not a reversal of the 4★ floor. The floor governs **curated** moments —
+the buy-box pull quote and the signature quote — where we are choosing what to
+say. A review *widget* that hides its 1-stars is a widget nobody believes, and
+Judge.me would not hide them anyway.
+
+### The video gap is now two sections, not zero
+
+`.club-media` (16:9, beside the description) and the six `.reel` slots are all
+labelled briefs, not stand-in photography. Nothing on this page pretends a
+still is a video. Briefs are written on each card.
 
 ### Verified facts on this page
 
@@ -303,6 +340,26 @@ the conversion aid higher up the page. Don't move it back.
   section is already shaped to carry tier pricing.
 - **E. No lifestyle or UGC on this page.** Both references run one. Blocked on
   the same photography gap as the homepage (§7b F/H).
+
+### Cart drawer — three bugs Cole caught in one screenshot
+
+All fixed in `core.css` / `core.js` / `partials/cart.html`, so both pages get them:
+
+1. **The "black bar" before checkout** was `.cd-foot`'s `border-top: 2px solid
+   var(--ink)`. A 2px ink rule on a cream field reads as a black bar, not a
+   divider — and the colour change from white body to cream footer is already
+   all the separation the eye needs. Now `--ink-14`.
+2. **The price looked struck through.** `.ci .pr` and `.qty` were inline
+   siblings, so the stepper's 2px border crossed `$99` at mid-height. The price
+   is `display:block` now, with 10px of clearance measured.
+3. **561px of dead space** between a one-line bag and the footer. Measured, not
+   estimated. That space now holds the cross-sell.
+
+**The cart cross-sell** reads a page-level `LG_CART_UPSELL` and filters out
+anything already in the bag, so it never offers what was just added. It hides
+itself when the bag is empty or nothing is left to offer — which is why the
+homepage, which defines no upsell list, shows no block at all. Dead gap is down
+to 214px.
 
 ### Two laws learned building it
 
