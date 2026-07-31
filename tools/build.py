@@ -176,11 +176,12 @@ def tile_for(pid, extra=None):
         "img": p["img"], "priceLabel": p["priceLabel"], "summary": p["summary"],
         "inStock": p["inStock"], "href": "{{link:p/%s}}" % pid,
     }
+    # Cole's rule: a product card never shows a review count. The variant
+    # summary ("Right & left hand", "S–3XL") is what belongs in that slot —
+    # it answers a question the shopper actually has at this point.
     if p.get("rating"):
         t["rating"] = p["rating"]
-        t["meta"] = "%s &#9733; %s" % (p["rating"]["avg"], p["rating"]["count"])
-    else:
-        t["meta"] = p["summary"]
+    t["meta"] = p["summary"]
     if extra:
         t.update({k: v for k, v in extra.items() if k != "id"})
     return t
@@ -251,6 +252,19 @@ def product_copy(prod):
     fam = [p for p in sitemap.PRODUCTS
            if p["family"] == prod["family"] and p["id"] != prod["id"]]
     if fam:
+        # Swatches are the family in catalogue order WITH this product in it,
+        # marked. The strip lower down is siblings only; this row is the whole
+        # range, because a swatch set with a hole where you are standing reads
+        # as a missing colour rather than as the current one.
+        whole = [p for p in sitemap.PRODUCTS if p["family"] == prod["family"]]
+        ctx["swatches"] = {
+            "label": "Colour" if prod["family"].startswith("polo") else "Design",
+            "current": prod["name"],
+            "items": [{"name": p["title"], "img": p["img"],
+                       "soldOut": not p["inStock"],
+                       "isThis": p["id"] == prod["id"],
+                       "href": "{{link:p/%s}}" % p["id"]} for p in whole],
+        }
         ctx["siblings"] = {
             "items": [{"name": p["name"].replace(" Classic Polo", "").replace(" Blade Polo", ""),
                        "title": p["title"], "img": p["img"], "summary": p["summary"],
@@ -344,6 +358,15 @@ def page_context(slug):
                 "summary": p["summary"], "inStock": p["inStock"],
                 "href": "{{link:p/%s}}" % p["id"],
             }
+            # Quick add, but only where there is genuinely nothing to choose.
+            # One sellable variant and no option axes means the button can put
+            # the real SKU in the bag; anything else has to go to its own page.
+            live = [v for v in p["variants"].values() if v["avail"]]
+            if not p["options"] and len(live) == 1:
+                tile["addSku"] = live[0]["sku"]
+            else:
+                axis = p["options"][0]["name"].lower() if p["options"] else "options"
+                tile["chooseLabel"] = "Choose %s" % axis
             if p.get("rating"):
                 tile["rating"] = p["rating"]
             tiles.append(tile)

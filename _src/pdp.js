@@ -114,7 +114,8 @@ var PD_KIT = [
 
      * Availability is `avail`, never `qty > 0`. Shopify oversells some lines
        (the glove ships at qty -3) and holds others at qty 0 while still
-       selling them. Quantity only drives the "Low stock" line.
+       selling them. Quantity is no longer surfaced at all — the stock line
+       says when it ships and nothing more (Cole, 2026-07-31).
      * Price is per variant. Grips run $9.95 / $11.95 / $14.95 across
        Standard / Midsize / Jumbo, so the price repaints on selection.
      ======================================================================= */
@@ -185,9 +186,10 @@ var PD_KIT = [
         stock.removeAttribute('data-out');
         /* qty can be zero or negative on a sellable variant — that is a
            backorder, not low stock, so only a real positive count qualifies */
-        st.textContent = (v.qty > 0 && v.qty < 25)
-          ? 'Low stock — ' + v.qty + ' left. Ships in 1–2 business days'
-          : 'In stock — ships in 1–2 business days';
+        /* The stock line says WHEN it ships and nothing else. It used to
+           publish the exact unit count on anything under 25, which is inventory
+           data a shopper has no use for and we have no reason to broadcast. */
+        st.textContent = 'In stock — ships in 1–2 business days';
       }
     }
     [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
@@ -245,7 +247,10 @@ var PD_KIT = [
   if (oav) oav.innerHTML = PD_OAV.map(function(o){
     return '<article class="oav-i">'
       + '<div class="oav-ph">'
-      +   '<span class="oav-tag"' + (o.out ? ' data-out' : '') + '>' + esc(o.tag) + '</span>'
+      /* an empty tag used to render as a small black square on every card
+         without a callout — no tag, no element */
+      +   (o.tag ? '<span class="oav-tag"' + (o.out ? ' data-out' : '') + '>'
+                   + esc(o.tag) + '</span>' : '')
       +   '<img src="' + o.img + '" alt="' + esc(o.nm) + '" loading="lazy" width="600" height="600">'
       + '</div>'
       + '<div class="oav-bd"><a class="oav-nm stretch" href="' + o.href + '">' + esc(o.nm) + '</a>'

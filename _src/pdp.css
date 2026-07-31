@@ -372,3 +372,28 @@
    all, says so rather than rendering an empty list under a star filter */
 .jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
 
+/* ==========================================================================
+   BUY-BOX LINKS AND TRUST ROW  ·  Cole's notes 5 and 8
+   The delivery and returns triggers used to sit inline at the end of the stock
+   sentence with no underline, so they read as prose rather than as controls.
+   Own line, underlined, gold underline on hover — the same treatment .ilink
+   gets in body copy.
+   ========================================================================== */
+.bx-links{margin:8px 0 0}
+.bx-links a{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-70);
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:var(--ink-14);
+  display:inline-flex;align-items:center;min-height:34px}
+.bx-links a:hover{color:var(--ink);text-decoration-color:var(--gold)}
+
+/* Three even columns rather than a wrapping flex row, which put two items on
+   one line and orphaned the third. */
+.bx-terms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;
+  margin:22px 0 0;padding:18px 0 0;border-top:2px solid var(--ink-08)}
+.bx-terms span{display:flex;align-items:flex-start;gap:8px;
+  font-size:.8rem;line-height:1.35;color:var(--ink-70)}
+@media (max-width:520px){
+  .bx-terms{grid-template-columns:1fr}
+}
+

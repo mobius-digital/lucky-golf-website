@@ -1132,3 +1132,62 @@ Shopify product id:
 
 **Cole has offered a fuller MD file. Ask for it — it is the only route to the
 new driver and to apparel measurements.**
+
+---
+
+## 16. Cole's second review pass — nine notes (2026-07-31)
+
+### The root cause behind three of them
+
+`core.css` defined **`.ptile .pt-ph` and `.ptile .pt-tag` twice** — once under
+PRODUCT TILES and again under STUDIO CUTOUTS. The second block won, so:
+
+- the photo-first margin never applied, leaving **a cream band above every
+  product image**;
+- the tag inherited `top:0` from one rule and `bottom:0` from the other, which
+  **stretched SOLD OUT into a full-height black bar** down the side of the card.
+
+One definition each now. **A component defined in two places is a component
+that will drift** — this is the same lesson as `.chip` and `.crumb`, from the
+inside of one file rather than across two.
+
+| # | Note | Done |
+|---|---|---|
+| 1 | Cards look wrong, sold-out looks broken | Duplicate rules collapsed. Chip is 68×25 in a 309px well, not a bar |
+| 2 | Never show review counts on cards · empty black callout | `.pt-rt` gone from every tile; an empty tag no longer renders an element |
+| 3 | Drop the "it costs $X because we sell direct" para | Removed from all four club pages that carried it |
+| 4 | "One length, one weight, both hands" tries too hard | All five club spec headlines are now "The numbers" |
+| 5 | Delivery/returns links: underline, own line, no stock count | `.bx-links`, underlined, and the stock line says only when it ships |
+| 6 | Colourway swatches in the buy box | Added **above** the size picker — see below |
+| 7 | Quick add on the collection grid | Added, with the sized-product rule |
+| 8 | Trust row layout | Three even columns instead of a wrapping flex row |
+| 9 | Material/care dropdown on apparel | Already there — "Fabric and care", open by default |
+
+### 16a. Where the swatches went, and why
+
+**Above the size picker, inside the buy box.** Colour is the first decision —
+you choose which shirt, then what size — and the swatch row is what stops a
+thirteen-product range feeling like one product with a dead end.
+
+The swatch set includes **the product you are on**, marked with a gold border.
+A swatch row with a hole where you are standing reads as a missing colour
+rather than as the current one.
+
+The larger "More colours" section lower down stays. It is doing a different
+job: swatches are for deciding, the strip is for browsing at a size where you
+can actually see the print.
+
+### 16b. Quick add follows the same rule as the cross-sell tiles
+
+A product with **no option axes and exactly one sellable variant** gets a real
+Add button carrying the real SKU. Anything with a choice gets
+"Choose hand →" / "Choose size →" to its own page, because there is nothing
+sensible to put in a bag without that choice. Sold-out products show the state
+instead of a control.
+
+### 16c. Stock quantity is no longer published
+
+The buy box used to print "Low stock — 2 left" under 25 units. That is
+inventory data a shopper has no use for and we have no reason to broadcast.
+The line now says when it ships and nothing else. `qty` is still in the data
+and still drives nothing visible.

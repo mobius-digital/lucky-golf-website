@@ -106,7 +106,6 @@
   "clubParas": [
     "Pick it up and it feels like a club that costs more. That's the forging &mdash; 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.",
     "The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.",
-    "It costs $99 because we sell it to you directly and we don&rsquo;t pay anyone on tour to play it. That is the whole explanation, and there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it.",
     "Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower centre of gravity for cleaner full swings. Same club, six jobs."
   ],
   "clubSpecs": [
@@ -345,5 +344,6 @@
       "why": "Reviewers keep mentioning cart rash. This stops it.",
       "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
     }
-  ]
+  ],
+  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
 }

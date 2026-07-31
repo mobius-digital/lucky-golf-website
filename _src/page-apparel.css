@@ -62,3 +62,24 @@
   .sibs{grid-template-columns:repeat(3,1fr);gap:10px}
   .sib-nm{font-size:.74rem}
 }
+
+/* ==========================================================================
+   COLOURWAY SWATCHES  ·  Cole's note 6
+   Colourways are separate Shopify products, so this is a row of links rather
+   than a variant axis. It sits above the size picker because it is the first
+   decision, and because having to go back to the collection to see another
+   colour is what makes a thirteen-product range feel like one product.
+   ========================================================================== */
+.sw-row{display:flex;flex-wrap:wrap;gap:8px}
+.sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
+  background:var(--cream);border:2px solid var(--ink-14);border-radius:var(--r);
+  transition:border-color .18s,transform .2s}
+.sw img{width:100%;height:100%;object-fit:cover;display:block}
+.sw:hover{border-color:var(--ink);transform:translateY(-2px)}
+.sw--on{border-color:var(--gold);cursor:default}
+.sw--on:hover{transform:none}
+.sw--out img{filter:grayscale(1);opacity:.45}
+/* a struck-through swatch, matching how a dead variant chip reads */
+.sw--out::after{content:'';position:absolute;left:10%;right:10%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-24deg}
+

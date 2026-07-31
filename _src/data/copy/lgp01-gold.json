@@ -65,8 +65,7 @@
   "clubParas": [
     "A blade putter does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. There is more feel in a small head and more information in a mishit.",
     "It is cast 431 stainless at 385 grams &mdash; heavy for a blade, which is what stops the hands taking over on a short one. Loft is 3.5 degrees, enough to lift the ball out of its own dent and start it rolling early.",
-    "35 inches, right hand, with the Lucky rubber grip rather than the oversized 3.0 that ships on the mallet. That is a deliberate pairing: an arcing stroke wants to feel the club, and a fat grip takes that away.",
-    "It is $199 because we sell it to you directly &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+    "35 inches, right hand, with the Lucky rubber grip rather than the oversized 3.0 that ships on the mallet. That is a deliberate pairing: an arcing stroke wants to feel the club, and a fat grip takes that away."
   ],
   "clubSpecs": [
     {
@@ -96,7 +95,7 @@
   ],
   "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film — lean on sound.",
   "reelHeadline": "The Blade, on the green",
-  "specHeadline": "One length, one hand, one weight.",
+  "specHeadline": "The numbers",
   "specSub": "Every number below is from the Product Reference Guide. Shopify describes this head as a casting; the guide says 100% CNC-milled, and the guide wins on product facts.",
   "specTabs": [
     {
@@ -264,5 +263,6 @@
       }
     ],
     "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
-  }
+  },
+  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
 }

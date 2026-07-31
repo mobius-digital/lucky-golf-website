@@ -86,6 +86,9 @@ var PLP = {{COLLECTION_JSON}};
       + '<span class="s-bg">' + five + '</span><span class="s-fg">' + five + '</span></span>';
   }
 
+  /* No review count on a product card, ever (Cole, 2026-07-31). The variant
+     summary carries this slot instead — it answers a question the shopper
+     actually has while browsing. */
   function tile(p){
     var out = !p.inStock;
     return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
@@ -103,9 +106,22 @@ var PLP = {{COLLECTION_JSON}};
       + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
         + esc(p.name) + '</span></a>'
       + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
-      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
-      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
-      + '</span>'
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span></span>'
+      /* Quick add. A product with exactly one sellable variant can go straight
+         in the bag; anything with a choice to make cannot, so it links to its
+         own page instead of pretending to be one-click. Same rule as the PDP
+         cross-sell tiles. */
+      + '<div class="pt-add">'
+      + (out
+          ? '<span class="pt-out">Sold out</span>'
+          : p.addSku
+            ? '<button class="btn btn-ink btn-sm" type="button" data-add'
+              + ' data-sku="' + esc(p.addSku) + '" data-name="' + esc(p.name) + '"'
+              + ' data-price="' + esc(p.priceLabel) + '" data-img="' + esc(p.img || '') + '"'
+              + ' data-variant=""><span>Add</span></button>'
+            : '<a class="btn btn-line btn-sm" href="' + esc(p.href) + '"><span>'
+              + esc(p.chooseLabel || 'Choose options') + '</span><span class="ar">&rarr;</span></a>')
+      + '</div>'
       + '</article>';
   }
 

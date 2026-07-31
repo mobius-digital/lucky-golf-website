@@ -679,15 +679,22 @@ button{font:inherit;color:inherit}
 .ptile .pt-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
   font-size:1.02rem}
 .ptile .pt-rt{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink-muted)}
-.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative;
-  background:var(--white)}
-.ptile .pt-ph img{width:100%;height:100%;object-fit:cover;
-  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.ptile:hover .pt-ph img{transform:scale(1.04)}
+/* Photo well. Full-bleed to the tile edge and flush to the top — the tile's
+   own top padding is cancelled here rather than left as a cream band above the
+   image, which is what it read as. Studio cutouts are clubs on white, so
+   mix-blend-mode:multiply drops that white into the cream tile beneath. */
+.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative}
+.ptile .pt-ph img{width:100%;height:100%;object-fit:contain;
+  mix-blend-mode:multiply;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ptile:hover .pt-ph img{transform:scale(1.045)}
 .ptile .pt-ph .ph{position:absolute;inset:0;border:0}
-.ptile .pt-tag{position:absolute;left:0;top:0;z-index:3;background:var(--gold);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;padding:7px 12px}
+/* Emphasis tag, top-left of the photo. It previously carried top:0 from here
+   and bottom:0 from a second definition below, which stretched it into a
+   full-height bar down the side of every sold-out card. */
+.ptile .pt-tag{position:absolute;left:0;top:0;bottom:auto;right:auto;z-index:3;
+  background:var(--lg-foil-h);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:6px 10px;border-bottom-right-radius:var(--r)}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
 @media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
 /* .pgrid at <=620 is handled by .msnap; see MOBILE CARD RAILS */
@@ -699,22 +706,11 @@ button{font:inherit;color:inherit}
    white into the cream tile beneath, so the club floats the way Takomo's do
    instead of sitting in a white box.
    ========================================================================== */
-/* full-bleed to the tile edge. It was inset by the tile's 26px side padding,
-   which left a cream gutter the corner tag appeared to float in. */
-.ptile .pt-ph{margin:16px -26px 0;aspect-ratio:1/1;position:relative;overflow:hidden}
-.ptile .pt-ph img{width:100%;height:100%;object-fit:contain;
-  mix-blend-mode:multiply;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.ptile:hover .pt-ph img{transform:scale(1.045)}
+/* .ptile's photo and tag are defined ONCE, in PRODUCT TILES above. They used
+   to be redefined here too and the duplicate is what broke the cards. */
 /* tile background stays cream on hover — the lift and the image nudge are the
    whole hover. mix-blend-mode:multiply reads fine on cream, so nothing is lost. */
 .mtile .mt-img{mix-blend-mode:multiply}
-
-/* emphasis tag — small, tight, flush into the corner.
-   Flat --gold read dull, so it carries the foil ramp (device 1) instead. */
-.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;
-  background:var(--lg-foil-h);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;padding:5px 9px;border-radius:0 var(--r) 0 0}
 
 /* meta line — price leads, rating steps back to a quiet mono stamp (HANDOFF §3) */
 .ptile .pt-meta{gap:0;flex-direction:column;align-items:center}
@@ -1007,10 +1003,28 @@ button{font:inherit;color:inherit}
      short, and a collection you came here to browse should not be one long
      column you have to scroll past */
   .plp-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .plp-grid .ptile{padding:20px 14px 0}
-  .plp-grid .ptile .pt-ph{margin:14px -14px 0}
+  /* photo-first here too — a positive top margin on .pt-ph is what put a
+     cream band above every image before */
+  .plp-grid .ptile{padding:20px 14px}
+  .plp-grid .ptile .pt-ph{margin:-20px -14px 14px}
   .plp-grid .pt-nm{font-size:clamp(1.1rem,4.6vw,1.45rem)}
   .plp-grid .pt-sum{font-size:.52rem}
+}
+
+/* ---------- quick add · Cole's note 7 ----------
+   Sits at the foot of every tile so the row of buttons lines up across the
+   grid regardless of how long the names above them run. */
+.pt-add{margin-top:auto;padding-top:16px;display:flex;justify-content:center}
+.pt-add .btn{width:100%;justify-content:center}
+.pt-out{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-muted);min-height:40px;
+  display:inline-flex;align-items:center}
+/* the tile's stretch link would swallow clicks on the button */
+.plp-grid .ptile .stretch::after{z-index:1}
+.pt-add{position:relative;z-index:3}
+@media (max-width:620px){
+  .pt-add{padding-top:12px}
+  .pt-add .btn{font-size:.7rem;padding:9px 10px}
 }
 </style>
 </head>
@@ -1311,7 +1325,7 @@ button{font:inherit;color:inherit}
    sort options are all derived, so adding a product to products.json puts it
    on the right page with no edit here.
    ========================================================================== */
-var PLP = {"id": "hybrid-driver", "name": "Hybrid & Driver", "facets": [{"k": "driver", "label": "Driver"}, {"k": "hybrid", "label": "Hybrid"}], "products": [{"id": "lgh01", "code": "LGH01", "name": "Stryker", "title": "Stryker LGH01", "family": "hybrid", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493", "price": 209, "priceLabel": "$209", "summary": "Right & left hand", "inStock": true, "href": "20-product-lgh01.html", "rating": {"avg": 4.6, "count": 20}}, {"id": "lgd01", "code": "LGD01", "name": "Lucky Driver", "title": "Lucky Driver LGD01", "family": "driver", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220428_103621.png?v=1703705639", "price": 299, "priceLabel": "$299", "summary": "", "inStock": true, "href": "#", "rating": {"avg": 4.33, "count": 39}}]};
+var PLP = {"id": "hybrid-driver", "name": "Hybrid & Driver", "facets": [{"k": "driver", "label": "Driver"}, {"k": "hybrid", "label": "Hybrid"}], "products": [{"id": "lgh01", "code": "LGH01", "name": "Stryker", "title": "Stryker LGH01", "family": "hybrid", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493", "price": 209, "priceLabel": "$209", "summary": "Right & left hand", "inStock": true, "href": "20-product-lgh01.html", "chooseLabel": "Choose hand", "rating": {"avg": 4.6, "count": 20}}, {"id": "lgd01", "code": "LGD01", "name": "Lucky Driver", "title": "Lucky Driver LGD01", "family": "driver", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220428_103621.png?v=1703705639", "price": 299, "priceLabel": "$299", "summary": "", "inStock": true, "href": "#", "addSku": "LGD01-Right", "rating": {"avg": 4.33, "count": 39}}]};
 
 (function(){
   var $ = function(s, r){ return (r || document).querySelector(s); };
@@ -1392,6 +1406,9 @@ var PLP = {"id": "hybrid-driver", "name": "Hybrid & Driver", "facets": [{"k": "d
       + '<span class="s-bg">' + five + '</span><span class="s-fg">' + five + '</span></span>';
   }
 
+  /* No review count on a product card, ever (Cole, 2026-07-31). The variant
+     summary carries this slot instead — it answers a question the shopper
+     actually has while browsing. */
   function tile(p){
     var out = !p.inStock;
     return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
@@ -1409,9 +1426,22 @@ var PLP = {"id": "hybrid-driver", "name": "Hybrid & Driver", "facets": [{"k": "d
       + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
         + esc(p.name) + '</span></a>'
       + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
-      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span>'
-      + (p.rating ? '<span class="pt-rt">' + p.rating.avg + ' ★ ' + p.rating.count + '</span>' : '')
-      + '</span>'
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span></span>'
+      /* Quick add. A product with exactly one sellable variant can go straight
+         in the bag; anything with a choice to make cannot, so it links to its
+         own page instead of pretending to be one-click. Same rule as the PDP
+         cross-sell tiles. */
+      + '<div class="pt-add">'
+      + (out
+          ? '<span class="pt-out">Sold out</span>'
+          : p.addSku
+            ? '<button class="btn btn-ink btn-sm" type="button" data-add'
+              + ' data-sku="' + esc(p.addSku) + '" data-name="' + esc(p.name) + '"'
+              + ' data-price="' + esc(p.priceLabel) + '" data-img="' + esc(p.img || '') + '"'
+              + ' data-variant=""><span>Add</span></button>'
+            : '<a class="btn btn-line btn-sm" href="' + esc(p.href) + '"><span>'
+              + esc(p.chooseLabel || 'Choose options') + '</span><span class="ar">&rarr;</span></a>')
+      + '</div>'
       + '</article>';
   }
 

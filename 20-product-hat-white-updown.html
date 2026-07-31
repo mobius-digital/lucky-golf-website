@@ -679,15 +679,22 @@ button{font:inherit;color:inherit}
 .ptile .pt-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
   font-size:1.02rem}
 .ptile .pt-rt{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink-muted)}
-.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative;
-  background:var(--white)}
-.ptile .pt-ph img{width:100%;height:100%;object-fit:cover;
-  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.ptile:hover .pt-ph img{transform:scale(1.04)}
+/* Photo well. Full-bleed to the tile edge and flush to the top — the tile's
+   own top padding is cancelled here rather than left as a cream band above the
+   image, which is what it read as. Studio cutouts are clubs on white, so
+   mix-blend-mode:multiply drops that white into the cream tile beneath. */
+.ptile .pt-ph{margin:-30px -26px 20px;aspect-ratio:1/1;overflow:hidden;position:relative}
+.ptile .pt-ph img{width:100%;height:100%;object-fit:contain;
+  mix-blend-mode:multiply;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ptile:hover .pt-ph img{transform:scale(1.045)}
 .ptile .pt-ph .ph{position:absolute;inset:0;border:0}
-.ptile .pt-tag{position:absolute;left:0;top:0;z-index:3;background:var(--gold);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;padding:7px 12px}
+/* Emphasis tag, top-left of the photo. It previously carried top:0 from here
+   and bottom:0 from a second definition below, which stretched it into a
+   full-height bar down the side of every sold-out card. */
+.ptile .pt-tag{position:absolute;left:0;top:0;bottom:auto;right:auto;z-index:3;
+  background:var(--lg-foil-h);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:6px 10px;border-bottom-right-radius:var(--r)}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
 @media (max-width:980px){.pgrid{grid-template-columns:repeat(2,1fr)}.mega-grid{grid-template-columns:1fr}}
 /* .pgrid at <=620 is handled by .msnap; see MOBILE CARD RAILS */
@@ -699,22 +706,11 @@ button{font:inherit;color:inherit}
    white into the cream tile beneath, so the club floats the way Takomo's do
    instead of sitting in a white box.
    ========================================================================== */
-/* full-bleed to the tile edge. It was inset by the tile's 26px side padding,
-   which left a cream gutter the corner tag appeared to float in. */
-.ptile .pt-ph{margin:16px -26px 0;aspect-ratio:1/1;position:relative;overflow:hidden}
-.ptile .pt-ph img{width:100%;height:100%;object-fit:contain;
-  mix-blend-mode:multiply;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.ptile:hover .pt-ph img{transform:scale(1.045)}
+/* .ptile's photo and tag are defined ONCE, in PRODUCT TILES above. They used
+   to be redefined here too and the duplicate is what broke the cards. */
 /* tile background stays cream on hover — the lift and the image nudge are the
    whole hover. mix-blend-mode:multiply reads fine on cream, so nothing is lost. */
 .mtile .mt-img{mix-blend-mode:multiply}
-
-/* emphasis tag — small, tight, flush into the corner.
-   Flat --gold read dull, so it carries the foil ramp (device 1) instead. */
-.ptile .pt-tag{position:absolute;left:0;bottom:0;z-index:3;
-  background:var(--lg-foil-h);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;padding:5px 9px;border-radius:0 var(--r) 0 0}
 
 /* meta line — price leads, rating steps back to a quiet mono stamp (HANDOFF §3) */
 .ptile .pt-meta{gap:0;flex-direction:column;align-items:center}
@@ -1284,6 +1280,31 @@ button{font:inherit;color:inherit}
 .jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
 
 /* ==========================================================================
+   BUY-BOX LINKS AND TRUST ROW  ·  Cole's notes 5 and 8
+   The delivery and returns triggers used to sit inline at the end of the stock
+   sentence with no underline, so they read as prose rather than as controls.
+   Own line, underlined, gold underline on hover — the same treatment .ilink
+   gets in body copy.
+   ========================================================================== */
+.bx-links{margin:8px 0 0}
+.bx-links a{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-70);
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:var(--ink-14);
+  display:inline-flex;align-items:center;min-height:34px}
+.bx-links a:hover{color:var(--ink);text-decoration-color:var(--gold)}
+
+/* Three even columns rather than a wrapping flex row, which put two items on
+   one line and orphaned the third. */
+.bx-terms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;
+  margin:22px 0 0;padding:18px 0 0;border-top:2px solid var(--ink-08)}
+.bx-terms span{display:flex;align-items:flex-start;gap:8px;
+  font-size:.8rem;line-height:1.35;color:var(--ink-70)}
+@media (max-width:520px){
+  .bx-terms{grid-template-columns:1fr}
+}
+
+/* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
    The sibling colourway strip and the size guide. Everything else — the fold,
    the buy box, the rails, the review widget — is in _src/pdp.css.
@@ -1347,6 +1368,26 @@ button{font:inherit;color:inherit}
   .sibs{grid-template-columns:repeat(3,1fr);gap:10px}
   .sib-nm{font-size:.74rem}
 }
+
+/* ==========================================================================
+   COLOURWAY SWATCHES  ·  Cole's note 6
+   Colourways are separate Shopify products, so this is a row of links rather
+   than a variant axis. It sits above the size picker because it is the first
+   decision, and because having to go back to the collection to see another
+   colour is what makes a thirteen-product range feel like one product.
+   ========================================================================== */
+.sw-row{display:flex;flex-wrap:wrap;gap:8px}
+.sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
+  background:var(--cream);border:2px solid var(--ink-14);border-radius:var(--r);
+  transition:border-color .18s,transform .2s}
+.sw img{width:100%;height:100%;object-fit:cover;display:block}
+.sw:hover{border-color:var(--ink);transform:translateY(-2px)}
+.sw--on{border-color:var(--gold);cursor:default}
+.sw--on:hover{transform:none}
+.sw--out img{filter:grayscale(1);opacity:.45}
+/* a struck-through swatch, matching how a dead variant chip reads */
+.sw--out::after{content:'';position:absolute;left:10%;right:10%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-24deg}
 </style>
 </head>
 <body>
@@ -1531,6 +1572,32 @@ button{font:inherit;color:inherit}
       </div>
     </div>
 
+    <!-- Colourways are separate Shopify products, so this is a row of links
+         rather than a variant axis. It sits ABOVE the size picker because it
+         is the first decision — you choose which shirt, then what size — and
+         because having to go back to the collection to see another colour is
+         the thing that makes a thirteen-product range feel like one product. -->
+    
+    <div class="opt">
+      <div class="opt-hd">
+        <span class="lbl">Design</span>
+        <span class="val">White Upside Down Hat</span>
+      </div>
+      <div class="sw-row" role="group" aria-label="Design">
+        <a class="sw" href="20-product-hat-white-gold-classic.html" aria-label="White | Gold Classic Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/79.webp?v=1784585346" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-white-ibtbl.html" aria-label="It's Better To Be Lucky Hat, white"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/89.webp?v=1784585347" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-cream-updown.html" aria-label="Cream Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/69.webp?v=1784585346" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-black-ibtbl.html" aria-label="It's Better To Be Lucky Hat, black"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-tan-cursive.html" aria-label="Tan Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_9c446716-791d-48c1-be9d-9e805bda751a.webp?v=1784585347" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw sw--out" href="20-product-hat-black-gold-classic.html" aria-label="Black | Gold Classic Hat, sold out"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?v=1784585346" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-white-black-updown.html" aria-label="White/Black Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/20.webp?v=1784585346" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw sw--on" href="20-product-hat-white-updown.html" aria-current="page" aria-label="White Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/59.webp?v=1784585346" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-white-cursive.html" aria-label="White Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/49.webp?v=1784585347" alt="" loading="lazy" width="90" height="90"></a>
+        <a class="sw" href="20-product-hat-baby-blue-cursive.html" aria-label="Baby Blue Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347" alt="" loading="lazy" width="90" height="90"></a>
+      </div>
+    </div>
+    
+
     <!-- Size is the decision on this template, so the picker's help link goes
          to the guide rather than to a "which one" module. -->
     <div id="pickers"></div>
@@ -1544,8 +1611,8 @@ button{font:inherit;color:inherit}
       <button class="btn btn-foil sweep" id="atc" type="button"><span>Add to cart &middot; $29</span></button>
     </div>
 
-    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span>
-      <a class="bx-eta" href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
+    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span></p>
+    <p class="bx-links"><a href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Four-way stretch, UPF 50+</span>
@@ -1553,7 +1620,7 @@ button{font:inherit;color:inherit}
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
 
-    <p class="bx-policy"><a href="#" data-md-open="md-returns">Returns and exchanges</a></p>
+    <p class="bx-links"><a href="#" data-md-open="md-returns">Returns and exchanges</a></p>
 
     <div class="acc">
       <div class="acc-i">
@@ -2139,7 +2206,8 @@ var PD_KIT = [
 
      * Availability is `avail`, never `qty > 0`. Shopify oversells some lines
        (the glove ships at qty -3) and holds others at qty 0 while still
-       selling them. Quantity only drives the "Low stock" line.
+       selling them. Quantity is no longer surfaced at all — the stock line
+       says when it ships and nothing more (Cole, 2026-07-31).
      * Price is per variant. Grips run $9.95 / $11.95 / $14.95 across
        Standard / Midsize / Jumbo, so the price repaints on selection.
      ======================================================================= */
@@ -2210,9 +2278,10 @@ var PD_KIT = [
         stock.removeAttribute('data-out');
         /* qty can be zero or negative on a sellable variant — that is a
            backorder, not low stock, so only a real positive count qualifies */
-        st.textContent = (v.qty > 0 && v.qty < 25)
-          ? 'Low stock — ' + v.qty + ' left. Ships in 1–2 business days'
-          : 'In stock — ships in 1–2 business days';
+        /* The stock line says WHEN it ships and nothing else. It used to
+           publish the exact unit count on anything under 25, which is inventory
+           data a shopper has no use for and we have no reason to broadcast. */
+        st.textContent = 'In stock — ships in 1–2 business days';
       }
     }
     [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
@@ -2270,7 +2339,10 @@ var PD_KIT = [
   if (oav) oav.innerHTML = PD_OAV.map(function(o){
     return '<article class="oav-i">'
       + '<div class="oav-ph">'
-      +   '<span class="oav-tag"' + (o.out ? ' data-out' : '') + '>' + esc(o.tag) + '</span>'
+      /* an empty tag used to render as a small black square on every card
+         without a callout — no tag, no element */
+      +   (o.tag ? '<span class="oav-tag"' + (o.out ? ' data-out' : '') + '>'
+                   + esc(o.tag) + '</span>' : '')
       +   '<img src="' + o.img + '" alt="' + esc(o.nm) + '" loading="lazy" width="600" height="600">'
       + '</div>'
       + '<div class="oav-bd"><a class="oav-nm stretch" href="' + o.href + '">' + esc(o.nm) + '</a>'

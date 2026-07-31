@@ -65,8 +65,7 @@
   "clubParas": [
     "The V2 exists because the first one was very good out of a clean lie and merely fine out of a bad one. The grind is reshaped and more forgiving, so the sole works through the turf instead of digging into it.",
     "The centre of gravity sits lower, which gets the ball up from lies that do not deserve it &mdash; hardpan, thin rough, the ones where a wedge normally punishes you.",
-    "It is forged, like the LGW01, so the feedback is the same honest kind. Where it differs is what happens when you do not catch it flush.",
-    "It costs $109 because we sell it to you directly &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+    "It is forged, like the LGW01, so the feedback is the same honest kind. Where it differs is what happens when you do not catch it flush."
   ],
   "clubSpecs": [
     {
@@ -96,7 +95,7 @@
   ],
   "videoBrief": "16:9 product film, 40&ndash;60s. Shot to show the grind: sole through turf in slow motion, then the same shot from a bad lie. The whole argument for this club is what happens when the lie is wrong.",
   "reelHeadline": "The LGW02, in the wild",
-  "specHeadline": "Three lofts. One grind.",
+  "specHeadline": "The numbers",
   "specSub": "Every number below is from the Product Reference Guide. Lie changes with loft on this club, which it does not on the LGW01.",
   "specTabs": [
     {
@@ -235,5 +234,6 @@
   "helpLoft": {
     "headline": "Start with the wedge you already carry",
     "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even. The LGW02 comes in three lofts rather than six, so this ladder will often pair it with an LGW01."
-  }
+  },
+  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
 }

@@ -99,8 +99,7 @@
   "clubParas": [
     "Nobody buys a putter for the reason they should. A driver gets picked over three weekends and a putter gets whatever was in the bag when you started. It is the club you use on every hole, twice, and it decides more of your score than anything else you carry.",
     "The head is perimeter-weighted, so the strikes you miss off the toe hold their line instead of leaking away. The neck gives it a slight toe hang, which means it works with a natural arc in the stroke rather than asking you to putt straighter than you do.",
-    "It comes with the oversized 3.0 grip fitted, which is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club.",
-    "It costs $229 because we sell it to you directly and we don&rsquo;t pay anyone on tour to play it &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+    "It comes with the oversized 3.0 grip fitted, which is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club."
   ],
   "clubSpecs": [
     {
@@ -206,8 +205,8 @@
     ],
     "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
   },
-  "specHeadline": "One length, one weight, both hands.",
-  "specSub": "Every number below is from the Product Reference Guide.",
+  "specHeadline": "The numbers",
+  "specSub": "All of it from the Product Reference Guide. One length, one head weight, right or left hand.",
   "specTabs": [
     {
       "label": "Club",
@@ -362,5 +361,6 @@
       "why": "If the oversized 3.0 is more grip than you want.",
       "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382"
     }
-  ]
+  ],
+  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
 }
