@@ -1,0 +1,24 @@
+/* ==========================================================================
+   GEAR PDP — what only a cover, grip, glove or pack of tees renders
+   Which is almost nothing. The fold, the buy box, the review widget and the
+   cross-sell grid all come from _src/pdp.css; the only thing this template
+   adds is the two-up detail block that stands in for a spec table.
+
+   The shortness is the design (GAMEPLAN §3). A $9.95 pack of tees does not
+   get a brand moment, a highlight reel or a help-me-choose module.
+   ========================================================================== */
+
+.gr-two{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(30px,4vw,72px);
+  align-items:start}
+.gr-block .eyebrow{margin-bottom:16px}
+.gr-block h2{margin:0 0 18px;max-width:18ch}
+.gr-block .body{margin:0 0 14px}
+.gr-block .body:last-child{margin-bottom:0}
+.gr-block .club-specs{margin-top:22px}
+
+/* a product with no reviews yet says so rather than borrowing a score */
+.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+
+@media (max-width:760px){
+  .gr-two{grid-template-columns:1fr;gap:clamp(28px,6vw,40px)}
+}

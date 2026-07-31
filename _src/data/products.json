@@ -688,7 +688,7 @@
    "default": "RH",
    "summary": "Right & left hand",
    "inStock": true,
-   "built": false,
+   "built": true,
    "rating": {
     "avg": 4.71,
     "count": 58
@@ -1201,7 +1201,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-marble",
@@ -2366,7 +2366,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "cover-driver",

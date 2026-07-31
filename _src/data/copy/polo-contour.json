@@ -1,0 +1,93 @@
+{
+  "_": "Editorial for the Contour Classic Polo. Catalogue facts come from products.json.",
+  "_specs": "Fabric, fit, weight and care are verbatim from the copy skill's Product Reference Guide (The Classic Polo). Body measurements are NOT published anywhere and are not invented here — the size table carries the sizes that exist and marks the numbers as needed.",
+  "_voice": "The reference guide is explicit that apparel does NOT get the clubs' value-comparison framing, so there is no middlemen-and-markups argument on this page.",
+  "_proves": "Phase C's apparel proof: one axis (size), a sibling strip because colourways are separate products, fabric and care instead of a spec table, and no reviews at all — this product has none, and the widget says so rather than borrowing a score.",
+
+  "eyebrow": "The Classic &middot; Polos",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+  "gallery": [
+    ["TopographyStyle1.webp?v=1779472755", "Contour Classic Polo, front"]
+  ],
+
+  "priceNote": "One price, every size",
+  "buyBody": "A contour print that reads as texture from more than a few feet away, on the collar and three-button placket that most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round doesn't cost you anything.",
+
+  "four": [
+    {"k": "Classic collar", "v": "Three-button placket"},
+    {"k": "88/12",          "v": "Poly-spandex, four-way stretch"},
+    {"k": "UPF 50+",        "v": "Moisture-wicking, odour-resistant"},
+    {"k": "Sub-180gsm",     "v": "Light enough for a hot round"}
+  ],
+
+  "fabric": [
+    {"k": "Fabric",   "v": "88/12 poly-spandex."},
+    {"k": "Weight",   "v": "Sub-180gsm &mdash; light, not flimsy."},
+    {"k": "Stretch",  "v": "Four-way, so it moves in every direction the swing does."},
+    {"k": "Finish",   "v": "Moisture-wicking, odour-resistant, colour-retentive."},
+    {"k": "UPF",      "v": "50+."},
+    {"k": "Care",     "v": "Machine wash. No special handling."}
+  ],
+
+  "marquee": [
+    "Four-way stretch",
+    "UPF 50+",
+    "Machine wash",
+    "Thirty-day returns, unworn with tags",
+    "Free US shipping",
+    "It's better to be lucky"
+  ],
+
+  "pieceHeadline": "A polo that survives a round, a car, and whatever happens after.",
+  "pieceParas": [
+    "The contour print is the point. Up close it reads as a topographic line drawing; from across a fairway it reads as texture, which is the right way round for something you wear for five hours next to people who are looking at you.",
+    "Underneath the pattern it is the Classic: a proper collar, a three-button placket, and a tailored athletic cut that follows the shoulders without gripping them. The kind of fit that looks deliberate rather than either baggy or sprayed on.",
+    "The fabric does the work nobody notices. Four-way stretch means the top of the backswing doesn't drag the hem out of your trousers, moisture-wicking means the back of the shirt is not a conversation on a hot day, and UPF 50+ means five hours in open sun costs you nothing.",
+    "It is sub-180gsm, which is light. That is deliberate and it is the reason this is the shirt still on your back at the bar afterwards rather than the one you changed out of in the car park."
+  ],
+  "lifestyleBrief": "Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. Natural light, course visible but thrown out of focus. The print has to be legible as texture at this distance — this is the shot that sells the pattern, and there is currently no on-body apparel photography at all (HANDOFF §7b F).",
+
+  "sizeHeadline": "Get the size right the first time",
+  "sizeSub": "The Classic runs tailored athletic — closer to the body than a traditional golf polo, but not compression. If you are between sizes or you like room across the chest, take the larger one.",
+  "sizeCols": ["S", "M", "L", "XL", "XXL", "3XL"],
+  "sizeRows": [
+    {"k": "Chest (in)",      "cells": ["—", "—", "—", "—", "—", "—"]},
+    {"k": "Body length (in)","cells": ["—", "—", "—", "—", "—", "—"]},
+    {"k": "Sleeve (in)",     "cells": ["—", "—", "—", "—", "—", "—"]}
+  ],
+  "sizeNote": "The measurements above are not published anywhere we can verify, so they are left visibly empty rather than guessed at. They are the single most useful thing that could be added to this page — wrong size is the most common reason apparel is returned, and a table of dashes does not prevent that.",
+  "fitTitle": "How it fits",
+  "fitParas": [
+    "Tailored athletic. It follows the shoulders and tapers slightly through the body, so it sits closer than a traditional boxy golf polo without restricting the swing.",
+    "The four-way stretch means the fit is more forgiving than the cut suggests. If you normally wear a large in a performance polo, a large here is right.",
+    "Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on, so an exchange is straightforward &mdash; but the guide above is worth thirty seconds first."
+  ],
+
+  "reviewHeadline": "Reviews",
+
+  "sibEyebrow": "More colours",
+  "sibHeadline": "The same polo, twelve other ways",
+
+  "chooseCta": "Pick a size",
+  "closeHeadline": "Go look like you",
+  "closeFoil": "mean it",
+  "closeBody": "$67 in every size, four-way stretch, UPF 50+. Thirty days to send it back unworn if the fit isn't right.",
+  "closeTrust": ["30-day apparel returns", "Free US shipping", "UPF 50+", "Machine wash"],
+
+  "bagHeadline": "The rest of the look",
+  "bag": [
+    {"id": "hat-black-ibtbl", "name": "It's Better To Be Lucky Hat", "code": "HAT", "meta": "Five-panel",
+     "hook": "Black snapback, the line on the front. Goes with everything in the range."},
+    {"id": "polo-blackout", "name": "Blackout Blade Polo", "code": "LGA-BP", "meta": "S–3XL",
+     "hook": "Blade collar, no buttons. The quieter half of the range."},
+    {"id": "lgw01-gold", "name": "Carver Gold", "code": "LGW01", "meta": "4.81 &#9733; 551",
+     "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."}
+  ],
+
+  "upsell": [
+    {"sku": "HAT-5P-SB-IBTBL-BL", "name": "It's Better To Be Lucky Hat", "price": "$29", "variant": "",
+     "why": "Five-panel snapback. Finishes the look.",
+     "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347"}
+  ]
+}

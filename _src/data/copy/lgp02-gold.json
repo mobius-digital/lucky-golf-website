@@ -1,0 +1,196 @@
+{
+  "_": "Editorial for LGP02 Tracer Mallet. Catalogue facts come from products.json.",
+  "_specs": "Loft, lie, weight, length and grip are verbatim from the Shopify descriptionHtml, which for LGP02 actually has content (unlike LGW01). Head material is NOT stated for LGP02 — LGP01's description says 431 stainless, but that is a different head and is not assumed here.",
+  "_proves": "This is the Phase C proof for the club template: one axis instead of two, blade-or-mallet instead of the loft ladder, and a spec table with no by-loft matrix. No template change was needed for any of it.",
+
+  "eyebrow": "The Tracer &middot; Putters",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+  "gallery": [
+    ["11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134", "LGP02 Tracer Mallet putter, face on"],
+    ["1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133", "LGP02 Tracer Mallet putter, full club"],
+    ["2_4518fe6e-f25e-4eca-a48e-688b1f09cf7e.webp?v=1782598133", "LGP02 Tracer Mallet putter, sole"],
+    ["3_ae5c4333-764f-45d4-9c66-e273bc69126a.webp?v=1782598134", "LGP02 Tracer Mallet putter, address position"],
+    ["4_ff40f8a6-5ea8-47ea-81e5-adc7b51adecc.webp?v=1782598134", "LGP02 Tracer Mallet putter, alignment lines"],
+    ["5_d4dc02e3-6a1a-4a7a-9a4e-d46c39c18bc2.webp?v=1782598134", "LGP02 Tracer Mallet putter, toe profile"],
+    ["6_b48ef32d-d670-47d7-ad36-4bf7a466e2f8.webp?v=1782598134", "LGP02 Tracer Mallet putter, heel profile"],
+    ["7_e54ccbdc-f5aa-4c78-ab50-b5cdfb104b2f.webp?v=1782598134", "LGP02 Tracer Mallet putter, oversized grip"],
+    ["8_a32edd17-2924-472d-8767-0919e47bff83.webp?v=1782598134", "LGP02 Tracer Mallet putter, three-quarter view"],
+    ["Copy_of_LGP02.webp?v=1782598471", "LGP02 Tracer Mallet putter, head detail"],
+    ["Copy_of_LGP02_1.webp?v=1782598471", "LGP02 Tracer Mallet putter, clover mark"]
+  ],
+
+  "pullQuote": {
+    "title": "As good as it looks",
+    "quote": "First mallet I've owned and I love it. Great feel, great touch. Looks amazing, people definitely notice and my longer putts outside of 5 feet have gotten better.",
+    "who": "austin s. &middot; Verified buyer"
+  },
+
+  "priceNote": "Right or left hand",
+  "buyBody": "The putter you use more than any other club, and the one most golfers think about least. The Tracer Mallet sits square without being asked, rolls the ball end over end, and the oversized grip quiets the hands that are costing you the short ones. Right or left hand, sixty days to decide.",
+
+  "four": [
+    {"k": "Mallet head",   "v": "Sits square, forgiving on the toe"},
+    {"k": "3.0 grip",      "v": "Oversized, white and gold, in the box"},
+    {"k": "385 g",         "v": "Heavy enough to swing itself"},
+    {"k": "Sixty days",    "v": "Send it back if it isn't the one"}
+  ],
+
+  "whatYouGet": [
+    "One LGP02 Tracer Mallet putter in the hand you picked",
+    "Oversized 3.0 white and gold Lucky putter grip, fitted",
+    "35&quot; Lucky Approved shaft",
+    "Head cover: <span class=\"tbd tbd--light\">Confirm</span> &mdash; several reviewers expected one and it did not arrive"
+  ],
+  "careTitle": "Looking after the finish",
+  "carePara": [
+    "The gold is a finish, not a coating that needs babying, but the face still wants wiping after a wet round so the ball comes off it the same way every time.",
+    "The grip is white. Reviewers have flagged that it picks up dirt quickly &mdash; a wipe with a damp cloth after a round keeps it looking new for a lot longer than it otherwise would."
+  ],
+
+  "marquee": [
+    "Sixty-day returns on every club",
+    "Free US shipping",
+    "Right and left hand",
+    "Oversized 3.0 grip included",
+    "Sold direct, never through a middleman",
+    "It's better to be lucky"
+  ],
+
+  "clubHeadline": "The club you use twice as often as any other, and think about half as much.",
+  "clubParas": [
+    "Nobody buys a putter for the reason they should. A driver gets picked over three weekends and a putter gets whatever was in the bag when you started. It is the club you use on every hole, twice, and it decides more of your score than anything else you carry.",
+    "The Tracer Mallet is built for that job. The head is wide enough to sit square on its own, so you are not fighting the face on the short ones, and the weight sits back and out where it holds the stroke steady through impact. Miss the middle and it still goes roughly where you sent it.",
+    "It comes with the oversized 3.0 grip fitted, which is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club.",
+    "It costs $229 because we sell it to you directly and we don&rsquo;t pay anyone on tour to play it &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+  ],
+  "clubSpecs": [
+    {"k": "Type",          "v": "Mallet putter, face-balanced through the stroke."},
+    {"k": "Feel",          "v": "Solid face, no insert. The roll starts early and stays on line."},
+    {"k": "Grip",          "v": "Oversized 3.0 in white and gold, fitted as standard."},
+    {"k": "Weighting",     "v": "385 g head. Heavy enough that the stroke runs on tempo, not hands."},
+    {"k": "For who",       "v": "Anyone whose stroke runs straight back and straight through."},
+    {"k": "Head material", "tbd": true}
+  ],
+  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line at address showing the head sitting square on its own, then the alignment lines from the golfer's eye, then three putts holed from 4, 12 and 30 feet with the sound of the strike. Close on the oversized grip in the hands.",
+
+  "reelHeadline": "The Tracer, on the green",
+  "reelSub": "Clips of this exact putter being rolled &mdash; creators, customers, and anyone who tags us.",
+  "reel": [
+    {"kind": "Creator reel",  "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike, no music"},
+    {"kind": "Customer clip", "brief": "Thirty-footer across a tier, ball tracking, reaction from the group"},
+    {"kind": "Creator reel",  "brief": "Face-on slow motion of the roll off the face — end over end, no skid"},
+    {"kind": "Customer clip", "brief": "The head sitting square at address, hands off the club, then the stroke"},
+    {"kind": "Creator reel",  "brief": "Oversized 3.0 grip close-up in the hands, then a stroke showing the wrists staying quiet"},
+    {"kind": "Customer clip", "brief": "Unboxing, putter out of the sleeve, first reaction to the gold and the grip"}
+  ],
+
+  "helpPick": {
+    "eyebrow": "Blade or mallet",
+    "headline": "Two putters, and the honest answer is your stroke picks",
+    "sub": "This is the only question worth asking about a putter, and it has a real answer. Watch your stroke from behind: if the head travels straight back and straight through, you want a mallet. If it arcs inside on the way back and closes through the ball, you want a blade. Most golfers are somewhere in between and should follow the one that feels less like work.",
+    "options": [
+      {
+        "id": "lgp02-gold",
+        "name": "Tracer Mallet",
+        "forWho": "Straight back, straight through",
+        "body": "Wide, face-balanced head that resists twisting and sits square without being aimed. The forgiving one, and the one that flatters a stroke that is already fairly straight.",
+        "facts": [
+          {"k": "Stroke", "v": "Minimal arc"},
+          {"k": "Head",   "v": "Mallet, 385 g"},
+          {"k": "Grip",   "v": "Oversized 3.0, included"}
+        ]
+      },
+      {
+        "id": "lgp01-gold",
+        "name": "Tracer Blade",
+        "forWho": "Natural arc, toe hang",
+        "body": "Classic blade with toe hang, which wants to rotate through the ball the way an arcing stroke already does. More feel, less forgiveness, and the one better putters tend to reach for.",
+        "facts": [
+          {"k": "Stroke", "v": "Moderate arc"},
+          {"k": "Head",   "v": "Blade, 431 stainless"},
+          {"k": "Grip",   "v": "Lucky rubber, stock"}
+        ],
+        "cta": "See the blade"
+      }
+    ],
+    "note": "The blade is out of stock at the moment. If that is the one your stroke wants, it is worth waiting for rather than talking yourself into the other."
+  },
+
+  "specHeadline": "One length, one weight, both hands.",
+  "specSub": "A putter has fewer numbers than a wedge, and the ones that matter are all below.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "LGP02 Tracer Mallet &mdash; club",
+      "rows": [
+        {"k": "Head style",    "v": "Mallet"},
+        {"k": "Loft",          "v": "3.5&deg;"},
+        {"k": "Lie",           "v": "72&deg;"},
+        {"k": "Head weight",   "v": "385 g"},
+        {"k": "Length",        "v": "35&quot;"},
+        {"k": "Finish",        "v": "Gold"},
+        {"k": "Hand",          "v": "Right and left"},
+        {"k": "Head material", "tbd": true},
+        {"k": "Face",          "tbd": true},
+        {"k": "Toe hang",      "tbd": true}
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "LGP02 Tracer Mallet &mdash; shaft &amp; grip",
+      "rows": [
+        {"k": "Shaft",         "v": "Lucky Approved, 35&quot;"},
+        {"k": "Grip",          "v": "Oversized 3.0 putter grip, white and gold"},
+        {"k": "Grip supplied", "v": "Fitted as standard, not an upgrade"},
+        {"k": "Shaft weight",  "tbd": true},
+        {"k": "Other lengths", "tbd": true},
+        {"k": "Head cover",    "tbd": true}
+      ],
+      "aside": "Length is 35&quot; and there is only one. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that is right for them, which is a real answer either way &mdash; a taller golfer should know before ordering that there is no long option yet."
+    }
+  ],
+
+  "look": {
+    "photo": "Bold, full-bleed, portrait. The putter head on the green at address, low sun raking across the gold and the white grip, the ball and the hole in soft focus beyond. Shot from the golfer's eyeline so the alignment reads.",
+    "headline": "It gets noticed on every green you walk onto",
+    "paras": [
+      "Putters are the one club everyone in the group sees you use, eighteen times a round, standing still, from four feet away. Most of them are grey. This one is gold and white, and the reviews are close to unanimous about what happens next.",
+      "That isn't the reason to buy it &mdash; the stroke is. But of every club in the bag, this is the one where looking down at something you actually like is worth the most, because you are looking down at it more than anything else you own."
+    ],
+    "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
+  },
+
+  "quote": {
+    "q": "Putter is well balanced and the weight is perfect. I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances.",
+    "name": "Patrick S.",
+    "meta": "LGP02 Tracer Mallet &middot; 5 stars &middot; verified buyer"
+  },
+
+  "reviewHeadline": "What 58 golfers said",
+
+  "chooseCta": "Pick a hand",
+  "closeHeadline": "Go roll it",
+  "closeFoil": "pure",
+  "closeBody": "The Tracer Mallet is $229, right hand or left, with the oversized grip already on it. Sixty days to send it back if it isn't the one.",
+  "closeTrust": ["60-day club returns", "Free US shipping", "Right &amp; left hand", "Direct pricing"],
+
+  "oav": ["lgp01-gold", "lgh01", "lgw01-gold", "cover-mallet"],
+  "bag": [
+    {"id": "lgp01-gold", "name": "Tracer Blade", "code": "LGP01", "meta": "4.86 &#9733; 147",
+     "hook": "The arcing stroke's putter. More feel, less forgiveness, and currently sold out."},
+    {"id": "lgw01-gold", "name": "Carver", "code": "LGW01", "meta": "4.81 &#9733; 551",
+     "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."},
+    {"id": "lgh01", "name": "Stryker", "code": "LGH01", "meta": "4.60 &#9733; 20",
+     "hook": "Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover."}
+  ],
+
+  "upsell": [
+    {"sku": "HeadCover-Mallet-SignatureWhite-RH", "name": "Lucky Mallet Cover", "price": "$29.95", "variant": "Right hand",
+     "why": "Made for this head. Reviewers keep expecting one in the box.",
+     "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851"},
+    {"sku": "GRP-PUT-STCK", "name": "Stock Putter Grip", "price": "$19.95", "variant": "",
+     "why": "If the oversized 3.0 is more grip than you want.",
+     "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382"}
+  ]
+}

@@ -771,3 +771,137 @@ python tools/build.py --check        # diff against disk
 python tools/build.py --links        # the registry: 62 declared, 9 built
 node   tools/test-variants.js        # variant engine over all 44 products
 ```
+
+---
+
+## 12. Phase C — the three PDP templates, proven
+
+Built 2026-07-31. **The PDP stopped being a page and became three templates.**
+GAMEPLAN §3 predicted clubs, apparel and gear needed different pages; each is
+now real and each is proven on a product that stresses it.
+
+| Template | Proof product | What it stresses |
+|---|---|---|
+| club | LGP02 Tracer Mallet | 1 axis not 2, blade-or-mallet not the loft ladder, no by-loft matrix |
+| apparel | Contour Classic Polo | size is the decision, 9 sibling colourways, no spec table, no reviews at all |
+| gear | Lucky Blade Cover | **zero axes** — no pickers render — and five sections instead of fourteen |
+
+Built pages: **12 of 62.** Output length falls the way the gameplan said it
+should: club 228 KB, apparel 184 KB, gear 170 KB.
+
+### 12a. The template engine — `tools/template.py`
+
+Mustache-shaped, ~120 lines, deliberately dumb:
+
+```
+{{name}}                 insert
+{{#name}} … {{/name}}    repeat a list · render once if truthy · skip if falsy
+{{^name}} … {{/name}}    the inverse
+{{.}}                    the current item, for plain string lists
+```
+
+Mustache's shape was chosen because `{{#x}}` maps almost directly onto Liquid's
+`{% for %}` / `{% if %}`, so these templates hand over to a Shopify developer
+legibly. **No escaping** — every value is authored copy from `_src/data/copy/`,
+much of it intentional markup. It renders trusted content only and must never
+be pointed at user input. **No dotted paths, no filters, no partials**: if a
+template needs one, the data is shaped wrong and `build.py` flattens it instead.
+An unclosed or mismatched section raises rather than silently swallowing a block.
+
+`{{link:…}}` and `{{count:…}}` are not in the context, so the engine leaves them
+for their own passes. Only the page's own sources are rendered — core.css and
+core.js are shared, contain no tokens, and are not a place for a surprise.
+
+### 12b. Where a product page's content lives now
+
+```
+_src/data/products.json        catalogue: price, SKUs, axes, stock          (generated)
+_src/data/copy/<id>.json       editorial: every sentence on the page        (hand)
+_src/data/reviews/<id>.json    verbatim Judge.me                            (pulled)
+_src/page-<club|apparel|gear>.html   the template                          (no product named)
+```
+
+Nothing is typed twice. A cross-sell row names a product id and `build.py`
+resolves price, rating and stock through the catalogue — so a neighbour selling
+out updates every page pointing at it. `oav` rows tag themselves "Sold out"
+automatically for the same reason.
+
+**LGW01 survived the conversion.** The visible text diff against the
+pre-template page was five lines, every one explained: a source line-wrap, the
+sticky bar's variant line moving from hard-coded to rendered, and one
+deliberate "a wedge was never meant to do" → "a club" in the now-shared modal.
+
+### 12c. Two more things had to be split out of the club page
+
+Same lesson as `.chip` and `.crumb` in §11b, one level up. **A page loads
+`core.*` plus its own stylesheet and script and nothing else**, so the apparel
+and gear templates could see none of the fold, buy box, rails or review widget.
+
+```
+_src/pdp.css   fold · buy box · cross-sell rails · reviews · (shared by all 3)
+_src/pdp.js    gallery · N-axis buy box · accordions · rails · review widget
+_src/page-club.*      specs · loft ladder · blade-or-mallet · the look · the reel
+_src/page-apparel.*   sibling colourways · size guide
+_src/page-gear.*      the two-up detail block
+```
+
+**This is now a three-strike pattern. Before building a fourth page type, check
+whether what you are reusing lives in `core.*`/`pdp.*` or in some other page's
+file.** Two club-only rules (`.spec-tab` responsive) leaked into `pdp.css` in
+the split — harmless unused selectors, worth tidying in a dedicated pass.
+
+### 12d. The near-miss that changed the smoke test
+
+Splitting `pdp.js` out dropped it from the bundle entirely for one build. The
+page **still assembled, still had every CSS rule, and `--check` still said
+"identical"** — because `--check` compares output to disk, and the disk had just
+been written from the same broken build. Only a 30 KB size drop gave it away.
+
+`REQUIRED` now checks **JS as well as CSS**: `function paintPickers`,
+`LG_VARIANTS`, `function paintLoftFinder`. Verified by emptying `pdp.js` and
+watching the build exit 1.
+
+**`--check` answers "did the sources change?", never "is the output correct."**
+The smoke list is the only thing standing between a silent bundling mistake and
+a page that looks right and does nothing.
+
+### 12e. Reviews are real or absent — never borrowed
+
+- **LGP02: all 58 pulled**, both Judge.me widget pages. The computed mean is
+  273/58 = 4.7069 → 4.71, which matches the rating Shopify reports, so the
+  histogram is exact rather than sampled.
+- **Both LGP02 1-star reviews are "no left-handed putter" complaints from 2024.**
+  LGP02 has shipped a left-hand variant since (89 in stock), so the product
+  answers them — worth knowing before reading the histogram as a quality signal.
+- **The polo and the cover have no reviews at all**, so the widget renders an
+  empty state saying so rather than borrowing a score from a sibling.
+- LGP02 has no Judge.me AI summary, so that block is simply absent — none was
+  invented to fill the hole.
+
+### 12f. Editorial gaps recorded rather than filled
+
+- **The polo size table is dashes.** Chest, body length and sleeve are not
+  published anywhere verifiable, so they render as em-dashes with a note saying
+  why. This is the single most useful thing that could be added to that page —
+  wrong size is the most common reason apparel comes back, and a table of
+  dashes does not prevent that. Same rule as the clubs' "Needs spec" chips.
+- **Apparel lifestyle photography still does not exist.** The polo's one slot
+  is a labelled brief. HANDOFF §7b F is now blocking a shipped page, not a
+  hypothetical one.
+- The blade cover's closure, material and dimensions are three "Needs spec"
+  rows — Shopify has no description for it and the reference guide does not
+  cover head covers.
+- Fabric, fit, weight and care ARE verified, from the copy skill's Product
+  Reference Guide. That guide is also explicit that **apparel does not get the
+  clubs' value-comparison framing**, so there is no middlemen-and-markups
+  argument on the polo page.
+
+### 12g. Adding the remaining 40 pages (Phase D)
+
+1. Write `_src/data/copy/<id>.json`.
+2. Pull reviews to `_src/data/reviews/<id>.json` if the product has any.
+3. Set `built=True` on that handle in `normalize-products.py`.
+4. `python tools/normalize-products.py && python tools/build.py`.
+
+No template edits. The registry already routes all 44, and `product_copy()`
+fails the build if a product is marked built without an editorial file.

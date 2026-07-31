@@ -1,0 +1,347 @@
+<!-- ==========================================================================
+     APPAREL PDP TEMPLATE  ·  polos and hats
+     Genuinely different from the club template, for the four reasons in
+     GAMEPLAN §3: size is the decision rather than a spec, colourways are
+     separate Shopify products so siblings must be linked or the range is
+     undiscoverable, fabric and care replace construction, and lifestyle
+     photography carries it instead of studio cutouts.
+
+     No spec table. No help-me-choose. Shares the fold, the rails and the
+     review widget with the other two templates via _src/pdp.js.
+     ========================================================================== -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><a href="{{collLink}}">{{collName}}</a></li>
+    <li><span aria-current="page">{{title}}</span></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+<div class="pd-top">
+
+  <div class="pd-gal">
+    <div class="gal-stage" id="gal">
+      <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+      {{#galleryTag}}<span class="gal-tag">{{galleryTag}}</span>{{/galleryTag}}
+{{#gallery}}      <div class="gal-slide"{{#first}} data-on{{/first}}><img src="{{src}}" alt="{{alt}}"{{^first}} loading="lazy"{{/first}} width="1000" height="1000"></div>
+{{/gallery}}
+      <button class="gal-arw" data-p type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="gal-arw" data-n type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <span class="gal-count"><span id="gal-i">1</span> / {{galleryCount}}</span>
+    </div>
+    <div class="gal-thumbs" aria-label="Product images"></div>
+  </div>
+
+  <div class="pd-buy">
+    <p class="bx-eye">{{eyebrow}}</p>
+    <h1 class="disp d-l pd-h1">{{title}}</h1>
+
+    {{#rating}}
+    <div class="bx-rate">
+      <span class="stars" role="img" aria-label="Rated {{avg}} out of 5">
+        <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
+      </span>
+      <a href="#reviews">{{avg}} &mdash; {{count}} reviews</a>
+    </div>
+    {{/rating}}
+
+    <div class="bx-price">
+      <span class="amt" id="bx-amt">{{priceLabel}}</span>
+      {{#priceNote}}<span class="flat">{{priceNote}}</span>{{/priceNote}}
+    </div>
+
+    <p class="bx-body">{{buyBody}}</p>
+
+    <div class="bx-four">
+{{#four}}      <div>
+        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+        <b>{{k}}</b><span>{{v}}</span>
+      </div>
+{{/four}}    </div>
+
+    <!-- Size is the decision on this template, so the picker's help link goes
+         to the guide rather than to a "which one" module. -->
+    <div id="pickers"></div>
+
+    <div class="atc-row">
+      <div class="bx-qty">
+        <button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button>
+        <input id="qty" type="number" value="1" min="1" max="9" aria-label="Quantity">
+        <button type="button" data-q="1" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="btn btn-foil sweep" id="atc" type="button"><span>Add to cart &middot; {{priceLabel}}</span></button>
+    </div>
+
+    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span>
+      <a class="bx-eta" href="{{link:none}}" data-md-open="md-delivery">Estimate delivery time</a></p>
+
+    <div class="bx-terms">
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Four-way stretch, UPF 50+</span>
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thirty days, unworn with tags</span>
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
+    </div>
+
+    <p class="bx-policy"><a href="{{link:none}}" data-md-open="md-returns">Returns and exchanges</a></p>
+
+    <div class="acc">
+      <div class="acc-i">
+        <button class="acc-hd" type="button" aria-expanded="true" aria-controls="a1"><span>Fabric and care</span><span class="pm" aria-hidden="true"></span></button>
+        <div class="acc-bd" id="a1">
+          <ul>
+{{#fabric}}            <li><b>{{k}}</b> {{v}}</li>
+{{/fabric}}          </ul>
+        </div>
+      </div>
+      <div class="acc-i">
+        <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
+        <div class="acc-bd" id="a2" hidden>
+          <p>Free shipping inside the US. Orders leave the warehouse in one to two business days.</p>
+          <p>Apparel comes back within thirty days, unworn and with the tags still on. That is a shorter window than the clubs get, and it is the one part of the policy we can't be relaxed about.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-label="Lucky Golf, at a glance">
+  <div class="mq-track"><div class="mq-set" aria-hidden="true">{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}</div><div class="mq-set" aria-hidden="true">{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}</div></div>
+</div>
+
+<!-- ============ MORE COLOURS ============
+     The load-bearing section on this template. Every colourway is a separate
+     Shopify product, so without this strip the other twelve polos are
+     unreachable from the one you happen to have landed on. -->
+{{#siblings}}
+<section class="sec-tight band-cream" id="colours">
+  <div class="wrap">
+    <div class="sib-hd">
+      <div>
+        <span class="eyebrow">{{sibEyebrow}}</span>
+        <h2 class="disp d-m">{{sibHeadline}}</h2>
+      </div>
+      <a class="btn btn-line btn-sm" href="{{collLink}}"><span>See all {{sibTotal}}</span><span class="ar">&rarr;</span></a>
+    </div>
+    <div class="sibs msnap">
+{{#items}}      <a class="sib{{#soldOut}} sib--out{{/soldOut}}" href="{{href}}">
+        <span class="sib-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="500" height="500"></span>
+        <span class="sib-nm">{{name}}</span>
+        <span class="sib-meta">{{#soldOut}}Sold out{{/soldOut}}{{^soldOut}}{{summary}}{{/soldOut}}</span>
+      </a>
+{{/items}}    </div>
+  </div>
+</section>
+{{/siblings}}
+
+<!-- ============ THE PIECE — description + lifestyle photo ============
+     Clubs are carried by studio cutouts; apparel is carried by a body in it.
+     This is the biggest asset gap on the site (HANDOFF §7b F). -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">The polo</span>
+    <h2 class="disp d-l" style="max-width:24ch">{{pieceHeadline}}</h2>
+
+    <div class="club-grid">
+      <div class="club-copy">
+{{#pieceParas}}        <p class="body">{{.}}</p>
+{{/pieceParas}}      </div>
+      <div class="club-media">
+        <div class="ph ph--dark ph--tall">
+          <span class="lbl">
+            <span class="mono k">Photo needed</span>
+            <span class="mono">{{lifestyleBrief}}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIZE AND FIT ============
+     The spec table's replacement. Size is the decision here, and getting it
+     wrong is the single biggest reason apparel comes back. -->
+<section class="sec band-cream" id="size">
+  <div class="wrap">
+    <span class="eyebrow">Size and fit</span>
+    <h2 class="disp d-l" style="max-width:20ch">{{sizeHeadline}}</h2>
+    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px);max-width:56ch">{{sizeSub}}</p>
+
+    <div class="sz">
+      <div class="sz-tbl-wrap">
+        <table class="spec-tbl sz-tbl">
+          <thead><tr><th scope="col">Size</th>{{#sizeCols}}<th scope="col">{{.}}</th>{{/sizeCols}}</tr></thead>
+          <tbody>
+{{#sizeRows}}            <tr><th scope="row">{{k}}</th>{{#cells}}<td>{{.}}</td>{{/cells}}</tr>
+{{/sizeRows}}          </tbody>
+        </table>
+      </div>
+      <div class="sz-note">
+        <h3 class="disp d-s">{{fitTitle}}</h3>
+{{#fitParas}}        <p class="body">{{.}}</p>
+{{/fitParas}}      </div>
+    </div>
+    <p class="spec-note">{{sizeNote}}</p>
+  </div>
+</section>
+
+{{#quote}}
+<section class="pull sec">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap pull-in">
+    <span class="eyebrow centre">Verified review</span>
+    <q>{{q}}</q>
+    <div class="pull-by"><span class="n">{{name}}</span><span class="p">{{meta}}</span></div>
+  </div>
+</section>
+{{/quote}}
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <span class="eyebrow">Reviews</span>
+    <h2 class="disp d-l" style="margin-bottom:clamp(26px,3vw,40px)">{{reviewHeadline}}</h2>
+    <div class="jm">
+      {{#rating}}
+      <div class="jm-hd">
+        <div class="jm-score">
+          <span class="num">{{avg}}</span>
+          <span class="stars" role="img" aria-label="{{avg}} out of 5">
+            <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
+          </span>
+          <span class="cnt">Based on {{count}} reviews</span>
+        </div>
+        <div class="jm-bars" id="jm-bars"></div>
+        <div class="jm-act">
+          <button class="btn btn-ink btn-sm" type="button"><span>Write a review</span></button>
+          <button class="btn btn-line btn-sm" type="button"><span>Ask a question</span></button>
+        </div>
+      </div>
+      {{/rating}}
+      {{^rating}}
+      <!-- No Judge.me reviews on this product yet. The widget shows its empty
+           state rather than borrowing another product's score. -->
+      <p class="jm-none">No reviews on this one yet. If you own it, yours would be the first.</p>
+      <div class="jm-act"><button class="btn btn-ink btn-sm" type="button"><span>Write a review</span></button></div>
+      {{/rating}}
+
+      {{#rating}}
+      <div class="jm-bar">
+        <div class="jm-filters" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
+        <label class="jm-sort">
+          <span class="sr">Sort reviews</span>
+          <select id="jm-sort">
+            <option value="recent">Most recent</option>
+            <option value="high">Highest rating</option>
+            <option value="low">Lowest rating</option>
+          </select>
+        </label>
+      </div>
+      <p class="jm-count" id="jm-count"></p>
+      <div class="jm-list" id="jm-list"></div>
+      <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
+      {{/rating}}
+      <p class="jm-foot">Live site swaps this block for the Judge.me widget itself &mdash; same shape, same data, real submissions.</p>
+    </div>
+  </div>
+</section>
+
+<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
+
+<!-- ============ WEAR IT WITH ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Wear it with</span>
+    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">{{bagHeadline}}</h2>
+    <div class="pgrid msnap">
+{{#bag}}
+      <article class="ptile">
+        <span class="pt-sku">{{code}}</span>
+        <a class="pt-nm stretch" href="{{href}}">{{name}}</a>
+        <p class="pt-hook">{{hook}}</p>
+        <div class="pt-meta"><span class="pt-pr">{{priceLabel}}</span><span class="pt-rt">{{meta}}</span></div>
+        <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800"></div>
+        {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}
+      </article>
+{{/bag}}
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="close">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <span class="halo" aria-hidden="true"></span>
+  <div class="close-in">
+    <div class="wrap">
+      <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
+      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <h2 class="disp d-l">{{closeHeadline}} <span class="foil on-dark">{{closeFoil}}</span></h2>
+      <p class="body on-dark">{{closeBody}}</p>
+      <div class="close-cta">
+        <a href="#gal" class="btn btn-foil sweep"><span>{{chooseCta}}</span><span class="ar">&rarr;</span></a>
+        <a href="{{collLink}}" class="btn btn-line-cream"><span>See all {{sibTotal}}</span></a>
+      </div>
+      <div class="close-trust">
+{{#closeTrust}}        <span class="mono">{{.}}</span>
+        <span class="div"></span>
+{{/closeTrust}}      </div>
+    </div>
+  </div>
+</section>
+
+<div class="atc-bar" id="atc-bar">
+  <div class="sum">
+    <b>{{name}} &middot; {{priceLabel}}</b>
+    <span id="atc-bar-v">{{defaultVariant}}</span>
+  </div>
+  <button class="btn btn-foil" id="atc2" type="button"><span>Add to cart</span></button>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="md" id="md-returns" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-returns-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Returns and exchanges</span>
+    <h2 class="disp d-m" id="md-returns-t">Thirty days, tags on</h2>
+    <div class="md-sec">
+      <h3>Apparel is different from clubs</h3>
+      <p>Clubs get sixty days and you can play them. Apparel gets thirty, unworn, in its original packaging with the tags attached. That is the one part of the policy we can't be relaxed about &mdash; a worn polo can't go back on the shelf.</p>
+    </div>
+    <div class="md-sec">
+      <h3>Wrong size</h3>
+      <p>Exchanges for a different size are the most common reason anything comes back, which is why the size guide above is worth thirty seconds before you order.</p>
+      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; whether exchanges ship free, and who pays return postage.</p>
+    </div>
+    <div class="md-sec">
+      <p><a href="{{link:returns}}">Read the full returns policy</a></p>
+    </div>
+    <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
+  </div>
+</div>
+
+<div class="md" id="md-delivery" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-delivery-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Delivery</span>
+    <h2 class="disp d-m" id="md-delivery-t">When it turns up</h2>
+    <div class="md-carriers"><span>USPS</span><span>UPS</span><span>FedEx</span></div>
+    <div class="md-sec">
+      <p>Orders leave the warehouse in one to two business days. Most US deliveries land within five business days of dispatch, and you get a tracking number as soon as the carrier scans it.</p>
+      <p>Shipping inside the US is free. There is no minimum and no threshold to hit.</p>
+    </div>
+    <div class="md-sec">
+      <h3>Where it ships from</h3>
+      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; warehouse locations, international destinations, and whether duties are prepaid or collected on delivery.</p>
+    </div>
+    <div class="md-sec">
+      <p><a href="{{link:shipping}}">Read the full shipping policy</a></p>
+    </div>
+    <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
+  </div>
+</div>

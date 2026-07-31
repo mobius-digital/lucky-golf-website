@@ -74,7 +74,7 @@ def _pages():
         add("p/" + prod["id"],
             prod.get("file", "20-product-%s.html" % prod["id"]),
             "%s — Lucky Golf" % prod["title"],
-            src="pdp" if prod["built"] else None,
+            src=prod["template"] if prod["built"] else None,
             built=prod["built"],
             kind="product")
 

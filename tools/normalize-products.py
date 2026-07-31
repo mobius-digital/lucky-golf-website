@@ -146,7 +146,7 @@ EDITORIAL = {
         note="Sold out (qty -12, availableForSale false) and right hand only."),
     "limited-edition-mallet-putter": dict(
         id="lgp02-gold", tpl="club", fam="putter", code="LGP02", name="Tracer Mallet",
-        coll="putters", rating=[4.71, 58]),
+        coll="putters", rating=[4.71, 58], built=True),
     "lgp02-mallet-putter-patriot": dict(
         id="lgp02-patriot", tpl="club", fam="putter", code="LGP02", name="Tracer Mallet Patriot",
         coll="putters",
@@ -165,7 +165,7 @@ EDITORIAL = {
     "gold-dust-classic-polo":      dict(id="polo-gold-dust",      tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Dust Classic Polo",      coll="polos"),
     "shadow-classic-polo":         dict(id="polo-shadow",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Shadow Classic Polo",         coll="polos"),
     "signature-black-classic-polo":dict(id="polo-signature-black",tpl="apparel", fam="polo-classic", code="LGA-CP", name="Signature Black Classic Polo",coll="polos"),
-    "contour-classic-polo":        dict(id="polo-contour",        tpl="apparel", fam="polo-classic", code="LGA-CP", name="Contour Classic Polo",        coll="polos"),
+    "contour-classic-polo":        dict(id="polo-contour",        tpl="apparel", fam="polo-classic", code="LGA-CP", name="Contour Classic Polo",        coll="polos", built=True),
     "marble-classic-polo":         dict(id="polo-marble",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Marble Classic Polo",         coll="polos"),
     "gold-carnation-classic-polo": dict(id="polo-gold-carnation", tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Carnation Classic Polo", coll="polos"),
     "frost-classic-polo":          dict(id="polo-frost",          tpl="apparel", fam="polo-classic", code="LGA-CP", name="Frost Classic Polo",          coll="polos"),
@@ -192,7 +192,7 @@ EDITORIAL = {
     "baby-blue-cursive-hat":                  dict(id="hat-baby-blue-cursive",   tpl="apparel", fam="hat", code="HAT", name="Baby Blue Cursive Hat",    coll="hats"),
 
     # --- gear --------------------------------------------------------------
-    "lucky-putter-head-cover-blade":        dict(id="cover-blade",   tpl="gear", fam="headcover", code="HC", name="Lucky Blade Cover",  coll="gear"),
+    "lucky-putter-head-cover-blade":        dict(id="cover-blade",   tpl="gear", fam="headcover", code="HC", name="Lucky Blade Cover",  coll="gear", built=True),
     "driver-head-cover":                    dict(id="cover-driver",  tpl="gear", fam="headcover", code="HC", name="Driver Head Cover",  coll="gear"),
     "lucky-putter-head-cover-mallet-large": dict(id="cover-mallet",  tpl="gear", fam="headcover", code="HC", name="Lucky Mallet Cover", coll="gear"),
     "lucky-clover-tour-glove":              dict(id="glove-tour",    tpl="gear", fam="glove",     code="CLG1", name="Lucky Tour Glove", coll="gear",

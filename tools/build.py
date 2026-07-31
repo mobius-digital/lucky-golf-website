@@ -29,6 +29,7 @@ import re
 import sys
 
 import sitemap
+import template
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
@@ -149,6 +150,157 @@ def audit_sources():
 
 
 # --------------------------------------------------------------------------
+# Product pages: catalogue + editorial -> template context
+# --------------------------------------------------------------------------
+def spec_table(tab):
+    """A spec tab is either structured `rows` (key/value, the common case) or
+    raw `html` for the irregular ones — the by-loft matrix has merged cells and
+    a header row and is not worth a schema."""
+    if "html" in tab:
+        return tab["html"]
+    body = []
+    for r in tab.get("rows", []):
+        cell = ('<span class="tbd tbd--light">Needs spec</span>'
+                if r.get("tbd") else r.get("v", ""))
+        body.append('<tr><th scope="row">%s</th><td>%s</td></tr>' % (r["k"], cell))
+    return '<table class="spec-tbl"><tbody>%s</tbody></table>' % "".join(body)
+
+
+def tile_for(pid, extra=None):
+    """A cross-sell tile: catalogue facts from products.json, hook and label
+    from whichever copy file asked for it. Nothing about price or availability
+    is retyped in the editorial layer."""
+    p = sitemap.product(pid)
+    t = {
+        "id": p["id"], "code": p["code"], "name": p["name"], "title": p["title"],
+        "img": p["img"], "priceLabel": p["priceLabel"], "summary": p["summary"],
+        "inStock": p["inStock"], "href": "{{link:p/%s}}" % pid,
+    }
+    if p.get("rating"):
+        t["rating"] = p["rating"]
+        t["meta"] = "%s &#9733; %s" % (p["rating"]["avg"], p["rating"]["count"])
+    else:
+        t["meta"] = p["summary"]
+    if extra:
+        t.update({k: v for k, v in extra.items() if k != "id"})
+    return t
+
+
+def product_copy(prod):
+    """Merge the editorial file with the catalogue record and precompute
+    everything the template would otherwise need expressions for. The template
+    engine is deliberately dumb (tools/template.py), so the shaping happens
+    here where it can be read and tested."""
+    path = os.path.join(SRC, "data", "copy", "%s.json" % prod["id"])
+    if not os.path.exists(path):
+        sys.exit("%s is marked built but has no editorial: _src/data/copy/%s.json"
+                 % (prod["id"], prod["id"]))
+    copy = json.load(open(path, encoding="utf8"))
+
+    coll = sitemap.collection(prod["collection"])
+    ctx = {k: v for k, v in copy.items() if not k.startswith("_")}
+    ctx.update({
+        "title": prod["title"], "name": prod["name"], "code": prod["code"],
+        "priceLabel": prod["priceLabel"],
+        "collName": coll["name"], "collLink": "{{link:c/%s}}" % coll["id"],
+    })
+    if prod.get("rating"):
+        ctx["rating"] = prod["rating"]
+
+    # The sticky mobile bar's variant line is repainted by JS on every change,
+    # but rendering it server-side too means it is never briefly blank — and
+    # unlike the old hard-coded "Right hand · 56°" it is right for any product.
+    labels = []
+    for i, ax in enumerate(prod["options"]):
+        want = prod["default"].split("|")[i]
+        labels += [v["label"] for v in ax["values"] if v["k"] == want]
+    ctx["defaultVariant"] = " &middot; ".join(labels)
+
+    # gallery: [path, alt] pairs -> objects, with `first` driving data-on and
+    # the eager load on slide one
+    base = copy.get("galleryBase", "")
+    shots = []
+    for i, g in enumerate(copy.get("gallery", [])):
+        shots.append({"src": base + g[0], "alt": g[1], "first": i == 0})
+    ctx["gallery"] = shots
+    ctx["galleryCount"] = len(shots)
+
+    tabs = []
+    for i, tab in enumerate(copy.get("specTabs", [])):
+        tabs.append(dict(tab, i=i, selected="true" if i == 0 else "false",
+                         hidden=i > 0, tableHtml=spec_table(tab)))
+    ctx["specTabs"] = tabs
+
+    ctx["bag"] = [tile_for(row["id"], row) for row in copy.get("bag", [])]
+
+    # ---- sibling colourways ----------------------------------------------
+    # Ten Classic Polos are ten separate Shopify products, so without a strip
+    # linking them the range is undiscoverable from any one page (GAMEPLAN
+    # §3.2). Membership is the product's own family — nothing to maintain.
+    fam = [p for p in sitemap.PRODUCTS
+           if p["family"] == prod["family"] and p["id"] != prod["id"]]
+    if fam:
+        ctx["siblings"] = {
+            "items": [{"name": p["name"].replace(" Classic Polo", "").replace(" Blade Polo", ""),
+                       "title": p["title"], "img": p["img"], "summary": p["summary"],
+                       "soldOut": not p["inStock"],
+                       "href": "{{link:p/%s}}" % p["id"]}
+                      for p in fam],
+        }
+        ctx["sibTotal"] = len(fam) + 1
+
+    # ---- JSON blocks the page's script reads -----------------------------
+    # The browse rail names product ids; price, rating and stock come from the
+    # catalogue, so a neighbour going out of stock updates every page that
+    # points at it without anyone editing copy.
+    rail = []
+    for row in copy.get("oav", []):
+        row = {"id": row} if isinstance(row, str) else dict(row)
+        p = sitemap.product(row["id"])
+        tag = row.get("tag", "")
+        if not p["inStock"]:
+            tag = "Sold out"
+        rail.append({
+            "nm": p["title"], "pr": p["priceLabel"],
+            "rt": ("%s ★ %s" % (p["rating"]["avg"], p["rating"]["count"])
+                   if p.get("rating") else p["summary"]),
+            "tag": tag, "out": not p["inStock"],
+            "href": "{{link:p/%s}}" % p["id"], "img": p["img"],
+        })
+    ctx["OAV_JSON"] = json.dumps(rail, ensure_ascii=False)
+    ctx["REEL_JSON"] = json.dumps(copy.get("reel", []), ensure_ascii=False)
+    ctx["UPSELL_JSON"] = json.dumps(copy.get("upsell", []), ensure_ascii=False)
+
+    rpath = os.path.join(SRC, "data", "reviews", "%s.json" % prod["id"])
+    if os.path.exists(rpath):
+        rev = json.load(open(rpath, encoding="utf8"))
+        rev = {k: v for k, v in rev.items() if not k.startswith("_")}
+    else:
+        # A product with no reviews pulled yet still renders — the widget just
+        # has nothing to show. Better than a page that fails to build.
+        rev = {"total": 0, "totals": {}, "sample": []}
+    ctx["REVIEWS_JSON"] = json.dumps(rev, ensure_ascii=False)
+
+    # the comparison module names its sibling products, so the tiles it shows
+    # resolve through the catalogue the same way cross-sells do
+    if copy.get("helpPick"):
+        pick = dict(copy["helpPick"])
+        opts = []
+        for o in pick.get("options", []):
+            row = dict(o)
+            if o.get("id") and o["id"] != prod["id"]:
+                row["href"] = "{{link:p/%s}}" % o["id"]
+            else:
+                row["isThis"] = True
+                row["href"] = None
+            opts.append(row)
+        pick["options"] = opts
+        ctx["helpPick"] = pick
+
+    return ctx
+
+
+# --------------------------------------------------------------------------
 # Page assembly
 # --------------------------------------------------------------------------
 def page_context(slug):
@@ -163,6 +315,7 @@ def page_context(slug):
     if page.kind == "product":
         prod = sitemap.product(slug.split("/", 1)[1])
         ctx["PRODUCT_JSON"] = json.dumps(prod, ensure_ascii=False, sort_keys=False)
+        ctx.update(product_copy(prod))
 
     if page.kind == "collection":
         coll = sitemap.collection(slug.split("/", 1)[1])
@@ -193,12 +346,6 @@ def page_context(slug):
     return ctx
 
 
-def apply_context(text, ctx, slug):
-    for name, value in ctx.items():
-        text = text.replace("{{%s}}" % name, value)
-    return text
-
-
 def build(slug, report):
     page = sitemap.PAGES[slug]
     if not page.built:
@@ -212,11 +359,32 @@ def build(slug, report):
         sys.exit("partials/symbols-host.html lost its {{SYMBOLS}} placeholder")
     host = host.replace("{{SYMBOLS}}", symbols)
 
-    css = read("core.css") + "\n\n" + read("page-%s.css" % src)
-    # Product pages get the variant engine ahead of their own script, which
-    # reads it at module scope. Other pages have no buy box and don't need it.
-    js = read("variants.js") + "\n\n" if page.kind == "product" else ""
-    js += read("page-%s.js" % src, required=False)
+    # Product pages: core, then the shared PDP styles, then the template's own.
+    # A page only ever loads core plus one page stylesheet, so anything two
+    # templates render has to be in pdp.css — the same reason .chip and .crumb
+    # had to move into core.
+    css = read("core.css")
+    if page.kind == "product":
+        css += "\n\n" + read("pdp.css")
+    css += "\n\n" + read("page-%s.css" % src)
+
+    # Only the page's own sources go through the template engine — core.css and
+    # core.js are shared, contain no tokens, and rendering them would be a
+    # pointless place for a surprise. {{link:…}} and {{count:…}} are not in the
+    # context, so the engine leaves them alone for their own passes below.
+    sections = template.render(read("page-%s.html" % src), ctx, "page-%s.html" % src)
+    page_js = template.render(read("page-%s.js" % src, required=False), ctx,
+                              "page-%s.js" % src)
+
+    # Product pages get the variant engine, then the shared PDP behaviour
+    # (gallery, buy box, cross-sell rails, reviews), then whatever is genuinely
+    # specific to their template. Other pages have no buy box and need none of
+    # it. pdp.js carries the data declarations, so it is rendered too.
+    js = ""
+    if page.kind == "product":
+        js = read("variants.js") + "\n\n"
+        js += template.render(read("pdp.js"), ctx, "pdp.js") + "\n\n"
+    js += page_js
     js = js.rstrip("\n") + "\n\n" + read("core.js")
 
     html = SHELL.format(
@@ -224,14 +392,12 @@ def build(slug, report):
         css=css,
         symbols=host,
         header=read("partials/header.html"),
-        sections=read("page-%s.html" % src),
+        sections=sections,
         footer=read("partials/footer.html"),
         lightbox=read("partials/lightbox.html"),
         cart=read("partials/cart.html"),
         js=js,
     )
-
-    html = apply_context(html, ctx, slug)
     html = resolve_counts(html)
     html = resolve_links(html, slug, report)
 
@@ -251,7 +417,7 @@ REQUIRED = {
         "@media (max-width:980px)",
         ".hdr{", ".cd-panel{", ".mq{",
     ],
-    "pdp": [
+    "club": [
         ".msnap{",
         ".atc-bar{display:flex}",        # mobile sticky add-to-cart
         ".bx-four{grid-template-columns:repeat(2,1fr)",
@@ -261,6 +427,25 @@ REQUIRED = {
         ".md-panel{",                    # policy modals
         "@media (max-width:760px)",
         'id="pickers"',                  # N-axis buy box mounts here
+        # JS, not CSS. Splitting the shared PDP behaviour into pdp.js briefly
+        # dropped it from the bundle entirely: the page still built, --check
+        # still said "identical" (it compares output to output), and only the
+        # 30KB size drop gave it away. Anything whose absence leaves a page
+        # that looks right and does nothing belongs here.
+        "function paintPickers",         # pdp.js — the buy box
+        "LG_VARIANTS",                   # variants.js — the axis engine
+        "function paintLoftFinder",      # page-club.js — the wedge ladder
+    ],
+    "apparel": [
+        'id="pickers"', "function paintPickers", "LG_VARIANTS",
+        ".sibs{",                        # the colourway strip — the range dies without it
+        ".sz{",                          # size guide replaces the spec table
+        "@media (max-width:620px)",
+    ],
+    "gear": [
+        'id="pickers"', "function paintPickers", "LG_VARIANTS",
+        ".pd-top{grid-template-columns:1fr",
+        "@media (max-width:760px)",
     ],
     "plp": [
         'id="plp-grid"', 'id="plp-empty"',   # grid and its empty state

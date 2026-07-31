@@ -40,6 +40,7 @@ check by hand), gradients, decorative SVG.
 | Build system | `_src/` + `tools/build.py`, smoke-tested |
 | **Phase A** | **Done 2026-07-31 — see HANDOFF §10** |
 | **Phase B — collection pages** | **Done 2026-07-31 — 7 of 8 built, see HANDOFF §11** |
+| **Phase C — three PDP templates** | **Done 2026-07-31 — proven on a putter, a polo and a cover, see HANDOFF §12** |
 | Everything else | Not started |
 
 **The store: 44 sellable products**, counted from the catalogue pull, not
@@ -98,7 +99,7 @@ build.
 
 **This is the answer to "does apparel need the same thing as clubs".** No.
 
-### Club PDP — built ✅
+### Club PDP — built ✅ · proven on a putter
 Gallery, buy box, description + video, highlight reel, help-me-choose, spec
 table, the look (brand field), quote, reviews, cross-sell.
 
@@ -195,7 +196,15 @@ the help-me-choose module swaps to blade-or-mallet and the spec table loses its
 loft column. Note **LGP01 Tracer Blade is sold out**, so the putter that proves
 the template should probably be LGP02.
 
-**Phase D — generate the rest.** All 45 PDPs from data.
+**Phase D — generate the rest. NEXT.** The remaining 40 PDPs from data. Per
+product: write `_src/data/copy/<id>.json`, pull reviews if it has any, flip
+`built=True` in `normalize-products.py`, rebuild. **No template edits** — the
+registry already routes all 44 and the build fails if a product is marked built
+without an editorial file. HANDOFF §12g is the checklist.
+
+The work is copy, not code. The two things that will slow it down are that most
+products have no Shopify description to write from, and that apparel lifestyle
+photography still does not exist.
 
 **Phase E — brand pages.** Our Story, then Trybe. Both have two references each.
 
@@ -229,11 +238,11 @@ From HANDOFF, still needing Cole:
 ## 7. Starting the next chat
 
 > Continuing Lucky Golf. Read `GAMEPLAN.md` then `HANDOFF.md` in
-> `C:\Users\wetzl\Lucky Golf\Website`. Homepage, the LGW01 PDP, Phase A
-> (routing, N-axis buy box, product data) and Phase B (seven collection pages)
-> are done — HANDOFF §10 and §11 have the details. Start Phase C: prove the
-> three PDP templates on one putter (LGP02 — LGP01 is sold out), one polo and
-> one head cover.
+> `C:\Users\wetzl\Lucky Golf\Website`. Phases A, B and C are done — routing,
+> the N-axis buy box, the product data layer, seven collection pages and all
+> three PDP templates, proven on LGP02, the Contour polo and the Blade Cover.
+> 12 of 62 pages built. HANDOFF §10–§12 have the details. Start Phase D:
+> generate the remaining PDPs from data, following the §12g checklist.
 
-Then Phase D generates the remaining forty PDPs from `products.json`, which is
-data entry once the templates flex.
+Then Phase E (Our Story, Trybe), F (support cluster, search, 404) and G (link
+audit plus the developer handoff doc).
