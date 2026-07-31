@@ -1448,6 +1448,13 @@ button{font:inherit;color:inherit}
   .look-ph{aspect-ratio:4/3}
   .look-copy h2{max-width:none}
 }
+
+/* a shipped-soon marker is not the same thing as a missing spec, so it does not
+   borrow the dashed .tbd chip */
+.soon{display:inline-block;margin-left:8px;background:var(--green);color:var(--white);
+  font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;
+  text-transform:uppercase;border-radius:2px;padding:3px 8px;vertical-align:1px}
+.spec-aside{margin:16px 0 0;font-size:.9rem;line-height:1.6;color:var(--ink-70);max-width:64ch}
 </style>
 </head>
 <body>
@@ -1692,7 +1699,7 @@ button{font:inherit;color:inherit}
         <div class="acc-bd" id="a1">
           <ul>
             <li>One LGW01 Carver Gold wedge in the loft and hand you picked</li>
-            <li>KBS Tour shaft, stiff flex</li>
+            <li>Lucky Golf stock steel shaft (KBS becomes an option soon)</li>
             <li>Lucky Golf grip</li>
             <li>Headcover: <span class="tbd tbd--light">Confirm</span></li>
           </ul>
@@ -1823,8 +1830,8 @@ button{font:inherit;color:inherit}
 <section class="sec band-cream" id="specs">
   <div class="wrap">
     <span class="eyebrow">Specifications</span>
-    <h2 class="disp d-l">The numbers</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px)">Forged 1020 soft carbon steel in every loft. Same head weight, same lie, same price across the lineup.</p>
+    <h2 class="disp d-l" style="max-width:18ch">Same steel, same weight, same price. Six lofts.</h2>
+    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px)">The only thing that changes across the lineup is the number stamped on the sole.</p>
 
     <div class="spec-tabs" role="tablist" aria-label="Specification group">
       <button class="spec-tab" role="tab" aria-selected="true" aria-controls="sp0" id="st0" type="button">Club</button>
@@ -1873,14 +1880,19 @@ button{font:inherit;color:inherit}
         <h3 class="spec-cap">LGW01 Carver &mdash; shaft &amp; grip</h3>
         <div class="spec-wrap"><table class="spec-tbl">
           <tbody>
-            <tr><th scope="row">Shaft</th><td>KBS Tour, stiff</td></tr>
-            <tr><th scope="row">Shaft options</th><td><span class="tbd tbd--light">Needs spec &mdash; stiff only today</span></td></tr>
+            <tr><th scope="row">Shaft, stock</th><td>Lucky Golf stock steel &mdash; what ships today</td></tr>
+            <tr><th scope="row">Shaft, upgrade</th><td>KBS <span class="soon">Coming soon</span></td></tr>
+            <tr><th scope="row">Stock shaft weight</th><td><span class="tbd tbd--light">Needs spec</span></td></tr>
+            <tr><th scope="row">Flex options</th><td><span class="tbd tbd--light">Needs spec</span></td></tr>
             <tr><th scope="row">Grip</th><td>Lucky Golf grip</td></tr>
             <tr><th scope="row">Grip sizes</th><td><span class="tbd tbd--light">Needs spec</span></td></tr>
             <tr><th scope="row">Playing length</th><td><span class="tbd tbd--light">Needs spec</span></td></tr>
           </tbody>
         </table></div>
       </div>
+      <p class="spec-aside">Every Carver ships on the Lucky stock shaft today. KBS becomes a
+      selectable option at checkout once it lands &mdash; when it does, shaft joins hand and
+      loft as a third choice in the buy box.</p>
     </div>
 
     <p class="spec-note">Rows marked &ldquo;needs spec&rdquo; are not published anywhere we can verify. They are left visibly empty rather than guessed at.</p>
@@ -1996,7 +2008,6 @@ button{font:inherit;color:inherit}
         <p class="pt-hook">The same forged feel, with a reshaped edge and softer sole that handle more lies.</p>
         <div class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">4.78 &#9733; 69</span></div>
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="LGW02 Carver Gold wedge" loading="lazy" width="800" height="800"></div>
-        <span class="pt-tag">3 lofts</span>
       </article>
 
       <article class="ptile">
@@ -2014,7 +2025,6 @@ button{font:inherit;color:inherit}
         <p class="pt-hook">Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover.</p>
         <div class="pt-meta"><span class="pt-pr">$209</span><span class="pt-rt">4.60 &#9733; 20</span></div>
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="LGH01 Stryker hybrid" loading="lazy" width="800" height="800"></div>
-        <span class="pt-tag">Right &amp; left</span>
       </article>
 
     </div>
@@ -2271,14 +2281,14 @@ var PD_JM = [{"n":"David L.","r":5,"t":"Golden sw","d":"2026-07-19","q":"Love th
 /* Real store rows for the browse rail under the fold. Takomo mixes clubs and
    apparel here rather than showing only comparable products. */
 var PD_OAV = [
-  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'3 lofts',
+  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462'},
+  {nm:'LGW02 Carver Shadow', pr:'$109', rt:'6 lofts', tag:'New',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436'},
   {nm:'LGP01 Tracer Blade', pr:'$199', rt:'4.86 ★ 147', tag:'Sold out', out:true,
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090'},
-  {nm:'Contour Classic Polo', pr:'$67', rt:'6 sizes', tag:'Apparel',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {nm:'Lucky Blade Cover', pr:'$29.95', rt:'In stock', tag:'Gear',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397'}
+  {nm:'LGH01 Stryker', pr:'$209', rt:'4.60 ★ 20', tag:'',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493'}
 ];
 
 /* Six briefs for the highlight reel. No footage exists, so each card is a
@@ -2309,10 +2319,10 @@ var LG_CART_UPSELL = [
 /* Finish-the-look cross-sell: polos and hats only. Cole's call — gear is a
    grab-bag, apparel completes the look and is the same voice as the club. */
 var PD_KIT = [
-  {sku:'LGA-CP-Contour-Large', nm:'Contour Classic Polo', pr:'$67',
+  {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:true,
    why:'Classic collar, tailored fit, UPF 50+.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {sku:'LGA-BP-Blackout-Large', nm:'Blackout Blade Polo', pr:'$67',
+  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:true,
    why:'Blade collar, no buttons. Quieter than it sounds.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
   {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',
@@ -2561,9 +2571,15 @@ var PD_KIT = [
       + '<div class="kit-bd"><span class="kit-nm">' + esc(o.nm) + '</span>'
       +   '<span class="kit-why">' + esc(o.why) + '</span>'
       +   '<div class="kit-bot"><span class="kit-pr">' + esc(o.pr) + '</span>'
-      +   '<button class="btn btn-ink btn-sm" type="button" data-add data-sku="' + esc(o.sku)
-      +     '" data-name="' + esc(o.nm) + '" data-price="' + esc(o.pr) + '" data-img="' + o.img
-      +     '" data-variant=""><span>Add</span></button></div></div>'
+      +   (o.sizes
+          /* sized product: there is nothing sensible to add without a size,
+             so it links to its own page instead of pretending to be one-click */
+          ? '<a class="btn btn-line btn-sm" href="#"><span>Choose size</span>'
+            + '<span class="ar">&rarr;</span></a>'
+          : '<button class="btn btn-ink btn-sm" type="button" data-add data-sku="' + esc(o.sku)
+            + '" data-name="' + esc(o.nm) + '" data-price="' + esc(o.pr) + '" data-img="' + o.img
+            + '" data-variant=""><span>Add</span></button>')
+      +   '</div></div>'
       + '</article>';
   }).join('');
 

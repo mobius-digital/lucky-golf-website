@@ -286,8 +286,47 @@ white(rest of the bag) → cream(finish the look) → ink(close+footer)`
    reviews above. **Any section using `.ptile` must be on white.**
 6. **"Finish the setup" → "Finish the look"**, and it is polos and hats now, not
    gear. Cards went white so they read on the cream field.
+6b. **"Others also viewed" is clubs only** (Cole's call), even though Takomo
+   mixes apparel into theirs. The apparel cross-sell has its own section now.
 7. New club headline: *"The kind of wedge that makes a short-sided miss feel
-   survivable."*
+   survivable."* Spec headline is *"Same steel, same weight, same price. Six
+   lofts."* &mdash; "The numbers" was flagged as weak.
+
+### Shafts — the reference guide is WRONG on this, Cole overrides it
+
+`references/product-reference-guide.md` lists the Carver's shaft as **"KBS Tour,
+stiff."** That is not what ships. **Cole confirmed 2026-07-31: every Carver goes
+out on the Lucky Golf stock steel shaft today, and KBS becomes a selectable
+upgrade soon.**
+
+The spec table's Shaft & grip tab now reads *Shaft, stock* / *Shaft, upgrade
+(KBS — coming soon)*, and the "What you get" accordion was corrected too. On any
+product fact the reference guide normally wins; this is the documented exception
+until the guide is updated. **Update the guide.**
+
+When KBS lands it becomes a **third variant axis in the buy box** alongside hand
+and loft — the picker markup and `sync()` already generalise, but `PD.stock`
+would need a shaft dimension. `.spec-aside` under the table says as much.
+
+The `.soon` pill is a green marker for shipped-soon items. It is deliberately
+*not* the dashed `.tbd` chip: "we haven't published this number" and "this is
+coming" are different statements and should not look alike.
+
+### Product-card callouts: one tag, or none
+
+`.pt-tag` was on every club card ("3 lofts", "New", "Right & left"), which makes
+it wallpaper — Cole flagged it. A badge on one card in three is a signal; a badge
+on all three is decoration. **Only genuine news gets a tag now** (LGW02 Shadow =
+"New"), and the same rule applies to `.oav-tag` in the browse rail, where "Sold
+out" on the Tracer is real state.
+
+### Sized products cannot have an Add button
+
+The apparel cards were one-click "Add". Polos come in six sizes, so there is
+nothing sensible to add — Cole caught it. `PD_KIT` rows now carry `sizes:true`,
+which swaps the button for **"Choose size →"** linking to that product's own
+page. Hats are single-variant and keep the real Add. **Any future cross-sell
+tile has to make this distinction.**
 
 ### Buy box: trust row and the two policy modals
 

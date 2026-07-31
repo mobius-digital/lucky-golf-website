@@ -46,14 +46,14 @@ var PD_JM = [{"n":"David L.","r":5,"t":"Golden sw","d":"2026-07-19","q":"Love th
 /* Real store rows for the browse rail under the fold. Takomo mixes clubs and
    apparel here rather than showing only comparable products. */
 var PD_OAV = [
-  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'3 lofts',
+  {nm:'LGW02 Carver Gold', pr:'$109', rt:'4.78 ★ 69', tag:'',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462'},
+  {nm:'LGW02 Carver Shadow', pr:'$109', rt:'6 lofts', tag:'New',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436'},
   {nm:'LGP01 Tracer Blade', pr:'$199', rt:'4.86 ★ 147', tag:'Sold out', out:true,
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090'},
-  {nm:'Contour Classic Polo', pr:'$67', rt:'6 sizes', tag:'Apparel',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {nm:'Lucky Blade Cover', pr:'$29.95', rt:'In stock', tag:'Gear',
-   img:'https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397'}
+  {nm:'LGH01 Stryker', pr:'$209', rt:'4.60 ★ 20', tag:'',
+   img:'https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493'}
 ];
 
 /* Six briefs for the highlight reel. No footage exists, so each card is a
@@ -84,10 +84,10 @@ var LG_CART_UPSELL = [
 /* Finish-the-look cross-sell: polos and hats only. Cole's call — gear is a
    grab-bag, apparel completes the look and is the same voice as the club. */
 var PD_KIT = [
-  {sku:'LGA-CP-Contour-Large', nm:'Contour Classic Polo', pr:'$67',
+  {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:true,
    why:'Classic collar, tailored fit, UPF 50+.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {sku:'LGA-BP-Blackout-Large', nm:'Blackout Blade Polo', pr:'$67',
+  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:true,
    why:'Blade collar, no buttons. Quieter than it sounds.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
   {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',
@@ -336,9 +336,15 @@ var PD_KIT = [
       + '<div class="kit-bd"><span class="kit-nm">' + esc(o.nm) + '</span>'
       +   '<span class="kit-why">' + esc(o.why) + '</span>'
       +   '<div class="kit-bot"><span class="kit-pr">' + esc(o.pr) + '</span>'
-      +   '<button class="btn btn-ink btn-sm" type="button" data-add data-sku="' + esc(o.sku)
-      +     '" data-name="' + esc(o.nm) + '" data-price="' + esc(o.pr) + '" data-img="' + o.img
-      +     '" data-variant=""><span>Add</span></button></div></div>'
+      +   (o.sizes
+          /* sized product: there is nothing sensible to add without a size,
+             so it links to its own page instead of pretending to be one-click */
+          ? '<a class="btn btn-line btn-sm" href="#"><span>Choose size</span>'
+            + '<span class="ar">&rarr;</span></a>'
+          : '<button class="btn btn-ink btn-sm" type="button" data-add data-sku="' + esc(o.sku)
+            + '" data-name="' + esc(o.nm) + '" data-price="' + esc(o.pr) + '" data-img="' + o.img
+            + '" data-variant=""><span>Add</span></button>')
+      +   '</div></div>'
       + '</article>';
   }).join('');
 

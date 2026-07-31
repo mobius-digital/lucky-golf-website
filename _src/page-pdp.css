@@ -627,3 +627,10 @@
   .look-ph{aspect-ratio:4/3}
   .look-copy h2{max-width:none}
 }
+
+/* a shipped-soon marker is not the same thing as a missing spec, so it does not
+   borrow the dashed .tbd chip */
+.soon{display:inline-block;margin-left:8px;background:var(--green);color:var(--white);
+  font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;
+  text-transform:uppercase;border-radius:2px;padding:3px 8px;vertical-align:1px}
+.spec-aside{margin:16px 0 0;font-size:.9rem;line-height:1.6;color:var(--ink-70);max-width:64ch}
