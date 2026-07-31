@@ -1,0 +1,79 @@
+{
+  "_": "Editorial for grip-clover-white. Shared keys come from the family file.",
+  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+  "buyBody": "Tour performance grips with the clover worked into the pattern, in white. Grips are the only part of the club you actually touch and they are the part almost nobody replaces often enough. Looks best, dirties fastest. You know the trade.",
+  "four": [
+    {
+      "k": "Clover pattern",
+      "v": "All the way down"
+    },
+    {
+      "k": "Standard to Jumbo",
+      "v": "Priced by size"
+    },
+    {
+      "k": "White",
+      "v": "One of five colours"
+    },
+    {
+      "k": "From $9.95",
+      "v": "Per grip"
+    }
+  ],
+  "details": [
+    {
+      "eyebrow": "What it's for",
+      "headline": "The only part of the club you touch",
+      "paras": [
+        "A worn grip makes you hold on tighter, and holding on tighter is the fastest way to ruin a swing. Most golfers go years without changing them.",
+        "These cost under fifteen dollars. Change them."
+      ]
+    },
+    {
+      "eyebrow": "Sizing",
+      "headline": "Standard, midsize, jumbo",
+      "paras": [
+        "Bigger grips quieten the hands; smaller ones let them work. If your hands are large or you tend to flip through impact, go up a size.",
+        "Price goes up with size, which is why the buy box repaints when you choose."
+      ],
+      "facts": {
+        "rows": [
+          {
+            "k": "Type",
+            "v": "Tour performance grip"
+          },
+          {
+            "k": "Colour",
+            "v": "White"
+          },
+          {
+            "k": "Pattern",
+            "v": "Clover"
+          },
+          {
+            "k": "Fitting",
+            "v": "Needs regripping — not a slip-on"
+          },
+          {
+            "k": "Material",
+            "tbd": true
+          },
+          {
+            "k": "Weight",
+            "tbd": true
+          },
+          {
+            "k": "Core size",
+            "tbd": true
+          }
+        ]
+      }
+    }
+  ],
+  "gallery": [
+    [
+      "files/3M6A0853.jpg?v=1701474134",
+      "Lucky Golf Tour Performance Clover Grips, white"
+    ]
+  ]
+}

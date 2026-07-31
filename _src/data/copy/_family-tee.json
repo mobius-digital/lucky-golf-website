@@ -1,0 +1,34 @@
+{
+  "_": "Shared editorial for tee. Merged UNDER each product's own file.",
+  "_specs": "Shopify has no descriptions for gear and the reference guide does not cover it. Materials, closures and dimensions are marked as needing spec on every page.",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+  "priceNote": "",
+  "reviewHeadline": "Reviews",
+  "chooseCta": "Add it",
+  "eyebrow": "Tees &middot; Gear",
+  "bagHeadline": "Other things you keep losing",
+  "bag": [
+    {
+      "id": "glove-tour",
+      "name": "Lucky Tour Glove",
+      "code": "CLG1",
+      "meta": "Left hand",
+      "hook": "The other consumable. Wears out on a schedule you can set your watch by."
+    },
+    {
+      "id": "cover-blade",
+      "name": "Lucky Blade Cover",
+      "code": "HC",
+      "meta": "Blade heads",
+      "hook": "This one you will not lose, which is the point of it."
+    },
+    {
+      "id": "grip-clover-blue",
+      "name": "Clover Grips, blue",
+      "code": "GRP",
+      "meta": "Standard–Jumbo",
+      "hook": "Same idea as tees, longer replacement cycle."
+    }
+  ]
+}

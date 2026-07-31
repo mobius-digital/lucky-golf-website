@@ -1,0 +1,215 @@
+{
+  "_": "Editorial for lgp02-patriot. Shared keys come from _family-putter.json.",
+  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "gallery": [
+    [
+      "3_97d00e2d-9a43-4970-bb65-a5fd30d3702c.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, face on"
+    ],
+    [
+      "1_4fe08cce-2ae4-4cde-bc44-973d0d056cb5.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, full club"
+    ],
+    [
+      "2_325dc3f4-941c-443f-b995-9d49b7eafd62.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, twin fangs"
+    ],
+    [
+      "4_1d384035-04fe-41eb-bd4a-b8e98254618f.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, address position"
+    ],
+    [
+      "5_1e94f418-2b59-4aa5-99c1-a1a3ed87d6e6.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, face insert"
+    ],
+    [
+      "6_431e9702-6b18-4191-a797-43ee77320aaa.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, red clover stamp"
+    ],
+    [
+      "7_6fb37165-134a-41d4-8209-98e77527694d.webp?v=1782845523",
+      "Tracer LGP02 Patriot putter, three-quarter view"
+    ]
+  ],
+  "priceNote": "Limited to 50 &middot; sold out",
+  "buyBody": "A fifty-unit run for America's 250th. High-MOI mallet, twin navy fangs for alignment, a soft white face insert and a red clover stamped where your eyes go. They are gone.",
+  "four": [
+    {
+      "k": "Fifty made",
+      "v": "And that was the whole run"
+    },
+    {
+      "k": "Twin fangs",
+      "v": "Navy, for dead-square alignment"
+    },
+    {
+      "k": "White insert",
+      "v": "Softer roll off the face"
+    },
+    {
+      "k": "Red clover",
+      "v": "Stamped in your eyeline"
+    }
+  ],
+  "whatYouGet": [
+    "One Tracer LGP02 Patriot putter, right hand",
+    "Oversized Lucky putter grip",
+    "Lucky Approved shaft",
+    "Head cover: <span class=\"tbd tbd--light\">Confirm</span>"
+  ],
+  "clubHeadline": "Fifty of them, for a birthday that only happens once.",
+  "clubParas": [
+    "Most putters are built to disappear into a bag. This one was built to get talked about on the first tee, and it is a limited drop for America's 250th &mdash; fifty units, and then nothing.",
+    "Under the paint it is the LGP02: a high-MOI mallet, stable through impact and forgiving on the strikes you do not centre. The twin fangs are navy and they line up dead square, which is the entire reason fangs exist.",
+    "The face insert is soft and white, so the roll comes off quieter than the standard mallet, and the Lucky clover is stamped in red exactly where you look when you are over the ball.",
+    "It is sold out. It was always going to be."
+  ],
+  "clubSpecs": [
+    {
+      "k": "Type",
+      "v": "High-MOI mallet, limited run of 50."
+    },
+    {
+      "k": "Alignment",
+      "v": "Twin navy fangs."
+    },
+    {
+      "k": "Face",
+      "v": "Soft white insert."
+    },
+    {
+      "k": "Mark",
+      "v": "Red Lucky clover, in the eyeline."
+    },
+    {
+      "k": "For who",
+      "v": "Anyone who wanted one in July and moved fast enough."
+    },
+    {
+      "k": "Head material",
+      "tbd": true
+    }
+  ],
+  "videoBrief": "16:9, 30&ndash;40s. This is a collector's item more than a performance club, so shoot it as an object: rotating on black, fangs and clover catching light, serial detail if there is one.",
+  "reelHeadline": "The Patriot, on the green",
+  "specHeadline": "A colourway, and a very short run.",
+  "specSub": "Shared geometry with the standard LGP02. What is different is the alignment, the insert and the fact that there were only ever fifty.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "Tracer LGP02 Patriot &mdash; club",
+      "rows": [
+        {
+          "k": "Head style",
+          "v": "High-MOI mallet"
+        },
+        {
+          "k": "Alignment",
+          "v": "Twin navy fangs"
+        },
+        {
+          "k": "Face",
+          "v": "Soft white insert"
+        },
+        {
+          "k": "Mark",
+          "v": "Red Lucky clover"
+        },
+        {
+          "k": "Run size",
+          "v": "50 units"
+        },
+        {
+          "k": "Hand",
+          "v": "Right only"
+        },
+        {
+          "k": "Head material",
+          "tbd": true
+        },
+        {
+          "k": "Loft",
+          "tbd": true
+        },
+        {
+          "k": "Lie",
+          "tbd": true
+        },
+        {
+          "k": "Head weight",
+          "tbd": true
+        },
+        {
+          "k": "Length",
+          "tbd": true
+        }
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "Tracer LGP02 Patriot &mdash; shaft &amp; grip",
+      "rows": [
+        {
+          "k": "Shaft",
+          "v": "Lucky Approved"
+        },
+        {
+          "k": "Grip",
+          "v": "Oversized Lucky putter grip"
+        },
+        {
+          "k": "Shaft weight",
+          "tbd": true
+        },
+        {
+          "k": "Length",
+          "tbd": true
+        },
+        {
+          "k": "Head cover",
+          "tbd": true
+        }
+      ],
+      "aside": "Shopify's description for this club is a launch announcement rather than a spec sheet. The standard LGP02's figures are not copied across &mdash; the head is shaped differently."
+    }
+  ],
+  "look": {
+    "photo": "Bold, full-bleed, portrait. Navy fangs and the red clover against green, low sun. This is the most photogenic club in the range and the shot should treat it as an object rather than as equipment.",
+    "headline": "Built to be noticed, and then to be gone",
+    "paras": [
+      "Fifty units is not a marketing number, it is the whole production run. Everything about the club &mdash; the navy, the red clover, the white insert &mdash; was decided on the basis that it would never be restocked.",
+      "If you have one, that is the point of it."
+    ],
+    "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
+  },
+  "closeBody": "The Patriot was $229, right hand, fifty made. Sold out — the standard Tracer Mallet is the one still available.",
+  "oav": [
+    "lgp02-gold",
+    "lgp01-gold",
+    "lgw01-gold",
+    "cover-mallet"
+  ],
+  "bag": [
+    {
+      "id": "lgp02-gold",
+      "name": "Tracer Mallet",
+      "code": "LGP02",
+      "meta": "4.71 &#9733; 58",
+      "hook": "The same head in gold, in stock, right or left hand."
+    },
+    {
+      "id": "lgp01-gold",
+      "name": "Tracer Blade",
+      "code": "LGP01",
+      "meta": "4.86 &#9733; 147",
+      "hook": "The blade, for a stroke that arcs. Also sold out."
+    },
+    {
+      "id": "cover-mallet",
+      "name": "Lucky Mallet Cover",
+      "code": "HC",
+      "meta": "Right &amp; left hand",
+      "hook": "Cut for a mallet head. Worth it on a fifty-unit club."
+    }
+  ]
+}

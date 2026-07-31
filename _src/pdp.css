@@ -367,3 +367,8 @@
   .jm-bar{flex-direction:column;align-items:stretch}
   .jm-sort select{width:100%}
 }
+
+/* a product with a real score but no reviews pulled into the repo, or none at
+   all, says so rather than rendering an empty list under a star filter */
+.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+

@@ -1,0 +1,34 @@
+{
+  "_": "Shared editorial for headcover. Merged UNDER each product's own file.",
+  "_specs": "Shopify has no descriptions for gear and the reference guide does not cover it. Materials, closures and dimensions are marked as needing spec on every page.",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+  "priceNote": "",
+  "reviewHeadline": "Reviews",
+  "chooseCta": "Add it",
+  "eyebrow": "Head covers &middot; Gear",
+  "bagHeadline": "What it goes on",
+  "bag": [
+    {
+      "id": "lgp02-gold",
+      "name": "Tracer Mallet",
+      "code": "LGP02",
+      "meta": "4.71 &#9733; 58",
+      "hook": "The mallet. Oversized 3.0 grip fitted, right or left hand."
+    },
+    {
+      "id": "cover-blade",
+      "name": "Lucky Blade Cover",
+      "code": "HC",
+      "meta": "Blade heads",
+      "hook": "The blade version. Same idea, different shape."
+    },
+    {
+      "id": "tees-25",
+      "name": "Lucky Golf Tees",
+      "code": "TEES",
+      "meta": "25 tees",
+      "hook": "You are out of tees. You are always out of tees."
+    }
+  ]
+}

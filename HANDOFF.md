@@ -994,3 +994,74 @@ design story and a lifestyle brief. Everything else comes from the family file.
 **The tenth hat is deliberately not built.** White Upside Down's only photograph
 is `59.webp`, which has inverted lettering (§6). A page whose single image is
 wrong is worse than no page. Reshoot, then flip `built=True`.
+
+---
+
+## 14. Phase D complete — 43 of 44 products
+
+Built 2026-07-31. **51 pages.** Every sellable product has a page except one.
+
+| Batch | Count | Notes |
+|---|---|---|
+| Hats | 9 | 0-axis, shortest pages in the store |
+| Polos | 13 | 1 axis (size), sibling strips, no reviews anywhere |
+| Gear | 13 | dry voice per §13.4, per-variant pricing on the grips |
+| Clubs | 8 | spec tables from each product's own Shopify description |
+
+**Not built: `hat-white-updown`.** Its only photograph (`59.webp`) has inverted
+lettering (§6). A page whose single image is wrong is worse than no page.
+Reshoot, then flip `built=True` — the copy slot is the only thing missing.
+
+### 14a. Family defaults carried it
+
+`_family-<family>.json` merges **under** each product's own file:
+
+```
+_family-wedge  _family-putter  _family-hybrid  _family-driver
+_family-polo-classic  _family-polo-blade  _family-hat
+_family-headcover  _family-grip  _family-glove  _family-tee
+```
+
+A product file is now a photo, a buy-box line, a description and whatever specs
+that product actually publishes. Everything shared — marquee, care notes, size
+guide, closing CTA, cross-sell — lives once. **The hybrid and the driver each
+got a family file despite being one-product families**, because the merge is
+keyed on `family` and the build fails without one.
+
+### 14b. Specs came from each product's own Shopify description
+
+The driver and the hybrid publish real numbers and their tables are nearly
+complete. **Nothing was carried across between products** — LGW01's 1020 steel
+and 300 g head are LGW01's, and the LGW02 tables are mostly marked rows because
+Shopify gives that club prose instead of figures. Unverified counts by page:
+LGW02 Black 11, driver 6, grips 3 each.
+
+Newly recovered from Shopify descriptions, previously unrecorded here:
+- **LGD01:** 10.5&deg; loft, 59&deg; lie, 193 g head, **450cc** (not 460),
+  45&Prime; shaft, 61 g graphite, stiff, Runner standard grip.
+- **LGH01:** titanium, 19&deg;, 200&ndash;220 yd, stiff graphite, black rubber
+  grip, **limited run of 100**.
+- **LGP01:** 431 stainless casting, 3.5&deg;, 72&deg; lie, 385 g, 35&Prime;.
+- **LGP02 Patriot:** high-MOI mallet, twin navy fangs, soft white face insert,
+  red clover, **50 units only**, for America's 250th.
+
+### 14c. Reviews: real, or the page says so
+
+Only LGW01 (47 of 551) and LGP02 (all 58) have review text in the repo. The
+other six clubs have **real Judge.me scores but no pulled reviews**, which would
+have rendered a star filter and a sort control over an empty list — that reads
+as a bug. The club template now gates the filter/list/pagination on
+`reviewSample`, and shows the score with a line explaining the widget swap
+instead. Apparel and gear have no reviews at all and say so.
+
+**Pulling the remaining six clubs' reviews is the highest-value follow-up**
+— the Judge.me widget URL in §5 works without auth, and LGP02's pull took two
+requests.
+
+### 14d. Still open
+
+- `hat-white-updown` — blocked on a reshoot.
+- **Polo measurements** — 13 pages now carry a table of dashes.
+- **Apparel and gear lifestyle photography** — every page has a written brief
+  and no image behind it.
+- Club collection redesign (§13.3), deferred by Cole to after Phase D.

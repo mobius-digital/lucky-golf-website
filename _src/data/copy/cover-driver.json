@@ -1,0 +1,74 @@
+{
+  "_": "Editorial for cover-driver. Shared keys come from the family file.",
+  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+  "buyBody": "A driver cover in signature white and gold. Drivers are the most expensive thing in the bag and the one that spends the whole round unused, knocking against everything else. This is the cheapest insurance available.",
+  "four": [
+    {
+      "k": "Driver fit",
+      "v": "Fits a 460cc head"
+    },
+    {
+      "k": "White and gold",
+      "v": "Matches the rest of it"
+    },
+    {
+      "k": "One job",
+      "v": "Stops the driver getting chewed"
+    },
+    {
+      "k": "In stock",
+      "v": "Ships in one to two days"
+    }
+  ],
+  "details": [
+    {
+      "eyebrow": "What it's for",
+      "headline": "The most expensive club, doing the least work",
+      "paras": [
+        "A driver gets used fourteen times a round and spends the other four hours being a crash barrier for the irons. It is also the club you paid the most for.",
+        "Thirty dollars against that maths is not a difficult sum."
+      ]
+    },
+    {
+      "eyebrow": "What it fits",
+      "headline": "Drivers",
+      "paras": [
+        "Cut for a standard 460cc driver head. If you need one for a fairway wood or a hybrid, we do not make that yet."
+      ],
+      "facts": {
+        "rows": [
+          {
+            "k": "Type",
+            "v": "Driver head cover"
+          },
+          {
+            "k": "Fits",
+            "v": "Standard 460cc driver heads"
+          },
+          {
+            "k": "Colourway",
+            "v": "Signature white and gold"
+          },
+          {
+            "k": "Closure",
+            "tbd": true
+          },
+          {
+            "k": "Material",
+            "tbd": true
+          },
+          {
+            "k": "Dimensions",
+            "tbd": true
+          }
+        ]
+      }
+    }
+  ],
+  "gallery": [
+    [
+      "products/DriverHeadCover1.png?v=1676592799",
+      "Driver head cover, signature white"
+    ]
+  ]
+}

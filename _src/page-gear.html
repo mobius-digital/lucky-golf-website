@@ -23,6 +23,11 @@
       <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
       {{#galleryTag}}<span class="gal-tag">{{galleryTag}}</span>{{/galleryTag}}
 {{#gallery}}      <div class="gal-slide"{{#first}} data-on{{/first}}><img src="{{src}}" alt="{{alt}}"{{^first}} loading="lazy"{{/first}} width="1000" height="1000"></div>
+{{/gallery}}{{^gallery}}      <div class="gal-slide" data-on>
+        <div class="ph ph--dark"><span class="lbl">
+          <span class="mono k">Photo needed</span>
+          <span class="mono">{{photoBrief}}</span></span></div>
+      </div>
 {{/gallery}}
       <button class="gal-arw" data-p type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button class="gal-arw" data-n type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>

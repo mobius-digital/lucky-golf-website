@@ -1,0 +1,55 @@
+{
+  "_": "Shared editorial for the wedges. Merged UNDER each wedge's own file.",
+  "eyebrow": "The Carver &middot; Wedges",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+  "galleryTag": "",
+  "careTitle": "Looking after the finish",
+  "carePara": [
+    "Grooves full of sand do not spin anything. Brush the face after a round and dry the head before it goes back in the bag &mdash; that is the whole maintenance routine.",
+    "A head cover is worth it if your clubs rattle around in a cart. Reviewers mention picking up cart rash without one more than they mention anything else."
+  ],
+  "marquee": [
+    "Sixty-day returns on every club",
+    "Free US shipping",
+    "Forged, not cast",
+    "Sold direct, never through a middleman",
+    "It's better to be lucky"
+  ],
+  "reelSub": "Clips of this exact club being played &mdash; creators, customers, and anyone who tags us.",
+  "reel": [
+    {
+      "kind": "Creator reel",
+      "brief": "Full swing from 100 yards, ball tracked to the pin, reaction"
+    },
+    {
+      "kind": "Customer clip",
+      "brief": "Greenside chip, one hop and stop, shot from behind"
+    },
+    {
+      "kind": "Creator reel",
+      "brief": "Bunker shot, sand spray, ball releasing to the hole"
+    },
+    {
+      "kind": "Customer clip",
+      "brief": "Flop over a bunker, face wide open, soft landing"
+    },
+    {
+      "kind": "Creator reel",
+      "brief": "Face close-up in sunlight, grooves and finish, slow pan"
+    },
+    {
+      "kind": "Customer clip",
+      "brief": "Unboxing, club out of the sleeve, first reaction to the finish"
+    }
+  ],
+  "chooseCta": "Pick a loft",
+  "closeHeadline": "Go own the",
+  "closeFoil": "green",
+  "closeTrust": [
+    "60-day club returns",
+    "Free US shipping",
+    "Forged",
+    "Direct pricing"
+  ],
+  "reviewHeadline": "What golfers said"
+}

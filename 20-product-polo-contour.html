@@ -1279,6 +1279,10 @@ button{font:inherit;color:inherit}
   .jm-sort select{width:100%}
 }
 
+/* a product with a real score but no reviews pulled into the repo, or none at
+   all, says so rather than rendering an empty list under a star filter */
+.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+
 /* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
    The sibling colourway strip and the size guide. Everything else — the fold,
@@ -1373,8 +1377,8 @@ button{font:inherit;color:inherit}
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
           <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgw02-gold.html"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgw02-black.html"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1389,7 +1393,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-putters">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgp01-gold.html"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
           <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
@@ -1405,7 +1409,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgh01.html"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1499,7 +1503,7 @@ button{font:inherit;color:inherit}
       <span class="flat">One price, every size</span>
     </div>
 
-    <p class="bx-body">A contour print that reads as texture from more than a few feet away, on the collar and three-button placket that most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round doesn't cost you anything.</p>
+    <p class="bx-body">A contour print that reads as texture from more than a few feet away, on the collar and three-button placket most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round costs you nothing.</p>
 
     <div class="bx-four">
       <div>
@@ -1586,52 +1590,52 @@ button{font:inherit;color:inherit}
     <div class="sib-hd">
       <div>
         <span class="eyebrow">More colours</span>
-        <h2 class="disp d-m">The same polo, twelve other ways</h2>
+        <h2 class="disp d-m">The same polo, nine other ways</h2>
       </div>
       <a class="btn btn-line btn-sm" href="10-collection-polos.html"><span>See all 10</span><span class="ar">&rarr;</span></a>
     </div>
     <div class="sibs msnap">
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-gold-dust.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?v=1779472856" alt="Gold Dust Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Gold Dust</span>
         <span class="sib-meta">S–XXL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-shadow.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Graycamofour-leafclover1.webp?v=1779472823" alt="Shadow Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Shadow</span>
         <span class="sib-meta">S–XL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-signature-black.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Classicpolowithlogointhecollar1.webp?v=1779472786" alt="Signature Black Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Signature Black</span>
         <span class="sib-meta">S–3XL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-marble.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="Marble Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Marble</span>
         <span class="sib-meta">S–L</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-gold-carnation.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693" alt="Gold Carnation Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Gold Carnation</span>
         <span class="sib-meta">S–3XL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-frost.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Whitecome1.webp?v=1779472662" alt="Frost Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Frost</span>
         <span class="sib-meta">S–3XL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-cruiser.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Golfcart1.webp?v=1779472510" alt="Cruiser Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Cruiser</span>
         <span class="sib-meta">S–XXL</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-azalea.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Flower1.webp?v=1779472480" alt="Azalea Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Azalea</span>
         <span class="sib-meta">S, M</span>
       </a>
-      <a class="sib" href="#">
+      <a class="sib" href="20-product-polo-nightshade.html">
         <span class="sib-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Blackwhiteflower1.webp?v=1779472292" alt="Nightshade Classic Polo" loading="lazy" width="500" height="500"></span>
         <span class="sib-nm">Nightshade</span>
         <span class="sib-meta">S–3XL</span>
@@ -1647,20 +1651,18 @@ button{font:inherit;color:inherit}
 <section class="sec">
   <div class="wrap">
     <span class="eyebrow">The polo</span>
-    <h2 class="disp d-l" style="max-width:24ch">A polo that survives a round, a car, and whatever happens after.</h2>
+    <h2 class="disp d-l" style="max-width:24ch">Up close it's a map. From across the fairway it's texture.</h2>
 
     <div class="club-grid">
       <div class="club-copy">
-        <p class="body">The contour print is the point. Up close it reads as a topographic line drawing; from across a fairway it reads as texture, which is the right way round for something you wear for five hours next to people who are looking at you.</p>
-        <p class="body">Underneath the pattern it is the Classic: a proper collar, a three-button placket, and a tailored athletic cut that follows the shoulders without gripping them. The kind of fit that looks deliberate rather than either baggy or sprayed on.</p>
-        <p class="body">The fabric does the work nobody notices. Four-way stretch means the top of the backswing doesn't drag the hem out of your trousers, moisture-wicking means the back of the shirt is not a conversation on a hot day, and UPF 50+ means five hours in open sun costs you nothing.</p>
-        <p class="body">It is sub-180gsm, which is light. That is deliberate and it is the reason this is the shirt still on your back at the bar afterwards rather than the one you changed out of in the car park.</p>
+        <p class="body">The contour print is the point. Near to, it reads as a topographic line drawing; at conversational distance it reads as texture. That is the right way round for something worn for five hours next to people who are looking at you.</p>
+        <p class="body">It is the most-reached-for print in the range for exactly that reason — it carries a pattern without ever becoming the thing anyone comments on.</p>
       </div>
       <div class="club-media">
         <div class="ph ph--dark ph--tall">
           <span class="lbl">
             <span class="mono k">Photo needed</span>
-            <span class="mono">Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. Natural light, course visible but thrown out of focus. The print has to be legible as texture at this distance — this is the shot that sells the pattern, and there is currently no on-body apparel photography at all (HANDOFF §7b F).</span>
+            <span class="mono">Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. The print has to be legible as texture at this distance. There is no on-body apparel photography at all yet (HANDOFF §7b F).</span>
           </span>
         </div>
       </div>
@@ -1695,7 +1697,7 @@ button{font:inherit;color:inherit}
         <p class="body">Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on, so an exchange is straightforward &mdash; but the guide above is worth thirty seconds first.</p>
       </div>
     </div>
-    <p class="spec-note">The measurements above are not published anywhere we can verify, so they are left visibly empty rather than guessed at. They are the single most useful thing that could be added to this page — wrong size is the most common reason apparel is returned, and a table of dashes does not prevent that.</p>
+    <p class="spec-note">The measurements above are not published anywhere we can verify, so they are left visibly empty rather than guessed at. They are the single most useful thing that could be added to these pages — wrong size is the most common reason apparel is returned, and a table of dashes does not prevent that.</p>
   </div>
 </section>
 
@@ -1743,7 +1745,7 @@ button{font:inherit;color:inherit}
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570" alt="Blackout Blade Polo" loading="lazy" width="800" height="800">
           </div>
         <span class="pt-sku">LGA-BP</span>
-        <a class="pt-nm stretch" href="#">Blackout Blade Polo</a>
+        <a class="pt-nm stretch" href="20-product-polo-blackout.html">Blackout Blade Polo</a>
         <p class="pt-hook">Blade collar, no buttons. The quieter half of the range.</p>
         <div class="pt-meta"><span class="pt-pr">$67</span><span class="pt-rt">S–3XL</span></div>
       </article>
@@ -1854,11 +1856,11 @@ button{font:inherit;color:inherit}
         <h3>Clubs</h3>
         <ul>
           <li><a href="02-pdp-lgw01.html">Carver LGW01 Gold</a></li>
-          <li><a href="#">Carver LGW02 Gold</a></li>
-          <li><a href="#">Carver LGW02 Black</a></li>
-          <li><a href="#">Tracer LGP01 Blade</a></li>
+          <li><a href="20-product-lgw02-gold.html">Carver LGW02 Gold</a></li>
+          <li><a href="20-product-lgw02-black.html">Carver LGW02 Black</a></li>
+          <li><a href="20-product-lgp01-gold.html">Tracer LGP01 Blade</a></li>
           <li><a href="20-product-lgp02-gold.html">Tracer LGP02 Mallet</a></li>
-          <li><a href="#">Stryker LGH01</a></li>
+          <li><a href="20-product-lgh01.html">Stryker LGH01</a></li>
         </ul>
       </div>
       <div>
@@ -2067,7 +2069,7 @@ var PD_KIT = [
   {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:'20-product-polo-contour.html',
    why:'Classic collar, tailored fit, UPF 50+.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:'#',
+  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:'20-product-polo-blackout.html',
    why:'Blade collar, no buttons. Quieter than it sounds.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
   {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',

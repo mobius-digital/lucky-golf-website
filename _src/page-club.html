@@ -360,6 +360,14 @@
       </div>
       {{/jmSummary}}
 
+      {{^reviewSample}}
+      <!-- Rating is real, but no reviews have been pulled into the repo for
+           this product yet. Score only — a filter over an empty list reads as
+           a bug, and inventing review text is forbidden (HANDOFF). -->
+      <p class="jm-none">The score is live from Judge.me. The individual reviews are not in this mock yet &mdash; the live site renders them from the widget.</p>
+      {{/reviewSample}}
+
+      {{#reviewSample}}
       <!-- filter + sort -->
       <div class="jm-bar">
         <div class="jm-filters" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
@@ -376,6 +384,7 @@
       <p class="jm-count" id="jm-count"></p>
       <div class="jm-list" id="jm-list"></div>
       <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
+      {{/reviewSample}}
       <p class="jm-foot">Live site swaps this block for the Judge.me widget itself &mdash; same shape, same data, real submissions.</p>
     </div>
   </div>

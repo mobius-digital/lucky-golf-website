@@ -1,0 +1,264 @@
+{
+  "_": "Editorial for lgp01-gold. Shared keys come from _family-putter.json.",
+  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "gallery": [
+    [
+      "1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091",
+      "Tracer LGP01 Blade putter, face on"
+    ],
+    [
+      "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090",
+      "Tracer LGP01 Blade putter, full club"
+    ],
+    [
+      "2_a3a63c64-3884-4a7c-8adc-f95c92fcd0dd.webp?v=1782599091",
+      "Tracer LGP01 Blade putter, sole"
+    ],
+    [
+      "10_9f03f10f-f2a9-45a5-8b33-2f4a2ba92cc0.webp?v=1782599091",
+      "Tracer LGP01 Blade putter, address position"
+    ],
+    [
+      "4_0f5d6078-af78-4ed2-8574-6dc77522bc6f.webp?v=1782599090",
+      "Tracer LGP01 Blade putter, toe profile"
+    ],
+    [
+      "12_05f8aa33-3d15-4f0a-883b-3ac5130ff7fe.webp?v=1782599090",
+      "Tracer LGP01 Blade putter, heel profile"
+    ],
+    [
+      "9_75306612-b3aa-4a31-b46b-d506eb767256.webp?v=1782599091",
+      "Tracer LGP01 Blade putter, grip"
+    ],
+    [
+      "13_c992d86a-cfac-47da-98d1-8921ac2c8504.webp?v=1782599090",
+      "Tracer LGP01 Blade putter, three-quarter view"
+    ]
+  ],
+  "priceNote": "Right hand &middot; sold out",
+  "buyBody": "The blade. Cast 431 stainless, 3.5&deg; of loft, 385 grams and 35 inches of it, in gold. This is the one for a stroke that arcs, and it is out of stock at the moment.",
+  "four": [
+    {
+      "k": "431 stainless",
+      "v": "Cast, and heavy with it"
+    },
+    {
+      "k": "3.5&deg; loft",
+      "v": "Gets the ball rolling early"
+    },
+    {
+      "k": "385 g",
+      "v": "Swings on tempo, not hands"
+    },
+    {
+      "k": "Sold out",
+      "v": "Right hand only when it returns"
+    }
+  ],
+  "whatYouGet": [
+    "One Tracer LGP01 Blade putter, right hand",
+    "Authentic Lucky Golf rubber grip",
+    "35&quot; Lucky Approved shaft",
+    "Head cover: <span class=\"tbd tbd--light\">Confirm</span>"
+  ],
+  "clubHeadline": "The one for a stroke that already arcs.",
+  "clubParas": [
+    "A blade putter does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. There is more feel in a small head and more information in a mishit.",
+    "It is cast 431 stainless at 385 grams &mdash; heavy for a blade, which is what stops the hands taking over on a short one. Loft is 3.5 degrees, enough to lift the ball out of its own dent and start it rolling early.",
+    "35 inches, right hand, with the Lucky rubber grip rather than the oversized 3.0 that ships on the mallet. That is a deliberate pairing: an arcing stroke wants to feel the club, and a fat grip takes that away.",
+    "It is $199 because we sell it to you directly &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+  ],
+  "clubSpecs": [
+    {
+      "k": "Type",
+      "v": "Blade putter, cast 431 stainless."
+    },
+    {
+      "k": "Feel",
+      "v": "Solid and heavy. A blade tells you where you hit it."
+    },
+    {
+      "k": "Grip",
+      "v": "Lucky rubber, stock — not the oversized 3.0."
+    },
+    {
+      "k": "Weighting",
+      "v": "385 g head at 35 inches."
+    },
+    {
+      "k": "For who",
+      "v": "Anyone whose stroke arcs inside on the way back."
+    },
+    {
+      "k": "Toe hang",
+      "tbd": true
+    }
+  ],
+  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film — lean on sound.",
+  "reelHeadline": "The Blade, on the green",
+  "specHeadline": "One length, one hand, one weight.",
+  "specSub": "These numbers are published in full, which makes this the best-documented club in the range.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "Tracer LGP01 &mdash; club",
+      "rows": [
+        {
+          "k": "Head style",
+          "v": "Blade"
+        },
+        {
+          "k": "Head material",
+          "v": "431 stainless steel casting"
+        },
+        {
+          "k": "Loft",
+          "v": "3.5&deg;"
+        },
+        {
+          "k": "Lie",
+          "v": "72&deg;"
+        },
+        {
+          "k": "Head weight",
+          "v": "385 g"
+        },
+        {
+          "k": "Length",
+          "v": "35&quot;"
+        },
+        {
+          "k": "Finish",
+          "v": "Gold"
+        },
+        {
+          "k": "Hand",
+          "v": "Right only"
+        },
+        {
+          "k": "Face milling",
+          "tbd": true
+        },
+        {
+          "k": "Toe hang",
+          "tbd": true
+        }
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "Tracer LGP01 &mdash; shaft &amp; grip",
+      "rows": [
+        {
+          "k": "Shaft",
+          "v": "Lucky Approved, 35&quot;"
+        },
+        {
+          "k": "Grip",
+          "v": "Authentic Lucky Golf rubber grip (stock)"
+        },
+        {
+          "k": "Shaft weight",
+          "tbd": true
+        },
+        {
+          "k": "Other lengths",
+          "tbd": true
+        },
+        {
+          "k": "Head cover",
+          "tbd": true
+        }
+      ],
+      "aside": "The blade ships on the standard rubber grip, not the oversized 3.0 that comes on the mallet. That is deliberate &mdash; an arcing stroke wants to feel the club."
+    }
+  ],
+  "look": {
+    "photo": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small — that is the appeal.",
+    "headline": "Less club, more information",
+    "paras": [
+      "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. That is either the reason to play one or the reason not to.",
+      "In gold, at 385 grams, it is also the least apologetic putter we make."
+    ],
+    "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
+  },
+  "closeBody": "The Blade is $199, right hand, and sold out at the moment. Sixty days to send it back when it returns.",
+  "oav": [
+    "lgp02-gold",
+    "lgp02-patriot",
+    "lgw01-gold",
+    "cover-blade"
+  ],
+  "bag": [
+    {
+      "id": "lgp02-gold",
+      "name": "Tracer Mallet",
+      "code": "LGP02",
+      "meta": "4.71 &#9733; 58",
+      "hook": "The mallet, and the one in stock. Straight-back strokes want this."
+    },
+    {
+      "id": "cover-blade",
+      "name": "Lucky Blade Cover",
+      "code": "HC",
+      "meta": "Blade heads",
+      "hook": "Cut for this head. Stops the bag chewing it."
+    },
+    {
+      "id": "lgw01-gold",
+      "name": "Carver Gold",
+      "code": "LGW01",
+      "meta": "4.81 &#9733; 551",
+      "hook": "The wedge most people add first. Six lofts, same feel."
+    }
+  ],
+  "helpPick": {
+    "eyebrow": "Blade or mallet",
+    "headline": "Two putters, and the honest answer is your stroke picks",
+    "sub": "Watch your stroke from behind. If the head arcs inside on the way back and closes through the ball, you want this one. If it travels straight back and straight through, the mallet is the easier club.",
+    "options": [
+      {
+        "id": "lgp01-gold",
+        "name": "Tracer Blade",
+        "forWho": "Natural arc, toe hang",
+        "body": "Classic blade that wants to rotate through the ball the way an arcing stroke already does. More feel, less forgiveness, and the one better putters tend to reach for.",
+        "facts": [
+          {
+            "k": "Stroke",
+            "v": "Moderate arc"
+          },
+          {
+            "k": "Head",
+            "v": "Blade, 431 stainless, 385 g"
+          },
+          {
+            "k": "Grip",
+            "v": "Lucky rubber, stock"
+          }
+        ]
+      },
+      {
+        "id": "lgp02-gold",
+        "name": "Tracer Mallet",
+        "forWho": "Straight back, straight through",
+        "body": "Wide, face-balanced head that resists twisting and sits square without being aimed. The forgiving one, and it comes in left hand as well.",
+        "facts": [
+          {
+            "k": "Stroke",
+            "v": "Minimal arc"
+          },
+          {
+            "k": "Head",
+            "v": "Mallet, 385 g"
+          },
+          {
+            "k": "Grip",
+            "v": "Oversized 3.0, included"
+          }
+        ],
+        "cta": "See the mallet"
+      }
+    ],
+    "note": "The blade is out of stock at the moment and right hand only when it returns. If your stroke wants a blade, that is worth waiting for rather than talking yourself into the other one."
+  }
+}

@@ -480,7 +480,7 @@
    "default": "RH|52",
    "summary": "Right & left hand · 3 lofts",
    "inStock": true,
-   "built": false,
+   "built": true,
    "rating": {
     "avg": 4.78,
     "count": 69
@@ -591,7 +591,7 @@
    "default": "RH|50",
    "summary": "Right hand only · 6 lofts",
    "inStock": true,
-   "built": false,
+   "built": true,
    "note": "RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — false for this one. Also called 'Carver Shadow' in the PDP's browse rail; see HANDOFF 9 open item C, naming is Cole's call."
   },
   {
@@ -632,7 +632,7 @@
    "default": "RH",
    "summary": "",
    "inStock": false,
-   "built": false,
+   "built": true,
    "rating": {
     "avg": 4.86,
     "count": 147
@@ -732,7 +732,7 @@
    "default": "RH",
    "summary": "",
    "inStock": false,
-   "built": false,
+   "built": true,
    "note": "Sold out. A colourway of LGP02, not a separate model — the apparel template's sibling strip is the right pattern here, on a club page."
   },
   {
@@ -784,7 +784,7 @@
    "default": "RH",
    "summary": "Right & left hand",
    "inStock": true,
-   "built": false,
+   "built": true,
    "rating": {
     "avg": 4.6,
     "count": 20
@@ -816,7 +816,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false,
+   "built": true,
    "rating": {
     "avg": 4.33,
     "count": 39
@@ -916,7 +916,7 @@
    "default": "S",
    "summary": "S–XXL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-shadow",
@@ -1011,7 +1011,7 @@
    "default": "S",
    "summary": "S–XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-signature-black",
@@ -1106,7 +1106,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-contour",
@@ -1296,7 +1296,7 @@
    "default": "S",
    "summary": "S–L",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-gold-carnation",
@@ -1391,7 +1391,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-frost",
@@ -1486,7 +1486,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-cruiser",
@@ -1581,7 +1581,7 @@
    "default": "S",
    "summary": "S–XXL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-azalea",
@@ -1676,7 +1676,7 @@
    "default": "S",
    "summary": "S, M",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-nightshade",
@@ -1771,7 +1771,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-swirl",
@@ -1866,7 +1866,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-spot",
@@ -1961,7 +1961,7 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "polo-blackout",
@@ -2056,7 +2056,7 @@
    "default": "S",
    "summary": "S–XL",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "hat-white-gold-classic",
@@ -2394,7 +2394,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "cover-mallet",
@@ -2445,7 +2445,7 @@
    "default": "RH",
    "summary": "Right & left hand",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "glove-tour",
@@ -2558,7 +2558,7 @@
    "default": "LH|S",
    "summary": "Left hand only · S, M",
    "inStock": true,
-   "built": false,
+   "built": true,
    "note": "Two axes on a $17.95 item — Hand x Size. Only the two left-hand small/medium variants are sellable, and both are oversold. Nearly every chip renders dead."
   },
   {
@@ -2632,7 +2632,7 @@
    "default": "STD",
    "summary": "Standard",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "grip-clover-black",
@@ -2694,7 +2694,7 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "grip-clover-white",
@@ -2756,7 +2756,7 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "grip-clover-blue",
@@ -2818,7 +2818,7 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "grip-clover-pink",
@@ -2858,7 +2858,7 @@
    "default": "LDY",
    "summary": "Lady",
    "inStock": true,
-   "built": false,
+   "built": true,
    "note": "Lady size only — a one-value axis, which should render as a stated fact, not a picker."
   },
   {
@@ -2932,7 +2932,7 @@
    "default": "1.0",
    "summary": "",
    "inStock": false,
-   "built": false,
+   "built": true,
    "note": "Entirely sold out."
   },
   {
@@ -3006,7 +3006,7 @@
    "default": "1.0",
    "summary": "",
    "inStock": false,
-   "built": false,
+   "built": true,
    "note": "Entirely sold out."
   },
   {
@@ -3035,7 +3035,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false
+   "built": true
   },
   {
    "id": "tees-25",
@@ -3063,7 +3063,7 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": false,
+   "built": true,
    "note": "NO IMAGE IN SHOPIFY. featuredMedia is null — the only product in the store with no photo at all."
   }
  ]

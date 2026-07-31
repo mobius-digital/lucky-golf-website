@@ -136,19 +136,19 @@ EDITORIAL = {
         id="lgw02-gold", tpl="club", fam="wedge", code="LGW02", name="Carver Gold",
         title="Carver LGW02 Gold",
         coll="wedges", rating=[4.78, 69],
-        note="Only 3 lofts (52/56/60), not 6. Any '6 lofts' copy about this one is wrong."),
+        note="Only 3 lofts (52/56/60), not 6. Any '6 lofts' copy about this one is wrong.", built=True),
     "lucky-golf-lgw02-black": dict(
         id="lgw02-black", tpl="club", fam="wedge", code="LGW02", name="Carver Black",
         title="Carver LGW02 Black",
         coll="wedges",
         note="RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — "
              "false for this one. Also called 'Carver Shadow' in the PDP's browse rail; "
-             "see HANDOFF 9 open item C, naming is Cole's call."),
+             "see HANDOFF 9 open item C, naming is Cole's call.", built=True),
     "signature-gold-putters": dict(
         id="lgp01-gold", tpl="club", fam="putter", code="LGP01", name="Tracer Blade",
         title="Tracer LGP01 Blade",
         coll="putters", rating=[4.86, 147],
-        note="Sold out (qty -12, availableForSale false) and right hand only."),
+        note="Sold out (qty -12, availableForSale false) and right hand only.", built=True),
     "limited-edition-mallet-putter": dict(
         id="lgp02-gold", tpl="club", fam="putter", code="LGP02", name="Tracer Mallet",
         title="Tracer LGP02 Mallet",
@@ -158,34 +158,34 @@ EDITORIAL = {
         title="Tracer LGP02 Patriot",
         coll="putters",
         note="Sold out. A colourway of LGP02, not a separate model — the apparel "
-             "template's sibling strip is the right pattern here, on a club page."),
+             "template's sibling strip is the right pattern here, on a club page.", built=True),
     "lucky-striker-hybrid-limited-edition": dict(
         id="lgh01", tpl="club", fam="hybrid", code="LGH01", name="Stryker",
         title="Stryker LGH01",
-        coll="hybrid-driver", rating=[4.60, 20]),
+        coll="hybrid-driver", rating=[4.60, 20], built=True),
     "lucky-gold-driver-pre-order_": dict(
         id="lgd01", tpl="club", fam="driver", code="LGD01", name="Lucky Driver",
         title="Lucky Driver LGD01",
         coll="hybrid-driver", rating=[4.33, 39],
         note="Zero variant axes — the 0-axis case for the buy box. Shopify handle "
-             "still says 'pre-order'; it is in stock (86)."),
+             "still says 'pre-order'; it is in stock (86).", built=True),
 
     # --- apparel: classic polos -------------------------------------------
-    "gold-dust-classic-polo":      dict(id="polo-gold-dust",      tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Dust Classic Polo",      coll="polos"),
-    "shadow-classic-polo":         dict(id="polo-shadow",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Shadow Classic Polo",         coll="polos"),
-    "signature-black-classic-polo":dict(id="polo-signature-black",tpl="apparel", fam="polo-classic", code="LGA-CP", name="Signature Black Classic Polo",coll="polos"),
+    "gold-dust-classic-polo":      dict(id="polo-gold-dust",      tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Dust Classic Polo",      coll="polos", built=True),
+    "shadow-classic-polo":         dict(id="polo-shadow",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Shadow Classic Polo",         coll="polos", built=True),
+    "signature-black-classic-polo":dict(id="polo-signature-black",tpl="apparel", fam="polo-classic", code="LGA-CP", name="Signature Black Classic Polo",coll="polos", built=True),
     "contour-classic-polo":        dict(id="polo-contour",        tpl="apparel", fam="polo-classic", code="LGA-CP", name="Contour Classic Polo",        coll="polos", built=True),
-    "marble-classic-polo":         dict(id="polo-marble",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Marble Classic Polo",         coll="polos"),
-    "gold-carnation-classic-polo": dict(id="polo-gold-carnation", tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Carnation Classic Polo", coll="polos"),
-    "frost-classic-polo":          dict(id="polo-frost",          tpl="apparel", fam="polo-classic", code="LGA-CP", name="Frost Classic Polo",          coll="polos"),
-    "cruiser-classic-polo":        dict(id="polo-cruiser",        tpl="apparel", fam="polo-classic", code="LGA-CP", name="Cruiser Classic Polo",        coll="polos"),
-    "azalea-classic-polo":         dict(id="polo-azalea",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Azalea Classic Polo",         coll="polos"),
-    "nightshade-classic-polo":     dict(id="polo-nightshade",     tpl="apparel", fam="polo-classic", code="LGA-CP", name="Nightshade Classic Polo",     coll="polos"),
+    "marble-classic-polo":         dict(id="polo-marble",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Marble Classic Polo",         coll="polos", built=True),
+    "gold-carnation-classic-polo": dict(id="polo-gold-carnation", tpl="apparel", fam="polo-classic", code="LGA-CP", name="Gold Carnation Classic Polo", coll="polos", built=True),
+    "frost-classic-polo":          dict(id="polo-frost",          tpl="apparel", fam="polo-classic", code="LGA-CP", name="Frost Classic Polo",          coll="polos", built=True),
+    "cruiser-classic-polo":        dict(id="polo-cruiser",        tpl="apparel", fam="polo-classic", code="LGA-CP", name="Cruiser Classic Polo",        coll="polos", built=True),
+    "azalea-classic-polo":         dict(id="polo-azalea",         tpl="apparel", fam="polo-classic", code="LGA-CP", name="Azalea Classic Polo",         coll="polos", built=True),
+    "nightshade-classic-polo":     dict(id="polo-nightshade",     tpl="apparel", fam="polo-classic", code="LGA-CP", name="Nightshade Classic Polo",     coll="polos", built=True),
 
     # --- apparel: blade polos ---------------------------------------------
-    "swirl-blade-polo":    dict(id="polo-swirl",    tpl="apparel", fam="polo-blade", code="LGA-BP", name="Swirl Blade Polo",    coll="polos"),
-    "spot-blade-polo":     dict(id="polo-spot",     tpl="apparel", fam="polo-blade", code="LGA-BP", name="Spot Blade Polo",     coll="polos"),
-    "blackout-blade-polo": dict(id="polo-blackout", tpl="apparel", fam="polo-blade", code="LGA-BP", name="Blackout Blade Polo", coll="polos"),
+    "swirl-blade-polo":    dict(id="polo-swirl",    tpl="apparel", fam="polo-blade", code="LGA-BP", name="Swirl Blade Polo",    coll="polos", built=True),
+    "spot-blade-polo":     dict(id="polo-spot",     tpl="apparel", fam="polo-blade", code="LGA-BP", name="Spot Blade Polo",     coll="polos", built=True),
+    "blackout-blade-polo": dict(id="polo-blackout", tpl="apparel", fam="polo-blade", code="LGA-BP", name="Blackout Blade Polo", coll="polos", built=True),
 
     # --- hats. Zero axes, so they exercise the 0-axis buy box too. ---------
     "white-gold-classic-hat":                 dict(id="hat-white-gold-classic",  tpl="apparel", fam="hat", code="HAT", name="White | Gold Classic Hat", coll="hats", built=True),
@@ -202,21 +202,21 @@ EDITORIAL = {
 
     # --- gear --------------------------------------------------------------
     "lucky-putter-head-cover-blade":        dict(id="cover-blade",   tpl="gear", fam="headcover", code="HC", name="Lucky Blade Cover",  coll="gear", built=True),
-    "driver-head-cover":                    dict(id="cover-driver",  tpl="gear", fam="headcover", code="HC", name="Driver Head Cover",  coll="gear"),
-    "lucky-putter-head-cover-mallet-large": dict(id="cover-mallet",  tpl="gear", fam="headcover", code="HC", name="Lucky Mallet Cover", coll="gear"),
-    "lucky-clover-tour-glove":              dict(id="glove-tour",    tpl="gear", fam="glove",     code="CLG1", name="Lucky Tour Glove", coll="gear",
+    "driver-head-cover":                    dict(id="cover-driver",  tpl="gear", fam="headcover", code="HC", name="Driver Head Cover",  coll="gear", built=True),
+    "lucky-putter-head-cover-mallet-large": dict(id="cover-mallet",  tpl="gear", fam="headcover", code="HC", name="Lucky Mallet Cover", coll="gear", built=True),
+    "lucky-clover-tour-glove":              dict(id="glove-tour",    tpl="gear", fam="glove",     code="CLG1", name="Lucky Tour Glove", coll="gear", built=True,
                                                  note="Two axes on a $17.95 item — Hand x Size. Only the two left-hand small/medium "
                                                       "variants are sellable, and both are oversold. Nearly every chip renders dead."),
-    "copy-of-lucky-golf-clover-grips-green":                dict(id="grip-clover-green",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, green", coll="gear"),
-    "lucky-golf-performance-x2-clover-grips-black":         dict(id="grip-clover-black",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, black", coll="gear"),
-    "copy-of-lucky-golf-performance-x2-clover-grips-white": dict(id="grip-clover-white",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, white", coll="gear"),
-    "lucky-golf-performance-x2-clover-grips-blue":          dict(id="grip-clover-blue",   tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, blue",  coll="gear"),
-    "lucky-golf-performance-x2-clover-grips-pink":          dict(id="grip-clover-pink",   tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, pink",  coll="gear",
+    "copy-of-lucky-golf-clover-grips-green":                dict(id="grip-clover-green",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, green", coll="gear", built=True),
+    "lucky-golf-performance-x2-clover-grips-black":         dict(id="grip-clover-black",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, black", coll="gear", built=True),
+    "copy-of-lucky-golf-performance-x2-clover-grips-white": dict(id="grip-clover-white",  tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, white", coll="gear", built=True),
+    "lucky-golf-performance-x2-clover-grips-blue":          dict(id="grip-clover-blue",   tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, blue",  coll="gear", built=True),
+    "lucky-golf-performance-x2-clover-grips-pink":          dict(id="grip-clover-pink",   tpl="gear", fam="grip", code="GRP", name="Tour Performance Clover Grips, pink",  coll="gear", built=True,
                                                                 note="Lady size only — a one-value axis, which should render as a stated fact, not a picker."),
-    "lucky-golf-oversized-putter-grip":                     dict(id="grip-putter-green",  tpl="gear", fam="grip", code="GRP", name="Green Oversized Putter Grip",  coll="gear", note="Entirely sold out."),
-    "lucky-golf-clovers-oversized-putter-grip":             dict(id="grip-putter-clovers",tpl="gear", fam="grip", code="GRP", name="Clovers Oversized Putter Grip",coll="gear", note="Entirely sold out."),
-    "stock-putter-grips":                                   dict(id="grip-putter-stock",  tpl="gear", fam="grip", code="GRP", name="Stock Putter Grip",  coll="gear"),
-    "lucky-golf-tees": dict(id="tees-25", tpl="gear", fam="tee", code="TEES", name="Lucky Golf Tees", coll="gear",
+    "lucky-golf-oversized-putter-grip":                     dict(id="grip-putter-green",  tpl="gear", fam="grip", code="GRP", name="Green Oversized Putter Grip",  coll="gear", built=True, note="Entirely sold out."),
+    "lucky-golf-clovers-oversized-putter-grip":             dict(id="grip-putter-clovers",tpl="gear", fam="grip", code="GRP", name="Clovers Oversized Putter Grip",coll="gear", built=True, note="Entirely sold out."),
+    "stock-putter-grips":                                   dict(id="grip-putter-stock",  tpl="gear", fam="grip", code="GRP", name="Stock Putter Grip",  coll="gear", built=True),
+    "lucky-golf-tees": dict(id="tees-25", tpl="gear", fam="tee", code="TEES", name="Lucky Golf Tees", coll="gear", built=True,
                             note="NO IMAGE IN SHOPIFY. featuredMedia is null — the only product in the store with no photo at all."),
 }
 

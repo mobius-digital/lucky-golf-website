@@ -1,0 +1,231 @@
+{
+  "_": "Editorial for lgw02-gold. Shared keys come from _family-wedge.json.",
+  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "gallery": [
+    [
+      "15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, face on"
+    ],
+    [
+      "1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, full club"
+    ],
+    [
+      "12_d01a528b-b7d0-4789-b0cd-2c9aafe72998.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, sole"
+    ],
+    [
+      "14_842af949-2f87-435b-8bf0-74d3f596047e.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, address position"
+    ],
+    [
+      "3_b91d1d46-0aaa-4a41-9473-734a3f79362c.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, toe profile"
+    ],
+    [
+      "5_ff482aee-dd1e-4bfd-83b1-5dc9881050d5.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, milled face detail"
+    ],
+    [
+      "2_96372f98-f89d-4da6-96b5-407afc856fef.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, heel profile"
+    ],
+    [
+      "8_1ff271d0-3097-408f-8aea-cd9846005fb4.webp?v=1781012462",
+      "Carver LGW02 Gold wedge, three-quarter view"
+    ]
+  ],
+  "priceNote": "Three lofts, right or left hand",
+  "buyBody": "The second-generation Carver. A reshaped, more forgiving grind and a lower centre of gravity, which is the difference you feel out of the lies that are not perfect. Three lofts, right or left hand, sixty days to decide.",
+  "four": [
+    {
+      "k": "Forged",
+      "v": "For feel and feedback"
+    },
+    {
+      "k": "New grind",
+      "v": "More forgiving through the turf"
+    },
+    {
+      "k": "Lower CG",
+      "v": "Better flight from bad lies"
+    },
+    {
+      "k": "Sixty days",
+      "v": "Send it back if it isn't the one"
+    }
+  ],
+  "whatYouGet": [
+    "One Carver LGW02 Gold wedge in the loft and hand you picked",
+    "Lucky Golf stock steel shaft",
+    "Lucky Golf grip",
+    "Headcover: <span class=\"tbd tbd--light\">Confirm</span>"
+  ],
+  "clubHeadline": "The Carver, second time around.",
+  "clubParas": [
+    "The V2 exists because the first one was very good out of a clean lie and merely fine out of a bad one. The grind is reshaped and more forgiving, so the sole works through the turf instead of digging into it.",
+    "The centre of gravity sits lower, which gets the ball up from lies that do not deserve it &mdash; hardpan, thin rough, the ones where a wedge normally punishes you.",
+    "It is forged, like the LGW01, so the feedback is the same honest kind. Where it differs is what happens when you do not catch it flush.",
+    "It costs $109 because we sell it to you directly &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+  ],
+  "clubSpecs": [
+    {
+      "k": "Type",
+      "v": "Forged wedge, three-loft lineup."
+    },
+    {
+      "k": "Feel",
+      "v": "Forged. Reports back on every strike."
+    },
+    {
+      "k": "Grind",
+      "v": "Reshaped and more forgiving than the LGW01."
+    },
+    {
+      "k": "Weighting",
+      "v": "Lower centre of gravity for flight out of poor lies."
+    },
+    {
+      "k": "For who",
+      "v": "Anyone who liked the LGW01 and wants more help from bad lies."
+    },
+    {
+      "k": "Handicap range",
+      "tbd": true
+    }
+  ],
+  "videoBrief": "16:9 product film, 40&ndash;60s. Shot to show the grind: sole through turf in slow motion, then the same shot from a bad lie. The whole argument for this club is what happens when the lie is wrong.",
+  "reelHeadline": "The LGW02, in the wild",
+  "specHeadline": "Three lofts. One grind.",
+  "specSub": "Numbers below are what Shopify publishes for this club. Anything unverified is marked rather than borrowed from the LGW01.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "Carver LGW02 &mdash; club",
+      "rows": [
+        {
+          "k": "Construction",
+          "v": "Forged"
+        },
+        {
+          "k": "Grind",
+          "v": "Reshaped, more forgiving than the LGW01"
+        },
+        {
+          "k": "Centre of gravity",
+          "v": "Lower than the LGW01"
+        },
+        {
+          "k": "Finish",
+          "v": "Gold"
+        },
+        {
+          "k": "Hand",
+          "v": "Right and left"
+        },
+        {
+          "k": "Lofts",
+          "v": "52&deg;, 56&deg;, 60&deg;"
+        },
+        {
+          "k": "Body material",
+          "tbd": true
+        },
+        {
+          "k": "Head weight",
+          "tbd": true
+        },
+        {
+          "k": "Lie",
+          "tbd": true
+        },
+        {
+          "k": "Bounce",
+          "tbd": true
+        },
+        {
+          "k": "Swing weight",
+          "tbd": true
+        }
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "Carver LGW02 &mdash; shaft &amp; grip",
+      "rows": [
+        {
+          "k": "Shaft, stock",
+          "v": "Lucky Golf stock steel"
+        },
+        {
+          "k": "Grip",
+          "v": "Lucky Golf grip"
+        },
+        {
+          "k": "Shaft weight",
+          "tbd": true
+        },
+        {
+          "k": "Flex options",
+          "tbd": true
+        },
+        {
+          "k": "Grip sizes",
+          "tbd": true
+        },
+        {
+          "k": "Playing length",
+          "tbd": true
+        }
+      ],
+      "aside": "Shopify's description for this club is prose rather than a spec sheet, so most of the table is marked. The LGW01's numbers are not carried over &mdash; it is a different head."
+    }
+  ],
+  "look": {
+    "photo": "Bold, full-bleed, portrait. The gold head coming out of the bag in low sun, other players soft behind. Should stop the scroll on its own.",
+    "headline": "You'll want to pull it out of the bag",
+    "paras": [
+      "Most wedges are grey. This one is not, and you find out what that is worth the first time you take it out on a busy tee box.",
+      "That is not the reason to buy it &mdash; the grind is. But it is not nothing either."
+    ],
+    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+  },
+  "closeBody": "The LGW02 is $109 in every loft, right hand or left. Sixty days to send it back if it isn't the one.",
+  "oav": [
+    "lgw01-gold",
+    {
+      "id": "lgw02-black",
+      "tag": "New"
+    },
+    "lgp02-gold",
+    "lgh01"
+  ],
+  "bag": [
+    {
+      "id": "lgw01-gold",
+      "name": "Carver Gold",
+      "code": "LGW01",
+      "meta": "4.81 &#9733; 551",
+      "hook": "The original. Six lofts, and the one most people add first."
+    },
+    {
+      "id": "lgw02-black",
+      "name": "Carver Black",
+      "code": "LGW02",
+      "meta": "6 lofts",
+      "tag": "New",
+      "hook": "The same club in a finish that stays quiet in the bag."
+    },
+    {
+      "id": "lgh01",
+      "name": "Stryker",
+      "code": "LGH01",
+      "meta": "4.60 &#9733; 20",
+      "hook": "Titanium hybrid at 19&deg;, for the long approach."
+    }
+  ],
+  "helpLoft": {
+    "headline": "Start with the wedge you already carry",
+    "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even. The LGW02 comes in three lofts rather than six, so this ladder will often pair it with an LGW01."
+  }
+}

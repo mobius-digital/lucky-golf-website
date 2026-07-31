@@ -1,0 +1,268 @@
+{
+  "_": "Editorial for lgh01. Shared keys come from _family-wedge.json.",
+  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "gallery": [
+    [
+      "11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493",
+      "Stryker LGH01 hybrid, face on"
+    ],
+    [
+      "3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493",
+      "Stryker LGH01 hybrid, full club"
+    ],
+    [
+      "12_65f3a9e3-d92c-481b-87b0-85ac2eb90294.webp?v=1782597493",
+      "Stryker LGH01 hybrid, sole"
+    ],
+    [
+      "9_d51d0f8d-1213-4585-b809-af99f594601c.webp?v=1782597493",
+      "Stryker LGH01 hybrid, address position"
+    ],
+    [
+      "6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?v=1782597493",
+      "Stryker LGH01 hybrid, toe profile"
+    ],
+    [
+      "4_7d834550-4eee-4bce-863d-56db73af9f52.webp?v=1782597493",
+      "Stryker LGH01 hybrid, heel profile"
+    ],
+    [
+      "2_c53541c4-5870-4442-8849-858931bad25d.webp?v=1782597493",
+      "Stryker LGH01 hybrid, grip"
+    ],
+    [
+      "7_d0504108-60dc-4c66-9750-7755f781fcf6.webp?v=1782597493",
+      "Stryker LGH01 hybrid, three-quarter view"
+    ]
+  ],
+  "priceNote": "Right or left hand",
+  "buyBody": "A titanium hybrid at 19 degrees, built for the 200-to-220 yard shot that irons make hard work of. Forgiving on the ones you do not catch, and a limited run of a hundred.",
+  "four": [
+    {
+      "k": "Titanium",
+      "v": "Head, in gold"
+    },
+    {
+      "k": "19&deg; loft",
+      "v": "200 to 220 yards"
+    },
+    {
+      "k": "Forgiving",
+      "v": "Straight even off-centre"
+    },
+    {
+      "k": "Stiff graphite",
+      "v": "Stable through impact"
+    }
+  ],
+  "whatYouGet": [
+    "One Stryker LGH01 hybrid in the hand you picked",
+    "Stiff graphite shaft",
+    "Natural black rubber grip",
+    "Headcover: <span class=\"tbd tbd--light\">Confirm</span>"
+  ],
+  "clubHeadline": "The club that makes 210 yards a normal shot.",
+  "clubParas": [
+    "There is a distance where a long iron stops being reliable and a fairway wood is too much club. For most golfers it sits somewhere around 200 to 220 yards, and it is where scores quietly leak away.",
+    "The Stryker is built for that gap. Nineteen degrees of loft, a titanium head, and enough forgiveness that a strike off the toe still finishes somewhere near the target instead of thirty yards right of it.",
+    "The shaft is stiff graphite, which keeps the head stable through impact without asking for a tour swing speed to load it. The grip is plain black rubber &mdash; the one restrained thing on an otherwise gold club.",
+    "It is a limited run of a hundred units, which is not a marketing device: when they are gone the page comes down."
+  ],
+  "clubSpecs": [
+    {
+      "k": "Type",
+      "v": "Titanium hybrid, 19&deg;."
+    },
+    {
+      "k": "Feel",
+      "v": "Hot off the face. Titanium does not feel like an iron."
+    },
+    {
+      "k": "Forgiveness",
+      "v": "Built for off-centre strikes to still finish straight."
+    },
+    {
+      "k": "Shaft",
+      "v": "Stiff graphite."
+    },
+    {
+      "k": "For who",
+      "v": "Anyone whose long irons have stopped being trustworthy."
+    },
+    {
+      "k": "Head weight",
+      "tbd": true
+    }
+  ],
+  "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is a distance, so film the distance: 210 yards from the fairway, ball tracked to the green, then the same shot struck off the toe to show what forgiveness actually means.",
+  "reelHeadline": "The Stryker, in the wild",
+  "specHeadline": "Titanium, nineteen degrees, both hands.",
+  "specSub": "What Shopify publishes for this club, and nothing borrowed from anywhere else.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "Stryker LGH01 &mdash; club",
+      "rows": [
+        {
+          "k": "Head material",
+          "v": "Titanium"
+        },
+        {
+          "k": "Loft",
+          "v": "19&deg;"
+        },
+        {
+          "k": "Typical carry",
+          "v": "200&ndash;220 yards"
+        },
+        {
+          "k": "Finish",
+          "v": "Shiny gold"
+        },
+        {
+          "k": "Hand",
+          "v": "Right and left"
+        },
+        {
+          "k": "Run size",
+          "v": "100 units"
+        },
+        {
+          "k": "Head weight",
+          "tbd": true
+        },
+        {
+          "k": "Lie",
+          "tbd": true
+        },
+        {
+          "k": "Face thickness",
+          "tbd": true
+        },
+        {
+          "k": "Volume",
+          "tbd": true
+        }
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "Stryker LGH01 &mdash; shaft &amp; grip",
+      "rows": [
+        {
+          "k": "Shaft",
+          "v": "Graphite, stiff flex"
+        },
+        {
+          "k": "Grip",
+          "v": "Natural black rubber"
+        },
+        {
+          "k": "Shaft weight",
+          "tbd": true
+        },
+        {
+          "k": "Playing length",
+          "tbd": true
+        },
+        {
+          "k": "Other flexes",
+          "tbd": true
+        }
+      ],
+      "aside": "Stiff is the only flex offered. For a club aimed at the average golfer that is a real constraint, and worth knowing before ordering."
+    }
+  ],
+  "look": {
+    "photo": "Bold, full-bleed, portrait. Gold titanium head on the fairway at address, low sun. A hybrid is a wide, shallow shape — shoot it from behind so the width reads as confidence rather than bulk.",
+    "headline": "The club you stop worrying about",
+    "paras": [
+      "There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.",
+      "That is what this one does. It is also gold, so it does it loudly."
+    ],
+    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+  },
+  "closeBody": "The Stryker is $209, right hand or left, in a run of a hundred. Sixty days to send it back if it isn't the one.",
+  "oav": [
+    "lgd01",
+    "lgw01-gold",
+    "lgp02-gold",
+    "lgw02-gold"
+  ],
+  "bag": [
+    {
+      "id": "lgd01",
+      "name": "Lucky Driver",
+      "code": "LGD01",
+      "meta": "4.33 &#9733; 39",
+      "hook": "450cc, 10.5&deg;, gold. The other end of the bag."
+    },
+    {
+      "id": "lgw01-gold",
+      "name": "Carver Gold",
+      "code": "LGW01",
+      "meta": "4.81 &#9733; 551",
+      "hook": "The wedge most people add first. Six lofts, same feel."
+    },
+    {
+      "id": "lgp02-gold",
+      "name": "Tracer Mallet",
+      "code": "LGP02",
+      "meta": "4.71 &#9733; 58",
+      "hook": "The mallet. Oversized 3.0 grip fitted."
+    }
+  ],
+  "helpPick": {
+    "eyebrow": "What it replaces",
+    "headline": "It goes in the bag where something else comes out",
+    "sub": "A hybrid earns its place by replacing a club you have stopped trusting. Which one depends on what you carry now, and the honest answer for most golfers is the long iron they already avoid hitting.",
+    "options": [
+      {
+        "id": "lgh01",
+        "name": "Instead of a 3-iron",
+        "forWho": "The club you avoid",
+        "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones — the hybrid gets airborne from lies where the iron simply does not.",
+        "facts": [
+          {
+            "k": "Carry",
+            "v": "200–220 yards"
+          },
+          {
+            "k": "Off a bad lie",
+            "v": "Far better than a long iron"
+          },
+          {
+            "k": "Off a tee",
+            "v": "Straighter than a 3-wood"
+          }
+        ]
+      },
+      {
+        "id": "lgd01",
+        "name": "Alongside the driver",
+        "forWho": "The second club off the tee",
+        "body": "On a tight hole where the driver is too much gun, this is the club that puts the ball in play at a distance you can still reach the green from.",
+        "facts": [
+          {
+            "k": "Loft",
+            "v": "19&deg; against the driver's 10.5&deg;"
+          },
+          {
+            "k": "Job",
+            "v": "Fairway, not distance"
+          },
+          {
+            "k": "Both hands",
+            "v": "The driver is single-option"
+          }
+        ],
+        "cta": "See the driver"
+      }
+    ],
+    "note": "A hundred units, and that is the whole run. If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision."
+  },
+  "eyebrow": "The Stryker &middot; Hybrid",
+  "chooseCta": "Add to cart",
+  "closeHeadline": "Go hit it",
+  "closeFoil": "further"
+}

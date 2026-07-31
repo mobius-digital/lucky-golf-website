@@ -1279,6 +1279,10 @@ button{font:inherit;color:inherit}
   .jm-sort select{width:100%}
 }
 
+/* a product with a real score but no reviews pulled into the repo, or none at
+   all, says so rather than rendering an empty list under a star filter */
+.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+
 /* ==========================================================================
    GEAR PDP — what only a cover, grip, glove or pack of tees renders
    Which is almost nothing. The fold, the buy box, the review widget and the
@@ -1333,8 +1337,8 @@ button{font:inherit;color:inherit}
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
           <a class="mtile" href="02-pdp-lgw01.html"><span class="mt-nm">LGW01 Gold</span><span class="mt-sub">Forged wedge &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgw02-gold.html"><span class="mt-nm">LGW02 Gold</span><span class="mt-sub">Forged wedge &middot; three lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgw02-black.html"><span class="mt-nm">LGW02 Black</span><span class="mt-sub">Forged wedge &middot; right hand</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1349,7 +1353,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-putters">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgp01-gold.html"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
           <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
@@ -1365,7 +1369,7 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-hybrid">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="20-product-lgh01.html"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">60-day club returns. Right and left hand, except the Black.</p>
@@ -1564,7 +1568,7 @@ button{font:inherit;color:inherit}
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851" alt="Lucky Mallet Cover" loading="lazy" width="800" height="800">
           </div>
         <span class="pt-sku">HC</span>
-        <a class="pt-nm stretch" href="#">Lucky Mallet Cover</a>
+        <a class="pt-nm stretch" href="20-product-cover-mallet.html">Lucky Mallet Cover</a>
         <p class="pt-hook">The mallet version. Same idea, different shape, and it knows which hand you play.</p>
         <div class="pt-meta"><span class="pt-pr">$29.95</span><span class="pt-rt">Right &amp; left hand</span></div>
       </article>
@@ -1582,7 +1586,7 @@ button{font:inherit;color:inherit}
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091" alt="Tracer LGP01 Blade" loading="lazy" width="800" height="800">
           </div>
         <span class="pt-sku">LGP01</span>
-        <a class="pt-nm stretch" href="#">Tracer Blade</a>
+        <a class="pt-nm stretch" href="20-product-lgp01-gold.html">Tracer Blade</a>
         <p class="pt-hook">The blade this is cut for. Sold out at the moment, which is its own kind of review.</p>
         <div class="pt-meta"><span class="pt-pr">$199</span><span class="pt-rt">4.86 &#9733; 147</span></div>
       </article>
@@ -1651,11 +1655,11 @@ button{font:inherit;color:inherit}
         <h3>Clubs</h3>
         <ul>
           <li><a href="02-pdp-lgw01.html">Carver LGW01 Gold</a></li>
-          <li><a href="#">Carver LGW02 Gold</a></li>
-          <li><a href="#">Carver LGW02 Black</a></li>
-          <li><a href="#">Tracer LGP01 Blade</a></li>
+          <li><a href="20-product-lgw02-gold.html">Carver LGW02 Gold</a></li>
+          <li><a href="20-product-lgw02-black.html">Carver LGW02 Black</a></li>
+          <li><a href="20-product-lgp01-gold.html">Tracer LGP01 Blade</a></li>
           <li><a href="20-product-lgp02-gold.html">Tracer LGP02 Mallet</a></li>
-          <li><a href="#">Stryker LGH01</a></li>
+          <li><a href="20-product-lgh01.html">Stryker LGH01</a></li>
         </ul>
       </div>
       <div>
@@ -1864,7 +1868,7 @@ var PD_KIT = [
   {sku:'LGA-CP-Contour', nm:'Contour Classic Polo', pr:'$67', sizes:'20-product-polo-contour.html',
    why:'Classic collar, tailored fit, UPF 50+.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?v=1779472755'},
-  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:'#',
+  {sku:'LGA-BP-Blackout', nm:'Blackout Blade Polo', pr:'$67', sizes:'20-product-polo-blackout.html',
    why:'Blade collar, no buttons. Quieter than it sounds.',
    img:'https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?v=1779472570'},
   {sku:'HAT-5P-SB-IBTBL-BL', nm:'It’s Better To Be Lucky Hat', pr:'$29',

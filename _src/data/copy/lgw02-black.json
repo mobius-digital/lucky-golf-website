@@ -1,0 +1,219 @@
+{
+  "_": "Editorial for lgw02-black. Shared keys come from _family-wedge.json.",
+  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+  "gallery": [
+    [
+      "1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436",
+      "Carver LGW02 Black wedge, face on"
+    ],
+    [
+      "6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436",
+      "Carver LGW02 Black wedge, full club"
+    ],
+    [
+      "2_1034dc77-47fb-4f0c-8bbe-e9887bcad44d.webp?v=1784586436",
+      "Carver LGW02 Black wedge, sole"
+    ],
+    [
+      "3_12ac0b01-88f5-473c-b7c4-73ce179013d0.webp?v=1784586436",
+      "Carver LGW02 Black wedge, address position"
+    ],
+    [
+      "4_ebd1b984-579a-4055-a62f-990e06304a00.webp?v=1784586436",
+      "Carver LGW02 Black wedge, toe profile"
+    ],
+    [
+      "5_b02b2d30-6854-4de6-8da3-6228ca45541d.webp?v=1784586436",
+      "Carver LGW02 Black wedge, milled face detail"
+    ]
+  ],
+  "priceNote": "Six lofts, right hand",
+  "buyBody": "The LGW02 in shadow. Same forged body, same feel through the turf, same spin off the face, blacked out with gold only where it counts. Six lofts, right hand only, sixty days to decide.",
+  "four": [
+    {
+      "k": "Forged",
+      "v": "Same body as the LGW02 Gold"
+    },
+    {
+      "k": "Blacked out",
+      "v": "Gold on the clover and the stamp"
+    },
+    {
+      "k": "Six lofts",
+      "v": "50 through 60"
+    },
+    {
+      "k": "Right hand",
+      "v": "No left-hand option yet"
+    }
+  ],
+  "whatYouGet": [
+    "One Carver LGW02 Black wedge in the loft you picked",
+    "Lucky Golf stock steel shaft",
+    "Lucky Golf grip",
+    "Headcover: <span class=\"tbd tbd--light\">Confirm</span>"
+  ],
+  "clubHeadline": "Same club. Quieter about it.",
+  "clubParas": [
+    "This is the LGW02 with the volume turned down. Same forged body, same grind, same behaviour out of the same lies &mdash; the only thing that changed is what it looks like at address.",
+    "Blacked-out finish with gold on the clover and the loft stamp, and nothing else. At address it disappears against the grass, which some golfers find easier to aim and others find they miss the gold entirely.",
+    "It is the full six-loft lineup, unlike the gold V2, which stops at three.",
+    "Right hand only at the moment. That is a real limitation and it is the reason this is not simply the better version of the gold."
+  ],
+  "clubSpecs": [
+    {
+      "k": "Type",
+      "v": "Forged wedge, full six-loft lineup."
+    },
+    {
+      "k": "Feel",
+      "v": "Identical to the LGW02 Gold — same body."
+    },
+    {
+      "k": "Finish",
+      "v": "Blacked out, gold on the clover and the loft stamp."
+    },
+    {
+      "k": "Hand",
+      "v": "Right only."
+    },
+    {
+      "k": "For who",
+      "v": "Anyone who wants the LGW02 without the gold."
+    },
+    {
+      "k": "Handicap range",
+      "tbd": true
+    }
+  ],
+  "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light — the club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
+  "reelHeadline": "The Black, in the wild",
+  "specHeadline": "Six lofts. One finish.",
+  "specSub": "Shopify publishes prose for this club rather than figures. Unverified rows are marked rather than copied across from another head.",
+  "specTabs": [
+    {
+      "label": "Club",
+      "caption": "Carver LGW02 Black &mdash; club",
+      "rows": [
+        {
+          "k": "Construction",
+          "v": "Forged"
+        },
+        {
+          "k": "Body",
+          "v": "Same as the LGW02 Gold"
+        },
+        {
+          "k": "Finish",
+          "v": "Blacked out, gold clover and loft stamp"
+        },
+        {
+          "k": "Hand",
+          "v": "Right only"
+        },
+        {
+          "k": "Lofts",
+          "v": "50&deg;, 52&deg;, 54&deg;, 56&deg;, 58&deg;, 60&deg;"
+        },
+        {
+          "k": "Body material",
+          "tbd": true
+        },
+        {
+          "k": "Head weight",
+          "tbd": true
+        },
+        {
+          "k": "Lie",
+          "tbd": true
+        },
+        {
+          "k": "Bounce",
+          "tbd": true
+        },
+        {
+          "k": "Grind",
+          "tbd": true
+        },
+        {
+          "k": "Swing weight",
+          "tbd": true
+        }
+      ]
+    },
+    {
+      "label": "Shaft &amp; grip",
+      "caption": "Carver LGW02 Black &mdash; shaft &amp; grip",
+      "rows": [
+        {
+          "k": "Shaft, stock",
+          "v": "Lucky Golf stock steel"
+        },
+        {
+          "k": "Grip",
+          "v": "Lucky Golf grip"
+        },
+        {
+          "k": "Shaft weight",
+          "tbd": true
+        },
+        {
+          "k": "Flex options",
+          "tbd": true
+        },
+        {
+          "k": "Grip sizes",
+          "tbd": true
+        },
+        {
+          "k": "Playing length",
+          "tbd": true
+        }
+      ],
+      "aside": "Right hand only. The wedges mega-menu says &ldquo;right and left hand, except the Black&rdquo; for this reason."
+    }
+  ],
+  "look": {
+    "photo": "Bold, full-bleed, portrait. Black head at address on grass in flat light, gold clover the only thing that catches. The point of the shot is how little the club announces itself.",
+    "headline": "The one nobody notices until you use it",
+    "paras": [
+      "Gold clubs get comments. That is fine until it is not, and there is a kind of golfer who would rather the club said nothing at all.",
+      "This is that club. It still has gold on it &mdash; on the clover, on the number &mdash; but you have to be standing over it to find any."
+    ],
+    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+  },
+  "closeBody": "The Black is $109 in every loft, right hand. Sixty days to send it back if it isn't the one.",
+  "oav": [
+    "lgw02-gold",
+    "lgw01-gold",
+    "lgp02-gold",
+    "lgh01"
+  ],
+  "bag": [
+    {
+      "id": "lgw02-gold",
+      "name": "Carver Gold",
+      "code": "LGW02",
+      "meta": "4.78 &#9733; 69",
+      "hook": "The same club in gold, and in right or left hand."
+    },
+    {
+      "id": "lgw01-gold",
+      "name": "Carver Gold",
+      "code": "LGW01",
+      "meta": "4.81 &#9733; 551",
+      "hook": "The original. Six lofts, and the one most people add first."
+    },
+    {
+      "id": "lgp02-gold",
+      "name": "Tracer Mallet",
+      "code": "LGP02",
+      "meta": "4.71 &#9733; 58",
+      "hook": "The mallet. Oversized 3.0 grip fitted, right or left hand."
+    }
+  ],
+  "helpLoft": {
+    "headline": "Start with the wedge you already carry",
+    "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. The Black comes in all six lofts, so a full ladder is available in this finish."
+  }
+}

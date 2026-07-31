@@ -291,6 +291,7 @@ def product_copy(prod):
         # has nothing to show. Better than a page that fails to build.
         rev = {"total": 0, "totals": {}, "sample": []}
     ctx["REVIEWS_JSON"] = json.dumps(rev, ensure_ascii=False)
+    ctx["reviewSample"] = bool(rev.get("sample"))
 
     # the comparison module names its sibling products, so the tiles it shows
     # resolve through the catalogue the same way cross-sells do

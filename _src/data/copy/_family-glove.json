@@ -1,0 +1,34 @@
+{
+  "_": "Shared editorial for glove. Merged UNDER each product's own file.",
+  "_specs": "Shopify has no descriptions for gear and the reference guide does not cover it. Materials, closures and dimensions are marked as needing spec on every page.",
+  "galleryTag": "",
+  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+  "priceNote": "",
+  "reviewHeadline": "Reviews",
+  "chooseCta": "Add it",
+  "eyebrow": "Gloves &middot; Gear",
+  "bagHeadline": "The rest of the small stuff",
+  "bag": [
+    {
+      "id": "tees-25",
+      "name": "Lucky Golf Tees",
+      "code": "TEES",
+      "meta": "25 tees",
+      "hook": "You are out of tees. You are always out of tees."
+    },
+    {
+      "id": "grip-clover-blue",
+      "name": "Clover Grips, blue",
+      "code": "GRP",
+      "meta": "Standard–Jumbo",
+      "hook": "If the glove is wearing out fast, the grip usually is too."
+    },
+    {
+      "id": "cover-blade",
+      "name": "Lucky Blade Cover",
+      "code": "HC",
+      "meta": "Blade heads",
+      "hook": "Stops the bag chewing your putter."
+    }
+  ]
+}
