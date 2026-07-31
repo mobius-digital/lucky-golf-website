@@ -33,7 +33,7 @@
 
   /* ---- BRAND FIELD ----
      The header, the marquee and the brand band all share one field. Swap these
-     six and the whole spine changes colour. --on-brand must clear 4.5:1 against
+     six and the whole spine changes color. --on-brand must clear 4.5:1 against
      --brand for text; --brand-accent only needs 3:1 (rules, marks, badges). */
   --brand:#0B5130;
   --on-brand:#FFFFFF;
@@ -612,7 +612,7 @@ button{font:inherit;color:inherit}
 
 
 /* ==========================================================================
-   MEGA MENU v2 — Takomo pattern: centred, 2-up, name + category only,
+   MEGA MENU v2 — Takomo pattern: centerd, 2-up, name + category only,
    product photo large and bleeding out of the tile. No price, no buy button.
    ========================================================================== */
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
@@ -833,7 +833,7 @@ button{font:inherit;color:inherit}
 }
 
 /* the clover bullet carries a translateY(2px) nudge that suits it sitting
-   beside display type; inside a centre-aligned flex row it just reads as
+   beside display type; inside a center-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
 
@@ -874,7 +874,7 @@ button{font:inherit;color:inherit}
    Started life as the PDP's variant picker; the collection pages use the same
    control for facet filters, so it lives in core. aria-pressed carries the
    state, [disabled] means genuinely unavailable and is struck through rather
-   than merely greyed.
+   than merely grayed.
    ========================================================================== */
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
@@ -885,7 +885,7 @@ button{font:inherit;color:inherit}
 .chip:hover:not([disabled]){border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
 .chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
-/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+/* struck through rather than merely grayed — LH 50 and LH 60 are genuinely out */
 .chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
   background:var(--ink-14);rotate:-12deg}
 
@@ -987,8 +987,7 @@ button{font:inherit;color:inherit}
 
 /* price */
 .bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
-.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
-  font-size:clamp(2.1rem,3vw,2.7rem);line-height:1;letter-spacing:-.01em}
+.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;font-size:1.5rem;letter-spacing:-.005em;color:var(--ink)}
 .bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted)}
 .bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}
@@ -1306,7 +1305,7 @@ button{font:inherit;color:inherit}
 
 /* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
-   The sibling colourway strip and the size guide. Everything else — the fold,
+   The sibling colorway strip and the size guide. Everything else — the fold,
    the buy box, the rails, the review widget — is in _src/pdp.css.
    ========================================================================== */
 
@@ -1326,7 +1325,7 @@ button{font:inherit;color:inherit}
 .sib-ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);
   border-radius:2px}
 .sib-ph img{width:100%;height:100%;object-fit:cover;display:block}
-/* a sold-out colourway still belongs in the strip — the range is the point —
+/* a sold-out colorway still belongs in the strip — the range is the point —
    but it should not look as available as the rest */
 .sib--out .sib-ph img{filter:grayscale(1);opacity:.5}
 .sib-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
@@ -1371,10 +1370,10 @@ button{font:inherit;color:inherit}
 
 /* ==========================================================================
    COLOURWAY SWATCHES  ·  Cole's note 6
-   Colourways are separate Shopify products, so this is a row of links rather
+   Colorways are separate Shopify products, so this is a row of links rather
    than a variant axis. It sits above the size picker because it is the first
    decision, and because having to go back to the collection to see another
-   colour is what makes a thirteen-product range feel like one product.
+   color is what makes a thirteen-product range feel like one product.
    ========================================================================== */
 .sw-row{display:flex;flex-wrap:wrap;gap:8px}
 .sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
@@ -1394,7 +1393,7 @@ button{font:inherit;color:inherit}
 
 <!-- ==========================================================================
      OFFICIAL LOGO KIT — tight viewBoxes, fill="currentColor" so each lockup is
-     always ONE flat colour (green / ink / cream / white / flat gold).
+     always ONE flat color (green / ink / cream / white / flat gold).
      The foil gradient is never applied to a logo.
      ========================================================================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1500,7 +1499,7 @@ button{font:inherit;color:inherit}
 <!-- ==========================================================================
      APPAREL PDP TEMPLATE  ·  polos and hats
      Genuinely different from the club template, for the four reasons in
-     GAMEPLAN §3: size is the decision rather than a spec, colourways are
+     GAMEPLAN §3: size is the decision rather than a spec, colorways are
      separate Shopify products so siblings must be linked or the range is
      undiscoverable, fabric and care replace construction, and lifestyle
      photography carries it instead of studio cutouts.
@@ -1539,9 +1538,10 @@ button{font:inherit;color:inherit}
 
     
 
+    <!-- Price only. The note beside it ("Right or left hand", "Same price,
+         every loft") was repeating what the pickers below already say. -->
     <div class="bx-price">
       <span class="amt" id="bx-amt">$67</span>
-      <span class="flat">One price, every size</span>
     </div>
 
     <p class="bx-body">Plain white. The most useful shirt in any golf wardrobe and the one that most courses will never question.</p>
@@ -1557,7 +1557,7 @@ button{font:inherit;color:inherit}
       </div>
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>UPF 50+</b><span>Moisture-wicking, odour-resistant</span>
+        <b>UPF 50+</b><span>Moisture-wicking, odor-resistant</span>
       </div>
       <div>
         <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
@@ -1565,10 +1565,10 @@ button{font:inherit;color:inherit}
       </div>
     </div>
 
-    <!-- Colourways are separate Shopify products, so this is a row of links
+    <!-- Colorways are separate Shopify products, so this is a row of links
          rather than a variant axis. It sits ABOVE the size picker because it
          is the first decision — you choose which shirt, then what size — and
-         because having to go back to the collection to see another colour is
+         because having to go back to the collection to see another color is
          the thing that makes a thirteen-product range feel like one product. -->
     
     <div class="opt">
@@ -1623,7 +1623,7 @@ button{font:inherit;color:inherit}
             <li><b>Fabric</b> 88/12 poly-spandex.</li>
             <li><b>Weight</b> Sub-180gsm &mdash; light, not flimsy.</li>
             <li><b>Stretch</b> Four-way, so it moves in every direction the swing does.</li>
-            <li><b>Finish</b> Moisture-wicking, odour-resistant, colour-retentive.</li>
+            <li><b>Finish</b> Moisture-wicking, odor-resistant, color-retentive.</li>
             <li><b>UPF</b> 50+.</li>
             <li><b>Care</b> Machine wash. No special handling.</li>
           </ul>
@@ -1648,15 +1648,15 @@ button{font:inherit;color:inherit}
 </div>
 
 <!-- ============ MORE COLOURS ============
-     The load-bearing section on this template. Every colourway is a separate
+     The load-bearing section on this template. Every colorway is a separate
      Shopify product, so without this strip the other twelve polos are
      unreachable from the one you happen to have landed on. -->
 
-<section class="sec-tight band-cream" id="colours">
+<section class="sec-tight band-cream" id="colors">
   <div class="wrap">
     <div class="sib-hd">
       <div>
-        <span class="eyebrow">More colours</span>
+        <span class="eyebrow">More colors</span>
         <h2 class="disp d-m">The same polo, nine other ways</h2>
       </div>
       <a class="btn btn-line btn-sm" href="10-collection-polos.html"><span>See all 10</span><span class="ar">&rarr;</span></a>
@@ -1722,14 +1722,14 @@ button{font:inherit;color:inherit}
 
     <div class="club-grid">
       <div class="club-copy">
-        <p class="body">Every golfer needs a white polo and most of them own one that has gone grey. This is a replacement: four-way stretch, UPF 50+, and a collar that holds its shape.</p>
+        <p class="body">Every golfer needs a white polo and most of them own one that has gone gray. This is a replacement: four-way stretch, UPF 50+, and a collar that holds its shape.</p>
         <p class="body">There is no print, no contrast stitching and nothing to clash with. It is the shirt you pack when you do not know what the course is like.</p>
       </div>
       <div class="club-media">
         <div class="ph ph--dark ph--tall">
           <span class="lbl">
             <span class="mono k">Photo needed</span>
-            <span class="mono">Portrait 4:5, on body, strong sun. White is the hardest colour to expose — this brief needs a shot that keeps detail in the fabric rather than blowing the shirt out. There is no on-body apparel photography at all yet (HANDOFF §7b F).</span>
+            <span class="mono">Portrait 4:5, on body, strong sun. White is the hardest color to expose — this brief needs a shot that keeps detail in the fabric rather than blowing the shirt out. There is no on-body apparel photography at all yet (HANDOFF §7b F).</span>
           </span>
         </div>
       </div>
@@ -1837,7 +1837,7 @@ button{font:inherit;color:inherit}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <span class="eyebrow on-dark center">It's better to be lucky</span>
       <h2 class="disp d-l">Go look like you <span class="foil on-dark">mean it</span></h2>
       <p class="body on-dark">$67 in every size, four-way stretch, UPF 50+. Thirty days to send it back unworn if the fit isn't right.</p>
       <div class="close-cta">
@@ -1874,15 +1874,18 @@ button{font:inherit;color:inherit}
     <span class="eyebrow">Returns and exchanges</span>
     <h2 class="disp d-m" id="md-returns-t">Thirty days, tags on</h2>
     <div class="md-sec">
-      <h3>Apparel is different from clubs</h3>
-      <p>Clubs get sixty days and you can play them. Apparel gets thirty, unworn, in its original packaging with the tags attached. That is the one part of the policy we can't be relaxed about &mdash; a worn polo can't go back on the shelf.</p>
+      <h3>Thirty days, tags on</h3>
+      <p>Apparel comes back within thirty days of delivery, unworn, unwashed and in original condition with all original tags attached.</p>
+      <p>No makeup or deodorant marks, odors, pet hair, stretching or laundering. <b>A return without its tags has $7 deducted from the refund.</b></p>
+      <p>Requests after thirty days are not accepted. Clubs get sixty days; apparel does not.</p>
     </div>
     <div class="md-sec">
       <h3>Wrong size</h3>
-      <p>Exchanges for a different size are the most common reason anything comes back, which is why the size guide above is worth thirty seconds before you order.</p>
-      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; whether exchanges ship free, and who pays return postage.</p>
+      <p>Size is the most common reason anything comes back, which is why the size guide above is worth thirty seconds before you order.</p>
+      <p>Refunds are issued after the item is received and inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
     <div class="md-sec">
+      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="#">Read the full returns policy</a></p>
     </div>
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
@@ -2025,8 +2028,8 @@ button{font:inherit;color:inherit}
   /* Is any sellable variant reachable with `val` on axis i, holding the axes
      to the LEFT of i at what is already selected?
 
-     Cascading left to right is what makes "Left hand" grey out only when no
-     loft at all is available in it, while an individual loft greys out for
+     Cascading left to right is what makes "Left hand" gray out only when no
+     loft at all is available in it, while an individual loft grays out for
      the hand you are actually on. Availability is the `avail` flag and never
      `qty > 0`: Shopify oversells some lines and holds others at zero while
      still selling them, so quantity answers a different question. */
@@ -2045,7 +2048,7 @@ button{font:inherit;color:inherit}
 
   /* Changing axis `from` can strand the axes to its right on a dead variant.
      Slide each to the nearest offered value by position — on an ordered axis
-     (lofts, sizes) that is the neighbouring step up or down, which is what
+     (lofts, sizes) that is the neighboring step up or down, which is what
      someone switching hand actually wants. Mutates and returns `sel`. */
   function reconcile(pd, sel, from) {
     var axes = pd.options || [], i, vals, at, best, bestD, n, d;
@@ -2087,7 +2090,7 @@ button{font:inherit;color:inherit}
 }));
 
 /* ==========================================================================
-   PDP — behaviour shared by all three product templates
+   PDP — behavior shared by all three product templates
    Gallery, the N-axis buy box, accordions, the cross-sell rails and the
    review widget. The club, apparel and gear templates each add only what is
    genuinely theirs; everything here would otherwise be copied three ways and
@@ -2119,7 +2122,7 @@ var PD_REVIEWS = {"total": 0, "totals": {}, "sample": []};
 
 /* The browse rail under the fold. Rows are product ids in the copy file;
    build.py resolves each to live price, rating and stock so a sold-out
-   neighbour says so without anyone remembering to update this page. */
+   neighbor says so without anyone remembering to update this page. */
 var PD_OAV = [];
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card

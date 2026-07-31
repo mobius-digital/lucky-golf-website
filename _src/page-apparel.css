@@ -1,6 +1,6 @@
 /* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
-   The sibling colourway strip and the size guide. Everything else — the fold,
+   The sibling colorway strip and the size guide. Everything else — the fold,
    the buy box, the rails, the review widget — is in _src/pdp.css.
    ========================================================================== */
 
@@ -20,7 +20,7 @@
 .sib-ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);
   border-radius:2px}
 .sib-ph img{width:100%;height:100%;object-fit:cover;display:block}
-/* a sold-out colourway still belongs in the strip — the range is the point —
+/* a sold-out colorway still belongs in the strip — the range is the point —
    but it should not look as available as the rest */
 .sib--out .sib-ph img{filter:grayscale(1);opacity:.5}
 .sib-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
@@ -65,10 +65,10 @@
 
 /* ==========================================================================
    COLOURWAY SWATCHES  ·  Cole's note 6
-   Colourways are separate Shopify products, so this is a row of links rather
+   Colorways are separate Shopify products, so this is a row of links rather
    than a variant axis. It sits above the size picker because it is the first
    decision, and because having to go back to the collection to see another
-   colour is what makes a thirteen-product range feel like one product.
+   color is what makes a thirteen-product range feel like one product.
    ========================================================================== */
 .sw-row{display:flex;flex-wrap:wrap;gap:8px}
 .sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;

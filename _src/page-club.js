@@ -1,7 +1,7 @@
 /* ==========================================================================
    CLUB PDP — what only a wedge, putter, hybrid or driver needs
    The spec table's tabs, the wedge loft ladder and the highlight reel. Every
-   other behaviour on this page comes from _src/pdp.js.
+   other behavior on this page comes from _src/pdp.js.
    ========================================================================== */
 /* What each loft is FOR. Editorial — Shopify has no field for it, and the
    answer is the same for every wedge we sell. */

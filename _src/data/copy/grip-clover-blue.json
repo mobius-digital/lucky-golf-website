@@ -1,7 +1,7 @@
 {
   "_": "Editorial for grip-clover-blue. Shared keys come from the family file.",
   "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "Tour performance grips with the clover worked into the pattern, in blue. Grips are the only part of the club you actually touch and they are the part almost nobody replaces often enough. The only colour here that is not a neutral.",
+  "buyBody": "Tour performance grips with the clover worked into the pattern, in blue. Grips are the only part of the club you actually touch and they are the part almost nobody replaces often enough. The only color here that is not a neutral.",
   "four": [
     {
       "k": "Clover pattern",
@@ -13,7 +13,7 @@
     },
     {
       "k": "Blue",
-      "v": "One of five colours"
+      "v": "One of five colors"
     },
     {
       "k": "From $9.95",
@@ -43,7 +43,7 @@
             "v": "Tour performance grip"
           },
           {
-            "k": "Colour",
+            "k": "Color",
             "v": "Blue"
           },
           {

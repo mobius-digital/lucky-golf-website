@@ -33,7 +33,7 @@
 
   /* ---- BRAND FIELD ----
      The header, the marquee and the brand band all share one field. Swap these
-     six and the whole spine changes colour. --on-brand must clear 4.5:1 against
+     six and the whole spine changes color. --on-brand must clear 4.5:1 against
      --brand for text; --brand-accent only needs 3:1 (rules, marks, badges). */
   --brand:#0B5130;
   --on-brand:#FFFFFF;
@@ -612,7 +612,7 @@ button{font:inherit;color:inherit}
 
 
 /* ==========================================================================
-   MEGA MENU v2 — Takomo pattern: centred, 2-up, name + category only,
+   MEGA MENU v2 — Takomo pattern: centerd, 2-up, name + category only,
    product photo large and bleeding out of the tile. No price, no buy button.
    ========================================================================== */
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
@@ -833,7 +833,7 @@ button{font:inherit;color:inherit}
 }
 
 /* the clover bullet carries a translateY(2px) nudge that suits it sitting
-   beside display type; inside a centre-aligned flex row it just reads as
+   beside display type; inside a center-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
 
@@ -874,7 +874,7 @@ button{font:inherit;color:inherit}
    Started life as the PDP's variant picker; the collection pages use the same
    control for facet filters, so it lives in core. aria-pressed carries the
    state, [disabled] means genuinely unavailable and is struck through rather
-   than merely greyed.
+   than merely grayed.
    ========================================================================== */
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
@@ -885,7 +885,7 @@ button{font:inherit;color:inherit}
 .chip:hover:not([disabled]){border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
 .chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
-/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+/* struck through rather than merely grayed — LH 50 and LH 60 are genuinely out */
 .chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
   background:var(--ink-14);rotate:-12deg}
 
@@ -1081,7 +1081,7 @@ button{font:inherit;color:inherit}
 .vp-in{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;
   gap:clamp(30px,4.6vw,78px);align-items:center}
 .vp h2{color:var(--cream);max-width:13ch}
-/* Takomo runs a coloured second deck under the headline. Ours is gold. */
+/* Takomo runs a colored second deck under the headline. Ours is gold. */
 .vp-sub{margin:16px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
   font-weight:800;text-transform:uppercase;letter-spacing:.005em;line-height:1;
   font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--gold-hi);max-width:20ch}
@@ -1238,7 +1238,7 @@ button{font:inherit;color:inherit}
 
 <!-- ==========================================================================
      OFFICIAL LOGO KIT — tight viewBoxes, fill="currentColor" so each lockup is
-     always ONE flat colour (green / ink / cream / white / flat gold).
+     always ONE flat color (green / ink / cream / white / flat gold).
      The foil gradient is never applied to a logo.
      ========================================================================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2045,7 +2045,7 @@ button{font:inherit;color:inherit}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <span class="eyebrow on-dark center">It's better to be lucky</span>
       <h2 class="disp d-l">Go put one in the <span class="foil on-dark">bag</span></h2>
       <p class="body on-dark">Forged wedges from $99. Milled putters from $199. Titanium hybrid at $209. Sixty days to send a club back if it isn't the one.</p>
       <div class="close-cta">

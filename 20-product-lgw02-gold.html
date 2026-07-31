@@ -33,7 +33,7 @@
 
   /* ---- BRAND FIELD ----
      The header, the marquee and the brand band all share one field. Swap these
-     six and the whole spine changes colour. --on-brand must clear 4.5:1 against
+     six and the whole spine changes color. --on-brand must clear 4.5:1 against
      --brand for text; --brand-accent only needs 3:1 (rules, marks, badges). */
   --brand:#0B5130;
   --on-brand:#FFFFFF;
@@ -612,7 +612,7 @@ button{font:inherit;color:inherit}
 
 
 /* ==========================================================================
-   MEGA MENU v2 — Takomo pattern: centred, 2-up, name + category only,
+   MEGA MENU v2 — Takomo pattern: centerd, 2-up, name + category only,
    product photo large and bleeding out of the tile. No price, no buy button.
    ========================================================================== */
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
@@ -833,7 +833,7 @@ button{font:inherit;color:inherit}
 }
 
 /* the clover bullet carries a translateY(2px) nudge that suits it sitting
-   beside display type; inside a centre-aligned flex row it just reads as
+   beside display type; inside a center-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
 
@@ -874,7 +874,7 @@ button{font:inherit;color:inherit}
    Started life as the PDP's variant picker; the collection pages use the same
    control for facet filters, so it lives in core. aria-pressed carries the
    state, [disabled] means genuinely unavailable and is struck through rather
-   than merely greyed.
+   than merely grayed.
    ========================================================================== */
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
@@ -885,7 +885,7 @@ button{font:inherit;color:inherit}
 .chip:hover:not([disabled]){border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
 .chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
-/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+/* struck through rather than merely grayed — LH 50 and LH 60 are genuinely out */
 .chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
   background:var(--ink-14);rotate:-12deg}
 
@@ -987,8 +987,7 @@ button{font:inherit;color:inherit}
 
 /* price */
 .bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
-.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
-  font-size:clamp(2.1rem,3vw,2.7rem);line-height:1;letter-spacing:-.01em}
+.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;font-size:1.5rem;letter-spacing:-.005em;color:var(--ink)}
 .bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted)}
 .bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}
@@ -1342,7 +1341,7 @@ button{font:inherit;color:inherit}
    SPECS — Takomo's shape on a light field.
    This block used to sit on ink WITH the groove behind it. The groove is 1px
    lines on a 6px pitch, and small mono table figures sitting on top of it were
-   genuinely hard to read (Cole flagged it). Takomo's spec block is light grey
+   genuinely hard to read (Cole flagged it). Takomo's spec block is light gray
    with a white bordered table; this follows that, and the groove is gone from
    under the table entirely.
    ========================================================================== */
@@ -1582,7 +1581,7 @@ button{font:inherit;color:inherit}
 
 <!-- ==========================================================================
      OFFICIAL LOGO KIT — tight viewBoxes, fill="currentColor" so each lockup is
-     always ONE flat colour (green / ink / cream / white / flat gold).
+     always ONE flat color (green / ink / cream / white / flat gold).
      The foil gradient is never applied to a logo.
      ========================================================================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1746,12 +1745,13 @@ button{font:inherit;color:inherit}
 
     
 
+    <!-- Price only. The note beside it ("Right or left hand", "Same price,
+         every loft") was repeating what the pickers below already say. -->
     <div class="bx-price">
       <span class="amt" id="bx-amt">$109</span>
-      <span class="flat">Three lofts, right or left hand</span>
     </div>
 
-    <p class="bx-body">The second-generation Carver. A reshaped, more forgiving grind and a lower centre of gravity, which is the difference you feel out of the lies that are not perfect. Three lofts, right or left hand, sixty days to decide.</p>
+    <p class="bx-body">The second-generation Carver. A reshaped, more forgiving grind and a lower center of gravity, which is the difference you feel out of the lies that are not perfect. Three lofts, right or left hand, sixty days to decide.</p>
 
     <div class="bx-four">
       <div>
@@ -1809,7 +1809,7 @@ button{font:inherit;color:inherit}
             <li>One Carver LGW02 Gold wedge in the loft and hand you picked</li>
             <li>Lucky Golf stock steel shaft</li>
             <li>Lucky Golf grip</li>
-            <li>Headcover: <span class="tbd tbd--light">Confirm</span></li>
+            <li>No headcover &mdash; none of our clubs ship with one</li>
           </ul>
         </div>
       </div>
@@ -1855,7 +1855,7 @@ button{font:inherit;color:inherit}
     <div class="club-grid">
       <div class="club-copy">
         <p class="body">The V2 exists because the first one was very good out of a clean lie and merely fine out of a bad one. The grind is reshaped and more forgiving, so the sole works through the turf instead of digging into it.</p>
-        <p class="body">The centre of gravity sits lower, which gets the ball up from lies that do not deserve it &mdash; hardpan, thin rough, the ones where a wedge normally punishes you.</p>
+        <p class="body">The center of gravity sits lower, which gets the ball up from lies that do not deserve it &mdash; hardpan, thin rough, the ones where a wedge normally punishes you.</p>
         <p class="body">It is forged, like the LGW01, so the feedback is the same honest kind. Where it differs is what happens when you do not catch it flush.</p>
 
     <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->
@@ -1989,7 +1989,7 @@ button{font:inherit;color:inherit}
     <div class="look-copy">
       <span class="eyebrow centre-none">The look</span>
       <h2 class="disp d-l">You'll want to pull it out of the bag</h2>
-      <p class="body">Most wedges are grey. This one is not, and you find out what that is worth the first time you take it out on a busy tee box.</p>
+      <p class="body">Most wedges are gray. This one is not, and you find out what that is worth the first time you take it out on a busy tee box.</p>
       <p class="body">That is not the reason to buy it &mdash; the grind is. But it is not nothing either.</p>
       <p class="aside">Everyone else is carrying the same club with someone else's name on it. It's better to be lucky.</p>
       <div class="look-cta">
@@ -2110,7 +2110,7 @@ button{font:inherit;color:inherit}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <span class="eyebrow on-dark center">It's better to be lucky</span>
       <h2 class="disp d-l">Go own the <span class="foil on-dark">green</span></h2>
       <p class="body on-dark">The LGW02 is $109 in every loft, right hand or left. Sixty days to send it back if it isn't the one.</p>
       <div class="close-cta">
@@ -2150,20 +2150,23 @@ button{font:inherit;color:inherit}
     <h2 class="disp d-m" id="md-returns-t">Sixty days, no argument</h2>
 
     <div class="md-sec">
-      <h3>Sixty-day returns</h3>
-      <p>Take sixty days from delivery to decide. Play it, take it to the range, hit it out of a bunker &mdash; this is not a &ldquo;keep it in the wrapper&rdquo; policy. If the club isn't the one, send it back.</p>
-      <p>Clubs come back in the condition normal play leaves them in. That's expected and it's fine.</p>
+      <h3>Sixty days, with conditions</h3>
+      <p>Sixty days from delivery on every club. <b>Contact us before sending anything back</b> &mdash; club returns need approval and photo verification first, and a club returned without authorization will not be accepted.</p>
+      <p>Refunds are issued after the club comes back and is inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
 
     <div class="md-sec">
-      <h3>What's covered</h3>
-      <p>Manufacturing defects and damage in transit are on us. Normal wear, and damage from things a club was never meant to do, are not.</p>
-      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; whether Lucky offers a stated warranty period, who pays return shipping, and whether apparel differs from clubs.</p>
+      <h3>What you can do with it first</h3>
+      <p><b>Putters</b> may be used during the sixty days, but must come back in brand-new condition &mdash; no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p>
+      <p><b>Wedges</b>: one wedge per order may be opened and tested, on a turf mat or another non-abrasive surface. Any others stay factory sealed. The tested one must come back with no groove wear, face marks or sole wear.</p>
+      <p><b>Hybrids</b> must appear completely unused, with no visible wear and no modifications.</p>
+      <p>Wear beyond these conditions can mean a partial refund or a declined return.</p>
     </div>
 
     <div class="md-sec">
       <h3>Apparel and gear</h3>
-      <p>Unworn, in original packaging, tags attached.</p>
+      <p>Thirty days. Apparel unworn and unwashed with all original tags attached &mdash; <b>a return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
+      <p>Customised products are final sale unless they arrive defective.</p>
       <p><a href="#">Read the full returns policy</a></p>
     </div>
 
@@ -2312,8 +2315,8 @@ button{font:inherit;color:inherit}
   /* Is any sellable variant reachable with `val` on axis i, holding the axes
      to the LEFT of i at what is already selected?
 
-     Cascading left to right is what makes "Left hand" grey out only when no
-     loft at all is available in it, while an individual loft greys out for
+     Cascading left to right is what makes "Left hand" gray out only when no
+     loft at all is available in it, while an individual loft grays out for
      the hand you are actually on. Availability is the `avail` flag and never
      `qty > 0`: Shopify oversells some lines and holds others at zero while
      still selling them, so quantity answers a different question. */
@@ -2332,7 +2335,7 @@ button{font:inherit;color:inherit}
 
   /* Changing axis `from` can strand the axes to its right on a dead variant.
      Slide each to the nearest offered value by position — on an ordered axis
-     (lofts, sizes) that is the neighbouring step up or down, which is what
+     (lofts, sizes) that is the neighboring step up or down, which is what
      someone switching hand actually wants. Mutates and returns `sel`. */
   function reconcile(pd, sel, from) {
     var axes = pd.options || [], i, vals, at, best, bestD, n, d;
@@ -2374,7 +2377,7 @@ button{font:inherit;color:inherit}
 }));
 
 /* ==========================================================================
-   PDP — behaviour shared by all three product templates
+   PDP — behavior shared by all three product templates
    Gallery, the N-axis buy box, accordions, the cross-sell rails and the
    review widget. The club, apparel and gear templates each add only what is
    genuinely theirs; everything here would otherwise be copied three ways and
@@ -2406,7 +2409,7 @@ var PD_REVIEWS = {"total": 0, "totals": {}, "sample": []};
 
 /* The browse rail under the fold. Rows are product ids in the copy file;
    build.py resolves each to live price, rating and stock so a sold-out
-   neighbour says so without anyone remembering to update this page. */
+   neighbor says so without anyone remembering to update this page. */
 var PD_OAV = [{"nm": "Carver LGW01 Gold", "pr": "$99", "rt": "4.81 ★ 551", "tag": "", "out": false, "href": "02-pdp-lgw01.html", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869"}, {"nm": "Carver LGW02 Black", "pr": "$109", "rt": "Right hand only · 6 lofts", "tag": "New", "out": false, "href": "20-product-lgw02-black.html", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436"}, {"nm": "Tracer LGP02 Mallet", "pr": "$229", "rt": "4.71 ★ 58", "tag": "", "out": false, "href": "20-product-lgp02-gold.html", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134"}, {"nm": "Stryker LGH01", "pr": "$209", "rt": "4.6 ★ 20", "tag": "", "out": false, "href": "20-product-lgh01.html", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493"}];
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card
@@ -2740,7 +2743,7 @@ var PD_KIT = [
 /* ==========================================================================
    CLUB PDP — what only a wedge, putter, hybrid or driver needs
    The spec table's tabs, the wedge loft ladder and the highlight reel. Every
-   other behaviour on this page comes from _src/pdp.js.
+   other behavior on this page comes from _src/pdp.js.
    ========================================================================== */
 /* What each loft is FOR. Editorial — Shopify has no field for it, and the
    answer is the same for every wedge we sell. */

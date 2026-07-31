@@ -12,7 +12,7 @@
   "four": [
     {"k": "Classic collar", "v": "Three-button placket"},
     {"k": "88/12",          "v": "Poly-spandex, four-way stretch"},
-    {"k": "UPF 50+",        "v": "Moisture-wicking, odour-resistant"},
+    {"k": "UPF 50+",        "v": "Moisture-wicking, odor-resistant"},
     {"k": "Sub-180gsm",     "v": "Light enough for a hot round"}
   ],
 
@@ -20,7 +20,7 @@
     {"k": "Fabric",  "v": "88/12 poly-spandex."},
     {"k": "Weight",  "v": "Sub-180gsm &mdash; light, not flimsy."},
     {"k": "Stretch", "v": "Four-way, so it moves in every direction the swing does."},
-    {"k": "Finish",  "v": "Moisture-wicking, odour-resistant, colour-retentive."},
+    {"k": "Finish",  "v": "Moisture-wicking, odor-resistant, color-retentive."},
     {"k": "UPF",     "v": "50+."},
     {"k": "Care",    "v": "Machine wash. No special handling."}
   ],
@@ -51,7 +51,7 @@
   ],
 
   "reviewHeadline": "Reviews",
-  "sibEyebrow": "More colours",
+  "sibEyebrow": "More colors",
   "sibHeadline": "The same polo, nine other ways",
 
   "chooseCta": "Pick a size",

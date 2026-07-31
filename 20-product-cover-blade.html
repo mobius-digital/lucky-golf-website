@@ -33,7 +33,7 @@
 
   /* ---- BRAND FIELD ----
      The header, the marquee and the brand band all share one field. Swap these
-     six and the whole spine changes colour. --on-brand must clear 4.5:1 against
+     six and the whole spine changes color. --on-brand must clear 4.5:1 against
      --brand for text; --brand-accent only needs 3:1 (rules, marks, badges). */
   --brand:#0B5130;
   --on-brand:#FFFFFF;
@@ -612,7 +612,7 @@ button{font:inherit;color:inherit}
 
 
 /* ==========================================================================
-   MEGA MENU v2 — Takomo pattern: centred, 2-up, name + category only,
+   MEGA MENU v2 — Takomo pattern: centerd, 2-up, name + category only,
    product photo large and bleeding out of the tile. No price, no buy button.
    ========================================================================== */
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
@@ -833,7 +833,7 @@ button{font:inherit;color:inherit}
 }
 
 /* the clover bullet carries a translateY(2px) nudge that suits it sitting
-   beside display type; inside a centre-aligned flex row it just reads as
+   beside display type; inside a center-aligned flex row it just reads as
    misaligned, so these contexts opt out */
 .bx-terms .cbul,.jm-medals .cbul,.rvh-badges .cbul,.md-sec .cbul{transform:none}
 
@@ -874,7 +874,7 @@ button{font:inherit;color:inherit}
    Started life as the PDP's variant picker; the collection pages use the same
    control for facet filters, so it lives in core. aria-pressed carries the
    state, [disabled] means genuinely unavailable and is struck through rather
-   than merely greyed.
+   than merely grayed.
    ========================================================================== */
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
@@ -885,7 +885,7 @@ button{font:inherit;color:inherit}
 .chip:hover:not([disabled]){border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
 .chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
-/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+/* struck through rather than merely grayed — LH 50 and LH 60 are genuinely out */
 .chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
   background:var(--ink-14);rotate:-12deg}
 
@@ -987,8 +987,7 @@ button{font:inherit;color:inherit}
 
 /* price */
 .bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
-.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
-  font-size:clamp(2.1rem,3vw,2.7rem);line-height:1;letter-spacing:-.01em}
+.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;font-size:1.5rem;letter-spacing:-.005em;color:var(--ink)}
 .bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted)}
 .bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}
@@ -1334,7 +1333,7 @@ button{font:inherit;color:inherit}
 
 <!-- ==========================================================================
      OFFICIAL LOGO KIT — tight viewBoxes, fill="currentColor" so each lockup is
-     always ONE flat colour (green / ink / cream / white / flat gold).
+     always ONE flat color (green / ink / cream / white / flat gold).
      The foil gradient is never applied to a logo.
      ========================================================================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1476,9 +1475,10 @@ button{font:inherit;color:inherit}
 
     
 
+    <!-- Price only. The note beside it ("Right or left hand", "Same price,
+         every loft") was repeating what the pickers below already say. -->
     <div class="bx-price">
       <span class="amt" id="bx-amt">$29.95</span>
-      
     </div>
 
     <p class="bx-body">It's a head cover. It goes on the putter, it stays on the putter, and a season later the club still looks like the one in the photos. That is the entire job. Cart rash is the thing reviewers bring up most about a nice putter, and thirty dollars is a cheaper fix than a new one.</p>
@@ -1550,7 +1550,7 @@ button{font:inherit;color:inherit}
         <ul class="club-specs">
           <li><b>Type</b><span>Blade putter cover</span></li>
           <li><b>Fits</b><span>Blade heads, including the Tracer LGP01</span></li>
-          <li><b>Colourway</b><span>Signature white and gold</span></li>
+          <li><b>Colorway</b><span>Signature white and gold</span></li>
           <li><b>Closure</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
           <li><b>Material</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
           <li><b>Dimensions</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
@@ -1636,10 +1636,13 @@ button{font:inherit;color:inherit}
     <span class="eyebrow">Returns</span>
     <h2 class="disp d-m" id="md-returns-t">Thirty days, unused</h2>
     <div class="md-sec">
-      <p>Gear comes back within thirty days, unused and in its original packaging. Clubs get sixty; gear gets thirty, and a grip that has been on a shaft can't go back.</p>
-      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; who pays return postage on gear, and whether a fitted grip is returnable at all.</p>
+      <h3>Thirty days, unused</h3>
+      <p>Gear and accessories come back within thirty days, unused and in original condition. Anything showing wear, damage or use is not eligible.</p>
+      <p>Defective items may be replaced or refunded after inspection.</p>
+      <p>Refunds are issued after the item is received and inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
     <div class="md-sec">
+      <p>A grip that has been fitted to a shaft counts as used. Customized products are final sale unless defective.</p>
       <p><a href="#">Read the full returns policy</a></p>
     </div>
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
@@ -1778,8 +1781,8 @@ button{font:inherit;color:inherit}
   /* Is any sellable variant reachable with `val` on axis i, holding the axes
      to the LEFT of i at what is already selected?
 
-     Cascading left to right is what makes "Left hand" grey out only when no
-     loft at all is available in it, while an individual loft greys out for
+     Cascading left to right is what makes "Left hand" gray out only when no
+     loft at all is available in it, while an individual loft grays out for
      the hand you are actually on. Availability is the `avail` flag and never
      `qty > 0`: Shopify oversells some lines and holds others at zero while
      still selling them, so quantity answers a different question. */
@@ -1798,7 +1801,7 @@ button{font:inherit;color:inherit}
 
   /* Changing axis `from` can strand the axes to its right on a dead variant.
      Slide each to the nearest offered value by position — on an ordered axis
-     (lofts, sizes) that is the neighbouring step up or down, which is what
+     (lofts, sizes) that is the neighboring step up or down, which is what
      someone switching hand actually wants. Mutates and returns `sel`. */
   function reconcile(pd, sel, from) {
     var axes = pd.options || [], i, vals, at, best, bestD, n, d;
@@ -1840,7 +1843,7 @@ button{font:inherit;color:inherit}
 }));
 
 /* ==========================================================================
-   PDP — behaviour shared by all three product templates
+   PDP — behavior shared by all three product templates
    Gallery, the N-axis buy box, accordions, the cross-sell rails and the
    review widget. The club, apparel and gear templates each add only what is
    genuinely theirs; everything here would otherwise be copied three ways and
@@ -1872,7 +1875,7 @@ var PD_REVIEWS = {"total": 0, "totals": {}, "sample": []};
 
 /* The browse rail under the fold. Rows are product ids in the copy file;
    build.py resolves each to live price, rating and stock so a sold-out
-   neighbour says so without anyone remembering to update this page. */
+   neighbor says so without anyone remembering to update this page. */
 var PD_OAV = [];
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card

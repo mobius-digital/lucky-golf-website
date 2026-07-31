@@ -365,8 +365,11 @@ def page_context(slug):
             if not p["options"] and len(live) == 1:
                 tile["addSku"] = live[0]["sku"]
             else:
-                axis = p["options"][0]["name"].lower() if p["options"] else "options"
-                tile["chooseLabel"] = "Choose %s" % axis
+                # "Choose hand" was wrong on a wedge, where there is also a loft
+                # to pick. Clubs get one honest label; apparel keeps the
+                # specific one because size really is the only choice there.
+                tile["chooseLabel"] = ("Choose size" if p["template"] == "apparel"
+                                       else "Build it")
             if p.get("rating"):
                 tile["rating"] = p["rating"]
             tiles.append(tile)

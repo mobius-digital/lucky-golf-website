@@ -18,8 +18,8 @@
   /* Is any sellable variant reachable with `val` on axis i, holding the axes
      to the LEFT of i at what is already selected?
 
-     Cascading left to right is what makes "Left hand" grey out only when no
-     loft at all is available in it, while an individual loft greys out for
+     Cascading left to right is what makes "Left hand" gray out only when no
+     loft at all is available in it, while an individual loft grays out for
      the hand you are actually on. Availability is the `avail` flag and never
      `qty > 0`: Shopify oversells some lines and holds others at zero while
      still selling them, so quantity answers a different question. */
@@ -38,7 +38,7 @@
 
   /* Changing axis `from` can strand the axes to its right on a dead variant.
      Slide each to the nearest offered value by position — on an ordered axis
-     (lofts, sizes) that is the neighbouring step up or down, which is what
+     (lofts, sizes) that is the neighboring step up or down, which is what
      someone switching hand actually wants. Mutates and returns `sel`. */
   function reconcile(pd, sel, from) {
     var axes = pd.options || [], i, vals, at, best, bestD, n, d;

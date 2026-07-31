@@ -1191,3 +1191,79 @@ The buy box used to print "Low stock — 2 left" under 25 units. That is
 inventory data a shopper has no use for and we have no reason to broadcast.
 The line now says when it ships and nothing else. `qty` is still in the data
 and still drives nothing visible.
+
+---
+
+## 17. Reference Guide v1.8 and Cole's third review pass (2026-07-31)
+
+Cole supplied **Product Reference Guide v1.8** as a .docx. Extracted to
+`_src/data/` context via `zipfile` + regex on `word/document.xml` — the Read
+tool cannot open .docx, but unzipping it can.
+
+### 17a. What v1.8 settles
+
+- **There is no driver.** v1.8 says Lucky sells across four categories: wedges,
+  putters, hybrids, apparel. LGD01 staying discontinued is correct.
+- **No headcover ships with any club.** Every club entry says so explicitly.
+  That closes the "Headcover: Confirm" chip on all eight club pages.
+- **Grinds are published:** LGW01 K Grind, LGW02 Gold **S Grind**, LGW02 Black
+  **K Grind**. The mega menu's original "K Grind / S Grind" sub-lines were
+  right after all — they were removed as unverifiable in §13 and the guide has
+  since confirmed them.
+- **LGW02 Black is built on the LGW01 platform** — K Grind, LGW01 lies and
+  bounces, six lofts. The LGW02 name signals tier and price, **not** a shared
+  platform with LGW02 Gold. The two have different grinds and different specs.
+- **LGW02 Black is right- AND left-hand** per the guide, but Shopify lists only
+  right hand. The buy box follows Shopify because that is what is buyable;
+  **worth confirming which is current.**
+- **Full manufacturer spec tables** — per-loft lie, bounce, head weight and
+  length for LGW01, LGW02 Gold and LGH01, plus shaft flex, kick point, original
+  length/weight and grip weight for every club. Shafts are **Regular flex** on
+  wedges and putters, **Stiff** on the hybrid.
+- **Polo fabric is 88% polyester / 12% spandex**, plus **wrinkle-resistant** and
+  **easy to clean**, which v1.1 did not carry.
+- **Hats have a moisture-wicking sweatband and laser-cut ventilation** — the
+  first construction facts we have had for them.
+
+**Still no apparel measurements.** Colorways and hat SKUs are explicitly "not
+tracked here". The size tables stay dashes.
+
+**v1.8 drops the "slight toe hang / plumber neck" line that v1.1 carried for
+LGP02.** It is a pure spec sheet now and toe hang is not in it. Treat the toe
+hang claim as unconfirmed until it reappears somewhere.
+
+### 17b. The return policy was wrong in ways that cost money
+
+v1.8 carries the real policy and the modal contradicted it:
+
+| Modal said | Policy says |
+|---|---|
+| "Play it, take it to the range, hit it out of a bunker" | **One wedge per order** may be opened and tested, **on a turf mat**, and must return with no groove or face wear |
+| Implied you just post it back | **All club returns need approval and photo verification first**; unauthorized returns are refused |
+| "Needs confirming — who pays return shipping" | **The customer does.** Original shipping is not refunded |
+| Nothing about tags | Apparel returned **without tags has $7 deducted** |
+
+All three templates' returns modals are rewritten from the policy. Putters may
+be used but must come back unmarked; hybrids must appear completely unused.
+
+### 17c. Cole's notes 1, 2, 4, 5, 6
+
+1. **Price note removed** from every PDP, and the price itself dropped from
+   display type to 1.5rem / weight 600 — it was competing with the H1.
+2. **"Choose hand" was wrong on a wedge**, which also has a loft to pick.
+   Clubs now say **"Build it"**; apparel keeps "Choose size", where size really
+   is the only choice.
+4. **Collection cards carry name and price only.** SKU stamp and variant
+   summary both gone — a browse card is for recognising a product and its
+   price.
+5. **Quick add moved onto the photograph**, bottom-right, the way Primo does
+   it. Under a name and a price it read as page furniture; Cole did not find
+   it at all. Below 620px it goes full-width under the image, because the pill
+   would otherwise cover a third of a 168px photo.
+6. **American spelling.** 106 substitutions across 41 files — colour, centre,
+   grey, odour, behaviour, neighbour. `centre-none` and `eyebrow centre` are
+   CSS class names and were protected from the sweep.
+
+**Lesson: the copy had drifted British throughout and nobody caught it for four
+phases.** Lucky is a US brand selling to US golfers. Check spelling on any new
+copy file.

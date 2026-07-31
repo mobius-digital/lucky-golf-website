@@ -80,8 +80,7 @@
 
 /* price */
 .bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
-.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
-  font-size:clamp(2.1rem,3vw,2.7rem);line-height:1;letter-spacing:-.01em}
+.bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;font-size:1.5rem;letter-spacing:-.005em;color:var(--ink)}
 .bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted)}
 .bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}

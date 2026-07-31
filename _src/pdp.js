@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PDP — behaviour shared by all three product templates
+   PDP — behavior shared by all three product templates
    Gallery, the N-axis buy box, accordions, the cross-sell rails and the
    review widget. The club, apparel and gear templates each add only what is
    genuinely theirs; everything here would otherwise be copied three ways and
@@ -31,7 +31,7 @@ var PD_REVIEWS = {{REVIEWS_JSON}};
 
 /* The browse rail under the fold. Rows are product ids in the copy file;
    build.py resolves each to live price, rating and stock so a sold-out
-   neighbour says so without anyone remembering to update this page. */
+   neighbor says so without anyone remembering to update this page. */
 var PD_OAV = {{OAV_JSON}};
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card

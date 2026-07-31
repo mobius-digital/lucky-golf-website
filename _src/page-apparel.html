@@ -1,7 +1,7 @@
 <!-- ==========================================================================
      APPAREL PDP TEMPLATE  ·  polos and hats
      Genuinely different from the club template, for the four reasons in
-     GAMEPLAN §3: size is the decision rather than a spec, colourways are
+     GAMEPLAN §3: size is the decision rather than a spec, colorways are
      separate Shopify products so siblings must be linked or the range is
      undiscoverable, fabric and care replace construction, and lifestyle
      photography carries it instead of studio cutouts.
@@ -47,9 +47,10 @@
     </div>
     {{/rating}}
 
+    <!-- Price only. The note beside it ("Right or left hand", "Same price,
+         every loft") was repeating what the pickers below already say. -->
     <div class="bx-price">
       <span class="amt" id="bx-amt">{{priceLabel}}</span>
-      {{#priceNote}}<span class="flat">{{priceNote}}</span>{{/priceNote}}
     </div>
 
     <p class="bx-body">{{buyBody}}</p>
@@ -61,10 +62,10 @@
       </div>
 {{/four}}    </div>
 
-    <!-- Colourways are separate Shopify products, so this is a row of links
+    <!-- Colorways are separate Shopify products, so this is a row of links
          rather than a variant axis. It sits ABOVE the size picker because it
          is the first decision — you choose which shirt, then what size — and
-         because having to go back to the collection to see another colour is
+         because having to go back to the collection to see another color is
          the thing that makes a thirteen-product range feel like one product. -->
     {{#swatches}}
     <div class="opt">
@@ -130,11 +131,11 @@
 </div>
 
 <!-- ============ MORE COLOURS ============
-     The load-bearing section on this template. Every colourway is a separate
+     The load-bearing section on this template. Every colorway is a separate
      Shopify product, so without this strip the other twelve polos are
      unreachable from the one you happen to have landed on. -->
 {{#siblings}}
-<section class="sec-tight band-cream" id="colours">
+<section class="sec-tight band-cream" id="colors">
   <div class="wrap">
     <div class="sib-hd">
       <div>
@@ -295,7 +296,7 @@
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark centre">It's better to be lucky</span>
+      <span class="eyebrow on-dark center">It's better to be lucky</span>
       <h2 class="disp d-l">{{closeHeadline}} <span class="foil on-dark">{{closeFoil}}</span></h2>
       <p class="body on-dark">{{closeBody}}</p>
       <div class="close-cta">
@@ -326,15 +327,18 @@
     <span class="eyebrow">Returns and exchanges</span>
     <h2 class="disp d-m" id="md-returns-t">Thirty days, tags on</h2>
     <div class="md-sec">
-      <h3>Apparel is different from clubs</h3>
-      <p>Clubs get sixty days and you can play them. Apparel gets thirty, unworn, in its original packaging with the tags attached. That is the one part of the policy we can't be relaxed about &mdash; a worn polo can't go back on the shelf.</p>
+      <h3>Thirty days, tags on</h3>
+      <p>Apparel comes back within thirty days of delivery, unworn, unwashed and in original condition with all original tags attached.</p>
+      <p>No makeup or deodorant marks, odors, pet hair, stretching or laundering. <b>A return without its tags has $7 deducted from the refund.</b></p>
+      <p>Requests after thirty days are not accepted. Clubs get sixty days; apparel does not.</p>
     </div>
     <div class="md-sec">
       <h3>Wrong size</h3>
-      <p>Exchanges for a different size are the most common reason anything comes back, which is why the size guide above is worth thirty seconds before you order.</p>
-      <p><span class="tbd tbd--light">Needs confirming</span> &mdash; whether exchanges ship free, and who pays return postage.</p>
+      <p>Size is the most common reason anything comes back, which is why the size guide above is worth thirty seconds before you order.</p>
+      <p>Refunds are issued after the item is received and inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
     <div class="md-sec">
+      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="{{link:returns}}">Read the full returns policy</a></p>
     </div>
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>

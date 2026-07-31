@@ -101,27 +101,28 @@ var PLP = {{COLLECTION_JSON}};
           : '<div class="ph"><span class="lbl"><span class="mono k">Photo needed</span>'
             + '<span class="mono">' + esc(p.title) + '</span></span></div>')
       + (out ? '<span class="pt-tag">Sold out</span>' : '')
-      + '</div>'
-      + '<span class="pt-sku">' + esc(p.code) + '</span>'
-      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
-        + esc(p.name) + '</span></a>'
-      + (p.summary ? '<p class="pt-sum">' + esc(p.summary) + '</p>' : '')
-      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span></span>'
-      /* Quick add. A product with exactly one sellable variant can go straight
-         in the bag; anything with a choice to make cannot, so it links to its
-         own page instead of pretending to be one-click. Same rule as the PDP
-         cross-sell tiles. */
+      /* Quick add sits ON the photo, bottom-right, the way Primo does it —
+         under the card it was easy to miss entirely. */
       + '<div class="pt-add">'
       + (out
-          ? '<span class="pt-out">Sold out</span>'
+          ? ''
           : p.addSku
-            ? '<button class="btn btn-ink btn-sm" type="button" data-add'
+            ? '<button class="qadd" type="button" data-add'
               + ' data-sku="' + esc(p.addSku) + '" data-name="' + esc(p.name) + '"'
               + ' data-price="' + esc(p.priceLabel) + '" data-img="' + esc(p.img || '') + '"'
-              + ' data-variant=""><span>Add</span></button>'
-            : '<a class="btn btn-line btn-sm" href="' + esc(p.href) + '"><span>'
-              + esc(p.chooseLabel || 'Choose options') + '</span><span class="ar">&rarr;</span></a>')
+              + ' data-variant=""><svg viewBox="0 0 24 24" aria-hidden="true">'
+              + '<path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/>'
+              + '</svg><span>Quick add</span></button>'
+            : '<a class="qadd" href="' + esc(p.href) + '"><span>'
+              + esc(p.chooseLabel || 'Options') + '</span><span class="ar">&rarr;</span></a>')
       + '</div>'
+      + '</div>'
+      /* Name and price. No SKU stamp and no variant summary — Cole's note 4.
+         A collection card is for recognising a product and its price; the
+         detail belongs on the page it links to. */
+      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
+        + esc(p.name) + '</span></a>'
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span></span>'
       + '</article>';
   }
 

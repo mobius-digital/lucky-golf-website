@@ -40,7 +40,7 @@
         "rows": [
           {"k": "Type",       "v": "Blade putter cover"},
           {"k": "Fits",       "v": "Blade heads, including the Tracer LGP01"},
-          {"k": "Colourway",  "v": "Signature white and gold"},
+          {"k": "Colorway",  "v": "Signature white and gold"},
           {"k": "Closure",    "tbd": true},
           {"k": "Material",   "tbd": true},
           {"k": "Dimensions", "tbd": true}
