@@ -70,6 +70,7 @@ SHELL = """<!DOCTYPE html>
 """
 
 LINK_TOKEN = re.compile(r"\{\{link:([^}]*)\}\}")
+COUNT_TOKEN = re.compile(r"\{\{count:([^}]*)\}\}")
 BARE_HASH = re.compile(r"""href=(["'])#\1""")
 
 
@@ -113,6 +114,23 @@ def resolve_links(text, current_slug, report):
     return LINK_TOKEN.sub(sub, text)
 
 
+def resolve_counts(text):
+    """{{count:hats}} -> the number of products actually in that collection.
+
+    The shared mega menu advertised "13 styles" of hat when the store has ten
+    — three were archived and the hand-typed number stayed behind. Any count
+    quoted in copy comes from products.json now, so it cannot drift again."""
+
+    def sub(m):
+        cid = m.group(1).strip()
+        try:
+            return str(sitemap.collection(cid)["count"])
+        except KeyError:
+            sys.exit("{{count:%s}}: no such collection in products.json" % cid)
+
+    return COUNT_TOKEN.sub(sub, text)
+
+
 def audit_sources():
     """Every internal link must be a token. A literal href="#" is either a
     forgotten link or a control that only looks like one — `{{link:none}}`
@@ -141,9 +159,37 @@ def page_context(slug):
     catalogue changes the page without anyone editing markup."""
     page = sitemap.PAGES[slug]
     ctx = {"TITLE": page.title}
+
     if page.kind == "product":
         prod = sitemap.product(slug.split("/", 1)[1])
         ctx["PRODUCT_JSON"] = json.dumps(prod, ensure_ascii=False, sort_keys=False)
+
+    if page.kind == "collection":
+        coll = sitemap.collection(slug.split("/", 1)[1])
+        # Tiles carry only what the grid renders and sorts on. The href is a
+        # registry token so these links are audited like any other, even
+        # though the tile itself is painted by JS.
+        tiles = []
+        for pid in coll["products"]:
+            p = sitemap.product(pid)
+            tile = {
+                "id": p["id"], "code": p["code"], "name": p["name"],
+                "title": p["title"], "family": p["family"], "img": p["img"],
+                "price": p["price"], "priceLabel": p["priceLabel"],
+                "summary": p["summary"], "inStock": p["inStock"],
+                "href": "{{link:p/%s}}" % p["id"],
+            }
+            if p.get("rating"):
+                tile["rating"] = p["rating"]
+            tiles.append(tile)
+        ctx["COLLECTION_JSON"] = json.dumps(
+            {"id": coll["id"], "name": coll["name"],
+             "facets": coll["facets"], "products": tiles},
+            ensure_ascii=False, sort_keys=False)
+        ctx["COLL_NAME"] = coll["name"]
+        ctx["COLL_EYEBROW"] = coll["eyebrow"]
+        ctx["COLL_LEDE"] = coll["lede"]
+
     return ctx
 
 
@@ -186,6 +232,7 @@ def build(slug, report):
     )
 
     html = apply_context(html, ctx, slug)
+    html = resolve_counts(html)
     html = resolve_links(html, slug, report)
 
     leftover = sorted(set(re.findall(r"\{\{[^}\n]{0,60}\}\}", html)))
@@ -214,6 +261,13 @@ REQUIRED = {
         ".md-panel{",                    # policy modals
         "@media (max-width:760px)",
         'id="pickers"',                  # N-axis buy box mounts here
+    ],
+    "plp": [
+        'id="plp-grid"', 'id="plp-empty"',   # grid and its empty state
+        ".plp-grid{grid-template-columns:repeat(2,1fr);gap:14px}",  # phone grid
+        ".plp-facets:empty{display:none}",   # single-family collections
+        ".chip{",                            # promoted to core; PLP depends on it
+        "@media (max-width:620px)",
     ],
 }
 

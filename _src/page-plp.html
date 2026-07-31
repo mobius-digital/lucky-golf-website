@@ -1,0 +1,88 @@
+<!-- ============ BREADCRUMB ============ -->
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">{{COLL_NAME}}</span></li>
+  </ol>
+</nav>
+
+<!-- ============ COLLECTION HEAD ============
+     Static, not painted by JS: the name, the count and the lede are what a
+     crawler and a no-JS reader need, and they never change with a filter. -->
+<section class="sec-tight plp-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{COLL_EYEBROW}}</p>
+    <h1 class="disp d-xl">{{COLL_NAME}}</h1>
+    <p class="body lead plp-lede">{{COLL_LEDE}}</p>
+  </div>
+</section>
+
+<!-- ============ THE GRID ============
+     .ptile is a cream card, so this section stays white — a cream tile on a
+     cream field has no edge (HANDOFF §9.5). No .msnap either: a snap rail is
+     for a curated row, and a collection you came here to browse wants a real
+     grid on a phone. -->
+<section class="sec plp-body">
+  <div class="wrap">
+
+    <div class="plp-bar">
+      <div class="chips plp-facets" id="plp-facets" role="group" aria-label="Filter by type"></div>
+      <div class="plp-tools">
+        <button class="plp-stock" id="plp-instock" type="button" aria-pressed="false">
+          <span class="bx" aria-hidden="true"></span>In stock only
+        </button>
+        <span class="plp-sort">
+          <label class="mono" for="plp-sort">Sort</label>
+          <select id="plp-sort">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price, low to high</option>
+            <option value="price-desc">Price, high to low</option>
+            <option value="rated">Best reviewed</option>
+            <option value="name">Name, A to Z</option>
+          </select>
+        </span>
+      </div>
+    </div>
+
+    <p class="plp-count" id="plp-count" role="status" aria-live="polite"></p>
+
+    <div class="pgrid plp-grid" id="plp-grid"></div>
+
+    <div class="plp-empty" id="plp-empty" hidden>
+      <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+      <p class="disp d-s">Nothing here matches that</p>
+      <p class="body">Every one of these is either out of stock or a different type. Clear the filters and have another look.</p>
+      <button class="btn btn-line btn-sm" type="button" id="plp-clear"><span>Clear filters</span></button>
+    </div>
+
+  </div>
+</section>
+
+<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
+
+<!-- ============ THE REST OF THE STORE ============
+     Every collection listed statically so the links stay in the registry's
+     audit; page-plp.js drops the one you are already on. -->
+<section class="sec band-cream plp-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">The rest of the store</h2>
+    <div class="plp-sibs" id="plp-sibs">
+      <a class="plp-sib" href="{{link:c/clubs}}"         data-c="clubs">All Clubs</a>
+      <a class="plp-sib" href="{{link:c/wedges}}"        data-c="wedges">Wedges</a>
+      <a class="plp-sib" href="{{link:c/putters}}"       data-c="putters">Putters</a>
+      <a class="plp-sib" href="{{link:c/hybrid-driver}}" data-c="hybrid-driver">Hybrid &amp; Driver</a>
+      <a class="plp-sib" href="{{link:c/polos}}"         data-c="polos">Polos</a>
+      <a class="plp-sib" href="{{link:c/hats}}"          data-c="hats">Hats</a>
+      <a class="plp-sib" href="{{link:c/gear}}"          data-c="gear">Gear</a>
+    </div>
+    <p class="aside plp-aside">Sixty days to decide on any club. If it doesn't earn its place in the bag, send it back.</p>
+  </div>
+</section>
+
+<!-- No closing CTA on a collection page, deliberately. `.close` is an ink
+     field and `.ftr` is ink too, which is the dark-on-dark seam already open
+     against the homepage and the PDP — putting it on seven more pages spreads
+     a known problem. A browse page's job is to get you into a product, not to
+     re-pitch the brand on the way out, so this ends on the cream band. -->

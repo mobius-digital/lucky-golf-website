@@ -842,3 +842,40 @@ button{font:inherit;color:inherit}
   /* .ptile bleeds its photo edge-to-edge, which needs the tile to own its box */
   .msnap > .ptile{height:100%}
 }
+
+/* ==========================================================================
+   CHIP — a pressable option token
+   Started life as the PDP's variant picker; the collection pages use the same
+   control for facet filters, so it lives in core. aria-pressed carries the
+   state, [disabled] means genuinely unavailable and is struck through rather
+   than merely greyed.
+   ========================================================================== */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.88rem;letter-spacing:.02em;color:var(--ink);
+  transition:border-color .18s,background .18s,color .18s}
+.chip:hover:not([disabled]){border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
+/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+.chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-12deg}
+
+/* ==========================================================================
+   BREADCRUMB
+   Every page below the homepage carries one, so it lives in core. The 44px
+   min-height on the links is the tap target; the list is reset because an
+   unstyled <ol> renders as a numbered list in the body font.
+   ========================================================================== */
+.crumb{padding:18px 0 0}
+.crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0;padding:0;list-style:none;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-muted)}
+.crumb li{display:flex;align-items:center;gap:9px}
+.crumb li + li::before{content:'';width:4px;height:4px;background:var(--gold);rotate:45deg;flex:none}
+.crumb a{min-height:44px;display:inline-flex;align-items:center}
+.crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumb [aria-current]{color:var(--ink)}
+

@@ -79,9 +79,14 @@ def _pages():
             kind="product")
 
     # ---- collections (GAMEPLAN phase B) -----------------------------------
+    # One template, one page each. A collection carrying `blocked` is declared
+    # and routed but not built — links to it resolve to "#" like any other
+    # stub, and the reason travels in products.json.
     for coll in COLLECTIONS:
+        live = not coll.get("blocked")
         add("c/" + coll["id"], "10-collection-%s.html" % coll["id"],
-            "%s — Lucky Golf" % coll["name"], kind="collection")
+            "%s — Lucky Golf" % coll["name"],
+            src="plp" if live else None, built=live, kind="collection")
 
     # ---- brand, support, utility (phases E and F) -------------------------
     add("story",    "30-story.html",    "Our Story — Lucky Golf")

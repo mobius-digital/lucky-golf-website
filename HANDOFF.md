@@ -603,17 +603,23 @@ does **not** yet emit 44 HTML files, because the club template cannot render a
 hat. That is Phase C's "prove the three templates", which is where the gameplan
 puts it. Flip `built=True` in the overlay as each one lands.
 
-### 10e. Findings for Cole — new, from the catalogue pull
+### 10e. Catalogue facts — confirmed by Cole, not open questions
 
-Nothing below was changed on a shipped page. These are decisions, not typos.
+These came out of the pull, Cole has confirmed them, and they are recorded
+because the next session needs them — not because anyone is waiting on a
+decision. **Don't re-raise these.**
 
-- **Hats are 10, not 13.** Three are ARCHIVED older versions at $24.95/$29.95.
-  The `hats` collection still counts 13, and the mega menu says **"13 styles"** —
-  that number is wrong on the live homepage.
-- **LGW02 Gold has three lofts (52/56/60), not six.** Any "6 lofts" copy about
-  it is wrong. LGW02 Black has six, right hand only.
-- **LGW02 Black is right-hand only.** The wedges mega-panel aside says "Right
-  and left hand", which is false for one of the three tiles under it.
+- **Hats are 10, polos are 13.** Three hats are ARCHIVED older versions, which
+  is why the `hats` collection still counts 13. Every count quoted in copy is
+  now a `{{count:…}}` token off `products.json` (see §11c), so this cannot
+  drift again.
+- **LGW02 Gold has three lofts (52/56/60), not six. LGW02 Black has six, right
+  hand only.** Any "6 lofts" or "right and left hand" copy written about
+  either one needs checking against the data first. The wedges mega-panel
+  aside currently says "Right and left hand" above all three wedge tiles.
+
+### 10e-2. Still open for Cole
+
 - **Four names are in play for LGW02 Gold**: "Carver Gold" (mega menu),
   "LGW02 Carver Gold" (PDP browse rail), "Carver Gold V2" (PDP cross-sell),
   "Lucky Golf LGW02 Gold" (Shopify). And LGW02 Black is "Carver Black" in the
@@ -649,3 +655,119 @@ node   tools/test-variants.js               # variant engine over all 44 product
 **Adding a page:** declare it in `tools/sitemap.py`, point links at its slug,
 set `built=True` and give it a `src` when the sources exist. Until then every
 link to it resolves to `#` and shows up in the build report.
+
+---
+
+## 11. Phase B — the collection template
+
+Built 2026-07-31. **Seven collection pages from one template.** Sources are
+`_src/page-plp.{html,css,js}`; everything they render comes from the collection
+record `build.py` injects, so adding a product to `products.json` puts it on the
+right page with no edit to the template.
+
+```
+10-collection-clubs.html          8 products · 4 facets · ratings
+10-collection-wedges.html         3
+10-collection-putters.html        3
+10-collection-hybrid-driver.html  2 · 2 facets
+10-collection-polos.html         13 · 2 facets
+10-collection-hats.html          10
+10-collection-gear.html          13 · 4 facets
+```
+
+### 11a. What the page does
+
+- **Facet chips** by family, from `collection.facets`. A facet no member has is
+  dropped in the normaliser rather than rendered as a chip that filters to
+  nothing, and a collection with fewer than two facets renders no filter row at
+  all — `.plp-facets:empty` collapses it so the sort control doesn't float.
+- **In-stock toggle** and **sort** (featured / price ↑ / price ↓ / best reviewed
+  / A–Z). "Best reviewed" is **removed at runtime** where nothing in the
+  collection has a rating, rather than left to sort on a field that is null for
+  every row. Only clubs have Judge.me ratings.
+- **Sold-out products sink to the bottom of every ordering** and grey their
+  photo. They are still shown — a collection that hides them looks thinner than
+  the range actually is — but nothing sold out leads a grid.
+- **Empty state** with a Clear-filters button. It is currently unreachable with
+  live stock, so it was verified against a copy of the built page with every
+  `inStock` flipped false: grid hides, empty shows, Clear restores.
+- **`Lucky Golf Tees` gets a labelled "Photo needed" slot** rather than a broken
+  image, because it is the one product in the store with no photo in Shopify.
+- Tile hrefs are `{{link:p/…}}` tokens even though the tile is painted by JS, so
+  collection links are audited by the registry like any other.
+
+### 11b. Two components had to move to core — and why it matters
+
+**Page stylesheets do not see each other.** `core.css` + `page-NAME.css` is the
+whole cascade for a page, so anything a second page type needs has to be in
+core. Two things were sitting in `page-pdp.css`:
+
+- **`.chip`** — the PDP's variant picker, now also the PLP's facet filter.
+- **`.crumb`** — which the PLP used and therefore rendered as **a numbered list
+  in Archivo with 40px of browser-default padding**. It looked deliberate
+  enough in a screenshot to miss; the sweep caught it as a 18.5px tap target.
+
+Both are now in `core.css` under their own banners. `.mtile .chip` in core is
+dead CSS (no markup uses it), so promoting `.chip` changed nothing there.
+
+**The rule going forward: before styling a new page type, check whether the
+class you are reusing is in `core.css` or in the other page's stylesheet.**
+This is the same trap as HANDOFF §9's "check class names against core.css
+before inventing one", from the other direction.
+
+### 11c. Counts come from data now — `{{count:…}}`
+
+`{{count:hats}}` resolves to that collection's real product count at build time.
+The mega menu and the homepage collection tiles both used to hard-code "13
+styles" for hats, which stopped being true when three were archived. Four
+places now read from `products.json`. A count naming a collection that doesn't
+exist fails the build.
+
+### 11d. No closing CTA on a collection page, deliberately
+
+`.close` is an ink field and `.ftr` is ink too — that is the dark-on-dark seam
+already open against the homepage and the PDP, and putting it on seven more
+pages spreads a known problem. A browse page's job is to get you into a
+product, not to re-pitch the brand on the way out, so the PLP ends on the cream
+"rest of the store" band. **If the `.close`/`.ftr` seam gets fixed, reconsider.**
+
+### 11e. Sale is declared but NOT built — this needs Cole
+
+`c/sale` is routed and stubbed. Its nine Shopify members are six grips plus
+three ARCHIVED hats, and **not one carries a real `compareAtPrice`** — every
+value is `null` or `"0.00"`. The only product in the store with a genuine
+was-price is `stock-putter-grips` ($19.95 from $30.00), and it is **not in the
+collection**. Building the page today would put six full-price grips under a
+heading that says Sale.
+
+The membership and the reason are recorded in `products.json`; the page builds
+the moment `blocked` comes off the collection in `normalize-products.py`.
+
+### 11f. Verified
+
+Fresh loads at 1440 and 390, contrast composited through rgba ancestors:
+
+| | 1440 | 390 |
+|---|---|---|
+| Contrast failures | 0 | 0 |
+| Overflow | none | none, `scrollWidth` exactly 390 |
+| Grid | 4-up | 2-up, toolbar stacks |
+
+Filters, sort, in-stock, clear and the empty state were all driven through the
+DOM and checked against expected counts. The PDP was re-checked after the CSS
+promotions: chips still 48px/2px/Archivo, crumb still Space Mono flex, buy box
+still opens on `LGW01-56-RH` in stock.
+
+**Known and NOT fixed:** footer links are 16px tall, well under the 44px tap
+target. This is pre-existing on the homepage and the PDP, not introduced here,
+and fixing it changes footer spacing on every page — so it is Cole's call.
+
+### 11g. Build commands, current
+
+```bash
+python tools/normalize-products.py   # Shopify raw -> products.json
+python tools/build.py                # 9 pages
+python tools/build.py --check        # diff against disk
+python tools/build.py --links        # the registry: 62 declared, 9 built
+node   tools/test-variants.js        # variant engine over all 44 products
+```

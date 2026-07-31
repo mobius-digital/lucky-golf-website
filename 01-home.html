@@ -853,6 +853,42 @@ button{font:inherit;color:inherit}
   .msnap > .ptile{height:100%}
 }
 
+/* ==========================================================================
+   CHIP — a pressable option token
+   Started life as the PDP's variant picker; the collection pages use the same
+   control for facet filters, so it lives in core. aria-pressed carries the
+   state, [disabled] means genuinely unavailable and is struck through rather
+   than merely greyed.
+   ========================================================================== */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;min-height:48px;padding:12px 20px;cursor:pointer;
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.88rem;letter-spacing:.02em;color:var(--ink);
+  transition:border-color .18s,background .18s,color .18s}
+.chip:hover:not([disabled]){border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
+/* struck through rather than merely greyed — LH 50 and LH 60 are genuinely out */
+.chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-12deg}
+
+/* ==========================================================================
+   BREADCRUMB
+   Every page below the homepage carries one, so it lives in core. The 44px
+   min-height on the links is the tap target; the list is reset because an
+   unstyled <ol> renders as a numbered list in the body font.
+   ========================================================================== */
+.crumb{padding:18px 0 0}
+.crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0;padding:0;list-style:none;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-muted)}
+.crumb li{display:flex;align-items:center;gap:9px}
+.crumb li + li::before{content:'';width:4px;height:4px;background:var(--gold);rotate:45deg;flex:none}
+.crumb a{min-height:44px;display:inline-flex;align-items:center}
+.crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumb [aria-current]{color:var(--ink)}
+
 /* DEAD as of 2026-07-31: .fam, .gear and .revs are defined below but appear
    in no markup on either page — leftovers from an earlier revision. Left in
    place rather than removed blind; verify and delete in a cleanup pass. */
@@ -1257,9 +1293,9 @@ button{font:inherit;color:inherit}
         <div class="mega" id="mega-apparel">
           <div class="mega-in">
             <div class="mega-wrap"><div class="mega-grid">
-          <a class="mtile" href="#"><span class="mt-nm">Polos</span><span class="mt-sub">13 styles &middot; four-way stretch, UPF 50+</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Hats</span><span class="mt-sub">13 styles &middot; five-panel snapbacks</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347" alt="" width="344" height="344" decoding="async"></a>
-          <a class="mtile" href="#"><span class="mt-nm">Gear</span><span class="mt-sub">Head covers, gloves, grips</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="10-collection-polos.html"><span class="mt-nm">Polos</span><span class="mt-sub">13 styles &middot; four-way stretch, UPF 50+</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="10-collection-hats.html"><span class="mt-nm">Hats</span><span class="mt-sub">10 styles &middot; five-panel snapbacks</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347" alt="" width="344" height="344" decoding="async"></a>
+          <a class="mtile" href="10-collection-gear.html"><span class="mt-nm">Gear</span><span class="mt-sub">Head covers, gloves, grips</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
               <p class="aside">Apparel and gear return within 30 days, unworn with tags on.</p>
@@ -1330,7 +1366,7 @@ button{font:inherit;color:inherit}
         <span class="eyebrow">Wedges &middot; Putters &middot; Hybrid</span>
         <h2 class="disp d-l">Every club we <span class="foil">make</span></h2>
       </div>
-      <a href="#" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
+      <a href="10-collection-clubs.html" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
     </div>
 
     <div class="pgrid msnap">
@@ -1948,7 +1984,7 @@ button{font:inherit;color:inherit}
         <span class="gtile-scrim" aria-hidden="true"></span>
         <div class="gtile-in">
           <span class="gtile-ct">13 styles</span>
-          <h3 class="gtile-nm"><a class="stretch" href="#">Polos</a></h3>
+          <h3 class="gtile-nm"><a class="stretch" href="10-collection-polos.html">Polos</a></h3>
           <p class="gtile-ln">Four-way stretch and UPF 50+, cut to sit right mid-swing and still look like something after the round.</p>
           <span class="btn btn-line-cream btn-sm"><span>Shop polos</span><span class="ar">&rarr;</span></span>
         </div>
@@ -1959,8 +1995,8 @@ button{font:inherit;color:inherit}
         </div>
         <span class="gtile-scrim" aria-hidden="true"></span>
         <div class="gtile-in">
-          <span class="gtile-ct">13 styles</span>
-          <h3 class="gtile-nm"><a class="stretch" href="#">Hats</a></h3>
+          <span class="gtile-ct">10 styles</span>
+          <h3 class="gtile-nm"><a class="stretch" href="10-collection-hats.html">Hats</a></h3>
           <p class="gtile-ln">Snapbacks that hold their shape through a wet round and a hot car.</p>
           <span class="btn btn-line-cream btn-sm"><span>Shop hats</span><span class="ar">&rarr;</span></span>
         </div>
@@ -1972,7 +2008,7 @@ button{font:inherit;color:inherit}
         <span class="gtile-scrim" aria-hidden="true"></span>
         <div class="gtile-in">
           <span class="gtile-ct">Covers &middot; gloves &middot; grips</span>
-          <h3 class="gtile-nm"><a class="stretch" href="#">Gear</a></h3>
+          <h3 class="gtile-nm"><a class="stretch" href="10-collection-gear.html">Gear</a></h3>
           <p class="gtile-ln">The parts of the bag nobody photographs and everybody notices.</p>
           <span class="btn btn-line-cream btn-sm"><span>Shop gear</span><span class="ar">&rarr;</span></span>
         </div>
@@ -1981,7 +2017,7 @@ button{font:inherit;color:inherit}
 
     <div class="gear-foot rv">
       <p class="body" style="max-width:52ch;font-size:.98rem">Apparel and gear return within 30 days, unworn with tags on.</p>
-      <a href="#" class="btn btn-line btn-sm"><span>Shop apparel &amp; gear</span><span class="ar">→</span></a>
+      <a href="10-collection-gear.html" class="btn btn-line btn-sm"><span>Shop apparel &amp; gear</span><span class="ar">→</span></a>
     </div>
   </div>
 </section>
@@ -2035,9 +2071,9 @@ button{font:inherit;color:inherit}
       <div>
         <h3>Apparel</h3>
         <ul>
-          <li><a href="#">The Classic Polo</a></li>
-          <li><a href="#">The Blade Polo</a></li>
-          <li><a href="#">Hats</a></li>
+          <li><a href="10-collection-polos.html">The Classic Polo</a></li>
+          <li><a href="10-collection-polos.html">The Blade Polo</a></li>
+          <li><a href="10-collection-hats.html">Hats</a></li>
         </ul>
       </div>
       <div>

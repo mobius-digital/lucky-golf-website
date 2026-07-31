@@ -39,6 +39,7 @@ check by hand), gradients, decorative SVG.
 | PDP — LGW01 Carver Gold | Done, 4 revisions. The club template. |
 | Build system | `_src/` + `tools/build.py`, smoke-tested |
 | **Phase A** | **Done 2026-07-31 — see HANDOFF §10** |
+| **Phase B — collection pages** | **Done 2026-07-31 — 7 of 8 built, see HANDOFF §11** |
 | Everything else | Not started |
 
 **The store: 44 sellable products**, counted from the catalogue pull, not
@@ -55,10 +56,10 @@ estimated. Full data in `_src/data/products.json`.
 | Hats | **10** | none | $29 |
 | Gear | **13** | mixed | $9.95–40 |
 
-Corrections from the pull: **hats are 10, not 13** — three are archived, and
-the mega menu's "13 styles" is wrong on the live homepage. Gear is 13, not ~11.
-Ignore `Free Returns + Package Protection` — it is a checkout app product, not a
-page. More findings in HANDOFF §10e.
+Corrections from the pull: hats are 10 (three are archived) and gear is 13, not
+~11. Both counts are now `{{count:…}}` tokens off the data wherever they appear
+in copy, so they cannot drift again. Ignore `Free Returns + Package
+Protection` — it is a checkout app product, not a page.
 
 ---
 
@@ -165,24 +166,34 @@ four are already linked in the footer and all four currently go nowhere.
 
 **Phase A — routing and data. DONE 2026-07-31.** Link registry in
 `tools/sitemap.py`, N-axis buy box in `_src/variants.js`, product data layer in
-`_src/data/`. 62 pages declared, 2 built, 86 links stubbed and counted. The
-build now fails on a dangling link, a literal `href="#"`, or an unresolved
-token — each verified by breaking it. **HANDOFF §10 is the record.**
+`_src/data/`. 62 pages declared, and the build now fails on a dangling link, a
+literal `href="#"`, or an unresolved token — each verified by breaking it.
+**HANDOFF §10 is the record.**
 
 Carried into Phase C: §2b's "emit a page per product" has its data layer and
 emitter wiring, but `build.py` does not yet write 44 HTML files, because the
 club template cannot render a hat. That is Phase C's job anyway.
 
-**Phase B — PLP.** Unlocks the mega menu and every product link. Needs filter,
-sort and an empty state. Cheap now that tiles exist. Eight collections are
-already declared and routed (`c/clubs c/wedges c/putters c/hybrid-driver
-c/polos c/hats c/gear c/sale`) with their membership computed in
-`products.json` — **except Sale**, whose 9 members were not pulled. Pull that
-first.
+**Phase B — PLP. DONE 2026-07-31.** One template, `_src/page-plp.*`, and seven
+built collection pages with facet filters, sort, an in-stock toggle and an
+empty state. **Sale is the eighth and is deliberately not built** — nothing in
+that collection carries a `compareAtPrice`, so the page would show six
+full-price grips under a Sale heading. HANDOFF §11e has the detail; it builds
+the moment the collection is priced.
 
-**Phase C — prove the three templates.** One putter (1 axis + a different
+Also landed here: `.chip` and `.crumb` moved to `core.css` (page stylesheets
+don't see each other, and the PLP breadcrumb was rendering as a numbered list),
+and `{{count:…}}` so product counts in copy come from the data.
+
+**Phase C — prove the three templates. NEXT.** One putter (1 axis + a different
 help-me-choose), one polo (siblings + size guide), one head cover (short form).
 If the templates flex here, the remaining 40 pages are data entry.
+
+The club template is already parameterised — `PD` comes from `products.json`
+and the buy box handles 0, 1 and 2 axes — so the putter is mostly editorial:
+the help-me-choose module swaps to blade-or-mallet and the spec table loses its
+loft column. Note **LGP01 Tracer Blade is sold out**, so the putter that proves
+the template should probably be LGP02.
 
 **Phase D — generate the rest.** All 45 PDPs from data.
 
@@ -218,10 +229,11 @@ From HANDOFF, still needing Cole:
 ## 7. Starting the next chat
 
 > Continuing Lucky Golf. Read `GAMEPLAN.md` then `HANDOFF.md` in
-> `C:\Users\wetzl\Lucky Golf\Website`. Homepage, the LGW01 PDP and Phase A
-> (routing, N-axis buy box, product data) are done — HANDOFF §10 has the
-> details. Start Phase B: the collection/PLP template over the eight declared
-> collections. Pull the Sale collection's membership from Shopify first.
+> `C:\Users\wetzl\Lucky Golf\Website`. Homepage, the LGW01 PDP, Phase A
+> (routing, N-axis buy box, product data) and Phase B (seven collection pages)
+> are done — HANDOFF §10 and §11 have the details. Start Phase C: prove the
+> three PDP templates on one putter (LGP02 — LGP01 is sold out), one polo and
+> one head cover.
 
-Then Phase C — one putter, one polo, one head cover — to prove the three
-templates before generating the remaining forty PDPs.
+Then Phase D generates the remaining forty PDPs from `products.json`, which is
+data entry once the templates flex.

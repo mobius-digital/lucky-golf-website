@@ -212,17 +212,106 @@ EDITORIAL = {
 }
 
 # Our collections. `shopify` is the real handle where one exists; Gear and the
-# two roll-ups have none, which is HANDOFF 7b item E.
+# three roll-ups have none, which is HANDOFF 7b item E.
+#
+# Membership is computed from `fams` — the family assignments above are the
+# single source of truth, so a product cannot be in a collection and missing
+# from the store's own grouping. `members` overrides that for collections whose
+# contents are curated rather than structural (Sale).
+#
+# `facets` are the filter chips on the PLP: family keys the visitor can narrow
+# by. Omitted where there is only one family and a filter row would be noise.
 COLLECTIONS = [
-    dict(id="clubs",         name="All Clubs",       shopify="lucky-golf-clubs",      fams=["wedge", "putter", "hybrid", "driver"]),
-    dict(id="wedges",        name="Wedges",          shopify=None,                    fams=["wedge"]),
-    dict(id="putters",       name="Putters",         shopify=None,                    fams=["putter"]),
-    dict(id="hybrid-driver", name="Hybrid & Driver", shopify=None,                    fams=["hybrid", "driver"]),
-    dict(id="polos",         name="Polos",           shopify="polos",                 fams=["polo-classic", "polo-blade"]),
-    dict(id="hats",          name="Hats",            shopify="hats",                  fams=["hat"]),
-    dict(id="gear",          name="Gear",            shopify=None,                    fams=["headcover", "glove", "grip", "tee"]),
-    dict(id="sale",          name="Sale",            shopify="summer-warehouse-sale", fams=[]),
+    dict(id="clubs", name="All Clubs", shopify="lucky-golf-clubs",
+         fams=["wedge", "putter", "hybrid", "driver"],
+         facets=[("wedge", "Wedges"), ("putter", "Putters"),
+                 ("hybrid", "Hybrid"), ("driver", "Driver")],
+         eyebrow="The full bag",
+         lede="Wedges, putters, a hybrid and a driver. The same standard the big "
+              "names charge triple for, without the sponsorships and the middlemen "
+              "in the price."),
+    dict(id="wedges", name="Wedges", shopify=None, fams=["wedge"],
+         eyebrow="The scoring clubs",
+         lede="The clubs you use most and think about least. Pick the loft you keep "
+              "missing and the finish you want to look down at."),
+    dict(id="putters", name="Putters", shopify=None, fams=["putter"],
+         eyebrow="On the green",
+         lede="Blade or mallet, depending on whether your stroke runs straight or "
+              "arcs. Either way the ball comes off the face quietly and starts on "
+              "the line you picked."),
+    dict(id="hybrid-driver", name="Hybrid & Driver", shopify=None,
+         fams=["hybrid", "driver"],
+         facets=[("driver", "Driver"), ("hybrid", "Hybrid")],
+         eyebrow="The long shots",
+         lede="One to get the ball in play off the tee, one for when the green is "
+              "still a long way off and the lie isn't helping."),
+    dict(id="polos", name="Polos", shopify="polos",
+         fams=["polo-classic", "polo-blade"],
+         facets=[("polo-classic", "Classic collar"), ("polo-blade", "Blade collar")],
+         eyebrow="On the course, and after",
+         lede="Cut to play in and comfortable enough to keep on afterwards. Thirteen "
+              "patterns, and none of them shout."),
+    dict(id="hats", name="Hats", shopify="hats", fams=["hat"],
+         eyebrow="Five-panel, snapback",
+         lede="Ten of them, in the colours we actually wear. Pick the one that goes "
+              "with the rest of what you own."),
+    dict(id="gear", name="Gear", shopify=None,
+         fams=["headcover", "glove", "grip", "tee"],
+         facets=[("headcover", "Head covers"), ("grip", "Grips"),
+                 ("glove", "Gloves"), ("tee", "Tees")],
+         eyebrow="The rest of it",
+         lede="Covers, grips, gloves and tees. The small things that wear out first "
+              "and get replaced last."),
+
+    # Sale is DECLARED BUT NOT BUILT, deliberately. Its nine Shopify members are
+    # six grips plus three ARCHIVED hats, and not one of them carries a real
+    # compareAtPrice — every value is null or "0.00". The only product in the
+    # store with a genuine was-price is stock-putter-grips ($19.95 from $30.00),
+    # and that one is NOT in the collection. Building the page today would put
+    # six full-price grips under a heading that says Sale.
+    dict(id="sale", name="Sale", shopify="summer-warehouse-sale", fams=[],
+         members=["grip-clover-white", "grip-clover-green", "grip-clover-blue",
+                  "grip-clover-black", "grip-clover-pink", "grip-putter-green"],
+         eyebrow="Marked down",
+         lede="",
+         blocked="No product in this collection has a compareAtPrice, so there is "
+                 "no discount to show. Needs Cole: either price the collection or "
+                 "drop Sale from the nav."),
 ]
+
+
+def live_values(options, variants, i):
+    """The values on axis i that some sellable variant actually reaches. A
+    collection tile promising "6 lofts" when two are dead is a small lie that
+    the visitor discovers one click later."""
+    out = []
+    for v in options[i]["values"]:
+        for k, var in variants.items():
+            if var["avail"] and k.split("|")[i] == v["k"]:
+                out.append(v)
+                break
+    return out
+
+
+def axis_summary(options, variants):
+    """One short line per axis for the collection tile — what you get to pick.
+    Counting is right for lofts (nobody reads six numbers on a tile), naming is
+    right for hands and grip sizes, and a range is right for clothing sizes."""
+    parts = []
+    for i, opt in enumerate(options):
+        live = live_values(options, variants, i)
+        if not live:
+            continue
+        labels = [v["label"] for v in live]
+        if opt["key"] == "hand":
+            parts.append("Right & left hand" if len(labels) > 1 else labels[0] + " only")
+        elif opt["key"] == "loft":
+            parts.append("%d loft%s" % (len(labels), "" if len(labels) == 1 else "s"))
+        elif opt["key"] == "size" and len(labels) > 2:
+            parts.append("%s–%s" % (labels[0], labels[-1]))
+        else:
+            parts.append(", ".join(labels))
+    return " · ".join(parts)
 
 
 def money(s):
@@ -300,6 +389,7 @@ def build_product(raw):
         "options": options,
         "variants": variants,
         "default": default,
+        "summary": axis_summary(options, variants),
         "inStock": bool(live),
         "built": bool(ed.get("built")),
     }
@@ -331,10 +421,26 @@ def main():
         if p["collection"] not in known:
             sys.exit("%s: unknown collection %r" % (p["id"], p["collection"]))
 
+    by_id = {p["id"]: p for p in products}
     colls = []
     for c in COLLECTIONS:
-        members = [p["id"] for p in products if p["family"] in c["fams"]]
-        colls.append(dict(c, products=members, count=len(members)))
+        members = c.get("members")
+        if members is None:
+            members = [p["id"] for p in products if p["family"] in c["fams"]]
+        else:
+            unknown = [m for m in members if m not in by_id]
+            if unknown:
+                sys.exit("collection %s lists unknown products: %s"
+                         % (c["id"], ", ".join(unknown)))
+        rec = dict(c, products=members, count=len(members))
+        rec.pop("members", None)
+
+        # Facets that no member actually has would render as chips that filter
+        # to nothing, so drop them here rather than in the page.
+        present = {by_id[m]["family"] for m in members}
+        rec["facets"] = [{"k": k, "label": lab}
+                         for k, lab in c.get("facets", []) if k in present]
+        colls.append(rec)
 
     doc = {
         "_": "GENERATED by tools/normalize-products.py — do not hand-edit.",

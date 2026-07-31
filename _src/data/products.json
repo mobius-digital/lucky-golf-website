@@ -13,6 +13,26 @@
     "hybrid",
     "driver"
    ],
+   "facets": [
+    {
+     "k": "wedge",
+     "label": "Wedges"
+    },
+    {
+     "k": "putter",
+     "label": "Putters"
+    },
+    {
+     "k": "hybrid",
+     "label": "Hybrid"
+    },
+    {
+     "k": "driver",
+     "label": "Driver"
+    }
+   ],
+   "eyebrow": "The full bag",
+   "lede": "Wedges, putters, a hybrid and a driver. The same standard the big names charge triple for, without the sponsorships and the middlemen in the price.",
    "products": [
     "lgw01-gold",
     "lgw02-gold",
@@ -32,12 +52,15 @@
    "fams": [
     "wedge"
    ],
+   "eyebrow": "The scoring clubs",
+   "lede": "The clubs you use most and think about least. Pick the loft you keep missing and the finish you want to look down at.",
    "products": [
     "lgw01-gold",
     "lgw02-gold",
     "lgw02-black"
    ],
-   "count": 3
+   "count": 3,
+   "facets": []
   },
   {
    "id": "putters",
@@ -46,12 +69,15 @@
    "fams": [
     "putter"
    ],
+   "eyebrow": "On the green",
+   "lede": "Blade or mallet, depending on whether your stroke runs straight or arcs. Either way the ball comes off the face quietly and starts on the line you picked.",
    "products": [
     "lgp01-gold",
     "lgp02-gold",
     "lgp02-patriot"
    ],
-   "count": 3
+   "count": 3,
+   "facets": []
   },
   {
    "id": "hybrid-driver",
@@ -61,6 +87,18 @@
     "hybrid",
     "driver"
    ],
+   "facets": [
+    {
+     "k": "driver",
+     "label": "Driver"
+    },
+    {
+     "k": "hybrid",
+     "label": "Hybrid"
+    }
+   ],
+   "eyebrow": "The long shots",
+   "lede": "One to get the ball in play off the tee, one for when the green is still a long way off and the lie isn't helping.",
    "products": [
     "lgh01",
     "lgd01"
@@ -75,6 +113,18 @@
     "polo-classic",
     "polo-blade"
    ],
+   "facets": [
+    {
+     "k": "polo-classic",
+     "label": "Classic collar"
+    },
+    {
+     "k": "polo-blade",
+     "label": "Blade collar"
+    }
+   ],
+   "eyebrow": "On the course, and after",
+   "lede": "Cut to play in and comfortable enough to keep on afterwards. Thirteen patterns, and none of them shout.",
    "products": [
     "polo-gold-dust",
     "polo-shadow",
@@ -99,6 +149,8 @@
    "fams": [
     "hat"
    ],
+   "eyebrow": "Five-panel, snapback",
+   "lede": "Ten of them, in the colours we actually wear. Pick the one that goes with the rest of what you own.",
    "products": [
     "hat-white-gold-classic",
     "hat-white-ibtbl",
@@ -111,7 +163,8 @@
     "hat-white-cursive",
     "hat-baby-blue-cursive"
    ],
-   "count": 10
+   "count": 10,
+   "facets": []
   },
   {
    "id": "gear",
@@ -123,6 +176,26 @@
     "grip",
     "tee"
    ],
+   "facets": [
+    {
+     "k": "headcover",
+     "label": "Head covers"
+    },
+    {
+     "k": "grip",
+     "label": "Grips"
+    },
+    {
+     "k": "glove",
+     "label": "Gloves"
+    },
+    {
+     "k": "tee",
+     "label": "Tees"
+    }
+   ],
+   "eyebrow": "The rest of it",
+   "lede": "Covers, grips, gloves and tees. The small things that wear out first and get replaced last.",
    "products": [
     "cover-blade",
     "cover-driver",
@@ -145,8 +218,19 @@
    "name": "Sale",
    "shopify": "summer-warehouse-sale",
    "fams": [],
-   "products": [],
-   "count": 0
+   "eyebrow": "Marked down",
+   "lede": "",
+   "blocked": "No product in this collection has a compareAtPrice, so there is no discount to show. Needs Cole: either price the collection or drop Sale from the nav.",
+   "products": [
+    "grip-clover-white",
+    "grip-clover-green",
+    "grip-clover-blue",
+    "grip-clover-black",
+    "grip-clover-pink",
+    "grip-putter-green"
+   ],
+   "count": 6,
+   "facets": []
   }
  ],
  "products": [
@@ -293,6 +377,7 @@
     }
    },
    "default": "RH|56",
+   "summary": "Right & left hand · 6 lofts",
    "inStock": true,
    "built": true,
    "file": "02-pdp-lgw01.html",
@@ -393,6 +478,7 @@
     }
    },
    "default": "RH|52",
+   "summary": "Right & left hand · 3 lofts",
    "inStock": true,
    "built": false,
    "rating": {
@@ -503,6 +589,7 @@
     }
    },
    "default": "RH|50",
+   "summary": "Right hand only · 6 lofts",
    "inStock": true,
    "built": false,
    "note": "RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — false for this one. Also called 'Carver Shadow' in the PDP's browse rail; see HANDOFF 9 open item C, naming is Cole's call."
@@ -543,6 +630,7 @@
     }
    },
    "default": "RH",
+   "summary": "",
    "inStock": false,
    "built": false,
    "rating": {
@@ -598,6 +686,7 @@
     }
    },
    "default": "RH",
+   "summary": "Right & left hand",
    "inStock": true,
    "built": false,
    "rating": {
@@ -641,6 +730,7 @@
     }
    },
    "default": "RH",
+   "summary": "",
    "inStock": false,
    "built": false,
    "note": "Sold out. A colourway of LGP02, not a separate model — the apparel template's sibling strip is the right pattern here, on a club page."
@@ -692,6 +782,7 @@
     }
    },
    "default": "RH",
+   "summary": "Right & left hand",
    "inStock": true,
    "built": false,
    "rating": {
@@ -723,6 +814,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false,
    "rating": {
@@ -822,6 +914,7 @@
     }
    },
    "default": "S",
+   "summary": "S–XXL",
    "inStock": true,
    "built": false
   },
@@ -916,6 +1009,7 @@
     }
    },
    "default": "S",
+   "summary": "S–XL",
    "inStock": true,
    "built": false
   },
@@ -1010,6 +1104,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1104,6 +1199,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1198,6 +1294,7 @@
     }
    },
    "default": "S",
+   "summary": "S–L",
    "inStock": true,
    "built": false
   },
@@ -1292,6 +1389,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1386,6 +1484,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1480,6 +1579,7 @@
     }
    },
    "default": "S",
+   "summary": "S–XXL",
    "inStock": true,
    "built": false
   },
@@ -1574,6 +1674,7 @@
     }
    },
    "default": "S",
+   "summary": "S, M",
    "inStock": true,
    "built": false
   },
@@ -1668,6 +1769,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1762,6 +1864,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1856,6 +1959,7 @@
     }
    },
    "default": "S",
+   "summary": "S–3XL",
    "inStock": true,
    "built": false
   },
@@ -1950,6 +2054,7 @@
     }
    },
    "default": "S",
+   "summary": "S–XL",
    "inStock": true,
    "built": false
   },
@@ -1977,6 +2082,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2004,6 +2110,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2031,6 +2138,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2058,6 +2166,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2085,6 +2194,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2112,6 +2222,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": false,
    "built": false,
    "note": "Sold out."
@@ -2140,6 +2251,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2167,6 +2279,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false,
    "note": "ASSET BROKEN: 59.webp has inverted lettering (HANDOFF 6). Needs a reshoot before this page ships."
@@ -2195,6 +2308,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2222,6 +2336,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2249,6 +2364,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2276,6 +2392,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2326,6 +2443,7 @@
     }
    },
    "default": "RH",
+   "summary": "Right & left hand",
    "inStock": true,
    "built": false
   },
@@ -2438,6 +2556,7 @@
     }
    },
    "default": "LH|S",
+   "summary": "Left hand only · S, M",
    "inStock": true,
    "built": false,
    "note": "Two axes on a $17.95 item — Hand x Size. Only the two left-hand small/medium variants are sellable, and both are oversold. Nearly every chip renders dead."
@@ -2511,6 +2630,7 @@
     }
    },
    "default": "STD",
+   "summary": "Standard",
    "inStock": true,
    "built": false
   },
@@ -2572,6 +2692,7 @@
     }
    },
    "default": "STD",
+   "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
    "built": false
   },
@@ -2633,6 +2754,7 @@
     }
    },
    "default": "STD",
+   "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
    "built": false
   },
@@ -2694,6 +2816,7 @@
     }
    },
    "default": "STD",
+   "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
    "built": false
   },
@@ -2733,6 +2856,7 @@
     }
    },
    "default": "LDY",
+   "summary": "Lady",
    "inStock": true,
    "built": false,
    "note": "Lady size only — a one-value axis, which should render as a stated fact, not a picker."
@@ -2806,6 +2930,7 @@
     }
    },
    "default": "1.0",
+   "summary": "",
    "inStock": false,
    "built": false,
    "note": "Entirely sold out."
@@ -2879,6 +3004,7 @@
     }
    },
    "default": "1.0",
+   "summary": "",
    "inStock": false,
    "built": false,
    "note": "Entirely sold out."
@@ -2907,6 +3033,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false
   },
@@ -2934,6 +3061,7 @@
     }
    },
    "default": "",
+   "summary": "",
    "inStock": true,
    "built": false,
    "note": "NO IMAGE IN SHOPIFY. featuredMedia is null — the only product in the store with no photo at all."
