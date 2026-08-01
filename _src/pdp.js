@@ -17,7 +17,13 @@ var PD = {{PRODUCT_JSON}};
 var PD_AXIS_UI = {
   hand:     {val: true},
   loft:     {help: {href: '#loft', text: 'Not sure? →'}},
-  size:     {help: {href: '#size', text: 'Size guide →'}},
+  /* the combined Loft & grind axis — 50K, 52K, 52S. The help link goes to
+     the grind explainer, because the grind is the half of this choice
+     nobody arrives knowing. */
+  loftgrind:{help: {href: '#grinds', text: 'Which grind? →'}},
+  /* the size guide is a MODAL now, not a section on the page (Cole
+     2026-07-31), so this opens it rather than jumping down the page */
+  size:     {help: {md: 'md-size', text: 'Size guide →'}},
   gripsize: {val: true}
 };
 
@@ -145,7 +151,13 @@ var PD_KIT = [
     for (i = 0; i < AXES.length; i++){
       var ax = AXES[i], ui = PD_AXIS_UI[ax.key] || {};
       out += '<div class="opt"><div class="opt-hd"><span class="lbl">' + esc(ax.name) + '</span>';
-      if (ui.help) out += '<a class="help" href="' + esc(ui.help.href) + '">' + esc(ui.help.text) + '</a>';
+      /* {{link:none}} rather than a literal hash: a modal trigger is a real
+         anchor that genuinely goes nowhere, and saying so out loud is what
+         keeps a bare hash a build error everywhere else (HANDOFF §10a). */
+      if (ui.help) out += ui.help.md
+        ? '<a class="help" href="{{link:none}}" data-md-open="' + esc(ui.help.md) + '">'
+          + esc(ui.help.text) + '</a>'
+        : '<a class="help" href="' + esc(ui.help.href) + '">' + esc(ui.help.text) + '</a>';
       else if (ui.val) out += '<span class="val">' + esc(labelOf(i)) + '</span>';
       out += '</div><div class="chips" role="group" aria-label="' + esc(ax.name) + '">';
       for (n = 0; n < ax.values.length; n++){
@@ -156,12 +168,11 @@ var PD_KIT = [
           + ' data-axis="' + i + '" data-val="' + esc(v.k) + '">' + esc(v.label) + '</button>';
       }
       out += '</div>';
-      /* the SKU hangs off the last axis, the way it did when Loft was last */
-      if (i === AXES.length - 1) out += '<p class="opt-note" id="v-sku"></p>';
+      /* No SKU printed here. Cole 2026-07-31: no SKU is shown anywhere on a
+         PDP. It is still carried on every variant for the cart, and it is
+         still never synthesised — it just does not render. */
       out += '</div>';
     }
-    /* no axes at all: still show the SKU, just with nothing to choose */
-    if (!AXES.length) out = '<p class="opt-note" id="v-sku"></p>';
     host.innerHTML = out;
   }
 
@@ -171,7 +182,6 @@ var PD_KIT = [
     var variantLabel = labels.join(' · ');
     var money = '$' + v.price;
 
-    if ($('#v-sku')) $('#v-sku').textContent = v.sku;
     if ($('#bx-amt')) $('#bx-amt').textContent = money;
     if ($('#atc-bar-v')) $('#atc-bar-v').textContent = variantLabel || PD.title;
 

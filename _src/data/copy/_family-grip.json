@@ -1,34 +1,33 @@
 {
-  "_": "Shared editorial for grip. Merged UNDER each product's own file.",
-  "_specs": "Shopify has no descriptions for gear and the reference guide does not cover it. Materials, closures and dimensions are marked as needing spec on every page.",
-  "galleryTag": "",
-  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
-  "priceNote": "",
-  "reviewHeadline": "Reviews",
-  "chooseCta": "Add it",
-  "eyebrow": "Grips &middot; Gear",
-  "bagHeadline": "Grips wear out. These don't cost much.",
-  "bag": [
-    {
-      "id": "grip-clover-blue",
-      "name": "Clover Grips, blue",
-      "code": "GRP",
-      "meta": "Standard–Jumbo",
-      "hook": "Same grip, different color. Standard, midsize and jumbo."
-    },
-    {
-      "id": "grip-putter-stock",
-      "name": "Stock Putter Grip",
-      "code": "GRP",
-      "meta": "One size",
-      "hook": "The plain putter grip, for when the oversized one is too much."
-    },
-    {
-      "id": "lgw01-gold",
-      "name": "Carver Gold",
-      "code": "LGW01",
-      "meta": "4.81 &#9733; 551",
-      "hook": "The wedge most people add first. Six lofts, all the same feel."
-    }
-  ]
+ "_": "Shared editorial for grip. Merged UNDER each product's own file.",
+ "_specs": "Shopify has no descriptions for gear and the reference guide does not cover it. Materials, closures and dimensions are marked as needing spec on every page.",
+ "galleryTag": "",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+ "priceNote": "",
+ "reviewHeadline": "Reviews",
+ "chooseCta": "Add it",
+ "eyebrow": "Grips &middot; Gear",
+ "bagHeadline": "Grips wear out. These don't cost much.",
+ "bag": [
+  {
+   "id": "grip-clover-blue",
+   "name": "Clover Grips, blue",
+   "code": "GRP",
+   "meta": "Standard–Jumbo",
+   "hook": "Same grip, different color. Standard, midsize and jumbo."
+  },
+  {
+   "id": "grip-putter-stock",
+   "name": "Stock Putter Grip",
+   "code": "GRP",
+   "meta": "One size",
+   "hook": "The plain putter grip, for when the oversized one is too much."
+  },
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The wedge most people add first. Six lofts, all the same feel."
+  }
+ ]
 }

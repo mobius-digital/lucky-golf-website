@@ -1,0 +1,127 @@
+{
+ "_": "Editorial for the All Clubs collection page. Catalogue facts (price, stock, photo, name) come from products.json — nothing here retypes one.",
+ "_facts": "Every spec sentence below is from Product Reference Guide v1.8. No comparison table on this page: a wedge measured against a putter is meaningless, so the mixed collection gets the family router instead.",
+ "_price": "Deliberately no price-justification paragraph anywhere on this page. Cole cut that from all four club PDPs (HANDOFF §13, note 3) and the homepage's Why Lucky owns the price objection.",
+ "bands": [
+  {
+   "label": "Wedges",
+   "lede": "One wedge, the 01, in gold or black &mdash; the grind is an option on it. The true 02 is coming.",
+   "ids": [
+    "lgw01-gold",
+    "lgw01-black"
+   ]
+  },
+  {
+   "label": "Putters",
+   "lede": "A blade and a mallet, both milled from a single block of stainless. Same loft, same lie, same length.",
+   "ids": [
+    "lgp01-gold",
+    "lgp02-gold"
+   ]
+  },
+  {
+   "label": "Hybrid",
+   "lede": "One club. Titanium head, nineteen degrees, stiff graphite.",
+   "ids": [
+    "lgh01"
+   ]
+  }
+ ],
+ "tags": {
+  "lgw01-gold": "Gold",
+  "lgw01-black": "Black",
+  "lgp01-gold": "Blade",
+  "lgp02-gold": "Mallet",
+  "lgh01": "19&deg; titanium"
+ },
+ "router": {
+  "eyebrow": "Start here",
+  "headline": "Three questions, and one of them is yours.",
+  "sub": "Five clubs, and they answer completely different problems. Pick the part of the round that keeps costing you shots.",
+  "cards": [
+   {
+    "q": "Inside a hundred yards",
+    "name": "Wedges",
+    "body": "One wedge in two finishes, with six lofts and two sole grinds to pick between. The question is which gap you keep leaving yourself.",
+    "to": "wedges",
+    "cta": "See the 01"
+   },
+   {
+    "q": "On the green",
+    "name": "Putters",
+    "body": "A blade and a mallet, identical everywhere a spec sheet can measure. The head is the only thing you are actually choosing between.",
+    "to": "putters",
+    "cta": "Blade or mallet"
+   },
+   {
+    "q": "Still a long way out",
+    "name": "Hybrid",
+    "body": "Nineteen degrees of titanium for the shot where the green is out of reach and the lie is not doing you any favors.",
+    "to": "hybrid",
+    "cta": "See the Stryker"
+   }
+  ]
+ },
+ "fitting": {
+  "eyebrow": "Not sure",
+  "headline": "Tell us what keeps going wrong.",
+  "body": "The finder on the homepage walks the same three questions in about a minute, and it is built around the shot you are trying to fix rather than the club you think you want. If it doesn't settle it, a person will.",
+  "ctaFinder": "Use the club finder",
+  "ctaAsk": "Ask a person",
+  "aside": "Sixty days on any club. Returns need approval and a photo before you send anything back."
+ },
+ "story": {
+  "eyebrow": "Why these",
+  "headline": "Built to be played, not admired in a bag.",
+  "rows": [
+   {
+    "photo": "Landscape 4:3. Golfer mid-swing on course with a Lucky wedge, late low sun raking across the head so the gold reads as metal rather than paint. Real course, real turf, no studio.",
+    "rowHeadline": "The finish is the first thing anyone mentions",
+    "paras": [
+     "Read enough of the reviews and a pattern shows up before anyone gets to distance or spin: playing partners ask about the club. That is not an accident — the gold is a real finish on a forged head, not a coating over a stock casting.",
+     "It is also the part that has to survive. The face is CNC-milled and sandblasted, and the head is 1020 forged carbon steel, which is soft enough to feel and soft enough to mark. Clubs that get used look like clubs that get used."
+    ]
+   },
+   {
+    "photo": "Landscape 4:3. Close crop of a used Lucky wedge face on a turf mat — grooves clean, a season of honest wear. Shot from above at a shallow angle.",
+    "rowHeadline": "Sixty days to find out",
+    "flip": true,
+    "paras": [
+     "Every club has a sixty-day window. Putters can go on the green during it, and they come back if they still look new — no face marks, no sole wear, no bag chatter. Wedges get one club out of the wrapper, tested on a turf mat, grooves unworn. Hybrids come back unused.",
+     "Club returns need approval and a photo before anything ships, and return shipping is on you. That is the whole policy, written down here rather than three clicks away, because finding it at the wrong moment is worse than reading it now."
+    ]
+   }
+  ]
+ },
+ "quote": {
+  "id": "lgw01-gold",
+  "n": "Paul F.",
+  "q": "The new Lucky wedges look and feel great and strike pure! I always play better when I feel Lucky!"
+ },
+ "upsell": [
+  {
+   "sku": "HeadCover-Blade-SignatureWhite",
+   "name": "Lucky Blade Cover",
+   "price": "$29.95",
+   "variant": "",
+   "why": "No Lucky club ships with a cover. This is the blade one.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
+  },
+  {
+   "sku": "GRP-BLK-STD",
+   "name": "Clover Grips, black",
+   "price": "$9.95",
+   "variant": "Standard",
+   "why": "Grips wear out years before the club does.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0848.jpg?v=1701474078"
+  },
+  {
+   "sku": "HeadCover-Mallet-SignatureWhite-RH",
+   "name": "Lucky Mallet Cover",
+   "price": "$29.95",
+   "variant": "Right hand",
+   "why": "The mallet needs the bigger one.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851"
+  }
+ ]
+}

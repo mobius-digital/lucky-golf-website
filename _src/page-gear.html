@@ -83,7 +83,16 @@
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
 
-    <p class="bx-links"><a href="{{link:none}}" data-md-open="md-returns">Returns</a></p>
+    <div class="acc">
+      <div class="acc-i">
+        <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
+        <div class="acc-bd" id="a2" hidden>
+          <p>Free shipping inside the US. Orders leave the warehouse in one to two business days.</p>
+          <p>Gear comes back within thirty days, unused. Anything showing wear is not eligible, and a defective item is replaced or refunded after inspection.</p>
+          <p class="acc-link"><a href="{{link:none}}" data-md-open="md-returns">Read the full returns policy</a></p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -162,7 +171,6 @@
       <article class="ptile">
         <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800">
           {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}</div>
-        <span class="pt-sku">{{code}}</span>
         <a class="pt-nm stretch" href="{{href}}">{{name}}</a>
         <p class="pt-hook">{{hook}}</p>
         <div class="pt-meta"><span class="pt-pr">{{priceLabel}}</span><span class="pt-rt">{{meta}}</span></div>

@@ -1,165 +1,124 @@
 {
-  "_": "Shared editorial for the three Blade Polos. Merged UNDER each polo's own file.",
-  "_specs": "Fabric, fit, weight, features and care are verbatim from the copy skill's Product Reference Guide (The Blade Polo) — identical to the Classic. The collar is the difference. Body measurements are not published and are not invented.",
-  "_voice": "The reference guide is explicit that apparel does NOT get the clubs' value-comparison framing. No middlemen-and-markups argument on any polo page.",
-  "eyebrow": "The Blade &middot; Polos",
-  "galleryTag": "",
-  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
-  "pieceEyebrow": "The polo",
-  "priceNote": "One price, every size",
-  "four": [
-    {
-      "k": "Blade collar",
-      "v": "No buttons, no placket"
-    },
-    {
-      "k": "88/12",
-      "v": "Poly-spandex, four-way stretch"
-    },
-    {
-      "k": "UPF 50+",
-      "v": "Moisture-wicking, odor-resistant"
-    },
-    {
-      "k": "Sub-180gsm",
-      "v": "Light enough for a hot round"
-    }
-  ],
-  "fabric": [
-    {
-      "k": "Collar",
-      "v": "Blade. No buttons, no placket."
-    },
-    {
-      "k": "Fabric",
-      "v": "88/12 poly-spandex."
-    },
-    {
-      "k": "Weight",
-      "v": "Sub-180gsm &mdash; light, not flimsy."
-    },
-    {
-      "k": "Stretch",
-      "v": "Four-way, so it moves in every direction the swing does."
-    },
-    {
-      "k": "Finish",
-      "v": "Moisture-wicking, odor-resistant, color-retentive."
-    },
-    {
-      "k": "UPF",
-      "v": "50+."
-    },
-    {
-      "k": "Care",
-      "v": "Machine wash. No special handling."
-    }
-  ],
-  "marquee": [
-    "Four-way stretch",
-    "UPF 50+",
-    "Machine wash",
-    "Thirty-day returns, unworn with tags",
-    "Free US shipping",
-    "It's better to be lucky"
-  ],
-  "sizeHeadline": "Get the size right the first time",
-  "sizeSub": "The Blade runs tailored athletic, the same cut as the Classic. Without a placket the neck sits flatter, which reads slightly closer at the shoulders even though the body is identical. Between sizes, take the larger one.",
-  "sizeCols": [
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL",
-    "3XL"
-  ],
-  "sizeRows": [
-    {
-      "k": "Chest (in)",
-      "cells": [
-        "—",
-        "—",
-        "—",
-        "—",
-        "—",
-        "—"
-      ]
-    },
-    {
-      "k": "Body length (in)",
-      "cells": [
-        "—",
-        "—",
-        "—",
-        "—",
-        "—",
-        "—"
-      ]
-    },
-    {
-      "k": "Sleeve (in)",
-      "cells": [
-        "—",
-        "—",
-        "—",
-        "—",
-        "—",
-        "—"
-      ]
-    }
-  ],
-  "sizeNote": "The measurements above are not published anywhere we can verify, so they are left visibly empty rather than guessed at. They are the single most useful thing that could be added to these pages — wrong size is the most common reason apparel is returned, and a table of dashes does not prevent that.",
-  "fitTitle": "How it fits",
-  "fitParas": [
-    "Tailored athletic, and the same block as the Classic — if you know your size in one, it is your size in the other.",
-    "The blade collar has no buttons and no placket, so the neckline lies flat instead of gapping. It reads a little more fitted at the shoulders for that reason alone; the body has not changed.",
-    "Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on."
-  ],
-  "reviewHeadline": "Reviews",
-  "sibEyebrow": "The other blades",
-  "sibHeadline": "Two more, same collar",
-  "chooseCta": "Pick a size",
-  "closeHeadline": "Go look like you",
-  "closeFoil": "mean it",
-  "closeBody": "$67 in every size, four-way stretch, UPF 50+. Thirty days to send it back unworn if the fit isn't right.",
-  "closeTrust": [
-    "30-day apparel returns",
-    "Free US shipping",
-    "UPF 50+",
-    "Machine wash"
-  ],
-  "bagHeadline": "The rest of the look",
-  "bag": [
-    {
-      "id": "hat-black-ibtbl",
-      "name": "It's Better To Be Lucky Hat",
-      "code": "HAT",
-      "meta": "Five-panel",
-      "hook": "Black snapback, the line on the front. Goes with everything in the range."
-    },
-    {
-      "id": "polo-contour",
-      "name": "Contour Classic Polo",
-      "code": "LGA-CP",
-      "meta": "S–3XL",
-      "hook": "If you want a collar with buttons, this is the same shirt with one."
-    },
-    {
-      "id": "lgw01-gold",
-      "name": "Carver Gold",
-      "code": "LGW01",
-      "meta": "4.81 &#9733; 551",
-      "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."
-    }
-  ],
-  "upsell": [
-    {
-      "sku": "HAT-5P-SB-IBTBL-BL",
-      "name": "It's Better To Be Lucky Hat",
-      "price": "$29",
-      "variant": "",
-      "why": "Five-panel snapback. Finishes the look.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347"
-    }
-  ]
+ "_": "Shared editorial for the three Blade Polos. Merged UNDER each polo's own file.",
+ "_specs": "Fabric, fit, weight, features and care are verbatim from the copy skill's Product Reference Guide (The Blade Polo) — identical to the Classic. The collar is the difference. Body measurements are not published and are not invented.",
+ "_voice": "The reference guide is explicit that apparel does NOT get the clubs' value-comparison framing. No middlemen-and-markups argument on any polo page.",
+ "eyebrow": "The Blade &middot; Polos",
+ "galleryTag": "",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+ "pieceEyebrow": "The polo",
+ "priceNote": "One price, every size",
+ "four": [
+  {
+   "k": "Blade collar",
+   "v": "No buttons, no placket"
+  },
+  {
+   "k": "88/12",
+   "v": "Poly-spandex, four-way stretch"
+  },
+  {
+   "k": "UPF 50+",
+   "v": "Moisture-wicking, odor-resistant"
+  },
+  {
+   "k": "Sub-180gsm",
+   "v": "Light enough for a hot round"
+  }
+ ],
+ "fabric": [
+  {
+   "k": "Collar",
+   "v": "Blade. No buttons, no placket."
+  },
+  {
+   "k": "Fabric",
+   "v": "88/12 poly-spandex."
+  },
+  {
+   "k": "Weight",
+   "v": "Sub-180gsm &mdash; light, not flimsy."
+  },
+  {
+   "k": "Stretch",
+   "v": "Four-way, so it moves in every direction the swing does."
+  },
+  {
+   "k": "Finish",
+   "v": "Moisture-wicking, odor-resistant, color-retentive."
+  },
+  {
+   "k": "UPF",
+   "v": "50+."
+  },
+  {
+   "k": "Care",
+   "v": "Machine wash. No special handling."
+  }
+ ],
+ "marquee": [
+  "Four-way stretch",
+  "UPF 50+",
+  "Machine wash",
+  "Thirty-day returns, unworn with tags",
+  "Free US shipping",
+  "It's better to be lucky"
+ ],
+ "fitTitle": "How it fits",
+ "fitParas": [
+  "Tailored athletic, and the same block as the Classic — if you know your size in one, it is your size in the other.",
+  "The blade collar has no buttons and no placket, so the neckline lies flat instead of gapping. It reads a little more fitted at the shoulders for that reason alone; the body has not changed.",
+  "Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on."
+ ],
+ "reviewHeadline": "Reviews",
+ "sibEyebrow": "The other blades",
+ "sibHeadline": "Two more, same collar",
+ "chooseCta": "Pick a size",
+ "closeHeadline": "Go look like you",
+ "closeFoil": "mean it",
+ "closeBody": "$67 in every size, four-way stretch, UPF 50+. Thirty days to send it back unworn if the fit isn't right.",
+ "closeTrust": [
+  "30-day apparel returns",
+  "Free US shipping",
+  "UPF 50+",
+  "Machine wash"
+ ],
+ "bagHeadline": "The rest of the look",
+ "bag": [
+  {
+   "id": "hat-black-ibtbl",
+   "name": "It's Better To Be Lucky Hat",
+   "code": "HAT",
+   "meta": "Five-panel",
+   "hook": "Black snapback, the line on the front. Goes with everything in the range."
+  },
+  {
+   "id": "polo-contour",
+   "name": "Contour Classic Polo",
+   "code": "LGA-CP",
+   "meta": "S–3XL",
+   "hook": "If you want a collar with buttons, this is the same shirt with one."
+  },
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."
+  }
+ ],
+ "upsell": [
+  {
+   "sku": "HAT-5P-SB-IBTBL-BL",
+   "name": "It's Better To Be Lucky Hat",
+   "price": "$29",
+   "variant": "",
+   "why": "Five-panel snapback. Finishes the look.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347"
+  }
+ ],
+ "_piece": "Cole 2026-07-31: ONE section that works for any design. Every colorway used to carry its own bespoke headline and two paragraphs, which is 22 pages of copy saying the same thing 22 ways. What differs between designs is the photograph, not the garment. Anything genuinely specific to one design goes in that product's own file and overrides these keys.",
+ "pieceHeadline": "A sharper collar, and the same shirt underneath.",
+ "pieceParas": [
+  "The Blade swaps the traditional collar for a blade collar, which sits flatter and holds its shape without a placket fighting it. Everything below the neck is the Classic: tailored athletic through the body, 88/12 poly-spandex, four-way stretch.",
+  "UPF 50+, moisture-wicking, wrinkle-resistant. It reads a little more modern than the Classic and it wears exactly the same, so the choice is the collar and the print &mdash; nothing else changes."
+ ]
 }

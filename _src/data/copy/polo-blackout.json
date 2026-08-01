@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-blackout. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-blade.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "StrokePlay1.webp?v=1779472570",
-      "Blackout Blade Polo, front"
-    ]
-  ],
-  "buyBody": "All black, blade collar, no buttons. The plainest shirt in the range and the one most likely to be worn twice a week.",
-  "pieceHeadline": "Quieter than it sounds",
-  "pieceParas": [
-    "Black, with the stroke-play pattern worked in dark enough that you only find it in direct light. Nothing at the neck, nothing on the chest.",
-    "It is the default. If you own one Lucky shirt and you want it to disappear into everything else you own, this is that shirt."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body. Raking side light is mandatory — the pattern is tonal and in flat light this photographs as a plain black shirt, which undersells it. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-blackout. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-blade.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "StrokePlay1.webp?v=1779472570",
+   "Blackout Blade Polo, front"
+  ]
+ ],
+ "buyBody": "All black, blade collar, no buttons. The plainest shirt in the range and the one most likely to be worn twice a week.",
+ "lifestyleBrief": "Portrait 4:5, on body. Raking side light is mandatory — the pattern is tonal and in flat light this photographs as a plain black shirt, which undersells it. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

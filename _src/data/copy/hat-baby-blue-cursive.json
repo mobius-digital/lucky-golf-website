@@ -1,18 +1,13 @@
 {
-  "_": "Editorial for hat-baby-blue-cursive. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-hat.json.",
-  "_specs": "Nothing about construction is published for the hats. The family file marks fabric and care as needing spec; nothing is invented here.",
-  "eyebrow": "Cursive &middot; Hats",
-  "gallery": [
-    [
-      "30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347",
-      "Baby blue monochrome Cursive Lucky hat, front"
-    ]
-  ],
-  "buyBody": "Script in baby blue, tonal on tonal. The quietest hat we make — the lettering is the same color as the panel and you only find it up close.",
-  "pieceHeadline": "Monochrome, so you have to be close to read it",
-  "pieceParas": [
-    "The script is stitched in the same blue as the panel. From any distance it is just a blue hat; from conversational range it is a Lucky one. That restraint is deliberate and it is the reason this is the one that sells fastest.",
-    "It is also the only color in the range that is not black, white, cream or tan, which makes it the easiest one to wear with everything else being loud."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body, close crop. Tonal stitching needs raking side light or it disappears entirely — this is the hardest hat in the range to photograph and the brief should say so. There is no on-body hat photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for hat-baby-blue-cursive. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-hat.json.",
+ "_specs": "Nothing about construction is published for the hats. The family file marks fabric and care as needing spec; nothing is invented here.",
+ "eyebrow": "Cursive &middot; Hats",
+ "gallery": [
+  [
+   "30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347",
+   "Baby blue monochrome Cursive Lucky hat, front"
+  ]
+ ],
+ "buyBody": "Script in baby blue, tonal on tonal. The quietest hat we make — the lettering is the same color as the panel and you only find it up close.",
+ "lifestyleBrief": "Portrait 4:5, on body, close crop. Tonal stitching needs raking side light or it disappears entirely — this is the hardest hat in the range to photograph and the brief should say so. There is no on-body hat photography at all yet (HANDOFF §7b F)."
 }

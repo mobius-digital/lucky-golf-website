@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-swirl. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-blade.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "GoldTwist1.webp?v=1779472637",
-      "Swirl Blade Polo, front"
-    ]
-  ],
-  "buyBody": "A gold twist running through the shirt, on the blade collar. No buttons, no placket, nothing at the neck to sit crooked.",
-  "pieceHeadline": "The gold one, without the collar buttons",
-  "pieceParas": [
-    "A twisting gold pattern across the body, on the collar that has no buttons to do up and no placket to gap. It is the most modern-looking thing in the range and the one that reads least like traditional golf kit.",
-    "If you like the Gold Dust but not the placket, this is the shirt."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body. The blade collar is half the product — the crop has to include the neckline, and it has to be lit so the absence of a placket is obvious. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-swirl. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-blade.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "GoldTwist1.webp?v=1779472637",
+   "Swirl Blade Polo, front"
+  ]
+ ],
+ "buyBody": "A gold twist running through the shirt, on the blade collar. No buttons, no placket, nothing at the neck to sit crooked.",
+ "lifestyleBrief": "Portrait 4:5, on body. The blade collar is half the product — the crop has to include the neckline, and it has to be lit so the absence of a placket is obvious. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

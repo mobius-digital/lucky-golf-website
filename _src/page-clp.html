@@ -1,0 +1,279 @@
+<!-- ==========================================================================
+     CLUB COLLECTION  ·  clubs · wedges · putters · hybrid
+     Takomo's Iron Sets page is the reference (HANDOFF §19a): products grouped
+     into labelled bands rather than one flat grid, a character chip on every
+     card, a "what's the difference" comparison with segmented spec bars, a
+     fitting CTA, then brand copy. Ours ended at the grid.
+
+     The grid is rendered here, server-side, not painted by JS the way the PLP
+     does it — a club collection has no facets and no sort, so there is nothing
+     for a script to repaint, and a Shopify developer gets markup that maps
+     onto a Liquid {% for %} directly.
+
+     Every template token on this page is filled from
+     _src/data/copy/_collection-<id>.json by build.py's collection_copy().
+     ========================================================================== -->
+
+<!-- ============ BREADCRUMB ============ -->
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">{{COLL_NAME}}</span></li>
+  </ol>
+</nav>
+
+<!-- ============ COLLECTION HEAD ============ -->
+<section class="sec-tight clp-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{COLL_EYEBROW}}</p>
+    <h1 class="disp d-xl">{{COLL_NAME}}</h1>
+    <p class="body lead clp-lede">{{COLL_LEDE}}</p>
+    <p class="clp-count">{{COLL_COUNT}}{{#compare}} &middot; <a href="#difference">What&rsquo;s the difference?</a>{{/compare}}{{#router}} &middot; <a href="#start-here">Not sure where to start?</a>{{/router}}</p>
+  </div>
+</section>
+
+<!-- ============ THE BANDS ============
+     One row per band, each with its own heading and a line saying who the band
+     is for. This is the whole point of the redesign: three wedges under one
+     "Wedges" heading tell you nothing, and three wedges split by grind tell you
+     which one to look at first.
+
+     build.py fails if a product in the collection is not in exactly one band,
+     so adding a club to products.json cannot quietly leave it off the page. -->
+<section class="sec clp-bands">
+  <div class="wrap">
+{{#bands}}    <div class="clp-band">
+      <div class="clp-band-hd">
+        <h2 class="disp d-s">{{label}}</h2>
+        {{#lede}}<p class="clp-band-lede">{{lede}}</p>{{/lede}}
+      </div>
+      <div class="pgrid clp-grid">
+{{#tiles}}        <article class="ptile rv"{{#soldOut}} data-out{{/soldOut}}>
+          <div class="pt-ph">
+            <img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800" decoding="async">
+            {{#soldOut}}<span class="pt-tag">Sold out</span>{{/soldOut}}
+            <!-- Quick add. Zero axes and one sellable variant -> a plain
+                 [data-add] that drops the real SKU in the bag. Anything with a
+                 choice opens the in-card picker via [data-qa] instead of
+                 linking to the product page (Cole, 2026-07-31 — that is what
+                 Primo's does). Sold out gets no control at all. -->
+            {{^soldOut}}<div class="pt-add">
+              {{#addSku}}<button class="qadd" type="button" data-add data-sku="{{addSku}}" data-name="{{name}}" data-price="{{priceLabel}}" data-img="{{img}}" data-variant=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg><span>Quick add</span></button>{{/addSku}}
+              {{#chooseLabel}}<button class="qadd" type="button" data-qa="{{id}}" aria-haspopup="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg><span>Quick add</span></button>{{/chooseLabel}}
+            </div>{{/soldOut}}
+          </div>
+          <a class="stretch" href="{{href}}"><span class="pt-nm">{{name}}</span></a>
+          <span class="pt-meta"><span class="pt-pr">{{priceLabel}}</span></span>
+          <!-- Takomo's device: a short word naming the character of the club,
+               under the price rather than on the photo. Not the same thing as
+               .pt-tag, which is foil, sits on the image and is reserved for
+               genuine news (HANDOFF §9). -->
+          {{#tag}}<span class="clp-tag">{{tag}}</span>{{/tag}}
+        </article>
+{{/tiles}}      </div>
+    </div>
+{{/bands}}
+<!-- ============ WHAT'S COMING ============
+     A band with no products in it, for a club that is not in Shopify yet. It
+     carries the .soon marker rather than the dashed .tbd chip — "this is
+     coming" and "we have not published this number" are different statements
+     and must not look alike (§9). No price, no buy button, no date: none of
+     those exist yet, and inventing one here is exactly what this site does not
+     do. Set `coming` to false in the collection copy file to pull the whole
+     block, which is the switch if pre-announcing starts costing sales of the
+     clubs that ARE for sale. -->
+{{#coming}}    <div class="clp-band clp-next">
+      <div class="clp-band-hd">
+        <h2 class="disp d-s">{{label}}<span class="soon">{{soon}}</span></h2>
+        {{#lede}}<p class="clp-band-lede">{{lede}}</p>{{/lede}}
+      </div>
+      <div class="clp-next-in">
+        <div class="clp-next-copy">
+          <h3 class="disp d-m">{{headline}}</h3>
+{{#paras}}          <p class="body">{{.}}</p>
+{{/paras}}        </div>
+        <ul class="clp-next-pts">
+{{#points}}          <li><span class="k">{{k}}</span><span class="v">{{v}}</span></li>
+{{/points}}        </ul>
+      </div>
+      <p class="aside clp-next-note">{{note}}</p>
+    </div>
+{{/coming}}  </div>
+</section>
+
+{{#router}}
+<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
+
+<!-- ============ START HERE — All Clubs only ============
+     A wedge-against-a-putter spec comparison would be meaningless, so the
+     mixed collection gets the decision instead of the table: the question each
+     family answers, and a way into the page that does compare like for like. -->
+<section class="sec band-cream clp-router" id="start-here">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l clp-h2">{{headline}}</h2>
+    <p class="body" style="margin-top:18px">{{sub}}</p>
+    <div class="clp-router-grid msnap">
+{{#cards}}      <a class="clp-route" href="{{href}}">
+        <span class="q">{{q}}</span>
+        <span class="nm disp d-s">{{name}}</span>
+        <span class="bd">{{body}}</span>
+        <span class="go">{{cta}} <span class="ar">&rarr;</span></span>
+      </a>
+{{/cards}}    </div>
+  </div>
+</section>
+{{/router}}
+
+{{#compare}}
+<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
+
+<!-- ============ WHAT'S THE DIFFERENCE ============
+     The single biggest thing this page lacked (HANDOFF §19a.3). Photo, name,
+     price, segmented spec bars, then a key/value list.
+
+     EVERY BAR IS A REAL PUBLISHED NUMBER and prints that number beside it.
+     There is no forgiveness bar and no workability bar, because nobody has
+     measured one for these clubs — the same rule that puts "Needs spec" in the
+     spec tables instead of a plausible figure. If you add a bar, add the
+     source with it. -->
+<section class="sec band-cream clp-cmp" id="difference">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l clp-h2">{{headline}}</h2>
+    <p class="body" style="margin-top:18px">{{sub}}</p>
+
+    <div class="clp-cmp-grid msnap">
+{{#items}}      <article class="clp-cmp-i{{#coming}} clp-cmp-i--next{{/coming}}">
+        {{^coming}}
+        <a class="clp-cmp-ph" href="{{href}}">
+          <img src="{{img}}" alt="{{name}}" loading="lazy" width="800" height="800" decoding="async">
+        </a>
+        <a class="clp-cmp-nm" href="{{href}}">{{name}}</a>
+        <span class="clp-cmp-for">{{forWho}}</span>
+        <span class="clp-cmp-pr">{{priceLabel}}{{#soldOut}} <em>&middot; sold out</em>{{/soldOut}}</span>
+
+        <div class="clp-bars">
+{{#bars}}          <div class="clp-bar">
+            <span class="k">{{label}}</span>
+            <span class="v">{{display}}</span>
+            <span class="clp-seg" aria-hidden="true">{{#segs}}<i{{#on}} data-on{{/on}}></i>{{/segs}}</span>
+          </div>
+{{/bars}}        </div>
+        {{/coming}}
+
+        <!-- the 02 column: no photograph, no price, no buy link, because none
+             of those exist. The .soon marker says which state this is — it is
+             deliberately not the dashed .tbd chip (§9). -->
+        {{#coming}}
+        <div class="clp-cmp-ph clp-cmp-ph--next">
+          <div class="ph"><span class="lbl">
+            <span class="mono k">Photo needed</span>
+            <span class="mono">{{photo}}</span>
+          </span></div>
+        </div>
+        <span class="clp-cmp-nm clp-cmp-nm--next">{{name}}<span class="soon">{{soon}}</span></span>
+        <span class="clp-cmp-for">{{forWho}}</span>
+        <span class="clp-cmp-pr"><em>Not priced yet</em></span>
+        {{/coming}}
+
+        <dl class="clp-facts">
+{{#facts}}          <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/facts}}        </dl>
+
+        {{^coming}}<a class="btn btn-line btn-sm clp-cmp-cta" href="{{href}}"><span>{{cta}}</span><span class="ar">&rarr;</span></a>{{/coming}}
+        {{#coming}}<p class="clp-cmp-note">{{note}}</p>{{/coming}}
+      </article>
+{{/items}}    </div>
+
+    <div class="clp-scales">
+{{#scaleNotes}}      <p class="clp-scale-note">{{.}}</p>
+{{/scaleNotes}}      <p class="clp-scale-note">Every figure above is from the manufacturer spec sheet. Nothing on this page is a rating we invented.</p>
+    </div>
+  </div>
+</section>
+{{/compare}}
+
+<!-- ============ NEED HELP PICKING ============
+     Takomo runs a colored button here. Ours gets the brand field instead —
+     this is where green lands on a collection page, which is the whole reason
+     the header/marquee/band spine exists (HANDOFF §1). -->
+{{#fitting}}
+<section class="clp-fit">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap clp-fit-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="clp-fit-cta">
+      <a class="btn btn-foil sweep" href="{{link:home#finder}}"><span>{{ctaFinder}}</span><span class="ar">&rarr;</span></a>
+      <a class="btn btn-line-cream" href="{{link:contact}}"><span>{{ctaAsk}}</span></a>
+    </div>
+    <p class="aside clp-fit-aside">{{aside}}</p>
+  </div>
+</section>
+{{/fitting}}
+
+<!-- ============ THE STORY ============
+     Takomo runs a full-bleed photo band and three alternating image/text rows.
+     Ours runs two rows, because every image on this site is a written brief
+     until the photography exists (HANDOFF §18b) and four dashed boxes in a row
+     read as an unfinished page rather than an honest one. -->
+{{#story}}
+<section class="sec clp-story">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l clp-h2">{{headline}}</h2>
+{{#rows}}    <div class="clp-row{{#flip}} clp-row--flip{{/flip}}">
+      <div class="clp-row-ph">
+        <div class="ph">
+          <span class="lbl">
+            <span class="mono k">Photo needed</span>
+            <span class="mono">{{photo}}</span>
+          </span>
+        </div>
+      </div>
+      <div class="clp-row-copy">
+        <h3 class="disp d-m">{{rowHeadline}}</h3>
+{{#paras}}        <p class="body">{{.}}</p>
+{{/paras}}      </div>
+    </div>
+{{/rows}}  </div>
+</section>
+{{/story}}
+
+<!-- ============ ONE REAL REVIEW ============
+     Takomo puts a testimonial over a dark course photo. We do not have the
+     photo, but we do have the reviews, so this is ink and type — and the club
+     it is actually about is named and linked, because a quote floating free of
+     its product reads as invented even when it is verbatim. -->
+{{#quote}}
+<section class="clp-quote band-ink">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap clp-quote-in">
+    <span class="stars" aria-label="5 out of 5">
+      <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
+    </span>
+    <blockquote class="disp d-m clp-q">&ldquo;{{q}}&rdquo;</blockquote>
+    <p class="clp-q-by"><span class="mono">{{n}}</span> <span class="mono clp-q-v">Verified buyer</span></p>
+    <p class="clp-q-on">on the <a href="{{href}}">{{product}}</a></p>
+  </div>
+</section>
+{{/quote}}
+
+<!-- ============ THE REST OF THE STORE ============ -->
+<section class="sec band-cream plp-more clp-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">The rest of the store</h2>
+    <div class="plp-sibs">
+{{#siblings}}      <a class="plp-sib" href="{{href}}">{{name}}</a>
+{{/siblings}}    </div>
+    <p class="aside plp-aside">Sixty days to decide on any club. Club returns need approval and a photo first, and the club has to come back unmarked.</p>
+  </div>
+</section>
+
+<!-- No closing CTA here either, same reason as the PLP (HANDOFF §11d): .close
+     is ink and .ftr is ink, and that seam is a known open problem. The page
+     already gets its brand moment from .clp-fit. -->

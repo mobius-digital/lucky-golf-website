@@ -34,16 +34,6 @@
    Size is the decision on this template, and the wrong one is the single
    biggest reason apparel comes back.
    ========================================================================== */
-.sz{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-  gap:clamp(26px,3.4vw,54px);align-items:start}
-.sz-tbl-wrap{overflow-x:auto}
-.sz-tbl{min-width:460px}
-.sz-tbl thead th{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-muted);text-align:center;padding:10px 8px}
-.sz-tbl tbody td{text-align:center;font-variant-numeric:tabular-nums}
-.sz-note h3{margin:0 0 14px}
-.sz-note .body{margin:0 0 14px;max-width:none}
-.sz-note .body:last-child{margin-bottom:0}
 
 /* the lifestyle slot is portrait, not 16:9 — a body in a polo is a tall crop */
 .ph--tall{aspect-ratio:4/5}
@@ -56,30 +46,58 @@
 }
 @media (max-width:980px){
   .sibs{grid-template-columns:repeat(4,1fr)}
-  .sz{grid-template-columns:1fr}
 }
 @media (max-width:620px){
   .sibs{grid-template-columns:repeat(3,1fr);gap:10px}
   .sib-nm{font-size:.74rem}
 }
 
-/* ==========================================================================
-   COLOURWAY SWATCHES  ·  Cole's note 6
-   Colorways are separate Shopify products, so this is a row of links rather
-   than a variant axis. It sits above the size picker because it is the first
-   decision, and because having to go back to the collection to see another
-   color is what makes a thirteen-product range feel like one product.
-   ========================================================================== */
-.sw-row{display:flex;flex-wrap:wrap;gap:8px}
-.sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
-  background:var(--cream);border:2px solid var(--ink-14);border-radius:var(--r);
-  transition:border-color .18s,transform .2s}
-.sw img{width:100%;height:100%;object-fit:cover;display:block}
-.sw:hover{border-color:var(--ink);transform:translateY(-2px)}
-.sw--on{border-color:var(--gold);cursor:default}
-.sw--on:hover{transform:none}
-.sw--out img{filter:grayscale(1);opacity:.45}
-/* a struck-through swatch, matching how a dead variant chip reads */
-.sw--out::after{content:'';position:absolute;left:10%;right:10%;top:50%;height:2px;
-  background:var(--ink-14);rotate:-24deg}
+/* Swatches moved to pdp.css — the club template needs them too now that
+   finish is a swatch row (gold / black). See the note there. */
 
+
+
+/* ==========================================================================
+   SIZE GUIDE — inside the modal, not a section on the page (Cole 2026-07-31)
+   ========================================================================== */
+.sg-intro{margin:6px 0 0;font-size:.98rem;line-height:1.6;color:var(--ink-70)}
+.sg-units{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:20px 0 18px}
+.sg-units-lbl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.9rem;margin-right:4px}
+.sg-unit{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:8px 4px;
+  background:none;border:0;cursor:pointer;color:var(--ink);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.9rem}
+.sg-unit .dot{width:17px;height:17px;flex:none;border:2px solid var(--ink-38);border-radius:50%;
+  display:grid;place-items:center;transition:border-color .16s}
+.sg-unit[aria-checked="true"] .dot{border-color:var(--ink)}
+.sg-unit[aria-checked="true"] .dot::after{content:'';width:9px;height:9px;border-radius:50%;
+  background:var(--ink)}
+.sg-unit:hover .dot{border-color:var(--ink)}
+
+/* The size table is styled from scratch here, NOT off .spec-tbl.
+   .spec-tbl lives in page-club.css and a page loads core + ONE page
+   stylesheet, so on the apparel template it does not exist — this table was
+   rendering with browser-default <th> centring, no padding and no rules, which
+   is exactly the "weird spacing, hard to read" Cole saw. Third time this trap
+   has bitten (.chip §11b, the pdp split §12c): before styling a new page type,
+   check where the class you are reusing actually lives. */
+.sg-tbl-wrap{overflow-x:auto;margin:0 0 4px}
+.sg-tbl{width:100%;min-width:430px;border-collapse:collapse;table-layout:fixed}
+/* the label column carries words, the six size columns carry three characters
+   each — fixed layout so the numbers sit in even columns instead of the
+   longest value stretching one of them */
+.sg-tbl col.lbl{width:120px}
+.sg-tbl th,.sg-tbl td{padding:11px 6px;text-align:center;vertical-align:middle}
+.sg-tbl thead th{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-muted);font-weight:400;
+  padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.sg-tbl thead th:first-child{text-align:left;white-space:nowrap;padding-left:0}
+.sg-tbl tbody th{text-align:left;padding-left:0;white-space:nowrap;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.92rem;color:var(--ink)}
+.sg-tbl tbody td{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--ink-70);
+  font-variant-numeric:tabular-nums}
+.sg-tbl tbody tr + tr th,.sg-tbl tbody tr + tr td{border-top:1px solid var(--ink-08)}
+
+.sg-note{margin:18px 0 0;font-family:'Space Mono',monospace;font-size:.62rem;line-height:1.7;
+  text-transform:none;letter-spacing:.01em;color:var(--ink-muted)}

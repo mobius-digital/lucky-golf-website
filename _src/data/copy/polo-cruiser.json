@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-cruiser. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "Golfcart1.webp?v=1779472510",
-      "Cruiser Classic Polo, front"
-    ]
-  ],
-  "buyBody": "A golf cart print. It is exactly as literal as it sounds and it is the most fun thing in the range.",
-  "pieceHeadline": "Yes, they're golf carts",
-  "pieceParas": [
-    "A repeating golf-cart print across the shirt. There is no deeper idea here — somebody thought it would be funny, it was, and it went into production.",
-    "It is the shirt that gets talked about on the first tee, which is either the reason to buy it or the reason not to. You will know which."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body, ideally beside or in an actual cart. The joke lands harder in context, and one close crop is needed for anyone to see what the print is. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-cruiser. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "Golfcart1.webp?v=1779472510",
+   "Cruiser Classic Polo, front"
+  ]
+ ],
+ "buyBody": "A golf cart print. It is exactly as literal as it sounds and it is the most fun thing in the range.",
+ "lifestyleBrief": "Portrait 4:5, on body, ideally beside or in an actual cart. The joke lands harder in context, and one close crop is needed for anyone to see what the print is. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

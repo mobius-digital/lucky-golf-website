@@ -1,0 +1,43 @@
+{
+ "_": "Editorial for homepage sections that are driven by the catalogue. Only the club finder so far — the rest of page-home.html is still prose in markup.",
+ "_why": "The finder used to hard-code a name, a price and an image per card. The prices had drifted: both LGW02s said $119 when the store charges $109. Nothing on this site should retype a price that products.json already holds.",
+ "finder": {
+  "tabs": [
+   {
+    "label": "Around the green",
+    "cards": [
+     {
+      "id": "lgw01-gold",
+      "ln": "One wedge, six lofts and two sole grinds. The one that makes you stop blaming the swing."
+     },
+     {
+      "id": "lgw01-black",
+      "ln": "The same shape, blacked out. Gold on the clover and nothing else."
+     }
+    ]
+   },
+   {
+    "label": "On the green",
+    "cards": [
+     {
+      "id": "lgp01-gold",
+      "ln": "Short ones start to feel like a formality. Quiet off the face."
+     },
+     {
+      "id": "lgp02-gold",
+      "ln": "More head behind the ball, so the ones you catch thin still finish close."
+     }
+    ]
+   },
+   {
+    "label": "The long ones",
+    "cards": [
+     {
+      "id": "lgh01",
+      "ln": "The one you reach for when the long shot has to find the green."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -43,6 +43,14 @@
   --lg-foil-h:linear-gradient(96deg,var(--gold-lo) 0%,var(--gold) 20%,var(--gold-hi) 50%,var(--gold) 80%,var(--gold-lo) 100%);
   --lg-foil-v:linear-gradient(178deg,var(--gold-lo) 0%,var(--gold) 24%,var(--gold-hi) 50%,var(--gold) 76%,var(--gold-lo) 100%);
   --lg-foil-v-dark:linear-gradient(178deg,var(--gold) 0%,var(--gold-hi) 46%,var(--gold-hi) 56%,var(--gold) 100%);
+  /* TAG FOIL — same sweep, but the shadow stops are dropped.
+     The full ramp bottoms out at --gold-lo #8A6A1C, and ink on that measures
+     3.64:1 — a fail for the ~9px mono an emphasis tag is set in. The contrast
+     sweep cannot catch it either, because it skips gradient backgrounds. On a
+     button the shadow stops sit under no text and are fine; on a tag they sit
+     directly under the first and last letters. Darkest point here is --gold at
+     6.95:1. Use this for any small text on a foil FILL. */
+  --lg-foil-tag:linear-gradient(96deg,var(--gold) 0%,var(--gold-hi) 50%,var(--gold) 100%);
 
   /* ---- DEVICE 3 · GROOVE ---- */
   /* ink = option C from the ladder: 1px line on a 6px pitch, 2.4x the first pass.
@@ -659,8 +667,8 @@ button{font:inherit;color:inherit}
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s}
 .ptile:hover{transform:translateY(-3px)}
-.ptile .pt-sku{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink-muted)}
+/* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
+   rule had no markup left to style. */
 .ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
   font-weight:800;text-transform:uppercase;letter-spacing:-.008em;
   font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:.92;margin:8px 0 10px;color:var(--ink)}
@@ -682,7 +690,7 @@ button{font:inherit;color:inherit}
    and bottom:0 from a second definition below, which stretched it into a
    full-height bar down the side of every sold-out card. */
 .ptile .pt-tag{position:absolute;left:0;top:0;bottom:auto;right:auto;z-index:3;
-  background:var(--lg-foil-h);color:var(--ink);
+  background:var(--lg-foil-tag);color:var(--ink);
   font-family:'Space Mono',monospace;font-size:.5rem;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;padding:6px 10px;border-bottom-right-radius:var(--r)}
 .ptile .stretch::after{content:'';position:absolute;inset:0;z-index:4}
@@ -874,10 +882,96 @@ button{font:inherit;color:inherit}
   transition:border-color .18s,background .18s,color .18s}
 .chip:hover:not([disabled]){border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
-.chip[disabled]{cursor:not-allowed;color:var(--ink-38);border-color:var(--ink-08);background:var(--white)}
+/* was --ink-38 (2.44:1). See the note on .qa-chip[disabled] — a dead loft in
+   the buy box should still be readable as the loft you cannot have. */
+.chip[disabled]{cursor:not-allowed;color:var(--ink-muted);border-color:var(--ink-08);background:var(--white)}
 /* struck through rather than merely grayed — LH 50 and LH 60 are genuinely out */
 .chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
   background:var(--ink-14);rotate:-12deg}
+
+/* ==========================================================================
+   QUICK ADD — the in-card option picker
+   Cole, 2026-07-31: Primo's QUICK ADD does not send you to the product page.
+   It opens a size picker inside the card and adds to the bag from there. Ours
+   is the same control; clubs just need two steps (hand, then loft) where a
+   polo needs one.
+
+   It lives in core because BOTH collection templates paint cards — page-clp
+   renders them server-side, page-plp paints them in JS — and a control defined
+   in two page stylesheets is a control that will drift (§11b, §16).
+
+   The panel sits ON the card so a grid row never jumps when one opens, and it
+   is anchored to the BOTTOM so the photograph stays visible above it — Cole,
+   2026-07-31: ours covered the whole image, and the reference keeps the
+   product in view while you pick. `max-height` caps it at 70% of the card so
+   there is always a photo to look at; past that it scrolls.
+
+   Two traps recorded, both hit here:
+   * It was `display:flex; justify-content:flex-end`. Flex end-alignment puts
+     overflow ABOVE the scroll origin — at 390px "1. Choose hand" measured at
+     top:-164px with scrollTop pinned at 0, so on a phone the first step did
+     not exist and could not be scrolled to. Plain block scroll container now.
+     NEVER end-align a flex container that can overflow.
+   * `inset:0` is what made it cover the image. Anchor bottom/left/right and
+     leave `top` alone.
+   ========================================================================== */
+.qa{position:absolute;left:0;right:0;bottom:0;z-index:6;display:block;
+  max-height:70%;
+  background:rgba(246,242,232,.97);padding:16px;overflow-y:auto;
+  overscroll-behavior:contain;
+  border-top:2px solid var(--ink-14);
+  box-shadow:0 -10px 24px rgba(23,20,15,.10)}
+.qa[hidden]{display:none}
+.qa-step + .qa-step{margin-top:12px}
+.qa-lbl{display:block;margin-bottom:7px;font-family:'Space Mono',monospace;font-size:.52rem;
+  font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+.qa-chips{display:flex;flex-wrap:wrap;gap:6px}
+/* deliberately NOT .chip: that one is a 48px page-level control and six of them
+   will not fit a 168px card. Same states, smaller box. */
+.qa-chip{position:relative;min-height:34px;padding:7px 11px;cursor:pointer;
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.76rem;color:var(--ink);transition:border-color .15s,background .15s,color .15s}
+.qa-chip:hover:not([disabled]){border-color:var(--ink)}
+.qa-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+/* --ink-muted, not --ink-38. A disabled control is formally exempt from the
+   contrast rule, and --ink-38 measured 2.44:1 — legible enough to look like a
+   choice and not quite legible enough to read. The strike-through, the border
+   and the cursor carry "unavailable"; the text does not also have to be faint.
+   Same change applied to .chip[disabled] below. */
+.qa-chip[disabled]{cursor:not-allowed;color:var(--ink-muted);border-color:var(--ink-08)}
+/* struck through rather than merely grayed, same as the buy box: a dead
+   combination should look dead, not just unemphasised */
+.qa-chip[disabled]::after{content:'';position:absolute;left:8%;right:8%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-12deg}
+.qa-buy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  min-height:44px;margin-top:14px;padding:11px 14px;cursor:pointer;
+  background:var(--ink);color:var(--cream);border:2px solid var(--ink);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;
+  transition:background .18s,color .18s}
+.qa-buy:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.qa-buy[data-added]{background:var(--green);border-color:var(--green);color:var(--white)}
+.qa-buy .amt{font-variation-settings:'wdth' 70;opacity:.72}
+.qa-x{position:absolute;right:8px;top:8px;width:30px;height:30px;display:grid;place-items:center;
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);cursor:pointer;
+  color:var(--ink);line-height:1;font-size:.9rem}
+.qa-x:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+/* the tile-wide stretch link must not sit over an open panel */
+.ptile:has(.qa:not([hidden])) .stretch::after{display:none}
+
+/* On a small card the picker is most of what fits, so it gets tighter.
+   Six loft chips at 2-per-row still scroll on a 390px phone — that is fine
+   now that the panel scrolls at all. */
+@media (max-width:620px){
+  .qa{padding:12px}
+  .qa-lbl{margin-bottom:5px;font-size:.48rem;letter-spacing:.1em}
+  .qa-step + .qa-step{margin-top:9px}
+  .qa-chips{gap:5px}
+  .qa-chip{min-height:32px;padding:6px 9px;font-size:.7rem}
+  .qa-buy{margin-top:11px;min-height:42px;font-size:.7rem;padding:9px 10px}
+  .qa-x{width:26px;height:26px;right:6px;top:6px}
+}
 
 /* ==========================================================================
    BREADCRUMB
@@ -885,13 +979,30 @@ button{font:inherit;color:inherit}
    min-height on the links is the tap target; the list is reset because an
    unstyled <ol> renders as a numbered list in the body font.
    ========================================================================== */
-.crumb{padding:18px 0 0}
-.crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0;padding:0;list-style:none;
+/* 26px, not 18: the header is sticky, so the breadcrumb is the first thing
+   that slides under it. Flush against a coloured bar it reads as clipped. */
+.crumb{padding:26px 0 0}
+/* NOWRAP + horizontal scroll rather than wrap. A four-level trail ending in a
+   long product name wraps on a phone, and a breadcrumb broken across two lines
+   under a sticky bar is exactly what "getting cut off" looks like.
+
+   The first attempt bled this to the page edge with a negative margin-inline
+   and re-padded it. Do not: a nowrap flex row with overflow-x resolves its own
+   width from its content once the negative margin is on it, and the <ol> came
+   out 1485px in a 1440px viewport — it put horizontal overflow on every PDP.
+   `min-width:0` is what actually makes the scroll container behave. */
+.crumb ol{display:flex;align-items:center;gap:9px;margin:0;padding:0;list-style:none;
   font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-muted)}
-.crumb li{display:flex;align-items:center;gap:9px}
+  color:var(--ink-muted);
+  flex-wrap:nowrap;white-space:nowrap;min-width:0;max-width:100%;
+  overflow-x:auto;scrollbar-width:none}
+.crumb ol::-webkit-scrollbar{display:none}
+.crumb li{display:flex;align-items:center;gap:9px;flex:none}
 .crumb li + li::before{content:'';width:4px;height:4px;background:var(--gold);rotate:45deg;flex:none}
-.crumb a{min-height:44px;display:inline-flex;align-items:center}
+/* The current-page item is a <span>, not an <a>, so it was picking up none of
+   the link sizing: 15.4px tall against the links' 44px, sitting 14.3px LOWER
+   than the rest of the trail. Measured, not guessed. Both now share one rule. */
+.crumb a,.crumb [aria-current]{min-height:44px;display:inline-flex;align-items:center}
 .crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumb [aria-current]{color:var(--ink)}
 

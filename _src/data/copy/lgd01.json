@@ -1,212 +1,210 @@
 {
-  "_": "Editorial for lgd01. Shared keys come from _family-wedge.json.",
-  "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
-  "gallery": [
-    [
-      "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220428_103621.png?v=1703705639",
-      "Lucky Driver LGD01, face on"
-    ],
-    [
-      "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A9973.jpg?v=1703705639",
-      "Lucky Driver LGD01, sole"
-    ],
-    [
-      "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A9981.jpg?v=1703705639",
-      "Lucky Driver LGD01, crown"
-    ],
-    [
-      "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220424_135346.jpg?v=1703705568",
-      "Lucky Driver LGD01, three-quarter view"
-    ]
+ "_": "Editorial for lgd01. Shared keys come from _family-wedge.json.",
+ "_specs": "Facts come from this product's own Shopify descriptionHtml. Nothing is carried over from a sibling club — unverified rows are marked.",
+ "gallery": [
+  [
+   "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220428_103621.png?v=1703705639",
+   "Lucky Driver LGD01, face on"
   ],
-  "priceNote": "One specification",
-  "buyBody": "450cc of titanium at 10.5 degrees, on a 45-inch stiff graphite shaft, in gold. One specification, no options to get wrong, and the loudest-looking club we make.",
-  "four": [
-    {
-      "k": "450cc",
-      "v": "10.5&deg; loft, 59&deg; lie"
-    },
-    {
-      "k": "45 inches",
-      "v": "61g stiff graphite"
-    },
-    {
-      "k": "193 g head",
-      "v": "Aerodynamic crown"
-    },
-    {
-      "k": "Gold",
-      "v": "There is no other finish"
-    }
+  [
+   "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A9973.jpg?v=1703705639",
+   "Lucky Driver LGD01, sole"
   ],
-  "whatYouGet": [
-    "One Lucky Driver LGD01",
-    "45&quot; stiff graphite shaft, 61 g",
-    "Runner standard-size grip",
-    "No headcover &mdash; none of our clubs ship with one"
+  [
+   "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A9981.jpg?v=1703705639",
+   "Lucky Driver LGD01, crown"
   ],
-  "clubHeadline": "One driver. One spec. No fitting appointment.",
-  "clubParas": [
-    "Most driver purchases involve an hour in a bay, four shaft options and a number you do not fully understand. This one comes in exactly one configuration, which is either a limitation or a relief depending on how that hour usually goes for you.",
-    "450cc at 10.5 degrees is the middle of the road on purpose &mdash; enough loft to get the ball up for a normal swing speed, enough head to forgive a strike off the heel. The crown is shaped to cut through the air rather than to look fast in a photograph.",
-    "The shaft is 45 inches of 61-gram stiff graphite, which is light enough to swing and firm enough not to wander at the top. The grip is a standard-size Runner.",
-    "It is $299, which for a titanium driver is the number that needs no further explanation &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
-  ],
-  "clubSpecs": [
-    {
-      "k": "Type",
-      "v": "450cc titanium driver, 10.5&deg;."
-    },
-    {
-      "k": "Feel",
-      "v": "Hot and light. 193 g head on a 61 g shaft."
-    },
-    {
-      "k": "Shape",
-      "v": "Aerodynamic crown for head speed."
-    },
-    {
-      "k": "Options",
-      "v": "None. One loft, one shaft, one flex."
-    },
-    {
-      "k": "For who",
-      "v": "Anyone who wants a driver without a fitting."
-    },
-    {
-      "k": "Adjustability",
-      "tbd": true
-    }
-  ],
-  "videoBrief": "16:9 product film, 40&ndash;60s. Driver film lives or dies on ball speed — face-on high frame rate at impact, then the ball tracked. Gold crown at address in sunlight is the money shot.",
-  "reelHeadline": "The Driver, in the wild",
-  "specHeadline": "One loft. One shaft. One flex.",
-  "specSub": "Every number below is published by Shopify for this club. It is the most completely specified thing in the range.",
-  "specTabs": [
-    {
-      "label": "Club",
-      "caption": "Lucky Driver LGD01 &mdash; club",
-      "rows": [
-        {
-          "k": "Head volume",
-          "v": "450cc"
-        },
-        {
-          "k": "Head material",
-          "v": "Titanium"
-        },
-        {
-          "k": "Loft",
-          "v": "10.5&deg;"
-        },
-        {
-          "k": "Lie",
-          "v": "59&deg;"
-        },
-        {
-          "k": "Head weight",
-          "v": "193 g"
-        },
-        {
-          "k": "Finish",
-          "v": "Gold"
-        },
-        {
-          "k": "Crown",
-          "v": "Aerodynamic"
-        },
-        {
-          "k": "Face thickness",
-          "tbd": true
-        },
-        {
-          "k": "Adjustability",
-          "tbd": true
-        },
-        {
-          "k": "Hand",
-          "tbd": true
-        }
-      ]
-    },
-    {
-      "label": "Shaft &amp; grip",
-      "caption": "Lucky Driver LGD01 &mdash; shaft &amp; grip",
-      "rows": [
-        {
-          "k": "Shaft length",
-          "v": "45&quot;"
-        },
-        {
-          "k": "Shaft weight",
-          "v": "61 g"
-        },
-        {
-          "k": "Shaft material",
-          "v": "Graphite"
-        },
-        {
-          "k": "Flex",
-          "v": "Stiff"
-        },
-        {
-          "k": "Grip",
-          "v": "Runner, standard size"
-        },
-        {
-          "k": "Other flexes",
-          "tbd": true
-        },
-        {
-          "k": "Other lengths",
-          "tbd": true
-        }
-      ],
-      "aside": "Stiff is the only flex and 45&quot; the only length. Shopify records this club as having no variant options at all, which is why the buy box shows no pickers &mdash; there is genuinely nothing to choose."
-    }
-  ],
-  "look": {
-    "photo": "Bold, full-bleed, portrait. Gold crown at address on a tee box in low sun, sky behind. A driver is the biggest object in the bag and this shot should make that the point.",
-    "headline": "There is no quiet way to carry a gold driver",
-    "paras": [
-      "A 450cc gold head is the most visible thing you will own. It sits at the top of the bag, it comes out on the first tee, and everybody in the group sees it before you have hit a shot.",
-      "That is either a good reason to buy it or a good reason not to, and there is no third option."
-    ],
-    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+  [
+   "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoRoom_20220424_135346.jpg?v=1703705568",
+   "Lucky Driver LGD01, three-quarter view"
+  ]
+ ],
+ "priceNote": "One specification",
+ "buyBody": "450cc of titanium at 10.5 degrees, on a 45-inch stiff graphite shaft, in gold. One specification, no options to get wrong, and the loudest-looking club we make.",
+ "four": [
+  {
+   "k": "450cc",
+   "v": "10.5&deg; loft, 59&deg; lie"
   },
-  "closeBody": "The Driver is $299, one specification, gold. Sixty days to send it back if it isn't the one.",
-  "oav": [
-    "lgh01",
-    "lgw01-gold",
-    "lgp02-gold",
-    "cover-driver"
-  ],
-  "bag": [
+  {
+   "k": "45 inches",
+   "v": "61g stiff graphite"
+  },
+  {
+   "k": "193 g head",
+   "v": "Aerodynamic crown"
+  },
+  {
+   "k": "Gold",
+   "v": "There is no other finish"
+  }
+ ],
+ "whatYouGet": [
+  "One Lucky Driver LGD01",
+  "45&quot; stiff graphite shaft, 61 g",
+  "Runner standard-size grip",
+  "No headcover &mdash; none of our clubs ship with one"
+ ],
+ "clubHeadline": "One driver. One spec. No fitting appointment.",
+ "clubParas": [
+  "Most driver purchases involve an hour in a bay, four shaft options and a number you do not fully understand. This one comes in exactly one configuration, which is either a limitation or a relief depending on how that hour usually goes for you.",
+  "450cc at 10.5 degrees is the middle of the road on purpose &mdash; enough loft to get the ball up for a normal swing speed, enough head to forgive a strike off the heel. The crown is shaped to cut through the air rather than to look fast in a photograph.",
+  "The shaft is 45 inches of 61-gram stiff graphite, which is light enough to swing and firm enough not to wander at the top. The grip is a standard-size Runner.",
+  "It is $299, which for a titanium driver is the number that needs no further explanation &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+ ],
+ "clubSpecs": [
+  {
+   "k": "Type",
+   "v": "450cc titanium driver, 10.5&deg;."
+  },
+  {
+   "k": "Feel",
+   "v": "Hot and light. 193 g head on a 61 g shaft."
+  },
+  {
+   "k": "Shape",
+   "v": "Aerodynamic crown for head speed."
+  },
+  {
+   "k": "Options",
+   "v": "None. One loft, one shaft, one flex."
+  },
+  {
+   "k": "For who",
+   "v": "Anyone who wants a driver without a fitting."
+  },
+  {
+   "k": "Adjustability",
+   "tbd": true
+  }
+ ],
+ "videoBrief": "16:9 product film, 40&ndash;60s. Driver film lives or dies on ball speed — face-on high frame rate at impact, then the ball tracked. Gold crown at address in sunlight is the money shot.",
+ "reelHeadline": "The Driver, in the wild",
+ "specHeadline": "One loft. One shaft. One flex.",
+ "specSub": "Every number below is published by Shopify for this club. It is the most completely specified thing in the range.",
+ "specTabs": [
+  {
+   "label": "Club",
+   "caption": "Lucky Driver LGD01 &mdash; club",
+   "rows": [
     {
-      "id": "lgh01",
-      "name": "Stryker",
-      "code": "LGH01",
-      "meta": "4.60 &#9733; 20",
-      "hook": "Titanium hybrid at 19&deg;, for when the driver is too much club."
+     "k": "Head volume",
+     "v": "450cc"
     },
     {
-      "id": "cover-driver",
-      "name": "Driver Head Cover",
-      "code": "HC",
-      "meta": "460cc heads",
-      "hook": "The most expensive club in the bag, doing the least work. Cover it."
+     "k": "Head material",
+     "v": "Titanium"
     },
     {
-      "id": "lgw01-gold",
-      "name": "Carver Gold",
-      "code": "LGW01",
-      "meta": "4.81 &#9733; 551",
-      "hook": "The wedge most people add first. Six lofts, same feel."
+     "k": "Loft",
+     "v": "10.5&deg;"
+    },
+    {
+     "k": "Lie",
+     "v": "59&deg;"
+    },
+    {
+     "k": "Head weight",
+     "v": "193 g"
+    },
+    {
+     "k": "Finish",
+     "v": "Gold"
+    },
+    {
+     "k": "Crown",
+     "v": "Aerodynamic"
+    },
+    {
+     "k": "Face thickness",
+     "tbd": true
+    },
+    {
+     "k": "Adjustability",
+     "tbd": true
+    },
+    {
+     "k": "Hand",
+     "tbd": true
     }
+   ]
+  },
+  {
+   "label": "Shaft &amp; grip",
+   "caption": "Lucky Driver LGD01 &mdash; shaft &amp; grip",
+   "rows": [
+    {
+     "k": "Shaft length",
+     "v": "45&quot;"
+    },
+    {
+     "k": "Shaft weight",
+     "v": "61 g"
+    },
+    {
+     "k": "Shaft material",
+     "v": "Graphite"
+    },
+    {
+     "k": "Flex",
+     "v": "Stiff"
+    },
+    {
+     "k": "Grip",
+     "v": "Runner, standard size"
+    },
+    {
+     "k": "Other flexes",
+     "tbd": true
+    },
+    {
+     "k": "Other lengths",
+     "tbd": true
+    }
+   ],
+   "aside": "Stiff is the only flex and 45&quot; the only length. Shopify records this club as having no variant options at all, which is why the buy box shows no pickers &mdash; there is genuinely nothing to choose."
+  }
+ ],
+ "look": {
+  "photo": "Bold, full-bleed, portrait. Gold crown at address on a tee box in low sun, sky behind. A driver is the biggest object in the bag and this shot should make that the point.",
+  "headline": "There is no quiet way to carry a gold driver",
+  "paras": [
+   "A 450cc gold head is the most visible thing you will own. It sits at the top of the bag, it comes out on the first tee, and everybody in the group sees it before you have hit a shot.",
+   "That is either a good reason to buy it or a good reason not to, and there is no third option."
   ],
-  "galleryBase": "",
-  "eyebrow": "The Driver",
-  "chooseCta": "Add to cart",
-  "closeHeadline": "Go hit it",
-  "closeFoil": "further"
+  "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+ },
+ "closeBody": "The Driver is $299, one specification, gold. Sixty days to send it back if it isn't the one.",
+ "oav": [
+  "lgh01",
+  "lgw01-gold",
+  "lgp02-gold",
+  "cover-driver"
+ ],
+ "bag": [
+  {
+   "id": "lgh01",
+   "name": "Stryker",
+   "code": "LGH01",
+   "hook": "Titanium hybrid at 19&deg;, for when the driver is too much club."
+  },
+  {
+   "id": "cover-driver",
+   "name": "Driver Head Cover",
+   "code": "HC",
+   "meta": "460cc heads",
+   "hook": "The most expensive club in the bag, doing the least work. Cover it."
+  },
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The wedge most people add first. Six lofts, same feel."
+  }
+ ],
+ "galleryBase": "",
+ "eyebrow": "The Driver",
+ "chooseCta": "Add to cart",
+ "closeHeadline": "Go hit it",
+ "closeFoil": "further"
 }

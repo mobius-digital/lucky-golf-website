@@ -1,73 +1,122 @@
 {
-  "_": "Editorial for the Lucky Blade Cover. Catalogue facts come from products.json.",
-  "_voice": "Rev 2, off Cole's note that gear was reading too serious. A head cover is a mundane object and pretending otherwise is what made it stiff — the fix is to say so out loud and then be useful. Takomo's glove page is the reference: dry about what it is, straight about what it does, specs in a compact list rather than paragraphs.",
-  "_specs": "Shopify has no description for this product and the reference guide does not cover head covers. Everything factual is either visible in the photography or marked as needing spec. Nothing is invented.",
-  "_proves": "Phase C's gear proof: zero variant axes, so the buy box renders no pickers at all.",
-
-  "eyebrow": "Head covers &middot; Gear",
-  "galleryTag": "",
-  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
-  "gallery": [
-    ["products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397", "Lucky Blade Cover, signature white"]
-  ],
-
-  "priceNote": "",
-  "buyBody": "It's a head cover. It goes on the putter, it stays on the putter, and a season later the club still looks like the one in the photos. That is the entire job. Cart rash is the thing reviewers bring up most about a nice putter, and thirty dollars is a cheaper fix than a new one.",
-
-  "four": [
-    {"k": "Blade fit",  "v": "Cut for blade heads"},
-    {"k": "White and gold", "v": "Matches the rest of it"},
-    {"k": "One job",    "v": "Stops the bag chewing your putter"},
-    {"k": "In stock",   "v": "Ships in one to two days"}
-  ],
-
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "Your putter spends most of the round in the bag",
-      "paras": [
-        "Four hours of it, wedged against a set of irons, in a cart going over kerbs. The head is the part every playing partner sees on every green, and it is the part that collects the dings.",
-        "Nobody has ever been thrilled to buy a head cover. Buy one anyway. It is the least interesting thirty dollars you will spend this season and the putter will thank you for it in about a year."
-      ]
-    },
-    {
-      "eyebrow": "What it fits",
-      "headline": "Blades. Not mallets.",
-      "paras": [
-        "Cut for a blade head &mdash; the Tracer LGP01, and most other blades. If you play a mallet this is the wrong one: the Lucky Mallet Cover is shaped for that head and comes in right and left hand."
-      ],
-      "facts": {
-        "rows": [
-          {"k": "Type",       "v": "Blade putter cover"},
-          {"k": "Fits",       "v": "Blade heads, including the Tracer LGP01"},
-          {"k": "Colorway",  "v": "Signature white and gold"},
-          {"k": "Closure",    "tbd": true},
-          {"k": "Material",   "tbd": true},
-          {"k": "Dimensions", "tbd": true}
-        ]
-      }
-    }
-  ],
-
-  "reviewHeadline": "Reviews",
-
-  "chooseCta": "Add it",
-  "bagHeadline": "What it goes on, and what else is missing",
-  "bag": [
-    {"id": "cover-mallet", "name": "Lucky Mallet Cover", "code": "HC", "meta": "Right &amp; left hand",
-     "hook": "The mallet version. Same idea, different shape, and it knows which hand you play."},
-    {"id": "lgp02-gold", "name": "Tracer Mallet", "code": "LGP02", "meta": "4.71 &#9733; 58",
-     "hook": "The mallet. Oversized 3.0 grip already fitted, right or left hand."},
-    {"id": "lgp01-gold", "name": "Tracer Blade", "code": "LGP01", "meta": "4.86 &#9733; 147",
-     "hook": "The blade this is cut for. Sold out at the moment, which is its own kind of review."}
-  ],
-
-  "upsell": [
-    {"sku": "HeadCover-Driver-SignatureWhite", "name": "Driver Head Cover", "price": "$40", "variant": "",
-     "why": "Same white and gold, considerably more surface area to protect.",
-     "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"},
-    {"sku": "TEES-25", "name": "Lucky Golf Tees", "price": "$9.95", "variant": "25 tees",
-     "why": "You are out of tees. You are always out of tees.",
-     "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"}
+ "_": "Editorial for the Lucky Blade Cover. Catalogue facts come from products.json.",
+ "_voice": "Rev 2, off Cole's note that gear was reading too serious. A head cover is a mundane object and pretending otherwise is what made it stiff — the fix is to say so out loud and then be useful. Takomo's glove page is the reference: dry about what it is, straight about what it does, specs in a compact list rather than paragraphs.",
+ "_specs": "Shopify has no description for this product and the reference guide does not cover head covers. Everything factual is either visible in the photography or marked as needing spec. Nothing is invented.",
+ "_proves": "Phase C's gear proof: zero variant axes, so the buy box renders no pickers at all.",
+ "eyebrow": "Head covers &middot; Gear",
+ "galleryTag": "",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/",
+ "gallery": [
+  [
+   "products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397",
+   "Lucky Blade Cover, signature white"
   ]
+ ],
+ "priceNote": "",
+ "buyBody": "It's a head cover. It goes on the putter, it stays on the putter, and a season later the club still looks like the one in the photos. That is the entire job. Cart rash is the thing reviewers bring up most about a nice putter, and thirty dollars is a cheaper fix than a new one.",
+ "four": [
+  {
+   "k": "Blade fit",
+   "v": "Cut for blade heads"
+  },
+  {
+   "k": "White and gold",
+   "v": "Matches the rest of it"
+  },
+  {
+   "k": "One job",
+   "v": "Stops the bag chewing your putter"
+  },
+  {
+   "k": "In stock",
+   "v": "Ships in one to two days"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "Your putter spends most of the round in the bag",
+   "paras": [
+    "Four hours of it, wedged against a set of irons, in a cart going over kerbs. The head is the part every playing partner sees on every green, and it is the part that collects the dings.",
+    "Nobody has ever been thrilled to buy a head cover. Buy one anyway. It is the least interesting thirty dollars you will spend this season and the putter will thank you for it in about a year."
+   ]
+  },
+  {
+   "eyebrow": "What it fits",
+   "headline": "Blades. Not mallets.",
+   "paras": [
+    "Cut for a blade head &mdash; the Tracer LGP01, and most other blades. If you play a mallet this is the wrong one: the Lucky Mallet Cover is shaped for that head and comes in right and left hand."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Blade putter cover"
+     },
+     {
+      "k": "Fits",
+      "v": "Blade heads, including the Tracer LGP01"
+     },
+     {
+      "k": "Colorway",
+      "v": "Signature white and gold"
+     },
+     {
+      "k": "Closure",
+      "tbd": true
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     },
+     {
+      "k": "Dimensions",
+      "tbd": true
+     }
+    ]
+   }
+  }
+ ],
+ "reviewHeadline": "Reviews",
+ "chooseCta": "Add it",
+ "bagHeadline": "What it goes on, and what else is missing",
+ "bag": [
+  {
+   "id": "cover-mallet",
+   "name": "Lucky Mallet Cover",
+   "code": "HC",
+   "meta": "Right &amp; left hand",
+   "hook": "The mallet version. Same idea, different shape, and it knows which hand you play."
+  },
+  {
+   "id": "lgp02-gold",
+   "name": "Tracer Mallet",
+   "code": "LGP02",
+   "hook": "The mallet. Oversized 3.0 grip already fitted, right or left hand."
+  },
+  {
+   "id": "lgp01-gold",
+   "name": "Tracer Blade",
+   "code": "LGP01",
+   "hook": "The blade this is cut for. Sold out at the moment, which is its own kind of review."
+  }
+ ],
+ "upsell": [
+  {
+   "sku": "HeadCover-Driver-SignatureWhite",
+   "name": "Driver Head Cover",
+   "price": "$40",
+   "variant": "",
+   "why": "Same white and gold, considerably more surface area to protect.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"
+  },
+  {
+   "sku": "TEES-25",
+   "name": "Lucky Golf Tees",
+   "price": "$9.95",
+   "variant": "25 tees",
+   "why": "You are out of tees. You are always out of tees.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
+  }
+ ]
 }

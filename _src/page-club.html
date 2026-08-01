@@ -84,6 +84,22 @@
 
          A Shopify theme would render these server-side in Liquid; here they
          are painted by page-club.js, which is why the container is empty. -->
+    <!-- Finish is two Shopify products, not a variant axis, so this is a row
+         of links — the same device the polo colorways use. It sits ABOVE the
+         pickers because finish is the first decision: which wedge, then which
+         loft and grind. -->
+    {{#finishes}}
+    <div class="opt">
+      <div class="opt-hd">
+        <span class="lbl">{{label}}</span>
+        <span class="val">{{current}}</span>
+      </div>
+      <div class="sw-row" role="group" aria-label="{{label}}">
+{{#items}}        <a class="sw{{#isThis}} sw--on{{/isThis}}{{#soldOut}} sw--out{{/soldOut}}" href="{{href}}"{{#isThis}} aria-current="page"{{/isThis}} aria-label="{{name}}, {{priceLabel}}{{#soldOut}}, sold out{{/soldOut}}"><img src="{{img}}" alt="" loading="lazy" width="90" height="90"></a>
+{{/items}}      </div>
+    </div>
+    {{/finishes}}
+
     <div id="pickers"></div>
 
     <div class="atc-row">
@@ -104,8 +120,6 @@
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
 
-    <p class="bx-links"><a href="{{link:none}}" data-md-open="md-returns">Warranty and returns</a></p>
-
     <div class="acc">
       <div class="acc-i">
         <button class="acc-hd" type="button" aria-expanded="true" aria-controls="a1"><span>What you get</span><span class="pm" aria-hidden="true"></span></button>
@@ -120,6 +134,7 @@
         <div class="acc-bd" id="a2" hidden>
           <p>Free shipping inside the US. Orders leave the warehouse in one to two business days.</p>
           <p>Sixty days to send a club back. Play it, take it to the range, put it in a bunker. If it isn't the one, it goes back.</p>
+          <p class="acc-link"><a href="{{link:none}}" data-md-open="md-returns">Read the full warranty and returns policy</a></p>
         </div>
       </div>
       <div class="acc-i">
@@ -242,7 +257,12 @@
 
     <div class="cmp msnap">
 {{#options}}      <article class="cmp-i"{{#isThis}} data-this{{/isThis}}>
-        <span class="rank">{{#isThis}}You're looking at this one{{/isThis}}{{^isThis}}The other one{{/isThis}}</span>
+        <!-- `rank` and `foot` default in build.py to "You're looking at this
+             one" / "The other one" and "You're on this page". The hybrid
+             overrides them: its two options are two ways of using the SAME
+             club (instead of a 3-iron, instead of a 5-wood), so neither the
+             default rank nor a link to a second product applies. -->
+        <span class="rank">{{rank}}</span>
         <span class="cmp-nm">{{name}}</span>
         <span class="cmp-for">{{forWho}}</span>
         <p>{{body}}</p>
@@ -250,13 +270,54 @@
 {{#facts}}          <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/facts}}        </dl>
         {{#href}}<a class="btn btn-line btn-sm" href="{{href}}"><span>{{cta}}</span><span class="ar">&rarr;</span></a>{{/href}}
-        {{^href}}<span class="cmp-here">You're on this page</span>{{/href}}
+        {{^href}}<span class="cmp-here">{{foot}}</span>{{/href}}
       </article>
 {{/options}}    </div>
     <p class="aside cmp-note">{{note}}</p>
   </div>
 </section>
 {{/helpPick}}
+
+<!-- ============ THE GRINDS ============
+     Cole asked for this when the wedges collapsed into the 01: with grind as
+     an option rather than a product tier, the page has to say what a grind IS
+     and which one to pick. The buy box's "Which grind?" link lands here.
+
+     EVERY performance sentence in this block is DRAFTED and awaiting Cole's
+     sign-off — see the `_signoff` note in the copy file. The reference guide
+     publishes the grind NAMES and the per-loft bounce and nothing about what
+     either does for a player, so this is the one module on the site whose
+     claims are not traceable to a document. Do not treat it as verified. -->
+{{#grinds}}
+<section class="sec" id="grinds">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l" style="max-width:20ch">{{headline}}</h2>
+    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px);max-width:58ch">{{sub}}</p>
+
+    <div class="gr-grid">
+{{#options}}      <article class="gr-card"{{#isThis}} data-this{{/isThis}}>
+        <span class="gr-k">{{k}}</span>
+        <span class="gr-nm disp d-s">{{name}}</span>
+        <span class="gr-for">{{forWho}}</span>
+{{#paras}}        <p>{{.}}</p>
+{{/paras}}        <dl class="gr-facts">
+{{#facts}}          <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/facts}}        </dl>
+      </article>
+{{/options}}    </div>
+    <!-- Takomo end on a one-line summary and it is the most useful sentence in
+         the block — somebody who reads nothing else reads this. -->
+    <!-- Measured vs effective bounce. This paragraph exists because our S
+         measures MORE bounce than our K at the same loft, which looks like a
+         typo next to Vokey letters until somebody explains why it isn't. The
+         spec table's aside says the same thing so the two never disagree. -->
+    {{#measured}}<p class="gr-measured">{{measured}}</p>{{/measured}}
+    {{#short}}<p class="gr-short">{{short}}</p>{{/short}}
+    <p class="spec-note">{{note}}</p>
+  </div>
+</section>
+{{/grinds}}
 
 <!-- ============ SPECS — on a light field. On ink the groove ran behind the
      table text at a 6px pitch and made small mono numbers hard to read. ============ -->
@@ -405,7 +466,6 @@
       <article class="ptile">
         <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800">
           {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}</div>
-        <span class="pt-sku">{{code}}</span>
         <a class="pt-nm stretch" href="{{href}}">{{name}}</a>
         <p class="pt-hook">{{hook}}</p>
         <div class="pt-meta"><span class="pt-pr">{{priceLabel}}</span><span class="pt-rt">{{meta}}</span></div>

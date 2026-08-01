@@ -1,46 +1,41 @@
 {
-  "_": "Editorial for hat-white-updown. Shared keys come from _family-hat.json.",
-  "_asset": "59.webp is EXCLUDED — it is the frame with inverted lettering (HANDOFF §6). The product has ten photographs in Shopify and the other nine are fine, so the page leads on 60.webp. Do not reinstate 59 without checking it.",
-  "eyebrow": "Upside Down &middot; Hats",
-  "gallery": [
-    [
-      "60.webp?v=1784585346",
-      "White Upside Down hat, front"
-    ],
-    [
-      "61.webp?v=1784585346",
-      "White Upside Down hat, angle"
-    ],
-    [
-      "62.webp?v=1784585346",
-      "White Upside Down hat, side"
-    ],
-    [
-      "63.webp?v=1784585346",
-      "White Upside Down hat, back"
-    ],
-    [
-      "65.webp?v=1784585347",
-      "White Upside Down hat, brim detail"
-    ],
-    [
-      "66.webp?v=1784585346",
-      "White Upside Down hat, panel detail"
-    ],
-    [
-      "67.webp?v=1784585346",
-      "White Upside Down hat, three-quarter"
-    ],
-    [
-      "68.webp?v=1784585346",
-      "White Upside Down hat, crown"
-    ]
+ "_": "Editorial for hat-white-updown. Shared keys come from _family-hat.json.",
+ "_asset": "59.webp is EXCLUDED — it is the frame with inverted lettering (HANDOFF §6). The product has ten photographs in Shopify and the other nine are fine, so the page leads on 60.webp. Do not reinstate 59 without checking it.",
+ "eyebrow": "Upside Down &middot; Hats",
+ "gallery": [
+  [
+   "60.webp?v=1784585346",
+   "White Upside Down hat, front"
   ],
-  "buyBody": "The mark inverted, on white. The cleanest version of the joke — nothing on the hat but the shape, and the shape is the wrong way up.",
-  "pieceHeadline": "White, and upside down",
-  "pieceParas": [
-    "The Upside Down runs in cream and in white-on-black. This is the plainest of the three: white ground, inverted mark, nothing else competing with it.",
-    "White makes the joke easiest to see and hardest to keep clean, which is the trade on every white hat ever made. It is also the one that goes with the most."
+  [
+   "61.webp?v=1784585346",
+   "White Upside Down hat, angle"
   ],
-  "lifestyleBrief": "Portrait 4:5, on body. White against green — the mark has to read clearly, so shoot in even light rather than hard sun, which blows out a white panel. There is no on-body hat photography at all yet (HANDOFF §7b F)."
+  [
+   "62.webp?v=1784585346",
+   "White Upside Down hat, side"
+  ],
+  [
+   "63.webp?v=1784585346",
+   "White Upside Down hat, back"
+  ],
+  [
+   "65.webp?v=1784585347",
+   "White Upside Down hat, brim detail"
+  ],
+  [
+   "66.webp?v=1784585346",
+   "White Upside Down hat, panel detail"
+  ],
+  [
+   "67.webp?v=1784585346",
+   "White Upside Down hat, three-quarter"
+  ],
+  [
+   "68.webp?v=1784585346",
+   "White Upside Down hat, crown"
+  ]
+ ],
+ "buyBody": "The mark inverted, on white. The cleanest version of the joke — nothing on the hat but the shape, and the shape is the wrong way up.",
+ "lifestyleBrief": "Portrait 4:5, on body. White against green — the mark has to read clearly, so shoot in even light rather than hard sun, which blows out a white panel. There is no on-body hat photography at all yet (HANDOFF §7b F)."
 }

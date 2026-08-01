@@ -62,21 +62,17 @@
 <div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
 
 <!-- ============ THE REST OF THE STORE ============
-     Every collection listed statically so the links stay in the registry's
-     audit; page-plp.js drops the one you are already on. -->
+     Generated from products.json by build.py, not typed here: it was static
+     markup in this file and would have become static markup in page-clp.html
+     too, which is how a component starts drifting from itself. The hrefs are
+     still registry tokens, so the link audit covers them either way. -->
 <section class="sec band-cream plp-more">
   <div class="wrap">
     <span class="eyebrow">Keep looking</span>
     <h2 class="disp d-m">The rest of the store</h2>
-    <div class="plp-sibs" id="plp-sibs">
-      <a class="plp-sib" href="{{link:c/clubs}}"         data-c="clubs">All Clubs</a>
-      <a class="plp-sib" href="{{link:c/wedges}}"        data-c="wedges">Wedges</a>
-      <a class="plp-sib" href="{{link:c/putters}}"       data-c="putters">Putters</a>
-      <a class="plp-sib" href="{{link:c/hybrid-driver}}" data-c="hybrid-driver">Hybrid &amp; Driver</a>
-      <a class="plp-sib" href="{{link:c/polos}}"         data-c="polos">Polos</a>
-      <a class="plp-sib" href="{{link:c/hats}}"          data-c="hats">Hats</a>
-      <a class="plp-sib" href="{{link:c/gear}}"          data-c="gear">Gear</a>
-    </div>
+    <div class="plp-sibs">
+{{#siblings}}      <a class="plp-sib" href="{{href}}">{{name}}</a>
+{{/siblings}}    </div>
     <p class="aside plp-aside">Sixty days to decide on any club. If it doesn't earn its place in the bag, send it back.</p>
   </div>
 </section>

@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-gold-dust. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "PaintSplatter1.webp?v=1779472856",
-      "Gold Dust Classic Polo, front"
-    ]
-  ],
-  "buyBody": "Gold flecked across the shirt like it was thrown at it. The loudest print in the Classic range and the one that most obviously belongs to a brand whose clubs are gold.",
-  "pieceHeadline": "The one that matches the wedge",
-  "pieceParas": [
-    "A gold paint-splatter across the body. It is not subtle and it is not trying to be — this is the shirt for the golfer who already owns a gold wedge and would like the two to be obviously related.",
-    "The splatter is irregular, so no two areas of the shirt read the same, which stops it looking like uniform."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body, with a gold club in frame. The whole shot is the rhyme between the flecks and the finish on the club. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-gold-dust. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "PaintSplatter1.webp?v=1779472856",
+   "Gold Dust Classic Polo, front"
+  ]
+ ],
+ "buyBody": "Gold flecked across the shirt like it was thrown at it. The loudest print in the Classic range and the one that most obviously belongs to a brand whose clubs are gold.",
+ "lifestyleBrief": "Portrait 4:5, on body, with a gold club in frame. The whole shot is the rhyme between the flecks and the finish on the club. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

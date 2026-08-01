@@ -1314,14 +1314,17 @@ LGW02 Black has no reviews and correctly shows none.
 - **The new driver.** v1.8 has no driver section at all.
 
 **Not blocked, not done:**
-- **The club collection redesign** (§13.3). Takomo groups irons into labelled
-  bands with a comparison table and a fitting CTA; ours is one filtered grid.
-  Cole deferred it to after Phase D, and Phase D is done. **This is the next
-  build.**
+- ~~The club collection redesign (§13.3)~~ — **done, see §20.** Four pages from
+  a new `clp` template: bands, a comparison with segmented spec bars, a fitting
+  CTA on the brand field, story rows and a real review.
 - Phases E (Our Story, Trybe), F (support cluster, search, 404) and G (link
   audit + the developer handoff doc). Ten pages remain unbuilt: `story`,
   `trybe`, `reviews`, `returns`, `shipping`, `contact`, `faq`, `search`, `404`
   and `c/sale`.
+
+**§18 is superseded on two counts by §20:** `hybrid-driver` is now `hybrid`,
+and the driver and the Patriot are out of every collection rather than merely
+pageless.
 
 ### 18c. Two facts to verify when convenient
 
@@ -1395,3 +1398,790 @@ photo: *"Wes is 6'1", weighs 225lbs, and wears Large."*
 **That last one is worth stealing** once apparel photography exists — it does
 more for sizing confidence than a measurement table, and it costs one line of
 copy per product.
+
+---
+
+## 20. The club collection redesign — §13.3, built 2026-07-31
+
+The largest outstanding item from Cole's first review pass. Takomo's Iron Sets
+page (§19a) groups products into labelled bands with a comparison table and a
+fitting CTA; ours was one flat filtered grid that ended at the grid.
+
+**Four pages from one new template.** `_src/page-clp.{html,css,js}`, routed by a
+`tpl` field on the collection record — `clp` for the club collections, `plp` for
+the flat grid that is still the right page for thirteen polos.
+
+```
+10-collection-clubs.html    6 products · 3 bands · family router
+10-collection-wedges.html   3 · 2 bands (by grind) · 3-way comparison
+10-collection-putters.html  2 · 2 bands (blade/mallet) · 2-way comparison
+10-collection-hybrid.html   1 · 1 band · no comparison, no router
+```
+
+Section order and fields:
+`white(head) -> white(bands) -> breath -> cream(router OR comparison) ->
+brand(fitting CTA) -> white(story) -> ink(one real review) -> cream(rest of store)`
+
+Green lands mid-page on every club collection now, which is the thing §1 said
+was missing from browse pages. No closing CTA, same reason as §11d.
+
+### 20a. The grid is rendered, not painted
+
+The PLP paints its tiles in JS because it has facets, a sort and an in-stock
+toggle. A club collection has none of those — bands replace the filter row — so
+`build.py` renders the grid into the HTML. A Shopify developer gets markup that
+maps onto a Liquid for-loop directly, and the page works with no script at all.
+
+`page-clp.js` exists only to declare `LG_CART_UPSELL`. Quick add rides core.js's
+`[data-add]` delegation and the reveal rides its observer, both already running.
+
+### 20b. Every bar is a published number — this is the load-bearing rule
+
+The reference draws forgiveness / distance / workability bars. **We have not
+measured any of those and did not invent them.** Every bar on these pages is a
+figure from the v1.8 manufacturer spec sheet, prints that figure beside itself,
+and states its scale under the module:
+
+| Bar | Scale | Source |
+|---|---|---|
+| Lofts in production | one segment per loft, 50&deg;&ndash;60&deg; | v1.8 loft lists |
+| Bounce across the lofts | 0&deg;&ndash;14&deg;, one segment per 2&deg;, lit as a **range** | v1.8 per-loft tables |
+| Head weight | 320&ndash;400 g, one segment per 10 g | v1.8 putter tables |
+
+Segments carry `data-on` individually rather than being one filled width,
+because bounce is a range — 8&deg;&ndash;12&deg; lights segments 4 and 5, not 0&ndash;5.
+
+**If you add a bar, add its source with it.** A bar with no number beside it is a
+rating, and this project does not publish ratings it cannot cite. Same rule as
+the "Needs spec" chips.
+
+The putters page carries **one** bar, deliberately. Loft, lie and length are
+identical across both Tracers — head weight is the only figure that differs, and
+saying so out loud is a better page than three invented bars.
+
+### 20c. Bands must cover the collection exactly
+
+`build.py` fails if a product in the collection is in no band, in two bands, or
+in a band but not in the collection. Without it, adding a club to
+`products.json` would quietly leave it off the page — the failure mode a flat
+grid does not have, and the reason the flat grid was safe to leave unattended.
+Verified by breaking it.
+
+A club collection with no `_src/data/copy/_collection-<id>.json` also fails the
+build, same contract as `product_copy`.
+
+### 20d. The character chip is NOT `.pt-tag`
+
+`.clp-tag` sits **under the price**; `.pt-tag` is foil, sits **on the photo**,
+and is reserved for genuine news. Cole's rule that a badge on every card is
+wallpaper (§9) governs the second one. The first is a different kind of
+information — the same descriptor slot filled on every card — so it reads as a
+column rather than three competing badges. White on `--brand`, well past 4.5:1.
+
+### 20e. Two discontinued products were still in the store
+
+**This was live.** §15a discontinued the LGD01 driver and the LGP02 Patriot and
+deleted their pages, but nothing removed them from the things that point at
+products:
+
+- the All Clubs grid rendered both, linking to `#`;
+- the driver is 0-axis with one sellable variant, so it rendered **a working
+  Quick add** that put a discontinued club in the bag;
+- `Hybrid & Driver` was a collection of one hybrid and one dead tile;
+- the LGH01 page cross-sold the driver in its browse rail, its bag grid **and**
+  a whole comparison column.
+
+Nothing caught it because an unbuilt page resolving to `#` is a normal, counted
+state — sixty pages are still to come. **Discontinued is not the same state as
+not-built-yet**, and now says so:
+
+- `discon=True` in the overlay. Discontinued products keep their catalogue
+  record (the pull is provenance) but leave every collection.
+- `cross_sell()` in `build.py` **fails the build** on any copy file pointing at
+  one. Verified by putting the driver back into LGH01's browse rail.
+
+Links to discontinued products across the site: **3 -> 0.**
+
+**`hybrid-driver` was renamed to `hybrid`.** v1.8 has no driver section at all,
+so a collection named after one held a single hybrid.
+`10-collection-hybrid-driver.html` is deleted, not orphaned. When the new driver
+lands, add it back and rename.
+
+### 20f. Two things fixed on the way past
+
+- **LGH01's fitting module claimed a 200-220 yd carry**, plus "far better than a
+  long iron" and "straighter than a 3-wood". None of that is in the reference
+  guide — the carry came off the retired Shopify description — and §15 makes the
+  guide the authority. Replaced with loft, lie, head weight, length, shaft and
+  face, all v1.8. The module's second option compared the hybrid to the dead
+  driver; it now compares two ways of using the same club (instead of a 3-iron,
+  instead of a 5-wood), which is what GAMEPLAN §3 always described.
+  `rank` and `foot` on a `helpPick` option are now overridable and default to
+  today's behavior on every other club page.
+- **The "rest of the store" row is generated** from `products.json` for both
+  templates, instead of being static markup in one file about to be copied into
+  a second. `page-plp.js` no longer removes the current collection from the DOM.
+
+### 20g. A comment cannot contain a link token
+
+`resolve_links()` runs over the whole assembled page **including its CSS**, so a
+`{{link:...}}` written illustratively inside a comment fails the build as a
+dangling link. It did, twice. Describe the token, do not spell it.
+
+### 20h. Verified
+
+Fresh loads at 1440 and 390, contrast composited through rgba ancestors.
+
+| | 1440 | 390 |
+|---|---|---|
+| Contrast failures | 0 | 0 |
+| Overflow | none | none, `scrollWidth` exactly 390 |
+| Band grid | 3-up | 2-up |
+| Comparison | 3-up | snap rail at 76% |
+| Story rows | 2-col, alternating | 1-col, photo always leads |
+
+Two flagged items are the documented false positives: the `.btn-foil` on the
+brand field (the sweep reads `backgroundColor: transparent` and scores ink
+against green, when the real field is the gold ramp), and `.stretch`, whose hit
+area is a tile-wide `::after` rather than its 367x47 text box. **There is no
+`background-clip:text` foil on any of these pages**, so the by-hand foil check
+has nothing to catch.
+
+`.clp-cmp-nm` was a 21px link and is now 44px by padding, with the space taken
+back off `.clp-cmp-for` so the card reads unchanged.
+
+Also re-checked after the shared-markup changes: the polos PLP still filters,
+sorts and counts correctly and its sibling row still drops itself; the LGH01
+buy box still opens on $209 with two hand chips.
+
+**Known and NOT fixed**, all pre-existing and shared with the PLP:
+- `.qadd` is 38px tall, under the 44px target, on all eleven collection pages.
+- Footer links are 16px. Cole's call, unchanged since §11f.
+- Inline text links inside a sentence (`.clp-count`, the quote attribution) run
+  14-17px. WCAG 2.5.8 exempts inline links, so they are noted, not padded.
+
+### 20i. Still open for Cole
+
+- **The toe-hang contradiction.** §17a and §18c say v1.8 dropped "slight toe
+  hang / plumber neck" and that it is out of the copy until it reappears
+  somewhere citable. **It is not out of the copy** — `lgp02-gold.json`'s
+  blade-or-mallet module still asserts it in the prose and in a fact row. The new
+  putters collection page deliberately avoids it and leans on head shape instead,
+  so the PDP and the collection page now argue slightly differently. Settle it.
+- **Photography.** Eight new labelled briefs across the four pages, two per page.
+  Written, specific, and with nothing behind them.
+- **`contact` is a stub**, so the fitting CTA's second button resolves to `#` on
+  all four pages. Phase F builds it.
+
+### 20j. Build commands, current
+
+```bash
+python tools/normalize-products.py   # Shopify raw -> products.json
+python tools/build.py                # 50 pages
+python tools/build.py --check        # diff against disk
+python tools/build.py --links        # 62 declared, 50 built
+node   tools/test-variants.js        # variant engine over all 44 products
+```
+
+---
+
+## 21. Cole's review of the collection redesign (2026-07-31)
+
+Six notes. All six done, plus four things they turned up.
+
+### 21a. Quick add opens a picker IN the card — it does not go to the page
+
+Cole sent two Primo screenshots: QUICK ADD on the card, and what happens when
+you click it — the card fills with **1. CHOOSE SIZE**, a row of size chips and a
+**QUICK BUY** button. It adds to the bag from the collection page. Ours linked
+to the product page, which was a misreading of the reference.
+
+Now shared in `core.*` (both collection templates paint cards — `page-clp`
+server-side, `page-plp` in JS — and a control defined in two page stylesheets is
+one that will drift):
+
+```
+core.css   .qa .qa-step .qa-lbl .qa-chips .qa-chip .qa-buy .qa-x
+core.js    the panel: build, cascade, repaint, close
+variants.js  now loaded on collection pages too
+```
+
+Three states, and the rule is the same one the cross-sell tiles use:
+
+| Product | Control |
+|---|---|
+| 0 axes, 1 sellable variant | plain `[data-add]`, real SKU straight to the bag |
+| 1+ axes | `[data-qa]` opens the picker |
+| sold out | no control at all |
+
+**Clubs take two steps** (Cole's call): *1. Choose hand*, *2. Choose loft*.
+Availability comes from `LG_VARIANTS` — the same engine the PDP buy box runs on
+and that `test-variants.js` covers over all 44 products. There is deliberately
+no second implementation of "is this combination sellable". Verified in the
+browser: switching to left hand on the LGW01 greys **50° and 60°**, which are
+the two genuinely dead left-hand lofts, and picking 54 resolves to
+`LGW01-54-LH`. Grips repaint $9.95 → $11.95 → $14.95 across the grip sizes.
+
+Adding is handed to the existing `[data-add]` delegation: Quick buy carries the
+resolved SKU, name, price and variant as data attributes, rewritten on every
+selection change. **No new cart code.**
+
+### 21b. Never end-align a flex container that can overflow
+
+The panel was `display:flex; justify-content:flex-end` over the photo well. At
+390px the well is 168×168 and a two-axis wedge picker is **320px** of content.
+Flex end-alignment puts overflow *above* the scroll origin: "1. Choose hand"
+measured at `top:-164px` with `scrollTop` pinned at 0 and `scrollHeight ===
+clientHeight`. **On a phone the hand step did not exist and could not be
+scrolled to** — and the panel reported "fits".
+
+Fixed twice over: it is a plain block scroll container now, and it mounts on the
+whole `.ptile` rather than the photo well, which is 317px tall on a phone
+instead of 168. Re-measured: everything reachable, nothing clipped.
+
+### 21c. The wedges page is built around 01 / 02 now — COLE'S PRODUCT DIRECTION
+
+**Read this before editing `_collection-wedges.json`.** The three wedges in the
+store today are **all the 01** — different sole grinds and different finishes of
+one club. The **02 is a genuinely new club that is coming**, not a re-label of
+an LGW02 in stock. Cole chose to make the page official rather than a workaround
+("since they will be here soon anyway").
+
+What the 02 will be, per Cole 2026-07-31 — **this is roadmap, not v1.8, and must
+not be checked against the reference guide**:
+
+- full-face grooves
+- a reshaped head and leading edge, more versatile around the green, more shot shapes
+- **cast rather than forged**, specifically so weight can be moved
+- progressive weighting through the lofts
+- a painted alignment line on the first groove
+- more grind options than the 01
+
+It renders as a band with **no product row** — a `.soon` panel, no price, no
+loft list, no date, because none of those have been given. **Do not fill them
+in from anywhere.** `"coming": false` in the copy file pulls the whole block if
+pre-announcing starts costing sales of the wedges that are actually for sale.
+
+The comparison still compares the three 01s (which grind, which finish) and is
+now headed *"Pick the sole first. The finish is the easy part."*
+
+### 21d. "Same steel" is banned
+
+Cole, verbatim: *"Anytime that you say same steel I want you to remove that."*
+More broadly — **never write copy that flattens the range into one club wearing
+different paint.** The 02 has to read as better, not as the same club again.
+
+Three places carried it and all three are gone: the wedges comparison headline,
+a wedges story row, and `lgw01-gold.json`'s `specHeadline`, which was still
+*"Same steel, same weight, same price. Six lofts."* — §16 note 4 said all five
+club spec headlines are *"The numbers"* and that one was missed.
+
+### 21e. No manufacturer tolerances, anywhere
+
+Cole: no `±` deviations. "300 g", never "300 g (±3 g)". **20 figures across 9
+copy files**, plus one spec aside on the LGW02 Gold that existed only to state
+the tolerance and was deleted outright. Zero `&plusmn;` left in the tree.
+
+### 21f. The homepage club finder had four faults in one section
+
+Cole reported the photos being enormous and the clubs not clickable. Both true,
+and two more underneath:
+
+1. **`repeat(auto-fit,minmax(240px,1fr))`** gave a one-card panel a single 1fr
+   track, so "The long ones" rendered the Stryker at full page width with a
+   photograph to match. Fixed 3 columns now; a tab with one club leaves two
+   empty tracks, which is honest — there is one long club.
+2. **The cards were `<article>` with no link in them at all.** Now `<a>`.
+3. **The prices were hard-coded and stale** — both LGW02s said **$119** against
+   a real $109. The finder is driven from `products.json` now via a new
+   `_src/data/copy/_page-home.json`.
+4. **Text-first cards**, the same fault Cole caught in §13 note 5. Photo leads.
+
+It also had no breakpoints of its own, because auto-fit was doing that job —
+2-up at 980 and a `.msnap` rail at 620 now.
+
+### 21g. Radius: an image inside a rounded card must not round itself
+
+Cole on the PDP cross-sell cards: *"the images have way too big of curve, should
+these have curve at all and it's not to the edge of the product card itself."*
+
+`.oav-i` carried `--r` (6px, the **control** step) while its own photo carried
+`--r-card` (14px, the **surface** step). A 14px curve inside a 6px corner is why
+the image read as floating away from the card edge. §13.6's rule is that radius
+follows the size of the surface, so:
+
+- the **card** is a surface → `--r-card`;
+- the **photo** fills that card edge to edge → **no radius of its own**. The
+  card's `overflow:hidden` clips it. This is how `.ptile` has always worked.
+
+**Answer to "should these have curve at all": the card yes, the image no.**
+
+The same fault was one line away: `.gal-stage` — the biggest image well on every
+PDP — declared `border-radius` **twice in one rule**, `--r-card` then `--r`, so
+the control step won. One declaration now, and it is `--r-card`.
+
+### 21h. Two things the screenshots exposed that Cole did not raise
+
+- **`.pt-rt` was still printing "4.81 ★ 551"** on the PDP cross-sell grids and
+  the browse rail. §16 note 2 ruled that a card never shows a review count; it
+  landed on the collection grid and the homepage and missed these. 25 rating
+  `meta` values removed from 14 copy files, and a **rating in a card meta is now
+  a build error** — it is against the rule and it is stale the moment Judge.me
+  moves. The variant summary fills the slot instead. **Say the word and this
+  reverts.**
+- **Disabled chips measured 2.44:1** (`--ink-38` on white). A disabled control
+  is formally exempt from the contrast rule, but that is legible enough to look
+  like a choice and not quite legible enough to read. Both `.qa-chip[disabled]`
+  and `.chip[disabled]` are `--ink-muted` now; the strike-through and the border
+  carry "unavailable". This changes the PDP buy box's dead lofts too.
+
+### 21i. A smoke marker must exist in exactly ONE source file
+
+`REQUIRED` listed `"LG_VARIANTS"` to prove the axis engine was bundled. Then
+core.js's quick-add started naming `window.LG_VARIANTS` too — so **emptying
+`variants.js` entirely still passed the smoke test.** Same class of near-miss as
+§12d, from the opposite direction: the marker moved into a file that is always
+present.
+
+Both the `club` and `clp` lists now use `function offered(pd, sel, i, val)`,
+which exists only in `variants.js`. Verified by emptying it and watching both
+fail. **When you add a smoke marker, grep the tree for it first.**
+
+### 21j. Verified
+
+Every changed page swept fresh at 1440 and 390, contrast composited through rgba
+ancestors, with a Quick add panel open as well as closed.
+
+| Page | 1440 | 390 |
+|---|---|---|
+| Home | 0 fails, no overflow | 0 fails, `scrollWidth` 390 |
+| Wedges (01 + coming 02) | 0 fails | 0 fails |
+| Gear (per-variant pricing) | 0 fails | — |
+
+Driven through the DOM, not eyeballed: the two-axis wedge picker across both
+hands, the three-price grip picker, the glove (six of eight combinations dead),
+Quick buy landing `LGW01-54-LH` in the bag with the right variant line, the
+zero-axis direct add, sold-out cards having no control, and all three finder
+tabs returning cards at a constant 419px with live hrefs and catalogue prices.
+
+Build guards verified by breaking each one: band coverage, missing collection
+editorial, cross-sell to a discontinued product, a rating in a card meta, the
+finder cards losing their link, and the axis engine dropping out of the bundle.
+
+### 21k. Still open for Cole
+
+- **Pre-announcing the 02.** The wedges page now tells a shopper a better wedge
+  is coming, on the page where the current ones are for sale. That is Cole's
+  call and it is one key to switch off (`"coming": false`).
+- **Naming.** A product called *Carver LGW02 Black* sits under a band headed
+  *The 01*, because its specs are the 01's. Renaming it in Shopify is what makes
+  the page read cleanly.
+- The toe-hang line stays in `lgp02-gold.json` per Cole ("if it was in the other
+  one then it's fine" — v1.1 carried it). The putters collection page still
+  leans on head shape rather than toe hang, so the two argue slightly
+  differently; harmless, worth knowing.
+- Photography, polo and hat measurements, and the `contact` page are unchanged
+  from §20i.
+
+---
+
+## 22. Cole's third pass on the PDPs (2026-07-31)
+
+Six notes. All six done; two of them exposed a third thing each.
+
+### 22a. The size guide is a modal, and it has real numbers at last
+
+Cole supplied the **ATHLETE FIT** chart in inches and centimetres. This was the
+longest-standing editorial gap on the site — twelve polo pages had been shipping
+a table of em-dashes since §12f.
+
+It is no longer a section on the page. It opens from the **size picker's own
+help link**, where the decision is being made:
+
+```
+_src/data/copy/_shared-apparel.json   the chart
+_src/page-apparel.html                #md-size, using core's generic .md
+_src/page-apparel.js                  the unit toggle (new file)
+_src/page-apparel.css                 .sg-*
+```
+
+**Both unit tables are in the markup and the toggle swaps which is shown.** The
+manufacturer publishes inches AND centimetres and they are not exact
+conversions of one another — 28.3&Prime; against 72&nbsp;cm is 71.9, 20.5&Prime;
+against 52 is 52.1. Computing one from the other would quietly replace supplied
+figures with derived ones. **Do not "fix" the rounding.**
+
+The chart's own header says 2XL; the store's size option is XXL. The columns
+follow the store so the chart and the picker agree.
+
+### 22b. A third copy layer: `_shared-<template>.json`
+
+The merge order under a product file is now:
+
+```
+_shared-<template>.json   true of the template   (new)
+_family-<family>.json     true of the family
+<product>.json            what is different about THIS product
+```
+
+The shared layer exists because the Classic and the Blade share one size chart,
+and a 6&times;3&times;2 table copied into two family files is a table that will
+drift. `build.py` drops `sizeGuide` from any product with no size axis, which is
+how hats inherit the apparel layer without rendering polo measurements.
+
+### 22c. One design section per family, not per design
+
+**22 apparel pages each carried a bespoke headline and two paragraphs about
+their own print.** Cole: it should be general and work for any design.
+
+It is one section per family now — Classic, Blade, hat — living in the family
+file. What actually differs between colourways is the photograph, not the
+garment. `pieceEyebrow` / `pieceHeadline` / `pieceParas` were stripped from **23
+product files**; a design that genuinely needs its own paragraph can still set
+those keys and override the family.
+
+### 22d. No SKU renders anywhere
+
+Two places did: `#v-sku` under the variant picker, and `.pt-sku` on cross-sell
+tiles. Both gone from all three PDP templates, plus the homepage grid and the
+club finder. The dead `.pt-sku` rule is out of core.css.
+
+**SKUs are still carried on every variant** — the cart needs them and they are
+still never synthesised (§10c). They just never render.
+
+**Consequence worth knowing:** the SKU stamp was the only thing telling the two
+Carver Golds apart on a tile — both are `name: "Carver Gold"` at $99 and $109.
+Tiles use **`title`** now (Cole's locked full form: family, code, finish), so
+they read "Carver LGW01 Gold" and "Carver LGW02 Gold". Applied to the collection
+grid, the PLP painter, the homepage grid and the finder.
+
+### 22e. The returns link is in the returns tab
+
+It was its own `.bx-links` line under the trust callouts. It now sits inside the
+**Shipping & returns** accordion on all three templates. Gear had no accordion
+at all, so it gained one — a policy surface is not the padding §13 note 4 warned
+about.
+
+### 22f. The breadcrumb — what was actually wrong, and what I broke fixing it
+
+Measured rather than guessed. The real defect: the current-page item is a
+`<span>`, not an `<a>`, so it picked up none of the link sizing — **15.4px tall
+against the links' 44px, sitting 14.3px lower than the rest of the trail.** The
+page name dropped out of line, which is what reads as clipped. Both now share
+one rule.
+
+Also: `.crumb` top padding 18px &rarr; 26px (it is the first thing under a
+sticky header), and the trail is `nowrap` with horizontal scroll instead of
+wrapping — a four-level trail ending in a long product name wraps on a phone,
+and a breadcrumb broken across two lines under a coloured bar looks broken.
+
+**The regression:** the first attempt bled the `<ol>` to the page edge with a
+negative `margin-inline` and re-padded it. A nowrap flex row with `overflow-x`
+resolves its width from its content once that negative margin is on it — the
+`<ol>` came out **1485px in a 1440px viewport and put horizontal overflow on
+every PDP.** `min-width:0; max-width:100%` and no bleed is what actually works.
+Caught by the sweep, not by eye. **Never bleed a nowrap overflow-x flex row.**
+
+**I could not reproduce a hard clip** at 1440 or 390, scrolled or at rest. The
+misalignment above is real and fixed; if it is still cutting off, the window
+width and roughly where the page was scrolled would pin it down.
+
+### 22g. The wedges page: gold and black, one tier
+
+Cole: the 01 will be **gold and black only** — not two golds — and today's
+LGW02 Gold merges into the 01 as another grind. So the page must not present two
+different gold types or two product tiers.
+
+One band, **The 01**, three tiles, differentiated by **finish and grind** rather
+than by model. Tags are the grind (`K Grind`, `S Grind`, `K Grind`), which is
+what survives the merge. The comparison is headed *"Two finishes. Two soles.
+Pick the sole first."*
+
+**When the merge lands in Shopify, delete the LGW02 Gold tile from the band and
+the comparison — nothing else on the page has to change.** The `coming` block
+for the real 02 (full-face, cast, progressive weighting) is unchanged from §21c.
+
+### 22h. Verified
+
+| | 1440 | 390 |
+|---|---|---|
+| Polo PDP | 0 contrast fails, no overflow | 0 fails, `scrollWidth` 390 |
+| Polo PDP, modal open | 0 fails, all taps &ge;44px | panel 350px, table scrolls in its own container |
+| Wedges collection | 0 fails, no overflow | — |
+
+Driven through the DOM: the size modal opening from the picker link, the
+inches&rarr;centimetres toggle swapping tables and radio state, focus trapped
+and body locked, the returns link resolving inside `.acc-bd`, zero `.pt-sku` /
+`#v-sku` on any built page, breadcrumb misalignment at 0px, and the wedges page
+carrying no "same steel", no `&plusmn;` and no SKU.
+
+**The size-guide modal is smoke-tested per PAGE, not per template** — it only
+exists on a product with a size axis, so `REQUIRED["apparel"]` would fail on
+every hat. `smoke()` takes an `extra` list that `build()` derives from the
+page's own context. Verified by deleting the modal block and watching it fail.
+
+### 22i. Still open
+
+- The `_family-hat` file lost `fitTitle`/`fitParas` with the size keys — hats
+  have no size axis and never rendered them.
+- Everything in §21k stands: pre-announcing the 02, the LGW02 Black naming, the
+  `contact` stub, photography.
+
+---
+
+## 23. THE 01 — the wedge line collapses into one club (2026-07-31)
+
+**This is the biggest structural change since the templates, and it changes what
+the store sells, not just how a page reads. Read it before touching a wedge.**
+
+### 23a. What Cole decided
+
+Lucky sells **one wedge: the 01.** The K-grind gold and the S-grind gold were
+two Shopify products at two prices for a difference that is not a difference —
+same forged 1020 head, same 300&nbsp;g, same milled and sandblasted face. Grind
+is an **option on the 01**, never a tier.
+
+```
+Carver 01 Gold    $99    K and S grind    6 lofts    right + left
+Carver 01 Black   $109   K grind          6 lofts    right hand today
+Carver 02         —      the real one: full-face grooves, cast, progressive
+                         weighting, painted first groove. Coming.
+```
+
+The $10 is **the blacked-out finish**, which is a genuine extra process. That is
+now the only price difference in the wedge line, and the only other one that
+will ever be justified is the true 02.
+
+**Cole is deleting the LGW02 in Shopify and folding it into the 01.** This models
+that state now, ahead of the store, so the site is not describing a lineup that
+is about to stop existing.
+
+### 23b. How the merge works — `merge_grinds()` in normalize-products.py
+
+```
+merge:      ["v2-signature-gold-wedge-1"]   fold this product's variants in
+grind:      "K" / "S"                       which grind each source is
+axisGrind:  True                            Loft -> "Loft & grind"
+priceAll:   99                              one price across the product
+finishGroup:"carver-01"                     what the gold/black swatch row uses
+```
+
+Variant keys gain the grind: `RH|56` becomes `RH|56K` / `RH|56S`. Values sort
+**loft ascending, K before S** — `50K, 52K, 52S, 54K, 56K, 56S, 58K, 60K, 60S`,
+which is Cole's own ordering.
+
+**Every SKU is still carried verbatim.** `52° S` is the real `LGW02-52-RH`.
+Verified in the browser: picking it puts that SKU in the bag at $99 with the
+variant line "Right hand · 52° S".
+
+**THIS IS THE ONE PLACE THE OVERLAY OVERRIDES SHOPIFY** rather than only adding
+to it — it rewrites variant keys, flattens a price, and removes a product from
+`products.json` entirely. It is deliberate and temporary. **When Shopify is
+merged: re-pull, delete `merge` / `axisGrind` / `priceAll` and the merged
+handle's overlay entry, and the function stops doing anything.**
+
+A single-grind product still gets the combined axis (`axisGrind` without
+`merge`), so the Gold and the Black read the same way when you flip finishes.
+
+### 23c. Finish is a swatch row, not an axis
+
+Gold and Black are two Shopify products, exactly like the polo colorways, so
+they use the same device — a row of links above the pickers, keyed on
+`finishGroup`. Without it the Black is unreachable from the Gold's page.
+
+`.sw` had to move from `page-apparel.css` into `pdp.css` for this. **Fourth time
+a component has moved because a page loads core plus ONE page stylesheet**
+(`.chip` §11b, the pdp split §12c, `.spec-tbl` §22f, now this).
+
+### 23d. The grind explainer — THE ONLY UNVERIFIED BLOCK ON THE SITE
+
+New section on the club template, `#grinds`, which the buy box's "Which grind?"
+link targets. Two cards: K Grind / the all-rounder, S Grind / the shot-maker.
+
+**Cole asked me to draft it and correct it afterwards.** The `facts` rows are
+v1.8. The prose — who each grind suits and why — is drafted from the published
+bounce plus the standard industry meaning of a K and an S grind, because **the
+reference guide publishes the grind NAMES and the per-loft bounce and nothing
+whatever about what either does for a player.**
+
+The copy files carry a `_signoff` key saying exactly this, and the section's own
+note says it on the page. **Do not treat this block as verified until Cole has
+been through it.** It is the only place on the site making a claim that cannot
+be traced to a document.
+
+### 23e. Everything that had to move with it
+
+The registry caught all of it — a merged product leaving `products.json` makes
+every reference to it a build error:
+
+- `20-product-lgw02-gold.html` deleted; `lgw02-black` renamed to `lgw01-black`,
+  so `20-product-lgw02-black.html` is deleted too.
+- Mega menu: two wedge tiles now, `01 Gold` (K or S grind) and `01 Black`.
+- Homepage: the duplicate gold tile removed from the grid, the finder down to
+  two wedge cards, and the hero stamp off "LGW02 · Carver Gold · 52/56/60".
+- Footer, All Clubs, the wedges collection, and the LGH01 cross-sells.
+- **Spec sheet rebuilt** (Cole asked): the by-loft matrix carries a **Grind
+  column** and both v1.8 tables — six K rows and three S rows — and the club
+  tab lists both grinds and both lie sets.
+- Naming swept: nothing on any built page says LGW02 or "Carver LGW01" any
+  more. The only `LGW02` strings left are inside SKUs, which is correct.
+
+### 23f. Also in this pass
+
+- **Carousel callouts are foil now.** `.gal-tag` was a flat `--gold` fill while
+  every other emphasis tag ran the ramp. **And a real problem underneath:** ink
+  on the ramp's darkest stop `--gold-lo` measures **3.64:1**, a fail at tag
+  size, and the contrast sweep cannot see it because it skips gradients. New
+  `--lg-foil-tag` drops the shadow stops, so the darkest point is `--gold` at
+  6.95:1. `.pt-tag` moved onto it too — it had been failing since Phase 1.
+- **Quick add no longer covers the photo.** It was `inset:0`; it is anchored
+  bottom now with `max-height:70%`. Measured: **89% of the image still visible
+  at 1440, 57% at 390**, with the panel scrolling if the picker is tall.
+- **The size guide opened with neither unit selected.** `checked` was a Python
+  bool, so it rendered `aria-checked="True"` — CSS attribute matching is
+  case-sensitive, so `[aria-checked="true"]` never matched, and it was invalid
+  ARIA besides. **Any boolean reaching an attribute VALUE must be a lowercase
+  string**; a `{{#section}}` is fine.
+- **The size table had no styling at all.** It carried `class="spec-tbl"`, and
+  `.spec-tbl` lives in `page-club.css` — which the apparel template does not
+  load. Browser-default `<th>` centring and zero padding, which is exactly the
+  "weird spacing" Cole saw. `.sg-tbl` is now styled from scratch with a
+  `colgroup`: 120px label column, six even 58px size columns.
+
+### 23g. Verified
+
+| | 1440 | 390 |
+|---|---|---|
+| Carver 01 Gold PDP | 0 contrast fails, no overflow | — |
+| Wedges collection | 0 fails, no overflow | — |
+| Polo PDP + size modal | 0 fails | panel 350px, table scrolls in its container |
+| Quick add | photo 89% visible | photo 57% visible, panel scrolls |
+
+Driven through the DOM: the 9-value Loft & grind picker, `52° S` resolving to
+`LGW02-52-RH` at $99 in the cart, left hand correctly killing `50° K` and
+`60° K` while every S variant stays live, the gold/black swatch row, the
+"Which grind?" link finding `#grinds`, and the size guide opening on Inches
+with a filled radio.
+
+`node tools/test-variants.js` passes over all 43 products and 155 variants —
+the merged axis included.
+
+### 23h. What Cole still has to do
+
+1. **The Shopify merge itself.** Delete the LGW02 Gold product, move its six
+   variants onto the 01 Gold as grind options, and **drop them from $109 to
+   $99**. The site already shows that state.
+2. **Judge.me.** The 01 Gold page still shows **4.81 / 551** — the base
+   product's own real number. The S-grind product's **69 reviews** are not
+   folded in, because merging two review sets into a figure no system currently
+   reports would be inventing one. After the Shopify merge, migrate the reviews
+   and the count becomes 620.
+3. **Sign off the grind copy** (§23d).
+4. **The 02's specs**, when they exist — no price, no lofts, no date on the page
+   until they are real.
+
+---
+
+## 24. Grind copy in Takomo's register, and the 01/02 comparison (2026-07-31)
+
+### 24a. The grind block rewritten
+
+Cole supplied Takomo's F/V grind copy as the model. Their shape: what the sole
+is, what the bounce does, who it suits, then **a one-line short version** that
+somebody who reads nothing else still reads. Ours now follows it, and the
+template gained `.gr-short` for that closing line.
+
+**One accuracy point that has to survive this:** in Vokey's nomenclature a K
+grind is the *widest, highest-bounce* sole — but **our K spans 8&ndash;12&deg;
+while our S never drops below 10&deg;**, so ours is not simply "the high-bounce
+one". The copy describes what we actually publish and keeps the character claims
+to what the numbers support. The `_signoff` note in both wedge copy files spells
+this out. **Cole still needs to confirm the sole geometry** — is our S actually
+narrower, does it have a tapered rear sole — before any of it is verified.
+
+### 24b. The wedge collection compares 01 against 02, not gold against black
+
+Cole: the page's job is the difference between the 01 and the 02. That is the
+comparison now. Gold vs black is a *finish* choice and lives on the tiles and in
+the buy box, where you are actually picking.
+
+The comparison module gained the ability to describe **a product that does not
+exist**: a `coming` column skips the catalogue lookup entirely and renders no
+photo, no price, no bars and no buy link, because none of those are real. It
+carries the `.soon` marker, a labelled photo brief, and its feature list matched
+row-for-row against the 01's:
+
+```
+                01                          02  (coming)
+Construction    Forged 1020 carbon steel     Cast — for the weighting
+Face            Milled grooves, sandblasted  Reshaped head and leading edge
+Grooves         Standard face                Full face, heel to toe
+Weighting       300 g at every loft          Progressive through the lofts
+Grinds          K and S                      More options than the 01
+Alignment       None                         Painted first groove
+```
+
+Matching the rows is what makes the difference legible — the same six questions
+asked of both clubs. The separate `coming` band was removed: one telling of the
+02 story, not two.
+
+### 24c. NEXT-PAGES.md
+
+A standalone brief for the ten pages that remain, written to open a fresh
+session on: Our Story, Trybe, reviews, the four support pages, search, 404 and
+Sale, plus the Phase G developer handoff.
+
+**It answers Cole's question about the policy pages: they do not change,
+because they do not exist.** The *content* already does — the real v1.8 policy
+is written into the `#md-returns` and `#md-delivery` modals on all 40 product
+pages — so building them is lifting and expanding, not writing. The two "Needs
+confirming" chips (warranty period, warehouse/duties) are what is missing.
+
+### 24d. Our grind letters are VOKEY'S — and there is a conflict in the numbers
+
+Cole, 2026-07-31: **the K and S are Vokey's nomenclature, not a Lucky scheme.**
+He sent Takomo's F/V copy only as a model of tone. That resolves §24a's tension
+and corrects a real error in the first draft.
+
+Vokey's meanings, which now govern the copy:
+
+- **K Grind** — the fullest sole with the most camber, the most forgiving of the
+  set. Soft turf and sand, steeper attack angles.
+- **S Grind** — a narrower sole with heel and trailing-edge relief. A square
+  face and a neutral attack, on firm-to-normal turf.
+
+**The first draft called the S "the versatile one, for opening the face". That
+is Vokey's M grind, not the S.** Corrected.
+
+**UNRESOLVED, AND COLE NEEDS TO SETTLE IT:** Vokey's K carries the *highest*
+bounce of any grind — but our manufacturer sheet gives the **S equal or more
+bounce than the K at every shared loft**:
+
+| Loft | K | S |
+|---|---|---|
+| 52&deg; | 8&deg; | 10&deg; |
+| 56&deg; | 12&deg; | 12&deg; |
+| 60&deg; | 10&deg; | 12&deg; |
+
+So the copy deliberately describes the **sole shape**, which is what the letter
+denotes, and **never claims which grind has more bounce**. The facts rows carry
+the real per-loft figures and the spec table below carries them in full. Verified
+in the browser: no "more/higher/highest bounce" string appears in the block.
+
+**RESOLVED — Cole 2026-07-31: the spec sheet is true.** The labels are the right
+way round and the numbers are real. The apparent contradiction is measured bounce
+against **effective** bounce:
+
+> A full, cambered sole puts more of itself on the ground, so it plays every
+> degree it measures. A narrow sole with the heel and the trailing edge ground
+> away presents less — which is why the S reads higher on paper than the K at the
+> same loft and still plays lower through firm turf.
+
+That is standard wedge design, not a Lucky claim, and it is the honest
+reconciliation of two facts that are both true. The page **says it out loud** in
+`grinds.measured`, set off by a gold rule between the cards and the short
+version, and **the spec table's aside repeats it** so the numbers and the prose
+can never disagree.
+
+**Anyone editing either one has to edit both.** A customer who reads the table
+and not the paragraph concludes the table is a typo.

@@ -124,26 +124,46 @@ def norm_value(key, raw):
 #            available variant.
 #   built    True once a real page exists. The link registry resolves tokens
 #            for unbuilt pages to "#" and reports the count.
+#   discon   Discontinued. Still in the Shopify pull, deliberately NOT in any
+#            collection: a tile for a product with no page is a dead link, and
+#            a 0-axis one even rendered a working Quick add. `built` alone was
+#            not enough, because "not written yet" and "never again" are
+#            different states and only the second should leave the grid.
 # --------------------------------------------------------------------------
 EDITORIAL = {
     # --- clubs -------------------------------------------------------------
+    # THE 01. Everything Lucky sells in a wedge today is this club — the K
+    # grind and the S grind are options on it, not tiers (Cole 2026-07-31).
+    # `merge` folds another Shopify product's variants in as a second grind;
+    # `axisGrind` turns Loft into a combined "Loft & grind" axis (50K, 52K,
+    # 52S, ...); `priceAll` puts one price on the whole product, which is the
+    # point of the merge. Every SKU is still carried verbatim from Shopify.
     "v1-gold-lucky-golf-wedge": dict(
-        id="lgw01-gold", tpl="club", fam="wedge", code="LGW01", name="Carver Gold",
-        title="Carver LGW01 Gold",
-        coll="wedges", rating=[4.81, 551], default="RH|56", built=True,
-        file="02-pdp-lgw01.html"),
+        id="lgw01-gold", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Gold",
+        title="Carver 01 Gold",
+        coll="wedges", rating=[4.81, 551], built=True,
+        file="02-pdp-lgw01.html",
+        finish="Gold", grind="K", finishGroup="carver-01",
+        merge=["v2-signature-gold-wedge-1"], axisGrind=True, priceAll=99,
+        default="RH|56K"),
+    # FOLDED INTO lgw01-gold. Cole 2026-07-31: the S-grind gold was never a
+    # different club, only a different grind, and the price gap it carried was
+    # for a difference that did not exist. Its six variants become the "S" half
+    # of the Gold product's Loft & grind axis, at $99 with their real SKUs.
+    # Delete this entry once the merge is done in Shopify and the pull reflects it.
     "v2-signature-gold-wedge-1": dict(
-        id="lgw02-gold", tpl="club", fam="wedge", code="LGW02", name="Carver Gold",
-        title="Carver LGW02 Gold",
-        coll="wedges", rating=[4.78, 69],
-        note="Only 3 lofts (52/56/60), not 6. Any '6 lofts' copy about this one is wrong.", built=True),
+        id="lgw02-gold", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Gold",
+        title="Carver 01 Gold", coll="wedges", grind="S",
+        merged_into="lgw01-gold"),
     "lucky-golf-lgw02-black": dict(
-        id="lgw02-black", tpl="club", fam="wedge", code="LGW02", name="Carver Black",
-        title="Carver LGW02 Black",
-        coll="wedges",
-        note="RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — "
-             "false for this one. Also called 'Carver Shadow' in the PDP's browse rail; "
-             "see HANDOFF 9 open item C, naming is Cole's call.", built=True),
+        id="lgw01-black", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Black",
+        title="Carver 01 Black",
+        coll="wedges", finish="Black", grind="K", finishGroup="carver-01",
+        axisGrind=True, default="RH|56K",
+        note="RIGHT HAND ONLY today; left hand is coming (Cole). $109 against the "
+             "Gold's $99 — the black finish is a real extra process, which is the "
+             "one price difference in the wedge line that stands for something.",
+        built=True),
     "signature-gold-putters": dict(
         id="lgp01-gold", tpl="club", fam="putter", code="LGP01", name="Tracer Blade",
         title="Tracer LGP01 Blade",
@@ -156,16 +176,16 @@ EDITORIAL = {
     "lgp02-mallet-putter-patriot": dict(
         id="lgp02-patriot", tpl="club", fam="putter", code="LGP02", name="Tracer Patriot",
         title="Tracer LGP02 Patriot",
-        coll="putters",
+        coll="putters", discon=True,
         note="DISCONTINUED 2026-07-31 (Cole). A fifty-unit run for America's 250th, sold out and being removed from Shopify. Page unbuilt."),
     "lucky-striker-hybrid-limited-edition": dict(
         id="lgh01", tpl="club", fam="hybrid", code="LGH01", name="Stryker",
         title="Stryker LGH01",
-        coll="hybrid-driver", rating=[4.60, 20], built=True),
+        coll="hybrid", rating=[4.60, 20], built=True),
     "lucky-gold-driver-pre-order_": dict(
         id="lgd01", tpl="club", fam="driver", code="LGD01", name="Lucky Driver",
         title="Lucky Driver LGD01",
-        coll="hybrid-driver", rating=[4.33, 39],
+        coll="hybrid", rating=[4.33, 39], discon=True,
         note="DISCONTINUED 2026-07-31 (Cole). This is an old driver that is being removed from Shopify; a new one is coming and its specs are not in the reference guide yet. Page unbuilt — do not rebuild until the new driver's data lands."),
 
     # --- apparel: classic polos -------------------------------------------
@@ -228,30 +248,37 @@ EDITORIAL = {
 #
 # `facets` are the filter chips on the PLP: family keys the visitor can narrow
 # by. Omitted where there is only one family and a filter row would be noise.
+#
+# `tpl` picks the template. Club collections run `clp` — bands, a comparison
+# with spec bars, a fitting CTA and brand copy under the grid (GAMEPLAN §13.3,
+# Takomo's Iron Sets page). Everything else runs the flat filtered grid `plp`,
+# which is the right page for thirteen polos and wrong for six clubs.
 COLLECTIONS = [
-    dict(id="clubs", name="All Clubs", shopify="lucky-golf-clubs",
+    dict(id="clubs", name="All Clubs", shopify="lucky-golf-clubs", tpl="clp",
          fams=["wedge", "putter", "hybrid", "driver"],
          facets=[("wedge", "Wedges"), ("putter", "Putters"),
                  ("hybrid", "Hybrid"), ("driver", "Driver")],
          eyebrow="The full bag",
-         lede="Wedges, putters, a hybrid and a driver. The same standard the big "
-              "names charge triple for, without the sponsorships and the middlemen "
-              "in the price."),
-    dict(id="wedges", name="Wedges", shopify=None, fams=["wedge"],
+         lede="Wedges, putters and a hybrid. The same standard the big names charge "
+              "triple for, without the sponsorships and the middlemen in the price."),
+    dict(id="wedges", name="Wedges", shopify=None, fams=["wedge"], tpl="clp",
          eyebrow="The scoring clubs",
          lede="The clubs you use most and think about least. Pick the loft you keep "
               "missing and the finish you want to look down at."),
-    dict(id="putters", name="Putters", shopify=None, fams=["putter"],
+    dict(id="putters", name="Putters", shopify=None, fams=["putter"], tpl="clp",
          eyebrow="On the green",
-         lede="Blade or mallet, depending on whether your stroke runs straight or "
-              "arcs. Either way the ball comes off the face quietly and starts on "
-              "the line you picked."),
-    dict(id="hybrid-driver", name="Hybrid & Driver", shopify=None,
-         fams=["hybrid", "driver"],
-         facets=[("driver", "Driver"), ("hybrid", "Hybrid")],
-         eyebrow="The long shots",
-         lede="One to get the ball in play off the tee, one for when the green is "
-              "still a long way off and the lie isn't helping."),
+         lede="Two heads, same loft, same lie, same length. Which one you want comes "
+              "down to how much the putter should tell you about a miss."),
+    # Was "Hybrid & Driver". The driver is discontinued and the new one's specs
+    # are not in the reference guide yet (HANDOFF §15a, §17a), so a collection
+    # named after it held one hybrid and one dead tile. Renaming moves the URL —
+    # 10-collection-hybrid-driver.html is deleted, not left orphaned.
+    dict(id="hybrid", name="Hybrid", shopify=None, fams=["hybrid", "driver"],
+         tpl="clp",
+         eyebrow="The long approach",
+         lede="One club for when the green is still a long way off and the lie isn't "
+              "helping. Titanium, nineteen degrees, and easier to hit than the iron "
+              "it replaces."),
     dict(id="polos", name="Polos", shopify="polos",
          fams=["polo-classic", "polo-blade"],
          facets=[("polo-classic", "Classic collar"), ("polo-blade", "Blade collar")],
@@ -310,7 +337,13 @@ def axis_summary(options, variants):
         if not live:
             continue
         labels = [v["label"] for v in live]
-        if opt["key"] == "hand":
+        if opt["key"] == "loftgrind":
+            lofts = sorted({v["k"][:-1] for v in live}, key=float)
+            grinds = sorted({v["k"][-1] for v in live})
+            parts.append("%d loft%s · %s grind"
+                         % (len(lofts), "" if len(lofts) == 1 else "s",
+                            " and ".join(grinds)))
+        elif opt["key"] == "hand":
             parts.append("Right & left hand" if len(labels) > 1 else labels[0] + " only")
         elif opt["key"] == "loft":
             parts.append("%d loft%s" % (len(labels), "" if len(labels) == 1 else "s"))
@@ -373,7 +406,9 @@ def build_product(raw):
     live = [k for k, v in variants.items() if v["avail"]]
 
     default = ed.get("default")
-    if default and default not in variants:
+    # A combined-axis product's variant keys do not exist yet — the grind is
+    # appended in merge_grinds() — so its default is validated there instead.
+    if default and not ed.get("axisGrind") and default not in variants:
         sys.exit("%s: default %r is not a variant key" % (ed["id"], default))
     if not default:
         default = live[0] if live else sorted(variants)[0]
@@ -402,6 +437,7 @@ def build_product(raw):
         "summary": axis_summary(options, variants),
         "inStock": bool(live),
         "built": bool(ed.get("built")),
+        "discontinued": bool(ed.get("discon")),
     }
     if ed.get("file"):
         p["file"] = ed["file"]
@@ -409,7 +445,101 @@ def build_product(raw):
         p["rating"] = {"avg": ed["rating"][0], "count": ed["rating"][1]}
     if ed.get("note"):
         p["note"] = ed["note"]
+    # Finish is a sibling axis expressed as separate products, the way colorways
+    # are on the polos: `finishGroup` is what links them into one swatch row.
+    for k in ("finish", "grind", "finishGroup"):
+        if ed.get(k):
+            p[k] = ed[k]
     return p
+
+
+def merge_grinds(products):
+    """Fold a merged product's variants into its target as a second grind, and
+    turn the target's Loft axis into a combined "Loft & grind" one.
+
+    WHY THIS EXISTS — Cole, 2026-07-31. Lucky sells one wedge, the 01. The
+    K-grind gold and the S-grind gold were two Shopify products at two prices
+    for a difference that is not a difference: same 1020 forged head, same
+    weight, same face. He is collapsing them in Shopify; this models the
+    collapsed state now so the site is not describing a lineup that is about to
+    stop existing.
+
+    THIS IS THE ONE PLACE THE OVERLAY OVERRIDES SHOPIFY DATA rather than just
+    adding to it, and it is deliberate and temporary:
+      * variant keys gain the grind    RH|56  ->  RH|56K / RH|56S
+      * `priceAll` flattens the price  the S variants drop $109 -> $99
+      * the merged product LEAVES products.json entirely
+    Every SKU is still carried verbatim — 56S is the real LGW02-56-RH.
+
+    WHEN SHOPIFY IS MERGED: re-pull, delete `merge`/`axisGrind`/`priceAll` and
+    the merged handle's overlay entry, and this function stops doing anything.
+    """
+    by_handle = {p["shopifyHandle"]: p for p in products}
+    drop = set()
+
+    for p in products:
+        ed = EDITORIAL[p["shopifyHandle"]]
+        if not ed.get("axisGrind"):
+            continue
+
+        # A product with one grind still gets the combined axis, so the Gold
+        # and the Black read the same way when you flip between finishes.
+        sources = [(p, ed.get("grind"))]
+        for h in ed.get("merge", []):
+            src = by_handle.get(h)
+            if src is None:
+                sys.exit("%s merges %r, which is not in the pull" % (p["id"], h))
+            sources.append((src, EDITORIAL[h].get("grind")))
+            drop.add(src["id"])
+
+        loft_i = [i for i, o in enumerate(p["options"]) if o["key"] == "loft"]
+        if len(loft_i) != 1:
+            sys.exit("%s: axisGrind needs exactly one loft axis" % p["id"])
+        loft_i = loft_i[0]
+
+        combined, variants = {}, {}
+        for src, grind in sources:
+            if not grind:
+                sys.exit("%s: every merged product needs a `grind`" % src["id"])
+            src_loft = [i for i, o in enumerate(src["options"]) if o["key"] == "loft"][0]
+            for key, var in src["variants"].items():
+                parts = key.split("|")
+                lo = parts[src_loft]
+                parts[src_loft] = lo + grind
+                combined[lo + grind] = {
+                    "k": lo + grind,
+                    # Cole's own shorthand: 50K, 52K, 52S. The degree sign and
+                    # the space are for the chip; the KEY stays compact.
+                    # LITERAL characters, not HTML entities — the buy box runs
+                    # every chip label through esc(), so "&deg;" would render
+                    # as the four characters "&deg;". norm_value() already uses
+                    # a literal degree sign for the plain loft axis.
+                    "label": "%s° %s" % (lo, grind),
+                    "sv": "%s / %s Grind" % (lo, grind),
+                    "loft": float(lo), "grind": grind,
+                }
+                variants["|".join(parts)] = dict(
+                    var, price=ed["priceAll"] if ed.get("priceAll") else var["price"])
+
+        # loft ascending, K before S inside a loft — 50K, 52K, 52S, 54K, ...
+        vals = sorted(combined.values(), key=lambda v: (v["loft"], v["grind"]))
+        p["options"][loft_i] = {
+            "key": "loftgrind", "name": "Loft & grind",
+            "values": [{"k": v["k"], "label": v["label"], "sv": v["sv"]} for v in vals],
+        }
+        p["variants"] = variants
+        prices = sorted(v["price"] for v in variants.values())
+        p["price"], p["priceMax"] = prices[0], prices[-1]
+        p["priceLabel"] = (fmt_price(prices[0]) if prices[0] == prices[-1]
+                           else "%s-%s" % (fmt_price(prices[0]), fmt_price(prices[-1])))
+        p["summary"] = axis_summary(p["options"], variants)
+        live = [k for k, v in variants.items() if v["avail"]]
+        p["inStock"] = bool(live)
+        if p["default"] not in variants:
+            sys.exit("%s: default %r is not a variant key after the merge"
+                     % (p["id"], p["default"]))
+
+    return [p for p in products if p["id"] not in drop]
 
 
 def main():
@@ -420,6 +550,7 @@ def main():
 
     raw = json.load(open(RAW, encoding="utf8"))
     products = [build_product(r) for r in raw["products"]]
+    products = merge_grinds(products)
 
     ids = [p["id"] for p in products]
     dupes = sorted({i for i in ids if ids.count(i) > 1})
@@ -436,7 +567,11 @@ def main():
     for c in COLLECTIONS:
         members = c.get("members")
         if members is None:
-            members = [p["id"] for p in products if p["family"] in c["fams"]]
+            # Discontinued products keep their catalogue record — the pull is
+            # provenance and the note explains why they went — but they leave
+            # every grid. The driver was still rendering a Quick add.
+            members = [p["id"] for p in products
+                       if p["family"] in c["fams"] and not p["discontinued"]]
         else:
             unknown = [m for m in members if m not in by_id]
             if unknown:
@@ -444,6 +579,12 @@ def main():
                          % (c["id"], ", ".join(unknown)))
         rec = dict(c, products=members, count=len(members))
         rec.pop("members", None)
+        rec["tpl"] = c.get("tpl", "plp")
+        # A collection that has emptied out should stop being a page rather
+        # than ship a heading over nothing. Nothing hits this today; it is here
+        # because discontinuing the last member of a family now silently could.
+        if not members and not c.get("blocked"):
+            sys.exit("collection %s has no members — block it or remove it" % c["id"])
 
         # Facets that no member actually has would render as chips that filter
         # to nothing, so drop them here rather than in the page.

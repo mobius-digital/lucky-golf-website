@@ -14,7 +14,11 @@
 
 /* ---------- gallery ---------- */
 .pd-gal{position:sticky;top:96px;align-self:start}
-.gal-stage{border-radius:var(--r-card);position:relative;background:var(--cream);border-radius:var(--r);overflow:hidden;
+/* border-radius was declared TWICE in this rule — --r-card first, then --r,
+   so the 6px control step won and the biggest image well on the PDP rendered
+   with a chip's corner. One declaration, and it is --r-card because a square
+   image well the width of half the page is a surface (§13.6). */
+.gal-stage{position:relative;background:var(--cream);border-radius:var(--r-card);overflow:hidden;
   aspect-ratio:1/1}
 .gal-stage::before{content:'';position:absolute;inset:0;background:var(--groove-light);
   pointer-events:none;z-index:1}
@@ -22,7 +26,12 @@
 .gal-slide{position:absolute;inset:0;opacity:0;transition:opacity .3s;z-index:2}
 .gal-slide[data-on]{opacity:1}
 .gal-slide img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
-.gal-tag{position:absolute;left:0;top:0;z-index:4;background:var(--gold);color:var(--ink);
+/* FOIL, not flat gold. This is an emphasis tag and every other one on the site
+   runs the gold ramp (.pt-tag has since Phase 1) — this one was a flat fill and
+   read as a different brand. Legal on ink text because the ramp is a
+   BACKGROUND here, not background-clip:text (HANDOFF §9, "foil is illegal on
+   white" applies to type, not to fills). */
+.gal-tag{position:absolute;left:0;top:0;z-index:4;background:var(--lg-foil-tag);color:var(--ink);
   font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
   text-transform:uppercase;padding:7px 13px}
 .gal-count{position:absolute;right:12px;bottom:12px;z-index:4;
@@ -108,6 +117,32 @@
 .opt-note{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;
   color:var(--ink-muted)}
 
+/* ==========================================================================
+   SWATCH ROW — a sibling product presented as if it were an option
+   Polo colorways and wedge finishes are both separate Shopify products, so
+   both are a row of LINKS rather than a variant axis. It sits above the
+   pickers because it is the first decision: which shirt / which finish, then
+   what size / which loft and grind.
+
+   Lives in pdp.css, not page-apparel.css. It started there and the club
+   template could not see it when the wedges gained a gold/black swatch row —
+   the fourth time a component has had to move because a page loads core plus
+   ONE page stylesheet (.chip §11b, the pdp split §12c, .spec-tbl §23).
+   ========================================================================== */
+.sw-row{display:flex;flex-wrap:wrap;gap:8px}
+.sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
+  background:var(--cream);border:2px solid var(--ink-14);border-radius:var(--r);
+  transition:border-color .18s,transform .2s}
+.sw img{width:100%;height:100%;object-fit:cover;display:block}
+.sw:hover{border-color:var(--ink);transform:translateY(-2px)}
+.sw--on{border-color:var(--gold);cursor:default}
+.sw--on:hover{transform:none}
+.sw--out img{filter:grayscale(1);opacity:.45}
+/* a struck-through swatch, matching how a dead variant chip reads */
+.sw--out::after{content:'';position:absolute;left:10%;right:10%;top:50%;height:2px;
+  background:var(--ink-14);rotate:-24deg}
+
+
 /* ---------- add to cart ---------- */
 .atc-row{display:flex;gap:10px;margin:26px 0 0}
 .bx-qty{display:flex;align-items:center;border:2px solid var(--ink-14);border-radius:var(--r);flex:none}
@@ -146,6 +181,13 @@
 .acc-hd[aria-expanded="true"] .pm::after{transform:scaleY(0);opacity:0}
 .acc-bd{padding:0 0 22px;font-size:.96rem;line-height:1.62;color:var(--ink-70);max-width:52ch}
 .acc-bd[hidden]{display:none}
+/* the modal trigger lives inside the returns tab now, not on its own line
+   under the callouts (Cole 2026-07-31) */
+.acc-link{margin:14px 0 0}
+.acc-link a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.acc-link a:hover{text-decoration-color:var(--gold)}
 .acc-bd ul{margin:0;padding-left:1.1em}
 .acc-bd li{margin:0 0 6px}
 
@@ -167,11 +209,20 @@
    ========================================================================== */
 .oav-hd{text-align:center;margin:0 0 clamp(20px,2.2vw,30px)}
 .oav{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
+/* RADIUS — Cole flagged this: the photo's corner was rounder than the card's.
+   The card carried --r (6px, the CONTROL step) while its own photo carried
+   --r-card (14px, the SURFACE step), so a 14px curve sat inside a 6px corner
+   and the image read as floating away from the card edge.
+   §13.6's rule is that radius follows the size of the surface: a 300px card is
+   a surface, so the CARD gets --r-card. The photo fills that card edge to edge
+   and gets NO radius of its own — the card's overflow:hidden already clips it,
+   which is how .ptile has always worked. An image inside a rounded card should
+   never round itself; that is what produced two different curves. */
 .oav-i{position:relative;display:flex;flex-direction:column;background:var(--white);
-  border:2px solid transparent;border-radius:var(--r);overflow:hidden;
+  border:2px solid transparent;border-radius:var(--r-card);overflow:hidden;
   transition:border-color .2s,transform .3s}
 .oav-i:hover{border-color:var(--gold);transform:translateY(-3px)}
-.oav-ph{border-radius:var(--r-card);position:relative;aspect-ratio:1/1;background:var(--white);overflow:hidden}
+.oav-ph{position:relative;aspect-ratio:1/1;background:var(--white);overflow:hidden}
 .oav-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
   transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .oav-i:hover .oav-ph img{transform:scale(1.04)}

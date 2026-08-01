@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-contour. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "TopographyStyle1.webp?v=1779472755",
-      "Contour Classic Polo, front"
-    ]
-  ],
-  "buyBody": "A contour print that reads as texture from more than a few feet away, on the collar and three-button placket most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round costs you nothing.",
-  "pieceHeadline": "Up close it's a map. From across the fairway it's texture.",
-  "pieceParas": [
-    "The contour print is the point. Near to, it reads as a topographic line drawing; at conversational distance it reads as texture. That is the right way round for something worn for five hours next to people who are looking at you.",
-    "It is the most-reached-for print in the range for exactly that reason — it carries a pattern without ever becoming the thing anyone comments on."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. The print has to be legible as texture at this distance. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-contour. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "TopographyStyle1.webp?v=1779472755",
+   "Contour Classic Polo, front"
+  ]
+ ],
+ "buyBody": "A contour print that reads as texture from more than a few feet away, on the collar and three-button placket most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round costs you nothing.",
+ "lifestyleBrief": "Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. The print has to be legible as texture at this distance. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

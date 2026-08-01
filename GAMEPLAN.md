@@ -42,6 +42,7 @@ check by hand), gradients, decorative SVG.
 | **Phase B — collection pages** | **Done 2026-07-31 — 7 of 8 built, see HANDOFF §11** |
 | **Phase C — three PDP templates** | **Done 2026-07-31 — proven on a putter, a polo and a cover, see HANDOFF §12** |
 | **Phase D — all product pages** | **Done 2026-07-31 — 42 of 44, see HANDOFF §14 and §18** |
+| **Club collection redesign (§13.3)** | **Done 2026-07-31 — 4 pages from a new `clp` template, see HANDOFF §20** |
 | Everything else | Not started |
 
 **The store: 44 sellable products**, counted from the catalogue pull, not
@@ -155,9 +156,10 @@ two detail blocks + reviews + cross-sell. Nothing else.
 | 8 | Support cluster | one template | 4 |
 | 9 | Search results, 404 | new | 2 |
 
-**Collections that need to exist:** All Clubs, Wedges, Putters, Hybrid &
-Driver, Polos, Hats, Gear, Sale. Note **Gear does not exist in Shopify** — see
-HANDOFF §7b E.
+**Collections that need to exist:** All Clubs, Wedges, Putters, Hybrid, Polos,
+Hats, Gear, Sale. Note **Gear does not exist in Shopify** — see HANDOFF §7b E.
+"Hybrid & Driver" became "Hybrid" when the driver was discontinued (§20e); it
+goes back when the new driver's specs land.
 
 **Support cluster:** Returns & the 60-day policy, Shipping, Contact, FAQ. All
 four are already linked in the footer and all four currently go nowhere.
@@ -239,14 +241,45 @@ From HANDOFF, still needing Cole:
 ## 7. Starting the next chat
 
 > Continuing Lucky Golf. Read `GAMEPLAN.md` then `HANDOFF.md` in
-> `C:\Users\wetzl\Lucky Golf\Website`. Phases A–D are done: routing, the N-axis
-> buy box, the product data layer, seven collection pages, all three PDP
-> templates and 42 of 44 product pages. **50 of 62 pages built.** HANDOFF
-> §10–§18 have the details and §18 is the current state.
+> `C:\Users\wetzl\Lucky Golf\Website`. Phases A–D are done, and so is the club
+> collection redesign: routing, the N-axis buy box, the product data layer,
+> seven collection pages, all three PDP templates, 42 of 44 product pages, and
+> four club collection pages on the new `clp` template. **50 of 62 pages built.**
+> HANDOFF §10–§20 have the details; **§20 is the current state and supersedes
+> §18 where they disagree.**
 >
-> Next is the **club collection redesign** — HANDOFF §13.3. Takomo groups irons
-> into labelled bands with a comparison table and a fitting CTA; ours is one
-> filtered grid. Cole deferred it until Phase D finished, and it has.
+> Next is **Phase E — Our Story, then Trybe.** Both have two references each.
 
-Then Phase E (Our Story, Trybe), F (support cluster, search, 404) and G (link
-audit plus the developer handoff doc).
+Then Phase F (support cluster, search, 404) and G (link audit plus the developer
+handoff doc).
+
+**`NEXT-PAGES.md` is the brief for all ten remaining pages** — what each one is,
+what content already exists for it, what is blocked on Cole, and the Shopify
+template each of ours maps onto. Written 2026-07-31 to open a fresh session on.
+
+**Read HANDOFF §20b before touching the comparison module.** Every spec bar on a
+club collection page is a published manufacturer figure printed beside itself.
+There is no forgiveness bar and no workability bar because nobody has measured
+one — a bar without a citable number is a rating, and this site does not publish
+those.
+
+**Polo measurements exist now** (HANDOFF §22a) — the size guide is a modal off
+the size picker, not a section, and it carries the manufacturer's inches AND
+centimetres. They are not exact conversions of each other; do not "fix" the
+rounding. Apparel copy also gained a third merge layer,
+`_shared-<template>.json`, under the family file.
+
+**THE WEDGE LINE IS NOW ONE CLUB — read HANDOFF §23 before touching anything
+with a wedge in it.** Carver 01 Gold ($99, K and S grind) and Carver 01 Black
+($109, K grind). The old LGW02 Gold is merged into the Gold in the data layer,
+ahead of Shopify; `merge_grinds()` in normalize-products.py is the one place
+the overlay overrides Shopify rather than adding to it, and it is temporary.
+The grind explainer on the club PDP is **the only unverified block on the
+site** and is awaiting Cole's sign-off.
+
+**Read HANDOFF §21c and §22g before touching the wedges page.** The three wedges in the
+store are all the **01**; the **02** is a new club that is coming, and its block
+is Cole's roadmap, not the reference guide. Two standing copy rules came out of
+that review: **never write "same steel"** or anything else that flattens the
+range into one club in different paint (§21d), and **never publish a
+manufacturer tolerance** — "300 g", not "300 g (±3 g)" (§21e).

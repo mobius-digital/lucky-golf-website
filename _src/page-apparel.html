@@ -101,8 +101,6 @@
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
 
-    <p class="bx-links"><a href="{{link:none}}" data-md-open="md-returns">Returns and exchanges</a></p>
-
     <div class="acc">
       <div class="acc-i">
         <button class="acc-hd" type="button" aria-expanded="true" aria-controls="a1"><span>Fabric and care</span><span class="pm" aria-hidden="true"></span></button>
@@ -117,6 +115,7 @@
         <div class="acc-bd" id="a2" hidden>
           <p>Free shipping inside the US. Orders leave the warehouse in one to two business days.</p>
           <p>Apparel comes back within thirty days, unworn and with the tags still on. That is a shorter window than the clubs get, and it is the one part of the policy we can't be relaxed about.</p>
+          <p class="acc-link"><a href="{{link:none}}" data-md-open="md-returns">Read the full returns and exchanges policy</a></p>
         </div>
       </div>
     </div>
@@ -179,32 +178,9 @@
   </div>
 </section>
 
-<!-- ============ SIZE AND FIT ============
-     The spec table's replacement. Size is the decision here, and getting it
-     wrong is the single biggest reason apparel comes back. -->
-<section class="sec band-cream" id="size">
-  <div class="wrap">
-    <span class="eyebrow">Size and fit</span>
-    <h2 class="disp d-l" style="max-width:20ch">{{sizeHeadline}}</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px);max-width:56ch">{{sizeSub}}</p>
-
-    <div class="sz">
-      <div class="sz-tbl-wrap">
-        <table class="spec-tbl sz-tbl">
-          <thead><tr><th scope="col">Size</th>{{#sizeCols}}<th scope="col">{{.}}</th>{{/sizeCols}}</tr></thead>
-          <tbody>
-{{#sizeRows}}            <tr><th scope="row">{{k}}</th>{{#cells}}<td>{{.}}</td>{{/cells}}</tr>
-{{/sizeRows}}          </tbody>
-        </table>
-      </div>
-      <div class="sz-note">
-        <h3 class="disp d-s">{{fitTitle}}</h3>
-{{#fitParas}}        <p class="body">{{.}}</p>
-{{/fitParas}}      </div>
-    </div>
-    <p class="spec-note">{{sizeNote}}</p>
-  </div>
-</section>
+<!-- The size guide is NOT a section on the page any more (Cole 2026-07-31).
+     It is a modal opened from the size picker, where the decision is actually
+     being made — see #md-size at the bottom of this file. -->
 
 {{#quote}}
 <section class="pull sec">
@@ -279,7 +255,6 @@
       <article class="ptile">
         <div class="pt-ph"><img src="{{img}}" alt="{{title}}" loading="lazy" width="800" height="800">
           {{#tag}}<span class="pt-tag">{{tag}}</span>{{/tag}}</div>
-        <span class="pt-sku">{{code}}</span>
         <a class="pt-nm stretch" href="{{href}}">{{name}}</a>
         <p class="pt-hook">{{hook}}</p>
         <div class="pt-meta"><span class="pt-pr">{{priceLabel}}</span><span class="pt-rt">{{meta}}</span></div>
@@ -366,3 +341,45 @@
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
   </div>
 </div>
+
+<!-- ============ SIZE GUIDE MODAL ============
+     Cole, 2026-07-31: the size guide is a popup next to the size options, not
+     a section on the page. It opens from the picker's help link, which is
+     where the decision is actually being made.
+
+     Both unit tables are rendered and toggled rather than converted in JS.
+     The manufacturer gives inches AND centimeters, and they are not exact
+     conversions of one another — computing one from the other would quietly
+     replace supplied figures with derived ones. -->
+{{#sizeGuide}}
+<div class="md" id="md-size" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-size-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <h2 class="disp d-m" id="md-size-t">{{title}}</h2>
+    <p class="sg-intro">{{intro}}</p>
+
+    <div class="sg-units" role="radiogroup" aria-label="{{unitLabel}}">
+      <span class="sg-units-lbl">{{unitLabel}}</span>
+{{#units}}      <button class="sg-unit" type="button" role="radio" aria-checked="{{checked}}" data-unit="{{k}}"><span class="dot" aria-hidden="true"></span>{{label}}</button>
+{{/units}}    </div>
+
+{{#units}}    <div class="sg-tbl-wrap" data-unit-panel="{{k}}"{{#hidden}} hidden{{/hidden}}>
+      <table class="sg-tbl">
+        <colgroup><col class="lbl">{{#cols}}<col>{{/cols}}</colgroup>
+        <thead><tr><th scope="col">{{caption}}</th>{{#cols}}<th scope="col">{{.}}</th>{{/cols}}</tr></thead>
+        <tbody>
+{{#rows}}          <tr><th scope="row">{{k}}</th>{{#cells}}<td>{{.}}</td>{{/cells}}</tr>
+{{/rows}}        </tbody>
+      </table>
+    </div>
+{{/units}}
+    <div class="md-sec">
+      <h3>{{fitTitle}}</h3>
+{{#fitParas}}      <p>{{.}}</p>
+{{/fitParas}}    </div>
+    <p class="sg-note">{{note}}</p>
+    <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
+  </div>
+</div>
+{{/sizeGuide}}

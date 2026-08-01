@@ -7,6 +7,7 @@
    "id": "clubs",
    "name": "All Clubs",
    "shopify": "lucky-golf-clubs",
+   "tpl": "clp",
    "fams": [
     "wedge",
     "putter",
@@ -25,25 +26,18 @@
     {
      "k": "hybrid",
      "label": "Hybrid"
-    },
-    {
-     "k": "driver",
-     "label": "Driver"
     }
    ],
    "eyebrow": "The full bag",
-   "lede": "Wedges, putters, a hybrid and a driver. The same standard the big names charge triple for, without the sponsorships and the middlemen in the price.",
+   "lede": "Wedges, putters and a hybrid. The same standard the big names charge triple for, without the sponsorships and the middlemen in the price.",
    "products": [
     "lgw01-gold",
-    "lgw02-gold",
-    "lgw02-black",
+    "lgw01-black",
     "lgp01-gold",
     "lgp02-gold",
-    "lgp02-patriot",
-    "lgh01",
-    "lgd01"
+    "lgh01"
    ],
-   "count": 8
+   "count": 5
   },
   {
    "id": "wedges",
@@ -52,14 +46,14 @@
    "fams": [
     "wedge"
    ],
+   "tpl": "clp",
    "eyebrow": "The scoring clubs",
    "lede": "The clubs you use most and think about least. Pick the loft you keep missing and the finish you want to look down at.",
    "products": [
     "lgw01-gold",
-    "lgw02-gold",
-    "lgw02-black"
+    "lgw01-black"
    ],
-   "count": 3,
+   "count": 2,
    "facets": []
   },
   {
@@ -69,41 +63,32 @@
    "fams": [
     "putter"
    ],
+   "tpl": "clp",
    "eyebrow": "On the green",
-   "lede": "Blade or mallet, depending on whether your stroke runs straight or arcs. Either way the ball comes off the face quietly and starts on the line you picked.",
+   "lede": "Two heads, same loft, same lie, same length. Which one you want comes down to how much the putter should tell you about a miss.",
    "products": [
     "lgp01-gold",
-    "lgp02-gold",
-    "lgp02-patriot"
+    "lgp02-gold"
    ],
-   "count": 3,
+   "count": 2,
    "facets": []
   },
   {
-   "id": "hybrid-driver",
-   "name": "Hybrid & Driver",
+   "id": "hybrid",
+   "name": "Hybrid",
    "shopify": null,
    "fams": [
     "hybrid",
     "driver"
    ],
-   "facets": [
-    {
-     "k": "driver",
-     "label": "Driver"
-    },
-    {
-     "k": "hybrid",
-     "label": "Hybrid"
-    }
-   ],
-   "eyebrow": "The long shots",
-   "lede": "One to get the ball in play off the tee, one for when the green is still a long way off and the lie isn't helping.",
+   "tpl": "clp",
+   "eyebrow": "The long approach",
+   "lede": "One club for when the green is still a long way off and the lie isn't helping. Titanium, nineteen degrees, and easier to hit than the iron it replaces.",
    "products": [
-    "lgh01",
-    "lgd01"
+    "lgh01"
    ],
-   "count": 2
+   "count": 1,
+   "facets": []
   },
   {
    "id": "polos",
@@ -140,7 +125,8 @@
     "polo-spot",
     "polo-blackout"
    ],
-   "count": 13
+   "count": 13,
+   "tpl": "plp"
   },
   {
    "id": "hats",
@@ -164,6 +150,7 @@
     "hat-baby-blue-cursive"
    ],
    "count": 10,
+   "tpl": "plp",
    "facets": []
   },
   {
@@ -211,7 +198,8 @@
     "grip-putter-stock",
     "tees-25"
    ],
-   "count": 13
+   "count": 13,
+   "tpl": "plp"
   },
   {
    "id": "sale",
@@ -230,6 +218,7 @@
     "grip-putter-green"
    ],
    "count": 6,
+   "tpl": "plp",
    "facets": []
   }
  ],
@@ -240,8 +229,8 @@
    "family": "wedge",
    "collection": "wedges",
    "code": "LGW01",
-   "name": "Carver Gold",
-   "title": "Carver LGW01 Gold",
+   "name": "Carver 01 Gold",
+   "title": "Carver 01 Gold",
    "shopifyHandle": "v1-gold-lucky-golf-wedge",
    "shopifyTitle": "Lucky Golf LGW01 Gold",
    "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
@@ -266,235 +255,189 @@
      ]
     },
     {
-     "key": "loft",
-     "name": "Loft",
+     "key": "loftgrind",
+     "name": "Loft & grind",
      "values": [
       {
-       "k": "50",
-       "label": "50°",
-       "sv": "50°"
+       "k": "50K",
+       "label": "50° K",
+       "sv": "50 / K Grind"
       },
       {
-       "k": "52",
-       "label": "52°",
-       "sv": "52°"
+       "k": "52K",
+       "label": "52° K",
+       "sv": "52 / K Grind"
       },
       {
-       "k": "54",
-       "label": "54°",
-       "sv": "54°"
+       "k": "52S",
+       "label": "52° S",
+       "sv": "52 / S Grind"
       },
       {
-       "k": "56",
-       "label": "56°",
-       "sv": "56°"
+       "k": "54K",
+       "label": "54° K",
+       "sv": "54 / K Grind"
       },
       {
-       "k": "58",
-       "label": "58°",
-       "sv": "58°"
+       "k": "56K",
+       "label": "56° K",
+       "sv": "56 / K Grind"
       },
       {
-       "k": "60",
-       "label": "60°",
-       "sv": "60°"
+       "k": "56S",
+       "label": "56° S",
+       "sv": "56 / S Grind"
+      },
+      {
+       "k": "58K",
+       "label": "58° K",
+       "sv": "58 / K Grind"
+      },
+      {
+       "k": "60K",
+       "label": "60° K",
+       "sv": "60 / K Grind"
+      },
+      {
+       "k": "60S",
+       "label": "60° S",
+       "sv": "60 / S Grind"
       }
      ]
     }
    ],
    "variants": {
-    "RH|50": {
+    "RH|50K": {
      "sku": "LGW01-50-RH",
      "price": 99,
      "avail": true,
      "qty": 98
     },
-    "RH|52": {
+    "RH|52K": {
      "sku": "LGW01-52-RH",
      "price": 99,
      "avail": true,
      "qty": 577
     },
-    "RH|54": {
+    "RH|54K": {
      "sku": "LGW01-54-RH",
      "price": 99,
      "avail": true,
      "qty": 215
     },
-    "RH|56": {
+    "RH|56K": {
      "sku": "LGW01-56-RH",
      "price": 99,
      "avail": true,
      "qty": 163
     },
-    "RH|58": {
+    "RH|58K": {
      "sku": "LGW01-58-RH",
      "price": 99,
      "avail": true,
      "qty": 314
     },
-    "RH|60": {
+    "RH|60K": {
      "sku": "LGW01-60-RH",
      "price": 99,
      "avail": true,
      "qty": 686
     },
-    "LH|50": {
+    "LH|50K": {
      "sku": "LGW01-50-LH",
      "price": 99,
      "avail": false,
      "qty": 0
     },
-    "LH|52": {
+    "LH|52K": {
      "sku": "LGW01-52-LH",
      "price": 99,
      "avail": true,
      "qty": 275
     },
-    "LH|54": {
+    "LH|54K": {
      "sku": "LGW01-54-LH",
      "price": 99,
      "avail": true,
      "qty": 82
     },
-    "LH|56": {
+    "LH|56K": {
      "sku": "LGW01-56-LH",
      "price": 99,
      "avail": true,
      "qty": 104
     },
-    "LH|58": {
+    "LH|58K": {
      "sku": "LGW01-58-LH",
      "price": 99,
      "avail": true,
      "qty": 15
     },
-    "LH|60": {
+    "LH|60K": {
      "sku": "LGW01-60-LH",
      "price": 99,
      "avail": false,
      "qty": 0
-    }
-   },
-   "default": "RH|56",
-   "summary": "Right & left hand · 6 lofts",
-   "inStock": true,
-   "built": true,
-   "file": "02-pdp-lgw01.html",
-   "rating": {
-    "avg": 4.81,
-    "count": 551
-   }
-  },
-  {
-   "id": "lgw02-gold",
-   "template": "club",
-   "family": "wedge",
-   "collection": "wedges",
-   "code": "LGW02",
-   "name": "Carver Gold",
-   "title": "Carver LGW02 Gold",
-   "shopifyHandle": "v2-signature-gold-wedge-1",
-   "shopifyTitle": "Lucky Golf LGW02 Gold",
-   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/15_3a49e7db-dfba-4afa-8876-112996a96c00.webp?v=1781012462",
-   "price": 109,
-   "priceMax": 109,
-   "priceLabel": "$109",
-   "options": [
-    {
-     "key": "hand",
-     "name": "Hand",
-     "values": [
-      {
-       "k": "RH",
-       "label": "Right hand",
-       "sv": "Right Hand"
-      },
-      {
-       "k": "LH",
-       "label": "Left hand",
-       "sv": "Left Hand"
-      }
-     ]
     },
-    {
-     "key": "loft",
-     "name": "Loft",
-     "values": [
-      {
-       "k": "52",
-       "label": "52°",
-       "sv": "52°"
-      },
-      {
-       "k": "56",
-       "label": "56°",
-       "sv": "56°"
-      },
-      {
-       "k": "60",
-       "label": "60°",
-       "sv": "60°"
-      }
-     ]
-    }
-   ],
-   "variants": {
-    "RH|52": {
+    "RH|52S": {
      "sku": "LGW02-52-RH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 40
     },
-    "RH|56": {
+    "RH|56S": {
      "sku": "LGW02-56-RH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 25
     },
-    "RH|60": {
+    "RH|60S": {
      "sku": "LGW02-60-RH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 2
     },
-    "LH|52": {
+    "LH|52S": {
      "sku": "LGW02-52-LH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 96
     },
-    "LH|56": {
+    "LH|56S": {
      "sku": "LGW02-56-LH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 92
     },
-    "LH|60": {
+    "LH|60S": {
      "sku": "LGW02-60-LH",
-     "price": 109,
+     "price": 99,
      "avail": true,
      "qty": 71
     }
    },
-   "default": "RH|52",
-   "summary": "Right & left hand · 3 lofts",
+   "default": "RH|56K",
+   "summary": "Right & left hand · 6 lofts · K and S grind",
    "inStock": true,
    "built": true,
+   "discontinued": false,
+   "file": "02-pdp-lgw01.html",
    "rating": {
-    "avg": 4.78,
-    "count": 69
+    "avg": 4.81,
+    "count": 551
    },
-   "note": "Only 3 lofts (52/56/60), not 6. Any '6 lofts' copy about this one is wrong."
+   "finish": "Gold",
+   "grind": "K",
+   "finishGroup": "carver-01"
   },
   {
-   "id": "lgw02-black",
+   "id": "lgw01-black",
    "template": "club",
    "family": "wedge",
    "collection": "wedges",
-   "code": "LGW02",
-   "name": "Carver Black",
-   "title": "Carver LGW02 Black",
+   "code": "LGW01",
+   "name": "Carver 01 Black",
+   "title": "Carver 01 Black",
    "shopifyHandle": "lucky-golf-lgw02-black",
    "shopifyTitle": "Lucky Golf LGW02 Black",
    "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436",
@@ -514,85 +457,89 @@
      ]
     },
     {
-     "key": "loft",
-     "name": "Loft",
+     "key": "loftgrind",
+     "name": "Loft & grind",
      "values": [
       {
-       "k": "50",
-       "label": "50°",
-       "sv": "50°"
+       "k": "50K",
+       "label": "50° K",
+       "sv": "50 / K Grind"
       },
       {
-       "k": "52",
-       "label": "52°",
-       "sv": "52°"
+       "k": "52K",
+       "label": "52° K",
+       "sv": "52 / K Grind"
       },
       {
-       "k": "54",
-       "label": "54°",
-       "sv": "54°"
+       "k": "54K",
+       "label": "54° K",
+       "sv": "54 / K Grind"
       },
       {
-       "k": "56",
-       "label": "56°",
-       "sv": "56°"
+       "k": "56K",
+       "label": "56° K",
+       "sv": "56 / K Grind"
       },
       {
-       "k": "58",
-       "label": "58°",
-       "sv": "58°"
+       "k": "58K",
+       "label": "58° K",
+       "sv": "58 / K Grind"
       },
       {
-       "k": "60",
-       "label": "60°",
-       "sv": "60°"
+       "k": "60K",
+       "label": "60° K",
+       "sv": "60 / K Grind"
       }
      ]
     }
    ],
    "variants": {
-    "RH|50": {
+    "RH|50K": {
      "sku": "LGW03-BLK-STOCK-RH-50",
      "price": 109,
      "avail": true,
      "qty": 134
     },
-    "RH|52": {
+    "RH|52K": {
      "sku": "LGW03-BLK-STOCK-RH-52",
      "price": 109,
      "avail": true,
      "qty": 94
     },
-    "RH|54": {
+    "RH|54K": {
      "sku": "LGW02-BLK-STOCK-RH-54",
      "price": 109,
      "avail": true,
      "qty": 92
     },
-    "RH|56": {
+    "RH|56K": {
      "sku": "LGW02-BLK-STOCK-RH-56",
      "price": 109,
      "avail": true,
      "qty": 291
     },
-    "RH|58": {
+    "RH|58K": {
      "sku": "LGW02-BLK-STOCK-RH-58",
      "price": 109,
      "avail": true,
      "qty": 96
     },
-    "RH|60": {
+    "RH|60K": {
      "sku": "LGW02-BLK-STOCK-RH-60",
      "price": 109,
      "avail": true,
      "qty": 289
     }
    },
-   "default": "RH|50",
-   "summary": "Right hand only · 6 lofts",
+   "default": "RH|56K",
+   "summary": "Right hand only · 6 lofts · K grind",
    "inStock": true,
    "built": true,
-   "note": "RIGHT HAND ONLY. The wedges mega-menu aside says 'Right and left hand' — false for this one. Also called 'Carver Shadow' in the PDP's browse rail; see HANDOFF 9 open item C, naming is Cole's call."
+   "discontinued": false,
+   "note": "RIGHT HAND ONLY today; left hand is coming (Cole). $109 against the Gold's $99 — the black finish is a real extra process, which is the one price difference in the wedge line that stands for something.",
+   "finish": "Black",
+   "grind": "K",
+   "finishGroup": "carver-01"
   },
   {
    "id": "lgp01-gold",
@@ -633,6 +580,7 @@
    "summary": "",
    "inStock": false,
    "built": true,
+   "discontinued": false,
    "rating": {
     "avg": 4.86,
     "count": 147
@@ -689,6 +637,7 @@
    "summary": "Right & left hand",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "rating": {
     "avg": 4.71,
     "count": 58
@@ -733,13 +682,14 @@
    "summary": "",
    "inStock": false,
    "built": false,
+   "discontinued": true,
    "note": "DISCONTINUED 2026-07-31 (Cole). A fifty-unit run for America's 250th, sold out and being removed from Shopify. Page unbuilt."
   },
   {
    "id": "lgh01",
    "template": "club",
    "family": "hybrid",
-   "collection": "hybrid-driver",
+   "collection": "hybrid",
    "code": "LGH01",
    "name": "Stryker",
    "title": "Stryker LGH01",
@@ -785,6 +735,7 @@
    "summary": "Right & left hand",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "rating": {
     "avg": 4.6,
     "count": 20
@@ -794,7 +745,7 @@
    "id": "lgd01",
    "template": "club",
    "family": "driver",
-   "collection": "hybrid-driver",
+   "collection": "hybrid",
    "code": "LGD01",
    "name": "Lucky Driver",
    "title": "Lucky Driver LGD01",
@@ -817,6 +768,7 @@
    "summary": "",
    "inStock": true,
    "built": false,
+   "discontinued": true,
    "rating": {
     "avg": 4.33,
     "count": 39
@@ -916,7 +868,8 @@
    "default": "S",
    "summary": "S–XXL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-shadow",
@@ -1011,7 +964,8 @@
    "default": "S",
    "summary": "S–XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-signature-black",
@@ -1106,7 +1060,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-contour",
@@ -1201,7 +1156,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-marble",
@@ -1296,7 +1252,8 @@
    "default": "S",
    "summary": "S–L",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-gold-carnation",
@@ -1391,7 +1348,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-frost",
@@ -1486,7 +1444,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-cruiser",
@@ -1581,7 +1540,8 @@
    "default": "S",
    "summary": "S–XXL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-azalea",
@@ -1676,7 +1636,8 @@
    "default": "S",
    "summary": "S, M",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-nightshade",
@@ -1771,7 +1732,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-swirl",
@@ -1866,7 +1828,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-spot",
@@ -1961,7 +1924,8 @@
    "default": "S",
    "summary": "S–3XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "polo-blackout",
@@ -2056,7 +2020,8 @@
    "default": "S",
    "summary": "S–XL",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-white-gold-classic",
@@ -2084,7 +2049,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-white-ibtbl",
@@ -2112,7 +2078,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-cream-updown",
@@ -2140,7 +2107,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-black-ibtbl",
@@ -2168,7 +2136,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-tan-cursive",
@@ -2196,7 +2165,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-black-gold-classic",
@@ -2225,6 +2195,7 @@
    "summary": "",
    "inStock": false,
    "built": true,
+   "discontinued": false,
    "note": "Sold out."
   },
   {
@@ -2253,7 +2224,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-white-updown",
@@ -2282,6 +2254,7 @@
    "summary": "",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "note": "59.webp has inverted lettering (HANDOFF 6) and is EXCLUDED from the gallery. The product has ten photos; the other nine are fine and the page leads on 60.webp."
   },
   {
@@ -2310,7 +2283,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "hat-baby-blue-cursive",
@@ -2338,7 +2312,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "cover-blade",
@@ -2366,7 +2341,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "cover-driver",
@@ -2394,7 +2370,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "cover-mallet",
@@ -2445,7 +2422,8 @@
    "default": "RH",
    "summary": "Right & left hand",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "glove-tour",
@@ -2559,6 +2537,7 @@
    "summary": "Left hand only · S, M",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "note": "Two axes on a $17.95 item — Hand x Size. Only the two left-hand small/medium variants are sellable, and both are oversold. Nearly every chip renders dead."
   },
   {
@@ -2632,7 +2611,8 @@
    "default": "STD",
    "summary": "Standard",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "grip-clover-black",
@@ -2694,7 +2674,8 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "grip-clover-white",
@@ -2756,7 +2737,8 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "grip-clover-blue",
@@ -2818,7 +2800,8 @@
    "default": "STD",
    "summary": "Standard, Midsize, Jumbo",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "grip-clover-pink",
@@ -2859,6 +2842,7 @@
    "summary": "Lady",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "note": "Lady size only — a one-value axis, which should render as a stated fact, not a picker."
   },
   {
@@ -2933,6 +2917,7 @@
    "summary": "",
    "inStock": false,
    "built": true,
+   "discontinued": false,
    "note": "Entirely sold out."
   },
   {
@@ -3007,6 +2992,7 @@
    "summary": "",
    "inStock": false,
    "built": true,
+   "discontinued": false,
    "note": "Entirely sold out."
   },
   {
@@ -3035,7 +3021,8 @@
    "default": "",
    "summary": "",
    "inStock": true,
-   "built": true
+   "built": true,
+   "discontinued": false
   },
   {
    "id": "tees-25",
@@ -3064,6 +3051,7 @@
    "summary": "",
    "inStock": true,
    "built": true,
+   "discontinued": false,
    "note": "NO IMAGE IN SHOPIFY. featuredMedia is null — the only product in the store with no photo at all."
   }
  ]

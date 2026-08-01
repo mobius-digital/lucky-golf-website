@@ -560,3 +560,123 @@
     else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
   });
 })();
+
+/* ==========================================================================
+   QUICK ADD — the in-card option picker
+   Cole, 2026-07-31: Primo's QUICK ADD opens a size picker inside the card and
+   adds to the bag from there, rather than sending you to the product page.
+   This is that control. Clubs take two steps (hand, then loft); a polo takes
+   one; a hat takes none and keeps its plain [data-add] button.
+
+   Runs on any page that declares LG_QUICKADD and loads variants.js — both
+   collection templates do, and no other page does, so this is inert elsewhere.
+
+   Availability comes from LG_VARIANTS, the same engine the PDP buy box uses
+   and that tools/test-variants.js exercises over all 44 products. There is
+   deliberately no second implementation of "is this combination sellable".
+
+   Adding is handed to the existing [data-add] delegation above: the Quick buy
+   button carries the resolved SKU, name, price and variant as data attributes
+   and they are rewritten on every selection change. No new cart code.
+   ========================================================================== */
+(function(){
+  var DATA = (typeof LG_QUICKADD !== 'undefined' && LG_QUICKADD) ? LG_QUICKADD : null;
+  var V = window.LG_VARIANTS;
+  if (!DATA || !V) return;
+
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var money = function(n){ return n === Math.round(n) ? '$' + n : '$' + n.toFixed(2); };
+
+  var current = null;   /* the open .qa panel, or null */
+
+  function paint(panel){
+    var pd = panel._pd, sel = panel._sel, axes = pd.options || [], h = '', i, n, v, ok;
+    for (i = 0; i < axes.length; i++){
+      h += '<div class="qa-step"><span class="qa-lbl">' + (i + 1) + '. Choose '
+         + esc(axes[i].name.toLowerCase()) + '</span><div class="qa-chips">';
+      for (n = 0; n < axes[i].values.length; n++){
+        v = axes[i].values[n];
+        ok = V.offered(pd, sel, i, v.k);
+        h += '<button class="qa-chip" type="button" data-ax="' + i + '" data-v="' + esc(v.k) + '"'
+           + (ok ? '' : ' disabled') + ' aria-pressed="' + (sel[i] === v.k) + '">'
+           + esc(v.label) + '</button>';
+      }
+      h += '</div></div>';
+    }
+    /* price is PER VARIANT — the grips run $9.95 to $14.95 across the three
+       grip sizes — so it is read off the resolved variant, never off the card */
+    var vr = V.variantFor(pd, sel) || {};
+    h += '<button class="qa-buy" type="button" data-add'
+       + ' data-sku="' + esc(vr.sku || '') + '"'
+       + ' data-name="' + esc(pd.name) + '"'
+       + ' data-price="' + esc(money(vr.price)) + '"'
+       + ' data-img="' + esc(pd.img || '') + '"'
+       + ' data-variant="' + esc(V.labels(pd, sel).join(' \u00b7 ')) + '">'
+       + '<span>Quick buy</span><span class="amt">' + esc(money(vr.price)) + '</span></button>'
+       + '<button class="qa-x" type="button" aria-label="Close">\u2715</button>';
+    panel.innerHTML = h;
+  }
+
+  function close(){
+    if (!current) return;
+    var t = current._trigger;
+    current.hidden = true;
+    current = null;
+    if (t && t.focus) t.focus();
+  }
+
+  function openFor(trigger){
+    var pid = trigger.getAttribute('data-qa'), pd = DATA[pid];
+    if (!pd) return;
+    var card = trigger.closest('.ptile');
+    if (!card) return;
+    close();
+    var panel = card.querySelector('.qa');
+    if (!panel){
+      panel = document.createElement('div');
+      panel.className = 'qa';
+      /* mounted on the CARD, not the photo well: a two-axis wedge picker is
+         320px of content and the well is 168px square on a phone */
+      card.appendChild(panel);
+    }
+    panel._pd = pd;
+    panel._trigger = trigger;
+    /* start from the product's own default and reconcile, so a card never
+       opens on a combination that cannot be bought */
+    panel._sel = V.reconcile(pd, V.selectionFor(pd), 0);
+    paint(panel);
+    panel.hidden = false;
+    current = panel;
+    var first = panel.querySelector('.qa-chip:not([disabled])');
+    if (first) first.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    var trig = e.target.closest('[data-qa]');
+    if (trig){ e.preventDefault(); openFor(trig); return; }
+
+    var chip = e.target.closest('.qa-chip');
+    if (chip && current && !chip.disabled){
+      var ax = +chip.getAttribute('data-ax');
+      current._sel[ax] = chip.getAttribute('data-v');
+      /* reconcile FROM this axis: changing hand can strand a loft, and the
+         engine slides you to the nearest live one rather than leaving a dead
+         selection sitting in the picker */
+      current._sel = V.reconcile(current._pd, current._sel, ax);
+      paint(current);
+      var again = current.querySelector('[data-ax="' + ax + '"][aria-pressed="true"]');
+      if (again) again.focus();
+      return;
+    }
+    if (e.target.closest('.qa-x')){ close(); return; }
+    /* Quick buy is handled by the [data-add] delegation; let it run, then get
+       the panel out of the way so the card is a card again */
+    if (e.target.closest('.qa-buy')){ setTimeout(close, 900); return; }
+    if (current && !e.target.closest('.qa')) close();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && current) close();
+  });
+})();

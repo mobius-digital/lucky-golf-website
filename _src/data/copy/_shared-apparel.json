@@ -1,0 +1,37 @@
+{
+  "_": "Shared by EVERY apparel page — both polo families and the hats. Merged under _family-*.json, which is merged under the product's own file. Anything true of one design only belongs in the product file, not here.",
+
+  "_sizeguide": "Measurements supplied by Cole 2026-07-31 as the ATHLETE FIT chart, in inches and centimeters. They are the manufacturer's chart, verbatim — the inch and cm columns are BOTH given and neither is converted from the other, so do not 'fix' a rounding difference between them. The chart's column header for XXL reads 2XL; the store's size option is XXL, and the columns here follow the store so the chart and the picker agree.",
+
+  "_sizeguide_scope": "Lives here rather than in the two polo family files because the Classic and the Blade share one chart, and a 6x3x2 table copied twice is a table that will drift. build.py drops it for any product with no size axis, which is how the hats avoid rendering polo measurements.",
+
+  "sizeGuide": {
+    "title": "Size Guide",
+    "intro": "Use the below chart as a guide.",
+    "unitLabel": "Choose unit:",
+    "cols": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "units": [
+      {
+        "k": "in",
+        "label": "Inches",
+        "caption": "Athlete fit (in)",
+        "rows": [
+          { "k": "Length",   "cells": ["28.3&Prime;", "29.1&Prime;", "29.9&Prime;", "30.7&Prime;", "31.5&Prime;", "32.3&Prime;"] },
+          { "k": "Chest",    "cells": ["20.5&Prime;", "21.7&Prime;", "22.8&Prime;", "24.0&Prime;", "25.2&Prime;", "26.4&Prime;"] },
+          { "k": "Shoulder", "cells": ["17.7&Prime;", "18.5&Prime;", "19.3&Prime;", "20.1&Prime;", "20.9&Prime;", "21.7&Prime;"] }
+        ]
+      },
+      {
+        "k": "cm",
+        "label": "Centimeters",
+        "caption": "Athlete fit (cm)",
+        "rows": [
+          { "k": "Length",   "cells": ["72", "74", "76", "78", "80", "82"] },
+          { "k": "Chest",    "cells": ["52", "55", "58", "61", "64", "67"] },
+          { "k": "Shoulder", "cells": ["45", "47", "49", "51", "53", "55"] }
+        ]
+      }
+    ],
+    "note": "Garment measurements, laid flat &mdash; not body measurements. Chest is measured across the chest and doubled. If you are between sizes or you like more room across the chest, take the larger one."
+  }
+}

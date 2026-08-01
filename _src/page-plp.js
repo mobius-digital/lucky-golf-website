@@ -7,6 +7,11 @@
    ========================================================================== */
 var PLP = {{COLLECTION_JSON}};
 
+/* Option axes and the real variant map for the in-card Quick add picker.
+   core.js owns the panel; this only supplies the data. See build.py's
+   quick_add_data() — in-stock products with at least one axis only. */
+var LG_QUICKADD = {{QUICKADD_JSON}};
+
 (function(){
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
@@ -104,17 +109,22 @@ var PLP = {{COLLECTION_JSON}};
       /* Quick add sits ON the photo, bottom-right, the way Primo does it —
          under the card it was easy to miss entirely. */
       + '<div class="pt-add">'
+      /* Zero axes and one sellable variant gets a plain [data-add]. Anything
+         with a choice opens the in-card picker via [data-qa] rather than
+         linking to the product page — Cole, 2026-07-31, matching Primo. The
+         panel itself is core.js; this only has to emit the trigger. */
       + (out
           ? ''
-          : p.addSku
-            ? '<button class="qadd" type="button" data-add'
-              + ' data-sku="' + esc(p.addSku) + '" data-name="' + esc(p.name) + '"'
-              + ' data-price="' + esc(p.priceLabel) + '" data-img="' + esc(p.img || '') + '"'
-              + ' data-variant=""><svg viewBox="0 0 24 24" aria-hidden="true">'
-              + '<path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/>'
-              + '</svg><span>Quick add</span></button>'
-            : '<a class="qadd" href="' + esc(p.href) + '"><span>'
-              + esc(p.chooseLabel || 'Options') + '</span><span class="ar">&rarr;</span></a>')
+          : '<button class="qadd" type="button"'
+            + (p.addSku
+                ? ' data-add data-sku="' + esc(p.addSku) + '"'
+                  + ' data-name="' + esc(p.name) + '"'
+                  + ' data-price="' + esc(p.priceLabel) + '"'
+                  + ' data-img="' + esc(p.img || '') + '" data-variant=""'
+                : ' data-qa="' + esc(p.id) + '" aria-haspopup="true"')
+            + '><svg viewBox="0 0 24 24" aria-hidden="true">'
+            + '<path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/>'
+            + '</svg><span>Quick add</span></button>')
       + '</div>'
       + '</div>'
       /* Name and price. No SKU stamp and no variant summary — Cole's note 4.
@@ -168,10 +178,6 @@ var PLP = {{COLLECTION_JSON}};
 
   var sortSel = $('#plp-sort');
   if (sortSel) sortSel.addEventListener('change', function(){ sort = sortSel.value; paint(); });
-
-  /* you are already here — the current collection is not a place to go next */
-  var here = $('#plp-sibs [data-c="' + PLP.id + '"]');
-  if (here) here.parentNode.removeChild(here);
 
   trimSort();
   paintFacets();

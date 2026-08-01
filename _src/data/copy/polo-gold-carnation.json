@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-gold-carnation. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "WhiteCarnation1.webp?v=1779472693",
-      "Gold Carnation Classic Polo, front"
-    ]
-  ],
-  "buyBody": "A gold carnation print on white. Floral, but drawn tight enough that it reads as pattern rather than as a garden.",
-  "pieceHeadline": "Floral, without the apology",
-  "pieceParas": [
-    "Golf has come round to floral prints and mostly done them badly — too big, too literal, too much. This one is drawn small and repeated tight, so it holds together as a pattern at any distance.",
-    "White ground with gold linework, which puts it in the same family as the Classic hat and the clubs without repeating either."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body. Bright natural light — a white ground with fine gold linework goes flat and gray in shade. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-gold-carnation. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "WhiteCarnation1.webp?v=1779472693",
+   "Gold Carnation Classic Polo, front"
+  ]
+ ],
+ "buyBody": "A gold carnation print on white. Floral, but drawn tight enough that it reads as pattern rather than as a garden.",
+ "lifestyleBrief": "Portrait 4:5, on body. Bright natural light — a white ground with fine gold linework goes flat and gray in shade. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

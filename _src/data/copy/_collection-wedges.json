@@ -1,0 +1,174 @@
+{
+ "_": "Editorial for the Wedges collection page.",
+ "_architecture": "COLE 2026-07-31. Lucky sells ONE wedge: the 01. It comes in Gold ($99) and Black ($109), and the grind is an option on it — the loft axis is a combined Loft & grind (50K, 52K, 52S...). The old LGW02 Gold was never a different club and has been merged into the Gold; see merge_grinds() in normalize-products.py. The true 02 (full-face, cast) is still coming and is the ONLY thing that will justify a tier and a price step.",
+ "_02claims": "The 02 column of `compare.items` (the one flagged `coming`) is Cole's product roadmap, given 2026-07-31. It is NOT in Product Reference Guide v1.8 and must not be checked against it: reshaped head and leading edge, full-face grooves, cast rather than forged, progressive weighting through the lofts, a painted alignment line on the first groove, more grind options. No price, no lofts, no weights and no date, because none have been given. Do not fill them in from anywhere else.",
+ "_samesteel": "Cole: never write 'same steel' or any phrasing that flattens the range into one club wearing different paint. The 02 has to read as better, not as the same club again.",
+ "_facts": "Every number in `compare` is v1.8: the per-loft manufacturer tables, which are now the K and the S halves of the 01 rather than two products. No manufacturer tolerances anywhere — Cole 2026-07-31.",
+ "bands": [
+  {
+   "label": "The 01",
+   "lede": "One wedge, two finishes. Forged 1020 carbon steel, a milled and sandblasted face, 300&nbsp;g of head at every loft, and your choice of sole grind.",
+   "ids": [
+    "lgw01-gold",
+    "lgw01-black"
+   ]
+  }
+ ],
+ "tags": {
+  "lgw01-gold": "Gold &middot; K or S",
+  "lgw01-black": "Black &middot; K"
+ },
+ "compare": {
+  "eyebrow": "01 or 02",
+  "headline": "What actually changes between the 01 and the 02.",
+  "sub": "The 01 is the wedge Lucky sells today: a forged head, a milled and sandblasted face, six lofts and your choice of sole grind. The 02 is a different club, not a finish and not a tier &mdash; it is cast rather than forged, and that is what makes the rest of it possible.",
+  "scales": [
+   {
+    "k": "lofts",
+    "label": "Lofts in production",
+    "segs": 6,
+    "note": "Loft bar: one segment per loft in the six-loft lineup, 50&deg; to 60&deg;."
+   },
+   {
+    "k": "bounce",
+    "label": "Bounce across the lofts",
+    "segs": 7,
+    "note": "Bounce bar: 0&deg; to 14&deg;, one segment per two degrees. Bounce is the angle between the leading edge and the ground, so a wider lit run means the set covers more turf conditions."
+   }
+  ],
+  "items": [
+   {
+    "id": "lgw01-gold",
+    "forWho": "On sale now &middot; gold or black",
+    "cta": "See the 01",
+    "bars": {
+     "lofts": {
+      "to": 6,
+      "display": "Six &middot; 50&ndash;60&deg;"
+     },
+     "bounce": {
+      "from": 4,
+      "to": 6,
+      "display": "8&deg;&ndash;12&deg;"
+     }
+    },
+    "facts": [
+     {
+      "k": "Construction",
+      "v": "Forged 1020 carbon steel"
+     },
+     {
+      "k": "Face",
+      "v": "Milled grooves, sandblasted"
+     },
+     {
+      "k": "Grooves",
+      "v": "Standard face"
+     },
+     {
+      "k": "Weighting",
+      "v": "300&nbsp;g at every loft"
+     },
+     {
+      "k": "Grinds",
+      "v": "K and S"
+     },
+     {
+      "k": "Alignment",
+      "v": "None"
+     }
+    ]
+   },
+   {
+    "coming": true,
+    "soon": "Coming",
+    "name": "Carver 02",
+    "forWho": "A new head, not a new finish",
+    "photo": "Landscape 1:1 studio cutout of the 02 head, face-on, so the full-face grooves and the painted first groove read. Matches the 01's studio treatment.",
+    "facts": [
+     {
+      "k": "Construction",
+      "v": "Cast &mdash; for the weighting"
+     },
+     {
+      "k": "Face",
+      "v": "Reshaped head and leading edge"
+     },
+     {
+      "k": "Grooves",
+      "v": "Full face, heel to toe"
+     },
+     {
+      "k": "Weighting",
+      "v": "Progressive through the lofts"
+     },
+     {
+      "k": "Grinds",
+      "v": "More options than the 01"
+     },
+     {
+      "k": "Alignment",
+      "v": "Painted first groove"
+     }
+    ],
+    "note": "No price, no loft list and no date yet. When those are real they will be here and not before &mdash; and the 02 is what will sit above the 01, not replace it."
+   }
+  ]
+ },
+ "fitting": {
+  "eyebrow": "Not sure",
+  "headline": "Start with the wedge you already carry.",
+  "body": "Almost nobody needs all six lofts. The useful question is what sits in your bag now and where the gap under it is &mdash; a 56&deg; next to a pitching wedge leaves a different hole than a 60&deg; does.",
+  "ctaFinder": "Use the club finder",
+  "ctaAsk": "Ask a person",
+  "aside": "One wedge per order can be opened and hit on a turf mat inside the sixty days. The rest stay sealed."
+ },
+ "story": {
+  "eyebrow": "The detail",
+  "headline": "What you are actually choosing between.",
+  "rows": [
+   {
+    "photo": "Landscape 4:3. The 01 sole-up on turf, a K and an S side by side so the two sole shapes read against each other, with the gold and the black both in frame. Overhead, hard side light, loft stamps legible.",
+    "rowHeadline": "Bounce, in one paragraph",
+    "paras": [
+     "Bounce is the angle between the leading edge of the club and the ground when the sole sits flat. More of it stops the head digging; less of it lets the leading edge get under a ball sitting tight. It is the single spec that decides whether a wedge suits how you take turf.",
+     "The K runs 8&deg; on the 50 and 52, 12&deg; on the 54 and 56, and 10&deg; on the 58 and 60. The S runs 10&deg; at 52 and 12&deg; at both 56 and 60 &mdash; more on paper, less through firm turf, because the narrower sole puts less of itself on the ground. The product page explains that properly."
+    ]
+   },
+   {
+    "photo": "Landscape 4:3. Macro of a milled, sandblasted face &mdash; grooves and the dual texture visible, gold catching along the top line. Shot on a neutral surface, no props.",
+    "rowHeadline": "Forged now, cast next, and both on purpose",
+    "flip": true,
+    "paras": [
+     "The 01 is forged from 1020 carbon steel and finished with CNC-milled grooves over a sandblasted face. Forging is what gives a wedge that soft, slightly dead feel off the face, and it is the right call for a club whose whole job is feel at short range.",
+     "It is also a constraint. A forged blank leaves very little freedom to move mass around or to change what the face carries, which is why the 02 goes the other way. Two construction methods, chosen for two different sets of things they let you do &mdash; not a step down to save money."
+    ]
+   }
+  ]
+ },
+ "quote": {
+  "id": "lgw01-gold",
+  "n": "1981 C.o.M.",
+  "q": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer."
+ },
+ "upsell": [
+  {
+   "sku": "GRP-BLK-STD",
+   "name": "Clover Grips, black",
+   "price": "$9.95",
+   "variant": "Standard",
+   "why": "Grips wear out years before the club does.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0848.jpg?v=1701474078"
+  },
+  {
+   "sku": "HeadCover-Blade-SignatureWhite",
+   "name": "Lucky Blade Cover",
+   "price": "$29.95",
+   "variant": "",
+   "why": "No Lucky club ships with a cover.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
+  }
+ ],
+ "_merge": "UNTIL THE MERGE LANDS in Shopify there are three sellable products and two of them are called Gold at different prices ($99 and $109). The page groups them under one 01 heading and differentiates by finish and grind rather than by tier, which is how it will read once the merge is done. When LGW02 Gold folds into the 01, delete its tile from the band and the comparison and nothing else on this page has to change.",
+ "_page": "COLE 2026-07-31: this page's job is the difference between the 01 and the 02. The band is the products you can buy today (the 01, in two finishes); the comparison is 01 against 02, which is the question the page exists to answer. Gold vs black is a finish choice and lives on the tiles and in the buy box, not in the comparison."
+}

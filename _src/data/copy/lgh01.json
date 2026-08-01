@@ -1,268 +1,268 @@
 {
-  "_": "Editorial for lgh01. Shared keys come from _family-wedge.json.",
-  "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
-  "gallery": [
-    [
-      "11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493",
-      "Stryker LGH01 hybrid, face on"
-    ],
-    [
-      "3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493",
-      "Stryker LGH01 hybrid, full club"
-    ],
-    [
-      "12_65f3a9e3-d92c-481b-87b0-85ac2eb90294.webp?v=1782597493",
-      "Stryker LGH01 hybrid, sole"
-    ],
-    [
-      "9_d51d0f8d-1213-4585-b809-af99f594601c.webp?v=1782597493",
-      "Stryker LGH01 hybrid, address position"
-    ],
-    [
-      "6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?v=1782597493",
-      "Stryker LGH01 hybrid, toe profile"
-    ],
-    [
-      "4_7d834550-4eee-4bce-863d-56db73af9f52.webp?v=1782597493",
-      "Stryker LGH01 hybrid, heel profile"
-    ],
-    [
-      "2_c53541c4-5870-4442-8849-858931bad25d.webp?v=1782597493",
-      "Stryker LGH01 hybrid, grip"
-    ],
-    [
-      "7_d0504108-60dc-4c66-9750-7755f781fcf6.webp?v=1782597493",
-      "Stryker LGH01 hybrid, three-quarter view"
-    ]
+ "_": "Editorial for lgh01. Shared keys come from _family-wedge.json.",
+ "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
+ "gallery": [
+  [
+   "11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493",
+   "Stryker LGH01 hybrid, face on"
   ],
-  "priceNote": "Right or left hand",
-  "buyBody": "A premium titanium hybrid at 19 degrees, built for speed and forgiveness on long approaches. High launch, mid spin, a neutral flight, and a Flex Channel face that keeps ball speed up when you do not catch it flush. Right or left hand.",
-  "four": [
+  [
+   "3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493",
+   "Stryker LGH01 hybrid, full club"
+  ],
+  [
+   "12_65f3a9e3-d92c-481b-87b0-85ac2eb90294.webp?v=1782597493",
+   "Stryker LGH01 hybrid, sole"
+  ],
+  [
+   "9_d51d0f8d-1213-4585-b809-af99f594601c.webp?v=1782597493",
+   "Stryker LGH01 hybrid, address position"
+  ],
+  [
+   "6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?v=1782597493",
+   "Stryker LGH01 hybrid, toe profile"
+  ],
+  [
+   "4_7d834550-4eee-4bce-863d-56db73af9f52.webp?v=1782597493",
+   "Stryker LGH01 hybrid, heel profile"
+  ],
+  [
+   "2_c53541c4-5870-4442-8849-858931bad25d.webp?v=1782597493",
+   "Stryker LGH01 hybrid, grip"
+  ],
+  [
+   "7_d0504108-60dc-4c66-9750-7755f781fcf6.webp?v=1782597493",
+   "Stryker LGH01 hybrid, three-quarter view"
+  ]
+ ],
+ "priceNote": "Right or left hand",
+ "buyBody": "A premium titanium hybrid at 19 degrees, built for speed and forgiveness on long approaches. High launch, mid spin, a neutral flight, and a Flex Channel face that keeps ball speed up when you do not catch it flush. Right or left hand.",
+ "four": [
+  {
+   "k": "Titanium",
+   "v": "Flex Channel face, gold"
+  },
+  {
+   "k": "19&deg; loft",
+   "v": "High launch, mid spin"
+  },
+  {
+   "k": "235 g head",
+   "v": "Light and fast"
+  },
+  {
+   "k": "Glide Sole",
+   "v": "Clean through fairway or rough"
+  }
+ ],
+ "whatYouGet": [
+  "One Stryker LGH01 hybrid in the hand you picked",
+  "Stiff graphite shaft",
+  "Natural black rubber grip",
+  "No headcover &mdash; none of our clubs ship with one"
+ ],
+ "clubHeadline": "The club that makes 210 yards a normal shot.",
+ "clubParas": [
+  "There is a distance where a long iron stops being reliable and a fairway wood is too much club. For most golfers it sits somewhere around 200 to 220 yards, and it is where scores quietly leak away.",
+  "The Stryker is built for that gap. Nineteen degrees on a light 235-gram titanium head, with a Flex Channel face whose channels flex at impact to keep ball speed up on the strikes you do not center.",
+  "The shaft is stiff graphite, which keeps the head stable through impact without asking for a tour swing speed to load it. The grip is plain black rubber &mdash; the one restrained thing on an otherwise gold club.",
+  "The Glide Sole is the part nobody notices until they need it &mdash; less friction through turf, so the club moves the same way out of the fairway and out of the rough."
+ ],
+ "clubSpecs": [
+  {
+   "k": "Type",
+   "v": "Titanium hybrid, 19&deg;. Not forged, not CNC-milled."
+  },
+  {
+   "k": "Face",
+   "v": "Flex Channel titanium — channels flex at impact for more rebound."
+  },
+  {
+   "k": "Launch",
+   "v": "High, with mid spin and a neutral flight."
+  },
+  {
+   "k": "Sole",
+   "v": "Glide Sole. Less friction through turf from the fairway or the rough."
+  },
+  {
+   "k": "Forgiveness",
+   "v": "Stabilised impact frame holds the head steady for tighter dispersion."
+  },
+  {
+   "k": "For who",
+   "v": "Anyone whose long irons have stopped being trustworthy."
+  }
+ ],
+ "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is a distance, so film the distance: 210 yards from the fairway, ball tracked to the green, then the same shot struck off the toe to show what forgiveness actually means.",
+ "reelHeadline": "The Stryker, in the wild",
+ "specHeadline": "The numbers",
+ "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
+ "specTabs": [
+  {
+   "label": "Club",
+   "caption": "Stryker LGH01 &mdash; club",
+   "rows": [
     {
-      "k": "Titanium",
-      "v": "Flex Channel face, gold"
+     "k": "Head material",
+     "v": "Titanium"
     },
     {
-      "k": "19&deg; loft",
-      "v": "High launch, mid spin"
+     "k": "Face",
+     "v": "Flex Channel face"
     },
     {
-      "k": "235 g head",
-      "v": "Light and fast"
+     "k": "Sole",
+     "v": "Glide Sole"
     },
     {
-      "k": "Glide Sole",
-      "v": "Clean through fairway or rough"
+     "k": "Loft",
+     "v": "19&deg;"
+    },
+    {
+     "k": "Lie",
+     "v": "59&deg;"
+    },
+    {
+     "k": "Head weight",
+     "v": "235 g"
+    },
+    {
+     "k": "Length",
+     "v": "40.5&quot;"
+    },
+    {
+     "k": "Finish",
+     "v": "Brushed satin gold face, polished mirror gold sole, gloss black crown with a gold starburst from the center, gold ferrule, clover on the crown"
+    },
+    {
+     "k": "Hand",
+     "v": "Right and left"
+    },
+    {
+     "k": "Headcover",
+     "v": "Not included"
     }
-  ],
-  "whatYouGet": [
-    "One Stryker LGH01 hybrid in the hand you picked",
-    "Stiff graphite shaft",
-    "Natural black rubber grip",
-    "No headcover &mdash; none of our clubs ship with one"
-  ],
-  "clubHeadline": "The club that makes 210 yards a normal shot.",
-  "clubParas": [
-    "There is a distance where a long iron stops being reliable and a fairway wood is too much club. For most golfers it sits somewhere around 200 to 220 yards, and it is where scores quietly leak away.",
-    "The Stryker is built for that gap. Nineteen degrees on a light 235-gram titanium head, with a Flex Channel face whose channels flex at impact to keep ball speed up on the strikes you do not center.",
-    "The shaft is stiff graphite, which keeps the head stable through impact without asking for a tour swing speed to load it. The grip is plain black rubber &mdash; the one restrained thing on an otherwise gold club.",
-    "The Glide Sole is the part nobody notices until they need it &mdash; less friction through turf, so the club moves the same way out of the fairway and out of the rough."
-  ],
-  "clubSpecs": [
+   ]
+  },
+  {
+   "label": "Shaft &amp; grip",
+   "caption": "Stryker LGH01 &mdash; shaft &amp; grip",
+   "rows": [
     {
-      "k": "Type",
-      "v": "Titanium hybrid, 19&deg;. Not forged, not CNC-milled."
+     "k": "Shaft",
+     "v": "Stiff (S) flex, mid kick point"
     },
     {
+     "k": "Shaft length",
+     "v": "40&quot; original &mdash; 40.5&quot; built"
+    },
+    {
+     "k": "Shaft weight",
+     "v": "68 g original"
+    },
+    {
+     "k": "Grip",
+     "v": "Stock grip"
+    },
+    {
+     "k": "Grip weight",
+     "v": "58 g"
+    }
+   ],
+   "aside": "Stiff is the only flex offered, and it is the one club in the range that ships stiff &mdash; the wedges and putters are Regular."
+  }
+ ],
+ "look": {
+  "photo": "Bold, full-bleed, portrait. Gold titanium head on the fairway at address, low sun. A hybrid is a wide, shallow shape — shoot it from behind so the width reads as confidence rather than bulk.",
+  "headline": "The club you stop worrying about",
+  "paras": [
+   "There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.",
+   "In gold, with a gloss black crown, it is also the least apologetic long club we make."
+  ],
+  "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+ },
+ "closeBody": "The Stryker is $209, right hand or left, in a run of a hundred. Sixty days to send it back if it isn't the one.",
+ "oav": [
+  "lgw01-gold",
+  "lgp02-gold"
+ ],
+ "bag": [
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The wedge most people add first. Six lofts, same feel."
+  },
+  {
+   "id": "lgp02-gold",
+   "name": "Tracer Mallet",
+   "code": "LGP02",
+   "hook": "The mallet. Oversized 3.0 grip fitted."
+  },
+  {
+   "id": "lgw01-black",
+   "name": "Carver 01 Black",
+   "code": "LGW01",
+   "meta": "6 lofts",
+   "hook": "The blacked-out wedge. Same K Grind, same 1020 forged steel."
+  }
+ ],
+ "helpPick": {
+  "eyebrow": "What it replaces",
+  "headline": "It goes in the bag where something else comes out",
+  "sub": "A hybrid earns its place by replacing a club you have stopped trusting. Which one depends on what you carry now, and the honest answer for most golfers is the long iron they already avoid hitting.",
+  "options": [
+   {
+    "id": "lgh01",
+    "name": "Instead of a 3-iron",
+    "forWho": "The club you avoid",
+    "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones — the hybrid gets airborne from lies where the iron simply does not.",
+    "facts": [
+     {
+      "k": "Loft",
+      "v": "19&deg;"
+     },
+     {
+      "k": "Lie",
+      "v": "59&deg;"
+     },
+     {
+      "k": "Head",
+      "v": "Titanium, 235&nbsp;g"
+     }
+    ],
+    "rank": "Most of the time",
+    "foot": "This is the club"
+   },
+   {
+    "id": "lgh01",
+    "rank": "The other way",
+    "name": "Instead of a 5-wood",
+    "forWho": "The club you can't keep straight",
+    "body": "A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter of the two &mdash; 40.5&Prime; of shaft rather than a fairway wood's. That is most of why it is easier to find the middle of, and why it holds a line off a tight tee shot.",
+    "facts": [
+     {
+      "k": "Length",
+      "v": "40.5&Prime;, shorter than a wood"
+     },
+     {
+      "k": "Shaft",
+      "v": "Stiff graphite, mid kick"
+     },
+     {
       "k": "Face",
-      "v": "Flex Channel titanium — channels flex at impact for more rebound."
-    },
-    {
-      "k": "Launch",
-      "v": "High, with mid spin and a neutral flight."
-    },
-    {
-      "k": "Sole",
-      "v": "Glide Sole. Less friction through turf from the fairway or the rough."
-    },
-    {
-      "k": "Forgiveness",
-      "v": "Stabilised impact frame holds the head steady for tighter dispersion."
-    },
-    {
-      "k": "For who",
-      "v": "Anyone whose long irons have stopped being trustworthy."
-    }
-  ],
-  "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is a distance, so film the distance: 210 yards from the fairway, ball tracked to the green, then the same shot struck off the toe to show what forgiveness actually means.",
-  "reelHeadline": "The Stryker, in the wild",
-  "specHeadline": "The numbers",
-  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
-  "specTabs": [
-    {
-      "label": "Club",
-      "caption": "Stryker LGH01 &mdash; club",
-      "rows": [
-        {
-          "k": "Head material",
-          "v": "Titanium"
-        },
-        {
-          "k": "Face",
-          "v": "Flex Channel face"
-        },
-        {
-          "k": "Sole",
-          "v": "Glide Sole"
-        },
-        {
-          "k": "Loft",
-          "v": "19&deg;"
-        },
-        {
-          "k": "Lie",
-          "v": "59&deg;"
-        },
-        {
-          "k": "Head weight",
-          "v": "235 g (&plusmn;3 g)"
-        },
-        {
-          "k": "Length",
-          "v": "40.5&quot;"
-        },
-        {
-          "k": "Finish",
-          "v": "Brushed satin gold face, polished mirror gold sole, gloss black crown with a gold starburst from the center, gold ferrule, clover on the crown"
-        },
-        {
-          "k": "Hand",
-          "v": "Right and left"
-        },
-        {
-          "k": "Headcover",
-          "v": "Not included"
-        }
-      ]
-    },
-    {
-      "label": "Shaft &amp; grip",
-      "caption": "Stryker LGH01 &mdash; shaft &amp; grip",
-      "rows": [
-        {
-          "k": "Shaft",
-          "v": "Stiff (S) flex, mid kick point"
-        },
-        {
-          "k": "Shaft length",
-          "v": "40&quot; original &mdash; 40.5&quot; built"
-        },
-        {
-          "k": "Shaft weight",
-          "v": "68 g original"
-        },
-        {
-          "k": "Grip",
-          "v": "Stock grip"
-        },
-        {
-          "k": "Grip weight",
-          "v": "58 g (&plusmn;3 g)"
-        }
-      ],
-      "aside": "Stiff is the only flex offered, and it is the one club in the range that ships stiff &mdash; the wedges and putters are Regular."
-    }
-  ],
-  "look": {
-    "photo": "Bold, full-bleed, portrait. Gold titanium head on the fairway at address, low sun. A hybrid is a wide, shallow shape — shoot it from behind so the width reads as confidence rather than bulk.",
-    "headline": "The club you stop worrying about",
-    "paras": [
-      "There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.",
-      "In gold, with a gloss black crown, it is also the least apologetic long club we make."
+      "v": "Flex Channel"
+     }
     ],
-    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
-  },
-  "closeBody": "The Stryker is $209, right hand or left, in a run of a hundred. Sixty days to send it back if it isn't the one.",
-  "oav": [
-    "lgd01",
-    "lgw01-gold",
-    "lgp02-gold",
-    "lgw02-gold"
+    "foot": "Same club, different gap"
+   }
   ],
-  "bag": [
-    {
-      "id": "lgd01",
-      "name": "Lucky Driver",
-      "code": "LGD01",
-      "meta": "4.33 &#9733; 39",
-      "hook": "450cc, 10.5&deg;, gold. The other end of the bag."
-    },
-    {
-      "id": "lgw01-gold",
-      "name": "Carver Gold",
-      "code": "LGW01",
-      "meta": "4.81 &#9733; 551",
-      "hook": "The wedge most people add first. Six lofts, same feel."
-    },
-    {
-      "id": "lgp02-gold",
-      "name": "Tracer Mallet",
-      "code": "LGP02",
-      "meta": "4.71 &#9733; 58",
-      "hook": "The mallet. Oversized 3.0 grip fitted."
-    }
-  ],
-  "helpPick": {
-    "eyebrow": "What it replaces",
-    "headline": "It goes in the bag where something else comes out",
-    "sub": "A hybrid earns its place by replacing a club you have stopped trusting. Which one depends on what you carry now, and the honest answer for most golfers is the long iron they already avoid hitting.",
-    "options": [
-      {
-        "id": "lgh01",
-        "name": "Instead of a 3-iron",
-        "forWho": "The club you avoid",
-        "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones — the hybrid gets airborne from lies where the iron simply does not.",
-        "facts": [
-          {
-            "k": "Carry",
-            "v": "200–220 yards"
-          },
-          {
-            "k": "Off a bad lie",
-            "v": "Far better than a long iron"
-          },
-          {
-            "k": "Off a tee",
-            "v": "Straighter than a 3-wood"
-          }
-        ]
-      },
-      {
-        "id": "lgd01",
-        "name": "Alongside the driver",
-        "forWho": "The second club off the tee",
-        "body": "On a tight hole where the driver is too much gun, this is the club that puts the ball in play at a distance you can still reach the green from.",
-        "facts": [
-          {
-            "k": "Loft",
-            "v": "19&deg; against the driver's 10.5&deg;"
-          },
-          {
-            "k": "Job",
-            "v": "Fairway, not distance"
-          },
-          {
-            "k": "Both hands",
-            "v": "The driver is single-option"
-          }
-        ],
-        "cta": "See the driver"
-      }
-    ],
-    "note": "If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision. Right or left hand, and sixty days to change your mind."
-  },
-  "eyebrow": "The Stryker &middot; Hybrid",
-  "chooseCta": "Add to cart",
-  "closeHeadline": "Go hit it",
-  "closeFoil": "further"
+  "note": "Either way it is one club, one loft and one flex, in right or left hand. If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision."
+ },
+ "eyebrow": "The Stryker &middot; Hybrid",
+ "chooseCta": "Add to cart",
+ "closeHeadline": "Go hit it",
+ "closeFoil": "further",
+ "_specsource": "helpPick facts are v1.8 only. The previous rows claimed a 200-220 yd carry and two comparative performance advantages; none of that is in the reference guide and the carry came off the retired Shopify description."
 }

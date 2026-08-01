@@ -1,17 +1,12 @@
 {
-  "_": "Editorial for polo-marble. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
-  "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
-  "gallery": [
-    [
-      "GoldMirage1.webp?v=1779472719",
-      "Marble Classic Polo, front"
-    ]
-  ],
-  "buyBody": "A gold mirage that moves like marble across the shirt. Softer than the Gold Dust and closer to a fabric than a print.",
-  "pieceHeadline": "Gold, but poured rather than thrown",
-  "pieceParas": [
-    "Where the Gold Dust flecks, this one flows. The mirage pattern moves in wide bands across the body, so the shirt reads as a material rather than as something with a graphic on it.",
-    "It is the most expensive-looking thing in the range and the hardest to photograph, because the effect depends on the light moving across it."
-  ],
-  "lifestyleBrief": "Portrait 4:5, on body, moving. The pattern needs motion and raking light to read — a static front-on shot in flat light will lose the whole effect. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "_": "Editorial for polo-marble. Fabric, fit, size guide, marquee, closing CTA and cross-sell come from _family-polo-classic.json.",
+ "_specs": "The design name comes from the Shopify image filename, the only record of what the print is. Nothing about the artwork is invented.",
+ "gallery": [
+  [
+   "GoldMirage1.webp?v=1779472719",
+   "Marble Classic Polo, front"
+  ]
+ ],
+ "buyBody": "A gold mirage that moves like marble across the shirt. Softer than the Gold Dust and closer to a fabric than a print.",
+ "lifestyleBrief": "Portrait 4:5, on body, moving. The pattern needs motion and raking light to read — a static front-on shot in flat light will lose the whole effect. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
 }

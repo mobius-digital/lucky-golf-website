@@ -1,341 +1,407 @@
 {
-  "_": "Editorial for Carver LGW01 Gold. Catalogue facts (price, SKUs, stock, axes) come from products.json — never repeat them here.",
-  "_specs": "Numbers below are from the copy skill's Product Reference Guide, the only source for LGW01 (its Shopify descriptionHtml is empty). Shafts are the documented exception: the guide says KBS, Cole overrode it 2026-07-31. See HANDOFF §9.",
-  "eyebrow": "The Carver &middot; Wedges",
-  "galleryTag": "Best seller",
-  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
-  "gallery": [
-    [
-      "11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
-      "Carver LGW01 Gold wedge, face on"
-    ],
-    [
-      "9_e72fa738-81c3-4ee6-9013-c8ca2a153745.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, sole"
-    ],
-    [
-      "12_5bea3d04-db05-40df-b68e-c408d3d70b9c.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, address position"
-    ],
-    [
-      "1_8996f3e6-4df5-4a4c-9ac6-8a3528b59702.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, back"
-    ],
-    [
-      "6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, full club"
-    ],
-    [
-      "2_b0f7ffdb-e65e-4c7e-ad97-79598e434ae9.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, toe profile"
-    ],
-    [
-      "4_744b4c6e-a04c-4618-9d58-9a36314000d8.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, milled face detail"
-    ],
-    [
-      "5_8e9c3269-c2a3-4274-b027-b42c3c624532.webp?v=1782597869",
-      "Carver LGW01 Gold wedge, hosel"
-    ],
-    [
-      "8_b14a5dfe-6780-4ff8-ac59-70bb0b2e7a9e.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, heel profile"
-    ],
-    [
-      "7_b0aefaca-bb58-4481-b70b-efd2a7a63d5e.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, grip"
-    ],
-    [
-      "3_165e743e-727f-42cf-88c9-c3b834fccbea.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, three-quarter view"
-    ],
-    [
-      "10_eb0cd992-4e1f-4285-8b83-8a351d94d640.webp?v=1782597868",
-      "Carver LGW01 Gold wedge, clover mark"
-    ],
-    [
-      "13_e0814fc8-9c00-480c-9771-fe9a8847b5ff.webp?v=1782597869",
-      "Carver LGW01 Gold wedge, top line"
-    ]
+ "_": "Editorial for Carver 01 Gold. Catalogue facts (price, SKUs, stock, axes) come from products.json — never repeat them here.",
+ "_specs": "Numbers below are from the copy skill's Product Reference Guide, the only source for LGW01 (its Shopify descriptionHtml is empty). Shafts are the documented exception: the guide says KBS, Cole overrode it 2026-07-31. See HANDOFF §9.",
+ "eyebrow": "The 01",
+ "galleryTag": "Best seller",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+ "gallery": [
+  [
+   "11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+   "Carver 01 Gold wedge, face on"
   ],
-  "pullQuote": {
-    "title": "As good as gold",
-    "quote": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.",
-    "who": "1981 C.o.M. &middot; Verified buyer"
+  [
+   "9_e72fa738-81c3-4ee6-9013-c8ca2a153745.webp?v=1782597868",
+   "Carver 01 Gold wedge, sole"
+  ],
+  [
+   "12_5bea3d04-db05-40df-b68e-c408d3d70b9c.webp?v=1782597868",
+   "Carver 01 Gold wedge, address position"
+  ],
+  [
+   "1_8996f3e6-4df5-4a4c-9ac6-8a3528b59702.webp?v=1782597868",
+   "Carver 01 Gold wedge, back"
+  ],
+  [
+   "6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868",
+   "Carver 01 Gold wedge, full club"
+  ],
+  [
+   "2_b0f7ffdb-e65e-4c7e-ad97-79598e434ae9.webp?v=1782597868",
+   "Carver 01 Gold wedge, toe profile"
+  ],
+  [
+   "4_744b4c6e-a04c-4618-9d58-9a36314000d8.webp?v=1782597868",
+   "Carver 01 Gold wedge, milled face detail"
+  ],
+  [
+   "5_8e9c3269-c2a3-4274-b027-b42c3c624532.webp?v=1782597869",
+   "Carver 01 Gold wedge, hosel"
+  ],
+  [
+   "8_b14a5dfe-6780-4ff8-ac59-70bb0b2e7a9e.webp?v=1782597868",
+   "Carver 01 Gold wedge, heel profile"
+  ],
+  [
+   "7_b0aefaca-bb58-4481-b70b-efd2a7a63d5e.webp?v=1782597868",
+   "Carver 01 Gold wedge, grip"
+  ],
+  [
+   "3_165e743e-727f-42cf-88c9-c3b834fccbea.webp?v=1782597868",
+   "Carver 01 Gold wedge, three-quarter view"
+  ],
+  [
+   "10_eb0cd992-4e1f-4285-8b83-8a351d94d640.webp?v=1782597868",
+   "Carver 01 Gold wedge, clover mark"
+  ],
+  [
+   "13_e0814fc8-9c00-480c-9771-fe9a8847b5ff.webp?v=1782597869",
+   "Carver 01 Gold wedge, top line"
+  ]
+ ],
+ "pullQuote": {
+  "title": "As good as gold",
+  "quote": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.",
+  "who": "1981 C.o.M. &middot; Verified buyer"
+ },
+ "priceNote": "Same price, every loft",
+ "buyBody": "Everything inside a hundred yards gets easier. The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. Six lofts, right and left hand, sixty days to decide whether it stays in the bag.",
+ "four": [
+  {
+   "k": "Forged",
+   "v": "1020 soft carbon steel"
   },
-  "priceNote": "Same price, every loft",
-  "buyBody": "Everything inside a hundred yards gets easier. The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. Six lofts, right and left hand, sixty days to decide whether it stays in the bag.",
-  "four": [
-    {
-      "k": "Forged",
-      "v": "1020 soft carbon steel"
-    },
-    {
-      "k": "Milled",
-      "v": "CNC grooves, micro-milled between"
-    },
-    {
-      "k": "Sandblasted",
-      "v": "Extra grip across the face"
-    },
-    {
-      "k": "Sixty days",
-      "v": "Send it back if it isn't the one"
-    }
-  ],
-  "whatYouGet": [
-    "One Carver LGW01 Gold wedge in the loft and hand you picked",
-    "Lucky Golf stock steel shaft (KBS becomes an option soon)",
-    "Lucky Golf grip",
-    "No headcover &mdash; none of our clubs ship with one"
-  ],
-  "careTitle": "Looking after the finish",
-  "carePara": [
-    "The gold finish is a finish, not a coating you have to baby, but grooves full of sand don't spin anything. Brush the face after a round and dry the head before it goes back in the bag.",
-    "A headcover is worth it if your clubs rattle around in the cart. Several reviewers mention picking up cart rash without one."
-  ],
-  "marquee": [
-    "Sixty-day returns on every club",
-    "Free US shipping",
-    "Six lofts, right and left hand",
-    "Same price, every loft",
-    "Sold direct, never through a middleman",
-    "It's better to be lucky"
-  ],
-  "clubHeadline": "The kind of wedge that makes a short-sided miss feel survivable.",
-  "clubParas": [
-    "Pick it up and it feels like a club that costs more. That's the forging &mdash; 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.",
-    "The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.",
-    "Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower center of gravity for cleaner full swings. Same club, six jobs."
-  ],
-  "clubSpecs": [
-    {
-      "k": "Type",
-      "v": "Forged players' wedge, full six-loft lineup."
-    },
-    {
-      "k": "Feel",
-      "v": "Soft. 1020 carbon steel reports back on every strike, good and bad."
-    },
-    {
-      "k": "Face",
-      "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
-    },
-    {
-      "k": "Grind",
-      "v": "K Grind."
-    },
-    {
-      "k": "Weighting",
-      "v": "Shifts by loft &mdash; toe-weighted high for finesse, lower CG low for full swings."
-    },
-    {
-      "k": "For who",
-      "v": "Anyone replacing a stock wedge that has stopped gripping the ball."
-    }
-  ],
-  "videoBrief": "16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on. This is the slot Takomo runs beside their description.",
-  "reelHeadline": "The Carver, in the wild",
-  "reelSub": "Clips of this exact club being played &mdash; creators, customers, and anyone who tags us.",
-  "reel": [
-    {
-      "kind": "Creator reel",
-      "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"
-    },
-    {
-      "kind": "Creator reel",
-      "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "Flop over a bunker with the 60°, face wide open, soft landing"
-    },
-    {
-      "kind": "Creator reel",
-      "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "Unboxing, club out of the sleeve, first reaction to the finish"
-    }
-  ],
-  "helpLoft": {
-    "headline": "Start with the wedge you already carry",
-    "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
+  {
+   "k": "Milled",
+   "v": "CNC grooves, micro-milled between"
   },
-  "specHeadline": "Same steel, same weight, same price. Six lofts.",
-  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8. Bounce is the only thing that changes across the six.",
-  "specTabs": [
+  {
+   "k": "Sandblasted",
+   "v": "Extra grip across the face"
+  },
+  {
+   "k": "Sixty days",
+   "v": "Send it back if it isn't the one"
+  }
+ ],
+ "whatYouGet": [
+  "One Carver 01 Gold wedge in the loft and hand you picked",
+  "Lucky Golf stock steel shaft (KBS becomes an option soon)",
+  "Lucky Golf grip",
+  "No headcover &mdash; none of our clubs ship with one"
+ ],
+ "careTitle": "Looking after the finish",
+ "carePara": [
+  "The gold finish is a finish, not a coating you have to baby, but grooves full of sand don't spin anything. Brush the face after a round and dry the head before it goes back in the bag.",
+  "A headcover is worth it if your clubs rattle around in the cart. Several reviewers mention picking up cart rash without one."
+ ],
+ "marquee": [
+  "Sixty-day returns on every club",
+  "Free US shipping",
+  "Six lofts, right and left hand",
+  "Same price, every loft",
+  "Sold direct, never through a middleman",
+  "It's better to be lucky"
+ ],
+ "clubHeadline": "The kind of wedge that makes a short-sided miss feel survivable.",
+ "clubParas": [
+  "Pick it up and it feels like a club that costs more. That's the forging &mdash; 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.",
+  "The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.",
+  "Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower center of gravity for cleaner full swings. Same club, six jobs."
+ ],
+ "clubSpecs": [
+  {
+   "k": "Type",
+   "v": "Forged players' wedge, full six-loft lineup."
+  },
+  {
+   "k": "Feel",
+   "v": "Soft. 1020 carbon steel reports back on every strike, good and bad."
+  },
+  {
+   "k": "Face",
+   "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
+  },
+  {
+   "k": "Grind",
+   "v": "K Grind."
+  },
+  {
+   "k": "Weighting",
+   "v": "Shifts by loft &mdash; toe-weighted high for finesse, lower CG low for full swings."
+  },
+  {
+   "k": "For who",
+   "v": "Anyone replacing a stock wedge that has stopped gripping the ball."
+  }
+ ],
+ "videoBrief": "16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on. This is the slot Takomo runs beside their description.",
+ "reelHeadline": "The Carver, in the wild",
+ "reelSub": "Clips of this exact club being played &mdash; creators, customers, and anyone who tags us.",
+ "reel": [
+  {
+   "kind": "Creator reel",
+   "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Flop over a bunker with the 60°, face wide open, soft landing"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Unboxing, club out of the sleeve, first reaction to the finish"
+  }
+ ],
+ "helpLoft": {
+  "headline": "Start with the wedge you already carry",
+  "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
+ },
+ "specHeadline": "The numbers",
+ "specSub": "One head, two soles and six lofts. Everything below is the manufacturer's sheet; where the K and the S differ, both are listed.",
+ "specTabs": [
+  {
+   "label": "Club",
+   "caption": "Carver 01 Gold &mdash; club",
+   "rows": [
     {
-      "label": "Club",
-      "caption": "Carver LGW01 &mdash; club",
-      "rows": [
-        {
-          "k": "Head material",
-          "v": "1020 forged carbon steel"
-        },
-        {
-          "k": "Face",
-          "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
-        },
-        {
-          "k": "Grind",
-          "v": "K Grind"
-        },
-        {
-          "k": "Head weight",
-          "v": "300 g (&plusmn;3 g), all lofts"
-        },
-        {
-          "k": "Lie",
-          "v": "63&deg;, all lofts"
-        },
-        {
-          "k": "Finish",
-          "v": "Gold"
-        },
-        {
-          "k": "Hand",
-          "v": "Right and left"
-        },
-        {
-          "k": "Lofts",
-          "v": "50&deg;, 52&deg;, 54&deg;, 56&deg;, 58&deg;, 60&deg;"
-        },
-        {
-          "k": "Headcover",
-          "v": "Not included"
-        }
-      ]
+     "k": "Head material",
+     "v": "1020 forged carbon steel"
     },
     {
-      "label": "By loft",
-      "caption": "Carver LGW01 &mdash; by loft",
-      "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td>8</td><td>8</td><td>12</td><td>12</td><td>10</td><td>10</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Length (in)</th><td>35.25</td><td>35.25</td><td>35.125</td><td>35.125</td><td>35</td><td>35</td></tr><tr><th scope=\"row\">Price</th><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td><td>$99</td></tr></tbody></table>"
+     "k": "Face",
+     "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
     },
     {
-      "label": "Shaft &amp; grip",
-      "caption": "Carver LGW01 &mdash; shaft &amp; grip",
-      "rows": [
-        {
-          "k": "Shaft, stock",
-          "v": "Regular (R) flex, mid kick point"
-        },
-        {
-          "k": "Shaft length",
-          "v": "35&quot; original"
-        },
-        {
-          "k": "Shaft weight",
-          "v": "110 g original"
-        },
-        {
-          "k": "Shaft, upgrade",
-          "v": "KBS <span class=\"soon\">Coming soon</span>"
-        },
-        {
-          "k": "Grip",
-          "v": "Stock grip"
-        },
-        {
-          "k": "Grip weight",
-          "v": "55 g (&plusmn;3 g)"
-        }
-      ],
-      "aside": "Head weight is &plusmn;3 g and length &plusmn;0.125&quot; from the manufacturer. Every Carver ships on the Lucky stock shaft today; KBS becomes a selectable upgrade when it lands, and shaft joins hand and loft as a third choice in the buy box."
+     "k": "Grind",
+     "v": "K Grind and S Grind"
+    },
+    {
+     "k": "Head weight",
+     "v": "300 g, all lofts"
+    },
+    {
+     "k": "Lie",
+     "v": "63&deg; all lofts (K) &middot; 63.5&deg; at 52&deg;, 64&deg; at 56 and 60 (S)"
+    },
+    {
+     "k": "Finish",
+     "v": "Gold"
+    },
+    {
+     "k": "Hand",
+     "v": "Right and left"
+    },
+    {
+     "k": "Lofts",
+     "v": "50, 52, 54, 56, 58, 60&deg; (K) &middot; 52, 56, 60&deg; (S)"
+    },
+    {
+     "k": "Headcover",
+     "v": "Not included"
     }
+   ]
+  },
+  {
+   "label": "By loft",
+   "caption": "Carver 01 Gold &mdash; by loft and grind",
+   "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">Grind</th><th scope=\"col\">Lie</th><th scope=\"col\">Bounce</th><th scope=\"col\">Head weight</th><th scope=\"col\">Length</th></tr></thead><tbody><tr><th scope=\"row\">50&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">54&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">58&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>S</td><td>63.5&deg;</td><td>10&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35&Prime;</td></tr></tbody></table>",
+   "aside": "Both grinds are the same forged 1020 head at 300&nbsp;g. Where they differ is the sole, and the bounce and lie that come with it. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf."
+  },
+  {
+   "label": "Shaft &amp; grip",
+   "caption": "Carver 01 Gold &mdash; shaft &amp; grip",
+   "rows": [
+    {
+     "k": "Shaft, stock",
+     "v": "Regular (R) flex, mid kick point"
+    },
+    {
+     "k": "Shaft length",
+     "v": "35&quot; original"
+    },
+    {
+     "k": "Shaft weight",
+     "v": "110 g original"
+    },
+    {
+     "k": "Shaft, upgrade",
+     "v": "KBS <span class=\"soon\">Coming soon</span>"
+    },
+    {
+     "k": "Grip",
+     "v": "Stock grip"
+    },
+    {
+     "k": "Grip weight",
+     "v": "55 g (K) &middot; 57 g (S)"
+    }
+   ],
+   "aside": "Every Carver ships on the Lucky stock shaft today; KBS becomes a selectable upgrade when it lands, and shaft joins hand and loft as a third choice in the buy box."
+  }
+ ],
+ "look": {
+  "photo": "Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box &mdash; other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.",
+  "headline": "You'll want to pull it out of the bag",
+  "paras": [
+   "Most wedges are gray. This one isn't, and you find out what that's worth the first time you take it out on a busy tee box. People ask. They always ask.",
+   "That's not the reason to buy it &mdash; the face is. But it isn't nothing, either. Golf is a game you play for four hours with the same three people, and the club you look down at should be one you actually like looking at."
   ],
-  "look": {
-    "photo": "Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box &mdash; other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.",
-    "headline": "You'll want to pull it out of the bag",
+  "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+ },
+ "quote": {
+  "q": "I have played 10 plus rounds with this club and I love it. I can confidently place the ball within 5ft of where I am aiming with this thing.",
+  "name": "Dan T.",
+  "meta": "Carver 01 Gold 60&deg; &middot; 5 stars &middot; verified buyer"
+ },
+ "reviewHeadline": "What 551 golfers said",
+ "jmSummary": {
+  "text": "Customers praised this premium forged wedge for its &ldquo;crazy spin and control&rdquo; and eye-catching gold finish. Many said it performs &ldquo;as well as big name brands&rdquo; at a better price. The club features CNC-milled grooves, soft feel, and solid construction. However, one customer reported the head separating from shaft on first swing, and another noted slow customer service response times.",
+  "of": 551
+ },
+ "chooseCta": "Pick a loft",
+ "closeHeadline": "Go own the",
+ "closeFoil": "green",
+ "closeBody": "The Carver is $99 in every loft, right hand or left. Sixty days to send it back if it isn't the one.",
+ "closeTrust": [
+  "60-day club returns",
+  "Free US shipping",
+  "Six lofts",
+  "Direct pricing"
+ ],
+ "oav": [
+  {
+   "id": "lgw01-black",
+   "tag": "New"
+  },
+  "lgp01-gold",
+  "lgh01"
+ ],
+ "bag": [
+  {
+   "id": "lgw01-black",
+   "name": "Carver 01 Black",
+   "code": "LGW01",
+   "meta": "6 lofts",
+   "tag": "New",
+   "hook": "Everything the Gold does around the greens, in a finish that stays quiet in the bag."
+  },
+  {
+   "id": "lgh01",
+   "name": "Stryker",
+   "code": "LGH01",
+   "hook": "Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover."
+  }
+ ],
+ "upsell": [
+  {
+   "sku": "LGW01-56-RH",
+   "name": "Carver Gold 56°",
+   "price": "$99",
+   "variant": "Right hand · 56°",
+   "why": "The sand wedge. Most-carried loft in the lineup.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"
+  },
+  {
+   "sku": "LGW01-60-RH",
+   "name": "Carver Gold 60°",
+   "price": "$99",
+   "variant": "Right hand · 60°",
+   "why": "The lob. For tight pins and short-sided misses.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"
+  },
+  {
+   "sku": "HeadCover-Blade-SignatureWhite",
+   "name": "Lucky Blade Cover",
+   "price": "$29.95",
+   "variant": "",
+   "why": "Reviewers keep mentioning cart rash. This stops it.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
+  }
+ ],
+ "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
+ "_01": "THE 01. Cole 2026-07-31: Lucky sells one wedge. The K-grind gold and the S-grind gold were two products at two prices for a difference that is not one, so they are merged — see merge_grinds() in normalize-products.py. This file is the merged product. Its loft axis is now Loft & grind (50K, 52K, 52S...) and every variant is $99.",
+ "_signoff": "GRIND COPY — read before editing.\n1. Our letter names are VOKEY'S (Cole, 2026-07-31). K = the full sole with camber, the most forgiving. S = the narrower sole with heel and trailing-edge relief, for a square face and a neutral attack. S is NOT the open-the-face versatility grind; that is Vokey's M, which we do not make. An early draft had that wrong.\n2. THE SPEC SHEET IS TRUE (Cole, 2026-07-31). Our S measures equal or more bounce than our K at every shared loft — 52 K=8 S=10, 56 K=12 S=12, 60 K=10 S=12 — which looks backwards for Vokey letters until you separate MEASURED bounce from EFFECTIVE bounce. A narrow sole with relief ground off the heel and trailing edge presents less of itself to the turf, so it can carry more measured bounce and still play lower than a full cambered sole. That is standard wedge design, not a Lucky-specific claim, and it is the honest reconciliation of the two facts. The page now says it out loud rather than leaving a customer to think the table is a typo.\n3. Every number in `facts` is the manufacturer sheet. The sole descriptions are the standard meaning of the letters. The measured-vs-effective explanation is general equipment design.",
+ "grinds": {
+  "eyebrow": "The grinds",
+  "headline": "Same head. Two soles.",
+  "sub": "Grind is the shape of the sole &mdash; the part of the club that meets the turf. It is the only thing that changes between a 01 in K and a 01 in S: same forged 1020 head, same 300&nbsp;g, same milled and sandblasted face, same price.",
+  "options": [
+   {
+    "k": "K Grind",
+    "name": "The forgiving one",
+    "forWho": "Soft turf, and a real divot",
     "paras": [
-      "Most wedges are gray. This one isn't, and you find out what that's worth the first time you take it out on a busy tee box. People ask. They always ask.",
-      "That's not the reason to buy it &mdash; the face is. But it isn't nothing, either. Golf is a game you play for four hours with the same three people, and the club you look down at should be one you actually like looking at."
+     "K grind is the fuller sole, with camber through it, so the club skids across the ground instead of catching in it. More of the sole is in contact with the turf, which is what makes it the forgiving one out of soft lies and out of sand.",
+     "The bounce steps with the loft rather than sitting flat: 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
     ],
-    "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
-  },
-  "quote": {
-    "q": "I have played 10 plus rounds with this club and I love it. I can confidently place the ball within 5ft of where I am aiming with this thing.",
-    "name": "Dan T.",
-    "meta": "Carver LGW01 60&deg; &middot; 5 stars &middot; verified buyer"
-  },
-  "reviewHeadline": "What 551 golfers said",
-  "jmSummary": {
-    "text": "Customers praised this premium forged wedge for its &ldquo;crazy spin and control&rdquo; and eye-catching gold finish. Many said it performs &ldquo;as well as big name brands&rdquo; at a better price. The club features CNC-milled grooves, soft feel, and solid construction. However, one customer reported the head separating from shaft on first swing, and another noted slow customer service response times.",
-    "of": 551
-  },
-  "chooseCta": "Pick a loft",
-  "closeHeadline": "Go own the",
-  "closeFoil": "green",
-  "closeBody": "The Carver is $99 in every loft, right hand or left. Sixty days to send it back if it isn't the one.",
-  "closeTrust": [
-    "60-day club returns",
-    "Free US shipping",
-    "Six lofts",
-    "Direct pricing"
+    "facts": [
+     {
+      "k": "Sole",
+      "v": "Full, with camber"
+     },
+     {
+      "k": "Bounce",
+      "v": "8&deg; at 50 and 52 &middot; 12&deg; at 54 and 56 &middot; 10&deg; at 58 and 60"
+     },
+     {
+      "k": "Lofts",
+      "v": "50, 52, 54, 56, 58, 60&deg;"
+     },
+     {
+      "k": "Lie",
+      "v": "63&deg; at every loft"
+     },
+     {
+      "k": "Finishes",
+      "v": "Gold and black"
+     }
+    ]
+   },
+   {
+    "k": "S Grind",
+    "name": "The narrower one",
+    "forWho": "Firm turf, and a square face",
+    "paras": [
+     "S grind takes relief off the heel and the trailing edge, so the sole is narrower and less of it meets the ground. On firm turf and off a tight lie that is the right trade &mdash; the leading edge gets under the ball instead of the sole bouncing into it.",
+     "It measures more bounce than the K at the same loft, and it plays less of it, because there is less sole there to use. It suits a square face at address and a neutral swing: a sweeper rather than a digger."
+    ],
+    "facts": [
+     {
+      "k": "Sole",
+      "v": "Narrower, heel and trailing-edge relief"
+     },
+     {
+      "k": "Bounce",
+      "v": "10&deg; at 52 &middot; 12&deg; at 56 and 60"
+     },
+     {
+      "k": "Lofts",
+      "v": "52, 56, 60&deg;"
+     },
+     {
+      "k": "Lie",
+      "v": "63.5&deg; at 52&deg;, 64&deg; at 56 and 60"
+     },
+     {
+      "k": "Finishes",
+      "v": "Gold"
+     }
+    ]
+   }
   ],
-  "oav": [
-    "lgw02-gold",
-    {
-      "id": "lgw02-black",
-      "tag": "New"
-    },
-    "lgp01-gold",
-    "lgh01"
-  ],
-  "bag": [
-    {
-      "id": "lgw02-gold",
-      "name": "Carver Gold",
-      "code": "LGW02",
-      "meta": "4.78 &#9733; 69",
-      "hook": "The same forged feel, with a reshaped edge and softer sole that handle more lies."
-    },
-    {
-      "id": "lgw02-black",
-      "name": "Carver Black",
-      "code": "LGW02",
-      "meta": "6 lofts",
-      "tag": "New",
-      "hook": "Everything the LGW02 does around the greens, in a finish that stays quiet in the bag."
-    },
-    {
-      "id": "lgh01",
-      "name": "Stryker",
-      "code": "LGH01",
-      "meta": "4.60 &#9733; 20",
-      "hook": "Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover."
-    }
-  ],
-  "upsell": [
-    {
-      "sku": "LGW01-56-RH",
-      "name": "Carver Gold 56°",
-      "price": "$99",
-      "variant": "Right hand · 56°",
-      "why": "The sand wedge. Most-carried loft in the lineup.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"
-    },
-    {
-      "sku": "LGW01-60-RH",
-      "name": "Carver Gold 60°",
-      "price": "$99",
-      "variant": "Right hand · 60°",
-      "why": "The lob. For tight pins and short-sided misses.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"
-    },
-    {
-      "sku": "HeadCover-Blade-SignatureWhite",
-      "name": "Lucky Blade Cover",
-      "price": "$29.95",
-      "variant": "",
-      "why": "Reviewers keep mentioning cart rash. This stops it.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
-    }
-  ],
-  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
+  "measured": "Bounce on a spec sheet is measured off the sole, and it is not the whole story. A full, cambered sole puts more of itself on the ground, so it plays every degree it measures. A narrow sole with the heel and the trailing edge ground away presents less &mdash; which is why the S reads higher on paper than the K at the same loft and still plays lower through firm turf. The numbers below are real; read them alongside the sole, not instead of it.",
+  "short": "Short version: K for soft turf and a real divot, S for firm turf and tight lies.",
+  "note": "Bounce, loft and lie are the manufacturer's published figures and the full table by loft is further down this page. The sole descriptions are the standard meaning of a K and an S grind."
+ }
 }

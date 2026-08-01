@@ -166,24 +166,50 @@ def spec_table(tab):
     return '<table class="spec-tbl"><tbody>%s</tbody></table>' % "".join(body)
 
 
+def cross_sell(pid, where):
+    """Resolve a product another page points at, and refuse a discontinued one.
+
+    Discontinuing the driver and the Patriot (HANDOFF §15a) deleted their pages
+    but left three cross-sell rows pointing at them, so the LGH01 page shipped
+    with a browse card, a bag tile and a whole comparison column linking to
+    href="#". Nothing caught it: an unbuilt page resolving to "#" is a normal,
+    counted state for the sixty pages still to come. A DISCONTINUED one is not
+    the same thing, and now says so."""
+    p = sitemap.product(pid)
+    if p.get("discontinued"):
+        sys.exit("%s points at %s, which is discontinued — remove the row"
+                 % (where, pid))
+    return p
+
+
 def tile_for(pid, extra=None):
     """A cross-sell tile: catalogue facts from products.json, hook and label
     from whichever copy file asked for it. Nothing about price or availability
     is retyped in the editorial layer."""
-    p = sitemap.product(pid)
+    p = cross_sell(pid, "a bag/cross-sell row")
     t = {
         "id": p["id"], "code": p["code"], "name": p["name"], "title": p["title"],
         "img": p["img"], "priceLabel": p["priceLabel"], "summary": p["summary"],
         "inStock": p["inStock"], "href": "{{link:p/%s}}" % pid,
     }
-    # Cole's rule: a product card never shows a review count. The variant
-    # summary ("Right & left hand", "S–3XL") is what belongs in that slot —
-    # it answers a question the shopper actually has at this point.
     if p.get("rating"):
         t["rating"] = p["rating"]
-    t["meta"] = p["summary"]
     if extra:
         t.update({k: v for k, v in extra.items() if k != "id"})
+    # Cole's rule (§16 note 2): a product card NEVER shows a review count. The
+    # variant summary ("Right & left hand · 6 lofts", "S–3XL") is what belongs
+    # in that slot — it answers a question a browsing shopper actually has.
+    #
+    # The rule was applied to the collection grid and the homepage and missed
+    # the PDP cross-sell grids, where copy files were overriding `meta` with a
+    # hand-typed "4.81 ★ 551". So the fallback happens AFTER the copy layer,
+    # and a star in a meta is now fatal rather than merely wrong: a rating
+    # typed into a copy file is also stale the moment Judge.me moves.
+    if "★" in t.get("meta", "") or "&#9733;" in t.get("meta", ""):
+        sys.exit("%s: a card meta carries a review count (%r). Cards never show "
+                 "ratings — drop the key and the variant summary is used."
+                 % (pid, t["meta"]))
+    t.setdefault("meta", p["summary"])
     return t
 
 
@@ -203,10 +229,22 @@ def product_copy(prod):
     # carries only what is actually different about that product, and any key
     # it does set wins outright — no deep merging, because a half-overridden
     # list is harder to reason about than a repeated one.
-    fam_path = os.path.join(SRC, "data", "copy", "_family-%s.json" % prod["family"])
+    # Three layers, each overriding the one under it:
+    #
+    #   _shared-<template>.json   everything that is true of the template
+    #   _family-<family>.json     everything that is true of the family
+    #   <product>.json            what is actually different about this product
+    #
+    # The shared layer exists because the polo size chart is identical for the
+    # Classic and the Blade, and a 6x3x2 table copied into two family files is a
+    # table that will drift. Same for the design section: Cole, 2026-07-31, one
+    # section that works for any polo and one that works for any hat.
     copy = {}
-    if os.path.exists(fam_path):
-        copy.update(json.load(open(fam_path, encoding="utf8")))
+    for layer in ("_shared-%s.json" % prod["template"],
+                  "_family-%s.json" % prod["family"]):
+        lp = os.path.join(SRC, "data", "copy", layer)
+        if os.path.exists(lp):
+            copy.update(json.load(open(lp, encoding="utf8")))
     copy.update(json.load(open(path, encoding="utf8")))
 
     coll = sitemap.collection(prod["collection"])
@@ -237,6 +275,24 @@ def product_copy(prod):
     ctx["gallery"] = shots
     ctx["galleryCount"] = len(shots)
 
+    # The size guide is a modal hung off the size picker (Cole 2026-07-31), so
+    # a product with no size axis has nothing to hang it from. Hats inherit the
+    # apparel shared layer and must not render a chart of polo measurements.
+    if not any(ax["key"] == "size" for ax in prod["options"]):
+        ctx.pop("sizeGuide", None)
+    elif ctx.get("sizeGuide"):
+        g = dict(ctx["sizeGuide"])
+        # "true"/"false" as STRINGS. A Python bool renders as "True", and CSS
+        # attribute-value matching is case-sensitive — [aria-checked="true"]
+        # never matched, so the guide opened with neither unit selected. It is
+        # also invalid ARIA. The same trap applies to any boolean that reaches
+        # an attribute VALUE rather than a {{#section}}.
+        g["units"] = [dict(u, i=i,
+                           checked=("true" if i == 0 else "false"),
+                           hidden=(i > 0))
+                      for i, u in enumerate(g["units"])]
+        ctx["sizeGuide"] = g
+
     tabs = []
     for i, tab in enumerate(copy.get("specTabs", [])):
         tabs.append(dict(tab, i=i, selected="true" if i == 0 else "false",
@@ -244,6 +300,25 @@ def product_copy(prod):
     ctx["specTabs"] = tabs
 
     ctx["bag"] = [tile_for(row["id"], row) for row in copy.get("bag", [])]
+
+    # ---- finish swatches (clubs) -----------------------------------------
+    # Gold and Black are two Shopify products, exactly like the polo colorways,
+    # so the same swatch device links them: pick the finish, then the loft and
+    # grind. Cole asked for this explicitly when the wedges collapsed into the
+    # 01 — without it the Black is unreachable from the Gold's page.
+    if prod.get("finishGroup"):
+        grp = [x for x in sitemap.PRODUCTS
+               if x.get("finishGroup") == prod["finishGroup"] and x["built"]]
+        if len(grp) > 1:
+            ctx["finishes"] = {
+                "label": "Finish",
+                "current": prod.get("finish", ""),
+                "items": [{"name": x.get("finish", x["name"]), "img": x["img"],
+                           "priceLabel": x["priceLabel"],
+                           "soldOut": not x["inStock"],
+                           "isThis": x["id"] == prod["id"],
+                           "href": "{{link:p/%s}}" % x["id"]} for x in grp],
+            }
 
     # ---- sibling colourways ----------------------------------------------
     # Ten Classic Polos are ten separate Shopify products, so without a strip
@@ -281,14 +356,18 @@ def product_copy(prod):
     rail = []
     for row in copy.get("oav", []):
         row = {"id": row} if isinstance(row, str) else dict(row)
-        p = sitemap.product(row["id"])
+        p = cross_sell(row["id"], "%s oav" % prod["id"])
         tag = row.get("tag", "")
         if not p["inStock"]:
             tag = "Sold out"
         rail.append({
             "nm": p["title"], "pr": p["priceLabel"],
-            "rt": ("%s ★ %s" % (p["rating"]["avg"], p["rating"]["count"])
-                   if p.get("rating") else p["summary"]),
+            # Cole's rule from §16 note 2 — never a review count on a card —
+            # was applied to .pt-rt and missed the browse rail, which was still
+            # printing "4.81 ★ 551" on every club. The variant summary is what
+            # belongs in this slot: it answers a question a browsing shopper
+            # actually has.
+            "rt": p["summary"],
             "tag": tag, "out": not p["inStock"],
             "href": "{{link:p/%s}}" % p["id"], "img": p["img"],
         })
@@ -315,14 +394,214 @@ def product_copy(prod):
         for o in pick.get("options", []):
             row = dict(o)
             if o.get("id") and o["id"] != prod["id"]:
+                cross_sell(o["id"], "%s helpPick" % prod["id"])
                 row["href"] = "{{link:p/%s}}" % o["id"]
+                row.setdefault("rank", "The other one")
             else:
                 row["isThis"] = True
                 row["href"] = None
+                row.setdefault("rank", "You're looking at this one")
+                row.setdefault("foot", "You're on this page")
             opts.append(row)
         pick["options"] = opts
         ctx["helpPick"] = pick
 
+    return ctx
+
+
+# --------------------------------------------------------------------------
+# Collections
+# --------------------------------------------------------------------------
+def collection_tile(pid, tag=None):
+    """A product tile for a collection grid. Same catalogue facts the PLP
+    paints in JS, but shaped for the template to render server-side — the club
+    collections have no filters, so there is nothing for a script to repaint
+    and the grid can just be in the HTML."""
+    p = sitemap.product(pid)
+    live = [v for v in p["variants"].values() if v["avail"]]
+    t = {
+        # `title` on the card, not `name`. The short form is ambiguous now that
+        # the SKU stamp is gone (Cole 2026-07-31): LGW01 Gold and LGW02 Gold are
+        # BOTH "Carver Gold", and the code stamp was the only thing separating
+        # them. `title` is Cole's own locked full form — family, code, finish.
+        "id": p["id"], "name": p["title"], "title": p["title"],
+        "img": p["img"], "priceLabel": p["priceLabel"],
+        "inStock": p["inStock"], "soldOut": not p["inStock"],
+        "href": "{{link:p/%s}}" % pid, "tag": tag,
+    }
+    # Same rule as the PLP and the cross-sell tiles: a real Add only where
+    # there is genuinely nothing to choose. Every club has at least a hand.
+    if p["inStock"]:
+        if not p["options"] and len(live) == 1:
+            t["addSku"] = live[0]["sku"]
+        else:
+            t["chooseLabel"] = "Build it"
+    return t
+
+
+def quick_add_data(pids):
+    """The variant data the in-card Quick add picker needs, keyed by product id.
+
+    Primo's QUICK ADD does not go to the product page — it opens a size picker
+    inside the card and adds from there (Cole, 2026-07-31). Clubs have a hand
+    and often a loft, so ours is two steps rather than one, but it is the same
+    control. That means a collection page now needs the real option axes and
+    the real variant map, which is exactly what the PDP buy box runs on — so
+    the pages load `variants.js` and reuse the engine `test-variants.js`
+    already covers, rather than growing a second availability implementation.
+
+    Only in-stock products with at least one axis appear. A zero-axis product
+    keeps its plain [data-add] button — there is nothing to pick — and a
+    sold-out one gets no control at all."""
+    out = {}
+    for pid in pids:
+        p = sitemap.product(pid)
+        if not p["options"] or not p["inStock"]:
+            continue
+        out[pid] = {
+            "name": p["name"], "img": p["img"], "default": p["default"],
+            "options": p["options"], "variants": p["variants"],
+        }
+    return out
+
+
+def collection_siblings(cid):
+    """The other collections, for the "rest of the store" row. Generated from
+    products.json rather than typed into each template — it was static markup
+    in one page and would have been static markup in two, which is how the
+    duplicate .ptile rules in core.css started (HANDOFF §16)."""
+    return [{"name": c["name"], "href": "{{link:c/%s}}" % c["id"]}
+            for c in sitemap.COLLECTIONS
+            if c["id"] != cid and not c.get("blocked")]
+
+
+def home_copy():
+    """The homepage's catalogue-driven sections. Only the club finder today.
+
+    It used to hard-code a name, a price and an image per card, and the prices
+    had gone stale — both LGW02s said $119 against a real $109. Anything that
+    names a product now resolves through products.json like everywhere else."""
+    path = os.path.join(SRC, "data", "copy", "_page-home.json")
+    copy = json.load(open(path, encoding="utf8"))
+    tabs = []
+    for i, tab in enumerate(copy["finder"]["tabs"]):
+        cards = []
+        for c in tab["cards"]:
+            p = cross_sell(c["id"], "the homepage finder")
+            cards.append({
+                "code": p["code"], "name": p["title"], "ln": c["ln"],
+                "priceLabel": p["priceLabel"], "img": p["img"],
+                "soldOut": not p["inStock"],
+                "href": "{{link:p/%s}}" % p["id"],
+            })
+        tabs.append({"label": tab["label"], "i": i, "cards": cards,
+                     "selected": "true" if i == 0 else "false", "hidden": i > 0})
+    return {"finderTabs": tabs}
+
+
+def collection_copy(coll):
+    """The editorial layer for a club collection page: bands, the comparison,
+    the brand copy under the grid. Same contract as product_copy — a club
+    collection without a file fails the build rather than rendering a page
+    with holes in it."""
+    cid = coll["id"]
+    path = os.path.join(SRC, "data", "copy", "_collection-%s.json" % cid)
+    if not os.path.exists(path):
+        sys.exit("collection %s uses the clp template but has no editorial: "
+                 "_src/data/copy/_collection-%s.json" % (cid, cid))
+    copy = json.load(open(path, encoding="utf8"))
+    ctx = {k: v for k, v in copy.items() if not k.startswith("_")}
+
+    tags = copy.get("tags", {})
+
+    # ---- bands ------------------------------------------------------------
+    # Every member of the collection must sit in exactly one band. Without the
+    # check, adding a club to products.json would quietly leave it off the page
+    # — the failure mode a flat grid does not have and the reason the flat grid
+    # was safe to leave unattended.
+    placed, bands = [], []
+    for b in copy.get("bands", []):
+        placed += b["ids"]
+        bands.append({
+            "label": b["label"], "lede": b.get("lede", ""),
+            "tiles": [collection_tile(pid, tags.get(pid)) for pid in b["ids"]],
+        })
+    if sorted(placed) != sorted(coll["products"]):
+        missing = [p for p in coll["products"] if p not in placed]
+        extra = [p for p in placed if p not in coll["products"]]
+        sys.exit("collection %s bands do not match membership%s%s"
+                 % (cid,
+                    ("\n  not in any band: " + ", ".join(missing)) if missing else "",
+                    ("\n  banded but not in the collection: " + ", ".join(extra)) if extra else ""))
+    if len(placed) != len(set(placed)):
+        sys.exit("collection %s lists a product in two bands" % cid)
+    ctx["bands"] = bands
+
+    # ---- the comparison ---------------------------------------------------
+    # Bars are segmented, and every segment count comes off a REAL published
+    # number with the number printed beside it. There is no forgiveness or
+    # workability bar, because nobody has measured one — the same rule that
+    # makes the spec tables carry "Needs spec" instead of a guess.
+    cmp_ = copy.get("compare")
+    if cmp_:
+        scales = cmp_["scales"]
+        items = []
+        for row in cmp_["items"]:
+            # A column can describe a product that does not exist yet — the
+            # wedge page's whole job is the 01 against the 02 (Cole,
+            # 2026-07-31) and the 02 is not in Shopify. A `coming` column has
+            # no catalogue lookup, no price, no bars and no buy link: it
+            # carries its feature list and says it is coming, which is all
+            # that is true about it.
+            if row.get("coming"):
+                items.append({
+                    "coming": True, "name": row["name"], "soon": row.get("soon", "Coming"),
+                    "photo": row.get("photo", ""),
+                    "forWho": row["forWho"], "facts": row["facts"],
+                    "note": row.get("note", ""),
+                })
+                continue
+            p = sitemap.product(row["id"])
+            bars = []
+            for sc in scales:
+                b = row["bars"][sc["k"]]
+                lo, hi = b.get("from", 0), b["to"]
+                bars.append({
+                    "label": sc["label"], "display": b["display"],
+                    "segs": [{"on": lo <= i < hi} for i in range(sc["segs"])],
+                })
+            items.append({
+                "name": p["title"], "img": p["img"],
+                "priceLabel": p["priceLabel"], "soldOut": not p["inStock"],
+                "href": "{{link:p/%s}}" % p["id"],
+                "forWho": row["forWho"], "bars": bars,
+                "facts": row["facts"], "cta": row.get("cta", "See it"),
+            })
+        ctx["compare"] = dict(cmp_, items=items,
+                              scaleNotes=[s["note"] for s in scales if s.get("note")])
+
+    # ---- the family router (All Clubs only) -------------------------------
+    if copy.get("router"):
+        r = dict(copy["router"])
+        r["cards"] = [dict(c, href="{{link:c/%s}}" % c["to"])
+                      for c in r["cards"]]
+        ctx["router"] = r
+
+    # ---- the testimonial --------------------------------------------------
+    # Verbatim Judge.me, and the product it is actually about is named and
+    # linked. A quote floating free of the club it praises is the kind of thing
+    # that reads as invented even when it is not.
+    if copy.get("quote"):
+        q = dict(copy["quote"])
+        p = sitemap.product(q["id"])
+        q["product"] = p["title"]
+        q["href"] = "{{link:p/%s}}" % p["id"]
+        ctx["quote"] = q
+
+    ctx["siblings"] = collection_siblings(cid)
+    ctx["UPSELL_JSON"] = json.dumps(copy.get("upsell", []), ensure_ascii=False)
+    ctx["QUICKADD_JSON"] = json.dumps(quick_add_data(coll["products"]),
+                                      ensure_ascii=False)
     return ctx
 
 
@@ -338,6 +617,9 @@ def page_context(slug):
     page = sitemap.PAGES[slug]
     ctx = {"TITLE": page.title}
 
+    if slug == "home":
+        ctx.update(home_copy())
+
     if page.kind == "product":
         prod = sitemap.product(slug.split("/", 1)[1])
         ctx["PRODUCT_JSON"] = json.dumps(prod, ensure_ascii=False, sort_keys=False)
@@ -345,6 +627,19 @@ def page_context(slug):
 
     if page.kind == "collection":
         coll = sitemap.collection(slug.split("/", 1)[1])
+        ctx["COLL_NAME"] = coll["name"]
+        ctx["COLL_EYEBROW"] = coll["eyebrow"]
+        ctx["COLL_LEDE"] = coll["lede"]
+        ctx["COLL_COUNT"] = "%d %s" % (coll["count"],
+                                       "club" if coll["count"] == 1 else "clubs")
+
+        # The club collections are a page, not a product list (GAMEPLAN §13.3).
+        # They render their grid server-side in bands and have no filters, so
+        # none of the PLP's tile-painting or sort-trimming applies.
+        if coll["tpl"] == "clp":
+            ctx.update(collection_copy(coll))
+            return ctx
+
         # Tiles carry only what the grid renders and sorts on. The href is a
         # registry token so these links are audited like any other, even
         # though the tile itself is painted by JS.
@@ -352,7 +647,7 @@ def page_context(slug):
         for pid in coll["products"]:
             p = sitemap.product(pid)
             tile = {
-                "id": p["id"], "code": p["code"], "name": p["name"],
+                "id": p["id"], "code": p["code"], "name": p["title"],
                 "title": p["title"], "family": p["family"], "img": p["img"],
                 "price": p["price"], "priceLabel": p["priceLabel"],
                 "summary": p["summary"], "inStock": p["inStock"],
@@ -377,9 +672,9 @@ def page_context(slug):
             {"id": coll["id"], "name": coll["name"],
              "facets": coll["facets"], "products": tiles},
             ensure_ascii=False, sort_keys=False)
-        ctx["COLL_NAME"] = coll["name"]
-        ctx["COLL_EYEBROW"] = coll["eyebrow"]
-        ctx["COLL_LEDE"] = coll["lede"]
+        ctx["siblings"] = collection_siblings(coll["id"])
+        ctx["QUICKADD_JSON"] = json.dumps(quick_add_data(coll["products"]),
+                                          ensure_ascii=False)
 
     return ctx
 
@@ -390,6 +685,9 @@ def build(slug, report):
         sys.exit("%s is declared but not built — nothing to assemble" % slug)
     src = page.src
     ctx = page_context(slug)
+    # what THIS page must contain, decided from its own context rather than
+    # from its template — see smoke()
+    page.extra_required = ['id="md-size"'] if ctx.get("sizeGuide") else []
 
     symbols = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf8").read().rstrip("\n")
     host = read("partials/symbols-host.html")
@@ -422,6 +720,12 @@ def build(slug, report):
     if page.kind == "product":
         js = read("variants.js") + "\n\n"
         js += template.render(read("pdp.js"), ctx, "pdp.js") + "\n\n"
+    # Collection pages get the variant engine too: the in-card Quick add picker
+    # runs the same cascading-availability rules as the buy box, and a second
+    # implementation of "is this combination sellable" is the last thing this
+    # site needs. core.js reads LG_QUICKADD and LG_VARIANTS if both are present.
+    if page.kind == "collection":
+        js = read("variants.js") + "\n\n"
     js += page_js
     js = js.rstrip("\n") + "\n\n" + read("core.js")
 
@@ -454,6 +758,10 @@ REQUIRED = {
         ".msnap{",                       # mobile card rails
         "@media (max-width:980px)",
         ".hdr{", ".cd-panel{", ".mq{",
+        # the club finder: fixed columns (auto-fit blew a one-card panel up to
+        # full width) and cards that are actually links
+        ".fnd-grid{display:grid;grid-template-columns:repeat(3,1fr)",
+        '<a class="fnd-c"',
     ],
     "club": [
         ".msnap{",
@@ -471,13 +779,27 @@ REQUIRED = {
         # 30KB size drop gave it away. Anything whose absence leaves a page
         # that looks right and does nothing belongs here.
         "function paintPickers",         # pdp.js — the buy box
-        "LG_VARIANTS",                   # variants.js — the axis engine
+        # NOT "LG_VARIANTS": core.js's quick-add now names it too, so the
+        # marker survived emptying variants.js entirely. A smoke marker has to
+        # be a string that exists in exactly ONE source file (§12d again).
+        "function offered(pd, sel, i, val)",   # variants.js — the axis engine
         "function paintLoftFinder",      # page-club.js — the wedge ladder
     ],
     "apparel": [
-        'id="pickers"', "function paintPickers", "LG_VARIANTS",
+        'id="pickers"', "function paintPickers",
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely
         ".sibs{",                        # the colourway strip — the range dies without it
-        ".sz{",                          # size guide replaces the spec table
+        # the size guide is a modal now, not a section. Three parts, and the
+        # page looks fine without any of them: the trigger, the panel and the
+        # unit toggle that makes two tables into one control.
+        # the trigger wiring and the toggle styles, which every apparel page
+        # carries. The modal ITSELF is per-page — see smoke()'s `extra`.
+        "md: 'md-size'", ".sg-unit{",
+        # page-apparel.js. Without it the modal still renders and the unit
+        # radios still look like controls — they just do nothing, and the cm
+        # table is never reachable. Marker chosen because it exists in that
+        # file and nowhere else (§21i).
+        "querySelector('.sg-units')",
         "@media (max-width:620px)",
     ],
     "gear": [
@@ -491,12 +813,33 @@ REQUIRED = {
         ".plp-facets:empty{display:none}",   # single-family collections
         ".chip{",                            # promoted to core; PLP depends on it
         "@media (max-width:620px)",
+        # the in-card Quick add: engine, data and panel. Without any one of the
+        # three the pill still renders and simply does nothing when clicked.
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely
+        "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
+    ],
+    "clp": [
+        # The grid is server-rendered here, so its absence is a blank page
+        # rather than a page that looks right and does nothing. The bars are
+        # the part with no analogue anywhere else in the site.
+        '<section class="sec clp-bands"',
+        ".clp-seg{",                         # the segmented spec bar
+        ".clp-seg i[data-on]{",              # ...and its lit segment
+        ".clp-tag{",                         # the character chip under the price
+        ".clp-fit{",                         # the fitting CTA, on the brand field
+        ".clp-grid{grid-template-columns:repeat(2,1fr)",   # phone grid
+        "@media (max-width:620px)",
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely
+        "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
     ],
 }
 
 
-def smoke(src, html):
-    missing = [n for n in REQUIRED.get(src, []) if n not in html]
+def smoke(src, html, extra=()):
+    """`extra` is per-PAGE rather than per-template. The size-guide modal only
+    exists on a product that has a size axis, so it cannot live in REQUIRED —
+    that list runs against every hat as well as every polo."""
+    missing = [n for n in list(REQUIRED.get(src, [])) + list(extra) if n not in html]
     if missing:
         sys.exit("%s: build is missing required rules:\n  %s"
                  % (src, "\n  ".join(missing)))
@@ -555,7 +898,7 @@ def main():
     rc = 0
     for slug, page in targets:
         html = build(slug, report)
-        smoke(page.src, html)
+        smoke(page.src, html, getattr(page, "extra_required", ()))
         path = os.path.join(ROOT, page.file)
 
         if a.check:
