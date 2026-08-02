@@ -17,28 +17,29 @@ node   tools/test-variants.js
 
 ## 1. Where the site stands
 
-**49 of 61 pages.** Home, 8 collection pages, 40 product pages. Every sellable
-product has a page except the two discontinued clubs.
+**53 of 61 pages.** Home, 8 collection pages, 40 product pages, and the four
+support pages. Every sellable product has a page except the two discontinued
+clubs.
 
-Ten pages remain, and they are the whole of what is left:
+**The support cluster is built** — see HANDOFF §25. Six pages remain:
 
 | Slug | File | What it is |
 |---|---|---|
 | `story` | `30-story.html` | Our Story |
 | `trybe` | `31-trybe.html` | The Trybe — ambassador program |
 | `reviews` | `32-reviews.html` | All reviews, clubs-wide |
-| `returns` | `40-returns.html` | Returns & the 60-day policy |
-| `shipping` | `41-shipping.html` | Shipping |
-| `contact` | `42-contact.html` | Contact |
-| `faq` | `43-faq.html` | FAQ |
+| ~~`returns`~~ | `40-returns.html` | **Built 2026-08-01** |
+| ~~`shipping`~~ | `41-shipping.html` | **Built 2026-08-01** |
+| ~~`contact`~~ | `42-contact.html` | **Built 2026-08-01** |
+| ~~`faq`~~ | `43-faq.html` | **Built 2026-08-01** |
 | `search` | `50-search.html` | Search results |
 | `404` | `51-404.html` | Not found |
 | `c/sale` | `10-collection-sale.html` | Sale — **blocked, see §6** |
 
 Every one of them is already declared in `tools/sitemap.py` and already linked
-from the footer and the header, which is why the build reports **678 links
-resolving to `#`**. That number is the to-do list. It goes to zero when these
-ten land.
+from the footer and the header. The build reported **678 links resolving to
+`#`**; the support cluster took it to **428**, and the rest is `trybe` (214),
+`story` (160), `search` (53) and `reviews` (1). That number is the to-do list.
 
 ---
 
@@ -165,7 +166,10 @@ pull quotes only; a widget that hides its 1-stars is a widget nobody believes
 
 ---
 
-## 6. The support cluster — one template, four pages
+## 6. The support cluster — one template, four pages  ·  **DONE 2026-08-01**
+
+**Built. HANDOFF §25 is the record and supersedes this section.** What follows
+is the brief it was built from, kept because it explains the shape.
 
 `returns` · `shipping` · `contact` · `faq`
 
@@ -266,7 +270,9 @@ Ordered by how much it holds up:
 3. **Our Story references** — Cole sent them; they were never described into
    HANDOFF and the screenshots are gone.
 4. **Warranty period** and **warehouse/duties**, the two "Needs confirming"
-   chips in the policy modals.
+   chips in the policy modals — now also chips on the returns and shipping
+   pages. Two more surfaced building Contact: **staffed hours and a response
+   target**, and **the Returns Portal's URL** (§25f).
 5. **Sale** — price the collection or drop it from the nav.
 6. **The Shopify wedge merge**, and the Judge.me migration behind it (§23h).
 7. **Sign-off on the grind copy** — the only unverified block on the site

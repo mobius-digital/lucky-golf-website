@@ -1,0 +1,39 @@
+/* ==========================================================================
+   404
+   One centred column on the brand field. This is the only page on the site
+   with no navigation job other than "get out of here", so it is short, it is
+   centred, and it ends. The green lands here because there is nothing else on
+   the page for it to compete with.
+   ========================================================================== */
+.nf{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);
+  padding:clamp(72px,10vw,150px) 0;border-block:2px solid var(--brand-accent)}
+.nf::before{content:'';position:absolute;inset:0;background:var(--brand-groove);
+  pointer-events:none}
+.nf .wm{width:min(80vw,900px);height:min(80vw,900px);left:50%;top:50%;
+  translate:-50% -50%;color:var(--on-brand);opacity:.07}
+.nf-in{position:relative;z-index:1;max-width:60ch;margin-inline:auto;text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.nf .eyebrow{color:var(--on-brand-88)}
+.nf .eyebrow::before{background:var(--brand-accent)}
+.nf-h{color:var(--on-brand);margin:0}
+.nf-lede{margin:24px 0 0;max-width:44ch;color:var(--on-brand-88)}
+.nf-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+/* .btn-line is ink-on-light; on the brand field it needs the cream edge */
+.nf .btn-line{color:var(--on-brand);border-color:var(--on-brand-22)}
+.nf .btn-line:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+.nf-links{margin-top:clamp(34px,4vw,52px);padding-top:clamp(24px,2.6vw,34px);
+  border-top:2px solid var(--on-brand-22);width:100%;
+  display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center}
+.nf-links a{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--on-brand-88);
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nf-links a:hover{color:var(--on-brand);border-color:var(--brand-accent)}
+
+.nf-aside{margin-top:clamp(30px,3.4vw,44px);color:var(--on-brand)}
+
+@media (max-width:620px){
+  .nf-cta{width:100%}
+  .nf-cta .btn{width:100%;justify-content:center}
+}

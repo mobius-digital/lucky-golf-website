@@ -218,6 +218,28 @@ button{font:inherit;color:inherit}
 /* clover bullet */
 .cbul{width:15px;height:15px;color:var(--green);flex:none;transform:translateY(2px)}
 
+/* ---------- .tbd — a gap, said out loud ----------
+   Used wherever the site would otherwise have to guess: a spec nobody has
+   measured ("Needs spec"), a policy detail Cole has not confirmed ("Needs
+   confirming"). It has been in the markup since Phase D — the spec tables and
+   both PDP policy modals on all 40 product pages — with NO rule behind it, so
+   every one of those rendered as ordinary body copy. A gap that looks like
+   prose reads as a statement, which is the opposite of the point.
+
+   Dashed, because a solid chip reads as a value. Lives in core rather than a
+   page stylesheet because the PDP modals and the support pages both use it,
+   and a page loads core plus exactly ONE page stylesheet — the same reason
+   .chip (§11b), the pdp split (§12c), .spec-tbl (§22f) and .sw (§23c) all had
+   to move. Fifth time.
+
+   --light is the variant for a white or cream field; the base is for ink.
+   --ink-muted measures 5.14:1 on white and 4.94:1 on cream. */
+.tbd{display:inline-block;font-family:'Space Mono',monospace;font-size:.58rem;
+  letter-spacing:.14em;text-transform:uppercase;line-height:1;white-space:nowrap;
+  padding:5px 9px;border:1.5px dashed var(--cream-52);color:var(--cream-70);
+  border-radius:var(--r);vertical-align:1px}
+.tbd--light{border-color:var(--ink-38);color:var(--ink-muted)}
+
 /* ==========================================================================
    ANNOUNCEMENT
    ========================================================================== */
@@ -1017,6 +1039,135 @@ button{font:inherit;color:inherit}
 .crumb [aria-current]{color:var(--ink)}
 
 /* ==========================================================================
+   REVIEWS — Judge.me's shape. Filter, sort and paging all work so the
+   interaction can be judged; the live site swaps in the real widget.
+
+   MOVED HERE FROM pdp.css. The all-clubs reviews page renders the same widget
+   and a page loads core plus exactly ONE page stylesheet, so a component two
+   templates paint has to be in core or it will drift. SIXTH time — .chip
+   (§11b), the pdp split (§12c), .spec-tbl (§22f), .sw (§23c), .tbd (§25e),
+   now this. The behaviour moved with it, into _src/reviews.js.
+   ========================================================================== */
+.jm{border:2px solid var(--ink-14);border-radius:var(--r);overflow:hidden}
+.jm-hd{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) minmax(0,.9fr);
+  gap:clamp(20px,2.6vw,42px);align-items:center;padding:clamp(22px,2.4vw,32px);
+  border-bottom:2px solid var(--ink-14)}
+.jm-score{text-align:center}
+.jm-score .num{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;font-size:clamp(2.6rem,4.2vw,3.6rem);line-height:.85;letter-spacing:-.02em}
+.jm-score .stars{display:flex;justify-content:center;gap:3px;margin-top:10px}
+.jm-score .stars svg{width:16px;height:16px;fill:var(--gold)}
+.jm-score .cnt{display:block;margin-top:9px;font-family:'Space Mono',monospace;
+  font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
+.jm-bars{display:flex;flex-direction:column;gap:6px}
+/* these are real click targets (they filter the list), so they need a real
+   target height, not just the height of the 8px bar inside them */
+.jm-bars .row{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:4px 0;
+  background:none;border:0;cursor:pointer;text-align:left;
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:var(--ink-muted)}
+.jm-bars .row:hover .t i{background:var(--gold-lo)}
+.jm-bars .row .k{width:26px;flex:none;text-align:right}
+.jm-bars .row .t{flex:1;height:8px;background:var(--ink-08);border-radius:2px;overflow:hidden}
+.jm-bars .row .t i{display:block;height:100%;background:var(--gold);transition:background .2s}
+.jm-bars .row .v{width:34px;flex:none;text-align:right}
+.jm-act{display:flex;flex-direction:column;gap:9px;align-items:stretch}
+.jm-act .btn{justify-content:center}
+.jm-medals{display:flex;flex-direction:column;gap:5px;margin-top:5px}
+.jm-medals span{display:flex;align-items:center;gap:7px;
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.jm-medals .cbul{width:12px;height:12px}
+
+.jm-sum{padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,32px);background:var(--cream);
+  border-bottom:2px solid var(--ink-14)}
+.jm-sum h3{margin:0 0 8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em}
+.jm-sum p{margin:0;font-size:.93rem;line-height:1.6;color:var(--ink-70);max-width:92ch}
+.jm-sum .src{display:block;margin-top:10px;font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
+
+.jm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px clamp(22px,2.4vw,32px);border-bottom:2px solid var(--ink-14)}
+.jm-filters{display:flex;flex-wrap:wrap;gap:7px}
+.jm-f{min-height:36px;padding:8px 14px;cursor:pointer;background:transparent;
+  border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-70);transition:background .18s,border-color .18s,color .18s}
+.jm-f:hover{border-color:var(--ink)}
+.jm-f[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.jm-sort select{min-height:36px;padding:7px 12px;border:2px solid var(--ink-14);
+  border-radius:var(--r);background:var(--white);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
+.jm-count{margin:0;padding:14px clamp(22px,2.4vw,32px) 0;
+  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted)}
+.jm-list{padding:0 clamp(22px,2.4vw,32px)}
+.jr{border-radius:var(--r-card);padding:22px 0;border-bottom:1px solid var(--ink-08)}
+.jr:last-child{border-bottom:0}
+.jr-top{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.jr-av{width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--white);
+  display:grid;place-items:center;flex:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.8rem}
+.jr-who b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.84rem;text-transform:uppercase;letter-spacing:.03em;line-height:1.2}
+.jr-who span{display:block;margin-top:2px;font-family:'Space Mono',monospace;font-size:.54rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.jr-stars{display:flex;gap:2px;margin-left:auto;flex:none}
+.jr-stars svg{width:13px;height:13px;fill:var(--gold)}
+.jr-stars svg.off{fill:var(--ink-14)}
+.jr h4{margin:0 0 6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.93rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.3}
+.jr p{margin:0;font-size:.93rem;line-height:1.6;color:var(--ink-70);white-space:pre-line}
+.jm-more{padding:20px clamp(22px,2.4vw,32px) 4px;text-align:center}
+.jm-more .btn{min-width:230px;justify-content:center}
+.jm-more[hidden]{display:none}
+.jm-empty{padding:34px 0;text-align:center;color:var(--ink-muted);
+  font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em}
+.jm-foot{margin:0;padding:18px clamp(22px,2.4vw,32px) 22px;text-align:center;
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-muted)}
+
+/* ---------- the all-clubs page only ---------- */
+/* Which club a review is about. Only rendered where the page supplied it, so
+   a PDP — where the answer is "the one you are looking at" — never shows it. */
+.jr-on{margin:8px 0 0 !important;font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.jr-on a{border-bottom:1px solid var(--gold)}
+.jr-on a:hover{color:var(--gold-lo)}
+
+/* The product filter. Same control language as .jm-f, wider because it
+   carries a name and a count rather than one glyph. */
+.jm-prods{display:flex;flex-wrap:wrap;gap:8px;padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,32px) 0}
+.jm-p{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 16px;
+  cursor:pointer;background:transparent;border:2px solid var(--ink-14);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);
+  transition:background .2s,border-color .2s,color .2s}
+.jm-p:hover{border-color:var(--ink)}
+.jm-p[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.jm-p span{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
+  color:var(--ink-muted)}
+.jm-p[aria-pressed="true"] span{color:var(--cream-70)}
+
+@media (max-width:1180px){
+  .jm-hd{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);row-gap:24px}
+  .jm-act{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .jm-medals{flex-direction:row;flex-wrap:wrap;gap:14px;margin:0 0 0 auto}
+}
+@media (max-width:620px){
+  .jm-hd{grid-template-columns:1fr}
+  .jm-act{flex-direction:column;align-items:stretch}
+  .jm-medals{margin:5px 0 0;flex-direction:column;gap:5px}
+  .jm-bar{flex-direction:column;align-items:stretch}
+  .jm-sort select{width:100%}
+  .jm-p{width:100%;justify-content:space-between}
+}
+
+/* a product with a real score but no reviews pulled into the repo, or none at
+   all, says so rather than rendering an empty list under a star filter */
+.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+
+/* ==========================================================================
    PDP — styles shared by the club, apparel and gear templates
    The fold, the buy box, the cross-sell rails, the review widget and the
    modals. A page loads core.css plus its own stylesheet and nothing else, so
@@ -1286,88 +1437,6 @@ button{font:inherit;color:inherit}
 .ilink:hover{color:var(--ink)}
 
 
-/* ==========================================================================
-   REVIEWS — Judge.me's shape. Filter, sort and paging all work so the
-   interaction can be judged; the live site swaps in the real widget.
-   ========================================================================== */
-.jm{border:2px solid var(--ink-14);border-radius:var(--r);overflow:hidden}
-.jm-hd{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) minmax(0,.9fr);
-  gap:clamp(20px,2.6vw,42px);align-items:center;padding:clamp(22px,2.4vw,32px);
-  border-bottom:2px solid var(--ink-14)}
-.jm-score{text-align:center}
-.jm-score .num{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
-  font-weight:800;font-size:clamp(2.6rem,4.2vw,3.6rem);line-height:.85;letter-spacing:-.02em}
-.jm-score .stars{display:flex;justify-content:center;gap:3px;margin-top:10px}
-.jm-score .stars svg{width:16px;height:16px;fill:var(--gold)}
-.jm-score .cnt{display:block;margin-top:9px;font-family:'Space Mono',monospace;
-  font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
-.jm-bars{display:flex;flex-direction:column;gap:6px}
-/* these are real click targets (they filter the list), so they need a real
-   target height, not just the height of the 8px bar inside them */
-.jm-bars .row{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:4px 0;
-  background:none;border:0;cursor:pointer;text-align:left;
-  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:var(--ink-muted)}
-.jm-bars .row:hover .t i{background:var(--gold-lo)}
-.jm-bars .row .k{width:26px;flex:none;text-align:right}
-.jm-bars .row .t{flex:1;height:8px;background:var(--ink-08);border-radius:2px;overflow:hidden}
-.jm-bars .row .t i{display:block;height:100%;background:var(--gold);transition:background .2s}
-.jm-bars .row .v{width:34px;flex:none;text-align:right}
-.jm-act{display:flex;flex-direction:column;gap:9px;align-items:stretch}
-.jm-act .btn{justify-content:center}
-.jm-medals{display:flex;flex-direction:column;gap:5px;margin-top:5px}
-.jm-medals span{display:flex;align-items:center;gap:7px;
-  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-muted)}
-.jm-medals .cbul{width:12px;height:12px}
-
-.jm-sum{padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,32px);background:var(--cream);
-  border-bottom:2px solid var(--ink-14)}
-.jm-sum h3{margin:0 0 8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em}
-.jm-sum p{margin:0;font-size:.93rem;line-height:1.6;color:var(--ink-70);max-width:92ch}
-.jm-sum .src{display:block;margin-top:10px;font-family:'Space Mono',monospace;font-size:.55rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
-
-.jm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
-  padding:16px clamp(22px,2.4vw,32px);border-bottom:2px solid var(--ink-14)}
-.jm-filters{display:flex;flex-wrap:wrap;gap:7px}
-.jm-f{min-height:36px;padding:8px 14px;cursor:pointer;background:transparent;
-  border:2px solid var(--ink-14);border-radius:var(--r);
-  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-70);transition:background .18s,border-color .18s,color .18s}
-.jm-f:hover{border-color:var(--ink)}
-.jm-f[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
-.jm-sort select{min-height:36px;padding:7px 12px;border:2px solid var(--ink-14);
-  border-radius:var(--r);background:var(--white);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
-.jm-count{margin:0;padding:14px clamp(22px,2.4vw,32px) 0;
-  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-muted)}
-.jm-list{padding:0 clamp(22px,2.4vw,32px)}
-.jr{border-radius:var(--r-card);padding:22px 0;border-bottom:1px solid var(--ink-08)}
-.jr:last-child{border-bottom:0}
-.jr-top{display:flex;align-items:center;gap:11px;margin-bottom:9px}
-.jr-av{width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--white);
-  display:grid;place-items:center;flex:none;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.8rem}
-.jr-who b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.84rem;text-transform:uppercase;letter-spacing:.03em;line-height:1.2}
-.jr-who span{display:block;margin-top:2px;font-family:'Space Mono',monospace;font-size:.54rem;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
-.jr-stars{display:flex;gap:2px;margin-left:auto;flex:none}
-.jr-stars svg{width:13px;height:13px;fill:var(--gold)}
-.jr-stars svg.off{fill:var(--ink-14)}
-.jr h4{margin:0 0 6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.93rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.3}
-.jr p{margin:0;font-size:.93rem;line-height:1.6;color:var(--ink-70);white-space:pre-line}
-.jm-more{padding:20px clamp(22px,2.4vw,32px) 4px;text-align:center}
-.jm-more .btn{min-width:230px;justify-content:center}
-.jm-more[hidden]{display:none}
-.jm-empty{padding:34px 0;text-align:center;color:var(--ink-muted);
-  font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em}
-.jm-foot{margin:0;padding:18px clamp(22px,2.4vw,32px) 22px;text-align:center;
-  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-muted)}
 
 
 /* ==========================================================================
@@ -1419,9 +1488,6 @@ button{font:inherit;color:inherit}
 /* ---------- responsive for the new blocks ---------- */
 @media (max-width:1180px){
   .oav,.kit{grid-template-columns:repeat(2,1fr)}
-  .jm-hd{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);row-gap:24px}
-  .jm-act{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;align-items:center}
-  .jm-medals{flex-direction:row;flex-wrap:wrap;gap:14px;margin:0 0 0 auto}
 }
 @media (max-width:980px){
   .club-grid{grid-template-columns:1fr}
@@ -1429,16 +1495,7 @@ button{font:inherit;color:inherit}
 }
 @media (max-width:620px){
   .club-specs li{grid-template-columns:1fr;gap:4px}
-  .jm-hd{grid-template-columns:1fr}
-  .jm-act{flex-direction:column;align-items:stretch}
-  .jm-medals{margin:5px 0 0;flex-direction:column;gap:5px}
-  .jm-bar{flex-direction:column;align-items:stretch}
-  .jm-sort select{width:100%}
 }
-
-/* a product with a real score but no reviews pulled into the repo, or none at
-   all, says so rather than rendering an empty list under a star filter */
-.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
 
 /* ==========================================================================
    BUY-BOX LINKS AND TRUST ROW  ·  Cole's notes 5 and 8
@@ -1858,11 +1915,11 @@ button{font:inherit;color:inherit}
           </div>
         </div>
       </div>
-      <a href="#">Our Story</a>
-      <a href="#">Trybe</a>
+      <a href="30-story.html">Our Story</a>
+      <a href="31-trybe.html">Trybe</a>
     </nav>
     <div class="hdr-act">
-      <a href="#" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></a>
+      <a href="50-search.html" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></a>
       <button type="button" class="cart" data-cart-open aria-label="Open bag">
         <svg class="icn" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg>
         <span class="cart-count" data-n="0" aria-hidden="true">0</span>
@@ -1875,8 +1932,8 @@ button{font:inherit;color:inherit}
     <a href="01-home.html#families">Putters</a>
     <a href="01-home.html#families">Hybrid</a>
     <a href="01-home.html#gear">Apparel &amp; Gear</a>
-    <a href="#">Our Story</a>
-    <a href="#">Trybe</a>
+    <a href="30-story.html">Our Story</a>
+    <a href="31-trybe.html">Trybe</a>
   </nav>
 </header>
 
@@ -2435,7 +2492,7 @@ button{font:inherit;color:inherit}
       <h3>Apparel and gear</h3>
       <p>Thirty days. Apparel unworn and unwashed with all original tags attached &mdash; <b>a return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
       <p>Customised products are final sale unless they arrive defective.</p>
-      <p><a href="#">Read the full returns policy</a></p>
+      <p><a href="40-returns.html">Read the full returns policy</a></p>
     </div>
 
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
@@ -2462,7 +2519,7 @@ button{font:inherit;color:inherit}
     </div>
 
     <div class="md-sec">
-      <p><a href="#">Read the full shipping policy</a></p>
+      <p><a href="41-shipping.html">Read the full shipping policy</a></p>
     </div>
 
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
@@ -2498,18 +2555,18 @@ button{font:inherit;color:inherit}
       <div>
         <h3>Company</h3>
         <ul>
-          <li><a href="#">Our Story</a></li>
-          <li><a href="#">Trybe</a></li>
-          <li><a href="#">Ambassadors</a></li>
+          <li><a href="30-story.html">Our Story</a></li>
+          <li><a href="31-trybe.html">Trybe</a></li>
+          <li><a href="31-trybe.html">Ambassadors</a></li>
         </ul>
       </div>
       <div>
         <h3>Support</h3>
         <ul>
-          <li><a href="#">Returns &amp; 60-day policy</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="40-returns.html">Returns &amp; 60-day policy</a></li>
+          <li><a href="41-shipping.html">Shipping</a></li>
+          <li><a href="42-contact.html">Contact</a></li>
+          <li><a href="43-faq.html">FAQ</a></li>
         </ul>
       </div>
     </div>
@@ -2644,6 +2701,186 @@ button{font:inherit;color:inherit}
 }));
 
 /* ==========================================================================
+   THE REVIEW WIDGET — one implementation, two pages.
+
+   It was inside pdp.js, which only product pages load. `32-reviews.html` needs
+   the same histogram, the same star filter, the same sort and the same
+   pagination over the union of every pull — and a second implementation of
+   "which reviews am I showing" is the last thing this site needs (the same
+   argument that put the quick-add picker on LG_VARIANTS rather than on its own
+   availability rules, §21a).
+
+   So: mount it on a root element and hand it data. The PDP mounts one product;
+   the reviews page mounts all of them and adds a product filter.
+
+   `data` is the shape of _src/data/reviews/<id>.json:
+     { total, totals:{5..1}, sample:[ {n,r,t,d,q,v,rep} ] }
+   plus, on the reviews page only, `p` and `pn` per review (product id and
+   name) and a `products` list for the filter chips.
+
+   The 4-star-and-up rule governs curated pull quotes, NOT this widget. A
+   widget that hides its 1-stars is a widget nobody believes (HANDOFF §9).
+   ========================================================================== */
+var LG_REVIEWS = (function(){
+  var STAR = '<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
+  var STAR_OFF = '<svg viewBox="0 0 24 24" class="off"><use href="#star"/></svg>';
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; });
+  }
+  function starRow(n){
+    var o = ''; for (var i = 1; i <= 5; i++) o += (i <= n ? STAR : STAR_OFF); return o;
+  }
+  function fmtDate(iso){
+    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var p = iso.split('-'); return p[2].replace(/^0/,'') + ' ' + m[+p[1]-1] + ' ' + p[0];
+  }
+
+  function mount(root, data, opts){
+    if (!root || !data) return null;
+    opts = opts || {};
+    var PAGE = opts.page || 6;
+    var $ = function(s){ return root.querySelector(s); };
+
+    var star = 0, sort = 'recent', shown = PAGE, prod = '';
+
+    /* Every review currently in scope: the product filter narrows first, the
+       star filter second, so the histogram can redraw for one product. */
+    function scoped(){
+      return prod ? data.sample.filter(function(r){ return r.p === prod; }) : data.sample;
+    }
+    /* Live totals for whatever is in scope. On the PDP that is always the
+       product's own real histogram; on the reviews page a product filter
+       swaps to that product's, which is the only honest thing to draw —
+       summing sampled reviews would report a distribution nobody publishes. */
+    function totals(){
+      if (!prod) return data.totals;
+      var p = (data.products || []).filter(function(x){ return x.id === prod; })[0];
+      return (p && p.totals) || data.totals;
+    }
+    function scopedTotal(){
+      if (!prod) return data.total;
+      var p = (data.products || []).filter(function(x){ return x.id === prod; })[0];
+      return (p && p.total) || data.total;
+    }
+
+    function pool(){
+      var list = scoped().filter(function(r){ return !star || r.r === star; }).slice();
+      if (sort === 'high') list.sort(function(a,b){ return b.r - a.r || (a.d < b.d ? 1 : -1); });
+      else if (sort === 'low') list.sort(function(a,b){ return a.r - b.r || (a.d < b.d ? 1 : -1); });
+      else list.sort(function(a,b){ return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
+      return list;
+    }
+
+    function paintScore(){
+      var t = totals(), n = scopedTotal(), box = $('#jm-avg'), cnt = $('#jm-cnt');
+      if (!box && !cnt) return;
+      var sum = 0, all = 0;
+      [5,4,3,2,1].forEach(function(k){ sum += k * (t[k] || 0); all += (t[k] || 0); });
+      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '—';
+      if (cnt) cnt.textContent = 'Based on ' + n + ' reviews';
+    }
+    function paintBars(){
+      var box = $('#jm-bars'); if (!box) return;
+      var t = totals(), n = scopedTotal();
+      box.innerHTML = [5,4,3,2,1].map(function(k){
+        var pct = n ? Math.round((t[k] || 0) / n * 100) : 0;
+        return '<button class="row" type="button" data-star="' + k + '"'
+          + ' aria-label="Show only ' + k + ' star reviews">'
+          + '<span class="k">' + k + ' ★</span>'
+          + '<span class="t"><i style="width:' + Math.max(pct, 1) + '%"></i></span>'
+          + '<span class="v">' + (t[k] || 0) + '</span></button>';
+      }).join('');
+    }
+    function paintFilters(){
+      var box = $('#jm-filters'); if (!box) return;
+      var opts_ = [[0, 'All']].concat([5,4,3,2,1].map(function(k){ return [k, k + ' ★']; }));
+      box.innerHTML = opts_.map(function(o){
+        return '<button class="jm-f" type="button" data-star="' + o[0] + '"'
+          + ' aria-pressed="' + (star === o[0]) + '">' + o[1] + '</button>';
+      }).join('');
+    }
+    /* Product chips. Only rendered where the page supplied a product list, so
+       the PDP is untouched by this. */
+    function paintProducts(){
+      var box = $('#jm-prods'); if (!box || !data.products) return;
+      var rows = [{id:'', name:'Every club', total:data.total}].concat(data.products);
+      box.innerHTML = rows.map(function(p){
+        return '<button class="jm-p" type="button" data-prod="' + esc(p.id) + '"'
+          + ' aria-pressed="' + (prod === p.id) + '">'
+          + esc(p.name) + '<span>' + p.total + '</span></button>';
+      }).join('');
+    }
+    function paintList(){
+      var box = $('#jm-list'), more = $('#jm-more'), cnt = $('#jm-count');
+      if (!box) return;
+      var list = pool();
+      if (!list.length){
+        box.innerHTML = '<p class="jm-empty">No reviews at that rating in this sample.</p>';
+        if (more) more.hidden = true;
+        if (cnt) cnt.textContent = '';
+        return;
+      }
+      box.innerHTML = list.slice(0, shown).map(function(r){
+        return '<article class="jr">'
+          + '<div class="jr-top">'
+          +   '<span class="jr-av" aria-hidden="true">' + esc(r.n.charAt(0).toUpperCase()) + '</span>'
+          +   '<span class="jr-who"><b>' + esc(r.n) + '</b>'
+          +     '<span>' + (r.v ? 'Verified buyer · ' : '') + fmtDate(r.d) + '</span></span>'
+          +   '<span class="jr-stars" role="img" aria-label="' + r.r + ' out of 5">' + starRow(r.r) + '</span>'
+          + '</div>'
+          + (r.t ? '<h4>' + esc(r.t) + '</h4>' : '')
+          + '<p>' + esc(r.q) + '</p>'
+          /* which club it is about, on the all-clubs page only */
+          + (r.pn ? '<p class="jr-on">on <a href="' + esc(r.ph || '') + '">' + esc(r.pn) + '</a></p>' : '')
+          + '</article>';
+      }).join('');
+      if (more) more.hidden = shown >= list.length;
+      if (cnt){
+        var t = totals();
+        var scale = star ? (t[star] || 0) : scopedTotal();
+        cnt.textContent = 'Showing ' + Math.min(shown, list.length) + ' of ' + list.length
+          + ' in this sample · ' + scale + ' live'
+          + (star ? ' at ' + star + ' star' : '');
+      }
+    }
+
+    function setStar(s){
+      star = s; shown = PAGE;
+      paintFilters(); paintList();
+      root.scrollIntoView({block:'nearest'});
+    }
+    function setProduct(id){
+      prod = id; star = 0; shown = PAGE;
+      paintProducts(); paintScore(); paintBars(); paintFilters(); paintList();
+      root.scrollIntoView({block:'nearest'});
+    }
+
+    /* Delegation is scoped to the root, not to document — two widgets on one
+       page would otherwise both answer the same click. */
+    root.addEventListener('click', function(e){
+      var f = e.target.closest('.jm-f'),
+          b = e.target.closest('.jm-bars .row'),
+          p = e.target.closest('.jm-p');
+      if (p){ setProduct(p.getAttribute('data-prod')); return; }
+      if (f){ setStar(+f.getAttribute('data-star')); return; }
+      if (b){ setStar(+b.getAttribute('data-star')); return; }
+      if (e.target.closest('#jm-more')){ shown += PAGE; paintList(); }
+    });
+    var sortSel = $('#jm-sort');
+    if (sortSel) sortSel.addEventListener('change', function(){
+      sort = sortSel.value; shown = PAGE; paintList();
+    });
+
+    paintProducts(); paintScore(); paintBars(); paintFilters(); paintList();
+    return {setStar: setStar, setProduct: setProduct};
+  }
+
+  return {mount: mount, starRow: starRow, fmtDate: fmtDate, esc: esc};
+})();
+
+/* ==========================================================================
    PDP — behavior shared by all three product templates
    Gallery, the N-axis buy box, accordions, the cross-sell rails and the
    review widget. The club, apparel and gear templates each add only what is
@@ -2714,15 +2951,6 @@ var PD_KIT = [
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-  var STAR = '<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
-  var STAR_OFF = '<svg viewBox="0 0 24 24" class="off"><use href="#star"/></svg>';
-  function starRow(n){
-    var o = ''; for (var i = 1; i <= 5; i++) o += (i <= n ? STAR : STAR_OFF); return o;
-  }
-  function fmtDate(iso){
-    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var p = iso.split('-'); return p[2].replace(/^0/,'') + ' ' + m[+p[1]-1] + ' ' + p[0];
-  }
 
   /* ---------------------------------------------------------------- gallery */
   var gal = $('#gal');
@@ -2935,86 +3163,12 @@ var PD_KIT = [
   }).join('');
 
   /* =====================================================================
-     REVIEWS — Judge.me shape. The histogram is the real 551-review
-     distribution; the list is a 47-review sample that preserves that
-     distribution, so filtering by star rating returns a believable set.
+     REVIEWS — one implementation, in _src/reviews.js, shared with the
+     all-clubs reviews page. The histogram is the product's real live
+     distribution; the list is a sample that preserves it, so filtering by
+     star rating returns a believable set.
      ===================================================================== */
-  var JM_TOTALS = PD_REVIEWS.totals, JM_TOTAL = PD_REVIEWS.total, JM_PAGE = 6;
-  var jmFilter = 0, jmSort = 'recent', jmShown = JM_PAGE;
-
-  function jmPool(){
-    var list = PD_REVIEWS.sample.filter(function(r){ return !jmFilter || r.r === jmFilter; });
-    list = list.slice();
-    if (jmSort === 'high') list.sort(function(a,b){ return b.r - a.r || (a.d < b.d ? 1 : -1); });
-    else if (jmSort === 'low') list.sort(function(a,b){ return a.r - b.r || (a.d < b.d ? 1 : -1); });
-    else list.sort(function(a,b){ return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
-    return list;
-  }
-  function paintBars(){
-    var box = $('#jm-bars'); if (!box) return;
-    box.innerHTML = [5,4,3,2,1].map(function(k){
-      var pct = Math.round(JM_TOTALS[k] / JM_TOTAL * 100);
-      return '<button class="row" type="button" data-star="' + k + '"'
-        + ' aria-label="Show only ' + k + ' star reviews">'
-        + '<span class="k">' + k + ' ★</span>'
-        + '<span class="t"><i style="width:' + Math.max(pct, 1) + '%"></i></span>'
-        + '<span class="v">' + JM_TOTALS[k] + '</span></button>';
-    }).join('');
-  }
-  function paintFilters(){
-    var box = $('#jm-filters'); if (!box) return;
-    var opts = [[0, 'All']].concat([5,4,3,2,1].map(function(k){ return [k, k + ' ★']; }));
-    box.innerHTML = opts.map(function(o){
-      return '<button class="jm-f" type="button" data-star="' + o[0] + '"'
-        + ' aria-pressed="' + (jmFilter === o[0]) + '">' + o[1] + '</button>';
-    }).join('');
-  }
-  function paintList(){
-    var box = $('#jm-list'), more = $('#jm-more'), cnt = $('#jm-count');
-    if (!box) return;
-    var pool = jmPool();
-    if (!pool.length){
-      box.innerHTML = '<p class="jm-empty">No reviews at that rating in this sample.</p>';
-      if (more) more.hidden = true;
-      if (cnt) cnt.textContent = '';
-      return;
-    }
-    box.innerHTML = pool.slice(0, jmShown).map(function(r){
-      return '<article class="jr">'
-        + '<div class="jr-top">'
-        +   '<span class="jr-av" aria-hidden="true">' + esc(r.n.charAt(0).toUpperCase()) + '</span>'
-        +   '<span class="jr-who"><b>' + esc(r.n) + '</b>'
-        +     '<span>' + (r.v ? 'Verified buyer · ' : '') + fmtDate(r.d) + '</span></span>'
-        +   '<span class="jr-stars" role="img" aria-label="' + r.r + ' out of 5">' + starRow(r.r) + '</span>'
-        + '</div>'
-        + (r.t ? '<h4>' + esc(r.t) + '</h4>' : '')
-        + '<p>' + esc(r.q) + '</p>'
-        + '</article>';
-    }).join('');
-    if (more) more.hidden = jmShown >= pool.length;
-    if (cnt){
-      var scale = jmFilter ? JM_TOTALS[jmFilter] : JM_TOTAL;
-      cnt.textContent = 'Showing ' + Math.min(jmShown, pool.length) + ' of ' + pool.length
-        + ' in this sample · ' + scale + ' live'
-        + (jmFilter ? ' at ' + jmFilter + ' star' : '');
-    }
-  }
-  function jmSetFilter(star){
-    jmFilter = star; jmShown = JM_PAGE;
-    paintFilters(); paintList();
-    var sec = $('#reviews'); if (sec) sec.scrollIntoView({block:'nearest'});
-  }
-  document.addEventListener('click', function(e){
-    var f = e.target.closest('.jm-f'), b = e.target.closest('.jm-bars .row');
-    if (f){ jmSetFilter(+f.getAttribute('data-star')); return; }
-    if (b){ jmSetFilter(+b.getAttribute('data-star')); return; }
-    if (e.target.closest('#jm-more')){ jmShown += JM_PAGE; paintList(); }
-  });
-  var sortSel = $('#jm-sort');
-  if (sortSel) sortSel.addEventListener('change', function(){
-    jmSort = sortSel.value; jmShown = JM_PAGE; paintList();
-  });
-  paintBars(); paintFilters(); paintList();
+  LG_REVIEWS.mount($('#reviews'), PD_REVIEWS);
 })();
 
 /* ==========================================================================

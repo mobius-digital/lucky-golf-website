@@ -69,15 +69,6 @@ var PD_KIT = [
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-  var STAR = '<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
-  var STAR_OFF = '<svg viewBox="0 0 24 24" class="off"><use href="#star"/></svg>';
-  function starRow(n){
-    var o = ''; for (var i = 1; i <= 5; i++) o += (i <= n ? STAR : STAR_OFF); return o;
-  }
-  function fmtDate(iso){
-    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var p = iso.split('-'); return p[2].replace(/^0/,'') + ' ' + m[+p[1]-1] + ' ' + p[0];
-  }
 
   /* ---------------------------------------------------------------- gallery */
   var gal = $('#gal');
@@ -290,84 +281,10 @@ var PD_KIT = [
   }).join('');
 
   /* =====================================================================
-     REVIEWS — Judge.me shape. The histogram is the real 551-review
-     distribution; the list is a 47-review sample that preserves that
-     distribution, so filtering by star rating returns a believable set.
+     REVIEWS — one implementation, in _src/reviews.js, shared with the
+     all-clubs reviews page. The histogram is the product's real live
+     distribution; the list is a sample that preserves it, so filtering by
+     star rating returns a believable set.
      ===================================================================== */
-  var JM_TOTALS = PD_REVIEWS.totals, JM_TOTAL = PD_REVIEWS.total, JM_PAGE = 6;
-  var jmFilter = 0, jmSort = 'recent', jmShown = JM_PAGE;
-
-  function jmPool(){
-    var list = PD_REVIEWS.sample.filter(function(r){ return !jmFilter || r.r === jmFilter; });
-    list = list.slice();
-    if (jmSort === 'high') list.sort(function(a,b){ return b.r - a.r || (a.d < b.d ? 1 : -1); });
-    else if (jmSort === 'low') list.sort(function(a,b){ return a.r - b.r || (a.d < b.d ? 1 : -1); });
-    else list.sort(function(a,b){ return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
-    return list;
-  }
-  function paintBars(){
-    var box = $('#jm-bars'); if (!box) return;
-    box.innerHTML = [5,4,3,2,1].map(function(k){
-      var pct = Math.round(JM_TOTALS[k] / JM_TOTAL * 100);
-      return '<button class="row" type="button" data-star="' + k + '"'
-        + ' aria-label="Show only ' + k + ' star reviews">'
-        + '<span class="k">' + k + ' ★</span>'
-        + '<span class="t"><i style="width:' + Math.max(pct, 1) + '%"></i></span>'
-        + '<span class="v">' + JM_TOTALS[k] + '</span></button>';
-    }).join('');
-  }
-  function paintFilters(){
-    var box = $('#jm-filters'); if (!box) return;
-    var opts = [[0, 'All']].concat([5,4,3,2,1].map(function(k){ return [k, k + ' ★']; }));
-    box.innerHTML = opts.map(function(o){
-      return '<button class="jm-f" type="button" data-star="' + o[0] + '"'
-        + ' aria-pressed="' + (jmFilter === o[0]) + '">' + o[1] + '</button>';
-    }).join('');
-  }
-  function paintList(){
-    var box = $('#jm-list'), more = $('#jm-more'), cnt = $('#jm-count');
-    if (!box) return;
-    var pool = jmPool();
-    if (!pool.length){
-      box.innerHTML = '<p class="jm-empty">No reviews at that rating in this sample.</p>';
-      if (more) more.hidden = true;
-      if (cnt) cnt.textContent = '';
-      return;
-    }
-    box.innerHTML = pool.slice(0, jmShown).map(function(r){
-      return '<article class="jr">'
-        + '<div class="jr-top">'
-        +   '<span class="jr-av" aria-hidden="true">' + esc(r.n.charAt(0).toUpperCase()) + '</span>'
-        +   '<span class="jr-who"><b>' + esc(r.n) + '</b>'
-        +     '<span>' + (r.v ? 'Verified buyer · ' : '') + fmtDate(r.d) + '</span></span>'
-        +   '<span class="jr-stars" role="img" aria-label="' + r.r + ' out of 5">' + starRow(r.r) + '</span>'
-        + '</div>'
-        + (r.t ? '<h4>' + esc(r.t) + '</h4>' : '')
-        + '<p>' + esc(r.q) + '</p>'
-        + '</article>';
-    }).join('');
-    if (more) more.hidden = jmShown >= pool.length;
-    if (cnt){
-      var scale = jmFilter ? JM_TOTALS[jmFilter] : JM_TOTAL;
-      cnt.textContent = 'Showing ' + Math.min(jmShown, pool.length) + ' of ' + pool.length
-        + ' in this sample · ' + scale + ' live'
-        + (jmFilter ? ' at ' + jmFilter + ' star' : '');
-    }
-  }
-  function jmSetFilter(star){
-    jmFilter = star; jmShown = JM_PAGE;
-    paintFilters(); paintList();
-    var sec = $('#reviews'); if (sec) sec.scrollIntoView({block:'nearest'});
-  }
-  document.addEventListener('click', function(e){
-    var f = e.target.closest('.jm-f'), b = e.target.closest('.jm-bars .row');
-    if (f){ jmSetFilter(+f.getAttribute('data-star')); return; }
-    if (b){ jmSetFilter(+b.getAttribute('data-star')); return; }
-    if (e.target.closest('#jm-more')){ jmShown += JM_PAGE; paintList(); }
-  });
-  var sortSel = $('#jm-sort');
-  if (sortSel) sortSel.addEventListener('change', function(){
-    jmSort = sortSel.value; jmShown = JM_PAGE; paintList();
-  });
-  paintBars(); paintFilters(); paintList();
+  LG_REVIEWS.mount($('#reviews'), PD_REVIEWS);
 })();

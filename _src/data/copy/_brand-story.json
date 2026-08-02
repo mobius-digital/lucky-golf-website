@@ -1,0 +1,89 @@
+{
+  "_": "Our Story. NEXT-PAGES §3 governs this page. Every number is one Shopify or Judge.me actually reports; the quote is verbatim Judge.me.",
+  "_rules": "The price argument — no tour contracts, no middlemen — is OWNED BY THE HOMEPAGE's Why Lucky section (HANDOFF §7) and is deliberately not re-argued here. This page is about who Lucky is, not why it is cheap. No underdog story and no manifesto about disrupting golf, per the tone guide.",
+  "_blocked": "Photography. Every image on this page is a labelled brief. Cole also sent two visual references for this page that were never described into HANDOFF and the screenshots are gone (§3) — the rows below are built from what is verifiable, so those references can be applied later without restructuring the page.",
+
+  "crumbName": "Our Story",
+  "eyebrow": "Our story",
+  "headline": "We built the clubs we wanted",
+  "lede": "Lucky Golf makes forged wedges, CNC-milled putters and a titanium hybrid, in gold, at prices that surprise people. There is no origin myth here. Somebody thought these clubs should exist, so they got made.",
+
+  "hero": {
+    "k": "Hero shot needed",
+    "brief": "21:9. The line together on turf — wedge, putter, hybrid — early light, gold reading warm rather than yellow. No hands, no model."
+  },
+
+  "stats": {
+    "eyebrow": "Where we are",
+    "headline": "Numbers anyone can look up",
+    "items": [
+      { "k": "10,000+", "v": "Customers, and more than 10,000 orders. Shopify's count, not an estimate." },
+      { "k": "884", "v": "Reviews across the club line on Judge.me, averaging 4.78." },
+      { "k": "5", "v": "Clubs in the bag today: two wedge finishes, two putters, one hybrid." }
+    ],
+    "note": "Every one of these is checkable. That is the only reason they are on the page."
+  },
+
+  "rows": [
+    {
+      "eyebrow": "What we make",
+      "title": "Real materials, and nothing hidden behind them",
+      "phK": "Detail shot needed",
+      "phBrief": "4:3 macro. A milled wedge face, raking light across the grooves so the sandblast texture reads. Close enough to see the machining.",
+      "paras": [
+        "The wedges are forged from 1020 carbon steel with a milled and sandblasted face. The putters are cut from a single block of stainless — 431 in the blade, 304 in the mallet. The hybrid is titanium with a flex-channel face.",
+        "None of that is unusual for a good club. What is unusual is publishing it plainly, per loft, in a table you can read before you buy, including the rows where we do not have a number yet. If a spec is missing from this site it is because nobody has measured it, not because it is inconvenient."
+      ],
+      "cta": { "label": "See the clubs", "href": "{{link:c/clubs}}" }
+    },
+    {
+      "eyebrow": "How we sell it",
+      "cream": true,
+      "flip": true,
+      "title": "Sixty days, because you cannot judge a wedge in a shop",
+      "phK": "Lifestyle shot needed",
+      "phBrief": "4:3. A golfer mid-round with a Lucky wedge, shot from behind at address. Course context, not studio. Natural light.",
+      "paras": [
+        "Every club gets sixty days. Roll the putter. Hit one wedge on a mat. If it does not earn a place in the bag, tell us and send it back.",
+        "The conditions are specific and they are on the returns page in full, because a sixty-day promise with the catches buried is not really a sixty-day promise."
+      ],
+      "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" }
+    },
+    {
+      "eyebrow": "Who answers",
+      "title": "A small company, and it shows in the good way",
+      "phK": "Portrait needed",
+      "phBrief": "4:3. Cole, working — packing an order or on the phone, in the space where it actually happens. Not a posed headshot.",
+      "paras": [
+        "The inbox is read by people who handle the clubs. When an order goes missing, the person sorting it out is usually the person who sold it to you.",
+        "That is not a service promise with a number attached — there isn't one published, and inventing one would be worse than admitting it. It is just what the reviews describe, over and over, in customers' own words."
+      ],
+      "cta": { "label": "Read all 884 reviews", "href": "{{link:reviews}}" }
+    }
+  ],
+
+  "quote": {
+    "eyebrow": "In their words",
+    "text": "I ordered a Christmas present for my boyfriend, it got lost in the mail. Cole personally texted me to get the correct information, and sent a new one that arrived a few days later. I highly recommend!!",
+    "who": "January Z.",
+    "stars": "5 ★",
+    "date": "February 2026",
+    "product": "Carver 01 Gold",
+    "href": "{{link:p/lgw01-gold}}",
+    "note": "Verbatim from Judge.me, like every quote on this site. Nothing here is written by us and attributed to somebody else."
+  },
+
+  "close": {
+    "eyebrow": "Have a look",
+    "headline": "The clubs are the argument",
+    "body": "Everything above is context. The reason to buy a Lucky wedge is the wedge, and there are sixty days to decide whether that holds up.",
+    "ctaLabel": "Shop the clubs",
+    "ctaHref": "{{link:c/clubs}}",
+    "cta2Label": "Read the reviews",
+    "cta2Href": "{{link:reviews}}",
+    "aside": "It's better to be lucky."
+  },
+
+  "moreHeadline": "The rest of it",
+  "moreAside": "Photography for this page does not exist yet. Every image slot above carries the brief for the shot that belongs in it."
+}

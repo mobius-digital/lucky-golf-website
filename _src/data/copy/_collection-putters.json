@@ -7,12 +7,12 @@
   "bands": [
     {
       "label": "Blade",
-      "lede": "Milled from a single block of 431 stainless. Twenty grams heavier than the mallet.",
+      "lede": "Solid 431 stainless, and twenty grams heavier than the mallet. It sits planted behind the ball.",
       "ids": ["lgp01-gold"]
     },
     {
       "label": "Mallet",
-      "lede": "Same milling, more head. 304 stainless, and the only one of the two in both hands.",
+      "lede": "More head, and the stability that comes with it. 304 stainless, and the only one of the two in both hands.",
       "ids": ["lgp02-gold"]
     }
   ],

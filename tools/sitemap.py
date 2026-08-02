@@ -91,18 +91,34 @@ def _pages():
             built=live, kind="collection")
 
     # ---- brand, support, utility (phases E and F) -------------------------
-    add("story",    "30-story.html",    "Our Story — Lucky Golf")
-    add("trybe",    "31-trybe.html",    "The Trybe — Lucky Golf")
+    # ---- brand pages (phase E) --------------------------------------------
+    # One template, two pages, same argument as the support cluster: they share
+    # a shape and differ only in which blocks they carry.
+    add("story", "30-story.html", "Our Story — Lucky Golf",
+        src="brand", built=True, kind="brand")
+    add("trybe", "31-trybe.html", "The Trybe — Lucky Golf",
+        src="brand", built=True, kind="brand")
     # Not in GAMEPLAN 4's page list, but the homepage's "Read all 884 reviews"
     # has to land somewhere, and that count is clubs-wide — so it cannot point
     # at any single PDP's review block.
-    add("reviews",  "32-reviews.html",  "Reviews — Lucky Golf")
-    add("returns",  "40-returns.html",  "Returns & the 60-day policy — Lucky Golf")
-    add("shipping", "41-shipping.html", "Shipping — Lucky Golf")
-    add("contact",  "42-contact.html",  "Contact — Lucky Golf")
-    add("faq",      "43-faq.html",      "FAQ — Lucky Golf")
-    add("search",   "50-search.html",   "Search — Lucky Golf")
-    add("404",      "51-404.html",      "Page not found — Lucky Golf")
+    add("reviews", "32-reviews.html", "Reviews — Lucky Golf",
+        src="reviews", built=True)
+    # ---- the support cluster (phase F) ------------------------------------
+    # Four pages, ONE template, the way the three PDP templates work: they
+    # share a shape (title, lede, sectioned prose, a way to reach a person) and
+    # differ only in the body. `kind` is what routes build.py at the editorial
+    # file, exactly as "product" and "collection" do.
+    for slug, file, title in (
+        ("returns",  "40-returns.html",  "Returns & the 60-day policy — Lucky Golf"),
+        ("shipping", "41-shipping.html", "Shipping — Lucky Golf"),
+        ("contact",  "42-contact.html",  "Contact — Lucky Golf"),
+        ("faq",      "43-faq.html",      "FAQ — Lucky Golf"),
+    ):
+        add(slug, file, title, src="support", built=True, kind="support")
+    add("search", "50-search.html", "Search — Lucky Golf",
+        src="search", built=True)
+    add("404", "51-404.html", "Page not found — Lucky Golf",
+        src="404", built=True)
 
     return p
 

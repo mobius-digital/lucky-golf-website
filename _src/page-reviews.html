@@ -1,0 +1,117 @@
+<!-- ============================================================================
+     REVIEWS — every club review, clubs-wide.
+     This page exists because the homepage's "Read all 884 reviews" is a
+     clubs-wide count and cannot point at any single PDP's review block
+     (NEXT-PAGES §5).
+
+     The widget is the SAME one the product pages run — _src/reviews.js — with
+     a product filter on top. It is not a second implementation, and the
+     histogram, star filter, sort and paging all behave identically.
+     ============================================================================ -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">{{crumbName}}</span></li>
+  </ol>
+</nav>
+
+<section class="sec-tight rv-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{eyebrow}}</p>
+    <h1 class="disp d-xl">{{headline}}</h1>
+    <p class="body lead rv-lede">{{lede}}</p>
+
+    <!-- The reconciliation, said out loud. The homepage advertises a
+         clubs-wide number; this page can only filter the reviews it actually
+         holds, and the difference is a discontinued club. Printing 884 over a
+         histogram that sums to 845 would be the quiet kind of wrong. -->
+{{#figures}}
+    <dl class="rv-figs">
+      <div><dt>{{clubsWide}}</dt><dd>Clubs-wide on Judge.me, the figure on the homepage</dd></div>
+      <div><dt>{{pulled}}</dt><dd>Across the {{setCount}} clubs below, and what the filters cover</dd></div>
+      <div><dt>{{elsewhere}}</dt><dd>On the {{elsewhereWho}}, discontinued and no longer on the site</dd></div>
+    </dl>
+{{/figures}}
+  </div>
+</section>
+
+<section class="sec rv-body">
+  <div class="wrap">
+    <div class="jm" id="reviews">
+
+      <div class="jm-hd">
+        <div class="jm-score">
+          <span class="num" id="jm-avg">{{#figures}}{{avg}}{{/figures}}</span>
+          <span class="stars" role="img" aria-label="{{#figures}}{{avg}}{{/figures}} out of 5">
+            <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
+          </span>
+          <span class="cnt" id="jm-cnt">Based on {{#figures}}{{pulled}}{{/figures}} reviews</span>
+        </div>
+        <div class="jm-bars" id="jm-bars"></div>
+        <div class="jm-act">
+          <a class="btn btn-ink btn-sm" href="{{link:c/clubs}}"><span>Shop the clubs</span></a>
+          <a class="btn btn-line btn-sm" href="{{link:contact}}"><span>Ask a question</span></a>
+          <div class="jm-medals">
+            <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Platinum authentic shop</span>
+            <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>99.2% verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- product filter — the block that makes this page different from a
+           PDP's review section. Painted by reviews.js from the same data. -->
+      <div class="jm-prods" id="jm-prods" role="group" aria-label="Filter by club"></div>
+
+      <div class="jm-bar">
+        <div class="jm-filters" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
+        <label class="jm-sort">
+          <span class="sr">Sort reviews</span>
+          <select id="jm-sort">
+            <option value="recent">Most recent</option>
+            <option value="high">Highest rating</option>
+            <option value="low">Lowest rating</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="jm-count" id="jm-count"></p>
+      <div class="jm-list" id="jm-list"></div>
+      <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
+      <p class="jm-foot">Live site swaps this block for the Judge.me widget itself &mdash; same shape, same data, real submissions.</p>
+    </div>
+
+    <p class="aside rv-note">{{note}}</p>
+  </div>
+</section>
+
+<!-- the brand field, once, and not against the ink footer -->
+{{#close}}
+<section class="rv-fit">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap rv-fit-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="rv-fit-cta">
+      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+      <a class="btn btn-line-cream" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>
+    </div>
+    <p class="aside rv-fit-aside">{{aside}}</p>
+  </div>
+</section>
+{{/close}}
+
+<section class="sec band-cream rv-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">{{moreHeadline}}</h2>
+    <div class="rv-sibs">
+      <a class="rv-sib" href="{{link:c/clubs}}"><span class="rv-sib-n">The clubs</span><span class="rv-sib-h">Two wedge finishes, two putters and a hybrid.</span></a>
+      <a class="rv-sib" href="{{link:story}}"><span class="rv-sib-n">Our Story</span><span class="rv-sib-h">What Lucky makes, and who answers when something goes wrong.</span></a>
+      <a class="rv-sib" href="{{link:returns}}"><span class="rv-sib-n">Returns</span><span class="rv-sib-h">Sixty days on a club, and what condition it comes back in.</span></a>
+    </div>
+    <p class="aside rv-aside">{{moreAside}}</p>
+  </div>
+</section>

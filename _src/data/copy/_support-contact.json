@@ -1,0 +1,114 @@
+{
+  "_": "Contact. This is the page the fitting CTA on all four club collection pages points at ('Ask a person'), and it has been resolving to # since the collection redesign. Both channels are named in Product Reference Guide v1.8: website chat, and support@luckygolf.com. Nothing else is invented.",
+  "_signoff": "Two things on this page are NOT verified and carry chips: staffed hours / a response target, and the Returns Portal address. There is deliberately no 'we reply within N hours' anywhere — the reviews on this site include both a customer emailed back on a Sunday and a customer who waited weeks, and a number nobody has committed to is worse than no number. Cole owns both.",
+
+  "crumbName": "Contact",
+  "eyebrow": "Contact",
+  "headline": "Ask a person",
+  "lede": "Two ways in, both of them read by someone who knows the clubs. If it is about a club coming back, start here rather than in a box — every club return needs approval before it ships.",
+
+  "channels": { "items": [
+    {
+      "k": "Email",
+      "v": "support@luckygolf.com",
+      "href": "mailto:support@luckygolf.com",
+      "body": "Best for anything with a photo attached — a club return, something that arrived damaged, the wrong loft in the box. Put the order number in the subject line and it gets picked up faster."
+    },
+    {
+      "k": "Chat",
+      "v": "The chat on the store",
+      "body": "Best for quick questions before you buy: which loft, whether a left-hand club exists, whether something is back in stock. It opens from the corner of any page on the store.",
+      "tbd": {
+        "label": "Needs confirming",
+        "text": "the hours chat is staffed."
+      }
+    }
+  ] },
+
+  "sections": [
+    {
+      "id": "ready",
+      "title": "What to have in front of you",
+      "lede": "Three things turn a thread into a single reply.",
+      "list": { "items": [
+        "The order number, from your confirmation email.",
+        "What you ordered and what actually arrived — the loft, the hand, the size.",
+        "Photos, if anything is damaged or a club is coming back. Club returns need photo verification before approval, so sending them first skips a round trip."
+      ] }
+    },
+    {
+      "id": "where",
+      "cream": true,
+      "title": "Where each thing goes",
+      "lede": "Most of these end up in the same inbox, but two do not.",
+      "rows": { "items": [
+        { "k": "Returning a club", "v": "Email or chat. Approval and photos are required before it ships — a club sent back without them is not accepted." },
+        { "k": "Returning apparel or gear", "v": "The Returns Portal, or the instructions in your order confirmation. Not this inbox." },
+        { "k": "Order not moving", "v": "Email, with the order number." },
+        { "k": "Wrong item delivered", "v": "Email, with a photo of what arrived." },
+        { "k": "Damaged or broken", "v": "Email, with photos. Do not send it anywhere until we have replied." },
+        { "k": "Which club to buy", "v": "Chat, or the club finder on the homepage." }
+      ] },
+      "tbd": {
+        "label": "Needs confirming",
+        "text": "the Returns Portal's address, so the apparel and gear row can be a link rather than a description.",
+        "ask": "Until then the order confirmation email is the reliable route to it."
+      }
+    },
+    {
+      "id": "when",
+      "title": "When you'll hear back",
+      "paras": [
+        "There is no published response time on this page, and that is deliberate. We would rather answer the question than commit to a number nobody has agreed to internally yet.",
+        "What is true: this is a small company and the inbox is read by people who handle the clubs, not by a queue. If something has gone quiet for longer than feels reasonable, send the thread again — it is not an imposition, it is the fastest way to surface it."
+      ],
+      "tbd": {
+        "label": "Needs confirming",
+        "text": "staffed hours and a response target, for both email and chat.",
+        "ask": "This is the single most useful thing to add to this page."
+      }
+    },
+    {
+      "id": "not",
+      "cream": true,
+      "title": "Things this inbox can't do",
+      "lede": "Worth saying, so you are not waiting on an answer that was never coming.",
+      "list": { "items": [
+        "Change a shaft, a grip or a length before shipping. Every club goes out with the stock shaft and the stock grip, and there is no build-to-order step.",
+        "Extend a return window that has already closed.",
+        "Approve a club return without photos.",
+        "Take an order over the phone or by email — orders go through the store."
+      ] },
+      "note": "The first one comes up often enough to be worth reading twice. If you want a different grip, the grips are sold separately — but fitting one to the club ends its return window."
+    }
+  ],
+
+  "form": {
+    "id": "message",
+    "eyebrow": "Or write it here",
+    "title": "Send a message",
+    "lede": "Same inbox as the email address above. Use whichever is in front of you.",
+    "protoLabel": "Prototype",
+    "proto": "these fields are the markup for Shopify's contact form and there is no server behind this file. Nothing here sends. Email support@luckygolf.com and it will reach us today.",
+    "topics": [
+      "A question before I buy",
+      "Where is my order",
+      "Something arrived wrong or damaged",
+      "I want to return a club",
+      "I want to return apparel or gear",
+      "The Trybe / ambassadors",
+      "Something else"
+    ],
+    "cta": "Send"
+  },
+
+  "close": {
+    "eyebrow": "Before you write",
+    "headline": "It might be answered already",
+    "body": "The FAQ is built from the questions golfers actually ask us, mostly in reviews — left-hand availability, putter length, whether a head cover is in the box.",
+    "ctaLabel": "Read the FAQ",
+    "ctaHref": "{{link:faq}}",
+    "ctaMail": "Email anyway",
+    "aside": "If it is not there, it should be. Tell us and it gets added."
+  }
+}

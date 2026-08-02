@@ -475,6 +475,298 @@ def collection_siblings(cid):
             if c["id"] != cid and not c.get("blocked")]
 
 
+# --------------------------------------------------------------------------
+# The support cluster — returns, shipping, contact, faq
+# --------------------------------------------------------------------------
+def hand_rows():
+    """Which clubs exist in which hand, generated from the catalogue.
+
+    The FAQ's most-asked question is left-hand availability — it comes up in
+    the LGP01 and LGP02 reviews more than any other subject. Typing the answer
+    into a copy file would make it wrong the first time a loft sells out, and
+    "do you make a left-handed one" is precisely the question you cannot afford
+    to answer stalely. So it is derived, like every price and count on the site.
+
+    Availability is `avail`, never `qty > 0` (§10c)."""
+    rows = []
+    for p in sitemap.PRODUCTS:
+        if not p["built"] or p["template"] != "club":
+            continue
+        axes = p["options"]
+        hand = next((ax for ax in axes if ax["key"] == "hand"), None)
+        if not hand:
+            continue
+        other = next((ax for ax in axes if ax["key"] != "hand"), None)
+
+        def live(key):
+            return p["variants"].get(key, {}).get("avail")
+
+        # "Right hand and Left hand" is how the labels concatenate and not how
+        # anyone says it. Collapse the repeated noun where every label carries
+        # it, which is the case for every club in the store.
+        def phrase(labels):
+            if len(labels) > 1 and all(l.lower().endswith(" hand") for l in labels):
+                heads = [l[:-len(" hand")] for l in labels]
+                return "%s and %s hand" % (heads[0],
+                                           " and ".join(h.lower() for h in heads[1:]))
+            return " and ".join(labels)
+
+        if other is None:
+            declared = [h["label"] for h in hand["values"]]
+            offered = [h["label"] for h in hand["values"] if live(h["k"])]
+            if not offered:
+                v = "%s &mdash; sold out at the moment." % phrase(declared)
+            elif len(offered) < len(declared):
+                v = "%s only." % phrase(offered)
+            else:
+                v = "%s." % phrase(offered)
+        else:
+            # The axis NAME reaches the page as markup, and "Loft & grind"
+            # carries a bare ampersand.
+            axis = other["name"].lower().replace("&", "&amp;")
+            parts = []
+            for h in hand["values"]:
+                got = [o["label"] for o in other["values"] if live(h["k"] + "|" + o["k"])]
+                if not got:
+                    parts.append("%s &mdash; none right now" % h["label"])
+                elif len(got) == len(other["values"]):
+                    parts.append("%s &mdash; every %s" % (h["label"], axis))
+                else:
+                    parts.append("%s &mdash; %s" % (h["label"], ", ".join(got)))
+            v = ". ".join(parts) + "."
+        rows.append({"k": '<a href="{{link:p/%s}}">%s</a>' % (p["id"], p["title"]), "v": v})
+    if not rows:
+        sys.exit("hand_rows(): no built club has a hand axis — the FAQ's "
+                 "left-hand answer would render empty")
+    return rows
+
+
+def support_copy(slug):
+    """Two layers, the same contract as a product page: `_shared-support.json`
+    under `_support-<slug>.json`, page file wins outright (§22b). A support
+    page without its editorial fails the build rather than rendering a shell."""
+    path = os.path.join(SRC, "data", "copy", "_support-%s.json" % slug)
+    if not os.path.exists(path):
+        sys.exit("support page %s has no editorial: _src/data/copy/_support-%s.json"
+                 % (slug, slug))
+    copy = json.load(open(os.path.join(SRC, "data", "copy", "_shared-support.json"),
+                          encoding="utf8"))
+    copy.update(json.load(open(path, encoding="utf8")))
+    ctx = {k: v for k, v in copy.items() if not k.startswith("_")}
+
+    # The sibling row is the other three pages, generated rather than typed
+    # into four files — the same reason the PLP's is generated (§11d).
+    pages = ctx.pop("pages", [])
+    ctx["siblings"] = [{"name": p["name"], "hook": p["hook"],
+                        "href": "{{link:%s}}" % p["slug"]}
+                       for p in pages if p["slug"] != slug]
+    if not ctx["siblings"]:
+        sys.exit("support page %s is not listed in _shared-support.json's "
+                 "`pages` — its sibling row would be empty" % slug)
+
+    # Every section is an anchor target: the jump nav points at it, and so can
+    # a link from anywhere else on the site.
+    for sec in ctx.get("sections", []):
+        if not sec.get("id"):
+            sys.exit("support page %s has a section with no id (%r) — nothing "
+                     "can link to it" % (slug, sec.get("title")))
+
+    # "On this page" is opt-in per page: four sections on Contact do not need
+    # one and eight on Returns do. Only a section that names itself appears.
+    if ctx.get("jump"):
+        items = [{"id": s["id"], "label": s.get("nav") or s["title"]}
+                 for s in ctx.get("sections", []) if s.get("nav")]
+        if not items:
+            sys.exit("support page %s asks for a jump nav but no section "
+                     "carries a `nav` label" % slug)
+        ctx["jump"] = {"items": items}
+
+    for grp in ctx.get("faq", {}).get("groups", []):
+        for item in grp.get("items", []):
+            if not item.get("id"):
+                sys.exit("support page %s has an FAQ item with no id (%r) — the "
+                         "deep link into it cannot exist" % (slug, item.get("q")))
+            if item.pop("handRows", False):
+                item["rows"] = {"items": hand_rows()}
+
+    return ctx
+
+
+def search_copy():
+    """The whole catalogue, flattened for a client-side search.
+
+    43 products is small enough that searching them in the browser is genuinely
+    useful rather than a toy (NEXT-PAGES §7), and it is the same shape a
+    Shopify search template fills server-side.
+
+    `terms` is what makes the search worth having: the variant LABELS go in, so
+    "56" finds the wedge and "left hand" finds every club built in both hands.
+    Those are the two things a golfer actually types, and neither one appears
+    in a product title."""
+    rows, ids = [], []
+    for p in sitemap.PRODUCTS:
+        if not p["built"]:
+            continue
+        coll = sitemap.collection(p["collection"])
+        terms = [p["code"], p["family"], coll["name"]]
+        for ax in p["options"]:
+            terms.append(ax["name"])
+            terms += [v["label"] for v in ax["values"]]
+        live = [v for v in p["variants"].values() if v["avail"]]
+        row = {
+            "id": p["id"], "name": p["title"], "title": p["title"],
+            "family": p["family"], "collName": coll["name"],
+            "img": p["img"], "priceLabel": p["priceLabel"],
+            "inStock": p["inStock"], "href": "{{link:p/%s}}" % p["id"],
+            # SKUs are deliberately NOT searchable: no SKU renders anywhere on
+            # the site (§22d), and a search that matches a string it will not
+            # then show is a search that looks broken.
+            "terms": sorted({t for t in terms if t}),
+        }
+        if not p["options"] and len(live) == 1:
+            row["addSku"] = live[0]["sku"]
+        rows.append(row)
+        ids.append(p["id"])
+    if not rows:
+        sys.exit("search page: no built products to search")
+    return {"SEARCH_JSON": json.dumps(rows, ensure_ascii=False),
+            "QUICKADD_JSON": json.dumps(quick_add_data(ids), ensure_ascii=False)}
+
+
+def reviews_copy():
+    """The all-clubs reviews page: the five Judge.me pulls, merged, with each
+    review tagged with the product it is about.
+
+    The counts here are the fiddliest arithmetic on the site, so all of it is
+    derived and then CHECKED rather than typed:
+
+      pulled      the five sets in _src/data/reviews/          845
+      catalogue   every club in products.json with a rating    815  (incl. the
+                                                                    discontinued
+                                                                    LGD01 driver)
+      merged      a set whose product has left products.json    69  (the S grind,
+                                                                    §23)
+      clubsWide   catalogue + merged                           884  <- the
+                                                                    homepage's
+                                                                    number
+      elsewhere   clubsWide - pulled                            39  <- must equal
+                                                                    the rated
+                                                                    clubs with no
+                                                                    review file
+
+    If those two ways of reaching 39 ever disagree, the build stops. A reviews
+    page whose headline and histogram do not add up is worse than no page."""
+    path = os.path.join(SRC, "data", "copy", "_page-reviews.json")
+    copy = json.load(open(path, encoding="utf8"))
+    ctx = {k: v for k, v in copy.items() if not k.startswith("_")}
+
+    prod_ids = {p["id"] for p in sitemap.PRODUCTS}
+    sets, sample, totals, pulled, merged = [], [], {5:0,4:0,3:0,2:0,1:0}, 0, 0
+    for spec in ctx.pop("sets", []):
+        rp = os.path.join(SRC, "data", "reviews", "%s.json" % spec["file"])
+        if not os.path.exists(rp):
+            sys.exit("reviews page names %s, which has no pull in "
+                     "_src/data/reviews/" % spec["file"])
+        data = json.load(open(rp, encoding="utf8"))
+        cross_sell(spec["product"], "the reviews page")
+        href = "{{link:p/%s}}" % spec["product"]
+        t = {int(k): v for k, v in data["totals"].items()}
+        for k in totals:
+            totals[k] += t.get(k, 0)
+        pulled += data["total"]
+        if spec["file"] not in prod_ids:
+            merged += data["total"]
+        sets.append({"id": spec["file"], "name": spec["name"],
+                     "total": data["total"], "totals": t, "href": href})
+        for r in data["sample"]:
+            row = dict(r)
+            row["p"], row["pn"], row["ph"] = spec["file"], spec["name"], href
+            sample.append(row)
+
+    catalogue = sum(p["rating"]["count"] for p in sitemap.PRODUCTS
+                    if p["template"] == "club" and p.get("rating"))
+    clubs_wide = catalogue + merged
+    elsewhere = clubs_wide - pulled
+    # the same 39 reached the other way: a rated club with no pull in the repo
+    unpulled = [p for p in sitemap.PRODUCTS
+                if p["template"] == "club" and p.get("rating")
+                and not os.path.exists(os.path.join(SRC, "data", "reviews",
+                                                    "%s.json" % p["id"]))]
+    check = sum(p["rating"]["count"] for p in unpulled)
+    if check != elsewhere:
+        sys.exit("reviews page: %d reviews are unaccounted for. clubs-wide %d "
+                 "minus pulled %d is %d, but the clubs with no pull hold %d (%s)."
+                 % (abs(check - elsewhere), clubs_wide, pulled, elsewhere, check,
+                    ", ".join(p["id"] for p in unpulled) or "none"))
+
+    avg = sum(k * v for k, v in totals.items()) / float(pulled)
+    ctx["REVIEWS_JSON"] = json.dumps(
+        {"total": pulled, "totals": totals, "products": sets, "sample": sample},
+        ensure_ascii=False)
+    ctx["figures"] = {
+        "avg": "%.2f" % avg,
+        "pulled": pulled,
+        "clubsWide": clubs_wide,
+        "elsewhere": elsewhere,
+        "elsewhereWho": ", ".join(p["title"] for p in unpulled),
+        "sampleCount": len(sample),
+        "setCount": len(sets),
+    }
+    return ctx
+
+
+def brand_copy(slug):
+    """Our Story and The Trybe. Two layers, same contract as everywhere else:
+    `_shared-brand.json` under `_brand-<slug>.json`, page file wins."""
+    path = os.path.join(SRC, "data", "copy", "_brand-%s.json" % slug)
+    if not os.path.exists(path):
+        sys.exit("brand page %s has no editorial: _src/data/copy/_brand-%s.json"
+                 % (slug, slug))
+    copy = json.load(open(os.path.join(SRC, "data", "copy", "_shared-brand.json"),
+                          encoding="utf8"))
+    copy.update(json.load(open(path, encoding="utf8")))
+    ctx = {k: v for k, v in copy.items() if not k.startswith("_")}
+
+    pages = ctx.pop("pages", [])
+    ctx["siblings"] = [{"name": p["name"], "hook": p["hook"],
+                        "href": "{{link:%s}}" % p["slug"]}
+                       for p in pages if p["slug"] != slug]
+    if not ctx["siblings"]:
+        sys.exit("brand page %s is not listed in _shared-brand.json's `pages`"
+                 % slug)
+
+    # An ambassador page must never print a name nobody agreed to (NEXT-PAGES
+    # §4). Roster names stay bracketed until Cole supplies real ones, and the
+    # build says so rather than trusting a copy edit to remember.
+    ros = ctx.get("roster")
+    if ros:
+        for s_ in ros.get("slots", []):
+            named = not (s_["name"].startswith("[") and s_["name"].endswith("]"))
+            if named and not s_.get("consent"):
+                sys.exit("brand page %s: roster slot %r carries a real name with "
+                         "no `consent` key. Nobody appears on the roster until "
+                         "they have agreed to (NEXT-PAGES §4)." % (slug, s_["name"]))
+        if not ros.get("slots"):
+            sys.exit("brand page %s has a roster with no slots" % slug)
+
+    # Every photo brief has to actually say what the shot is. A `.ph` with an
+    # empty label is a grey box, which is the thing this device exists to
+    # avoid — the brief travels with the page (HANDOFF §18b).
+    briefs = []
+    if ctx.get("hero"):
+        briefs.append(("hero", ctx["hero"]))
+    for i, r in enumerate(ctx.get("rows", [])):
+        briefs.append(("row %d" % i, {"k": r.get("phK"), "brief": r.get("phBrief")}))
+    for i, s_ in enumerate((ctx.get("roster") or {}).get("slots", [])):
+        briefs.append(("roster %d" % i, s_))
+    for where, b in briefs:
+        if not (b.get("k") and b.get("brief")):
+            sys.exit("brand page %s: the %s image slot has no brief. A labelled "
+                     "placeholder with no label is just a grey box." % (slug, where))
+
+    return ctx
+
+
 def home_copy():
     """The homepage's catalogue-driven sections. Only the club finder today.
 
@@ -620,6 +912,18 @@ def page_context(slug):
     if slug == "home":
         ctx.update(home_copy())
 
+    if page.kind == "support":
+        ctx.update(support_copy(slug))
+
+    if page.kind == "brand":
+        ctx.update(brand_copy(slug))
+
+    if slug == "reviews":
+        ctx.update(reviews_copy())
+
+    if slug == "search":
+        ctx.update(search_copy())
+
     if page.kind == "product":
         prod = sitemap.product(slug.split("/", 1)[1])
         ctx["PRODUCT_JSON"] = json.dumps(prod, ensure_ascii=False, sort_keys=False)
@@ -686,8 +990,16 @@ def build(slug, report):
     src = page.src
     ctx = page_context(slug)
     # what THIS page must contain, decided from its own context rather than
-    # from its template — see smoke()
-    page.extra_required = ['id="md-size"'] if ctx.get("sizeGuide") else []
+    # from its template — see smoke(). One template can serve pages that carry
+    # genuinely different blocks: the size guide only exists on a product with
+    # a size axis, the accordion only on the FAQ, the form only on Contact.
+    page.extra_required = []
+    if ctx.get("sizeGuide"):
+        page.extra_required.append('id="md-size"')
+    if ctx.get("faq"):
+        page.extra_required.append('<details class="sup-q"')
+    if ctx.get("form"):
+        page.extra_required.append('id="sup-contact"')
 
     symbols = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf8").read().rstrip("\n")
     host = read("partials/symbols-host.html")
@@ -719,11 +1031,24 @@ def build(slug, report):
     js = ""
     if page.kind == "product":
         js = read("variants.js") + "\n\n"
+        # The review widget is shared with 32-reviews.html, so it is its own
+        # file — pdp.js only mounts it. Must load BEFORE pdp.js, which calls
+        # LG_REVIEWS.mount() at parse time.
+        js += read("reviews.js") + "\n\n"
         js += template.render(read("pdp.js"), ctx, "pdp.js") + "\n\n"
     # Collection pages get the variant engine too: the in-card Quick add picker
     # runs the same cascading-availability rules as the buy box, and a second
     # implementation of "is this combination sellable" is the last thing this
     # site needs. core.js reads LG_QUICKADD and LG_VARIANTS if both are present.
+    # The all-clubs reviews page runs the same widget the PDPs do, so it needs
+    # the same file — and BEFORE its own script, which calls mount().
+    if slug == "reviews":
+        js = read("reviews.js") + "\n\n"
+    # Search results carry the in-card quick add, which runs on the same axis
+    # engine the buy box and the collection grids do — never a second copy of
+    # "is this combination sellable" (§21a).
+    if slug == "search":
+        js = read("variants.js") + "\n\n"
     if page.kind == "collection":
         js = read("variants.js") + "\n\n"
     js += page_js
@@ -779,6 +1104,10 @@ REQUIRED = {
         # 30KB size drop gave it away. Anything whose absence leaves a page
         # that looks right and does nothing belongs here.
         "function paintPickers",         # pdp.js — the buy box
+        # reviews.js, uniquely. It moved out of pdp.js so 32-reviews.html can
+        # run the same widget, and a missing bundle leaves the histogram, the
+        # star filter and the whole review list silently empty.
+        "var LG_REVIEWS = (function(){",
         # NOT "LG_VARIANTS": core.js's quick-add now names it too, so the
         # marker survived emptying variants.js entirely. A smoke marker has to
         # be a string that exists in exactly ONE source file (§12d again).
@@ -817,6 +1146,55 @@ REQUIRED = {
         # three the pill still renders and simply does nothing when clicked.
         "function offered(pd, sel, i, val)",   # variants.js, uniquely
         "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
+    ],
+    "search": [
+        'id="se-grid"', 'id="se-empty"', 'id="se-start"',   # results, empty, pre-query
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely — quick add
+        "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
+        ".ptile{",                             # the tile is core's, not a copy
+        "@media (max-width:620px)",
+    ],
+    "404": [
+        ".nf-in{", '<section class="nf"',
+        "@media (max-width:620px)",
+    ],
+    "reviews": [
+        "var LG_REVIEWS = (function(){",   # reviews.js, uniquely
+        "LG_REVIEWS.mount(",               # page-reviews.js — the mount call
+        'id="jm-prods"',                   # the club filter, this page only
+        ".jm-p{", ".jm{", ".jr{",          # the widget, promoted to core
+        '<section class="rv-fit"',
+        "@media (max-width:620px)",
+    ],
+    "brand": [
+        # the brand field, once, and never against the ink footer
+        '<section class="br-fit"', ".br-fit{",
+        ".ph{",                          # the labelled placeholder — core
+        ".br-row-in{display:grid",       # the alternating photo/copy rows
+        ".tbd{",
+        # .msnap is what stops the roster and the row stack becoming six
+        # screens on a phone; it lives in core and is a layout-mode switch
+        ".msnap{display:grid",
+        "@media (max-width:980px)",
+        "@media (max-width:620px)",
+    ],
+    "support": [
+        # The brand field, once per page and never against the ink footer —
+        # the cream sibling band below it is what keeps two dark bands apart.
+        '<section class="sup-still"', ".sup-still{",
+        ".sup-quick{",                   # the answer above the fold
+        ".sup-rows{",                    # the key/value blocks the policy lives in
+        # The FAQ is <details>, so it opens with no JS. This is the one thing
+        # native <details> cannot do, and without it a link into a closed
+        # answer lands on a collapsed row — a page that looks right and does
+        # nothing, which is what this list is for.
+        "function supOpenFromHash",      # page-support.js, uniquely
+        ".sup-q summary{",
+        # .tbd is the whole reason an unconfirmed policy detail is visible as a
+        # gap rather than as prose. It lives in core, so this also proves core
+        # is bundled ahead of the page stylesheet.
+        ".tbd{",
+        "@media (max-width:620px)",
     ],
     "clp": [
         # The grid is server-rendered here, so its absence is a blank page

@@ -1,0 +1,14 @@
+{
+  "_": "Shared under every _brand-<slug>.json. Same two-layer merge as the product and support pages (HANDOFF §22b) — a key set in the page file wins outright.",
+
+  "_pages": "The brand and browse pages each of these can send you to. build.py drops the page you are on, so a page never links to itself.",
+  "pages": [
+    { "slug": "story",    "name": "Our Story", "hook": "What Lucky makes, how it sells it, and who answers when something goes wrong." },
+    { "slug": "trybe",    "name": "The Trybe", "hook": "The ambassador roster, what we look for, and the one way to ask." },
+    { "slug": "reviews",  "name": "Reviews",   "hook": "Every club review in one place, filterable by product and by rating." },
+    { "slug": "c/clubs",  "name": "The clubs", "hook": "Five clubs: two wedge finishes, two putters and a hybrid." }
+  ],
+
+  "moreHeadline": "The rest of it",
+  "moreAside": "Photography across this site is a written brief until the real thing exists."
+}

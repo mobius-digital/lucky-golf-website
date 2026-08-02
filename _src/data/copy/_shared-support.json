@@ -1,0 +1,23 @@
+{
+  "_": "Shared under every _support-<slug>.json. Same two-layer merge the product pages use (HANDOFF §22b), and the same rule: a key set in the page file wins outright.",
+
+  "_pages": "The four support pages, in the order they are useful. build.py turns this into each page's sibling row minus itself, so adding a fifth support page needs one entry here and nothing in four editorial files.",
+  "pages": [
+    { "slug": "returns",  "name": "Returns",  "hook": "Sixty days on a club, thirty on everything else, and what condition it has to come back in." },
+    { "slug": "shipping", "name": "Shipping", "hook": "When it leaves, when it lands, and what it costs to get it to you." },
+    { "slug": "contact",  "name": "Contact",  "hook": "The two ways to reach a person, and what to have in front of you when you do." },
+    { "slug": "faq",      "name": "FAQ",      "hook": "The questions golfers actually ask us, mostly in reviews, answered in one place." }
+  ],
+
+  "moreAside": "Anything here that reads as unclear is worth telling us about. It is easier to fix a sentence than to argue about it later.",
+
+  "close": {
+    "eyebrow": "Still stuck",
+    "headline": "Talk to a person",
+    "body": "If the answer isn't on this page, it's faster to ask than to guess. Chat is open on the site and email goes to a real inbox.",
+    "ctaLabel": "Go to contact",
+    "ctaHref": "{{link:contact}}",
+    "ctaMail": "Email support",
+    "aside": "Have your order number ready. It turns a two-day thread into one reply."
+  }
+}

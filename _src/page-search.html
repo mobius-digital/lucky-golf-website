@@ -1,0 +1,71 @@
+<!-- ============================================================================
+     SEARCH — a results template over the catalogue.
+     43 products is small enough that a client-side search is genuinely useful
+     here rather than a toy (NEXT-PAGES §7), and it demonstrates the pattern a
+     Shopify search template will implement server-side.
+
+     The tile is the SAME one the PLP paints, quick add and all, so a result
+     behaves exactly like the collection grid it came from.
+     ============================================================================ -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">Search</span></li>
+  </ol>
+</nav>
+
+<section class="sec-tight se-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">Search</p>
+    <h1 class="disp d-xl">Find it</h1>
+
+    <form class="se-form" id="se-form" role="search">
+      <label class="sr" for="se-q">Search products</label>
+      <input id="se-q" name="q" type="search" autocomplete="off"
+             placeholder="Wedge, 56, left hand, polo, grip&hellip;">
+      <button class="btn btn-ink" type="submit"><span>Search</span></button>
+    </form>
+
+    <p class="se-hint">Try a loft, a hand, a colour or a club name. Searching
+      titles, types and variants across all {{count:clubs}} clubs and the rest
+      of the store.</p>
+  </div>
+</section>
+
+<section class="sec se-body">
+  <div class="wrap">
+    <p class="se-count" id="se-count" role="status" aria-live="polite"></p>
+
+    <div class="pgrid se-grid" id="se-grid"></div>
+
+    <!-- Empty state, per §7. Same shape as the PLP's, because a search that
+         finds nothing and a filter that finds nothing are the same moment. -->
+    <div class="se-empty" id="se-empty" hidden>
+      <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+      <p class="disp d-s" id="se-empty-h">Nothing matches that</p>
+      <p class="body">Try fewer words, or a loft on its own. Everything Lucky
+        sells is two clicks away in the menu if search is not finding it.</p>
+      <div class="se-empty-cta">
+        <a class="btn btn-line btn-sm" href="{{link:c/clubs}}"><span>All clubs</span></a>
+        <a class="btn btn-line btn-sm" href="{{link:c/polos}}"><span>Polos</span></a>
+        <a class="btn btn-line btn-sm" href="{{link:c/gear}}"><span>Gear</span></a>
+      </div>
+    </div>
+
+    <!-- Before anything is typed. A blank page with a cursor is a dead end. -->
+    <div class="se-start" id="se-start">
+      <p class="mono se-start-k">Popular</p>
+      <div class="se-terms">
+        <button class="chip se-term" type="button" data-term="wedge">Wedge</button>
+        <button class="chip se-term" type="button" data-term="56">56&deg;</button>
+        <button class="chip se-term" type="button" data-term="left hand">Left hand</button>
+        <button class="chip se-term" type="button" data-term="putter">Putter</button>
+        <button class="chip se-term" type="button" data-term="polo">Polo</button>
+        <button class="chip se-term" type="button" data-term="grip">Grip</button>
+        <button class="chip se-term" type="button" data-term="hat">Hat</button>
+      </div>
+    </div>
+  </div>
+</section>

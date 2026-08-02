@@ -1,0 +1,99 @@
+{
+  "_": "Shipping. The dispatch window, the delivery window, the carriers and free US shipping are the copy already shipping in #md-delivery on all 40 product pages, expanded. The one thing that modal flags as unconfirmed is flagged here the same way and in the same words.",
+  "_signoff": "`where` is NOT verified. Warehouse locations, which countries we ship to, and whether duties are prepaid or collected are all unanswered, and the page says so rather than guessing. Cole owns it. Everything else on this page is the modal copy.",
+
+  "crumbName": "Shipping",
+  "eyebrow": "Delivery",
+  "headline": "When it turns up",
+  "lede": "Orders leave in one to two business days and most US deliveries land within five business days of that. Shipping inside the US is free, with no minimum to hit and no threshold to clear.",
+
+  "quick": { "items": [
+    { "k": "1–2 days", "v": "To leave the warehouse" },
+    { "k": "5 days", "v": "Most US deliveries, after dispatch" },
+    { "k": "Free", "v": "Shipping inside the US" },
+    { "k": "Tracked", "v": "From the first carrier scan" }
+  ] },
+
+  "jump": true,
+
+  "sections": [
+    {
+      "id": "dispatch",
+      "nav": "When it leaves",
+      "title": "When it leaves",
+      "paras": [
+        "Orders leave the warehouse in one to two business days. Business days, so an order placed on a Friday evening is a Monday or Tuesday order.",
+        "You get a tracking number as soon as the carrier scans the parcel — which is the moment it is genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
+      ]
+    },
+    {
+      "id": "arrive",
+      "nav": "When it lands",
+      "cream": true,
+      "title": "When it lands",
+      "paras": [
+        "Most US deliveries land within five business days of dispatch. That is after the one to two days above, not including them.",
+        "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it is going and what is in the box, and it is not something you choose at checkout today."
+      ],
+      "rows": { "items": [
+        { "k": "Carriers", "v": "USPS · UPS · FedEx" },
+        { "k": "Dispatch", "v": "1–2 business days" },
+        { "k": "In transit", "v": "Most US deliveries within 5 business days" }
+      ] }
+    },
+    {
+      "id": "cost",
+      "nav": "What it costs",
+      "title": "What it costs",
+      "lede": "Nothing, inside the US.",
+      "paras": [
+        "Free shipping on every US order. No minimum, no threshold, no cart total to reach before it unlocks — a $9.95 pack of tees ships on the same terms as a $229 putter.",
+        "Original shipping is not refunded if you return something, which is worth knowing but rarely matters on an order that shipped free in the first place."
+      ]
+    },
+    {
+      "id": "where",
+      "nav": "Outside the US",
+      "cream": true,
+      "title": "Where it ships from, and where it goes",
+      "lede": "This is the one part of shipping we cannot yet put in writing.",
+      "tbd": {
+        "label": "Needs confirming",
+        "text": "warehouse locations, which international destinations we ship to, and whether duties and import taxes are prepaid at checkout or collected on delivery.",
+        "ask": "Those three answers change what an order outside the US actually costs, which is exactly why this page will not estimate them. If you are ordering from outside the US, ask first and you will get a real number instead of a guess."
+      },
+      "cta": { "label": "Ask about an international order", "href": "{{link:contact}}" }
+    },
+    {
+      "id": "tracking",
+      "nav": "Tracking",
+      "title": "Tracking, and when it goes quiet",
+      "paras": [
+        "Tracking updates when the parcel is scanned, so it moves in jumps rather than continuously. A day or two of silence mid-route is normal and usually means it is on a truck between two scans.",
+        "Longer than that is worth telling us about. Parcels do get lost, and a lost parcel is our problem to solve rather than yours to chase the carrier over — email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with the order number and we will pick it up from there."
+      ],
+      "note": "Two of the reviews on this site describe exactly that: a club lost in transit, and a replacement sent. That is the intended outcome, and asking early is what makes it quick."
+    },
+    {
+      "id": "wrong",
+      "nav": "If the wrong thing turns up",
+      "cream": true,
+      "title": "If the wrong thing turns up",
+      "paras": [
+        "A 58 in the box when you ordered a 60 is a picking error, not a return, and it does not come out of your sixty days.",
+        "Send us the order number and a photo of what arrived — for a wedge, the loft stamp on the sole settles it in one picture — and do not send anything back until we have replied."
+      ],
+      "cta": { "label": "Tell us what arrived", "href": "{{link:contact}}" }
+    }
+  ],
+
+  "close": {
+    "eyebrow": "Still stuck",
+    "headline": "Where is it?",
+    "body": "If tracking has stopped moving, or the box turned up with the wrong thing in it, that is worth an email rather than another day of waiting.",
+    "ctaLabel": "Go to contact",
+    "ctaHref": "{{link:contact}}",
+    "ctaMail": "Email support",
+    "aside": "The order number is in your confirmation email. It saves a whole exchange."
+  }
+}

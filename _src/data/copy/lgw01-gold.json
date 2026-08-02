@@ -331,7 +331,7 @@
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
  "_01": "THE 01. Cole 2026-07-31: Lucky sells one wedge. The K-grind gold and the S-grind gold were two products at two prices for a difference that is not one, so they are merged — see merge_grinds() in normalize-products.py. This file is the merged product. Its loft axis is now Loft & grind (50K, 52K, 52S...) and every variant is $99.",
- "_signoff": "GRIND COPY — read before editing.\n1. Our letter names are VOKEY'S (Cole, 2026-07-31). K = the full sole with camber, the most forgiving. S = the narrower sole with heel and trailing-edge relief, for a square face and a neutral attack. S is NOT the open-the-face versatility grind; that is Vokey's M, which we do not make. An early draft had that wrong.\n2. THE SPEC SHEET IS TRUE (Cole, 2026-07-31). Our S measures equal or more bounce than our K at every shared loft — 52 K=8 S=10, 56 K=12 S=12, 60 K=10 S=12 — which looks backwards for Vokey letters until you separate MEASURED bounce from EFFECTIVE bounce. A narrow sole with relief ground off the heel and trailing edge presents less of itself to the turf, so it can carry more measured bounce and still play lower than a full cambered sole. That is standard wedge design, not a Lucky-specific claim, and it is the honest reconciliation of the two facts. The page now says it out loud rather than leaving a customer to think the table is a typo.\n3. Every number in `facts` is the manufacturer sheet. The sole descriptions are the standard meaning of the letters. The measured-vs-effective explanation is general equipment design.",
+ "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
  "grinds": {
   "eyebrow": "The grinds",
   "headline": "Same head. Two soles.",
@@ -339,16 +339,16 @@
   "options": [
    {
     "k": "K Grind",
-    "name": "The forgiving one",
-    "forWho": "Soft turf, and a real divot",
+    "name": "The no-surprises one",
+    "forWho": "Standard lies, and a square setup",
     "paras": [
-     "K grind is the fuller sole, with camber through it, so the club skids across the ground instead of catching in it. More of the sole is in contact with the turf, which is what makes it the forgiving one out of soft lies and out of sand.",
-     "The bounce steps with the loft rather than sitting flat: 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
+     "K grind is the wider, flatter sole, with a standard leading edge. Spreading turf contact over more of the sole is what stops the club digging, so it bottoms out in the same place shot after shot &mdash; set up square, swing through, take your divot, and it does what you expect.",
+     "That makes it the one for standard lies: fairway, rough, fringe, full swings and the straightforward short-game shots. The bounce steps with the loft rather than sitting flat &mdash; 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
     ],
     "facts": [
      {
       "k": "Sole",
-      "v": "Full, with camber"
+      "v": "Wider and flatter, standard leading edge"
      },
      {
       "k": "Bounce",
@@ -370,16 +370,16 @@
    },
    {
     "k": "S Grind",
-    "name": "The narrower one",
-    "forWho": "Firm turf, and a square face",
+    "name": "The versatile one",
+    "forWho": "Tight lies, and an open face",
     "paras": [
-     "S grind takes relief off the heel and the trailing edge, so the sole is narrower and less of it meets the ground. On firm turf and off a tight lie that is the right trade &mdash; the leading edge gets under the ball instead of the sole bouncing into it.",
-     "It measures more bounce than the K at the same loft, and it plays less of it, because there is less sole there to use. It suits a square face at address and a neutral swing: a sweeper rather than a digger."
+     "S grind takes relief off the heel and the trailing edge and reshapes the leading edge, so there is less sole meeting the ground. Open the face and the club still sits low behind the ball instead of riding up on its own bounce.",
+     "That is what makes it the versatile one. Off a tight lie the reshaped leading edge slides under the ball where a wider sole would skip into it, and out of a bunker or off an awkward angle you can work the face without the club fighting you. More shots, from more places."
     ],
     "facts": [
      {
       "k": "Sole",
-      "v": "Narrower, heel and trailing-edge relief"
+      "v": "Narrower and relieved, reshaped leading edge"
      },
      {
       "k": "Bounce",
@@ -400,8 +400,8 @@
     ]
    }
   ],
-  "measured": "Bounce on a spec sheet is measured off the sole, and it is not the whole story. A full, cambered sole puts more of itself on the ground, so it plays every degree it measures. A narrow sole with the heel and the trailing edge ground away presents less &mdash; which is why the S reads higher on paper than the K at the same loft and still plays lower through firm turf. The numbers below are real; read them alongside the sole, not instead of it.",
-  "short": "Short version: K for soft turf and a real divot, S for firm turf and tight lies.",
+  "measured": "Bounce on a spec sheet is measured off the sole, and it is not the whole story. A wide, flat sole puts more of itself on the ground, so it plays every degree it measures. A narrower sole with the heel and the trailing edge ground away presents less &mdash; which is why the S reads higher on paper than the K at the same loft and still slides rather than bounces off a tight lie. The numbers below are real; read them alongside the sole, not instead of it.",
+  "short": "Short version: K for standard lies and a square setup, S for tight lies and an open face.",
   "note": "Bounce, loft and lie are the manufacturer's published figures and the full table by loft is further down this page. The sole descriptions are the standard meaning of a K and an S grind."
  }
 }

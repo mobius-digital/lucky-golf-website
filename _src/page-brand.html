@@ -1,0 +1,190 @@
+<!-- ============================================================================
+     BRAND — one template, two pages: Our Story and The Trybe.
+     Same argument as the support cluster: they share a shape (a title, a lede,
+     alternating photo/copy rows, one brand moment, a way in) and differ only in
+     which blocks they carry. Every block below is gated on its own key.
+
+     FIELD ORDER is the law here (HANDOFF §9.5): ink / white / cream alternate
+     so no two dark bands ever touch, and the brand field lands ONCE, mid-page.
+     The closing band is cream so the ink footer has a light band above it.
+
+     Every image is a labelled brief until the photography exists (§18b). That
+     is not a placeholder to fill in later and forget — `.ph` prints what the
+     shot has to be, so the brief travels with the page.
+     ============================================================================ -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">{{crumbName}}</span></li>
+  </ol>
+</nav>
+
+<!-- ============ HEAD ============ -->
+<section class="sec-tight br-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{eyebrow}}</p>
+    <h1 class="disp d-xl">{{headline}}</h1>
+    <p class="body lead br-lede">{{lede}}</p>
+{{#hero}}
+    <div class="br-hero ph{{#dark}} ph--dark{{/dark}}">
+      <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
+    </div>
+{{/hero}}
+  </div>
+</section>
+
+<!-- ============ THE NUMBERS ============
+     Ink field. Every figure here is one Shopify or Judge.me actually reports —
+     there is no "trusted by" number on this page that nobody can look up. -->
+{{#stats}}
+<section class="sec band-ink br-stats">
+  <div class="wrap">
+    <span class="eyebrow on-dark">{{eyebrow}}</span>
+    <h2 class="disp d-l br-stats-h">{{headline}}</h2>
+    <dl class="br-figs">
+{{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/items}}    </dl>
+    {{#note}}<p class="aside br-stats-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/stats}}
+
+<!-- ============ ROWS — alternating photo / copy ============
+     `flip` puts the photo on the right. Two or three rows, never four: four
+     dashed boxes in a column read as an unfinished page rather than an honest
+     one (§20, the same call the club collection made). -->
+{{#rows}}
+<section class="sec br-row{{#cream}} br-row--cream{{/cream}}{{#flip}} br-row--flip{{/flip}}">
+  <div class="wrap br-row-in">
+    <div class="br-row-ph">
+      <div class="ph">
+        <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
+      </div>
+    </div>
+    <div class="br-row-copy">
+      {{#eyebrow}}<span class="eyebrow">{{eyebrow}}</span>{{/eyebrow}}
+      <h2 class="disp d-m">{{title}}</h2>
+{{#paras}}      <p class="br-p">{{.}}</p>
+{{/paras}}{{#list}}
+      <ul class="br-list">
+{{#items}}        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}      </ul>
+{{/list}}{{#cta}}      <p class="br-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
+{{/cta}}    </div>
+  </div>
+</section>
+{{/rows}}
+
+<!-- ============ THE QUOTE ============
+     Verbatim Judge.me, attributed, and the club it is about is named and
+     linked — a quote floating free of the product reads as invented even when
+     it is not (§11's rule, applied here). NOTHING on this site is a written
+     testimonial; if it is in quotation marks a customer typed it. -->
+{{#quote}}
+<section class="sec band-cream br-quote">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <figure class="br-q">
+      <blockquote>{{text}}</blockquote>
+      <figcaption>
+        <span class="br-q-who">{{who}}</span>
+        <span class="br-q-meta">{{stars}} &middot; Verified buyer &middot; {{date}}</span>
+        <span class="br-q-on">on <a href="{{href}}">{{product}}</a></span>
+      </figcaption>
+    </figure>
+    {{#note}}<p class="aside br-q-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/quote}}
+
+<!-- ============ ROSTER ============
+     Five 4:5 portraits and five real names, none of which exist yet. Names are
+     BRACKETED, never invented — an ambassador page that names people who have
+     not agreed to be on it is the worst version of this page. Same shape as
+     the homepage roster it feeds from (§7b G). -->
+{{#roster}}
+<section class="sec br-roster" id="roster">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body br-roster-lede">{{lede}}</p>
+    <div class="br-rost-grid msnap">
+{{#slots}}      <div class="br-rost">
+        <div class="ph">
+          <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
+        </div>
+        <span class="br-rost-nm">{{name}}</span>
+        <span class="br-rost-hd">{{handle}}</span>
+      </div>
+{{/slots}}    </div>
+    {{#tbd}}
+    <div class="br-tbd">
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+      {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
+    </div>
+    {{/tbd}}
+  </div>
+</section>
+{{/roster}}
+
+<!-- ============ HOW IT WORKS ============
+     Numbered, and deliberately short. What the program GIVES and what it ASKS
+     is not written down anywhere, so this describes only the part that is
+     real — how to ask — and says so about the rest. -->
+{{#steps}}
+<section class="sec band-cream br-steps">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <ol class="br-steps-list">
+{{#items}}      <li>
+        <span class="br-step-n" aria-hidden="true">{{n}}</span>
+        <div>
+          <h3>{{title}}</h3>
+          <p>{{body}}</p>
+        </div>
+      </li>
+{{/items}}    </ol>
+    {{#tbd}}
+    <div class="br-tbd">
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+      {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
+    </div>
+    {{/tbd}}
+  </div>
+</section>
+{{/steps}}
+
+<!-- ============ THE BRAND MOMENT — once, mid-page, never against the footer -->
+{{#close}}
+<section class="br-fit">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap br-fit-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="br-fit-cta">
+      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+      {{#cta2Href}}<a class="btn btn-line-cream" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>{{/cta2Href}}
+    </div>
+    <p class="aside br-fit-aside">{{aside}}</p>
+  </div>
+</section>
+{{/close}}
+
+<!-- ============ KEEP LOOKING — ends on cream, above the ink footer ============ -->
+<section class="sec band-cream br-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">{{moreHeadline}}</h2>
+    <div class="br-sibs">
+{{#siblings}}      <a class="br-sib" href="{{href}}">
+        <span class="br-sib-n">{{name}}</span>
+        <span class="br-sib-h">{{hook}}</span>
+      </a>
+{{/siblings}}    </div>
+    <p class="aside br-aside">{{moreAside}}</p>
+  </div>
+</section>

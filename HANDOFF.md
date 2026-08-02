@@ -2185,3 +2185,464 @@ can never disagree.
 
 **Anyone editing either one has to edit both.** A customer who reads the table
 and not the paragraph concludes the table is a typo.
+
+---
+
+## 25. The Shopify draft, and the support cluster (2026-08-01)
+
+### 25a. Carver 01 Gold exists in Shopify, as a DRAFT
+
+`gid://shopify/Product/9583978905877` · handle `carver-01-gold`
+https://admin.shopify.com/store/lucky-wedges/products/9583978905877
+
+Built by duplicating LGW01 Gold (`v1-gold-lucky-golf-wedge`) and correcting the
+duplicate. **Neither live product was touched** — Cole archives them himself
+after he approves this. Not published to any sales channel
+(`resourcePublicationsCount: 0`), not added to a collection by hand.
+
+```
+Title    Carver 01 Gold          Status  DRAFT
+Price    $99 on all 18 variants
+Option1  Hand           Right Hand, Left Hand
+Option2  Loft & Grind   50K 52K 52S 54K 56K 56S 58K 60K 60S
+```
+
+Option values are in **Cole's ordering** — loft ascending, K before S — set
+with `productOptionsReorder` after the variants existed, because
+`productVariantsBulkCreate` appends.
+
+**All 18 SKUs were read off the two live products and carried verbatim.** The
+twelve K variants came across with the duplicate; the six S variants were
+created from LGW02 Gold's real SKUs (`LGW02-52-RH` and friends). Nothing was
+synthesised — §10c is why, and 52° S is exactly the case it warns about.
+
+### 25b. The duplicate carried inventory, which the brief did not expect
+
+**`productDuplicate` copies inventory quantities.** The draft holds **2,524
+units** across the twelve K variants, and the same stock is still on the live
+LGW01 Gold. Nothing can sell — it is an unpublished draft — but **store-wide
+inventory totals are inflated until Cole merges.**
+
+Left as-is rather than zeroed: those quantities are carried data, not invented
+data, and they make twelve of the eighteen availabilities correct on their own
+(including LH 50° K and LH 60° K, which are genuinely dead and stayed dead).
+
+The six S variants are at zero and therefore read unavailable, where the live
+LGW02 Gold has all six sellable. **Quantities to move, from the live product:**
+
+| Variant | SKU | Live qty |
+|---|---|---|
+| RH 52° S | LGW02-52-RH | 38 |
+| RH 56° S | LGW02-56-RH | 25 |
+| RH 60° S | LGW02-60-RH | 2 |
+| LH 52° S | LGW02-52-LH | 94 |
+| LH 56° S | LGW02-56-LH | 92 |
+| LH 60° S | LGW02-60-LH | 70 |
+
+Tracking and policy match the source on all eighteen: `tracked: true`,
+`inventoryPolicy: DENY`, 1.2 lb. So availability behaves the same way once the
+stock is there — and `availableForSale` is still not `qty > 0` anywhere else in
+the store (§10c).
+
+**Two automated collections picked the draft up** on its copied tags: All
+Products (a type rule) and Lucky Golf Clubs (`tag:club`). Not added by hand;
+the rules matched. Stripping the tags would keep it out, at the cost of the
+tags.
+
+**Nothing in `_src/` changed for this.** The catalogue was NOT re-pulled and
+`merge_grinds()` was not touched — the site's merged state is deliberate and
+stays until Cole publishes the real product (§23b).
+
+### 25c. The support cluster — four pages, one template
+
+`returns` · `shipping` · `contact` · `faq`, from `_src/page-support.*`.
+**53 of 61 pages.** Dead links **678 → 428**; the four that remain are `trybe`
+(214), `story` (160), `search` (53) and `reviews` (1).
+
+**Contact is no longer broken.** The "Ask a person" button on all four club
+collection pages resolved to `#`; it resolves to `42-contact.html` now.
+
+Editorial is the same two-layer merge the product pages use (§22b):
+`_shared-support.json` under `_support-<slug>.json`. The shared layer carries
+the four-page list, and **the sibling row on each page is generated from it**
+minus itself — a fifth support page needs one entry there and no edits in four
+files, the same reason the PLP's row is generated (§11d).
+
+**None of this is new policy.** Returns and Shipping are the `#md-returns` and
+`#md-delivery` modals expanded, against Product Reference Guide v1.8's Return
+policy section. The modals stay where they are.
+
+### 25d. The FAQ's left-hand answer is generated, not typed
+
+`hand_rows()` in build.py derives it from `products.json`:
+
+```
+Carver 01 Gold       Right hand — every loft & grind.
+                     Left hand — 52° K, 52° S, 54° K, 56° K, 56° S, 58° K, 60° S.
+Carver 01 Black      Right hand — every loft & grind.
+Tracer LGP01 Blade   Right hand — sold out at the moment.
+Tracer LGP02 Mallet  Right and left hand.
+Stryker LGH01        Right and left hand.
+```
+
+Left-hand availability is the **most-asked question in the whole review corpus**
+— it is in the LGP01 and LGP02 pulls repeatedly, twice at one star. It is also
+the answer that goes stale the instant a loft sells out, and "do you make a
+left-handed one" is the worst possible question to answer stalely. So it is
+derived, like every price and count on the site. It reads `avail`, never
+`qty > 0`.
+
+### 25e. `.tbd` had no CSS at all, on 40 pages
+
+`<span class="tbd tbd--light">Needs confirming</span>` has been in the markup
+since Phase D — both policy modals and every "Needs spec" row — and **there was
+no rule behind it anywhere in the tree.** Every one of those rendered as
+ordinary body copy. A gap that looks like prose reads as a statement, which is
+the exact opposite of the point.
+
+Now in `core.css`: dashed, Space Mono, `--ink-muted` (5.14:1 on white, 4.94 on
+cream). Measured on a live PDP modal at **5.14:1**, 133×22.
+
+It went into core rather than a page stylesheet because the PDP modals and the
+support pages both use it, and a page loads core plus exactly ONE page
+stylesheet. **Fifth component to move for this reason** — `.chip` (§11b), the
+pdp split (§12c), `.spec-tbl` (§22f), `.sw` (§23c), now this.
+
+### 25f. What the two unconfirmed answers do on these pages
+
+Neither was invented. Both carry the modal's own chip, set off by a gold rule:
+
+- **Warranty period, and who pays return shipping when the fault is ours** —
+  `40-returns.html#defective`, and again in the FAQ. What v1.8 *does* settle is
+  stated: defective gear may be replaced or refunded after inspection, and a
+  customized item is returnable if it arrives defective.
+- **Warehouse locations, international destinations, duties prepaid or
+  collected** — `41-shipping.html#where`, which is a whole section that exists
+  to say the question is open.
+
+**A third turned up while writing Contact: staffed hours and a response
+target.** There is deliberately no "we reply within N hours" anywhere on the
+site — the review corpus contains both a customer emailed back on a Sunday and
+one who waited weeks, and a number nobody has committed to internally is worse
+than no number. It is the single most useful thing Cole could add to that page.
+
+A fourth, smaller: **the Returns Portal has no URL anywhere**, so Contact and
+Returns describe it instead of linking to it.
+
+### 25g. The contact form is markup, and says so before you press it
+
+Real `<form>` fields, shaped for Shopify's contact form. The prototype notice
+is a `.tbd` chip **above the fields**, not a message after submit, and the
+submit handler stops navigation and repeats it. Verified in the browser: does
+not navigate, and **does not thank anyone for a message it never sent**.
+
+### 25h. Two things the sweep caught that eyes did not
+
+- **`.sup-opt`** — the word "optional" on the order-number label — was
+  `--ink-38` at 9.9px, **2.44:1**. The same number §21h caught on disabled
+  chips. A disabled control is formally exempt from the contrast rule; a form
+  label is not. `--ink-muted` now.
+- **The email address on Contact** was a 22px hit area, and it is the primary
+  control on the page. The FAQ's product links in the hand table were 16px.
+  Both are 44px now.
+
+**Still open and NOT fixed here: every footer link is a 16px hit area**, on all
+53 pages. It is pre-existing, it is in the shared partial, and changing it
+touches the whole site — Cole's call, not a support-cluster edit.
+
+### 25i. The jump nav, and §21b
+
+"On this page" is a nowrap `overflow-x` row on a phone, which is the shape that
+put 1485px of overflow on every PDP when it was bled to the page edge (§22f).
+It is **not** bled. Verified rather than assumed, because §21b's flex row also
+reported "fits" while hiding its first step above the scroll origin:
+
+```
+scroll origin 0 · first item visible at origin (left 20)
+scrolled to end · last item right 370 == container right 370
+page scrollWidth 390 at a 390 viewport
+```
+
+### 25j. Verified
+
+Swept at 1440 and 390, contrast composited through rgba ancestors, foil skipped
+because the sweep cannot see it (§9).
+
+| Page | 1440 | 390 |
+|---|---|---|
+| Returns | 0 fails, no overflow | 0 fails, `scrollWidth` 390, jump row reachable |
+| Shipping | 0 fails, no overflow | 0 fails, `scrollWidth` 390 |
+| Contact | 0 fails, no overflow | 0 fails, `scrollWidth` 390 |
+| FAQ | 0 fails, closed AND all 17 open | 0 fails, closed AND all open |
+| LGW01 PDP (`.tbd` regression) | chip 5.14:1, no overflow | — |
+
+Driven through the DOM: the deep link into a closed answer on both paths (load
+and `hashchange`), a hash matching a group heading, a hash matching nothing
+(does not throw), the form's submit interception, and the jump row's scroll
+origin and reach.
+
+Build guards verified by breaking each one: the page-support.js marker
+(`supOpenFromHash`, by emptying the file), `.tbd` dropping out of core, the FAQ
+accordion becoming a `<div>` (fails 43-faq only and lets the other three build
+— the per-PAGE `extra` from §22h), a missing editorial file, and a section
+losing its `id`.
+
+`--check` reports every one of the 53 pages identical. `test-variants.js` and
+`normalize-products.py --check` unchanged.
+
+### 25k. One thing to fix outside the repo
+
+**The `lucky-golf-copy` skill's own example of good returns copy contradicts
+the policy.** It reads *"send it back — we'll refund you, and you don't pay
+return shipping."* v1.8 says the customer is responsible for return shipping,
+and every product page already says so. v1.8 won here, per the skill's own
+precedence rule, but that example will produce wrong copy the next time someone
+writes an ad from it.
+
+---
+
+## 26. The site is complete, and the copy is re-sourced (2026-08-01)
+
+### 26a. 58 of 61 pages. ZERO dead links.
+
+`678 -> 0`. Every page that can be built is built.
+
+The three not built are all deliberate: **`c/sale`** (blocked — nothing in the
+collection carries a `compareAtPrice`, §11e) and the two **discontinued**
+products, `lgd01` and `lgp02-patriot`.
+
+Landed this session: the four support pages (§25), Our Story, The Trybe,
+Reviews, Search and 404.
+
+### 26b. Three NEW reference documents, and one of them changes the site
+
+Cole supplied four `.docx` files on 2026-08-01. They are extracted into the
+repo as markdown beside the existing guide:
+
+```
+references-how-we-write-v7.3.md        was v6 in the copy skill
+references-culture-v2.md               NEW — golf-culture vocabulary
+references-spec-to-benefit-v1.0.md     NEW — what each spec means
+references-product-guide-v1.8.md       unchanged, byte-for-byte verified
+```
+
+**The Product Reference Guide is identical to the copy already in the repo** —
+diffed line by line, no change. The other three are new information.
+
+### 26c. THE GRIND COPY IS NO LONGER UNVERIFIED — and it reversed
+
+This closes the item HANDOFF has carried since §23d as "the only unverified
+block on the site".
+
+**Spec-to-Benefit v1.0 defines both grinds directly:**
+
+> **K Grind** — "a wider, flatter sole profile with a standard leading
+> edge... the no-surprises wedge... built for the golfer who strikes cleanly
+> and plays primarily from standard lies: fairway, rough, fringe."
+>
+> **S Grind** — "a narrower, more relieved sole with a reshaped leading
+> edge... the versatility wedge... tight lies, awkward angles, open-face
+> lobs, and bunker shots."
+
+**This REVERSES §24d.** That section recorded that the S is *not* the
+open-face versatility grind, reasoning that our letters are Vokey's and that
+Vokey's versatility grind is the M. Lucky's own written guide says the S *is*
+the versatility grind. A company document about what Lucky's specs mean
+outranks an inference from another manufacturer's nomenclature, so the site
+now follows the guide.
+
+It also closes §24a's open question — *"is our S actually narrower, does it
+have a tapered rear sole"* — in writing: narrower, more relieved, reshaped
+leading edge.
+
+What changed on the page, in `lgw01-gold.json` and `lgw01-black.json`:
+
+| | was | now |
+|---|---|---|
+| K name | The forgiving one | The no-surprises one |
+| K for who | Soft turf, and a real divot | Standard lies, and a square setup |
+| K sole | Full, with camber | Wider and flatter, standard leading edge |
+| S name | The narrower one | The versatile one |
+| S for who | Firm turf, and a square face | Tight lies, and an open face |
+| S sole | Narrower, heel and trailing-edge relief | Narrower and relieved, reshaped leading edge |
+
+**Note what moved:** the site had given "square face" to the S. The guide gives
+"set up square" to the K. That was backwards and is the single most
+consequential correction in this pass.
+
+**Every manufacturer number is untouched**, and the measured-vs-effective
+bounce reconciliation (§24d) still stands — a narrow, relieved sole carrying
+more measured bounce than a wide flat one is exactly what the geometry
+predicts, so the new framing makes that paragraph *more* coherent, not less.
+
+`_signoff` in both files records all of this, including how to put the Vokey
+reading back if Cole wants it.
+
+### 26d. CLAIMS TO AVOID — audited across all 58 pages, 10 fixes
+
+Spec-to-Benefit v1.0 carries a `CLAIMS TO AVOID` list. Every built page was
+scanned against it plus the standing HANDOFF bans. Ten violations, all in our
+own copy, all fixed:
+
+| Rule | Where | Fix |
+|---|---|---|
+| Don't use the word "cheap" | `cover-blade` | "thirty dollars fixes it before it happens" |
+| | `cover-driver` | "Thirty dollars, against the most expensive club in the bag" |
+| | `grip-putter-clovers`, `grip-putter-green` | "the smallest change that measurably affects putting" |
+| | `grip-putter-stock` | "the smallest change you can make to a putter" |
+| | `tees-25` | "The least you can spend here" |
+| Don't claim "premium" | `lgh01` | "A titanium hybrid at 19 degrees" |
+| Don't LEAD with "milled from a single block" | `_collection-clubs` | "both cut from solid stainless so there is nothing inside to rattle" |
+| | `_collection-putters` (LGP01) | "Solid 431 stainless... It sits planted behind the ball" |
+| | `_collection-putters` (LGP02) | "More head, and the stability that comes with it" |
+
+The spec-table rows that say "Fully CNC-milled from a single block" are
+**kept** — the ban is on leading with the process name as a headline, not on
+stating it as a spec.
+
+Re-scanned after the fixes: **zero banned claims in our own copy.**
+
+**Two deliberate exceptions, both flagged for Cole rather than changed:**
+
+1. **The Judge.me AI summary on the 01 Gold contains the word "premium"**
+   ("Customers praised this premium forged wedge"). It is Judge.me's
+   auto-generated text, published verbatim by standing decision (§9B). Ours to
+   disable, not to edit.
+2. **Competitor names appear on the homepage and the wedges collection** —
+   Vokey, Cleveland, Odyssey, Ping, Titleist — every one inside a *verbatim
+   customer review*. The rule ("Don't compare to brands by name") governs
+   Lucky's claims, not a customer's words. But **choosing** that quote for the
+   homepage is arguably making the comparison by proxy, and that is Cole's
+   call, not a rule violation to undo unilaterally.
+
+### 26e. How We Write v7.3 — what actually changed from v6
+
+The copy skill still ships v6. v7.3 adds:
+
+- **"The range."** The voice moves between **bold / plainspoken / quiet** —
+  "the same person at different volumes". v7 exists specifically so the voice
+  "isn't defaulted to quiet by omission".
+- **What bold is NOT**: combative us-vs-them framing ("the wedge nobody wanted
+  you to find") or wordplay ("new dress code"). Bold in Lucky is "a plain
+  statement said with weight".
+- **Range within a SET**: four tooltips or six ad variants that all play the
+  same shape read templated even when each line is fine.
+- **Specs**: not the failure mode. *Stacking* them as proof is. A spec earns
+  its place when paired with what it delivers or carrying the line.
+- **The fragments rule is now long-form only.** Fragments are the correct shape
+  for ads, captions, tooltips and subject lines.
+- **Reach vs land**: "playfulness that has to be explained isn't playful".
+
+**Not audited page by page** — that is a subjective register pass across ~58
+pages and it needs Cole's eye, not a regex. The site's long-form reads
+plainspoken throughout, which v7.3 permits but which is also the "defaulted to
+quiet" failure v7 was written to name. Worth a review pass on the homepage and
+the collection ledes specifically.
+
+**The `lucky-golf-copy` skill should be updated to v7.3** and given the two new
+documents. Its returns-copy example still contradicts v1.8 (§25k).
+
+### 26f. The review widget moved out of pdp.js
+
+`32-reviews.html` needed the histogram, star filter, sort and paging the PDPs
+already had. Rather than a second implementation:
+
+```
+_src/reviews.js     LG_REVIEWS.mount(root, data, opts)   — the whole widget
+core.css            .jm* / .jr* / .jm-p                  — moved from pdp.css
+```
+
+**Sixth component to move into core** because a page loads core plus exactly
+ONE page stylesheet — `.chip` (§11b), the pdp split (§12c), `.spec-tbl`
+(§22f), `.sw` (§23c), `.tbd` (§25e), now this.
+
+The PDP calls `LG_REVIEWS.mount($('#reviews'), PD_REVIEWS)`. Verified in the
+browser after the extraction that a product page behaves **identically**: the
+real 551 histogram, 1★ filter returning 5 of 9 live, show-more paging 6→12,
+sort-by-lowest, and none of the reviews-page-only chrome rendering.
+
+### 26g. The reviews page, and the arithmetic that has to reconcile
+
+Three figures, all derived, none typed:
+
+```
+884   clubs-wide on Judge.me — the homepage's number
+845   across the five pulls in _src/data/reviews/ — what the filters cover
+ 39   on the discontinued LGD01 driver
+```
+
+`reviews_copy()` reaches 39 **two independent ways** — `clubs_wide - pulled`,
+and the sum of rated clubs with no pull in the repo — and **stops the build if
+they disagree**. Verified by deleting a set: *"20 reviews are unaccounted
+for."* A reviews page whose headline and histogram do not add up is worse than
+no page.
+
+The 69 S-grind reviews are their own chip linked to the 01 Gold. They are
+**not** summed into the 01's 551 — §23h's rule stands until the Judge.me
+migration.
+
+**Known and correct:** filtering the S-grind or LGP01 sets to a low star can
+show "No reviews at that rating in this sample". Those two pulls are Judge.me's
+*first page*, not distribution-preserving samples, so their samples are
+top-heavy while the histogram shows the real spread. The widget says so rather
+than pretending.
+
+### 26h. Search
+
+Client-side over the catalogue. The thing that makes it worth having is that
+**variant labels are searchable**: "56" finds the wedge, "left hand" finds all
+five clubs and covers built in both hands. Neither string is in a product
+title. Words are AND-ed, so "left hand wedge" narrows to one.
+
+**SKUs are deliberately NOT searchable** — no SKU renders anywhere (§22d), and
+a search that matches a string it will not then show looks broken.
+
+The query lives in `?q=`, so a result page can be linked and reloaded, which is
+also what Shopify's search template reads.
+
+### 26i. Verified
+
+Swept at 1440 and 390, contrast composited through rgba ancestors, foil skipped
+(§9).
+
+| Page | 1440 | 390 |
+|---|---|---|
+| Our Story | 0 fails, no overflow | 0 fails, `scrollWidth` 390 |
+| The Trybe | 0 fails | 0 fails, roster is the `.msnap` rail |
+| Reviews | 0 fails | 0 fails |
+| Search | 0 fails | 0 fails, incl. the empty state |
+| 404 | 0 fails | 0 fails |
+| Putters collection (edited ledes) | 0 fails | — |
+
+Driven through the DOM: the reviews product filter swapping the histogram to
+that club's real distribution, the star filter inside a product, the empty
+state, paging and sort across the union; six search queries including a
+two-word narrowing and a no-match; the roster rail; and field order on both
+brand pages (no two dark bands adjacent, brand field once, cream before the
+ink footer).
+
+Build guards verified by breaking each one: a real roster name with no
+`consent` key, an image slot with no brief, a review set that stops the
+figures reconciling, `page-reviews.js` emptied, and `reviews.js` dropped from
+the bundle (fails the club pages too).
+
+`--check` reports all 58 identical. `test-variants.js` and
+`normalize-products.py --check` unchanged.
+
+### 26j. Still Cole's
+
+1. **Sale** — price the collection or drop it from the nav. The only thing
+   between the site and 61 of 61.
+2. **The Shopify wedge draft** — move stock onto the six S variants and publish
+   (§25a, §25b).
+3. **Photography** — every image on Our Story, The Trybe and the collection
+   pages is a labelled brief.
+4. **The Trybe roster** — five names, five handles, five 4:5 portraits, and the
+   program terms.
+5. **Four unanswered policy questions**, all chipped on the pages: warranty
+   period and who pays return shipping on a defective club; warehouse
+   locations and duties; staffed hours and a response target; the Returns
+   Portal URL.
+6. **The homepage review quotes naming competitors** (§26d).
+7. **Update the copy skill to How We Write v7.3** and add the two new guides.
+8. **A register pass** against v7.3's "range" section (§26e).

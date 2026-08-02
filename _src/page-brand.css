@@ -1,0 +1,148 @@
+/* ==========================================================================
+   BRAND — Our Story · The Trybe
+   One stylesheet, two pages, same reason as page-support.css: they are one
+   template. Nothing here is a new device — the labelled placeholder (.ph), the
+   rule-eyebrow, the brand field and the clover bullet all come from core. This
+   file only lays them out.
+   ========================================================================== */
+
+/* ---------- head ---------- */
+.br-hd{position:relative;overflow:hidden}
+.br-hd .wm{width:min(54vw,640px);height:min(54vw,640px);right:-10%;top:-22%;
+  color:var(--green);opacity:.05}
+.br-hd .wrap{position:relative;z-index:1}
+.br-hd h1{max-width:13ch}
+.br-lede{margin-top:26px;max-width:58ch;font-size:clamp(1.14rem,1.5vw,1.32rem)}
+.br-hero{margin-top:clamp(34px,4vw,56px);aspect-ratio:21/9}
+
+/* ---------- the numbers (ink field) ---------- */
+.br-stats-h{max-width:18ch}
+.br-figs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);
+  margin:clamp(32px,3.6vw,52px) 0 0;padding:0}
+.br-figs > div{padding-top:20px;border-top:2px solid var(--rule-on-dark)}
+.br-figs dt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
+  font-size:clamp(2.2rem,4vw,3.4rem);line-height:.9;letter-spacing:-.015em;
+  text-transform:uppercase;color:var(--cream)}
+.br-figs dd{margin:12px 0 0;font-size:.98rem;line-height:1.55;color:var(--cream-70);max-width:34ch}
+.br-stats-note{margin-top:clamp(30px,3.2vw,44px);max-width:56ch;color:var(--cream-70)}
+
+/* ---------- alternating rows ---------- */
+.br-row--cream{position:relative;background:var(--cream)}
+.br-row--cream::before{content:'';position:absolute;inset:0;background:var(--groove-light);
+  pointer-events:none}
+.br-row--cream > *{position:relative;z-index:1}
+.br-row-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,72px);align-items:center}
+/* photo leads by default; .br-row--flip puts the copy first. Alternating them
+   is what stops three rows reading as a list (§21f note 4: photo leads). */
+.br-row--flip .br-row-ph{order:2}
+.br-row-ph{position:relative;aspect-ratio:4/3}
+.br-row-ph .ph{position:absolute;inset:0;border-radius:var(--r-card);padding:30px}
+.br-row-copy h2{max-width:15ch}
+.br-p{margin:18px 0 0;max-width:52ch;font-size:1.0625rem;line-height:1.66;color:var(--ink-70)}
+.br-p b{color:var(--ink)}
+.br-list{margin:22px 0 0;padding:0;list-style:none;max-width:52ch;
+  display:flex;flex-direction:column;gap:11px}
+.br-list li{display:flex;gap:12px;font-size:1.0125rem;line-height:1.6;color:var(--ink-70)}
+.br-cta{margin:26px 0 0}
+
+/* ---------- the quote ---------- */
+.br-q{margin:clamp(28px,3.2vw,44px) 0 0;max-width:62ch}
+.br-q blockquote{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 84;
+  font-weight:600;font-size:clamp(1.3rem,2.2vw,1.86rem);line-height:1.34;
+  letter-spacing:-.005em;color:var(--ink);text-wrap:pretty}
+.br-q blockquote::before{content:'\201C'}
+.br-q blockquote::after{content:'\201D'}
+.br-q figcaption{margin-top:22px;display:flex;flex-direction:column;gap:5px}
+.br-q-who{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
+.br-q-meta,.br-q-on{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-muted)}
+/* the club the quote is about is a real destination, and at .6rem mono it was
+   a 15px hit area. 44px, like every other link that goes somewhere. */
+.br-q-on a{display:inline-flex;align-items:center;min-height:44px;
+  border-bottom:1px solid var(--gold)}
+.br-q-on a:hover{color:var(--gold-lo)}
+.br-q-note{margin-top:clamp(26px,3vw,40px);max-width:56ch;color:var(--ink-70)}
+
+/* ---------- roster ---------- */
+.br-roster-lede{margin-top:20px;max-width:56ch}
+.br-rost-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gut);
+  margin-top:clamp(30px,3.4vw,48px)}
+.br-rost{display:flex;flex-direction:column;gap:12px}
+.br-rost .ph{aspect-ratio:4/5;border-radius:var(--r-card);padding:18px}
+.br-rost .ph .lbl .mono{font-size:.56rem;letter-spacing:.12em}
+.br-rost-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
+  font-size:1.02rem;line-height:1.05;text-transform:uppercase;letter-spacing:-.005em}
+.br-rost-hd{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-muted)}
+
+/* ---------- an unanswered question, set apart ---------- */
+.br-tbd{margin-top:clamp(30px,3.4vw,46px);max-width:64ch;
+  border-left:2px solid var(--gold);padding:4px 0 4px 20px}
+.br-tbd-p{margin:0;font-size:1.0125rem;line-height:1.66;color:var(--ink-70)}
+.br-tbd-ask{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
+  line-height:1.6;color:var(--ink-muted)}
+
+/* ---------- how it works ---------- */
+.br-steps-list{margin:clamp(28px,3.2vw,44px) 0 0;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.br-steps-list li{display:flex;gap:16px;align-items:flex-start}
+.br-step-n{flex:none;width:38px;height:38px;display:grid;place-items:center;
+  border-radius:50%;background:var(--ink);color:var(--cream);
+  font-family:'Space Mono',monospace;font-size:.78rem}
+.br-steps-list h3{margin:6px 0 0;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;font-size:1rem;
+  text-transform:uppercase;letter-spacing:.03em}
+.br-steps-list p{margin:9px 0 0;font-size:.98rem;line-height:1.6;color:var(--ink-70)}
+
+/* ---------- the brand moment ---------- */
+.br-fit{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);
+  padding:clamp(62px,7vw,102px) 0;border-block:2px solid var(--brand-accent)}
+.br-fit::before{content:'';position:absolute;inset:0;background:var(--brand-groove);
+  pointer-events:none}
+.br-fit .wm{width:min(46vw,540px);height:min(46vw,540px);right:-8%;top:50%;
+  translate:0 -50%;color:var(--on-brand);opacity:.08}
+.br-fit-in{position:relative;z-index:1;max-width:72ch}
+.br-fit .eyebrow{color:var(--on-brand-88)}
+.br-fit .eyebrow::before{background:var(--brand-accent)}
+.br-fit h2{color:var(--on-brand);max-width:16ch;margin:0}
+.br-fit .body{margin:22px 0 0;max-width:52ch;color:var(--on-brand-88)}
+.br-fit-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
+.br-fit-aside{margin-top:26px;max-width:48ch;color:var(--on-brand)}
+
+/* ---------- keep looking ---------- */
+.br-sibs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);margin-top:34px}
+.br-sib{display:flex;flex-direction:column;gap:8px;background:var(--white);
+  border:2px solid var(--ink-14);border-radius:var(--r-card);padding:26px 24px;
+  transition:transform .22s,border-color .22s}
+.br-sib:hover{transform:translateY(-3px);border-color:var(--gold)}
+.br-sib-n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  font-size:clamp(1.24rem,1.8vw,1.5rem);line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+.br-sib-h{font-size:.95rem;line-height:1.55;color:var(--ink-70)}
+.br-aside{margin-top:34px;max-width:54ch;color:var(--ink-70)}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1180px){
+  .br-rost-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:980px){
+  .br-figs{grid-template-columns:1fr}
+  .br-row-in{grid-template-columns:1fr}
+  /* photo leads on a phone regardless of which side it took on desktop */
+  .br-row--flip .br-row-ph{order:0}
+  .br-steps-list{grid-template-columns:1fr}
+  .br-sibs{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .br-hd h1{max-width:none}
+  .br-hero{aspect-ratio:4/3}
+  .br-row-ph{aspect-ratio:3/2}
+  /* the roster carries .msnap, so core turns it into the snap rail here —
+     five 4:5 portraits stacked is a very long column for five slots that are
+     all placeholders today. Nothing to declare: core's !important is the
+     layout-mode switch and this file must not fight it. */
+  .br-fit-cta .btn{width:100%;justify-content:center}
+}
