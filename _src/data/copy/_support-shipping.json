@@ -2,8 +2,8 @@
  "_": "Shipping. COLE 2026-08-02: rates and thresholds do NOT belong on this page. They change, they are promoted in an announcement bar when they run, and checkout is the only place that can be right about them. This page carries POLICY — the windows, the carriers, and what to do when something goes wrong. Dispatch is 1–2 business days, Cole's number.",
  "crumbName": "Shipping",
  "eyebrow": "Delivery",
- "headline": "When it turns up",
- "lede": "Orders leave in one to two business days, and ground delivery takes another few after that. What shipping costs is worked out at checkout, because it depends on where it is going.",
+ "headline": "Shipping",
+ "lede": "Dispatch times, carriers and tracking. What shipping costs is calculated at checkout.",
  "quick": {
   "items": [
    {
@@ -86,10 +86,9 @@
    "nav": "Tracking",
    "title": "Tracking, and when it goes quiet",
    "paras": [
-    "Tracking updates when the parcel is scanned, so it moves in jumps rather than continuously. A day or two of silence mid-route is normal and usually means it is on a truck between two scans.",
-    "Longer than that is worth telling us about. Parcels do get lost, and a lost parcel is our problem to solve rather than yours to chase the carrier over — email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with the order number and we will pick it up from there."
-   ],
-   "note": "Two of the reviews on this site describe exactly that: a club lost in transit, and a replacement sent. That is the intended outcome, and asking early is what makes it quick."
+    "Tracking updates when the parcel is scanned, so it moves in steps rather than continuously. A day or two without an update mid-route is normal.",
+    "If there has been no movement for longer than that, email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and we will trace it."
+   ]
   },
   {
    "id": "wrong",
@@ -97,8 +96,8 @@
    "cream": true,
    "title": "If the wrong thing turns up",
    "paras": [
-    "A 58 in the box when you ordered a 60 is a picking error, not a return, and it does not come out of your sixty days.",
-    "Send us the order number and a photo of what arrived — for a wedge, the loft stamp on the sole settles it in one picture — and do not send anything back until we have replied."
+    "If you receive the wrong item, contact us before sending anything back.",
+    "Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and a photo of what arrived. A picking error is not a return and does not count against your return window."
    ],
    "cta": {
     "label": "Tell us what arrived",

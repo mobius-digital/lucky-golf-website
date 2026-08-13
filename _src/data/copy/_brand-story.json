@@ -47,7 +47,7 @@
         "Every club gets sixty days. Roll the putter. Hit one wedge on a mat. If it does not earn a place in the bag, tell us and send it back.",
         "The conditions are specific and they are on the returns page in full, because a sixty-day promise with the catches buried is not really a sixty-day promise."
       ],
-      "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" }
+      "cta": { "label": "Read the refund policy", "href": "{{link:returns}}" }
     },
     {
       "eyebrow": "Who answers",

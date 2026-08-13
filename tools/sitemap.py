@@ -109,7 +109,7 @@ def _pages():
     # differ only in the body. `kind` is what routes build.py at the editorial
     # file, exactly as "product" and "collection" do.
     for slug, file, title in (
-        ("returns",  "40-returns.html",  "Returns & the 60-day policy — Lucky Golf"),
+        ("returns",  "40-returns.html",  "Refund Policy — Lucky Golf"),
         ("shipping", "41-shipping.html", "Shipping — Lucky Golf"),
         ("contact",  "42-contact.html",  "Contact — Lucky Golf"),
         ("faq",      "43-faq.html",      "FAQ — Lucky Golf"),

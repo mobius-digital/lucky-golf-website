@@ -1,237 +1,294 @@
 {
-  "_": "FAQ. Written from questions the reviews actually ask (NEXT-PAGES §6) — the pulls in _src/data/reviews/ are the source, not a generic support-page checklist. Where a question came from a review it says so, without naming the reviewer.",
-  "_signoff": "No fitting advice anywhere on this page. The putter-length question is answered with what we build and what the return policy says about cutting one down, NOT with a height-to-length recommendation — that would be a second unverified block on a site that has exactly one (the grind copy, §23d). Left-hand availability is generated from products.json by build.py, so it cannot go stale.",
-
-  "crumbName": "FAQ",
-  "eyebrow": "Questions",
-  "headline": "The ones we actually get",
-  "lede": "Most of these came out of reviews rather than a support ticket — golfers asking in public, which usually means plenty of other people wanted to know too. Left-hand availability and putter length come up more than anything else.",
-
-  "quick": { "items": [
-    { "k": "Left hand", "v": "Yes, on most of the line" },
-    { "k": "35 inches", "v": "Both putters, one length" },
-    { "k": "No cover", "v": "Not included on any club" },
-    { "k": "Stock only", "v": "One shaft, one grip" }
-  ] },
-
-  "faq": { "groups": [
-    {
-      "id": "left-hand",
-      "label": "Left-handed clubs",
-      "items": [
+ "_": "FAQ. Answers only. COLE 2026-08-02: support pages are policy — plain and scannable. The 'asked in the reviews' attributions and the anecdotal framing are gone; the questions are still the real ones, the answers are just answers now.",
+ "_signoff": "No fitting advice anywhere on this page. The putter-length question is answered with what we build and what the return policy says about cutting one down, NOT with a height-to-length recommendation — that would be a second unverified block on a site that has exactly one (the grind copy, §23d). Left-hand availability is generated from products.json by build.py, so it cannot go stale.",
+ "crumbName": "FAQ",
+ "eyebrow": "Questions",
+ "headline": "Frequently asked questions",
+ "lede": "The questions we get most often, answered.",
+ "quick": {
+  "items": [
+   {
+    "k": "Left hand",
+    "v": "Yes, on most of the line"
+   },
+   {
+    "k": "35 inches",
+    "v": "Both putters, one length"
+   },
+   {
+    "k": "No cover",
+    "v": "Not included on any club"
+   },
+   {
+    "k": "Stock only",
+    "v": "One shaft, one grip"
+   }
+  ]
+ },
+ "faq": {
+  "groups": [
+   {
+    "id": "left-hand",
+    "label": "Left-handed clubs",
+    "items": [
+     {
+      "id": "lh-availability",
+      "q": "Do you make left-handed clubs?",
+      "a": [
+       "Yes, across most of the line — but not every club and not every loft, so here is the whole picture rather than a yes that turns into a no at checkout."
+      ],
+      "handRows": true
+     },
+     {
+      "id": "lh-blade",
+      "q": "Will there be a left-handed blade putter?",
+      "a": [
+       "Not today. The Tracer LGP01 Blade is right hand only.",
+       "The Tracer LGP02 Mallet is built in both hands, so if it is a Lucky putter you are after rather than specifically a blade, that one exists now.",
+       "We are not going to put a date on a left-handed blade here. When it is real it will be on the site with a price and a stock number like everything else."
+      ],
+      "cta": {
+       "label": "The Tracer LGP02 Mallet",
+       "href": "{{link:p/lgp02-gold}}"
+      }
+     }
+    ]
+   },
+   {
+    "id": "fit",
+    "label": "Length, loft and fit",
+    "items": [
+     {
+      "id": "putter-length",
+      "q": "I'm 5'9\". Is a 35-inch putter right for me?",
+      "a": [
+       "Both Tracers are built at 35 inches, and that is the only length we make today. We do not cut or extend one before it ships.",
+       "The useful comparison is the putter you already own: measure it heel to grip cap and see how far off 35 is. That number tells you more than your height does, because putter length follows how you stand over the ball.",
+       "If you want it shorter, a club fitter can do it after purchase — but read the returns page first. <b>Cutting, bending or regripping a putter ends its return window</b>, so it is a decision to make after the sixty days, not during them."
+      ],
+      "cta": {
+       "label": "Read the refund policy",
+       "href": "{{link:returns}}"
+      }
+     },
+     {
+      "id": "lengths",
+      "q": "Can I get a different length, grip size or shaft?",
+      "a": [
+       "No. Every club ships with the stock shaft and the stock grip, in one length, and there is no option to change any of it at checkout.",
+       "Grips are sold separately if you want to change one yourself. Fitting a new grip to the club counts as a modification, so it ends the return window on that club."
+      ],
+      "cta": {
+       "label": "Grips, sold separately",
+       "href": "{{link:c/gear}}"
+      }
+     },
+     {
+      "id": "which-loft",
+      "q": "Which wedge loft should I start with?",
+      "a": [
+       "Start from the wedge already in your bag rather than from a chart. The gap between your pitching wedge and your next club is the hole you are filling, and the Carver's loft ladder on the product page walks through it.",
+       "The 01 comes in six lofts from 50° to 60°, in two grinds. Which grind suits you is a separate question from which loft, and it has its own section on the product page."
+      ],
+      "cta": {
+       "label": "The Carver 01 Gold",
+       "href": "{{link:p/lgw01-gold}}"
+      }
+     }
+    ]
+   },
+   {
+    "id": "box",
+    "label": "What's in the box",
+    "items": [
+     {
+      "id": "headcover",
+      "q": "Does the club come with a head cover?",
+      "a": [
+       "No. No club in the line ships with a head cover — not the wedges, not the putters, not the hybrid.",
+       "Covers are sold separately: a blade cover, a mallet cover and a driver cover."
+      ],
+      "cta": {
+       "label": "Head covers",
+       "href": "{{link:c/gear}}"
+      }
+     },
+     {
+      "id": "grip-colour",
+      "q": "The white grip is going to get dirty, isn't it?",
+      "a": [
+       "Grips are a consumable on any club and we sell replacements in several colours. Fitting one yourself ends the return window on the club, so if you are still inside your sixty days it is worth waiting."
+      ],
+      "cta": {
+       "label": "Grips",
+       "href": "{{link:c/gear}}"
+      }
+     }
+    ]
+   },
+   {
+    "id": "ordering",
+    "label": "Ordering and delivery",
+    "items": [
+     {
+      "id": "shipping-time",
+      "q": "How long does delivery take?",
+      "a": [
+       "Orders leave the warehouse in one to two business days, and ground delivery takes a few business days after that. You get a tracking number as soon as the carrier scans the parcel.",
+       "What shipping costs is worked out at checkout, before you pay."
+      ],
+      "cta": {
+       "label": "Read the shipping page",
+       "href": "{{link:shipping}}"
+      }
+     },
+     {
+      "id": "international",
+      "q": "Do you ship outside the US?",
+      "a": [
+       "Yes, worldwide. The rate is calculated at checkout like any other, so you see it before you pay."
+      ],
+      "tbd": {
+       "label": "Needs confirming",
+       "text": "whether duties and import taxes are prepaid at checkout or collected on delivery."
+      },
+      "cta": {
+       "label": "Ask about an international order",
+       "href": "{{link:contact}}"
+      }
+     },
+     {
+      "id": "tracking-stuck",
+      "q": "Tracking hasn't moved in days. Where is it?",
+      "a": [
+       "Tracking updates on scans, so it moves in jumps. A day or two of silence in transit is normal and usually means the parcel is between two of them.",
+       "If there has been no movement for longer than that, email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and we will trace it."
+      ],
+      "cta": {
+       "label": "Email support",
+       "href": "{{link:contact}}"
+      }
+     },
+     {
+      "id": "wrong-loft",
+      "q": "The wrong loft turned up. What now?",
+      "a": [
+       "That is a picking error rather than a return, and it does not come out of your sixty days.",
+       "Send the order number and a photo of the loft stamp on the sole — one picture settles it — and hold onto the club until we have replied."
+      ],
+      "cta": {
+       "label": "Tell us what arrived",
+       "href": "{{link:contact}}"
+      }
+     }
+    ]
+   },
+   {
+    "id": "returns",
+    "label": "Returns",
+    "items": [
+     {
+      "id": "how-long",
+      "q": "How long do I have to send something back?",
+      "a": [
+       "Sixty days on a club, thirty on apparel and gear, both counted from delivery. Customized items are final sale unless they arrive defective."
+      ],
+      "rows": {
+       "items": [
         {
-          "id": "lh-availability",
-          "q": "Do you make left-handed clubs?",
-          "a": [
-            "Yes, across most of the line — but not every club and not every loft, so here is the whole picture rather than a yes that turns into a no at checkout."
-          ],
-          "handRows": true,
-          "src": "Asked repeatedly in the Tracer LGP01 and LGP02 reviews"
+         "k": "Clubs",
+         "v": "60 days from delivery"
         },
         {
-          "id": "lh-blade",
-          "q": "Will there be a left-handed blade putter?",
-          "a": [
-            "Not today. The Tracer LGP01 Blade is right hand only, and that is the club left-handers ask about most — it comes up in its reviews more than any other subject.",
-            "The Tracer LGP02 Mallet is built in both hands, so if it is a Lucky putter you are after rather than specifically a blade, that one exists now.",
-            "We are not going to put a date on a left-handed blade here. When it is real it will be on the site with a price and a stock number like everything else."
-          ],
-          "cta": { "label": "The Tracer LGP02 Mallet", "href": "{{link:p/lgp02-gold}}" },
-          "src": "From the Tracer LGP01 reviews"
+         "k": "Apparel and gear",
+         "v": "30 days from delivery"
+        },
+        {
+         "k": "Customized",
+         "v": "Final sale, unless defective"
         }
-      ]
-    },
-    {
-      "id": "fit",
-      "label": "Length, loft and fit",
-      "items": [
-        {
-          "id": "putter-length",
-          "q": "I'm 5'9\". Is a 35-inch putter right for me?",
-          "a": [
-            "Both Tracers are built at 35 inches, and that is the only length we make today. We do not cut or extend one before it ships.",
-            "The useful comparison is the putter you already own: measure it heel to grip cap and see how far off 35 is. That number tells you more than your height does, because putter length follows how you stand over the ball.",
-            "If you want it shorter, a club fitter can do it after purchase — but read the returns page first. <b>Cutting, bending or regripping a putter ends its return window</b>, so it is a decision to make after the sixty days, not during them.",
-            "For what it is worth, one of the reviews on the mallet is from a golfer at 6'7\" who says 35 inches is perfect for him. Which mostly shows that height on its own does not settle it."
-          ],
-          "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" },
-          "src": "Asked in the Tracer LGP02 reviews"
-        },
-        {
-          "id": "lengths",
-          "q": "Can I get a different length, grip size or shaft?",
-          "a": [
-            "No. Every club ships with the stock shaft and the stock grip, in one length, and there is no option to change any of it at checkout.",
-            "It is a fair request and it has been made in the reviews more than once — different putter lengths, a heavier shaft, a bigger grip. It is not something we build today.",
-            "Grips are sold separately if you want to change one yourself. Fitting a new grip to the club counts as a modification, so it ends the return window on that club."
-          ],
-          "cta": { "label": "Grips, sold separately", "href": "{{link:c/gear}}" },
-          "src": "From the Stryker LGH01 and Tracer LGP02 reviews"
-        },
-        {
-          "id": "which-loft",
-          "q": "Which wedge loft should I start with?",
-          "a": [
-            "Start from the wedge already in your bag rather than from a chart. The gap between your pitching wedge and your next club is the hole you are filling, and the Carver's loft ladder on the product page walks through it.",
-            "The 01 comes in six lofts from 50° to 60°, in two grinds. Which grind suits you is a separate question from which loft, and it has its own section on the product page."
-          ],
-          "cta": { "label": "The Carver 01 Gold", "href": "{{link:p/lgw01-gold}}" }
-        }
-      ]
-    },
-    {
-      "id": "box",
-      "label": "What's in the box",
-      "items": [
-        {
-          "id": "headcover",
-          "q": "Does the club come with a head cover?",
-          "a": [
-            "No. No club in the line ships with a head cover — not the wedges, not the putters, not the hybrid.",
-            "It surprises people, and two separate reviews say so in fairly plain terms. It is worth knowing before the box arrives rather than after.",
-            "Covers are sold separately: a blade cover, a mallet cover and a driver cover."
-          ],
-          "cta": { "label": "Head covers", "href": "{{link:c/gear}}" },
-          "src": "From the Stryker LGH01 and Tracer LGP02 reviews"
-        },
-        {
-          "id": "grip-colour",
-          "q": "The white grip is going to get dirty, isn't it?",
-          "a": [
-            "A reviewer raised exactly this, and it is a reasonable thing to raise about a light grip on a club that lives in a bag.",
-            "Grips are a consumable on any club and we sell replacements in several colours. Fitting one yourself ends the return window on the club, so if you are still inside your sixty days it is worth waiting."
-          ],
-          "cta": { "label": "Grips", "href": "{{link:c/gear}}" },
-          "src": "From the Tracer LGP02 reviews"
-        }
-      ]
-    },
-    {
-      "id": "ordering",
-      "label": "Ordering and delivery",
-      "items": [
-        {
-          "id": "shipping-time",
-          "q": "How long does delivery take?",
-          "a": [
-            "Orders leave the warehouse in one to two business days, and ground delivery takes a few business days after that. You get a tracking number as soon as the carrier scans the parcel.",
-            "What shipping costs is worked out at checkout, before you pay."
-          ],
-          "cta": { "label": "Read the shipping page", "href": "{{link:shipping}}" }
-        },
-        {
-          "id": "international",
-          "q": "Do you ship outside the US?",
-          "a": [
-            "Yes, worldwide. The rate is calculated at checkout like any other, so you see it before you pay."
-          ],
-          "tbd": {
-            "label": "Needs confirming",
-            "text": "whether duties and import taxes are prepaid at checkout or collected on delivery."
-          },
-          "cta": { "label": "Ask about an international order", "href": "{{link:contact}}" }
-        },
-        {
-          "id": "tracking-stuck",
-          "q": "Tracking hasn't moved in days. Where is it?",
-          "a": [
-            "Tracking updates on scans, so it moves in jumps. A day or two of silence in transit is normal and usually means the parcel is between two of them.",
-            "Longer than that, tell us. Parcels do get lost — two of the reviews on this site describe exactly that, and both end with a replacement in the bag. Chasing the carrier yourself is the slow version."
-          ],
-          "cta": { "label": "Email support", "href": "{{link:contact}}" }
-        },
-        {
-          "id": "wrong-loft",
-          "q": "The wrong loft turned up. What now?",
-          "a": [
-            "That is a picking error rather than a return, and it does not come out of your sixty days.",
-            "Send the order number and a photo of the loft stamp on the sole — one picture settles it — and hold onto the club until we have replied."
-          ],
-          "cta": { "label": "Tell us what arrived", "href": "{{link:contact}}" },
-          "src": "From the Carver 01 Gold reviews"
-        }
-      ]
-    },
-    {
-      "id": "returns",
-      "label": "Returns",
-      "items": [
-        {
-          "id": "how-long",
-          "q": "How long do I have to send something back?",
-          "a": [
-            "Sixty days on a club, thirty on apparel and gear, both counted from delivery. Customized items are final sale unless they arrive defective."
-          ],
-          "rows": { "items": [
-            { "k": "Clubs", "v": "60 days from delivery" },
-            { "k": "Apparel and gear", "v": "30 days from delivery" },
-            { "k": "Customized", "v": "Final sale, unless defective" }
-          ] },
-          "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" }
-        },
-        {
-          "id": "can-i-hit-it",
-          "q": "Can I actually hit it first?",
-          "a": [
-            "A putter, yes — use it, that is what sixty days is for. It has to come back unmarked, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
-            "A wedge, one per order, on a turf mat or another non-abrasive surface. Any others stay factory sealed, and the tested one comes back with no groove wear.",
-            "A hybrid, driver or wood has to appear completely unused."
-          ],
-          "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" }
-        },
-        {
-          "id": "approval",
-          "q": "Can I just post the club back?",
-          "a": [
-            "No, and this is the one mistake that is hard to undo. <b>Every club return needs approval and photo verification before it ships.</b> A club that arrives without authorization is not accepted.",
-            "Email or chat first with the order number and photos of the face and the sole. It takes one message."
-          ],
-          "cta": { "label": "Start a return", "href": "{{link:contact}}" }
-        },
-        {
-          "id": "gift",
-          "q": "It's a gift. Does the window start when I give it?",
-          "a": [
-            "No — the window runs from delivery, so a club bought in November and handed over at Christmas has spent most of its sixty days in a closet.",
-            "A reviewer made this point about a Christmas present and it is a fair one. If you are buying ahead, it is worth telling us when you order rather than after the window has gone."
-          ],
-          "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" },
-          "src": "From the Carver 01 Gold reviews"
-        },
-        {
-          "id": "broken",
-          "q": "It broke. Is that covered?",
-          "a": [
-            "Tell us, with photos, and do not send it anywhere until we have answered. A club that fails in normal use is a different conversation from one you have decided against.",
-            "What is settled: defective gear may be replaced or refunded after inspection, and a customized item is returnable if it arrives defective."
-          ],
-          "tbd": {
-            "label": "Needs confirming",
-            "text": "the warranty period on a club, and who pays return shipping when the fault is ours."
-          },
-          "cta": { "label": "Email support", "href": "{{link:contact}}" },
-          "src": "From the Carver 01 Gold reviews"
-        },
-        {
-          "id": "who-pays",
-          "q": "Who pays return shipping?",
-          "a": [
-            "You do, on a change of mind, and the original shipping is not refunded. We do not send a prepaid label.",
-            "Where the fault is ours it should not work that way, but that case is not written down yet — see the question above."
-          ],
-          "cta": { "label": "Read the returns policy", "href": "{{link:returns}}" }
-        }
-      ]
-    }
-  ] },
-
-  "close": {
-    "eyebrow": "Not here",
-    "headline": "Ask it anyway",
-    "body": "This page is built from questions golfers asked in public. If yours isn't on it, asking is how it gets added.",
-    "ctaLabel": "Go to contact",
-    "ctaHref": "{{link:contact}}",
-    "ctaMail": "Email support",
-    "aside": "The good questions on this page all came from someone who bothered to ask."
-  }
+       ]
+      },
+      "cta": {
+       "label": "Read the refund policy",
+       "href": "{{link:returns}}"
+      }
+     },
+     {
+      "id": "can-i-hit-it",
+      "q": "Can I actually hit it first?",
+      "a": [
+       "A putter, yes — use it, that is what sixty days is for. It has to come back unmarked, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
+       "A wedge, one per order, on a turf mat or another non-abrasive surface. Any others stay factory sealed, and the tested one comes back with no groove wear.",
+       "A hybrid, driver or wood has to appear completely unused."
+      ],
+      "cta": {
+       "label": "Read the refund policy",
+       "href": "{{link:returns}}"
+      }
+     },
+     {
+      "id": "approval",
+      "q": "Can I just post the club back?",
+      "a": [
+       "No, and this is the one mistake that is hard to undo. <b>Every club return needs approval and photo verification before it ships.</b> A club that arrives without authorization is not accepted.",
+       "Email or chat first with the order number and photos of the face and the sole. It takes one message."
+      ],
+      "cta": {
+       "label": "Start a return",
+       "href": "{{link:contact}}"
+      }
+     },
+     {
+      "id": "gift",
+      "q": "It's a gift. Does the window start when I give it?",
+      "a": [
+       "No — the window runs from delivery, so a club bought in November and handed over at Christmas has spent most of its sixty days in a closet."
+      ],
+      "cta": {
+       "label": "Read the refund policy",
+       "href": "{{link:returns}}"
+      }
+     },
+     {
+      "id": "broken",
+      "q": "It broke. Is that covered?",
+      "a": [
+       "Tell us, with photos, and do not send it anywhere until we have answered. A club that fails in normal use is a different conversation from one you have decided against.",
+       "What is settled: defective gear may be replaced or refunded after inspection, and a customized item is returnable if it arrives defective."
+      ],
+      "tbd": {
+       "label": "Needs confirming",
+       "text": "the warranty period on a club, and who pays return shipping when the fault is ours."
+      },
+      "cta": {
+       "label": "Email support",
+       "href": "{{link:contact}}"
+      }
+     },
+     {
+      "id": "who-pays",
+      "q": "Who pays return shipping?",
+      "a": [
+       "You do, on a change of mind, and the original shipping is not refunded. We do not send a prepaid label.",
+       "Where the fault is ours it should not work that way, but that case is not written down yet — see the question above."
+      ],
+      "cta": {
+       "label": "Read the refund policy",
+       "href": "{{link:returns}}"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "close": {
+  "eyebrow": "Not answered here",
+  "headline": "Contact us",
+  "body": "If your question isn't on this page, email or use the chat on the store.",
+  "ctaLabel": "Contact us",
+  "ctaHref": "{{link:contact}}",
+  "ctaMail": "Email support",
+  "aside": "Have your order number ready."
+ }
 }

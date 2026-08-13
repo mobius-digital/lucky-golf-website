@@ -39,12 +39,20 @@ All four currently render as dashed "Needs confirming" chips. The pages are
 built around them, so answering turns a chip into a sentence and nothing else
 moves.
 
-| Question | Where it shows |
+**ANSWERED 2026-08-02 — three of the four are closed:**
+
+- **Defective items: Lucky pays the return shipping.** Now stated on the refund
+  policy page and in the FAQ.
+- **The refund policy is the truth, not the FAQ page.** The store's own FAQ page
+  claims a lifetime guarantee and says the line is right-hand only — both false.
+  That page needs retiring on Shopify; this site follows the refund policy.
+- **International: yes, worldwide, rate at checkout.** Was a chip, now an answer.
+
+| Still open | Where it shows |
 |---|---|
-| Warranty period on a club, and who pays return shipping when the fault is ours | `40-returns.html#defective`, and the FAQ |
-| Warehouse locations, which countries we ship to, duties prepaid or collected | `41-shipping.html#where` — a whole section exists to say it is open |
+| Duties — prepaid at checkout or collected on delivery | `41-shipping.html#where` |
 | Staffed hours for chat, and a response target for email | `42-contact.html#when` |
-| The Returns Portal's URL | Contact and Returns both describe it instead of linking |
+| The Returns Portal's URL | Contact and the refund policy describe it instead of linking |
 
 **On the response target specifically:** there is deliberately no "we reply
 within N hours" anywhere on the site. The review corpus contains both a
@@ -193,8 +201,9 @@ its own document, because it is what ships with the repo.
 **Cole**
 
 - [ ] Sale priced, or dropped from the nav
-- [ ] Warranty period + who pays return shipping on a defective club
-- [ ] Warehouse locations, destinations, duties prepaid or collected
+- [x] ~~Defective returns — Lucky pays the shipping~~ (answered 2026-08-02)
+- [ ] Duties — prepaid at checkout, or collected on delivery
+- [ ] Retire or rewrite the Shopify FAQ page (it contradicts the refund policy)
 - [ ] Chat hours + email response target
 - [ ] Returns Portal URL
 - [ ] Product Language Rules sent

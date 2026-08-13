@@ -564,6 +564,20 @@ def support_copy(slug):
         sys.exit("support page %s is not listed in _shared-support.json's "
                  "`pages` — its sibling row would be empty" % slug)
 
+    # The template engine walks the scope stack OUTWARD (tools/template.py), so a
+    # section with no `lede` of its own silently inherits the PAGE's lede, and a
+    # `list` with no `title` inherits the SECTION's title. Both render as a
+    # duplicated line rather than as nothing, which is how the refund policy came
+    # out repeating its own headline twice. Pin the optional keys to "" so the
+    # lookup stops here — "" is falsy, so `{{#lede}}` skips the block.
+    for sec in ctx.get("sections", []):
+        sec.setdefault("lede", "")
+        sec.setdefault("note", "")
+        if isinstance(sec.get("list"), dict):
+            sec["list"].setdefault("title", "")
+        for sub in sec.get("sub", []) or []:
+            sub.setdefault("lede", "")
+
     # Every section is an anchor target: the jump nav points at it, and so can
     # a link from anywhere else on the site.
     for sec in ctx.get("sections", []):
