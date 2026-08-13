@@ -114,8 +114,8 @@
           "id": "shipping-time",
           "q": "How long does delivery take?",
           "a": [
-            "Orders leave the warehouse in one to two business days, and most US deliveries land within five business days of dispatch. You get a tracking number as soon as the carrier scans the parcel.",
-            "Shipping inside the US is free, with no minimum to reach."
+            "Orders leave the warehouse in one to two business days, and ground delivery takes a few business days after that. You get a tracking number as soon as the carrier scans the parcel.",
+            "What shipping costs is worked out at checkout, before you pay."
           ],
           "cta": { "label": "Read the shipping page", "href": "{{link:shipping}}" }
         },
@@ -123,11 +123,11 @@
           "id": "international",
           "q": "Do you ship outside the US?",
           "a": [
-            "This is the one we cannot answer properly yet, so it is not going to be answered badly."
+            "Yes, worldwide. The rate is calculated at checkout like any other, so you see it before you pay."
           ],
           "tbd": {
             "label": "Needs confirming",
-            "text": "which international destinations we ship to, and whether duties are prepaid at checkout or collected on delivery."
+            "text": "whether duties and import taxes are prepaid at checkout or collected on delivery."
           },
           "cta": { "label": "Ask about an international order", "href": "{{link:contact}}" }
         },

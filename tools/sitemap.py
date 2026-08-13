@@ -96,7 +96,7 @@ def _pages():
     # a shape and differ only in which blocks they carry.
     add("story", "30-story.html", "Our Story — Lucky Golf",
         src="brand", built=True, kind="brand")
-    add("trybe", "31-trybe.html", "The Trybe — Lucky Golf",
+    add("trybe", "31-trybe.html", "Ambassador Program — Lucky Golf",
         src="brand", built=True, kind="brand")
     # Not in GAMEPLAN 4's page list, but the homepage's "Read all 884 reviews"
     # has to land somewhere, and that count is clubs-wide — so it cannot point

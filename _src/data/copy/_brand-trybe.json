@@ -1,9 +1,9 @@
 {
- "_": "The Trybe. NEXT-PAGES §4 governs this page and is unusually explicit about what NOT to do.",
+ "_": "The Ambassador Program (slug stays `trybe`, the URL does not change). COLE 2026-08-02: the word 'Trybe' comes off the site — this is the Ambassador Program everywhere a customer can read it. It is also out of the header and lives in the footer only.",
  "_rules": "PROGRAM TERMS ARE NOW SOURCED, not invented. Found published on the store 2026-08-02: the 'Join the Team' page gives partners@luckygolf.com as the ambassador contact, and the Lucky Golf Affiliate Application page publishes the affiliate terms — 10% commission, 60-day cookie, run through AvantLink. Those are TWO DIFFERENT THINGS and the page keeps them apart: the affiliate program is a public, self-serve commission scheme; the Trybe roster is not. What the ROSTER gives and asks is still unwritten, and still says so.",
  "_blocked": "The roster itself — five real names, five handles, five 4:5 portraits — and the program terms. Names are BRACKETED. The homepage roster (HANDOFF §7b G) has the same five slots and fills from the same answer.",
- "crumbName": "The Trybe",
- "eyebrow": "The Trybe",
+ "crumbName": "Ambassador Program",
+ "eyebrow": "Ambassador Program",
  "headline": "The people who actually play them",
  "lede": "Creators, club pros and a few very good amateurs who put Lucky in the bag before anyone was paying attention. They get early access, they give honest notes, and some of them make the videos.",
  "stats": {
@@ -112,7 +112,7 @@
    {
     "n": "1",
     "title": "Write to us",
-    "body": "Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a>, which is the address the team page gives, or use the contact form and pick &ldquo;The Trybe / ambassadors&rdquo; so it lands in the right place."
+    "body": "Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a>, which is the address the team page gives, or use the contact form and pick &ldquo;The Ambassador Program&rdquo; so it lands in the right place."
    },
    {
     "n": "2",
@@ -127,7 +127,7 @@
   ],
   "tbd": {
    "label": "Needs confirming",
-   "text": "what the Trybe roster itself gives and asks — product, discount, or something else. The affiliate program below is separate and its terms are public; the roster's are not written down.",
+   "text": "what the roster itself gives and asks — product, discount, or something else. The affiliate program above is separate and its terms are public; the roster's are not written down.",
    "ask": "A roster place and an affiliate link are different things, and the page will not blur them."
   }
  },

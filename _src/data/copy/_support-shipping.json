@@ -1,27 +1,26 @@
 {
- "_": "Shipping. CORRECTED 2026-08-02 against the LIVE Shopify shipping configuration (deliveryProfiles), which is what a customer is actually charged. The earlier copy said 'free, no minimum' and 'one to two business days' and both were wrong. Note the store's own published Shipping policy ALSO disagrees with its checkout — it says free over $175; the live rate fires at $125.",
- "_signoff": "`where` is NOT verified. Warehouse locations, which countries we ship to, and whether duties are prepaid or collected are all unanswered, and the page says so rather than guessing. Cole owns it. Everything else on this page is the modal copy.",
+ "_": "Shipping. COLE 2026-08-02: rates and thresholds do NOT belong on this page. They change, they are promoted in an announcement bar when they run, and checkout is the only place that can be right about them. This page carries POLICY — the windows, the carriers, and what to do when something goes wrong. Dispatch is 1–2 business days, Cole's number.",
  "crumbName": "Shipping",
  "eyebrow": "Delivery",
  "headline": "When it turns up",
- "lede": "Orders leave in two to three business days and ground delivery takes another three to five. US shipping is free over $125, and we ship worldwide.",
+ "lede": "Orders leave in one to two business days, and ground delivery takes another few after that. What shipping costs is worked out at checkout, because it depends on where it is going.",
  "quick": {
   "items": [
    {
-    "k": "2–3 days",
+    "k": "1–2 days",
     "v": "To leave the warehouse"
    },
    {
-    "k": "3–5 days",
-    "v": "US ground, after dispatch"
-   },
-   {
-    "k": "Free over $125",
-    "v": "Inside the US"
+    "k": "Tracked",
+    "v": "From the first carrier scan"
    },
    {
     "k": "Worldwide",
-    "v": "Priced by weight"
+    "v": "We ship internationally"
+   },
+   {
+    "k": "At checkout",
+    "v": "What it costs, and the options"
    }
   ]
  },
@@ -32,7 +31,7 @@
    "nav": "When it leaves",
    "title": "When it leaves",
    "paras": [
-    "Orders leave the warehouse in two to three business days. Business days, so an order placed on a Friday evening is a Tuesday or Wednesday dispatch.",
+    "Orders leave the warehouse in one to two business days. Business days, so an order placed on a Friday evening is a Monday or Tuesday dispatch.",
     "You get a tracking number as soon as the carrier scans the parcel — which is the moment it is genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
    ]
   },
@@ -42,8 +41,8 @@
    "cream": true,
    "title": "When it lands",
    "paras": [
-    "Ground delivery takes three to five business days depending on where you are. That is after the two to three days above, not including them.",
-    "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it is going and what is in the box. Express — UPS 2 Day — is available to buy at checkout if the ground window is too slow."
+    "Ground delivery takes a few business days on top of that, depending on where you are. Checkout shows the options and what each one costs before you pay.",
+    "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it is going and what is in the box."
    ],
    "rows": {
     "items": [
@@ -53,46 +52,11 @@
      },
      {
       "k": "Dispatch",
-      "v": "2–3 business days"
+      "v": "1–2 business days"
      },
      {
-      "k": "US ground",
-      "v": "3–5 business days after dispatch"
-     },
-     {
-      "k": "Express",
-      "v": "UPS 2 Day, priced at checkout"
-     }
-    ]
-   }
-  },
-  {
-   "id": "cost",
-   "nav": "What it costs",
-   "title": "What it costs",
-   "lede": "Free over $125 inside the US.",
-   "paras": [
-    "Every US order over $125 ships free. A single wedge is under that, so it carries a charge; two of them do not.",
-    "Below $125 the cost is by weight, starting at $8 and rising with the parcel. Express is priced separately at checkout.",
-    "Original shipping is not refunded if you return something."
-   ],
-   "rows": {
-    "items": [
-     {
-      "k": "Over $125",
-      "v": "Free, inside the US"
-     },
-     {
-      "k": "Under $125",
-      "v": "By weight, from $8"
-     },
-     {
-      "k": "Express",
-      "v": "UPS 2 Day, from $28"
-     },
-     {
-      "k": "International",
-      "v": "By weight, from $17.50"
+      "k": "Cost and speed",
+      "v": "Shown at checkout, before you pay"
      }
     ]
    }
@@ -113,8 +77,8 @@
     "href": "{{link:contact}}"
    },
    "paras": [
-    "Orders ship out of Long Beach, with some fulfilment handled from Denver.",
-    "International shipping is real and priced by weight: standard service starts at $17.50 for a light parcel and rises with the box. The rate you see at checkout is the rate."
+    "Orders ship out of Long Beach.",
+    "International shipping is real, and the rate is calculated at checkout like any other."
    ]
   },
   {
@@ -150,6 +114,5 @@
   "ctaHref": "{{link:contact}}",
   "ctaMail": "Email support",
   "aside": "The order number is in your confirmation email. It saves a whole exchange."
- },
- "_source": "Free shipping: TOTAL_PRICE >= $125.00, US zone. Paid US ground by weight: $8 to 1lb, $18 to 2lb, $25 to 3lb, $35 to 4lb, $40 above. Express (UPS 2 Day): $28 / $40 / $60 by the same weight bands. International 'Rest of the World' Standard Service: $17.50 to 0.5lb rising to $60 at 9lb. Locations: Long Beach CA (two), Compton CA, and a Denver CO fulfilment location."
+ }
 }

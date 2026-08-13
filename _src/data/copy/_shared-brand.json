@@ -4,7 +4,7 @@
   "_pages": "The brand and browse pages each of these can send you to. build.py drops the page you are on, so a page never links to itself.",
   "pages": [
     { "slug": "story",    "name": "Our Story", "hook": "What Lucky makes, how it sells it, and who answers when something goes wrong." },
-    { "slug": "trybe",    "name": "The Trybe", "hook": "The ambassador roster, what we look for, and the one way to ask." },
+    { "slug": "trybe",    "name": "Ambassador Program", "hook": "The roster, the affiliate commission, and the two ways in." },
     { "slug": "reviews",  "name": "Reviews",   "hook": "Every club review in one place, filterable by product and by rating." },
     { "slug": "c/clubs",  "name": "The clubs", "hook": "Five clubs: two wedge finishes, two putters and a hybrid." }
   ],
