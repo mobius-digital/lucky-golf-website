@@ -509,7 +509,16 @@ button{font:inherit;color:inherit}
   border-block:2px solid var(--brand-accent);padding:16px 0}
 .mq::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite;position:relative;z-index:1}
-.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+/* The marquee does NOT pause on hover (Cole, 2026-08-02). It used to stop on
+   :hover and :focus-within, which meant a cursor resting anywhere near the top
+   of the page froze it — on the homepage that is most of the time, so the band
+   read as a static strip rather than a moving one.
+
+   Safe to drop both: the track holds only <span> and decorative <svg>, both
+   sets are aria-hidden, and there is nothing focusable inside — so
+   :focus-within could never fire and no keyboard user can be trapped beside
+   moving text. The accessibility escape that matters is still below:
+   prefers-reduced-motion stops the animation outright. */
 .mq-set{display:flex;align-items:center;flex:none}
 .mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
   font-size:.72rem;color:var(--on-brand);padding:0 30px;white-space:nowrap}
@@ -1963,7 +1972,7 @@ button{font:inherit;color:inherit}
   <div class="pd-gal">
     <div class="gal-stage" id="gal">
       <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-      
+      <span class="gal-tag">Flush</span>
       <div class="gal-slide" data-on><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="Stryker LGH01 hybrid, face on" width="1000" height="1000"></div>
       <div class="gal-slide"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="Stryker LGH01 hybrid, full club" loading="lazy" width="1000" height="1000"></div>
       <div class="gal-slide"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_65f3a9e3-d92c-481b-87b0-85ac2eb90294.webp?v=1782597493" alt="Stryker LGH01 hybrid, sole" loading="lazy" width="1000" height="1000"></div>

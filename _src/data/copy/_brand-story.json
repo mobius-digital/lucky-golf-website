@@ -34,7 +34,7 @@
         "The wedges are forged from 1020 carbon steel with a milled and sandblasted face. The putters are cut from a single block of stainless — 431 in the blade, 304 in the mallet. The hybrid is titanium with a flex-channel face.",
         "None of that is unusual for a good club. What is unusual is publishing it plainly, per loft, in a table you can read before you buy, including the rows where we do not have a number yet. If a spec is missing from this site it is because nobody has measured it, not because it is inconvenient."
       ],
-      "cta": { "label": "See the clubs", "href": "{{link:c/clubs}}" }
+      "cta": { "label": "Put one in the bag", "href": "{{link:c/clubs}}" }
     },
     {
       "eyebrow": "How we sell it",
@@ -77,9 +77,9 @@
     "eyebrow": "Have a look",
     "headline": "The clubs are the argument",
     "body": "Everything above is context. The reason to buy a Lucky wedge is the wedge, and there are sixty days to decide whether that holds up.",
-    "ctaLabel": "Shop the clubs",
+    "ctaLabel": "Take it home",
     "ctaHref": "{{link:c/clubs}}",
-    "cta2Label": "Read the reviews",
+    "cta2Label": "What people found",
     "cta2Href": "{{link:reviews}}",
     "aside": "It's better to be lucky."
   },

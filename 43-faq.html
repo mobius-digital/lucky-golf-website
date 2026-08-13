@@ -509,7 +509,16 @@ button{font:inherit;color:inherit}
   border-block:2px solid var(--brand-accent);padding:16px 0}
 .mq::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite;position:relative;z-index:1}
-.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+/* The marquee does NOT pause on hover (Cole, 2026-08-02). It used to stop on
+   :hover and :focus-within, which meant a cursor resting anywhere near the top
+   of the page froze it — on the homepage that is most of the time, so the band
+   read as a static strip rather than a moving one.
+
+   Safe to drop both: the track holds only <span> and decorative <svg>, both
+   sets are aria-hidden, and there is nothing focusable inside — so
+   :focus-within could never fire and no keyboard user can be trapped beside
+   moving text. The accessibility escape that matters is still below:
+   prefers-reduced-motion stops the animation outright. */
 .mq-set{display:flex;align-items:center;flex:none}
 .mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
   font-size:.72rem;color:var(--on-brand);padding:0 30px;white-space:nowrap}
@@ -1572,7 +1581,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
           <p>The Tracer LGP02 Mallet is built in both hands, so if it is a Lucky putter you are after rather than specifically a blade, that one exists now.</p>
           <p>We are not going to put a date on a left-handed blade here. When it is real it will be on the site with a price and a stock number like everything else.</p>
           <p class="sup-src">From the Tracer LGP01 reviews</p>
-          <p class="sup-cta"><a class="btn btn-line btn-sm" href="20-product-lgp02-gold.html"><span>See the Tracer LGP02 Mallet</span><span class="ar">&rarr;</span></a></p>
+          <p class="sup-cta"><a class="btn btn-line btn-sm" href="20-product-lgp02-gold.html"><span>The Tracer LGP02 Mallet</span><span class="ar">&rarr;</span></a></p>
         </div>
       </details>
     </div>
@@ -1597,7 +1606,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
           <p>It is a fair request and it has been made in the reviews more than once — different putter lengths, a heavier shaft, a bigger grip. It is not something we build today.</p>
           <p>Grips are sold separately if you want to change one yourself. Fitting a new grip to the club counts as a modification, so it ends the return window on that club.</p>
           <p class="sup-src">From the Stryker LGH01 and Tracer LGP02 reviews</p>
-          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>See grips</span><span class="ar">&rarr;</span></a></p>
+          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>Grips, sold separately</span><span class="ar">&rarr;</span></a></p>
         </div>
       </details>
       <details class="sup-q" id="which-loft">
@@ -1605,7 +1614,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
         <div class="sup-a">
           <p>Start from the wedge already in your bag rather than from a chart. The gap between your pitching wedge and your next club is the hole you are filling, and the Carver's loft ladder on the product page walks through it.</p>
           <p>The 01 comes in six lofts from 50° to 60°, in two grinds. Which grind suits you is a separate question from which loft, and it has its own section on the product page.</p>
-          <p class="sup-cta"><a class="btn btn-line btn-sm" href="02-pdp-lgw01.html"><span>See the Carver 01 Gold</span><span class="ar">&rarr;</span></a></p>
+          <p class="sup-cta"><a class="btn btn-line btn-sm" href="02-pdp-lgw01.html"><span>The Carver 01 Gold</span><span class="ar">&rarr;</span></a></p>
         </div>
       </details>
     </div>
@@ -1619,7 +1628,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
           <p>It surprises people, and two separate reviews say so in fairly plain terms. It is worth knowing before the box arrives rather than after.</p>
           <p>Covers are sold separately: a blade cover, a mallet cover and a driver cover.</p>
           <p class="sup-src">From the Stryker LGH01 and Tracer LGP02 reviews</p>
-          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>See head covers</span><span class="ar">&rarr;</span></a></p>
+          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>Head covers</span><span class="ar">&rarr;</span></a></p>
         </div>
       </details>
       <details class="sup-q" id="grip-colour">
@@ -1628,7 +1637,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
           <p>A reviewer raised exactly this, and it is a reasonable thing to raise about a light grip on a club that lives in a bag.</p>
           <p>Grips are a consumable on any club and we sell replacements in several colours. Fitting one yourself ends the return window on the club, so if you are still inside your sixty days it is worth waiting.</p>
           <p class="sup-src">From the Tracer LGP02 reviews</p>
-          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>See grips</span><span class="ar">&rarr;</span></a></p>
+          <p class="sup-cta"><a class="btn btn-line btn-sm" href="10-collection-gear.html"><span>Grips</span><span class="ar">&rarr;</span></a></p>
         </div>
       </details>
     </div>

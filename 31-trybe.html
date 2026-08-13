@@ -509,7 +509,16 @@ button{font:inherit;color:inherit}
   border-block:2px solid var(--brand-accent);padding:16px 0}
 .mq::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite;position:relative;z-index:1}
-.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+/* The marquee does NOT pause on hover (Cole, 2026-08-02). It used to stop on
+   :hover and :focus-within, which meant a cursor resting anywhere near the top
+   of the page froze it — on the homepage that is most of the time, so the band
+   read as a static strip rather than a moving one.
+
+   Safe to drop both: the track holds only <span> and decorative <svg>, both
+   sets are aria-hidden, and there is nothing focusable inside — so
+   :focus-within could never fire and no keyboard user can be trapped beside
+   moving text. The accessibility escape that matters is still below:
+   prefers-reduced-motion stops the animation outright. */
 .mq-set{display:flex;align-items:center;flex:none}
 .mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
   font-size:.72rem;color:var(--on-brand);padding:0 30px;white-space:nowrap}
@@ -1619,7 +1628,7 @@ button{font:inherit;color:inherit}
     <p class="body">There's no form to fill in and no application window to wait for. Write, tell us how you play, and it gets read.</p>
     <div class="br-fit-cta">
       <a class="btn btn-foil sweep" href="42-contact.html"><span>Get in touch</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line-cream" href="10-collection-clubs.html"><span>See the clubs</span></a>
+      <a class="btn btn-line-cream" href="10-collection-clubs.html"><span>The clubs</span></a>
     </div>
     <p class="aside br-fit-aside">No follower minimum. That part is settled.</p>
   </div>

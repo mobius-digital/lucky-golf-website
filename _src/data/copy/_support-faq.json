@@ -36,7 +36,7 @@
             "The Tracer LGP02 Mallet is built in both hands, so if it is a Lucky putter you are after rather than specifically a blade, that one exists now.",
             "We are not going to put a date on a left-handed blade here. When it is real it will be on the site with a price and a stock number like everything else."
           ],
-          "cta": { "label": "See the Tracer LGP02 Mallet", "href": "{{link:p/lgp02-gold}}" },
+          "cta": { "label": "The Tracer LGP02 Mallet", "href": "{{link:p/lgp02-gold}}" },
           "src": "From the Tracer LGP01 reviews"
         }
       ]
@@ -65,7 +65,7 @@
             "It is a fair request and it has been made in the reviews more than once — different putter lengths, a heavier shaft, a bigger grip. It is not something we build today.",
             "Grips are sold separately if you want to change one yourself. Fitting a new grip to the club counts as a modification, so it ends the return window on that club."
           ],
-          "cta": { "label": "See grips", "href": "{{link:c/gear}}" },
+          "cta": { "label": "Grips, sold separately", "href": "{{link:c/gear}}" },
           "src": "From the Stryker LGH01 and Tracer LGP02 reviews"
         },
         {
@@ -75,7 +75,7 @@
             "Start from the wedge already in your bag rather than from a chart. The gap between your pitching wedge and your next club is the hole you are filling, and the Carver's loft ladder on the product page walks through it.",
             "The 01 comes in six lofts from 50° to 60°, in two grinds. Which grind suits you is a separate question from which loft, and it has its own section on the product page."
           ],
-          "cta": { "label": "See the Carver 01 Gold", "href": "{{link:p/lgw01-gold}}" }
+          "cta": { "label": "The Carver 01 Gold", "href": "{{link:p/lgw01-gold}}" }
         }
       ]
     },
@@ -91,7 +91,7 @@
             "It surprises people, and two separate reviews say so in fairly plain terms. It is worth knowing before the box arrives rather than after.",
             "Covers are sold separately: a blade cover, a mallet cover and a driver cover."
           ],
-          "cta": { "label": "See head covers", "href": "{{link:c/gear}}" },
+          "cta": { "label": "Head covers", "href": "{{link:c/gear}}" },
           "src": "From the Stryker LGH01 and Tracer LGP02 reviews"
         },
         {
@@ -101,7 +101,7 @@
             "A reviewer raised exactly this, and it is a reasonable thing to raise about a light grip on a club that lives in a bag.",
             "Grips are a consumable on any club and we sell replacements in several colours. Fitting one yourself ends the return window on the club, so if you are still inside your sixty days it is worth waiting."
           ],
-          "cta": { "label": "See grips", "href": "{{link:c/gear}}" },
+          "cta": { "label": "Grips", "href": "{{link:c/gear}}" },
           "src": "From the Tracer LGP02 reviews"
         }
       ]

@@ -509,7 +509,16 @@ button{font:inherit;color:inherit}
   border-block:2px solid var(--brand-accent);padding:16px 0}
 .mq::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite;position:relative;z-index:1}
-.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+/* The marquee does NOT pause on hover (Cole, 2026-08-02). It used to stop on
+   :hover and :focus-within, which meant a cursor resting anywhere near the top
+   of the page froze it — on the homepage that is most of the time, so the band
+   read as a static strip rather than a moving one.
+
+   Safe to drop both: the track holds only <span> and decorative <svg>, both
+   sets are aria-hidden, and there is nothing focusable inside — so
+   :focus-within could never fire and no keyboard user can be trapped beside
+   moving text. The accessibility escape that matters is still below:
+   prefers-reduced-motion stops the animation outright. */
 .mq-set{display:flex;align-items:center;flex:none}
 .mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
   font-size:.72rem;color:var(--on-brand);padding:0 30px;white-space:nowrap}
@@ -1495,7 +1504,7 @@ button{font:inherit;color:inherit}
       <h2 class="disp d-m">Real materials, and nothing hidden behind them</h2>
       <p class="br-p">The wedges are forged from 1020 carbon steel with a milled and sandblasted face. The putters are cut from a single block of stainless — 431 in the blade, 304 in the mallet. The hybrid is titanium with a flex-channel face.</p>
       <p class="br-p">None of that is unusual for a good club. What is unusual is publishing it plainly, per loft, in a table you can read before you buy, including the rows where we do not have a number yet. If a spec is missing from this site it is because nobody has measured it, not because it is inconvenient.</p>
-      <p class="br-cta"><a class="btn btn-line btn-sm" href="10-collection-clubs.html"><span>See the clubs</span><span class="ar">&rarr;</span></a></p>
+      <p class="br-cta"><a class="btn btn-line btn-sm" href="10-collection-clubs.html"><span>Put one in the bag</span><span class="ar">&rarr;</span></a></p>
     </div>
   </div>
 </section>
@@ -1579,8 +1588,8 @@ button{font:inherit;color:inherit}
     <h2 class="disp d-l">The clubs are the argument</h2>
     <p class="body">Everything above is context. The reason to buy a Lucky wedge is the wedge, and there are sixty days to decide whether that holds up.</p>
     <div class="br-fit-cta">
-      <a class="btn btn-foil sweep" href="10-collection-clubs.html"><span>Shop the clubs</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line-cream" href="32-reviews.html"><span>Read the reviews</span></a>
+      <a class="btn btn-foil sweep" href="10-collection-clubs.html"><span>Take it home</span><span class="ar">&rarr;</span></a>
+      <a class="btn btn-line-cream" href="32-reviews.html"><span>What people found</span></a>
     </div>
     <p class="aside br-fit-aside">It's better to be lucky.</p>
   </div>

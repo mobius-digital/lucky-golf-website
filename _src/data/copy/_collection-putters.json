@@ -38,7 +38,7 @@
       {
         "id": "lgp01-gold",
         "forWho": "Blade &middot; more feedback",
-        "cta": "See the Blade",
+        "cta": "Bag the blade",
         "bars": {
           "weight": { "to": 7, "display": "385&nbsp;g" }
         },
@@ -54,7 +54,7 @@
       {
         "id": "lgp02-gold",
         "forWho": "Mallet &middot; more head",
-        "cta": "See the Mallet",
+        "cta": "Bag the mallet",
         "bars": {
           "weight": { "to": 5, "display": "365&nbsp;g" }
         },

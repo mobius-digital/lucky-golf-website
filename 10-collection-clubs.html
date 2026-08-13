@@ -509,7 +509,16 @@ button{font:inherit;color:inherit}
   border-block:2px solid var(--brand-accent);padding:16px 0}
 .mq::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .mq-track{display:flex;width:max-content;animation:mq-run 110s linear infinite;position:relative;z-index:1}
-.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+/* The marquee does NOT pause on hover (Cole, 2026-08-02). It used to stop on
+   :hover and :focus-within, which meant a cursor resting anywhere near the top
+   of the page froze it — on the homepage that is most of the time, so the band
+   read as a static strip rather than a moving one.
+
+   Safe to drop both: the track holds only <span> and decorative <svg>, both
+   sets are aria-hidden, and there is nothing focusable inside — so
+   :focus-within could never fire and no keyboard user can be trapped beside
+   moving text. The accessibility escape that matters is still below:
+   prefers-reduced-motion stops the animation outright. */
 .mq-set{display:flex;align-items:center;flex:none}
 .mq-set span{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
   font-size:.72rem;color:var(--on-brand);padding:0 30px;white-space:nowrap}
@@ -1793,7 +1802,7 @@ button{font:inherit;color:inherit}
         <span class="q">Inside a hundred yards</span>
         <span class="nm disp d-s">Wedges</span>
         <span class="bd">One wedge in two finishes, with six lofts and two sole grinds to pick between. The question is which gap you keep leaving yourself.</span>
-        <span class="go">See the 01 <span class="ar">&rarr;</span></span>
+        <span class="go">Pick your loft <span class="ar">&rarr;</span></span>
       </a>
       <a class="clp-route" href="10-collection-putters.html">
         <span class="q">On the green</span>
@@ -1805,7 +1814,7 @@ button{font:inherit;color:inherit}
         <span class="q">Still a long way out</span>
         <span class="nm disp d-s">Hybrid</span>
         <span class="bd">Nineteen degrees of titanium for the shot where the green is out of reach and the lie is not doing you any favors.</span>
-        <span class="go">See the Stryker <span class="ar">&rarr;</span></span>
+        <span class="go">Fill the gap <span class="ar">&rarr;</span></span>
       </a>
     </div>
   </div>
