@@ -1,88 +1,146 @@
 {
-  "_": "The Trybe. NEXT-PAGES §4 governs this page and is unusually explicit about what NOT to do.",
-  "_rules": "DO NOT INVENT PROGRAM TERMS. There is no agreed discount, commission or product allowance written down anywhere, so this page describes none. NEXT-PAGES §4: 'An ambassador page that describes a commission structure nobody agreed to is worse than a page that says applications open soon.' It is built around the roster and the brand, with the application as one clear CTA into contact.",
-  "_blocked": "The roster itself — five real names, five handles, five 4:5 portraits — and the program terms. Names are BRACKETED. The homepage roster (HANDOFF §7b G) has the same five slots and fills from the same answer.",
-
-  "crumbName": "The Trybe",
-  "eyebrow": "The Trybe",
-  "headline": "The people who actually play them",
-  "lede": "Creators, club pros and a few very good amateurs who put Lucky in the bag before anyone was paying attention. They get early access, they give honest notes, and some of them make the videos.",
-
-  "stats": {
-    "eyebrow": "What it isn't",
-    "headline": "No follower minimum",
-    "items": [
-      { "k": "Open", "v": "Applications open a few times a year. There is no follower threshold to clear." },
-      { "k": "Honest", "v": "The notes we want are the critical ones. A roster that only says nice things is worth nothing to anyone." },
-      { "k": "Small", "v": "Five slots on the roster today, and they are not filled yet." }
-    ]
-  },
-
-  "roster": {
-    "eyebrow": "The roster",
-    "headline": "Five slots",
-    "lede": "These are real slots waiting on real people. The names below are brackets, not placeholders for names we already have — nobody appears on this page until they have agreed to be on it.",
-    "slots": [
-      { "k": "Headshot needed", "brief": "4:5 portrait, on course, natural light.", "name": "[Creator name]", "handle": "@[handle]" },
-      { "k": "Headshot needed", "brief": "4:5 portrait, on course, natural light.", "name": "[Creator name]", "handle": "@[handle]" },
-      { "k": "Headshot needed", "brief": "4:5 portrait, on course, natural light.", "name": "[Creator name]", "handle": "@[handle]" },
-      { "k": "Headshot needed", "brief": "4:5 portrait, on course, natural light.", "name": "[Creator name]", "handle": "@[handle]" },
-      { "k": "Headshot needed", "brief": "4:5 portrait, on course, natural light.", "name": "[Creator name]", "handle": "@[handle]" }
-    ],
-    "tbd": {
-      "label": "Needs confirming",
-      "text": "who the five are — names, handles and a 4:5 portrait each.",
-      "ask": "The same five slots sit on the homepage, so one answer fills both."
-    }
-  },
-
-  "rows": [
-    {
-      "eyebrow": "What we're after",
-      "cream": true,
-      "title": "Golfers, not audiences",
-      "phK": "Lifestyle shot needed",
-      "phBrief": "4:3. Two or three golfers on a course together, Lucky clubs visible but not staged. Shot wide, natural light, no product hero framing.",
-      "paras": [
-        "The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.",
-        "That is genuinely most of the brief. We are not looking for a particular follower count or a posting schedule, and there is no script."
-      ],
-      "list": {
-        "items": [
-          "You play regularly, and you'd put these in the bag on merit.",
-          "You'll tell us what's wrong with a club as readily as what's right.",
-          "You're happy for your name and handle to appear on this page."
-        ]
-      }
-    }
+ "_": "The Trybe. NEXT-PAGES §4 governs this page and is unusually explicit about what NOT to do.",
+ "_rules": "PROGRAM TERMS ARE NOW SOURCED, not invented. Found published on the store 2026-08-02: the 'Join the Team' page gives partners@luckygolf.com as the ambassador contact, and the Lucky Golf Affiliate Application page publishes the affiliate terms — 10% commission, 60-day cookie, run through AvantLink. Those are TWO DIFFERENT THINGS and the page keeps them apart: the affiliate program is a public, self-serve commission scheme; the Trybe roster is not. What the ROSTER gives and asks is still unwritten, and still says so.",
+ "_blocked": "The roster itself — five real names, five handles, five 4:5 portraits — and the program terms. Names are BRACKETED. The homepage roster (HANDOFF §7b G) has the same five slots and fills from the same answer.",
+ "crumbName": "The Trybe",
+ "eyebrow": "The Trybe",
+ "headline": "The people who actually play them",
+ "lede": "Creators, club pros and a few very good amateurs who put Lucky in the bag before anyone was paying attention. They get early access, they give honest notes, and some of them make the videos.",
+ "stats": {
+  "eyebrow": "What it isn't",
+  "headline": "No follower minimum",
+  "items": [
+   {
+    "k": "Open",
+    "v": "Applications open a few times a year. There is no follower threshold to clear."
+   },
+   {
+    "k": "Honest",
+    "v": "The notes we want are the critical ones. A roster that only says nice things is worth nothing to anyone."
+   },
+   {
+    "k": "Small",
+    "v": "Five slots on the roster today, and they are not filled yet."
+   }
+  ]
+ },
+ "roster": {
+  "eyebrow": "The roster",
+  "headline": "Five slots",
+  "lede": "These are real slots waiting on real people. The names below are brackets, not placeholders for names we already have — nobody appears on this page until they have agreed to be on it.",
+  "slots": [
+   {
+    "k": "Headshot needed",
+    "brief": "4:5 portrait, on course, natural light.",
+    "name": "[Creator name]",
+    "handle": "@[handle]"
+   },
+   {
+    "k": "Headshot needed",
+    "brief": "4:5 portrait, on course, natural light.",
+    "name": "[Creator name]",
+    "handle": "@[handle]"
+   },
+   {
+    "k": "Headshot needed",
+    "brief": "4:5 portrait, on course, natural light.",
+    "name": "[Creator name]",
+    "handle": "@[handle]"
+   },
+   {
+    "k": "Headshot needed",
+    "brief": "4:5 portrait, on course, natural light.",
+    "name": "[Creator name]",
+    "handle": "@[handle]"
+   },
+   {
+    "k": "Headshot needed",
+    "brief": "4:5 portrait, on course, natural light.",
+    "name": "[Creator name]",
+    "handle": "@[handle]"
+   }
   ],
-
-  "steps": {
-    "eyebrow": "How to ask",
-    "headline": "There is one way in",
+  "tbd": {
+   "label": "Needs confirming",
+   "text": "who the five are — names, handles and a 4:5 portrait each.",
+   "ask": "The same five slots sit on the homepage, so one answer fills both."
+  }
+ },
+ "rows": [
+  {
+   "eyebrow": "What we're after",
+   "cream": true,
+   "title": "Golfers, not audiences",
+   "phK": "Lifestyle shot needed",
+   "phBrief": "4:3. Two or three golfers on a course together, Lucky clubs visible but not staged. Shot wide, natural light, no product hero framing.",
+   "paras": [
+    "The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.",
+    "That is genuinely most of the brief. We are not looking for a particular follower count or a posting schedule, and there is no script."
+   ],
+   "list": {
     "items": [
-      { "n": "1", "title": "Write to us", "body": "Email support@luckygolf.com or use the contact page. Pick “The Trybe / ambassadors” from the list so it lands in the right place." },
-      { "n": "2", "title": "Tell us how you play", "body": "Where you play, how often, what's in the bag now. A handle if you post; it is not required." },
-      { "n": "3", "title": "We'll come back to you", "body": "Applications are looked at in batches rather than continuously, so a reply is not immediate." }
-    ],
-    "tbd": {
-      "label": "Needs confirming",
-      "text": "what the program gives and what it asks — discount, commission, product, or some combination — and how often applications actually open.",
-      "ask": "None of it is written down yet, so this page describes none of it. A commission structure nobody has agreed to is worse on a page than an honest gap."
-    }
+     "You play regularly, and you'd put these in the bag on merit.",
+     "You'll tell us what's wrong with a club as readily as what's right.",
+     "You're happy for your name and handle to appear on this page."
+    ]
+   }
   },
-
-  "close": {
-    "eyebrow": "Interested",
-    "headline": "Say hello",
-    "body": "There's no form to fill in and no application window to wait for. Write, tell us how you play, and it gets read.",
-    "ctaLabel": "Get in touch",
-    "ctaHref": "{{link:contact}}",
-    "cta2Label": "The clubs",
-    "cta2Href": "{{link:c/clubs}}",
-    "aside": "No follower minimum. That part is settled."
-  },
-
-  "moreHeadline": "The rest of it",
-  "moreAside": "The roster portraits and the program terms are the two things standing between this page and a finished one."
+  {
+   "eyebrow": "The other way in",
+   "flip": true,
+   "title": "Or just take the commission",
+   "phK": "Lifestyle shot needed",
+   "phBrief": "4:3. A golfer filming a shot on a phone at the range, Lucky club in frame. Loose, unposed, natural light — this is about somebody making their own content, not a brand shoot.",
+   "paras": [
+    "If you have a website, a blog or a following in the golf space and you would rather not wait on a roster place, the affiliate program is open now and you can apply yourself.",
+    "It pays <b>10% commission</b> on every qualified buyer you send, on a <b>60-day cookie</b>, and it runs through AvantLink &mdash; so the tracking, the reporting and the payouts are not something either of us has to build."
+   ],
+   "list": {
+    "items": [
+     "10% commission on qualified sales.",
+     "60-day cookie window.",
+     "Run through AvantLink, free to join.",
+     "Open now &mdash; no roster place required."
+    ]
+   }
+  }
+ ],
+ "steps": {
+  "eyebrow": "How to ask",
+  "headline": "There is one way in",
+  "items": [
+   {
+    "n": "1",
+    "title": "Write to us",
+    "body": "Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a>, which is the address the team page gives, or use the contact form and pick &ldquo;The Trybe / ambassadors&rdquo; so it lands in the right place."
+   },
+   {
+    "n": "2",
+    "title": "Tell us how you play",
+    "body": "Where you play, how often, what's in the bag now. A handle if you post; it is not required."
+   },
+   {
+    "n": "3",
+    "title": "We'll come back to you",
+    "body": "Applications are looked at in batches rather than continuously, so a reply is not immediate."
+   }
+  ],
+  "tbd": {
+   "label": "Needs confirming",
+   "text": "what the Trybe roster itself gives and asks — product, discount, or something else. The affiliate program below is separate and its terms are public; the roster's are not written down.",
+   "ask": "A roster place and an affiliate link are different things, and the page will not blur them."
+  }
+ },
+ "close": {
+  "eyebrow": "Interested",
+  "headline": "Say hello",
+  "body": "There's no form to fill in and no application window to wait for. Write, tell us how you play, and it gets read.",
+  "ctaLabel": "Get in touch",
+  "ctaHref": "{{link:contact}}",
+  "cta2Label": "The clubs",
+  "cta2Href": "{{link:c/clubs}}",
+  "aside": "No follower minimum. That part is settled."
+ },
+ "moreHeadline": "The rest of it",
+ "moreAside": "The roster portraits and the program terms are the two things standing between this page and a finished one."
 }
