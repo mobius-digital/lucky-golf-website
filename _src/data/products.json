@@ -200,26 +200,6 @@
    ],
    "count": 13,
    "tpl": "plp"
-  },
-  {
-   "id": "sale",
-   "name": "Sale",
-   "shopify": "summer-warehouse-sale",
-   "fams": [],
-   "eyebrow": "Marked down",
-   "lede": "",
-   "blocked": "No product in this collection has a compareAtPrice, so there is no discount to show. Needs Cole: either price the collection or drop Sale from the nav.",
-   "products": [
-    "grip-clover-white",
-    "grip-clover-green",
-    "grip-clover-blue",
-    "grip-clover-black",
-    "grip-clover-pink",
-    "grip-putter-green"
-   ],
-   "count": 6,
-   "tpl": "plp",
-   "facets": []
   }
  ],
  "products": [

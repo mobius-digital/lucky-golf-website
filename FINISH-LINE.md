@@ -1,6 +1,6 @@
 # Lucky Golf — the finish line
 
-**58 of 61 pages built. Zero dead links.** Live at
+**58 of 60 pages built. Zero dead links.** Live at
 https://mobius-digital.github.io/lucky-golf-website/
 
 This is the plan for closing out the remaining work, ordered so the cheap things
@@ -14,24 +14,28 @@ a known, scoped gap.
 Three answers. None needs research, all three are decisions or documents that
 already exist somewhere.
 
-### 1a. Sale — price it, or drop it
+### 1a. Sale — CLOSED 2026-08-13. Dropped.
 
-The last unbuilt page. Nine products sit in the Shopify Sale collection — six
-grips and three archived hats — and **not one carries a real `compareAtPrice`**.
-Every value is `null` or `"0.00"`. Building it today puts six full-price grips
-under a heading that says Sale.
+Cole: *"That was a long time ago."* The slug is removed from `COLLECTIONS` in
+`normalize-products.py`.
 
-Two ways to close it:
+Re-verified against the live store before removing it: the Shopify "Summer
+Warehouse Sale" collection still holds six grip products plus three **archived**
+hats, and **not one variant carries a real `compareAtPrice`** — every value is
+`null` or `"0.00"`. One of the six grips is sold out entirely. A page headed
+Sale showing six full-price grips is a lie.
 
-- **Price the collection.** Set a genuine compare-at price on the members you
-  want discounted, and the page builds with no other change.
-- **Drop Sale from the nav.** One line in `normalize-products.py`, and the
-  header stops advertising a collection that isn't one.
+**The brief was wrong about one thing:** it said "drop Sale from the nav." There
+was no nav entry. Nothing on the site ever linked to Sale — no `{{link:c/sale}}`
+token anywhere in `_src/` — so it was a declared slug nobody could reach, not an
+advertised collection. Removing it changes **no page's output**; all 58 rebuild
+byte-identical. It only stops the registry counting a page that could not exist.
 
-*(The only product in the whole store with a real was-price is
-`stock-putter-grips`, $19.95 from $30.00 — and it is not in the collection.)*
+The Shopify collection itself is untouched. **To bring Sale back** for a real
+promotion: re-add the dict, set genuine compare-at prices in Shopify, and add a
+nav or footer entry — without one the page builds and stays unreachable.
 
-**Unblocks:** the 59th page, or a cleaner nav.
+**Registry: 61 pages → 60. Still 58 built, still zero dead links.**
 
 ### 1b. The four policy answers
 
@@ -140,11 +144,21 @@ homepage, so one answer fills both.
 
 ---
 
-## Round 4 · One build task left, and it is not blocked
+## Round 4 · DONE — `DEVELOPER-HANDOFF.md` (2026-08-13)
 
 ### The developer handoff document
 
-Always the final deliverable, and the reason the build is shaped the way it is.
+**Written. It is `DEVELOPER-HANDOFF.md` at the repo root**, fourteen sections:
+how to run the build, the repo map, the pipeline and what happens to each half
+of it in a theme, the page→template map, what each template is made of, a
+Mustache→Liquid conversion table, **how the three-layer editorial merge has to
+be rebuilt in Liquid** (metafields plus metaobjects, with the fallback chain
+written out — Liquid has no merge), the catalogue traps, the design laws with
+their measured numbers, the build guards, what is temporary and must be deleted
+rather than ported, what is still open and who owns it, and a port checklist.
+
+Everything below is what it had to carry, kept here as the record of the brief.
+
 It maps each of our pages onto the Shopify template that replaces it:
 
 | Ours | Shopify |
@@ -183,8 +197,12 @@ its own document, because it is what ships with the repo.
 
 ## Deferred — real, but not blockers
 
-- **Footer links are 16px tap targets** on all 59 pages. Pre-existing, in the
-  shared partial, and fixing it touches the whole site.
+- ~~**Footer links are 16px tap targets**~~ — **FIXED 2026-08-13.** The note
+  overstated it: the phone rule has given them 44px since Phase 1, so the gap
+  was only ever the POINTER target on desktop. Measured 16×98.7 with ~11px of
+  dead gap between rows; now **24×205.7**, gap moved inside the target. Footer
+  is 41.5px shorter and the rows are a 25px pitch instead of ~36px — the one
+  visible change, and the reason it needed a decision rather than a patch.
 - **The Judge.me AI summary says "premium"** on the 01 Gold — a word the
   Spec-to-Benefit guide bans. It is Judge.me's auto-generated text, published
   verbatim by standing decision. Yours to disable, not to edit.
@@ -200,7 +218,7 @@ its own document, because it is what ships with the repo.
 
 **Cole**
 
-- [ ] Sale priced, or dropped from the nav
+- [x] ~~Sale priced, or dropped from the nav~~ — dropped 2026-08-13
 - [x] ~~Defective returns — Lucky pays the shipping~~ (answered 2026-08-02)
 - [ ] Duties — prepaid at checkout, or collected on delivery
 - [ ] Retire or rewrite the Shopify FAQ page (it contradicts the refund policy)
@@ -218,19 +236,19 @@ its own document, because it is what ships with the repo.
 
 **Build side**
 
-- [ ] Sale page built, or the slug retired
+- [x] ~~Sale page built, or the slug retired~~ — slug retired 2026-08-13
 - [ ] Four policy chips replaced with real answers
 - [ ] Catalogue re-pulled, `merge_grinds()` deleted
 - [ ] Reviews page: S-grind chip removed, 01 reads 620
 - [ ] Product-specific CTAs applied from Product Language Rules
 - [ ] Roster names and portraits in, `consent` keys set
 - [ ] Photography dropped into the 26 still slots
-- [ ] Developer handoff document written
-- [ ] Footer tap targets — decided either way
+- [x] ~~Developer handoff document written~~ — `DEVELOPER-HANDOFF.md` (2026-08-13)
+- [x] ~~Footer tap targets — decided either way~~ — fixed 2026-08-13, desktop 16px → 24px
 - [ ] Final sweep at 1440 and 390, all pages
 - [ ] `python tools/build.py --check` clean
 - [ ] `node tools/test-variants.js` passes
-- [ ] `python tools/build.py --links` reports 61 of 61, zero dead links
+- [ ] `python tools/build.py --links` reports 60 of 60, zero dead links
 
 **Then it is finished.**
 
@@ -243,7 +261,7 @@ Paste this:
 > Continuing Lucky Golf in `C:\Users\wetzl\Lucky Golf\Website`.
 > Read `FINISH-LINE.md` first, then `HANDOFF.md` §23–§26.
 >
-> The site is built and live: 58 of 61 pages, zero dead links, published at
+> The site is built and live: 58 of 60 pages, zero dead links, published at
 > https://mobius-digital.github.io/lucky-golf-website/ from a public GitHub
 > repo (`mobius-digital/lucky-golf-website`, master, GitHub Pages).
 >

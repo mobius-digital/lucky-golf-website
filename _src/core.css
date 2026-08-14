@@ -458,8 +458,16 @@ button{font:inherit;color:inherit}
 .ftr .tag{color:var(--cream-52);margin-top:18px;max-width:30ch;font-size:.95rem}
 .ftr h3{margin:0 0 16px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--gold);font-weight:700}
-.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.ftr ul a{color:var(--cream-70);font-size:.93rem}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+/* 24px is WCAG 2.2 SC 2.5.8's minimum target, and these were 16px on a POINTER
+   — the phone rule below has given them 44px since Phase 1, so the gap was only
+   ever desktop. 16px boxes 9px apart put the centres 25px apart, which clears
+   the spacing exception by a single pixel; passing on a technicality is not the
+   same as being usable. The gap moves INSIDE the target (9px between -> 1px
+   between, 8px of padding within), so the column grows 8px and nothing else
+   about the footer moves. */
+.ftr ul a{color:var(--cream-70);font-size:.93rem;
+  display:flex;align-items:center;min-height:24px}
 .ftr ul a:hover{color:var(--cream)}
 .ftr-btm{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   align-items:center;padding:20px 0 26px;border-top:2px solid var(--rule-on-dark)}

@@ -2646,3 +2646,211 @@ the bundle (fails the club pages too).
 6. **The homepage review quotes naming competitors** (§26d).
 7. **Update the copy skill to How We Write v7.3** and add the two new guides.
 8. **A register pass** against v7.3's "range" section (§26e).
+
+---
+
+## 27. The developer handoff document (2026-08-13)
+
+### 27a. `DEVELOPER-HANDOFF.md` — Round 4 is closed
+
+The last unblocked build task. It existed only as a table inside `NEXT-PAGES.md`
+§9; it is its own document now, because it is what ships with the repo.
+
+Fourteen sections: how to run the build, the repo map, the pipeline diagram and
+what happens to each half of it in a theme, the page→template map, what each
+template is made of, a Mustache→Liquid conversion table, the editorial layer,
+the catalogue traps, the design laws, the build guards, what is temporary, what
+is still open, a port checklist, and where to read further.
+
+### 27b. The part that is not in §9's brief, and is the most useful thing in it
+
+**Liquid has no merge.** The three-layer editorial contract —
+`_shared-<template>.json` under `_family-<family>.json` under `<product>.json`,
+shallow and total — is the single hardest thing in this build to reproduce in a
+theme, and nothing in NEXT-PAGES §9 mentioned it.
+
+The doc names the mapping (product metafields → `lucky_family` metaobject →
+`lucky_template` metaobject) and writes the fallback chain out in Liquid, because
+a developer who does not know the layers exist will discover them the way we did:
+by finding the same size chart typed into two family files.
+
+### 27c. Two rules that turned out to apply to Liquid as well
+
+- **The scope stack walks outward, and so does Liquid.** `{{ lede }}` inside a
+  `{% for %}` resolves to the outer assign exactly as our engine does, so the
+  duplicated-headline bug on the refund policy is reproducible in a theme. The
+  doc says: reference loop variables explicitly, `{{ sec.lede }}`, never
+  `{{ lede }}`.
+- **`availableForSale` is `variant.available`, never `variant.inventory_quantity`.**
+  The checklist tells the porter to grep for `inventory_quantity` and justify
+  every hit.
+
+### 27d. Three counts corrected against the data rather than the prose
+
+NEXT-PAGES §9 and earlier HANDOFF sections carried figures from before the wedge
+merge. Recomputed from `products.json` for the doc:
+
+```
+club     5 built     (7 records — lgd01 and lgp02-patriot are discontinued)
+apparel  23 built
+gear     13 built    (§9's brief said 12)
+         41 product pages, of 58 built, of 61 declared
+```
+
+### 27e. One nuance §9's "no SKU renders anywhere" needed
+
+It is true of every merchandising surface — PDP, tile, buy box, cross-sell rail
+— and search deliberately does not match SKUs either. **They do render in the
+cart line item and the lightbox buy block**, which is where Shopify's own cart
+shows a variant title anyway. Stated that way in the doc rather than as an
+absolute a developer would find a counter-example to in five minutes.
+
+### 27f. Verified
+
+`normalize-products.py --check` identical · `build.py --check` **all 58
+identical** · `test-variants.js` all invariants hold · `build.py --links` 61
+pages, 58 built, 3 declared. No source file changed — this pass is documentation
+only.
+
+### 27g. Still Cole's
+
+Unchanged from §26j and `FINISH-LINE.md`. The site side of the checklist now has
+one fewer box: the handoff document is written. Everything else on the build
+side is blocked on an answer, a photograph or the Shopify merge.
+
+---
+
+## 28. Sale is gone (2026-08-13)
+
+### 28a. Cole: "that was a long time ago"
+
+The `sale` entry is deleted from `COLLECTIONS` in `normalize-products.py`. It had
+been the site's only `blocked` collection since Phase B.
+
+Re-verified against the live store before removing it, because the record was
+twelve days old:
+
+```
+Summer Warehouse Sale (gid://shopify/Collection/486822183189) — 9 members
+  6 grip products   ACTIVE    compareAtPrice null or "0.00" on EVERY variant
+  3 clover hats     ARCHIVED  sold out, no compare-at
+  grip-putter-green ACTIVE    all four variants dead — sold out entirely
+```
+
+Nothing changed since §26a. Still not one real was-price anywhere in it.
+
+### 28b. The brief was wrong, and the correction is the useful part
+
+`FINISH-LINE.md` §1a and NEXT-PAGES §8 both said "drop Sale from the nav."
+**There was no nav entry.** Zero `{{link:c/sale}}` tokens anywhere in `_src/`,
+and `build.py` reported zero links to unbuilt pages — so Sale was a *declared
+slug nobody could reach*, not a collection the header was advertising.
+
+That changes what the decision was worth. It was never "the 59th page against a
+cleaner nav". It was "do you want a sale section at all", and building one would
+have needed compare-at prices **and** a new nav or footer entry, because the page
+would have been unreachable the moment it existed.
+
+### 28c. Removing it changes no page's output
+
+`collection_siblings()` already skipped `blocked` collections, so Sale was never
+in a sibling row either. **All 58 pages rebuild byte-identical.** The only
+observable change is the registry:
+
+```
+before   61 pages, 58 built, 3 declared
+after    60 pages, 58 built, 2 declared   (the two discontinued products)
+```
+
+### 28d. What was kept, and why
+
+- **The `blocked` mechanism stays.** It is how a collection gets a routed slug
+  and an explained absence instead of a dangling link, and the next collection
+  that is real in Shopify but not ready here will want it.
+- **The `members` code path stays**, now documented as unused. It is the general
+  facility for a curated rather than family-derived collection.
+- **The Shopify collection is untouched.** Removing a slug from our overlay is
+  not the same action as deleting a merchandising object in a live store, and
+  the second one was not asked for.
+- A comment block where the entry was records how to bring Sale back: re-add the
+  dict, set genuine compare-at prices, **and add a nav or footer entry.**
+
+### 28e. Verified
+
+`normalize-products.py` 43 products / 155 variants, unchanged · `build.py
+--check` **all 58 identical** · `test-variants.js` all invariants hold ·
+`--links` 60 pages, 58 built, 2 declared · no `sale` string left in
+`products.json`, `_src/` or any built page.
+
+---
+
+## 29. Footer tap targets (2026-08-13)
+
+### 29a. The standing note was half wrong
+
+HANDOFF §25h and `FINISH-LINE.md` both carried "every footer link is a 16px hit
+area on all 58 pages". Measured on a built page with the fonts actually loaded:
+
+```
+390   44 x 350     already correct — the <=620px rule has done this since Phase 1
+1440  16 x 98.7    the real gap, and it is POINTER-only
+```
+
+So it was never a tap-target problem. It was a **pointer**-target problem, and
+the note had been repeated forward without anyone re-measuring it.
+
+### 29b. What was actually wrong — inline anchors have no vertical hit area
+
+`.ftr ul a` had no `display`, so it was inline: **its hit area is the inline
+box, not the line box.** The `<li>` rows were ~27px of line-height with a 9px
+grid gap — about 36px of visual pitch — but only 16px of each row was
+clickable. Roughly **11px of dead space between every pair of links**, which is
+invisible and which no contrast or overflow sweep can see.
+
+16px boxes at a 25px centre-to-centre pitch technically clear WCAG 2.2 SC 2.5.8
+through its *spacing* exception, by one pixel. Passing on a technicality is not
+the same as being usable.
+
+### 29c. The fix moves the gap INSIDE the target
+
+```css
+.ftr ul   { gap:9px -> 1px }
+.ftr ul a { + display:flex; align-items:center; min-height:24px }
+```
+
+| | before | after |
+|---|---|---|
+| hit area | 16 &times; 98.7 | **24 &times; 205.7** |
+| row pitch | ~36px, 11px of it dead | 25px, all live |
+| footer height | 436.2 | **394.7** |
+
+The footer is **41.5px shorter** and every row is fully clickable. The `<=620px`
+rule still wins on a phone, so 44px is untouched there.
+
+**The visible consequence, and the reason this needed a decision:** the link
+lists are a 25px pitch now instead of ~36px, so the footer columns read tighter.
+That is the trade — density for a target that matches what the eye already
+thought it was aiming at.
+
+### 29d. Two measurement traps worth keeping
+
+- **Await `document.fonts.ready` before measuring anything.** The first pass
+  read the footer at 436.2px pre-font-load and the `.tag` paragraph was wrapping
+  to a different number of lines. Every derived comparison would have been
+  wrong.
+- **Get before/after from the same DOM.** The honest comparison came from
+  injecting the OLD rule back into the live page with `!important`, measuring,
+  then removing it — not from comparing against a number captured earlier under
+  different conditions.
+
+### 29e. Verified
+
+Measured at 1440 and 390 on `01-home.html`, fonts loaded. No two link boxes
+overlap in any column, colour is unchanged (`--cream-70`), `display:flex`
+confirmed computed, page `scrollWidth` 390 at a 390 viewport.
+
+`normalize-products.py --check` identical · `build.py --check` **all 58
+identical** after rebuild · `test-variants.js` all invariants hold · `--links`
+60 pages, 58 built, 2 declared.
+
+**All 58 pages changed on disk** — it is core.css, so every page carries it.

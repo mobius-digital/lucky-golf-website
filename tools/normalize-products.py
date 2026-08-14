@@ -243,8 +243,9 @@ EDITORIAL = {
 #
 # Membership is computed from `fams` — the family assignments above are the
 # single source of truth, so a product cannot be in a collection and missing
-# from the store's own grouping. `members` overrides that for collections whose
-# contents are curated rather than structural (Sale).
+# from the store's own grouping. `members` overrides that for a collection whose
+# contents are curated rather than structural; no collection uses it today (Sale
+# was the only one, and it is gone — see below).
 #
 # `facets` are the filter chips on the PLP: family keys the visitor can narrow
 # by. Omitted where there is only one family and a filter row would be noise.
@@ -297,20 +298,27 @@ COLLECTIONS = [
          lede="Covers, grips, gloves and tees. The small things that wear out first "
               "and get replaced last."),
 
-    # Sale is DECLARED BUT NOT BUILT, deliberately. Its nine Shopify members are
-    # six grips plus three ARCHIVED hats, and not one of them carries a real
-    # compareAtPrice — every value is null or "0.00". The only product in the
-    # store with a genuine was-price is stock-putter-grips ($19.95 from $30.00),
-    # and that one is NOT in the collection. Building the page today would put
-    # six full-price grips under a heading that says Sale.
-    dict(id="sale", name="Sale", shopify="summer-warehouse-sale", fams=[],
-         members=["grip-clover-white", "grip-clover-green", "grip-clover-blue",
-                  "grip-clover-black", "grip-clover-pink", "grip-putter-green"],
-         eyebrow="Marked down",
-         lede="",
-         blocked="No product in this collection has a compareAtPrice, so there is "
-                 "no discount to show. Needs Cole: either price the collection or "
-                 "drop Sale from the nav."),
+    # SALE — REMOVED 2026-08-13 (Cole: "that was a long time ago").
+    #
+    # It was declared here but never built, and it was the site's only `blocked`
+    # collection. Shopify's "Summer Warehouse Sale" holds six grip products plus
+    # three ARCHIVED hats, and not one variant carries a real compareAtPrice —
+    # every value is null or "0.00", re-verified against the live store on
+    # 2026-08-13. A page headed Sale showing six full-price grips is a lie, and
+    # the green oversized putter grip in it is sold out entirely.
+    #
+    # Nothing on the site ever linked to it: there was no {{link:c/sale}} token
+    # anywhere in _src/, and `collection_siblings()` already skipped `blocked`
+    # collections, so removing the entry changes no page's output. All it does
+    # is stop the registry declaring a page nobody could reach.
+    #
+    # TO BRING IT BACK for a real promotion: re-add a dict here with the members
+    # you want, set genuine compareAtPrices in Shopify, and ADD A NAV OR FOOTER
+    # ENTRY — without one the page builds and stays unreachable.
+    #
+    # The `blocked` mechanism itself stays. It is how a collection gets a routed
+    # slug and an explained absence instead of a dangling link, and the next
+    # collection that is real in Shopify but not ready here will want it.
 ]
 
 
