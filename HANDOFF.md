@@ -2854,3 +2854,132 @@ identical** after rebuild · `test-variants.js` all invariants hold · `--links`
 60 pages, 58 built, 2 declared.
 
 **All 58 pages changed on disk** — it is core.css, so every page carries it.
+
+---
+
+## 30. The support cluster reaches zero chips (2026-08-13)
+
+Cole answered every open policy question. **All four support pages now carry no
+`.tbd` chips at all** — the first time since they were built.
+
+### 30a. Duties: not "collected on delivery", but off the site entirely
+
+> Cole: *"there's no duties, this can just be completely ignored because we ship
+> from within the United States… it doesn't even need to be brought up."*
+
+So this was a **deletion**, not an answer. `duties` appeared in five places and
+is now in none: `41-shipping.html#where`, the FAQ's `international` answer, and
+the delivery modal on **all 40 product pages** (`page-club.html`,
+`page-apparel.html` — `page-gear.html` never had it).
+
+**Flagged to Cole and overruled, which is the correct outcome but worth
+recording:** shipping *from* the US does not stop a destination country charging
+the customer import duty on delivery. The site is now silent on that. His call,
+made with the consequence stated.
+
+### 30b. The response target, phrased as an aim
+
+> Cole: *"we try to reply to emails within 24 business hours."*
+
+The copy says **"We aim to answer email within 24 business hours"** — "aim",
+because he said "try to", and the Friday-evening case is spelled out the same
+way the dispatch section does it. §25f's argument against a committed number is
+satisfied: this is a number he has actually committed to.
+
+**Chat has no separate hours.** Same hours as email, Monday to Friday, same
+team — so the chat chip became a sentence in the channel body rather than a
+second staffed-hours claim.
+
+### 30c. The Returns Portal, and the rule attached to it
+
+```
+https://lucky-golf.loopreturns.com/
+```
+
+**It is NOT a general "start a return" link, and must never become one.**
+
+> Cole: *"for clubs people are supposed to reach out to support… we need to make
+> sure that there's nothing wrong with it before they send it. For apparel they
+> can use that return portal 100%."*
+
+So the link is on the **apparel and gear route only**, in exactly two places —
+the refund policy's `start` section and Contact's `where` row. Verified: it
+appears on no club page anywhere on the site. Both pages carry a note saying why
+clubs are the exception, because a reader who sees a portal link and a "contact
+support" instruction on the same page will otherwise assume the second is
+optional.
+
+**This is the first external link on the entire site**, which is what exposed
+§30e.
+
+### 30d. The warranty question, answered as a "depends"
+
+> Cole: *"they have 60 days to try it out, that's our return policy… that may
+> change in the future, right now it's 60 days."*
+
+The FAQ's `broken` answer now says there is no lifetime warranty, that sixty
+days is the whole of the written policy, and that a fault found afterwards
+**depends on what the fault is** — send photos and we will answer, rather than
+guess at it on the page. A stated "depends" beats a chip.
+
+**Also fixed here: the chip was stale and contradicting our own refund policy.**
+It read "needs confirming: the warranty period on a club, *and who pays return
+shipping when the fault is ours*" — but that second half was answered 2026-08-02
+and `40-returns.html#defective` already stated it plainly. The FAQ had been
+saying "unconfirmed" about something the policy page asserted.
+
+### 30e. EVERY inline prose link on the site was invisible as a link
+
+Adding the portal link surfaced a defect that had shipped with the support
+cluster. Measured on `40-returns.html`:
+
+```
+link colour    rgba(23,20,15,.70)      <- --ink-70
+parent colour  rgba(23,20,15,.70)      <- identical
+text-decoration none
+```
+
+An `<a>` in body prose inherited the paragraph's colour and carried no
+underline. **Colour alone would need 3:1 against the surrounding text plus a
+non-colour cue; there was neither.** Every `mailto:support@luckygolf.com` on the
+four support pages, and `partners@luckygolf.com` on the Ambassador page, had
+been unmarked prose since they were written.
+
+Fixed with an underline — the non-colour cue, it survives the cream and white
+fields both, and it avoids adding a second link colour to the palette. The
+**gold is the decoration, not the text**, so it carries no contrast obligation
+of its own and the text stays `--ink-70`. `.btn` is excluded; a button already
+reads as a control.
+
+**The rule is duplicated in `page-support.css` and `page-brand.css` rather than
+promoted to core.** Those are the only two stylesheets whose pages carry inline
+prose links, and a page loads core plus exactly ONE page stylesheet — promoting
+it would have put the rule on 58 pages to serve six. This is the first time that
+trade has gone the *other* way from §11b / §12c / §22f / §23c / §25e / §26f.
+
+### 30f. Verified
+
+Swept at 1440 and 390 with `document.fonts.ready` awaited, contrast composited
+through rgba ancestors, FAQ accordions forced open.
+
+| | 1440 | 390 |
+|---|---|---|
+| Refund policy | 0 contrast fails, `scrollWidth` 1425 | 0 fails, `scrollWidth` 390 |
+| Portal link | underlined, 1.5px, `--gold` decoration | underlined |
+
+Driven through the DOM: the portal link's computed decoration on returns and
+contact, every inline link's parent-colour comparison before and after, and a
+grep proving `loopreturns` appears on exactly two pages and no club page.
+
+`normalize-products.py --check` identical · `build.py --check` all 58 identical ·
+`test-variants.js` all invariants hold · `--links` 60 pages, 58 built, zero dead
+links · **`Needs confirming` count across the four support pages: 7 → 0.**
+
+### 30g. Still Cole's, from this pass
+
+1. **Retire the Shopify FAQ page.** He confirmed it is wrong — no lifetime
+   warranty, 60 days on clubs. It still contradicts the site.
+2. **The Ambassador roster is being restructured** — see §31 when it lands. He
+   does not want five named people; the program is open to anyone meeting the
+   criteria, and the criteria and terms are not yet supplied.
+3. **Photography**, to be issued as its own brief.

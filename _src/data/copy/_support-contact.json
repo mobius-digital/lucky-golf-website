@@ -1,6 +1,6 @@
 {
  "_": "Contact. This is the page the fitting CTA on all four club collection pages points at ('Ask a person'), and it has been resolving to # since the collection redesign. Both channels are named in Product Reference Guide v1.8: website chat, and support@luckygolf.com. Nothing else is invented.",
- "_signoff": "Two things on this page are NOT verified and carry chips: staffed hours / a response target, and the Returns Portal address. There is deliberately no 'we reply within N hours' anywhere — the reviews on this site include both a customer emailed back on a Sunday and a customer who waited weeks, and a number nobody has committed to is worse than no number. Cole owns both.",
+ "_signoff": "BOTH former chips are answered (Cole, 2026-08-13). Email target: 24 business hours, written as an aim rather than a promise because he said 'we try to'. Chat: no separate staffed hours — same hours as email, Monday to Friday, same team. The Returns Portal is https://lucky-golf.loopreturns.com/ and is linked on the APPAREL row only: clubs go through support first so a fault is caught before the club is in a box. Do not add the portal link to a club route.",
  "crumbName": "Contact",
  "eyebrow": "Contact",
  "headline": "Contact us",
@@ -16,11 +16,7 @@
    {
     "k": "Chat",
     "v": "The chat on the store",
-    "body": "Best for quick questions before you buy: which loft, whether a left-hand club exists, whether something is back in stock. It opens from the corner of any page on the store.",
-    "tbd": {
-     "label": "Needs confirming",
-     "text": "the hours chat is staffed."
-    }
+    "body": "Best for quick questions before you buy: which loft, whether a left-hand club exists, whether something is back in stock. It opens from the corner of any page on the store. Staffed Monday to Friday, the same hours as email — it reaches the same people either way."
    }
   ]
  },
@@ -50,7 +46,7 @@
      },
      {
       "k": "Returning apparel or gear",
-      "v": "The Returns Portal, or the instructions in your order confirmation. Not this inbox."
+      "v": "The <a href=\"https://lucky-golf.loopreturns.com/\">Returns Portal</a>, or the instructions in your order confirmation. Not this inbox."
      },
      {
       "k": "Order not moving",
@@ -70,23 +66,15 @@
      }
     ]
    },
-   "tbd": {
-    "label": "Needs confirming",
-    "text": "the Returns Portal's address, so the apparel and gear row can be a link rather than a description.",
-    "ask": "Until then the order confirmation email is the reliable route to it."
-   }
+   "note": "Clubs are the exception on purpose. Support checks the fault before the club moves, which is what stops a return being denied after it has already shipped."
   },
   {
    "id": "when",
    "title": "When you'll hear back",
    "paras": [
+    "We aim to answer email within 24 business hours. Business hours, so a Friday evening message is usually answered Monday or Tuesday rather than over the weekend.",
     "Email and chat are both monitored. If a thread has gone quiet, reply to it again and it will be picked up."
-   ],
-   "tbd": {
-    "label": "Needs confirming",
-    "text": "staffed hours and a response target, for both email and chat.",
-    "ask": "This is the single most useful thing to add to this page."
-   }
+   ]
   },
   {
    "id": "not",

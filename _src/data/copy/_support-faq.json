@@ -148,10 +148,6 @@
       "a": [
        "Yes, worldwide. The rate is calculated at checkout like any other, so you see it before you pay."
       ],
-      "tbd": {
-       "label": "Needs confirming",
-       "text": "whether duties and import taxes are prepaid at checkout or collected on delivery."
-      },
       "cta": {
        "label": "Ask about an international order",
        "href": "{{link:contact}}"
@@ -255,12 +251,10 @@
       "q": "It broke. Is that covered?",
       "a": [
        "Tell us, with photos, and do not send it anywhere until we have answered. A club that fails in normal use is a different conversation from one you have decided against.",
-       "What is settled: defective gear may be replaced or refunded after inspection, and a customized item is returnable if it arrives defective."
+       "What is settled: if the fault is ours, we pay the return shipping. Defective gear may be replaced or refunded after inspection, and a customized item is returnable if it arrives defective.",
+       "There is no lifetime warranty on a club. Sixty days is the window, and that is the whole of the written policy today.",
+       "After it closes, a manufacturing fault depends on what the fault is. Send photos and we will tell you where we land, rather than guess at it here."
       ],
-      "tbd": {
-       "label": "Needs confirming",
-       "text": "the warranty period on a club, and who pays return shipping when the fault is ours."
-      },
       "cta": {
        "label": "Email support",
        "href": "{{link:contact}}"

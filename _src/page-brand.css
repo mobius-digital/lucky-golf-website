@@ -146,3 +146,21 @@
      layout-mode switch and this file must not fight it. */
   .br-fit-cta .btn{width:100%;justify-content:center}
 }
+
+/* ---------- INLINE PROSE LINKS ----------
+   Same defect and same fix as page-support.css: the partners@ address in the
+   application steps inherited the paragraph colour with no underline, so it
+   did not read as a link. This file and page-support.css are the only two
+   stylesheets whose pages carry inline prose links, which is why the rule is
+   in both rather than in core (a page loads core plus exactly ONE of these). */
+.br-steps-list p a:not(.btn),
+.br-row-tx p a:not(.btn){
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:1.5px;
+  text-underline-offset:.18em;
+  transition:text-decoration-color .18s,color .18s}
+.br-steps-list p a:not(.btn):hover,
+.br-row-tx p a:not(.btn):hover{
+  color:var(--ink);
+  text-decoration-color:var(--ink)}

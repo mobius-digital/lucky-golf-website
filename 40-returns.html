@@ -1387,6 +1387,41 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
   .sup-rows dt{flex:1 1 100%}
   .sup-still-cta .btn{width:100%;justify-content:center}
 }
+
+/* ---------- INLINE PROSE LINKS ----------
+   An <a> inside body prose inherited the paragraph's colour and carried no
+   underline, so every mailto on these four pages has been indistinguishable
+   from the sentence around it since the support cluster was built. Measured on
+   40-returns: link colour rgba(23,20,15,.7), parent colour rgba(23,20,15,.7),
+   text-decoration none. Colour alone would need 3:1 against the surrounding
+   text AND a non-colour cue on hover; there was neither colour difference nor
+   cue, so the link simply was not one to look at.
+
+   It surfaced adding the Returns Portal link, which inherited the same nothing.
+
+   Underline rather than a colour change: it is the non-colour cue, it survives
+   the cream and white fields both, and it does not introduce a second link
+   colour to the palette. The gold is the DECORATION, not the text, so it
+   carries no contrast obligation of its own — the text stays --ink-70.
+
+   .btn is excluded: a button already reads as a control. */
+.sup-sec p a:not(.btn),
+.sup-a p a:not(.btn),
+.sup-rows dt a:not(.btn),
+.sup-rows dd a:not(.btn),
+.sup-chan a:not(.btn){
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:1.5px;
+  text-underline-offset:.18em;
+  transition:text-decoration-color .18s,color .18s}
+.sup-sec p a:not(.btn):hover,
+.sup-a p a:not(.btn):hover,
+.sup-rows dt a:not(.btn):hover,
+.sup-rows dd a:not(.btn):hover,
+.sup-chan a:not(.btn):hover{
+  color:var(--ink);
+  text-decoration-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1572,8 +1607,9 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
 
     <div class="sup-sub">
       <h3 class="sup-h3">Apparel and gear</h3>
-      <p class="sup-p">Use the Returns Portal, or follow the instructions in your order confirmation email.</p>
+      <p class="sup-p">Start it in the <a href="https://lucky-golf.loopreturns.com/">Returns Portal</a>, or follow the instructions in your order confirmation email.</p>
       <p class="sup-p">No prior approval is needed. The item must meet the conditions below to be refunded.</p>
+      <p class="sup-p">If you are not sure whether something qualifies, ask us before you start one &mdash; it is quicker than a return that gets denied.</p>
     </div>
 
     <div class="sup-sub">
@@ -1581,11 +1617,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
       <p class="sup-p"><b>All club returns require approval before the club is sent back.</b> Contact Customer Support through the website chat or at <a href="mailto:support@luckygolf.com">support@luckygolf.com</a>.</p>
       <p class="sup-p">Approval requires photo verification. A club returned without authorisation is not accepted.</p>
     </div>
-
-    <div class="sup-tbd-block">
-      <p class="sup-tbd"><span class="tbd tbd--light">Needs confirming</span> &mdash; the Returns Portal's web address, so this section can link to it directly.</p>
-      
-    </div>
+    <p class="aside sup-note">The portal is for apparel and gear. Clubs go through support first &mdash; that is not a formality, it is how a fault gets caught before the club is in a box.</p>
   </div>
 </section>
 

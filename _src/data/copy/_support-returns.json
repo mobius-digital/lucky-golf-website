@@ -26,8 +26,9 @@
         {
           "h": "Apparel and gear",
           "paras": [
-            "Use the Returns Portal, or follow the instructions in your order confirmation email.",
-            "No prior approval is needed. The item must meet the conditions below to be refunded."
+            "Start it in the <a href=\"https://lucky-golf.loopreturns.com/\">Returns Portal</a>, or follow the instructions in your order confirmation email.",
+            "No prior approval is needed. The item must meet the conditions below to be refunded.",
+            "If you are not sure whether something qualifies, ask us before you start one &mdash; it is quicker than a return that gets denied."
           ]
         },
         {
@@ -38,10 +39,7 @@
           ]
         }
       ],
-      "tbd": {
-        "label": "Needs confirming",
-        "text": "the Returns Portal's web address, so this section can link to it directly."
-      }
+      "note": "The portal is for apparel and gear. Clubs go through support first &mdash; that is not a formality, it is how a fault gets caught before the club is in a box."
     },
     {
       "id": "general",

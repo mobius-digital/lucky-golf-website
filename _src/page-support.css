@@ -201,3 +201,38 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
   .sup-rows dt{flex:1 1 100%}
   .sup-still-cta .btn{width:100%;justify-content:center}
 }
+
+/* ---------- INLINE PROSE LINKS ----------
+   An <a> inside body prose inherited the paragraph's colour and carried no
+   underline, so every mailto on these four pages has been indistinguishable
+   from the sentence around it since the support cluster was built. Measured on
+   40-returns: link colour rgba(23,20,15,.7), parent colour rgba(23,20,15,.7),
+   text-decoration none. Colour alone would need 3:1 against the surrounding
+   text AND a non-colour cue on hover; there was neither colour difference nor
+   cue, so the link simply was not one to look at.
+
+   It surfaced adding the Returns Portal link, which inherited the same nothing.
+
+   Underline rather than a colour change: it is the non-colour cue, it survives
+   the cream and white fields both, and it does not introduce a second link
+   colour to the palette. The gold is the DECORATION, not the text, so it
+   carries no contrast obligation of its own — the text stays --ink-70.
+
+   .btn is excluded: a button already reads as a control. */
+.sup-sec p a:not(.btn),
+.sup-a p a:not(.btn),
+.sup-rows dt a:not(.btn),
+.sup-rows dd a:not(.btn),
+.sup-chan a:not(.btn){
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:1.5px;
+  text-underline-offset:.18em;
+  transition:text-decoration-color .18s,color .18s}
+.sup-sec p a:not(.btn):hover,
+.sup-a p a:not(.btn):hover,
+.sup-rows dt a:not(.btn):hover,
+.sup-rows dd a:not(.btn):hover,
+.sup-chan a:not(.btn):hover{
+  color:var(--ink);
+  text-decoration-color:var(--ink)}

@@ -67,11 +67,6 @@
    "cream": true,
    "title": "Where it ships from, and where it goes",
    "lede": "Long Beach, California — and out to most of the world.",
-   "tbd": {
-    "label": "Needs confirming",
-    "text": "whether duties and import taxes are prepaid at checkout or collected on delivery.",
-    "ask": "That is the one number an international order still cannot see in advance, so it is worth asking before you buy."
-   },
    "cta": {
     "label": "Ask about an international order",
     "href": "{{link:contact}}"

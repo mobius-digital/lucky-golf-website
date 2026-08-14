@@ -52,17 +52,24 @@ moves.
   That page needs retiring on Shopify; this site follows the refund policy.
 - **International: yes, worldwide, rate at checkout.** Was a chip, now an answer.
 
-| Still open | Where it shows |
-|---|---|
-| Duties — prepaid at checkout or collected on delivery | `41-shipping.html#where` |
-| Staffed hours for chat, and a response target for email | `42-contact.html#when` |
-| The Returns Portal's URL | Contact and the refund policy describe it instead of linking |
+**ALL CLOSED 2026-08-13. The four support pages now carry ZERO chips.**
 
-**On the response target specifically:** there is deliberately no "we reply
-within N hours" anywhere on the site. The review corpus contains both a
-customer emailed back on a Sunday and one who waited weeks. A number nobody has
-committed to internally is worse than no number — so this one is a decision to
-make, not a fact to look up.
+| Was open | Answer |
+|---|---|
+| Duties — prepaid or collected | **Neither. Not relevant, and off the site entirely.** Removed from the shipping page, the FAQ and the delivery modal on all 40 product pages. |
+| Chat hours, email response target | **Email: within 24 business hours**, written as an aim rather than a promise. **Chat: no separate hours** — same as email, Monday to Friday, same team. |
+| The Returns Portal's URL | **https://lucky-golf.loopreturns.com/** — linked on the APPAREL route only. |
+| Warranty after the window | **No lifetime warranty. Sixty days is the whole written policy.** A fault after that is case by case. |
+
+**The portal link has a rule attached to it (Cole, 2026-08-13):** apparel and
+gear go to the portal; **clubs go through support first**, so a fault is caught
+before the club is in a box. Do not add the portal link to a club route. It
+appears exactly twice on the site — the refund policy and Contact — and on no
+club page.
+
+**One thing the duties removal buries:** shipping *from* the US does not stop a
+destination country charging the customer import duty on delivery. The site now
+says nothing about it. Cole's call, made knowingly.
 
 ### 1c. Send the Product Language Rules document
 
@@ -220,10 +227,10 @@ its own document, because it is what ships with the repo.
 
 - [x] ~~Sale priced, or dropped from the nav~~ — dropped 2026-08-13
 - [x] ~~Defective returns — Lucky pays the shipping~~ (answered 2026-08-02)
-- [ ] Duties — prepaid at checkout, or collected on delivery
+- [x] ~~Duties~~ — not relevant; removed from the site entirely (2026-08-13)
 - [ ] Retire or rewrite the Shopify FAQ page (it contradicts the refund policy)
-- [ ] Chat hours + email response target
-- [ ] Returns Portal URL
+- [x] ~~Chat hours + email response target~~ — 24 business hours; chat = email hours, Mon–Fri
+- [x] ~~Returns Portal URL~~ — lucky-golf.loopreturns.com, apparel route only
 - [ ] Product Language Rules sent
 - [ ] Stock moved onto the six S-grind variants
 - [ ] Draft published
@@ -237,7 +244,7 @@ its own document, because it is what ships with the repo.
 **Build side**
 
 - [x] ~~Sale page built, or the slug retired~~ — slug retired 2026-08-13
-- [ ] Four policy chips replaced with real answers
+- [x] ~~Four policy chips replaced with real answers~~ — all four support pages at ZERO chips
 - [ ] Catalogue re-pulled, `merge_grinds()` deleted
 - [ ] Reviews page: S-grind chip removed, 01 reads 620
 - [ ] Product-specific CTAs applied from Product Language Rules
