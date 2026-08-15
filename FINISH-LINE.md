@@ -3,9 +3,20 @@
 **58 of 60 pages built. Zero dead links.** Live at
 https://mobius-digital.github.io/lucky-golf-website/
 
-This is the plan for closing out the remaining work, ordered so the cheap things
-that unblock the most happen first. Nothing below is discovery — every item is
-a known, scoped gap.
+**Cole's running order, set 2026-08-13:**
+
+1. **Layouts** — finish every page's structure. *Effectively done; see below.*
+2. **Copy revisions** — a SEPARATE chat, page by page, Cole reacting to each.
+3. **Photography** — `SHOT-LIST.md`, 51 shots. Last, so nothing is shot for a
+   layout that then changes.
+4. **The wedge merge** — the Shopify job, whenever he says go.
+
+Photography is deliberately last: shooting 51 images against a layout that is
+still moving is the expensive mistake, and the pages read as finished with
+labelled briefs in the meantime.
+
+This file is the plan for closing out the remaining work. Nothing below is
+discovery — every item is a known, scoped gap.
 
 ---
 
@@ -124,22 +135,24 @@ Once 2a lands, three things get deleted rather than written:
 
 ### 3a. Photography — the biggest gap on the site
 
-**21 stills and 36 video briefs**, all already written into the copy files and
-extracted to **`SHOT-LIST.md`**. That file is handable to a photographer as-is:
-every entry names the crop, the light and what has to read in the frame.
+**51 stills**, in `SHOT-LIST.md`, which is handable to a photographer as-is:
+every entry names the crop, the light and what has to read in the frame, grouped
+into four shoot sessions rather than by page.
 
-The stills are what block pages. The 21 break down as:
+**The old count of 21 was wrong.** That file was generated from the copy files
+and missed all 23 apparel heroes, the 8 homepage slots and the tees flat-lay.
+It is now generated from the 58 built pages, so it cannot drift again.
 
-- **Our Story** — 4 (a 21:9 hero, a macro of a milled face, a lifestyle shot, and
-  a portrait of you working)
-- **The Ambassador Program** — 1 lifestyle shot (was 6; the roster took five
-  portraits, and the Dartee-layout rebuild absorbed the other brief)
-- **The four club collections** — 9 landscape 4:3 story shots
-- **Product hero panels** — 5 full-bleed portraits
-- **The 02** — 1 studio cutout, whenever that club is real
+| Session | Shots | |
+|---|---|---|
+| A · Course day, the clubs | 14 | 13 shootable; the 02 cutout needs a club that does not exist |
+| B · Apparel day, on body | 23 | **unblocks 23 pages at once** — the biggest single win |
+| C · Brand + lifestyle | 13 | Our Story, the Ambassador page, 8 homepage slots |
+| D · Studio flat-lay | 1 | the tees — the only product with no Shopify photo at all |
 
-Video is lower priority: every reel slot already renders as a labelled card, and
-a page with no footage still reads as finished. Photography does not.
+Video is lower priority and separate: 5 product films plus 36 short-form reel
+briefs. Every reel slot already renders as a labelled card and a page with no
+footage still reads as finished. Photography does not.
 
 ### 3b. The Ambassador Program — RESTRUCTURED AND CLOSED 2026-08-13
 
@@ -243,8 +256,8 @@ its own document, because it is what ships with the repo.
 - [ ] Judge.me reviews migrated (01 reads 620)
 - [x] ~~Trybe roster~~ — roster killed 2026-08-13; open program, no names needed
 - [x] ~~Trybe program terms~~ — on the page 2026-08-13, all Cole's
-- [ ] 21 stills shot (`SHOT-LIST.md` — was 26 before the roster came off)
-- [ ] 36 video clips shot (lower priority)
+- [ ] 51 stills shot (`SHOT-LIST.md`, 4 sessions — 23 of them unblock every apparel page)
+- [ ] 5 product films + 36 reel clips (lower priority)
 
 **Build side**
 
