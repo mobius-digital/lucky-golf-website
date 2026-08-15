@@ -124,15 +124,16 @@ Once 2a lands, three things get deleted rather than written:
 
 ### 3a. Photography — the biggest gap on the site
 
-**26 stills and 36 video briefs**, all already written into the copy files and
+**21 stills and 36 video briefs**, all already written into the copy files and
 extracted to **`SHOT-LIST.md`**. That file is handable to a photographer as-is:
 every entry names the crop, the light and what has to read in the frame.
 
-The stills are what block pages. The 26 break down as:
+The stills are what block pages. The 21 break down as:
 
 - **Our Story** — 4 (a 21:9 hero, a macro of a milled face, a lifestyle shot, and
   a portrait of you working)
-- **The Trybe** — 6 (five 4:5 roster portraits plus a lifestyle shot)
+- **The Ambassador Program** — 1 lifestyle shot (was 6; the roster took five
+  portraits, and the Dartee-layout rebuild absorbed the other brief)
 - **The four club collections** — 9 landscape 4:3 story shots
 - **Product hero panels** — 5 full-bleed portraits
 - **The 02** — 1 studio cutout, whenever that club is real
@@ -140,14 +141,18 @@ The stills are what block pages. The 26 break down as:
 Video is lower priority: every reel slot already renders as a labelled card, and
 a page with no footage still reads as finished. Photography does not.
 
-### 3b. The Trybe roster
+### 3b. The Ambassador Program — RESTRUCTURED AND CLOSED 2026-08-13
 
-Five names, five handles, five 4:5 portraits, and **what the program gives and
-asks** — discount, commission, product, or some combination.
+Cole killed the five-slot roster: the program is **open to anyone who meets the
+criteria**, and a lineup of five faces said the opposite. The grid is off both
+pages, and the terms are now ON the page, all Cole's: clubs to play (specifics
+travel in the acceptance email, deliberately), a private group chat, first look
+at drops and events, reposts — and **nobody paid per sale, stated as brand
+proof**. The 10%/AvantLink affiliate block is off the page at his instruction;
+the commission test continues quietly on the Trybe platform, off-site.
 
-Nothing on that page invents terms today, and the build will **refuse** a real
-name on the roster without a `consent` key. The same five slots sit on the
-homepage, so one answer fills both.
+A named roster returns only when there are big, real names — the dormant block
+in `page-brand.html` still enforces `consent` keys when that day comes.
 
 ---
 
@@ -236,9 +241,9 @@ its own document, because it is what ships with the repo.
 - [ ] Draft published
 - [ ] Both old wedge products archived
 - [ ] Judge.me reviews migrated (01 reads 620)
-- [ ] Trybe roster — 5 names, 5 handles, 5 portraits
-- [ ] Trybe program terms
-- [ ] 26 stills shot (`SHOT-LIST.md`)
+- [x] ~~Trybe roster~~ — roster killed 2026-08-13; open program, no names needed
+- [x] ~~Trybe program terms~~ — on the page 2026-08-13, all Cole's
+- [ ] 21 stills shot (`SHOT-LIST.md` — was 26 before the roster came off)
 - [ ] 36 video clips shot (lower priority)
 
 **Build side**
@@ -248,7 +253,7 @@ its own document, because it is what ships with the repo.
 - [ ] Catalogue re-pulled, `merge_grinds()` deleted
 - [ ] Reviews page: S-grind chip removed, 01 reads 620
 - [ ] Product-specific CTAs applied from Product Language Rules
-- [ ] Roster names and portraits in, `consent` keys set
+- [x] ~~Roster names and portraits in~~ — obsolete; roster removed, block dormant
 - [ ] Photography dropped into the 26 still slots
 - [x] ~~Developer handoff document written~~ — `DEVELOPER-HANDOFF.md` (2026-08-13)
 - [x] ~~Footer tap targets — decided either way~~ — fixed 2026-08-13, desktop 16px → 24px

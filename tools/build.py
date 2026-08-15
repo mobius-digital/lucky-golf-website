@@ -1014,6 +1014,12 @@ def build(slug, report):
         page.extra_required.append('<details class="sup-q"')
     if ctx.get("form"):
         page.extra_required.append('id="sup-contact"')
+    # The ambassador application (brand template). The id proves the form
+    # rendered; the function name proves page-brand.js made the bundle — a
+    # form whose submit navigates to nowhere is a page that looks right and
+    # does nothing. Marker verified unique to page-brand.js (§21i).
+    if ctx.get("apply"):
+        page.extra_required += ['id="amb-apply"', 'function brApplyIntercept']
 
     symbols = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf8").read().rstrip("\n")
     host = read("partials/symbols-host.html")

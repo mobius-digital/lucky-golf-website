@@ -4,7 +4,9 @@ Generated from the written briefs already in `_src/data/copy/`. Every slot on
 the site names the shot that belongs in it, so this is not a wish list — it is
 the set of images the pages are already built around.
 
-**62 briefs: 26 stills, 36 video.**
+**57 briefs: 21 stills, 36 video.** *(Was 26 stills — the five roster
+headshots left with the roster on 2026-08-13, and the Ambassador page's second
+lifestyle brief left with its old layout the same day.)*
 
 ---
 
@@ -18,13 +20,12 @@ the set of images the pages are already built around.
 - [ ] **Lifestyle shot needed** — 4:3. A golfer mid-round with a Lucky wedge, shot from behind at address. Course context, not studio. Natural light.
 - [ ] **Portrait needed** — 4:3. Cole, working — packing an order or on the phone, in the space where it actually happens. Not a posed headshot.
 
-### The Trybe (31-trybe.html)
+### Ambassador Program (31-trybe.html)
 
-- [ ] **Headshot needed** — 4:5 portrait, on course, natural light.
-- [ ] **Headshot needed** — 4:5 portrait, on course, natural light.
-- [ ] **Headshot needed** — 4:5 portrait, on course, natural light.
-- [ ] **Headshot needed** — 4:5 portrait, on course, natural light.
-- [ ] **Headshot needed** — 4:5 portrait, on course, natural light.
+*The five 4:5 roster headshots left with the roster (2026-08-13), and the
+second lifestyle brief left with the gives row when the page went to the
+Dartee-style fork layout the same day. One shot on this page now:*
+
 - [ ] **Lifestyle shot needed** — 4:3. Two or three golfers on a course together, Lucky clubs visible but not staged. Shot wide, natural light, no product hero framing.
 
 ### All Clubs collection

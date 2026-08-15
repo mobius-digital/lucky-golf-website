@@ -35,6 +35,90 @@
   </div>
 </section>
 
+<!-- ============ THE FORK ============
+     Dartee's device (Cole, 2026-08-13: "follow Dartee's version... it's just so
+     easy to grasp"): two cards, first screen, and the visitor self-sorts.
+     Lucky's terms, not Dartee's — their hero leads with commission, which is
+     the one thing this page must never advertise (§31a). Card two is BY INVITE
+     because a direct creator door needs terms nobody has defined; the links
+     field on the application is the fast lane that makes it unnecessary. -->
+{{#fork}}
+<section class="sec-tight br-fork-sec">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <div class="br-fork">
+{{#cards}}      <div class="br-fk{{#dark}} br-fk--ink{{/dark}}">
+        <span class="br-fk-badge mono">{{badge}}</span>
+        <h3 class="disp d-s">{{title}}</h3>
+        <ul class="br-list br-fk-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+        <p class="br-fk-foot">{{foot}}</p>
+{{#cta}}        <p class="br-fk-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&darr;</span></a></p>
+{{/cta}}      </div>
+{{/cards}}    </div>
+    {{#note}}<p class="aside br-fork-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/fork}}
+
+<!-- ============ THE BAR — who this is for ============
+     Takomo's device (Cole, 2026-08-13), inverted. Theirs states a numeric gate
+     — 5k Instagram, 10k TikTok, 1k YouTube — and its VALUE is that you know
+     before applying whether you fit. Ours states the bar just as plainly, but
+     the bar is quality-shaped rather than audience-shaped, so "explicit" and
+     "inclusive" are not in tension: the loudest column is the one saying what
+     we DON'T ask for. Three columns, so the honest restriction sits beside the
+     two that open the door rather than alone. -->
+{{#bar}}
+<section class="sec band-cream br-bar" id="fit">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <p class="body br-bar-lede">{{lede}}</p>
+    <div class="br-bar-cols">
+{{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
+        <h3 class="br-bar-h">{{title}}</h3>
+        <ul class="br-list br-bar-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+      </div>
+{{/cols}}    </div>
+    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/bar}}
+
+<!-- ============ THE MONEY SIDE ============
+     Dartee-shaped (Cole, 2026-08-13): say commission EXISTS and that it grows,
+     say payout is monthly — and publish no percentage, no cookie window, no
+     payout date, no network name. "All of the contractual detail doesn't need
+     to be on the page; they can learn more after they're accepted."
+
+     Two columns, and the second is the load-bearing one: clubs are never
+     commissioned. That is positioning, not thrift — the homepage sells a price
+     with no middlemen in it, and a commissioned advocate on the hero category
+     contradicts it. Reuses the bar's column styling; `warn` marks the column
+     that closes a door rather than opens one. -->
+{{#earn}}
+<section class="sec br-earn" id="earn">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <div class="br-bar-cols br-bar-cols--2">
+{{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
+        <h3 class="br-bar-h">{{title}}</h3>
+        <ul class="br-list br-bar-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+      </div>
+{{/cols}}    </div>
+    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/earn}}
+
 <!-- ============ THE NUMBERS ============
      Ink field. Every figure here is one Shopify or Judge.me actually reports —
      there is no "trusted by" number on this page that nobody can look up. -->
@@ -99,11 +183,13 @@
 </section>
 {{/quote}}
 
-<!-- ============ ROSTER ============
-     Five 4:5 portraits and five real names, none of which exist yet. Names are
-     BRACKETED, never invented — an ambassador page that names people who have
-     not agreed to be on it is the worst version of this page. Same shape as
-     the homepage roster it feeds from (§7b G). -->
+<!-- ============ ROSTER — DORMANT ============
+     No page sets `roster` since 2026-08-13: Cole ruled the program is open to
+     anyone who meets the criteria, so a lineup of five faces said the opposite
+     and came off. The block stays for the day there ARE big, real names worth
+     showing (his words) — and build.py still refuses any real name that lacks
+     a `consent` key, so re-enabling it cannot quietly name someone who never
+     agreed. Names are BRACKETED until then, never invented. -->
 {{#roster}}
 <section class="sec br-roster" id="roster">
   <div class="wrap">
@@ -173,6 +259,35 @@
   </div>
 </section>
 {{/close}}
+
+<!-- ============ THE APPLICATION ============
+     Inline, Dartee-style (Cole approved 2026-08-13), and the same contract as
+     the contact form (§25g): the prototype notice sits ABOVE the fields, the
+     submit handler stops navigation, and nothing thanks anyone for a message
+     it never sent — the interception repeats the notice instead. The links
+     field is the creator fast lane (§32). -->
+{{#apply}}
+<section class="sec br-apply-sec" id="apply">
+  <div class="wrap br-apply-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{title}}</h2>
+    <p class="body br-apply-lede">{{lede}}</p>
+    <p class="br-proto"><span class="tbd tbd--light">{{protoLabel}}</span> &mdash; {{proto}}</p>
+    <form id="amb-apply">
+      <div class="br-f2">
+        <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
+        <p class="br-field"><label for="af-email">Email</label><input id="af-email" name="email" type="email" autocomplete="email" required></p>
+      </div>
+      <p class="br-field"><label for="af-handle">Instagram or TikTok <span class="br-opt">optional</span></label><input id="af-handle" name="handle" type="text"></p>
+      <p class="br-field"><label for="af-play">How do you play? Where, how often, what's in the bag now</label><textarea id="af-play" name="play" rows="4" required></textarea></p>
+      <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional &mdash; this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
+      <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>{{cta}}</span><span class="ar">&rarr;</span></button></p>
+      <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">{{sent}}</p>
+    </form>
+    <p class="aside br-apply-note">{{note}}</p>
+  </div>
+</section>
+{{/apply}}
 
 <!-- ============ KEEP LOOKING — ends on cream, above the ink footer ============ -->
 <section class="sec band-cream br-more">

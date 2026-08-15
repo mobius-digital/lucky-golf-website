@@ -125,7 +125,7 @@
       detail.innerHTML =
         '<div class="lb-row">'
         + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>'
-        + (o.who === 'creator' ? 'Trybe creator' : 'Customer post') + '</span></span>'
+        + (o.who === 'creator' ? 'Lucky ambassador' : 'Customer post') + '</span></span>'
         + '</div>'
         + '<span class="lb-who" id="lb-who">' + (o.who === 'creator' ? '@[CREATOR HANDLE]' : '@[CUSTOMER HANDLE]') + '</span>'
         + '<p class="lb-meta">' + esc(o.kind) + '</p>'
@@ -258,7 +258,7 @@
       detail.innerHTML =
         '<div class="lb-row">'
         + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>'
-        + (o.who === 'creator' ? 'Trybe creator' : 'Customer post') + '</span></span>'
+        + (o.who === 'creator' ? 'Lucky ambassador' : 'Customer post') + '</span></span>'
         + '</div>'
         + '<span class="lb-who" id="lb-who">' + (o.who === 'creator' ? '@[CREATOR HANDLE]' : '@[CUSTOMER HANDLE]') + '</span>'
         + '<p class="lb-meta">' + esc(o.kind) + '</p>'

@@ -272,20 +272,14 @@
 
 /* ==========================================================================
    THE ROSTER  (OPEN D · 3) — creator headshots on the homepage, feeds Trybe.
-   NO headshot assets exist yet, so every slot is a photo-needed placeholder
-   with a shot spec. Names/handles are bracketed, not invented.
+   Was the five-slot headshot grid; an invitation band since 2026-08-13 (the
+   program is open — a lineup of five faces said the opposite).
    ========================================================================== */
 .roster{position:relative;background:var(--cream);overflow:hidden}
 .roster::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
 .roster-in{position:relative;z-index:1}
-.rost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(188px,1fr));
-  gap:var(--gut);margin-top:clamp(30px,3.6vw,50px)}
-.rost .ph{aspect-ratio:4/5;padding:16px;background:repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 14px,rgba(23,20,15,.08) 14px 28px)}
-.rost .ph .lbl .mono{font-size:.55rem;letter-spacing:.13em}
-.rost-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
-  font-weight:800;text-transform:uppercase;font-size:1.02rem;line-height:1;margin:14px 0 5px}
-.rost-hd{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-muted)}
+/* .rost-grid / .rost-nm / .rost-hd removed 2026-08-13 with the headshot grid —
+   the section is an invitation band now. The .roster band styles above stay. */
 
 /* ==========================================================================
    COLLECTION TILES  (OPEN C) — image-led, Takomo-style.

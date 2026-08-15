@@ -1270,14 +1270,31 @@ button{font:inherit;color:inherit}
 .br-tbd-ask{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
   line-height:1.6;color:var(--ink-muted)}
 
-/* ---------- how it works ---------- */
-.br-steps-list{margin:clamp(28px,3.2vw,44px) 0 0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.br-steps-list li{display:flex;gap:16px;align-items:flex-start}
+/* ---------- how it works — a TIMELINE, not a 3-up grid ----------
+   Was repeat(3,1fr), which held exactly three steps and went ragged at five
+   (Cole asked for Dartee's "application to athlete" flow, 2026-08-13). Now the
+   number sits ON TOP of its step and a connector rule runs behind the row, so
+   the sequence reads as a sequence rather than as three unrelated cards.
+   The connector is drawn on the LIST, clipped to stop at the last number, and
+   sits behind the badges via z-index — a ::before on each li would print a
+   tail after step five. On a phone it flips to a vertical rail, which is how
+   a five-step flow actually reads on 390. */
+.br-steps-list{position:relative;margin:clamp(28px,3.2vw,44px) 0 0;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gut)}
+/* The connector spans BADGE CENTRE to BADGE CENTRE. A percentage guess
+   overshot past step five: with 5 columns and 4 gaps the column width is
+   (100% - 4*gut)/5, the first centre sits 19px in (half a 38px badge), and the
+   last centre sits one column-width minus 19px from the right. Measured after
+   fixing: both ends land on a badge centre. */
+.br-steps-list::before{content:'';position:absolute;top:19px;height:2px;
+  left:19px;right:calc((100% - 4 * var(--gut)) / 5 - 19px);
+  background:var(--rule-on-light);z-index:0}
+.br-steps-list li{position:relative;z-index:1;display:flex;flex-direction:column;
+  gap:0;align-items:flex-start}
 .br-step-n{flex:none;width:38px;height:38px;display:grid;place-items:center;
   border-radius:50%;background:var(--ink);color:var(--cream);
-  font-family:'Space Mono',monospace;font-size:.78rem}
-.br-steps-list h3{margin:6px 0 0;font-family:'Archivo',sans-serif;
+  font-family:'Space Mono',monospace;font-size:.78rem;margin-bottom:14px}
+.br-steps-list h3{margin:0;font-family:'Archivo',sans-serif;
   font-variation-settings:'wdth' 76;font-weight:700;font-size:1rem;
   text-transform:uppercase;letter-spacing:.03em}
 .br-steps-list p{margin:9px 0 0;font-size:.98rem;line-height:1.6;color:var(--ink-70)}
@@ -1340,6 +1357,7 @@ button{font:inherit;color:inherit}
    stylesheets whose pages carry inline prose links, which is why the rule is
    in both rather than in core (a page loads core plus exactly ONE of these). */
 .br-steps-list p a:not(.btn),
+.br-proto a:not(.btn),
 .br-row-tx p a:not(.btn){
   text-decoration:underline;
   text-decoration-color:var(--gold);
@@ -1347,9 +1365,92 @@ button{font:inherit;color:inherit}
   text-underline-offset:.18em;
   transition:text-decoration-color .18s,color .18s}
 .br-steps-list p a:not(.btn):hover,
+.br-proto a:not(.btn):hover,
 .br-row-tx p a:not(.btn):hover{
   color:var(--ink);
   text-decoration-color:var(--ink)}
+
+/* ---------- THE FORK — two cards, first screen (Dartee's device) ----------
+   One cream card, one ink card: the contrast IS the information — open vs
+   invited. Cards are surfaces, so --r-card; the badge is a control-sized
+   chip, so --r. On the ink card the clover bullets flip to --gold-hi (green
+   on ink is a dim 3.4:1 — passes non-text, reads as off) and text runs the
+   cream ramp. Groove on the ink card per the band rules; children lifted
+   above it. */
+.br-fork-sec{padding-top:calc(var(--sec) * .35)}
+.br-fork{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);
+  margin-top:clamp(26px,3vw,40px)}
+.br-fk{position:relative;overflow:hidden;border:2px solid var(--ink-14);border-radius:var(--r-card);
+  padding:clamp(24px,2.8vw,42px);background:var(--cream)}
+.br-fk--ink{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.br-fk--ink::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.br-fk--ink > *{position:relative;z-index:1}
+.br-fk-badge{display:inline-block;font-size:.6rem;color:var(--ink-muted);
+  border:1.5px solid var(--rule-on-light);border-radius:var(--r);padding:7px 12px;margin:0 0 18px}
+.br-fk--ink .br-fk-badge{color:var(--gold-hi);border-color:var(--cream-18)}
+.br-fk h3{margin:0 0 6px}
+.br-fk-list{max-width:none}
+.br-fk--ink .br-list li{color:var(--cream-70)}
+.br-fk--ink .cbul{color:var(--gold-hi)}
+.br-fk-foot{margin:20px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
+  letter-spacing:.05em;color:var(--ink-muted)}
+.br-fk--ink .br-fk-foot{color:var(--cream-70)}
+.br-fk-cta{margin:22px 0 0}
+.br-fork-note{margin-top:clamp(22px,2.4vw,34px);max-width:62ch;color:var(--ink-muted)}
+
+/* ---------- THE APPLICATION ----------
+   Same contract as the contact form (§25g). .br-opt is --ink-muted, never
+   --ink-38 — the "optional" label at 2.44:1 is exactly the §25h bug. */
+.br-apply-in{max-width:780px}
+.br-proto{margin:18px 0 28px;color:var(--ink-70);max-width:62ch}
+.br-f2{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--gut)}
+.br-field{margin:0 0 18px}
+.br-field label{display:block;font-family:'Space Mono',monospace;text-transform:uppercase;
+  letter-spacing:.14em;font-size:.62rem;color:var(--ink-70);margin-bottom:8px}
+.br-opt{color:var(--ink-muted);text-transform:none;letter-spacing:.02em}
+.br-field input,.br-field textarea{width:100%;border:2px solid var(--ink-14);border-radius:var(--r);
+  padding:12px 14px;font:inherit;background:var(--white);color:var(--ink)}
+.br-field input{min-height:48px}
+.br-apply-cta{margin:10px 0 0}
+.br-apply-sent{margin:16px 0 0;font-family:'Space Mono',monospace;font-size:.78rem;
+  line-height:1.6;color:var(--ink-70)}
+.br-apply-note{margin-top:24px;color:var(--ink-muted)}
+@media (max-width:700px){
+  .br-fork{grid-template-columns:1fr}
+  .br-f2{grid-template-columns:1fr}
+}
+
+/* ---------- THE BAR — who this is for ----------
+   Three equal columns on cream. The "not a fit" column is marked but NOT
+   coloured red or given a cross: the point is that it reads as the same kind
+   of information as the other two, which is what keeps an explicit bar from
+   reading as a bouncer. Its bullets go --ink-muted (5.14 on white, 4.94 on
+   cream) rather than a warning colour, and the clover stays the clover. */
+.br-bar-lede{margin-top:16px;max-width:64ch}
+.br-bar-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);
+  margin-top:clamp(28px,3.2vw,44px)}
+.br-bar-col{border-top:2px solid var(--rule-on-light);padding-top:22px}
+.br-bar-col--warn{border-top-color:var(--gold)}
+.br-bar-h{margin:0;font-family:'Space Mono',monospace;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.66rem;color:var(--ink-muted)}
+.br-bar-col--warn .br-bar-h{color:var(--ink)}
+.br-bar-cols--2{grid-template-columns:1fr 1fr}
+.br-bar-list{margin-top:16px;max-width:none}
+.br-bar-note{margin-top:clamp(24px,2.6vw,36px);max-width:64ch;color:var(--ink-muted)}
+@media (max-width:900px){
+  .br-bar-cols{grid-template-columns:1fr}
+  .br-bar-col{padding-top:18px}
+}
+@media (max-width:820px){
+  /* the ladder flips to a vertical rail: the connector becomes a left spine
+     and each step sits beside its number again */
+  .br-steps-list{grid-template-columns:1fr;gap:26px}
+  .br-steps-list::before{top:19px;bottom:19px;height:auto;width:2px;
+    left:18px;right:auto}
+  .br-steps-list li{flex-direction:row;gap:16px;align-items:flex-start}
+  .br-step-n{margin-bottom:0}
+  .br-steps-list h3{margin-top:8px}
+}
 </style>
 </head>
 <body>
@@ -1484,10 +1585,140 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <p class="eyebrow">Ambassador Program</p>
     <h1 class="disp d-xl">The people who actually play them</h1>
-    <p class="body lead br-lede">Creators, club pros and a few very good amateurs who put Lucky in the bag before anyone was paying attention. They get early access, they give honest notes, and some of them make the videos.</p>
+    <p class="body lead br-lede">Golfers who put Lucky in the bag and say what they think. Everyone starts in the same place, and the creators we pay come from that crew. No follower bar, no script, and nobody ever paid to praise a club.</p>
 
   </div>
 </section>
+
+<!-- ============ THE FORK ============
+     Dartee's device (Cole, 2026-08-13: "follow Dartee's version... it's just so
+     easy to grasp"): two cards, first screen, and the visitor self-sorts.
+     Lucky's terms, not Dartee's — their hero leads with commission, which is
+     the one thing this page must never advertise (§31a). Card two is BY INVITE
+     because a direct creator door needs terms nobody has defined; the links
+     field on the application is the fast lane that makes it unnecessary. -->
+
+<section class="sec-tight br-fork-sec">
+  <div class="wrap">
+    <span class="eyebrow">The shape of it</span>
+    <h2 class="disp d-m">One door in. Two levels.</h2>
+    <div class="br-fork">
+      <div class="br-fk">
+        <span class="br-fk-badge mono">Open — apply today</span>
+        <h3 class="disp d-s">Ambassador</h3>
+        <ul class="br-list br-fk-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Your own code for apparel, and commission on what it sells.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A private group chat, with us in it.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>First look at drops and events.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Reposts, with your name on them.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>And a shot at a club to play &mdash; those go out in batches, and there are never enough.</span></li>
+        </ul>
+        <p class="br-fk-foot">No quota. No script. No commission on clubs, ever.</p>
+        <p class="br-fk-cta"><a class="btn btn-line btn-sm" href="#fit"><span>See if you fit</span><span class="ar">&darr;</span></a></p>
+      </div>
+      <div class="br-fk br-fk--ink">
+        <span class="br-fk-badge mono">By invite — earned</span>
+        <h3 class="disp d-s">Creator</h3>
+        <ul class="br-list br-fk-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Paid content work, per project.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Invites go to ambassadors whose work stands out.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Sometimes on day one — the links field in the application is the fast lane.</span></li>
+        </ul>
+        <p class="br-fk-foot">Earned, not promised.</p>
+      </div>
+    </div>
+    <p class="aside br-fork-note">Apparel pays commission and clubs never will, and that split is the whole point. The Lucky argument is that the price is honest because nothing is hiding in it &mdash; so when an ambassador says the wedge is good, that has to be the whole transaction. Rates grow as you do, and the numbers come with your acceptance.</p>
+  </div>
+</section>
+
+
+<!-- ============ THE BAR — who this is for ============
+     Takomo's device (Cole, 2026-08-13), inverted. Theirs states a numeric gate
+     — 5k Instagram, 10k TikTok, 1k YouTube — and its VALUE is that you know
+     before applying whether you fit. Ours states the bar just as plainly, but
+     the bar is quality-shaped rather than audience-shaped, so "explicit" and
+     "inclusive" are not in tension: the loudest column is the one saying what
+     we DON'T ask for. Three columns, so the honest restriction sits beside the
+     two that open the door rather than alone. -->
+
+<section class="sec band-cream br-bar" id="fit">
+  <div class="wrap">
+    <span class="eyebrow">Who this is for</span>
+    <h2 class="disp d-m">The bar, stated plainly</h2>
+    <p class="body br-bar-lede">Most programs make you guess whether you qualify. Here is the whole of it, including the part that rules people out.</p>
+    <div class="br-bar-cols">
+      <div class="br-bar-col">
+        <h3 class="br-bar-h">This is for you if</h3>
+        <ul class="br-list br-bar-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You play regularly &mdash; enough that you'd notice a sole grinding through turf differently.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You'd have bought the club anyway. Merit first, free second.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You'll say what's wrong with a club as readily as what's right.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You're happy to be tagged, and for us to repost what you make.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You post, film, write, or just talk golf with people who listen.</span></li>
+        </ul>
+      </div>
+      <div class="br-bar-col">
+        <h3 class="br-bar-h">What we don't ask for</h3>
+        <ul class="br-list br-bar-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A follower count. There is no threshold, on any platform.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A posting schedule, or a minimum number of anything.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A script. What you say about the club is yours.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Exclusivity &mdash; keep playing whatever else is in the bag.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Professional gear. A phone and daylight is the whole kit.</span></li>
+        </ul>
+      </div>
+      <div class="br-bar-col br-bar-col--warn">
+        <h3 class="br-bar-h">What isn't a fit</h3>
+        <ul class="br-list br-bar-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A feed that is mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Wanting a script, or sign-off before you post. That exists here &mdash; but it is the Creator level, and it is paid work.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Applying for a free club with no plan to play it. We read applications properly, and it shows.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="aside br-bar-note">Joining is open &mdash; there is nothing to clear. Clubs are the part that is limited, and the application is where that gets decided. If you are not sure whether it is worth applying, apply and say so. The worst outcome is a reply.</p>
+  </div>
+</section>
+
+
+<!-- ============ THE MONEY SIDE ============
+     Dartee-shaped (Cole, 2026-08-13): say commission EXISTS and that it grows,
+     say payout is monthly — and publish no percentage, no cookie window, no
+     payout date, no network name. "All of the contractual detail doesn't need
+     to be on the page; they can learn more after they're accepted."
+
+     Two columns, and the second is the load-bearing one: clubs are never
+     commissioned. That is positioning, not thrift — the homepage sells a price
+     with no middlemen in it, and a commissioned advocate on the hero category
+     contradicts it. Reuses the bar's column styling; `warn` marks the column
+     that closes a door rather than opens one. -->
+
+<section class="sec br-earn" id="earn">
+  <div class="wrap">
+    <span class="eyebrow">The money side</span>
+    <h2 class="disp d-m">Where earning happens, and where it doesn't</h2>
+    <div class="br-bar-cols br-bar-cols--2">
+      <div class="br-bar-col">
+        <h3 class="br-bar-h">Apparel &mdash; you earn</h3>
+        <ul class="br-list br-bar-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Your own code, and commission on everything it sells.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Your rate grows as you do.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Paid out monthly.</span></li>
+        </ul>
+      </div>
+      <div class="br-bar-col br-bar-col--warn">
+        <h3 class="br-bar-h">Clubs &mdash; you don't</h3>
+        <ul class="br-list br-bar-list">
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>No code, no commission, no cut. Not now, not at any level.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You get clubs to play because you play, and what you say about them is yours.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>It is the one thing on this page we will not change.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="aside br-bar-note">Rates, timing and the rest of it come with your acceptance &mdash; there is no contract to read on a web page.</p>
+  </div>
+</section>
+
 
 <!-- ============ THE NUMBERS ============
      Ink field. Every figure here is one Shopify or Judge.me actually reports —
@@ -1498,9 +1729,9 @@ button{font:inherit;color:inherit}
     <span class="eyebrow on-dark">What it isn't</span>
     <h2 class="disp d-l br-stats-h">No follower minimum</h2>
     <dl class="br-figs">
-      <div><dt>Open</dt><dd>Applications open a few times a year. There is no follower threshold to clear.</dd></div>
-      <div><dt>Honest</dt><dd>The notes we want are the critical ones. A roster that only says nice things is worth nothing to anyone.</dd></div>
-      <div><dt>Small</dt><dd>Five slots on the roster today, and they are not filled yet.</dd></div>
+      <div><dt>Open</dt><dd>No follower threshold to clear, and no window to wait for. Write any time &mdash; applications are read in batches.</dd></div>
+      <div><dt>Honest</dt><dd>The notes we want are the critical ones. An ambassador who only says nice things is worth nothing to anyone.</dd></div>
+      <div><dt>Unbought</dt><dd>Clubs are never commissioned. Nobody here earns a cent for saying a wedge is good.</dd></div>
     </dl>
     
   </div>
@@ -1512,7 +1743,7 @@ button{font:inherit;color:inherit}
      dashed boxes in a column read as an unfinished page rather than an honest
      one (§20, the same call the club collection made). -->
 
-<section class="sec br-row br-row--cream">
+<section class="sec br-row">
   <div class="wrap br-row-in">
     <div class="br-row-ph">
       <div class="ph">
@@ -1523,36 +1754,7 @@ button{font:inherit;color:inherit}
       <span class="eyebrow">What we're after</span>
       <h2 class="disp d-m">Golfers, not audiences</h2>
       <p class="br-p">The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.</p>
-      <p class="br-p">That is genuinely most of the brief. We are not looking for a particular follower count or a posting schedule, and there is no script.</p>
-
-      <ul class="br-list">
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You play regularly, and you'd put these in the bag on merit.</span></li>
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You'll tell us what's wrong with a club as readily as what's right.</span></li>
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You're happy for your name and handle to appear on this page.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec br-row br-row--flip">
-  <div class="wrap br-row-in">
-    <div class="br-row-ph">
-      <div class="ph">
-        <span class="lbl"><span class="mono k">Lifestyle shot needed</span><span class="mono">4:3. A golfer filming a shot on a phone at the range, Lucky club in frame. Loose, unposed, natural light — this is about somebody making their own content, not a brand shoot.</span></span>
-      </div>
-    </div>
-    <div class="br-row-copy">
-      <span class="eyebrow">The other way in</span>
-      <h2 class="disp d-m">Or just take the commission</h2>
-      <p class="br-p">If you have a website, a blog or a following in the golf space and you would rather not wait on a roster place, the affiliate program is open now and you can apply yourself.</p>
-      <p class="br-p">It pays <b>10% commission</b> on every qualified buyer you send, on a <b>60-day cookie</b>, and it runs through AvantLink &mdash; so the tracking, the reporting and the payouts are not something either of us has to build.</p>
-
-      <ul class="br-list">
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>10% commission on qualified sales.</span></li>
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>60-day cookie window.</span></li>
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Run through AvantLink, free to join.</span></li>
-        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Open now &mdash; no roster place required.</span></li>
-      </ul>
+      <p class="br-p">That is genuinely most of the brief. What we are not doing is buying an audience &mdash; there is no follower count that gets you in and none that keeps you out.</p>
     </div>
   </div>
 </section>
@@ -1565,62 +1767,13 @@ button{font:inherit;color:inherit}
      testimonial; if it is in quotation marks a customer typed it. -->
 
 
-<!-- ============ ROSTER ============
-     Five 4:5 portraits and five real names, none of which exist yet. Names are
-     BRACKETED, never invented — an ambassador page that names people who have
-     not agreed to be on it is the worst version of this page. Same shape as
-     the homepage roster it feeds from (§7b G). -->
-
-<section class="sec br-roster" id="roster">
-  <div class="wrap">
-    <span class="eyebrow">The roster</span>
-    <h2 class="disp d-l">Five slots</h2>
-    <p class="body br-roster-lede">These are real slots waiting on real people. The names below are brackets, not placeholders for names we already have — nobody appears on this page until they have agreed to be on it.</p>
-    <div class="br-rost-grid msnap">
-      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">Headshot needed</span><span class="mono">4:5 portrait, on course, natural light.</span></span>
-        </div>
-        <span class="br-rost-nm">[Creator name]</span>
-        <span class="br-rost-hd">@[handle]</span>
-      </div>
-      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">Headshot needed</span><span class="mono">4:5 portrait, on course, natural light.</span></span>
-        </div>
-        <span class="br-rost-nm">[Creator name]</span>
-        <span class="br-rost-hd">@[handle]</span>
-      </div>
-      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">Headshot needed</span><span class="mono">4:5 portrait, on course, natural light.</span></span>
-        </div>
-        <span class="br-rost-nm">[Creator name]</span>
-        <span class="br-rost-hd">@[handle]</span>
-      </div>
-      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">Headshot needed</span><span class="mono">4:5 portrait, on course, natural light.</span></span>
-        </div>
-        <span class="br-rost-nm">[Creator name]</span>
-        <span class="br-rost-hd">@[handle]</span>
-      </div>
-      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">Headshot needed</span><span class="mono">4:5 portrait, on course, natural light.</span></span>
-        </div>
-        <span class="br-rost-nm">[Creator name]</span>
-        <span class="br-rost-hd">@[handle]</span>
-      </div>
-    </div>
-    
-    <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">Needs confirming</span> &mdash; who the five are — names, handles and a 4:5 portrait each.</p>
-      <p class="br-tbd-ask">The same five slots sit on the homepage, so one answer fills both.</p>
-    </div>
-    
-  </div>
-</section>
+<!-- ============ ROSTER — DORMANT ============
+     No page sets `roster` since 2026-08-13: Cole ruled the program is open to
+     anyone who meets the criteria, so a lineup of five faces said the opposite
+     and came off. The block stays for the day there ARE big, real names worth
+     showing (his words) — and build.py still refuses any real name that lacks
+     a `consent` key, so re-enabling it cannot quietly name someone who never
+     agreed. Names are BRACKETED until then, never invented. -->
 
 
 <!-- ============ HOW IT WORKS ============
@@ -1630,36 +1783,45 @@ button{font:inherit;color:inherit}
 
 <section class="sec band-cream br-steps">
   <div class="wrap">
-    <span class="eyebrow">How to ask</span>
-    <h2 class="disp d-m">There is one way in</h2>
+    <span class="eyebrow">What happens next</span>
+    <h2 class="disp d-m">From application to creator</h2>
     <ol class="br-steps-list">
       <li>
         <span class="br-step-n" aria-hidden="true">1</span>
         <div>
-          <h3>Write to us</h3>
-          <p>Email <a href="mailto:partners@luckygolf.com">partners@luckygolf.com</a>, which is the address the team page gives, or use the contact form and pick &ldquo;The Ambassador Program&rdquo; so it lands in the right place.</p>
+          <h3>You apply</h3>
+          <p>The form below, or an email. Five fields, and the links one is optional.</p>
         </div>
       </li>
       <li>
         <span class="br-step-n" aria-hidden="true">2</span>
         <div>
-          <h3>Tell us how you play</h3>
-          <p>Where you play, how often, what's in the bag now. A handle if you post; it is not required.</p>
+          <h3>We read it</h3>
+          <p>In batches, by a person, not on a schedule we can promise. You get an answer either way.</p>
         </div>
       </li>
       <li>
         <span class="br-step-n" aria-hidden="true">3</span>
         <div>
-          <h3>We'll come back to you</h3>
-          <p>Applications are looked at in batches rather than continuously, so a reply is not immediate.</p>
+          <h3>You're in</h3>
+          <p>Your apparel code, the group chat, drops and reposts &mdash; all of it from day one, for everyone accepted.</p>
+        </div>
+      </li>
+      <li>
+        <span class="br-step-n" aria-hidden="true">4</span>
+        <div>
+          <h3>Clubs, when there are clubs</h3>
+          <p>Seeded in batches and never to everyone. What you wrote in the application is what decides it, not what you post afterwards.</p>
+        </div>
+      </li>
+      <li>
+        <span class="br-step-n" aria-hidden="true">5</span>
+        <div>
+          <h3>It grows with you</h3>
+          <p>Your apparel rate goes up as you do, and the ambassadors whose work we keep coming back to are the first people we call for paid projects.</p>
         </div>
       </li>
     </ol>
-    
-    <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">Needs confirming</span> &mdash; what the roster itself gives and asks — product, discount, or something else. The affiliate program above is separate and its terms are public; the roster's are not written down.</p>
-      <p class="br-tbd-ask">A roster place and an affiliate link are different things, and the page will not blur them.</p>
-    </div>
     
   </div>
 </section>
@@ -1672,12 +1834,41 @@ button{font:inherit;color:inherit}
   <div class="wrap br-fit-in">
     <span class="eyebrow">Interested</span>
     <h2 class="disp d-l">Say hello</h2>
-    <p class="body">There's no form to fill in and no application window to wait for. Write, tell us how you play, and it gets read.</p>
+    <p class="body">The application is just below, and it is read by a person. Or skip the form: write to partners@luckygolf.com and say how you play.</p>
     <div class="br-fit-cta">
-      <a class="btn btn-foil sweep" href="42-contact.html"><span>Get in touch</span><span class="ar">&rarr;</span></a>
+      <a class="btn btn-foil sweep" href="#apply"><span>Apply now</span><span class="ar">&rarr;</span></a>
       <a class="btn btn-line-cream" href="10-collection-clubs.html"><span>The clubs</span></a>
     </div>
     <p class="aside br-fit-aside">No follower minimum. That part is settled.</p>
+  </div>
+</section>
+
+
+<!-- ============ THE APPLICATION ============
+     Inline, Dartee-style (Cole approved 2026-08-13), and the same contract as
+     the contact form (§25g): the prototype notice sits ABOVE the fields, the
+     submit handler stops navigation, and nothing thanks anyone for a message
+     it never sent — the interception repeats the notice instead. The links
+     field is the creator fast lane (§32). -->
+
+<section class="sec br-apply-sec" id="apply">
+  <div class="wrap br-apply-in">
+    <span class="eyebrow">The application</span>
+    <h2 class="disp d-m">Apply as an ambassador</h2>
+    <p class="body br-apply-lede">Five fields, read in batches, answered by a person. The links one is optional — and it is also the fast lane.</p>
+    <p class="br-proto"><span class="tbd tbd--light">Prototype</span> &mdash; these fields are the markup for the Shopify build and nothing sends yet. Email <a href="mailto:partners@luckygolf.com">partners@luckygolf.com</a> and it reaches us today.</p>
+    <form id="amb-apply">
+      <div class="br-f2">
+        <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
+        <p class="br-field"><label for="af-email">Email</label><input id="af-email" name="email" type="email" autocomplete="email" required></p>
+      </div>
+      <p class="br-field"><label for="af-handle">Instagram or TikTok <span class="br-opt">optional</span></label><input id="af-handle" name="handle" type="text"></p>
+      <p class="br-field"><label for="af-play">How do you play? Where, how often, what's in the bag now</label><textarea id="af-play" name="play" rows="4" required></textarea></p>
+      <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional &mdash; this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
+      <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>Submit application</span><span class="ar">&rarr;</span></button></p>
+      <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">Nothing was sent — this form is a prototype. Email partners@luckygolf.com and it reaches us today.</p>
+    </form>
+    <p class="aside br-apply-note">No follower minimum, and no window to wait for. Everyone accepted gets the code, the chat and the drops; clubs go out in batches.</p>
   </div>
 </section>
 
@@ -1701,7 +1892,7 @@ button{font:inherit;color:inherit}
         <span class="br-sib-h">Five clubs: two wedge finishes, two putters and a hybrid.</span>
       </a>
     </div>
-    <p class="aside br-aside">The roster portraits and the program terms are the two things standing between this page and a finished one.</p>
+    <p class="aside br-aside">Everything the program gives and asks is on this page, and the application is at the bottom of it.</p>
   </div>
 </section>
 
@@ -1797,7 +1988,21 @@ button{font:inherit;color:inherit}
 <p class="sr" id="cart-live" role="status" aria-live="polite"></p>
 
 <script>
-
+/* page-brand.js — the ambassador application, markup only.
+   Same contract as the contact form (§25g): the prototype notice sits ABOVE
+   the fields, submit is intercepted, and nobody is thanked for a message that
+   never sent — the interception repeats the notice instead. Native `required`
+   validation still runs; this fires only on a valid submit. */
+(function(){
+  var f = document.getElementById('amb-apply');
+  if (!f) return;
+  function brApplyIntercept(e){
+    e.preventDefault();
+    var n = document.getElementById('amb-sent');
+    if (n){ n.hidden = false; n.focus(); }
+  }
+  f.addEventListener('submit', brApplyIntercept);
+})();
 
 /* reveal-on-scroll */
 (function(){
@@ -1926,7 +2131,7 @@ button{font:inherit;color:inherit}
       detail.innerHTML =
         '<div class="lb-row">'
         + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>'
-        + (o.who === 'creator' ? 'Trybe creator' : 'Customer post') + '</span></span>'
+        + (o.who === 'creator' ? 'Lucky ambassador' : 'Customer post') + '</span></span>'
         + '</div>'
         + '<span class="lb-who" id="lb-who">' + (o.who === 'creator' ? '@[CREATOR HANDLE]' : '@[CUSTOMER HANDLE]') + '</span>'
         + '<p class="lb-meta">' + esc(o.kind) + '</p>'
@@ -2059,7 +2264,7 @@ button{font:inherit;color:inherit}
       detail.innerHTML =
         '<div class="lb-row">'
         + '<span class="lb-vfd"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>'
-        + (o.who === 'creator' ? 'Trybe creator' : 'Customer post') + '</span></span>'
+        + (o.who === 'creator' ? 'Lucky ambassador' : 'Customer post') + '</span></span>'
         + '</div>'
         + '<span class="lb-who" id="lb-who">' + (o.who === 'creator' ? '@[CREATOR HANDLE]' : '@[CUSTOMER HANDLE]') + '</span>'
         + '<p class="lb-meta">' + esc(o.kind) + '</p>'

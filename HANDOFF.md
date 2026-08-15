@@ -2983,3 +2983,399 @@ links · **`Needs confirming` count across the four support pages: 7 → 0.**
    does not want five named people; the program is open to anyone meeting the
    criteria, and the criteria and terms are not yet supplied.
 3. **Photography**, to be issued as its own brief.
+
+---
+
+## 31. The roster comes off, and the program gets its terms (2026-08-13)
+
+### 31a. Cole's ruling, and the model behind it
+
+The five-slot roster was §3's borrow from Takomo's homepage — and it was
+borrowed wrong. Takomo's roster shows **signed influencers** (their ambassador
+page gatekeeps at 5k Instagram / 10k TikTok / 1k YouTube); Lucky's program is an
+**open door**. Same visual, opposite meaning. Cole, 2026-08-13: anyone meeting
+the criteria can be an ambassador; names appear only when there are big, real
+ones — a future "Lucky Golf Athletes" idea that stays unannounced (the 02 rule).
+
+Three decisions via question card, plus the analysis he asked for:
+
+1. **The club give stays deliberately unspecified on the page** — "clubs to
+   play, details with your acceptance." The specifics travel in the acceptance
+   email the way the returns portal travels in the order confirmation. DO NOT
+   "fix" the vagueness by inventing a number.
+2. **The 10%/AvantLink affiliate block is OFF the page.** He does not want
+   commission advertised on the site; the commission test continues on the
+   Trybe platform, off-site. (His Grunk Dolfer creator brief — 12% on subtotal,
+   free seeding, Partnership Ads — is the in-house model for a future APPAREL
+   track, which stays off the page until its terms exist.)
+3. **The group chat is real and advertised** — Takomo lists theirs as a
+   headline perk, and it is the retention mechanism.
+
+**No commission on clubs is positioning, not thrift.** The homepage sells "no
+sponsorships and the middlemen in the price"; a commissioned advocate on the
+hero category is a walking counterexample. The test that survives this session:
+*if the incentive would embarrass the price story, it does not attach to clubs.*
+Apparel carries no price story, so commission there passes the same test.
+
+### 31b. What changed on the two pages
+
+`_brand-trybe.json`: `roster` deleted; the affiliate row became **"What you
+get, and what we ask"** (the gives are all Cole's: clubs, group chat, drops and
+events, reposts — and "nobody is paid per sale" as brand proof); the stats item
+"Small / Five slots" (now false) became **"Unpaid"**; the paid-creator ladder is
+one sentence, **earned-not-promised**; the steps' terms chip is gone because the
+terms are now on the page. The stale contradiction between "applications open a
+few times a year" (stats) and "no application window" (close) is resolved to
+"write any time — read in batches", which is what Cole described.
+
+`page-home.html`: the five-card grid is gone; the section is an invitation band
+— same `.roster` cream field, same `#trybe` id, because the §7 field order and
+the UGC rail's "Join the program" button both depend on the section existing.
+Dead `.rost-*` rules removed from `page-home.css`.
+
+`page-brand.html`: the roster block is **dormant, not deleted** — its comment
+now says why, and `brand_copy()`'s consent guard still stands for the day real
+names exist.
+
+### 31c. A "Trybe" leak the 2026-08-02 sweep missed
+
+`core.js`'s lightbox rendered **"Trybe creator"** as a visible label on UGC
+panes — on the homepage, the Ambassador page, and every page with a reel rail.
+The 08-02 rule ("the word Trybe comes off the site") was applied to markup and
+copy but nobody grepped the JS. Now "Lucky ambassador". The only "Trybe"
+strings left in any built page are HTML comments.
+
+### 31d. Verified
+
+Swept at 1440 and 390 with fonts awaited (and re-measured after the
+`viewport: 0` trap hit again on a fresh tab — resize EVERY new tab before
+trusting a number).
+
+| | 1440 | 390 |
+|---|---|---|
+| Ambassador page | 0 contrast fails, field order white→INK→cream→white→cream→BRAND→cream, no two darks adjacent | `scrollWidth` 390, partners@ link underlined, 3 steps, 0 chips |
+| Homepage #trybe | 0 fails in section, cream between INK and white, 0 roster cards | `scrollWidth` 390, CTA 170×44 |
+
+`--check` all 58 identical after rebuild · `test-variants.js` holds ·
+`--links` 60 pages, 58 built · zero `.tbd` chips on the Ambassador page.
+
+### 31e. The shot list shrinks
+
+**26 stills → 22.** The five roster headshots left with the roster; the program
+page gained one lifestyle brief (the filming-at-the-range shot moved from the
+old affiliate row to the new gives row). `SHOT-LIST.md` and `FINISH-LINE.md`
+both updated. Video count unchanged at 36.
+
+### 31f. Still open
+
+The named-roster block waits dormant. The apparel commission track exists only
+as the Grunk model plus Cole's intent — off every page until terms exist. The
+photography brief for the 22 remaining stills is the next deliverable.
+
+---
+
+## 32. The Ambassador page goes Dartee-shaped (2026-08-13)
+
+### 32a. Cole: follow Dartee's layout, not Takomo's
+
+He sent Dartee's ambassador page as a screenshot: *"I like their layout because
+it's so easy to grasp."* He is right about why — **Takomo's page is a pitch you
+read; Dartee's is a decision you make.** Their fork ("Which one fits you?", two
+cards, first screen) makes every visitor self-sort, and everything below is
+sequenced by that choice.
+
+Two things on Dartee's page deliberately did NOT carry over:
+
+- **Their hero leads with commission** ("your own discount code and
+  commission", "Earn on Every Sale") — the exact thing §31a took off this page.
+- **Their four-tier ladder and stats band** ("300+ crew", "$20K+ paid") run on
+  defined tier rewards and real numbers. Lucky has neither; inventing either is
+  the roster problem in a different costume.
+
+### 32b. The fork is ONE door, and that was a recommendation Cole asked for
+
+Via question card: inline form YES, two-stage ladder YES, and on the fork he
+asked for my thoughts. Recommended and built: **one door with a fast lane** —
+Ambassador is open, Creator is by invite, and the application's optional
+"links to anything you've made" field is the fast lane ("sometimes on day
+one"). Three reasons, recorded so the next session doesn't relitigate:
+
+1. A direct creator door needs a defined offer (store credit? per-project
+   rate?) and Cole has not defined one — two doors today means inventing the
+   second.
+2. Zero members, one review queue. Two application tracks is segmentation
+   before there is anything to segment.
+3. The links field produces the same outcome as Dartee's creator door without
+   a public offer to honour: a strong creator is visible at application time
+   and the invite conversation starts immediately.
+
+**If Cole later defines a direct creator deal** (the Grunk Dolfer brief is the
+in-house template), card two gains a CTA and the form a branch — one swap.
+
+### 32c. What was built
+
+New template blocks in `page-brand.html`, both gated so Our Story is untouched:
+
+- **`fork`** — two cards: cream Ambassador card (the §31 gives, "No commission.
+  No quota. No script.", CTA ↓ to the form) and ink Creator card ("Earned, not
+  promised."). The colour contrast IS the information — open vs invited. On the
+  ink card the clover bullets flip to `--gold-hi`: green on ink measures ~3.4:1,
+  which passes non-text but reads as off (§7's green-on-green lesson, again).
+- **`apply`** — the inline application, id `#apply`: name, email, optional
+  handle, "how do you play", optional links. Same contract as the contact form
+  (§25g): prototype chip ABOVE the fields, submit intercepted, and the
+  interception repeats the notice — nobody is thanked for a message that never
+  sent. `.br-opt` is `--ink-muted`, never `--ink-38` (§25h's 2.44:1 bug).
+- **`steps` reused as the ladder** — no new block. Two numbered stages,
+  Ambassador → Creator, in the existing `.br-steps-list` styling.
+- **`page-brand.js` is new** (the brand template had no JS until now), and
+  `build.py` gained a per-page `extra` for it: `id="amb-apply"` proves the form
+  rendered, `function brApplyIntercept` proves the bundle carries the
+  interception. Marker verified unique to one source file (§21i).
+
+The gives row died into the fork card; the criteria row ("Golfers, not
+audiences") stays as the page's one photo moment, now on white. The close
+(`br-fit`) CTA is "Apply now" → `#apply`, and the homepage UGC rail's "Join
+the program" deep-links there too — `{{link:trybe#apply}}` resolves through
+the registry like everything else.
+
+### 32d. Field order, re-derived
+
+```
+white hd → white fork → INK stats → white row → cream ladder → BRAND fit
+→ white apply → cream more → INK footer
+```
+
+No two dark bands adjacent, brand field once, cream above the footer. The
+fork's ink CARD sits inside a white section with padding, so it does not count
+as a band and cannot touch the stats band.
+
+### 32e. Verified
+
+1440 and 390, fonts awaited: **0 contrast fails both widths** (the ink card's
+badge, bullets and foot included), `scrollWidth` 390 at 390, cards stack
+full-width on a phone, inputs 54px, submit 202×55. Driven through the DOM: a
+valid submit does NOT navigate and DOES reveal the repeated prototype notice;
+`#apply` anchors resolve from the fork card, the close and the homepage.
+`--check` all 58 identical after rebuild · `test-variants.js` holds ·
+`--links` 60 pages, 58 built, zero dead.
+
+### 32f. The shot list, again
+
+**22 → 21 stills.** The second lifestyle brief (golfer filming at the range)
+left with the gives row. The Ambassador page now carries exactly one photo
+brief. Video unchanged at 36.
+
+### 32g. Dormant, unchanged
+
+The roster block (§31b) and the apparel-commission track (§31a) both stay off
+the page and wait on real terms. The tier ladder can go Dartee-four-wide the
+day Cole defines tier rewards — the two-stage version is the honest subset of
+it today.
+
+---
+
+## 33. The bar, and the flow (2026-08-13)
+
+Cole, on the Dartee-shaped page: *"add the restrictions like Takomo does to
+make it more inclusive"*, and *"is there any way we can make the page flow more
+and if people have questions on what they do it's easier to read like
+Dartee's?"* Two blocks answer the two halves.
+
+### 33a. The bar — Takomo's device, inverted
+
+Takomo's ambassador page gates on numbers: 5,000 Instagram, 10,000 TikTok,
+1,000 YouTube. **The value of that is not the gate, it is the certainty** — you
+know before applying whether you fit. That is what Cole wants and it is not in
+tension with "inclusive", because the certainty and the threshold are separable.
+
+So `bar` states the bar just as plainly, and the bar is quality-shaped:
+
+```
+This is for you if   →  play regularly, merit first, say what's wrong, happy to
+                        be tagged, talk golf to people who listen
+What we don't ask    →  NO follower count on any platform, no schedule, no
+                        script, no exclusivity, no professional gear
+What isn't a fit     →  wall-to-wall promo-code feeds, wanting a script or
+                        post approval, under 18, free-club hunters
+```
+
+**Three columns, not two, and that is the design.** The middle column is the
+loudest thing in the section, so the restriction lands beside an explicit list
+of what is *not* being asked rather than standing alone. The third column is
+marked with a gold top rule and darker heading, but **no red, no cross, no
+warning colour** — its bullets keep the clover and run `--ink-muted`. An
+explicit bar that looks like a bouncer is the failure mode here.
+
+**⚠️ THE THIRD COLUMN IS DRAFTED, NOT CONFIRMED.** The promo-code exclusion,
+the no-script line, **under 18**, and the free-club-hunter line are my drafting
+from Cole's stated intent — not quoted terms. The age minimum is real policy
+with real consequences. `_signoff` says so and Cole was told directly. The
+first two columns are safe: they restate criteria that have been on the page
+since it was built.
+
+### 33b. The flow — Dartee's "application to athlete"
+
+`steps` was three abstract stages. It is now **five concrete ones** answering
+the question Cole actually named — *what do I do, and what happens next*:
+
+```
+1 You apply  →  2 We read it  →  3 Clubs arrive  →  4 You play, and you post
+             →  5 Some of you get paid
+```
+
+Step 5 is the §32b ladder, kept earned-not-promised. Step 2 promises an answer
+but no timeframe, which is the §25f rule about response targets.
+
+### 33c. `.br-steps-list` had to become a timeline
+
+It was `grid-template-columns:repeat(3,1fr)` — it held exactly three steps and
+would have gone 3+2 ragged at five. Now the number sits **on top** of its step
+with a 2px connector running behind the row, so a sequence reads as a sequence.
+
+**The connector is drawn on the LIST, not per-item**, and clipped to badge
+centres — a `::before` on each `li` prints a tail after step five. Getting the
+right edge right needed real arithmetic rather than a guess:
+
+```
+first centre   19px            (half a 38px badge)
+last centre    one column-width minus 19px from the right
+column width   (100% - 4 * var(--gut)) / 5
+→ right: calc((100% - 4 * var(--gut)) / 5 - 19px)
+```
+
+A first attempt used `right:calc(10% + 19px)` and **measured 0px off on the
+left and overshot on the right**; the fix measures **0.0px off at both ends**.
+A percentage is not a column width when there are gaps.
+
+Under 820px it flips to a **vertical rail** — the connector becomes a left
+spine and the number sits beside its step again. Measured: all five badge
+centres and the rail land on x=39.
+
+### 33d. Field order, re-derived again
+
+```
+white hd → white fork → cream BAR → INK stats → white row → cream ladder
+→ BRAND fit → white apply → cream more → INK footer
+```
+
+The bar slots between the fork and the stats, so cream separates the white fork
+from the ink band. No two darks adjacent, brand field once, cream above the
+footer.
+
+### 33e. The duplicate that had to go
+
+The criteria row's three-item list said the same things as the bar's first
+column. The row keeps its prose and its photo brief and **lost the list** —
+otherwise the page makes the same argument twice within two screens, which is
+the §7 "why / value props" mistake in miniature.
+
+### 33f. Verified
+
+1440 and 390, fonts awaited.
+
+| | 1440 | 390 |
+|---|---|---|
+| Contrast | 0 fails (bar, fork ink card, timeline, form) | 0 fails |
+| Timeline | 5 across, connector 0.0px off both badge centres, behind badges | 5 stacked, rail at x=39 aligned to every badge |
+| Bar | 3 columns | stacked full-width |
+| Overflow | `scrollWidth` 1425 | `scrollWidth` 390 |
+
+**Build guard verified by breaking it:** emptying `page-brand.js` fails the
+brand pages on `function brApplyIntercept` and lets the other 56 build — the
+per-PAGE `extra` from §22h. Note `page-brand.js` is a NEW untracked file, so
+`git checkout` cannot restore it after that test; rewrite it from HANDOFF or
+retype it.
+
+`--check` all 58 identical · `test-variants.js` holds · `--links` 60 pages,
+58 built, zero dead links.
+
+---
+
+## 34. The money split, and the follower question settled (2026-08-13)
+
+### 34a. Apparel pays, clubs never will
+
+Cole approved apparel commission ON the page, **Dartee-shaped**: *"just say
+commission and then you can increase as you go"*, *"just say monthly payout,
+don't put whatever the date is"*, *"all of the contractual detail doesn't need
+to be on the page... they can learn more after they're accepted."*
+
+New `earn` section, two columns, and the second is the load-bearing one:
+
+```
+Apparel — you earn     your own code · commission on what it sells ·
+                       rate grows as you do · paid monthly
+Clubs — you don't      no code, no commission, no cut, at any level
+                       "the one thing on this page we will not change"
+```
+
+**NO figures anywhere: no percentage, no cookie window, no payout date, no
+network name.** Verified by stripping comments, CSS and JS from the built page
+and scanning visible text — "commission" appears six times and is never
+quantified. (Those numbers *are* public on the store's own Affiliate
+Application page — 10% / 60-day / AvantLink, §33's `_rules` — this page simply
+does not repeat them.)
+
+### 34b. "Nobody is paid per sale" became false and had to be rewritten in four places
+
+The blanket claim was true only while nothing paid commission. Apparel paying
+made it a lie the moment the `earn` section landed. Every instance is now
+**club-specific**:
+
+| | was | now |
+|---|---|---|
+| lede | "nobody paid per sale" | "nobody ever paid to praise a club" |
+| stat | "Unpaid — nobody is paid per sale" | "Unbought — clubs are never commissioned" |
+| fork foot | "No commission. No quota. No script." | "No quota. No script. No commission on clubs, ever." |
+| fork note | "nobody at either level is paid per sale" | "apparel pays commission and clubs never will, and that split is the whole point" |
+
+**This is the trap to watch on this page.** Adding an earning mechanism
+anywhere silently falsifies a global claim made somewhere else. Grep for
+"commission", "paid" and "per sale" before touching it.
+
+### 34c. The follower bar — option C, and Cole's reasoning is the good one
+
+I recommended no published minimum; Cole picked **C**, which is stronger than
+either extreme, and his stated reason is why: *"I can always transfer back to
+like a specific follower account or remove it all entirely in the future."* It
+moves in both directions without a rewrite.
+
+```
+Joining          open. No threshold on any platform.
+Club seeding     limited and competitive. The application decides it.
+Everything else  code, commission, chat, drops, reposts — everyone accepted.
+```
+
+Takomo publishes 5k IG / 10k TikTok / 1k YT **with an exceptions clause**, so
+even their gate is soft. Mirroring it was rejected because a status gate
+contradicts the homepage's own no-status-tax argument, and because a published
+number has to be enforced against the 900-follower club pro who would be the
+best ambassador on the roster.
+
+**The honesty gain matters more than the flexibility.** The previous copy
+implied every accepted ambassador got a club, which was never going to be true
+at $99–229 a unit. The guaranteed set and the competitive one are now separated
+in three places: the fork card (four guarantees, then "a shot at a club to play
+— those go out in batches, and there are never enough"), the ladder (**step 3
+"You're in"** vs **step 4 "Clubs, when there are clubs"**), and both notes.
+
+### 34d. Two earlier drafts Cole cut
+
+- **The age minimum is gone.** *"The age doesn't matter, so don't add an age
+  thing unless Takomo does it"* — they don't.
+- **The promo-code bullet was reworded.** It read as though it were about Lucky
+  promo codes, which do not exist for clubs. It filters applicants whose *own
+  feeds* are wall-to-wall ads, and now says exactly that.
+
+### 34e. Verified
+
+| | 1440 | 390 |
+|---|---|---|
+| Contrast | 0 fails (fork ink card, bar, earn, timeline, form) | 0 fails |
+| Timeline | 5 across, connector 0.0px off both badge centres | 5 stacked, rail x=39 on every badge |
+| earn / bar | 2 and 3 columns | both stacked full-width |
+| Overflow | `scrollWidth` 1425 | `scrollWidth` 390 |
+
+`--check` all 58 identical · `test-variants.js` holds · `--links` 60 pages, 58
+built, zero dead links · no commission figure in visible copy.
