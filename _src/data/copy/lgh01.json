@@ -60,14 +60,14 @@
   "One Stryker LGH01 hybrid in the hand you picked",
   "Stiff graphite shaft",
   "Natural black rubber grip",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "clubHeadline": "The club that makes 210 yards a normal shot.",
  "clubParas": [
   "There is a distance where a long iron stops being reliable and a fairway wood is too much club. For most golfers it sits somewhere around 200 to 220 yards, and it is where scores quietly leak away.",
   "The Stryker is built for that gap. Nineteen degrees on a light 235-gram titanium head, with a Flex Channel face whose channels flex at impact to keep ball speed up on the strikes you do not center.",
-  "The shaft is stiff graphite, which keeps the head stable through impact without asking for a tour swing speed to load it. The grip is plain black rubber &mdash; the one restrained thing on an otherwise gold club.",
-  "The Glide Sole is the part nobody notices until they need it &mdash; less friction through turf, so the club moves the same way out of the fairway and out of the rough."
+  "The shaft is stiff graphite, which keeps the head stable through impact without asking for a tour swing speed to load it. The grip is plain black rubber, the one restrained thing on an otherwise gold club.",
+  "The Glide Sole is the part nobody notices until they need it: less friction through turf, so the club moves the same way out of the fairway and out of the rough."
  ],
  "clubSpecs": [
   {
@@ -76,7 +76,7 @@
   },
   {
    "k": "Face",
-   "v": "Flex Channel titanium — channels flex at impact for more rebound."
+   "v": "Flex Channel titanium: channels flex at impact for more rebound."
   },
   {
    "k": "Launch",
@@ -102,7 +102,7 @@
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Stryker LGH01 &mdash; club",
+   "caption": "Stryker LGH01 · club",
    "rows": [
     {
      "k": "Head material",
@@ -148,7 +148,7 @@
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Stryker LGH01 &mdash; shaft &amp; grip",
+   "caption": "Stryker LGH01 · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft",
@@ -156,7 +156,7 @@
     },
     {
      "k": "Shaft length",
-     "v": "40&quot; original &mdash; 40.5&quot; built"
+     "v": "40&quot; original, 40.5&quot; built"
     },
     {
      "k": "Shaft weight",
@@ -171,11 +171,11 @@
      "v": "58 g"
     }
    ],
-   "aside": "Stiff is the only flex offered, and it is the one club in the range that ships stiff &mdash; the wedges and putters are Regular."
+   "aside": "Stiff is the only flex offered, and it is the one club in the range that ships stiff. The wedges and putters are Regular."
   }
  ],
  "look": {
-  "photo": "Bold, full-bleed, portrait. Gold titanium head on the fairway at address, low sun. A hybrid is a wide, shallow shape — shoot it from behind so the width reads as confidence rather than bulk.",
+  "photo": "Bold, full-bleed, portrait. Gold titanium head on the fairway at address, low sun. A hybrid is a wide, shallow shape. Shoot it from behind so the width reads as confidence rather than bulk.",
   "headline": "The club you stop worrying about",
   "paras": [
    "There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.",
@@ -218,7 +218,7 @@
     "id": "lgh01",
     "name": "Instead of a 3-iron",
     "forWho": "The club you avoid",
-    "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones — the hybrid gets airborne from lies where the iron simply does not.",
+    "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones. The hybrid gets airborne from lies where the iron simply does not.",
     "facts": [
      {
       "k": "Loft",
@@ -241,7 +241,7 @@
     "rank": "The other way",
     "name": "Instead of a 5-wood",
     "forWho": "The club you can't keep straight",
-    "body": "A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter of the two &mdash; 40.5&Prime; of shaft rather than a fairway wood's. That is most of why it is easier to find the middle of, and why it holds a line off a tight tee shot.",
+    "body": "A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter of the two, at 40.5&Prime; of shaft rather than a fairway wood's. That is most of why it is easier to find the middle of, and why it holds a line off a tight tee shot.",
     "facts": [
      {
       "k": "Length",

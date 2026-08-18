@@ -65,7 +65,7 @@ var PD_GAPS = {
     var top = set[set.length - 1];
     $('#lf-note').textContent = top < 60
       ? 'That ladder tops out at ' + top + '°. If you want a 60° for tight pins as well, add it and drop the ' + set[1] + '°.'
-      : 'Three wedges, four to six degrees apart. Nothing overlaps and nothing is missing.';
+      : 'Those three cover everything from full shots to the flop. Pick the lofts, then the grind.';
   }
   [].forEach.call(document.querySelectorAll('[data-pw]'), function(b){
     b.addEventListener('click', function(){

@@ -20,7 +20,9 @@ var PD_AXIS_UI = {
   /* the combined Loft & grind axis — 50K, 52K, 52S. The help link goes to
      the grind explainer, because the grind is the half of this choice
      nobody arrives knowing. */
-  loftgrind:{help: {href: '#grinds', text: 'Which grind? →'}},
+  /* the grinds anchor moved: the standalone grind section died into the
+     product-description bullets (Cole, 2026-08-17, Takomo-shaped) */
+  loftgrind:{help: {href: '#club', text: 'Which grind? →'}},
   /* the size guide is a MODAL now, not a section on the page (Cole
      2026-07-31), so this opens it rather than jumping down the page */
   size:     {help: {md: 'md-size', text: 'Size guide →'}},
@@ -190,7 +192,7 @@ var PD_KIT = [
         /* The stock line says WHEN it ships and nothing else. It used to
            publish the exact unit count on anything under 25, which is inventory
            data a shopper has no use for and we have no reason to broadcast. */
-        st.textContent = 'In stock — ships in 1–2 business days';
+        st.textContent = 'In stock · ships in 1–2 business days';
       }
     }
     [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
@@ -232,6 +234,18 @@ var PD_KIT = [
     });
   });
   paintPickers(); sync();
+
+  /* ---------------------------------------------- sticky bar: fallback only.
+     Slides in when the real #atc button leaves the viewport, slides out when
+     it is back (Cole, 2026-08-18). No observer support -> the bar stays put
+     off-screen and the in-box button is the CTA, which is the safe default. */
+  (function(){
+    var atc = $('#atc'), bar = $('#atc-bar');
+    if (!atc || !bar || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(es){
+      bar.classList.toggle('atc-bar--on', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+    }, {threshold: 0}).observe(atc);
+  })();
 
   /* ------------------------------------------------------------ accordions */
   [].forEach.call(document.querySelectorAll('.acc-hd'), function(h){

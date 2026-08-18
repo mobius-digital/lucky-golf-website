@@ -10,7 +10,7 @@
 
   "hero": {
     "k": "Hero shot needed",
-    "brief": "21:9. The line together on turf — wedge, putter, hybrid — early light, gold reading warm rather than yellow. No hands, no model."
+    "brief": "21:9. The line together on turf (wedge, putter, hybrid), early light, gold reading warm rather than yellow. No hands, no model."
   },
 
   "stats": {
@@ -31,7 +31,7 @@
       "phK": "Detail shot needed",
       "phBrief": "4:3 macro. A milled wedge face, raking light across the grooves so the sandblast texture reads. Close enough to see the machining.",
       "paras": [
-        "The wedges are forged from 1020 carbon steel with a milled and sandblasted face. The putters are cut from a single block of stainless — 431 in the blade, 304 in the mallet. The hybrid is titanium with a flex-channel face.",
+        "The wedges are forged from 1020 carbon steel with a milled and sandblasted face. The putters are cut from a single block of stainless: 431 in the blade, 304 in the mallet. The hybrid is titanium with a flex-channel face.",
         "None of that is unusual for a good club. What is unusual is publishing it plainly, per loft, in a table you can read before you buy, including the rows where we do not have a number yet. If a spec is missing from this site it is because nobody has measured it, not because it is inconvenient."
       ],
       "cta": { "label": "Put one in the bag", "href": "{{link:c/clubs}}" }
@@ -53,10 +53,10 @@
       "eyebrow": "Who answers",
       "title": "A small company, and it shows in the good way",
       "phK": "Portrait needed",
-      "phBrief": "4:3. Cole, working — packing an order or on the phone, in the space where it actually happens. Not a posed headshot.",
+      "phBrief": "4:3. Cole, working: packing an order or on the phone, in the space where it actually happens. Not a posed headshot.",
       "paras": [
         "The inbox is read by people who handle the clubs. When an order goes missing, the person sorting it out is usually the person who sold it to you.",
-        "That is not a service promise with a number attached — there isn't one published, and inventing one would be worse than admitting it. It is just what the reviews describe, over and over, in customers' own words."
+        "That is not a service promise with a number attached. There isn't one published, and inventing one would be worse than admitting it. It is just what the reviews describe, over and over, in customers' own words."
       ],
       "cta": { "label": "Read all 884 reviews", "href": "{{link:reviews}}" }
     }

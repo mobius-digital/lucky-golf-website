@@ -21,7 +21,7 @@
  "compare": {
   "eyebrow": "01 or 02",
   "headline": "What actually changes between the 01 and the 02.",
-  "sub": "The 01 is the wedge Lucky sells today: a forged head, a milled and sandblasted face, six lofts and your choice of sole grind. The 02 is a different club, not a finish and not a tier &mdash; it is cast rather than forged, and that is what makes the rest of it possible.",
+  "sub": "The 01 is the wedge Lucky sells today: a forged head, a milled and sandblasted face, six lofts and your choice of sole grind. The 02 is a different club, not a finish and not a tier. It is cast rather than forged, and that is what makes the rest of it possible.",
   "scales": [
    {
     "k": "lofts",
@@ -88,7 +88,7 @@
     "facts": [
      {
       "k": "Construction",
-      "v": "Cast &mdash; for the weighting"
+      "v": "Cast, for the weighting"
      },
      {
       "k": "Face",
@@ -111,14 +111,14 @@
       "v": "Painted first groove"
      }
     ],
-    "note": "No price, no loft list and no date yet. When those are real they will be here and not before &mdash; and the 02 is what will sit above the 01, not replace it."
+    "note": "No price, no loft list and no date yet. When those are real they will be here and not before. And the 02 is what will sit above the 01, not replace it."
    }
   ]
  },
  "fitting": {
   "eyebrow": "Not sure",
   "headline": "Start with the wedge you already carry.",
-  "body": "Almost nobody needs all six lofts. The useful question is what sits in your bag now and where the gap under it is &mdash; a 56&deg; next to a pitching wedge leaves a different hole than a 60&deg; does.",
+  "body": "Almost nobody needs all six lofts. The useful question is what sits in your bag now and where the gap under it is. A 56&deg; next to a pitching wedge leaves a different hole than a 60&deg; does.",
   "ctaFinder": "Use the club finder",
   "ctaAsk": "Ask a person",
   "aside": "One wedge per order can be opened and hit on a turf mat inside the sixty days. The rest stay sealed."
@@ -132,16 +132,16 @@
     "rowHeadline": "Bounce, in one paragraph",
     "paras": [
      "Bounce is the angle between the leading edge of the club and the ground when the sole sits flat. More of it stops the head digging; less of it lets the leading edge get under a ball sitting tight. It is the single spec that decides whether a wedge suits how you take turf.",
-     "The K runs 8&deg; on the 50 and 52, 12&deg; on the 54 and 56, and 10&deg; on the 58 and 60. The S runs 10&deg; at 52 and 12&deg; at both 56 and 60 &mdash; more on paper, less through firm turf, because the narrower sole puts less of itself on the ground. The product page explains that properly."
+     "The K runs 8&deg; on the 50 and 52, 12&deg; on the 54 and 56, and 10&deg; on the 58 and 60. The S runs 10&deg; at 52 and 12&deg; at both 56 and 60: more on paper, less through firm turf, because the narrower sole puts less of itself on the ground. The product page explains that properly."
     ]
    },
    {
-    "photo": "Landscape 4:3. Macro of a milled, sandblasted face &mdash; grooves and the dual texture visible, gold catching along the top line. Shot on a neutral surface, no props.",
+    "photo": "Landscape 4:3. Macro of a milled, sandblasted face: grooves and the dual texture visible, gold catching along the top line. Shot on a neutral surface, no props.",
     "rowHeadline": "Forged now, cast next, and both on purpose",
     "flip": true,
     "paras": [
      "The 01 is forged from 1020 carbon steel and finished with CNC-milled grooves over a sandblasted face. Forging is what gives a wedge that soft, slightly dead feel off the face, and it is the right call for a club whose whole job is feel at short range.",
-     "It is also a constraint. A forged blank leaves very little freedom to move mass around or to change what the face carries, which is why the 02 goes the other way. Two construction methods, chosen for two different sets of things they let you do &mdash; not a step down to save money."
+     "It is also a constraint. A forged blank leaves very little freedom to move mass around or to change what the face carries, which is why the 02 goes the other way. Two construction methods, chosen for two different sets of things they let you do, not a step down to save money."
     ]
    }
   ]

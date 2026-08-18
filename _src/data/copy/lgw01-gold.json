@@ -58,10 +58,11 @@
    "Carver 01 Gold wedge, top line"
   ]
  ],
+ "_pullQuote": "Swapped 2026-08-17: the old quote here was the same Vokey/Cleveland comparison Cole removed from the homepage pull quote — a verbatim review, but CHOOSING it is the comparison by proxy, and it argues parity rather than delight. Paul F. is verbatim from the lgw01-gold Judge.me pull; his last line is the brand argument in a customer's mouth.",
  "pullQuote": {
   "title": "As good as gold",
-  "quote": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.",
-  "who": "1981 C.o.M. &middot; Verified buyer"
+  "quote": "The new Lucky wedges look and feel great and strike pure! I always play better when I feel Lucky!",
+  "who": "Paul F. &middot; Verified buyer"
  },
  "priceNote": "Same price, every loft",
  "buyBody": "Everything inside a hundred yards gets easier. The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. Six lofts, right and left hand, sixty days to decide whether it stays in the bag.",
@@ -87,7 +88,7 @@
   "One Carver 01 Gold wedge in the loft and hand you picked",
   "Lucky Golf stock steel shaft (KBS becomes an option soon)",
   "Lucky Golf grip",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "careTitle": "Looking after the finish",
  "carePara": [
@@ -96,47 +97,51 @@
  ],
  "marquee": [
   "Sixty-day returns on every club",
-  "Free US shipping",
+  "Ships in 1&ndash;2 business days",
   "Six lofts, right and left hand",
   "Same price, every loft",
-  "Sold direct, never through a middleman",
-  "It's better to be lucky"
+    "It's better to be lucky"
  ],
- "clubHeadline": "The kind of wedge that makes a short-sided miss feel survivable.",
+ "_club": "Takomo-shaped 2026-08-17 at Cole's instruction: fun headline, one tight intro para, grind blurbs IN the bullets (the standalone grind section is gone from this page; every grind fact stays traceable to Spec-to-Benefit v1.0 and the numbers live in the By-loft spec tab), then Takomo's bullet shape ending on For who and Handicap range.",
+ "clubHeadline": "Forged feel meets filthy spin. Rip it back and go tap it in.",
  "clubParas": [
-  "Pick it up and it feels like a club that costs more. That's the forging &mdash; 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.",
-  "The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.",
-  "Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower center of gravity for cleaner full swings. Same club, six jobs."
+  "Into and around the green, the Carver makes it happen. Forged from 1020 soft carbon steel for buttery feel and honest feedback, with a dual-texture face that grips the ball everywhere, not just in the grooves, so the check-up shows up on the shots you didn't catch pure and out of wet grass. Six lofts and two grinds mean you can build the exact short game your bag is missing."
+ ],
+ "clubGrinds": [
+  {
+   "k": "K Grind: no surprises",
+   "v": "A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe. All six lofts."
+  },
+  {
+   "k": "S Grind: versatility",
+   "v": "A narrower, relieved sole with a reshaped leading edge, so the face opens without the bounce fighting you. Built for tight lies, bunker shots and open-face lobs. 52, 56 and 60."
+  }
  ],
  "clubSpecs": [
   {
    "k": "Type",
-   "v": "Forged players' wedge, full six-loft lineup."
+   "v": "Forged players' wedge."
   },
   {
-   "k": "Feel",
-   "v": "Soft. 1020 carbon steel reports back on every strike, good and bad."
+   "k": "Characteristics",
+   "v": "High spin in any conditions, soft feel, honest feedback on every strike."
   },
   {
-   "k": "Face",
-   "v": "CNC-milled grooves, micro-milled between, over a sandblasted finish."
-  },
-  {
-   "k": "Grind",
-   "v": "K Grind."
-  },
-  {
-   "k": "Weighting",
-   "v": "Shifts by loft &mdash; toe-weighted high for finesse, lower CG low for full swings."
+   "k": "Design",
+   "v": "Forged 1020 head with a dual-texture face: CNC-milled grooves, micro-milled between, sandblasted across. Weighting shifts by loft."
   },
   {
    "k": "For who",
-   "v": "Anyone replacing a stock wedge that has stopped gripping the ball."
+   "v": "Any golfer. Whether you flop it over bunkers or just want your chips to stop, the Carver has your back."
+  },
+  {
+   "k": "HCP range",
+   "v": "All"
   }
  ],
- "videoBrief": "16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on. This is the slot Takomo runs beside their description.",
- "reelHeadline": "The Carver, in the wild",
- "reelSub": "Clips of this exact club being played &mdash; creators, customers, and anyone who tags us.",
+ "videoBrief": "16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.",
+ "reelHeadline": "The Carver, in the <span class=\"foil on-dark\">wild</span>",
+ "reelSub": "Share your shots. Tag Lucky Golf on social and the good ones get reposted.",
  "reel": [
   {
    "kind": "Creator reel",
@@ -167,12 +172,12 @@
   "headline": "Start with the wedge you already carry",
   "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
  },
- "specHeadline": "The numbers",
- "specSub": "One head, two soles and six lofts. Everything below is the manufacturer's sheet; where the K and the S differ, both are listed.",
+ "specHeadline": "Same feel, every loft",
+ "specSub": "A dual-texture milled face, 300 g of head at every loft, and two sole grinds. The manufacturer's full sheet below, including where the K and the S differ.",
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Carver 01 Gold &mdash; club",
+   "caption": "Carver 01 Gold · club",
    "rows": [
     {
      "k": "Head material",
@@ -180,7 +185,7 @@
     },
     {
      "k": "Face",
-     "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
+     "v": "CNC-milled grooves and micro-grooves over a sandblasted face: a dual-texture face"
     },
     {
      "k": "Grind",
@@ -214,13 +219,13 @@
   },
   {
    "label": "By loft",
-   "caption": "Carver 01 Gold &mdash; by loft and grind",
+   "caption": "Carver 01 Gold · by loft and grind",
    "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">Grind</th><th scope=\"col\">Lie</th><th scope=\"col\">Bounce</th><th scope=\"col\">Head weight</th><th scope=\"col\">Length</th></tr></thead><tbody><tr><th scope=\"row\">50&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">54&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">58&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>S</td><td>63.5&deg;</td><td>10&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35&Prime;</td></tr></tbody></table>",
    "aside": "Both grinds are the same forged 1020 head at 300&nbsp;g. Where they differ is the sole, and the bounce and lie that come with it. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf."
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Carver 01 Gold &mdash; shaft &amp; grip",
+   "caption": "Carver 01 Gold · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft, stock",
@@ -251,11 +256,11 @@
   }
  ],
  "look": {
-  "photo": "Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box &mdash; other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.",
+  "photo": "Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box, other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.",
   "headline": "You'll want to pull it out of the bag",
   "paras": [
-   "Most wedges are gray. This one isn't, and you find out what that's worth the first time you take it out on a busy tee box. People ask. They always ask.",
-   "That's not the reason to buy it &mdash; the face is. But it isn't nothing, either. Golf is a game you play for four hours with the same three people, and the club you look down at should be one you actually like looking at."
+   "Nobody needs a gold wedge, and that is more or less the point. It catches the light at address, it looks like nothing else in the group, and it turns your short game into the thing somebody brings up on the next hole.",
+   "If that isn't you, the Carver 01 Black does the same job quietly."
   ],
   "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
  },
@@ -272,12 +277,12 @@
  "chooseCta": "Pick a loft",
  "closeHeadline": "Go own the",
  "closeFoil": "green",
- "closeBody": "The Carver is $99 in every loft, right hand or left. Sixty days to send it back if it isn't the one.",
+ "closeBody": "One price, every loft, either hand. Sixty days to decide, and if it doesn't earn the bag, send it back, no hard feelings.",
  "closeTrust": [
-  "60-day club returns",
-  "Free US shipping",
-  "Six lofts",
-  "Direct pricing"
+  "60-day returns",
+  "Six lofts, one price",
+  "4.81 from verified buyers",
+  "Ships in 1&ndash;2 business days"
  ],
  "oav": [
   {
@@ -331,77 +336,5 @@
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
  "_01": "THE 01. Cole 2026-07-31: Lucky sells one wedge. The K-grind gold and the S-grind gold were two products at two prices for a difference that is not one, so they are merged — see merge_grinds() in normalize-products.py. This file is the merged product. Its loft axis is now Loft & grind (50K, 52K, 52S...) and every variant is $99.",
- "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
- "grinds": {
-  "eyebrow": "The grinds",
-  "headline": "Same head. Two soles.",
-  "sub": "Grind is the shape of the sole &mdash; the part of the club that meets the turf. It is the only thing that changes between a 01 in K and a 01 in S: same forged 1020 head, same 300&nbsp;g, same milled and sandblasted face, same price.",
-  "options": [
-   {
-    "k": "K Grind",
-    "name": "The no-surprises one",
-    "forWho": "Standard lies, and a square setup",
-    "paras": [
-     "K grind is the wider, flatter sole, with a standard leading edge. Spreading turf contact over more of the sole is what stops the club digging, so it bottoms out in the same place shot after shot &mdash; set up square, swing through, take your divot, and it does what you expect.",
-     "That makes it the one for standard lies: fairway, rough, fringe, full swings and the straightforward short-game shots. The bounce steps with the loft rather than sitting flat &mdash; 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
-    ],
-    "facts": [
-     {
-      "k": "Sole",
-      "v": "Wider and flatter, standard leading edge"
-     },
-     {
-      "k": "Bounce",
-      "v": "8&deg; at 50 and 52 &middot; 12&deg; at 54 and 56 &middot; 10&deg; at 58 and 60"
-     },
-     {
-      "k": "Lofts",
-      "v": "50, 52, 54, 56, 58, 60&deg;"
-     },
-     {
-      "k": "Lie",
-      "v": "63&deg; at every loft"
-     },
-     {
-      "k": "Finishes",
-      "v": "Gold and black"
-     }
-    ]
-   },
-   {
-    "k": "S Grind",
-    "name": "The versatile one",
-    "forWho": "Tight lies, and an open face",
-    "paras": [
-     "S grind takes relief off the heel and the trailing edge and reshapes the leading edge, so there is less sole meeting the ground. Open the face and the club still sits low behind the ball instead of riding up on its own bounce.",
-     "That is what makes it the versatile one. Off a tight lie the reshaped leading edge slides under the ball where a wider sole would skip into it, and out of a bunker or off an awkward angle you can work the face without the club fighting you. More shots, from more places."
-    ],
-    "facts": [
-     {
-      "k": "Sole",
-      "v": "Narrower and relieved, reshaped leading edge"
-     },
-     {
-      "k": "Bounce",
-      "v": "10&deg; at 52 &middot; 12&deg; at 56 and 60"
-     },
-     {
-      "k": "Lofts",
-      "v": "52, 56, 60&deg;"
-     },
-     {
-      "k": "Lie",
-      "v": "63.5&deg; at 52&deg;, 64&deg; at 56 and 60"
-     },
-     {
-      "k": "Finishes",
-      "v": "Gold"
-     }
-    ]
-   }
-  ],
-  "measured": "Bounce on a spec sheet is measured off the sole, and it is not the whole story. A wide, flat sole puts more of itself on the ground, so it plays every degree it measures. A narrower sole with the heel and the trailing edge ground away presents less &mdash; which is why the S reads higher on paper than the K at the same loft and still slides rather than bounces off a tight lie. The numbers below are real; read them alongside the sole, not instead of it.",
-  "short": "Short version: K for standard lies and a square setup, S for tight lies and an open face.",
-  "note": "Bounce, loft and lie are the manufacturer's published figures and the full table by loft is further down this page. The sole descriptions are the standard meaning of a K and an S grind."
- }
+ "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts."
 }

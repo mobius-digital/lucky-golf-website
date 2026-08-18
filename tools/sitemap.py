@@ -65,7 +65,7 @@ def _pages():
         p[slug] = Page(slug, file, title, src, built, kind)
 
     # ---- built ------------------------------------------------------------
-    add("home", "01-home.html", "Lucky Golf — Home", src="home", built=True)
+    add("home", "01-home.html", "Lucky Golf · Home", src="home", built=True)
 
     # ---- product pages, one per catalogue entry ---------------------------
     # The slug is p/<products.json id>, so adding a product to the catalogue
@@ -73,7 +73,7 @@ def _pages():
     for prod in PRODUCTS:
         add("p/" + prod["id"],
             prod.get("file", "20-product-%s.html" % prod["id"]),
-            "%s — Lucky Golf" % prod["title"],
+            "%s · Lucky Golf" % prod["title"],
             src=prod["template"] if prod["built"] else None,
             built=prod["built"],
             kind="product")
@@ -86,7 +86,7 @@ def _pages():
     for coll in COLLECTIONS:
         live = not coll.get("blocked")
         add("c/" + coll["id"], "10-collection-%s.html" % coll["id"],
-            "%s — Lucky Golf" % coll["name"],
+            "%s · Lucky Golf" % coll["name"],
             src=coll.get("tpl", "plp") if live else None,
             built=live, kind="collection")
 
@@ -94,14 +94,14 @@ def _pages():
     # ---- brand pages (phase E) --------------------------------------------
     # One template, two pages, same argument as the support cluster: they share
     # a shape and differ only in which blocks they carry.
-    add("story", "30-story.html", "Our Story — Lucky Golf",
+    add("story", "30-story.html", "Our Story · Lucky Golf",
         src="brand", built=True, kind="brand")
-    add("trybe", "31-trybe.html", "Ambassador Program — Lucky Golf",
+    add("trybe", "31-trybe.html", "Ambassador Program · Lucky Golf",
         src="brand", built=True, kind="brand")
     # Not in GAMEPLAN 4's page list, but the homepage's "Read all 884 reviews"
     # has to land somewhere, and that count is clubs-wide — so it cannot point
     # at any single PDP's review block.
-    add("reviews", "32-reviews.html", "Reviews — Lucky Golf",
+    add("reviews", "32-reviews.html", "Reviews · Lucky Golf",
         src="reviews", built=True)
     # ---- the support cluster (phase F) ------------------------------------
     # Four pages, ONE template, the way the three PDP templates work: they
@@ -109,15 +109,15 @@ def _pages():
     # differ only in the body. `kind` is what routes build.py at the editorial
     # file, exactly as "product" and "collection" do.
     for slug, file, title in (
-        ("returns",  "40-returns.html",  "Refund Policy — Lucky Golf"),
-        ("shipping", "41-shipping.html", "Shipping — Lucky Golf"),
-        ("contact",  "42-contact.html",  "Contact — Lucky Golf"),
-        ("faq",      "43-faq.html",      "FAQ — Lucky Golf"),
+        ("returns",  "40-returns.html",  "Refund Policy · Lucky Golf"),
+        ("shipping", "41-shipping.html", "Shipping · Lucky Golf"),
+        ("contact",  "42-contact.html",  "Contact · Lucky Golf"),
+        ("faq",      "43-faq.html",      "FAQ · Lucky Golf"),
     ):
         add(slug, file, title, src="support", built=True, kind="support")
-    add("search", "50-search.html", "Search — Lucky Golf",
+    add("search", "50-search.html", "Search · Lucky Golf",
         src="search", built=True)
-    add("404", "51-404.html", "Page not found — Lucky Golf",
+    add("404", "51-404.html", "Page not found · Lucky Golf",
         src="404", built=True)
 
     return p

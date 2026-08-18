@@ -40,7 +40,7 @@ function supOpenFromHash(){
   f.addEventListener('submit', function(e){
     e.preventDefault();
     out.hidden = false;
-    out.textContent = 'Nothing was sent. This prototype has no server behind it — '
+    out.textContent = 'Nothing was sent. This prototype has no server behind it. '
       + 'on the live store these fields post to Shopify. Email '
       + 'support@luckygolf.com in the meantime.';
     out.scrollIntoView({block:'nearest', behavior:'smooth'});

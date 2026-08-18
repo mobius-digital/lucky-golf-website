@@ -28,7 +28,7 @@
           "paras": [
             "Start it in the <a href=\"https://lucky-golf.loopreturns.com/\">Returns Portal</a>, or follow the instructions in your order confirmation email.",
             "No prior approval is needed. The item must meet the conditions below to be refunded.",
-            "If you are not sure whether something qualifies, ask us before you start one &mdash; it is quicker than a return that gets denied."
+            "If you are not sure whether something qualifies, ask us before you start one. It is quicker than a return that gets denied."
           ]
         },
         {
@@ -39,7 +39,7 @@
           ]
         }
       ],
-      "note": "The portal is for apparel and gear. Clubs go through support first &mdash; that is not a formality, it is how a fault gets caught before the club is in a box."
+      "note": "The portal is for apparel and gear. Clubs go through support first. That is not a formality, it is how a fault gets caught before the club is in a box."
     },
     {
       "id": "general",
@@ -58,8 +58,8 @@
     },
     {
       "id": "clubs",
-      "nav": "Golf clubs — 60 days",
-      "title": "Golf clubs — 60 days",
+      "nav": "Golf clubs · 60 days",
+      "title": "Golf clubs · 60 days",
       "lede": "Returns must be started within 60 days of delivery. All club returns require approval before return, require photo verification prior to approval, and are refunded only after physical inspection.",
       "sub": [
         {
@@ -67,7 +67,7 @@
           "paras": [
             "May be used during the 60-day period.",
             "Must be returned in brand-new condition, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
-            "Modifications — regripping, bending, cutting or altering — are not permitted.",
+            "Modifications (regripping, bending, cutting or altering) are not permitted.",
             "Wear or damage may result in a partial refund or return denial."
           ]
         },
@@ -91,9 +91,9 @@
     },
     {
       "id": "apparel",
-      "nav": "Apparel — 30 days",
+      "nav": "Apparel · 30 days",
       "cream": true,
-      "title": "Apparel — 30 days",
+      "title": "Apparel · 30 days",
       "lede": "Returns must be started within 30 days of delivery.",
       "list": { "items": [
         "Unworn, unwashed and in original condition.",
@@ -105,8 +105,8 @@
     },
     {
       "id": "gear",
-      "nav": "Gear — 30 days",
-      "title": "Gear and accessories — 30 days",
+      "nav": "Gear · 30 days",
+      "title": "Gear and accessories · 30 days",
       "lede": "Returns must be started within 30 days of delivery.",
       "list": { "items": [
         "Must be returned in unused condition.",

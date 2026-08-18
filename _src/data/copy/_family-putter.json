@@ -10,12 +10,11 @@
   ],
   "marquee": [
     "Sixty-day returns on every club",
-    "Free US shipping",
+    "Ships in 1&ndash;2 business days",
     "Milled face",
-    "Sold direct, never through a middleman",
-    "It's better to be lucky"
+        "It's better to be lucky"
   ],
-  "reelSub": "Clips of this exact putter being rolled &mdash; creators, customers, and anyone who tags us.",
+  "reelSub": "Clips of this exact putter being rolled: creators, customers, and anyone who tags us.",
   "reel": [
     {
       "kind": "Creator reel",
@@ -27,7 +26,7 @@
     },
     {
       "kind": "Creator reel",
-      "brief": "Face-on slow motion of the roll off the face — end over end, no skid"
+      "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
     },
     {
       "kind": "Customer clip",
@@ -47,7 +46,7 @@
   "closeFoil": "pure",
   "closeTrust": [
     "60-day club returns",
-    "Free US shipping",
+    "Ships in 1&ndash;2 business days",
     "Forged",
     "Direct pricing"
   ],

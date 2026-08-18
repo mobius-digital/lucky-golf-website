@@ -43,14 +43,14 @@
   "One Lucky Driver LGD01",
   "45&quot; stiff graphite shaft, 61 g",
   "Runner standard-size grip",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "clubHeadline": "One driver. One spec. No fitting appointment.",
  "clubParas": [
   "Most driver purchases involve an hour in a bay, four shaft options and a number you do not fully understand. This one comes in exactly one configuration, which is either a limitation or a relief depending on how that hour usually goes for you.",
-  "450cc at 10.5 degrees is the middle of the road on purpose &mdash; enough loft to get the ball up for a normal swing speed, enough head to forgive a strike off the heel. The crown is shaped to cut through the air rather than to look fast in a photograph.",
+  "450cc at 10.5 degrees is the middle of the road on purpose: enough loft to get the ball up for a normal swing speed, enough head to forgive a strike off the heel. The crown is shaped to cut through the air rather than to look fast in a photograph.",
   "The shaft is 45 inches of 61-gram stiff graphite, which is light enough to swing and firm enough not to wander at the top. The grip is a standard-size Runner.",
-  "It is $299, which for a titanium driver is the number that needs no further explanation &mdash; there is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
+  "It is $299, which for a titanium driver is the number that needs no further explanation. There is <a class=\"ilink\" href=\"{{link:home#why}}\">more on the pricing</a> if you want it."
  ],
  "clubSpecs": [
   {
@@ -78,14 +78,14 @@
    "tbd": true
   }
  ],
- "videoBrief": "16:9 product film, 40&ndash;60s. Driver film lives or dies on ball speed — face-on high frame rate at impact, then the ball tracked. Gold crown at address in sunlight is the money shot.",
+ "videoBrief": "16:9 product film, 40&ndash;60s. Driver film lives or dies on ball speed: face-on high frame rate at impact, then the ball tracked. Gold crown at address in sunlight is the money shot.",
  "reelHeadline": "The Driver, in the wild",
  "specHeadline": "One loft. One shaft. One flex.",
  "specSub": "Every number below is published by Shopify for this club. It is the most completely specified thing in the range.",
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Lucky Driver LGD01 &mdash; club",
+   "caption": "Lucky Driver LGD01 · club",
    "rows": [
     {
      "k": "Head volume",
@@ -131,7 +131,7 @@
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Lucky Driver LGD01 &mdash; shaft &amp; grip",
+   "caption": "Lucky Driver LGD01 · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft length",
@@ -162,7 +162,7 @@
      "tbd": true
     }
    ],
-   "aside": "Stiff is the only flex and 45&quot; the only length. Shopify records this club as having no variant options at all, which is why the buy box shows no pickers &mdash; there is genuinely nothing to choose."
+   "aside": "Stiff is the only flex and 45&quot; the only length. Shopify records this club as having no variant options at all, which is why the buy box shows no pickers. There is genuinely nothing to choose."
   }
  ],
  "look": {

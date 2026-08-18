@@ -55,11 +55,11 @@
   "One Tracer LGP02 Patriot putter, right hand",
   "Oversized Lucky putter grip",
   "Lucky Approved shaft",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "clubHeadline": "Fifty of them, for a birthday that only happens once.",
  "clubParas": [
-  "Most putters are built to disappear into a bag. This one was built to get talked about on the first tee, and it is a limited drop for America's 250th &mdash; fifty units, and then nothing.",
+  "Most putters are built to disappear into a bag. This one was built to get talked about on the first tee, and it is a limited drop for America's 250th: fifty units, and then nothing.",
   "Under the paint it is the LGP02: a high-MOI mallet, stable through impact and forgiving on the strikes you do not center. The twin fangs are navy and they line up dead square, which is the entire reason fangs exist.",
   "The face insert is soft and white, so the roll comes off quieter than the standard mallet, and the Lucky clover is stamped in red exactly where you look when you are over the ball.",
   "It is sold out. It was always going to be."
@@ -97,7 +97,7 @@
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Tracer LGP02 Patriot &mdash; club",
+   "caption": "Tracer LGP02 Patriot · club",
    "rows": [
     {
      "k": "Head style",
@@ -147,7 +147,7 @@
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Tracer LGP02 Patriot &mdash; shaft &amp; grip",
+   "caption": "Tracer LGP02 Patriot · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft",
@@ -170,19 +170,19 @@
      "tbd": true
     }
    ],
-   "aside": "Shopify's description for this club is a launch announcement rather than a spec sheet. The standard LGP02's figures are not copied across &mdash; the head is shaped differently."
+   "aside": "Shopify's description for this club is a launch announcement rather than a spec sheet. The standard LGP02's figures are not copied across. The head is shaped differently."
   }
  ],
  "look": {
   "photo": "Bold, full-bleed, portrait. Navy fangs and the red clover against green, low sun. This is the most photogenic club in the range and the shot should treat it as an object rather than as equipment.",
   "headline": "Built to be noticed, and then to be gone",
   "paras": [
-   "Fifty units is not a marketing number, it is the whole production run. Everything about the club &mdash; the navy, the red clover, the white insert &mdash; was decided on the basis that it would never be restocked.",
+   "Fifty units is not a marketing number, it is the whole production run. Everything about the club (the navy, the red clover, the white insert) was decided on the basis that it would never be restocked.",
    "If you have one, that is the point of it."
   ],
   "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
  },
- "closeBody": "The Patriot was $229, right hand, fifty made. Sold out — the standard Tracer Mallet is the one still available.",
+ "closeBody": "The Patriot was $229, right hand, fifty made. Sold out. The standard Tracer Mallet is the one still available.",
  "oav": [
   "lgp02-gold",
   "lgp01-gold",

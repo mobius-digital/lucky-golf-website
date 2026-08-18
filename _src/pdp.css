@@ -251,6 +251,13 @@
   border-radius:50%;background:var(--ink);display:grid;place-items:center;pointer-events:none}
 .ph--video .play svg{width:19px;height:19px;fill:var(--cream);margin-left:3px}
 
+/* Grind sub-blocks between the intro and the bullets: Takomo's labelled
+   "V GRIND: VERSATILITY" paragraphs. Bold caps label, body under it. */
+.club-grind{margin:0}
+.club-grind b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.club-grind p{margin:0;font-size:.96rem;line-height:1.55;color:var(--ink-70)}
+
 /* Takomo's bulleted spec summary under the description */
 .club-specs{list-style:none;margin:clamp(28px,3vw,44px) 0 0;padding:0;
   border-top:2px solid var(--ink-14)}
@@ -304,10 +311,15 @@
   .pd-buy{max-width:none}
   .gal-thumbs{grid-template-columns:repeat(6,1fr)}
 }
+/* Sticky bar (Cole, 2026-08-18): the in-box Add to cart is ALWAYS visible on
+   every width. The bar is a fallback that appears only once the real button
+   has scrolled out of view: pdp.js watches #atc with an IntersectionObserver
+   and toggles .atc-bar--on. The old rule hid the in-box button on phones and
+   made the bar the only CTA, which read as "the button is missing". */
 @media (max-width:760px){
-  .atc-bar{display:flex}
+  .atc-bar{display:flex;transform:translateY(110%);transition:transform .22s ease}
+  .atc-bar--on{transform:translateY(0)}
   body{padding-bottom:78px}
-  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
 }
 @media (max-width:620px){
   .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}

@@ -11,12 +11,12 @@
     "k": "Email",
     "v": "support@luckygolf.com",
     "href": "mailto:support@luckygolf.com",
-    "body": "Best for anything with a photo attached — a club return, something that arrived damaged, the wrong loft in the box. Put the order number in the subject line and it gets picked up faster."
+    "body": "Best for anything with a photo attached: a club return, something that arrived damaged, the wrong loft in the box. Put the order number in the subject line and it gets picked up faster."
    },
    {
     "k": "Chat",
     "v": "The chat on the store",
-    "body": "Best for quick questions before you buy: which loft, whether a left-hand club exists, whether something is back in stock. It opens from the corner of any page on the store. Staffed Monday to Friday, the same hours as email — it reaches the same people either way."
+    "body": "Best for quick questions before you buy: which loft, whether a left-hand club exists, whether something is back in stock. It opens from the corner of any page on the store. Staffed Monday to Friday, the same hours as email. It reaches the same people either way."
    }
   ]
  },
@@ -28,7 +28,7 @@
    "list": {
     "items": [
      "The order number, from your confirmation email.",
-     "What you ordered and what actually arrived — the loft, the hand, the size.",
+     "What you ordered and what actually arrived: the loft, the hand, the size.",
      "Photos, if anything is damaged or a club is coming back. Club returns need photo verification before approval, so sending them first skips a round trip."
     ]
    }
@@ -42,7 +42,7 @@
     "items": [
      {
       "k": "Returning a club",
-      "v": "Email or chat. Approval and photos are required before it ships — a club sent back without them is not accepted."
+      "v": "Email or chat. Approval and photos are required before it ships. A club sent back without them is not accepted."
      },
      {
       "k": "Returning apparel or gear",
@@ -86,7 +86,7 @@
      "Change a shaft, a grip or a length before shipping. Every club goes out with the stock shaft and the stock grip, and there is no build-to-order step.",
      "Extend a return window that has already closed.",
      "Approve a club return without photos.",
-     "Take an order over the phone or by email — orders go through the store."
+     "Take an order over the phone or by email. Orders go through the store."
     ]
    }
   }

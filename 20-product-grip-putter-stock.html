@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stock Putter Grip — Lucky Golf</title>
+<title>Stock Putter Grip · Lucky Golf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -1437,6 +1437,13 @@ button{font:inherit;color:inherit}
   border-radius:50%;background:var(--ink);display:grid;place-items:center;pointer-events:none}
 .ph--video .play svg{width:19px;height:19px;fill:var(--cream);margin-left:3px}
 
+/* Grind sub-blocks between the intro and the bullets: Takomo's labelled
+   "V GRIND: VERSATILITY" paragraphs. Bold caps label, body under it. */
+.club-grind{margin:0}
+.club-grind b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.club-grind p{margin:0;font-size:.96rem;line-height:1.55;color:var(--ink-70)}
+
 /* Takomo's bulleted spec summary under the description */
 .club-specs{list-style:none;margin:clamp(28px,3vw,44px) 0 0;padding:0;
   border-top:2px solid var(--ink-14)}
@@ -1490,10 +1497,15 @@ button{font:inherit;color:inherit}
   .pd-buy{max-width:none}
   .gal-thumbs{grid-template-columns:repeat(6,1fr)}
 }
+/* Sticky bar (Cole, 2026-08-18): the in-box Add to cart is ALWAYS visible on
+   every width. The bar is a fallback that appears only once the real button
+   has scrolled out of view: pdp.js watches #atc with an IntersectionObserver
+   and toggles .atc-bar--on. The old rule hid the in-box button on phones and
+   made the bar the only CTA, which read as "the button is missing". */
 @media (max-width:760px){
-  .atc-bar{display:flex}
+  .atc-bar{display:flex;transform:translateY(110%);transition:transform .22s ease}
+  .atc-bar--on{transform:translateY(0)}
   body{padding-bottom:78px}
-  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
 }
 @media (max-width:620px){
   .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
@@ -1596,7 +1608,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgw01-black.html"><span class="mt-nm">01 Black</span><span class="mt-sub">K grind &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -1612,7 +1624,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -1627,7 +1639,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgh01.html"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -1746,7 +1758,7 @@ button{font:inherit;color:inherit}
       <button class="btn btn-foil sweep" id="atc" type="button"><span>Add to cart &middot; $19.95</span></button>
     </div>
 
-    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span></p>
+    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock · ships in 1&ndash;2 business days</span></p>
     <p class="bx-links"><a href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
@@ -1792,7 +1804,7 @@ button{font:inherit;color:inherit}
         <ul class="club-specs">
           <li><b>Type</b><span>Putter grip, standard size</span></li>
           <li><b>Fits</b><span>Putters</span></li>
-          <li><b>Fitting</b><span>Needs regripping — not a slip-on</span></li>
+          <li><b>Fitting</b><span>Needs regripping, not a slip-on</span></li>
           <li><b>Material</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
           <li><b>Weight</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
           <li><b>Core size</b><span><span class="tbd tbd--light">Needs spec</span></span></li>
@@ -1991,7 +2003,7 @@ button{font:inherit;color:inherit}
       <div class="cd-sub"><span class="l">Subtotal</span><span class="v" id="cd-sub">$0</span></div>
       <p class="cd-note">Shipping and tax calculated at checkout</p>
       <a href="#" class="btn btn-foil"><span>Checkout</span><span class="ar">&rarr;</span></a>
-      <p class="cd-mock">Front-end demo &mdash; no live checkout wired up</p>
+      <p class="cd-mock">Front-end demo. No live checkout wired up</p>
     </div>
   </div>
 </div>
@@ -2157,7 +2169,7 @@ var LG_REVIEWS = (function(){
       if (!box && !cnt) return;
       var sum = 0, all = 0;
       [5,4,3,2,1].forEach(function(k){ sum += k * (t[k] || 0); all += (t[k] || 0); });
-      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '—';
+      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '–';
       if (cnt) cnt.textContent = 'Based on ' + n + ' reviews';
     }
     function paintBars(){
@@ -2281,7 +2293,9 @@ var PD_AXIS_UI = {
   /* the combined Loft & grind axis — 50K, 52K, 52S. The help link goes to
      the grind explainer, because the grind is the half of this choice
      nobody arrives knowing. */
-  loftgrind:{help: {href: '#grinds', text: 'Which grind? →'}},
+  /* the grinds anchor moved: the standalone grind section died into the
+     product-description bullets (Cole, 2026-08-17, Takomo-shaped) */
+  loftgrind:{help: {href: '#club', text: 'Which grind? →'}},
   /* the size guide is a MODAL now, not a section on the page (Cole
      2026-07-31), so this opens it rather than jumping down the page */
   size:     {help: {md: 'md-size', text: 'Size guide →'}},
@@ -2451,7 +2465,7 @@ var PD_KIT = [
         /* The stock line says WHEN it ships and nothing else. It used to
            publish the exact unit count on anything under 25, which is inventory
            data a shopper has no use for and we have no reason to broadcast. */
-        st.textContent = 'In stock — ships in 1–2 business days';
+        st.textContent = 'In stock · ships in 1–2 business days';
       }
     }
     [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
@@ -2493,6 +2507,18 @@ var PD_KIT = [
     });
   });
   paintPickers(); sync();
+
+  /* ---------------------------------------------- sticky bar: fallback only.
+     Slides in when the real #atc button leaves the viewport, slides out when
+     it is back (Cole, 2026-08-18). No observer support -> the bar stays put
+     off-screen and the in-box button is the CTA, which is the safe default. */
+  (function(){
+    var atc = $('#atc'), bar = $('#atc-bar');
+    if (!atc || !bar || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(es){
+      bar.classList.toggle('atc-bar--on', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+    }, {threshold: 0}).observe(atc);
+  })();
 
   /* ------------------------------------------------------------ accordions */
   [].forEach.call(document.querySelectorAll('.acc-hd'), function(h){
@@ -2671,7 +2697,7 @@ var PD_KIT = [
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =
@@ -2804,7 +2830,7 @@ var PD_KIT = [
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =

@@ -119,7 +119,7 @@
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =
@@ -252,7 +252,7 @@
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =

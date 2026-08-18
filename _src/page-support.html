@@ -62,7 +62,7 @@
         {{#href}}<a class="sup-chan-v" href="{{href}}">{{v}}</a>{{/href}}
         {{^href}}<span class="sup-chan-v sup-chan-v--flat">{{v}}</span>{{/href}}
         <p class="sup-chan-b">{{body}}</p>
-        {{#tbd}}<p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>{{/tbd}}
+        {{#tbd}}<p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>{{/tbd}}
       </div>
 {{/items}}    </div>
   </div>
@@ -96,7 +96,7 @@
 {{/paras}}    </div>
 {{/sub}}{{#tbd}}
     <div class="sup-tbd-block">
-      <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+      <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="sup-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
 {{/tbd}}{{#note}}    <p class="aside sup-note">{{note}}</p>
@@ -125,7 +125,7 @@
           <dl class="sup-rows sup-rows--tight">
 {{#items}}            <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/items}}          </dl>
-{{/rows}}{{#tbd}}          <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+{{/rows}}{{#tbd}}          <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
 {{/tbd}}{{#src}}          <p class="sup-src">{{src}}</p>
 {{/src}}{{#cta}}          <p class="sup-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
 {{/cta}}        </div>
@@ -146,7 +146,7 @@
     <span class="eyebrow">{{eyebrow}}</span>
     <h2 class="disp d-m">{{title}}</h2>
     <p class="body sup-form-lede">{{lede}}</p>
-    <p class="sup-tbd"><span class="tbd tbd--light">{{protoLabel}}</span> &mdash; {{proto}}</p>
+    <p class="sup-tbd"><span class="tbd tbd--light">{{protoLabel}}</span> · {{proto}}</p>
     <form class="sup-form" id="sup-contact" novalidate>
       <div class="sup-f2">
         <p class="sup-fld"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name"></p>

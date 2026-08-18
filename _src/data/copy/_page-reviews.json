@@ -6,7 +6,7 @@
   "crumbName": "Reviews",
   "eyebrow": "Reviews",
   "headline": "Every club review",
-  "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden — the one-stars are in the list with everything else.",
+  "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden. The one-stars are in the list with everything else.",
 
   "sets": [
     { "file": "lgw01-gold", "name": "Carver 01 Gold",     "product": "lgw01-gold" },

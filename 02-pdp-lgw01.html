@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carver 01 Gold — Lucky Golf</title>
+<title>Carver 01 Gold · Lucky Golf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -1437,6 +1437,13 @@ button{font:inherit;color:inherit}
   border-radius:50%;background:var(--ink);display:grid;place-items:center;pointer-events:none}
 .ph--video .play svg{width:19px;height:19px;fill:var(--cream);margin-left:3px}
 
+/* Grind sub-blocks between the intro and the bullets: Takomo's labelled
+   "V GRIND: VERSATILITY" paragraphs. Bold caps label, body under it. */
+.club-grind{margin:0}
+.club-grind b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
+  font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.club-grind p{margin:0;font-size:.96rem;line-height:1.55;color:var(--ink-70)}
+
 /* Takomo's bulleted spec summary under the description */
 .club-specs{list-style:none;margin:clamp(28px,3vw,44px) 0 0;padding:0;
   border-top:2px solid var(--ink-14)}
@@ -1490,10 +1497,15 @@ button{font:inherit;color:inherit}
   .pd-buy{max-width:none}
   .gal-thumbs{grid-template-columns:repeat(6,1fr)}
 }
+/* Sticky bar (Cole, 2026-08-18): the in-box Add to cart is ALWAYS visible on
+   every width. The bar is a fallback that appears only once the real button
+   has scrolled out of view: pdp.js watches #atc with an IntersectionObserver
+   and toggles .atc-bar--on. The old rule hid the in-box button on phones and
+   made the bar the only CTA, which read as "the button is missing". */
 @media (max-width:760px){
-  .atc-bar{display:flex}
+  .atc-bar{display:flex;transform:translateY(110%);transition:transform .22s ease}
+  .atc-bar--on{transform:translateY(0)}
   body{padding-bottom:78px}
-  .atc-row .btn-foil{display:none}    /* the sticky bar owns the primary CTA */
 }
 @media (max-width:620px){
   .bx-four{grid-template-columns:repeat(2,1fr);row-gap:20px}
@@ -1879,7 +1891,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgw01-black.html"><span class="mt-nm">01 Black</span><span class="mt-sub">K grind &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -1895,7 +1907,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgp02-gold.html"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -1910,7 +1922,7 @@ button{font:inherit;color:inherit}
           <a class="mtile" href="20-product-lgh01.html"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
             <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand &mdash; the Black is right hand for now.</p>
+              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
             </div>
           </div>
         </div>
@@ -2012,20 +2024,8 @@ button{font:inherit;color:inherit}
       <span class="stars" role="img" aria-label="Rated 4.81 out of 5">
         <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
       </span>
-      <a href="#reviews">4.81 &mdash; 551 reviews</a>
+      <a href="#reviews">4.81 · 551 reviews</a>
     </div>
-    
-
-    
-    <!-- DARTEE MOVE: a real review, above the price. Verbatim from Judge.me. -->
-    <figure class="pq">
-      <span class="stars" role="img" aria-label="Five stars">
-        <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
-      </span>
-      <p class="pq-t">As good as gold</p>
-      <blockquote class="pq-q">&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.&rdquo;</blockquote>
-      <figcaption class="pq-w">1981 C.o.M. &middot; Verified buyer</figcaption>
-    </figure>
     
 
     <!-- Price only. The note beside it ("Right or left hand", "Same price,
@@ -2036,24 +2036,12 @@ button{font:inherit;color:inherit}
 
     <p class="bx-body">Everything inside a hundred yards gets easier. The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. Six lofts, right and left hand, sixty days to decide whether it stays in the bag.</p>
 
-    <div class="bx-four">
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Forged</b><span>1020 soft carbon steel</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Milled</b><span>CNC grooves, micro-milled between</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Sandblasted</b><span>Extra grip across the face</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Sixty days</b><span>Send it back if it isn't the one</span>
-      </div>
-    </div>
+    <!-- The four construction chips and the pull quote used to sit HERE,
+         between the price and the pickers. Cole (2026-08-17): get to Add to
+         cart quicker — Takomo puts nothing between price and pickers. The
+         chips are gone (the description section carries construction) and the
+         pull quote moved BELOW the cart button. -->
+
 
     <!-- ---- variant pickers ----
          Generated from the product record's option axes, so the same markup
@@ -2081,52 +2069,41 @@ button{font:inherit;color:inherit}
 
     <div id="pickers"></div>
 
+    <!-- No quantity stepper on a club (Cole, 2026-08-17): nobody buys two of
+         the same loft-and-grind — they add one and pick the next loft. pdp.js
+         already defaults a missing #qty to 1, so removing the markup is safe.
+         Apparel keeps its stepper. -->
     <div class="atc-row">
-      <div class="bx-qty">
-        <button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button>
-        <input id="qty" type="number" value="1" min="1" max="9" aria-label="Quantity">
-        <button type="button" data-q="1" aria-label="Increase quantity">+</button>
-      </div>
       <button class="btn btn-foil sweep" id="atc" type="button"><span>Add to cart &middot; $99</span></button>
     </div>
 
-    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock &mdash; ships in 1&ndash;2 business days</span></p>
-    <p class="bx-links"><a href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
+    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock · ships in 1&ndash;2 business days</span></p>
+    <!-- Takomo's device: plain underlined links under the button, opening the
+         policy modals. This replaced a three-item accordion (What you get /
+         Shipping & returns / care). Cole 2026-08-17: what-you-get is obvious
+         for a club, care over-promised the finish, and the returns line said
+         "take it to the range, put it in a bunker" — a POLICY VIOLATION; the
+         real policy is one wedge tested on a turf mat, brand-new condition. -->
+    <p class="bx-links"><a href="#" data-md-open="md-returns">Shipping &amp; returns</a> &middot; <a href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thousands of satisfied golfers</span>
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Sixty-day return window</span>
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Ships in 1&ndash;2 business days</span>
     </div>
 
-    <div class="acc">
-      <div class="acc-i">
-        <button class="acc-hd" type="button" aria-expanded="true" aria-controls="a1"><span>What you get</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="acc-bd" id="a1">
-          <ul>
-            <li>One Carver 01 Gold wedge in the loft and hand you picked</li>
-            <li>Lucky Golf stock steel shaft (KBS becomes an option soon)</li>
-            <li>Lucky Golf grip</li>
-            <li>No headcover &mdash; none of our clubs ship with one</li>
-          </ul>
-        </div>
-      </div>
-      <div class="acc-i">
-        <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="acc-bd" id="a2" hidden>
-          <p>Orders leave the warehouse in one to two business days. Shipping is calculated at checkout.</p>
-          <p>Sixty days to send a club back. Play it, take it to the range, put it in a bunker. If it isn't the one, it goes back.</p>
-          <p class="acc-link"><a href="#" data-md-open="md-returns">Read the full refund policy</a></p>
-        </div>
-      </div>
-      <div class="acc-i">
-        <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a3"><span>Looking after the finish</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="acc-bd" id="a3" hidden>
-          <p>The gold finish is a finish, not a coating you have to baby, but grooves full of sand don't spin anything. Brush the face after a round and dry the head before it goes back in the bag.</p>
-          <p>A headcover is worth it if your clubs rattle around in the cart. Several reviewers mention picking up cart rash without one.</p>
-        </div>
-      </div>
-    </div>
+    
+    <!-- A real review, verbatim from Judge.me — below the cart button now, so
+         the path to Add to cart is price, pickers, button. -->
+    <figure class="pq">
+      <span class="stars" role="img" aria-label="Five stars">
+        <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
+      </span>
+      <p class="pq-t">As good as gold</p>
+      <blockquote class="pq-q">&ldquo;The new Lucky wedges look and feel great and strike pure! I always play better when I feel Lucky!&rdquo;</blockquote>
+      <figcaption class="pq-w">Paul F. &middot; Verified buyer</figcaption>
+    </figure>
+    
   </div>
 
 </div>
@@ -2134,7 +2111,10 @@ button{font:inherit;color:inherit}
 
 <!-- ============ MARQUEE — brand field #2 ============ -->
 <div class="mq" aria-label="Lucky Golf, at a glance">
-  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Free US shipping</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sold direct, never through a middleman</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Free US shipping</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sold direct, never through a middleman</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
+  <!-- Each set runs the list TWICE: the track animates by one set width, so a
+       set narrower than the viewport shows empty band at the loop point (the
+       homepage measured a 420px gap at 1920 before the same fix). -->
+  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Ships in 1&ndash;2 business days</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Ships in 1&ndash;2 business days</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Ships in 1&ndash;2 business days</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Ships in 1&ndash;2 business days</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Six lofts, right and left hand</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Same price, every loft</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>It's better to be lucky</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
 </div>
 
 <!-- ============ OTHERS ALSO VIEWED — Takomo puts this straight under the fold ============ -->
@@ -2146,25 +2126,29 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ============ THE CLUB — description + video, Takomo's second move ============ -->
-<section class="sec">
+<section class="sec" id="club">
   <div class="wrap">
-    <span class="eyebrow">The club</span>
-    <h2 class="disp d-l" style="max-width:24ch">The kind of wedge that makes a short-sided miss feel survivable.</h2>
+    <span class="eyebrow">Product description</span>
+    <h2 class="disp d-l" style="max-width:24ch">Forged feel meets filthy spin. Rip it back and go tap it in.</h2>
 
     <div class="club-grid">
       <div class="club-copy">
-        <p class="body">Pick it up and it feels like a club that costs more. That's the forging &mdash; 1020 soft carbon steel rather than cast, which is what gives you the soft strike and the honest feedback when you catch one thin.</p>
-        <p class="body">The face is where the work happens. CNC-milled grooves with micro-milling in the land between them, over a sandblasted finish, so there's texture on the ball across the whole face and not just in the grooves. That's what produces the check-up and the one-hop stop, and it's what keeps working out of wet grass.</p>
-        <p class="body">Weighting shifts as the loft goes up. The higher lofts run toe-weighted for finesse around the green; the lower ones sit with a lower center of gravity for cleaner full swings. Same club, six jobs.</p>
+        <p class="body">Into and around the green, the Carver makes it happen. Forged from 1020 soft carbon steel for buttery feel and honest feedback, with a dual-texture face that grips the ball everywhere, not just in the grooves, so the check-up shows up on the shots you didn't catch pure and out of wet grass. Six lofts and two grinds mean you can build the exact short game your bag is missing.</p>
+
+    <!-- Grind sub-blocks: Takomo's "V GRIND: VERSATILITY / F GRIND: FULL"
+         labelled paragraphs between the intro and the bullets. Only wedges
+         with more than one grind carry `clubGrinds`; putters and the hybrid
+         render nothing here. -->
+        <div class="club-grind"><b>K Grind: no surprises</b><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe. All six lofts.</p></div>
+        <div class="club-grind"><b>S Grind: versatility</b><p>A narrower, relieved sole with a reshaped leading edge, so the face opens without the bounce fighting you. Built for tight lies, bunker shots and open-face lobs. 52, 56 and 60.</p></div>
 
     <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->
         <ul class="club-specs">
-          <li><b>Type</b><span>Forged players' wedge, full six-loft lineup.</span></li>
-          <li><b>Feel</b><span>Soft. 1020 carbon steel reports back on every strike, good and bad.</span></li>
-          <li><b>Face</b><span>CNC-milled grooves, micro-milled between, over a sandblasted finish.</span></li>
-          <li><b>Grind</b><span>K Grind.</span></li>
-          <li><b>Weighting</b><span>Shifts by loft &mdash; toe-weighted high for finesse, lower CG low for full swings.</span></li>
-          <li><b>For who</b><span>Anyone replacing a stock wedge that has stopped gripping the ball.</span></li>
+          <li><b>Type</b><span>Forged players' wedge.</span></li>
+          <li><b>Characteristics</b><span>High spin in any conditions, soft feel, honest feedback on every strike.</span></li>
+          <li><b>Design</b><span>Forged 1020 head with a dual-texture face: CNC-milled grooves, micro-milled between, sandblasted across. Weighting shifts by loft.</span></li>
+          <li><b>For who</b><span>Any golfer. Whether you flop it over bunkers or just want your chips to stop, the Carver has your back.</span></li>
+          <li><b>HCP range</b><span>All</span></li>
         </ul>
       </div>
 
@@ -2174,7 +2158,7 @@ button{font:inherit;color:inherit}
         <div class="ph ph--video">
           <span class="lbl">
             <span class="mono k">Video needed</span>
-            <span class="mono">16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on. This is the slot Takomo runs beside their description.</span>
+            <span class="mono">16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.</span>
           </span>
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
@@ -2190,8 +2174,8 @@ button{font:inherit;color:inherit}
     <div class="reel-hd">
       <div>
         <span class="eyebrow on-dark">See it in play</span>
-        <h2 class="disp d-l" style="color:var(--cream)">The Carver, in the wild</h2>
-        <p class="body on-dark" style="margin-top:16px">Clips of this exact club being played &mdash; creators, customers, and anyone who tags us.</p>
+        <h2 class="disp d-l" style="color:var(--cream)">The Carver, in the <span class="foil on-dark">wild</span></h2>
+        <p class="body on-dark" style="margin-top:16px">Share your shots. Tag Lucky Golf on social and the good ones get reposted.</p>
       </div>
       <div class="rail-nav">
         <button class="rail-btn" type="button" data-rail-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -2199,7 +2183,6 @@ button{font:inherit;color:inherit}
       </div>
     </div>
     <div class="rail" id="reel-rail"></div>
-    <p class="mono reel-note">Six slots, all needing footage. Briefs are on each card &mdash; nothing here is a stand-in photo pretending to be a video.</p>
   </div>
 </section>
 
@@ -2249,62 +2232,14 @@ button{font:inherit;color:inherit}
      either does for a player, so this is the one module on the site whose
      claims are not traceable to a document. Do not treat it as verified. -->
 
-<section class="sec" id="grinds">
-  <div class="wrap">
-    <span class="eyebrow">The grinds</span>
-    <h2 class="disp d-l" style="max-width:20ch">Same head. Two soles.</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px);max-width:58ch">Grind is the shape of the sole &mdash; the part of the club that meets the turf. It is the only thing that changes between a 01 in K and a 01 in S: same forged 1020 head, same 300&nbsp;g, same milled and sandblasted face, same price.</p>
-
-    <div class="gr-grid">
-      <article class="gr-card">
-        <span class="gr-k">K Grind</span>
-        <span class="gr-nm disp d-s">The no-surprises one</span>
-        <span class="gr-for">Standard lies, and a square setup</span>
-        <p>K grind is the wider, flatter sole, with a standard leading edge. Spreading turf contact over more of the sole is what stops the club digging, so it bottoms out in the same place shot after shot &mdash; set up square, swing through, take your divot, and it does what you expect.</p>
-        <p>That makes it the one for standard lies: fairway, rough, fringe, full swings and the straightforward short-game shots. The bounce steps with the loft rather than sitting flat &mdash; 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60.</p>
-        <dl class="gr-facts">
-          <div><dt>Sole</dt><dd>Wider and flatter, standard leading edge</dd></div>
-          <div><dt>Bounce</dt><dd>8&deg; at 50 and 52 &middot; 12&deg; at 54 and 56 &middot; 10&deg; at 58 and 60</dd></div>
-          <div><dt>Lofts</dt><dd>50, 52, 54, 56, 58, 60&deg;</dd></div>
-          <div><dt>Lie</dt><dd>63&deg; at every loft</dd></div>
-          <div><dt>Finishes</dt><dd>Gold and black</dd></div>
-        </dl>
-      </article>
-      <article class="gr-card">
-        <span class="gr-k">S Grind</span>
-        <span class="gr-nm disp d-s">The versatile one</span>
-        <span class="gr-for">Tight lies, and an open face</span>
-        <p>S grind takes relief off the heel and the trailing edge and reshapes the leading edge, so there is less sole meeting the ground. Open the face and the club still sits low behind the ball instead of riding up on its own bounce.</p>
-        <p>That is what makes it the versatile one. Off a tight lie the reshaped leading edge slides under the ball where a wider sole would skip into it, and out of a bunker or off an awkward angle you can work the face without the club fighting you. More shots, from more places.</p>
-        <dl class="gr-facts">
-          <div><dt>Sole</dt><dd>Narrower and relieved, reshaped leading edge</dd></div>
-          <div><dt>Bounce</dt><dd>10&deg; at 52 &middot; 12&deg; at 56 and 60</dd></div>
-          <div><dt>Lofts</dt><dd>52, 56, 60&deg;</dd></div>
-          <div><dt>Lie</dt><dd>63.5&deg; at 52&deg;, 64&deg; at 56 and 60</dd></div>
-          <div><dt>Finishes</dt><dd>Gold</dd></div>
-        </dl>
-      </article>
-    </div>
-    <!-- Takomo end on a one-line summary and it is the most useful sentence in
-         the block — somebody who reads nothing else reads this. -->
-    <!-- Measured vs effective bounce. This paragraph exists because our S
-         measures MORE bounce than our K at the same loft, which looks like a
-         typo next to Vokey letters until somebody explains why it isn't. The
-         spec table's aside says the same thing so the two never disagree. -->
-    <p class="gr-measured">Bounce on a spec sheet is measured off the sole, and it is not the whole story. A wide, flat sole puts more of itself on the ground, so it plays every degree it measures. A narrower sole with the heel and the trailing edge ground away presents less &mdash; which is why the S reads higher on paper than the K at the same loft and still slides rather than bounces off a tight lie. The numbers below are real; read them alongside the sole, not instead of it.</p>
-    <p class="gr-short">Short version: K for standard lies and a square setup, S for tight lies and an open face.</p>
-    <p class="spec-note">Bounce, loft and lie are the manufacturer's published figures and the full table by loft is further down this page. The sole descriptions are the standard meaning of a K and an S grind.</p>
-  </div>
-</section>
-
 
 <!-- ============ SPECS — on a light field. On ink the groove ran behind the
      table text at a 6px pitch and made small mono numbers hard to read. ============ -->
 <section class="sec band-cream" id="specs">
   <div class="wrap">
-    <span class="eyebrow">Specifications</span>
-    <h2 class="disp d-l" style="max-width:18ch">The numbers</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px)">One head, two soles and six lofts. Everything below is the manufacturer's sheet; where the K and the S differ, both are listed.</p>
+    <span class="eyebrow">LGW01 specs</span>
+    <h2 class="disp d-l" style="max-width:18ch">Same feel, every loft</h2>
+    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px)">A dual-texture milled face, 300 g of head at every loft, and two sole grinds. The manufacturer's full sheet below, including where the K and the S differ.</p>
 
     <div class="spec-tabs" role="tablist" aria-label="Specification group">
       <button class="spec-tab" role="tab" aria-selected="true" aria-controls="sp0" id="st0" type="button">Club</button>
@@ -2314,21 +2249,21 @@ button{font:inherit;color:inherit}
 
     <div class="spec-panel" role="tabpanel" id="sp0" aria-labelledby="st0" data-p="0">
       <div class="spec-card">
-        <h3 class="spec-cap">Carver 01 Gold &mdash; club</h3>
-        <div class="spec-wrap"><table class="spec-tbl"><tbody><tr><th scope="row">Head material</th><td>1020 forged carbon steel</td></tr><tr><th scope="row">Face</th><td>CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face</td></tr><tr><th scope="row">Grind</th><td>K Grind and S Grind</td></tr><tr><th scope="row">Head weight</th><td>300 g, all lofts</td></tr><tr><th scope="row">Lie</th><td>63&deg; all lofts (K) &middot; 63.5&deg; at 52&deg;, 64&deg; at 56 and 60 (S)</td></tr><tr><th scope="row">Finish</th><td>Gold</td></tr><tr><th scope="row">Hand</th><td>Right and left</td></tr><tr><th scope="row">Lofts</th><td>50, 52, 54, 56, 58, 60&deg; (K) &middot; 52, 56, 60&deg; (S)</td></tr><tr><th scope="row">Headcover</th><td>Not included</td></tr></tbody></table></div>
+        <h3 class="spec-cap">Carver 01 Gold · club</h3>
+        <div class="spec-wrap"><table class="spec-tbl"><tbody><tr><th scope="row">Head material</th><td>1020 forged carbon steel</td></tr><tr><th scope="row">Face</th><td>CNC-milled grooves and micro-grooves over a sandblasted face: a dual-texture face</td></tr><tr><th scope="row">Grind</th><td>K Grind and S Grind</td></tr><tr><th scope="row">Head weight</th><td>300 g, all lofts</td></tr><tr><th scope="row">Lie</th><td>63&deg; all lofts (K) &middot; 63.5&deg; at 52&deg;, 64&deg; at 56 and 60 (S)</td></tr><tr><th scope="row">Finish</th><td>Gold</td></tr><tr><th scope="row">Hand</th><td>Right and left</td></tr><tr><th scope="row">Lofts</th><td>50, 52, 54, 56, 58, 60&deg; (K) &middot; 52, 56, 60&deg; (S)</td></tr><tr><th scope="row">Headcover</th><td>Not included</td></tr></tbody></table></div>
       </div>
       
     </div>
     <div class="spec-panel" role="tabpanel" id="sp1" aria-labelledby="st1" data-p="1" hidden>
       <div class="spec-card">
-        <h3 class="spec-cap">Carver 01 Gold &mdash; by loft and grind</h3>
+        <h3 class="spec-cap">Carver 01 Gold · by loft and grind</h3>
         <div class="spec-wrap"><table class="spec-tbl spec-tbl--matrix"><thead><tr><th scope="col">Loft</th><th scope="col">Grind</th><th scope="col">Lie</th><th scope="col">Bounce</th><th scope="col">Head weight</th><th scope="col">Length</th></tr></thead><tbody><tr><th scope="row">50&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope="row">52&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope="row">54&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope="row">56&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope="row">58&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope="row">60&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope="row">52&deg;</th><td>S</td><td>63.5&deg;</td><td>10&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope="row">56&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope="row">60&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35&Prime;</td></tr></tbody></table></div>
       </div>
       <p class="spec-aside">Both grinds are the same forged 1020 head at 300&nbsp;g. Where they differ is the sole, and the bounce and lie that come with it. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf.</p>
     </div>
     <div class="spec-panel" role="tabpanel" id="sp2" aria-labelledby="st2" data-p="2" hidden>
       <div class="spec-card">
-        <h3 class="spec-cap">Carver 01 Gold &mdash; shaft &amp; grip</h3>
+        <h3 class="spec-cap">Carver 01 Gold · shaft &amp; grip</h3>
         <div class="spec-wrap"><table class="spec-tbl"><tbody><tr><th scope="row">Shaft, stock</th><td>Regular (R) flex, mid kick point</td></tr><tr><th scope="row">Shaft length</th><td>35&quot; original</td></tr><tr><th scope="row">Shaft weight</th><td>110 g original</td></tr><tr><th scope="row">Shaft, upgrade</th><td>KBS <span class="soon">Coming soon</span></td></tr><tr><th scope="row">Grip</th><td>Stock grip</td></tr><tr><th scope="row">Grip weight</th><td>55 g (K) &middot; 57 g (S)</td></tr></tbody></table></div>
       </div>
       <p class="spec-aside">Every Carver ships on the Lucky stock shaft today; KBS becomes a selectable upgrade when it lands, and shaft joins hand and loft as a third choice in the buy box.</p>
@@ -2349,15 +2284,15 @@ button{font:inherit;color:inherit}
       <div class="ph ph--dark">
         <span class="lbl">
           <span class="mono k">Photo needed</span>
-          <span class="mono">Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box &mdash; other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.</span>
+          <span class="mono">Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box, other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.</span>
         </span>
       </div>
     </div>
     <div class="look-copy">
       <span class="eyebrow centre-none">The look</span>
       <h2 class="disp d-l">You'll want to pull it out of the bag</h2>
-      <p class="body">Most wedges are gray. This one isn't, and you find out what that's worth the first time you take it out on a busy tee box. People ask. They always ask.</p>
-      <p class="body">That's not the reason to buy it &mdash; the face is. But it isn't nothing, either. Golf is a game you play for four hours with the same three people, and the club you look down at should be one you actually like looking at.</p>
+      <p class="body">Nobody needs a gold wedge, and that is more or less the point. It catches the light at address, it looks like nothing else in the group, and it turns your short game into the thing somebody brings up on the next hole.</p>
+      <p class="body">If that isn't you, the Carver 01 Black does the same job quietly.</p>
       <p class="aside">Everyone else is carrying the same club with someone else's name on it. It's better to be lucky.</p>
       <div class="look-cta">
         <a href="#gal" class="btn btn-line-cream"><span>Pick a loft</span><span class="ar">&rarr;</span></a>
@@ -2438,41 +2373,17 @@ button{font:inherit;color:inherit}
       <div class="jm-list" id="jm-list"></div>
       <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
       
-      <p class="jm-foot">Live site swaps this block for the Judge.me widget itself &mdash; same shape, same data, real submissions.</p>
+      <p class="jm-foot">Live site swaps this block for the Judge.me widget itself: same shape, same data, real submissions.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ THE REST OF THE BAG — clubs.
-     White, not cream: .ptile is itself cream, and cream tiles on a cream field
-     have no edge at all. ============ -->
+<!-- "The rest of the bag" section removed (Cole, 2026-08-17): it duplicated
+     Others-also-viewed, which sits straight under the fold. Finish-the-look
+     below the reviews is the one cross-sell that stays — his words: "you've
+     got the club, now get the rest — I like actually having that below the
+     reviews". The `bag` key in the copy files is now unused. ============ -->
 <div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
-
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow">More from Lucky</span>
-    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">The rest of the bag</h2>
-    <div class="pgrid msnap">
-
-      <article class="ptile">
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436" alt="Carver 01 Black" loading="lazy" width="800" height="800">
-          <span class="pt-tag">New</span></div>
-        <a class="pt-nm stretch" href="20-product-lgw01-black.html">Carver 01 Black</a>
-        <p class="pt-hook">Everything the Gold does around the greens, in a finish that stays quiet in the bag.</p>
-        <div class="pt-meta"><span class="pt-pr">$109</span><span class="pt-rt">6 lofts</span></div>
-      </article>
-
-      <article class="ptile">
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493" alt="Stryker LGH01" loading="lazy" width="800" height="800">
-          </div>
-        <a class="pt-nm stretch" href="20-product-lgh01.html">Stryker</a>
-        <p class="pt-hook">Titanium hybrid at 19&deg;. For the long approach the irons don't quite cover.</p>
-        <div class="pt-meta"><span class="pt-pr">$209</span><span class="pt-rt">Right & left hand</span></div>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 <!-- ============ FINISH THE LOOK — apparel, not gear ============ -->
 <section class="sec band-cream">
@@ -2495,21 +2406,20 @@ button{font:inherit;color:inherit}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark center">It's better to be lucky</span>
       <h2 class="disp d-l">Go own the <span class="foil on-dark">green</span></h2>
-      <p class="body on-dark">The Carver is $99 in every loft, right hand or left. Sixty days to send it back if it isn't the one.</p>
+      <p class="body on-dark">One price, every loft, either hand. Sixty days to decide, and if it doesn't earn the bag, send it back, no hard feelings.</p>
       <div class="close-cta">
         <a href="#gal" class="btn btn-foil sweep"><span>Pick a loft</span><span class="ar">&rarr;</span></a>
         <a href="10-collection-clubs.html" class="btn btn-line-cream"><span>See the whole line</span></a>
       </div>
       <div class="close-trust">
-        <span class="mono">60-day club returns</span>
+        <span class="mono">60-day returns</span>
         <span class="div"></span>
-        <span class="mono">Free US shipping</span>
+        <span class="mono">Six lofts, one price</span>
         <span class="div"></span>
-        <span class="mono">Six lofts</span>
+        <span class="mono">4.81 from verified buyers</span>
         <span class="div"></span>
-        <span class="mono">Direct pricing</span>
+        <span class="mono">Ships in 1&ndash;2 business days</span>
         <span class="div"></span>
       </div>
     </div>
@@ -2536,13 +2446,13 @@ button{font:inherit;color:inherit}
 
     <div class="md-sec">
       <h3>Sixty days, with conditions</h3>
-      <p>Sixty days from delivery on every club. <b>Contact us before sending anything back</b> &mdash; club returns need approval and photo verification first, and a club returned without authorization will not be accepted.</p>
+      <p>Sixty days from delivery on every club. <b>Contact us before sending anything back</b>. Club returns need approval and photo verification first, and a club returned without authorization will not be accepted.</p>
       <p>Refunds are issued after the club comes back and is inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
 
     <div class="md-sec">
       <h3>What you can do with it first</h3>
-      <p><b>Putters</b> may be used during the sixty days, but must come back in brand-new condition &mdash; no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p>
+      <p><b>Putters</b> may be used during the sixty days, but must come back in brand-new condition: no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p>
       <p><b>Wedges</b>: one wedge per order may be opened and tested, on a turf mat or another non-abrasive surface. Any others stay factory sealed. The tested one must come back with no groove wear, face marks or sole wear.</p>
       <p><b>Hybrids</b> must appear completely unused, with no visible wear and no modifications.</p>
       <p>Wear beyond these conditions can mean a partial refund or a declined return.</p>
@@ -2550,7 +2460,7 @@ button{font:inherit;color:inherit}
 
     <div class="md-sec">
       <h3>Apparel and gear</h3>
-      <p>Thirty days. Apparel unworn and unwashed with all original tags attached &mdash; <b>a return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
+      <p>Thirty days. Apparel unworn and unwashed with all original tags attached. <b>A return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
       <p>Customised products are final sale unless they arrive defective.</p>
       <p><a href="40-returns.html">Read the full refund policy</a></p>
     </div>
@@ -2569,7 +2479,7 @@ button{font:inherit;color:inherit}
     <div class="md-carriers"><span>USPS</span><span>UPS</span><span>FedEx</span></div>
 
     <div class="md-sec">
-      <p>Orders leave the warehouse in one to two business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
+      <p>Orders leave the warehouse in 1&ndash;2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
       <p>What shipping costs, and how fast, is shown at checkout before you pay. We ship worldwide.</p>
     </div>
 
@@ -2671,7 +2581,7 @@ button{font:inherit;color:inherit}
       <div class="cd-sub"><span class="l">Subtotal</span><span class="v" id="cd-sub">$0</span></div>
       <p class="cd-note">Shipping and tax calculated at checkout</p>
       <a href="#" class="btn btn-foil"><span>Checkout</span><span class="ar">&rarr;</span></a>
-      <p class="cd-mock">Front-end demo &mdash; no live checkout wired up</p>
+      <p class="cd-mock">Front-end demo. No live checkout wired up</p>
     </div>
   </div>
 </div>
@@ -2837,7 +2747,7 @@ var LG_REVIEWS = (function(){
       if (!box && !cnt) return;
       var sum = 0, all = 0;
       [5,4,3,2,1].forEach(function(k){ sum += k * (t[k] || 0); all += (t[k] || 0); });
-      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '—';
+      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '–';
       if (cnt) cnt.textContent = 'Based on ' + n + ' reviews';
     }
     function paintBars(){
@@ -2961,7 +2871,9 @@ var PD_AXIS_UI = {
   /* the combined Loft & grind axis — 50K, 52K, 52S. The help link goes to
      the grind explainer, because the grind is the half of this choice
      nobody arrives knowing. */
-  loftgrind:{help: {href: '#grinds', text: 'Which grind? →'}},
+  /* the grinds anchor moved: the standalone grind section died into the
+     product-description bullets (Cole, 2026-08-17, Takomo-shaped) */
+  loftgrind:{help: {href: '#club', text: 'Which grind? →'}},
   /* the size guide is a MODAL now, not a section on the page (Cole
      2026-07-31), so this opens it rather than jumping down the page */
   size:     {help: {md: 'md-size', text: 'Size guide →'}},
@@ -3131,7 +3043,7 @@ var PD_KIT = [
         /* The stock line says WHEN it ships and nothing else. It used to
            publish the exact unit count on anything under 25, which is inventory
            data a shopper has no use for and we have no reason to broadcast. */
-        st.textContent = 'In stock — ships in 1–2 business days';
+        st.textContent = 'In stock · ships in 1–2 business days';
       }
     }
     [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
@@ -3173,6 +3085,18 @@ var PD_KIT = [
     });
   });
   paintPickers(); sync();
+
+  /* ---------------------------------------------- sticky bar: fallback only.
+     Slides in when the real #atc button leaves the viewport, slides out when
+     it is back (Cole, 2026-08-18). No observer support -> the bar stays put
+     off-screen and the in-box button is the CTA, which is the safe default. */
+  (function(){
+    var atc = $('#atc'), bar = $('#atc-bar');
+    if (!atc || !bar || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(es){
+      bar.classList.toggle('atc-bar--on', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+    }, {threshold: 0}).observe(atc);
+  })();
 
   /* ------------------------------------------------------------ accordions */
   [].forEach.call(document.querySelectorAll('.acc-hd'), function(h){
@@ -3297,7 +3221,7 @@ var PD_GAPS = {
     var top = set[set.length - 1];
     $('#lf-note').textContent = top < 60
       ? 'That ladder tops out at ' + top + '°. If you want a 60° for tight pins as well, add it and drop the ' + set[1] + '°.'
-      : 'Three wedges, four to six degrees apart. Nothing overlaps and nothing is missing.';
+      : 'Those three cover everything from full shots to the flop. Pick the lofts, then the grind.';
   }
   [].forEach.call(document.querySelectorAll('[data-pw]'), function(b){
     b.addEventListener('click', function(){
@@ -3446,7 +3370,7 @@ var PD_GAPS = {
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =
@@ -3579,7 +3503,7 @@ var PD_GAPS = {
       var ph = document.createElement('div');
       ph.className = 'ph ph--dark';
       ph.innerHTML = '<span class="lbl"><span class="mono k">Video needed</span>'
-        + '<span class="mono">' + esc(o.brief) + ' &mdash; full vertical video, sound on. '
+        + '<span class="mono">' + esc(o.brief) + '. Full vertical video, sound on. '
         + 'This pane takes the creator&rsquo;s reel or the customer&rsquo;s clip at full length.</span></span>';
       media.insertBefore(ph, media.firstChild);
       detail.innerHTML =

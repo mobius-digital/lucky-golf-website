@@ -308,6 +308,17 @@
   text-transform:uppercase;font-size:clamp(1.8rem,3vw,2.7rem);line-height:.9;margin:0;color:var(--cream)}
 .gtile-ln{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:44ch}
 .gtile .btn{margin-top:6px}
+/* Top-right callout chips on a highlight tile (Takomo's NEW/rating badges,
+   Cole 2026-08-15). Same recipe as .pt-tag — small text on a gold fill is
+   ONLY legal on --lg-foil-tag (§9), never the animated ramp. .fl--new is the
+   ink variant for a genuinely new product; it renders nowhere today because
+   nothing is new — do not add it as decoration. Radius 6px: a chip is a small
+   surface (§9 radius law). */
+.gtile-flag{position:absolute;top:14px;right:14px;z-index:3;display:flex;gap:6px}
+.gtile-flag .fl{background:var(--lg-foil-tag);color:var(--ink);
+  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px}
+.gtile-flag .fl--new{background:var(--ink);color:var(--cream)}
 @media (max-width:760px){.gtile--wide{grid-column:auto}}
 /* one column between 621 and 760; below that .coll becomes a .msnap rail,
    and a grid-template-columns here would beat core's rule */

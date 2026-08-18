@@ -51,11 +51,11 @@
   "One Carver 01 Black wedge in the loft you picked",
   "Lucky Golf stock steel shaft",
   "Lucky Golf grip",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "clubHeadline": "Same club. Quieter about it.",
  "clubParas": [
-  "This is the LGW02 with the volume turned down. Same forged body, same grind, same behavior out of the same lies &mdash; the only thing that changed is what it looks like at address.",
+  "This is the LGW02 with the volume turned down. Same forged body, same grind, same behavior out of the same lies. The only thing that changed is what it looks like at address.",
   "Blacked-out finish with gold on the clover and the loft stamp, and nothing else. At address it disappears against the grass, which some golfers find easier to aim and others find they miss the gold entirely.",
   "It is the full six-loft lineup, unlike the gold V2, which stops at three.",
   "Right hand today. Left hand is on the way, so if that is what you need it is worth waiting rather than settling for the gold."
@@ -67,7 +67,7 @@
   },
   {
    "k": "Feel",
-   "v": "Forged 1020 soft carbon steel — identical to the LGW02 Gold."
+   "v": "Forged 1020 soft carbon steel, identical to the LGW02 Gold."
   },
   {
    "k": "Face",
@@ -86,14 +86,14 @@
    "v": "Anyone who wants the LGW02 without the gold."
   }
  ],
- "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light — the club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
+ "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light. The club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
  "reelHeadline": "The Black, in the wild",
  "specHeadline": "The numbers",
  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8. This club is built on the LGW01 platform, so its numbers are the LGW01's.",
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Carver 01 Black &mdash; club",
+   "caption": "Carver 01 Black · club",
    "rows": [
     {
      "k": "Head material",
@@ -101,11 +101,11 @@
     },
     {
      "k": "Face",
-     "v": "CNC-milled grooves and micro-grooves over a sandblasted face &mdash; a dual-texture face"
+     "v": "CNC-milled grooves and micro-grooves over a sandblasted face: a dual-texture face"
     },
     {
      "k": "Grind",
-     "v": "K Grind &mdash; the LGW01 platform, not the LGW02 Gold's S Grind"
+     "v": "K Grind: the LGW01 platform, not the LGW02 Gold's S Grind"
     },
     {
      "k": "Head weight",
@@ -121,7 +121,7 @@
     },
     {
      "k": "Hand",
-     "v": "Right &mdash; left hand <span class=\"soon\">Coming soon</span>"
+     "v": "Right. Left hand <span class=\"soon\">Coming soon</span>"
     },
     {
      "k": "Lofts",
@@ -135,13 +135,13 @@
   },
   {
    "label": "By loft",
-   "caption": "Carver 01 Black &mdash; by loft",
+   "caption": "Carver 01 Black · by loft",
    "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">50&deg;</th><th scope=\"col\">52&deg;</th><th scope=\"col\">54&deg;</th><th scope=\"col\">56&deg;</th><th scope=\"col\">58&deg;</th><th scope=\"col\">60&deg;</th></tr></thead><tbody><tr><th scope=\"row\">Lie (&deg;)</th><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td><td>63</td></tr><tr><th scope=\"row\">Bounce (&deg;)</th><td>8</td><td>8</td><td>12</td><td>12</td><td>10</td><td>10</td></tr><tr><th scope=\"row\">Head weight (g)</th><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td><td>300</td></tr><tr><th scope=\"row\">Length (in)</th><td>35.25</td><td>35.25</td><td>35.125</td><td>35.125</td><td>35</td><td>35</td></tr><tr><th scope=\"row\">Price</th><td>$109</td><td>$109</td><td>$109</td><td>$109</td><td>$109</td><td>$109</td></tr></tbody></table>",
    "aside": "Both grinds are the same forged 1020 head at 300&nbsp;g. Where they differ is the sole, and the bounce and lie that come with it. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf."
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Carver 01 Black &mdash; shaft &amp; grip",
+   "caption": "Carver 01 Black · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft, stock",
@@ -176,7 +176,7 @@
   "headline": "The one nobody notices until you use it",
   "paras": [
    "Gold clubs get comments. That is fine until it is not, and there is a kind of golfer who would rather the club said nothing at all.",
-   "This is that club. It still has gold on it &mdash; on the clover, on the number &mdash; but you have to be standing over it to find any."
+   "This is that club. It still has gold on it, on the clover and the number, but you have to be standing over it to find any."
   ],
   "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
  },
@@ -209,15 +209,15 @@
  "grinds": {
   "eyebrow": "The grind",
   "headline": "One sole, and it is the steady one.",
-  "sub": "Grind is the shape of the sole &mdash; the part of the club that meets the turf. The Black is built on the K grind, the wider sole. If you want the S, the narrower one that opens up, it is on the Gold.",
+  "sub": "Grind is the shape of the sole, the part of the club that meets the turf. The Black is built on the K grind, the wider sole. If you want the S, the narrower one that opens up, it is on the Gold.",
   "options": [
    {
     "k": "K Grind",
     "name": "The no-surprises one",
     "forWho": "Standard lies, and a square setup",
     "paras": [
-     "K grind is the wider, flatter sole, with a standard leading edge. Spreading turf contact over more of the sole is what stops the club digging, so it bottoms out in the same place shot after shot &mdash; set up square, swing through, take your divot, and it does what you expect.",
-     "That makes it the one for standard lies: fairway, rough, fringe, full swings and the straightforward short-game shots. The bounce steps with the loft rather than sitting flat &mdash; 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
+     "K grind is the wider, flatter sole, with a standard leading edge. Spreading turf contact over more of the sole is what stops the club digging, so it bottoms out in the same place shot after shot: set up square, swing through, take your divot, and it does what you expect.",
+     "That makes it the one for standard lies: fairway, rough, fringe, full swings and the straightforward short-game shots. The bounce steps with the loft rather than sitting flat: 8&deg; on the 50 and the 52, where you are hitting full shots and do not want the sole in the way; 12&deg; on the 54 and the 56, which are the ones you take into a bunker; 10&deg; on the 58 and the 60."
     ],
     "facts": [
      {

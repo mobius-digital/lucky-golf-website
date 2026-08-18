@@ -80,20 +80,19 @@
   "One Tracer LGP02 Mallet putter in the hand you picked",
   "Oversized 3.0 white and gold Lucky putter grip, fitted",
   "35&quot; Lucky Approved shaft",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "careTitle": "Looking after the finish",
  "carePara": [
   "The gold is a finish, not a coating that needs babying, but the face still wants wiping after a wet round so the ball comes off it the same way every time.",
-  "The grip is white. Reviewers have flagged that it picks up dirt quickly &mdash; a wipe with a damp cloth after a round keeps it looking new for a lot longer than it otherwise would."
+  "The grip is white. Reviewers have flagged that it picks up dirt quickly. A wipe with a damp cloth after a round keeps it looking new for a lot longer than it otherwise would."
  ],
  "marquee": [
   "Sixty-day returns on every club",
-  "Free US shipping",
+  "Ships in 1&ndash;2 business days",
   "Right and left hand",
   "Oversized 3.0 grip included",
-  "Sold direct, never through a middleman",
-  "It's better to be lucky"
+    "It's better to be lucky"
  ],
  "clubHeadline": "The club you use twice as often as any other, and think about half as much.",
  "clubParas": [
@@ -112,7 +111,7 @@
   },
   {
    "k": "Face",
-   "v": "Deep, fully milled texture — reduces skid and starts the roll cleanly."
+   "v": "Deep, fully milled texture: reduces skid and starts the roll cleanly."
   },
   {
    "k": "Weighting",
@@ -125,7 +124,7 @@
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line at address showing the head sitting square on its own, then the alignment lines from the golfer's eye, then three putts holed from 4, 12 and 30 feet with the sound of the strike. Close on the oversized grip in the hands.",
  "reelHeadline": "The Tracer, on the green",
- "reelSub": "Clips of this exact putter being rolled &mdash; creators, customers, and anyone who tags us.",
+ "reelSub": "Clips of this exact putter being rolled: creators, customers, and anyone who tags us.",
  "reel": [
   {
    "kind": "Creator reel",
@@ -137,7 +136,7 @@
   },
   {
    "kind": "Creator reel",
-   "brief": "Face-on slow motion of the roll off the face — end over end, no skid"
+   "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
   },
   {
    "kind": "Customer clip",
@@ -155,13 +154,13 @@
  "helpPick": {
   "eyebrow": "Blade or mallet",
   "headline": "Both suit an arc. The question is feel or forgiveness.",
-  "sub": "This is the only question worth asking about a putter and the usual answer — mallets for straight strokes, blades for arcs — does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
+  "sub": "This is the only question worth asking about a putter and the usual answer (mallets for straight strokes, blades for arcs) does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
   "options": [
    {
     "id": "lgp02-gold",
     "name": "Tracer Mallet",
     "forWho": "Arc, with forgiveness",
-    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line — you give up some feedback to get that.",
+    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line. You give up some feedback to get that.",
     "facts": [
      {
       "k": "Toe hang",
@@ -181,7 +180,7 @@
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade — a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade: a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -206,7 +205,7 @@
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Tracer LGP02 &mdash; club",
+   "caption": "Tracer LGP02 · club",
    "rows": [
     {
      "k": "Head shape",
@@ -252,7 +251,7 @@
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Tracer LGP02 &mdash; shaft &amp; grip",
+   "caption": "Tracer LGP02 · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft",
@@ -275,7 +274,7 @@
      "v": "63 g"
     }
    ],
-   "aside": "One length, 35&quot;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way &mdash; a taller golfer should know there is no long option yet."
+   "aside": "One length, 35&quot;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way. A taller golfer should know there is no long option yet."
   }
  ],
  "look": {
@@ -283,7 +282,7 @@
   "headline": "It gets noticed on every green you walk onto",
   "paras": [
    "Putters are the one club everyone in the group sees you use, eighteen times a round, standing still, from four feet away. Most of them are gray. This one is gold and white, and the reviews are close to unanimous about what happens next.",
-   "That isn't the reason to buy it &mdash; the stroke is. But of every club in the bag, this is the one where looking down at something you actually like is worth the most, because you are looking down at it more than anything else you own."
+   "That isn't the reason to buy it. The stroke is. But of every club in the bag, this is the one where looking down at something you actually like is worth the most, because you are looking down at it more than anything else you own."
   ],
   "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
  },
@@ -299,7 +298,7 @@
  "closeBody": "The Tracer Mallet is $229, right hand or left, with the oversized grip already on it. Sixty days to send it back if it isn't the one.",
  "closeTrust": [
   "60-day club returns",
-  "Free US shipping",
+  "Ships in 1&ndash;2 business days",
   "Right &amp; left hand",
   "Direct pricing"
  ],

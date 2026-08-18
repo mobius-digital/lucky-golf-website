@@ -35,7 +35,7 @@
       "id": "lh-availability",
       "q": "Do you make left-handed clubs?",
       "a": [
-       "Yes, across most of the line — but not every club and not every loft, so here is the whole picture rather than a yes that turns into a no at checkout."
+       "Yes, across most of the line, but not every club and not every loft, so here is the whole picture rather than a yes that turns into a no at checkout."
       ],
       "handRows": true
      },
@@ -64,7 +64,7 @@
       "a": [
        "Both Tracers are built at 35 inches, and that is the only length we make today. We do not cut or extend one before it ships.",
        "The useful comparison is the putter you already own: measure it heel to grip cap and see how far off 35 is. That number tells you more than your height does, because putter length follows how you stand over the ball.",
-       "If you want it shorter, a club fitter can do it after purchase — but read the returns page first. <b>Cutting, bending or regripping a putter ends its return window</b>, so it is a decision to make after the sixty days, not during them."
+       "If you want it shorter, a club fitter can do it after purchase, but read the returns page first. <b>Cutting, bending or regripping a putter ends its return window</b>, so it is a decision to make after the sixty days, not during them."
       ],
       "cta": {
        "label": "Read the refund policy",
@@ -105,7 +105,7 @@
       "id": "headcover",
       "q": "Does the club come with a head cover?",
       "a": [
-       "No. No club in the line ships with a head cover — not the wedges, not the putters, not the hybrid.",
+       "No. No club in the line ships with a head cover: not the wedges, not the putters, not the hybrid.",
        "Covers are sold separately: a blade cover, a mallet cover and a driver cover."
       ],
       "cta": {
@@ -170,7 +170,7 @@
       "q": "The wrong loft turned up. What now?",
       "a": [
        "That is a picking error rather than a return, and it does not come out of your sixty days.",
-       "Send the order number and a photo of the loft stamp on the sole — one picture settles it — and hold onto the club until we have replied."
+       "Send the order number and a photo of the loft stamp on the sole (one picture settles it) and hold onto the club until we have replied."
       ],
       "cta": {
        "label": "Tell us what arrived",
@@ -214,7 +214,7 @@
       "id": "can-i-hit-it",
       "q": "Can I actually hit it first?",
       "a": [
-       "A putter, yes — use it, that is what sixty days is for. It has to come back unmarked, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
+       "A putter, yes. Use it, that is what sixty days is for. It has to come back unmarked, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
        "A wedge, one per order, on a turf mat or another non-abrasive surface. Any others stay factory sealed, and the tested one comes back with no groove wear.",
        "A hybrid, driver or wood has to appear completely unused."
       ],
@@ -239,7 +239,7 @@
       "id": "gift",
       "q": "It's a gift. Does the window start when I give it?",
       "a": [
-       "No — the window runs from delivery, so a club bought in November and handed over at Christmas has spent most of its sixty days in a closet."
+       "No. The window runs from delivery, so a club bought in November and handed over at Christmas has spent most of its sixty days in a closet."
       ],
       "cta": {
        "label": "Read the refund policy",
@@ -265,7 +265,7 @@
       "q": "Who pays return shipping?",
       "a": [
        "You do, on a change of mind, and the original shipping is not refunded. We do not send a prepaid label.",
-       "Where the fault is ours it should not work that way, but that case is not written down yet — see the question above."
+       "Where the fault is ours it should not work that way, but that case is not written down yet. See the question above."
       ],
       "cta": {
        "label": "Read the refund policy",

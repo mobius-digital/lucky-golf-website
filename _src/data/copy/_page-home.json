@@ -8,11 +8,11 @@
     "cards": [
      {
       "id": "lgw01-gold",
-      "ln": "One wedge, six lofts and two sole grinds. The one that makes you stop blaming the swing."
+      "ln": "Two sole grinds, so you can match the club to the turf you actually play."
      },
      {
       "id": "lgw01-black",
-      "ln": "The same shape, blacked out. Gold on the clover and nothing else."
+      "ln": "The same wedge, if you'd rather not be asked about it."
      }
     ]
    },
@@ -21,7 +21,7 @@
     "cards": [
      {
       "id": "lgp01-gold",
-      "ln": "Short ones start to feel like a formality. Quiet off the face."
+      "ln": "A heavier head that holds its line without you steering it."
      },
      {
       "id": "lgp02-gold",
@@ -34,7 +34,7 @@
     "cards": [
      {
       "id": "lgh01",
-      "ln": "The one you reach for when the long shot has to find the green."
+      "ln": "For the long one that has to end up on the green, not near it."
      }
     ]
    }

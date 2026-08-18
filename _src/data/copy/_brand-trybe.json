@@ -12,7 +12,7 @@
   "items": [
    {
     "k": "Open",
-    "v": "No follower threshold to clear, and no window to wait for. Write any time &mdash; applications are read in batches."
+    "v": "No follower threshold to clear, and no window to wait for. Write any time. Applications are read in batches."
    },
    {
     "k": "Honest",
@@ -32,7 +32,7 @@
    "phBrief": "4:3. Two or three golfers on a course together, Lucky clubs visible but not staged. Shot wide, natural light, no product hero framing.",
    "paras": [
     "The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.",
-    "That is genuinely most of the brief. What we are not doing is buying an audience &mdash; there is no follower count that gets you in and none that keeps you out."
+    "That is genuinely most of the brief. What we are not doing is buying an audience. There is no follower count that gets you in and none that keeps you out."
    ]
   }
  ],
@@ -53,7 +53,7 @@
    {
     "n": "3",
     "title": "You're in",
-    "body": "Your apparel code, the group chat, drops and reposts &mdash; all of it from day one, for everyone accepted."
+    "body": "Your apparel code, the group chat, drops and reposts: all of it from day one, for everyone accepted."
    },
    {
     "n": "4",
@@ -85,14 +85,14 @@
   "headline": "One door in. Two levels.",
   "cards": [
    {
-    "badge": "Open — apply today",
+    "badge": "Open · apply today",
     "title": "Ambassador",
     "items": [
      "Your own code for apparel, and commission on what it sells.",
      "A private group chat, with us in it.",
      "First look at drops and events.",
      "Reposts, with your name on them.",
-     "And a shot at a club to play &mdash; those go out in batches, and there are never enough."
+     "And a shot at a club to play. Those go out in batches, and there are never enough."
     ],
     "foot": "No quota. No script. No commission on clubs, ever.",
     "cta": {
@@ -102,26 +102,26 @@
    },
    {
     "dark": true,
-    "badge": "By invite — earned",
+    "badge": "By invite · earned",
     "title": "Creator",
     "items": [
      "Paid content work, per project.",
      "Invites go to ambassadors whose work stands out.",
-     "Sometimes on day one — the links field in the application is the fast lane."
+     "Sometimes on day one. The links field in the application is the fast lane."
     ],
     "foot": "Earned, not promised."
    }
   ],
-  "note": "Apparel pays commission and clubs never will, and that split is the whole point. The Lucky argument is that the price is honest because nothing is hiding in it &mdash; so when an ambassador says the wedge is good, that has to be the whole transaction. Rates grow as you do, and the numbers come with your acceptance."
+  "note": "Apparel pays commission and clubs never will, and that split is the whole point. The Lucky argument is that the price is honest because nothing is hiding in it, so when an ambassador says the wedge is good, that has to be the whole transaction. Rates grow as you do, and the numbers come with your acceptance."
  },
  "apply": {
   "eyebrow": "The application",
   "title": "Apply as an ambassador",
-  "lede": "Five fields, read in batches, answered by a person. The links one is optional — and it is also the fast lane.",
+  "lede": "Five fields, read in batches, answered by a person. The links one is optional, and it is also the fast lane.",
   "protoLabel": "Prototype",
   "proto": "these fields are the markup for the Shopify build and nothing sends yet. Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a> and it reaches us today.",
   "cta": "Submit application",
-  "sent": "Nothing was sent — this form is a prototype. Email partners@luckygolf.com and it reaches us today.",
+  "sent": "Nothing was sent. This form is a prototype. Email partners@luckygolf.com and it reaches us today.",
   "note": "No follower minimum, and no window to wait for. Everyone accepted gets the code, the chat and the drops; clubs go out in batches."
  },
  "bar": {
@@ -132,7 +132,7 @@
    {
     "title": "This is for you if",
     "items": [
-     "You play regularly &mdash; enough that you'd notice a sole grinding through turf differently.",
+     "You play regularly, enough that you'd notice a sole grinding through turf differently.",
      "You'd have bought the club anyway. Merit first, free second.",
      "You'll say what's wrong with a club as readily as what's right.",
      "You're happy to be tagged, and for us to repost what you make.",
@@ -145,7 +145,7 @@
      "A follower count. There is no threshold, on any platform.",
      "A posting schedule, or a minimum number of anything.",
      "A script. What you say about the club is yours.",
-     "Exclusivity &mdash; keep playing whatever else is in the bag.",
+     "Exclusivity: keep playing whatever else is in the bag.",
      "Professional gear. A phone and daylight is the whole kit."
     ]
    },
@@ -154,19 +154,19 @@
     "title": "What isn't a fit",
     "items": [
      "A feed that is mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.",
-     "Wanting a script, or sign-off before you post. That exists here &mdash; but it is the Creator level, and it is paid work.",
+     "Wanting a script, or sign-off before you post. That exists here, but it is the Creator level, and it is paid work.",
      "Applying for a free club with no plan to play it. We read applications properly, and it shows."
     ]
    }
   ],
-  "note": "Joining is open &mdash; there is nothing to clear. Clubs are the part that is limited, and the application is where that gets decided. If you are not sure whether it is worth applying, apply and say so. The worst outcome is a reply."
+  "note": "Joining is open. There is nothing to clear. Clubs are the part that is limited, and the application is where that gets decided. If you are not sure whether it is worth applying, apply and say so. The worst outcome is a reply."
  },
  "earn": {
   "eyebrow": "The money side",
   "headline": "Where earning happens, and where it doesn't",
   "cols": [
    {
-    "title": "Apparel &mdash; you earn",
+    "title": "Apparel: you earn",
     "items": [
      "Your own code, and commission on everything it sells.",
      "Your rate grows as you do.",
@@ -175,7 +175,7 @@
    },
    {
     "warn": true,
-    "title": "Clubs &mdash; you don't",
+    "title": "Clubs: you don't",
     "items": [
      "No code, no commission, no cut. Not now, not at any level.",
      "You get clubs to play because you play, and what you say about them is yours.",
@@ -183,6 +183,6 @@
     ]
    }
   ],
-  "note": "Rates, timing and the rest of it come with your acceptance &mdash; there is no contract to read on a web page."
+  "note": "Rates, timing and the rest of it come with your acceptance. There is no contract to read on a web page."
  }
 }

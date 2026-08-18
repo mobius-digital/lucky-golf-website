@@ -515,7 +515,7 @@ def hand_rows():
             declared = [h["label"] for h in hand["values"]]
             offered = [h["label"] for h in hand["values"] if live(h["k"])]
             if not offered:
-                v = "%s &mdash; sold out at the moment." % phrase(declared)
+                v = "%s: sold out at the moment." % phrase(declared)
             elif len(offered) < len(declared):
                 v = "%s only." % phrase(offered)
             else:
@@ -528,11 +528,11 @@ def hand_rows():
             for h in hand["values"]:
                 got = [o["label"] for o in other["values"] if live(h["k"] + "|" + o["k"])]
                 if not got:
-                    parts.append("%s &mdash; none right now" % h["label"])
+                    parts.append("%s: none right now" % h["label"])
                 elif len(got) == len(other["values"]):
-                    parts.append("%s &mdash; every %s" % (h["label"], axis))
+                    parts.append("%s: every %s" % (h["label"], axis))
                 else:
-                    parts.append("%s &mdash; %s" % (h["label"], ", ".join(got)))
+                    parts.append("%s: %s" % (h["label"], ", ".join(got)))
             v = ". ".join(parts) + "."
         rows.append({"k": '<a href="{{link:p/%s}}">%s</a>' % (p["id"], p["title"]), "v": v})
     if not rows:
@@ -1110,7 +1110,7 @@ REQUIRED = {
     ],
     "club": [
         ".msnap{",
-        ".atc-bar{display:flex}",        # mobile sticky add-to-cart
+        ".atc-bar--on{transform:translateY(0)}",  # mobile sticky add-to-cart, fallback-only since 2026-08-18
         ".bx-four{grid-template-columns:repeat(2,1fr)",
         ".pd-top{grid-template-columns:1fr",
         ".gal-thumbs{grid-template-columns:repeat(5,1fr)}",

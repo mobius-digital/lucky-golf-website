@@ -59,12 +59,12 @@
   "One Tracer LGP01 Blade putter, right hand",
   "Authentic Lucky Golf rubber grip",
   "35&quot; Lucky Approved shaft",
-  "No headcover &mdash; none of our clubs ship with one"
+  "No headcover (none of our clubs ship with one)"
  ],
  "clubHeadline": "The one for a stroke that already arcs.",
  "clubParas": [
   "A blade putter does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. There is more feel in a small head and more information in a mishit.",
-  "It is cast 431 stainless at 385 grams &mdash; heavy for a blade, which is what stops the hands taking over on a short one. Loft is 3.5 degrees, enough to lift the ball out of its own dent and start it rolling early.",
+  "It is cast 431 stainless at 385 grams: heavy for a blade, which is what stops the hands taking over on a short one. Loft is 3.5 degrees, enough to lift the ball out of its own dent and start it rolling early.",
   "35 inches, right hand, with the Lucky rubber grip rather than the oversized 3.0 that ships on the mallet. That is a deliberate pairing: an arcing stroke wants to feel the club, and a fat grip takes that away."
  ],
  "clubSpecs": [
@@ -78,7 +78,7 @@
   },
   {
    "k": "Face",
-   "v": "Deep precision-milled pattern — reduces skid and starts the ball rolling sooner."
+   "v": "Deep precision-milled pattern: reduces skid and starts the ball rolling sooner."
   },
   {
    "k": "Weighting",
@@ -93,14 +93,14 @@
    "v": "Authentic Lucky Golf rubber grip."
   }
  ],
- "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film — lean on sound.",
+ "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film. Lean on sound.",
  "reelHeadline": "The Blade, on the green",
  "specHeadline": "The numbers",
  "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
  "specTabs": [
   {
    "label": "Club",
-   "caption": "Tracer LGP01 &mdash; club",
+   "caption": "Tracer LGP01 · club",
    "rows": [
     {
      "k": "Head shape",
@@ -136,7 +136,7 @@
     },
     {
      "k": "Hand",
-     "v": "Right &mdash; left hand not currently offered"
+     "v": "Right (left hand not currently offered)"
     },
     {
      "k": "Headcover",
@@ -146,7 +146,7 @@
   },
   {
    "label": "Shaft &amp; grip",
-   "caption": "Tracer LGP01 &mdash; shaft &amp; grip",
+   "caption": "Tracer LGP01 · shaft &amp; grip",
    "rows": [
     {
      "k": "Shaft",
@@ -169,11 +169,11 @@
      "v": "75 g"
     }
    ],
-   "aside": "The blade's grip is 75 g against the mallet's 63 g &mdash; twelve grams more in the hands on the club that asks for more feel."
+   "aside": "The blade's grip is 75 g against the mallet's 63 g: twelve grams more in the hands on the club that asks for more feel."
   }
  ],
  "look": {
-  "photo": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small — that is the appeal.",
+  "photo": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small. That is the appeal.",
   "headline": "Less club, more information",
   "paras": [
    "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. That is either the reason to play one or the reason not to.",
@@ -211,13 +211,13 @@
  "helpPick": {
   "eyebrow": "Blade or mallet",
   "headline": "Both suit an arc. The question is feel or forgiveness.",
-  "sub": "This is the only question worth asking about a putter and the usual answer — mallets for straight strokes, blades for arcs — does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
+  "sub": "This is the only question worth asking about a putter and the usual answer (mallets for straight strokes, blades for arcs) does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
   "options": [
    {
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade — a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade: a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -237,7 +237,7 @@
     "id": "lgp02-gold",
     "name": "Tracer Mallet",
     "forWho": "Arc, with forgiveness",
-    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line — you give up some feedback to get that.",
+    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line. You give up some feedback to get that.",
     "facts": [
      {
       "k": "Toe hang",

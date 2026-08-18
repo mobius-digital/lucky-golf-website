@@ -32,7 +32,7 @@
    "title": "When it leaves",
    "paras": [
     "Orders leave the warehouse in one to two business days. Business days, so an order placed on a Friday evening is a Monday or Tuesday dispatch.",
-    "You get a tracking number as soon as the carrier scans the parcel — which is the moment it is genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
+    "You get a tracking number as soon as the carrier scans the parcel, which is the moment it is genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
    ]
   },
   {
@@ -66,7 +66,7 @@
    "nav": "Outside the US",
    "cream": true,
    "title": "Where it ships from, and where it goes",
-   "lede": "Long Beach, California — and out to most of the world.",
+   "lede": "Long Beach, California, and out to most of the world.",
    "cta": {
     "label": "Ask about an international order",
     "href": "{{link:contact}}"

@@ -25,7 +25,7 @@
   "compare": {
     "eyebrow": "What's the difference",
     "headline": "Same loft, same lie, same length. The head is the decision.",
-    "sub": "There are only two putters and almost everything a spec sheet can measure about them is identical &mdash; 3.5&deg; of loft, a 72&deg; lie, 35&Prime; long, both fully CNC-milled from one block. What changes is twenty grams and the shape of what sits behind the face.",
+    "sub": "There are only two putters and almost everything a spec sheet can measure about them is identical: 3.5&deg; of loft, a 72&deg; lie, 35&Prime; long, both fully CNC-milled from one block. What changes is twenty grams and the shape of what sits behind the face.",
     "scales": [
       {
         "k": "weight",
@@ -76,7 +76,7 @@
     "body": "That trade is the whole choice, and it is older than either of these putters. If you like knowing exactly where on the face you struck it, that is the blade. If you would rather the ones you catch thin still finish near the hole, that is the mallet.",
     "ctaFinder": "Use the club finder",
     "ctaAsk": "Ask a person",
-    "aside": "Putters can go on the green inside the sixty days. They have to come back unmarked &mdash; no face marks, no sole wear, no bag chatter."
+    "aside": "Putters can go on the green inside the sixty days. They have to come back unmarked: no face marks, no sole wear, no bag chatter."
   },
 
   "story": {
@@ -88,7 +88,7 @@
         "rowHeadline": "One block of stainless, each",
         "paras": [
           "Both heads are cut from a single billet rather than poured into a mold and finished. That is a slower way to make a putter and it is why these two sit at $199 and $229 instead of somewhere under a hundred.",
-          "The blade is 431 stainless, the mallet is 304. Both carry the same 3.5&deg; of loft and the same 72&deg; lie, which means a stroke that works with one will work with the other &mdash; nothing about setup changes when you switch."
+          "The blade is 431 stainless, the mallet is 304. Both carry the same 3.5&deg; of loft and the same 72&deg; lie, which means a stroke that works with one will work with the other. Nothing about setup changes when you switch."
         ]
       },
       {
@@ -97,7 +97,7 @@
         "flip": true,
         "paras": [
           "385&nbsp;g against 365&nbsp;g is not much on a scale and is plenty in your hands. The heavier blade concentrates its weight in a small head; the lighter mallet spreads it further from the face.",
-          "That is the whole argument, and both are worth putting with for a few rounds before deciding. Sixty days is enough time to know &mdash; just keep the sole off the cart path."
+          "That is the whole argument, and both are worth putting with for a few rounds before deciding. Sixty days is enough time to know. Just keep the sole off the cart path."
         ]
       }
     ]

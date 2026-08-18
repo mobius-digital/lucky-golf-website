@@ -207,7 +207,7 @@
 {{/slots}}    </div>
     {{#tbd}}
     <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
     {{/tbd}}
@@ -235,7 +235,7 @@
 {{/items}}    </ol>
     {{#tbd}}
     <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> &mdash; {{text}}</p>
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
     {{/tbd}}
@@ -272,7 +272,7 @@
     <span class="eyebrow">{{eyebrow}}</span>
     <h2 class="disp d-m">{{title}}</h2>
     <p class="body br-apply-lede">{{lede}}</p>
-    <p class="br-proto"><span class="tbd tbd--light">{{protoLabel}}</span> &mdash; {{proto}}</p>
+    <p class="br-proto"><span class="tbd tbd--light">{{protoLabel}}</span> · {{proto}}</p>
     <form id="amb-apply">
       <div class="br-f2">
         <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
@@ -280,7 +280,7 @@
       </div>
       <p class="br-field"><label for="af-handle">Instagram or TikTok <span class="br-opt">optional</span></label><input id="af-handle" name="handle" type="text"></p>
       <p class="br-field"><label for="af-play">How do you play? Where, how often, what's in the bag now</label><textarea id="af-play" name="play" rows="4" required></textarea></p>
-      <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional &mdash; this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
+      <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional: this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
       <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>{{cta}}</span><span class="ar">&rarr;</span></button></p>
       <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">{{sent}}</p>
     </form>

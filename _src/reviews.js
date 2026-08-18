@@ -76,7 +76,7 @@ var LG_REVIEWS = (function(){
       if (!box && !cnt) return;
       var sum = 0, all = 0;
       [5,4,3,2,1].forEach(function(k){ sum += k * (t[k] || 0); all += (t[k] || 0); });
-      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '—';
+      if (box) box.textContent = all ? (Math.round(sum / all * 100) / 100).toFixed(2) : '–';
       if (cnt) cnt.textContent = 'Based on ' + n + ' reviews';
     }
     function paintBars(){
