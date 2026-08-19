@@ -34,7 +34,7 @@
   "who": "Ray O. &middot; Verified buyer &middot; Carver 01 Gold"
  },
  "priceNote": "Six lofts, right hand",
- "buyBody": "The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. The Black does all of it with gold left only on the clover and the loft stamp, which is the whole difference. Six lofts, right hand, sixty days to decide whether it stays in the bag.",
+ "buyBody": "The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. The Black does all of it with gold left only on the clover and the loft stamp. Six lofts, right hand, sixty days to decide whether it stays in the bag.",
  "four": [
   {
    "k": "Forged 1020",
@@ -59,9 +59,9 @@
   "Lucky Golf grip",
   "No headcover (none of our clubs ship with one)"
  ],
- "clubHeadline": "All the spin, none of the shine. Rip it back and say nothing.",
+ "clubHeadline": "All the spin, none of the shine. Same wedge, quieter about it.",
  "clubParas": [
-  "The Black is the same wedge as the Gold in a finish that keeps to itself. Forged 1020 soft carbon steel gives it the buttery feel and the honest feedback, and the dual-texture face grips the ball everywhere rather than only in the grooves, so the check-up shows up out of wet grass and on the strikes you didn't catch pure. Blacked out heel to toe with gold left on the clover and the loft stamp, it sits down into the grass at address and stays there."
+  "The same forged wedge as the Gold, blacked out with gold left on the clover and the loft stamp. 1020 carbon steel for buttery feel and honest feedback. A dual-texture face that grips the ball on the strikes you don't catch pure and out of wet grass. Six lofts, K grind, and it sits down quiet at address."
  ],
  "clubSpecs": [
   {
@@ -82,7 +82,7 @@
   },
   {
    "k": "For who",
-   "v": "Any golfer who would rather the club said nothing. Same short game as the Gold, none of the conversation on the next tee."
+   "v": "Any golfer who wants the Carver's short game without the gold."
   },
   {
    "k": "HCP range",
@@ -168,7 +168,7 @@
      }
     ]
    },
-   "aside": "One grind, so one value in every cell. The bounce still steps with the loft: least on the two you hit full shots with, most on the two you take into a bunker."
+   "aside": "Bounce steps with the loft: least on the 50 and 52 for full shots, most on the 54 and 56 you take into a bunker."
   },
   {
    "label": "Shafts",
@@ -235,13 +235,13 @@
   "photo": "Bold, full-bleed, portrait. Black head at address on grass in flat light, gold clover the only thing that catches. The point of the shot is how little the club announces itself.",
   "headline": "The one nobody notices until you use it",
   "paras": [
-   "Gold clubs get comments. That is fine until it is not, and there is a kind of golfer who would rather the club said nothing at all.",
+   "Gold clubs get comments. Some golfers would rather the club said nothing at all.",
    "This is that club. It still has gold on it, on the clover and the number, but you have to be standing over it to find any.",
    "If that isn't you, the Carver 01 Gold catches every bit of light there is."
   ],
-  "aside": "Everyone else is carrying the same club with someone else's name on it. It's better to be lucky."
+  "aside": "Gold where it counts, and nowhere else."
  },
- "closeBody": "Six lofts, one price, right hand. Sixty days to decide, and if it doesn't earn the bag, send it back, no hard feelings.",
+ "closeBody": "Six lofts, one price, right hand. Sixty days to decide.",
  "oav": [
   "lgw01-gold",
   "lgp02-gold",
@@ -268,11 +268,11 @@
  "_01": "THE 01, BLACK. Same club as the gold on the LGW01 platform (v1.8's platform note), K grind, six lofts. $109 rather than $99 because the blacked-out finish is a real extra process — the one price difference in the wedge line that stands for something (Cole 2026-07-31).",
  "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
  "eyebrow": "The 01",
- "_club": "Takomo-shaped 2026-08-19, matching the Gold (HANDOFF 36c): playful two-beat headline, ONE intro paragraph, the grind as a labelled sub-block, then Takomo's bullets ending on For who and HCP range. The standalone `grinds` section is deleted from this page: pdp.js already sends the buy box's 'Which grind?' link to #club. Three stale claims went with the old copy: the club called itself 'the LGW02' (the site calls it the Carver 01 Black everywhere else), it said the gold 'stops at three' lofts (the merged 01 Gold has six), and the close typed the price into editorial.",
+ "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it'). The second beat of the headline no longer repeats the Gold's 'Rip it back' (range across the set).",
  "clubGrinds": [
   {
    "k": "K Grind: no surprises",
-   "v": "A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe. It is the only grind the Black is built in, at all six lofts. The S, narrower and relieved so the face can open on tight lies and lobs, is on the Gold."
+   "v": "A wider, flatter sole with a standard leading edge. Set up square, take your divot, same result every time. Fairway, rough, fringe. The only grind on the Black, at all six lofts. The S grind is on the Gold."
   }
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. Bounce in Takomo's suffix notation with our letter (8K), so the sheet speaks the picker's language. The old shape was Club / By loft / Shaft & grip and carried two things that had to go: a PRICE row (price is per variant, from products.json, and is never retyped in editorial) and a K-vs-S aside on a club that is only built in K. NOTHING the Product Reference Guide does not publish is on the page: no swing weight, tip diameter or grip length.",

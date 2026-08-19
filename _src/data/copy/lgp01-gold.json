@@ -36,7 +36,7 @@
   ]
  ],
  "priceNote": "Right hand &middot; sold out",
- "buyBody": "A blade tells you the truth about every putt you hit, which is exactly why better putters keep going back to them. This one is milled from a single block of 431 stainless and heavy for its size, so there is nothing inside it to ring and nothing in your hands to take over on a short one. Right hand, sixty days, and out of stock at the moment.",
+ "buyBody": "A blade milled from a single block of 431 stainless, 385 grams, with nothing inside it to ring. It tells you the truth about every putt, and better putters wouldn't have it any other way. Right hand, sixty days. Out of stock at the moment.",
  "four": [
   {
    "k": "CNC-milled",
@@ -61,9 +61,9 @@
   "35&quot; Lucky Approved shaft",
   "No headcover (none of our clubs ship with one)"
  ],
- "clubHeadline": "A smaller head tells you more. Roll one pure and you'll know it.",
+ "clubHeadline": "A smaller head tells you more. Roll it pure.",
  "clubParas": [
-  "A blade does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. It is milled from a single block of 431 stainless, so there is nothing inside it to ring or buzz and the feedback comes back honest rather than harsh: you feel where on the face you hit it, every time. At 385 grams it is heavy for a blade, and that weight is what keeps it planted through a four-footer when the hands want to help."
+  "A blade milled from one block of 431 stainless, heavy for its size at 385 grams. Nothing inside it to ring, so the strike comes back muted and solid and you feel exactly where on the face you hit it. The weight keeps it planted on a four-footer when the hands want to help."
  ],
  "clubSpecs": [
   {
@@ -80,7 +80,7 @@
   },
   {
    "k": "For who",
-   "v": "Players who release the head through the stroke and would rather know about a miss than have it covered up."
+   "v": "Players who release the head through the stroke and want to know about a miss, not have it covered up."
   },
   {
    "k": "HCP range",
@@ -196,13 +196,13 @@
   "photo": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small. That is the appeal.",
   "headline": "Less club, more information",
   "paras": [
-   "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. That is either the reason to play one or the reason not to.",
+   "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. Either that is why you play one, or it is why you don't.",
    "In gold, at 385 grams, it is also the least apologetic putter we make.",
-   "If you would rather the head covered the miss than reported it, the Tracer Mallet is the other one."
+   "If you would rather the head covered the miss, the Tracer Mallet is the other one."
   ],
-  "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
+  "aside": "Roll it pure."
  },
- "closeBody": "One loft, one length, right hand. It is out of stock at the moment, and when it comes back you get sixty days to decide whether it earns the bag.",
+ "closeBody": "One loft, one length, right hand. Out of stock right now. When it's back, sixty days to decide.",
  "oav": [
   "lgp02-gold",
   "lgw01-gold",
@@ -238,7 +238,7 @@
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade: a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving. The trade is that a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -285,15 +285,15 @@
   "quote": "The look alone is amazing!!! And I haven&rsquo;t putted this good in my life. I should have switched to blades years ago",
   "who": "Michael M. &middot; Verified buyer"
  },
- "_club": "Takomo-shaped 2026-08-19, matching the Gold and the Black: two-beat headline, ONE intro paragraph, two labelled sub-blocks, then Type / Characteristics / Design / For who / HCP range. THE SUB-BLOCKS REUSE `clubGrinds`. On a wedge that key carries the grinds; the markup is generic (<b>label</b><p>body</p>) and a putter has exactly the same need for two labelled beats between the intro and the bullets. Nothing in the template changed. ONE FLAT CONTRADICTION WENT: the old middle paragraph said \"It is cast 431 stainless\", three lines under a bullet saying 100% CNC-milled and against the guide.",
+ "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it').",
  "clubGrinds": [
   {
    "k": "The head: feel over forgiveness",
-   "v": "It is the smallest thing you will look down at all round and the most honest. A blade will not straighten out a strike you missed, and that is the trade you are making: it tells you exactly what you did instead. For players who release the head through the stroke."
+   "v": "A blade will not straighten out a strike you missed. It tells you what you did instead. For players who release the head through the stroke."
   },
   {
    "k": "The grip: nothing in the way",
-   "v": "The stock Lucky rubber grip, not the oversized 3.0 that ships on the mallet. That pairing is deliberate. An arcing stroke wants to feel the club, and a fat grip is designed to take exactly that away."
+   "v": "The stock Lucky rubber grip, not the oversized 3.0 on the mallet. An arcing stroke wants to feel the club, and a fat grip takes that away."
   }
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. A putter has one loft and one length, so the Clubs matrix runs the four figures as COLUMNS against one head-shape row rather than lofts as columns. The old shape was Club / Shaft & grip. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text: an internal document and its version number, on the page.",

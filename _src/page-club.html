@@ -422,7 +422,9 @@
       <!-- Rating is real, but no reviews have been pulled into the repo for
            this product yet. Score only — a filter over an empty list reads as
            a bug, and inventing review text is forbidden (HANDOFF). -->
-      <p class="jm-none">The score is live from Judge.me. The individual reviews are not in this mock yet. The live site renders them from the widget.</p>
+      <!-- Rating is real, reviews not yet pulled into the repo: say nothing
+           rather than narrate the mock to the customer (Cole, 2026-08-19:
+           the page must not talk about itself). The score block above stands. -->
       {{/reviewSample}}
 
       {{#reviewSample}}
@@ -443,7 +445,9 @@
       <div class="jm-list" id="jm-list"></div>
       <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
       {{/reviewSample}}
-      <p class="jm-foot">Live site swaps this block for the Judge.me widget itself: same shape, same data, real submissions.</p>
+      <!-- The "Live site swaps this block for the Judge.me widget" footer came
+           off 2026-08-19: a build note in the customer's face, on 31 pages.
+           The fact lives in DEVELOPER-HANDOFF. -->
     </div>
   </div>
 </section>

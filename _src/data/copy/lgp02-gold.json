@@ -57,7 +57,7 @@
   "who": "austin s. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "You use it twice a hole and think about it least, and it decides more of your score than anything else you carry. The Tracer is milled from a single block of 304 stainless, so it comes off the face muted and solid with nothing inside to ring, with a slight toe hang that works with a natural arc instead of fighting it and the weight pushed out to the edges so an off-center strike holds its line. Right or left hand, sixty days to decide.",
+ "buyBody": "You use it twice a hole and it decides more of your score than anything else in the bag. Milled from one block of 304 stainless, muted and solid off the face, with a slight toe hang that works with your arc and the weight out at the edges so a miss still holds its line. Right or left hand, sixty days to decide.",
  "four": [
   {
    "k": "100% CNC-milled",
@@ -96,7 +96,7 @@
  ],
  "clubHeadline": "The club you use most, thought about least. Lag it close and walk it in.",
  "clubParas": [
-  "Nobody buys a putter for the reason they should. A driver gets picked over three weekends and a putter gets whatever was in the bag when you started, and it is the club you use on every hole, twice, deciding more of your score than anything else you carry. The Tracer is milled from one block of 304 stainless, which is why it comes off the face muted and solid instead of ringing, and why a strike off the toe reads as information rather than a punishment."
+  "A mallet milled from one block of 304 stainless. The strike comes back muted and solid, nothing inside to ring, and a miss off the toe reads as information rather than punishment. A slight toe hang that works with your arc, weight out at the edges so the ball holds its line, and the oversized 3.0 grip already on it."
  ],
  "clubSpecs": [
   {
@@ -178,7 +178,7 @@
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving, which is the trade: a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving. The trade is that a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -238,7 +238,7 @@
      }
     ]
    },
-   "aside": "One length, 35&Prime;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way. A taller golfer should know there is no long option yet."
+   "aside": "One length, 35&Prime;, and no long option yet. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether it suits them."
   },
   {
    "label": "Shafts",
@@ -299,7 +299,7 @@
      }
     ]
    },
-   "aside": "The white picks up dirt, which reviewers say more often than they say anything else about it. A damp cloth after a round is the whole answer."
+   "aside": "The white picks up dirt; reviewers say so. A damp cloth after a round sorts it."
   }
  ],
  "look": {
@@ -307,9 +307,9 @@
   "headline": "It gets noticed on every green you walk onto",
   "paras": [
    "Putters are the one club everyone in the group sees you use, eighteen times a round, standing still, from four feet away. Most of them are gray. This one is gold and white, and the reviews are close to unanimous about what happens next.",
-   "That isn't the reason to buy it. The stroke is. But of every club in the bag, this is the one where looking down at something you actually like is worth the most, because you are looking down at it more than anything else you own."
+   "The stroke is the reason to buy it. But you look down at this club more than anything else you own, so it might as well be one you like."
   ],
-  "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
+  "aside": "Eighteen greens a round, and every one of them sees it."
  },
  "quote": {
   "q": "Putter is well balanced and the weight is perfect. I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances.",
@@ -320,7 +320,7 @@
  "chooseCta": "Pick a hand",
  "closeHeadline": "Go roll it",
  "closeFoil": "pure",
- "closeBody": "One loft, one length, right hand or left, with the oversized grip already on it. Sixty days to decide, and if it doesn't earn the bag, send it back, no hard feelings.",
+ "closeBody": "Right hand or left, with the oversized grip already on it. Sixty days to decide.",
  "closeTrust": [
   "60-day club returns",
   "Ships in 1&ndash;2 business days",
@@ -372,15 +372,15 @@
   }
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
- "_club": "Takomo-shaped 2026-08-19, matching the Gold, the Black and the Blade: two-beat headline, ONE intro paragraph, two labelled sub-blocks, then the bullets. The sub-blocks reuse `clubGrinds` — see the note in lgp01-gold.json. The three old paragraphs were good and their arguments all survive; they are now shaped so somebody scanning gets the two that decide the purchase (the neck and the grip) without reading the prose.",
+ "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it').",
  "clubGrinds": [
   {
    "k": "The neck: it works with your arc",
-   "v": "The plumber neck gives the head a slight toe hang, so it swings on the arc your stroke already has rather than asking you to putt straighter than you do. The weight sits out at the edges of the head, and that is what keeps a strike off the toe on its line instead of leaking away."
+   "v": "The plumber neck gives it a slight toe hang, so it swings on the arc your stroke already has. Weight out at the edges keeps a toe strike on its line instead of leaking away."
   },
   {
    "k": "The grip: fitted, not extra",
-   "v": "It arrives with the oversized 3.0 in white and gold already on it, and that is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club."
+   "v": "The oversized 3.0 in white and gold comes fitted. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else."
   }
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold. See the note in lgp01-gold.json for why the Clubs matrix runs figures as columns on a putter. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text.",

@@ -3560,10 +3560,14 @@ Read `_src/page-home.html` for the copy; this is the *why* behind the shape.
   is always visible and `pdp.js` slides the bar in only when `#atc` has
   scrolled above the viewport (IntersectionObserver). The smoke marker in
   build.py keys on `.atc-bar--on{transform:translateY(0)}`.
-- **Product description** is Takomo's exact shape: eyebrow "Product
+- **Product description** is Takomo's shape: eyebrow "Product
   description", a two-beat playful headline in Culture-doc vocabulary
   ("Forged feel meets filthy spin. Rip it back and go tap it in."), ONE intro
-  paragraph, then **grind sub-blocks** (new `clubGrinds` key, `.club-grind`,
+  paragraph, then **grind sub-blocks**. **[CORRECTED 2026-08-19, §37e: the
+  headline is NOT Takomo's shape. Takomo's headlines describe ("The precision
+  and control of a players' iron. Balanced with a dash of forgiveness.").
+  Cole is fine with OUR bold headline; what went wrong after this was the
+  BODY, which circled instead of describing. See §37e for the rule.]** (new `clubGrinds` key, `.club-grind`,
   renders only on products with more than one grind), then the
   Type / Characteristics / Design / For who / HCP range bullets. The standalone
   grind section is deleted from the Gold (`grinds` key removed; the buy box's
@@ -3825,3 +3829,81 @@ All four landed on the specs section, and one of them was the template's.
 Measured after the removal: the specs band's bottom gap is its own padding and
 nothing else, 95px at 1440 and 64px at 390, on the Gold, the Black, the Blade,
 the Mallet and the Stryker.
+
+
+### 37e. The audit, and the rule (2026-08-19)
+
+Cole, after the spec-block notes: *"are you actually reading our guides... the
+copy on all of this stuff is really bad... we're trying too hard... I'm the
+owner and I'm getting confused looking at this product page."* He asked for an
+honest read of every page against Takomo, and an honest answer on whether the
+visuals are too much.
+
+**The audit.** Visible copy was extracted from all 58 built pages and read as
+copy. Three Takomo PDPs in `_ref/` (201T iron, glove, Blade Polo) were read
+end to end. Findings:
+
+1. **§36c mis-described Takomo.** It recorded "a two-beat playful headline in
+   Culture-doc vocabulary" as Takomo's shape. Takomo's headlines *describe*.
+   The wrong model was written down on the 17th and every page after matched
+   it. **But Cole does NOT want Takomo's tone:** "Forged feel meets filthy
+   spin. Rip it back and go tap it in" is, by his standard, good. Bold, golf
+   vocabulary, a golfer gets it instantly.
+2. **The fluff is the body, not the headline.** Three kinds, site-wide:
+   *circling* (the Mallet spent 50 words before naming the club); *the page
+   talking about itself* ("Every one of these is checkable. That is the only
+   reason they are on the page", "Nothing on this page is a rating we
+   invented", "Live site swaps this block for the Judge.me widget" on 31
+   pages, the needs-spec footnote); and *one writer's tics* ("...and that is
+   more or less the point", "...which is exactly why", 48 × "which is",
+   the identical "Everyone else is carrying the same club with someone else's
+   name on it" aside on all five club pages, the brand line 202 times).
+3. **Facts still wrong on the read:** Stryker close said "in a run of a
+   hundred" (§15a said removed); Stryker spec sub cited "v1.8"; Our Story says
+   10,000+ orders vs the homepage's 30,000+; Our Story headlines "884"; the
+   Ambassador page says clubs are never commissioned five times after Cole
+   called the homepage's version "stupid"; Putters collection has "Bag the
+   blade" on a sold-out blade; Wedges collection carries a full 01-vs-02
+   comparison for a club with no price, lofts or date.
+4. **Stryker copy carried two unsourced performance claims**: "high launch,
+   mid spin, neutral flight" and a "stabilised impact frame... tighter
+   dispersion." In no guide, and Shopify's description is empty. Replaced with
+   what Spec-to-Benefit actually says (easy launch from titanium; Flex Channel
+   recovers ball speed on toe/heel strikes; Glide Sole for consistent contact).
+
+**The rule Cole approved** ("perfect, you nailed it"): **bold, in Lucky's
+vocabulary, AND one thing per line, said once, no commentary.** If a golfer
+reads it at scroll pace and gets it, it stays. If they'd have to re-read, it
+goes. Takomo's virtue is not a tone; it is that the reader never has to work.
+Take that; keep the gold, the bold, the culture references. The model is the
+Gold's intro paragraph after this date (47 words, the club named in the first
+line, facts paired with what they deliver).
+
+**What changed, five club pages:** every intro paragraph (one para, ~45-60
+words); the Black's headline second beat (no longer the Gold's "Rip it back",
+range across the set); the Blade's headline ("Roll it pure", the locked putter
+CTA); every look-section paragraph and **five different asides** (Gold keeps
+the original; Black "Gold where it counts, and nowhere else"; Blade "Roll it
+pure"; Mallet "Eighteen greens a round, and every one of them sees it";
+Stryker "Fill the gap"); five different closes; the Stryker's spec block to
+three cards matching the others, plus its first pull quote (John L.L.) and
+signature quote (LB06, whose review says what the what-it-replaces module
+says). The `.jm-foot` build note and the Black's "not in this mock yet" empty
+state came off the templates (club, apparel, reviews).
+
+**The visual answer, measured.** Takomo's iron PDP: white → grey → white →
+white → grey → white → footer. Two fields, no texture, six sections. Our Gold
+PDP: white → green (animated marquee) → cream → white → ink → white → cream →
+green (look) → cream (pull) → white → white → cream → ink (close) → footer.
+Four fields plus groove textures and watermarks, twelve sections plus a sticky
+bar. On one club page the sixty-day claim appears 12 times, "ships in 1–2"
+7 times, the brand line 6, a review-quote moment 3 times, a trust row 3 times,
+an Add-to-cart 3 times, a cross-sell rail twice. **Recommendation given to
+Cole, not acted on:** thin the club PDP toward six sections (fold, others
+also viewed, description, reel, specs, reviews; keep the loft helper on wedges
+and Complete your kit below reviews), brand field once per page where it earns
+it, each trust claim once. **His call; layouts are locked until he says.**
+
+**Asked of Cole:** captures of Takomo's homepage, one collection page and the
+Skyforger wedge PDP, the way the three in `_ref/` were captured, before the
+homepage and collection passes.
