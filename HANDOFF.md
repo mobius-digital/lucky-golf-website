@@ -3635,3 +3635,82 @@ next chat**, then the putters and the hybrid get the same card treatment.
 4. The Carver Black copy pass, then putters, then hybrid: the next chat.
 5. The cross-sell rail on the Gold still offers the Lucky Blade Cover (a putter
    cover) on a wedge page. Swap for glove/tees or leave.
+
+---
+
+## 37. Copy pass, chat two: the Carver Black, then the putters (2026-08-19)
+
+Cole's order from FINISH-LINE: the Carver 01 Black first (it inherited every
+template change from the Gold and none of the per-product copy), then the
+putters. Layouts locked. Build guards held on every step (`--check`,
+`--links` 60/58/2 declared and zero dead, `test-variants.js`).
+
+### 37a. The Carver 01 Black
+
+The template changes landed on this page on 2026-08-17; the copy underneath
+them was still the copy written before the wedge line collapsed into the 01.
+**Three claims on the page were stale rather than merely off-register:**
+
+1. It called itself **"the LGW02"** four times, in the buy body, the
+   description and the bullets. The site calls it the Carver 01 Black
+   everywhere else, and LGW02 is a Shopify tier name, not a product name.
+2. *"It is the full six-loft lineup, unlike the gold V2, which stops at
+   three."* The merged 01 Gold has six lofts. The sentence argued a
+   difference that no longer exists.
+3. The close **typed the price into editorial** ("The Black is $109 in every
+   loft"). Price is per variant, from products.json, and the standing rule is
+   that catalogue facts are never retyped in the copy layer.
+
+A fourth, smaller: `helpLoft`'s sub said the Black's six lofts made "a full
+ladder available in this finish", which was written when the gold stopped at
+three.
+
+**Description**, now Takomo's shape exactly as the Gold's:
+
+| | was | now |
+|---|---|---|
+| Headline | "Same club. Quieter about it." | "All the spin, none of the shine. Rip it back and say nothing." |
+| Intro | four paragraphs, two of them stale | ONE paragraph |
+| Grind | a whole standalone section, one card | one `clubGrinds` sub-block |
+| Bullets | Type / Feel / Face / Finish / Hand / For who | Type / Characteristics / Design / Hand / For who / HCP range |
+
+The **standalone `grinds` section is deleted**, the same move the Gold made:
+a full-width section with one card in it, on a club built in one grind, was a
+screen of scroll saying what four lines say. Its one genuinely useful
+sentence, that the S grind lives on the Gold, moved into the K sub-block.
+`pdp.js` already sends the buy box's "Which grind?" link to `#club`, so
+nothing pointed at the section that went.
+
+The Black keeps a **Hand** bullet the Gold does not have ("Right hand today.
+Left hand is coming."), because on this club it is the question a shopper
+actually arrives with.
+
+**Specs are three cards**, Clubs / Shafts / Grips, matching the Gold. The old
+shape was Club / By loft / Shaft & grip and carried two things that had to go:
+a **Price row** in the by-loft matrix, and a **K-versus-S aside on a club that
+is only built in K**. Bounce is Takomo's suffix notation with our letter
+(`8K`), so the sheet speaks the picker's language (`50K`, `52K`). Every figure
+is the Product Reference Guide's LGW01 table, which is what v1.8's platform
+note says the Black's numbers are. Nothing the guide does not publish is on
+the page.
+
+The reel headline picked up the foil the Gold's has (`.foil.on-dark`, on the
+ink band, which is the legal field for it). The look section gained the
+mirror of the Gold's cross-sell line: the Gold points at the Black for quiet,
+the Black now points at the Gold for light.
+
+**`four` was corrected rather than deleted.** It stopped rendering when the
+construction chips came out of the buy box (§36c), but it carried two of the
+stale LGW02 references, and dead copy that is also wrong is a trap for
+whoever turns the block back on.
+
+**The Black still has no pull quote, and that is correct, not a gap.** It has
+**zero reviews** — no rating in products.json, no pull in `_src/data/reviews/`.
+The buy-box quote slot renders only on `pullQuote`, so it is absent. Putting a
+Gold review there, even labelled as the Gold's, is social proof for a product
+that has none. Flagged for Cole rather than filled.
+
+Verified at 1440 and 390: `documentElement.scrollWidth` 1425 and 390, the
+spec matrix scrolling inside its own wrap at 390 (640 in a 346 box) exactly
+as the Gold's does, three tabs rendering, one grind block, no `#grinds`
+section, zero em dashes and zero banned claims in visible text.
