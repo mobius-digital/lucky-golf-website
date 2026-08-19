@@ -23,7 +23,7 @@
   border-bottom:2px solid var(--ink-14)}
 .sup-quick dt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;font-weight:800;
   font-size:clamp(1.5rem,2.4vw,2rem);line-height:.94;letter-spacing:-.01em;text-transform:uppercase}
-.sup-quick dd{margin:8px 0 0;font-family:'Space Mono',monospace;font-size:.62rem;
+.sup-quick dd{margin:8px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);line-height:1.5}
 
 /* ---------- on this page ---------- */
@@ -32,7 +32,7 @@
 .sup-jump-lbl{color:var(--ink-muted);flex:none}
 .sup-jump ul{display:flex;flex-wrap:wrap;gap:10px 20px;margin:0;padding:0;list-style:none}
 .sup-jump a{display:inline-flex;align-items:center;min-height:44px;
-  font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-70);
   border-bottom:2px solid var(--ink-14);transition:color .2s,border-color .2s}
 .sup-jump a:hover{color:var(--ink);border-color:var(--gold)}
@@ -76,8 +76,8 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
 .sup-rows{margin:26px 0 0;padding:0;max-width:72ch;border-top:2px solid var(--ink-14)}
 .sup-rows > div{display:flex;flex-wrap:wrap;gap:6px 26px;padding:15px 0;
   border-bottom:2px solid var(--ink-14)}
-.sup-rows dt{flex:0 0 clamp(160px,20vw,240px);font-family:'Space Mono',monospace;
-  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+.sup-rows dt{flex:0 0 clamp(160px,20vw,240px);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
   line-height:1.6;padding-top:2px}
 /* the FAQ's left-hand table puts a product link in the term. At .66rem that is
    a 16px-tall hit area, so it gets the 44px the rest of the site's links get —
@@ -97,7 +97,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
 .sup-tbd-block{margin-top:26px;max-width:64ch;border-left:2px solid var(--gold);
   padding:4px 0 4px 20px}
 .sup-tbd{margin:0;font-size:1.0125rem;line-height:1.66;color:var(--ink-70)}
-.sup-tbd-ask{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
+.sup-tbd-ask{margin:10px 0 0;font-family:'Archivo',sans-serif;font-size:.72rem;
   line-height:1.6;color:var(--ink-muted)}
 .sup-chan .sup-tbd{margin-top:12px;font-size:.95rem}
 
@@ -127,7 +127,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
 .sup-a p{margin:0 0 14px;font-size:1.0125rem;line-height:1.66;color:var(--ink-70)}
 .sup-a p:last-child{margin-bottom:0}
 .sup-a b{color:var(--ink)}
-.sup-src{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em;
+.sup-src{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-muted)}
 
 /* ---------- the form ---------- */
@@ -136,7 +136,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
 .sup-form{margin-top:26px}
 .sup-f2{display:grid;grid-template-columns:repeat(2,1fr);gap:0 var(--gut)}
 .sup-fld{margin:0 0 18px}
-.sup-fld label{display:block;font-family:'Space Mono',monospace;font-size:.62rem;
+.sup-fld label{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px}
 /* --ink-38 measures 2.44:1 on white — the same number §21h caught on disabled
    chips. A disabled control is formally exempt from the contrast rule; a form

@@ -25,7 +25,7 @@
 .sib--out .sib-ph img{filter:grayscale(1);opacity:.5}
 .sib-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
   font-size:.82rem;line-height:1.2;color:var(--ink)}
-.sib-meta{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.1em;
+.sib-meta{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.66rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-muted)}
 .sib--out .sib-meta{color:var(--gold-lo)}
 
@@ -88,16 +88,16 @@
    longest value stretching one of them */
 .sg-tbl col.lbl{width:120px}
 .sg-tbl th,.sg-tbl td{padding:11px 6px;text-align:center;vertical-align:middle}
-.sg-tbl thead th{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;
+.sg-tbl thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted);font-weight:400;
   padding-bottom:12px;border-bottom:2px solid var(--ink)}
 .sg-tbl thead th:first-child{text-align:left;white-space:nowrap;padding-left:0}
 .sg-tbl tbody th{text-align:left;padding-left:0;white-space:nowrap;
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
   font-size:.92rem;color:var(--ink)}
-.sg-tbl tbody td{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--ink-70);
+.sg-tbl tbody td{font-family:'Archivo',sans-serif;font-size:.8rem;color:var(--ink-70);
   font-variant-numeric:tabular-nums}
 .sg-tbl tbody tr + tr th,.sg-tbl tbody tr + tr td{border-top:1px solid var(--ink-08)}
 
-.sg-note{margin:18px 0 0;font-family:'Space Mono',monospace;font-size:.62rem;line-height:1.7;
+.sg-note{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;line-height:1.7;
   text-transform:none;letter-spacing:.01em;color:var(--ink-muted)}

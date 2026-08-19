@@ -26,6 +26,21 @@
     b.setAttribute('aria-expanded', String(!open));
     n.setAttribute('data-open', String(!open));
   });
+  /* accordion rows: one open at a time, Takomo-style */
+  var hds = n.querySelectorAll('.mn-hd');
+  [].forEach.call(hds, function(h){
+    h.addEventListener('click', function(){
+      var was = h.getAttribute('aria-expanded')==='true';
+      [].forEach.call(hds, function(x){
+        x.setAttribute('aria-expanded','false');
+        var bd = document.getElementById(x.getAttribute('aria-controls')); if (bd) bd.hidden = true;
+      });
+      if (!was){
+        h.setAttribute('aria-expanded','true');
+        var mine = document.getElementById(h.getAttribute('aria-controls')); if (mine) mine.hidden = false;
+      }
+    });
+  });
 })();
 
 /* social rail */

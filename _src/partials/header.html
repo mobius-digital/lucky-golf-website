@@ -13,9 +13,6 @@
           <a class="mtile" href="{{link:p/lgw01-gold}}"><span class="mt-nm">01 Gold</span><span class="mt-sub">K or S grind &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" decoding="async"></a>
           <a class="mtile" href="{{link:p/lgw01-black}}"><span class="mt-nm">01 Black</span><span class="mt-sub">K grind &middot; six lofts</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
-            <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -29,9 +26,6 @@
           <a class="mtile" href="{{link:p/lgp01-gold}}"><span class="mt-nm">LGP01 Blade</span><span class="mt-sub">Blade putter &middot; arcing stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" decoding="async"></a>
           <a class="mtile" href="{{link:p/lgp02-gold}}"><span class="mt-nm">LGP02 Mallet</span><span class="mt-sub">Mallet putter &middot; straight stroke</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
-            <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -44,9 +38,6 @@
             <div class="mega-wrap"><div class="mega-grid">
           <a class="mtile" href="{{link:p/lgh01}}"><span class="mt-nm">LGH01</span><span class="mt-sub">Titanium hybrid</span><img class="mt-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" decoding="async"></a>
             </div></div>
-            <div class="mega-foot">
-              <p class="aside">60-day club returns. Right and left hand. The Black is right hand for now.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -78,11 +69,44 @@
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
     </div>
   </div>
+  <!-- MOBILE NAV (Cole, 2026-08-18): Takomo's exact mobile menu — accordion
+       rows, and each opens to TWO-UP PRODUCT CARDS: photo on top, name and
+       price beneath. Prices are price tokens resolved from
+       products.json at build time; a typed price in the shared header would
+       drift the moment Shopify changed. Every card is a real product or
+       collection page — never a homepage anchor. -->
   <nav class="mnav" id="mnav" data-open="false" aria-label="Mobile">
-    <a href="{{link:home#families}}">Wedges</a>
-    <a href="{{link:home#families}}">Putters</a>
-    <a href="{{link:home#families}}">Hybrid</a>
-    <a href="{{link:home#gear}}">Apparel &amp; Gear</a>
-    <a href="{{link:story}}">Our Story</a>
+    <div class="mn-i">
+      <button class="mn-hd" type="button" aria-expanded="false" aria-controls="mn-wedges">Wedges<svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></button>
+      <div class="mn-bd" id="mn-wedges" hidden><div class="mn-grid">
+        <a class="mn-card" href="{{link:p/lgw01-gold}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Carver 01 Gold</span><span class="mn-pr">{{price:lgw01-gold}}</span></a>
+        <a class="mn-card" href="{{link:p/lgw01-black}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Carver 01 Black</span><span class="mn-pr">{{price:lgw01-black}}</span></a>
+      </div>        <a class="mn-all" href="{{link:c/wedges}}">All wedges &rarr;</a>
+</div>
+    </div>
+    <div class="mn-i">
+      <button class="mn-hd" type="button" aria-expanded="false" aria-controls="mn-putters">Putters<svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></button>
+      <div class="mn-bd" id="mn-putters" hidden><div class="mn-grid">
+        <a class="mn-card" href="{{link:p/lgp01-gold}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Tracer LGP01 Blade</span><span class="mn-pr">{{price:lgp01-gold}}</span></a>
+        <a class="mn-card" href="{{link:p/lgp02-gold}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Tracer LGP02 Mallet</span><span class="mn-pr">{{price:lgp02-gold}}</span></a>
+      </div>        <a class="mn-all" href="{{link:c/putters}}">All putters &rarr;</a>
+</div>
+    </div>
+    <div class="mn-i">
+      <button class="mn-hd" type="button" aria-expanded="false" aria-controls="mn-hybrid">Hybrid<svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></button>
+      <div class="mn-bd" id="mn-hybrid" hidden><div class="mn-grid">
+        <a class="mn-card" href="{{link:p/lgh01}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Stryker LGH01</span><span class="mn-pr">{{price:lgh01}}</span></a>
+      </div></div>
+    </div>
+    <div class="mn-i">
+      <button class="mn-hd" type="button" aria-expanded="false" aria-controls="mn-apparel">Apparel &amp; Gear<svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></button>
+      <div class="mn-bd" id="mn-apparel" hidden><div class="mn-grid">
+        <a class="mn-card" href="{{link:c/polos}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?v=1779472719" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Polos</span><span class="mn-pr">{{price:c/polos}}</span></a>
+        <a class="mn-card" href="{{link:c/hats}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Hats</span><span class="mn-pr">{{price:c/hats}}</span></a>
+        <a class="mn-card" href="{{link:c/gear}}"><span class="mn-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799" alt="" width="344" height="344" loading="lazy" decoding="async"></span><span class="mn-nm">Gear</span><span class="mn-pr">{{price:c/gear}}</span></a>
+      </div></div>
+    </div>
+    <a class="mn-link" href="{{link:c/clubs}}">All Clubs</a>
+    <a class="mn-link" href="{{link:story}}">Our Story</a>
   </nav>
 </header>

@@ -32,10 +32,10 @@
    BACKGROUND here, not background-clip:text (HANDOFF §9, "foil is illegal on
    white" applies to type, not to fills). */
 .gal-tag{position:absolute;left:0;top:0;z-index:4;background:var(--lg-foil-tag);color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.18em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;font-weight:700;letter-spacing:.18em;
   text-transform:uppercase;padding:7px 13px}
 .gal-count{position:absolute;right:12px;bottom:12px;z-index:4;
-  font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--ink-muted);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;letter-spacing:.14em;color:var(--ink-muted);
   background:var(--white);padding:5px 9px;border-radius:2px}
 .gal-arw{position:absolute;top:50%;translate:0 -50%;z-index:5;width:42px;height:42px;
   border:2px solid var(--ink-14);background:var(--white);border-radius:var(--r);cursor:pointer;
@@ -57,8 +57,8 @@
    ========================================================================== */
 .pd-buy{max-width:560px}
 .bx-eye{display:flex;align-items:center;gap:10px;margin:0 0 14px;
-  font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.2em;
-  font-size:.62rem;color:var(--gold-lo)}
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+  font-size:.7rem;color:var(--gold-lo)}
 .bx-eye::before{content:'';width:22px;height:2px;background:var(--gold);flex:none}
 .pd-h1{margin:0}
 .bx-sub{margin:10px 0 0;font-size:1.06rem;line-height:1.5;color:var(--ink-70);max-width:42ch}
@@ -68,7 +68,7 @@
 .bx-rate .stars{display:flex;gap:2px}
 .bx-rate .stars svg{width:15px;height:15px;fill:var(--gold)}
 .bx-rate a{display:inline-flex;align-items:center;min-height:44px;
-  font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.12em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted);text-decoration:underline;
   text-underline-offset:3px;text-decoration-color:var(--ink-14)}
 .bx-rate a:hover{color:var(--ink);text-decoration-color:var(--gold)}
@@ -84,13 +84,13 @@
 .pq-t{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
   font-size:.95rem;text-transform:uppercase;letter-spacing:.02em;margin:0 0 7px}
 .pq-q{margin:0;font-size:.97rem;line-height:1.55;color:var(--ink-70);font-style:italic}
-.pq-w{display:block;margin-top:11px;font-family:'Space Mono',monospace;font-size:.58rem;
+.pq-w{display:block;margin-top:11px;font-family:'Archivo',sans-serif;font-size:.68rem;
   letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
 
 /* price */
 .bx-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:26px 0 0}
 .bx-price .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;font-size:1.5rem;letter-spacing:-.005em;color:var(--ink)}
-.bx-price .flat{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;
+.bx-price .flat{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted)}
 .bx-body{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--ink-70);max-width:44ch}
 
@@ -106,15 +106,15 @@
 /* ---------- variant pickers ---------- */
 .opt{margin:26px 0 0}
 .opt-hd{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 6px}
-.opt-hd .lbl{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+.opt-hd .lbl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--ink)}
-.opt-hd .val{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+.opt-hd .val{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em;
   color:var(--ink-muted)}
 .opt-hd .help{display:inline-flex;align-items:center;min-height:44px;
-  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-muted);text-decoration:underline;text-underline-offset:3px}
 .opt-hd .help:hover{color:var(--ink);text-decoration-color:var(--gold)}
-.opt-note{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;
+.opt-note{margin:10px 0 0;font-family:'Archivo',sans-serif;font-size:.7rem;letter-spacing:.08em;
   color:var(--ink-muted)}
 
 /* ==========================================================================
@@ -150,7 +150,7 @@
   font-size:1.1rem;line-height:1;color:var(--ink)}
 .bx-qty button:hover{background:var(--cream)}
 .bx-qty input{width:38px;min-height:48px;border:0;text-align:center;background:transparent;
-  font-family:'Space Mono',monospace;font-size:.86rem;color:var(--ink);
+  font-family:'Archivo',sans-serif;font-size:.86rem;color:var(--ink);
   -moz-appearance:textfield;appearance:textfield}
 .bx-qty input::-webkit-outer-spin-button,.bx-qty input::-webkit-inner-spin-button{
   -webkit-appearance:none;margin:0}
@@ -159,7 +159,7 @@
 
 /* stock + dispatch */
 .bx-stock{display:flex;align-items:center;gap:9px;margin:16px 0 0;
-  font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--ink-70)}
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em;color:var(--ink-70)}
 .bx-stock .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
 .bx-stock[data-out] .dot{background:var(--ink-38)}
 .bx-terms{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0}
@@ -185,7 +185,7 @@
    under the callouts (Cole 2026-07-31) */
 .acc-link{margin:14px 0 0}
 .acc-link a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);
-  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
   text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .acc-link a:hover{text-decoration-color:var(--gold)}
 .acc-bd ul{margin:0;padding-left:1.1em}
@@ -198,7 +198,7 @@
 .atc-bar .sum{flex:1;min-width:0}
 .atc-bar .sum b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
   font-weight:700;font-size:.92rem;line-height:1.2}
-.atc-bar .sum span{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;
+.atc-bar .sum span{font-family:'Archivo',sans-serif;font-size:.68rem;letter-spacing:.1em;
   color:var(--ink-muted)}
 
 
@@ -227,7 +227,7 @@
   transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .oav-i:hover .oav-ph img{transform:scale(1.04)}
 .oav-tag{position:absolute;left:0;top:0;z-index:2;background:var(--ink);color:var(--cream);
-  font-family:'Space Mono',monospace;font-size:.52rem;font-weight:700;letter-spacing:.16em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;padding:5px 10px}
 .oav-tag[data-out]{background:var(--ink-14);color:var(--ink)}
 .oav-bd{padding:14px 16px 18px}
@@ -235,7 +235,7 @@
   font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.2}
 .oav-meta{display:flex;align-items:baseline;gap:9px;margin-top:7px}
 .oav-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.9rem}
-.oav-rt{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;color:var(--ink-muted)}
+.oav-rt{font-family:'Archivo',sans-serif;font-size:.66rem;letter-spacing:.1em;color:var(--ink-muted)}
 .oav-i .stretch::after{content:'';position:absolute;inset:0;z-index:3}
 
 
@@ -348,7 +348,7 @@
    gets in body copy.
    ========================================================================== */
 .bx-links{margin:8px 0 0}
-.bx-links a{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+.bx-links a{font-family:'Archivo',sans-serif;font-size:.7rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-70);
   text-decoration:underline;text-underline-offset:4px;
   text-decoration-color:var(--ink-14);

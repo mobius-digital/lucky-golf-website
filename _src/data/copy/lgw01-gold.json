@@ -100,7 +100,7 @@
   "Ships in 1&ndash;2 business days",
   "Six lofts, right and left hand",
   "Same price, every loft",
-    "It's better to be lucky"
+  "It's better to be lucky"
  ],
  "_club": "Takomo-shaped 2026-08-17 at Cole's instruction: fun headline, one tight intro para, grind blurbs IN the bullets (the standalone grind section is gone from this page; every grind fact stays traceable to Spec-to-Benefit v1.0 and the numbers live in the By-loft spec tab), then Takomo's bullet shape ending on For who and Handicap range.",
  "clubHeadline": "Forged feel meets filthy spin. Rip it back and go tap it in.",
@@ -173,86 +173,143 @@
   "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
  },
  "specHeadline": "Same feel, every loft",
- "specSub": "A dual-texture milled face, 300 g of head at every loft, and two sole grinds. The manufacturer's full sheet below, including where the K and the S differ.",
+ "specSub": "Six lofts, two sole grinds, and 300 g of head at every one of them. The manufacturer's sheet, in full.",
  "specTabs": [
   {
-   "label": "Club",
-   "caption": "Carver 01 Gold · club",
-   "rows": [
+   "label": "Clubs",
+   "caption": "Carver 01 Gold · clubs",
+   "head": [
     {
      "k": "Head material",
      "v": "1020 forged carbon steel"
     },
     {
      "k": "Face",
-     "v": "CNC-milled grooves and micro-grooves over a sandblasted face: a dual-texture face"
-    },
-    {
-     "k": "Grind",
-     "v": "K Grind and S Grind"
-    },
-    {
-     "k": "Head weight",
-     "v": "300 g, all lofts"
-    },
-    {
-     "k": "Lie",
-     "v": "63&deg; all lofts (K) &middot; 63.5&deg; at 52&deg;, 64&deg; at 56 and 60 (S)"
+     "v": "CNC-milled grooves and micro-grooves over a sandblasted face"
     },
     {
      "k": "Finish",
      "v": "Gold"
-    },
-    {
-     "k": "Hand",
-     "v": "Right and left"
-    },
-    {
-     "k": "Lofts",
-     "v": "50, 52, 54, 56, 58, 60&deg; (K) &middot; 52, 56, 60&deg; (S)"
-    },
-    {
-     "k": "Headcover",
-     "v": "Not included"
-    }
-   ]
-  },
-  {
-   "label": "By loft",
-   "caption": "Carver 01 Gold · by loft and grind",
-   "html": "<table class=\"spec-tbl spec-tbl--matrix\"><thead><tr><th scope=\"col\">Loft</th><th scope=\"col\">Grind</th><th scope=\"col\">Lie</th><th scope=\"col\">Bounce</th><th scope=\"col\">Head weight</th><th scope=\"col\">Length</th></tr></thead><tbody><tr><th scope=\"row\">50&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>K</td><td>63&deg;</td><td>8&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">54&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>K</td><td>63&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">58&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>K</td><td>63&deg;</td><td>10&deg;</td><td>300 g</td><td>35&Prime;</td></tr><tr><th scope=\"row\">52&deg;</th><td>S</td><td>63.5&deg;</td><td>10&deg;</td><td>300 g</td><td>35.25&Prime;</td></tr><tr><th scope=\"row\">56&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35.125&Prime;</td></tr><tr><th scope=\"row\">60&deg;</th><td>S</td><td>64&deg;</td><td>12&deg;</td><td>300 g</td><td>35&Prime;</td></tr></tbody></table>",
-   "aside": "Both grinds are the same forged 1020 head at 300&nbsp;g. Where they differ is the sole, and the bounce and lie that come with it. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf."
-  },
-  {
-   "label": "Shaft &amp; grip",
-   "caption": "Carver 01 Gold · shaft &amp; grip",
-   "rows": [
-    {
-     "k": "Shaft, stock",
-     "v": "Regular (R) flex, mid kick point"
-    },
-    {
-     "k": "Shaft length",
-     "v": "35&quot; original"
-    },
-    {
-     "k": "Shaft weight",
-     "v": "110 g original"
-    },
-    {
-     "k": "Shaft, upgrade",
-     "v": "KBS <span class=\"soon\">Coming soon</span>"
-    },
-    {
-     "k": "Grip",
-     "v": "Stock grip"
-    },
-    {
-     "k": "Grip weight",
-     "v": "55 g (K) &middot; 57 g (S)"
     }
    ],
-   "aside": "Every Carver ships on the Lucky stock shaft today; KBS becomes a selectable upgrade when it lands, and shaft joins hand and loft as a third choice in the buy box."
+   "matrix": {
+    "corner": "Loft",
+    "cols": [
+     "50&deg;",
+     "52&deg;",
+     "54&deg;",
+     "56&deg;",
+     "58&deg;",
+     "60&deg;"
+    ],
+    "rows": [
+     {
+      "k": "Head weight (g)",
+      "v": [
+       "300",
+       "300",
+       "300",
+       "300",
+       "300",
+       "300"
+      ]
+     },
+     {
+      "k": "Lie (&deg;)",
+      "v": [
+       "63",
+       "63 / 63.5",
+       "63",
+       "63 / 64",
+       "63",
+       "63 / 64"
+      ]
+     },
+     {
+      "k": "Length",
+      "v": [
+       "35.25&Prime;",
+       "35.25&Prime;",
+       "35.125&Prime;",
+       "35.125&Prime;",
+       "35&Prime;",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Bounce / Grind",
+      "v": [
+       "8K",
+       "8K / 10S",
+       "12K",
+       "12K / 12S",
+       "10K",
+       "10K / 12S"
+      ]
+     }
+    ]
+   },
+   "aside": "Where a cell shows two values, the first is the K grind and the second the S. The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf."
+  },
+  {
+   "label": "Shafts",
+   "caption": "Carver 01 Gold · Lucky stock steel",
+   "head": [
+    {
+     "k": "Shaft material",
+     "v": "Steel"
+    },
+    {
+     "k": "Availability",
+     "v": "Stock option. KBS <span class=\"soon\">Coming soon</span> as an upgrade."
+    }
+   ],
+   "matrix": {
+    "corner": "Flex",
+    "cols": [
+     "Kick point",
+     "Raw weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "Mid",
+       "110 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "label": "Grips",
+   "caption": "Carver 01 Gold · Lucky stock grip",
+   "head": [
+    {
+     "k": "Grip material",
+     "v": "Rubber"
+    },
+    {
+     "k": "Availability",
+     "v": "Stock option"
+    }
+   ],
+   "matrix": {
+    "corner": "Size",
+    "cols": [
+     "Weight"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "55 g"
+      ]
+     }
+    ]
+   }
   }
  ],
  "look": {
@@ -336,5 +393,6 @@
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
  "_01": "THE 01. Cole 2026-07-31: Lucky sells one wedge. The K-grind gold and the S-grind gold were two products at two prices for a difference that is not one, so they are merged — see merge_grinds() in normalize-products.py. This file is the merged product. Its loft axis is now Loft & grind (50K, 52K, 52S...) and every variant is $99.",
- "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts."
+ "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
+ "_specTabs": "Takomo-shaped 2026-08-18 at Cole's instruction: three tabs (Clubs / Shafts / Grips), each ONE card = caption, short key/value head, black-header matrix. Better than theirs in one way: K and S get their own rows instead of '10F / 12V' crammed in a cell. Every number is the Product Reference Guide's. NO swing weight, tip diameter, grip length/core: the guide does not publish them and they are not invented. GRIP: one row, Regular, 55 g (Cole 2026-08-18; the 2 g K/S difference is not worth a second row). FINISH: plain 'Gold', no link (Cole 2026-08-18: the finish swatches are one scroll up in the buy box). BOUNCE/GRIND: exactly Takomo's shape, ONE row, 'K / S' in a cell where both exist. Lie the same way, in the matrix not the head. Head block is Head material / Face / Finish only, stacked vertically. BOUNCE: Takomo's suffix notation (8F) adopted with OUR letters (8K, 10S) so the matrix matches the picker's 52K / 52S."
 }

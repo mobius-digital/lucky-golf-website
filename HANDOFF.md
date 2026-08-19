@@ -3446,3 +3446,192 @@ gets the repo too.
 the four session counts sum to 51. `--check` all 58 identical (no page changed
 — this pass is documentation only). `FINISH-LINE.md` §3a and both checklist
 lines updated to match.
+
+---
+
+## 36. The copy pass begins: homepage, the Carver PDP, and four site-wide rulings (2026-08-15 to 2026-08-18)
+
+Cole's running order (FINISH-LINE) put copy revisions in their own chat, page
+by page, Cole reacting to each. This section is that chat. Seven homepage
+revisions, three on the Carver 01 Gold PDP, and four rulings that reached every
+page. Everything below was Cole's call; the build guards held throughout
+(`--check`, `--links` 60/58/0 dead, `test-variants.js`, `normalize --check`).
+
+### 36a. Four site-wide rulings
+
+**1. No em dashes. Anywhere.** Cole, 2026-08-15. About 170 judged rewrites
+across copy JSONs, page templates, partials, JS UI strings, build.py's FAQ
+generator and sitemap.py's page titles. Replacements are per-instance, not
+mechanical: `·` for labels, chips and titles ("FAQ · Lucky Golf", "In stock ·
+ships in 1–2 business days"), colon for elaborations, comma or period for
+clauses, parentheses for asides. Two carve-outs: verbatim customer reviews keep
+whatever the customer typed, and source comments never render. The review
+widget's empty-state glyph is an en dash. Visible-text scan of all 58 built
+pages: zero.
+
+**2. Space Mono is gone. One typeface.** Cole, 2026-08-18: "it's all over the
+site and I never liked it." 126 declarations across 11 stylesheets replaced,
+the Google Fonts load trimmed to Archivo only, `index.html` fixed too. Archivo
+does every job through its width axis: `'wdth' 62–70 / 700–800` display,
+`'wdth' 78 / 600` for every former mono label (eyebrow, stamp, chips, tags,
+marquee, trust rows), `'wdth' 96 / 500` for the `.aside` charm voice, regular
+for body and spec cells. **Mono set wide, so its labels read bigger than their
+point size**; straight-swapped, Archivo condensed came in at 8–9px. Every
+former-mono size was floored to 10.6px or more in a uniform ratchet. The
+core.css header comment now says: do not reintroduce a second family. The
+`lucky-look-system-devices` memory is updated.
+
+**3. "Free US shipping" was a false claim on ~40 pages.** Cole's own 2026-08-02
+ruling says rates never go on the site because checkout is the only place that
+can be right; the shipping page says "calculated at checkout". Yet every
+product family's marquee and trust row said "Free US shipping". All 18
+instances are now **"Ships in 1–2 business days"** (his dispatch number, on the
+policy page). Zero on any built page.
+
+**4. "Sold direct, never through a middleman" is off every product marquee**
+(five family files plus two product files). Cole: Lucky will go wholesale
+eventually, and a site that says "never" becomes a liar on that day. **The
+homepage still says "Sold direct" three times** (marquee, Why section, close);
+Cole was told and has not yet ruled. Do not remove unilaterally.
+
+### 36b. The homepage, seven revisions: what settled
+
+Read `_src/page-home.html` for the copy; this is the *why* behind the shape.
+
+- **Hero** eyebrow is the brand line ("It's better to be lucky"), not a product
+  list; body is one sentence with no product inventory in it. Cole: "I do not
+  like us bluntly saying what we sell." **The trial is NOT on-course.** The
+  refund policy allows a turf mat / non-abrasive surface, brand-new condition.
+  "On real grass" / "on course" / "play it for two months" are all banned
+  phrasings next to the sixty days; a warning comment sits on the hero.
+- **Marquee** = benefits plus verified proof (tour-quality construction, priced
+  honestly, sixty-day returns, sold direct, 4.78, 30,000+ orders). It went
+  culture-vocabulary first at Cole's instruction, then he reversed to benefits.
+  Each `.mq-set` runs its list TWICE: the track animates one set width, so a
+  set narrower than the viewport shows empty band at the loop (measured 420px
+  at 1920 before the fix).
+- **"884" is dead on the homepage.** Cole: never a precise small review count
+  in brand copy. "Thousands of golfers", "hundreds of five-star reviews" (the
+  Takomo pattern). **34,360 orders is the verified Shopify figure** behind
+  "30,000+ orders shipped"; never round up past the true count. The reviews
+  headline is "Thousands of golfers bag Lucky"; the "every review below four
+  stars is still on the product pages" line is gone (Cole: why put that in
+  anyone's head); its slot sends to the clubs collection.
+- **Why section** is Takomo's shape (benefit-first headline, three-beat
+  paragraph) and keeps the one sentence Cole never objected to: "a price that
+  looks like a mistake right up until you understand why it isn't."
+- **Value props** mirror Takomo's four one-for-one. Two swaps are locked:
+  "premium materials" became "serious materials" (premium is banned), and their
+  warranty slot is our **sixty-day returns** because Lucky has no warranty
+  (§30d). Never write "warranty" there. **"Buy now, pay later" is verified**:
+  the live PDP loads Shopify's payment-terms (Shop Pay Installments) component.
+  If installments are switched off in Shopify, the line comes off with them.
+  Button goes to Our Story, like theirs.
+- **Mindset block** is three paragraphs written from Cole's own voice-note
+  argument (golf is luck sometimes; the name is a double meaning: confidence
+  over the ball, tour quality without the overpaid logo). Foil on "a lot".
+- **The highlight zone** (was "Apparel & gear") is Takomo's anything-goes
+  feature strip: Stryker wide with its real 4.6-star chip (`.gtile-flag`, same
+  `--lg-foil-tag` recipe as `.pt-tag`; NO "New" chip renders because nothing
+  is new; the ink `fl--new` variant is built for the day it is), then Polos
+  and Hats by live count tokens. Only the $209 is hand-typed; re-check on
+  rotation.
+- **Pull quote** is Brandon L. (wedge, look plus spin), replacing the Vokey /
+  Cleveland comparison: a verbatim review, but *choosing* it is the comparison
+  by proxy and it argued parity. The Ambassador paragraph no longer says "no
+  commission on a club, ever" (Cole: "stupid thing to say") and the club give
+  is "a shot at a club" per §34c.
+
+### 36c. The Carver 01 Gold PDP, three revisions, and what it means for the template
+
+`_src/page-club.html` changed, so **every club page inherited the structure**:
+
+- Buy box: nothing between price and pickers. The four construction chips are
+  gone; the pull quote moved **below** Add to cart; **no quantity stepper on a
+  club** (nobody buys two of one loft-and-grind; `pdp.js` defaults a missing
+  `#qty` to 1). The three-item accordion is gone: What you get (obvious for a
+  club), care (over-promised the finish), and Shipping & returns, which said
+  *"take it to the range, put it in a bunker"*, **a policy violation**. In its
+  place, Takomo's device: two underlined links under the button opening the
+  policy modals. The modals were already correct (turf mat, photo approval, $7
+  tags deduction); "one to two" became "1–2" at Cole's request.
+- **Sticky bar is fallback-only.** The old rule hid the in-box button on phones
+  and made the bar the only CTA ("the button is missing"). Now the real button
+  is always visible and `pdp.js` slides the bar in only when `#atc` has
+  scrolled above the viewport (IntersectionObserver). The smoke marker in
+  build.py keys on `.atc-bar--on{transform:translateY(0)}`.
+- **Product description** is Takomo's exact shape: eyebrow "Product
+  description", a two-beat playful headline in Culture-doc vocabulary
+  ("Forged feel meets filthy spin. Rip it back and go tap it in."), ONE intro
+  paragraph, then **grind sub-blocks** (new `clubGrinds` key, `.club-grind`,
+  renders only on products with more than one grind), then the
+  Type / Characteristics / Design / For who / HCP range bullets. The standalone
+  grind section is deleted from the Gold (`grinds` key removed; the buy box's
+  "Which grind?" link lands on `#club`). The Black keeps its own grind section
+  for now.
+- **Specs are three cards, Clubs / Shafts / Grips**, Takomo's shape exactly:
+  caption, a key/value `head` block STACKED VERTICALLY (Head material / Face /
+  Finish only; no lie up top, no link on the finish), then a black-header
+  matrix. `spec_table()` in build.py gained the `head` plus `matrix` shape; the
+  older `rows` / `html` shapes still render for clubs not yet reworked.
+  **Bounce/Grind is ONE row in Takomo's notation with our letters**, `8K`,
+  `8K / 10S`, so the sheet speaks the buy-box picker's language (52K / 52S).
+  Lie is in the matrix the same way. Grips: one row, Regular, 55 g. **Nothing
+  Takomo lists that the Product Reference Guide does not publish is on the page**
+  (no swing weight, tip diameter, grip length/core): an invented spec is worse
+  than a missing one.
+- Reel note, "rest of the bag" (duplicated others-also-viewed), the close's
+  stray brand-line eyebrow: all gone. The look section's body is the homepage
+  Finish argument with a Black cross-sell line.
+- The PDP's buy-box quote was the same Vokey/Cleveland review as the
+  homepage's; swapped for Paul F. ("I always play better when I feel Lucky!").
+  The video slot's brief no longer names Takomo in visible text (§35c's leak,
+  new spot).
+
+**The Carver Black got every TEMPLATE change and none of the per-product copy:**
+its description, spec content (still Club / By loft / Shaft & grip), and grind
+section are untouched, and it has no pull quote. **That is the first job of the
+next chat**, then the putters and the hybrid get the same card treatment.
+
+### 36d. Navigation
+
+- The **mobile menu linked every category to a homepage anchor**: a scroll-to,
+  not navigation. Rebuilt as Takomo's: accordion rows opening to **two-up
+  product cards** (square photo on a white well, name and price beneath), one
+  open at a time, "All wedges" / "All putters" under the pairs, All Clubs and
+  Our Story as plain rows. **Prices are price tokens**, a new build token
+  beside the count token, resolving a product's `priceLabel` or a collection's
+  "From $<min>" from products.json and build-stopping on an unknown id. Two CSS
+  traps fixed on the way: the tile name inherited the nav's cream
+  (white-on-cream, unreadable; `.mtile` now carries ink explicitly), and the
+  generic `.mnav a` rule out-ranked the card's `padding:0` and put an 8px cream
+  strip above the photo (`.mnav a.mn-card` now). Verified at 390: 16.4:1,
+  zero gap, every link a real page.
+- The **"60-day club returns. Right and left hand. The Black is right hand for
+  now."** aside was the footer of the Wedges, Putters AND Hybrid dropdowns,
+  which is why Cole saw it everywhere. Deleted from all three.
+
+### 36e. Four traps that bit this session
+
+1. **A comment cannot spell out a token.** §20g said it about link tokens; it
+   is equally true of count and price tokens. Twice this session a source
+   comment that merely *described* a token stopped the build.
+2. **The build's smoke markers are literal strings.** Restyling a rule the
+   marker keys on fails the build; update the marker, do not keep the old rule.
+3. **The browser pane only composites while it is displayed.** Scroll,
+   screenshot and even computed transforms freeze when it is hidden; a fresh
+   tab starts at `viewport: 0` (the standing resize trap). Verify layout by
+   measurement, and say plainly when a behaviour could not be watched live.
+4. **The local static server caches.** A `?v=N` on the URL is the only reliable
+   way to see a fresh build.
+
+### 36f. Still Cole's
+
+1. "Sold direct" three times on the homepage: remove for wholesale-proofing,
+   or keep.
+2. The Judge.me AI summary on the 01 Gold still says "premium" (yours to
+   disable in Judge.me).
+3. Shop Pay Installments: if ever switched off, the BNPL value prop comes off.
+4. The Carver Black copy pass, then putters, then hybrid: the next chat.
+5. The cross-sell rail on the Gold still offers the Lucky Blade Cover (a putter
+   cover) on a wedge page. Swap for glove/tees or leave.

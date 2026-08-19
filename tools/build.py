@@ -43,7 +43,7 @@ SHELL = """<!DOCTYPE html>
 <title>{title}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 <style>
 {css}
 </style>
@@ -132,6 +132,34 @@ def resolve_counts(text):
     return COUNT_TOKEN.sub(sub, text)
 
 
+PRICE_TOKEN = re.compile(r"\{\{price:([^}]*)\}\}")
+
+
+def resolve_prices(text):
+    """{{price:lgw01-gold}} -> "$99"; {{price:c/hats}} -> "From $29".
+
+    Added 2026-08-18 for the Takomo-shaped mobile menu, which shows a price
+    under every card. Same rule as {{count:...}}: a price that renders in the
+    shared header must come from products.json, never be typed — the finder
+    once showed $119 against a real $109 for exactly that reason. A product id
+    returns its priceLabel (already per-variant-aware, "$9.95–$14.95" for the
+    grips); a collection id returns "From $<lowest>"."""
+
+    def sub(m):
+        pid = m.group(1).strip()
+        try:
+            if pid.startswith("c/"):
+                coll = sitemap.collection(pid[2:])
+                prices = [sitemap.product(p)["price"] for p in coll["products"]]
+                lo = min(prices)
+                return "From $%s" % ("%g" % lo if lo != int(lo) else int(lo))
+            return sitemap.product(pid)["priceLabel"]
+        except KeyError:
+            sys.exit("{{price:%s}}: no such product or collection in products.json" % pid)
+
+    return PRICE_TOKEN.sub(sub, text)
+
+
 def audit_sources():
     """Every internal link must be a token. A literal href="#" is either a
     forgotten link or a control that only looks like one — `{{link:none}}`
@@ -153,11 +181,35 @@ def audit_sources():
 # Product pages: catalogue + editorial -> template context
 # --------------------------------------------------------------------------
 def spec_table(tab):
-    """A spec tab is either structured `rows` (key/value, the common case) or
-    raw `html` for the irregular ones — the by-loft matrix has merged cells and
-    a header row and is not worth a schema."""
+    """A spec tab renders one of three shapes:
+
+    `head` + `matrix`   Takomo's card (Cole, 2026-08-18): a short key/value
+                        block on top (material, hosel...), then a matrix with
+                        a black header row — columns are the lofts (or the
+                        flexes, or the grip sizes) and each row is one figure.
+                        `matrix` = {"cols": [...], "rows": [{"k":..., "v":[...]}]}.
+                        A `head` with no `matrix`, or vice versa, is fine.
+    `rows`              key/value only — the older shape, still used by clubs
+                        that have not been reworked.
+    `html`              raw, for anything irregular.
+    """
     if "html" in tab:
         return tab["html"]
+    out = []
+    if tab.get("head"):
+        out.append('<dl class="spec-head">%s</dl>' % "".join(
+            '<div><dt>%s</dt><dd>%s</dd></div>' % (h["k"], h["v"]) for h in tab["head"]))
+    if tab.get("matrix"):
+        m = tab["matrix"]
+        thead = "".join('<th scope="col">%s</th>' % c for c in m["cols"])
+        rows = []
+        for r in m["rows"]:
+            cells = "".join("<td>%s</td>" % v for v in r["v"])
+            rows.append('<tr><th scope="row">%s</th>%s</tr>' % (r["k"], cells))
+        out.append('<table class="spec-tbl spec-tbl--matrix"><thead><tr><th scope="col">%s</th>%s</tr></thead><tbody>%s</tbody></table>'
+                   % (m.get("corner", ""), thead, "".join(rows)))
+    if out:
+        return "".join(out)
     body = []
     for r in tab.get("rows", []):
         cell = ('<span class="tbd tbd--light">Needs spec</span>'
@@ -1086,6 +1138,7 @@ def build(slug, report):
         js=js,
     )
     html = resolve_counts(html)
+    html = resolve_prices(html)
     html = resolve_links(html, slug, report)
 
     leftover = sorted(set(re.findall(r"\{\{[^}\n]{0,60}\}\}", html)))

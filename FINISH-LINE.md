@@ -279,24 +279,36 @@ its own document, because it is what ships with the repo.
 
 ---
 
+## Where the copy pass stands (2026-08-18)
+
+The copy chat (HANDOFF §36) has closed out the **homepage** (seven revisions)
+and the **Carver 01 Gold PDP** (three revisions, including the Takomo-shaped
+description and the three-card spec layout), plus four site-wide rulings: no
+em dashes, Space Mono removed (Archivo only), "Free US shipping" off every
+page, "never through a middleman" off every product marquee. The nav was
+rebuilt (Takomo-style mobile accordion with two-up product cards; the
+"Black is right hand" aside deleted from every dropdown).
+
+**Pages still to pass, in order:** Carver 01 Black (template changes landed,
+per-product copy did not; ~15 min) → the two putters → the hybrid → the clubs
+collection → one polo, one hat (family copy covers the rest) → gear + the
+other collections → Our Story, Ambassador, Reviews → the four support pages.
+
 ## Starting the next chat
 
 Paste this:
 
 > Continuing Lucky Golf in `C:\Users\wetzl\Lucky Golf\Website`.
-> Read `FINISH-LINE.md` first, then `HANDOFF.md` §23–§26.
+> Read `FINISH-LINE.md` first, then `HANDOFF.md` §36 (the copy pass so far)
+> and §26 (the state of the site).
 >
-> The site is built and live: 58 of 60 pages, zero dead links, published at
-> https://mobius-digital.github.io/lucky-golf-website/ from a public GitHub
-> repo (`mobius-digital/lucky-golf-website`, master, GitHub Pages).
->
-> `FINISH-LINE.md` has the remaining work as a checklist. Start with
-> **Round 4 — the developer handoff document** — it is the one task that is not
-> blocked on me.
->
-> Answers to Round 1, if I have them by then: [paste here]
+> This chat is copy revisions, page by page, Cole reacting to each. Layouts
+> are locked unless I say otherwise. Start with the **Carver 01 Black**
+> (`20-product-lgw01-black.html`): bring its description, spec cards and grind
+> handling in line with the Gold (HANDOFF §36c), then move to the **putters**.
+> Link me the built page each time so I can react.
 
 **Read in this order, and don't re-derive what's in them:** `FINISH-LINE.md`
-(this file) → `HANDOFF.md` §26 (current state) → §23 (the wedge merge) → §25
-(the Shopify draft). `GAMEPLAN.md` and `NEXT-PAGES.md` are now history rather
-than plan — every page they describe is built.
+(this file) → `HANDOFF.md` §36 (the copy rulings and the PDP shape) → §26
+(the state of the site) → §23 / §25 only if the wedge merge comes up.
+`GAMEPLAN.md` and `NEXT-PAGES.md` are history rather than plan.

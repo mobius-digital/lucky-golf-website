@@ -56,7 +56,7 @@
 .br-q figcaption{margin-top:22px;display:flex;flex-direction:column;gap:5px}
 .br-q-who{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
   font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
-.br-q-meta,.br-q-on{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;
+.br-q-meta,.br-q-on{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted)}
 /* the club the quote is about is a real destination, and at .6rem mono it was
    a 15px hit area. 44px, like every other link that goes somewhere. */
@@ -71,17 +71,17 @@
   margin-top:clamp(30px,3.4vw,48px)}
 .br-rost{display:flex;flex-direction:column;gap:12px}
 .br-rost .ph{aspect-ratio:4/5;border-radius:var(--r-card);padding:18px}
-.br-rost .ph .lbl .mono{font-size:.56rem;letter-spacing:.12em}
+.br-rost .ph .lbl .mono{font-size:.66rem;letter-spacing:.12em}
 .br-rost-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
   font-size:1.02rem;line-height:1.05;text-transform:uppercase;letter-spacing:-.005em}
-.br-rost-hd{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;
+.br-rost-hd{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted)}
 
 /* ---------- an unanswered question, set apart ---------- */
 .br-tbd{margin-top:clamp(30px,3.4vw,46px);max-width:64ch;
   border-left:2px solid var(--gold);padding:4px 0 4px 20px}
 .br-tbd-p{margin:0;font-size:1.0125rem;line-height:1.66;color:var(--ink-70)}
-.br-tbd-ask{margin:10px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
+.br-tbd-ask{margin:10px 0 0;font-family:'Archivo',sans-serif;font-size:.72rem;
   line-height:1.6;color:var(--ink-muted)}
 
 /* ---------- how it works — a TIMELINE, not a 3-up grid ----------
@@ -107,7 +107,7 @@
   gap:0;align-items:flex-start}
 .br-step-n{flex:none;width:38px;height:38px;display:grid;place-items:center;
   border-radius:50%;background:var(--ink);color:var(--cream);
-  font-family:'Space Mono',monospace;font-size:.78rem;margin-bottom:14px}
+  font-family:'Archivo',sans-serif;font-size:.78rem;margin-bottom:14px}
 .br-steps-list h3{margin:0;font-family:'Archivo',sans-serif;
   font-variation-settings:'wdth' 76;font-weight:700;font-size:1rem;
   text-transform:uppercase;letter-spacing:.03em}
@@ -206,7 +206,7 @@
 .br-fk-list{max-width:none}
 .br-fk--ink .br-list li{color:var(--cream-70)}
 .br-fk--ink .cbul{color:var(--gold-hi)}
-.br-fk-foot{margin:20px 0 0;font-family:'Space Mono',monospace;font-size:.72rem;
+.br-fk-foot{margin:20px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;
   letter-spacing:.05em;color:var(--ink-muted)}
 .br-fk--ink .br-fk-foot{color:var(--cream-70)}
 .br-fk-cta{margin:22px 0 0}
@@ -219,14 +219,14 @@
 .br-proto{margin:18px 0 28px;color:var(--ink-70);max-width:62ch}
 .br-f2{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--gut)}
 .br-field{margin:0 0 18px}
-.br-field label{display:block;font-family:'Space Mono',monospace;text-transform:uppercase;
-  letter-spacing:.14em;font-size:.62rem;color:var(--ink-70);margin-bottom:8px}
+.br-field label{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;font-size:.7rem;color:var(--ink-70);margin-bottom:8px}
 .br-opt{color:var(--ink-muted);text-transform:none;letter-spacing:.02em}
 .br-field input,.br-field textarea{width:100%;border:2px solid var(--ink-14);border-radius:var(--r);
   padding:12px 14px;font:inherit;background:var(--white);color:var(--ink)}
 .br-field input{min-height:48px}
 .br-apply-cta{margin:10px 0 0}
-.br-apply-sent{margin:16px 0 0;font-family:'Space Mono',monospace;font-size:.78rem;
+.br-apply-sent{margin:16px 0 0;font-family:'Archivo',sans-serif;font-size:.78rem;
   line-height:1.6;color:var(--ink-70)}
 .br-apply-note{margin-top:24px;color:var(--ink-muted)}
 @media (max-width:700px){
@@ -245,8 +245,8 @@
   margin-top:clamp(28px,3.2vw,44px)}
 .br-bar-col{border-top:2px solid var(--rule-on-light);padding-top:22px}
 .br-bar-col--warn{border-top-color:var(--gold)}
-.br-bar-h{margin:0;font-family:'Space Mono',monospace;text-transform:uppercase;
-  letter-spacing:.16em;font-size:.66rem;color:var(--ink-muted)}
+.br-bar-h{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.72rem;color:var(--ink-muted)}
 .br-bar-col--warn .br-bar-h{color:var(--ink)}
 .br-bar-cols--2{grid-template-columns:1fr 1fr}
 .br-bar-list{margin-top:16px;max-width:none}
