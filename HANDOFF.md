@@ -3793,3 +3793,35 @@ Verified at 1440 and 390 on both: `scrollWidth` 1425 and 390, the spec matrix
 scrolling inside its own box at 390, three tabs, one intro paragraph, two
 sub-blocks, and zero em dashes, zero "cast", zero "forged", zero "premium",
 zero "skid", zero version numbers and zero typed prices in visible text.
+
+### 37d. Cole on the spec block, four notes
+
+All four landed on the specs section, and one of them was the template's.
+
+1. **"One loft, one length, one hand"** as the Blade's spec headline: *"bad
+   headline, it's a putter, just make it more simple like Takomo."* It was
+   being clever about the fact that a putter has one configuration. Now
+   **"The Blade, in numbers"** and **"The Mallet, in numbers"**.
+2. **"There is one way to buy a Blade, and this is its whole sheet. The
+   manufacturer's figures, in full."** *"Sounds terrible and too technical."*
+   Now one short line on both: **"Head, shaft and grip. Straight off the
+   manufacturer's sheet."**
+3. **The Blade's Clubs aside** repeated the headline back and then volunteered
+   that a customer had asked for a left hand and could not have one, on the
+   page where you buy it. **Deleted.** Nothing in that matrix needs explaining,
+   so nothing explains it. The Grips aside (75 g against the mallet's 63 g)
+   stays, because it answers a question the number raises. So does the
+   Mallet's 35&Prime; height aside.
+4. **The spec footnote in `page-club.html`** — *"Rows marked 'needs spec' are
+   not published anywhere we can verify. They are left visibly empty rather
+   than guessed at."* — rendered on **all five club pages**, and **not one club
+   has a needs-spec row**. Every `tbd` in the repo is in gear or a
+   discontinued product, and gear has its own template. It was explaining an
+   absence, in the voice of the people who built the site rather than the
+   brand's. **Removed.** The honesty rule behind it is unchanged and lives in
+   HANDOFF, which is where a rule belongs; the chip is self-describing if a
+   club ever carries one.
+
+Measured after the removal: the specs band's bottom gap is its own padding and
+nothing else, 95px at 1440 and 64px at 390, on the Gold, the Black, the Blade,
+the Mallet and the Stryker.
