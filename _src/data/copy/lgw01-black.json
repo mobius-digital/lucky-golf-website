@@ -27,6 +27,12 @@
    "Carver 01 Black wedge, milled face detail"
   ]
  ],
+ "_pullQuote": "BORROWED, and labelled as borrowed (Cole, 2026-08-19). The Black has zero reviews of its own: no rating in products.json, no pull in _src/data/reviews/. This is verbatim from the lgw01-gold Judge.me pull, and the `who` line names the Gold so nobody reads it as proof of a product that has none. TITLE AND QUOTE ARE THE SAME REVIEW — Ray O.'s own title, Ray O.'s own words. Chosen over the stronger feel-and-spin reviews because they are titled after the gold finish or untitled, and a quote praising the shine on the page that argues for no shine fights the page. Five stars, which the curated-moment floor requires and the card's markup hard-codes.",
+ "pullQuote": {
+  "title": "Hard to keep it!",
+  "quote": "People borrow it in my league- it&rsquo;s a winner!",
+  "who": "Ray O. &middot; Verified buyer &middot; Carver 01 Gold"
+ },
  "priceNote": "Six lofts, right hand",
  "buyBody": "The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. The Black does all of it with gold left only on the clover and the loft stamp, which is the whole difference. Six lofts, right hand, sixty days to decide whether it stays in the bag.",
  "four": [
