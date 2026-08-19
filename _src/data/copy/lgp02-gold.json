@@ -57,7 +57,7 @@
   "who": "austin s. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "You use it twice a hole and it decides more of your score than anything else in the bag. Milled from one block of 304 stainless, muted and solid off the face, with a slight toe hang that works with your arc and the weight out at the edges so a miss still holds its line. Right or left hand, sixty days to decide.",
+ "buyBody": "You use it twice a hole and it decides more of your score than anything else in the bag. CNC-milled 304 stainless, muted and solid off the face, with a slight toe hang that works with your arc and the weight out at the edges so a miss still holds its line. Right or left hand, sixty days to decide.",
  "four": [
   {
    "k": "100% CNC-milled",
@@ -96,12 +96,12 @@
  ],
  "clubHeadline": "The club you use most, thought about least. Lag it close and walk it in.",
  "clubParas": [
-  "A milled mallet that rolls it pure, for the stroke you already have. One block of 304 stainless, so the strike comes back muted and solid with no ping. A slight toe hang that works with your arc, and weight out at the edges so a toe strike still holds its line. Oversized 3.0 grip already on it, so the wrists stay quiet."
+  "CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping. The plumber neck gives it a slight toe hang that works with the arc your stroke already has, and the weight sits out at the edges so a putt you catch off the toe still holds its line. It comes with the oversized 3.0 grip already on it, which takes the wrists out of the stroke and keeps the short ones short."
  ],
  "clubSpecs": [
   {
    "k": "Type",
-   "v": "Mallet putter, CNC-milled from a single block of 304 stainless."
+   "v": "Mallet putter, CNC-CNC-milled 304 stainless."
   },
   {
    "k": "Characteristics",
@@ -207,11 +207,11 @@
    "head": [
     {
      "k": "Head material",
-     "v": "304 stainless steel, CNC-milled from a single block"
+     "v": "CNC-milled 304 stainless steel"
     },
     {
      "k": "Face",
-     "v": "Milled, cut from the same block as the head"
+     "v": "Milled"
     },
     {
      "k": "Finish",
@@ -372,7 +372,7 @@
   }
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
- "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it'). SECOND PASS same day: Cole caught the body drifting back to long three-clause sentences with no culture vocabulary. The Gold's pattern, exactly: short sentences, each one spec -> what it does, the golf word in it.",
+ "_club": "Rewritten 2026-08-19, third pass. Cole: the Lucky tone 'isn't a pattern or something we should structure. It's a person that embodies who we are and then just talks.' The test for every sentence is whether that person would say it to a golfer at the counter. Two notes on the draft he reacted to: never 'milled from one block of X' (tacky, and Spec-to-Benefit says not to lead with it); never open 'The X is a...' (salesy; Takomo goes straight in). Headline stays.",
  "clubGrinds": [
   {
    "k": "The neck: it works with your arc",

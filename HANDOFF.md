@@ -3907,3 +3907,40 @@ it, each trust claim once. **His call; layouts are locked until he says.**
 **Asked of Cole:** captures of Takomo's homepage, one collection page and the
 Skyforger wedge PDP, the way the three in `_ref/` were captured, before the
 homepage and collection passes.
+
+### 37f. The person, not the pattern (2026-08-19, same day, third pass on the five)
+
+Cole, after reading the second pass: *"I'm not looking at patterns... when you
+read Takomo and it just flows off the tongue and a golfer instantly understands
+it... do you still feel that? The wedge one maybe. Everything else no."*
+
+He was right, and the reason is worth writing down because it will recur.
+**§37e's rule was correct and the shape chosen to satisfy it was wrong.** "Four
+short sentences, spec then payoff" produces verbless fragments: *"A forged
+wedge with serious spin, for every shot inside a hundred yards. 1020 carbon
+steel for buttery feel and honest feedback."* Read aloud, nobody talks like
+that; v7.3 calls it "a brochure that got cut up to look edgy". Takomo's bodies,
+read live on the Skyforger 002, 101 MKII, 101U and Ignis D2 pages, are
+**sentences a person would say**: *"This wedge features full-face grooves for
+maximum versatility, a new micro-groove pattern for consistency, and a painted
+bottom groove for easier alignment."* Subject, verb, talking to you, every
+feature arriving with its *for*, a bit goofy, zero strain.
+
+**Cole's words, which are now the standard:** *"The tone of Lucky Golf isn't a
+pattern or something we should structure. It's a person that embodies who we
+are and then just talks."* The test for every sentence: would that person say
+it to a golfer at the counter.
+
+Two notes on the draft he approved, both applied site-wide from here:
+
+1. **Never "milled from one block of X" / "from a single block".** Cole:
+   "comes off tacky." Spec-to-Benefit already said not to *lead* with it; Cole
+   does not want it at all. It is "CNC-milled 431 stainless" now.
+2. **Never open "The X is a…".** Salesy. Takomo goes straight in. The headline
+   and the H1 already name the club.
+
+The five intros as they stand are in the copy files. The Takomo wedge headline
+shape ("Killer tech meets versatility. Make 'em spin and get some tap-ins") is
+what the Gold's headline copies, which is why Cole liked it; Takomo's other
+headlines range from descriptive ("Make the difficult shots feel easier") to
+goofy ("Fairway finders never looked so good. Tour-approved.").

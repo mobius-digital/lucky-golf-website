@@ -61,7 +61,7 @@
  ],
  "clubHeadline": "All the spin, none of the shine. Same wedge, quieter about it.",
  "clubParas": [
-  "The same forged wedge as the Gold, blacked out with gold left on the clover and the loft stamp. 1020 carbon steel for buttery feel and honest feedback. A dual-texture face that grips the ball on the strikes you don't catch pure and out of wet grass. Six lofts, K grind, and it sits down quiet at address."
+  "Same forged Carver, same buttery feel, same filthy spin, with the gold taken off everything except the clover and the loft stamp. It sits down quiet at address, and nobody on the tee has anything to say about it until you've hit it. Six lofts, all K grind, right hand for now."
  ],
  "clubSpecs": [
   {
@@ -268,7 +268,7 @@
  "_01": "THE 01, BLACK. Same club as the gold on the LGW01 platform (v1.8's platform note), K grind, six lofts. $109 rather than $99 because the blacked-out finish is a real extra process — the one price difference in the wedge line that stands for something (Cole 2026-07-31).",
  "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
  "eyebrow": "The 01",
- "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it'). The second beat of the headline no longer repeats the Gold's 'Rip it back' (range across the set).",
+ "_club": "Rewritten 2026-08-19, third pass. Cole: the Lucky tone 'isn't a pattern or something we should structure. It's a person that embodies who we are and then just talks.' The test for every sentence is whether that person would say it to a golfer at the counter. Two notes on the draft he reacted to: never 'milled from one block of X' (tacky, and Spec-to-Benefit says not to lead with it); never open 'The X is a...' (salesy; Takomo goes straight in). Headline stays.",
  "clubGrinds": [
   {
    "k": "K Grind: no surprises",

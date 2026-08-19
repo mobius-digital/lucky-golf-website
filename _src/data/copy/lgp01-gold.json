@@ -36,7 +36,7 @@
   ]
  ],
  "priceNote": "Right hand &middot; sold out",
- "buyBody": "A blade milled from a single block of 431 stainless, 385 grams, with nothing inside it to ring. It tells you the truth about every putt, and better putters wouldn't have it any other way. Right hand, sixty days. Out of stock at the moment.",
+ "buyBody": "A blade CNC-milled 431 stainless, 385 grams, with nothing inside it to ring. It tells you the truth about every putt, and better putters wouldn't have it any other way. Right hand, sixty days. Out of stock at the moment.",
  "four": [
   {
    "k": "CNC-milled",
@@ -44,7 +44,7 @@
   },
   {
    "k": "Milled face",
-   "v": "Cut from the same block as the head"
+   "v": "Milled with the rest of the head"
   },
   {
    "k": "385 g",
@@ -63,12 +63,12 @@
  ],
  "clubHeadline": "A smaller head tells you more. Roll it pure.",
  "clubParas": [
-  "A milled blade for the player who wants the truth about every putt. One block of 431 stainless, so the strike comes back muted and solid with no ping. 385 grams, heavy for a blade, and planted on a four-footer when the hands want to help. You feel exactly where on the face you hit it."
+  "CNC-milled 431 stainless, so it comes off the face muted and solid, with no ping. It's heavy for a blade at 385 grams, which keeps it planted through a four-footer when your hands want to get involved. And because it's a blade, it tells you exactly where on the face you hit it, every time. If you'd rather know than be forgiven, this is your putter."
  ],
  "clubSpecs": [
   {
    "k": "Type",
-   "v": "Blade putter, CNC-milled from a single block of 431 stainless."
+   "v": "Blade putter, CNC-CNC-milled 431 stainless."
   },
   {
    "k": "Characteristics",
@@ -98,11 +98,11 @@
    "head": [
     {
      "k": "Head material",
-     "v": "431 stainless steel, CNC-milled from a single block"
+     "v": "CNC-milled 431 stainless steel"
     },
     {
      "k": "Face",
-     "v": "Milled, cut from the same block as the head"
+     "v": "Milled"
     },
     {
      "k": "Finish",
@@ -285,7 +285,7 @@
   "quote": "The look alone is amazing!!! And I haven&rsquo;t putted this good in my life. I should have switched to blades years ago",
   "who": "Michael M. &middot; Verified buyer"
  },
- "_club": "Rewritten 2026-08-19 under Cole's rule: bold, in Lucky's vocabulary, AND one thing per line, said once, no commentary. The headline stays (Cole: 'I didn't think that was bad'). The body stops circling: ~45-50 words, the club named in the first line, facts paired with what they deliver, zero self-reference, zero 'and that is the point' / 'which is exactly why'. The Gold's intro is the model Cole approved ('perfect, you nailed it'). SECOND PASS same day: Cole caught the body drifting back to long three-clause sentences with no culture vocabulary. The Gold's pattern, exactly: short sentences, each one spec -> what it does, the golf word in it.",
+ "_club": "Rewritten 2026-08-19, third pass. Cole: the Lucky tone 'isn't a pattern or something we should structure. It's a person that embodies who we are and then just talks.' The test for every sentence is whether that person would say it to a golfer at the counter. Two notes on the draft he reacted to: never 'milled from one block of X' (tacky, and Spec-to-Benefit says not to lead with it); never open 'The X is a...' (salesy; Takomo goes straight in). Headline stays.",
  "clubGrinds": [
   {
    "k": "The head: feel over forgiveness",
