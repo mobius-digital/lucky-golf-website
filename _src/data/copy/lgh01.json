@@ -43,7 +43,7 @@
   "who": "John L.L. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "A titanium hybrid at 19 degrees for the long approach the irons don't cover. Easy launch, and a Flex Channel face that keeps ball speed up when you don't catch it flush. Right or left hand.",
+ "buyBody": "Nineteen degrees of titanium for the 210-yard shot your long irons keep missing. Gets up easy, stays fast off the heel and toe, and it's gold, which you will hear about. Right or left hand.",
  "four": [
   {
    "k": "Titanium",
@@ -96,8 +96,8 @@
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is a distance, so film the distance: 210 yards from the fairway, ball tracked to the green, then the same shot struck off the toe to show what forgiveness actually means.",
  "reelHeadline": "The Stryker, in the wild",
- "specHeadline": "The Stryker, in numbers",
- "specSub": "Head, shaft and grip. Straight off the manufacturer's sheet.",
+ "specHeadline": "Nineteen degrees and not much else to pick",
+ "specSub": "One loft, one flex, one length. The sheet is short because the decision is.",
  "specTabs": [
   {
    "label": "Clubs",
@@ -210,7 +210,7 @@
   ],
   "aside": "Fill the gap."
  },
- "closeBody": "One club, one flex, right hand or left. Sixty days to decide.",
+ "closeBody": "Take the club you don't trust out of the bag and put this in. Right or left hand.",
  "oav": [
   "lgw01-gold",
   "lgp02-gold"
@@ -239,7 +239,7 @@
  "helpPick": {
   "eyebrow": "What it replaces",
   "headline": "It goes in the bag where something else comes out",
-  "sub": "A hybrid earns its place by replacing a club you have stopped trusting. Which one depends on what you carry now, and the honest answer for most golfers is the long iron they already avoid hitting.",
+  "sub": "Two ways to use it. Most golfers take out the 3-iron. Some take out the 5-wood. Here's how each one goes.",
   "options": [
    {
     "id": "lgh01",
@@ -301,5 +301,6 @@
   "name": "LB06",
   "meta": "Stryker LGH01 &middot; 5 stars &middot; verified buyer"
  },
- "_quote": "Added 2026-08-19, verbatim from the lgh01 pull. Chosen because it says what the what-it-replaces module says, in a customer's mouth."
+ "_quote": "Added 2026-08-19, verbatim from the lgh01 pull. Chosen because it says what the what-it-replaces module says, in a customer's mouth.",
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
 }

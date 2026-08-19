@@ -3944,3 +3944,32 @@ shape ("Killer tech meets versatility. Make 'em spin and get some tap-ins") is
 what the Gold's headline copies, which is why Cole liked it; Takomo's other
 headlines range from descriptive ("Make the difficult shots feel easier") to
 goofy ("Fairway finders never looked so good. Tour-approved.").
+
+### 37g. The rest of each club page, the same way (2026-08-19)
+
+After the intros (§37f) Cole: *"now do the rest of each club page the same
+way."* Buy-box body, the labelled sub-blocks, the bullets, the spec headline
+and sub, the look section, the helper module and the close, on all five, each
+written as the person and each opening through a different door from the
+other four.
+
+**The check that now runs before every batch:** the first clause of each
+module, five clubs side by side. If two match, it has been templated, whatever
+it was called. This batch caught two (the Blade's buy body and spec headline
+both opened "Heavy"; the Gold's and Mallet's closes both opened "Pick a") and
+they were changed before the build.
+
+What went: buy bodies no longer all end "sixty days to decide" (the trust row
+under the button says it); closes no longer all end "Sixty days to decide"
+(the close trust row says it); the Gold's For-who bullet was Takomo's sentence
+with the nouns swapped ("Any golfer. Whether you're a green-side wizard or
+need maximum forgiveness, the SF has your back" → ours had "flop it over
+bunkers"); the putters' sub-blocks and the Blade's look paragraphs duplicated
+their new intros; the three putter-and-hybrid spec subs were one sentence
+three times; the blade-or-mallet module opened "This is the only question
+worth asking about a putter"; the Stryker's what-it-replaces sub said what its
+intro now says. The kit section's "because they do" is trimmed.
+
+The sixty-day claim still appears ten times per club page after this; the rest
+is structural (the marquee runs its list four times, two trust rows, the
+modal) and is the §37e visual question, Cole's.

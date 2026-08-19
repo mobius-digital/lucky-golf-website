@@ -34,7 +34,7 @@
   "who": "Ray O. &middot; Verified buyer &middot; Carver 01 Gold"
  },
  "priceNote": "Six lofts, right hand",
- "buyBody": "The Carver comes off the face soft, grabs the ball hard enough to stop it near where you aimed, and tells you honestly when you didn't. The Black does all of it with gold left only on the clover and the loft stamp. Six lofts, right hand, sixty days to decide whether it stays in the bag.",
+ "buyBody": "Everything the Gold does around the green, without the gold. Blacked out, with gold only on the clover and the loft stamp. Six lofts, K grind, right hand.",
  "four": [
   {
    "k": "Forged 1020",
@@ -91,8 +91,8 @@
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light. The club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
  "reelHeadline": "The Black, in the <span class=\"foil on-dark\">wild</span>",
- "specHeadline": "Same 300 grams, every loft",
- "specSub": "Six lofts on one platform, one sole grind, and the same head weight at all of them. The manufacturer's sheet, in full.",
+ "specHeadline": "The Gold's numbers, in black",
+ "specSub": "Same platform, same 300-gram head, K grind at every loft. The whole sheet.",
  "specTabs": [
   {
    "label": "Clubs",
@@ -241,7 +241,7 @@
   ],
   "aside": "Gold where it counts, and nowhere else."
  },
- "closeBody": "Six lofts, one price, right hand. Sixty days to decide.",
+ "closeBody": "Everything the Gold does, and nobody asks you about it. Pick a loft.",
  "oav": [
   "lgw01-gold",
   "lgp02-gold",
@@ -263,7 +263,7 @@
  ],
  "helpLoft": {
   "headline": "Start with the wedge you already carry",
-  "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
+  "sub": "Same ladder as the Gold. Tell us the loft of your pitching wedge and we'll do the arithmetic."
  },
  "_01": "THE 01, BLACK. Same club as the gold on the LGW01 platform (v1.8's platform note), K grind, six lofts. $109 rather than $99 because the blacked-out finish is a real extra process — the one price difference in the wedge line that stands for something (Cole 2026-07-31).",
  "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
@@ -276,5 +276,6 @@
   }
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. Bounce in Takomo's suffix notation with our letter (8K), so the sheet speaks the picker's language. The old shape was Club / By loft / Shaft & grip and carried two things that had to go: a PRICE row (price is per variant, from products.json, and is never retyped in editorial) and a K-vs-S aside on a club that is only built in K. NOTHING the Product Reference Guide does not publish is on the page: no swing weight, tip diameter or grip length.",
- "_grinds": "The standalone grind section was deleted 2026-08-19, the same move the Gold made: with the grind now a labelled sub-block inside the description, a whole section for ONE grind was a page of scroll saying what four lines say. Its one genuinely useful sentence, that the S lives on the Gold, moved into the K sub-block. pdp.js already points 'Which grind?' at #club."
+ "_grinds": "The standalone grind section was deleted 2026-08-19, the same move the Gold made: with the grind now a labelled sub-block inside the description, a whole section for ONE grind was a page of scroll saying what four lines say. Its one genuinely useful sentence, that the S lives on the Gold, moved into the K sub-block. pdp.js already points 'Which grind?' at #club.",
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
 }

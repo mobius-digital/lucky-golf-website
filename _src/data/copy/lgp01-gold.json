@@ -36,7 +36,7 @@
   ]
  ],
  "priceNote": "Right hand &middot; sold out",
- "buyBody": "A blade CNC-milled 431 stainless, 385 grams, with nothing inside it to ring. It tells you the truth about every putt, and better putters wouldn't have it any other way. Right hand, sixty days. Out of stock at the moment.",
+ "buyBody": "Heavy, honest, and milled from 431 stainless. A blade for the golfer who wants to know exactly where the putt came off the face. Right hand, and sold out at the moment.",
  "four": [
   {
    "k": "CNC-milled",
@@ -89,8 +89,8 @@
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film. Lean on sound.",
  "reelHeadline": "The Blade, on the green",
- "specHeadline": "The Blade, in numbers",
- "specSub": "Head, shaft and grip. Straight off the manufacturer's sheet.",
+ "specHeadline": "One way to buy it",
+ "specSub": "385 grams, 3.5 degrees of loft, 35 inches, right hand. The whole sheet.",
  "specTabs": [
   {
    "label": "Clubs",
@@ -196,13 +196,13 @@
   "photo": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small. That is the appeal.",
   "headline": "Less club, more information",
   "paras": [
-   "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. Either that is why you play one, or it is why you don't.",
-   "In gold, at 385 grams, it is also the least apologetic putter we make.",
+   "Most blades are chrome and try to disappear. This one is gold, 385 grams, and has no interest in disappearing.",
+   "A small head that doesn't go unnoticed. Your playing partners will see it before they see the stroke.",
    "If you would rather the head covered the miss, the Tracer Mallet is the other one."
   ],
   "aside": "Roll it pure."
  },
- "closeBody": "One loft, one length, right hand. Out of stock right now. When it's back, sixty days to decide.",
+ "closeBody": "Out of stock at the moment. The Mallet isn't.",
  "oav": [
   "lgp02-gold",
   "lgw01-gold",
@@ -232,7 +232,7 @@
  "helpPick": {
   "eyebrow": "Blade or mallet",
   "headline": "Both suit an arc. The question is feel or forgiveness.",
-  "sub": "This is the only question worth asking about a putter and the usual answer (mallets for straight strokes, blades for arcs) does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
+  "sub": "Normally it's mallets for straight strokes and blades for arcs. Not here: both Tracers are built for a stroke with some arc in it. The real question is how much you want the head to help on the ones you miss, and how much you want it to tell you.",
   "options": [
    {
     "id": "lgp01-gold",
@@ -288,11 +288,11 @@
  "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the choice a blade is.",
  "clubGrinds": [
   {
-   "k": "The head: feel over forgiveness",
-   "v": "A blade will not straighten out a strike you missed. It tells you what you did instead. For players who release the head through the stroke."
+   "k": "The head: heavy on purpose",
+   "v": "Twenty grams more than the mallet. That extra weight is what stops the face twisting on a short one and keeps your hands out of the stroke."
   },
   {
-   "k": "The grip: nothing in the way",
+   "k": "The grip: the thin one",
    "v": "The stock Lucky rubber grip, not the oversized 3.0 on the mallet. An arcing stroke wants to feel the club, and a fat grip takes that away."
   }
  ],
@@ -303,5 +303,6 @@
   "name": "Jay S.",
   "meta": "Tracer LGP01 Blade &middot; 5 stars &middot; verified buyer"
  },
- "_quote": "Added 2026-08-19. The Blade was the only club with no signature quote; the Gold, the Mallet and the Stryker all have one. Contiguous verbatim excerpt from Jay S.'s review in the lgp01-gold pull, not a splice."
+ "_quote": "Added 2026-08-19. The Blade was the only club with no signature quote; the Gold, the Mallet and the Stryker all have one. Contiguous verbatim excerpt from Jay S.'s review in the lgp01-gold pull, not a splice.",
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
 }

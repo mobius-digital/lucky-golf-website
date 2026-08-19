@@ -57,7 +57,7 @@
   "who": "austin s. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "You use it twice a hole and it decides more of your score than anything else in the bag. CNC-milled 304 stainless, muted and solid off the face, with a slight toe hang that works with your arc and the weight out at the edges so a miss still holds its line. Right or left hand, sixty days to decide.",
+ "buyBody": "The putter that comes with the big grip already on it. Milled 304 stainless, a slight toe hang for the arc you already have, and enough weight at the edges that a toe strike still holds its line. Right or left hand.",
  "four": [
   {
    "k": "100% CNC-milled",
@@ -152,7 +152,7 @@
  "helpPick": {
   "eyebrow": "Blade or mallet",
   "headline": "Both suit an arc. The question is feel or forgiveness.",
-  "sub": "This is the only question worth asking about a putter and the usual answer (mallets for straight strokes, blades for arcs) does not apply here. Both Tracers are built for a stroke with a natural arc. What separates them is how much the head helps you on the ones you miss, and how much it tells you about them.",
+  "sub": "Normally it's mallets for straight strokes and blades for arcs. Not here: both Tracers are built for a stroke with some arc in it. The real question is how much you want the head to help on the ones you miss, and how much you want it to tell you.",
   "options": [
    {
     "id": "lgp02-gold",
@@ -198,8 +198,8 @@
   ],
   "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
  },
- "specHeadline": "The Mallet, in numbers",
- "specSub": "Head, shaft and grip. Straight off the manufacturer's sheet.",
+ "specHeadline": "365 grams, built to swing easy",
+ "specSub": "Loft, lie, weight and length, plus the shaft and the grip. One loft, one length, either hand.",
  "specTabs": [
   {
    "label": "Clubs",
@@ -320,7 +320,7 @@
  "chooseCta": "Pick a hand",
  "closeHeadline": "Go roll it",
  "closeFoil": "pure",
- "closeBody": "Right hand or left, with the oversized grip already on it. Sixty days to decide.",
+ "closeBody": "Right or left. The grip's already on it.",
  "closeTrust": [
   "60-day club returns",
   "Ships in 1&ndash;2 business days",
@@ -375,14 +375,15 @@
  "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the problem (the short ones coming back).",
  "clubGrinds": [
   {
-   "k": "The neck: it works with your arc",
-   "v": "The plumber neck gives it a slight toe hang, so it swings on the arc your stroke already has. Weight out at the edges keeps a toe strike on its line instead of leaking away."
+   "k": "The neck: plumber, slight toe hang",
+   "v": "If your stroke arcs, the head swings with it instead of fighting it. Most strokes arc more than their owners think."
   },
   {
-   "k": "The grip: fitted, not extra",
-   "v": "The oversized 3.0 in white and gold comes fitted. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else."
+   "k": "The grip: oversized 3.0, fitted",
+   "v": "White and gold, and reviewers talk about it more than anything else on the club. If you want the thin one instead, the stock putter grip is in gear."
   }
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold. See the note in lgp01-gold.json for why the Clubs matrix runs figures as columns on a putter. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text.",
- "_reviewHeadline": "Was \"What 58 golfers said\". Cole's homepage ruling (HANDOFF 36b): never a precise SMALL review count in brand copy. The widget prints \"Based on 58 reviews\" under the score either way, so nothing is hidden; it just is not the headline. The Blade keeps its count at 147 and the Gold keeps 551."
+ "_reviewHeadline": "Was \"What 58 golfers said\". Cole's homepage ruling (HANDOFF 36b): never a precise SMALL review count in brand copy. The widget prints \"Based on 58 reviews\" under the score either way, so nothing is hidden; it just is not the headline. The Blade keeps its count at 147 and the Gold keeps 551.",
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
 }
