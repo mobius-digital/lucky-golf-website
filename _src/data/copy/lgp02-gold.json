@@ -96,7 +96,7 @@
  ],
  "clubHeadline": "The club you use most, thought about least. Lag it close and walk it in.",
  "clubParas": [
-  "CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping. The plumber neck gives it a slight toe hang that works with the arc your stroke already has, and the weight sits out at the edges so a putt you catch off the toe still holds its line. It comes with the oversized 3.0 grip already on it, which takes the wrists out of the stroke and keeps the short ones short."
+  "The short ones coming back are what wreck a round, and most of the time it's the wrists. So the Tracer Mallet ships with the oversized 3.0 grip already on it, which takes the wrists out of the stroke. The plumber neck gives it a slight toe hang that swings on the arc you already have, and the weight sits out at the edges so a putt off the toe still holds its line. CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping."
  ],
  "clubSpecs": [
   {
@@ -372,7 +372,7 @@
   }
  ],
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
- "_club": "Rewritten 2026-08-19, third pass. Cole: the Lucky tone 'isn't a pattern or something we should structure. It's a person that embodies who we are and then just talks.' The test for every sentence is whether that person would say it to a golfer at the counter. Two notes on the draft he reacted to: never 'milled from one block of X' (tacky, and Spec-to-Benefit says not to lead with it); never open 'The X is a...' (salesy; Takomo goes straight in). Headline stays.",
+ "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the problem (the short ones coming back).",
  "clubGrinds": [
   {
    "k": "The neck: it works with your arc",
