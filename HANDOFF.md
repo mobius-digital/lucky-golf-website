@@ -3714,3 +3714,82 @@ Verified at 1440 and 390: `documentElement.scrollWidth` 1425 and 390, the
 spec matrix scrolling inside its own wrap at 390 (640 in a 346 box) exactly
 as the Gold's does, three tabs rendering, one grind block, no `#grinds`
 section, zero em dashes and zero banned claims in visible text.
+
+### 37b. Cole's three rulings on the Black
+
+**Borrow a quote, and the Black is technically new, and left hand is coming.**
+The second and third needed no change: the "New" chip on the Gold's rail and
+the left-hand line in the bullets were already on the page and stay.
+
+The pull quote is **verbatim from the lgw01-gold Judge.me pull, with the Gold
+named in the attribution** ("Ray O. · Verified buyer · Carver 01 Gold"), so
+nobody reads it as proof of a product that has none. Ray O.'s own title and
+Ray O.'s own words, one review.
+
+**Two constraints picked him over stronger candidates.** The reviews with the
+best feel-and-spin bodies are either untitled or titled after the gold finish,
+and a quote praising the shine, on the page whose argument is no shine, fights
+the page. The card's markup also hard-codes five stars, so a curated quote has
+to be a five.
+
+**Worth knowing for the rest of the pass:** the Gold's own pull quote pairs
+`1981 C.o.M.`'s title ("As Good As Gold") with Paul F.'s body. Two reviews in
+one card. Not fabricated, but not one person either.
+
+### 37c. The putters: what the copy said that no document does
+
+The two putter pages got the same treatment as the Black (Takomo description,
+three spec cards, no typed prices, no internal document names in customer text)
+and turned up more than the wedge did.
+
+**Provably wrong, and fixed:**
+
+| | Where | |
+|---|---|---|
+| *"It is **cast** 431 stainless at 385 grams"* | Blade description | Three lines under its own bullet saying 100% CNC-milled, and against the guide. |
+| **"Forged"** as a close-CTA trust chip | `_family-putter.json` | The putters are milled from a single block. Nothing about them is forged. It only ever rendered on the **Blade** — the Mallet overrides `closeTrust` with its own list, which is how a wrong word survived on a shared file. |
+| *"The Blade is $199"*, *"The Tracer Mallet is $229"* | both closes | Price is per variant, from products.json, never retyped in editorial. |
+| *"from the Product Reference Guide v1.8"* | both spec subs | An internal document and its version number, in customer-facing text. |
+| "What **58** golfers said" | Mallet reviews | §36b: never a precise SMALL review count. The widget still prints "Based on 58 reviews" under the score. The Blade now carries its 147, the Gold keeps 551. |
+
+**UNSOURCED, AND LEFT ON THE PAGE FOR COLE.** Three claims are load-bearing on
+both putter pages and appear in **no** reference document:
+
+1. **"Slight toe hang (plumber neck)."** HANDOFF §15 recorded this as a
+   correction *from the guide*, replacing Shopify's "face-balanced". **The
+   guide does not contain the words "toe hang", "plumber" or "neck".** The
+   correction swapped one unsourced claim for another.
+2. **"Perimeter weighting."** Not in the guide. Spec-to-Benefit gets close
+   without the phrase: the mallet "achieves stability through geometry (higher
+   MOI from mass distribution) rather than raw weight".
+3. **"Deep precision-milled face"** and **"reduces skid, starts the roll
+   sooner."** The guide's only face line for a putter is *Construction: fully
+   CNC-milled from a single block*. §15 also attributed "deep
+   precision-milled face" to the guide; it is not there.
+
+**What was done about each:** (3) is a *performance* claim with a better,
+sourced substitute in the same slot, so it is replaced — the pages now say the
+face is milled from the same block as the head (true by construction) and take
+the feel argument from Spec-to-Benefit (muted, solid, no ring, honest feedback
+without harshness). (1) and (2) are *construction* facts, plausible, and Cole
+would simply know — so they stay, flagged, rather than being stripped out of
+the buy box and the blade-or-mallet module on a documentation gap.
+
+One customer, C.G., describes "the dimples on the face for gripping the ball",
+which is evidence the face is textured but is not a source we can write from.
+
+**Structural:** both putters now use `clubGrinds` for the two labelled
+sub-blocks between the intro and the bullets. The key was named for wedges but
+the markup is generic, and a putter has the same need for two beats that decide
+the purchase: the head and the grip on the Blade, the neck and the grip on the
+Mallet. **No template change** beyond the comment, which used to say putters
+render nothing there.
+
+The Blade also gained the two review modules it was the only club missing: a
+buy-box pull quote (Michael M., "Golden blade") and a signature quote (Jay S.,
+a contiguous excerpt, not a splice).
+
+Verified at 1440 and 390 on both: `scrollWidth` 1425 and 390, the spec matrix
+scrolling inside its own box at 390, three tabs, one intro paragraph, two
+sub-blocks, and zero em dashes, zero "cast", zero "forged", zero "premium",
+zero "skid", zero version numbers and zero typed prices in visible text.

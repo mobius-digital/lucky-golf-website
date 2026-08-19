@@ -1,54 +1,55 @@
 {
-  "_": "Shared editorial for the putters. Merged UNDER each putter's own file.",
-  "eyebrow": "The Tracer &middot; Putters",
-  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
-  "galleryTag": "",
-  "careTitle": "Looking after the finish",
-  "carePara": [
-    "The face wants wiping after a wet round so the ball comes off it the same way every time. That is it.",
-    "A cover is the difference between a putter that looks new in a year and one that does not. The head is the part everyone sees on every green."
-  ],
-  "marquee": [
-    "Sixty-day returns on every club",
-    "Ships in 1&ndash;2 business days",
-    "Milled face",
-        "It's better to be lucky"
-  ],
-  "reelSub": "Clips of this exact putter being rolled: creators, customers, and anyone who tags us.",
-  "reel": [
-    {
-      "kind": "Creator reel",
-      "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "Thirty-footer across a tier, ball tracking, reaction from the group"
-    },
-    {
-      "kind": "Creator reel",
-      "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "The head at address, hands off the club, then the stroke"
-    },
-    {
-      "kind": "Creator reel",
-      "brief": "Grip close-up in the hands, then a stroke showing quiet wrists"
-    },
-    {
-      "kind": "Customer clip",
-      "brief": "Unboxing, putter out of the sleeve, first reaction to the finish"
-    }
-  ],
-  "chooseCta": "Pick a hand",
-  "closeHeadline": "Go roll it",
-  "closeFoil": "pure",
-  "closeTrust": [
-    "60-day club returns",
-    "Ships in 1&ndash;2 business days",
-    "Forged",
-    "Direct pricing"
-  ],
-  "reviewHeadline": "What golfers said"
+ "_": "Shared editorial for the putters. Merged UNDER each putter's own file.",
+ "eyebrow": "The Tracer &middot; Putters",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+ "galleryTag": "",
+ "careTitle": "Looking after the finish",
+ "carePara": [
+  "The face wants wiping after a wet round so the ball comes off it the same way every time. That is it.",
+  "A cover is the difference between a putter that looks new in a year and one that does not. The head is the part everyone sees on every green."
+ ],
+ "marquee": [
+  "Sixty-day returns on every club",
+  "Ships in 1&ndash;2 business days",
+  "Milled face",
+  "It's better to be lucky"
+ ],
+ "reelSub": "Clips of this exact putter being rolled: creators, customers, and anyone who tags us.",
+ "reel": [
+  {
+   "kind": "Creator reel",
+   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "The head at address, hands off the club, then the stroke"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Grip close-up in the hands, then a stroke showing quiet wrists"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Unboxing, putter out of the sleeve, first reaction to the finish"
+  }
+ ],
+ "chooseCta": "Pick a hand",
+ "closeHeadline": "Go roll it",
+ "closeFoil": "pure",
+ "closeTrust": [
+  "60-day club returns",
+  "Ships in 1&ndash;2 business days",
+  "CNC-milled",
+  "Direct pricing"
+ ],
+ "reviewHeadline": "What golfers said",
+ "_closeTrust": "Was \"Forged\" until 2026-08-19. The putters are CNC-milled from a single block and nothing about them is forged; the wedges are the forged clubs. It only ever rendered on the Blade, because the Mallet overrides closeTrust with its own list, which is how a wrong word survived on a shared file."
 }

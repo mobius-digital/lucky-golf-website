@@ -156,10 +156,11 @@
       <div class="club-copy">
 {{#clubParas}}        <p class="body">{{.}}</p>
 {{/clubParas}}
-    <!-- Grind sub-blocks: Takomo's "V GRIND: VERSATILITY / F GRIND: FULL"
-         labelled paragraphs between the intro and the bullets. Only wedges
-         with more than one grind carry `clubGrinds`; putters and the hybrid
-         render nothing here. -->
+    <!-- Labelled sub-blocks between the intro and the bullets: Takomo's
+         "V GRIND: VERSATILITY / F GRIND: FULL" device. The markup is generic,
+         so `clubGrinds` carries whatever the two beats are that decide the
+         purchase — the grinds on a wedge, the neck and the grip on a putter.
+         A product with nothing to say here renders nothing. -->
 {{#clubGrinds}}        <div class="club-grind"><b>{{k}}</b><p>{{v}}</p></div>
 {{/clubGrinds}}
     <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->

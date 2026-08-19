@@ -1,6 +1,6 @@
 {
  "_": "Editorial for Tracer LGP02 Mallet. Catalogue facts come from products.json.",
- "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
+ "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31). The guide's LGP02 table is loft 3.5, lie 72, head 365 g, length 35\", grip 63 g, shaft Regular / mid / 35\" / 110 g.",
  "_proves": "This is the Phase C proof for the club template: one axis instead of two, blade-or-mallet instead of the loft ladder, and a spec table with no by-loft matrix. No template change was needed for any of it.",
  "eyebrow": "The Tracer &middot; Putters",
  "galleryTag": "Pure roll",
@@ -57,7 +57,7 @@
   "who": "austin s. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "The putter you use more than any other club, and think about least. One hundred per cent CNC-milled from 304 stainless, with a slight toe hang that works with a natural arc instead of fighting it, and perimeter weighting that holds the line on strikes you miss. Right or left hand.",
+ "buyBody": "You use it twice a hole and think about it least, and it decides more of your score than anything else you carry. The Tracer is milled from a single block of 304 stainless, so it comes off the face muted and solid with nothing inside to ring, with a slight toe hang that works with a natural arc instead of fighting it and the weight pushed out to the edges so an off-center strike holds its line. Right or left hand, sixty days to decide.",
  "four": [
   {
    "k": "100% CNC-milled",
@@ -92,34 +92,32 @@
   "Ships in 1&ndash;2 business days",
   "Right and left hand",
   "Oversized 3.0 grip included",
-    "It's better to be lucky"
+  "It's better to be lucky"
  ],
- "clubHeadline": "The club you use twice as often as any other, and think about half as much.",
+ "clubHeadline": "The club you use most, thought about least. Lag it close and walk it in.",
  "clubParas": [
-  "Nobody buys a putter for the reason they should. A driver gets picked over three weekends and a putter gets whatever was in the bag when you started. It is the club you use on every hole, twice, and it decides more of your score than anything else you carry.",
-  "The head is perimeter-weighted, so the strikes you miss off the toe hold their line instead of leaking away. The neck gives it a slight toe hang, which means it works with a natural arc in the stroke rather than asking you to putt straighter than you do.",
-  "It comes with the oversized 3.0 grip fitted, which is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club."
+  "Nobody buys a putter for the reason they should. A driver gets picked over three weekends and a putter gets whatever was in the bag when you started, and it is the club you use on every hole, twice, deciding more of your score than anything else you carry. The Tracer is milled from one block of 304 stainless, which is why it comes off the face muted and solid instead of ringing, and why a strike off the toe reads as information rather than a punishment."
  ],
  "clubSpecs": [
   {
    "k": "Type",
-   "v": "Mallet putter, 100% CNC-milled from 304 stainless."
+   "v": "Mallet putter, CNC-milled from a single block of 304 stainless."
   },
   {
-   "k": "Feel",
-   "v": "Soft but solid. Muted tone, no hollow ring, no vibration."
+   "k": "Characteristics",
+   "v": "Muted and solid at impact, stable through the stroke, and easy to swing on its own arc."
   },
   {
-   "k": "Face",
-   "v": "Deep, fully milled texture: reduces skid and starts the roll cleanly."
+   "k": "Design",
+   "v": "One-piece 304 stainless head, milled face, 3.5&deg; of loft and 365 g at 35 inches. Plumber neck, slight toe hang, gold finish, oversized 3.0 grip fitted."
   },
   {
-   "k": "Weighting",
-   "v": "365 g head. Perimeter weighting keeps off-center strikes on line."
+   "k": "For who",
+   "v": "Any golfer with a natural arc who would rather the head covered a miss than reported it."
   },
   {
-   "k": "Grip",
-   "v": "Oversized 3.0 in white and gold, fitted as standard."
+   "k": "HCP range",
+   "v": "All"
   }
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line at address showing the head sitting square on its own, then the alignment lines from the golfer's eye, then three putts holed from 4, 12 and 30 feet with the sound of the strike. Close on the oversized grip in the hands.",
@@ -200,81 +198,108 @@
   ],
   "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
  },
- "specHeadline": "The numbers",
- "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
+ "specHeadline": "One loft, one length, either hand",
+ "specSub": "There is one way to buy a Tracer Mallet, and this is its whole sheet. The manufacturer's figures, in full.",
  "specTabs": [
   {
-   "label": "Club",
-   "caption": "Tracer LGP02 · club",
-   "rows": [
+   "label": "Clubs",
+   "caption": "Tracer LGP02 Mallet · clubs",
+   "head": [
     {
-     "k": "Head shape",
-     "v": "Mallet"
+     "k": "Head material",
+     "v": "304 stainless steel, CNC-milled from a single block"
     },
     {
-     "k": "Construction",
-     "v": "Fully CNC-milled from a single block"
-    },
-    {
-     "k": "Material",
-     "v": "304 stainless steel"
-    },
-    {
-     "k": "Loft",
-     "v": "3.5&deg;"
-    },
-    {
-     "k": "Lie",
-     "v": "72&deg;"
-    },
-    {
-     "k": "Head weight",
-     "v": "365 g"
-    },
-    {
-     "k": "Length",
-     "v": "35&quot;"
+     "k": "Face",
+     "v": "Milled, cut from the same block as the head"
     },
     {
      "k": "Finish",
      "v": "Gold"
-    },
-    {
-     "k": "Hand",
-     "v": "Right and left"
-    },
-    {
-     "k": "Headcover",
-     "v": "Not included"
-    }
-   ]
-  },
-  {
-   "label": "Shaft &amp; grip",
-   "caption": "Tracer LGP02 · shaft &amp; grip",
-   "rows": [
-    {
-     "k": "Shaft",
-     "v": "Regular (R) flex, mid kick point"
-    },
-    {
-     "k": "Shaft length",
-     "v": "35&quot; original"
-    },
-    {
-     "k": "Shaft weight",
-     "v": "110 g original"
-    },
-    {
-     "k": "Grip",
-     "v": "Oversized 3.0, white and gold"
-    },
-    {
-     "k": "Grip weight",
-     "v": "63 g"
     }
    ],
-   "aside": "One length, 35&quot;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way. A taller golfer should know there is no long option yet."
+   "matrix": {
+    "corner": "Head shape",
+    "cols": [
+     "Loft",
+     "Lie",
+     "Head weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Mallet",
+      "v": [
+       "3.5&deg;",
+       "72&deg;",
+       "365 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   },
+   "aside": "One length, 35&Prime;. Reviewers at 6&prime;4&Prime; and 6&prime;7&Prime; disagree about whether that suits them, which is a real answer either way. A taller golfer should know there is no long option yet."
+  },
+  {
+   "label": "Shafts",
+   "head": [
+    {
+     "k": "Shaft",
+     "v": "Lucky stock shaft"
+    },
+    {
+     "k": "Availability",
+     "v": "Fitted as standard"
+    }
+   ],
+   "matrix": {
+    "corner": "Flex",
+    "cols": [
+     "Kick point",
+     "Raw weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "Mid",
+       "110 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   },
+   "caption": "Tracer LGP02 Mallet · Lucky stock shaft"
+  },
+  {
+   "label": "Grips",
+   "caption": "Tracer LGP02 Mallet · oversized 3.0",
+   "head": [
+    {
+     "k": "Grip material",
+     "v": "Rubber"
+    },
+    {
+     "k": "Availability",
+     "v": "Oversized 3.0 in white and gold, fitted as standard"
+    }
+   ],
+   "matrix": {
+    "corner": "Size",
+    "cols": [
+     "Weight"
+    ],
+    "rows": [
+     {
+      "k": "Oversized 3.0",
+      "v": [
+       "63 g"
+      ]
+     }
+    ]
+   },
+   "aside": "The white picks up dirt, which reviewers say more often than they say anything else about it. A damp cloth after a round is the whole answer."
   }
  ],
  "look": {
@@ -291,11 +316,11 @@
   "name": "Patrick S.",
   "meta": "Tracer LGP02 Mallet &middot; 5 stars &middot; verified buyer"
  },
- "reviewHeadline": "What 58 golfers said",
+ "reviewHeadline": "What golfers said",
  "chooseCta": "Pick a hand",
  "closeHeadline": "Go roll it",
  "closeFoil": "pure",
- "closeBody": "The Tracer Mallet is $229, right hand or left, with the oversized grip already on it. Sixty days to send it back if it isn't the one.",
+ "closeBody": "One loft, one length, right hand or left, with the oversized grip already on it. Sixty days to decide, and if it doesn't earn the bag, send it back, no hard feelings.",
  "closeTrust": [
   "60-day club returns",
   "Ships in 1&ndash;2 business days",
@@ -346,5 +371,18 @@
    "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382"
   }
  ],
- "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
+ "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
+ "_club": "Takomo-shaped 2026-08-19, matching the Gold, the Black and the Blade: two-beat headline, ONE intro paragraph, two labelled sub-blocks, then the bullets. The sub-blocks reuse `clubGrinds` — see the note in lgp01-gold.json. The three old paragraphs were good and their arguments all survive; they are now shaped so somebody scanning gets the two that decide the purchase (the neck and the grip) without reading the prose.",
+ "clubGrinds": [
+  {
+   "k": "The neck: it works with your arc",
+   "v": "The plumber neck gives the head a slight toe hang, so it swings on the arc your stroke already has rather than asking you to putt straighter than you do. The weight sits out at the edges of the head, and that is what keeps a strike off the toe on its line instead of leaking away."
+  },
+  {
+   "k": "The grip: fitted, not extra",
+   "v": "It arrives with the oversized 3.0 in white and gold already on it, and that is not a small detail. A fat grip takes the wrists out of the stroke, and the wrists are what turn a four-footer into a five-footer coming back. Reviewers mention it more than anything else on the club."
+  }
+ ],
+ "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold. See the note in lgp01-gold.json for why the Clubs matrix runs figures as columns on a putter. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text.",
+ "_reviewHeadline": "Was \"What 58 golfers said\". Cole's homepage ruling (HANDOFF 36b): never a precise SMALL review count in brand copy. The widget prints \"Based on 58 reviews\" under the score either way, so nothing is hidden; it just is not the headline. The Blade keeps its count at 147 and the Gold keeps 551."
 }

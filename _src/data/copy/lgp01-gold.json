@@ -1,6 +1,6 @@
 {
  "_": "Editorial for lgp01-gold. Shared keys come from _family-putter.json.",
- "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31).",
+ "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31). The guide's LGP01 table is loft 3.5, lie 72, head 385 g, length 35\", grip 75 g, shaft Regular / mid / 35\" / 110 g.",
  "gallery": [
   [
    "1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091",
@@ -36,15 +36,15 @@
   ]
  ],
  "priceNote": "Right hand &middot; sold out",
- "buyBody": "The blade. One hundred per cent CNC-milled from 431 stainless, 3.5&deg; of loft, 385 grams and 35 inches of it, in gold. Built for players who release the head through the stroke, and out of stock at the moment.",
+ "buyBody": "A blade tells you the truth about every putt you hit, which is exactly why better putters keep going back to them. This one is milled from a single block of 431 stainless and heavy for its size, so there is nothing inside it to ring and nothing in your hands to take over on a short one. Right hand, sixty days, and out of stock at the moment.",
  "four": [
   {
-   "k": "100% CNC-milled",
-   "v": "431 stainless, tight tolerances"
+   "k": "CNC-milled",
+   "v": "One block of 431 stainless"
   },
   {
    "k": "Milled face",
-   "v": "Less skid, earlier roll"
+   "v": "Cut from the same block as the head"
   },
   {
    "k": "385 g",
@@ -61,115 +61,136 @@
   "35&quot; Lucky Approved shaft",
   "No headcover (none of our clubs ship with one)"
  ],
- "clubHeadline": "The one for a stroke that already arcs.",
+ "clubHeadline": "A smaller head tells you more. Roll one pure and you'll know it.",
  "clubParas": [
-  "A blade putter does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. There is more feel in a small head and more information in a mishit.",
-  "It is cast 431 stainless at 385 grams: heavy for a blade, which is what stops the hands taking over on a short one. Loft is 3.5 degrees, enough to lift the ball out of its own dent and start it rolling early.",
-  "35 inches, right hand, with the Lucky rubber grip rather than the oversized 3.0 that ships on the mallet. That is a deliberate pairing: an arcing stroke wants to feel the club, and a fat grip takes that away."
+  "A blade does less for you than a mallet and asks more in return, which is exactly why better putters keep going back to them. It is milled from a single block of 431 stainless, so there is nothing inside it to ring or buzz and the feedback comes back honest rather than harsh: you feel where on the face you hit it, every time. At 385 grams it is heavy for a blade, and that weight is what keeps it planted through a four-footer when the hands want to help."
  ],
  "clubSpecs": [
   {
    "k": "Type",
-   "v": "Blade putter, 100% CNC-milled from 431 stainless."
+   "v": "Blade putter, CNC-milled from a single block of 431 stainless."
   },
   {
-   "k": "Feel",
-   "v": "Muted and solid. No ping, no hollow ring, no vibration through the hands."
+   "k": "Characteristics",
+   "v": "Muted and solid at impact. No ring, no ping, no buzz through the hands, and honest feedback on the ones you miss."
   },
   {
-   "k": "Face",
-   "v": "Deep precision-milled pattern: reduces skid and starts the ball rolling sooner."
-  },
-  {
-   "k": "Weighting",
-   "v": "385 g head at 35 inches. Planted enough to hold tempo on fast greens."
+   "k": "Design",
+   "v": "One-piece 431 stainless head, milled face, 3.5&deg; of loft and 385 g at 35 inches. Gold finish, Lucky rubber grip."
   },
   {
    "k": "For who",
-   "v": "Players who release the head through the stroke."
+   "v": "Players who release the head through the stroke and would rather know about a miss than have it covered up."
   },
   {
-   "k": "Grip",
-   "v": "Authentic Lucky Golf rubber grip."
+   "k": "HCP range",
+   "v": "All"
   }
  ],
  "videoBrief": "16:9 product film, 40&ndash;60s. Down-the-line showing the arc the head wants to travel on, then the face at impact in slow motion. A blade's argument is feel, which is the hardest thing to film. Lean on sound.",
  "reelHeadline": "The Blade, on the green",
- "specHeadline": "The numbers",
- "specSub": "Manufacturer figures, from the Product Reference Guide v1.8.",
+ "specHeadline": "One loft, one length, one hand",
+ "specSub": "There is one way to buy a Blade, and this is its whole sheet. The manufacturer's figures, in full.",
  "specTabs": [
   {
-   "label": "Club",
-   "caption": "Tracer LGP01 · club",
-   "rows": [
+   "label": "Clubs",
+   "caption": "Tracer LGP01 Blade · clubs",
+   "head": [
     {
-     "k": "Head shape",
-     "v": "Blade"
+     "k": "Head material",
+     "v": "431 stainless steel, CNC-milled from a single block"
     },
     {
-     "k": "Construction",
-     "v": "Fully CNC-milled from a single block"
-    },
-    {
-     "k": "Material",
-     "v": "431 stainless steel"
-    },
-    {
-     "k": "Loft",
-     "v": "3.5&deg;"
-    },
-    {
-     "k": "Lie",
-     "v": "72&deg;"
-    },
-    {
-     "k": "Head weight",
-     "v": "385 g"
-    },
-    {
-     "k": "Length",
-     "v": "35&quot;"
+     "k": "Face",
+     "v": "Milled, cut from the same block as the head"
     },
     {
      "k": "Finish",
      "v": "Gold"
-    },
-    {
-     "k": "Hand",
-     "v": "Right (left hand not currently offered)"
-    },
-    {
-     "k": "Headcover",
-     "v": "Not included"
-    }
-   ]
-  },
-  {
-   "label": "Shaft &amp; grip",
-   "caption": "Tracer LGP01 · shaft &amp; grip",
-   "rows": [
-    {
-     "k": "Shaft",
-     "v": "Regular (R) flex, mid kick point"
-    },
-    {
-     "k": "Shaft length",
-     "v": "35&quot; original"
-    },
-    {
-     "k": "Shaft weight",
-     "v": "110 g original"
-    },
-    {
-     "k": "Grip",
-     "v": "Stock grip"
-    },
-    {
-     "k": "Grip weight",
-     "v": "75 g"
     }
    ],
-   "aside": "The blade's grip is 75 g against the mallet's 63 g: twelve grams more in the hands on the club that asks for more feel."
+   "matrix": {
+    "corner": "Head shape",
+    "cols": [
+     "Loft",
+     "Lie",
+     "Head weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Blade",
+      "v": [
+       "3.5&deg;",
+       "72&deg;",
+       "385 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   },
+   "aside": "One loft, one length, one hand. Left hand is not offered on the Blade, and the reviews include somebody asking for it."
+  },
+  {
+   "label": "Shafts",
+   "head": [
+    {
+     "k": "Shaft",
+     "v": "Lucky stock shaft"
+    },
+    {
+     "k": "Availability",
+     "v": "Fitted as standard"
+    }
+   ],
+   "matrix": {
+    "corner": "Flex",
+    "cols": [
+     "Kick point",
+     "Raw weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "Mid",
+       "110 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   },
+   "caption": "Tracer LGP01 Blade · Lucky stock shaft"
+  },
+  {
+   "label": "Grips",
+   "caption": "Tracer LGP01 Blade · Lucky stock grip",
+   "head": [
+    {
+     "k": "Grip material",
+     "v": "Rubber"
+    },
+    {
+     "k": "Availability",
+     "v": "Stock option"
+    }
+   ],
+   "matrix": {
+    "corner": "Size",
+    "cols": [
+     "Weight"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "75 g"
+      ]
+     }
+    ]
+   },
+   "aside": "Twelve grams heavier than the mallet's oversized 3.0, on the club that asks for more feel."
   }
  ],
  "look": {
@@ -177,11 +198,12 @@
   "headline": "Less club, more information",
   "paras": [
    "A blade is the smallest thing you will look down at all round, and every miss tells you about itself. That is either the reason to play one or the reason not to.",
-   "In gold, at 385 grams, it is also the least apologetic putter we make."
+   "In gold, at 385 grams, it is also the least apologetic putter we make.",
+   "If you would rather the head covered the miss than reported it, the Tracer Mallet is the other one."
   ],
   "aside": "Everyone else is carrying the same putter with someone else's name on it. It's better to be lucky."
  },
- "closeBody": "The Blade is $199, right hand, and sold out at the moment. Sixty days to send it back when it returns.",
+ "closeBody": "One loft, one length, right hand. It is out of stock at the moment, and when it comes back you get sixty days to decide whether it earns the bag.",
  "oav": [
   "lgp02-gold",
   "lgw01-gold",
@@ -257,5 +279,30 @@
   ],
   "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
  },
- "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice."
+ "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
+ "_pullQuote": "Added 2026-08-19: the Blade had no pull quote and 147 reviews to draw one from. Michael M.'s own title and Michael M.'s own words, one review, not two spliced. Five stars, which the curated-moment floor requires and the card's markup hard-codes. The punctuation is his; verbatim reviews keep whatever the customer typed.",
+ "pullQuote": {
+  "title": "Golden blade",
+  "quote": "The look alone is amazing!!! And I haven&rsquo;t putted this good in my life. I should have switched to blades years ago",
+  "who": "Michael M. &middot; Verified buyer"
+ },
+ "_club": "Takomo-shaped 2026-08-19, matching the Gold and the Black: two-beat headline, ONE intro paragraph, two labelled sub-blocks, then Type / Characteristics / Design / For who / HCP range. THE SUB-BLOCKS REUSE `clubGrinds`. On a wedge that key carries the grinds; the markup is generic (<b>label</b><p>body</p>) and a putter has exactly the same need for two labelled beats between the intro and the bullets. Nothing in the template changed. ONE FLAT CONTRADICTION WENT: the old middle paragraph said \"It is cast 431 stainless\", three lines under a bullet saying 100% CNC-milled and against the guide.",
+ "clubGrinds": [
+  {
+   "k": "The head: feel over forgiveness",
+   "v": "It is the smallest thing you will look down at all round and the most honest. A blade will not straighten out a strike you missed, and that is the trade you are making: it tells you exactly what you did instead. For players who release the head through the stroke."
+  },
+  {
+   "k": "The grip: nothing in the way",
+   "v": "The stock Lucky rubber grip, not the oversized 3.0 that ships on the mallet. That pairing is deliberate. An arcing stroke wants to feel the club, and a fat grip is designed to take exactly that away."
+  }
+ ],
+ "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. A putter has one loft and one length, so the Clubs matrix runs the four figures as COLUMNS against one head-shape row rather than lofts as columns. The old shape was Club / Shaft & grip. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text: an internal document and its version number, on the page.",
+ "reviewHeadline": "What 147 golfers said",
+ "quote": {
+  "q": "When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!",
+  "name": "Jay S.",
+  "meta": "Tracer LGP01 Blade &middot; 5 stars &middot; verified buyer"
+ },
+ "_quote": "Added 2026-08-19. The Blade was the only club with no signature quote; the Gold, the Mallet and the Stryker all have one. Contiguous verbatim excerpt from Jay S.'s review in the lgp01-gold pull, not a splice."
 }
