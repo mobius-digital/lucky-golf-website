@@ -1259,7 +1259,9 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar{display:none;position:fixed;z-index:9999;left:50%;translate:-50% 0;bottom:16px;
   gap:2px;padding:4px;border-radius:999px;background:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .rev-bar[data-on]{display:flex}
-.rev-bar a{display:block;padding:8px 16px;border-radius:999px;text-decoration:none;
+.rev-bar button{display:block;padding:8px 16px;border:0;border-radius:999px;cursor:pointer;
+  background:transparent;font-family:inherit;
   font-size:12px;font-variation-settings:'wdth' 78;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--cream-70)}
-.rev-bar a[aria-current]{background:var(--cream);color:var(--ink)}
+.rev-bar button:hover{color:var(--cream)}
+.rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}

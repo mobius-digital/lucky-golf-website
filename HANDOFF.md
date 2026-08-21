@@ -4181,6 +4181,14 @@ full band.
 
 **How to switch:** `?rev=a` and `?rev=b` on any page. A pill toggle appears
 bottom-centre **only when `?rev=` is in the URL**, so a normal visitor never
-sees it. The whole thing is one guarded block at the bottom of `core.css` and
+sees it. It swaps **in place** — no navigation, no scroll reset (Cole,
+2026-08-19). Holding `window.scrollY` would not work, because rev B REMOVES
+sections and the same pixel is different content: it anchors instead, finding
+the section nearest the top of the viewport, remembering how far into it you
+are, and putting that section back at the same offset. Verified: standing on
+the specs, A→B moves scrollY 5022→4968 and the specs stay pinned at +0. If the
+section you are on is one rev B hides, it walks forward to the next visible
+one — standing on the pull quote lands you on Reviews, standing on the marquee
+lands you on Others-also-viewed. The whole thing is one guarded block at the bottom of `core.css` and
 one IIFE at the bottom of `core.js`; **delete both in one commit** once Cole
 picks, or promote rev B by dropping the `[data-rev="b"]` guard.

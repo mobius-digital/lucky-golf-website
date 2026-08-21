@@ -1269,10 +1269,12 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar{display:none;position:fixed;z-index:9999;left:50%;translate:-50% 0;bottom:16px;
   gap:2px;padding:4px;border-radius:999px;background:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .rev-bar[data-on]{display:flex}
-.rev-bar a{display:block;padding:8px 16px;border-radius:999px;text-decoration:none;
+.rev-bar button{display:block;padding:8px 16px;border:0;border-radius:999px;cursor:pointer;
+  background:transparent;font-family:inherit;
   font-size:12px;font-variation-settings:'wdth' 78;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--cream-70)}
-.rev-bar a[aria-current]{background:var(--cream);color:var(--ink)}
+.rev-bar button:hover{color:var(--cream)}
+.rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
 /* ==========================================================================
    COLLECTION / PLP  ·  one stylesheet, seven pages
@@ -2685,22 +2687,71 @@ var LG_QUICKADD = {"polo-gold-dust": {"name": "Gold Dust Classic Polo", "img": "
 
 /* REV B SWITCH — preview only (2026-08-19). ?rev=b applies the thinned layout
    defined at the bottom of core.css; ?rev=a is the current site. The bar only
-   appears when ?rev= is present, so a normal visitor never sees it. Remove
-   this IIFE and the core.css block together once Cole has picked. */
+   appears when ?rev= is present, so a normal visitor never sees it.
+
+   It toggles in place: no navigation, no scroll reset. Because rev B REMOVES
+   sections, holding window.scrollY would land you somewhere else on the page —
+   so it anchors instead. Before the swap it finds the section nearest the top
+   of the viewport and remembers how far into it you are; after the swap it puts
+   that same section back at the same offset. If the section you were looking at
+   is one rev B hides, it falls back to the next visible one.
+
+   Remove this IIFE and the core.css block together once Cole has picked. */
 (function () {
   var rev = new URLSearchParams(location.search).get('rev');
   if (!rev) return;
-  if (rev === 'b') document.documentElement.setAttribute('data-rev', 'b');
+  var root = document.documentElement;
+  function apply(r) { r === 'b' ? root.setAttribute('data-rev', 'b') : root.removeAttribute('data-rev'); }
+  apply(rev);
+
+  function anchors() {
+    return [].slice.call(document.querySelectorAll(
+      'body > section, body > div.mq, body > div.wrap, body > footer, body > nav'))
+      .filter(function (el) { return el.offsetParent !== null && el.getBoundingClientRect().height > 20; });
+  }
+  function swap(next) {
+    if (next === rev) return;
+    /* what am I looking at, and how far into it? */
+    var list = anchors(), mark = null, into = 0;
+    for (var i = 0; i < list.length; i++) {
+      var t = list[i].getBoundingClientRect().top;
+      if (t <= 1) { mark = list[i]; into = -t; } else break;
+    }
+    rev = next;
+    apply(rev);
+    history.replaceState(null, '', location.pathname + '?rev=' + rev + location.hash);
+    paint();
+    if (mark) {
+      /* the section may have just been hidden — walk forward to a visible one */
+      var el = mark;
+      while (el && el.offsetParent === null) el = el.nextElementSibling;
+      if (el) {
+        var y = el.getBoundingClientRect().top + window.scrollY + (el === mark ? into : 0);
+        window.scrollTo({ top: Math.max(0, y), behavior: 'instant' });
+      }
+    }
+  }
+
+  var bar;
+  function paint() {
+    if (!bar) return;
+    [].forEach.call(bar.children, function (b) {
+      b.toggleAttribute('aria-current', b.dataset.rev === rev);
+    });
+  }
   document.addEventListener('DOMContentLoaded', function () {
-    var base = location.pathname;
-    var bar = document.createElement('nav');
+    bar = document.createElement('nav');
     bar.className = 'rev-bar';
     bar.setAttribute('data-on', '');
     bar.setAttribute('aria-label', 'Layout preview');
-    bar.innerHTML =
-      '<a href="' + base + '?rev=a"' + (rev !== 'b' ? ' aria-current="true"' : '') + '>A · now</a>' +
-      '<a href="' + base + '?rev=b"' + (rev === 'b' ? ' aria-current="true"' : '') + '>B · thinned</a>';
+    [['a', 'A · now'], ['b', 'B · thinned']].forEach(function (o) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.dataset.rev = o[0]; b.textContent = o[1];
+      b.addEventListener('click', function () { swap(o[0]); });
+      bar.appendChild(b);
+    });
     document.body.appendChild(bar);
+    paint();
   });
 })();
 </script>
