@@ -4323,3 +4323,36 @@ overlay" buttons that were 1.15/1.3/1.3rem for no reason are now one size.
 `_src` was backed up to the scratchpad before the sweep. The token block in
 `core.css` carries the rule: **add a step only if no existing one fits — a new
 near-duplicate is how the last twenty-one happened.**
+
+### 37p. Dead pages deleted, and the sweep that found two sub-floor sizes
+
+**Four stale pages deleted** (Cole: *"if it's old we don't need it"*):
+`01-home-uupm-revamp.html` (the July 30 side-by-side, superseded by `?rev=a|b`),
+`_brand-variants.html`, `_groove-options.html`, `_why-options.html`. None was in
+the registry, none was linked from a page — but all four were **publicly served**
+and carried copy from before the rulings. Only HANDOFF and DEVELOPER-HANDOFF
+mention them, as history, which is where they belong.
+
+**`_src-home-template.html` was KEPT** and is not a page: it is the pre-split
+monolith that `tools/split-src.py` reads. Deleting it would remove the
+provenance of `_src/`.
+
+**The verification sweep after the type-scale change caught two things a
+1440-only sweep would have missed.**
+
+1. `.br-fk-badge` on the Ambassador page rendered at **9.6px**, under the
+   **10.6px floor** §36a set when Space Mono came out. It had been under it
+   since that pass; the type audit is what surfaced it.
+2. `.clp-tag` rendered at **8.8px on phones only** — the value lives inside a
+   `max-width` media query, so it is invisible to any desktop measurement. Both
+   are on `--fs-xs` now.
+
+**Final state, measured.** Smallest rendered text on every page checked at 390:
+**10.9px**. Zero horizontal overflow at 1440 or 390 across home, all five club
+pages, all four club collections, apparel, gear, both brand pages, reviews,
+returns, FAQ, search and 404. Distinct sizes per page now 11–19 (was up to 32);
+`--check` reports all 58 identical; `--links` 60/58/2 and zero dead; variants
+pass.
+
+**Lesson worth keeping: sweep at BOTH widths.** A phone-only override is
+invisible to a desktop audit, and that is exactly where the worst offender was.
