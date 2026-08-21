@@ -4233,3 +4233,51 @@ sweep after writing, not only before.**
 Swept after: **zero** hits for cheap / premium / "Down from" / prices in words /
 the inventory count / game-changing / disruptive / affordable luxury /
 tour-proven, across every product page, every collection and the homepage.
+
+### 37n. Our Story, the Ambassador page, Reviews and the support cluster (2026-08-19)
+
+The last of the copy pass.
+
+**Our Story carried a number that contradicted the homepage.** Its stats block
+said *"more than 10,000 orders. Shopify's count, not an estimate"* while the
+homepage says 30,000+ (34,360 verified, §36b). Both were presented as Shopify's
+count. Now *"Customers, and more than 30,000 orders behind them."*
+
+**Our Story also had more self-reference than any other page** — it is the page
+most tempted to explain its own editorial. Six passages out: *"Every one of
+these is checkable. That is the only reason they are on the page"*; *"What is
+unusual is publishing it plainly, per loft, in a table you can read before you
+buy"*; *"because a sixty-day promise with the catches buried is not really a
+sixty-day promise"*; *"That is not a service promise with a number attached.
+There isn't one published, and inventing one would be worse than admitting
+it"*; *"Verbatim from Judge.me, like every quote on this site. Nothing here is
+written by us and attributed to somebody else"*; and the footer note
+*"Photography for this page does not exist yet."* Its putters line also still
+said "cut from a single block".
+
+**The Reviews page was explaining the site's own curation rule** to customers
+(*"The 4-star-and-up rule on this site governs curated pull quotes, not this
+widget"*) and naming the repository (*"stored in the repo verbatim. The live
+site renders the widget itself"*).
+
+**Two forms said "prototype."** True — neither the ambassador application nor
+the contact form sends anywhere — but that is developer language on a customer
+page. Now *"This form doesn't send anywhere yet. Email … and it reaches us
+today."* The disclosure stays until the forms are wired up: the alternative is
+a form that silently eats an application.
+
+**A build guard did its job.** Deleting `moreAside` from three copy files left
+`{{moreAside}}` unresolved and **stopped the build**. The fix is the better
+one: the slot is now `{{#moreAside}}`-optional in all three templates, so a
+page with nothing to say there says nothing — which is how three build notes
+came to be rendering to customers in the first place, filling a slot that
+demanded filling.
+
+**Sweep of all 58 built pages: zero** self-reference, zero tics, zero banned
+claims, zero stale numbers, zero em dashes.
+
+**One orphan, flagged not deleted.** `01-home-uupm-revamp.html` is a July 30
+side-by-side experiment: not in the registry, not built by `build.py`, linked
+from nowhere — but still **publicly served**, and it carries em dashes, "charge
+triple" and "single block". Today's `?rev=a|b` switch supersedes what it was
+for. Recommend deleting it; it is Cole's file and git has it either way.

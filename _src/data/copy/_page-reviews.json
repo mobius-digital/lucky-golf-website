@@ -1,34 +1,49 @@
 {
-  "_": "The all-clubs reviews page. NEXT-PAGES §5. It exists because the homepage's 'Read all 884 reviews' is a clubs-wide figure and cannot point at any single PDP's review block.",
-  "_sets": "Which review pulls make up the page, in the order the chips appear. `file` is _src/data/reviews/<file>.json; `product` is the page a review links to. Totals and histograms come from those files — nothing about a count is typed here.",
-  "_merge": "lgw02-gold is the S-grind product that HANDOFF §23 folded into the 01. It is no longer in products.json, so its 69 reviews are carried as their own chip and linked to the 01 Gold. They are NOT summed into the 01's 551: merging two review sets into a figure no system currently reports would be inventing one (§23h). After Cole's Shopify merge and the Judge.me migration, the 01 becomes 620 and this entry goes away.",
-
-  "crumbName": "Reviews",
-  "eyebrow": "Reviews",
-  "headline": "Every club review",
-  "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden. The one-stars are in the list with everything else.",
-
-  "sets": [
-    { "file": "lgw01-gold", "name": "Carver 01 Gold",     "product": "lgw01-gold" },
-    { "file": "lgp01-gold", "name": "Tracer LGP01 Blade", "product": "lgp01-gold" },
-    { "file": "lgw02-gold", "name": "Carver 01 · S grind", "product": "lgw01-gold" },
-    { "file": "lgp02-gold", "name": "Tracer LGP02 Mallet","product": "lgp02-gold" },
-    { "file": "lgh01",      "name": "Stryker LGH01",      "product": "lgh01" }
-  ],
-
-  "note": "The 4-star-and-up rule on this site governs curated pull quotes, not this widget. A widget that hides its one-stars is a widget nobody believes.",
-
-  "close": {
-    "eyebrow": "Sixty days",
-    "headline": "Or find out yourself",
-    "body": "Every club gets sixty days. Roll the putter, hit one wedge on a mat, and decide with the club in your hands rather than from somebody else's review.",
-    "ctaLabel": "Put one in the bag",
-    "ctaHref": "{{link:c/clubs}}",
-    "cta2Label": "Read the refund policy",
-    "cta2Href": "{{link:returns}}",
-    "aside": "The reviews above are what other people found. Yours is the one that counts."
+ "_": "The all-clubs reviews page. NEXT-PAGES §5. It exists because the homepage's 'Read all 884 reviews' is a clubs-wide figure and cannot point at any single PDP's review block.",
+ "_sets": "Which review pulls make up the page, in the order the chips appear. `file` is _src/data/reviews/<file>.json; `product` is the page a review links to. Totals and histograms come from those files — nothing about a count is typed here.",
+ "_merge": "lgw02-gold is the S-grind product that HANDOFF §23 folded into the 01. It is no longer in products.json, so its 69 reviews are carried as their own chip and linked to the 01 Gold. They are NOT summed into the 01's 551: merging two review sets into a figure no system currently reports would be inventing one (§23h). After Cole's Shopify merge and the Judge.me migration, the 01 becomes 620 and this entry goes away.",
+ "crumbName": "Reviews",
+ "eyebrow": "Reviews",
+ "headline": "Every club review",
+ "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden. The one-stars are in the list with everything else.",
+ "sets": [
+  {
+   "file": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "product": "lgw01-gold"
   },
-
-  "moreHeadline": "The rest of it",
-  "moreAside": "Reviews are pulled from Judge.me and stored in the repo verbatim. The live site renders the widget itself, from the same data."
+  {
+   "file": "lgp01-gold",
+   "name": "Tracer LGP01 Blade",
+   "product": "lgp01-gold"
+  },
+  {
+   "file": "lgw02-gold",
+   "name": "Carver 01 · S grind",
+   "product": "lgw01-gold"
+  },
+  {
+   "file": "lgp02-gold",
+   "name": "Tracer LGP02 Mallet",
+   "product": "lgp02-gold"
+  },
+  {
+   "file": "lgh01",
+   "name": "Stryker LGH01",
+   "product": "lgh01"
+  }
+ ],
+ "note": "The one-stars are in here with everything else.",
+ "close": {
+  "eyebrow": "Sixty days",
+  "headline": "Or find out yourself",
+  "body": "Every club gets sixty days. Roll the putter, hit one wedge on a mat, and decide with the club in your hands rather than from somebody else's review.",
+  "ctaLabel": "Put one in the bag",
+  "ctaHref": "{{link:c/clubs}}",
+  "cta2Label": "Read the refund policy",
+  "cta2Href": "{{link:returns}}",
+  "aside": "The reviews above are what other people found. Yours is the one that counts."
+ },
+ "moreHeadline": "The rest of it",
+ "_pass": "Copy pass 2026-08-19. Two developer notes were rendering to customers: an explanation of the site's OWN four-star curation rule, and 'stored in the repo verbatim. The live site renders the widget itself.' The second names the repo on a live page."
 }

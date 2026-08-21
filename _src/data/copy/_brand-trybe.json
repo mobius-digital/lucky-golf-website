@@ -78,7 +78,6 @@
   "aside": "No follower minimum. That part is settled."
  },
  "moreHeadline": "The rest of it",
- "moreAside": "Everything the program gives and asks is on this page, and the application is at the bottom of it.",
  "_signoff": "ALL TERMS ON THIS PAGE ARE COLE'S, 2026-08-13, given in conversation and via a three-question card. (1) ROSTER REMOVED: he does not want five named people; anyone meeting the criteria can be an ambassador. A future named roster ('Lucky Golf Athletes') exists as an idea only and is deliberately NOT mentioned — same rule as the 02: nothing pre-announced without real terms. (2) THE 10%/AVANTLINK AFFILIATE ROW IS REMOVED from the page at his instruction — he does not want commission advertised on the site. The commission test on the Trybe platform continues OFF-site; do not re-add it here. (3) GROUP CHAT confirmed real and advertised as a perk. (4) THE CLUB GIVE IS DELIBERATELY UNSPECIFIED on the page ('clubs to play — details with your acceptance'): his explicit choice, the specifics travel in the acceptance email the way the returns portal travels in the order confirmation. Do not 'fix' the vagueness by inventing a number. (5) NO COMMISSION ON CLUBS is positioning, not thrift: the homepage sells 'no sponsorships and no middlemen in the price', and a commissioned advocate on the hero category contradicts it. Apparel commission may come later (the Grunk Dolfer brief is the in-house model) and stays OFF this page until its terms exist. (6) The paid-creator ladder is stated as earned-not-promised — a statement of intent Cole described, never an offer with terms. LAYOUT 2026-08-13 (later the same day): Cole ruled the page follows DARTEE'S ambassador layout, not Takomo's — the fork cards, the visible ladder, the inline application. Dartee's TERMS do not carry over: their hero advertises commission and their tiers/stats promise defined rewards and real numbers, neither of which Lucky has. The fork is ONE DOOR (my recommendation, Cole asked for thoughts and approved the form + two-stage ladder via question card): a direct creator door needs terms nobody has defined, and the application's links field is the fast lane that makes it unnecessary. If Cole later defines a direct creator offer, card two gains a CTA and the form a branch — one swap. The gives row became the fork's Ambassador card; the criteria row stays as the page's one photo moment. RESTRICTIONS DRAFTED 2026-08-13 at Cole's request (\"add the restrictions like Takomo does to make it more inclusive\") and NOT YET CONFIRMED BY HIM. The `bar` section's third column is program policy a visitor will read as rules: the promo-code-feed exclusion, the no-script/no-approval line, UNDER 18, and the free-club-hunter line are all my drafting from his stated intent, not quoted terms. The age minimum in particular is a real policy with real consequences — confirm before this ships. The first two columns are safe: they restate criteria already on the page since it was built. Takomo's numeric gate (5k IG / 10k TikTok / 1k YT) is deliberately NOT mirrored — Cole's whole position is that anyone can be an ambassador. BAR EDIT same day: age line REMOVED (Cole: 'the age doesn't matter'), and the promo-code bullet reworded — it filters applicants whose own feeds are wall-to-wall ads, and the first wording read as being about Lucky promo codes, which do not exist for clubs. MONEY 2026-08-13 (later): apparel commission goes ON the page, DARTEE-SHAPED at Cole's instruction — 'just say commission and then you can increase as you go', 'just say monthly payout, don't put whatever the date is', 'all the contractual detail doesn't need to be on the page, they can learn more after they're accepted'. So NO percentages, NO cookie window, NO payout date, NO AvantLink anywhere. (Those figures ARE public on the store's own Affiliate Application page — 10%/60-day/AvantLink — but this page deliberately does not repeat them.) The `earn` section's second column is the load-bearing one: clubs are never commissioned, and that is positioning, not thrift. Every 'nobody is paid per sale' claim was rewritten to be CLUB-SPECIFIC when apparel commission landed — the blanket version became false the moment apparel started paying. FOLLOWER BAR SETTLED 2026-08-13: Cole chose option C — NO published minimum to join, and CLUB SEEDING is the limited, competitive part. His reasoning, and it is the right one: it moves in either direction later without a rewrite — add a follower gate to the club tier, or drop the distinction entirely. I had recommended C over mirroring Takomo's 5k/10k/1k gate (they publish it WITH an exceptions clause) because a status gate contradicts the homepage's own no-status-tax argument, and because a published number has to be enforced against the 900-follower club pro who would be the best ambassador on the roster. NOTE the honesty gain: the previous copy implied every accepted ambassador got a club, which was never going to be true. The guaranteed set (code, commission, chat, drops, reposts) and the competitive one (clubs) are now separated in the fork card, step 3 vs step 4 of the ladder, and both notes.",
  "fork": {
   "eyebrow": "The shape of it",
@@ -118,10 +117,10 @@
   "eyebrow": "The application",
   "title": "Apply as an ambassador",
   "lede": "Five fields, read in batches, answered by a person. The links one is optional, and it is also the fast lane.",
-  "protoLabel": "Prototype",
+  "protoLabel": "Not wired up yet",
   "proto": "these fields are the markup for the Shopify build and nothing sends yet. Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a> and it reaches us today.",
   "cta": "Submit application",
-  "sent": "Nothing was sent. This form is a prototype. Email partners@luckygolf.com and it reaches us today.",
+  "sent": "This form doesn't send anywhere yet. Email partners@luckygolf.com and it reaches us today.",
   "note": "No follower minimum, and no window to wait for. Everyone accepted gets the code, the chat and the drops; clubs go out in batches."
  },
  "bar": {
@@ -179,10 +178,11 @@
     "items": [
      "No code, no commission, no cut. Not now, not at any level.",
      "You get clubs to play because you play, and what you say about them is yours.",
-     "It is the one thing on this page we will not change."
+     "It is the one part of the deal we will not change."
     ]
    }
   ],
   "note": "Rates, timing and the rest of it come with your acceptance. There is no contract to read on a web page."
- }
+ },
+ "_pass": "Copy pass 2026-08-19. The form disclosure said 'This form is a prototype' — true, but developer language on a customer page. Rewritten in the brand's voice; it stays until the form is wired up, because the alternative is a form that silently eats an application."
 }

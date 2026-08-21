@@ -96,7 +96,7 @@
   "eyebrow": "Or write it here",
   "title": "Send a message",
   "lede": "Same inbox as the email address above. Use whichever is in front of you.",
-  "protoLabel": "Prototype",
+  "protoLabel": "Not wired up yet",
   "proto": "these fields are the markup for Shopify's contact form and there is no server behind this file. Nothing here sends. Email support@luckygolf.com and it will reach us today.",
   "topics": [
    "A question before I buy",
