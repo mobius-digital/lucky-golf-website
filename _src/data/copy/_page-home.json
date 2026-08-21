@@ -12,7 +12,7 @@
      },
      {
       "id": "lgw01-black",
-      "ln": "The same wedge, if you'd rather not be asked about it."
+      "ln": "The Carver in black. Same club underneath, quieter on top."
      }
     ]
    },
@@ -21,7 +21,7 @@
     "cards": [
      {
       "id": "lgp01-gold",
-      "ln": "Sits planted behind the ball and holds its line without you steering it."
+      "ln": "Feedback over forgiveness, if that's the trade you want."
      },
      {
       "id": "lgp02-gold",
@@ -39,5 +39,6 @@
     ]
    }
   ]
- }
+ },
+ "_finder": "Two lines changed 2026-08-19: the Black's repeated the Gold PDP's cross-sell hook ('rather not be asked about it') and the Blade's repeated its own buy box ('sits planted behind the ball'). 'Sits planted' now belongs to the Blade PDP alone."
 }

@@ -1,79 +1,80 @@
 {
-  "_": "Editorial for cover-mallet. Shared keys come from the family file.",
-  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "A mallet cover in signature white and gold, in right and left hand. Mallet heads are wide and awkward and most covers do not fit them properly, which is the entire reason this one exists separately from the blade.",
-  "four": [
-    {
-      "k": "Mallet fit",
-      "v": "Cut for a mallet head"
-    },
-    {
-      "k": "Right or left",
-      "v": "It knows which hand you play"
-    },
-    {
-      "k": "One job",
-      "v": "Keeps the putter looking new"
-    },
-    {
-      "k": "In stock",
-      "v": "Ships in one to two days"
-    }
-  ],
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "A mallet is the worst-shaped thing in your bag",
-      "paras": [
-        "Wide, flat and heavy, so it finds every other club on the way in and out. The head is also the part your playing partners look at eighteen times a round.",
-        "Nobody enjoys buying a head cover. Buy it anyway and the putter still looks like the photos in a year."
-      ]
-    },
-    {
-      "eyebrow": "What it fits",
-      "headline": "Mallets, in either hand",
-      "paras": [
-        "Cut for a mallet head: the Tracer LGP02, and most other mallets. Pick the hand you actually play; a mallet cover is not symmetrical and the wrong one will not sit right.",
-        "Playing a blade? The Lucky Blade Cover is the shape you want."
-      ],
-      "facts": {
-        "rows": [
-          {
-            "k": "Type",
-            "v": "Mallet putter cover"
-          },
-          {
-            "k": "Fits",
-            "v": "Mallet heads, including the Tracer LGP02"
-          },
-          {
-            "k": "Hand",
-            "v": "Right and left"
-          },
-          {
-            "k": "Colorway",
-            "v": "Signature white and gold"
-          },
-          {
-            "k": "Closure",
-            "tbd": true
-          },
-          {
-            "k": "Material",
-            "tbd": true
-          },
-          {
-            "k": "Dimensions",
-            "tbd": true
-          }
-        ]
-      }
-    }
-  ],
-  "gallery": [
-    [
-      "products/MalletCoverBottom.png?v=1612818851",
-      "Lucky mallet putter cover, signature white"
+ "_": "Editorial for cover-mallet. Shared keys come from the family file.",
+ "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+ "buyBody": "A mallet cover in signature white and gold, right or left hand. A mallet needs a mallet-shaped cover, which is why this one is separate from the blade.",
+ "four": [
+  {
+   "k": "Mallet fit",
+   "v": "Cut for a mallet head"
+  },
+  {
+   "k": "Right or left",
+   "v": "It knows which hand you play"
+  },
+  {
+   "k": "One job",
+   "v": "Keeps the putter looking new"
+  },
+  {
+   "k": "In stock",
+   "v": "Ships in one to two days"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "Your putter head is the part everyone sees",
+   "paras": [
+    "Eighteen times a round, from four feet away, standing still. It also spends the other four hours wedged against a set of irons in a cart going over kerbs.",
+    "Thirty dollars, and the putter still looks like the photos in a year."
+   ]
+  },
+  {
+   "eyebrow": "What it fits",
+   "headline": "Mallets, in either hand",
+   "paras": [
+    "Cut for a mallet head: the Tracer LGP02, and most other mallets. Pick the hand you play. A mallet cover is not symmetrical and the wrong one will not sit right.",
+    "Playing a blade? The Lucky Blade Cover is the shape you want."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Mallet putter cover"
+     },
+     {
+      "k": "Fits",
+      "v": "Mallet heads, including the Tracer LGP02"
+     },
+     {
+      "k": "Hand",
+      "v": "Right and left"
+     },
+     {
+      "k": "Colorway",
+      "v": "Signature white and gold"
+     },
+     {
+      "k": "Closure",
+      "tbd": true
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     },
+     {
+      "k": "Dimensions",
+      "tbd": true
+     }
     ]
+   }
+  }
+ ],
+ "gallery": [
+  [
+   "products/MalletCoverBottom.png?v=1612818851",
+   "Lucky mallet putter cover, signature white"
   ]
+ ],
+ "_heavy": "Cole 2026-08-19: the same ruling as the Blade. This page was selling a $30 cover by calling our own $229 putter 'the worst-shaped thing in your bag', 'wide and awkward' and 'wide, flat and heavy'. The cover's case does not need the putter to be bad: the head is the part everyone sees and the part a cart dings."
 }

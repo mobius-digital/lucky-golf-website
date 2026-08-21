@@ -4007,3 +4007,40 @@ Black's hook on the Gold's page; once is the argument, three times is a tic.
 **The check now runs two ways** before any batch ships: first clause of each
 module across the five clubs (zero collisions), and repeated openings within a
 single page.
+
+### 37i. The mallet cover, and the homepage (2026-08-19)
+
+**The mallet cover** got the Blade's ruling: it was selling a $30 cover by
+calling our own $229 putter *"the worst-shaped thing in your bag"*, *"wide and
+awkward"* and *"wide, flat and heavy"*. The cover's case does not need the
+putter to be bad. It is the head everyone sees, and the head a cart dings.
+
+**The homepage**, ten edits, every one either a tic, a duplicate of a club
+page, or a claim that had gone stale:
+
+| Was | Why |
+|---|---|
+| Hero: *"Big-brand performance, an honest price, and sixty days to prove it."* | Three fragments, no verb. Now one sentence. **First draft of the replacement said "three times as much" and that was corrected before commit**: a $99 wedge against a big-brand $180–200 is about double, not triple. The line makes the standard-and-price argument without a multiplier to defend. |
+| Gold tile: *"...they all feel like the same club."* | The same-weight claim Cole banned in §37h, still live on the homepage. |
+| Blade band: *"...Line it up, let it go, walk it in."* | Four Culture-doc phrases in one paragraph. Now two. |
+| Why: *"Here's the thing:"* | Throat-clearing. |
+| *"Unrivaled value"* | Superlative. Now "Priced like we mean it". |
+| *"Problem? We got you covered."* | Stock phrase. Now "Not the one? Send it back." |
+| *"the quiet satisfaction of knowing"* | Writerly. |
+| The finish band | Was **near word-for-word the Gold PDP's look section**, and carried the "more or less the point" tic. Rewritten from a different door. |
+| *"If that isn't you..."* | The Gold PDP look's exact opener. |
+| Highlight tile: *"Nineteen degrees of titanium for the shots your long irons keep missing."* | **The Stryker's buy box with three words changed.** |
+
+Two club-finder cards also collided: the Black's repeated the Gold PDP's
+cross-sell hook, the Blade's repeated its own buy box. And *"sits planted
+behind the ball"* was on three pages; it belongs to the Blade PDP alone now.
+
+Checked after: the five family-tile hooks, five finder lines and three
+highlight lines each have five/five/three distinct openings. Zero em dashes.
+Marquee set measures 3,484px at a 390 viewport, so the loop-gap trap (§36b) is
+still clear.
+
+**Still Cole's, unchanged:** "Sold direct" three times on the homepage
+(§36f.1); the review rail still carries the Vokey/Cleveland and Odyssey quotes
+(§26d.2); and the clubs collection lede says the big names *"charge triple"*,
+which has the multiplier problem the hero just avoided.
