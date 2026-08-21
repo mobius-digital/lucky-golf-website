@@ -1,79 +1,79 @@
 {
-  "_": "Editorial for grip-putter-green. Shared keys come from the family file.",
-  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "An oversized putter grip in four sizes, green. A fat grip takes the wrists out of the stroke, which is why the Tracer ships with one fitted as standard. Every size is out of stock at the moment.",
-  "four": [
-    {
-      "k": "Oversized",
-      "v": "1.0 through 5.0"
-    },
-    {
-      "k": "Putter only",
-      "v": "Not for irons"
-    },
-    {
-      "k": "Priced by size",
-      "v": "$19.95 to $26.95"
-    },
-    {
-      "k": "Sold out",
-      "v": "Every size, right now"
-    }
-  ],
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "Quiet hands hole more short putts",
-      "paras": [
-        "The wrists are what turn a four-footer into a five-footer coming back. A thicker grip makes them harder to use, which for most golfers is an improvement.",
-        "It is the smallest change that measurably affects putting, and the one most people never try."
-      ]
-    },
-    {
-      "eyebrow": "Sizing",
-      "headline": "1.0 to 5.0",
-      "paras": [
-        "Four sizes, and the number is the diameter step rather than anything standardised across the industry. Bigger is quieter.",
-        "All four are sold out at the moment."
-      ],
-      "facts": {
-        "rows": [
-          {
-            "k": "Type",
-            "v": "Oversized putter grip"
-          },
-          {
-            "k": "Sizes",
-            "v": "1.0, 2.0, 3.0, 5.0"
-          },
-          {
-            "k": "Finish",
-            "v": "Green"
-          },
-          {
-            "k": "Fitting",
-            "v": "Needs regripping"
-          },
-          {
-            "k": "Material",
-            "tbd": true
-          },
-          {
-            "k": "Weight",
-            "tbd": true
-          },
-          {
-            "k": "Core size",
-            "tbd": true
-          }
-        ]
-      }
-    }
-  ],
-  "gallery": [
-    [
-      "files/Green_Oversized_Grip_Lucky_Golf-Photoroom.png?v=1724359296",
-      "Lucky Golf oversized putter grip, green"
+ "_": "Editorial for grip-putter-green. Shared keys come from the family file.",
+ "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+ "buyBody": "An oversized putter grip in four sizes, green. A fat grip takes the wrists out of the stroke, which is why the Tracer ships with one fitted as standard. Every size is out of stock at the moment.",
+ "four": [
+  {
+   "k": "Oversized",
+   "v": "1.0 through 5.0"
+  },
+  {
+   "k": "Putter only",
+   "v": "Not for irons"
+  },
+  {
+   "k": "Priced by size",
+   "v": "The bigger ones cost more"
+  },
+  {
+   "k": "Sold out",
+   "v": "Every size, right now"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "Quiet hands hole more short putts",
+   "paras": [
+    "The wrists are what turn a four-footer into a five-footer coming back. A thicker grip makes them harder to use, which for most golfers is an improvement.",
+    "It is the smallest change that measurably affects putting, and the one most people never try."
+   ]
+  },
+  {
+   "eyebrow": "Sizing",
+   "headline": "1.0 to 5.0",
+   "paras": [
+    "Four sizes, and the number is the diameter step rather than anything standardised across the industry. Bigger is quieter.",
+    "All four are sold out at the moment."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Oversized putter grip"
+     },
+     {
+      "k": "Sizes",
+      "v": "1.0, 2.0, 3.0, 5.0"
+     },
+     {
+      "k": "Finish",
+      "v": "Green"
+     },
+     {
+      "k": "Fitting",
+      "v": "Needs regripping"
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     },
+     {
+      "k": "Weight",
+      "tbd": true
+     },
+     {
+      "k": "Core size",
+      "tbd": true
+     }
     ]
+   }
+  }
+ ],
+ "gallery": [
+  [
+   "files/Green_Oversized_Grip_Lucky_Golf-Photoroom.png?v=1724359296",
+   "Lucky Golf oversized putter grip, green"
   ]
+ ]
 }

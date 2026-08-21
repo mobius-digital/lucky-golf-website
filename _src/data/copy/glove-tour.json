@@ -1,75 +1,75 @@
 {
-  "_": "Editorial for glove-tour. Shared keys come from the family file.",
-  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "A tour glove with the clover on the closure. It is a glove: it grips, it wears out, you buy another one. This one costs less than the pro-shop equivalent and has better branding on it.",
-  "four": [
-    {
-      "k": "Left or right",
-      "v": "Pick the hand it goes ON"
-    },
-    {
-      "k": "S to XL",
-      "v": "Four sizes"
-    },
-    {
-      "k": "Clover mark",
-      "v": "On the closure"
-    },
-    {
-      "k": "$17.95",
-      "v": "Less than the ones in the pro shop"
-    }
-  ],
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "The one thing in your bag with an expiry date",
-      "paras": [
-        "Gloves are a consumable. They stretch, they go shiny in the palm, and the day you notice is about a month after they stopped helping.",
-        "Buy two. Everyone who plays regularly ends up doing this and nobody regrets it."
-      ]
-    },
-    {
-      "eyebrow": "Which hand",
-      "headline": "The hand it goes on, not the hand you play with",
-      "paras": [
-        "A right-handed golfer wears a glove on the LEFT hand. That trips people up constantly, so: pick Left if you play right-handed.",
-        "Stock is thin at the moment and most combinations are unavailable. The picker grays out anything that is not genuinely buyable rather than letting you find out at checkout."
-      ],
-      "facts": {
-        "rows": [
-          {
-            "k": "Type",
-            "v": "Golf glove"
-          },
-          {
-            "k": "Hand",
-            "v": "Left or right"
-          },
-          {
-            "k": "Sizes",
-            "v": "Small to Extra Large"
-          },
-          {
-            "k": "Mark",
-            "v": "Clover on the closure"
-          },
-          {
-            "k": "Material",
-            "tbd": true
-          },
-          {
-            "k": "Thickness",
-            "tbd": true
-          }
-        ]
-      }
-    }
-  ],
-  "gallery": [
-    [
-      "products/PhotoRoom_000_20220517_095432.png?v=1654540304",
-      "Lucky Tour Glove, clover mark"
+ "_": "Editorial for glove-tour. Shared keys come from the family file.",
+ "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+ "buyBody": "A tour glove with the clover on the closure. It is a glove: it grips, it wears out, you buy another one. This one costs less than the pro-shop equivalent and has better branding on it.",
+ "four": [
+  {
+   "k": "Left or right",
+   "v": "Pick the hand it goes ON"
+  },
+  {
+   "k": "S to XL",
+   "v": "Four sizes"
+  },
+  {
+   "k": "Clover mark",
+   "v": "On the closure"
+  },
+  {
+   "k": "One price",
+   "v": "Every size the same"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "The one thing in your bag with an expiry date",
+   "paras": [
+    "Gloves are a consumable. They stretch, they go shiny in the palm, and the day you notice is about a month after they stopped helping.",
+    "Buy two. Everyone who plays regularly ends up doing this and nobody regrets it."
+   ]
+  },
+  {
+   "eyebrow": "Which hand",
+   "headline": "The hand it goes on, not the hand you play with",
+   "paras": [
+    "A right-handed golfer wears a glove on the LEFT hand. That trips people up constantly, so: pick Left if you play right-handed.",
+    "Stock is thin at the moment and most combinations are unavailable. The picker grays out anything that is not genuinely buyable rather than letting you find out at checkout."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Golf glove"
+     },
+     {
+      "k": "Hand",
+      "v": "Left or right"
+     },
+     {
+      "k": "Sizes",
+      "v": "Small to Extra Large"
+     },
+     {
+      "k": "Mark",
+      "v": "Clover on the closure"
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     },
+     {
+      "k": "Thickness",
+      "tbd": true
+     }
     ]
+   }
+  }
+ ],
+ "gallery": [
+  [
+   "products/PhotoRoom_000_20220517_095432.png?v=1654540304",
+   "Lucky Tour Glove, clover mark"
   ]
+ ]
 }

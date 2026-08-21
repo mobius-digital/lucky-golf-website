@@ -4192,3 +4192,44 @@ one — standing on the pull quote lands you on Reviews, standing on the marquee
 lands you on Others-also-viewed. The whole thing is one guarded block at the bottom of `core.css` and
 one IIFE at the bottom of `core.js`; **delete both in one commit** once Cole
 picks, or promote rev B by dropping the `[data-rev="b"]` guard.
+
+### 37m. The gear pages, and a price that was never real (2026-08-19)
+
+Thirteen gear pages, audited as a set rather than read one by one. The tone
+problems were minor. The pricing was not.
+
+**A fabricated markdown.** `grip-putter-stock`'s chip block read
+**"$19.95 / Down from $30."** Every gear variant in `shopify-raw.json` was
+checked — grips, gloves, tees, covers — and **not one carries a
+`compareAtPrice`**. $30 is a price this grip has never been sold at. That is
+the same reason FINISH-LINE §1a killed the Sale collection, except this one was
+live on a product page. Removed.
+
+**A price that had gone stale in prose.** `cover-driver` said **"Thirty
+dollars"** twice about a cover that costs **$40**. Spelling a price out in
+words dodges the no-typed-price rule and then rots silently, because nobody
+re-reads prose when a number moves. Both instances gone; the argument works
+without it.
+
+**Eleven more typed prices** came out of chip blocks and body copy: five clover
+grips ("From $9.95"), two putter grips ("$19.95 to $26.95"), the glove
+("$17.95 / Less than the ones in the pro shop" — also a price comparison), the
+tees ("$9.95", plus the buy body spelling it out as "nine dollars ninety-five"),
+and the mallet cover. Every one is replaced by a real product fact.
+
+**A live inventory count was on the tees page**: *"In stock / 1,257 packs of
+them."* Stale the moment one sells, and an internal number besides.
+
+**The last self-referential copy**: the tees' *"not published anywhere we can
+verify, so they are marked below rather than guessed at"*, the blade cover's
+*"That is the entire job"* and *"Buy one anyway."*
+
+**A violation I introduced and caught in the same pass.** The driver cover's
+replacement line read *"this is the cheap insurance."* Spec-to-Benefit bans the
+word outright and §26d had already removed it from **this exact page** in July.
+Recorded because the lesson is the guard, not the slip: **re-run the banned-claim
+sweep after writing, not only before.**
+
+Swept after: **zero** hits for cheap / premium / "Down from" / prices in words /
+the inventory count / game-changing / disruptive / affordable luxury /
+tour-proven, across every product page, every collection and the homepage.

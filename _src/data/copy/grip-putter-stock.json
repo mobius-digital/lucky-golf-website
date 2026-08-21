@@ -1,74 +1,75 @@
 {
-  "_": "Editorial for grip-putter-stock. Shared keys come from the family file.",
-  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "The plain putter grip. If the oversized 3.0 that ships on the Tracer is more grip than your hands want, this is what you swap it for.",
-  "four": [
-    {
-      "k": "Standard size",
-      "v": "Not oversized"
-    },
-    {
-      "k": "$19.95",
-      "v": "Down from $30"
-    },
-    {
-      "k": "Putter only",
-      "v": "Not for irons"
-    },
-    {
-      "k": "In stock",
-      "v": "Ships in one to two days"
-    }
-  ],
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "Not everyone gets on with a fat grip",
-      "paras": [
-        "The oversized grip takes the wrists out of the stroke, which helps most golfers and actively annoys the ones who putt with feel.",
-        "If you are in the second group, this is the fix, and it is the smallest change you can make to a putter."
-      ]
-    },
-    {
-      "eyebrow": "What it fits",
-      "headline": "Putters",
-      "paras": [
-        "A standard putter grip. It is not an iron grip and it will not feel right on one."
-      ],
-      "facts": {
-        "rows": [
-          {
-            "k": "Type",
-            "v": "Putter grip, standard size"
-          },
-          {
-            "k": "Fits",
-            "v": "Putters"
-          },
-          {
-            "k": "Fitting",
-            "v": "Needs regripping, not a slip-on"
-          },
-          {
-            "k": "Material",
-            "tbd": true
-          },
-          {
-            "k": "Weight",
-            "tbd": true
-          },
-          {
-            "k": "Core size",
-            "tbd": true
-          }
-        ]
-      }
-    }
-  ],
-  "gallery": [
-    [
-      "files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382",
-      "Stock Lucky putter grip"
+ "_": "Editorial for grip-putter-stock. Shared keys come from the family file.",
+ "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+ "buyBody": "The plain putter grip. If the oversized 3.0 that ships on the Tracer is more grip than your hands want, this is what you swap it for.",
+ "four": [
+  {
+   "k": "Standard size",
+   "v": "Not oversized"
+  },
+  {
+   "k": "Fits the Tracer",
+   "v": "Blade or mallet"
+  },
+  {
+   "k": "Putter only",
+   "v": "Not for irons"
+  },
+  {
+   "k": "In stock",
+   "v": "Ships in one to two days"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "Not everyone gets on with a fat grip",
+   "paras": [
+    "The oversized grip takes the wrists out of the stroke, which helps most golfers and actively annoys the ones who putt with feel.",
+    "If you are in the second group, this is the fix, and it is the smallest change you can make to a putter."
+   ]
+  },
+  {
+   "eyebrow": "What it fits",
+   "headline": "Putters",
+   "paras": [
+    "A standard putter grip. It is not an iron grip and it will not feel right on one."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Putter grip, standard size"
+     },
+     {
+      "k": "Fits",
+      "v": "Putters"
+     },
+     {
+      "k": "Fitting",
+      "v": "Needs regripping, not a slip-on"
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     },
+     {
+      "k": "Weight",
+      "tbd": true
+     },
+     {
+      "k": "Core size",
+      "tbd": true
+     }
     ]
+   }
+  }
+ ],
+ "gallery": [
+  [
+   "files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382",
+   "Stock Lucky putter grip"
   ]
+ ],
+ "_price": "REMOVED 2026-08-19: the chip block said '$19.95 / Down from $30'. NO gear variant in Shopify carries a compareAtPrice — checked every grip, glove, tee and cover in shopify-raw.json — so $30 was a price this grip has never been sold at. A fabricated 'was' price is not a tone problem, it is a claim we cannot support. Same reason FINISH-LINE 1a killed the Sale collection."
 }

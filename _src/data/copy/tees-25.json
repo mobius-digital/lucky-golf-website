@@ -1,66 +1,67 @@
 {
-  "_": "Editorial for tees-25. Shared keys come from the family file.",
-  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
-  "buyBody": "Twenty-five tees with a clover on them. You are out of tees. You have been out of tees since March. This is nine dollars ninety-five.",
-  "four": [
-    {
-      "k": "25 tees",
-      "v": "In a pack"
-    },
-    {
-      "k": "Lucky branded",
-      "v": "Clover on each one"
-    },
-    {
-      "k": "$9.95",
-      "v": "The least you can spend here"
-    },
-    {
-      "k": "In stock",
-      "v": "1,257 packs of them"
-    }
-  ],
-  "details": [
-    {
-      "eyebrow": "What it's for",
-      "headline": "You are out of tees",
-      "paras": [
-        "Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It is the one golf product with a genuinely disposable life cycle.",
-        "Twenty-five in a pack. Put some in the bag and some in the car."
-      ]
-    },
-    {
-      "eyebrow": "What you get",
-      "headline": "Twenty-five of them",
-      "paras": [
-        "A pack of twenty-five, clover-marked. Length and material are not published anywhere we can verify, so they are marked below rather than guessed at."
-      ],
-      "facts": {
-        "rows": [
-          {
-            "k": "Type",
-            "v": "Golf tees"
-          },
-          {
-            "k": "Quantity",
-            "v": "25 per pack"
-          },
-          {
-            "k": "Mark",
-            "v": "Clover"
-          },
-          {
-            "k": "Length",
-            "tbd": true
-          },
-          {
-            "k": "Material",
-            "tbd": true
-          }
-        ]
-      }
-    }
-  ],
-  "gallery": [],
-  "photoBrief": "Flat-lay, square. A loose scatter of tees on a dark surface with the clover mark legible on at least three of them. This is the ONLY product in the store with no photograph in Shopify at all. The tile and the PDP both fall back to this slot until one exists."
+ "_": "Editorial for tees-25. Shared keys come from the family file.",
+ "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
+ "buyBody": "Twenty-five tees with a clover on them. You are out of tees, and you have been since March. Put some in the bag and some in the car.",
+ "four": [
+  {
+   "k": "25 tees",
+   "v": "In a pack"
+  },
+  {
+   "k": "Lucky branded",
+   "v": "Clover on each one"
+  },
+  {
+   "k": "Bag or car",
+   "v": "Put some in both"
+  },
+  {
+   "k": "In stock",
+   "v": "Ships in one to two days"
+  }
+ ],
+ "details": [
+  {
+   "eyebrow": "What it's for",
+   "headline": "You are out of tees",
+   "paras": [
+    "Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It is the one golf product with a genuinely disposable life cycle.",
+    "Twenty-five in a pack. Put some in the bag and some in the car."
+   ]
+  },
+  {
+   "eyebrow": "What you get",
+   "headline": "Twenty-five of them",
+   "paras": [
+    "A pack of twenty-five, clover-marked."
+   ],
+   "facts": {
+    "rows": [
+     {
+      "k": "Type",
+      "v": "Golf tees"
+     },
+     {
+      "k": "Quantity",
+      "v": "25 per pack"
+     },
+     {
+      "k": "Mark",
+      "v": "Clover"
+     },
+     {
+      "k": "Length",
+      "tbd": true
+     },
+     {
+      "k": "Material",
+      "tbd": true
+     }
+    ]
+   }
+  }
+ ],
+ "gallery": [],
+ "photoBrief": "Flat-lay, square. A loose scatter of tees on a dark surface with the clover mark legible on at least three of them. This is the ONLY product in the store with no photograph in Shopify at all. The tile and the PDP both fall back to this slot until one exists.",
+ "_price": "2026-08-19: the chips carried the price AND a live inventory count ('In stock / 1,257 packs of them'), which is both stale the moment it moves and an internal number. The buy body spelled the price out in words to get around the no-typed-price rule, which is the same violation."
 }
