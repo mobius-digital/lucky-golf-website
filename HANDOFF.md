@@ -4081,3 +4081,48 @@ self-reference, zero "one block" across all seven built pages.
 triple"* (same multiplier problem as the hero, §37i); the full 01-vs-02
 comparison section for a club with no price, lofts or date; and *"Bag the
 blade"* as a live CTA on a sold-out putter.
+
+### 37k. Cole's answers, and the polo and hat (2026-08-19)
+
+**"If it's in the guide it's true."** It is not in the guide. Exhaustive search
+of all four reference documents for `toe hang`, `toe-hang`, `plumber`, `neck`,
+`perimeter`, `face-balanced`: **zero hits**. The guide's entire LGP02 entry is
+twelve lines (category, head shape, construction, material, loft, length,
+finish, shaft, grip, hand, headcover, price) and the manufacturer spec table is
+loft / lie / head weight / length. HANDOFF §15 recorded "slight toe hang
+(plumber neck)" as a correction *taken from the guide*; that attribution was
+wrong. **Left on the page, still flagged, still Cole's.**
+
+**"Would Takomo say this?"** — the *"charge triple"* lede. No. Read live,
+Takomo makes **no multiplier claim anywhere on their site**: the homepage says
+"GOLF, THE FAIR WAY" and "Tour-proven golf clubs priced accessibly", and the
+product pages simply put $99 next to a $649 iron and let it sit.
+Spec-to-Benefit says the same ("let the price speak"). The clubs lede now
+states the standard without the number: *"The same materials and the same
+machining as the big names, without the sponsorships and the middlemen in the
+price."*
+
+**"What would Takomo say?"** — *"Sold direct"* ×3. Takomo says it **zero
+times**; the mechanism never appears, only the result. Ours keeps it once, in
+the Why section, where it IS the argument and where the three claims are
+spelled out. The two bare chips are gone: the marquee now reads "Forged
+wedges, milled putters" and the close trust row "Ships in 1–2 business days".
+Marquee set re-measured at 3,780px against a 1920 viewport, so §36b's
+loop-gap trap stays clear.
+
+**Comparison correct, "Bag the blade" fine** — no change, per Cole.
+
+**The polo and the hat.** Both closes typed the price into editorial ($67,
+$29). The polo's fit note ended on *"the guide above is worth a look"* and its
+piece copy commented on its own spec list (*"matters more in August than it
+sounds like it does in a spec list"*). **The hat carried a logic slip**: you
+could wear it "for eighteen holes in July and still want it on your head **at
+the turn**" — the turn is hole nine, so the sentence undercut its own claim.
+
+**Found on the audit: six close headlines began "Go [verb]."** Go own the
+green, Go roll it pure, Go hit it further, Go put one in the bag, Go look like
+you mean it, Go put something on your head. The polo and hat are now
+"Thirteen prints, one shirt" and "Ten of them, one size". **The four club and
+homepage closes still all open "Go" — Cole's, and two of them ("Roll it pure",
+and the hybrid's slot where "Fill the gap" belongs) are locked product CTAs
+from Culture v2.**

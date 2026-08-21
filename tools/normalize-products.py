@@ -260,8 +260,9 @@ COLLECTIONS = [
          facets=[("wedge", "Wedges"), ("putter", "Putters"),
                  ("hybrid", "Hybrid"), ("driver", "Driver")],
          eyebrow="The full bag",
-         lede="Wedges, putters and a hybrid. The same standard the big names charge "
-              "triple for, without the sponsorships and the middlemen in the price."),
+         lede="Wedges, putters and a hybrid. The same materials and the same "
+              "machining as the big names, without the sponsorships and the "
+              "middlemen in the price."),
     dict(id="wedges", name="Wedges", shopify=None, fams=["wedge"], tpl="clp",
          eyebrow="The scoring clubs",
          lede="Pick the loft you keep leaving yourself, and the finish you want to "

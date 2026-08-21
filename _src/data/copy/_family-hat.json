@@ -53,9 +53,9 @@
  "sibEyebrow": "The rest of them",
  "sibHeadline": "Nine other hats",
  "chooseCta": "Add it",
- "closeHeadline": "Go put something on your",
- "closeFoil": "head",
- "closeBody": "$29, one size, five-panel snapback. Thirty days to send it back unworn if it isn't you.",
+ "closeHeadline": "Ten of them, one",
+ "closeFoil": "size",
+ "closeBody": "One size, five-panel snapback. Thirty days to send it back unworn if it isn't you.",
  "closeTrust": [
   "30-day apparel returns",
   "Ships in 1&ndash;2 business days",
@@ -89,7 +89,8 @@
  "_piece": "Cole 2026-07-31: ONE section that works for any design. Every colorway used to carry its own bespoke headline and two paragraphs, which is 22 pages of copy saying the same thing 22 ways. What differs between designs is the photograph, not the garment. Anything genuinely specific to one design goes in that product's own file and overrides these keys.",
  "pieceHeadline": "Five panels, a snapback, and a sweatband that actually works.",
  "pieceParas": [
-  "Every Lucky hat is the same build: a five-panel snapback with a moisture-wicking sweatband and laser-cut ventilation, so it is one of the few hats you can wear for eighteen holes in July and still want on your head at the turn.",
+  "Every Lucky hat is the same build: a five-panel snapback with a moisture-wicking sweatband and laser-cut ventilation. Eighteen holes in July and you still want it on at the end.",
   "The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the colour it sits on. Pick the one that goes with the rest of what you own."
- ]
+ ],
+ "_pass": "Copy pass 2026-08-19. The close typed $29 in. The piece copy said you could wear it 'for eighteen holes in July and still want it on your head AT THE TURN' — the turn is hole nine, so the sentence undercut its own claim. The close headline was another 'Go [verb]'."
 }
