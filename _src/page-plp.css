@@ -25,7 +25,7 @@
 
 .plp-stock{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 4px;
   background:none;border:0;cursor:pointer;color:var(--ink-muted);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase}
 .plp-stock .bx{width:16px;height:16px;flex:none;border:2px solid var(--ink-14);
   border-radius:2px;background:var(--white);transition:background .18s,border-color .18s}
 .plp-stock:hover{color:var(--ink)}
@@ -40,10 +40,10 @@
 .plp-sort label{color:var(--ink-muted)}
 .plp-sort select{min-height:44px;padding:7px 12px;border:2px solid var(--ink-14);
   border-radius:var(--r);background:var(--white);color:var(--ink);cursor:pointer;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase}
 .plp-sort select:hover{border-color:var(--ink)}
 
-.plp-count{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;
+.plp-count{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
   letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
 
 /* ---------- grid ----------
@@ -60,7 +60,7 @@
 .plp-grid .ptile[data-out] .pt-ph img{filter:grayscale(1);opacity:.5}
 .plp-grid .ptile[data-out] .pt-tag{background:var(--ink);color:var(--cream)}
 .plp-grid .pt-sum{margin:2px auto 0;max-width:28ch;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;letter-spacing:.08em;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-muted)}
 
 /* ---------- empty state ---------- */
@@ -75,7 +75,7 @@
 .plp-sib{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
-  font-size:.88rem;color:var(--ink);transition:border-color .18s,background .18s}
+  font-size:var(--fs-lg);color:var(--ink);transition:border-color .18s,background .18s}
 .plp-sib:hover{border-color:var(--ink)}
 .plp-aside{margin-top:30px;color:var(--ink-70)}
 
@@ -101,7 +101,7 @@
   .plp-grid .ptile{padding:20px 14px}
   .plp-grid .ptile .pt-ph{margin:-20px -14px 14px}
   .plp-grid .pt-nm{font-size:clamp(1.1rem,4.6vw,1.45rem)}
-  .plp-grid .pt-sum{font-size:.56rem}
+  .plp-grid .pt-sum{font-size:var(--fs-xs)}
 }
 
 /* ---------- quick add · Cole's notes 5 and 7 ----------
@@ -112,13 +112,13 @@
 .qadd{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:9px 14px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   cursor:pointer;color:var(--ink);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;font-weight:700;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;
   box-shadow:0 2px 10px rgba(23,20,15,.10);
   transition:border-color .18s,background .18s,transform .2s}
 .qadd svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round}
-.qadd .ar{font-size:.8rem;line-height:1}
+.qadd .ar{font-size:var(--fs-md);line-height:1}
 .qadd:hover{border-color:var(--ink);transform:translateY(-1px)}
 .qadd:active{transform:none}
 /* the tile-wide stretch link would otherwise swallow the click */
@@ -128,6 +128,6 @@
   /* on a phone the pill would cover a third of a 168px photo, so it goes
      full width under the image instead of on it */
   .pt-add{position:static;margin-top:10px}
-  .qadd{width:100%;justify-content:center;box-shadow:none;font-size:.56rem;padding:8px 10px}
+  .qadd{width:100%;justify-content:center;box-shadow:none;font-size:var(--fs-xs);padding:8px 10px}
 }
 

@@ -24,7 +24,7 @@
 
 .trust{border-bottom:1px solid var(--ink-08)}
 .trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,44px);padding:18px var(--pad)}
-.trust .mono{color:var(--ink-muted);font-size:.7rem;letter-spacing:.17em}
+.trust .mono{color:var(--ink-muted);font-size:var(--fs-sm);letter-spacing:.17em}
 .trust .div{width:1px;height:14px;background:var(--ink-14)}
 .stars{position:relative;display:inline-block;line-height:0;vertical-align:-.15em}
 .stars .s-bg,.stars .s-fg{display:flex;gap:3px}
@@ -34,7 +34,7 @@
 .stars .s-fg svg{fill:var(--gold)}
 .stars--dark .s-bg svg{fill:rgba(246,242,232,.22)}
 .card-rating{display:flex;align-items:center;gap:9px;color:var(--ink-muted)}
-.card-rating .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;letter-spacing:.1em}
+.card-rating .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.1em}
 .tok{color:var(--ink-muted)}
 
 /* ==========================================================================
@@ -56,11 +56,11 @@
 .card-ph .stamp{position:absolute;left:0;top:16px;background:var(--ink);color:var(--cream-70);
   padding:6px 11px 6px 14px;border-radius:0 2px 2px 0}
 .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;gap:10px}
-.card-body .hook{color:var(--ink-70);font-size:.99rem;line-height:1.5;flex:1}
+.card-body .hook{color:var(--ink-70);font-size:var(--fs-base);line-height:1.5;flex:1}
 .card-lofts{display:flex;align-items:center;gap:8px;color:var(--ink-38)}
 .card-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:6px}
-.price{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;font-size:1.02rem}
-.price small{font-variation-settings:'wdth' 90;font-weight:500;font-size:.72rem;color:var(--ink-muted);
+.price{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;font-size:var(--fs-body)}
+.price small{font-variation-settings:'wdth' 90;font-weight:500;font-size:var(--fs-sm);color:var(--ink-muted);
   letter-spacing:.04em;text-transform:uppercase;margin-right:.35em}
 
 /* ==========================================================================
@@ -100,10 +100,10 @@
 .claim{padding:clamp(26px,2.8vw,42px) clamp(20px,2.4vw,38px) 8px;border-right:1px solid var(--ink-14)}
 .claim:first-child{padding-left:0}
 .claim:last-child{border-right:0;padding-right:0}
-.claim .num{display:flex;align-items:center;gap:9px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;
+.claim .num{display:flex;align-items:center;gap:9px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
   letter-spacing:.2em;color:var(--gold-lo);margin-bottom:14px}
 .claim h3{margin:0 0 10px}
-.claim p{margin:0;color:var(--ink-70);font-size:.99rem;line-height:1.55}
+.claim p{margin:0;color:var(--ink-70);font-size:var(--fs-base);line-height:1.55}
 
 /* ==========================================================================
    DEVICE 5 · ASIDE MOMENT
@@ -118,18 +118,18 @@
    ========================================================================== */
 .proof-hd{text-align:center;max-width:min(820px,94%);margin:0 auto clamp(30px,3.6vw,52px)}
 .proof-hd .agg{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap}
-.proof-hd .agg .mono{color:var(--ink-muted);font-size:.7rem}
+.proof-hd .agg .mono{color:var(--ink-muted);font-size:var(--fs-sm)}
 .revs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
 .rev{border:1px solid var(--ink-08);border-radius:var(--r);padding:26px 24px 24px;
   display:flex;flex-direction:column;gap:14px;background:var(--white)}
 .rev .q{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 84;font-weight:600;
-  font-size:1.02rem;line-height:1.42;flex:1}
+  font-size:var(--fs-body);line-height:1.42;flex:1}
 .rev .who{display:flex;align-items:center;gap:8px;border-top:1px solid var(--ink-08);padding-top:14px}
-.rev .who .mono{font-size:.7rem;letter-spacing:.13em;color:var(--ink-muted)}
+.rev .who .mono{font-size:var(--fs-sm);letter-spacing:.13em;color:var(--ink-muted)}
 /* clover verified badge */
 .vfd{display:inline-flex;align-items:center;gap:5px;color:var(--green);flex:none}
 .vfd .mk{width:15px;height:15px}
-.vfd span{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase}
+.vfd span{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.13em;text-transform:uppercase}
 
 /* ==========================================================================
    LIFESTYLE BREAK
@@ -157,10 +157,10 @@
 .tile:hover .tile-ph img{transform:scale(1.04)}
 .tile-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
 .tile-body .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
-  text-transform:uppercase;letter-spacing:.02em;font-size:.92rem;line-height:1.15}
+  text-transform:uppercase;letter-spacing:.02em;font-size:var(--fs-base);line-height:1.15}
 .tile-body .sub{color:var(--ink-muted);font-size:.85rem}
 .tile-body .pr{margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.95rem}
+  font-weight:700;font-size:var(--fs-base)}
 .gear-foot{margin-top:clamp(26px,3vw,44px);display:flex;flex-wrap:wrap;gap:14px;
   align-items:center;justify-content:space-between}
 
@@ -186,11 +186,11 @@
 .vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-hi);stroke-width:1.6;fill:none;
   stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .vp-item h3{margin:0 0 5px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
-  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:1.06rem;line-height:1;color:var(--cream)}
-.vp-item p{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:46ch}
+  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:var(--fs-body);line-height:1;color:var(--cream)}
+.vp-item p{margin:0;color:var(--cream-70);font-size:var(--fs-base);line-height:1.5;max-width:46ch}
 .vp-collage{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(148px,1fr);gap:var(--gut)}
 .vp-collage .ph{border-radius:var(--r);padding:20px}
-.vp-collage .ph .lbl .mono{font-size:.68rem;letter-spacing:.14em}
+.vp-collage .ph .lbl .mono{font-size:var(--fs-xs);letter-spacing:.14em}
 .vp-collage > *:first-child{grid-row:span 2}
 @media (max-width:900px){.vp-in{grid-template-columns:1fr}}
 
@@ -203,7 +203,7 @@
 .fnd-tabs{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--ink-14)}
 .fnd-tab{background:none;border:0;cursor:pointer;padding:14px 22px;min-height:52px;position:relative;
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;
-  text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;color:var(--ink-muted)}
+  text-transform:uppercase;letter-spacing:.05em;font-size:var(--fs-md);color:var(--ink-muted)}
 .fnd-tab[aria-selected="true"]{color:var(--ink)}
 .fnd-tab[aria-selected="true"]::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold)}
 .fnd-panel[hidden]{display:none}
@@ -224,15 +224,15 @@
   transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .fnd-c:hover .im img{transform:scale(1.045)}
 .fnd-c .bd{display:flex;flex-direction:column;flex:1;padding:4px 22px 24px}
-.fnd-c .sku{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+.fnd-c .sku{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
 .fnd-c .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
-  text-transform:uppercase;font-size:1.5rem;line-height:.94;margin:7px 0 8px}
-.fnd-c .ln{margin:0 auto;font-size:.9rem;line-height:1.5;color:var(--ink-muted);max-width:28ch}
-.fnd-c .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:1.1rem;margin-top:12px}
-.fnd-c .pr em{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-style:normal;font-size:.66rem;
+  text-transform:uppercase;font-size:var(--fs-xl);line-height:.94;margin:7px 0 8px}
+.fnd-c .ln{margin:0 auto;font-size:var(--fs-lg);line-height:1.5;color:var(--ink-muted);max-width:28ch}
+.fnd-c .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:var(--fs-lead);margin-top:12px}
+.fnd-c .pr em{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-style:normal;font-size:var(--fs-xs);
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
 .fnd-c .go{margin-top:14px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}
+  font-weight:700;font-size:var(--fs-md);text-transform:uppercase;letter-spacing:.05em}
 .fnd-c .ar{display:inline-block;transition:transform .22s}
 .fnd-c:hover .ar{transform:translateX(4px)}
 .fnd-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
@@ -265,7 +265,7 @@
 .vp-ed h3{margin:0 0 20px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
   font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.96;color:var(--cream);
   font-size:clamp(1.7rem,3vw,2.7rem);max-width:16ch}
-.vp-ed p{margin:0 0 15px;color:var(--cream-70);font-size:1rem;line-height:1.64;max-width:54ch}
+.vp-ed p{margin:0 0 15px;color:var(--cream-70);font-size:var(--fs-body);line-height:1.64;max-width:54ch}
 .vp-ed p:last-child{margin-bottom:0}
 .vp-ed .aside{margin-top:20px;color:var(--cream)}
 @media (max-width:900px){.vp-ed{grid-template-columns:1fr}}
@@ -302,11 +302,11 @@
   background:linear-gradient(to top,rgba(23,20,15,.86) 0%,rgba(23,20,15,.42) 40%,rgba(23,20,15,0) 74%)}
 .gtile-in{position:relative;z-index:2;margin-top:auto;width:100%;
   padding:clamp(20px,2.2vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:9px}
-.gtile-ct{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;letter-spacing:.16em;
+.gtile-ct{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.16em;
   text-transform:uppercase;color:var(--cream-70)}
 .gtile-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;font-weight:800;
   text-transform:uppercase;font-size:clamp(1.8rem,3vw,2.7rem);line-height:.9;margin:0;color:var(--cream)}
-.gtile-ln{margin:0;color:var(--cream-70);font-size:.95rem;line-height:1.5;max-width:44ch}
+.gtile-ln{margin:0;color:var(--cream-70);font-size:var(--fs-base);line-height:1.5;max-width:44ch}
 .gtile .btn{margin-top:6px}
 /* Top-right callout chips on a highlight tile (Takomo's NEW/rating badges,
    Cole 2026-08-15). Same recipe as .pt-tag — small text on a gold fill is
@@ -316,7 +316,7 @@
    surface (§9 radius law). */
 .gtile-flag{position:absolute;top:14px;right:14px;z-index:3;display:flex;gap:6px}
 .gtile-flag .fl{background:var(--lg-foil-tag);color:var(--ink);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.68rem;font-weight:700;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px}
 .gtile-flag .fl--new{background:var(--ink);color:var(--cream)}
 @media (max-width:760px){.gtile--wide{grid-column:auto}}

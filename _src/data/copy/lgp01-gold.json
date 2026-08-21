@@ -258,11 +258,11 @@
     "id": "lgp02-gold",
     "name": "Tracer Mallet",
     "forWho": "Arc, with forgiveness",
-    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line. You give up some feedback to get that.",
+    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-centre strike on line. You give up some feedback to get that.",
     "facts": [
      {
-      "k": "Toe hang",
-      "v": "Slight (plumber neck)"
+      "k": "Neck",
+      "v": "Slant, with toe hang"
      },
      {
       "k": "Head",
@@ -305,5 +305,6 @@
  },
  "_quote": "Added 2026-08-19. The Blade was the only club with no signature quote; the Gold, the Mallet and the Stryker all have one. Contiguous verbatim excerpt from Jay S.'s review in the lgp01-gold pull, not a splice.",
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
- "_heavy": "Cole 2026-08-19: don't say the Blade is heavy, it makes it sound bad. The fact is unchanged (385 g against the mallet's 365, both on the sheet) but it is written as what it DOES. Spec-to-Benefit's words for it: 'stability through the stroke', 'resists face manipulation', 'planted and deliberate'."
+ "_heavy": "Cole 2026-08-19: don't say the Blade is heavy, it makes it sound bad. The fact is unchanged (385 g against the mallet's 365, both on the sheet) but it is written as what it DOES. Spec-to-Benefit's words for it: 'stability through the stroke', 'resists face manipulation', 'planted and deliberate'.",
+ "_neck": "DETERMINED FROM THE PRODUCT PHOTOGRAPHY 2026-08-19 (Cole: 'you look and determine'). Four Shopify studio shots of the LGP02 were examined at full resolution.\n1. NOT A PLUMBER NECK. A plumber neck bends forward, runs horizontally, then drops into a short vertical post offset from and parallel to the shaft. This club has ONE smooth bend where the shaft flows straight into the heel: a short SLANT neck. The word was wrong on both putter pages and in HANDOFF 15, which attributed it to a guide that never contained it.\n2. TOE HANG IS REAL. It is heel-shafted with the shaft axis outside the centre of gravity, so the toe hangs and it is NOT face-balanced. The direction of the claim was right. 'Slight' is dropped: how much it hangs cannot be read off a photo, it needs the club balanced on a finger, and a slant-neck fang mallet is usually moderate rather than slight.\n3. PERIMETER WEIGHTING CONFIRMED. It is a fang mallet: two long rear wings carrying mass at the extremes with the centre hollowed out. Textbook high-MOI perimeter weighting, and Spec-to-Benefit's 'stability through geometry rather than raw weight' describes exactly this shape."
 }

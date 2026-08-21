@@ -10,17 +10,17 @@
 .se-hd .wrap{position:relative;z-index:1}
 
 .se-form{display:flex;gap:12px;margin-top:clamp(26px,3vw,40px);max-width:680px}
-.se-form input{flex:1;min-width:0;font:inherit;font-size:1.06rem;color:var(--ink);
+.se-form input{flex:1;min-width:0;font:inherit;font-size:var(--fs-body);color:var(--ink);
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   padding:14px 18px;min-height:56px}
 .se-form input:focus{outline:none;border-color:var(--gold)}
 .se-form input::placeholder{color:var(--ink-38)}
 .se-form .btn{min-height:56px;flex:none}
-.se-hint{margin:16px 0 0;max-width:56ch;font-size:.95rem;line-height:1.6;color:var(--ink-muted)}
+.se-hint{margin:16px 0 0;max-width:56ch;font-size:var(--fs-base);line-height:1.6;color:var(--ink-muted)}
 
 .se-body{padding-top:clamp(28px,3vw,44px)}
 .se-count{margin:0 0 clamp(20px,2.4vw,32px);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
-  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+  font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
 .se-count:empty{display:none}
 .se-grid[hidden]{display:none}
 

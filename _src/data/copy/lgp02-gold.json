@@ -57,15 +57,15 @@
   "who": "austin s. &middot; Verified buyer"
  },
  "priceNote": "Right or left hand",
- "buyBody": "The putter that comes with the big grip already on it. Milled 304 stainless, a slight toe hang for the arc you already have, and enough weight at the edges that a toe strike still holds its line. Right or left hand.",
+ "buyBody": "The putter that comes with the big grip already on it. Milled 304 stainless, a slant neck that gives it toe hang for the arc you already have, and enough weight out in the wings that a toe strike still holds its line. Right or left hand.",
  "four": [
   {
    "k": "100% CNC-milled",
    "v": "304 stainless, one-piece feel"
   },
   {
-   "k": "Slight toe hang",
-   "v": "Plumber neck, for a natural arc"
+   "k": "Slant neck",
+   "v": "Toe hang, for a natural arc"
   },
   {
    "k": "365 g",
@@ -96,7 +96,7 @@
  ],
  "clubHeadline": "The club you use most, thought about least. Lag it close and walk it in.",
  "clubParas": [
-  "The short ones coming back are what wreck a round, and most of the time it's the wrists. So the Tracer Mallet ships with the oversized 3.0 grip already on it, which takes the wrists out of the stroke. The plumber neck gives it a slight toe hang that swings on the arc you already have, and the weight sits out at the edges so a putt off the toe still holds its line. CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping."
+  "The short ones coming back are what wreck a round, and most of the time it's the wrists. So the Tracer Mallet ships with the oversized 3.0 grip already on it, which takes the wrists out of the stroke. The slant neck gives it toe hang, so it swings on the arc you already have, and the weight sits out in the wings so a putt off the toe still holds its line. CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping."
  ],
  "clubSpecs": [
   {
@@ -109,7 +109,7 @@
   },
   {
    "k": "Design",
-   "v": "One-piece 304 stainless head, milled face, 3.5&deg; of loft and 365 g at 35 inches. Plumber neck, slight toe hang, gold finish, oversized 3.0 grip fitted."
+   "v": "One-piece 304 stainless head, milled face, 3.5&deg; of loft and 365 g at 35 inches. Slant neck, fang wings, gold finish, oversized 3.0 grip fitted."
   },
   {
    "k": "For who",
@@ -158,11 +158,11 @@
     "id": "lgp02-gold",
     "name": "Tracer Mallet",
     "forWho": "Arc, with forgiveness",
-    "body": "Slight toe hang from a plumber neck, so it works with the arc you already have. Perimeter weighting keeps an off-center strike on line. You give up some feedback to get that.",
+    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-centre strike on line. You give up some feedback to get that.",
     "facts": [
      {
-      "k": "Toe hang",
-      "v": "Slight (plumber neck)"
+      "k": "Neck",
+      "v": "Slant, with toe hang"
      },
      {
       "k": "Head",
@@ -375,7 +375,7 @@
  "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the problem (the short ones coming back).",
  "clubGrinds": [
   {
-   "k": "The neck: plumber, slight toe hang",
+   "k": "The neck: slant, with toe hang",
    "v": "If your stroke arcs, the head swings with it instead of fighting it. Most strokes arc more than their owners think."
   },
   {
@@ -385,5 +385,6 @@
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold. See the note in lgp01-gold.json for why the Clubs matrix runs figures as columns on a putter. specSub used to name \"the Product Reference Guide v1.8\" in customer-facing text.",
  "_reviewHeadline": "Was \"What 58 golfers said\". Cole's homepage ruling (HANDOFF 36b): never a precise SMALL review count in brand copy. The widget prints \"Based on 58 reviews\" under the score either way, so nothing is hidden; it just is not the headline. The Blade keeps its count at 147 and the Gold keeps 551.",
- "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_neck": "DETERMINED FROM THE PRODUCT PHOTOGRAPHY 2026-08-19 (Cole: 'you look and determine'). Four Shopify studio shots of the LGP02 were examined at full resolution.\n1. NOT A PLUMBER NECK. A plumber neck bends forward, runs horizontally, then drops into a short vertical post offset from and parallel to the shaft. This club has ONE smooth bend where the shaft flows straight into the heel: a short SLANT neck. The word was wrong on both putter pages and in HANDOFF 15, which attributed it to a guide that never contained it.\n2. TOE HANG IS REAL. It is heel-shafted with the shaft axis outside the centre of gravity, so the toe hangs and it is NOT face-balanced. The direction of the claim was right. 'Slight' is dropped: how much it hangs cannot be read off a photo, it needs the club balanced on a finger, and a slant-neck fang mallet is usually moderate rather than slight.\n3. PERIMETER WEIGHTING CONFIRMED. It is a fang mallet: two long rear wings carrying mass at the extremes with the centre hollowed out. Textbook high-MOI perimeter weighting, and Spec-to-Benefit's 'stability through geometry rather than raw weight' describes exactly this shape."
 }

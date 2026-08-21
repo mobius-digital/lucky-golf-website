@@ -4281,3 +4281,45 @@ side-by-side experiment: not in the registry, not built by `build.py`, linked
 from nowhere — but still **publicly served**, and it carries em dashes, "charge
 triple" and "single block". Today's `?rev=a|b` switch supersedes what it was
 for. Recommend deleting it; it is Cole's file and git has it either way.
+
+### 37o. The neck, determined from the photographs; and the type scale (2026-08-19)
+
+**Cole: "you look and determine."** Four Shopify studio shots of the LGP02 were
+opened at full resolution. Three findings, and the copy now matches all three.
+
+1. **It is NOT a plumber neck.** A plumber neck bends forward, runs
+   horizontally, then drops into a short vertical post offset from and parallel
+   to the shaft. This club has **one smooth bend where the shaft flows straight
+   into the heel: a short slant neck.** The word was wrong on both putter pages,
+   and HANDOFF §15 had attributed it to a guide that never contained it.
+2. **Toe hang is real.** It is heel-shafted with the shaft axis outside the
+   centre of gravity, so the toe hangs and it is **not** face-balanced. The
+   direction of the claim was right. **"Slight" is dropped** — how much it hangs
+   cannot be read off a photograph (it needs the club balanced on a finger), and
+   a slant-neck fang mallet is usually moderate rather than slight.
+3. **Perimeter weighting confirmed.** It is a fang mallet: two long rear wings
+   carrying mass at the extremes, centre hollowed out. Textbook high-MOI, and
+   exactly what Spec-to-Benefit means by "stability through geometry rather than
+   raw weight."
+
+**The type scale.** Before: **71 distinct `font-size` declarations across 349
+rules**, and **21 of them between .66rem and 1.0625rem** — a 0.4rem span cut
+into 21 pieces, which reads as inconsistency rather than hierarchy. Eight
+tokens now (`--fs-xs` through `--fs-xl`), **309 of 349 rules on the scale**, 31
+left as `clamp()` because they are the display system (`.disp` / `d-xl` …
+`d-s`), and 9 genuine one-offs.
+
+| Club PDP at 1440 | Before | After | Takomo |
+|---|---|---|---|
+| Distinct rendered sizes | 32 | **15** | 14 |
+| Top three carry | 39% | **66%** | 84% |
+| Body/UI sizes | ~21 | **6** | — |
+
+Every move was under 1px, and it shows: page height 11,306 → 11,341 (+35px),
+nothing reflowed, `scrollWidth` 1425 at 1440 and 390 at 390, and **no text fell
+below the 10.6px floor** §36a set when Space Mono came out. Three "close this
+overlay" buttons that were 1.15/1.3/1.3rem for no reason are now one size.
+
+`_src` was backed up to the scratchpad before the sweep. The token block in
+`core.css` carries the rule: **add a step only if no existing one fits — a new
+near-duplicate is how the last twenty-one happened.**

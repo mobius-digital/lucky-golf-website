@@ -17,7 +17,7 @@
 .gr-block .club-specs{margin-top:22px}
 
 /* a product with no reviews yet says so rather than borrowing a score */
-.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+.jm-none{margin:0 0 18px;font-size:var(--fs-body);line-height:1.6;color:var(--ink-70)}
 
 @media (max-width:760px){
   .gr-two{grid-template-columns:1fr;gap:clamp(28px,6vw,40px)}

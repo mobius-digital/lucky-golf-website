@@ -24,8 +24,8 @@
    but it should not look as available as the rest */
 .sib--out .sib-ph img{filter:grayscale(1);opacity:.5}
 .sib-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
-  font-size:.82rem;line-height:1.2;color:var(--ink)}
-.sib-meta{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.66rem;letter-spacing:.1em;
+  font-size:var(--fs-md);line-height:1.2;color:var(--ink)}
+.sib-meta{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-muted)}
 .sib--out .sib-meta{color:var(--gold-lo)}
 
@@ -39,7 +39,7 @@
 .ph--tall{aspect-ratio:4/5}
 
 /* a product with no reviews yet says so rather than borrowing a score */
-.jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
+.jm-none{margin:0 0 18px;font-size:var(--fs-body);line-height:1.6;color:var(--ink-70)}
 
 @media (max-width:1180px){
   .sibs{grid-template-columns:repeat(5,1fr)}
@@ -49,7 +49,7 @@
 }
 @media (max-width:620px){
   .sibs{grid-template-columns:repeat(3,1fr);gap:10px}
-  .sib-nm{font-size:.74rem}
+  .sib-nm{font-size:var(--fs-sm)}
 }
 
 /* Swatches moved to pdp.css — the club template needs them too now that
@@ -60,13 +60,13 @@
 /* ==========================================================================
    SIZE GUIDE — inside the modal, not a section on the page (Cole 2026-07-31)
    ========================================================================== */
-.sg-intro{margin:6px 0 0;font-size:.98rem;line-height:1.6;color:var(--ink-70)}
+.sg-intro{margin:6px 0 0;font-size:var(--fs-base);line-height:1.6;color:var(--ink-70)}
 .sg-units{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:20px 0 18px}
 .sg-units-lbl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
-  font-weight:700;font-size:.9rem;margin-right:4px}
+  font-weight:700;font-size:var(--fs-lg);margin-right:4px}
 .sg-unit{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:8px 4px;
   background:none;border:0;cursor:pointer;color:var(--ink);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:.9rem}
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;font-size:var(--fs-lg)}
 .sg-unit .dot{width:17px;height:17px;flex:none;border:2px solid var(--ink-38);border-radius:50%;
   display:grid;place-items:center;transition:border-color .16s}
 .sg-unit[aria-checked="true"] .dot{border-color:var(--ink)}
@@ -88,16 +88,16 @@
    longest value stretching one of them */
 .sg-tbl col.lbl{width:120px}
 .sg-tbl th,.sg-tbl td{padding:11px 6px;text-align:center;vertical-align:middle}
-.sg-tbl thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.72rem;letter-spacing:.12em;
+.sg-tbl thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted);font-weight:400;
   padding-bottom:12px;border-bottom:2px solid var(--ink)}
 .sg-tbl thead th:first-child{text-align:left;white-space:nowrap;padding-left:0}
 .sg-tbl tbody th{text-align:left;padding-left:0;white-space:nowrap;
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
-  font-size:.92rem;color:var(--ink)}
-.sg-tbl tbody td{font-family:'Archivo',sans-serif;font-size:.8rem;color:var(--ink-70);
+  font-size:var(--fs-base);color:var(--ink)}
+.sg-tbl tbody td{font-family:'Archivo',sans-serif;font-size:var(--fs-md);color:var(--ink-70);
   font-variant-numeric:tabular-nums}
 .sg-tbl tbody tr + tr th,.sg-tbl tbody tr + tr td{border-top:1px solid var(--ink-08)}
 
-.sg-note{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:.7rem;line-height:1.7;
+.sg-note{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);line-height:1.7;
   text-transform:none;letter-spacing:.01em;color:var(--ink-muted)}
