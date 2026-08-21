@@ -1,5 +1,5 @@
 {
- "_": "Editorial for the All Clubs collection page. Catalogue facts (price, stock, photo, name) come from products.json — nothing here retypes one.",
+ "_": "Collections pass 2026-08-19. The story row headline collided with the homepage's new finish band ('the first thing the reviews talk about'), and its second row ended on the page describing its own editorial decision ('written down here rather than three clicks away, because finding it at the wrong moment is worse than reading it now').",
  "_facts": "Every spec sentence below is from Product Reference Guide v1.8. No comparison table on this page: a wedge measured against a putter is meaningless, so the mixed collection gets the family router instead.",
  "_price": "Deliberately no price-justification paragraph anywhere on this page. Cole cut that from all four club PDPs (HANDOFF §13, note 3) and the homepage's Why Lucky owns the price objection.",
  "bands": [
@@ -36,7 +36,7 @@
  },
  "router": {
   "eyebrow": "Start here",
-  "headline": "Three questions, and one of them is yours.",
+  "headline": "Which part of the round is costing you?",
   "sub": "Five clubs, and they answer completely different problems. Pick the part of the round that keeps costing you shots.",
   "cards": [
    {
@@ -65,7 +65,7 @@
  "fitting": {
   "eyebrow": "Not sure",
   "headline": "Tell us what keeps going wrong.",
-  "body": "The finder on the homepage walks the same three questions in about a minute, and it is built around the shot you are trying to fix rather than the club you think you want. If it doesn't settle it, a person will.",
+  "body": "The finder on the homepage asks the same three questions and builds from the shot you are trying to fix. If it doesn't settle it, a person will.",
   "ctaFinder": "Use the club finder",
   "ctaAsk": "Ask a person",
   "aside": "Sixty days on any club. Returns need approval and a photo before you send anything back."
@@ -76,10 +76,10 @@
   "rows": [
    {
     "photo": "Landscape 4:3. Golfer mid-swing on course with a Lucky wedge, late low sun raking across the head so the gold reads as metal rather than paint. Real course, real turf, no studio.",
-    "rowHeadline": "The finish is the first thing anyone mentions",
+    "rowHeadline": "Everyone asks about the finish",
     "paras": [
-     "Read enough of the reviews and a pattern shows up before anyone gets to distance or spin: playing partners ask about the club. That is not an accident. The gold is a real finish on a forged head, not a coating over a stock casting.",
-     "It is also the part that has to survive. The face is CNC-milled and sandblasted, and the head is 1020 forged carbon steel, which is soft enough to feel and soft enough to mark. Clubs that get used look like clubs that get used."
+     "Read enough of the reviews and it shows up before anyone gets to distance or spin: playing partners ask about the club. The gold is a real finish on a forged head, not a coating over a stock casting.",
+     "It also has to survive. The face is CNC-milled and sandblasted over 1020 forged carbon steel, which is soft enough to feel and soft enough to mark. Clubs that get used look like clubs that get used."
     ]
    },
    {
@@ -88,7 +88,7 @@
     "flip": true,
     "paras": [
      "Every club has a sixty-day window. Putters can go on the green during it, and they come back if they still look new: no face marks, no sole wear, no bag chatter. Wedges get one club out of the wrapper, tested on a turf mat, grooves unworn. Hybrids come back unused.",
-     "Club returns need approval and a photo before anything ships, and return shipping is on you. That is the whole policy, written down here rather than three clicks away, because finding it at the wrong moment is worse than reading it now."
+     "Club returns need approval and a photo before anything ships, and return shipping is on you."
     ]
    }
   ]

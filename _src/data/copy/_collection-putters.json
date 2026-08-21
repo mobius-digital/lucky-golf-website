@@ -1,5 +1,5 @@
 {
- "_": "Editorial for the Putters collection page.",
+ "_": "Collections pass 2026-08-19. Cole banned 'from one block of X' as tacky (37f); this page had it as a row headline ('One block of stainless, each') and in both comparison fact columns. The story rows also ended on 'That is the whole argument'.",
  "_facts": "All specs from Product Reference Guide v1.8, including the manufacturer tables (LGP01 385 g, LGP02 365 g, both 3.5° loft, 72° lie, 35\" length).",
  "_toehang": "The 'slight toe hang / plumber neck' line that v1.1 carried for the LGP02 is NOT used here — v1.8 dropped it and HANDOFF §17a/§18c says treat it as unconfirmed. Note that lgp02-gold.json's helpPick module still asserts it; that needs settling one way or the other.",
  "_stock": "LGP01 is entirely sold out (qty -12). Tiles and the comparison card both say so from the catalogue — nothing here hard-codes it.",
@@ -26,7 +26,7 @@
  "compare": {
   "eyebrow": "What's the difference",
   "headline": "Same loft, same lie, same length. The head is the decision.",
-  "sub": "There are only two putters and almost everything a spec sheet can measure about them is identical: 3.5&deg; of loft, a 72&deg; lie, 35&Prime; long, both fully CNC-milled from one block. What changes is twenty grams and the shape of what sits behind the face.",
+  "sub": "There are only two putters, and almost everything a spec sheet can measure about them is identical: 3.5&deg; of loft, a 72&deg; lie, 35&Prime; long, both CNC-milled stainless. What changes is twenty grams and the shape of what sits behind the face.",
   "scales": [
    {
     "k": "weight",
@@ -57,7 +57,7 @@
      },
      {
       "k": "Construction",
-      "v": "CNC-milled from one block"
+      "v": "CNC-milled stainless"
      },
      {
       "k": "Loft &amp; lie",
@@ -94,7 +94,7 @@
      },
      {
       "k": "Construction",
-      "v": "CNC-milled from one block"
+      "v": "CNC-milled stainless"
      },
      {
       "k": "Loft &amp; lie",
@@ -126,9 +126,9 @@
   "rows": [
    {
     "photo": "Landscape 4:3. Both Tracers face-up side by side on a putting green at dawn, milling pattern catching the light across both faces.",
-    "rowHeadline": "One block of stainless, each",
+    "rowHeadline": "Cut, not poured",
     "paras": [
-     "Both heads are cut from a single billet rather than poured into a mold and finished. That is a slower way to make a putter and it is why these two sit at $199 and $229 instead of somewhere under a hundred.",
+     "Both heads are machined out of solid stainless rather than poured into a mold and finished. It is the slower way to make a putter, and it is why these two sit at $199 and $229 instead of $400.",
      "The blade is 431 stainless, the mallet is 304. Both carry the same 3.5&deg; of loft and the same 72&deg; lie, which means a stroke that works with one will work with the other. Nothing about setup changes when you switch."
     ]
    },
@@ -138,7 +138,7 @@
     "flip": true,
     "paras": [
      "385&nbsp;g against 365&nbsp;g is not much on a scale and is plenty in your hands. The blade keeps its mass in a small head; the mallet spreads it further from the face.",
-     "That is the whole argument, and both are worth putting with for a few rounds before deciding. Sixty days is enough time to know. Just keep the sole off the cart path."
+     "Both are worth putting with for a few rounds before you decide, and sixty days is enough time to know. Keep the sole off the cart path while you do."
     ]
    }
   ]

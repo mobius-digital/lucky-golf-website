@@ -264,8 +264,8 @@ COLLECTIONS = [
               "triple for, without the sponsorships and the middlemen in the price."),
     dict(id="wedges", name="Wedges", shopify=None, fams=["wedge"], tpl="clp",
          eyebrow="The scoring clubs",
-         lede="The clubs you use most and think about least. Pick the loft you keep "
-              "missing and the finish you want to look down at."),
+         lede="Pick the loft you keep leaving yourself, and the finish you want to "
+              "look down at."),
     dict(id="putters", name="Putters", shopify=None, fams=["putter"], tpl="clp",
          eyebrow="On the green",
          lede="Two heads, same loft, same lie, same length. Which one you want comes "
@@ -277,9 +277,8 @@ COLLECTIONS = [
     dict(id="hybrid", name="Hybrid", shopify=None, fams=["hybrid", "driver"],
          tpl="clp",
          eyebrow="The long approach",
-         lede="One club for when the green is still a long way off and the lie isn't "
-              "helping. Titanium, nineteen degrees, and easier to hit than the iron "
-              "it replaces."),
+         lede="One club, for when the green is a long way off and the lie isn't "
+              "helping. Titanium, nineteen degrees, right or left hand."),
     dict(id="polos", name="Polos", shopify="polos",
          fams=["polo-classic", "polo-blade"],
          facets=[("polo-classic", "Classic collar"), ("polo-blade", "Blade collar")],

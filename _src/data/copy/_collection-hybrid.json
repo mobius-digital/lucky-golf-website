@@ -1,76 +1,72 @@
 {
-  "_": "Editorial for the Hybrid collection page. One product, so no comparison and no router — the bands, the fitting CTA and the story carry it.",
-  "_facts": "All specs from Product Reference Guide v1.8: titanium head, 19° loft, 59° lie, 235 g ±3, 40.5\" length, Stiff flex graphite with a mid kick point, 40\" original shaft length, 68 g shaft weight, 58 g grip. Finish description is quoted almost directly from the guide.",
-  "_driver": "This collection was 'Hybrid & Driver' until 2026-07-31. LGD01 is discontinued and v1.8 has no driver section at all, so the collection was renamed rather than left holding a dead tile. When the new driver's specs land, add it back and rename.",
-  "_distance": "No yardage claim anywhere on this page. '200–220 yd' came off the old Shopify description, not the guide, and the guide is the authority on product facts (HANDOFF §15).",
-
-  "bands": [
-    {
-      "label": "The Stryker",
-      "lede": "Titanium head, nineteen degrees, stiff graphite. One club, one loft, both hands.",
-      "ids": ["lgh01"]
-    }
-  ],
-
-  "tags": {
-    "lgh01": "19&deg; titanium"
-  },
-
-  "fitting": {
-    "eyebrow": "Not sure",
-    "headline": "It replaces the club you keep not hitting.",
-    "body": "Nineteen degrees is long-iron territory, and a hybrid head gets the ball up from lies a long iron makes you fight. If there is a club at the top of your bag you reach for and then put back, this is the one it is standing in for.",
-    "ctaFinder": "Use the club finder",
-    "ctaAsk": "Ask a person",
-    "aside": "Hybrids have to come back completely unused inside the sixty days, so decide off a mat before you take it out."
-  },
-
-  "story": {
-    "eyebrow": "The detail",
-    "headline": "One club, and a lot of gold.",
-    "rows": [
-      {
-        "photo": "Landscape 4:3. Crown-down view of the Stryker at address on fairway turf, so the gold starburst on the gloss black crown reads from the center out. Overcast light, no hard specular.",
-        "rowHeadline": "The crown is the whole look",
-        "paras": [
-          "Gloss black, with a gold starburst radiating from the center and fading to black at the edges, and the clover mark sitting on top of it. The face is brushed satin gold, the sole is polished mirror gold, and there is a gold ferrule at the hosel.",
-          "Three different treatments of the same color on one head is a strange thing to commit to, and it is the reason this club does not look like a hybrid from anywhere else."
-        ]
-      },
-      {
-        "photo": "Landscape 4:3. Sole-up macro showing the Glide Sole shaping and the mirror finish, held over turf.",
-        "rowHeadline": "Titanium, and a sole that gets out of the way",
-        "flip": true,
-        "paras": [
-          "The head is titanium with a Flex Channel face and a Glide Sole, at 235&nbsp;g and a 59&deg; lie. The shaft is a Stiff flex graphite with a mid kick point, playing to 40.5&Prime;.",
-          "Stiff is the only flex it comes in, which is worth knowing before you order: several of the reviews that are not five stars are from players who wanted something softer."
-        ]
-      }
+ "_": "Collections pass 2026-08-19. The fitting body was the Stryker PDP's new intro almost word for word ('a club at the top of your bag you reach for and then put back').",
+ "_facts": "All specs from Product Reference Guide v1.8: titanium head, 19° loft, 59° lie, 235 g ±3, 40.5\" length, Stiff flex graphite with a mid kick point, 40\" original shaft length, 68 g shaft weight, 58 g grip. Finish description is quoted almost directly from the guide.",
+ "_driver": "This collection was 'Hybrid & Driver' until 2026-07-31. LGD01 is discontinued and v1.8 has no driver section at all, so the collection was renamed rather than left holding a dead tile. When the new driver's specs land, add it back and rename.",
+ "_distance": "No yardage claim anywhere on this page. '200–220 yd' came off the old Shopify description, not the guide, and the guide is the authority on product facts (HANDOFF §15).",
+ "bands": [
+  {
+   "label": "The Stryker",
+   "lede": "Titanium head, nineteen degrees, stiff graphite. One club, one loft, both hands.",
+   "ids": [
+    "lgh01"
+   ]
+  }
+ ],
+ "tags": {
+  "lgh01": "19&deg; titanium"
+ },
+ "fitting": {
+  "eyebrow": "Not sure",
+  "headline": "It replaces the club you keep not hitting.",
+  "body": "Nineteen degrees is long-iron territory, and a hybrid head gets the ball up from lies a long iron makes you fight. If your longest iron is the one you leave in the bag, this is what goes in its place.",
+  "ctaFinder": "Use the club finder",
+  "ctaAsk": "Ask a person",
+  "aside": "Hybrids have to come back completely unused inside the sixty days, so decide off a mat before you take it out."
+ },
+ "story": {
+  "eyebrow": "The detail",
+  "headline": "One club, and a lot of gold.",
+  "rows": [
+   {
+    "photo": "Landscape 4:3. Crown-down view of the Stryker at address on fairway turf, so the gold starburst on the gloss black crown reads from the center out. Overcast light, no hard specular.",
+    "rowHeadline": "The crown is the whole look",
+    "paras": [
+     "Gloss black, with a gold starburst radiating from the center and fading to black at the edges, and the clover mark sitting on top of it. The face is brushed satin gold, the sole is polished mirror gold, and there is a gold ferrule at the hosel.",
+     "Three different treatments of the same color on one head is a strange thing to commit to, and it is the reason this club does not look like a hybrid from anywhere else."
     ]
-  },
-
-  "quote": {
-    "id": "lgh01",
-    "n": "John L.L.",
-    "q": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now"
-  },
-
-  "upsell": [
-    {
-      "sku": "GRP-BLK-STD",
-      "name": "Clover Grips, black",
-      "price": "$9.95",
-      "variant": "Standard",
-      "why": "Grips wear out years before the club does.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0848.jpg?v=1701474078"
-    },
-    {
-      "sku": "HeadCover-Driver-SignatureWhite",
-      "name": "Driver Head Cover",
-      "price": "$40",
-      "variant": "",
-      "why": "No Lucky club ships with a cover.",
-      "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"
-    }
+   },
+   {
+    "photo": "Landscape 4:3. Sole-up macro showing the Glide Sole shaping and the mirror finish, held over turf.",
+    "rowHeadline": "Titanium, and a sole that gets out of the way",
+    "flip": true,
+    "paras": [
+     "The head is titanium with a Flex Channel face and a Glide Sole, at 235&nbsp;g and a 59&deg; lie. The shaft is a Stiff flex graphite with a mid kick point, playing to 40.5&Prime;.",
+     "Stiff is the only flex it comes in, and that is worth knowing before you order: the reviews that are not five stars are mostly players who wanted something softer."
+    ]
+   }
   ]
+ },
+ "quote": {
+  "id": "lgh01",
+  "n": "John L.L.",
+  "q": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now"
+ },
+ "upsell": [
+  {
+   "sku": "GRP-BLK-STD",
+   "name": "Clover Grips, black",
+   "price": "$9.95",
+   "variant": "Standard",
+   "why": "Grips wear out years before the club does.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0848.jpg?v=1701474078"
+  },
+  {
+   "sku": "HeadCover-Driver-SignatureWhite",
+   "name": "Driver Head Cover",
+   "price": "$40",
+   "variant": "",
+   "why": "No Lucky club ships with a cover.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/DriverHeadCover1.png?v=1676592799"
+  }
+ ]
 }

@@ -4044,3 +4044,40 @@ still clear.
 (§36f.1); the review rail still carries the Vokey/Cleveland and Odyssey quotes
 (§26d.2); and the clubs collection lede says the big names *"charge triple"*,
 which has the multiplier problem the hero just avoided.
+
+### 37j. The collections (2026-08-19)
+
+Two jobs: stop the collections repeating the club pages rewritten the same day,
+and stop the pages narrating themselves.
+
+**Collisions, all created by earlier passes today:**
+
+| Collection said | Where it already was |
+|---|---|
+| Wedges lede: *"The clubs you use most and think about least."* | **The Tracer Mallet's headline**, word for word, on the club the sentence is actually true of. Wedges lede rewritten. |
+| Hybrid lede: *"easier to hit than the iron it replaces"* | The Stryker's what-it-replaces module AND the homepage highlight tile. |
+| Hybrid fitting: *"a club at the top of your bag you reach for and then put back"* | **The Stryker PDP's new intro**, near word for word. |
+| Clubs story: *"The finish is the first thing anyone mentions"* | The homepage's new finish band, written an hour earlier. |
+
+**The page stops narrating itself**, four places: the comparison footnote
+*"Every figure above is from the manufacturer spec sheet. Nothing on this page
+is a rating we invented"* (in `page-clp.html`, so it rendered on every
+collection with a comparison); *"written down here rather than three clicks
+away, because finding it at the wrong moment is worse than reading it now"*;
+*"That is the whole argument"*; and the 02 note's *"When those are real they
+will be here and not before."*
+
+**"One block" is off the putters collection** — Cole's §37f ruling. It was a
+row headline (*"One block of stainless, each"*), both comparison fact columns
+and the comparison sub.
+
+**Caught on the re-check:** the new wedges lede opened *"The scoring clubs"*,
+which is that collection's own eyebrow, two lines above it. Fixed before commit.
+
+Seven collection ledes, seven distinct openings. Zero em dashes, zero
+self-reference, zero "one block" across all seven built pages.
+
+**Left alone, waiting on Cole:** the clubs lede's *"the big names charge
+triple"* (same multiplier problem as the hero, §37i); the full 01-vs-02
+comparison section for a club with no price, lofts or date; and *"Bag the
+blade"* as a live CTA on a sold-out putter.
