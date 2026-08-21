@@ -128,7 +128,7 @@
   },
   {
    "k": "Design",
-   "v": "Forged 1020 head with a dual-texture face: CNC-milled grooves, micro-milled between, sandblasted across. Weighting shifts by loft."
+   "v": "Forged 1020 head with a dual-texture face: CNC-milled grooves, micro-milled between, sandblasted across."
   },
   {
    "k": "For who",
@@ -172,8 +172,8 @@
   "headline": "Start with the wedge you already carry",
   "sub": "Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic."
  },
- "specHeadline": "Every loft swings the same",
- "specSub": "300 grams of head at every loft, so your 60 feels like your 52. Lie, length and bounce by loft, straight off the sheet.",
+ "specHeadline": "The whole wedge, by loft",
+ "specSub": "Lie, length and bounce for all six, plus the shaft and the grip. Straight off the manufacturer's sheet.",
  "specTabs": [
   {
    "label": "Clubs",
@@ -356,7 +356,7 @@
    "code": "LGW01",
    "meta": "6 lofts",
    "tag": "New",
-   "hook": "Everything the Gold does around the greens, in a finish that stays quiet in the bag."
+   "hook": "Same club, no gold. For the golfer who'd rather not be asked about it."
   },
   {
    "id": "lgh01",
@@ -395,5 +395,6 @@
  "_01": "THE 01. Cole 2026-07-31: Lucky sells one wedge. The K-grind gold and the S-grind gold were two products at two prices for a difference that is not one, so they are merged — see merge_grinds() in normalize-products.py. This file is the merged product. Its loft axis is now Loft & grind (50K, 52K, 52S...) and every variant is $99.",
  "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
  "_specTabs": "Takomo-shaped 2026-08-18 at Cole's instruction: three tabs (Clubs / Shafts / Grips), each ONE card = caption, short key/value head, black-header matrix. Better than theirs in one way: K and S get their own rows instead of '10F / 12V' crammed in a cell. Every number is the Product Reference Guide's. NO swing weight, tip diameter, grip length/core: the guide does not publish them and they are not invented. GRIP: one row, Regular, 55 g (Cole 2026-08-18; the 2 g K/S difference is not worth a second row). FINISH: plain 'Gold', no link (Cole 2026-08-18: the finish swatches are one scroll up in the buy box). BOUNCE/GRIND: exactly Takomo's shape, ONE row, 'K / S' in a cell where both exist. Lie the same way, in the matrix not the head. Head block is Head material / Face / Finish only, stacked vertically. BOUNCE: Takomo's suffix notation (8F) adopted with OUR letters (8K, 10S) so the matrix matches the picker's 52K / 52S.",
- "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_weight": "Cole 2026-08-19: do not write that the wedge weighs the same at every loft. The 300 g row stays in the spec matrix (it is the manufacturer's sheet, and the table is data) but no copy is built on it, and no 'they all feel like the same club' line derives from it. The Design bullet's 'Weighting shifts by loft' also came off: unsourced, and it contradicted the sheet it sits above."
 }

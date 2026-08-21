@@ -36,7 +36,7 @@
   ]
  ],
  "priceNote": "Right hand &middot; sold out",
- "buyBody": "Heavy, honest, and milled from 431 stainless. A blade for the golfer who wants to know exactly where the putt came off the face. Right hand, and sold out at the moment.",
+ "buyBody": "It sits planted behind the ball and tells you exactly where the putt came off the face. Milled 431 stainless, 3.5 degrees, 35 inches. Right hand, and sold out at the moment.",
  "four": [
   {
    "k": "CNC-milled",
@@ -63,7 +63,7 @@
  ],
  "clubHeadline": "A smaller head tells you more. Roll it pure.",
  "clubParas": [
-  "A blade is a choice. Less help on the miss, and in return it tells you exactly where on the face you hit it, every single time. The Tracer Blade is CNC-milled 431 stainless, muted and solid off the face with no ping, and heavy for a blade at 385 grams so it stays planted through a four-footer when your hands want to get involved. If you'd rather know than be forgiven, this is your putter."
+  "A blade is a choice. Less help on the miss, and in return it tells you exactly where on the face you hit it, every single time. The Tracer Blade is CNC-milled 431 stainless, muted and solid off the face with no ping, and it sits planted through a four-footer when your hands want to get involved. If you'd rather know than be forgiven, this is your putter."
  ],
  "clubSpecs": [
   {
@@ -189,7 +189,7 @@
      }
     ]
    },
-   "aside": "Twelve grams heavier than the mallet's oversized 3.0, on the club that asks for more feel."
+   "aside": "Twelve grams more than the mallet's oversized 3.0, on the club that asks for more feel."
   }
  ],
  "look": {
@@ -197,7 +197,7 @@
   "headline": "Less club, more information",
   "paras": [
    "Most blades are chrome and try to disappear. This one is gold, 385 grams, and has no interest in disappearing.",
-   "A small head that doesn't go unnoticed. Your playing partners will see it before they see the stroke.",
+   "Gold, 385 grams, and no interest in disappearing.",
    "If you would rather the head covered the miss, the Tracer Mallet is the other one."
   ],
   "aside": "Roll it pure."
@@ -226,7 +226,7 @@
    "id": "lgw01-gold",
    "name": "Carver 01 Gold",
    "code": "LGW01",
-   "hook": "The wedge most people add first. Six lofts, same feel."
+   "hook": "The wedge most people add first. Two grinds, either hand."
   }
  ],
  "helpPick": {
@@ -238,7 +238,7 @@
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving. The trade is that a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. It sits more planted and forgives less. The trade is that a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -246,7 +246,7 @@
      },
      {
       "k": "Head",
-      "v": "Blade, 431 stainless, 385 g"
+      "v": "Blade, 431 stainless, 385&nbsp;g"
      },
      {
       "k": "Grip",
@@ -288,8 +288,8 @@
  "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the choice a blade is.",
  "clubGrinds": [
   {
-   "k": "The head: heavy on purpose",
-   "v": "Twenty grams more than the mallet. That extra weight is what stops the face twisting on a short one and keeps your hands out of the stroke."
+   "k": "The head: it stays where you put it",
+   "v": "Twenty grams more head than the mallet, all of it in a small shape. That is what stops the face turning on a short one and keeps your hands out of the stroke."
   },
   {
    "k": "The grip: the thin one",
@@ -304,5 +304,6 @@
   "meta": "Tracer LGP01 Blade &middot; 5 stars &middot; verified buyer"
  },
  "_quote": "Added 2026-08-19. The Blade was the only club with no signature quote; the Gold, the Mallet and the Stryker all have one. Contiguous verbatim excerpt from Jay S.'s review in the lgp01-gold pull, not a splice.",
- "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_heavy": "Cole 2026-08-19: don't say the Blade is heavy, it makes it sound bad. The fact is unchanged (385 g against the mallet's 365, both on the sheet) but it is written as what it DOES. Spec-to-Benefit's words for it: 'stability through the stroke', 'resists face manipulation', 'planted and deliberate'."
 }

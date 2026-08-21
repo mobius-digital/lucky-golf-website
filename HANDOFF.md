@@ -3973,3 +3973,37 @@ intro now says. The kit section's "because they do" is trimmed.
 The sixty-day claim still appears ten times per club page after this; the rest
 is structural (the marquee runs its list four times, two trust rows, the
 modal) and is the §37e visual question, Cole's.
+
+### 37h. Two rulings on the club pages, and a spec claim that contradicted its own table
+
+Cole, reviewing §37g:
+
+1. **Never say the Blade is heavy.** *"Makes it sound bad."* The fact is
+   unchanged (385 g against the mallet's 365, both on the sheet) but it is
+   written as what it does now. Spec-to-Benefit's own words for that fact are
+   the replacement vocabulary: *stability through the stroke*, *resists face
+   manipulation*, *planted and deliberate*. Six places changed: the Blade's buy
+   body, intro, the head sub-block, the grips aside, the look paragraph, the
+   blade-or-mallet module on BOTH putter pages, the putters collection lede and
+   its comparison note, and the homepage club-finder card.
+2. **Never say the wedge weighs the same at every loft.** Off the Gold's spec
+   headline and sub, off the Black's spec sub, off the wedges collection lede,
+   and the comparison's `Weighting: 300 g at every loft` row is deleted — it sat
+   opposite the 02's *"Progressive through the lofts"*, which made a spec the 01
+   shares with nobody read as the thing it lacks. **The 300 g row stays in the
+   spec matrix**: that is the manufacturer's sheet and the table is data, not
+   copy. Nothing is built on it.
+
+**Found while doing it:** the Gold's Design bullet ended *"Weighting shifts by
+loft."* It is in no reference document, and it **contradicted the spec matrix
+directly underneath it**, which shows 300 g at all six. Removed.
+
+**Also:** the Carver's cross-sell hook was one sentence on eight pages
+(*"Six lofts, and they all feel like the same club"*) and that sentence was
+also the banned same-weight claim. Eight different hooks now. And *"Everything
+the Gold does"* was opening the Black's buy body, the Black's close and the
+Black's hook on the Gold's page; once is the argument, three times is a tic.
+
+**The check now runs two ways** before any batch ships: first clause of each
+module across the five clubs (zero collisions), and repeated openings within a
+single page.

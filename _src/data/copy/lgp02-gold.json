@@ -178,7 +178,7 @@
     "id": "lgp01-gold",
     "name": "Tracer Blade",
     "forWho": "Arc, with feedback",
-    "body": "For players who release the head through the stroke. Twenty grams heavier and far less forgiving. The trade is that a blade tells you exactly where on the face you hit it.",
+    "body": "For players who release the head through the stroke. It sits more planted and forgives less. The trade is that a blade tells you exactly where on the face you hit it.",
     "facts": [
      {
       "k": "Release",
@@ -186,7 +186,7 @@
      },
      {
       "k": "Head",
-      "v": "Blade, 431 stainless, 385 g"
+      "v": "Blade, 431 stainless, 385&nbsp;g"
      },
      {
       "k": "Grip",
@@ -344,7 +344,7 @@
    "id": "lgw01-gold",
    "name": "Carver",
    "code": "LGW01",
-   "hook": "The wedge most people add first. Six lofts, and they all feel like the same club."
+   "hook": "Forged 1020, and filthy out of anything wet."
   },
   {
    "id": "lgh01",

@@ -7,7 +7,7 @@
  "bands": [
   {
    "label": "The 01",
-   "lede": "One wedge, two finishes. Forged 1020 carbon steel, a milled and sandblasted face, 300&nbsp;g of head at every loft, and your choice of sole grind.",
+   "lede": "One wedge, two finishes. Forged 1020 carbon steel, a milled and sandblasted face, and your choice of sole grind.",
    "ids": [
     "lgw01-gold",
     "lgw01-black"
@@ -66,10 +66,6 @@
       "v": "Standard face"
      },
      {
-      "k": "Weighting",
-      "v": "300&nbsp;g at every loft"
-     },
-     {
       "k": "Grinds",
       "v": "K and S"
      },
@@ -97,10 +93,6 @@
      {
       "k": "Grooves",
       "v": "Full face, heel to toe"
-     },
-     {
-      "k": "Weighting",
-      "v": "Progressive through the lofts"
      },
      {
       "k": "Grinds",
@@ -170,5 +162,6 @@
   }
  ],
  "_merge": "UNTIL THE MERGE LANDS in Shopify there are three sellable products and two of them are called Gold at different prices ($99 and $109). The page groups them under one 01 heading and differentiates by finish and grind rather than by tier, which is how it will read once the merge is done. When LGW02 Gold folds into the 01, delete its tile from the band and the comparison and nothing else on this page has to change.",
- "_page": "COLE 2026-07-31: this page's job is the difference between the 01 and the 02. The band is the products you can buy today (the 01, in two finishes); the comparison is 01 against 02, which is the question the page exists to answer. Gold vs black is a finish choice and lives on the tiles and in the buy box, not in the comparison."
+ "_page": "COLE 2026-07-31: this page's job is the difference between the 01 and the 02. The band is the products you can buy today (the 01, in two finishes); the comparison is 01 against 02, which is the question the page exists to answer. Gold vs black is a finish choice and lives on the tiles and in the buy box, not in the comparison.",
+ "_weight": "The comparison's 'Weighting: 300 g at every loft' row came out 2026-08-19 (Cole: don't mention the wedge weighing the same at every loft). It sat opposite the 02's 'Progressive through the lofts', which made a spec the 01 shares with nobody read as the thing it lacks."
 }
