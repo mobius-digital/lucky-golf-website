@@ -695,3 +695,24 @@
     if (e.key === 'Escape' && current) close();
   });
 })();
+
+/* REV B SWITCH — preview only (2026-08-19). ?rev=b applies the thinned layout
+   defined at the bottom of core.css; ?rev=a is the current site. The bar only
+   appears when ?rev= is present, so a normal visitor never sees it. Remove
+   this IIFE and the core.css block together once Cole has picked. */
+(function () {
+  var rev = new URLSearchParams(location.search).get('rev');
+  if (!rev) return;
+  if (rev === 'b') document.documentElement.setAttribute('data-rev', 'b');
+  document.addEventListener('DOMContentLoaded', function () {
+    var base = location.pathname;
+    var bar = document.createElement('nav');
+    bar.className = 'rev-bar';
+    bar.setAttribute('data-on', '');
+    bar.setAttribute('aria-label', 'Layout preview');
+    bar.innerHTML =
+      '<a href="' + base + '?rev=a"' + (rev !== 'b' ? ' aria-current="true"' : '') + '>A · now</a>' +
+      '<a href="' + base + '?rev=b"' + (rev === 'b' ? ' aria-current="true"' : '') + '>B · thinned</a>';
+    document.body.appendChild(bar);
+  });
+})();

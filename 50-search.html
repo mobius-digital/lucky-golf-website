@@ -1241,6 +1241,40 @@ button{font:inherit;color:inherit}
 .jm-none{margin:0 0 18px;font-size:1.0625rem;line-height:1.6;color:var(--ink-70)}
 
 /* ==========================================================================
+   REV B — A VISUAL PREVIEW, NOT A DECISION (2026-08-19)
+   Cole asked to SEE the thinning before committing to it, so rev B ships as a
+   switch rather than a rewrite. Nothing below applies unless the document
+   carries data-rev="b", which only ?rev=b sets. Delete this block and the
+   matching core.js switch in one commit once he picks.
+
+   MEASURED, this page against Takomo's SF002 wedge PDP at 1440:
+     sections        15  vs   9
+     field changes   11  vs   0   (they set ONE page field and float cards on it)
+     font sizes      32  vs  14
+   Rev B changes the first two. The type scale is a separate job — see §37l.
+   ========================================================================== */
+/* the marquee stays on the HOMEPAGE, where it is the brand landing and the only
+   green left in rev B. It goes on PDPs, where its six claims repeat verbatim
+   in the buy-box trust row and again in the close. */
+html[data-rev="b"] body:has(.pd-top) .mq{display:none}
+html[data-rev="b"] .pull{display:none}               /* the signature quote: the third review moment on one page */
+html[data-rev="b"] .bband{display:none}              /* homepage brand band: a logo and four tag words, and the second green field */
+html[data-rev="b"] .sec-tight.band-cream{background:var(--white)}   /* others-also-viewed off the cream */
+html[data-rev="b"] .sec-tight.band-cream::before{display:none}
+html[data-rev="b"] section.sec.band-cream:not(#specs){background:var(--white)}  /* complete-your-kit off the cream */
+html[data-rev="b"] section.sec.band-cream:not(#specs)::before{display:none}
+html[data-rev="b"] .rev-bar{display:flex}
+/* the switch itself. Only rendered when ?rev= is in the URL, so nothing ships
+   to a customer. */
+.rev-bar{display:none;position:fixed;z-index:9999;left:50%;translate:-50% 0;bottom:16px;
+  gap:2px;padding:4px;border-radius:999px;background:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.rev-bar[data-on]{display:flex}
+.rev-bar a{display:block;padding:8px 16px;border-radius:999px;text-decoration:none;
+  font-size:12px;font-variation-settings:'wdth' 78;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--cream-70)}
+.rev-bar a[aria-current]{background:var(--cream);color:var(--ink)}
+
+/* ==========================================================================
    SEARCH — results over the catalogue.
    The tile is core's .ptile, unchanged, so a result behaves exactly like a
    collection card: same photo treatment, same quick add, same sold-out state.
@@ -2481,6 +2515,27 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
 
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && current) close();
+  });
+})();
+
+/* REV B SWITCH — preview only (2026-08-19). ?rev=b applies the thinned layout
+   defined at the bottom of core.css; ?rev=a is the current site. The bar only
+   appears when ?rev= is present, so a normal visitor never sees it. Remove
+   this IIFE and the core.css block together once Cole has picked. */
+(function () {
+  var rev = new URLSearchParams(location.search).get('rev');
+  if (!rev) return;
+  if (rev === 'b') document.documentElement.setAttribute('data-rev', 'b');
+  document.addEventListener('DOMContentLoaded', function () {
+    var base = location.pathname;
+    var bar = document.createElement('nav');
+    bar.className = 'rev-bar';
+    bar.setAttribute('data-on', '');
+    bar.setAttribute('aria-label', 'Layout preview');
+    bar.innerHTML =
+      '<a href="' + base + '?rev=a"' + (rev !== 'b' ? ' aria-current="true"' : '') + '>A · now</a>' +
+      '<a href="' + base + '?rev=b"' + (rev === 'b' ? ' aria-current="true"' : '') + '>B · thinned</a>';
+    document.body.appendChild(bar);
   });
 })();
 </script>

@@ -4126,3 +4126,61 @@ you mean it, Go put something on your head. The polo and hat are now
 homepage closes still all open "Go" — Cole's, and two of them ("Roll it pure",
 and the hybrid's slot where "Fill the gap" belongs) are locked product CTAs
 from Culture v2.**
+
+### 37l. The visual audit, and rev B as a switch (2026-08-19)
+
+Cole: *"do whatever you think from a visual perspective... an entire audit...
+and don't just change it, I want to see the difference and pick one."* So the
+proposal ships as a **preview switch**, not a rewrite.
+
+**The `/design` skill is a generator** (logos, CIP mockups, banners, icons,
+slides), not an auditor for an existing site. Its design-system framing — token
+layers, type scale, spacing scale, field rhythm — is what the audit uses; the
+numbers are measured off the real pages and off Takomo's live SF002 wedge PDP
+at the same 1440 viewport.
+
+| Measured at 1440 | Lucky PDP | Lucky home | Takomo PDP |
+|---|---|---|---|
+| Sections | 15 | 16 | 9 |
+| **Field changes** | **11** | **14** | **0** |
+| Field colours | 4 | 4 | 1 |
+| Distinct font sizes | **32** | — | **14** |
+
+**Takomo sets ONE page field** (`#F8F8F8`) and floats white cards on it. Every
+apparent band on their page is a card, not a background change. Ours changes
+background eleven times on a product page and fourteen on the homepage. That is
+what Cole is feeling when he says he gets lost on his own PDP.
+
+**The type finding is the bigger one and is NOT in rev B.** 32 distinct sizes
+render on one club page against Takomo's 14, and their top three (14 / 16 /
+24px) carry 84% of all text while our top three carry about 39%. The cause is
+`clamp()` declared per-component rather than from a scale: seven separate sizes
+land between 13.4px and 15.2px at 1440, close enough to look like sloppiness
+rather than hierarchy. Fixing it means a real type scale (7–8 steps) and
+rewriting every `font-size` to use it. Separate job, bigger blast radius,
+worth doing.
+
+**Also found:** radius has two declared steps (`--r` 6px controls, `--r-card`
+14px surfaces) plus 50% for circles, but **2px appears 11 times and 9px once** —
+off-scale strays. One typeface confirmed site-wide (Archivo, 1,230 elements,
+zero others).
+
+**Rev B, what the switch does:**
+
+| | PDP | Home |
+|---|---|---|
+| Marquee | hidden (its six claims repeat in the buy-box trust row and again in the close) | **kept** — it is the brand landing and rev B's only green |
+| Signature pull quote | hidden (third review moment on one page) | hidden |
+| Brand band | — | hidden (a logo and four tag words, and the second green field) |
+| Others-also-viewed, Complete-your-kit | cream → white | — |
+
+**Result: PDP 15 sections / 11 field changes → 13 / 6. Home 16 / 14 → 14 / 11.**
+Page height drops 522px and 827px. Specs keep their cream, and the look section
+keeps its green — the gold argument is the one place the brand field earns a
+full band.
+
+**How to switch:** `?rev=a` and `?rev=b` on any page. A pill toggle appears
+bottom-centre **only when `?rev=` is in the URL**, so a normal visitor never
+sees it. The whole thing is one guarded block at the bottom of `core.css` and
+one IIFE at the bottom of `core.js`; **delete both in one commit** once Cole
+picks, or promote rev B by dropping the `[data-rev="b"]` guard.
