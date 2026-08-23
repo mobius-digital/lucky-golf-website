@@ -347,12 +347,16 @@
   {{#look}}
   <div class="look-in">
     <div class="look-ph">
-      <div class="ph ph--dark">
+      <!-- Real photography when the copy file carries `photoSrc` (a Shopify CDN
+           URL); the labelled brief when it does not. Shot 2026, uploaded to
+           Shopify Files 2026-08-23. -->
+      {{#photoSrc}}<img class="look-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="1366" height="2048" loading="lazy" decoding="async">{{/photoSrc}}
+      {{^photoSrc}}<div class="ph ph--dark">
         <span class="lbl">
           <span class="mono k">Photo needed</span>
           <span class="mono">{{photo}}</span>
         </span>
-      </div>
+      </div>{{/photoSrc}}
     </div>
     <div class="look-copy">
       <span class="eyebrow centre-none">The look</span>

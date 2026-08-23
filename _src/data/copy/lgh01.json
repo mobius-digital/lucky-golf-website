@@ -208,7 +208,9 @@
    "There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.",
    "In gold, with a gloss black crown and a starburst on it, it doesn't look like anyone else's hybrid either."
   ],
-  "aside": "Fill the gap."
+  "aside": "Fill the gap.",
+  "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-stryker-hero.webp?v=1787514597",
+  "photoAlt": "Lucky Golf Stryker LGH01 hybrid on fairway turf with a ball in frame"
  },
  "closeBody": "Take the club you don't trust out of the bag and put this in. Right or left hand.",
  "oav": [
@@ -302,5 +304,6 @@
   "meta": "Stryker LGH01 &middot; 5 stars &middot; verified buyer"
  },
  "_quote": "Added 2026-08-19, verbatim from the lgh01 pull. Chosen because it says what the what-it-replaces module says, in a customer's mouth.",
- "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
 }

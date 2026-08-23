@@ -1299,6 +1299,15 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button:hover{color:var(--cream)}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
+/* Real photography in slots that used to hold a labelled brief (2026-08-23).
+   Each fills its slot the way the placeholder did, so nothing around it moves. */
+.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
+/* height:auto is load-bearing. The <img> carries width/height attributes to
+   reserve space, and that height acts as a presentational hint that BEATS
+   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
+.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+
 /* ==========================================================================
    CLUB COLLECTION  ·  one stylesheet, four pages
    Loads after core.css. Nothing here restyles a core component — .ptile,
@@ -2000,12 +2009,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     <h2 class="disp d-l clp-h2">Built to be played, not admired in a bag.</h2>
     <div class="clp-row">
       <div class="clp-row-ph">
-        <div class="ph">
-          <span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Landscape 4:3. Golfer mid-swing on course with a Lucky wedge, late low sun raking across the head so the gold reads as metal rather than paint. Real course, real turf, no studio.</span>
-          </span>
-        </div>
+        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-allclubs-swing.webp?v=1787514597" alt="Golfer playing a bunker shot with a Lucky Golf Carver wedge" width="2048" height="1536" loading="lazy" decoding="async">
+        
       </div>
       <div class="clp-row-copy">
         <h3 class="disp d-m">Everyone asks about the finish</h3>
@@ -2015,12 +2020,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     </div>
     <div class="clp-row clp-row--flip">
       <div class="clp-row-ph">
-        <div class="ph">
-          <span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Landscape 4:3. Close crop of a used Lucky wedge face on a turf mat: grooves clean, a season of honest wear. Shot from above at a shallow angle.</span>
-          </span>
-        </div>
+        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-macro.webp?v=1787514597" alt="Macro of the milled Lucky Golf Carver wedge face and clover mark" width="2048" height="1536" loading="lazy" decoding="async">
+        
       </div>
       <div class="clp-row-copy">
         <h3 class="disp d-m">Sixty days to find out</h3>

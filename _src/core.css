@@ -1288,3 +1288,12 @@ html[data-rev="b"] .rev-bar{display:flex}
   text-transform:uppercase;color:var(--cream-70)}
 .rev-bar button:hover{color:var(--cream)}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
+
+/* Real photography in slots that used to hold a labelled brief (2026-08-23).
+   Each fills its slot the way the placeholder did, so nothing around it moves. */
+.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
+/* height:auto is load-bearing. The <img> carries width/height attributes to
+   reserve space, and that height acts as a presentational hint that BEATS
+   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
+.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}

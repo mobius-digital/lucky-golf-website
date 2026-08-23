@@ -239,7 +239,9 @@
    "This is that club. It still has gold on it, on the clover and the number, but you have to be standing over it to find any.",
    "If that isn't you, the Carver 01 Gold catches every bit of light there is."
   ],
-  "aside": "Gold where it counts, and nowhere else."
+  "aside": "Gold where it counts, and nowhere else.",
+  "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-black-hero.webp?v=1787514597",
+  "photoAlt": "Lucky Golf Carver 01 Black wedge at address on grass, gold clover catching the light"
  },
  "closeBody": "Nobody has to know what you're playing. Pick a loft.",
  "oav": [
@@ -277,5 +279,6 @@
  ],
  "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. Bounce in Takomo's suffix notation with our letter (8K), so the sheet speaks the picker's language. The old shape was Club / By loft / Shaft & grip and carried two things that had to go: a PRICE row (price is per variant, from products.json, and is never retyped in editorial) and a K-vs-S aside on a club that is only built in K. NOTHING the Product Reference Guide does not publish is on the page: no swing weight, tip diameter or grip length.",
  "_grinds": "The standalone grind section was deleted 2026-08-19, the same move the Gold made: with the grind now a labelled sub-block inside the description, a whole section for ONE grind was a page of scroll saying what four lines say. Its one genuinely useful sentence, that the S lives on the Gold, moved into the K sub-block. pdp.js already points 'Which grind?' at #club.",
- "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it)."
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
 }

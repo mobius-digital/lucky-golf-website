@@ -80,7 +80,9 @@
     "paras": [
      "Read enough of the reviews and it shows up before anyone gets to distance or spin: playing partners ask about the club. The gold is a real finish on a forged head, not a coating over a stock casting.",
      "It also has to survive. The face is CNC-milled and sandblasted over 1020 forged carbon steel, which is soft enough to feel and soft enough to mark. Clubs that get used look like clubs that get used."
-    ]
+    ],
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-allclubs-swing.webp?v=1787514597",
+    "photoAlt": "Golfer playing a bunker shot with a Lucky Golf Carver wedge"
    },
    {
     "photo": "Landscape 4:3. Close crop of a used Lucky wedge face on a turf mat: grooves clean, a season of honest wear. Shot from above at a shallow angle.",
@@ -89,7 +91,9 @@
     "paras": [
      "Every club has a sixty-day window. Putters can go on the green during it, and they come back if they still look new: no face marks, no sole wear, no bag chatter. Wedges get one club out of the wrapper, tested on a turf mat, grooves unworn. Hybrids come back unused.",
      "Club returns need approval and a photo before anything ships, and return shipping is on you."
-    ]
+    ],
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-macro.webp?v=1787514597",
+    "photoAlt": "Macro of the milled Lucky Golf Carver wedge face and clover mark"
    }
   ]
  },
@@ -123,5 +127,6 @@
    "why": "The mallet needs the bigger one.",
    "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851"
   }
- ]
+ ],
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
 }

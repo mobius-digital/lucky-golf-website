@@ -1299,6 +1299,15 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button:hover{color:var(--cream)}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
+/* Real photography in slots that used to hold a labelled brief (2026-08-23).
+   Each fills its slot the way the placeholder did, so nothing around it moves. */
+.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
+/* height:auto is load-bearing. The <img> carries width/height attributes to
+   reserve space, and that height acts as a presentational hint that BEATS
+   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
+.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+
 /* ==========================================================================
    PDP — styles shared by the club, apparel and gear templates
    The fold, the buy box, the cross-sell rails, the review widget and the
@@ -2446,12 +2455,11 @@ html[data-rev="b"] .rev-bar{display:flex}
   
   <div class="look-in">
     <div class="look-ph">
-      <div class="ph ph--dark">
-        <span class="lbl">
-          <span class="mono k">Photo needed</span>
-          <span class="mono">Bold, full-bleed, portrait. The gold head caught in low sun as it comes out of the bag on the tee box, other players in soft focus behind. This is the hero of the section; it should stop the scroll on its own.</span>
-        </span>
-      </div>
+      <!-- Real photography when the copy file carries `photoSrc` (a Shopify CDN
+           URL); the labelled brief when it does not. Shot 2026, uploaded to
+           Shopify Files 2026-08-23. -->
+      <img class="look-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-address.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedge at address behind a ball on turf" width="1366" height="2048" loading="lazy" decoding="async">
+      
     </div>
     <div class="look-copy">
       <span class="eyebrow centre-none">The look</span>

@@ -230,12 +230,13 @@
     <h2 class="disp d-l clp-h2">{{headline}}</h2>
 {{#rows}}    <div class="clp-row{{#flip}} clp-row--flip{{/flip}}">
       <div class="clp-row-ph">
-        <div class="ph">
+        {{#photoSrc}}<img class="clp-row-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="1536" loading="lazy" decoding="async">{{/photoSrc}}
+        {{^photoSrc}}<div class="ph">
           <span class="lbl">
             <span class="mono k">Photo needed</span>
             <span class="mono">{{photo}}</span>
           </span>
-        </div>
+        </div>{{/photoSrc}}
       </div>
       <div class="clp-row-copy">
         <h3 class="disp d-m">{{rowHeadline}}</h3>

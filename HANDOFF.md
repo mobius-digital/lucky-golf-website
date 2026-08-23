@@ -4356,3 +4356,52 @@ pass.
 
 **Lesson worth keeping: sweep at BOTH widths.** A phone-only override is
 invisible to a desktop audit, and that is exactly where the worst offender was.
+
+### 37q. The first real photography lands (2026-08-23)
+
+Cole sent a 6.3 GB archive from his DAM: **526 files**, and it changes the
+photography position materially.
+
+**What is in it.** Apparel is **studio only** — all 10 hats (10 frames each)
+and 13 polos (6 each), ghost-mannequin on white up to 6718×6718. It looks like
+the same studio work already on the Shopify product pages, and **every one of
+SHOT-LIST's 23 apparel briefs asks for ON BODY**, so it does not close that gap.
+Clubs are the find: a real course shoot (Canon `3M6A*` originals at 5464×8192,
+plus RAW and HEIC) — a golfer out of a bunker, the blade cover in hand at
+golden hour, the 3.0 grip backlit. Plus **61 video clips**, several named
+`BROLL`, against 5 empty product-film slots and 36 reel cards.
+
+**How 258 club images got reviewed:** contact sheets. Eleven 6×4 montages with
+numbered tiles and a JSON index mapping number → path. Reviewing a shoot one
+`Read` at a time is not affordable; eleven sheets is.
+
+**Eight chosen, resized, uploaded, wired in.** 2048px long edge (matching every
+existing Shopify image), WebP, **2.4 MB for all eight** against ~165 MB of
+originals. Uploaded through `stagedUploadsCreate` → multipart POST → `fileCreate`,
+all eight `READY` on the CDN. Slots filled: the five club look sections, both
+clubs-collection story rows, and the homepage finish band.
+
+**The photo slot is now conditional.** `{{#photoSrc}}` renders a real `<img>`;
+`{{^photoSrc}}` renders the labelled brief exactly as before. **The `photo`
+brief stays in every copy file** — it is the record of what the slot asked for,
+and it comes back if `photoSrc` is ever removed.
+
+**Two traps worth keeping:**
+
+1. **`height:auto` is load-bearing on `.clp-row-img`.** The `<img>` carries
+   width/height attributes to reserve space, and that height is a
+   *presentational hint that beats `aspect-ratio`* — the collection rows
+   rendered **628×1536 instead of 628×471** until `height:auto` was added.
+2. **A lazy image reads as broken in this environment.** `.look-img` reported
+   `complete:false, naturalWidth:0` and looked like a failed load. It was
+   `loading="lazy"` below the fold, and §36e's frozen-scroll trap means
+   `scrollIntoView` does nothing while the pane is hidden. Proving it needs
+   `new Image()` or clearing the attribute and re-assigning `src`. Verified
+   loaded at 1366×2048 both ways.
+
+Verified: all eight load, zero placeholders left in the filled slots, 4:3 on
+the collection rows, no horizontal overflow at 1440 or 390, `--check` all 58
+identical.
+
+**Still needed from Cole: the on-body apparel shoot.** 23 briefs, and nothing
+in the archive covers them.

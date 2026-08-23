@@ -1299,6 +1299,15 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button:hover{color:var(--cream)}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
+/* Real photography in slots that used to hold a labelled brief (2026-08-23).
+   Each fills its slot the way the placeholder did, so nothing around it moves. */
+.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
+/* height:auto is load-bearing. The <img> carries width/height attributes to
+   reserve space, and that height acts as a presentational hint that BEATS
+   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
+.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+
 /* DEAD as of 2026-07-31: .fam, .gear and .revs are defined below but appear
    in no markup on either page — leftovers from an earlier revision. Left in
    place rather than removed blind; verify and delete in a cleanup pass. */
@@ -2431,12 +2440,8 @@ html[data-rev="b"] .rev-bar{display:flex}
         <p class="body on-dark" style="margin-top:14px">Want it quieter? The blacked-out one does the same job without the conversation.</p>
         <div class="spot-cta"><a href="#families" class="btn btn-foil sweep"><span>See the finishes</span><span class="ar">&rarr;</span></a></div>
       </div>
-      <div class="ph ph--dark rv">
-        <span class="lbl">
-          <span class="mono k">Photo needed</span>
-          <span class="mono">Tall 4:5 &middot; gold club at address in low sun, light raking across the face so the finish reads. Shot from behind the ball.</span>
-        </span>
-      </div>
+      <!-- Real photography, 2026 shoot, uploaded to Shopify Files 2026-08-23. -->
+      <img class="spot-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-hero.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedges in a golf bag, clover mark on the sole" width="2048" height="1639" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
