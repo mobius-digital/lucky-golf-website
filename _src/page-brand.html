@@ -28,9 +28,10 @@
     <h1 class="disp d-xl">{{headline}}</h1>
     <p class="body lead br-lede">{{lede}}</p>
 {{#hero}}
-    <div class="br-hero ph{{#dark}} ph--dark{{/dark}}">
+    {{#photoSrc}}<img class="br-hero br-hero-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="878" loading="lazy" decoding="async">{{/photoSrc}}
+    {{^photoSrc}}<div class="br-hero ph{{#dark}} ph--dark{{/dark}}">
       <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
-    </div>
+    </div>{{/photoSrc}}
 {{/hero}}
   </div>
 </section>
@@ -143,9 +144,10 @@
 <section class="sec br-row{{#cream}} br-row--cream{{/cream}}{{#flip}} br-row--flip{{/flip}}">
   <div class="wrap br-row-in">
     <div class="br-row-ph">
-      <div class="ph">
+      {{#photoSrc}}<img class="br-row-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="1536" loading="lazy" decoding="async">{{/photoSrc}}
+      {{^photoSrc}}<div class="ph">
         <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
-      </div>
+      </div>{{/photoSrc}}
     </div>
     <div class="br-row-copy">
       {{#eyebrow}}<span class="eyebrow">{{eyebrow}}</span>{{/eyebrow}}

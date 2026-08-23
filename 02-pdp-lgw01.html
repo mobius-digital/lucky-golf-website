@@ -1300,21 +1300,38 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
 /* Real photography in slots that used to hold a labelled brief (2026-08-23).
-   Each fills its slot the way the placeholder did, so nothing around it moves. */
-.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
-/* height:auto is load-bearing. The <img> carries width/height attributes to
-   reserve space, and that height acts as a presentational hint that BEATS
-   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
-.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-
-/* Real video in slots that used to hold a labelled brief (2026-08-23).
-   height:auto for the same reason .clp-row-img needs it: the width/height
-   attributes reserve space and would otherwise beat aspect-ratio. */
-.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
-  border-radius:var(--r-card);background:var(--ink)}
+   EACH ONE COPIES THE BOX OF THE .ph IT REPLACES — Cole spotted that they read
+   wrong against the placeholders, and he was right on all three:
+     .look-ph .ph   is absolute inset:0 with border-radius:0  (full-bleed band)
+     .clp-row-ph    already sets aspect-ratio:4/3, its .ph is absolute inset:0
+     .spot .ph      is aspect-ratio:4/5 with --r (6px), NOT --r-card (14px)
+   Getting this wrong gave the look section a 14px radius it should not have,
+   and put a LANDSCAPE image in the homepage's PORTRAIT slot. */
+.look-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.clp-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+.spot-img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:var(--r)}
 .post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
   border-radius:var(--r-card);background:var(--ink)}
+/* Brand-page slots. .br-hero is 21:9 with whatever radius .ph carries there;
+   .br-row-ph is 4:3 with its .ph absolute inset:0 at --r-card. Mirror both. */
+.br-hero-img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;border-radius:var(--r)}
+.br-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+/* Homepage slots. Each container styles ITS .ph differently, so the image has
+   to inherit the same box per container rather than take one global shape:
+     .vp-collage .ph  -> --r radius, grid cell (first child spans 2 rows)
+     .vp-ed .ph       -> aspect-ratio 3/4, --r radius
+     .gtile-ph        -> fills the tile
+   Same lesson as .clp-row-img: height:auto or the width/height attributes win. */
+.home-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.vp-collage .home-img{height:100%}
+.vp-ed .home-img{height:auto;aspect-ratio:3/4}
+/* the wide highlight tile runs full-bleed inside .gtile: its .ph has NO
+   radius, so neither does the image. Caught by comparing each image
+   against a .ph injected into the same parent. */
+.gtile .home-img{border-radius:0;height:100%}
 
 /* ==========================================================================
    PDP — styles shared by the club, apparel and gear templates
@@ -2331,11 +2348,14 @@ html[data-rev="b"] .rev-bar{display:flex}
       <!-- Video slot. No footage exists yet, so this is a labelled brief rather
            than a faked thumbnail — same contract as the homepage photo gaps. -->
       <div class="club-media">
-        <video class="club-video" controls preload="none" playsinline
-               poster="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold-poster.jpg?v=1787516101" width="1920" height="1080">
-          <source src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold.mp4?v=1787516101" type="video/mp4">
-        </video>
         
+        <div class="ph ph--video">
+          <span class="lbl">
+            <span class="mono k">Video needed</span>
+            <span class="mono">16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.</span>
+          </span>
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
       </div>
     </div>
 
@@ -3076,7 +3096,7 @@ var PD_OAV = [{"nm": "Carver 01 Black", "pr": "$109", "rt": "Right hand only · 
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card
    is a labelled slot describing the clip that belongs there. */
-var PD_REEL = [{"kind": "Creator reel", "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-1.mp4?v=1787516101"}, {"kind": "Customer clip", "brief": "Greenside chip with the 56°, one hop and stop, shot from behind", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-2.mp4?v=1787516101"}, {"kind": "Creator reel", "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-3.mp4?v=1787516101"}, {"kind": "Customer clip", "brief": "Flop over a bunker with the 60°, face wide open, soft landing"}, {"kind": "Creator reel", "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"}, {"kind": "Customer clip", "brief": "Unboxing, club out of the sleeve, first reaction to the finish"}];
+var PD_REEL = [{"kind": "Creator reel", "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"}, {"kind": "Customer clip", "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"}, {"kind": "Creator reel", "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"}, {"kind": "Customer clip", "brief": "Flop over a bunker with the 60°, face wide open, soft landing"}, {"kind": "Creator reel", "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"}, {"kind": "Customer clip", "brief": "Unboxing, club out of the sleeve, first reaction to the finish"}];
 
 /* Cart cross-sell, from the copy file. Read by core's paintUpsell(); rows
    already in the bag are filtered out there. */

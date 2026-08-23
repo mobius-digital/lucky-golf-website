@@ -8,7 +8,9 @@
  "lede": "Lucky Golf makes forged wedges, CNC-milled putters and a titanium hybrid, in gold, at prices that surprise people. There is no origin myth here. Somebody thought these clubs should exist, so they got made.",
  "hero": {
   "k": "Hero shot needed",
-  "brief": "21:9. The line together on turf (wedge, putter, hybrid), early light, gold reading warm rather than yellow. No hands, no model."
+  "brief": "21:9. The line together on turf (wedge, putter, hybrid), early light, gold reading warm rather than yellow. No hands, no model.",
+  "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-line-together.webp",
+  "photoAlt": "Lucky Golf clubs together on turf in early light"
  },
  "stats": {
   "eyebrow": "Where we are",
@@ -41,7 +43,9 @@
    "cta": {
     "label": "Put one in the bag",
     "href": "{{link:c/clubs}}"
-   }
+   },
+   "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-macro.webp",
+   "photoAlt": "Macro of the milled Lucky Golf Carver wedge face and clover mark"
   },
   {
    "eyebrow": "How we sell it",
@@ -57,7 +61,9 @@
    "cta": {
     "label": "Read the refund policy",
     "href": "{{link:returns}}"
-   }
+   },
+   "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp",
+   "photoAlt": "Golfer at address on course with a Lucky Golf wedge, shot from behind"
   },
   {
    "eyebrow": "Who answers",
@@ -94,5 +100,6 @@
   "aside": "It's better to be lucky."
  },
  "moreHeadline": "The rest of it",
- "_pass": "Copy pass 2026-08-19. The orders number CONTRADICTED THE HOMEPAGE: this page said 'more than 10,000 orders. Shopify's count, not an estimate' while the homepage says 30,000+ (34,360 verified, HANDOFF 36b). Both cannot be Shopify's count. Six self-referential passages also came off — this page had more of them than any other, because it is the page most tempted to explain its own editorial."
+ "_pass": "Copy pass 2026-08-19. The orders number CONTRADICTED THE HOMEPAGE: this page said 'more than 10,000 orders. Shopify's count, not an estimate' while the homepage says 30,000+ (34,360 verified, HANDOFF 36b). Both cannot be Shopify's count. Six self-referential passages also came off — this page had more of them than any other, because it is the page most tempted to explain its own editorial.",
+ "_photo": "Row 2 (Cole working, packing an order) has NO candidate in the archive and keeps its brief. Row 0 reuses the same macro already on the clubs collection: one file, two slots, and the two paragraphs make the same point about the face."
 }

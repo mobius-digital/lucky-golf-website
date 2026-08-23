@@ -4447,3 +4447,43 @@ three of its cards carry Blade footage and the Mallet's must not.
 Verified in-browser: every film `readyState` 4, correct duration, 16:9 at
 644×362, reels 1080×1920 and 16s, no horizontal overflow, `--check` all 58
 identical.
+
+### 37s. Video pulled, images extended, and Cole was right about the boxes (2026-08-23)
+
+Three instructions.
+
+**1. Every video removed.** Cole will hand-pick clips himself. The conditional
+stays in `page-club.html` and `page-club.js`, so dropping `videoSrc` / `reel[].src`
+back in is the whole job. The ten files remain in Shopify Files.
+
+**2. "Are you sure the corner radiuses are right? They look off." HE WAS RIGHT,
+and on all three slots.** The images were given `--r-card` (14px) as a blanket
+value instead of copying the box of the `.ph` each one replaced:
+
+| Slot | The placeholder actually is | Was given |
+|---|---|---|
+| `.look-ph .ph` | absolute inset:0, **`border-radius:0`** | 14px |
+| `.spot .ph` | **`aspect-ratio:4/5`, `--r` (6px)** | 14px, and a LANDSCAPE file in a PORTRAIT slot |
+| `.clp-row-ph` | already sets 4:3; its `.ph` is absolute inset:0 | double aspect-ratio |
+
+**The check that should have existed from the start, and does now:** inject a
+`.ph` into the image's own parent, read both computed radii, compare. Run
+across all 21 images it caught two more — the wide highlight tile (image 6px vs
+tile 0px) and the Our Story hero (image 0px vs `.ph` 6px). Final run: **21
+images, zero problems.**
+
+**3. Images everywhere.** Fifteen more stills chosen, resized to 2048px, and
+uploaded: both rows on the wedges, putters and hybrid collections, the Our
+Story hero and two of its three rows, and four homepage slots. `page-brand.html`
+gained the same `{{#photoSrc}}` conditional the other templates use.
+
+**Two deliberate substitutions, both recorded in the copy files:** the putters
+row 0 brief wants **both** Tracers side by side and no such frame exists, so it
+carries the Blade's milled face — which supports the paragraph without
+pretending to be the two-club shot. Our Story row 0 reuses the wedge-face macro
+already on the clubs collection.
+
+**Still empty, because the photograph does not exist:** the 23 apparel on-body
+slots, Our Story's portrait of Cole, the homepage's "hands regripping on a
+bench", the homepage's polo and hat on-body tiles, the Ambassador group shot,
+the tees flat-lay, and the Carver Black's look section.

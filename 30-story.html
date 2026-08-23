@@ -1300,21 +1300,38 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
 /* Real photography in slots that used to hold a labelled brief (2026-08-23).
-   Each fills its slot the way the placeholder did, so nothing around it moves. */
-.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
-/* height:auto is load-bearing. The <img> carries width/height attributes to
-   reserve space, and that height acts as a presentational hint that BEATS
-   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
-.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-
-/* Real video in slots that used to hold a labelled brief (2026-08-23).
-   height:auto for the same reason .clp-row-img needs it: the width/height
-   attributes reserve space and would otherwise beat aspect-ratio. */
-.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
-  border-radius:var(--r-card);background:var(--ink)}
+   EACH ONE COPIES THE BOX OF THE .ph IT REPLACES — Cole spotted that they read
+   wrong against the placeholders, and he was right on all three:
+     .look-ph .ph   is absolute inset:0 with border-radius:0  (full-bleed band)
+     .clp-row-ph    already sets aspect-ratio:4/3, its .ph is absolute inset:0
+     .spot .ph      is aspect-ratio:4/5 with --r (6px), NOT --r-card (14px)
+   Getting this wrong gave the look section a 14px radius it should not have,
+   and put a LANDSCAPE image in the homepage's PORTRAIT slot. */
+.look-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.clp-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+.spot-img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:var(--r)}
 .post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
   border-radius:var(--r-card);background:var(--ink)}
+/* Brand-page slots. .br-hero is 21:9 with whatever radius .ph carries there;
+   .br-row-ph is 4:3 with its .ph absolute inset:0 at --r-card. Mirror both. */
+.br-hero-img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;border-radius:var(--r)}
+.br-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+/* Homepage slots. Each container styles ITS .ph differently, so the image has
+   to inherit the same box per container rather than take one global shape:
+     .vp-collage .ph  -> --r radius, grid cell (first child spans 2 rows)
+     .vp-ed .ph       -> aspect-ratio 3/4, --r radius
+     .gtile-ph        -> fills the tile
+   Same lesson as .clp-row-img: height:auto or the width/height attributes win. */
+.home-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.vp-collage .home-img{height:100%}
+.vp-ed .home-img{height:auto;aspect-ratio:3/4}
+/* the wide highlight tile runs full-bleed inside .gtile: its .ph has NO
+   radius, so neither does the image. Caught by comparing each image
+   against a .ph injected into the same parent. */
+.gtile .home-img{border-radius:0;height:100%}
 
 /* ==========================================================================
    BRAND — Our Story · The Trybe
@@ -1743,9 +1760,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     <h1 class="disp d-xl">We built the clubs we wanted</h1>
     <p class="body lead br-lede">Lucky Golf makes forged wedges, CNC-milled putters and a titanium hybrid, in gold, at prices that surprise people. There is no origin myth here. Somebody thought these clubs should exist, so they got made.</p>
 
-    <div class="br-hero ph">
-      <span class="lbl"><span class="mono k">Hero shot needed</span><span class="mono">21:9. The line together on turf (wedge, putter, hybrid), early light, gold reading warm rather than yellow. No hands, no model.</span></span>
-    </div>
+    <img class="br-hero br-hero-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-line-together.webp" alt="Lucky Golf clubs together on turf in early light" width="2048" height="878" loading="lazy" decoding="async">
+    
 
   </div>
 </section>
@@ -1808,9 +1824,8 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec br-row">
   <div class="wrap br-row-in">
     <div class="br-row-ph">
-      <div class="ph">
-        <span class="lbl"><span class="mono k">Detail shot needed</span><span class="mono">4:3 macro. A milled wedge face, raking light across the grooves so the sandblast texture reads. Close enough to see the machining.</span></span>
-      </div>
+      <img class="br-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-macro.webp" alt="Macro of the milled Lucky Golf Carver wedge face and clover mark" width="2048" height="1536" loading="lazy" decoding="async">
+      
     </div>
     <div class="br-row-copy">
       <span class="eyebrow">What we make</span>
@@ -1825,9 +1840,8 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec br-row br-row--cream br-row--flip">
   <div class="wrap br-row-in">
     <div class="br-row-ph">
-      <div class="ph">
-        <span class="lbl"><span class="mono k">Lifestyle shot needed</span><span class="mono">4:3. A golfer mid-round with a Lucky wedge, shot from behind at address. Course context, not studio. Natural light.</span></span>
-      </div>
+      <img class="br-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp" alt="Golfer at address on course with a Lucky Golf wedge, shot from behind" width="2048" height="1536" loading="lazy" decoding="async">
+      
     </div>
     <div class="br-row-copy">
       <span class="eyebrow">How we sell it</span>
@@ -1842,6 +1856,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec br-row">
   <div class="wrap br-row-in">
     <div class="br-row-ph">
+      
       <div class="ph">
         <span class="lbl"><span class="mono k">Portrait needed</span><span class="mono">4:3. Cole, working: packing an order or on the phone, in the space where it actually happens. Not a posed headshot.</span></span>
       </div>

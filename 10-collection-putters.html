@@ -1300,21 +1300,38 @@ html[data-rev="b"] .rev-bar{display:flex}
 .rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
 
 /* Real photography in slots that used to hold a labelled brief (2026-08-23).
-   Each fills its slot the way the placeholder did, so nothing around it moves. */
-.look-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-.clp-row-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-card)}
-/* height:auto is load-bearing. The <img> carries width/height attributes to
-   reserve space, and that height acts as a presentational hint that BEATS
-   aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
-.spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
-
-/* Real video in slots that used to hold a labelled brief (2026-08-23).
-   height:auto for the same reason .clp-row-img needs it: the width/height
-   attributes reserve space and would otherwise beat aspect-ratio. */
-.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
-  border-radius:var(--r-card);background:var(--ink)}
+   EACH ONE COPIES THE BOX OF THE .ph IT REPLACES — Cole spotted that they read
+   wrong against the placeholders, and he was right on all three:
+     .look-ph .ph   is absolute inset:0 with border-radius:0  (full-bleed band)
+     .clp-row-ph    already sets aspect-ratio:4/3, its .ph is absolute inset:0
+     .spot .ph      is aspect-ratio:4/5 with --r (6px), NOT --r-card (14px)
+   Getting this wrong gave the look section a 14px radius it should not have,
+   and put a LANDSCAPE image in the homepage's PORTRAIT slot. */
+.look-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.clp-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+.spot-img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:var(--r)}
 .post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
   border-radius:var(--r-card);background:var(--ink)}
+/* Brand-page slots. .br-hero is 21:9 with whatever radius .ph carries there;
+   .br-row-ph is 4:3 with its .ph absolute inset:0 at --r-card. Mirror both. */
+.br-hero-img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;border-radius:var(--r)}
+.br-row-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--r-card)}
+/* Homepage slots. Each container styles ITS .ph differently, so the image has
+   to inherit the same box per container rather than take one global shape:
+     .vp-collage .ph  -> --r radius, grid cell (first child spans 2 rows)
+     .vp-ed .ph       -> aspect-ratio 3/4, --r radius
+     .gtile-ph        -> fills the tile
+   Same lesson as .clp-row-img: height:auto or the width/height attributes win. */
+.home-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.vp-collage .home-img{height:100%}
+.vp-ed .home-img{height:auto;aspect-ratio:3/4}
+/* the wide highlight tile runs full-bleed inside .gtile: its .ph has NO
+   radius, so neither does the image. Caught by comparing each image
+   against a .ph injected into the same parent. */
+.gtile .home-img{border-radius:0;height:100%}
 
 /* ==========================================================================
    CLUB COLLECTION  ·  one stylesheet, four pages
@@ -2009,13 +2026,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     <h2 class="disp d-l clp-h2">Milled, not cast.</h2>
     <div class="clp-row">
       <div class="clp-row-ph">
+        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-blade-face-macro.webp" alt="Milled face of the Lucky Golf Tracer Blade putter" width="2048" height="1536" loading="lazy" decoding="async">
         
-        <div class="ph">
-          <span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Landscape 4:3. Both Tracers face-up side by side on a putting green at dawn, milling pattern catching the light across both faces.</span>
-          </span>
-        </div>
       </div>
       <div class="clp-row-copy">
         <h3 class="disp d-m">Cut, not poured</h3>
@@ -2025,13 +2037,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     </div>
     <div class="clp-row clp-row--flip">
       <div class="clp-row-ph">
+        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-putters-downline.webp" alt="Down the line at address with a Lucky Golf Tracer putter on the green" width="2048" height="1536" loading="lazy" decoding="async">
         
-        <div class="ph">
-          <span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Landscape 4:3. Over-the-shoulder view down the line at address with the mallet, ball in frame, morning shadows across the green.</span>
-          </span>
-        </div>
       </div>
       <div class="clp-row-copy">
         <h3 class="disp d-m">Twenty grams, and where they sit</h3>

@@ -306,7 +306,5 @@
  "_quote": "Added 2026-08-19, verbatim from the lgh01 pull. Chosen because it says what the what-it-replaces module says, in a customer's mouth.",
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
- "videoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-stryker.mp4?v=1787516101",
- "videoPoster": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-stryker-poster.jpg?v=1787516101",
- "_video": "Real footage from the 2026 shoot, chosen 2026-08-23. Transcoded to H.264 1080p before upload (the masters are 25-194 MB of high-bitrate source; these are 0.8-11 MB) and hosted on Shopify Files. The `videoBrief` and each reel `brief` STAY in the file: they are the record of what the slot asked for, and they render again if the src is removed."
+ "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones."
 }
