@@ -145,15 +145,18 @@
  "reel": [
   {
    "kind": "Creator reel",
-   "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"
+   "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-1.mp4?v=1787516101"
   },
   {
    "kind": "Customer clip",
-   "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"
+   "brief": "Greenside chip with the 56°, one hop and stop, shot from behind",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-2.mp4?v=1787516101"
   },
   {
    "kind": "Creator reel",
-   "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"
+   "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-3.mp4?v=1787516101"
   },
   {
    "kind": "Customer clip",
@@ -399,5 +402,8 @@
  "_specTabs": "Takomo-shaped 2026-08-18 at Cole's instruction: three tabs (Clubs / Shafts / Grips), each ONE card = caption, short key/value head, black-header matrix. Better than theirs in one way: K and S get their own rows instead of '10F / 12V' crammed in a cell. Every number is the Product Reference Guide's. NO swing weight, tip diameter, grip length/core: the guide does not publish them and they are not invented. GRIP: one row, Regular, 55 g (Cole 2026-08-18; the 2 g K/S difference is not worth a second row). FINISH: plain 'Gold', no link (Cole 2026-08-18: the finish swatches are one scroll up in the buy box). BOUNCE/GRIND: exactly Takomo's shape, ONE row, 'K / S' in a cell where both exist. Lie the same way, in the matrix not the head. Head block is Head material / Face / Finish only, stacked vertically. BOUNCE: Takomo's suffix notation (8F) adopted with OUR letters (8K, 10S) so the matrix matches the picker's 52K / 52S.",
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_weight": "Cole 2026-08-19: do not write that the wedge weighs the same at every loft. The 300 g row stays in the spec matrix (it is the manufacturer's sheet, and the table is data) but no copy is built on it, and no 'they all feel like the same club' line derives from it. The Design bullet's 'Weighting shifts by loft' also came off: unsourced, and it contradicted the sheet it sits above.",
- "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
+ "videoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold.mp4?v=1787516101",
+ "videoPoster": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold-poster.jpg?v=1787516101",
+ "_video": "Real footage from the 2026 shoot, chosen 2026-08-23. Transcoded to H.264 1080p before upload (the masters are 25-194 MB of high-bitrate source; these are 0.8-11 MB) and hosted on Shopify Files. The `videoBrief` and each reel `brief` STAY in the file: they are the record of what the slot asked for, and they render again if the src is removed."
 }

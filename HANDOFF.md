@@ -4405,3 +4405,45 @@ identical.
 
 **Still needed from Cole: the on-body apparel shoot.** 23 briefs, and nothing
 in the archive covers them.
+
+### 37r. Video lands: four product films and six reel clips (2026-08-23)
+
+The archive's 61 clips, reviewed the same way as the stills — four numbered
+contact sheets built from one extracted frame per clip, with duration,
+resolution and size on every tile. `ffmpeg` is not on this machine; `pip install
+imageio-ffmpeg` ships a 7.1 binary, which is what made all of this possible.
+
+**The shoot splits cleanly by aspect**, which is what made the assignment
+obvious: **1920×1080 at 20–30s** are product films, **1080×1920 at 3–20s** are
+vertical social clips, and the 1080×1080 squares are neither. The site wanted
+exactly those two shapes.
+
+**Transcoded before upload, and that is the headline number: 1,063 MB of
+masters became 52.8 MB.** H.264, 1080p, CRF 24, `+faststart`. A single BROLL
+master is 194 MB; the clip on the page is 1.5 MB. Uploading masters to have
+Shopify re-encode them would have been the wrong shape.
+
+**Uploaded as `FILE`, not `VIDEO`.** The VIDEO resource creates a Shopify-hosted
+`Video` with its own player and a transcode wait; FILE gives a plain `.mp4` CDN
+URL that drops straight into `<video><source>`, which is what these templates
+use. No processing wait, no player to fight.
+
+| Slot | Filled |
+|---|---|
+| Product films | Gold 28s · Blade 21s · Mallet 25s · Stryker 25s, each with a real poster frame |
+| Reel cards | 3 on the Gold, 3 on the Blade |
+
+**The Black gets nothing, deliberately.** There is no Shadow Black footage in
+the archive, and a gold wedge clip on the Black's page would be a lie. Its
+briefs stay.
+
+**Two mechanics worth keeping.** The film uses `poster` + `preload="none"`; the
+reel cards use **`preload="metadata"` with no poster**, so the browser pulls
+just enough to paint a first frame instead of showing six black boxes — six
+posters for six cards was not worth the upload. And the Blade **had no `reel`
+array of its own**, inheriting the putter family's; it has one now, because
+three of its cards carry Blade footage and the Mallet's must not.
+
+Verified in-browser: every film `readyState` 4, correct duration, 16:9 at
+644×362, reels 1080×1920 and 16s, no horizontal overflow, `--check` all 58
+identical.

@@ -1308,6 +1308,14 @@ html[data-rev="b"] .rev-bar{display:flex}
    aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
 .spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
 
+/* Real video in slots that used to hold a labelled brief (2026-08-23).
+   height:auto for the same reason .clp-row-img needs it: the width/height
+   attributes reserve space and would otherwise beat aspect-ratio. */
+.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+.post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+
 /* ==========================================================================
    PDP — styles shared by the club, apparel and gear templates
    The fold, the buy box, the cross-sell rails, the review widget and the
@@ -2309,6 +2317,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <!-- Video slot. No footage exists yet, so this is a labelled brief rather
            than a faked thumbnail — same contract as the homepage photo gaps. -->
       <div class="club-media">
+        
         <div class="ph ph--video">
           <span class="lbl">
             <span class="mono k">Video needed</span>
@@ -3350,11 +3359,21 @@ var PD_GAPS = {
   var reel = $('#reel-rail');
   if (reel) reel.innerHTML = PD_REEL.map(function(o){
     return '<article class="post">'
+      /* A clip when the copy file carries `src`, the labelled brief when it
+         does not — the same contract the photo slots use. preload="none" so a
+         rail of six does not pull six videos on load. */
       + '<div class="post-ph">'
-      +   '<div class="ph ph--dark"><span class="lbl">'
-      +     '<span class="mono k">Video needed</span>'
-      +     '<span class="mono">' + esc(o.brief) + '</span></span></div>'
-      +   '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'
+      +   (o.src
+          /* preload="metadata" not "none": the browser pulls just enough to
+             paint a first frame, so a card is a still rather than a black box.
+             The film slot below uses a real poster instead. */
+          ? '<video class="post-video" controls preload="metadata" playsinline'
+            + (o.poster ? ' poster="' + esc(o.poster) + '"' : '')
+            + '><source src="' + esc(o.src) + '" type="video/mp4"></video>'
+          : '<div class="ph ph--dark"><span class="lbl">'
+            + '<span class="mono k">Video needed</span>'
+            + '<span class="mono">' + esc(o.brief) + '</span></span></div>'
+            + '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>')
       + '</div>'
       + '<div class="post-meta"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>'
       +   '<span class="h">' + esc(o.kind) + '</span></div>'

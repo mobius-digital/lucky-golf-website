@@ -1308,6 +1308,14 @@ html[data-rev="b"] .rev-bar{display:flex}
    aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
 .spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
 
+/* Real video in slots that used to hold a labelled brief (2026-08-23).
+   height:auto for the same reason .clp-row-img needs it: the width/height
+   attributes reserve space and would otherwise beat aspect-ratio. */
+.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+.post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+
 /* ==========================================================================
    PDP — styles shared by the club, apparel and gear templates
    The fold, the buy box, the cross-sell rails, the review widget and the
@@ -2323,13 +2331,11 @@ html[data-rev="b"] .rev-bar{display:flex}
       <!-- Video slot. No footage exists yet, so this is a labelled brief rather
            than a faked thumbnail — same contract as the homepage photo gaps. -->
       <div class="club-media">
-        <div class="ph ph--video">
-          <span class="lbl">
-            <span class="mono k">Video needed</span>
-            <span class="mono">16:9 product film, 40&ndash;60s. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.</span>
-          </span>
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-        </div>
+        <video class="club-video" controls preload="none" playsinline
+               poster="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold-poster.jpg?v=1787516101" width="1920" height="1080">
+          <source src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-carver-gold.mp4?v=1787516101" type="video/mp4">
+        </video>
+        
       </div>
     </div>
 
@@ -3070,7 +3076,7 @@ var PD_OAV = [{"nm": "Carver 01 Black", "pr": "$109", "rt": "Right hand only · 
 
 /* Highlight-reel briefs from the copy file. No footage exists, so each card
    is a labelled slot describing the clip that belongs there. */
-var PD_REEL = [{"kind": "Creator reel", "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"}, {"kind": "Customer clip", "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"}, {"kind": "Creator reel", "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"}, {"kind": "Customer clip", "brief": "Flop over a bunker with the 60°, face wide open, soft landing"}, {"kind": "Creator reel", "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"}, {"kind": "Customer clip", "brief": "Unboxing, club out of the sleeve, first reaction to the finish"}];
+var PD_REEL = [{"kind": "Creator reel", "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-1.mp4?v=1787516101"}, {"kind": "Customer clip", "brief": "Greenside chip with the 56°, one hop and stop, shot from behind", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-2.mp4?v=1787516101"}, {"kind": "Creator reel", "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole", "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-wedge-3.mp4?v=1787516101"}, {"kind": "Customer clip", "brief": "Flop over a bunker with the 60°, face wide open, soft landing"}, {"kind": "Creator reel", "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"}, {"kind": "Customer clip", "brief": "Unboxing, club out of the sleeve, first reaction to the finish"}];
 
 /* Cart cross-sell, from the copy file. Read by core's paintUpsell(); rows
    already in the bag are filtered out there. */
@@ -3411,11 +3417,21 @@ var PD_GAPS = {
   var reel = $('#reel-rail');
   if (reel) reel.innerHTML = PD_REEL.map(function(o){
     return '<article class="post">'
+      /* A clip when the copy file carries `src`, the labelled brief when it
+         does not — the same contract the photo slots use. preload="none" so a
+         rail of six does not pull six videos on load. */
       + '<div class="post-ph">'
-      +   '<div class="ph ph--dark"><span class="lbl">'
-      +     '<span class="mono k">Video needed</span>'
-      +     '<span class="mono">' + esc(o.brief) + '</span></span></div>'
-      +   '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'
+      +   (o.src
+          /* preload="metadata" not "none": the browser pulls just enough to
+             paint a first frame, so a card is a still rather than a black box.
+             The film slot below uses a real poster instead. */
+          ? '<video class="post-video" controls preload="metadata" playsinline'
+            + (o.poster ? ' poster="' + esc(o.poster) + '"' : '')
+            + '><source src="' + esc(o.src) + '" type="video/mp4"></video>'
+          : '<div class="ph ph--dark"><span class="lbl">'
+            + '<span class="mono k">Video needed</span>'
+            + '<span class="mono">' + esc(o.brief) + '</span></span></div>'
+            + '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>')
       + '</div>'
       + '<div class="post-meta"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>'
       +   '<span class="h">' + esc(o.kind) + '</span></div>'

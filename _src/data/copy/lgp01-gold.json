@@ -309,5 +309,38 @@
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_heavy": "Cole 2026-08-19: don't say the Blade is heavy, it makes it sound bad. The fact is unchanged (385 g against the mallet's 365, both on the sheet) but it is written as what it DOES. Spec-to-Benefit's words for it: 'stability through the stroke', 'resists face manipulation', 'planted and deliberate'.",
  "_neck": "DETERMINED FROM THE PRODUCT PHOTOGRAPHY 2026-08-19 (Cole: 'you look and determine'). Four Shopify studio shots of the LGP02 were examined at full resolution.\n1. NOT A PLUMBER NECK. A plumber neck bends forward, runs horizontally, then drops into a short vertical post offset from and parallel to the shaft. This club has ONE smooth bend where the shaft flows straight into the heel: a short SLANT neck. The word was wrong on both putter pages and in HANDOFF 15, which attributed it to a guide that never contained it.\n2. TOE HANG IS REAL. It is heel-shafted with the shaft axis outside the centre of gravity, so the toe hangs and it is NOT face-balanced. The direction of the claim was right. 'Slight' is dropped: how much it hangs cannot be read off a photo, it needs the club balanced on a finger, and a slant-neck fang mallet is usually moderate rather than slight.\n3. PERIMETER WEIGHTING CONFIRMED. It is a fang mallet: two long rear wings carrying mass at the extremes with the centre hollowed out. Textbook high-MOI perimeter weighting, and Spec-to-Benefit's 'stability through geometry rather than raw weight' describes exactly this shape.",
- "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
+ "videoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-blade.mp4?v=1787516101",
+ "videoPoster": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-film-blade-poster.jpg?v=1787516101",
+ "_video": "Real footage from the 2026 shoot, chosen 2026-08-23. Transcoded to H.264 1080p before upload (the masters are 25-194 MB of high-bitrate source; these are 0.8-11 MB) and hosted on Shopify Files. The `videoBrief` and each reel `brief` STAY in the file: they are the record of what the slot asked for, and they render again if the src is removed.",
+ "reel": [
+  {
+   "kind": "Creator reel",
+   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-blade-1.mp4?v=1787516101"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-blade-2.mp4?v=1787516101"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Face-on slow motion of the roll off the face: end over end, no skid",
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-reel-blade-3.mp4?v=1787516101"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "The head at address, hands off the club, then the stroke"
+  },
+  {
+   "kind": "Creator reel",
+   "brief": "Grip close-up in the hands, then a stroke showing quiet wrists"
+  },
+  {
+   "kind": "Customer clip",
+   "brief": "Unboxing, putter out of the sleeve, first reaction to the finish"
+  }
+ ],
+ "_reel": "The Blade previously inherited the putter family's reel list. It has its own now, because three of its six cards carry real Blade footage and the Mallet's must not."
 }

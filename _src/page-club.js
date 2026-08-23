@@ -80,11 +80,21 @@ var PD_GAPS = {
   var reel = $('#reel-rail');
   if (reel) reel.innerHTML = PD_REEL.map(function(o){
     return '<article class="post">'
+      /* A clip when the copy file carries `src`, the labelled brief when it
+         does not — the same contract the photo slots use. preload="none" so a
+         rail of six does not pull six videos on load. */
       + '<div class="post-ph">'
-      +   '<div class="ph ph--dark"><span class="lbl">'
-      +     '<span class="mono k">Video needed</span>'
-      +     '<span class="mono">' + esc(o.brief) + '</span></span></div>'
-      +   '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'
+      +   (o.src
+          /* preload="metadata" not "none": the browser pulls just enough to
+             paint a first frame, so a card is a still rather than a black box.
+             The film slot below uses a real poster instead. */
+          ? '<video class="post-video" controls preload="metadata" playsinline'
+            + (o.poster ? ' poster="' + esc(o.poster) + '"' : '')
+            + '><source src="' + esc(o.src) + '" type="video/mp4"></video>'
+          : '<div class="ph ph--dark"><span class="lbl">'
+            + '<span class="mono k">Video needed</span>'
+            + '<span class="mono">' + esc(o.brief) + '</span></span></div>'
+            + '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>')
       + '</div>'
       + '<div class="post-meta"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>'
       +   '<span class="h">' + esc(o.kind) + '</span></div>'

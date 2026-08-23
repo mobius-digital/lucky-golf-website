@@ -1308,6 +1308,14 @@ html[data-rev="b"] .rev-bar{display:flex}
    aspect-ratio — the row rendered 628x1536 instead of 628x471 without it. */
 .spot-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
 
+/* Real video in slots that used to hold a labelled brief (2026-08-23).
+   height:auto for the same reason .clp-row-img needs it: the width/height
+   attributes reserve space and would otherwise beat aspect-ratio. */
+.club-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+.post-video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;
+  border-radius:var(--r-card);background:var(--ink)}
+
 /* ==========================================================================
    SUPPORT — returns · shipping · contact · faq
    One stylesheet for all four, because they are one template. A page loads

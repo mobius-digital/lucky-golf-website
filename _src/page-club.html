@@ -172,13 +172,17 @@
       <!-- Video slot. No footage exists yet, so this is a labelled brief rather
            than a faked thumbnail — same contract as the homepage photo gaps. -->
       <div class="club-media">
-        <div class="ph ph--video">
+        {{#videoSrc}}<video class="club-video" controls preload="none" playsinline
+               poster="{{videoPoster}}" width="1920" height="1080">
+          <source src="{{videoSrc}}" type="video/mp4">
+        </video>{{/videoSrc}}
+        {{^videoSrc}}<div class="ph ph--video">
           <span class="lbl">
             <span class="mono k">Video needed</span>
             <span class="mono">{{videoBrief}}</span>
           </span>
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-        </div>
+        </div>{{/videoSrc}}
       </div>
     </div>
 
