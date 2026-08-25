@@ -1072,6 +1072,9 @@ def build(slug, report):
     # does nothing. Marker verified unique to page-brand.js (§21i).
     if ctx.get("apply"):
         page.extra_required += ['id="amb-apply"', 'function brApplyIntercept']
+    # `close` exists on other templates too (reviews); only brand renders br-fit
+    if ctx.get("close") and src == "brand":
+        page.extra_required.append('<section class="br-fit"')
 
     symbols = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf8").read().rstrip("\n")
     host = read("partials/symbols-host.html")
@@ -1240,8 +1243,13 @@ REQUIRED = {
         "@media (max-width:620px)",
     ],
     "brand": [
-        # the brand field, once, and never against the ink footer
-        '<section class="br-fit"', ".br-fit{",
+        # the brand field CSS ships with the template; the SECTION is per-page
+        # now (extra_required) — Our Story dropped its close 2026-08-25,
+        # Takomo-style, while the Trybe keeps one
+        ".br-fit{",
+        # the trio popups: cards that look fine and open nothing are exactly
+        # the silent failure smoke() exists for
+        "function brDialogs", ".br-dlg{",
         ".ph{",                          # the labelled placeholder — core
         ".br-row-in{display:grid",       # the alternating photo/copy rows
         ".tbd{",

@@ -2420,7 +2420,7 @@ Cole supplied four `.docx` files on 2026-08-01. They are extracted into the
 repo as markdown beside the existing guide:
 
 ```
-references-how-we-write-v7.3.md        was v6 in the copy skill
+references-how-we-write-v8.1.md        was v6 in the copy skill
 references-culture-v2.md               NEW — golf-culture vocabulary
 references-spec-to-benefit-v1.0.md     NEW — what each spec means
 references-product-guide-v1.8.md       unchanged, byte-for-byte verified
@@ -4487,3 +4487,41 @@ already on the clubs collection.
 slots, Our Story's portrait of Cole, the homepage's "hands regripping on a
 bench", the homepage's polo and hat on-body tiles, the Ambassador group shot,
 the tees flat-lay, and the Carver Black's look section.
+
+---
+
+## §38 — THE VOICE LANDED (2026-08-25)
+
+Our Story was rewritten seven times against Takomo's About page. Cole signed
+off: *"Now this is good. You finally found a voice, personality, etc. That is
+consistent across this entire page."*
+
+**The root cause of every earlier flat draft was this document's own tone
+guide.** `references-how-we-write` v7.1–7.3 banned "us-vs-them defiance" and
+named "new dress code" as a non-Lucky line. That paragraph built a careful
+person, not Lucky. It is reversed in **v8.0**, and **v8.1** adds the section
+**"The approved model"** — the approved lines verbatim, the two legs of the
+argument, and the hard rules.
+
+**Read `VOICE-ROLLOUT.md`** for the site-wide re-pass plan and the
+comparison-page spec. It is the entry point for the next session.
+
+**Hard rules set this day, site-wide:**
+- Never name the founder on a public page. (This removed the January Z. quote
+  block from Our Story, since the review names him.)
+- Trust claims stay vague: "thousands of happy golfers", "60-day test drives".
+  No order counts, no review counts, no "zero tour pros paid".
+- No process vocabulary in brand copy. "Forged", "CNC-milled" and alloy numbers
+  live on product pages. Brand copy says "the same high-end materials the big
+  names use".
+- Internal strategy language ("influencer arbitrage") never reaches a page.
+
+**Page structure now:** hero (darkened photo, centred, small headline) →
+manifesto (two-tone display left, conviction copy right, staccato close) →
+three popup cards (the card IS the button; `<dialog>` carries the copy) →
+ink year-rail timeline → keep-looking. Nine bands became five; ~9 screens
+became 3.
+
+**New template blocks on `page-brand.html`,** all gated, all reusable on other
+pages: `{{#manifesto}}`, `{{#trio}}` + its dialogs, `{{#timeline}}`. The dialog
+behaviour is `brDialogs()` in `_src/core.js` and is smoke-guarded.

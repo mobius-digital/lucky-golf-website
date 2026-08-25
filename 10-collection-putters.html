@@ -3049,6 +3049,35 @@ var LG_QUICKADD = {"lgp02-gold": {"name": "Tracer Mallet", "img": "https://cdn.s
     paint();
   });
 })();
+
+/* ============ POPUP CARDS — Takomo's device, verbatim (Cole, 2026-08-25:
+   "Takomo doesn't have a button and they can just click on the image").
+   A [data-dlg] card opens the <dialog> it names; native showModal handles
+   Esc and focus, the backdrop click is the only part we wire ourselves.
+   Lives in core because dialogs may spread beyond the story page; costs
+   nothing on pages without a [data-dlg]. */
+(function () {
+  function brDialogs() {
+    var cards = document.querySelectorAll('[data-dlg]');
+    if (!cards.length) return;
+    [].forEach.call(cards, function (c) {
+      c.addEventListener('click', function () {
+        var d = document.getElementById(c.getAttribute('data-dlg'));
+        if (d && d.showModal) d.showModal();
+      });
+    });
+    [].forEach.call(document.querySelectorAll('dialog.br-dlg'), function (d) {
+      d.addEventListener('click', function (e) {
+        // a click on the backdrop lands on the dialog element itself;
+        // clicks inside land on children
+        if (e.target === d) d.close();
+      });
+      var x = d.querySelector('[data-dlg-close]');
+      if (x) x.addEventListener('click', function () { d.close(); });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', brDialogs);
+})();
 </script>
 
 </body>

@@ -1448,6 +1448,138 @@ html[data-rev="b"] .rev-bar{display:flex}
   text-transform:uppercase;letter-spacing:.03em}
 .br-steps-list p{margin:9px 0 0;font-size:var(--fs-base);line-height:1.6;color:var(--ink-70)}
 
+/* ---------- the timeline on ink — Our Story ----------
+   Takomo runs their timeline as one dark block and folds nothing else around
+   it (Cole, 2026-08-25: too many colors, too much scroll). Same ladder markup
+   as .br-steps, inverted for the ink band, with the receipts dl living INSIDE
+   the same section so the page doesn't spend a second dark band on three
+   numbers. Badge inverts to cream-on-ink so it reads against the field. */
+.br-tl h2{text-align:center;margin-inline:auto}
+/* Takomo's year rail: entries read above the line, a dot marks each on it,
+   the year sits under the dot. Twelve entries means it scrolls sideways on
+   every viewport — same gold-thumb scrollbar as the mobile card rails.
+   The dot pins to the bottom with margin-top:auto so every dot lands on
+   the rail no matter how tall its entry runs. */
+.br-tl-rail{overflow-x:auto;scroll-snap-type:x proximity;
+  padding:0 clamp(20px,4vw,64px) 10px}
+.br-tl-rail::-webkit-scrollbar{height:4px}
+.br-tl-rail::-webkit-scrollbar-track{background:rgba(246,242,232,.14)}
+.br-tl-rail::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.br-tl-rail{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
+.br-tl-list{position:relative;display:grid;grid-auto-flow:column;
+  grid-auto-columns:224px;gap:30px;list-style:none;
+  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px}
+.br-tl-list::before{content:'';position:absolute;left:0;right:0;bottom:34px;
+  height:2px;background:var(--rule-on-dark)}
+.br-tl-list li{position:relative;display:flex;flex-direction:column;
+  align-items:center;text-align:center;scroll-snap-align:start}
+.br-tl-tx{margin-bottom:24px}
+.br-tl-tx h3{margin:0;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;font-size:var(--fs-body);
+  text-transform:uppercase;letter-spacing:.03em;color:var(--cream)}
+.br-tl-tx p{margin:9px 0 0;font-size:var(--fs-base);line-height:1.55;
+  color:var(--cream-70)}
+.br-tl-soon{display:inline-block;margin-top:10px;padding:4px 10px;
+  border:1.5px dashed var(--cream-52);border-radius:var(--r);
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:var(--fs-sm);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--cream-70)}
+.br-tl-dot{flex:none;margin-top:auto;width:12px;height:12px;border-radius:50%;
+  background:var(--gold);position:relative;z-index:1}
+.br-tl-yr{margin-top:10px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;font-size:var(--fs-sm);
+  letter-spacing:.08em;color:var(--cream-70)}
+.br-tl-figs{margin-top:clamp(40px,4.5vw,60px)}
+
+
+/* ---------- the manifesto — Takomo's FAIR WAY block, Lucky's argument ---- */
+.br-man-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  gap:clamp(28px,5vw,84px);align-items:start}
+.br-man-h{margin:0;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 70;font-weight:800;text-transform:uppercase;
+  font-size:clamp(2.3rem,4.4vw,3.9rem);line-height:.98;letter-spacing:-.01em}
+.br-man-a{background:var(--lg-foil-v);-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.br-man-lede{margin:0;font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.45;color:var(--ink)}
+.br-man-p{margin:16px 0 0;font-size:var(--fs-body);line-height:1.66;color:var(--ink-70)}
+.br-man-s{margin:14px 0 0;font-size:var(--fs-body);line-height:1.3;color:var(--ink)}
+.br-man-s + .br-man-s{margin-top:6px}
+.br-man-s:last-child{font-weight:700}
+
+/* ---------- the trio — Takomo's popup cards, done their way ----------
+   (Cole, 2026-08-25, second pass: "they can just click on the image... let's
+   really do it instead of making up your own shit.") The card IS the button:
+   image, label running up the left edge, one caption line over a bottom
+   scrim, a plus chip in the corner. The full copy lives in the card's
+   <dialog>. The scrim is what makes white-on-photo legible no matter what
+   was shot; the portrait card (still a brief) drops the scrim and sets ink. */
+.br-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.br-tc{position:relative;display:block;padding:0;border:0;background:none;
+  cursor:pointer;border-radius:var(--r-card);overflow:hidden;text-align:left;
+  font:inherit;color:inherit}
+.br-tc-img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.br-tc-img.ph{min-height:0;padding:24px 24px 96px;border-radius:0}
+.br-tc:not(.br-tc--ph)::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,9,6,.72),rgba(10,9,6,.28) 34%,transparent 58%);
+  pointer-events:none}
+.br-tc-side{position:absolute;left:10px;bottom:16px;z-index:1;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;
+  font-size:clamp(1.5rem,2.1vw,2rem);letter-spacing:.02em;text-transform:uppercase;
+  color:var(--cream)}
+.br-tc-plus{position:absolute;top:12px;right:12px;z-index:1;width:36px;height:36px;
+  display:grid;place-items:center;border-radius:50%;background:var(--cream);
+  color:var(--ink);font-family:'Archivo',sans-serif;font-size:1.3rem;font-weight:600;
+  line-height:1;transition:transform .15s ease}
+.br-tc:hover .br-tc-plus{transform:scale(1.12)}
+.br-tc-cap{position:absolute;left:64px;right:18px;bottom:16px;z-index:1;
+  font-family:'Archivo',sans-serif;font-weight:500;font-size:var(--fs-sm2,.9rem);
+  line-height:1.55;color:var(--cream)}
+.br-tc--ph .br-tc-side,.br-tc--ph .br-tc-cap{color:var(--ink)}
+
+/* ---------- the popup itself ---------- */
+.br-dlg{border:0;border-radius:var(--r-card);padding:0;
+  width:min(820px,calc(100vw - 40px))}
+.br-dlg::backdrop{background:rgba(23,20,15,.58)}
+.br-dlg-in{padding:clamp(30px,4vw,48px) clamp(26px,5vw,80px)
+  clamp(32px,4vw,52px) clamp(64px,16vw,230px)}
+.br-dlg-in h3{margin:0;max-width:none;text-transform:none;
+  font-size:clamp(1.3rem,1.9vw,1.65rem);letter-spacing:0;
+  font-variation-settings:'wdth' 84;line-height:1.2}
+.br-dlg-p{margin:14px 0 0;font-size:var(--fs-base);line-height:1.62;color:var(--ink-70)}
+.br-dlg-p a{border-bottom:1px solid var(--gold);color:var(--ink)}
+.br-dlg-p a:hover{color:var(--gold-lo)}
+.br-dlg-side{position:absolute;left:clamp(18px,4vw,54px);top:34px;writing-mode:vertical-rl;
+  transform:rotate(180deg);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 70;font-weight:800;font-size:clamp(1.6rem,3vw,2.6rem);
+  letter-spacing:.02em;text-transform:uppercase;color:rgba(23,20,15,.14)}
+/* the thin vertical rule that runs on from the ghost label, theirs exactly */
+.br-dlg::before{content:'';position:absolute;top:58%;bottom:44px;width:1.5px;
+  left:calc(clamp(18px,4vw,54px) + 1.1rem);background:rgba(23,20,15,.16)}
+.br-dlg-x{position:absolute;top:12px;right:12px;width:38px;height:38px;
+  display:grid;place-items:center;border:0;border-radius:50%;cursor:pointer;
+  background:var(--ink);color:var(--cream);font-size:1.25rem;line-height:1}
+
+/* ---------- centred head — Takomo's header (Our Story only) ----------
+   Their band: the photo fills it, darkened, with the small line and the
+   headline centred ON it (Cole, 2026-08-25 pass 4: "the image in the
+   background with it darkened... the spacing"). The darkening is a filter
+   on the image itself, so there is no overlay element to stack. h1 runs at
+   roughly a third of d-xl — their scale, overridden in scope. */
+.br-hd--c{position:relative;overflow:hidden;display:grid;align-content:center;
+  min-height:min(66vh,640px)}
+.br-hd--c .wm{display:none}
+.br-hd--c .wrap{position:static;text-align:center}
+.br-hd--c .br-hero-img{position:absolute;inset:0;width:100%;height:100%;
+  aspect-ratio:auto;object-fit:cover;margin:0;border-radius:0;z-index:0;
+  filter:brightness(.42)}
+.br-hd--c .eyebrow,.br-hd--c h1,.br-hd--c .br-lede{position:relative;z-index:1}
+.br-hd--c .eyebrow{color:var(--gold)}
+.br-hd--c h1{margin-inline:auto;max-width:26ch;color:var(--cream);
+  font-size:clamp(2rem,3.4vw,3.3rem)}
+.br-hd--c .br-lede{margin-inline:auto;margin-top:14px;color:var(--cream-70);
+  font-size:clamp(.98rem,1.1vw,1.06rem);max-width:64ch}
+
 /* ---------- the brand moment ---------- */
 .br-fit{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);
   padding:clamp(62px,7vw,102px) 0;border-block:2px solid var(--brand-accent)}
@@ -1489,6 +1621,9 @@ html[data-rev="b"] .rev-bar{display:flex}
   .br-sibs{grid-template-columns:1fr}
 }
 @media (max-width:620px){
+  .br-man-in{grid-template-columns:1fr;gap:22px}
+  .br-dlg-side,.br-dlg::before{display:none}
+  .br-dlg-in{padding:30px 22px 32px}
   .br-hd h1{max-width:none}
   .br-hero{aspect-ratio:4/3}
   .br-row-ph{aspect-ratio:3/2}
@@ -1599,6 +1734,8 @@ html[data-rev="b"] .rev-bar{display:flex}
   .br-steps-list li{flex-direction:row;gap:16px;align-items:flex-start}
   .br-step-n{margin-bottom:0}
   .br-steps-list h3{margin-top:8px}
+  /* the trio stacks; .msnap turns it into a swipe rail below 620 via core */
+  .br-trio{grid-template-columns:1fr;gap:26px}
 }
 </style>
 </head>
@@ -1752,7 +1889,9 @@ html[data-rev="b"] .rev-bar{display:flex}
   </ol>
 </nav>
 
-<!-- ============ HEAD ============ -->
+<!-- ============ HEAD ============
+     `center` (Our Story) sets Takomo's composition: headline, sub and photo
+     all on the centre axis. The Trybe keeps the left-aligned default. -->
 <section class="sec-tight br-hd">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <div class="wrap">
@@ -1762,6 +1901,36 @@ html[data-rev="b"] .rev-bar{display:flex}
 
   </div>
 </section>
+
+
+<!-- ============ THE MANIFESTO ============
+     Takomo's "FAIR WAY TO GOLF" block (Cole, 2026-08-25): big two-tone
+     display left, conviction copy right, staccato closer. Theirs argues
+     access; ours argues fun and standing out, which is the thesis split the
+     whole page runs on. -->
+
+
+<!-- ============ THE TRIO ============
+     Takomo's device, copied properly this second time (Cole, 2026-08-25:
+     "Takomo doesn't have a button and they can just click on the image...
+     let's really do it"). Each card IS the control: an image with the label
+     running up the left edge, one caption line over a scrim at the bottom,
+     a plus chip in the corner, and the full copy in a <dialog> it opens.
+     No buttons, no text stack under the photo. The card without a photo yet
+     (Cole's portrait) renders the labelled brief inside the same frame and
+     opens its dialog all the same. -->
+
+
+<!-- ============ THE TIMELINE ============
+     Takomo's device, and the one thing their story page has that ours didn't
+     (Cole, 2026-08-25). Their jokes land because they hang off a founder, a
+     year and a list of real events; ours had nothing to hang on, so the page
+     hung its lines on itself. Same markup and stylesheet as `steps` below —
+     a SECOND gated block rather than a moved one, because the Trybe page
+     renders `steps` after its rows and a founding story has to come first.
+     Five items, always: `.br-steps-list` is a 5-column grid and the connector
+     is measured badge-centre to badge-centre across exactly five. -->
+
 
 <!-- ============ THE FORK ============
      Dartee's device (Cole, 2026-08-13: "follow Dartee's version... it's just so
@@ -2066,7 +2235,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="br-sib-h">Five clubs: two wedge finishes, two putters and a hybrid.</span>
       </a>
     </div>
-    <p class="aside br-aside">Photography across this site is a written brief until the real thing exists.</p>
+    <p class="aside br-aside">Some photography on this site is still a written brief. Where it is, the brief says what the shot has to be.</p>
   </div>
 </section>
 
@@ -2944,6 +3113,35 @@ html[data-rev="b"] .rev-bar{display:flex}
     document.body.appendChild(bar);
     paint();
   });
+})();
+
+/* ============ POPUP CARDS — Takomo's device, verbatim (Cole, 2026-08-25:
+   "Takomo doesn't have a button and they can just click on the image").
+   A [data-dlg] card opens the <dialog> it names; native showModal handles
+   Esc and focus, the backdrop click is the only part we wire ourselves.
+   Lives in core because dialogs may spread beyond the story page; costs
+   nothing on pages without a [data-dlg]. */
+(function () {
+  function brDialogs() {
+    var cards = document.querySelectorAll('[data-dlg]');
+    if (!cards.length) return;
+    [].forEach.call(cards, function (c) {
+      c.addEventListener('click', function () {
+        var d = document.getElementById(c.getAttribute('data-dlg'));
+        if (d && d.showModal) d.showModal();
+      });
+    });
+    [].forEach.call(document.querySelectorAll('dialog.br-dlg'), function (d) {
+      d.addEventListener('click', function (e) {
+        // a click on the backdrop lands on the dialog element itself;
+        // clicks inside land on children
+        if (e.target === d) d.close();
+      });
+      var x = d.querySelector('[data-dlg-close]');
+      if (x) x.addEventListener('click', function () { d.close(); });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', brDialogs);
 })();
 </script>
 

@@ -80,7 +80,7 @@ tools/
   render-ref.py           historical — reference screenshots
 
 references-product-guide-v1.8.md      product facts. Outranks everything.
-references-how-we-write-v7.3.md       voice
+references-how-we-write-v8.1.md       voice
 references-culture-v2.md              golf-culture vocabulary
 references-spec-to-benefit-v1.0.md    what each spec means, and CLAIMS TO AVOID
 

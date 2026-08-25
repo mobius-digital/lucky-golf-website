@@ -1,6 +1,6 @@
 LUCKY GOLF — HOW WE WRITE
 
-Version 7.3 · A short guide to Lucky's tone.
+Version 8.1 · A short guide to Lucky's tone.
 
 This is a tone guide, not a rulebook. It describes how Lucky sounds — not what to write, not how long to make it, not what structure to use. Those things depend on the piece. What doesn't depend on the piece is the voice.
 
@@ -8,7 +8,7 @@ Product facts live in a separate document, the Product Reference Guide. Never wr
 Who Lucky is
 Lucky Golf builds equipment that performs at the level of the big brands and costs a fraction of what they charge. Forged wedges. CNC-milled putters. A titanium hybrid. A gold finish. Real materials, real performance, and prices set by people who chose not to pass along tour sponsorships and retail markups to the golfer.
 
-That's the brand: something better, priced fairly. No underdog story. No manifesto about disrupting golf. Just a company that built the clubs it thought should exist and put honest numbers on them. Bold in what it made. Never posturing about it.
+That's the brand: something better, priced fairly, from people who think golf got too serious and too expensive and aren't shy about saying so. Lucky has a point of view about the game — the stuffiness, the gatekeeping, the prices — and the copy is allowed to swing at it. What Lucky never does is posture without product behind the punch. Every swagger line hangs on something real: a gold club you can buy, a price you can check, a review a customer actually wrote. Attitude with receipts is Lucky. Attitude floating free is just noise.
 How Lucky sounds
 Lucky sounds like someone talking, not like copy. Confident without straining, warm without trying, sharp without needing to prove it. The voice has range — sometimes bold, sometimes plainspoken, sometimes quiet — but it always sounds like the same person.
 
@@ -24,7 +24,7 @@ These aren't three different voices. They're the same person at different volume
 
 The one thing that stays constant across all three: nothing is trying too hard. Bold doesn't mean loud. Playful doesn't mean clever. Quiet doesn't mean shy. Whatever the volume, Lucky lands the line without straining for it.
 
-A quick word on bold, because it's the volume most likely to get misread. Bold in Lucky is plainspoken with more energy — same content, more confidence in the delivery, less hedging. It's not combative. It's not metaphorical. When "bold" gets read as us-vs-them defiance ("the wedge nobody wanted you to find") or as wordplay ("new dress code"), the line stops sounding like Lucky and starts sounding like a different brand. A bold Lucky line is a plain statement said with weight — no wink, no fight.
+A quick word on bold, because it's the volume most likely to get misread — and v7's reading of it was wrong. Bold in Lucky has attitude. It's allowed to pick a fight with golf's stuffiness, its gatekeeping, and its prices, because that fight is why the company exists. "Golf has a dress code. We showed up in gold" is a Lucky line. What bold is NOT allowed to do is swing at nothing: every punchy line has to land on something real — a product, a price, a number, a thing that actually happened. The failure mode isn't attitude. It's attitude without receipts (a diss with no product behind it), and its opposite: the flat double-statement, where one plain sentence follows another plain sentence and nobody's home. If a line could open an investor deck, it isn't Lucky. If it sounds like the funniest guy in your foursome telling the truth, it is.
 
 Range works within a single piece too. A set of four tooltips where every one plays the same shape reads flat, even when each line is fine on its own. Same with three subject lines or six ad variants — if they all land in the same register, the group reads templated. Mix shapes and volumes so the set has some variety. One shape repeated is what a template sounds like. Range across the set is what Lucky sounds like.
 What Lucky sounds like
@@ -90,7 +90,11 @@ If a piece of Lucky copy sounds like a person talking to a golfer who already kn
 
 Lucky Golf — It's Better to Be Lucky.
 
-Last updated: July 2026 · v7.3
+Last updated: August 2026 · v8.1
+
+v8.1 — adds "The approved model": the lines Cole signed off on 2026-08-25, the two legs of the argument, and the hard rules (no founder name, vague trust claims, no process vocabulary in brand copy). This section is the reference for the site-wide re-pass.
+
+v8.0 — reverses v7.1's bold ruling, per Cole (2026-08-25), tested against Takomo's story page: attitude toward golf's stuffiness, gatekeeping and prices IS Lucky, and the guide was killing it. The failure mode was never attitude; it was attitude without receipts, and the flat double-statement the old rule produced instead. Rewrites 'Who Lucky is' to give the brand its point of view back.
 
 v7.3 — expands the tooltip example to model three shapes: anchored pair with warm/punchy outcome, pure benefit with no anchor, and bare fact stated flat. Uses different specs across the examples so no pairing gets held up as canonical. Adds a paragraph to "The range" section naming that range applies within a set, not just across pieces — a batch of copy where every line plays the same shape reads flat.
 

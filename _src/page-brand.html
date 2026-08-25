@@ -20,8 +20,10 @@
   </ol>
 </nav>
 
-<!-- ============ HEAD ============ -->
-<section class="sec-tight br-hd">
+<!-- ============ HEAD ============
+     `center` (Our Story) sets Takomo's composition: headline, sub and photo
+     all on the centre axis. The Trybe keeps the left-aligned default. -->
+<section class="sec-tight br-hd{{#center}} br-hd--c{{/center}}">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <div class="wrap">
     <p class="eyebrow">{{eyebrow}}</p>
@@ -35,6 +37,96 @@
 {{/hero}}
   </div>
 </section>
+
+
+<!-- ============ THE MANIFESTO ============
+     Takomo's "FAIR WAY TO GOLF" block (Cole, 2026-08-25): big two-tone
+     display left, conviction copy right, staccato closer. Theirs argues
+     access; ours argues fun and standing out, which is the thesis split the
+     whole page runs on. -->
+{{#manifesto}}
+<section class="sec br-man">
+  <div class="wrap br-man-in">
+    <h2 class="br-man-h"><span class="br-man-a">{{headA}}</span> <span>{{headB}}</span></h2>
+    <div class="br-man-c">
+      <p class="br-man-lede">{{lede}}</p>
+{{#paras}}      <p class="br-man-p">{{.}}</p>
+{{/paras}}{{#stack}}      <p class="br-man-s">{{.}}</p>
+{{/stack}}    </div>
+  </div>
+</section>
+{{/manifesto}}
+
+<!-- ============ THE TRIO ============
+     Takomo's device, copied properly this second time (Cole, 2026-08-25:
+     "Takomo doesn't have a button and they can just click on the image...
+     let's really do it"). Each card IS the control: an image with the label
+     running up the left edge, one caption line over a scrim at the bottom,
+     a plus chip in the corner, and the full copy in a <dialog> it opens.
+     No buttons, no text stack under the photo. The card without a photo yet
+     (Cole's portrait) renders the labelled brief inside the same frame and
+     opens its dialog all the same. -->
+{{#trio}}
+<section class="sec-tight br-trio-sec">
+  <div class="wrap">
+    <div class="br-trio msnap">
+{{#cards}}      <button type="button" class="br-tc{{^photoSrc}} br-tc--ph{{/photoSrc}}" data-dlg="dlg-{{id}}" aria-haspopup="dialog">
+        {{#photoSrc}}<img class="br-tc-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="1024" height="768" loading="lazy" decoding="async">{{/photoSrc}}
+        {{^photoSrc}}<span class="br-tc-img ph">
+          <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
+        </span>{{/photoSrc}}
+        <span class="br-tc-side" aria-hidden="true">{{tag}}</span>
+        <span class="br-tc-plus" aria-hidden="true">+</span>
+        <span class="br-tc-cap">{{cap}}</span>
+      </button>
+{{/cards}}    </div>
+  </div>
+{{#cards}}  <dialog class="br-dlg" id="dlg-{{id}}" aria-label="{{tag}}">
+    <button type="button" class="br-dlg-x" data-dlg-close aria-label="Close">&times;</button>
+    <span class="br-dlg-side" aria-hidden="true">{{tag}}</span>
+    <div class="br-dlg-in">
+      <h3 class="disp d-s">{{title}}</h3>
+{{#paras}}      <p class="br-dlg-p">{{.}}</p>
+{{/paras}}{{#cta}}      <p class="br-dlg-p"><a href="{{href}}">{{label}}</a></p>
+{{/cta}}    </div>
+  </dialog>
+{{/cards}}</section>
+{{/trio}}
+
+<!-- ============ THE TIMELINE ============
+     Takomo's device, and the one thing their story page has that ours didn't
+     (Cole, 2026-08-25). Their jokes land because they hang off a founder, a
+     year and a list of real events; ours had nothing to hang on, so the page
+     hung its lines on itself. Same markup and stylesheet as `steps` below —
+     a SECOND gated block rather than a moved one, because the Trybe page
+     renders `steps` after its rows and a founding story has to come first.
+     Five items, always: `.br-steps-list` is a 5-column grid and the connector
+     is measured badge-centre to badge-centre across exactly five. -->
+{{#timeline}}
+<section class="sec band-ink br-tl">
+  <div class="wrap">
+    <h2 class="disp d-m">{{headline}}</h2>
+  </div>
+  <div class="br-tl-rail" tabindex="0" aria-label="Timeline, scrolls sideways">
+    <ol class="br-tl-list">
+{{#items}}      <li>
+        <div class="br-tl-tx">
+          <h3>{{title}}</h3>
+          <p>{{body}}</p>
+          {{#soon}}<span class="br-tl-soon">Coming soon</span>{{/soon}}
+        </div>
+        <span class="br-tl-dot" aria-hidden="true"></span>
+        <span class="br-tl-yr">{{year}}</span>
+      </li>
+{{/items}}    </ol>
+  </div>
+  <div class="wrap">
+{{#figs}}    <dl class="br-figs br-tl-figs">
+{{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/items}}    </dl>
+{{/figs}}  </div>
+</section>
+{{/timeline}}
 
 <!-- ============ THE FORK ============
      Dartee's device (Cole, 2026-08-13: "follow Dartee's version... it's just so
@@ -169,7 +261,7 @@
      it is not (§11's rule, applied here). NOTHING on this site is a written
      testimonial; if it is in quotation marks a customer typed it. -->
 {{#quote}}
-<section class="sec band-cream br-quote">
+<section class="sec br-quote">
   <div class="wrap">
     <span class="eyebrow">{{eyebrow}}</span>
     <figure class="br-q">
