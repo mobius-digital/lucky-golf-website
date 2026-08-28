@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    GEAR PDP — what only a cover, grip, glove or pack of tees renders
    Which is almost nothing. The fold, the buy box, the review widget and the
@@ -1899,7 +1906,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <span class="amt" id="bx-amt">$17.95</span>
     </div>
 
-    <p class="bx-body">A tour glove with the clover on the closure. It is a glove: it grips, it wears out, you buy another one. This one costs less than the pro-shop equivalent and has better branding on it.</p>
+    <p class="bx-body">A tour glove with the clover on the closure. It's a glove: it grips, it wears out, you buy another one. This one costs less than the pro-shop equivalent and has better branding on it.</p>
 
     <div class="bx-four">
       <div>
@@ -1972,7 +1979,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="eyebrow">Which hand</span>
         <h2 class="disp d-m">The hand it goes on, not the hand you play with</h2>
         <p class="body">A right-handed golfer wears a glove on the LEFT hand. That trips people up constantly, so: pick Left if you play right-handed.</p>
-        <p class="body">Stock is thin at the moment and most combinations are unavailable. The picker grays out anything that is not genuinely buyable rather than letting you find out at checkout.</p>
+        <p class="body">Stock is thin at the moment and most combinations are unavailable. The picker grays out anything that's not genuinely buyable rather than letting you find out at checkout.</p>
 
         
         <ul class="club-specs">
@@ -2017,7 +2024,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <div class="pt-ph"><img src="" alt="Lucky Golf Tees" loading="lazy" width="800" height="800">
           </div>
         <a class="pt-nm stretch" href="20-product-tees-25.html">Lucky Golf Tees</a>
-        <p class="pt-hook">You are out of tees. You are always out of tees.</p>
+        <p class="pt-hook">You're out of tees. You're always out of tees.</p>
         <div class="pt-meta"><span class="pt-pr">$9.95</span><span class="pt-rt">25 tees</span></div>
       </article>
 

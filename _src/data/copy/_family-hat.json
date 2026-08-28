@@ -35,11 +35,7 @@
   },
   {
    "k": "Fabric",
-   "v": "<span class=\"tbd tbd--light\">Needs spec</span>"
-  },
-  {
-   "k": "Care",
-   "v": "<span class=\"tbd tbd--light\">Needs spec</span>"
+   "v": "Light and breathable, moisture-wicking."
   }
  ],
  "marquee": [
@@ -90,7 +86,10 @@
  "pieceHeadline": "Five panels, a snapback, and a sweatband that actually works.",
  "pieceParas": [
   "Every Lucky hat is the same build: a five-panel snapback with a moisture-wicking sweatband and laser-cut ventilation. Eighteen holes in July and you still want it on at the end.",
-  "The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the colour it sits on. Pick the one that goes with the rest of what you own."
+  "The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the color it sits on. Pick whichever one you would actually reach for."
  ],
- "_pass": "Copy pass 2026-08-19. The close typed $29 in. The piece copy said you could wear it 'for eighteen holes in July and still want it on your head AT THE TURN' — the turn is hole nine, so the sentence undercut its own claim. The close headline was another 'Go [verb]'."
+ "_pass": "Copy pass 2026-08-19. The close typed $29 in. The piece copy said you could wear it 'for eighteen holes in July and still want it on your head AT THE TURN' — the turn is hole nine, so the sentence undercut its own claim. The close headline was another 'Go [verb]'.",
+ "buyTerm": "Five-panel, one size fits all",
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25.",
+ "_fabric": "SOURCED 2026-08-25 from the live storefront, not invented. luckygolf.com's hat product pages carry the description 'Light, breathable, and clean enough to wear off the course' and a 'Moisture-Wicking Fabric' badge. That badge is hat-specific: it does NOT render on the head-cover page, so it is a product fact and not a global trust badge. Shopify holds no fabric or care metafields for any hat (checked via Admin API) and the description is one generic line. THE CARE ROW WAS REMOVED rather than filled: nothing about care is published anywhere, and a guessed wash instruction can wreck a customer's hat. It goes back the day the manufacturer supplies one. Fibre composition is still unknown and is the one thing only Cole can get."
 }

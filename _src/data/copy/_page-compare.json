@@ -1,0 +1,81 @@
+{
+ "_": "The comparison page. VOICE-ROLLOUT Job 2. REBUILT 2026-08-25 as a spec table after reviewing Takomo's actual page at /pages/takomo-vs-big-brands. The first version argued with two asymmetric stacks and no figures; Cole's note was that the thing he liked about Takomo's is the DETAIL, and the detail is the table.",
+ "_model": "Takomo's page is titled 'Why Pay $1,400 for Golf Irons?' and runs a 7-row table: price, material, manufacturing, shafts, awards, sales channel, try-before-buy. Its power is that rows 2 and 3 are word-for-word IDENTICAL in both columns. That is how it proves 'same club, different price' without arguing it. Ours copies the structure, not the content.",
+ "_price": "COLE CLEARED COMPETITOR PRICING 2026-08-25: 'yes Takomo did it that means we can'. Takomo publishes '$1,000 - $1,500+' for traditional iron sets without naming a brand. Ours is $170 to $200 for one big-name forged wedge, VERIFIED from published MSRPs on 2026-08-25: Titleist Vokey SM10 $189.99, Cleveland RTX 6 ZipCore $169.99 to $199.99. The range is deliberately conservative and no brand is named. Re-check it if it is still on the site in a year: MSRPs move.",
+ "_rules": "STILL TRUE: no competitor is ever NAMED, and no figure is invented. What changed is that a published MSRP is not an invented number. The big-names column is written at CATEGORY level and hedged the way Takomo hedges ('varies by model'), because we cannot speak for every manufacturer's process. Nothing in that column is a claim about a specific brand.",
+ "_awards": "THE AWARD ROW IS DELIBERATELY ABSENT. Takomo's strongest row is 'Award Recognition: MyGolfSpy Most Wanted, Golf Monthly Editor's Choice'. We have no equivalent and an empty cell on our side of a comparison table reverses the whole page. Cole asked what should go there; the answer is nothing, until there is something. The FINISH row takes its place: it is the one row the big names cannot match, and it is the second leg of the argument (gold, on purpose). Put awards back the day we have one. CLOSED 2026-08-25. The only press Cole could find is a VUE Magazine gift-guide inclusion. Considered and REJECTED for this row, and he raised the doubt himself. A gift guide is lifestyle placement, not equipment validation: it says the club makes a good present, not that it performs. Sat in a row labelled 'Award Recognition' next to Takomo's MyGolfSpy Most Wanted (a robot-tested independent award) it invites the comparison and loses it, and one soft row makes the whole table read softer. THE BAR for this row: an independent test, a head-to-head, or a golf-media award. Not a listicle, not a gift guide, not a sponsored mention. Until then the Finish row keeps the slot and this is a settled decision, not an open gap.",
+ "_scope": "Wedges only, per Cole 2026-08-25: 'Wedges for now, irons when we drop them later this year.' Irons land late 2026 per the Our Story timeline. When they do, this page either gains a second table or forks.",
+ "crumbName": "What you pay for",
+ "eyebrow": "What you're actually paying for",
+ "headline": "Why is a wedge two hundred dollars?",
+ "lede": "Short answer: you're not paying for the wedge. You're paying for the guy on TV who plays one, the shop that stocks it, and everybody in between. Here's the same club side by side.",
+ "table": {
+  "headline": "Spot the difference",
+  "sub": "A big-name forged wedge against our Carver. We're not naming names, because this isn't about one company. It's how the whole shelf is priced.",
+  "colA": "The big names",
+  "colB": "Lucky",
+  "rows": [
+   {
+    "k": "One wedge, typical price",
+    "a": "$170 to $200",
+    "b": "$99 to $109",
+    "hero": true
+   },
+   {
+    "k": "Head construction",
+    "a": "Forged carbon steel",
+    "b": "Forged carbon steel",
+    "same": true
+   },
+   {
+    "k": "Face",
+    "a": "Milled grooves",
+    "b": "Milled grooves",
+    "same": true
+   },
+   {
+    "k": "Sole grinds",
+    "a": "Varies by model",
+    "b": "K and S"
+   },
+   {
+    "k": "Finish",
+    "a": "Chrome, black or raw",
+    "b": "Gold, or blacked out with gold"
+   },
+   {
+    "k": "Where you buy it",
+    "a": "Retail and online",
+    "b": "Online, direct from us"
+   },
+   {
+    "k": "Try before you buy",
+    "a": "At the local store",
+    "b": "Sixty days, off a mat"
+   }
+  ],
+  "foot": "Look at rows two and three. Same steel, same milled face, word for word. Those are the parts that actually hit the ball, and they're not what the extra hundred dollars is buying you."
+ },
+ "why": {
+  "eyebrow": "So where does it go",
+  "headline": "Three things, none of them the club",
+  "paras": [
+   "First there's the tour contract. Somebody's getting paid to have that wedge in the bag on Sunday, and that money isn't coming out of anyone's goodwill. It's in the price you pay.",
+   "Then there's the shop itself. Floor space, lights, staff, rent by the square foot, in a building you had to drive to. And a distributor sitting between the factory and that shop, taking a cut on the way past.",
+   "We don't have any of those, so none of it ever got added in the first place. It isn't a sale and it isn't a discount. There's just less in there."
+  ]
+ },
+ "close": {
+  "eyebrow": "Sixty days",
+  "headline": "Don't take our word for it",
+  "body": "You get sixty days on any club. Hit one on a mat and make your own mind up, because a table on a website is still just a table on a website. Theirs is thirty days, and you have to drive to the shop for it.",
+  "ctaLabel": "See the wedges",
+  "ctaHref": "{{link:c/wedges}}",
+  "cta2Label": "Read the refund policy",
+  "cta2Href": "{{link:returns}}",
+  "aside": "One wedge per order can be opened and hit on a turf mat inside the sixty days. Club returns need approval and a photo before anything ships back."
+ },
+ "moreHeadline": "The rest of it",
+ "_voice": "Rewritten 2026-08-25 after Cole: 'Compare page doesn't sound like us at all' and 'it sounds like you are following rules again. Be a PERSON and talk, not so choppy.' Three faults in the first draft, all fixable and all measurable. (1) NO CONTRACTIONS: it ran one per 220 words against the approved Our Story page's one per 29. Writing 'that is not' where a person says \"that's not\" is the single loudest tell. (2) IT EXPLAINED ITS OWN DEVICES to the customer: 'That is not an accident of wording, it is the argument.' Nobody narrates their own layout decisions out loud. Now it just says 'Look at rows two and three.' (3) CONSULTANT VOCABULARY: 'how the category prices itself' became 'how the whole shelf is priced'. Takomo's version of this page talks straight at the reader ('You're paying for retail margins, sales reps, and million-dollar tour sponsorships') and that is the register to hold this page against.",
+ "_headings": "Fixed 2026-08-25. Cole: 'You think \"One wedge, side by side\" sounds like Lucky Golf?' No. The paragraphs got rewritten in voice and the HEADINGS were left as captions, which is a failure mode worth naming: a heading that describes what a block is ('One wedge, side by side', 'The big names vs Lucky') is doing layout labelling, not talking. 'Spot the difference' is the plainest way to say look at these two columns, and it sets up the payoff, because on rows two and three there isn't one. ROW LABELS ARE DELIBERATELY LEFT PLAIN: 'Head construction', 'Face', 'Sole grinds' are spec-table labels doing a functional job, and Takomo's are the same. Writing those in voice would be the opposite mistake."
+}

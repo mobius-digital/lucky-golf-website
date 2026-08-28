@@ -55,13 +55,10 @@
 
     <p class="bx-body">{{buyBody}}</p>
 
-    <div class="bx-four">
-{{#four}}      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>{{k}}</b><span>{{v}}</span>
-      </div>
-{{/four}}    </div>
-
+<!-- The bx-four spec grid was REMOVED here 2026-08-25 (Cole): every fact in
+     it repeated in the Fabric and care accordion a few hundred pixels below,
+     so it was pure scroll between the price and the button. The club
+     template still has its bx-four and should keep it. -->
     <!-- Colorways are separate Shopify products, so this is a row of links
          rather than a variant axis. It sits ABOVE the size picker because it
          is the first decision — you choose which shirt, then what size — and
@@ -96,7 +93,7 @@
     <p class="bx-links"><a href="{{link:none}}" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Four-way stretch, UPF 50+</span>
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>{{buyTerm}}</span>
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thirty days, unworn with tags</span>
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
@@ -114,7 +111,7 @@
         <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
         <div class="acc-bd" id="a2" hidden>
           <p>Orders leave the warehouse in one to two business days. Shipping is calculated at checkout.</p>
-          <p>Apparel comes back within thirty days, unworn and with the tags still on. That is a shorter window than the clubs get, and it is the one part of the policy we can't be relaxed about.</p>
+          <p>Apparel comes back within thirty days, unworn and with the tags still on. That's a shorter window than the clubs get, and it's the one part of the policy we can't be relaxed about.</p>
           <p class="acc-link"><a href="{{link:none}}" data-md-open="md-returns">Read the full refund policy</a></p>
         </div>
       </div>
@@ -271,7 +268,7 @@
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark center">It's better to be lucky</span>
+      <span class="eyebrow on-dark centre">It's better to be lucky</span>
       <h2 class="disp d-l">{{closeHeadline}} <span class="foil on-dark">{{closeFoil}}</span></h2>
       <p class="body on-dark">{{closeBody}}</p>
       <div class="close-cta">

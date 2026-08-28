@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    CLUB PDP — what only a wedge, putter, hybrid or driver renders
    The spec table, the wedge loft ladder, blade-or-mallet, the brand moment
@@ -2221,7 +2228,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <span class="amt" id="bx-amt">$209</span>
     </div>
 
-    <p class="bx-body">Nineteen degrees of titanium for the 210-yard shot your long irons keep missing. Gets up easy, stays fast off the heel and toe, and it's gold, which you will hear about. Right or left hand.</p>
+    <p class="bx-body">Nineteen degrees of titanium for the 210-yard shot your long irons keep missing. Gets up easy, stays fast off the heel and toe, and it's gold, which you'll hear about. Right or left hand.</p>
 
     <!-- The four construction chips and the pull quote used to sit HERE,
          between the price and the pickers. Cole (2026-08-17): get to Add to
@@ -2406,7 +2413,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="rank">The other way</span>
         <span class="cmp-nm">Instead of a 5-wood</span>
         <span class="cmp-for">The club you can't keep straight</span>
-        <p>A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter club at 40.5&Prime;. That is why it is easier to find the middle of, and why it holds a line off a tight tee.</p>
+        <p>A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter club at 40.5&Prime;. That's why it's easier to find the middle of, and why it holds a line off a tight tee.</p>
         <dl class="cmp-facts">
           <div><dt>Length</dt><dd>40.5&Prime;, shorter than a wood</dd></div>
           <div><dt>Shaft</dt><dd>Stiff graphite, mid kick</dd></div>
@@ -2416,7 +2423,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="cmp-here">Same club, different gap</span>
       </article>
     </div>
-    <p class="aside cmp-note">Either way it is one club, one loft and one flex, in right or left hand. If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision.</p>
+    <p class="aside cmp-note">Either way it's one club, one loft and one flex, in right or left hand. If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision.</p>
   </div>
 </section>
 
@@ -2496,7 +2503,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="look-copy">
       <span class="eyebrow centre-none">The look</span>
       <h2 class="disp d-l">The club you stop worrying about</h2>
-      <p class="body">There is a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.</p>
+      <p class="body">There's a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands.</p>
       <p class="body">In gold, with a gloss black crown and a starburst on it, it doesn't look like anyone else's hybrid either.</p>
       <p class="aside">Fill the gap.</p>
       <div class="look-cta">
@@ -2661,7 +2668,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="md-sec">
       <h3>Apparel and gear</h3>
       <p>Thirty days. Apparel unworn and unwashed with all original tags attached. <b>A return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
-      <p>Customised products are final sale unless they arrive defective.</p>
+      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="40-returns.html">Read the full refund policy</a></p>
     </div>
 

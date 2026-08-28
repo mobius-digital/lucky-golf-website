@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
    The sibling colorway strip and the size guide. Everything else — the fold,
@@ -1983,25 +1990,10 @@ html[data-rev="b"] .rev-bar{display:flex}
 
     <p class="bx-body">Mint, spotted. The lightest color we make and the only one that looks like summer from a distance.</p>
 
-    <div class="bx-four">
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Blade collar</b><span>No buttons, no placket</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>88/12</b><span>Poly-spandex, four-way stretch</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>UPF 50+</b><span>Moisture-wicking, odor-resistant</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Sub-180gsm</b><span>Light enough for a hot round</span>
-      </div>
-    </div>
-
+<!-- The bx-four spec grid was REMOVED here 2026-08-25 (Cole): every fact in
+     it repeated in the Fabric and care accordion a few hundred pixels below,
+     so it was pure scroll between the price and the button. The club
+     template still has its bx-four and should keep it. -->
     <!-- Colorways are separate Shopify products, so this is a row of links
          rather than a variant axis. It sits ABOVE the size picker because it
          is the first decision — you choose which shirt, then what size — and
@@ -2062,7 +2054,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
         <div class="acc-bd" id="a2" hidden>
           <p>Orders leave the warehouse in one to two business days. Shipping is calculated at checkout.</p>
-          <p>Apparel comes back within thirty days, unworn and with the tags still on. That is a shorter window than the clubs get, and it is the one part of the policy we can't be relaxed about.</p>
+          <p>Apparel comes back within thirty days, unworn and with the tags still on. That's a shorter window than the clubs get, and it's the one part of the policy we can't be relaxed about.</p>
           <p class="acc-link"><a href="#" data-md-open="md-returns">Read the full refund policy</a></p>
         </div>
       </div>
@@ -2113,18 +2105,19 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec">
   <div class="wrap">
     <span class="eyebrow">The polo</span>
-    <h2 class="disp d-l" style="max-width:24ch">A sharper collar, and the same shirt underneath.</h2>
+    <h2 class="disp d-l" style="max-width:24ch">Same shirt. Sharper collar.</h2>
 
     <div class="club-grid">
       <div class="club-copy">
-        <p class="body">The Blade swaps the traditional collar for a blade collar, which sits flatter and holds its shape without a placket fighting it. Everything below the neck is the Classic: tailored athletic through the body, 88/12 poly-spandex, four-way stretch.</p>
-        <p class="body">UPF 50+, moisture-wicking, wrinkle-resistant. It reads a little more modern than the Classic and it wears exactly the same, so the choice is the collar and the print. Nothing else changes.</p>
+        <p class="body">The Blade drops the buttons. No placket means nothing at your throat to sit crooked halfway round, and the collar lies flat instead of curling up on you by the ninth.</p>
+        <p class="body">Underneath it's the Classic, unchanged: tailored athletic through the body, 88/12 poly-spandex, four-way stretch that moves at the top of the backswing. UPF 50+ and moisture-wicking, same as everything else we make.</p>
+        <p class="body">So you're really choosing a collar and a print. That's it. Everything that matters to how it plays is identical either way.</p>
       </div>
       <div class="club-media">
         <div class="ph ph--dark ph--tall">
           <span class="lbl">
             <span class="mono k">Photo needed</span>
-            <span class="mono">Portrait 4:5, on body, hard summer light. Mint goes muddy in shade and gray under cloud; this one needs the sun. There is no on-body apparel photography at all yet (HANDOFF §7b F).</span>
+            <span class="mono">Portrait 4:5, on body, hard summer light. Mint goes muddy in shade and gray under cloud; this one needs the sun.</span>
           </span>
         </div>
       </div>
@@ -2202,7 +2195,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark center">It's better to be lucky</span>
+      <span class="eyebrow on-dark centre">It's better to be lucky</span>
       <h2 class="disp d-l">No buttons, no <span class="foil on-dark">fuss</span></h2>
       <p class="body on-dark">Thirty days to send it back unworn if the fit isn't right.</p>
       <div class="close-cta">
@@ -2294,7 +2287,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   <div class="md-panel">
     <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
     <h2 class="disp d-m" id="md-size-t">Size Guide</h2>
-    <p class="sg-intro">Use the below chart as a guide.</p>
+    <p class="sg-intro">Use the chart below as a guide.</p>
 
     <div class="sg-units" role="radiogroup" aria-label="Choose unit:">
       <span class="sg-units-lbl">Choose unit:</span>
@@ -2327,11 +2320,11 @@ html[data-rev="b"] .rev-bar{display:flex}
 
     <div class="md-sec">
       <h3>How it fits</h3>
-      <p>Tailored athletic, and the same block as the Classic. If you know your size in one, it is your size in the other.</p>
-      <p>The blade collar has no buttons and no placket, so the neckline lies flat instead of gapping. It reads a little more fitted at the shoulders for that reason alone; the body has not changed.</p>
+      <p>Tailored athletic, and the same block as the Classic. If you know your size in one, it's your size in the other.</p>
+      <p>The blade collar has no buttons and no placket, so the neckline lies flat instead of gapping. It reads a little more fitted at the shoulders for that reason alone; the body hasn't changed.</p>
       <p>Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on.</p>
     </div>
-    <p class="sg-note">Garment measurements, laid flat, not body measurements. Chest is measured across the chest and doubled. If you are between sizes or you like more room across the chest, take the larger one.</p>
+    <p class="sg-note">Garment measurements, laid flat, not body measurements. Chest is measured across the chest and doubled. If you're between sizes or you like more room across the chest, take the larger one.</p>
     <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
   </div>
 </div>

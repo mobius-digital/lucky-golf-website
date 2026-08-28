@@ -8,5 +8,6 @@
   ]
  ],
  "buyBody": "The same floral idea in black and white, with the contrast turned all the way up. The darkest thing in the Classic range.",
- "lifestyleBrief": "Portrait 4:5, on body. High-contrast print on a dark ground needs a bright background to separate: sky or open fairway, never trees. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "lifestyleBrief": "Portrait 4:5, on body. High-contrast print on a dark ground needs a bright background to separate: sky or open fairway, never trees.",
+ "_piece": "REVERTED 2026-08-25. Per-print piece blocks were written here and Cole reversed it: 'For polos they should all have the same look. The section under the fold should not be based on polo. It should be one section talking about the polos as a whole.' This restores the shared block from _family-polo-*.json, which is also what the 2026-07-31 ruling wanted. The per-print line still lives in buyBody, up in the buy box, which is where the choice actually gets made."
 }

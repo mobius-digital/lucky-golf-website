@@ -5,7 +5,7 @@
  "bands": [
   {
    "label": "Wedges",
-   "lede": "One wedge, the 01, in gold or black, with the grind as an option on it. The true 02 is coming.",
+   "lede": "One wedge, the 01, in gold or black, with your pick of sole grind. The true 02 is coming.",
    "ids": [
     "lgw01-gold",
     "lgw01-black"
@@ -13,7 +13,7 @@
   },
   {
    "label": "Putters",
-   "lede": "A blade and a mallet, both cut from solid stainless so there is nothing inside to rattle. Same loft, same lie, same length.",
+   "lede": "A blade and a mallet, both cut from solid stainless so there's nothing inside to rattle. Same loft, same lie, same length.",
    "ids": [
     "lgp01-gold",
     "lgp02-gold"
@@ -21,7 +21,7 @@
   },
   {
    "label": "Hybrid",
-   "lede": "One club. Titanium head, nineteen degrees, stiff graphite.",
+   "lede": "One club. Titanium, nineteen degrees, and stiff is the only flex it comes in.",
    "ids": [
     "lgh01"
    ]
@@ -37,7 +37,7 @@
  "router": {
   "eyebrow": "Start here",
   "headline": "Which part of the round is costing you?",
-  "sub": "Five clubs, and they answer completely different problems. Pick the part of the round that keeps costing you shots.",
+  "sub": "Five clubs, and they solve completely different problems. Start with the part of the round you would rather not talk about.",
   "cards": [
    {
     "q": "Inside a hundred yards",
@@ -49,14 +49,14 @@
    {
     "q": "On the green",
     "name": "Putters",
-    "body": "A blade and a mallet, identical everywhere a spec sheet can measure. The head is the only thing you are actually choosing between.",
+    "body": "A blade and a mallet, identical everywhere a spec sheet can measure. The head is the only thing you're actually choosing between.",
     "to": "putters",
     "cta": "Blade or mallet"
    },
    {
     "q": "Still a long way out",
     "name": "Hybrid",
-    "body": "Nineteen degrees of titanium for the shot where the green is out of reach and the lie is not doing you any favors.",
+    "body": "Nineteen degrees of titanium for the shot where the green is out of reach and the lie isn't doing you any favors.",
     "to": "hybrid",
     "cta": "Fill the gap"
    }
@@ -65,7 +65,7 @@
  "fitting": {
   "eyebrow": "Not sure",
   "headline": "Tell us what keeps going wrong.",
-  "body": "The finder on the homepage asks the same three questions and builds from the shot you are trying to fix. If it doesn't settle it, a person will.",
+  "body": "The finder on the homepage asks the same three questions and builds from the shot you're trying to fix. If it doesn't settle it, a person will.",
   "ctaFinder": "Use the club finder",
   "ctaAsk": "Ask a person",
   "aside": "Sixty days on any club. Returns need approval and a photo before you send anything back."

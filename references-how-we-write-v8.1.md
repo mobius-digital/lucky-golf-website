@@ -85,6 +85,47 @@ On facts
 Every product fact in Lucky's copy comes from the Product Reference Guide. Every spec, every material, every construction claim, every loft count, every price. If you're about to write a number, an alloy, a construction detail, or a lineup — open the reference guide first. Never write a spec from memory. It changes, and the tone guide can't chase it.
 
 The Product Reference Guide also carries CTA options for each club family. A piece of Lucky copy doesn't need a CTA to be complete. But when a piece calls for a callout, the reference guide is where the options live.
+The approved model
+Cole signed off on the Our Story page on 2026-08-25 with: "You finally found a voice, personality, etc. That is consistent across this entire page." That page is the reference. When a line is in doubt, hold it against these.
+
+The two legs. Every Lucky argument stands on one of two things, and there is no third.
+
+One: you're not overpaying. Same materials as the big names, same engineering, minus tour contracts and retail rent, sold direct. Two: you're not blending in. Gold, on purpose, because golf got too serious and we didn't.
+
+Fun and fair is the thesis. Access is somebody else's. If a line would sit unchanged on a competitor's site, it is wrong for us.
+
+The approved lines, verbatim from the page:
+
+"Golf has a dress code. Ours is gold."
+
+"Great clubs got too expensive. We took it personally."
+
+"The industry's playbook is simple: charge more, sponsor a tour pro, call it innovation. The steel didn't change. The price did."
+
+"Same steel as the big names. Different math."
+
+"Is gold subtle? Not even a little. That's the point. You only get so many Saturdays, and none of them should be spent blending in."
+
+"Ten ways to keep the sun off while you take someone's money."
+
+"Serious about the clubs. Not that serious about ourselves. That's the whole brand."
+
+What those have in common: each one swings, and each one lands on something you can check — a real product, a real price, a thing that happened. That is the test. Attitude with receipts is Lucky. Attitude floating free is noise.
+
+The failure mode to write against. Cole, same session: "I hate whenever we say a statement and then we say another statement after that." The flat double-statement is one plain sentence followed by another plain sentence with nobody home between them — "Eight years, in order" is the killed example. It is what a "no fight" filter produces, and v7.1-7.3 produced a site full of it. A plain sentence is fine. Two plain sentences stacked to sound weighty is not.
+
+Hard rules, from the same session:
+
+Never use the founder's name. Not in brand copy, not in a pulled review, nowhere on the site. A customer review that names him is disqualified from being quoted.
+
+Keep trust claims vague. "Thousands of happy golfers" and "60-day test drive" are approved shapes. Counted claims are not: no order counts, no review counts, no "zero tour pros paid."
+
+No process vocabulary in brand copy. Photo briefs, placeholder notes, editorial decisions, and anything describing how the site was made stay in the JSON's underscore keys. A page never narrates its own construction.
+
+No competitor named. "The big names" is the phrase.
+
+No invented numbers. No price, percentage or multiplier that isn't in the Product Reference Guide. "Charge triple" was killed for exactly this.
+
 The bar
 If a piece of Lucky copy sounds like a person talking to a golfer who already knows the game, it's landing. If it sounds like an ad, if it sounds like a brochure, if it sounds like it's straining — start over.
 

@@ -5,14 +5,14 @@
  "crumbName": "Ambassador Program",
  "eyebrow": "Ambassador Program",
  "headline": "The people who actually play them",
- "lede": "Golfers who put Lucky in the bag and say what they think. Everyone starts in the same place, and the creators we pay come from that crew. No follower bar, no script, and nobody ever paid to praise a club.",
+ "lede": "Golfers who put Lucky in the bag and say what they think, including when what they think is that something is wrong. Everyone starts in the same place, and the creators we pay come from that crew. Nobody has ever been paid to praise a club.",
  "stats": {
-  "eyebrow": "What it isn't",
-  "headline": "No follower minimum",
+  "eyebrow": "The deal",
+  "headline": "Anyone can get in. Not everyone gets a club.",
   "items": [
    {
     "k": "Open",
-    "v": "No follower threshold to clear, and no window to wait for. Write any time. Applications are read in batches."
+    "v": "No follower threshold, and no window to wait for. Write any time; applications get read in batches."
    },
    {
     "k": "Honest",
@@ -31,14 +31,14 @@
    "phK": "Lifestyle shot needed",
    "phBrief": "4:3. Two or three golfers on a course together, Lucky clubs visible but not staged. Shot wide, natural light, no product hero framing.",
    "paras": [
-    "The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.",
-    "That is genuinely most of the brief. What we are not doing is buying an audience. There is no follower count that gets you in and none that keeps you out."
+    "The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they'll say so when it doesn't.",
+    "That's genuinely most of the brief. What we're not doing is buying an audience. There's no follower count that gets you in and none that keeps you out."
    ]
   }
  ],
  "steps": {
   "eyebrow": "What happens next",
-  "headline": "From application to creator",
+  "headline": "What happens after you hit send",
   "items": [
    {
     "n": "1",
@@ -69,13 +69,13 @@
  },
  "close": {
   "eyebrow": "Interested",
-  "headline": "Say hello",
-  "body": "The application is just below, and it is read by a person. Or skip the form: write to partners@luckygolf.com and say how you play.",
+  "headline": "So, are you in?",
+  "body": "The application's right below and a person reads it. Or skip the form and write to partners@luckygolf.com telling us how you play.",
   "ctaLabel": "Apply now",
   "ctaHref": "{{link:trybe#apply}}",
   "cta2Label": "The clubs",
   "cta2Href": "{{link:c/clubs}}",
-  "aside": "No follower minimum. That part is settled."
+  "aside": "Applying costs you five fields and about two minutes."
  },
  "moreHeadline": "The rest of it",
  "_signoff": "ALL TERMS ON THIS PAGE ARE COLE'S, 2026-08-13, given in conversation and via a three-question card. (1) ROSTER REMOVED: he does not want five named people; anyone meeting the criteria can be an ambassador. A future named roster ('Lucky Golf Athletes') exists as an idea only and is deliberately NOT mentioned — same rule as the 02: nothing pre-announced without real terms. (2) THE 10%/AVANTLINK AFFILIATE ROW IS REMOVED from the page at his instruction — he does not want commission advertised on the site. The commission test on the Trybe platform continues OFF-site; do not re-add it here. (3) GROUP CHAT confirmed real and advertised as a perk. (4) THE CLUB GIVE IS DELIBERATELY UNSPECIFIED on the page ('clubs to play — details with your acceptance'): his explicit choice, the specifics travel in the acceptance email the way the returns portal travels in the order confirmation. Do not 'fix' the vagueness by inventing a number. (5) NO COMMISSION ON CLUBS is positioning, not thrift: the homepage sells 'no sponsorships and no middlemen in the price', and a commissioned advocate on the hero category contradicts it. Apparel commission may come later (the Grunk Dolfer brief is the in-house model) and stays OFF this page until its terms exist. (6) The paid-creator ladder is stated as earned-not-promised — a statement of intent Cole described, never an offer with terms. LAYOUT 2026-08-13 (later the same day): Cole ruled the page follows DARTEE'S ambassador layout, not Takomo's — the fork cards, the visible ladder, the inline application. Dartee's TERMS do not carry over: their hero advertises commission and their tiers/stats promise defined rewards and real numbers, neither of which Lucky has. The fork is ONE DOOR (my recommendation, Cole asked for thoughts and approved the form + two-stage ladder via question card): a direct creator door needs terms nobody has defined, and the application's links field is the fast lane that makes it unnecessary. If Cole later defines a direct creator offer, card two gains a CTA and the form a branch — one swap. The gives row became the fork's Ambassador card; the criteria row stays as the page's one photo moment. RESTRICTIONS DRAFTED 2026-08-13 at Cole's request (\"add the restrictions like Takomo does to make it more inclusive\") and NOT YET CONFIRMED BY HIM. The `bar` section's third column is program policy a visitor will read as rules: the promo-code-feed exclusion, the no-script/no-approval line, UNDER 18, and the free-club-hunter line are all my drafting from his stated intent, not quoted terms. The age minimum in particular is a real policy with real consequences — confirm before this ships. The first two columns are safe: they restate criteria already on the page since it was built. Takomo's numeric gate (5k IG / 10k TikTok / 1k YT) is deliberately NOT mirrored — Cole's whole position is that anyone can be an ambassador. BAR EDIT same day: age line REMOVED (Cole: 'the age doesn't matter'), and the promo-code bullet reworded — it filters applicants whose own feeds are wall-to-wall ads, and the first wording read as being about Lucky promo codes, which do not exist for clubs. MONEY 2026-08-13 (later): apparel commission goes ON the page, DARTEE-SHAPED at Cole's instruction — 'just say commission and then you can increase as you go', 'just say monthly payout, don't put whatever the date is', 'all the contractual detail doesn't need to be on the page, they can learn more after they're accepted'. So NO percentages, NO cookie window, NO payout date, NO AvantLink anywhere. (Those figures ARE public on the store's own Affiliate Application page — 10%/60-day/AvantLink — but this page deliberately does not repeat them.) The `earn` section's second column is the load-bearing one: clubs are never commissioned, and that is positioning, not thrift. Every 'nobody is paid per sale' claim was rewritten to be CLUB-SPECIFIC when apparel commission landed — the blanket version became false the moment apparel started paying. FOLLOWER BAR SETTLED 2026-08-13: Cole chose option C — NO published minimum to join, and CLUB SEEDING is the limited, competitive part. His reasoning, and it is the right one: it moves in either direction later without a rewrite — add a follower gate to the club tier, or drop the distinction entirely. I had recommended C over mirroring Takomo's 5k/10k/1k gate (they publish it WITH an exceptions clause) because a status gate contradicts the homepage's own no-status-tax argument, and because a published number has to be enforced against the 900-follower club pro who would be the best ambassador on the roster. NOTE the honesty gain: the previous copy implied every accepted ambassador got a club, which was never going to be true. The guaranteed set (code, commission, chat, drops, reposts) and the competitive one (clubs) are now separated in the fork card, step 3 vs step 4 of the ladder, and both notes.",
@@ -93,7 +93,7 @@
      "Reposts, with your name on them.",
      "And a shot at a club to play. Those go out in batches, and there are never enough."
     ],
-    "foot": "No quota. No script. No commission on clubs, ever.",
+    "foot": "Your words, your pace, and clubs never pay commission.",
     "cta": {
      "label": "See if you fit",
      "href": "{{link:trybe#fit}}"
@@ -116,17 +116,17 @@
  "apply": {
   "eyebrow": "The application",
   "title": "Apply as an ambassador",
-  "lede": "Five fields, read in batches, answered by a person. The links one is optional, and it is also the fast lane.",
+  "lede": "Five fields, read in batches, answered by a person. The links one is optional, and it's also the fast lane.",
   "protoLabel": "Not wired up yet",
-  "proto": "these fields are the markup for the Shopify build and nothing sends yet. Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a> and it reaches us today.",
+  "proto": "this form isn't live yet, so nothing you type here sends. Email <a href=\"mailto:partners@luckygolf.com\">partners@luckygolf.com</a> and it reaches us today.",
   "cta": "Submit application",
   "sent": "This form doesn't send anywhere yet. Email partners@luckygolf.com and it reaches us today.",
-  "note": "No follower minimum, and no window to wait for. Everyone accepted gets the code, the chat and the drops; clubs go out in batches."
+  "note": "Everyone accepted gets the code, the chat and the drops from day one. Clubs are the limited part."
  },
  "bar": {
   "eyebrow": "Who this is for",
-  "headline": "The bar, stated plainly",
-  "lede": "Most programs make you guess whether you qualify. Here is the whole of it, including the part that rules people out.",
+  "headline": "Here's exactly who gets in",
+  "lede": "Most programs make you guess whether you qualify. We'd rather just tell you, including the part that rules people out.",
   "cols": [
    {
     "title": "This is for you if",
@@ -141,7 +141,7 @@
    {
     "title": "What we don't ask for",
     "items": [
-     "A follower count. There is no threshold, on any platform.",
+     "A follower count. There's no threshold, on any platform.",
      "A posting schedule, or a minimum number of anything.",
      "A script. What you say about the club is yours.",
      "Exclusivity: keep playing whatever else is in the bag.",
@@ -152,13 +152,13 @@
     "warn": true,
     "title": "What isn't a fit",
     "items": [
-     "A feed that is mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.",
-     "Wanting a script, or sign-off before you post. That exists here, but it is the Creator level, and it is paid work.",
+     "A feed that's mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.",
+     "Wanting a script, or sign-off before you post. That exists here, but it's the Creator level, and it's paid work.",
      "Applying for a free club with no plan to play it. We read applications properly, and it shows."
     ]
    }
   ],
-  "note": "Joining is open. There is nothing to clear. Clubs are the part that is limited, and the application is where that gets decided. If you are not sure whether it is worth applying, apply and say so. The worst outcome is a reply."
+  "note": "Joining is open; clubs are the part that's limited, and the application is where that gets decided. If you're not sure whether it's worth applying, apply and say so. The worst outcome is a reply."
  },
  "earn": {
   "eyebrow": "The money side",
@@ -178,11 +178,13 @@
     "items": [
      "No code, no commission, no cut. Not now, not at any level.",
      "You get clubs to play because you play, and what you say about them is yours.",
-     "It is the one part of the deal we will not change."
+     "It's the one part of the deal we won't change."
     ]
    }
   ],
-  "note": "Rates, timing and the rest of it come with your acceptance. There is no contract to read on a web page."
+  "note": "Rates, timing and the rest of it come with your acceptance. There's no contract to read on a web page."
  },
- "_pass": "Copy pass 2026-08-19. The form disclosure said 'This form is a prototype' — true, but developer language on a customer page. Rewritten in the brand's voice; it stays until the form is wired up, because the alternative is a form that silently eats an application."
+ "_pass": "Copy pass 2026-08-19. The form disclosure said 'This form is a prototype' — true, but developer language on a customer page. Rewritten in the brand's voice; it stays until the form is wired up, because the alternative is a form that silently eats an application.",
+ "_headings": "2026-08-25. Two captions fixed after Cole caught the same fault on the compare page. 'The bar, stated plainly' described its own plainness, which is the page narrating how it was written. 'Say hello' is a greeting, not a line. Both now talk to the reader.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
 }

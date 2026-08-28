@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    GEAR PDP — what only a cover, grip, glove or pack of tees renders
    Which is almost nothing. The fold, the buy box, the review widget and the
@@ -1963,15 +1970,15 @@ html[data-rev="b"] .rev-bar{display:flex}
       <div class="gr-block">
         <span class="eyebrow">What it's for</span>
         <h2 class="disp d-m">Your putter head is the part everyone sees</h2>
-        <p class="body">Eighteen times a round, from four feet away, standing still. It also spends the other four hours wedged against a set of irons in a cart going over kerbs.</p>
-        <p class="body">A year from now it is the reason the putter still looks like the photos.</p>
+        <p class="body">Eighteen times a round, from four feet away, standing still. It also spends the other four hours wedged against a set of irons in a cart going over curbs.</p>
+        <p class="body">A year from now it's the reason the putter still looks like the photos.</p>
 
         
       </div>
       <div class="gr-block">
         <span class="eyebrow">What it fits</span>
         <h2 class="disp d-m">Mallets, in either hand</h2>
-        <p class="body">Cut for a mallet head: the Tracer LGP02, and most other mallets. Pick the hand you play. A mallet cover is not symmetrical and the wrong one will not sit right.</p>
+        <p class="body">Cut for a mallet head: the Tracer LGP02, and most other mallets. Pick the hand you play. A mallet cover isn't symmetrical and the wrong one won't sit right.</p>
         <p class="body">Playing a blade? The Lucky Blade Cover is the shape you want.</p>
 
         
@@ -2034,7 +2041,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <div class="pt-ph"><img src="" alt="Lucky Golf Tees" loading="lazy" width="800" height="800">
           </div>
         <a class="pt-nm stretch" href="20-product-tees-25.html">Lucky Golf Tees</a>
-        <p class="pt-hook">You are out of tees. You are always out of tees.</p>
+        <p class="pt-hook">You're out of tees. You're always out of tees.</p>
         <div class="pt-meta"><span class="pt-pr">$9.95</span><span class="pt-rt">25 tees</span></div>
       </article>
 

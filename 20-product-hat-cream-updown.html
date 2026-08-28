@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    APPAREL PDP — what only a polo or a hat renders
    The sibling colorway strip and the size guide. Everything else — the fold,
@@ -1981,27 +1988,12 @@ html[data-rev="b"] .rev-bar{display:flex}
       <span class="amt" id="bx-amt">$29</span>
     </div>
 
-    <p class="bx-body">The mark inverted, on cream. It is the one people look at twice, and cream sits better against a course than white does in strong light.</p>
+    <p class="bx-body">The mark inverted, on cream. It's the one people look at twice, and cream sits better against a course than white does in strong light.</p>
 
-    <div class="bx-four">
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Five-panel</b><span>Structured front, holds its shape</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Snapback</b><span>One size, adjusts at the back</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>$29</b><span>The same as every other hat we make</span>
-      </div>
-      <div>
-        <span class="mk" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-        <b>Thirty days</b><span>Unworn, with the tag on</span>
-      </div>
-    </div>
-
+<!-- The bx-four spec grid was REMOVED here 2026-08-25 (Cole): every fact in
+     it repeated in the Fabric and care accordion a few hundred pixels below,
+     so it was pure scroll between the price and the button. The club
+     template still has its bx-four and should keep it. -->
     <!-- Colorways are separate Shopify products, so this is a row of links
          rather than a variant axis. It sits ABOVE the size picker because it
          is the first decision — you choose which shirt, then what size — and
@@ -2045,7 +2037,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <p class="bx-links"><a href="#" data-md-open="md-delivery">Estimate delivery time</a></p>
 
     <div class="bx-terms">
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Four-way stretch, UPF 50+</span>
+      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Five-panel, one size fits all</span>
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thirty days, unworn with tags</span>
       <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Fast, free US shipping</span>
     </div>
@@ -2057,8 +2049,7 @@ html[data-rev="b"] .rev-bar{display:flex}
           <ul>
             <li><b>Style</b> Five-panel, structured front.</li>
             <li><b>Closure</b> Snapback. One size, adjustable.</li>
-            <li><b>Fabric</b> <span class="tbd tbd--light">Needs spec</span></li>
-            <li><b>Care</b> <span class="tbd tbd--light">Needs spec</span></li>
+            <li><b>Fabric</b> Light and breathable, moisture-wicking.</li>
           </ul>
         </div>
       </div>
@@ -2066,7 +2057,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <button class="acc-hd" type="button" aria-expanded="false" aria-controls="a2"><span>Shipping &amp; returns</span><span class="pm" aria-hidden="true"></span></button>
         <div class="acc-bd" id="a2" hidden>
           <p>Orders leave the warehouse in one to two business days. Shipping is calculated at checkout.</p>
-          <p>Apparel comes back within thirty days, unworn and with the tags still on. That is a shorter window than the clubs get, and it is the one part of the policy we can't be relaxed about.</p>
+          <p>Apparel comes back within thirty days, unworn and with the tags still on. That's a shorter window than the clubs get, and it's the one part of the policy we can't be relaxed about.</p>
           <p class="acc-link"><a href="#" data-md-open="md-returns">Read the full refund policy</a></p>
         </div>
       </div>
@@ -2157,13 +2148,13 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="club-grid">
       <div class="club-copy">
         <p class="body">Every Lucky hat is the same build: a five-panel snapback with a moisture-wicking sweatband and laser-cut ventilation. Eighteen holes in July and you still want it on at the end.</p>
-        <p class="body">The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the colour it sits on. Pick the one that goes with the rest of what you own.</p>
+        <p class="body">The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the color it sits on. Pick whichever one you would actually reach for.</p>
       </div>
       <div class="club-media">
         <div class="ph ph--dark ph--tall">
           <span class="lbl">
             <span class="mono k">Photo needed</span>
-            <span class="mono">Portrait 4:5, on body. Cream against green. The contrast is the shot. Golfer in profile so the inverted mark is unmistakably the right way up on the hat and the wrong way up as a mark. There is no on-body hat photography at all yet (HANDOFF §7b F).</span>
+            <span class="mono">Portrait 4:5, on body. Cream against green. The contrast is the shot. Golfer in profile so the inverted mark is unmistakably the right way up on the hat and the wrong way up as a mark.</span>
           </span>
         </div>
       </div>
@@ -2241,7 +2232,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   <div class="close-in">
     <div class="wrap">
       <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <span class="eyebrow on-dark center">It's better to be lucky</span>
+      <span class="eyebrow on-dark centre">It's better to be lucky</span>
       <h2 class="disp d-l">Ten of them, one <span class="foil on-dark">size</span></h2>
       <p class="body on-dark">One size, five-panel snapback. Thirty days to send it back unworn if it isn't you.</p>
       <div class="close-cta">

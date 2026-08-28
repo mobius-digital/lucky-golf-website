@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    GEAR PDP — what only a cover, grip, glove or pack of tees renders
    Which is almost nothing. The fold, the buy box, the review widget and the
@@ -1964,14 +1971,14 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="eyebrow">What it's for</span>
         <h2 class="disp d-m">Not everyone gets on with a fat grip</h2>
         <p class="body">The oversized grip takes the wrists out of the stroke, which helps most golfers and actively annoys the ones who putt with feel.</p>
-        <p class="body">If you are in the second group, this is the fix, and it is the smallest change you can make to a putter.</p>
+        <p class="body">If you're in the second group, this is the fix, and it's the smallest change you can make to a putter.</p>
 
         
       </div>
       <div class="gr-block">
         <span class="eyebrow">What it fits</span>
-        <h2 class="disp d-m">Putters</h2>
-        <p class="body">A standard putter grip. It is not an iron grip and it will not feel right on one.</p>
+        <h2 class="disp d-m">For putters, and nothing else</h2>
+        <p class="body">A standard putter grip. It's not an iron grip and it won't feel right on one.</p>
 
         
         <ul class="club-specs">
@@ -2009,7 +2016,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Goes with</span>
-    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">Grips wear out. These don't cost much.</h2>
+    <h2 class="disp d-l" style="margin-bottom:clamp(28px,3vw,44px)">The stuff that wears out first</h2>
     <div class="pgrid msnap">
 
       <article class="ptile">

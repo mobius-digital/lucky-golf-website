@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    GEAR PDP — what only a cover, grip, glove or pack of tees renders
    Which is almost nothing. The fold, the buy box, the review widget and the
@@ -1903,7 +1910,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <span class="amt" id="bx-amt">$9.95</span>
     </div>
 
-    <p class="bx-body">Twenty-five tees with a clover on them. You are out of tees, and you have been since March. Put some in the bag and some in the car.</p>
+    <p class="bx-body">Twenty-five tees with a clover on them. You're out of tees, and you've been since March. Put some in the bag and some in the car.</p>
 
     <div class="bx-four">
       <div>
@@ -1966,8 +1973,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="gr-two">
       <div class="gr-block">
         <span class="eyebrow">What it's for</span>
-        <h2 class="disp d-m">You are out of tees</h2>
-        <p class="body">Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It is the one golf product with a genuinely disposable life cycle.</p>
+        <h2 class="disp d-m">You're out of tees</h2>
+        <p class="body">Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It's the one golf product with a genuinely disposable life cycle.</p>
         <p class="body">Twenty-five in a pack. Put some in the bag and some in the car.</p>
 
         
@@ -2027,7 +2034,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397" alt="Lucky Blade Cover" loading="lazy" width="800" height="800">
           </div>
         <a class="pt-nm stretch" href="20-product-cover-blade.html">Lucky Blade Cover</a>
-        <p class="pt-hook">This one you will not lose, which is the point of it.</p>
+        <p class="pt-hook">This one you'll not lose, which is the point of it.</p>
         <div class="pt-meta"><span class="pt-pr">$29.95</span><span class="pt-rt">Blade heads</span></div>
       </article>
 

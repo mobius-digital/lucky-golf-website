@@ -133,7 +133,14 @@
 .br-tl-rail{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
 .br-tl-list{position:relative;display:grid;grid-auto-flow:column;
   grid-auto-columns:224px;gap:30px;list-style:none;
-  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px}
+  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px;
+  /* width:max-content is LOAD-BEARING. This grid overflows its scroll
+     container, and ::before below draws the rail with left:0;right:0 - which
+     resolves against the element's own box. Without max-content that box is
+     only as wide as the VISIBLE rail, so the line stopped a third of the way
+     along and the timeline looked broken (Cole, 2026-08-25: "the timeline is
+     missing the line part it cuts off halfway"). Measured: 1310px of 3590px. */
+  width:max-content}
 .br-tl-list::before{content:'';position:absolute;left:0;right:0;bottom:34px;
   height:2px;background:var(--rule-on-dark)}
 .br-tl-list li{position:relative;display:flex;flex-direction:column;

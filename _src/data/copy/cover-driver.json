@@ -25,15 +25,15 @@
    "eyebrow": "What it's for",
    "headline": "The most expensive club, doing the least work",
    "paras": [
-    "A driver gets used fourteen times a round and spends the other four hours being a crash barrier for the irons. It is also the club you paid the most for.",
-    "Against what the driver cost, the cover is not a difficult sum."
+    "A driver gets used fourteen times a round and spends the other four hours being a crash barrier for the irons. It's also the club you paid the most for.",
+    "Against what the driver cost, the cover isn't a difficult sum."
    ]
   },
   {
    "eyebrow": "What it fits",
-   "headline": "Drivers",
+   "headline": "Drivers only, for now",
    "paras": [
-    "Cut for a standard 460cc driver head. If you need one for a fairway wood or a hybrid, we do not make that yet."
+    "Cut for a standard 460cc driver head. If you need one for a fairway wood or a hybrid, we don't make that yet."
    ],
    "facts": {
     "rows": [
@@ -72,5 +72,6 @@
   ]
  ],
  "_price": "2026-08-19: this page said 'Thirty dollars' TWICE about a cover that costs $40. Spelling a price out in words dodges the no-typed-price rule and then goes stale silently, which is exactly what happened: nobody re-reads prose when a price moves. The argument works without the number.",
- "_cheap": "Caught in the same pass that introduced it, 2026-08-19: the replacement line read 'this is the cheap insurance'. Spec-to-Benefit bans the word outright, and 26d had already removed it from THIS page in July. Two minutes old and it was the same violation."
+ "_cheap": "Caught in the same pass that introduced it, 2026-08-19: the replacement line read 'this is the cheap insurance'. Spec-to-Benefit bans the word outright, and 26d had already removed it from THIS page in July. Two minutes old and it was the same violation.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
 }

@@ -1,165 +1,188 @@
 {
-  "_": "REFUND POLICY. Rewritten 2026-08-02 on Cole's instruction: policy pages are policy. Plain, organised, scannable. No review anecdotes, no charm lines, no rhetorical framing, no asides. The reader wants to know what the rule is and what to do.",
-  "_structure": "Follows the store's own published Refund policy section for section, so the two cannot drift: how to start a return, general rules, clubs 60 days, apparel 30 days, gear 30 days, customised, defective, non-returnable. It is NOT a clubs page with apparel bolted on — every category gets its own section at the same level.",
-  "_sourced": "Product Reference Guide v1.8 Return policy + the live Shopify Refund policy, which agree. DEFECTIVE ITEMS: Cole confirmed 2026-08-02 that Lucky pays return shipping when the item is defective. That was the last open question on this page.",
-
-  "crumbName": "Refund Policy",
-  "eyebrow": "Refund policy",
-  "headline": "Returns and refunds",
-  "lede": "Return windows, conditions and refund handling for every Lucky Golf product. Read the section for what you bought.",
-
-  "quick": { "items": [
-    { "k": "60 days", "v": "Golf clubs, from delivery" },
-    { "k": "30 days", "v": "Apparel, gear and accessories" },
-    { "k": "Approval first", "v": "Required on all club returns" },
-    { "k": "Final sale", "v": "Customised items" }
-  ] },
-
-  "jump": true,
-
-  "sections": [
+ "_": "REFUND POLICY. Rewritten 2026-08-02 on Cole's instruction: policy pages are policy. Plain, organised, scannable. No review anecdotes, no charm lines, no rhetorical framing, no asides. The reader wants to know what the rule is and what to do.",
+ "_structure": "Follows the store's own published Refund policy section for section, so the two cannot drift: how to start a return, general rules, clubs 60 days, apparel 30 days, gear 30 days, customised, defective, non-returnable. It is NOT a clubs page with apparel bolted on — every category gets its own section at the same level.",
+ "_sourced": "Product Reference Guide v1.8 Return policy + the live Shopify Refund policy, which agree. DEFECTIVE ITEMS: Cole confirmed 2026-08-02 that Lucky pays return shipping when the item is defective. That was the last open question on this page.",
+ "crumbName": "Refund Policy",
+ "eyebrow": "Refund policy",
+ "headline": "Returns and refunds",
+ "lede": "Return windows, conditions and refund handling for every Lucky Golf product. Read the section for what you bought.",
+ "quick": {
+  "items": [
+   {
+    "k": "60 days",
+    "v": "Golf clubs, from delivery"
+   },
+   {
+    "k": "30 days",
+    "v": "Apparel, gear and accessories"
+   },
+   {
+    "k": "Approval first",
+    "v": "Required on all club returns"
+   },
+   {
+    "k": "Final sale",
+    "v": "Customized items"
+   }
+  ]
+ },
+ "jump": true,
+ "sections": [
+  {
+   "id": "start",
+   "nav": "How to start a return",
+   "title": "How to start a return",
+   "sub": [
     {
-      "id": "start",
-      "nav": "How to start a return",
-      "title": "How to start a return",
-      "sub": [
-        {
-          "h": "Apparel and gear",
-          "paras": [
-            "Start it in the <a href=\"https://lucky-golf.loopreturns.com/\">Returns Portal</a>, or follow the instructions in your order confirmation email.",
-            "No prior approval is needed. The item must meet the conditions below to be refunded.",
-            "If you are not sure whether something qualifies, ask us before you start one. It is quicker than a return that gets denied."
-          ]
-        },
-        {
-          "h": "Golf clubs",
-          "paras": [
-            "<b>All club returns require approval before the club is sent back.</b> Contact Customer Support through the website chat or at <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a>.",
-            "Approval requires photo verification. A club returned without authorisation is not accepted."
-          ]
-        }
-      ],
-      "note": "The portal is for apparel and gear. Clubs go through support first. That is not a formality, it is how a fault gets caught before the club is in a box."
+     "h": "Apparel and gear",
+     "paras": [
+      "Start it in the <a href=\"https://lucky-golf.loopreturns.com/\">Returns Portal</a>, or follow the instructions in your order confirmation email.",
+      "No prior approval is needed. The item must meet the conditions below to be refunded.",
+      "If you're not sure whether something qualifies, ask us before you start one. It's quicker than a return that gets denied."
+     ]
     },
     {
-      "id": "general",
-      "nav": "General rules",
-      "cream": true,
-      "title": "General return rules",
-      "lede": "These apply to every product.",
-      "list": { "items": [
-        "Returns must be started within the return window for that product category.",
-        "Refunds are issued only after the returned item is received and inspected.",
-        "Customers are responsible for return shipping costs, except on defective items.",
-        "Original shipping fees are non-refundable.",
-        "Items returned outside the stated conditions may receive a partial refund, or be denied.",
-        "Customised items are final sale unless deemed defective."
-      ] }
-    },
-    {
-      "id": "clubs",
-      "nav": "Golf clubs · 60 days",
-      "title": "Golf clubs · 60 days",
-      "lede": "Returns must be started within 60 days of delivery. All club returns require approval before return, require photo verification prior to approval, and are refunded only after physical inspection.",
-      "sub": [
-        {
-          "h": "Putters",
-          "paras": [
-            "May be used during the 60-day period.",
-            "Must be returned in brand-new condition, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
-            "Modifications (regripping, bending, cutting or altering) are not permitted.",
-            "Wear or damage may result in a partial refund or return denial."
-          ]
-        },
-        {
-          "h": "Wedges",
-          "paras": [
-            "Only one wedge per set may be opened and tested, on a turf mat or other non-abrasive surface.",
-            "The tested wedge must be returned in brand-new condition, with no groove wear, face marks, sole wear, or cosmetic or structural damage.",
-            "All other wedges in the set must remain factory sealed.",
-            "Significant use or damage may result in a partial refund or return denial."
-          ]
-        },
-        {
-          "h": "Drivers, hybrids and woods",
-          "paras": [
-            "Must appear completely unused, with no visible signs of wear or damage and no modifications.",
-            "Significant use or damage may result in a partial refund or no refund, depending on condition."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "apparel",
-      "nav": "Apparel · 30 days",
-      "cream": true,
-      "title": "Apparel · 30 days",
-      "lede": "Returns must be started within 30 days of delivery.",
-      "list": { "items": [
-        "Unworn, unwashed and in original condition.",
-        "All original tags attached.",
-        "No makeup or deodorant stains, odours, pet hair, stretching or laundering.",
-        "Items returned without tags have a $7 fee deducted from the refund.",
-        "Requests after 30 days are not accepted."
-      ] }
-    },
-    {
-      "id": "gear",
-      "nav": "Gear · 30 days",
-      "title": "Gear and accessories · 30 days",
-      "lede": "Returns must be started within 30 days of delivery.",
-      "list": { "items": [
-        "Must be returned in unused condition.",
-        "Items showing wear, damage or use are not eligible.",
-        "A grip that has been fitted to a shaft counts as used.",
-        "Defective items may be eligible for replacement or refund upon inspection."
-      ] }
-    },
-    {
-      "id": "defective",
-      "nav": "Defective items",
-      "cream": true,
-      "title": "Defective items",
-      "lede": "If an item is defective, we pay the return shipping.",
-      "paras": [
-        "Contact us before sending anything back. Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> or use the website chat, with your order number and photos of the fault.",
-        "Defective items may be replaced or refunded after inspection.",
-        "Customised items, which are otherwise final sale, are returnable if they arrive defective."
-      ]
-    },
-    {
-      "id": "custom",
-      "nav": "Customised items",
-      "title": "Customised items",
-      "list": { "items": [
-        "All customised products are final sale.",
-        "Not eligible for return or refund unless deemed defective upon inspection."
-      ] }
-    },
-    {
-      "id": "refused",
-      "nav": "When a return is refused",
-      "cream": true,
-      "title": "Non-returnable conditions",
-      "lede": "Returns are not accepted if:",
-      "list": { "items": [
-        "The item shows visible wear or damage beyond the stated conditions.",
-        "The item has been modified.",
-        "The return window has passed.",
-        "Required approval or documentation is not provided.",
-        "The item is returned without authorisation."
-      ] },
-      "cta": { "label": "Start a return", "href": "{{link:contact}}" }
+     "h": "Golf clubs",
+     "paras": [
+      "<b>All club returns require approval before the club is sent back.</b> Contact Customer Support through the website chat or at <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a>.",
+      "Approval requires photo verification. A club returned without authorization is not accepted."
+     ]
     }
-  ],
-
-  "close": {
-    "eyebrow": "Questions",
-    "headline": "Ask before you send",
-    "body": "If you are not sure whether something qualifies, ask first. Club returns need approval either way.",
-    "ctaLabel": "Contact us",
-    "ctaHref": "{{link:contact}}",
-    "ctaMail": "Email support",
-    "aside": "Have your order number ready."
+   ],
+   "note": "The portal is for apparel and gear. Clubs go through support first. That's not a formality, it's how a fault gets caught before the club is in a box."
+  },
+  {
+   "id": "general",
+   "nav": "General rules",
+   "cream": true,
+   "title": "General return rules",
+   "lede": "These apply to every product.",
+   "list": {
+    "items": [
+     "Returns must be started within the return window for that product category.",
+     "Refunds are issued only after the returned item is received and inspected.",
+     "Customers are responsible for return shipping costs, except on defective items.",
+     "Original shipping fees are non-refundable.",
+     "Items returned outside the stated conditions may receive a partial refund, or be denied.",
+     "Customized items are final sale unless deemed defective."
+    ]
+   }
+  },
+  {
+   "id": "clubs",
+   "nav": "Golf clubs · 60 days",
+   "title": "Golf clubs · 60 days",
+   "lede": "Returns must be started within 60 days of delivery. All club returns require approval before return, require photo verification prior to approval, and are refunded only after physical inspection.",
+   "sub": [
+    {
+     "h": "Putters",
+     "paras": [
+      "May be used during the 60-day period.",
+      "Must be returned in brand-new condition, with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear.",
+      "Modifications (regripping, bending, cutting or altering) are not permitted.",
+      "Wear or damage may result in a partial refund or return denial."
+     ]
+    },
+    {
+     "h": "Wedges",
+     "paras": [
+      "Only one wedge per set may be opened and tested, on a turf mat or other non-abrasive surface.",
+      "The tested wedge must be returned in brand-new condition, with no groove wear, face marks, sole wear, or cosmetic or structural damage.",
+      "All other wedges in the set must remain factory sealed.",
+      "Significant use or damage may result in a partial refund or return denial."
+     ]
+    },
+    {
+     "h": "Drivers, hybrids and woods",
+     "paras": [
+      "Must appear completely unused, with no visible signs of wear or damage and no modifications.",
+      "Significant use or damage may result in a partial refund or no refund, depending on condition."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "apparel",
+   "nav": "Apparel · 30 days",
+   "cream": true,
+   "title": "Apparel · 30 days",
+   "lede": "Returns must be started within 30 days of delivery.",
+   "list": {
+    "items": [
+     "Unworn, unwashed and in original condition.",
+     "All original tags attached.",
+     "No makeup or deodorant stains, odours, pet hair, stretching or laundering.",
+     "Items returned without tags have a $7 fee deducted from the refund.",
+     "Requests after 30 days are not accepted."
+    ]
+   }
+  },
+  {
+   "id": "gear",
+   "nav": "Gear · 30 days",
+   "title": "Gear and accessories · 30 days",
+   "lede": "Returns must be started within 30 days of delivery.",
+   "list": {
+    "items": [
+     "Must be returned in unused condition.",
+     "Items showing wear, damage or use are not eligible.",
+     "A grip that has been fitted to a shaft counts as used.",
+     "Defective items may be eligible for replacement or refund upon inspection."
+    ]
+   }
+  },
+  {
+   "id": "defective",
+   "nav": "Defective items",
+   "cream": true,
+   "title": "Defective items",
+   "lede": "If an item is defective, we pay the return shipping.",
+   "paras": [
+    "Contact us before sending anything back. Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> or use the website chat, with your order number and photos of the fault.",
+    "Defective items may be replaced or refunded after inspection.",
+    "Customized items, which are otherwise final sale, are returnable if they arrive defective."
+   ]
+  },
+  {
+   "id": "custom",
+   "nav": "Customized items",
+   "title": "Customized items",
+   "list": {
+    "items": [
+     "All customized products are final sale.",
+     "Not eligible for return or refund unless deemed defective upon inspection."
+    ]
+   }
+  },
+  {
+   "id": "refused",
+   "nav": "When a return is refused",
+   "cream": true,
+   "title": "Non-returnable conditions",
+   "lede": "Returns are not accepted if:",
+   "list": {
+    "items": [
+     "The item shows visible wear or damage beyond the stated conditions.",
+     "The item has been modified.",
+     "The return window has passed.",
+     "Required approval or documentation is not provided.",
+     "The item is returned without authorization."
+    ]
+   },
+   "cta": {
+    "label": "Start a return",
+    "href": "{{link:contact}}"
+   }
   }
+ ],
+ "close": {
+  "eyebrow": "Questions",
+  "headline": "Ask before you send",
+  "body": "If you're not sure whether something qualifies, ask first. Club returns need approval either way.",
+  "ctaLabel": "Contact us",
+  "ctaHref": "{{link:contact}}",
+  "ctaMail": "Email support",
+  "aside": "Have your order number ready."
+ },
+ "_voice": "2026-08-25. Contractions applied to the EXPLANATORY sentences only. The categorical policy statements ('A club returned without authorization is not accepted', 'Requests after thirty days are not accepted') keep the formal form on purpose: they are the commitments a customer may hold us to, and the flatter register suits them. Everything that is us helping rather than us stating a rule now talks. This is the one file deliberately exempt from the site-wide contraction pass."
 }

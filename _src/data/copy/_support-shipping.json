@@ -32,7 +32,7 @@
    "title": "When it leaves",
    "paras": [
     "Orders leave the warehouse in one to two business days. Business days, so an order placed on a Friday evening is a Monday or Tuesday dispatch.",
-    "You get a tracking number as soon as the carrier scans the parcel, which is the moment it is genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
+    "You get a tracking number as soon as the carrier scans the parcel, which is the moment it's genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
    ]
   },
   {
@@ -42,7 +42,7 @@
    "title": "When it lands",
    "paras": [
     "Ground delivery takes a few business days on top of that, depending on where you are. Checkout shows the options and what each one costs before you pay.",
-    "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it is going and what is in the box."
+    "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it's going and what's in the box."
    ],
    "rows": {
     "items": [
@@ -82,7 +82,7 @@
    "title": "Tracking, and when it goes quiet",
    "paras": [
     "Tracking updates when the parcel is scanned, so it moves in steps rather than continuously. A day or two without an update mid-route is normal.",
-    "If there has been no movement for longer than that, email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and we will trace it."
+    "If there's been no movement for longer than that, email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and we'll trace it."
    ]
   },
   {
@@ -92,7 +92,7 @@
    "title": "If the wrong thing turns up",
    "paras": [
     "If you receive the wrong item, contact us before sending anything back.",
-    "Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and a photo of what arrived. A picking error is not a return and does not count against your return window."
+    "Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and a photo of what arrived. A picking error isn't a return and doesn't count against your return window."
    ],
    "cta": {
     "label": "Tell us what arrived",
@@ -103,7 +103,7 @@
  "close": {
   "eyebrow": "Still stuck",
   "headline": "Where is it?",
-  "body": "If tracking has stopped moving, or the box turned up with the wrong thing in it, that is worth an email rather than another day of waiting.",
+  "body": "If tracking has stopped moving, or the box turned up with the wrong thing in it, that's worth an email rather than another day of waiting.",
   "ctaLabel": "Go to contact",
   "ctaHref": "{{link:contact}}",
   "ctaMail": "Email support",

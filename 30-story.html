@@ -1468,7 +1468,14 @@ html[data-rev="b"] .rev-bar{display:flex}
 .br-tl-rail{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
 .br-tl-list{position:relative;display:grid;grid-auto-flow:column;
   grid-auto-columns:224px;gap:30px;list-style:none;
-  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px}
+  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px;
+  /* width:max-content is LOAD-BEARING. This grid overflows its scroll
+     container, and ::before below draws the rail with left:0;right:0 - which
+     resolves against the element's own box. Without max-content that box is
+     only as wide as the VISIBLE rail, so the line stopped a third of the way
+     along and the timeline looked broken (Cole, 2026-08-25: "the timeline is
+     missing the line part it cuts off halfway"). Measured: 1310px of 3590px. */
+  width:max-content}
 .br-tl-list::before{content:'';position:absolute;left:0;right:0;bottom:34px;
   height:2px;background:var(--rule-on-dark)}
 .br-tl-list li{position:relative;display:flex;flex-direction:column;
@@ -1986,7 +1993,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="br-dlg-in">
       <h3 class="disp d-s">Same steel as the big names. Different math.</h3>
       <p class="br-dlg-p">Our stuff? Built from the same high-end materials the big names use, engineered for real performance, and finished in gold so it doesn't look like anyone else's bag. Every detail earns its spot.</p>
-      <p class="br-dlg-p">We cut out the middlemen, the retail markup and the hype. No buzzword launches. No four-figure price tags. Just clubs that work, delivered straight to you.</p>
+      <p class="br-dlg-p">We cut out <a href="33-compare.html">the middlemen, the retail markup</a> and the hype. No buzzword launches. No four-figure price tags. Just clubs that work, delivered straight to you.</p>
       <p class="br-dlg-p">Every club gets a 60-day test drive. Roll it, hit it, take it to the course. If it doesn't earn its spot in the bag, send it back.</p>
       <p class="br-dlg-p">Thousands of happy golfers so far, and the reviews say it better than we can.</p>
       <p class="br-dlg-p">No gimmicks. No fine-print games. Just great clubs at honest prices.</p>
@@ -2022,7 +2029,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 <section class="sec band-ink br-tl">
   <div class="wrap">
-    <h2 class="disp d-m">The Lucky timeline</h2>
+    <h2 class="disp d-m">How a gold wedge turned into all this</h2>
   </div>
   <div class="br-tl-rail" tabindex="0" aria-label="Timeline, scrolls sideways">
     <ol class="br-tl-list">
@@ -2038,7 +2045,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <li>
         <div class="br-tl-tx">
           <h3>The Blade Putter</h3>
-          <p>CNC-milled stainless, quiet off the face. The line starts growing.</p>
+          <p>CNC-milled from solid stainless, quiet off the face. Turns out people wanted more than a wedge.</p>
           
         </div>
         <span class="br-tl-dot" aria-hidden="true"></span>
@@ -2047,7 +2054,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <li>
         <div class="br-tl-tx">
           <h3>Wedges, Version Two</h3>
-          <p>The original, refined and re-released. The golf world kept noticing.</p>
+          <p>The original, refined and re-released. The gold wedge wasn't a fluke.</p>
           
         </div>
         <span class="br-tl-dot" aria-hidden="true"></span>
@@ -2070,6 +2077,15 @@ html[data-rev="b"] .rev-bar{display:flex}
         </div>
         <span class="br-tl-dot" aria-hidden="true"></span>
         <span class="br-tl-yr">2024</span>
+      </li>
+      <li>
+        <div class="br-tl-tx">
+          <h3>Somebody Hit the Gas</h3>
+          <p>Lucky changed hands. Nothing happened to the clubs or the prices. Everything happened to the calendar.</p>
+          
+        </div>
+        <span class="br-tl-dot" aria-hidden="true"></span>
+        <span class="br-tl-yr">July 2025</span>
       </li>
       <li>
         <div class="br-tl-tx">
@@ -2100,6 +2116,15 @@ html[data-rev="b"] .rev-bar{display:flex}
       </li>
       <li>
         <div class="br-tl-tx">
+          <h3>Nine of Us Now</h3>
+          <p>Nine people where there used to be a lot fewer. That's what shipping this much at once actually takes.</p>
+          
+        </div>
+        <span class="br-tl-dot" aria-hidden="true"></span>
+        <span class="br-tl-yr">2026</span>
+      </li>
+      <li>
+        <div class="br-tl-tx">
           <h3>First Accessories Drop</h3>
           <p>Towels, divot tools, new headcovers. The little stuff, done right.</p>
           <span class="br-tl-soon">Coming soon</span>
@@ -2110,7 +2135,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <li>
         <div class="br-tl-tx">
           <h3>KBS Shafts</h3>
-          <p>A name shaft option across the line.</p>
+          <p>A name shaft across the line, for everyone who has opinions about shafts.</p>
           <span class="br-tl-soon">Coming soon</span>
         </div>
         <span class="br-tl-dot" aria-hidden="true"></span>
@@ -2128,7 +2153,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <li>
         <div class="br-tl-tx">
           <h3>And We're Just Getting Started</h3>
-          <p>Bigger names, bigger drops. Watch this space.</p>
+          <p>Partnerships, and a few drops we're not allowed to describe yet.</p>
           
         </div>
         <span class="br-tl-dot" aria-hidden="true"></span>
@@ -2223,20 +2248,24 @@ html[data-rev="b"] .rev-bar{display:flex}
     <span class="eyebrow">Keep looking</span>
     <h2 class="disp d-m">The rest of it</h2>
     <div class="br-sibs">
+      <a class="br-sib" href="33-compare.html">
+        <span class="br-sib-n">What you pay for</span>
+        <span class="br-sib-h">A big-name club's price covers four things. Ours covers one.</span>
+      </a>
       <a class="br-sib" href="31-trybe.html">
         <span class="br-sib-n">Ambassador Program</span>
-        <span class="br-sib-h">An open program for golfers who play: drops, a group chat and a shot at a club. No follower bar, no scripts.</span>
+        <span class="br-sib-h">Play the clubs, say what you actually think. That's the entire bar, and no, there's no follower count.</span>
       </a>
       <a class="br-sib" href="32-reviews.html">
         <span class="br-sib-n">Reviews</span>
-        <span class="br-sib-h">Every club review in one place, filterable by product and by rating.</span>
+        <span class="br-sib-h">Every review in one place, filterable by club and by rating. Including the bad ones.</span>
       </a>
       <a class="br-sib" href="10-collection-clubs.html">
         <span class="br-sib-n">The clubs</span>
-        <span class="br-sib-h">Five clubs: two wedge finishes, two putters and a hybrid.</span>
+        <span class="br-sib-h">Two wedge finishes, two putters and a hybrid. Five clubs, starting at $99.</span>
       </a>
     </div>
-    <p class="aside br-aside">Some photography on this site is still a written brief. Where it is, the brief says what the shot has to be.</p>
+    
   </div>
 </section>
 

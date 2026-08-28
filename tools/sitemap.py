@@ -103,6 +103,12 @@ def _pages():
     # at any single PDP's review block.
     add("reviews", "32-reviews.html", "Reviews · Lucky Golf",
         src="reviews", built=True)
+    # The comparison page (VOICE-ROLLOUT Job 2). Linked from the What We Do
+    # card on Our Story, the way Takomo's "No crazy retail prices" links out
+    # of their popup. Its own template and copy file: the argument is a pair
+    # of stacks, which nothing else on the site renders.
+    add("compare", "33-compare.html", "What you pay for · Lucky Golf",
+        src="compare", built=True)
     # ---- the support cluster (phase F) ------------------------------------
     # Four pages, ONE template, the way the three PDP templates work: they
     # share a shape (title, lede, sectioned prose, a way to reach a person) and

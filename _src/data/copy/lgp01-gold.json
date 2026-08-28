@@ -197,8 +197,8 @@
   "headline": "Less club, more information",
   "paras": [
    "Most blades are chrome and try to disappear. This one is gold, 385 grams, and has no interest in disappearing.",
-   "Gold, 385 grams, and no interest in disappearing.",
-   "If you would rather the head covered the miss, the Tracer Mallet is the other one."
+   "Milled from one block of 431 stainless, so there's nothing inside it to rattle or come loose, and the face was cut on the same machine as the rest of the head.",
+   "If you'd rather the head covered a miss than reported it, the Tracer Mallet is the other one."
   ],
   "aside": "Roll it pure.",
   "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-blade-hero.webp?v=1787514597",
@@ -260,7 +260,7 @@
     "id": "lgp02-gold",
     "name": "Tracer Mallet",
     "forWho": "Arc, with forgiveness",
-    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-centre strike on line. You give up some feedback to get that.",
+    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-center strike on line. You give up some feedback to get that.",
     "facts": [
      {
       "k": "Neck",
@@ -278,7 +278,7 @@
     "cta": "See the mallet"
    }
   ],
-  "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for."
+  "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that's worth waiting for."
  },
  "_pricing": "The 'it costs $X because we sell direct' paragraph was removed 2026-07-31 (Cole). The price argument is made once, on the homepage's Why Lucky, and repeating it in the product description is the brochure voice.",
  "_pullQuote": "Added 2026-08-19: the Blade had no pull quote and 147 reviews to draw one from. Michael M.'s own title and Michael M.'s own words, one review, not two spliced. Five stars, which the curated-moment floor requires and the card's markup hard-codes. The punctuation is his; verbatim reviews keep whatever the customer typed.",
@@ -291,7 +291,7 @@
  "clubGrinds": [
   {
    "k": "The head: it stays where you put it",
-   "v": "Twenty grams more head than the mallet, all of it in a small shape. That is what stops the face turning on a short one and keeps your hands out of the stroke."
+   "v": "Twenty grams more head than the mallet, all of it in a small shape. That's what stops the face turning on a short one and keeps your hands out of the stroke."
   },
   {
    "k": "The grip: the thin one",
@@ -337,5 +337,6 @@
    "brief": "Unboxing, putter out of the sleeve, first reaction to the finish"
   }
  ],
- "_reel": "The Blade previously inherited the putter family's reel list. It has its own now, because three of its six cards carry real Blade footage and the Mallet's must not."
+ "_reel": "The Blade previously inherited the putter family's reel list. It has its own now, because three of its six cards carry real Blade footage and the Mallet's must not.",
+ "_look": "2026-08-25: paras[1] was 'Gold, 385 grams, and no interest in disappearing.' - a near-verbatim repeat of the back half of paras[0], which read as a copy-paste error on a live page. Replaced with the construction fact, which is what the block was missing. paras[2] also picked up a contraction and now echoes the clubSpecs phrasing ('covered a miss than reported it') deliberately."
 }

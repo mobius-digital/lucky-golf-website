@@ -1468,7 +1468,14 @@ html[data-rev="b"] .rev-bar{display:flex}
 .br-tl-rail{scrollbar-color:var(--gold) rgba(246,242,232,.14)}
 .br-tl-list{position:relative;display:grid;grid-auto-flow:column;
   grid-auto-columns:224px;gap:30px;list-style:none;
-  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px}
+  margin:clamp(30px,3.4vw,46px) 0 0;padding:0 6px;
+  /* width:max-content is LOAD-BEARING. This grid overflows its scroll
+     container, and ::before below draws the rail with left:0;right:0 - which
+     resolves against the element's own box. Without max-content that box is
+     only as wide as the VISIBLE rail, so the line stopped a third of the way
+     along and the timeline looked broken (Cole, 2026-08-25: "the timeline is
+     missing the line part it cuts off halfway"). Measured: 1310px of 3590px. */
+  width:max-content}
 .br-tl-list::before{content:'';position:absolute;left:0;right:0;bottom:34px;
   height:2px;background:var(--rule-on-dark)}
 .br-tl-list li{position:relative;display:flex;flex-direction:column;
@@ -1897,7 +1904,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   <div class="wrap">
     <p class="eyebrow">Ambassador Program</p>
     <h1 class="disp d-xl">The people who actually play them</h1>
-    <p class="body lead br-lede">Golfers who put Lucky in the bag and say what they think. Everyone starts in the same place, and the creators we pay come from that crew. No follower bar, no script, and nobody ever paid to praise a club.</p>
+    <p class="body lead br-lede">Golfers who put Lucky in the bag and say what they think, including when what they think is that something is wrong. Everyone starts in the same place, and the creators we pay come from that crew. Nobody has ever been paid to praise a club.</p>
 
   </div>
 </section>
@@ -1955,7 +1962,7 @@ html[data-rev="b"] .rev-bar{display:flex}
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Reposts, with your name on them.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>And a shot at a club to play. Those go out in batches, and there are never enough.</span></li>
         </ul>
-        <p class="br-fk-foot">No quota. No script. No commission on clubs, ever.</p>
+        <p class="br-fk-foot">Your words, your pace, and clubs never pay commission.</p>
         <p class="br-fk-cta"><a class="btn btn-line btn-sm" href="#fit"><span>See if you fit</span><span class="ar">&darr;</span></a></p>
       </div>
       <div class="br-fk br-fk--ink">
@@ -1986,8 +1993,8 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec band-cream br-bar" id="fit">
   <div class="wrap">
     <span class="eyebrow">Who this is for</span>
-    <h2 class="disp d-m">The bar, stated plainly</h2>
-    <p class="body br-bar-lede">Most programs make you guess whether you qualify. Here is the whole of it, including the part that rules people out.</p>
+    <h2 class="disp d-m">Here's exactly who gets in</h2>
+    <p class="body br-bar-lede">Most programs make you guess whether you qualify. We'd rather just tell you, including the part that rules people out.</p>
     <div class="br-bar-cols">
       <div class="br-bar-col">
         <h3 class="br-bar-h">This is for you if</h3>
@@ -2002,7 +2009,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <div class="br-bar-col">
         <h3 class="br-bar-h">What we don't ask for</h3>
         <ul class="br-list br-bar-list">
-          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A follower count. There is no threshold, on any platform.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A follower count. There's no threshold, on any platform.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A posting schedule, or a minimum number of anything.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A script. What you say about the club is yours.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Exclusivity: keep playing whatever else is in the bag.</span></li>
@@ -2012,13 +2019,13 @@ html[data-rev="b"] .rev-bar{display:flex}
       <div class="br-bar-col br-bar-col--warn">
         <h3 class="br-bar-h">What isn't a fit</h3>
         <ul class="br-list br-bar-list">
-          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A feed that is mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.</span></li>
-          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Wanting a script, or sign-off before you post. That exists here, but it is the Creator level, and it is paid work.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>A feed that's mostly ads. If every post sells something, a Lucky post won't mean anything coming from it.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Wanting a script, or sign-off before you post. That exists here, but it's the Creator level, and it's paid work.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>Applying for a free club with no plan to play it. We read applications properly, and it shows.</span></li>
         </ul>
       </div>
     </div>
-    <p class="aside br-bar-note">Joining is open. There is nothing to clear. Clubs are the part that is limited, and the application is where that gets decided. If you are not sure whether it is worth applying, apply and say so. The worst outcome is a reply.</p>
+    <p class="aside br-bar-note">Joining is open; clubs are the part that's limited, and the application is where that gets decided. If you're not sure whether it's worth applying, apply and say so. The worst outcome is a reply.</p>
   </div>
 </section>
 
@@ -2053,11 +2060,11 @@ html[data-rev="b"] .rev-bar{display:flex}
         <ul class="br-list br-bar-list">
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>No code, no commission, no cut. Not now, not at any level.</span></li>
           <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>You get clubs to play because you play, and what you say about them is yours.</span></li>
-          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>It is the one part of the deal we will not change.</span></li>
+          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>It's the one part of the deal we won't change.</span></li>
         </ul>
       </div>
     </div>
-    <p class="aside br-bar-note">Rates, timing and the rest of it come with your acceptance. There is no contract to read on a web page.</p>
+    <p class="aside br-bar-note">Rates, timing and the rest of it come with your acceptance. There's no contract to read on a web page.</p>
   </div>
 </section>
 
@@ -2068,10 +2075,10 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 <section class="sec band-ink br-stats">
   <div class="wrap">
-    <span class="eyebrow on-dark">What it isn't</span>
-    <h2 class="disp d-l br-stats-h">No follower minimum</h2>
+    <span class="eyebrow on-dark">The deal</span>
+    <h2 class="disp d-l br-stats-h">Anyone can get in. Not everyone gets a club.</h2>
     <dl class="br-figs">
-      <div><dt>Open</dt><dd>No follower threshold to clear, and no window to wait for. Write any time. Applications are read in batches.</dd></div>
+      <div><dt>Open</dt><dd>No follower threshold, and no window to wait for. Write any time; applications get read in batches.</dd></div>
       <div><dt>Honest</dt><dd>The notes we want are the critical ones. An ambassador who only says nice things is worth nothing to anyone.</dd></div>
       <div><dt>Unbought</dt><dd>Clubs are never commissioned. Nobody here earns a cent for saying a wedge is good.</dd></div>
     </dl>
@@ -2096,8 +2103,8 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="br-row-copy">
       <span class="eyebrow">What we're after</span>
       <h2 class="disp d-m">Golfers, not audiences</h2>
-      <p class="br-p">The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they will say so when it doesn't.</p>
-      <p class="br-p">That is genuinely most of the brief. What we are not doing is buying an audience. There is no follower count that gets you in and none that keeps you out.</p>
+      <p class="br-p">The useful ambassador is someone who would have bought the club anyway. They play enough to notice when a sole grinds through turf differently, and they'll say so when it doesn't.</p>
+      <p class="br-p">That's genuinely most of the brief. What we're not doing is buying an audience. There's no follower count that gets you in and none that keeps you out.</p>
     </div>
   </div>
 </section>
@@ -2127,7 +2134,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 <section class="sec band-cream br-steps">
   <div class="wrap">
     <span class="eyebrow">What happens next</span>
-    <h2 class="disp d-m">From application to creator</h2>
+    <h2 class="disp d-m">What happens after you hit send</h2>
     <ol class="br-steps-list">
       <li>
         <span class="br-step-n" aria-hidden="true">1</span>
@@ -2176,13 +2183,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <div class="wrap br-fit-in">
     <span class="eyebrow">Interested</span>
-    <h2 class="disp d-l">Say hello</h2>
-    <p class="body">The application is just below, and it is read by a person. Or skip the form: write to partners@luckygolf.com and say how you play.</p>
+    <h2 class="disp d-l">So, are you in?</h2>
+    <p class="body">The application's right below and a person reads it. Or skip the form and write to partners@luckygolf.com telling us how you play.</p>
     <div class="br-fit-cta">
       <a class="btn btn-foil sweep" href="#apply"><span>Apply now</span><span class="ar">&rarr;</span></a>
       <a class="btn btn-line-cream" href="10-collection-clubs.html"><span>The clubs</span></a>
     </div>
-    <p class="aside br-fit-aside">No follower minimum. That part is settled.</p>
+    <p class="aside br-fit-aside">Applying costs you five fields and about two minutes.</p>
   </div>
 </section>
 
@@ -2198,8 +2205,8 @@ html[data-rev="b"] .rev-bar{display:flex}
   <div class="wrap br-apply-in">
     <span class="eyebrow">The application</span>
     <h2 class="disp d-m">Apply as an ambassador</h2>
-    <p class="body br-apply-lede">Five fields, read in batches, answered by a person. The links one is optional, and it is also the fast lane.</p>
-    <p class="br-proto"><span class="tbd tbd--light">Not wired up yet</span> · these fields are the markup for the Shopify build and nothing sends yet. Email <a href="mailto:partners@luckygolf.com">partners@luckygolf.com</a> and it reaches us today.</p>
+    <p class="body br-apply-lede">Five fields, read in batches, answered by a person. The links one is optional, and it's also the fast lane.</p>
+    <p class="br-proto"><span class="tbd tbd--light">Not wired up yet</span> · this form isn't live yet, so nothing you type here sends. Email <a href="mailto:partners@luckygolf.com">partners@luckygolf.com</a> and it reaches us today.</p>
     <form id="amb-apply">
       <div class="br-f2">
         <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
@@ -2211,7 +2218,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>Submit application</span><span class="ar">&rarr;</span></button></p>
       <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">This form doesn't send anywhere yet. Email partners@luckygolf.com and it reaches us today.</p>
     </form>
-    <p class="aside br-apply-note">No follower minimum, and no window to wait for. Everyone accepted gets the code, the chat and the drops; clubs go out in batches.</p>
+    <p class="aside br-apply-note">Everyone accepted gets the code, the chat and the drops from day one. Clubs are the limited part.</p>
   </div>
 </section>
 
@@ -2224,18 +2231,22 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="br-sibs">
       <a class="br-sib" href="30-story.html">
         <span class="br-sib-n">Our Story</span>
-        <span class="br-sib-h">What Lucky makes, how it sells it, and who answers when something goes wrong.</span>
+        <span class="br-sib-h">It started in 2018 with one gold wedge and a grudge about what golf charges.</span>
+      </a>
+      <a class="br-sib" href="33-compare.html">
+        <span class="br-sib-n">What you pay for</span>
+        <span class="br-sib-h">A big-name club's price covers four things. Ours covers one.</span>
       </a>
       <a class="br-sib" href="32-reviews.html">
         <span class="br-sib-n">Reviews</span>
-        <span class="br-sib-h">Every club review in one place, filterable by product and by rating.</span>
+        <span class="br-sib-h">Every review in one place, filterable by club and by rating. Including the bad ones.</span>
       </a>
       <a class="br-sib" href="10-collection-clubs.html">
         <span class="br-sib-n">The clubs</span>
-        <span class="br-sib-h">Five clubs: two wedge finishes, two putters and a hybrid.</span>
+        <span class="br-sib-h">Two wedge finishes, two putters and a hybrid. Five clubs, starting at $99.</span>
       </a>
     </div>
-    <p class="aside br-aside">Some photography on this site is still a written brief. Where it is, the brief says what the shot has to be.</p>
+    
   </div>
 </section>
 

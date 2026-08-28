@@ -699,6 +699,41 @@ def search_copy():
             "QUICKADD_JSON": json.dumps(quick_add_data(ids), ensure_ascii=False)}
 
 
+def compare_copy():
+    """The comparison page's editorial. A flat load: no catalogue joins and no
+    reconciliation, because the page deliberately carries NO figure that is not
+    Lucky's own. See _page-compare.json's `_rules` — the argument is the shape
+    of the two stacks, not a table of numbers, so there is nothing here that
+    could drift out of step with products.json."""
+    path = os.path.join(SRC, "data", "copy", "_page-compare.json")
+    if not os.path.exists(path):
+        sys.exit("compare page has no editorial: _src/data/copy/_page-compare.json")
+    copy = json.load(open(path, encoding="utf8"))
+
+    # The page's whole argument is that two rows read IDENTICALLY in both
+    # columns. A row flagged `same` whose cells have drifted apart leaves a
+    # table that still renders, still says "Identical" in the margin, and is
+    # now lying. Cheap to check, so check it.
+    for row in copy.get("table", {}).get("rows", []):
+        if row.get("same") and row["a"] != row["b"]:
+            sys.exit("compare: row %r is flagged `same` but its cells differ. "
+                     "big names=%r lucky=%r" % (row["k"], row["a"], row["b"]))
+
+    # Our own prices are checked against the catalogue so the table cannot
+    # drift the way the club finder did ($119 against a real $109).
+    wedges = [p for p in sitemap.PRODUCTS if p.get("family") == "wedge"]
+    if wedges:
+        lo, hi = min(p["price"] for p in wedges), max(p["price"] for p in wedges)
+        for row in copy.get("table", {}).get("rows", []):
+            if row.get("hero"):
+                for want in ("$%d" % lo, "$%d" % hi):
+                    if want not in row["b"]:
+                        sys.exit("compare: the price row says %r but the catalogue "
+                                 "has wedges from $%d to $%d" % (row["b"], lo, hi))
+
+    return {k: v for k, v in copy.items() if not k.startswith("_")}
+
+
 def reviews_copy():
     """The all-clubs reviews page: the five Judge.me pulls, merged, with each
     review tagged with the product it is about.
@@ -987,6 +1022,9 @@ def page_context(slug):
     if slug == "reviews":
         ctx.update(reviews_copy())
 
+    if slug == "compare":
+        ctx.update(compare_copy())
+
     if slug == "search":
         ctx.update(search_copy())
 
@@ -1189,6 +1227,18 @@ REQUIRED = {
         # be a string that exists in exactly ONE source file (§12d again).
         "function offered(pd, sel, i, val)",   # variants.js — the axis engine
         "function paintLoftFinder",      # page-club.js — the wedge ladder
+    ],
+    # The comparison page. Its two-stack grid IS the argument; if that rule
+    # goes missing the page still builds and reads as two unrelated lists.
+    "compare": [
+        # the two load-bearing rules: the tinted Lucky column and the marker on
+        # the rows whose cells read identically. Lose either and the table is
+        # still a table but stops making the argument.
+        ".cmp-td--us{background:rgba(194,154,43,.07)",
+        ".cmp-tr--same .cmp-rk::after{content:'Identical'",
+        ".cmp-scroll{margin-top:clamp(28px,4vw,46px);overflow-x:auto",
+        'class="cmp-t"',
+        "@media (max-width:760px)",
     ],
     "apparel": [
         'id="pickers"', "function paintPickers",

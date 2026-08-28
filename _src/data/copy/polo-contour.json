@@ -8,5 +8,6 @@
   ]
  ],
  "buyBody": "A contour print that reads as texture from more than a few feet away, on the collar and three-button placket most golfers already default to. Four-way stretch so it moves at the top of the backswing, and UPF 50+ so an afternoon round costs you nothing.",
- "lifestyleBrief": "Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. The print has to be legible as texture at this distance. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "lifestyleBrief": "Portrait 4:5, on body, mid-round. Golfer at the top of the backswing or walking off a tee, shot from slightly below so the collar and shoulder line read. The print has to be legible as texture at this distance.",
+ "_piece": "REVERTED 2026-08-25. Per-print piece blocks were written here and Cole reversed it: 'For polos they should all have the same look. The section under the fold should not be based on polo. It should be one section talking about the polos as a whole.' This restores the shared block from _family-polo-*.json, which is also what the 2026-07-31 ruling wanted. The per-print line still lives in buyBody, up in the buy box, which is where the choice actually gets made."
 }

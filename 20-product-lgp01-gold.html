@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    CLUB PDP — what only a wedge, putter, hybrid or driver renders
    The spec table, the wedge loft ladder, blade-or-mallet, the brand moment
@@ -2316,7 +2323,7 @@ html[data-rev="b"] .rev-bar{display:flex}
          so `clubGrinds` carries whatever the two beats are that decide the
          purchase — the grinds on a wedge, the neck and the grip on a putter.
          A product with nothing to say here renders nothing. -->
-        <div class="club-grind"><b>The head: it stays where you put it</b><p>Twenty grams more head than the mallet, all of it in a small shape. That is what stops the face turning on a short one and keeps your hands out of the stroke.</p></div>
+        <div class="club-grind"><b>The head: it stays where you put it</b><p>Twenty grams more head than the mallet, all of it in a small shape. That's what stops the face turning on a short one and keeps your hands out of the stroke.</p></div>
         <div class="club-grind"><b>The grip: the thin one</b><p>The stock Lucky rubber grip, not the oversized 3.0 on the mallet. An arcing stroke wants to feel the club, and a fat grip takes that away.</p></div>
 
     <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->
@@ -2408,7 +2415,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <span class="rank">The other one</span>
         <span class="cmp-nm">Tracer Mallet</span>
         <span class="cmp-for">Arc, with forgiveness</span>
-        <p>Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-centre strike on line. You give up some feedback to get that.</p>
+        <p>Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-center strike on line. You give up some feedback to get that.</p>
         <dl class="cmp-facts">
           <div><dt>Neck</dt><dd>Slant, with toe hang</dd></div>
           <div><dt>Head</dt><dd>Mallet, 304 stainless, 365 g</dd></div>
@@ -2418,7 +2425,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         
       </article>
     </div>
-    <p class="aside cmp-note">The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that is worth waiting for.</p>
+    <p class="aside cmp-note">The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that's worth waiting for.</p>
   </div>
 </section>
 
@@ -2499,8 +2506,8 @@ html[data-rev="b"] .rev-bar{display:flex}
       <span class="eyebrow centre-none">The look</span>
       <h2 class="disp d-l">Less club, more information</h2>
       <p class="body">Most blades are chrome and try to disappear. This one is gold, 385 grams, and has no interest in disappearing.</p>
-      <p class="body">Gold, 385 grams, and no interest in disappearing.</p>
-      <p class="body">If you would rather the head covered the miss, the Tracer Mallet is the other one.</p>
+      <p class="body">Milled from one block of 431 stainless, so there's nothing inside it to rattle or come loose, and the face was cut on the same machine as the rest of the head.</p>
+      <p class="body">If you'd rather the head covered a miss than reported it, the Tracer Mallet is the other one.</p>
       <p class="aside">Roll it pure.</p>
       <div class="look-cta">
         <a href="#gal" class="btn btn-line-cream"><span>Pick a hand</span><span class="ar">&rarr;</span></a>
@@ -2664,7 +2671,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="md-sec">
       <h3>Apparel and gear</h3>
       <p>Thirty days. Apparel unworn and unwashed with all original tags attached. <b>A return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
-      <p>Customised products are final sale unless they arrive defective.</p>
+      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="40-returns.html">Read the full refund policy</a></p>
     </div>
 

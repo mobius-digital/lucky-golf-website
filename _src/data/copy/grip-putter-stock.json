@@ -26,14 +26,14 @@
    "headline": "Not everyone gets on with a fat grip",
    "paras": [
     "The oversized grip takes the wrists out of the stroke, which helps most golfers and actively annoys the ones who putt with feel.",
-    "If you are in the second group, this is the fix, and it is the smallest change you can make to a putter."
+    "If you're in the second group, this is the fix, and it's the smallest change you can make to a putter."
    ]
   },
   {
    "eyebrow": "What it fits",
-   "headline": "Putters",
+   "headline": "For putters, and nothing else",
    "paras": [
-    "A standard putter grip. It is not an iron grip and it will not feel right on one."
+    "A standard putter grip. It's not an iron grip and it won't feel right on one."
    ],
    "facts": {
     "rows": [
@@ -71,5 +71,6 @@
    "Stock Lucky putter grip"
   ]
  ],
- "_price": "REMOVED 2026-08-19: the chip block said '$19.95 / Down from $30'. NO gear variant in Shopify carries a compareAtPrice — checked every grip, glove, tee and cover in shopify-raw.json — so $30 was a price this grip has never been sold at. A fabricated 'was' price is not a tone problem, it is a claim we cannot support. Same reason FINISH-LINE 1a killed the Sale collection."
+ "_price": "REMOVED 2026-08-19: the chip block said '$19.95 / Down from $30'. NO gear variant in Shopify carries a compareAtPrice — checked every grip, glove, tee and cover in shopify-raw.json — so $30 was a price this grip has never been sold at. A fabricated 'was' price is not a tone problem, it is a claim we cannot support. Same reason FINISH-LINE 1a killed the Sale collection.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
 }

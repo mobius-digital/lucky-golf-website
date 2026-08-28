@@ -5,24 +5,30 @@
   {
    "slug": "story",
    "name": "Our Story",
-   "hook": "What Lucky makes, how it sells it, and who answers when something goes wrong."
+   "hook": "It started in 2018 with one gold wedge and a grudge about what golf charges."
+  },
+  {
+   "slug": "compare",
+   "name": "What you pay for",
+   "hook": "A big-name club's price covers four things. Ours covers one."
   },
   {
    "slug": "trybe",
    "name": "Ambassador Program",
-   "hook": "An open program for golfers who play: drops, a group chat and a shot at a club. No follower bar, no scripts."
+   "hook": "Play the clubs, say what you actually think. That's the entire bar, and no, there's no follower count."
   },
   {
    "slug": "reviews",
    "name": "Reviews",
-   "hook": "Every club review in one place, filterable by product and by rating."
+   "hook": "Every review in one place, filterable by club and by rating. Including the bad ones."
   },
   {
    "slug": "c/clubs",
    "name": "The clubs",
-   "hook": "Five clubs: two wedge finishes, two putters and a hybrid."
+   "hook": "Two wedge finishes, two putters and a hybrid. Five clubs, starting at $99."
   }
  ],
  "moreHeadline": "The rest of it",
- "moreAside": "Some photography on this site is still a written brief. Where it is, the brief says what the shot has to be."
+ "_moreAside": "CUT 2026-08-25 in the voice re-pass. This rendered on Our Story and the Ambassador page and told visitors the site was half-finished: process vocabulary in brand copy, which v8.1 bans outright. The photo briefs still live in the phK/phBrief keys where they belong.",
+ "moreAside": ""
 }

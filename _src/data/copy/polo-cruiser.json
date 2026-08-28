@@ -7,6 +7,7 @@
    "Cruiser Classic Polo, front"
   ]
  ],
- "buyBody": "A golf cart print. It is exactly as literal as it sounds and it is the most fun thing in the range.",
- "lifestyleBrief": "Portrait 4:5, on body, ideally beside or in an actual cart. The joke lands harder in context, and one close crop is needed for anyone to see what the print is. There is no on-body apparel photography at all yet (HANDOFF §7b F)."
+ "buyBody": "A golf cart print. It's exactly as literal as it sounds and it's the most fun thing in the range.",
+ "lifestyleBrief": "Portrait 4:5, on body, ideally beside or in an actual cart. The joke lands harder in context, and one close crop is needed for anyone to see what the print is.",
+ "_piece": "REVERTED 2026-08-25. Per-print piece blocks were written here and Cole reversed it: 'For polos they should all have the same look. The section under the fold should not be based on polo. It should be one section talking about the polos as a whole.' This restores the shared block from _family-polo-*.json, which is also what the 2026-07-31 ruling wanted. The per-print line still lives in buyBody, up in the buy box, which is where the choice actually gets made."
 }

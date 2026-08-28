@@ -27,7 +27,7 @@
    "name": "Lucky Golf Tees",
    "code": "TEES",
    "meta": "25 tees",
-   "hook": "You are out of tees. You are always out of tees."
+   "hook": "You're out of tees. You're always out of tees."
   }
  ]
 }

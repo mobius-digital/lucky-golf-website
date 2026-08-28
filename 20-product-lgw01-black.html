@@ -1700,6 +1700,13 @@ html[data-rev="b"] .rev-bar{display:flex}
   .bx-terms{grid-template-columns:1fr}
 }
 
+/* The buy-box trust row. Each item is an inline clover mark followed by text,
+   and when that text wraps the second line used to start under the ICON,
+   which read as broken alignment (Cole, 2026-08-25). Flex with a non-shrinking
+   mark keeps the wrap indented under the text where it belongs. */
+.bx-terms > span{display:flex;align-items:flex-start;gap:8px}
+.bx-terms > span > .mk{flex:none;margin-top:.28em}
+
 /* ==========================================================================
    CLUB PDP — what only a wedge, putter, hybrid or driver renders
    The spec table, the wedge loft ladder, blade-or-mallet, the brand moment
@@ -2601,7 +2608,7 @@ html[data-rev="b"] .rev-bar{display:flex}
     <div class="md-sec">
       <h3>Apparel and gear</h3>
       <p>Thirty days. Apparel unworn and unwashed with all original tags attached. <b>A return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
-      <p>Customised products are final sale unless they arrive defective.</p>
+      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="40-returns.html">Read the full refund policy</a></p>
     </div>
 

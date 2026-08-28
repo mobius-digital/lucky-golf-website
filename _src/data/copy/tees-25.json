@@ -1,7 +1,7 @@
 {
  "_": "Editorial for tees-25. Shared keys come from the family file.",
  "_specs": "Nothing about this product's construction is published. Unverifiable rows are marked, not guessed.",
- "buyBody": "Twenty-five tees with a clover on them. You are out of tees, and you have been since March. Put some in the bag and some in the car.",
+ "buyBody": "Twenty-five tees with a clover on them. You're out of tees, and you've been since March. Put some in the bag and some in the car.",
  "four": [
   {
    "k": "25 tees",
@@ -23,9 +23,9 @@
  "details": [
   {
    "eyebrow": "What it's for",
-   "headline": "You are out of tees",
+   "headline": "You're out of tees",
    "paras": [
-    "Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It is the one golf product with a genuinely disposable life cycle.",
+    "Everyone is always out of tees. They snap, they get left in the ground, they end up in a washing machine. It's the one golf product with a genuinely disposable life cycle.",
     "Twenty-five in a pack. Put some in the bag and some in the car."
    ]
   },
@@ -63,5 +63,6 @@
  ],
  "gallery": [],
  "photoBrief": "Flat-lay, square. A loose scatter of tees on a dark surface with the clover mark legible on at least three of them. This is the ONLY product in the store with no photograph in Shopify at all. The tile and the PDP both fall back to this slot until one exists.",
- "_price": "2026-08-19: the chips carried the price AND a live inventory count ('In stock / 1,257 packs of them'), which is both stale the moment it moves and an internal number. The buy body spelled the price out in words to get around the no-typed-price rule, which is the same violation."
+ "_price": "2026-08-19: the chips carried the price AND a live inventory count ('In stock / 1,257 packs of them'), which is both stale the moment it moves and an internal number. The buy body spelled the price out in words to get around the no-typed-price rule, which is the same violation.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
 }

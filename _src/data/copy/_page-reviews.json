@@ -4,7 +4,7 @@
  "_merge": "lgw02-gold is the S-grind product that HANDOFF §23 folded into the 01. It is no longer in products.json, so its 69 reviews are carried as their own chip and linked to the 01 Gold. They are NOT summed into the 01's 551: merging two review sets into a figure no system currently reports would be inventing one (§23h). After Cole's Shopify merge and the Judge.me migration, the 01 becomes 620 and this entry goes away.",
  "crumbName": "Reviews",
  "eyebrow": "Reviews",
- "headline": "Every club review",
+ "headline": "Every review we've got",
  "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden. The one-stars are in the list with everything else.",
  "sets": [
   {
@@ -33,7 +33,7 @@
    "product": "lgh01"
   }
  ],
- "note": "The one-stars are in here with everything else.",
+ "note": "Filter by rating to read any slice of it.",
  "close": {
   "eyebrow": "Sixty days",
   "headline": "Or find out yourself",
@@ -45,5 +45,6 @@
   "aside": "The reviews above are what other people found. Yours is the one that counts."
  },
  "moreHeadline": "The rest of it",
- "_pass": "Copy pass 2026-08-19. Two developer notes were rendering to customers: an explanation of the site's OWN four-star curation rule, and 'stored in the repo verbatim. The live site renders the widget itself.' The second names the repo on a live page."
+ "_pass": "Copy pass 2026-08-19. Two developer notes were rendering to customers: an explanation of the site's OWN four-star curation rule, and 'stored in the repo verbatim. The live site renders the widget itself.' The second names the repo on a live page.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
 }

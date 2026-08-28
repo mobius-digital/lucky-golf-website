@@ -2,7 +2,7 @@
 
 **For the developer who turns this prototype into a Shopify theme.**
 
-This repo is 58 built pages, zero dead links, published at
+This repo is 59 built pages, zero dead links, published at
 https://mobius-digital.github.io/lucky-golf-website/ from
 `mobius-digital/lucky-golf-website` (master, GitHub Pages).
 
@@ -24,7 +24,7 @@ Python 3, no dependencies. Node only for the variant test.
 
 ```bash
 python tools/normalize-products.py          # shopify-raw.json -> products.json
-python tools/build.py                       # assemble all 58 pages
+python tools/build.py                       # assemble all 59 pages
 ```
 
 Checks — all three must be clean before anything ships:
@@ -38,11 +38,11 @@ node tools/test-variants.js                 # the axis engine, over all 43 produ
 Two more that are worth knowing:
 
 ```bash
-python tools/build.py --links               # the link registry: 60 pages, 58 built
+python tools/build.py --links               # the link registry: 61 pages, 59 built
 python tools/build.py club                  # build one template's pages only
 ```
 
-Current state: **43 products, 155 variants, 60 declared pages, 58 built.**
+Current state: **43 products, 155 variants, 61 declared pages, 59 built.**
 
 **Never edit an `NN-*.html` file.** They are build output and are overwritten.
 Source of truth is `_src/` plus `_src-logo-symbols.svg`.
@@ -697,8 +697,46 @@ The four reference documents are the source of truth for facts and voice, in
 this order of precedence: **Product Reference Guide v1.8** outranks everything
 on product facts; **Spec-to-Benefit v1.0** governs what a spec is allowed to
 claim and carries the CLAIMS TO AVOID list; **How We Write v7.3** governs voice;
-**Golf-Culture Reference v2** supplies vocabulary. All 58 pages were audited
+**Golf-Culture Reference v2** supplies vocabulary. All 59 pages were audited
 against the CLAIMS TO AVOID list — the site currently carries **zero banned
 claims in its own copy**, with two flagged exceptions that are somebody else's
 words: a Judge.me AI summary containing "premium", and competitor names inside
 verbatim customer reviews.
+
+
+---
+
+## 21. Added 2026-08-25 — the comparison page
+
+`33-compare.html`, slug `compare`. It is the 59th page and the only one with
+its own template that is not a product, collection, brand or support page.
+
+Wiring, all following the `reviews` precedent:
+
+| Piece | File |
+|---|---|
+| Copy | `_src/data/copy/_page-compare.json` |
+| Template | `_src/page-compare.html` |
+| Styles | `_src/page-compare.css` |
+| Route | `tools/sitemap.py` — `add("compare", "33-compare.html", ..., src="compare", built=True)` |
+| Loader | `tools/build.py` — `compare_copy()` and the `if slug == "compare"` line |
+| Smoke markers | `tools/build.py` — the `"compare"` entry in `REQUIRED` |
+| Inbound link | `_brand-story.json` → `trio.cards[1].paras[1]` |
+
+**Two invariants live in `compare_copy()` and both were proven by breaking
+them.** Do not remove them when porting to Liquid — reimplement them:
+
+1. A table row flagged `same` whose two cells have drifted apart **fails the
+   build**. The page's argument is that two rows read identically in both
+   columns, and the template prints "Identical" in the margin. Without the
+   check the table still renders, still says Identical, and is now lying.
+2. The price row's Lucky-side figures are checked against `products.json`, so
+   the table cannot drift the way the club finder once did ($119 shown against
+   a real $109).
+
+**The competitor price range ($170 to $200) is a published MSRP, not an
+estimate**, verified 2026-08-25 and sourced in the copy file's `_price` key.
+MSRPs move. Re-check it before this page has been live a year.
+
+**Never name a competitor on this page.** The big-names column is written at
+category level and hedged on purpose.

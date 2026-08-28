@@ -1,7 +1,7 @@
 {
  "_": "Shared editorial for all ten Classic Polos. Merged UNDER each polo's own file, which overrides any key it sets.",
  "_specs": "Fabric, fit, weight, features and care are verbatim from the copy skill's Product Reference Guide (The Classic Polo). Body measurements are NOT published anywhere verifiable and are not invented — the size table carries dashes and says why.",
- "_voice": "The reference guide is explicit that apparel does NOT get the clubs' value-comparison framing. No middlemen-and-markups argument on any polo page.",
+ "_voice": "Rewritten 2026-08-25. Cole: 'Overall copy still doesn't sound like somebody is talking and writing this, it sounds like you are following rules again. Be a PERSON and talk, not so choppy.' The measurable tell was CONTRACTIONS: the approved Our Story page runs one per 29 words; the copy he rejected ran one per 220. Writing 'that is not' and 'it is' instead of \"that's\" and \"it's\" is what made it read like a rulebook. This block also uses direct address and full sentences that run into each other, rather than clipped parallel beats.",
  "eyebrow": "The Classic &middot; Polos",
  "galleryTag": "",
  "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
@@ -62,7 +62,7 @@
  "fitTitle": "How it fits",
  "fitParas": [
   "Tailored athletic. It follows the shoulders and tapers slightly through the body, so it sits closer than a traditional boxy golf polo without restricting the swing.",
-  "The four-way stretch means the fit is more forgiving than the cut suggests. If you normally wear a large in a performance polo, a large here is right.",
+  "The four-way stretch means the fit is more forgiving than the cut suggests. If you normally wear a large in a performance polo, a large here's right.",
   "Between sizes, or want room across the chest? Size up."
  ],
  "reviewHeadline": "Reviews",
@@ -112,10 +112,13 @@
   }
  ],
  "_piece": "Cole 2026-07-31: ONE section that works for any design. Every colorway used to carry its own bespoke headline and two paragraphs, which is 22 pages of copy saying the same thing 22 ways. What differs between designs is the photograph, not the garment. Anything genuinely specific to one design goes in that product's own file and overrides these keys.",
- "pieceHeadline": "Cut to play in, and good enough to keep on after.",
+ "pieceHeadline": "Cut to play in, good enough to keep on after.",
  "pieceParas": [
-  "Traditional collar, tailored athletic cut, and 88/12 poly-spandex with four-way stretch, so it moves at the top of the backswing instead of pulling across the shoulders.",
-  "UPF 50+ and moisture-wicking, which you notice in August. Wrinkle-resistant enough to come out of a bag and go straight on. Every print in the range is the same shirt underneath, so pick the one you want to look down at."
+  "Here's the thing about most golf polos: they're cut like a box, and you feel it at the top of the backswing when the whole shirt drags across your shoulders. This one doesn't do that. Tailored athletic cut, 88/12 poly-spandex, four-way stretch, and it moves when you do.",
+  "You'll notice the UPF 50+ and the moisture-wicking in August and then never think about either again, which is how that stuff is supposed to work. It also comes out of a bag without looking like it spent the morning in one.",
+  "Every print in the range is this same shirt underneath, so there's nothing to weigh up on fabric. Just pick the one you actually want to look down at."
  ],
- "_pass": "Copy pass 2026-08-19. The close typed $67 into editorial (price is per variant, from products.json). The fit note ended on 'the guide above is worth a look', and the piece copy commented on its own spec list ('matters more in August than it sounds like it does in a spec list'). The close headline was the sixth 'Go [verb]' on the site."
+ "_pass": "Copy pass 2026-08-19. The close typed $67 into editorial (price is per variant, from products.json). The fit note ended on 'the guide above is worth a look', and the piece copy commented on its own spec list ('matters more in August than it sounds like it does in a spec list'). The close headline was the sixth 'Go [verb]' on the site.",
+ "buyTerm": "Four-way stretch, UPF 50+",
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25."
 }

@@ -42,7 +42,7 @@
     "items": [
      {
       "k": "Returning a club",
-      "v": "Email or chat. Approval and photos are required before it ships. A club sent back without them is not accepted."
+      "v": "Email or chat. Approval and photos are required before it ships. A club sent back without them isn't accepted."
      },
      {
       "k": "Returning apparel or gear",
@@ -58,7 +58,7 @@
      },
      {
       "k": "Damaged or broken",
-      "v": "Email, with photos. Do not send it anywhere until we have replied."
+      "v": "Email, with photos. Don't send it anywhere until we've replied."
      },
      {
       "k": "Which club to buy",
@@ -66,24 +66,24 @@
      }
     ]
    },
-   "note": "Clubs are the exception on purpose. Support checks the fault before the club moves, which is what stops a return being denied after it has already shipped."
+   "note": "Clubs are the exception on purpose. Support checks the fault before the club moves, which is what stops a return being denied after it's already shipped."
   },
   {
    "id": "when",
    "title": "When you'll hear back",
    "paras": [
     "We aim to answer email within 24 business hours. Business hours, so a Friday evening message is usually answered Monday or Tuesday rather than over the weekend.",
-    "Email and chat are both monitored. If a thread has gone quiet, reply to it again and it will be picked up."
+    "Email and chat are both monitored. If a thread has gone quiet, reply to it again and it'll be picked up."
    ]
   },
   {
    "id": "not",
    "cream": true,
    "title": "Things this inbox can't do",
-   "lede": "So you are not waiting on an answer that is not coming.",
+   "lede": "So you're not waiting on an answer that's not coming.",
    "list": {
     "items": [
-     "Change a shaft, a grip or a length before shipping. Every club goes out with the stock shaft and the stock grip, and there is no build-to-order step.",
+     "Change a shaft, a grip or a length before shipping. Every club goes out with the stock shaft and the stock grip, and there's no build-to-order step.",
      "Extend a return window that has already closed.",
      "Approve a club return without photos.",
      "Take an order over the phone or by email. Orders go through the store."
@@ -97,7 +97,7 @@
   "title": "Send a message",
   "lede": "Same inbox as the email address above. Use whichever is in front of you.",
   "protoLabel": "Not wired up yet",
-  "proto": "these fields are the markup for Shopify's contact form and there is no server behind this file. Nothing here sends. Email support@luckygolf.com and it will reach us today.",
+  "proto": "this form isn't live yet, so nothing you type here sends. Email support@luckygolf.com and it'll reach us today.",
   "topics": [
    "A question before I buy",
    "Where is my order",
