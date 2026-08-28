@@ -146,10 +146,15 @@ Liquid does inline.
 | `_src/page-reviews.html` | `templates/page.reviews.json` | 1 page |
 | `_src/page-search.html` | `templates/search.json` | 1 page |
 | `_src/page-404.html` | `templates/404.json` | 1 page |
+| `_src/page-compare.html` | `templates/page.compare.json` | 1 page (see §21 and §22) |
 
 **Three templates serve 41 product pages, one serves four support pages, one
 serves two brand pages.** That ratio is the point of the whole build: a change
 to the buy box is one edit, not forty.
+
+**For a page-by-page list rather than a template-by-template one, see §22.**
+That section also names the one page with no navigation entry and the eight
+that look orphaned to a crawler but are not.
 
 `templates/collection.json` and `collection.clubs.json` are genuinely different
 pages, not one page with a flag. The club collections (`clp`) render their grid
@@ -740,3 +745,122 @@ MSRPs move. Re-check it before this page has been live a year.
 
 **Never name a competitor on this page.** The big-names column is written at
 category level and hedged on purpose.
+
+
+---
+
+## 22. Every page, and how you reach it
+
+Added 2026-08-27 because "how many pages are there" is the first question, and
+section 4 answers it by template rather than by page.
+
+**59 built pages.** Two more (`p/lgd01`, `p/lgp02-patriot`) are declared in
+`tools/sitemap.py` but deliberately not built: both products are discontinued,
+and links to them resolve to `"#"` by design. `build.py --links` prints this
+whole registry at any time and is the source of truth, not this table.
+
+### The one that is easy to miss
+
+`33-compare.html` has **no navigation entry anywhere.** You reach it only by
+opening the "What we do" card on Our Story and clicking the phrase *"the
+middlemen, the retail markup"* inside the dialog. That is deliberate and copies
+Takomo's pattern, but it means a crawl of the nav will never find it. When you
+port to Shopify it needs a real page record even though nothing in the menu
+points at it.
+
+### Eight pages that look orphaned and are not
+
+`build.py --links` reports **0 dangling links**, but a naive crawl of the built
+HTML shows zero inbound links for these:
+
+`20-product-cover-driver` · `20-product-grip-clover-green` ·
+`-black` · `-white` · `-pink` · `20-product-grip-putter-green` ·
+`-clovers` · `51-404`
+
+They are not orphans. **The `plp` collection grid renders its tiles in
+JavaScript from a JSON blob**, so the product `href` exists in the page as data
+rather than as an `<a>`. Grep `10-collection-gear.html` for
+`20-product-grip-clover-black.html` and you will find it inside the products
+JSON. The 404 has no inbound link for the obvious reason.
+
+This matters for the port: **if you rebuild those grids server-side in Liquid,
+the links become real anchors and the pages stop depending on JS.** That is an
+improvement, not a regression, but it changes what a crawler sees.
+
+### The full inventory
+
+"Static links in" counts inbound `<a href>` in the built HTML only. High
+numbers are pages in the header or footer, which every page carries.
+
+| File | Slug | Template | Static links in |
+|---|---|---|---|
+| `01-home.html` | `home` | `page-home` | 59 |
+| `02-pdp-lgw01.html` | `p/lgw01-gold` | `page-club` | 58 |
+| `10-collection-clubs.html` | `c/clubs` | `page-clp` | 58 |
+| `10-collection-gear.html` | `c/gear` | `page-plp` | 58 |
+| `10-collection-hats.html` | `c/hats` | `page-plp` | 58 |
+| `10-collection-hybrid.html` | `c/hybrid` | `page-clp` | 7 |
+| `10-collection-polos.html` | `c/polos` | `page-plp` | 58 |
+| `10-collection-putters.html` | `c/putters` | `page-clp` | 58 |
+| `10-collection-wedges.html` | `c/wedges` | `page-clp` | 58 |
+| `20-product-cover-blade.html` | `p/cover-blade` | `page-gear` | 4 |
+| `20-product-cover-driver.html` | `p/cover-driver` | `page-gear` | **0** |
+| `20-product-cover-mallet.html` | `p/cover-mallet` | `page-gear` | 1 |
+| `20-product-glove-tour.html` | `p/glove-tour` | `page-gear` | 1 |
+| `20-product-grip-clover-black.html` | `p/grip-clover-black` | `page-gear` | **0** |
+| `20-product-grip-clover-blue.html` | `p/grip-clover-blue` | `page-gear` | 9 |
+| `20-product-grip-clover-green.html` | `p/grip-clover-green` | `page-gear` | **0** |
+| `20-product-grip-clover-pink.html` | `p/grip-clover-pink` | `page-gear` | **0** |
+| `20-product-grip-clover-white.html` | `p/grip-clover-white` | `page-gear` | **0** |
+| `20-product-grip-putter-clovers.html` | `p/grip-putter-clovers` | `page-gear` | **0** |
+| `20-product-grip-putter-green.html` | `p/grip-putter-green` | `page-gear` | **0** |
+| `20-product-grip-putter-stock.html` | `p/grip-putter-stock` | `page-gear` | 7 |
+| `20-product-hat-baby-blue-cursive.html` | `p/hat-baby-blue-cursive` | `page-apparel` | 9 |
+| `20-product-hat-black-gold-classic.html` | `p/hat-black-gold-classic` | `page-apparel` | 9 |
+| `20-product-hat-black-ibtbl.html` | `p/hat-black-ibtbl` | `page-apparel` | 22 |
+| `20-product-hat-cream-updown.html` | `p/hat-cream-updown` | `page-apparel` | 9 |
+| `20-product-hat-tan-cursive.html` | `p/hat-tan-cursive` | `page-apparel` | 9 |
+| `20-product-hat-white-black-updown.html` | `p/hat-white-black-updown` | `page-apparel` | 9 |
+| `20-product-hat-white-cursive.html` | `p/hat-white-cursive` | `page-apparel` | 9 |
+| `20-product-hat-white-gold-classic.html` | `p/hat-white-gold-classic` | `page-apparel` | 9 |
+| `20-product-hat-white-ibtbl.html` | `p/hat-white-ibtbl` | `page-apparel` | 9 |
+| `20-product-hat-white-updown.html` | `p/hat-white-updown` | `page-apparel` | 9 |
+| `20-product-lgh01.html` | `p/lgh01` | `page-club` | 58 |
+| `20-product-lgp01-gold.html` | `p/lgp01-gold` | `page-club` | 58 |
+| `20-product-lgp02-gold.html` | `p/lgp02-gold` | `page-club` | 58 |
+| `20-product-lgw01-black.html` | `p/lgw01-black` | `page-club` | 58 |
+| `20-product-polo-azalea.html` | `p/polo-azalea` | `page-apparel` | 9 |
+| `20-product-polo-blackout.html` | `p/polo-blackout` | `page-apparel` | 22 |
+| `20-product-polo-contour.html` | `p/polo-contour` | `page-apparel` | 22 |
+| `20-product-polo-cruiser.html` | `p/polo-cruiser` | `page-apparel` | 9 |
+| `20-product-polo-frost.html` | `p/polo-frost` | `page-apparel` | 9 |
+| `20-product-polo-gold-carnation.html` | `p/polo-gold-carnation` | `page-apparel` | 9 |
+| `20-product-polo-gold-dust.html` | `p/polo-gold-dust` | `page-apparel` | 9 |
+| `20-product-polo-marble.html` | `p/polo-marble` | `page-apparel` | 9 |
+| `20-product-polo-nightshade.html` | `p/polo-nightshade` | `page-apparel` | 9 |
+| `20-product-polo-shadow.html` | `p/polo-shadow` | `page-apparel` | 9 |
+| `20-product-polo-signature-black.html` | `p/polo-signature-black` | `page-apparel` | 9 |
+| `20-product-polo-spot.html` | `p/polo-spot` | `page-apparel` | 2 |
+| `20-product-polo-swirl.html` | `p/polo-swirl` | `page-apparel` | 2 |
+| `20-product-tees-25.html` | `p/tees-25` | `page-gear` | 3 |
+| `30-story.html` | `story` | `page-brand` | 58 |
+| `31-trybe.html` | `trybe` | `page-brand` | 58 |
+| `32-reviews.html` | `reviews` | `page-reviews` | 3 |
+| `33-compare.html` | `compare` | `page-compare` | 2 |
+| `40-returns.html` | `returns` | `page-support` | 58 |
+| `41-shipping.html` | `shipping` | `page-support` | 58 |
+| `42-contact.html` | `contact` | `page-support` | 58 |
+| `43-faq.html` | `faq` | `page-support` | 58 |
+| `50-search.html` | `search` | `page-search` | 58 |
+| `51-404.html` | `404` | `page-404` | **0** |
+
+### Reading the routing
+
+Every internal link in `_src/` is a `{{link:slug}}` token, never a hard-coded
+filename. `tools/sitemap.py` is the single registry that maps slug to file, and
+`build.py` resolves the tokens at build time. Three things are fatal at build:
+a token naming a slug that is not declared, a literal `href="#"` left in
+`_src/`, and any unresolved `{{...}}` surviving into the output.
+
+That is why the port is safe: **change a URL in one place and every link
+follows.** Keep that property in Liquid.
