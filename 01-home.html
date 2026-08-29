@@ -1747,7 +1747,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 /* The bands used to do the separating. Without them, adjacent light sections
    need a hairline so the page reads as sections rather than one long column. */
-.why, .pull, .feat, .spot, .roster{border-top:1px solid var(--ink-08)}
+
 
 /* Every rule inside these three that assumed a dark ground. Found by measuring
    the flipped page, not by reading: sixteen strings were landing at 1.1:1,
@@ -1772,6 +1772,70 @@ html[data-rev="b"] .rev-bar{display:flex}
   border-color:var(--ink-14)}
 .vp .ph--dark .lbl .mono{color:var(--ink-muted)}
 .vp .ph--dark .lbl .mono.k{color:var(--ink)}
+
+/* ============================================================================
+   SECOND PASS: making the light page finished rather than merely lighter.
+
+   Cole on the first pass: "it looks unfinished almost with the white and
+   cutoff and text colors." He was right, and the cause was not colour. Those
+   sections were COMPOSED for a full-bleed dark band. The band was doing three
+   jobs at once: separating one section from the next, giving the surface some
+   texture, and holding the content inside an edge. Removing it took all three
+   away and left the content floating.
+
+   So each job gets replaced deliberately:
+
+   1. SEPARATION becomes rhythm. --sec is clamp(64px,6.6vw,112px), which is
+      about 95px at desktop. That was tuned for a page where a colour change
+      marked every seam. With no colour change, the eye needs roughly double
+      before it reads two sections as two sections. No hairlines: whitespace
+      is the more confident separator and it is what Takomo does.
+
+   2. TEXTURE returns. --groove-light is ink-based, so it works on white as
+      well as it did on cream. The dark sections lost --groove-dark when they
+      flipped and got nothing back, which is most of why they read as flat
+      empty rectangles.
+
+   3. THE EDGE becomes type. Without a band holding the content, hierarchy has
+      to do it, so the sections that lost the most get more scale.
+   ========================================================================= */
+
+/* --- 1. rhythm ---------------------------------------------------------- */
+.feat, .why, .pull, .vp, .spot, .roster{
+  padding-block:clamp(104px,9.5vw,176px)}
+
+/* --- 2. texture on every light section ---------------------------------- */
+.feat::before, .vp::before, .spot::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:var(--groove-light);opacity:.85}
+.why::before, .pull::before{opacity:.85}
+
+/* The watermark clover was tuned to sit on ink. On white it needs to be
+   darker to read at all, and it is the only thing anchoring .pull. */
+.feat .wm, .spot .wm, .vp .wm{color:var(--ink);opacity:.045}
+.pull .wm{opacity:.055}
+
+/* --- 3. the two sections that lost the most ----------------------------- */
+
+/* .pull was a centred quote on cream. On white with nothing around it, it was
+   text in a void. It becomes a proper editorial moment instead: bigger, with
+   a short gold rule above it doing the work the band used to do. */
+.pull-in{max-width:1100px}
+.pull q{font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.18}
+.pull-in::before{content:'';display:block;width:64px;height:3px;
+  background:var(--gold);margin:0 auto clamp(30px,3.4vw,46px)}
+
+/* .vp is the tallest section on the page and it lost a full-bleed dark
+   ground. The four value props were floating as loose text, so they get real
+   grouping: a rule across the top and dividers between, which is the same
+   device .why already uses and the one that survives without colour. */
+.vp-list{border-top:2px solid var(--ink);padding-top:clamp(26px,3vw,44px)}
+.vp-item{padding-block:clamp(18px,2vw,28px)}
+.vp-item + .vp-item{border-top:1px solid var(--ink-14)}
+.vp-ic{stroke:var(--gold-lo)}
+
+/* --- the leftover dark-ground decoration -------------------------------- */
+.feat .halo{display:none}
 </style>
 </head>
 <body>
