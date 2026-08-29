@@ -533,3 +533,32 @@
 /* the "Why it says Lucky" card headline was still cream (set inline in the
    rule below the override block, so it never got caught) */
 .vp-ed h3{color:var(--ink)}
+
+/* ============================================================================
+   TABLET + MOBILE OPTIMIZATION (2026-08-29)
+   Measured, not guessed: at 768 the page was LONGER than desktop (15,266px vs
+   14,355) because single-column stacking let feature images render at natural
+   aspect - the golfer portrait hit 918px tall and the finish photo 861px, a
+   full viewport of image between two blocks of copy. And at 390 the doubled
+   desktop whitespace rhythm left 104px of padding twice per section: scroll
+   without content. Appended last so these win the cascade at their widths.
+   ========================================================================= */
+
+@media (max-width:900px){
+  /* stacked feature images: cap and crop instead of natural-height */
+  .vp-ed > img{width:100%;max-height:56vw;object-fit:cover;object-position:50% 30%}
+  .spot-img{width:100%;max-height:58vw;object-fit:cover}
+}
+
+/* tablet only - mobile keeps its own 76vh rule from the block above */
+@media (min-width:621px) and (max-width:980px){
+  .hero-media{height:min(84vh,880px);height:min(84dvh,880px)}
+}
+
+@media (max-width:620px){
+  /* the doubled section rhythm was tuned for desktop whitespace */
+  .feat,.why,.pull,.vp,.spot,.roster{padding-block:clamp(56px,16vw,72px)}
+  /* the collage: two 167px columns made every shot a thumbnail; the portrait
+     lead keeps its double-row presence, the small pair sit beside it */
+  .vp-collage{grid-auto-rows:minmax(120px,1fr)}
+}
