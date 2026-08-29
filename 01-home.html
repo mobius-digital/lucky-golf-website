@@ -136,6 +136,21 @@ button{font:inherit;color:inherit}
 .d-m {font-size:clamp(1.9rem,3.1vw,3rem);line-height:.9}
 .d-s {font-size:clamp(1.35rem,1.8vw,1.7rem);line-height:.94;font-variation-settings:'wdth' 70;font-weight:700}
 
+/* DISPLAY, SENTENCE CASE — the narrative register.
+   .disp is condensed (wdth 62), uppercase, weight 800, line-height .85. That
+   is a shop sign, and it is right for "GO PUT ONE IN THE BAG". It is wrong for
+   a sentence. Set a narrative headline in it and the reader gets a slab of
+   caps they have to decode a word at a time, which is what was happening to
+   "You're going to be looking down at this club a lot" and to the club-page
+   headlines that run a full sentence.
+
+   Same family, so this is not a second typeface: wider, lighter, mixed case,
+   and enough line-height for descenders. Use it where the headline is a
+   thought rather than a label. Keep .disp for the short punchy ones. */
+.disp-ed{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 88;font-weight:700;
+  text-transform:none;letter-spacing:-.014em;line-height:1.08;margin:0;
+  font-size:clamp(1.85rem,3.4vw,3.15rem)}
+
 /* DEVICE 4 · STAMP */
 .mono{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;
   letter-spacing:.2em;font-size:var(--fs-sm);line-height:1.5}
@@ -188,10 +203,15 @@ button{font:inherit;color:inherit}
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
   text-transform:uppercase;letter-spacing:.045em;font-size:var(--fs-lg);
   padding:15px 26px;min-height:48px;border:1.5px solid transparent;border-radius:var(--r);cursor:pointer;
-  transition:background .22s,color .22s,border-color .22s}
+  transition:background .22s,color .22s,border-color .22s,transform .1s}
 .btn > span{position:relative;z-index:2}
 .btn .ar{transition:transform .22s}
 .btn:hover .ar{transform:translateX(4px)}
+/* Every button had a hover state and no pressed state, so a click registered
+   as a colour change with no physical acknowledgement. One pixel down is
+   enough; more reads as a bounce. */
+.btn:active{transform:translateY(1px)}
+@media (prefers-reduced-motion:reduce){.btn{transition:background .22s,color .22s,border-color .22s}.btn:active{transform:none}}
 
 /* DEVICE 1 · FOIL button
    The highlight lives INSIDE the foil ramp and travels RIGHT → LEFT.
@@ -412,7 +432,8 @@ button{font:inherit;color:inherit}
 .rv-ph{position:relative;aspect-ratio:1/1;border-radius:var(--r);overflow:hidden;background:var(--white)}
 .rv-ph img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .rv-card:hover .rv-ph img,.rv-card:focus-visible .rv-ph img{transform:scale(1.04)}
-.rv-exp{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:2px;
+/* was a stray 2px; a 30px control is a small surface, so it takes --r */
+.rv-exp{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:var(--r);
   background:rgba(23,20,15,.62);display:grid;place-items:center;opacity:0;transition:opacity .25s}
 .rv-exp svg{width:14px;height:14px;stroke:var(--cream);stroke-width:2;fill:none;stroke-linecap:round}
 .rv-card:hover .rv-exp,.rv-card:focus-visible .rv-exp{opacity:1}
@@ -1406,14 +1427,19 @@ html[data-rev="b"] .rev-bar{display:flex}
 .feat .wm{width:min(58vw,760px);height:min(58vw,760px);left:-15%;top:-16%;opacity:.055}
 .feat .halo{position:absolute;left:38%;top:50%;translate:-50% -50%;width:min(900px,80%);aspect-ratio:1/1;
   background:radial-gradient(closest-side,rgba(194,154,43,.20),rgba(194,154,43,0) 72%);pointer-events:none;z-index:0}
-.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:clamp(30px,4.4vw,72px);align-items:center}
+/* 5fr / 7fr, not .92fr / 1.08fr. The old ratio was within a few percent of
+   half-and-half, and this page had FOUR two-column blocks all sitting at
+   roughly 50/50, which is most of why it read as one repeated template. */
+.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:5fr 7fr;
+  gap:clamp(30px,5.2vw,88px);align-items:center}
 .feat h2{color:var(--cream);max-width:16ch}
 .feat .body{margin-top:22px}
 .feat-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-70)}
 .feat-stamp .ln{height:2px;flex:1;background:var(--rule-on-dark)}
-.plinth-wrap{position:relative}
+/* the plinth overhangs the section padding, so this block has a top and bottom
+   edge that no other block on the page has */
+.plinth-wrap{position:relative;margin-block:calc(-1 * clamp(18px,3.4vw,56px))}
 .glow{position:absolute;inset:-13%;border-radius:50%;
   background:radial-gradient(closest-side,rgba(237,210,124,.30),rgba(194,154,43,.10) 55%,rgba(194,154,43,0) 78%);
   filter:blur(6px);z-index:0}
@@ -1428,9 +1454,33 @@ html[data-rev="b"] .rev-bar{display:flex}
 .why{position:relative;background:var(--cream);overflow:hidden}
 .why::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
 .why-in{position:relative;z-index:1}
-.why-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,80px);align-items:end}
+/* INDENTED HEADER. Every section on this page began its content at the wrap's
+   left edge, sixteen identical rectangles down the page. This one starts at
+   roughly column 3 of 12, so the page has at least one left margin that is not
+   the same left margin as all the others. Nothing else changes; the claims row
+   below still runs the full width, which is what makes the indent read as a
+   composition rather than a mistake. */
+.why-hd{margin-left:16.6%;max-width:74ch}
 .why h2{max-width:20ch}
+.why-hd .body{margin-top:clamp(20px,2.2vw,30px);max-width:60ch}
 .why-rule{height:2px;background:var(--ink);margin:clamp(38px,4.4vw,64px) 0 0}
+
+/* The four reassurance items, merged in from the old value-props section, sit
+   under the three claims with the two verified photographs beside them. Before
+   the merge this argument ran across two full sections and carried no
+   photography at all. */
+.why-props{display:grid;grid-template-columns:1fr .8fr;gap:clamp(32px,5vw,84px);
+  align-items:start;margin-top:clamp(52px,6vw,96px)}
+.why-shots{display:grid;gap:var(--gut)}
+.why-shots img{width:100%;border-radius:var(--r-card);display:block;object-fit:cover}
+.why-shots img:first-child{aspect-ratio:4/5}
+.why-shots img:last-child{aspect-ratio:16/10}
+@media (max-width:900px){
+  .why-hd{margin-left:0}
+  .why-props{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
+  .why-shots{grid-template-columns:1fr 1fr;align-items:start}
+  .why-shots img:first-child,.why-shots img:last-child{aspect-ratio:1/1}
+}
 .claims{display:grid;grid-template-columns:repeat(3,1fr)}
 .claim{padding:clamp(26px,2.8vw,42px) clamp(20px,2.4vw,38px) 8px;border-right:1px solid var(--ink-14)}
 .claim:first-child{padding-left:0}
@@ -1500,34 +1550,20 @@ html[data-rev="b"] .rev-bar{display:flex}
   align-items:center;justify-content:space-between}
 
 /* ==========================================================================
-   VALUE PROPS  (OPEN D · 2) — dark band, icon props, photo collage.
-   Icons are gold-hi on ink: the gold accent survives here because the field is
-   ink, not green. Collage slots use the standard photo-needed device.
+   THE REASSURANCE ITEMS  (was VALUE PROPS, OPEN D · 2)
+
+   The section wrapper is gone: this list merged into .why on 2026-08-29,
+   because "Gold clubs, honest math" and "Everything you're paying for is the
+   club" were making the same case in two consecutive sections. The four items
+   themselves are unchanged and every claim survives. What is left here is the
+   item styling; the grouping rules live with .why-props at the foot of this
+   file. .vp-in, .vp-sub and .vp-collage went with the wrapper.
    ========================================================================== */
-.vp{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
-.vp::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
-.vp-in{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;
-  gap:clamp(30px,4.6vw,78px);align-items:center}
-.vp h2{color:var(--cream);max-width:13ch}
-/* Takomo runs a colored second deck under the headline. Ours is gold. */
-.vp-sub{margin:16px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
-  font-weight:800;text-transform:uppercase;letter-spacing:.005em;line-height:1;
-  font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--gold-hi);max-width:20ch}
-.vp .body{margin-top:18px}
-.vp-cta{margin-top:clamp(26px,3vw,38px)}
-.vp-list{list-style:none;margin:clamp(28px,3.2vw,42px) 0 0;padding:0}
-.vp-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:2px solid var(--rule-on-dark)}
-.vp-item:last-child{border-bottom:2px solid var(--rule-on-dark)}
-.vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-hi);stroke-width:1.6;fill:none;
+.vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-lo);stroke-width:1.6;fill:none;
   stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .vp-item h3{margin:0 0 5px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
-  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:var(--fs-body);line-height:1;color:var(--cream)}
-.vp-item p{margin:0;color:var(--cream-70);font-size:var(--fs-base);line-height:1.5;max-width:46ch}
-.vp-collage{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(148px,1fr);gap:var(--gut)}
-.vp-collage .ph{border-radius:var(--r);padding:20px}
-.vp-collage .ph .lbl .mono{font-size:var(--fs-xs);letter-spacing:.14em}
-.vp-collage > *:first-child{grid-row:span 2}
-@media (max-width:900px){.vp-in{grid-template-columns:1fr}}
+  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:var(--fs-body);line-height:1}
+.vp-item p{margin:0;font-size:var(--fs-base);line-height:1.5;max-width:46ch}
 
 
 /* ==========================================================================
@@ -1580,39 +1616,80 @@ html[data-rev="b"] .rev-bar{display:flex}
 .spot{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
 .spot::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
 .spot .wm{width:min(50vw,640px);height:min(50vw,640px);right:-12%;bottom:-18%;opacity:.05}
-.spot-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;
+/* FULL BLEED, right. --edge reproduces the exact left content edge of .wrap
+   (max-width 1560, padding var(--pad)) using percentages of the section rather
+   than 100vw, so it stays aligned with every other section AND does not drift
+   by the scrollbar width. The photograph then runs past the wrap to the
+   viewport edge, which is a composition nothing else on the page has. */
+.spot{--edge:max(var(--pad), calc((100% - 1560px) / 2 + var(--pad)))}
+/* 1 / 1.28, not 1 / 1.08. At 1.08 the two columns measured 655 and 707, which
+   is half-and-half again, and this section is supposed to be the one where the
+   photograph clearly wins. */
+.spot-in{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.28fr);
   gap:clamp(28px,4.4vw,76px);align-items:center}
-.spot h2{color:var(--cream);max-width:14ch}
-.spot .body{margin-top:20px}
-.spot .ph{aspect-ratio:4/5;border-radius:var(--r)}
+.spot-copy{padding-left:var(--edge);padding-right:clamp(14px,1.8vw,30px)}
+.spot h2{max-width:15ch}
+.spot .body{margin-top:20px;max-width:46ch}
+.spot .body + .body{margin-top:14px}
+.spot-img{width:100%;height:100%;object-fit:cover;display:block;
+  min-height:clamp(360px,42vw,600px);border-radius:var(--r-card) 0 0 var(--r-card)}
 .spot-cta{margin-top:clamp(24px,2.8vw,36px)}
-@media (max-width:900px){.spot-in{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .spot-in{grid-template-columns:1fr;gap:clamp(26px,4vw,42px)}
+  .spot-copy{padding-inline:var(--pad)}
+  .spot-img{border-radius:0;min-height:clamp(300px,62vw,420px);order:-1}
+}
 
 /* ==========================================================================
    THE MINDSET — lower half of the value-props section.
    Layout is the earlier image-left / text-right block (Cole preferred it);
    only the subject changed. This is the brand argument, not the price one.
    ========================================================================== */
-.vp-ed{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:clamp(28px,4.4vw,76px);align-items:center;margin-top:clamp(50px,5.6vw,92px)}
-.vp-ed .ph{aspect-ratio:3/4;border-radius:var(--r)}
-.vp-ed .eyebrow{margin-bottom:16px}
-.vp-ed h3{margin:0 0 20px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
-  font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.96;color:var(--cream);
-  font-size:clamp(1.7rem,3vw,2.7rem);max-width:16ch}
-.vp-ed p{margin:0 0 15px;color:var(--cream-70);font-size:var(--fs-body);line-height:1.64;max-width:54ch}
-.vp-ed p:last-child{margin-bottom:0}
-.vp-ed .aside{margin-top:20px;color:var(--cream)}
-@media (max-width:900px){.vp-ed{grid-template-columns:1fr}}
+/* Was .vp-ed, the lower half of the value-props section. It is a section of
+   its own now that the price argument moved up the page, and it is the one
+   block on the homepage set in .disp-ed: sentence case, wider, mixed case.
+   The copy is a paragraph of reasoning, and 70px of condensed caps was turning
+   an argument into a shop sign.
+
+   FULL BLEED, left. Mirror of .spot on the other edge, and the third distinct
+   geometry on the page after the .why indent and the .spot right bleed. */
+.ed{--edge:max(var(--pad), calc((100% - 1560px) / 2 + var(--pad)))}
+.ed-in{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(30px,5vw,86px);align-items:center}
+.ed-img{width:100%;height:100%;object-fit:cover;display:block;
+  min-height:clamp(380px,44vw,640px);border-radius:0 var(--r-card) var(--r-card) 0}
+.ed-copy{padding-right:var(--edge);max-width:64ch}
+.ed-copy .eyebrow{margin-bottom:18px}
+.ed-copy h2{margin-bottom:clamp(20px,2.2vw,28px);max-width:20ch}
+.ed-copy p{margin:0 0 15px;color:var(--ink-70);font-size:var(--fs-body);line-height:1.64}
+.ed-copy p:last-child{margin-bottom:0}
+.ed-copy .aside{margin-top:22px;color:var(--ink)}
+@media (max-width:900px){
+  .ed-in{grid-template-columns:1fr;gap:clamp(26px,4vw,40px)}
+  .ed-img{border-radius:0;min-height:clamp(300px,64vw,430px)}
+  .ed-copy{padding-inline:var(--pad);max-width:none}
+}
+
+/* ==========================================================================
+   COMMUNITY + AMBASSADOR PROGRAM
+   Merged from the UGC rail and the roster band. Fourth geometry: no cards, no
+   rail, no two columns. A measured block of type centred on the page axis,
+   which is the one shape the page did not already have.
+   ========================================================================== */
+.comm{position:relative;background:var(--white);overflow:hidden}
+.comm-in{position:relative;z-index:1;max-width:64ch;margin:0 auto;text-align:center}
+.comm-in h2{margin-bottom:clamp(18px,2vw,26px)}
+.comm-in .body{margin:0 auto;max-width:58ch}
+.comm-cta{margin-top:clamp(26px,3vw,38px)}
 
 /* ==========================================================================
    THE ROSTER  (OPEN D · 3) — creator headshots on the homepage, feeds Trybe.
    Was the five-slot headshot grid; an invitation band since 2026-08-13 (the
    program is open — a lineup of five faces said the opposite).
    ========================================================================== */
-.roster{position:relative;background:var(--cream);overflow:hidden}
-.roster::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
-.roster-in{position:relative;z-index:1}
+/* Retired 2026-08-29: the invitation band merged with the UGC rail into .comm,
+   further down this file. The #trybe id moved with it. */
 /* .rost-grid / .rost-nm / .rost-hd removed 2026-08-13 with the headshot grid —
    the section is an invitation band now. The .roster band styles above stay. */
 
@@ -1654,6 +1731,19 @@ html[data-rev="b"] .rev-bar{display:flex}
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px}
 .gtile-flag .fl--new{background:var(--ink);color:var(--cream)}
+
+/* TEXT TILE. Polos and Hats were image-led tiles sitting on a photo-needed
+   placeholder, so two of the three tiles in this row rendered as grey boxes
+   labelled "Photo needed" on the live homepage. With no image slot at all they
+   read as a deliberate type tile instead of a photograph that failed. The gold
+   rule top-left is the marker that says this is finished, not empty.
+   When the on-body shots land: drop --text and put the <img> back. */
+.gtile--text{background:var(--ink)}
+.gtile--text::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--groove-dark)}
+.gtile--text::after{content:'';position:absolute;z-index:2;
+  left:clamp(20px,2.2vw,32px);top:clamp(20px,2.2vw,32px);
+  width:52px;height:3px;background:var(--lg-foil-tag)}
 @media (max-width:760px){.gtile--wide{grid-column:auto}}
 /* one column between 621 and 760; below that .coll becomes a .msnap rail,
    and a grid-template-columns here would beat core's rule */
@@ -1671,8 +1761,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   /* .fam -> .msnap rail at <=620 */
   .fam{grid-template-columns:1fr}
   .feat-in{grid-template-columns:1fr}
-  .plinth-wrap{order:-1}
-  .why-top{grid-template-columns:1fr}
+  .plinth-wrap{order:-1;margin-block:0}
   .claims{grid-template-columns:1fr}
   .claim{border-right:0;border-bottom:1px solid var(--ink-14);padding-left:0;padding-right:0;padding-bottom:26px}
   .claim:last-child{border-bottom:0}
@@ -1711,16 +1800,21 @@ html[data-rev="b"] .rev-bar{display:flex}
       single deliberate switch is a composition. Five alternating bands is
       just alternation.
 
-   THE COST, STATED HONESTLY: .feat, .vp and .spot each carried a foil
-   headline, and foil-as-type is illegal on white (the ramp peaks at
-   --gold-hi, under 2:1). Those three keep a gold accent word, but as SOLID
-   --gold-lo, which measures 5.05:1 on white and passes AA. Three foil
-   moments traded for a calmer page. If that trade is wrong, this whole block
-   reverts cleanly.
+   THE COST, STATED HONESTLY: .feat and .spot each carried a foil headline, and
+   foil-as-type is illegal on white (the ramp peaks at --gold-hi, under 2:1).
+   Those keep a gold accent word, but as SOLID --gold-lo, which measures 5.05:1
+   on white and passes AA. Foil moments traded for a calmer page. If that trade
+   is wrong, this whole block reverts cleanly.
+
+   SELECTOR NOTE, 2026-08-29: this block used to name .vp, .pull and .roster.
+   Those three sections no longer exist. .vp merged into .why (the price
+   argument) and became .ed (the narrative break); .pull merged into .proof;
+   .roster merged with the UGC rail into .comm. The rules below are the same
+   rules, pointed at the sections that inherited the content.
    ========================================================================= */
 
 /* --- cream retired ------------------------------------------------------ */
-.why, .pull, .roster{background:var(--white)}
+.why, .comm{background:var(--white)}
 
 /* --- forest retired from the page body ---------------------------------- */
 /* The marquee now continues the hero instead of interrupting it with a
@@ -1728,50 +1822,31 @@ html[data-rev="b"] .rev-bar{display:flex}
 .mq{background:var(--ink)}
 .bband{background:var(--ink)}
 
-/* --- three dark bands flipped to the page ground ------------------------ */
-.feat, .vp, .spot{background:var(--white);color:var(--ink)}
-.feat::before, .vp::before, .spot::before{background:none}
-.feat h2, .vp h2, .spot h2{color:var(--ink)}
-.feat .wm, .spot .wm, .vp .wm{opacity:.035;color:var(--ink)}
+/* --- the dark bands flipped to the page ground -------------------------- */
+.feat, .spot, .ed{background:var(--white);color:var(--ink)}
+.feat h2, .spot h2{color:var(--ink)}
+.feat .wm, .spot .wm{opacity:.035;color:var(--ink)}
 .feat .halo{display:none}
 
-/* Light-ground versions of the on-dark children. Scoped to these three
-   sections only, so .on-dark keeps its meaning everywhere else. */
-.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink)}
-.feat .eyebrow.on-dark, .vp .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
+/* Light-ground versions of the on-dark children. Scoped to these sections
+   only, so .on-dark keeps its meaning everywhere else. */
+.feat .on-dark, .spot .on-dark{color:var(--ink)}
+.feat .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
 
 /* Cole 2026-08-29: one gold, the bright foil, everywhere. On white it is used
    only as an accent word inside an otherwise-ink display headline: the ink
    words carry the sentence, the gold word is the flourish, so the contrast
    bar for body text does not apply. Body-size foil on white stays banned. */
 
-/* The bands used to do the separating. Without them, adjacent light sections
-   need a hairline so the page reads as sections rather than one long column. */
-
-
-/* Every rule inside these three that assumed a dark ground. Found by measuring
-   the flipped page, not by reading: sixteen strings were landing at 1.1:1,
-   which is cream on white. The .on-dark override above did not reach them
-   because they set --cream and --cream-70 directly. */
-.feat h2, .spot h2, .vp h2,
-.vp-ed .aside{color:var(--ink)}
+/* Every rule that assumed a dark ground. Found by measuring the flipped page,
+   not by reading: sixteen strings were landing at 1.1:1, which is cream on
+   white. The .on-dark override above did not reach them because they set
+   --cream and --cream-70 directly. */
 .feat-stamp,
-.vp-item p,
-.vp-ed p{color:var(--ink-70)}
+.vp-item p{color:var(--ink-70)}
 .vp-item h3{color:var(--ink)}
 /* gold-hi is a dark-ground stroke colour; on white it is under 2:1 */
 .vp-ic{stroke:var(--gold-lo)}
-.vp-sub{color:var(--gold-lo)}
-
-/* .ph--dark is a dark-ground placeholder and .vp now sits on white, so its
-   label was landing at 1.06:1. Caught by measuring the flipped page against
-   the original: master has one contrast failure, the first pass of this
-   branch had three. Light variant, scoped to the flipped section only. */
-.vp .ph--dark{background:repeating-linear-gradient(135deg,
-  rgba(23,20,15,.05) 0 14px, rgba(23,20,15,.09) 14px 28px);
-  border-color:var(--ink-14)}
-.vp .ph--dark .lbl .mono{color:var(--ink-muted)}
-.vp .ph--dark .lbl .mono.k{color:var(--ink)}
 
 /* ============================================================================
    SECOND PASS: making the light page finished rather than merely lighter.
@@ -1801,45 +1876,69 @@ html[data-rev="b"] .rev-bar{display:flex}
    ========================================================================= */
 
 /* --- 1. rhythm ---------------------------------------------------------- */
-.feat, .why, .pull, .vp, .spot, .roster{
-  padding-block:clamp(104px,9.5vw,176px)}
+/* Was clamp(104px,9.5vw,176px). That doubling was the right call when the only
+   thing separating two sections was whitespace, because every section was the
+   same rectangle at the same width and the eye had nothing else to go on. The
+   sections now have genuinely different geometry (an indent, two opposite
+   full-bleeds, a centred column, three grid families), and shape separates
+   them as well as space did. So the padding comes back down and the page gets
+   about 500px shorter without losing any of the breathing room that mattered. */
+.feat, .why, .proof, .ed, .spot, .comm{
+  padding-block:clamp(84px,7.4vw,136px)}
 
 /* --- 2. texture on every light section ---------------------------------- */
-.feat::before, .vp::before, .spot::before{
+.feat::before, .spot::before, .ed::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:var(--groove-light);opacity:.85}
-.why::before, .pull::before{opacity:.85}
+.ed{position:relative;overflow:hidden}
+.ed-in{position:relative;z-index:1}
+.why::before{opacity:.85}
 
 /* The watermark clover was tuned to sit on ink. On white it needs to be
-   darker to read at all, and it is the only thing anchoring .pull. */
-.feat .wm, .spot .wm, .vp .wm{color:var(--ink);opacity:.045}
-.pull .wm{opacity:.055}
+   darker to read at all. */
+.feat .wm, .spot .wm{color:var(--ink);opacity:.045}
 
-/* --- 3. the two sections that lost the most ----------------------------- */
+/* --- 3. the pull quote, now the lead of the proof section --------------- */
+/* It was a full section of its own sitting directly above the reviews, so the
+   page said "here is a review" and then "here are the reviews". As the lead of
+   .proof it does the job it was always doing, one section earlier. The short
+   gold rule above it is what the removed band used to do. */
+.proof{position:relative}
+.proof-hd{text-align:center;max-width:min(820px,94%);margin:0 auto clamp(30px,3.6vw,52px)}
+.proof .pull-in{max-width:1000px;margin:0 auto clamp(40px,4.6vw,72px);text-align:center}
+.proof .pull-in q{display:block;font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.18}
+.proof .pull-in::before{content:'';display:block;width:64px;height:3px;
+  background:var(--gold);margin:0 auto clamp(28px,3.2vw,44px)}
+.proof .pull-by{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:clamp(18px,2vw,26px)}
 
-/* .pull was a centred quote on cream. On white with nothing around it, it was
-   text in a void. It becomes a proper editorial moment instead: bigger, with
-   a short gold rule above it doing the work the band used to do. */
-.pull-in{max-width:1100px}
-.pull q{font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.18}
-.pull-in::before{content:'';display:block;width:64px;height:3px;
-  background:var(--gold);margin:0 auto clamp(30px,3.4vw,46px)}
-
-/* .vp is the tallest section on the page and it lost a full-bleed dark
-   ground. The four value props were floating as loose text, so they get real
-   grouping: a rule across the top and dividers between, which is the same
-   device .why already uses and the one that survives without colour. */
-.vp-list{border-top:2px solid var(--ink);padding-top:clamp(26px,3vw,44px)}
-.vp-item{padding-block:clamp(18px,2vw,28px)}
+/* --- 4. the four reassurance items, now inside .why --------------------- */
+/* They were floating as loose text when their dark band went away, so they get
+   real grouping: a rule across the top and dividers between, which is the same
+   device .why already uses one row above and the one that survives without
+   colour. */
+.vp-list{list-style:none;margin:0;padding:0;
+  border-top:2px solid var(--ink);padding-top:clamp(24px,2.8vw,40px)}
+.vp-item{display:flex;gap:16px;align-items:flex-start;
+  padding-block:clamp(18px,2vw,28px)}
 .vp-item + .vp-item{border-top:1px solid var(--ink-14)}
-.vp-ic{stroke:var(--gold-lo)}
+.vp-cta{margin-top:clamp(26px,3vw,38px)}
 
-/* --- the leftover dark-ground decoration -------------------------------- */
-.feat .halo{display:none}
+/* ============================================================================
+   RADIUS LAW, applied (2026-08-29)
 
-/* the "Why it says Lucky" card headline was still cream (set inline in the
-   rule below the override block, so it never got caught) */
-.vp-ed h3{color:var(--ink)}
+   The page was running three radii with no rule behind them: 6px on 47
+   elements, 14px on 15, and a stray 2px on 9. Mixed radii with no documented
+   reason is one of the things that reads as template rather than design.
+
+   The rule, and it is now followed everywhere on this page:
+     SMALL SURFACES  (buttons, chips, flags, inputs)  -> --r      6px
+     LARGE SURFACES  (cards, tiles, photographs)      -> --r-card 14px
+   A photograph is a large surface. That is the whole rule.
+   ========================================================================= */
+.plinth{border-radius:var(--r-card)}
+.fnd-c{border-radius:var(--r-card)}
+.gtile{border-radius:var(--r-card)}
+.rv-card .rv-ph, .ptile .pt-ph{border-radius:var(--r-card)}
 </style>
 </head>
 <body>
@@ -2017,19 +2116,23 @@ html[data-rev="b"] .rev-bar{display:flex}
 </div>
 
 
+<!-- ============ SHOP BY FAMILY ============
+     CHAPTER HEAD (1 of 3). Only three headlines on this page carry .d-l: this
+     one, the price argument, and the close. Everything else steps down to
+     .d-m. Before this pass every section head was .d-l, which is why the page
+     read as a template with the words swapped: sixteen headlines all shouting
+     at one volume is the same as none of them shouting.
 
-
-
-
-<!-- ============ SHOP BY FAMILY ============ -->
+     The "The lineup" eyebrow came off here. It restated the headline directly
+     underneath it, which is what eleven of the thirteen eyebrows on this page
+     were doing. Four survive; see the eyebrow note in page-home.css. -->
 <section class="sec" id="families">
   <div class="wrap">
     <div class="sec-hd rv">
       <div class="l">
-        <span class="eyebrow">The lineup</span>
         <h2 class="disp d-l">Shop the <span class="foil">gold</span> standard</h2>
       </div>
-      <a href="10-collection-clubs.html" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
+      <a href="10-collection-clubs.html" class="btn btn-line btn-sm"><span>Shop the clubs</span><span class="ar">→</span></a>
     </div>
 
     <div class="pgrid msnap">
@@ -2074,16 +2177,19 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 <div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
 
-<!-- ============ FEATURED — DARK EVENT ============ -->
+<!-- ============ FEATURED PRODUCT ============
+     Ratio was .92fr / 1.08fr, which is close enough to half-and-half that it
+     read as one more symmetrical two-column block. It is 5fr / 7fr now, and
+     the plinth overhangs the section padding top and bottom so the block has
+     an edge that is not the same edge as every other section. -->
 <section class="feat sec">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <span class="halo" aria-hidden="true"></span>
   <div class="wrap">
     <div class="feat-in">
       <div class="rv">
-        <span class="eyebrow on-dark">LGP01 · Tracer Blade</span>
-        <h2 class="disp d-l">No ping. No buzz. Just <span class="foil on-dark">roll</span></h2>
-        <p class="body on-dark">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
+        <h2 class="disp d-m">No ping. No buzz. Just <span class="foil">roll</span></h2>
+        <p class="body">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
         <div class="feat-cta">
           <a href="20-product-lgp01-gold.html" class="btn btn-foil"><span>Roll it pure</span><span class="ar">→</span></a>
           <a href="20-product-lgp02-gold.html" class="btn btn-line"><span>Prefer a mallet?</span></a>
@@ -2103,14 +2209,30 @@ html[data-rev="b"] .rev-bar{display:flex}
   </div>
 </section>
 
-<!-- ============ WHY LUCKY — typographic moment (1 of 1) ============ -->
+<!-- ============ THE PRICE ARGUMENT ============
+     MERGED 2026-08-29. This was two sections: "Everything you're paying for is
+     the club" (the argument, three numbered claims) and "Gold clubs, honest
+     math" (four reassurance items, Takomo-shaped). They were making the same
+     case twice, one after the other with a review rail in between. Every claim
+     from both is still here; they are now argument-then-reassurance inside one
+     section instead of two sections that each opened with a headline.
+
+     The two verified photographs that used to sit in the value-props collage
+     came with it. This section had no photography at all before, which is part
+     of why the strongest argument on the page was also the flattest block.
+
+     KEEPS: eyebrow (1 of 4 on the page), .d-l chapter head (2 of 3), the
+     "Read our story" button, the #why anchor.
+     ⚠️ "Buy now, pay later" is VERIFIED: the live PDP loads Shopify's
+     payment-terms component (Shop Pay Installments). If installments are ever
+     turned off in Shopify, that item comes off the page with them.
+     ⚠️ Never write "warranty" in the reassurance list. Lucky HAS no warranty
+     (§30d); the sixty-day return is what fills Takomo's warranty slot. -->
 <section class="why sec" id="why">
   <div class="why-in wrap">
-    <div class="why-top rv">
-      <div>
-        <span class="eyebrow">Priced honestly</span>
-        <h2 class="disp d-l">Everything you're paying for is the <span class="foil">club</span></h2>
-      </div>
+    <div class="why-hd rv">
+      <span class="eyebrow">Priced honestly</span>
+      <h2 class="disp d-l">Everything you're paying for is the <span class="foil">club</span></h2>
       <p class="body lead">Most of what you pay for a big-brand club isn't the club. It's the tour contracts, the distributors and the retail margin stacked on top. We skip all three and sell direct, so the price looks like a mistake right up until you understand why it isn't.</p>
     </div>
 
@@ -2132,15 +2254,60 @@ html[data-rev="b"] .rev-bar{display:flex}
         <p>The forging, the milling, the finish. The parts you actually hit.</p>
       </div>
     </div>
+
+    <div class="why-props">
+      <div class="rv">
+        <ul class="vp-list">
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 12l8 4.5 8-4.5"/><path d="M4 16.5L12 21l8-4.5"/></svg>
+            <div>
+              <h3>Built like the expensive ones</h3>
+              <p>Forged wedges, milled putters, a titanium hybrid.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.7 5.6 6.1.9-4.4 4.2 1 6-5.4-2.9-5.4 2.9 1-6L3.2 10l6.1-.9z"/></svg>
+            <div>
+              <h3>Priced like we mean it</h3>
+              <p>You pay for the club and nothing stacked on top.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <div>
+              <h3>Sixty-day returns</h3>
+              <p>Not the one? Send it back.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18"/></svg>
+            <div>
+              <h3>Buy now, pay later</h3>
+              <p>Split it with Shop Pay at checkout.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="vp-cta">
+          <a href="30-story.html" class="btn btn-foil sweep"><span>Read our story</span><span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="why-shots rv">
+        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-sole-turf.webp" alt="Sole and grooves of a Lucky Golf Carver wedge against turf" width="1067" height="1600" loading="lazy" decoding="async">
+        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp" alt="Lucky Golf clubs in the bag with the clover glove" width="2048" height="1365" loading="lazy" decoding="async">
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ CLUB FINDER ============ -->
+<!-- ============ CLUB FINDER ============
+     Eyebrow "Not sure where to start" removed: the headline asks the question
+     already. Head steps to .d-m. The "See every club" foot button is gone as
+     well, because the cards in the panel ARE the shop links and the page was
+     carrying five different labels for one shop-the-clubs intent. -->
 <section class="sec" id="finder">
   <div class="wrap">
     <div class="sec-hd rv"><div class="l">
-      <span class="eyebrow">Not sure where to start</span>
-      <h2 class="disp d-l">Tell us what's costing you <span class="foil">shots</span></h2>
+      <h2 class="disp d-m">Tell us what's costing you <span class="foil">shots</span></h2>
       <p class="body" style="margin-top:18px">Most golfers already know the answer to this one. Pick it, and we'll point you at the ones worth looking at.</p>
     </div></div>
     <!-- Every card is a LINK and every fact comes from products.json. Three
@@ -2209,7 +2376,6 @@ html[data-rev="b"] .rev-bar{display:flex}
 
       <div class="fnd-foot">
         <p class="aside">Still not sure? Every club comes with sixty days to change your mind.</p>
-        <a href="#families" class="btn btn-line btn-sm"><span>See every club</span><span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -2238,28 +2404,30 @@ html[data-rev="b"] .rev-bar{display:flex}
   </div>
 </section>
 
-<!-- ============ PULL QUOTE ============ -->
-<section class="pull sec">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap pull-in">
-    <span class="eyebrow centre">Verified review</span>
-    <q class="rv">All of my friends are jealous from the look. And when they stick on the green and come back two feet, there's no doubt.</q>
-    <div class="pull-by rv"><span class="n">Brandon L.</span><span class="p">Carver 01 Gold &middot; 5 stars &middot; verified buyer</span></div>
-  </div>
-</section>
+<!-- ============ SOCIAL PROOF ============
+     MERGED 2026-08-29. The pull quote was its own full section sitting
+     directly above the review section, so the page said "here is a review"
+     and then "here are the reviews" back to back. The quote is now the lead
+     of this section: aggregate, then the one quote worth reading slowly,
+     then the rail. Both eyebrows ("Verified review", "What golfers say")
+     came off; the attribution line and the headline already say both.
 
-<!-- ============ SOCIAL PROOF ============ -->
-<section class="sec">
+     ⚠️ NO FABRICATED REVIEWS. Every quote and name here is a real Judge.me
+     record pulled from the public widget endpoint. -->
+<section class="sec proof">
   <div class="wrap">
     <div class="proof-hd rv">
-      <span class="eyebrow centre">What golfers say</span>
-      <h2 class="disp d-l">Thousands of golfers bag <span class="foil">Lucky</span></h2>
+      <h2 class="disp d-m">Thousands of golfers bag <span class="foil">Lucky</span></h2>
       <div class="agg">
         <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
         <span class="mono">4.78 average from verified buyers on Judge.me</span>
       </div>
     </div>
 
+    <div class="pull-in rv">
+      <q>All of my friends are jealous from the look. And when they stick on the green and come back two feet, there's no doubt.</q>
+      <div class="pull-by"><span class="n">Brandon L.</span><span class="p">Carver 01 Gold &middot; 5 stars &middot; verified buyer</span></div>
+    </div>
   </div>
   <div class="rail rv-rail" role="region" aria-label="Customer reviews" tabindex="0">
       <article class="rv-card" data-rv="0" tabindex="0" role="button"
@@ -2382,275 +2550,114 @@ html[data-rev="b"] .rev-bar{display:flex}
   </div>
   <div class="wrap rv-foot-bar rv">
     <p class="aside" style="color:var(--ink-muted)">Rather make up your own mind?</p>
-    <a href="10-collection-clubs.html" class="btn btn-line btn-sm"><span>Find your club</span><span class="ar">&rarr;</span></a>
+    <a href="10-collection-clubs.html" class="btn btn-line btn-sm"><span>Shop the clubs</span><span class="ar">&rarr;</span></a>
   </div>
 </section>
 
-<!-- ============ VALUE PROPS (OPEN D · 2) ============ -->
-<section class="vp sec">
+<!-- ============ WHY IT SAYS LUCKY ============
+     Was the lower half of the value-props section. It is its own section now
+     that the price argument moved up the page, and it is the one place on the
+     homepage that runs a sentence-case display face (.disp-ed) instead of
+     condensed uppercase. It is narrative rather than a headline, and 70px of
+     condensed caps was flattening it into another shop sign.
+
+     Content is Cole's own argument (2026-08-15): golf is luck sometimes,
+     that's the whole idea; and the name is a double meaning, confidence over
+     the ball plus tour quality without the overpaid logo. "Tour-quality" is
+     the permitted construction phrasing; "tour-proven" stays banned. -->
+<section class="ed sec">
+  <div class="ed-in">
+    <img class="ed-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp" alt="Golfer at address on course with a Lucky Golf wedge, shot from behind" width="1366" height="2048" loading="lazy" decoding="async">
+    <div class="ed-copy rv">
+      <span class="eyebrow">Why it says Lucky</span>
+      <h2 class="disp-ed">You're going to be looking down at this club <span class="foil">a lot</span></h2>
+      <p>Golf is luck sometimes. The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows it. That's the name on the club.</p>
+      <p>And when you're standing over the ball, you're either looking down at the same wedge everyone else bought, or at one that says Lucky: the same tour-quality build as the big names, without the overpaid logo.</p>
+      <p>That's the double meaning. Confidence over the ball, and knowing you didn't pay extra for it.</p>
+      <p class="aside">It's better to be lucky.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY + AMBASSADOR PROGRAM ============
+     MERGED 2026-08-29, and this is where the page changed most.
+
+     "Lucky golfers in the wild" was a rail of SIX tiles and every one of them
+     was an empty placeholder: no UGC assets exist yet. Directly below it sat
+     the ambassador section, which had no imagery either. So the page ran two
+     consecutive community sections, one of them a wall of grey boxes, saying
+     the same thing: golfers play these, come join in.
+
+     They are one section now. Every claim survives, both CTAs collapse to the
+     one that actually goes somewhere, and nine grey placeholder boxes come off
+     the homepage (six here, one in the value props, two in the gear tiles).
+     There are now zero photo-needed boxes on this page.
+
+     The rail comes BACK, in this section, the day real UGC exists. The six
+     shot briefs that were here are in SHOT-LIST.md; they were not thrown away.
+     Do not fake them with stock or with product renders.
+
+     The #trybe id stays: §7 field order and the Trybe page both depend on it. -->
+<section class="comm sec" id="trybe">
   <div class="wrap">
-    <div class="vp-in">
-      <div class="rv">
-        <!-- Takomo-shaped at Cole's instruction (2026-08-15): their headline is
-             "The best value in golf", their items are a short claim over a
-             shorter reassurance, and their button goes to Our Story, not shop.
-             Every reassurance here is verifiable: the 4.78 is Judge.me's, the
-             support line is the shipping page's Mon-Fri commitment, and there
-             is deliberately NO buy-now-pay-later item because I could not
-             verify installments are on. -->
-        <!-- Takomo-shaped per Cole's third pass (2026-08-15): no sub-headline,
-             no body paragraph — headline straight into four short claim/
-             reassurance pairs, button to Our Story. "Buy now, pay later" is
-             VERIFIED: the live PDP loads Shopify's payment-terms component
-             (Shop Pay Installments). If installments are ever turned off in
-             Shopify, this item must come off the page with them. -->
-        <span class="eyebrow on-dark">Why golfers switch</span>
-        <h2 class="disp d-l">Gold clubs, honest <span class="foil on-dark">math</span></h2>
-        <ul class="vp-list">
-          <!-- Mirrors Takomo's four one-for-one. Two swaps are deliberate and
-               must stay swapped: their "premium materials" is a banned word
-               here, so the materials themselves are named instead (spec-as-
-               punch, v7.3); and their "Two-year warranty" slot becomes our
-               sixty-day returns because Lucky HAS no warranty (§30d) — never
-               write "warranty" in this list. -->
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 12l8 4.5 8-4.5"/><path d="M4 16.5L12 21l8-4.5"/></svg>
-            <div>
-              <h3>Built like the expensive ones</h3>
-              <p>Forged wedges, milled putters, a titanium hybrid.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.7 5.6 6.1.9-4.4 4.2 1 6-5.4-2.9-5.4 2.9 1-6L3.2 10l6.1-.9z"/></svg>
-            <div>
-              <h3>Priced like we mean it</h3>
-              <p>You pay for the club and nothing stacked on top.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-            <div>
-              <h3>Sixty-day returns</h3>
-              <p>Not the one? Send it back.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18"/></svg>
-            <div>
-              <h3>Buy now, pay later</h3>
-              <p>Split it with Shop Pay at checkout.</p>
-            </div>
-          </li>
-        </ul>
-        <div class="vp-cta">
-          <a href="30-story.html" class="btn btn-foil sweep"><span>Read our story</span><span class="ar">&rarr;</span></a>
-        </div>
-      </div>
-      <div class="vp-collage rv">
-        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-sole-turf.webp" alt="Sole and grooves of a Lucky Golf Carver wedge against turf" width="1067" height="1600" loading="lazy" decoding="async">
-        <div class="ph ph--dark">
-          <span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Hands regripping a Carver on the bench. Warm, close.</span>
-          </span>
-        </div>
-        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp" alt="Lucky Golf clubs in the bag with the clover glove" width="2048" height="1365" loading="lazy" decoding="async">
-      </div>
-    </div>
-
-    <div class="vp-ed rv">
-      <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp" alt="Golfer at address on course with a Lucky Golf wedge, shot from behind" width="1366" height="2048" loading="lazy" decoding="async">
-      <div>
-        <!-- Rewritten to Cole's own argument (2026-08-15): golf is luck
-             sometimes, that's the whole idea; and the name is a double meaning
-             — confidence over the ball, plus tour quality without the overpaid
-             logo. "Tour-quality" is the permitted construction phrasing;
-             "tour-proven" stays banned. -->
-        <span class="eyebrow on-dark">Why it says Lucky</span>
-        <h3>You're going to be looking down at this club <span class="foil on-dark">a lot</span></h3>
-        <p>Golf is luck sometimes. The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows it. That's the name on the club.</p>
-        <p>And when you're standing over the ball, you're either looking down at the same wedge everyone else bought, or at one that says Lucky: the same tour-quality build as the big names, without the overpaid logo.</p>
-        <p>That's the double meaning. Confidence over the ball, and knowing you didn't pay extra for it.</p>
-        <p class="aside">It's better to be lucky.</p>
+    <div class="comm-in rv">
+      <span class="eyebrow centre">Ambassador Program</span>
+      <h2 class="disp d-m">The people who actually <span class="foil">play them</span></h2>
+      <p class="body">An open program for golfers who put Lucky in the bag and say what they think. First look at drops, a group chat with us in it, and a shot at a club to play. No follower minimum. Write any time, and you'll get an answer either way.</p>
+      <div class="comm-cta">
+        <a href="31-trybe.html" class="btn btn-line"><span>About the program</span><span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SOCIAL RAIL ============ -->
-<section class="sec ugc" data-rail>
-  <div class="wrap">
-    <div class="sec-hd rv">
-      <div class="l">
-        <span class="eyebrow">From the community</span>
-        <h2 class="disp d-l">Lucky golfers in the <span class="foil">wild</span></h2>
-      </div>
-      <div class="rail-nav">
-        <button class="rail-btn" data-rail-prev aria-label="Previous posts">
-          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
-        </button>
-        <button class="rail-btn" data-rail-next aria-label="Next posts">
-          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="rail" role="region" aria-label="Customer and creator posts" tabindex="0">
-      <article class="post" data-po="0" tabindex="0" role="button" aria-label="Open post: Gold Carver in the bag on a cart path, walking shot, vertical crop">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Creator reel still</span>
-              <span class="mono">Gold Carver in the bag on a cart path, walking shot, vertical crop</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CREATOR HANDLE]</span>
-        </div>
-      </article>
-      <article class="post" data-po="1" tabindex="0" role="button" aria-label="Open post: First tee, LGW02 Gold in hand, morning light">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Customer post</span>
-              <span class="mono">First tee, LGW02 Gold in hand, morning light</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CUSTOMER HANDLE]</span>
-        </div>
-      </article>
-      <article class="post" data-po="2" tabindex="0" role="button" aria-label="Open post: Tracer Blade behind the ball on the green, ball rolling out">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Creator post</span>
-              <span class="mono">Tracer Blade behind the ball on the green, ball rolling out</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CREATOR HANDLE]</span>
-        </div>
-      </article>
-      <article class="post" data-po="3" tabindex="0" role="button" aria-label="Open post: Full bag setup, gold clubs fanned, overhead">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Customer post</span>
-              <span class="mono">Full bag setup, gold clubs fanned, overhead</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CUSTOMER HANDLE]</span>
-        </div>
-      </article>
-      <article class="post" data-po="4" tabindex="0" role="button" aria-label="Open post: Stryker off the deck, follow-through, mid-flight ball">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Creator reel still</span>
-              <span class="mono">Stryker off the deck, follow-through, mid-flight ball</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CREATOR HANDLE]</span>
-        </div>
-      </article>
-      <article class="post" data-po="5" tabindex="0" role="button" aria-label="Open post: Classic Polo on course, three-quarter, clover visible">
-        <div class="post-ph">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div class="ph">
-            <span class="lbl">
-              <span class="mono k">Customer post</span>
-              <span class="mono">Classic Polo on course, three-quarter, clover visible</span>
-            </span>
-          </div>
-        </div>
-        <div class="post-meta">
-          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
-          <span class="h">@[CUSTOMER HANDLE]</span>
-        </div>
-      </article>
-  </div>
-  <div class="wrap ugc-foot rv">
-    <p class="aside" style="color:var(--ink-muted)">Tag us for a chance to get reposted.</p>
-    <a href="31-trybe.html#apply" class="btn btn-line btn-sm"><span>Join the program</span><span class="ar">→</span></a>
-  </div>
-</section>
+<!-- ============ THE FINISH ============
+     Full bleed RIGHT, mirroring the narrative break's left bleed. Every other
+     section on this homepage started at the same left edge and ran to the same
+     right edge, 1304px wide at desktop, sixteen times. This one breaks the
+     container: the photograph runs to the right edge of the viewport and the
+     copy holds the page's normal left gutter.
 
-<!-- ============ THE FINISH (was the lifestyle break) ============ -->
+     ⚠️ ORDER MATTERS HERE. This section and the narrative break are mirror
+     images of each other, so back to back they read as one zigzag rather than
+     as two compositions. The community section sits between them on purpose.
+     If you reorder this part of the page, keep something that is not a
+     two-column split in between. Eyebrow "The finish" removed, head is .d-m. -->
 <section class="spot sec">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap">
-    <div class="spot-in">
-      <div class="rv">
-        <span class="eyebrow on-dark">The finish</span>
-        <h2 class="disp d-l">You'll get asked about it on the <span class="foil on-dark">first tee</span></h2>
-        <p class="body on-dark">Somebody in your group is going to ask what you're playing. Gold at address looks like nothing else out there, and it's the first thing the reviews talk about.</p>
-        <p class="body on-dark" style="margin-top:14px">Want it quieter? The blacked-out one does the same job without the conversation.</p>
-        <div class="spot-cta"><a href="#families" class="btn btn-foil sweep"><span>See the finishes</span><span class="ar">&rarr;</span></a></div>
-      </div>
-      <!-- Real photography, 2026 shoot, uploaded to Shopify Files 2026-08-23. -->
-      <img class="spot-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-hero.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedges in a golf bag, clover mark on the sole" width="2048" height="1639" loading="lazy" decoding="async">
+  <div class="spot-in">
+    <div class="spot-copy rv">
+      <h2 class="disp d-m">You'll get asked about it on the <span class="foil">first tee</span></h2>
+      <p class="body">Somebody in your group is going to ask what you're playing. Gold at address looks like nothing else out there, and it's the first thing the reviews talk about.</p>
+      <p class="body">Want it quieter? The blacked-out one does the same job without the conversation.</p>
+      <div class="spot-cta"><a href="#families" class="btn btn-foil sweep"><span>See the finishes</span><span class="ar">&rarr;</span></a></div>
     </div>
+    <!-- Real photography, 2026 shoot, uploaded to Shopify Files 2026-08-23. -->
+    <img class="spot-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-hero.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedges in a golf bag, clover mark on the sole" width="2048" height="1639" loading="lazy" decoding="async">
   </div>
 </section>
 
-<!-- ============ AMBASSADOR PROGRAM (was the five-slot roster; OPEN D · 3) ====
-     The grid of bracketed headshots is gone (Cole, 2026-08-13): the program is
-     open to anyone who meets the criteria, and a lineup of five faces said the
-     opposite. A named roster returns only when there are real names worth
-     showing, with consent keys. The cream band and the #trybe id both stay —
-     the §7 field order and the UGC rail's "Join the program" button depend on
-     this section being here. -->
-<section class="roster sec" id="trybe">
-  <div class="wrap roster-in">
-    <div class="sec-hd rv">
-      <div class="l">
-        <span class="eyebrow">Ambassador Program</span>
-        <h2 class="disp d-l">The people who actually <span class="foil">play them</span></h2>
-        <p class="body" style="margin-top:18px">An open program for golfers who put Lucky in the bag and say what they think. First look at drops, a group chat with us in it, and a shot at a club to play.</p>
-      </div>
-    </div>
+<!-- ============ APPAREL + GEAR ============
+     HIGHLIGHT ZONE, not a category section (Cole, 2026-08-15: "anything we
+     want here", Takomo-style). Any price chip here is HAND-TYPED, so re-check
+     products.json every time a featured product rotates ($119/$109 drift is
+     how the finder got burned). Current: lgh01 $209 — verified 2026-08-15. The
+     collection tiles use count tokens so their chips cannot drift. (§20g
+     applies to count tokens too: a comment cannot spell one out with braces,
+     the engine reads comments.)
 
-    <div class="gear-foot rv">
-      <p class="body" style="max-width:52ch;font-size:.98rem">No follower minimum. Write any time, and you'll get an answer either way.</p>
-      <a href="31-trybe.html" class="btn btn-line btn-sm"><span>About the program</span><span class="ar">&rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ APPAREL + GEAR ============ -->
+     POLOS AND HATS ARE TEXT TILES NOW. They were image-led tiles with a scrim
+     over a photo-needed placeholder, which meant two of the three tiles in
+     this row were grey boxes with a label reading "Photo needed". On ink with
+     no image slot at all they read as a deliberate type tile instead of a
+     missing photograph. When the on-body shots land, they go back to being
+     image tiles: drop the --text modifier and put the <img> back.
+     Eyebrow "Worth a look" removed, head steps to .d-m. -->
 <section class="sec" id="gear">
   <div class="wrap">
     <div class="sec-hd rv">
-      <!-- HIGHLIGHT ZONE, not a category section (Cole, 2026-08-15: "anything
-           we want here", Takomo-style — and his picks are Takomo's mix: one
-           club feature wide, then the two apparel categories in general).
-           Any price chip here is HAND-TYPED, so re-check products.json every
-           time a featured product rotates ($119/$109 drift is how the finder
-           got burned). Current: lgh01 $209 — verified 2026-08-15. The
-           collection tiles use count tokens so their chips cannot drift.
-           (§20g applies to count tokens too: a comment cannot spell one out
-           with braces, the engine reads comments.) -->
       <div class="l">
-        <span class="eyebrow">Worth a look</span>
-        <h2 class="disp d-l">While you're <span class="foil">here</span></h2>
+        <h2 class="disp d-m">While you're <span class="foil">here</span></h2>
         <p class="body" style="margin-top:18px">Whatever we're pointing at this month. New, restocked, or just good.</p>
       </div>
     </div>
@@ -2674,11 +2681,7 @@ html[data-rev="b"] .rev-bar{display:flex}
           <span class="btn btn-line-cream btn-sm"><span>Fill the gap</span><span class="ar">&rarr;</span></span>
         </div>
       </article>
-      <article class="gtile">
-        <div class="ph ph--dark">
-          <span class="lbl"><span class="mono k">Photo needed</span><span class="mono">Portrait &middot; polo on-body, three-quarter crop, clover visible. Room bottom-left.</span></span>
-        </div>
-        <span class="gtile-scrim" aria-hidden="true"></span>
+      <article class="gtile gtile--text">
         <div class="gtile-in">
           <span class="gtile-ct">13 styles</span>
           <h3 class="gtile-nm"><a class="stretch" href="10-collection-polos.html">Polos</a></h3>
@@ -2686,11 +2689,7 @@ html[data-rev="b"] .rev-bar{display:flex}
           <span class="btn btn-line-cream btn-sm"><span>Shop polos</span><span class="ar">&rarr;</span></span>
         </div>
       </article>
-      <article class="gtile">
-        <div class="ph ph--dark">
-          <span class="lbl"><span class="mono k">Photo needed</span><span class="mono">Portrait &middot; hat on-body, brim three-quarter, late light. Room bottom-left.</span></span>
-        </div>
-        <span class="gtile-scrim" aria-hidden="true"></span>
+      <article class="gtile gtile--text">
         <div class="gtile-in">
           <span class="gtile-ct">10 styles</span>
           <h3 class="gtile-nm"><a class="stretch" href="10-collection-hats.html">Hats</a></h3>
@@ -2707,7 +2706,8 @@ html[data-rev="b"] .rev-bar{display:flex}
   </div>
 </section>
 
-<!-- ============ CLOSING CTA ============ -->
+<!-- ============ CLOSING CTA ============
+     CHAPTER HEAD (3 of 3), .d-l. -->
 <section class="close">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <span class="halo" aria-hidden="true"></span>

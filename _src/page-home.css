@@ -71,14 +71,19 @@
 .feat .wm{width:min(58vw,760px);height:min(58vw,760px);left:-15%;top:-16%;opacity:.055}
 .feat .halo{position:absolute;left:38%;top:50%;translate:-50% -50%;width:min(900px,80%);aspect-ratio:1/1;
   background:radial-gradient(closest-side,rgba(194,154,43,.20),rgba(194,154,43,0) 72%);pointer-events:none;z-index:0}
-.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:clamp(30px,4.4vw,72px);align-items:center}
+/* 5fr / 7fr, not .92fr / 1.08fr. The old ratio was within a few percent of
+   half-and-half, and this page had FOUR two-column blocks all sitting at
+   roughly 50/50, which is most of why it read as one repeated template. */
+.feat-in{position:relative;z-index:1;display:grid;grid-template-columns:5fr 7fr;
+  gap:clamp(30px,5.2vw,88px);align-items:center}
 .feat h2{color:var(--cream);max-width:16ch}
 .feat .body{margin-top:22px}
 .feat-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .feat-stamp{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--cream-70)}
 .feat-stamp .ln{height:2px;flex:1;background:var(--rule-on-dark)}
-.plinth-wrap{position:relative}
+/* the plinth overhangs the section padding, so this block has a top and bottom
+   edge that no other block on the page has */
+.plinth-wrap{position:relative;margin-block:calc(-1 * clamp(18px,3.4vw,56px))}
 .glow{position:absolute;inset:-13%;border-radius:50%;
   background:radial-gradient(closest-side,rgba(237,210,124,.30),rgba(194,154,43,.10) 55%,rgba(194,154,43,0) 78%);
   filter:blur(6px);z-index:0}
@@ -93,9 +98,33 @@
 .why{position:relative;background:var(--cream);overflow:hidden}
 .why::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
 .why-in{position:relative;z-index:1}
-.why-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,80px);align-items:end}
+/* INDENTED HEADER. Every section on this page began its content at the wrap's
+   left edge, sixteen identical rectangles down the page. This one starts at
+   roughly column 3 of 12, so the page has at least one left margin that is not
+   the same left margin as all the others. Nothing else changes; the claims row
+   below still runs the full width, which is what makes the indent read as a
+   composition rather than a mistake. */
+.why-hd{margin-left:16.6%;max-width:74ch}
 .why h2{max-width:20ch}
+.why-hd .body{margin-top:clamp(20px,2.2vw,30px);max-width:60ch}
 .why-rule{height:2px;background:var(--ink);margin:clamp(38px,4.4vw,64px) 0 0}
+
+/* The four reassurance items, merged in from the old value-props section, sit
+   under the three claims with the two verified photographs beside them. Before
+   the merge this argument ran across two full sections and carried no
+   photography at all. */
+.why-props{display:grid;grid-template-columns:1fr .8fr;gap:clamp(32px,5vw,84px);
+  align-items:start;margin-top:clamp(52px,6vw,96px)}
+.why-shots{display:grid;gap:var(--gut)}
+.why-shots img{width:100%;border-radius:var(--r-card);display:block;object-fit:cover}
+.why-shots img:first-child{aspect-ratio:4/5}
+.why-shots img:last-child{aspect-ratio:16/10}
+@media (max-width:900px){
+  .why-hd{margin-left:0}
+  .why-props{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
+  .why-shots{grid-template-columns:1fr 1fr;align-items:start}
+  .why-shots img:first-child,.why-shots img:last-child{aspect-ratio:1/1}
+}
 .claims{display:grid;grid-template-columns:repeat(3,1fr)}
 .claim{padding:clamp(26px,2.8vw,42px) clamp(20px,2.4vw,38px) 8px;border-right:1px solid var(--ink-14)}
 .claim:first-child{padding-left:0}
@@ -165,34 +194,20 @@
   align-items:center;justify-content:space-between}
 
 /* ==========================================================================
-   VALUE PROPS  (OPEN D · 2) — dark band, icon props, photo collage.
-   Icons are gold-hi on ink: the gold accent survives here because the field is
-   ink, not green. Collage slots use the standard photo-needed device.
+   THE REASSURANCE ITEMS  (was VALUE PROPS, OPEN D · 2)
+
+   The section wrapper is gone: this list merged into .why on 2026-08-29,
+   because "Gold clubs, honest math" and "Everything you're paying for is the
+   club" were making the same case in two consecutive sections. The four items
+   themselves are unchanged and every claim survives. What is left here is the
+   item styling; the grouping rules live with .why-props at the foot of this
+   file. .vp-in, .vp-sub and .vp-collage went with the wrapper.
    ========================================================================== */
-.vp{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
-.vp::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
-.vp-in{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;
-  gap:clamp(30px,4.6vw,78px);align-items:center}
-.vp h2{color:var(--cream);max-width:13ch}
-/* Takomo runs a colored second deck under the headline. Ours is gold. */
-.vp-sub{margin:16px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
-  font-weight:800;text-transform:uppercase;letter-spacing:.005em;line-height:1;
-  font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--gold-hi);max-width:20ch}
-.vp .body{margin-top:18px}
-.vp-cta{margin-top:clamp(26px,3vw,38px)}
-.vp-list{list-style:none;margin:clamp(28px,3.2vw,42px) 0 0;padding:0}
-.vp-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:2px solid var(--rule-on-dark)}
-.vp-item:last-child{border-bottom:2px solid var(--rule-on-dark)}
-.vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-hi);stroke-width:1.6;fill:none;
+.vp-ic{width:26px;height:26px;flex:none;stroke:var(--gold-lo);stroke-width:1.6;fill:none;
   stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .vp-item h3{margin:0 0 5px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
-  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:var(--fs-body);line-height:1;color:var(--cream)}
-.vp-item p{margin:0;color:var(--cream-70);font-size:var(--fs-base);line-height:1.5;max-width:46ch}
-.vp-collage{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(148px,1fr);gap:var(--gut)}
-.vp-collage .ph{border-radius:var(--r);padding:20px}
-.vp-collage .ph .lbl .mono{font-size:var(--fs-xs);letter-spacing:.14em}
-.vp-collage > *:first-child{grid-row:span 2}
-@media (max-width:900px){.vp-in{grid-template-columns:1fr}}
+  font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:var(--fs-body);line-height:1}
+.vp-item p{margin:0;font-size:var(--fs-base);line-height:1.5;max-width:46ch}
 
 
 /* ==========================================================================
@@ -245,39 +260,80 @@
 .spot{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
 .spot::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
 .spot .wm{width:min(50vw,640px);height:min(50vw,640px);right:-12%;bottom:-18%;opacity:.05}
-.spot-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;
+/* FULL BLEED, right. --edge reproduces the exact left content edge of .wrap
+   (max-width 1560, padding var(--pad)) using percentages of the section rather
+   than 100vw, so it stays aligned with every other section AND does not drift
+   by the scrollbar width. The photograph then runs past the wrap to the
+   viewport edge, which is a composition nothing else on the page has. */
+.spot{--edge:max(var(--pad), calc((100% - 1560px) / 2 + var(--pad)))}
+/* 1 / 1.28, not 1 / 1.08. At 1.08 the two columns measured 655 and 707, which
+   is half-and-half again, and this section is supposed to be the one where the
+   photograph clearly wins. */
+.spot-in{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.28fr);
   gap:clamp(28px,4.4vw,76px);align-items:center}
-.spot h2{color:var(--cream);max-width:14ch}
-.spot .body{margin-top:20px}
-.spot .ph{aspect-ratio:4/5;border-radius:var(--r)}
+.spot-copy{padding-left:var(--edge);padding-right:clamp(14px,1.8vw,30px)}
+.spot h2{max-width:15ch}
+.spot .body{margin-top:20px;max-width:46ch}
+.spot .body + .body{margin-top:14px}
+.spot-img{width:100%;height:100%;object-fit:cover;display:block;
+  min-height:clamp(360px,42vw,600px);border-radius:var(--r-card) 0 0 var(--r-card)}
 .spot-cta{margin-top:clamp(24px,2.8vw,36px)}
-@media (max-width:900px){.spot-in{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .spot-in{grid-template-columns:1fr;gap:clamp(26px,4vw,42px)}
+  .spot-copy{padding-inline:var(--pad)}
+  .spot-img{border-radius:0;min-height:clamp(300px,62vw,420px);order:-1}
+}
 
 /* ==========================================================================
    THE MINDSET — lower half of the value-props section.
    Layout is the earlier image-left / text-right block (Cole preferred it);
    only the subject changed. This is the brand argument, not the price one.
    ========================================================================== */
-.vp-ed{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:clamp(28px,4.4vw,76px);align-items:center;margin-top:clamp(50px,5.6vw,92px)}
-.vp-ed .ph{aspect-ratio:3/4;border-radius:var(--r)}
-.vp-ed .eyebrow{margin-bottom:16px}
-.vp-ed h3{margin:0 0 20px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
-  font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.96;color:var(--cream);
-  font-size:clamp(1.7rem,3vw,2.7rem);max-width:16ch}
-.vp-ed p{margin:0 0 15px;color:var(--cream-70);font-size:var(--fs-body);line-height:1.64;max-width:54ch}
-.vp-ed p:last-child{margin-bottom:0}
-.vp-ed .aside{margin-top:20px;color:var(--cream)}
-@media (max-width:900px){.vp-ed{grid-template-columns:1fr}}
+/* Was .vp-ed, the lower half of the value-props section. It is a section of
+   its own now that the price argument moved up the page, and it is the one
+   block on the homepage set in .disp-ed: sentence case, wider, mixed case.
+   The copy is a paragraph of reasoning, and 70px of condensed caps was turning
+   an argument into a shop sign.
+
+   FULL BLEED, left. Mirror of .spot on the other edge, and the third distinct
+   geometry on the page after the .why indent and the .spot right bleed. */
+.ed{--edge:max(var(--pad), calc((100% - 1560px) / 2 + var(--pad)))}
+.ed-in{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(30px,5vw,86px);align-items:center}
+.ed-img{width:100%;height:100%;object-fit:cover;display:block;
+  min-height:clamp(380px,44vw,640px);border-radius:0 var(--r-card) var(--r-card) 0}
+.ed-copy{padding-right:var(--edge);max-width:64ch}
+.ed-copy .eyebrow{margin-bottom:18px}
+.ed-copy h2{margin-bottom:clamp(20px,2.2vw,28px);max-width:20ch}
+.ed-copy p{margin:0 0 15px;color:var(--ink-70);font-size:var(--fs-body);line-height:1.64}
+.ed-copy p:last-child{margin-bottom:0}
+.ed-copy .aside{margin-top:22px;color:var(--ink)}
+@media (max-width:900px){
+  .ed-in{grid-template-columns:1fr;gap:clamp(26px,4vw,40px)}
+  .ed-img{border-radius:0;min-height:clamp(300px,64vw,430px)}
+  .ed-copy{padding-inline:var(--pad);max-width:none}
+}
+
+/* ==========================================================================
+   COMMUNITY + AMBASSADOR PROGRAM
+   Merged from the UGC rail and the roster band. Fourth geometry: no cards, no
+   rail, no two columns. A measured block of type centred on the page axis,
+   which is the one shape the page did not already have.
+   ========================================================================== */
+.comm{position:relative;background:var(--white);overflow:hidden}
+.comm-in{position:relative;z-index:1;max-width:64ch;margin:0 auto;text-align:center}
+.comm-in h2{margin-bottom:clamp(18px,2vw,26px)}
+.comm-in .body{margin:0 auto;max-width:58ch}
+.comm-cta{margin-top:clamp(26px,3vw,38px)}
 
 /* ==========================================================================
    THE ROSTER  (OPEN D · 3) — creator headshots on the homepage, feeds Trybe.
    Was the five-slot headshot grid; an invitation band since 2026-08-13 (the
    program is open — a lineup of five faces said the opposite).
    ========================================================================== */
-.roster{position:relative;background:var(--cream);overflow:hidden}
-.roster::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
-.roster-in{position:relative;z-index:1}
+/* Retired 2026-08-29: the invitation band merged with the UGC rail into .comm,
+   further down this file. The #trybe id moved with it. */
 /* .rost-grid / .rost-nm / .rost-hd removed 2026-08-13 with the headshot grid —
    the section is an invitation band now. The .roster band styles above stay. */
 
@@ -319,6 +375,19 @@
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px}
 .gtile-flag .fl--new{background:var(--ink);color:var(--cream)}
+
+/* TEXT TILE. Polos and Hats were image-led tiles sitting on a photo-needed
+   placeholder, so two of the three tiles in this row rendered as grey boxes
+   labelled "Photo needed" on the live homepage. With no image slot at all they
+   read as a deliberate type tile instead of a photograph that failed. The gold
+   rule top-left is the marker that says this is finished, not empty.
+   When the on-body shots land: drop --text and put the <img> back. */
+.gtile--text{background:var(--ink)}
+.gtile--text::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--groove-dark)}
+.gtile--text::after{content:'';position:absolute;z-index:2;
+  left:clamp(20px,2.2vw,32px);top:clamp(20px,2.2vw,32px);
+  width:52px;height:3px;background:var(--lg-foil-tag)}
 @media (max-width:760px){.gtile--wide{grid-column:auto}}
 /* one column between 621 and 760; below that .coll becomes a .msnap rail,
    and a grid-template-columns here would beat core's rule */
@@ -336,8 +405,7 @@
   /* .fam -> .msnap rail at <=620 */
   .fam{grid-template-columns:1fr}
   .feat-in{grid-template-columns:1fr}
-  .plinth-wrap{order:-1}
-  .why-top{grid-template-columns:1fr}
+  .plinth-wrap{order:-1;margin-block:0}
   .claims{grid-template-columns:1fr}
   .claim{border-right:0;border-bottom:1px solid var(--ink-14);padding-left:0;padding-right:0;padding-bottom:26px}
   .claim:last-child{border-bottom:0}
@@ -376,16 +444,21 @@
       single deliberate switch is a composition. Five alternating bands is
       just alternation.
 
-   THE COST, STATED HONESTLY: .feat, .vp and .spot each carried a foil
-   headline, and foil-as-type is illegal on white (the ramp peaks at
-   --gold-hi, under 2:1). Those three keep a gold accent word, but as SOLID
-   --gold-lo, which measures 5.05:1 on white and passes AA. Three foil
-   moments traded for a calmer page. If that trade is wrong, this whole block
-   reverts cleanly.
+   THE COST, STATED HONESTLY: .feat and .spot each carried a foil headline, and
+   foil-as-type is illegal on white (the ramp peaks at --gold-hi, under 2:1).
+   Those keep a gold accent word, but as SOLID --gold-lo, which measures 5.05:1
+   on white and passes AA. Foil moments traded for a calmer page. If that trade
+   is wrong, this whole block reverts cleanly.
+
+   SELECTOR NOTE, 2026-08-29: this block used to name .vp, .pull and .roster.
+   Those three sections no longer exist. .vp merged into .why (the price
+   argument) and became .ed (the narrative break); .pull merged into .proof;
+   .roster merged with the UGC rail into .comm. The rules below are the same
+   rules, pointed at the sections that inherited the content.
    ========================================================================= */
 
 /* --- cream retired ------------------------------------------------------ */
-.why, .pull, .roster{background:var(--white)}
+.why, .comm{background:var(--white)}
 
 /* --- forest retired from the page body ---------------------------------- */
 /* The marquee now continues the hero instead of interrupting it with a
@@ -393,50 +466,31 @@
 .mq{background:var(--ink)}
 .bband{background:var(--ink)}
 
-/* --- three dark bands flipped to the page ground ------------------------ */
-.feat, .vp, .spot{background:var(--white);color:var(--ink)}
-.feat::before, .vp::before, .spot::before{background:none}
-.feat h2, .vp h2, .spot h2{color:var(--ink)}
-.feat .wm, .spot .wm, .vp .wm{opacity:.035;color:var(--ink)}
+/* --- the dark bands flipped to the page ground -------------------------- */
+.feat, .spot, .ed{background:var(--white);color:var(--ink)}
+.feat h2, .spot h2{color:var(--ink)}
+.feat .wm, .spot .wm{opacity:.035;color:var(--ink)}
 .feat .halo{display:none}
 
-/* Light-ground versions of the on-dark children. Scoped to these three
-   sections only, so .on-dark keeps its meaning everywhere else. */
-.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink)}
-.feat .eyebrow.on-dark, .vp .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
+/* Light-ground versions of the on-dark children. Scoped to these sections
+   only, so .on-dark keeps its meaning everywhere else. */
+.feat .on-dark, .spot .on-dark{color:var(--ink)}
+.feat .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
 
 /* Cole 2026-08-29: one gold, the bright foil, everywhere. On white it is used
    only as an accent word inside an otherwise-ink display headline: the ink
    words carry the sentence, the gold word is the flourish, so the contrast
    bar for body text does not apply. Body-size foil on white stays banned. */
 
-/* The bands used to do the separating. Without them, adjacent light sections
-   need a hairline so the page reads as sections rather than one long column. */
-
-
-/* Every rule inside these three that assumed a dark ground. Found by measuring
-   the flipped page, not by reading: sixteen strings were landing at 1.1:1,
-   which is cream on white. The .on-dark override above did not reach them
-   because they set --cream and --cream-70 directly. */
-.feat h2, .spot h2, .vp h2,
-.vp-ed .aside{color:var(--ink)}
+/* Every rule that assumed a dark ground. Found by measuring the flipped page,
+   not by reading: sixteen strings were landing at 1.1:1, which is cream on
+   white. The .on-dark override above did not reach them because they set
+   --cream and --cream-70 directly. */
 .feat-stamp,
-.vp-item p,
-.vp-ed p{color:var(--ink-70)}
+.vp-item p{color:var(--ink-70)}
 .vp-item h3{color:var(--ink)}
 /* gold-hi is a dark-ground stroke colour; on white it is under 2:1 */
 .vp-ic{stroke:var(--gold-lo)}
-.vp-sub{color:var(--gold-lo)}
-
-/* .ph--dark is a dark-ground placeholder and .vp now sits on white, so its
-   label was landing at 1.06:1. Caught by measuring the flipped page against
-   the original: master has one contrast failure, the first pass of this
-   branch had three. Light variant, scoped to the flipped section only. */
-.vp .ph--dark{background:repeating-linear-gradient(135deg,
-  rgba(23,20,15,.05) 0 14px, rgba(23,20,15,.09) 14px 28px);
-  border-color:var(--ink-14)}
-.vp .ph--dark .lbl .mono{color:var(--ink-muted)}
-.vp .ph--dark .lbl .mono.k{color:var(--ink)}
 
 /* ============================================================================
    SECOND PASS: making the light page finished rather than merely lighter.
@@ -466,42 +520,66 @@
    ========================================================================= */
 
 /* --- 1. rhythm ---------------------------------------------------------- */
-.feat, .why, .pull, .vp, .spot, .roster{
-  padding-block:clamp(104px,9.5vw,176px)}
+/* Was clamp(104px,9.5vw,176px). That doubling was the right call when the only
+   thing separating two sections was whitespace, because every section was the
+   same rectangle at the same width and the eye had nothing else to go on. The
+   sections now have genuinely different geometry (an indent, two opposite
+   full-bleeds, a centred column, three grid families), and shape separates
+   them as well as space did. So the padding comes back down and the page gets
+   about 500px shorter without losing any of the breathing room that mattered. */
+.feat, .why, .proof, .ed, .spot, .comm{
+  padding-block:clamp(84px,7.4vw,136px)}
 
 /* --- 2. texture on every light section ---------------------------------- */
-.feat::before, .vp::before, .spot::before{
+.feat::before, .spot::before, .ed::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:var(--groove-light);opacity:.85}
-.why::before, .pull::before{opacity:.85}
+.ed{position:relative;overflow:hidden}
+.ed-in{position:relative;z-index:1}
+.why::before{opacity:.85}
 
 /* The watermark clover was tuned to sit on ink. On white it needs to be
-   darker to read at all, and it is the only thing anchoring .pull. */
-.feat .wm, .spot .wm, .vp .wm{color:var(--ink);opacity:.045}
-.pull .wm{opacity:.055}
+   darker to read at all. */
+.feat .wm, .spot .wm{color:var(--ink);opacity:.045}
 
-/* --- 3. the two sections that lost the most ----------------------------- */
+/* --- 3. the pull quote, now the lead of the proof section --------------- */
+/* It was a full section of its own sitting directly above the reviews, so the
+   page said "here is a review" and then "here are the reviews". As the lead of
+   .proof it does the job it was always doing, one section earlier. The short
+   gold rule above it is what the removed band used to do. */
+.proof{position:relative}
+.proof-hd{text-align:center;max-width:min(820px,94%);margin:0 auto clamp(30px,3.6vw,52px)}
+.proof .pull-in{max-width:1000px;margin:0 auto clamp(40px,4.6vw,72px);text-align:center}
+.proof .pull-in q{display:block;font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.18}
+.proof .pull-in::before{content:'';display:block;width:64px;height:3px;
+  background:var(--gold);margin:0 auto clamp(28px,3.2vw,44px)}
+.proof .pull-by{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:clamp(18px,2vw,26px)}
 
-/* .pull was a centred quote on cream. On white with nothing around it, it was
-   text in a void. It becomes a proper editorial moment instead: bigger, with
-   a short gold rule above it doing the work the band used to do. */
-.pull-in{max-width:1100px}
-.pull q{font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.18}
-.pull-in::before{content:'';display:block;width:64px;height:3px;
-  background:var(--gold);margin:0 auto clamp(30px,3.4vw,46px)}
-
-/* .vp is the tallest section on the page and it lost a full-bleed dark
-   ground. The four value props were floating as loose text, so they get real
-   grouping: a rule across the top and dividers between, which is the same
-   device .why already uses and the one that survives without colour. */
-.vp-list{border-top:2px solid var(--ink);padding-top:clamp(26px,3vw,44px)}
-.vp-item{padding-block:clamp(18px,2vw,28px)}
+/* --- 4. the four reassurance items, now inside .why --------------------- */
+/* They were floating as loose text when their dark band went away, so they get
+   real grouping: a rule across the top and dividers between, which is the same
+   device .why already uses one row above and the one that survives without
+   colour. */
+.vp-list{list-style:none;margin:0;padding:0;
+  border-top:2px solid var(--ink);padding-top:clamp(24px,2.8vw,40px)}
+.vp-item{display:flex;gap:16px;align-items:flex-start;
+  padding-block:clamp(18px,2vw,28px)}
 .vp-item + .vp-item{border-top:1px solid var(--ink-14)}
-.vp-ic{stroke:var(--gold-lo)}
+.vp-cta{margin-top:clamp(26px,3vw,38px)}
 
-/* --- the leftover dark-ground decoration -------------------------------- */
-.feat .halo{display:none}
+/* ============================================================================
+   RADIUS LAW, applied (2026-08-29)
 
-/* the "Why it says Lucky" card headline was still cream (set inline in the
-   rule below the override block, so it never got caught) */
-.vp-ed h3{color:var(--ink)}
+   The page was running three radii with no rule behind them: 6px on 47
+   elements, 14px on 15, and a stray 2px on 9. Mixed radii with no documented
+   reason is one of the things that reads as template rather than design.
+
+   The rule, and it is now followed everywhere on this page:
+     SMALL SURFACES  (buttons, chips, flags, inputs)  -> --r      6px
+     LARGE SURFACES  (cards, tiles, photographs)      -> --r-card 14px
+   A photograph is a large surface. That is the whole rule.
+   ========================================================================= */
+.plinth{border-radius:var(--r-card)}
+.fnd-c{border-radius:var(--r-card)}
+.gtile{border-radius:var(--r-card)}
+.rv-card .rv-ph, .ptile .pt-ph{border-radius:var(--r-card)}
