@@ -953,7 +953,7 @@ button{font:inherit;color:inherit}
    ========================================================================== */
 .pull{position:relative;background:var(--cream);overflow:hidden;text-align:center}
 .pull::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
-.pull .wm{width:min(70vw,760px);height:min(70vw,760px);left:50%;top:50%;translate:-50% -50%;color:var(--ink);opacity:.05}
+.pull .wm{width:min(36vw,500px);height:min(36vw,500px);left:50%;top:50%;translate:-50% -50%;color:var(--ink);opacity:.05}
 .pull-in{position:relative;z-index:1;max-width:1000px;margin:0 auto}
 .pull q{display:block;quotes:none;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
   font-weight:800;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
@@ -1463,7 +1463,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    ========================================================================== */
 .feat{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
 .feat::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none;z-index:0}
-.feat .wm{width:min(58vw,760px);height:min(58vw,760px);left:-15%;top:-16%;opacity:.055}
+.feat .wm{width:min(58vw,700px);height:min(58vw,700px);left:-15%;top:50%;translate:0 -50%;opacity:.055}
 .feat .halo{position:absolute;left:38%;top:50%;translate:-50% -50%;width:min(900px,80%);aspect-ratio:1/1;
   background:radial-gradient(closest-side,rgba(194,154,43,.20),rgba(194,154,43,0) 72%);pointer-events:none;z-index:0}
 .feat-in{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;
@@ -1641,7 +1641,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    ========================================================================== */
 .spot{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
 .spot::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
-.spot .wm{width:min(50vw,640px);height:min(50vw,640px);right:-12%;bottom:-18%;opacity:.05}
+.spot .wm{width:min(50vw,640px);height:min(50vw,640px);right:-12%;top:50%;translate:0 -50%;opacity:.05}
 .spot-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;
   gap:clamp(28px,4.4vw,76px);align-items:center}
 .spot h2{color:var(--cream);max-width:14ch}
@@ -1878,16 +1878,12 @@ html[data-rev="b"] .rev-bar{display:flex}
 .feat .wm, .spot .wm, .vp .wm{color:var(--ink);opacity:.045}
 .pull .wm{opacity:.055}
 
-/* Cole 2026-08-29: the groove lines run continuously across adjacent white
-   sections, so the eye reads them as one canvas - and then the clover
-   watermark died mid-shape at the invisible seam, which looked like a
-   rendering bug. A crop at the viewport edge reads as intentional; a crop at
-   a same-colour seam never does. So the emblems that bleed past a section's
-   top or bottom now dissolve before the edge instead of hitting it. */
-.feat .wm{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);
-  mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
-.spot .wm{-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 96%);
-  mask-image:linear-gradient(180deg,#000 66%,transparent 96%)}
+/* Cole 2026-08-29 (second round - the first fix, a mask fade, mis-measured:
+   mask %s are relative to the emblem, the guillotine is at the section edge,
+   and the edge arrived before the fade finished). The durable rule: emblems
+   are contained vertically inside their section and bleed only off the
+   left/right VIEWPORT edge, where a crop always reads as intentional. This is
+   how .bband and .pull already behave, and neither ever showed a cut. */
 
 /* --- 3. the two sections that lost the most ----------------------------- */
 
