@@ -291,9 +291,14 @@ button{font:inherit;color:inherit}
      gold   #C29A2B  1.84:1  FAIL        -> never use on green, at any size
      gold-hi #EDD27C 3.27:1  PASS 3:1 non-text only -> rules, borders, badges
    That is why the hover underline moved gold -> gold-hi and nav text is white. */
-.hdr{position:sticky;top:0;z-index:60;background:var(--brand);
+.hdr{position:sticky;top:0;z-index:60;background:var(--ink);
   border-bottom:2px solid var(--brand-accent);
   box-shadow:0 10px 28px -22px rgba(23,20,15,.55)}
+/* 2026-08-29, Cole's call: the header was the last green rectangle on a page
+   whose every other surface is ink, white or gold - chrome competing with the
+   composition instead of framing it. Ink header over the ink hero makes the
+   top of the page one uninterrupted piece, mirroring the ink ending. Green
+   stays a brand accent (clover marks, PDP band), not a bar. */
 .hdr::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .hdr > *{position:relative;z-index:1}
 .hdr-in{display:flex;align-items:center;gap:clamp(18px,3vw,46px);padding:8px var(--pad)}
@@ -323,7 +328,7 @@ button{font:inherit;color:inherit}
 .burger[aria-expanded="true"] i:nth-child(1){top:22px;rotate:45deg}
 .burger[aria-expanded="true"] i:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] i:nth-child(3){top:22px;rotate:-45deg}
-.mnav{display:none;border-top:1px solid var(--on-brand-22);background:var(--brand);padding:8px var(--pad) 18px}
+.mnav{display:none;border-top:1px solid var(--on-brand-22);background:var(--ink);padding:8px var(--pad) 18px}
 .mnav[data-open="true"]{display:block}
 .mnav a{display:flex;align-items:center;min-height:48px;padding:8px 0;border-bottom:1px solid var(--on-brand-22);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
@@ -552,7 +557,7 @@ button{font:inherit;color:inherit}
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-.ftr{position:relative;background:var(--ink);color:var(--cream);border-top:2px solid var(--rule-on-dark);overflow:hidden}
+.ftr{position:relative;background:var(--ink);color:var(--cream);border-top:2px solid var(--brand-accent);overflow:hidden}
 .ftr::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
 .ftr-in{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr repeat(4,1fr);
   gap:clamp(24px,3vw,48px);padding:clamp(52px,6vw,84px) 0}

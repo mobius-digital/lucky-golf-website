@@ -500,6 +500,17 @@
 .feat .wm, .spot .wm, .vp .wm{color:var(--ink);opacity:.045}
 .pull .wm{opacity:.055}
 
+/* Cole 2026-08-29: the groove lines run continuously across adjacent white
+   sections, so the eye reads them as one canvas - and then the clover
+   watermark died mid-shape at the invisible seam, which looked like a
+   rendering bug. A crop at the viewport edge reads as intentional; a crop at
+   a same-colour seam never does. So the emblems that bleed past a section's
+   top or bottom now dissolve before the edge instead of hitting it. */
+.feat .wm{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);
+  mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.spot .wm{-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 96%);
+  mask-image:linear-gradient(180deg,#000 66%,transparent 96%)}
+
 /* --- 3. the two sections that lost the most ----------------------------- */
 
 /* .pull was a centred quote on cream. On white with nothing around it, it was
