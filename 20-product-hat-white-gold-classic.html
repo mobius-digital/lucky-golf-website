@@ -117,6 +117,14 @@
 
   --r:6px;
   --r-card:14px;
+
+  /* MOTION TOKENS. The stock CSS easings are too weak to feel intentional;
+     these are the strong curves (animations.dev lineage). --ease-out-s for
+     anything entering or reacting to the user, --ease-io-s for on-screen
+     movement. Never ease-in on UI: it delays the exact frames the eye is
+     watching and reads as lag. */
+  --ease-out-s:cubic-bezier(.23,1,.32,1);
+  --ease-io-s:cubic-bezier(.77,0,.175,1);
 }
 
 *{box-sizing:border-box}
@@ -130,7 +138,7 @@ button{font:inherit;color:inherit}
 
 /* ---------- type ---------- */
 .disp{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;
-  text-transform:uppercase;line-height:.85;letter-spacing:-.005em;margin:0}
+  text-transform:uppercase;line-height:.85;letter-spacing:-.005em;margin:0;text-wrap:balance}
 .d-xl{font-size:clamp(3.1rem,7.6vw,7.2rem)}
 .d-l {font-size:clamp(2.5rem,4.9vw,4.5rem)}
 .d-m {font-size:clamp(1.9rem,3.1vw,3rem);line-height:.9}
@@ -188,10 +196,14 @@ button{font:inherit;color:inherit}
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
   text-transform:uppercase;letter-spacing:.045em;font-size:var(--fs-lg);
   padding:15px 26px;min-height:48px;border:1.5px solid transparent;border-radius:var(--r);cursor:pointer;
-  transition:background .22s,color .22s,border-color .22s}
+  transition:background .22s,color .22s,border-color .22s,transform .14s var(--ease-out-s)}
 .btn > span{position:relative;z-index:2}
-.btn .ar{transition:transform .22s}
+.btn .ar{transition:transform .22s var(--ease-out-s)}
 .btn:hover .ar{transform:translateX(4px)}
+/* press feedback: the interface confirms it heard the click. Subtle scale,
+   nothing bouncy. The reduced-motion block at the foot of this file already
+   kills every transition, so this needs no extra guard. */
+.btn:active{transform:scale(.975)}
 
 /* DEVICE 1 · FOIL button
    The highlight lives INSIDE the foil ramp and travels RIGHT → LEFT.
@@ -290,7 +302,8 @@ button{font:inherit;color:inherit}
      gold-hi #EDD27C 3.27:1  PASS 3:1 non-text only -> rules, borders, badges
    That is why the hover underline moved gold -> gold-hi and nav text is white. */
 .hdr{position:sticky;top:0;z-index:60;background:var(--brand);
-  border-bottom:2px solid var(--brand-accent)}
+  border-bottom:2px solid var(--brand-accent);
+  box-shadow:0 10px 28px -22px rgba(23,20,15,.55)}
 .hdr::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .hdr > *{position:relative;z-index:1}
 .hdr-in{display:flex;align-items:center;gap:clamp(18px,3vw,46px);padding:8px var(--pad)}
@@ -505,13 +518,26 @@ button{font:inherit;color:inherit}
    LABELLED PLACEHOLDER
    ========================================================================== */
 .ph{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;
-  background:repeating-linear-gradient(135deg,rgba(23,20,15,.055) 0 14px,rgba(23,20,15,.085) 14px 28px);
-  border:1px dashed rgba(23,20,15,.28);border-radius:var(--r);overflow:hidden}
-.ph .lbl{max-width:46ch}
+  background:var(--cream);
+  border:1px solid var(--ink-14);border-radius:var(--r);overflow:hidden}
+/* REDESIGNED 2026-08-29. The old device was a dashed border over diagonal
+   stripes, which is the visual language of a construction site: it made every
+   waiting slot drag the page down with it. Same honesty, better clothes: a
+   solid brand surface, the groove texture every band already wears, and a thin
+   gold keyline frame. The label is unchanged and stays labelled - the
+   no-faked-slots rule is untouched, these ARE the placeholders. */
+.ph::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none}
+.ph::after{content:'';position:absolute;inset:10px;border:1px solid rgba(194,154,43,.42);
+  border-radius:calc(var(--r) - 2px);pointer-events:none}
+.ph .lbl{position:relative;z-index:1;max-width:46ch}
+/* the same short gold rule the eyebrow device uses, so the slot reads as
+   set in the brand's own type system rather than as debug output */
+.ph .lbl::before{content:'';display:block;width:26px;height:2px;background:var(--gold);margin:0 auto 13px}
 .ph .lbl .mono{display:block;font-size:var(--fs-xs);letter-spacing:.18em;color:rgba(23,20,15,.62)}
 .ph .lbl .mono.k{color:var(--ink);font-weight:700;margin-bottom:10px}
-.ph--dark{background:repeating-linear-gradient(135deg,rgba(246,242,232,.07) 0 14px,rgba(246,242,232,.11) 14px 28px);
-  border-color:rgba(246,242,232,.3)}
+.ph--dark{background:var(--ink);border-color:rgba(246,242,232,.14)}
+.ph--dark::before{background:var(--groove-dark)}
+.ph--dark::after{border-color:rgba(194,154,43,.5)}
 .ph--dark .lbl .mono{color:var(--cream-52)}
 .ph--dark .lbl .mono.k{color:var(--cream)}
 
@@ -793,8 +819,13 @@ button{font:inherit;color:inherit}
   display:flex;flex-direction:column;padding:30px 26px 26px;text-align:center;
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
-  transition:transform .3s}
-.ptile:hover{transform:translateY(-3px)}
+  transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
+/* the lift gets a shadow tinted to the ink, so the card visibly leaves the
+   page instead of just teleporting 3px. Gated to real pointers: on touch,
+   hover states only misfire. */
+@media (hover:hover) and (pointer:fine){
+  .ptile:hover{transform:translateY(-4px);box-shadow:0 26px 48px -30px rgba(23,20,15,.38)}
+}
 /* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
    rule had no markup left to style. */
 .ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
@@ -844,9 +875,16 @@ button{font:inherit;color:inherit}
 .ptile .pt-rt{margin-top:5px;font-size:var(--fs-xs);letter-spacing:.14em;color:var(--ink-muted)}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(20px)}
+.rv{opacity:0;transform:translateY(18px)}
 .rv.in{opacity:1;transform:none;
-  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  transition:opacity .55s var(--ease-out-s),transform .55s var(--ease-out-s)}
+/* Cards inside a grid cascade instead of landing as one slab. 60ms steps:
+   long enough to read as a wave, short enough to never feel like waiting.
+   Decorative only - the cards are clickable from frame one. */
+.pgrid > .rv:nth-child(2),.coll > .rv:nth-child(2),.claims > .rv:nth-child(2){transition-delay:.06s}
+.pgrid > .rv:nth-child(3),.coll > .rv:nth-child(3),.claims > .rv:nth-child(3){transition-delay:.12s}
+.pgrid > .rv:nth-child(4){transition-delay:.18s}
+.pgrid > .rv:nth-child(5){transition-delay:.24s}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none}

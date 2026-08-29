@@ -22,6 +22,23 @@
   color:var(--cream-70);z-index:2;text-shadow:0 1px 14px rgba(23,20,15,.75)}
 .hero-stamp b{display:block;color:var(--gold-hi);font-weight:400}
 
+/* HERO ENTRANCE (2026-08-29). A first paint is the one animation a visitor
+   sees exactly once, so it can afford ceremony: the photograph settles from a
+   4.5% zoom while the copy rises in sequence. Everything is transform/opacity
+   (compositor only), and the global reduced-motion block kills all of it. */
+@media (prefers-reduced-motion:no-preference){
+  .hero-media img{animation:hero-settle 1.7s var(--ease-out-s) both}
+  .hero-copy .wrap > *{opacity:0;animation:hero-rise .75s var(--ease-out-s) forwards}
+  .hero-copy .wrap > .eyebrow{animation-delay:.18s}
+  .hero-copy .wrap > h1{animation-delay:.28s}
+  .hero-copy .wrap > .body{animation-delay:.4s}
+  .hero-copy .wrap > .hero-cta{animation-delay:.52s}
+  .hero-stamp{opacity:0;animation:hero-fade .8s ease .8s forwards}
+}
+@keyframes hero-settle{from{transform:scale(1.045)}to{transform:scale(1)}}
+@keyframes hero-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes hero-fade{to{opacity:1}}
+
 .trust{border-bottom:1px solid var(--ink-08)}
 .trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,44px);padding:18px var(--pad)}
 .trust .mono{color:var(--ink-muted);font-size:var(--fs-sm);letter-spacing:.17em}
@@ -216,8 +233,10 @@
 /* the card is an <a>, not an <article> — none of these were clickable */
 .fnd-c{position:relative;background:var(--cream);border-radius:var(--r-card);
   display:flex;flex-direction:column;text-align:center;overflow:hidden;
-  color:var(--ink);transition:transform .3s}
-.fnd-c:hover{transform:translateY(-3px)}
+  color:var(--ink);transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
+@media (hover:hover) and (pointer:fine){
+  .fnd-c:hover{transform:translateY(-4px);box-shadow:0 26px 48px -30px rgba(23,20,15,.38)}
+}
 /* photo first, in the markup as well as the layout */
 .fnd-c .im{display:block;aspect-ratio:1/1;overflow:hidden}
 .fnd-c .im img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
@@ -291,9 +310,11 @@
 .coll{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);margin-top:clamp(30px,3.6vw,50px)}
 .gtile{position:relative;display:flex;border-radius:var(--r);overflow:hidden;
   min-height:clamp(310px,32vw,440px);background:var(--ink);
-  transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
 .gtile--wide{grid-column:1/-1;min-height:clamp(300px,26vw,400px)}
-.gtile:hover{transform:translateY(-3px)}
+@media (hover:hover) and (pointer:fine){
+  .gtile:hover{transform:translateY(-4px);box-shadow:0 26px 48px -30px rgba(23,20,15,.45)}
+}
 .gtile > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .gtile:hover > img{transform:scale(1.04)}
@@ -432,11 +453,10 @@
    label was landing at 1.06:1. Caught by measuring the flipped page against
    the original: master has one contrast failure, the first pass of this
    branch had three. Light variant, scoped to the flipped section only. */
-.vp .ph--dark{background:repeating-linear-gradient(135deg,
-  rgba(23,20,15,.05) 0 14px, rgba(23,20,15,.09) 14px 28px);
-  border-color:var(--ink-14)}
-.vp .ph--dark .lbl .mono{color:var(--ink-muted)}
-.vp .ph--dark .lbl .mono.k{color:var(--ink)}
+/* 2026-08-29: the .vp .ph--dark stripe override is gone. It existed because
+   the old dark placeholder was translucent stripes that vanished on a white
+   ground. The redesigned plate is solid ink with its own gold keyline, so it
+   reads correctly on every surface and the override only broke it. */
 
 /* ============================================================================
    SECOND PASS: making the light page finished rather than merely lighter.
