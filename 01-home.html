@@ -1737,13 +1737,13 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 /* Light-ground versions of the on-dark children. Scoped to these three
    sections only, so .on-dark keeps its meaning everywhere else. */
-.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink-70)}
+.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink)}
 .feat .eyebrow.on-dark, .vp .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
 
-/* Foil is illegal as type on white. Solid --gold-lo is 5.05:1 and passes. */
-.feat .foil, .vp .foil, .spot .foil{
-  background:none;-webkit-background-clip:initial;background-clip:initial;
-  -webkit-text-fill-color:currentColor;color:var(--gold-lo)}
+/* Cole 2026-08-29: one gold, the bright foil, everywhere. On white it is used
+   only as an accent word inside an otherwise-ink display headline: the ink
+   words carry the sentence, the gold word is the flourish, so the contrast
+   bar for body text does not apply. Body-size foil on white stays banned. */
 
 /* The bands used to do the separating. Without them, adjacent light sections
    need a hairline so the page reads as sections rather than one long column. */
@@ -1836,6 +1836,10 @@ html[data-rev="b"] .rev-bar{display:flex}
 
 /* --- the leftover dark-ground decoration -------------------------------- */
 .feat .halo{display:none}
+
+/* the "Why it says Lucky" card headline was still cream (set inline in the
+   rule below the override block, so it never got caught) */
+.vp-ed h3{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -2082,7 +2086,7 @@ html[data-rev="b"] .rev-bar{display:flex}
         <p class="body on-dark">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
         <div class="feat-cta">
           <a href="20-product-lgp01-gold.html" class="btn btn-foil"><span>Roll it pure</span><span class="ar">→</span></a>
-          <a href="20-product-lgp02-gold.html" class="btn btn-line-cream"><span>Prefer a mallet?</span></a>
+          <a href="20-product-lgp02-gold.html" class="btn btn-line"><span>Prefer a mallet?</span></a>
         </div>
         <div class="feat-stamp">
           <span class="stamp">LGP01 · Tracer Blade · 431 stainless · $199</span>

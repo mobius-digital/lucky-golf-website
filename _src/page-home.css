@@ -402,13 +402,13 @@
 
 /* Light-ground versions of the on-dark children. Scoped to these three
    sections only, so .on-dark keeps its meaning everywhere else. */
-.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink-70)}
+.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink)}
 .feat .eyebrow.on-dark, .vp .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
 
-/* Foil is illegal as type on white. Solid --gold-lo is 5.05:1 and passes. */
-.feat .foil, .vp .foil, .spot .foil{
-  background:none;-webkit-background-clip:initial;background-clip:initial;
-  -webkit-text-fill-color:currentColor;color:var(--gold-lo)}
+/* Cole 2026-08-29: one gold, the bright foil, everywhere. On white it is used
+   only as an accent word inside an otherwise-ink display headline: the ink
+   words carry the sentence, the gold word is the flourish, so the contrast
+   bar for body text does not apply. Body-size foil on white stays banned. */
 
 /* The bands used to do the separating. Without them, adjacent light sections
    need a hairline so the page reads as sections rather than one long column. */
@@ -501,3 +501,7 @@
 
 /* --- the leftover dark-ground decoration -------------------------------- */
 .feat .halo{display:none}
+
+/* the "Why it says Lucky" card headline was still cream (set inline in the
+   rule below the override block, so it never got caught) */
+.vp-ed h3{color:var(--ink)}
