@@ -136,21 +136,6 @@ button{font:inherit;color:inherit}
 .d-m {font-size:clamp(1.9rem,3.1vw,3rem);line-height:.9}
 .d-s {font-size:clamp(1.35rem,1.8vw,1.7rem);line-height:.94;font-variation-settings:'wdth' 70;font-weight:700}
 
-/* DISPLAY, SENTENCE CASE — the narrative register.
-   .disp is condensed (wdth 62), uppercase, weight 800, line-height .85. That
-   is a shop sign, and it is right for "GO PUT ONE IN THE BAG". It is wrong for
-   a sentence. Set a narrative headline in it and the reader gets a slab of
-   caps they have to decode a word at a time, which is what was happening to
-   "You're going to be looking down at this club a lot" and to the club-page
-   headlines that run a full sentence.
-
-   Same family, so this is not a second typeface: wider, lighter, mixed case,
-   and enough line-height for descenders. Use it where the headline is a
-   thought rather than a label. Keep .disp for the short punchy ones. */
-.disp-ed{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 88;font-weight:700;
-  text-transform:none;letter-spacing:-.014em;line-height:1.08;margin:0;
-  font-size:clamp(1.85rem,3.4vw,3.15rem)}
-
 /* DEVICE 4 · STAMP */
 .mono{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;
   letter-spacing:.2em;font-size:var(--fs-sm);line-height:1.5}
@@ -203,15 +188,10 @@ button{font:inherit;color:inherit}
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
   text-transform:uppercase;letter-spacing:.045em;font-size:var(--fs-lg);
   padding:15px 26px;min-height:48px;border:1.5px solid transparent;border-radius:var(--r);cursor:pointer;
-  transition:background .22s,color .22s,border-color .22s,transform .1s}
+  transition:background .22s,color .22s,border-color .22s}
 .btn > span{position:relative;z-index:2}
 .btn .ar{transition:transform .22s}
 .btn:hover .ar{transform:translateX(4px)}
-/* Every button had a hover state and no pressed state, so a click registered
-   as a colour change with no physical acknowledgement. One pixel down is
-   enough; more reads as a bounce. */
-.btn:active{transform:translateY(1px)}
-@media (prefers-reduced-motion:reduce){.btn{transition:background .22s,color .22s,border-color .22s}.btn:active{transform:none}}
 
 /* DEVICE 1 · FOIL button
    The highlight lives INSIDE the foil ramp and travels RIGHT → LEFT.
@@ -432,8 +412,7 @@ button{font:inherit;color:inherit}
 .rv-ph{position:relative;aspect-ratio:1/1;border-radius:var(--r);overflow:hidden;background:var(--white)}
 .rv-ph img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .rv-card:hover .rv-ph img,.rv-card:focus-visible .rv-ph img{transform:scale(1.04)}
-/* was a stray 2px; a 30px control is a small surface, so it takes --r */
-.rv-exp{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:var(--r);
+.rv-exp{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:2px;
   background:rgba(23,20,15,.62);display:grid;place-items:center;opacity:0;transition:opacity .25s}
 .rv-exp svg{width:14px;height:14px;stroke:var(--cream);stroke-width:2;fill:none;stroke-linecap:round}
 .rv-card:hover .rv-exp,.rv-card:focus-visible .rv-exp{opacity:1}

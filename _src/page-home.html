@@ -45,23 +45,19 @@
 </div>
 
 
-<!-- ============ SHOP BY FAMILY ============
-     CHAPTER HEAD (1 of 3). Only three headlines on this page carry .d-l: this
-     one, the price argument, and the close. Everything else steps down to
-     .d-m. Before this pass every section head was .d-l, which is why the page
-     read as a template with the words swapped: sixteen headlines all shouting
-     at one volume is the same as none of them shouting.
 
-     The "The lineup" eyebrow came off here. It restated the headline directly
-     underneath it, which is what eleven of the thirteen eyebrows on this page
-     were doing. Four survive; see the eyebrow note in page-home.css. -->
+
+
+
+<!-- ============ SHOP BY FAMILY ============ -->
 <section class="sec" id="families">
   <div class="wrap">
     <div class="sec-hd rv">
       <div class="l">
+        <span class="eyebrow">The lineup</span>
         <h2 class="disp d-l">Shop the <span class="foil">gold</span> standard</h2>
       </div>
-      <a href="{{link:c/clubs}}" class="btn btn-line btn-sm"><span>Shop the clubs</span><span class="ar">→</span></a>
+      <a href="{{link:c/clubs}}" class="btn btn-line btn-sm"><span>Shop everything</span><span class="ar">→</span></a>
     </div>
 
     <div class="pgrid msnap">
@@ -106,19 +102,16 @@
 
 <div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
 
-<!-- ============ FEATURED PRODUCT ============
-     Ratio was .92fr / 1.08fr, which is close enough to half-and-half that it
-     read as one more symmetrical two-column block. It is 5fr / 7fr now, and
-     the plinth overhangs the section padding top and bottom so the block has
-     an edge that is not the same edge as every other section. -->
+<!-- ============ FEATURED — DARK EVENT ============ -->
 <section class="feat sec">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <span class="halo" aria-hidden="true"></span>
   <div class="wrap">
     <div class="feat-in">
       <div class="rv">
-        <h2 class="disp d-m">No ping. No buzz. Just <span class="foil">roll</span></h2>
-        <p class="body">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
+        <span class="eyebrow on-dark">LGP01 · Tracer Blade</span>
+        <h2 class="disp d-l">No ping. No buzz. Just <span class="foil on-dark">roll</span></h2>
+        <p class="body on-dark">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
         <div class="feat-cta">
           <a href="{{link:p/lgp01-gold}}" class="btn btn-foil"><span>Roll it pure</span><span class="ar">→</span></a>
           <a href="{{link:p/lgp02-gold}}" class="btn btn-line"><span>Prefer a mallet?</span></a>
@@ -138,30 +131,14 @@
   </div>
 </section>
 
-<!-- ============ THE PRICE ARGUMENT ============
-     MERGED 2026-08-29. This was two sections: "Everything you're paying for is
-     the club" (the argument, three numbered claims) and "Gold clubs, honest
-     math" (four reassurance items, Takomo-shaped). They were making the same
-     case twice, one after the other with a review rail in between. Every claim
-     from both is still here; they are now argument-then-reassurance inside one
-     section instead of two sections that each opened with a headline.
-
-     The two verified photographs that used to sit in the value-props collage
-     came with it. This section had no photography at all before, which is part
-     of why the strongest argument on the page was also the flattest block.
-
-     KEEPS: eyebrow (1 of 4 on the page), .d-l chapter head (2 of 3), the
-     "Read our story" button, the #why anchor.
-     ⚠️ "Buy now, pay later" is VERIFIED: the live PDP loads Shopify's
-     payment-terms component (Shop Pay Installments). If installments are ever
-     turned off in Shopify, that item comes off the page with them.
-     ⚠️ Never write "warranty" in the reassurance list. Lucky HAS no warranty
-     (§30d); the sixty-day return is what fills Takomo's warranty slot. -->
+<!-- ============ WHY LUCKY — typographic moment (1 of 1) ============ -->
 <section class="why sec" id="why">
   <div class="why-in wrap">
-    <div class="why-hd rv">
-      <span class="eyebrow">Priced honestly</span>
-      <h2 class="disp d-l">Everything you're paying for is the <span class="foil">club</span></h2>
+    <div class="why-top rv">
+      <div>
+        <span class="eyebrow">Priced honestly</span>
+        <h2 class="disp d-l">Everything you're paying for is the <span class="foil">club</span></h2>
+      </div>
       <p class="body lead">Most of what you pay for a big-brand club isn't the club. It's the tour contracts, the distributors and the retail margin stacked on top. We skip all three and sell direct, so the price looks like a mistake right up until you understand why it isn't.</p>
     </div>
 
@@ -183,60 +160,15 @@
         <p>The forging, the milling, the finish. The parts you actually hit.</p>
       </div>
     </div>
-
-    <div class="why-props">
-      <div class="rv">
-        <ul class="vp-list">
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 12l8 4.5 8-4.5"/><path d="M4 16.5L12 21l8-4.5"/></svg>
-            <div>
-              <h3>Built like the expensive ones</h3>
-              <p>Forged wedges, milled putters, a titanium hybrid.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.7 5.6 6.1.9-4.4 4.2 1 6-5.4-2.9-5.4 2.9 1-6L3.2 10l6.1-.9z"/></svg>
-            <div>
-              <h3>Priced like we mean it</h3>
-              <p>You pay for the club and nothing stacked on top.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-            <div>
-              <h3>Sixty-day returns</h3>
-              <p>Not the one? Send it back.</p>
-            </div>
-          </li>
-          <li class="vp-item">
-            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18"/></svg>
-            <div>
-              <h3>Buy now, pay later</h3>
-              <p>Split it with Shop Pay at checkout.</p>
-            </div>
-          </li>
-        </ul>
-        <div class="vp-cta">
-          <a href="{{link:story}}" class="btn btn-foil sweep"><span>Read our story</span><span class="ar">&rarr;</span></a>
-        </div>
-      </div>
-      <div class="why-shots rv">
-        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-sole-turf.webp" alt="Sole and grooves of a Lucky Golf Carver wedge against turf" width="1067" height="1600" loading="lazy" decoding="async">
-        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp" alt="Lucky Golf clubs in the bag with the clover glove" width="2048" height="1365" loading="lazy" decoding="async">
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ============ CLUB FINDER ============
-     Eyebrow "Not sure where to start" removed: the headline asks the question
-     already. Head steps to .d-m. The "See every club" foot button is gone as
-     well, because the cards in the panel ARE the shop links and the page was
-     carrying five different labels for one shop-the-clubs intent. -->
+<!-- ============ CLUB FINDER ============ -->
 <section class="sec" id="finder">
   <div class="wrap">
     <div class="sec-hd rv"><div class="l">
-      <h2 class="disp d-m">Tell us what's costing you <span class="foil">shots</span></h2>
+      <span class="eyebrow">Not sure where to start</span>
+      <h2 class="disp d-l">Tell us what's costing you <span class="foil">shots</span></h2>
       <p class="body" style="margin-top:18px">Most golfers already know the answer to this one. Pick it, and we'll point you at the ones worth looking at.</p>
     </div></div>
     <!-- Every card is a LINK and every fact comes from products.json. Three
@@ -263,6 +195,7 @@
 {{/finderTabs}}
       <div class="fnd-foot">
         <p class="aside">Still not sure? Every club comes with sixty days to change your mind.</p>
+        <a href="#families" class="btn btn-line btn-sm"><span>See every club</span><span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -291,30 +224,28 @@
   </div>
 </section>
 
-<!-- ============ SOCIAL PROOF ============
-     MERGED 2026-08-29. The pull quote was its own full section sitting
-     directly above the review section, so the page said "here is a review"
-     and then "here are the reviews" back to back. The quote is now the lead
-     of this section: aggregate, then the one quote worth reading slowly,
-     then the rail. Both eyebrows ("Verified review", "What golfers say")
-     came off; the attribution line and the headline already say both.
+<!-- ============ PULL QUOTE ============ -->
+<section class="pull sec">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap pull-in">
+    <span class="eyebrow centre">Verified review</span>
+    <q class="rv">All of my friends are jealous from the look. And when they stick on the green and come back two feet, there's no doubt.</q>
+    <div class="pull-by rv"><span class="n">Brandon L.</span><span class="p">Carver 01 Gold &middot; 5 stars &middot; verified buyer</span></div>
+  </div>
+</section>
 
-     ⚠️ NO FABRICATED REVIEWS. Every quote and name here is a real Judge.me
-     record pulled from the public widget endpoint. -->
-<section class="sec proof">
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="sec">
   <div class="wrap">
     <div class="proof-hd rv">
-      <h2 class="disp d-m">Thousands of golfers bag <span class="foil">Lucky</span></h2>
+      <span class="eyebrow centre">What golfers say</span>
+      <h2 class="disp d-l">Thousands of golfers bag <span class="foil">Lucky</span></h2>
       <div class="agg">
         <span class="stars" style="--pct:95.6%" role="img" aria-label="4.78 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
         <span class="mono">4.78 average from verified buyers on Judge.me</span>
       </div>
     </div>
 
-    <div class="pull-in rv">
-      <q>All of my friends are jealous from the look. And when they stick on the green and come back two feet, there's no doubt.</q>
-      <div class="pull-by"><span class="n">Brandon L.</span><span class="p">Carver 01 Gold &middot; 5 stars &middot; verified buyer</span></div>
-    </div>
   </div>
   <div class="rail rv-rail" role="region" aria-label="Customer reviews" tabindex="0">
       <article class="rv-card" data-rv="0" tabindex="0" role="button"
@@ -437,114 +368,275 @@
   </div>
   <div class="wrap rv-foot-bar rv">
     <p class="aside" style="color:var(--ink-muted)">Rather make up your own mind?</p>
-    <a href="{{link:c/clubs}}" class="btn btn-line btn-sm"><span>Shop the clubs</span><span class="ar">&rarr;</span></a>
+    <a href="{{link:c/clubs}}" class="btn btn-line btn-sm"><span>Find your club</span><span class="ar">&rarr;</span></a>
   </div>
 </section>
 
-<!-- ============ WHY IT SAYS LUCKY ============
-     Was the lower half of the value-props section. It is its own section now
-     that the price argument moved up the page, and it is the one place on the
-     homepage that runs a sentence-case display face (.disp-ed) instead of
-     condensed uppercase. It is narrative rather than a headline, and 70px of
-     condensed caps was flattening it into another shop sign.
-
-     Content is Cole's own argument (2026-08-15): golf is luck sometimes,
-     that's the whole idea; and the name is a double meaning, confidence over
-     the ball plus tour quality without the overpaid logo. "Tour-quality" is
-     the permitted construction phrasing; "tour-proven" stays banned. -->
-<section class="ed sec">
-  <div class="ed-in">
-    <img class="ed-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp" alt="Golfer at address on course with a Lucky Golf wedge, shot from behind" width="1366" height="2048" loading="lazy" decoding="async">
-    <div class="ed-copy rv">
-      <span class="eyebrow">Why it says Lucky</span>
-      <h2 class="disp-ed">You're going to be looking down at this club <span class="foil">a lot</span></h2>
-      <p>Golf is luck sometimes. The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows it. That's the name on the club.</p>
-      <p>And when you're standing over the ball, you're either looking down at the same wedge everyone else bought, or at one that says Lucky: the same tour-quality build as the big names, without the overpaid logo.</p>
-      <p>That's the double meaning. Confidence over the ball, and knowing you didn't pay extra for it.</p>
-      <p class="aside">It's better to be lucky.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COMMUNITY + AMBASSADOR PROGRAM ============
-     MERGED 2026-08-29, and this is where the page changed most.
-
-     "Lucky golfers in the wild" was a rail of SIX tiles and every one of them
-     was an empty placeholder: no UGC assets exist yet. Directly below it sat
-     the ambassador section, which had no imagery either. So the page ran two
-     consecutive community sections, one of them a wall of grey boxes, saying
-     the same thing: golfers play these, come join in.
-
-     They are one section now. Every claim survives, both CTAs collapse to the
-     one that actually goes somewhere, and nine grey placeholder boxes come off
-     the homepage (six here, one in the value props, two in the gear tiles).
-     There are now zero photo-needed boxes on this page.
-
-     The rail comes BACK, in this section, the day real UGC exists. The six
-     shot briefs that were here are in SHOT-LIST.md; they were not thrown away.
-     Do not fake them with stock or with product renders.
-
-     The #trybe id stays: §7 field order and the Trybe page both depend on it. -->
-<section class="comm sec" id="trybe">
+<!-- ============ VALUE PROPS (OPEN D · 2) ============ -->
+<section class="vp sec">
   <div class="wrap">
-    <div class="comm-in rv">
-      <span class="eyebrow centre">Ambassador Program</span>
-      <h2 class="disp d-m">The people who actually <span class="foil">play them</span></h2>
-      <p class="body">An open program for golfers who put Lucky in the bag and say what they think. First look at drops, a group chat with us in it, and a shot at a club to play. No follower minimum. Write any time, and you'll get an answer either way.</p>
-      <div class="comm-cta">
-        <a href="{{link:trybe}}" class="btn btn-line"><span>About the program</span><span class="ar">&rarr;</span></a>
+    <div class="vp-in">
+      <div class="rv">
+        <!-- Takomo-shaped at Cole's instruction (2026-08-15): their headline is
+             "The best value in golf", their items are a short claim over a
+             shorter reassurance, and their button goes to Our Story, not shop.
+             Every reassurance here is verifiable: the 4.78 is Judge.me's, the
+             support line is the shipping page's Mon-Fri commitment, and there
+             is deliberately NO buy-now-pay-later item because I could not
+             verify installments are on. -->
+        <!-- Takomo-shaped per Cole's third pass (2026-08-15): no sub-headline,
+             no body paragraph — headline straight into four short claim/
+             reassurance pairs, button to Our Story. "Buy now, pay later" is
+             VERIFIED: the live PDP loads Shopify's payment-terms component
+             (Shop Pay Installments). If installments are ever turned off in
+             Shopify, this item must come off the page with them. -->
+        <span class="eyebrow on-dark">Why golfers switch</span>
+        <h2 class="disp d-l">Gold clubs, honest <span class="foil on-dark">math</span></h2>
+        <ul class="vp-list">
+          <!-- Mirrors Takomo's four one-for-one. Two swaps are deliberate and
+               must stay swapped: their "premium materials" is a banned word
+               here, so the materials themselves are named instead (spec-as-
+               punch, v7.3); and their "Two-year warranty" slot becomes our
+               sixty-day returns because Lucky HAS no warranty (§30d) — never
+               write "warranty" in this list. -->
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 12l8 4.5 8-4.5"/><path d="M4 16.5L12 21l8-4.5"/></svg>
+            <div>
+              <h3>Built like the expensive ones</h3>
+              <p>Forged wedges, milled putters, a titanium hybrid.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.7 5.6 6.1.9-4.4 4.2 1 6-5.4-2.9-5.4 2.9 1-6L3.2 10l6.1-.9z"/></svg>
+            <div>
+              <h3>Priced like we mean it</h3>
+              <p>You pay for the club and nothing stacked on top.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <div>
+              <h3>Sixty-day returns</h3>
+              <p>Not the one? Send it back.</p>
+            </div>
+          </li>
+          <li class="vp-item">
+            <svg class="vp-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18"/></svg>
+            <div>
+              <h3>Buy now, pay later</h3>
+              <p>Split it with Shop Pay at checkout.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="vp-cta">
+          <a href="{{link:story}}" class="btn btn-foil sweep"><span>Read our story</span><span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="vp-collage rv">
+        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-sole-turf.webp" alt="Sole and grooves of a Lucky Golf Carver wedge against turf" width="1067" height="1600" loading="lazy" decoding="async">
+        <div class="ph ph--dark">
+          <span class="lbl">
+            <span class="mono k">Photo needed</span>
+            <span class="mono">Hands regripping a Carver on the bench. Warm, close.</span>
+          </span>
+        </div>
+        <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp" alt="Lucky Golf clubs in the bag with the clover glove" width="2048" height="1365" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <div class="vp-ed rv">
+      <img class="home-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp" alt="Golfer at address on course with a Lucky Golf wedge, shot from behind" width="1366" height="2048" loading="lazy" decoding="async">
+      <div>
+        <!-- Rewritten to Cole's own argument (2026-08-15): golf is luck
+             sometimes, that's the whole idea; and the name is a double meaning
+             — confidence over the ball, plus tour quality without the overpaid
+             logo. "Tour-quality" is the permitted construction phrasing;
+             "tour-proven" stays banned. -->
+        <span class="eyebrow on-dark">Why it says Lucky</span>
+        <h3>You're going to be looking down at this club <span class="foil on-dark">a lot</span></h3>
+        <p>Golf is luck sometimes. The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows it. That's the name on the club.</p>
+        <p>And when you're standing over the ball, you're either looking down at the same wedge everyone else bought, or at one that says Lucky: the same tour-quality build as the big names, without the overpaid logo.</p>
+        <p>That's the double meaning. Confidence over the ball, and knowing you didn't pay extra for it.</p>
+        <p class="aside">It's better to be lucky.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE FINISH ============
-     Full bleed RIGHT, mirroring the narrative break's left bleed. Every other
-     section on this homepage started at the same left edge and ran to the same
-     right edge, 1304px wide at desktop, sixteen times. This one breaks the
-     container: the photograph runs to the right edge of the viewport and the
-     copy holds the page's normal left gutter.
-
-     ⚠️ ORDER MATTERS HERE. This section and the narrative break are mirror
-     images of each other, so back to back they read as one zigzag rather than
-     as two compositions. The community section sits between them on purpose.
-     If you reorder this part of the page, keep something that is not a
-     two-column split in between. Eyebrow "The finish" removed, head is .d-m. -->
-<section class="spot sec">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="spot-in">
-    <div class="spot-copy rv">
-      <h2 class="disp d-m">You'll get asked about it on the <span class="foil">first tee</span></h2>
-      <p class="body">Somebody in your group is going to ask what you're playing. Gold at address looks like nothing else out there, and it's the first thing the reviews talk about.</p>
-      <p class="body">Want it quieter? The blacked-out one does the same job without the conversation.</p>
-      <div class="spot-cta"><a href="#families" class="btn btn-foil sweep"><span>See the finishes</span><span class="ar">&rarr;</span></a></div>
-    </div>
-    <!-- Real photography, 2026 shoot, uploaded to Shopify Files 2026-08-23. -->
-    <img class="spot-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-hero.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedges in a golf bag, clover mark on the sole" width="2048" height="1639" loading="lazy" decoding="async">
-  </div>
-</section>
-
-<!-- ============ APPAREL + GEAR ============
-     HIGHLIGHT ZONE, not a category section (Cole, 2026-08-15: "anything we
-     want here", Takomo-style). Any price chip here is HAND-TYPED, so re-check
-     products.json every time a featured product rotates ($119/$109 drift is
-     how the finder got burned). Current: lgh01 $209 — verified 2026-08-15. The
-     collection tiles use count tokens so their chips cannot drift. (§20g
-     applies to count tokens too: a comment cannot spell one out with braces,
-     the engine reads comments.)
-
-     POLOS AND HATS ARE TEXT TILES NOW. They were image-led tiles with a scrim
-     over a photo-needed placeholder, which meant two of the three tiles in
-     this row were grey boxes with a label reading "Photo needed". On ink with
-     no image slot at all they read as a deliberate type tile instead of a
-     missing photograph. When the on-body shots land, they go back to being
-     image tiles: drop the --text modifier and put the <img> back.
-     Eyebrow "Worth a look" removed, head steps to .d-m. -->
-<section class="sec" id="gear">
+<!-- ============ SOCIAL RAIL ============ -->
+<section class="sec ugc" data-rail>
   <div class="wrap">
     <div class="sec-hd rv">
       <div class="l">
-        <h2 class="disp d-m">While you're <span class="foil">here</span></h2>
+        <span class="eyebrow">From the community</span>
+        <h2 class="disp d-l">Lucky golfers in the <span class="foil">wild</span></h2>
+      </div>
+      <div class="rail-nav">
+        <button class="rail-btn" data-rail-prev aria-label="Previous posts">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="rail-btn" data-rail-next aria-label="Next posts">
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="rail" role="region" aria-label="Customer and creator posts" tabindex="0">
+      <article class="post" data-po="0" tabindex="0" role="button" aria-label="Open post: Gold Carver in the bag on a cart path, walking shot, vertical crop">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator reel still</span>
+              <span class="mono">Gold Carver in the bag on a cart path, walking shot, vertical crop</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post" data-po="1" tabindex="0" role="button" aria-label="Open post: First tee, LGW02 Gold in hand, morning light">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">First tee, LGW02 Gold in hand, morning light</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+      <article class="post" data-po="2" tabindex="0" role="button" aria-label="Open post: Tracer Blade behind the ball on the green, ball rolling out">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator post</span>
+              <span class="mono">Tracer Blade behind the ball on the green, ball rolling out</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post" data-po="3" tabindex="0" role="button" aria-label="Open post: Full bag setup, gold clubs fanned, overhead">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">Full bag setup, gold clubs fanned, overhead</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+      <article class="post" data-po="4" tabindex="0" role="button" aria-label="Open post: Stryker off the deck, follow-through, mid-flight ball">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Creator reel still</span>
+              <span class="mono">Stryker off the deck, follow-through, mid-flight ball</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CREATOR HANDLE]</span>
+        </div>
+      </article>
+      <article class="post" data-po="5" tabindex="0" role="button" aria-label="Open post: Classic Polo on course, three-quarter, clover visible">
+        <div class="post-ph">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div class="ph">
+            <span class="lbl">
+              <span class="mono k">Customer post</span>
+              <span class="mono">Classic Polo on course, three-quarter, clover visible</span>
+            </span>
+          </div>
+        </div>
+        <div class="post-meta">
+          <span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>
+          <span class="h">@[CUSTOMER HANDLE]</span>
+        </div>
+      </article>
+  </div>
+  <div class="wrap ugc-foot rv">
+    <p class="aside" style="color:var(--ink-muted)">Tag us for a chance to get reposted.</p>
+    <a href="{{link:trybe#apply}}" class="btn btn-line btn-sm"><span>Join the program</span><span class="ar">→</span></a>
+  </div>
+</section>
+
+<!-- ============ THE FINISH (was the lifestyle break) ============ -->
+<section class="spot sec">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <div class="spot-in">
+      <div class="rv">
+        <span class="eyebrow on-dark">The finish</span>
+        <h2 class="disp d-l">You'll get asked about it on the <span class="foil on-dark">first tee</span></h2>
+        <p class="body on-dark">Somebody in your group is going to ask what you're playing. Gold at address looks like nothing else out there, and it's the first thing the reviews talk about.</p>
+        <p class="body on-dark" style="margin-top:14px">Want it quieter? The blacked-out one does the same job without the conversation.</p>
+        <div class="spot-cta"><a href="#families" class="btn btn-foil sweep"><span>See the finishes</span><span class="ar">&rarr;</span></a></div>
+      </div>
+      <!-- Real photography, 2026 shoot, uploaded to Shopify Files 2026-08-23. -->
+      <img class="spot-img rv" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-hero.webp?v=1787514597" alt="Lucky Golf Carver 01 Gold wedges in a golf bag, clover mark on the sole" width="2048" height="1639" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMBASSADOR PROGRAM (was the five-slot roster; OPEN D · 3) ====
+     The grid of bracketed headshots is gone (Cole, 2026-08-13): the program is
+     open to anyone who meets the criteria, and a lineup of five faces said the
+     opposite. A named roster returns only when there are real names worth
+     showing, with consent keys. The cream band and the #trybe id both stay —
+     the §7 field order and the UGC rail's "Join the program" button depend on
+     this section being here. -->
+<section class="roster sec" id="trybe">
+  <div class="wrap roster-in">
+    <div class="sec-hd rv">
+      <div class="l">
+        <span class="eyebrow">Ambassador Program</span>
+        <h2 class="disp d-l">The people who actually <span class="foil">play them</span></h2>
+        <p class="body" style="margin-top:18px">An open program for golfers who put Lucky in the bag and say what they think. First look at drops, a group chat with us in it, and a shot at a club to play.</p>
+      </div>
+    </div>
+
+    <div class="gear-foot rv">
+      <p class="body" style="max-width:52ch;font-size:.98rem">No follower minimum. Write any time, and you'll get an answer either way.</p>
+      <a href="{{link:trybe}}" class="btn btn-line btn-sm"><span>About the program</span><span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPAREL + GEAR ============ -->
+<section class="sec" id="gear">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <!-- HIGHLIGHT ZONE, not a category section (Cole, 2026-08-15: "anything
+           we want here", Takomo-style — and his picks are Takomo's mix: one
+           club feature wide, then the two apparel categories in general).
+           Any price chip here is HAND-TYPED, so re-check products.json every
+           time a featured product rotates ($119/$109 drift is how the finder
+           got burned). Current: lgh01 $209 — verified 2026-08-15. The
+           collection tiles use count tokens so their chips cannot drift.
+           (§20g applies to count tokens too: a comment cannot spell one out
+           with braces, the engine reads comments.) -->
+      <div class="l">
+        <span class="eyebrow">Worth a look</span>
+        <h2 class="disp d-l">While you're <span class="foil">here</span></h2>
         <p class="body" style="margin-top:18px">Whatever we're pointing at this month. New, restocked, or just good.</p>
       </div>
     </div>
@@ -568,7 +660,11 @@
           <span class="btn btn-line-cream btn-sm"><span>Fill the gap</span><span class="ar">&rarr;</span></span>
         </div>
       </article>
-      <article class="gtile gtile--text">
+      <article class="gtile">
+        <div class="ph ph--dark">
+          <span class="lbl"><span class="mono k">Photo needed</span><span class="mono">Portrait &middot; polo on-body, three-quarter crop, clover visible. Room bottom-left.</span></span>
+        </div>
+        <span class="gtile-scrim" aria-hidden="true"></span>
         <div class="gtile-in">
           <span class="gtile-ct">{{count:polos}} styles</span>
           <h3 class="gtile-nm"><a class="stretch" href="{{link:c/polos}}">Polos</a></h3>
@@ -576,7 +672,11 @@
           <span class="btn btn-line-cream btn-sm"><span>Shop polos</span><span class="ar">&rarr;</span></span>
         </div>
       </article>
-      <article class="gtile gtile--text">
+      <article class="gtile">
+        <div class="ph ph--dark">
+          <span class="lbl"><span class="mono k">Photo needed</span><span class="mono">Portrait &middot; hat on-body, brim three-quarter, late light. Room bottom-left.</span></span>
+        </div>
+        <span class="gtile-scrim" aria-hidden="true"></span>
         <div class="gtile-in">
           <span class="gtile-ct">{{count:hats}} styles</span>
           <h3 class="gtile-nm"><a class="stretch" href="{{link:c/hats}}">Hats</a></h3>
@@ -593,8 +693,7 @@
   </div>
 </section>
 
-<!-- ============ CLOSING CTA ============
-     CHAPTER HEAD (3 of 3), .d-l. -->
+<!-- ============ CLOSING CTA ============ -->
 <section class="close">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <span class="halo" aria-hidden="true"></span>
