@@ -7,7 +7,7 @@
    ========================================================================== */
 
 /* ---------- head ---------- */
-.clp-hd{position:relative;overflow:hidden;padding-top:34px}
+.clp-hd{position:relative;overflow-x:clip;overflow-y:visible;padding-top:34px}
 .clp-hd .wm{width:min(52vw,620px);height:min(52vw,620px);right:-6%;top:-24%;
   color:var(--ink);opacity:.035}
 .clp-hd .wrap{position:relative;z-index:1}
@@ -245,7 +245,7 @@
    QUICK ADD — same pill as the PLP, same reasons (Cole's notes 5 and 7).
    ========================================================================== */
 .pt-add{position:absolute;right:10px;bottom:10px;z-index:5}
-.qadd{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:9px 14px;
+.qadd{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:11px 14px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   cursor:pointer;color:var(--ink);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);font-weight:700;

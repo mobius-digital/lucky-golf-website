@@ -37,7 +37,7 @@
 .gal-count{position:absolute;right:12px;bottom:12px;z-index:4;
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.14em;color:var(--ink-muted);
   background:var(--white);padding:5px 9px;border-radius:2px}
-.gal-arw{position:absolute;top:50%;translate:0 -50%;z-index:5;width:42px;height:42px;
+.gal-arw{position:absolute;top:50%;translate:0 -50%;z-index:5;width:44px;height:44px;
   border:2px solid var(--ink-14);background:var(--white);border-radius:var(--r);cursor:pointer;
   display:grid;place-items:center;transition:border-color .2s,background .2s}
 .gal-arw:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}

@@ -1201,7 +1201,7 @@ button{font:inherit;color:inherit}
 .jm-bars{display:flex;flex-direction:column;gap:6px}
 /* these are real click targets (they filter the list), so they need a real
    target height, not just the height of the 8px bar inside them */
-.jm-bars .row{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:4px 0;
+.jm-bars .row{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:4px 0;
   background:none;border:0;cursor:pointer;text-align:left;
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.08em;color:var(--ink-muted)}
 .jm-bars .row:hover .t i{background:var(--gold-lo)}
@@ -1228,13 +1228,13 @@ button{font:inherit;color:inherit}
 .jm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
   padding:16px clamp(22px,2.4vw,32px);border-bottom:2px solid var(--ink-14)}
 .jm-filters{display:flex;flex-wrap:wrap;gap:7px}
-.jm-f{min-height:36px;padding:8px 14px;cursor:pointer;background:transparent;
+.jm-f{min-height:44px;padding:10px 14px;cursor:pointer;background:transparent;
   border:2px solid var(--ink-14);border-radius:var(--r);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-70);transition:background .18s,border-color .18s,color .18s}
 .jm-f:hover{border-color:var(--ink)}
 .jm-f[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
-.jm-sort select{min-height:36px;padding:7px 12px;border:2px solid var(--ink-14);
+.jm-sort select{min-height:44px;padding:10px 12px;border:2px solid var(--ink-14);
   border-radius:var(--r);background:var(--white);color:var(--ink);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase}
 .jm-count{margin:0;padding:14px clamp(22px,2.4vw,32px) 0;
@@ -1385,7 +1385,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    ========================================================================== */
 
 /* ---------- head ---------- */
-.clp-hd{position:relative;overflow:hidden;padding-top:34px}
+.clp-hd{position:relative;overflow-x:clip;overflow-y:visible;padding-top:34px}
 .clp-hd .wm{width:min(52vw,620px);height:min(52vw,620px);right:-6%;top:-24%;
   color:var(--ink);opacity:.035}
 .clp-hd .wrap{position:relative;z-index:1}
@@ -1623,7 +1623,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    QUICK ADD — same pill as the PLP, same reasons (Cole's notes 5 and 7).
    ========================================================================== */
 .pt-add{position:absolute;right:10px;bottom:10px;z-index:5}
-.qadd{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:9px 14px;
+.qadd{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:11px 14px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   cursor:pointer;color:var(--ink);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);font-weight:700;

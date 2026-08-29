@@ -7,7 +7,7 @@
    ========================================================================== */
 
 /* ---------- head ---------- */
-.br-hd{position:relative;overflow:hidden}
+.br-hd{position:relative;overflow-x:clip;overflow-y:visible}
 .br-hd .wm{width:min(54vw,640px);height:min(54vw,640px);right:-10%;top:-22%;
   color:var(--green);opacity:.05}
 .br-hd .wrap{position:relative;z-index:1}

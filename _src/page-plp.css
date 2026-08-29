@@ -109,7 +109,7 @@
    the card first and Cole did not find it — under a name and a price it reads
    as page furniture rather than as the control it is. */
 .pt-add{position:absolute;right:10px;bottom:10px;z-index:5}
-.qadd{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:9px 14px;
+.qadd{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:11px 14px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
   cursor:pointer;color:var(--ink);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);font-weight:700;
