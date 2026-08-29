@@ -1685,6 +1685,93 @@ html[data-rev="b"] .rev-bar{display:flex}
   .gear{grid-template-columns:1fr}
   .gear .g-hero{grid-column:auto}
 }
+
+/* ============================================================================
+   PALETTE SIMPLIFICATION (branch design/palette-simplify)
+
+   Four surfaces became two. The audit that drove it: the homepage changed
+   ground ELEVEN times through white, cream, ink and forest, while Takomo's
+   runs fourteen blocks on a single #F8F8F8. Every other page of ours already
+   changes twice, so the homepage was the outlier, not the system.
+
+   What changed and why:
+
+   1. CREAM IS GONE. It was the one surface with no job. It is also the exact
+      warm-paper default every premium-consumer site reaches for, which is why
+      the page read generic-premium rather than like Lucky. Gold is justified
+      because gold is the product. Cream never was.
+
+   2. FOREST IS GONE FROM THE PAGE BODY, kept in the header and footer where
+      it is chrome rather than content. Gold measures 1.84:1 on --green and
+      3.56:1 on forest: a dark ground where our own accent barely works. Ink
+      gives gold 6.95:1. Two dark grounds, one of them functional.
+
+   3. FIVE DARK BANDS BECAME THREE ZONES: an opening (hero + marquee), one
+      mid-page moment (the brand band), and the closer. Dark bookends plus a
+      single deliberate switch is a composition. Five alternating bands is
+      just alternation.
+
+   THE COST, STATED HONESTLY: .feat, .vp and .spot each carried a foil
+   headline, and foil-as-type is illegal on white (the ramp peaks at
+   --gold-hi, under 2:1). Those three keep a gold accent word, but as SOLID
+   --gold-lo, which measures 5.05:1 on white and passes AA. Three foil
+   moments traded for a calmer page. If that trade is wrong, this whole block
+   reverts cleanly.
+   ========================================================================= */
+
+/* --- cream retired ------------------------------------------------------ */
+.why, .pull, .roster{background:var(--white)}
+
+/* --- forest retired from the page body ---------------------------------- */
+/* The marquee now continues the hero instead of interrupting it with a
+   second dark colour one strip below. */
+.mq{background:var(--ink)}
+.bband{background:var(--ink)}
+
+/* --- three dark bands flipped to the page ground ------------------------ */
+.feat, .vp, .spot{background:var(--white);color:var(--ink)}
+.feat::before, .vp::before, .spot::before{background:none}
+.feat h2, .vp h2, .spot h2{color:var(--ink)}
+.feat .wm, .spot .wm, .vp .wm{opacity:.035;color:var(--ink)}
+.feat .halo{display:none}
+
+/* Light-ground versions of the on-dark children. Scoped to these three
+   sections only, so .on-dark keeps its meaning everywhere else. */
+.feat .on-dark, .vp .on-dark, .spot .on-dark{color:var(--ink-70)}
+.feat .eyebrow.on-dark, .vp .eyebrow.on-dark, .spot .eyebrow.on-dark{color:var(--ink-muted)}
+
+/* Foil is illegal as type on white. Solid --gold-lo is 5.05:1 and passes. */
+.feat .foil, .vp .foil, .spot .foil{
+  background:none;-webkit-background-clip:initial;background-clip:initial;
+  -webkit-text-fill-color:currentColor;color:var(--gold-lo)}
+
+/* The bands used to do the separating. Without them, adjacent light sections
+   need a hairline so the page reads as sections rather than one long column. */
+.why, .pull, .feat, .spot, .roster{border-top:1px solid var(--ink-08)}
+
+/* Every rule inside these three that assumed a dark ground. Found by measuring
+   the flipped page, not by reading: sixteen strings were landing at 1.1:1,
+   which is cream on white. The .on-dark override above did not reach them
+   because they set --cream and --cream-70 directly. */
+.feat h2, .spot h2, .vp h2,
+.vp-ed .aside{color:var(--ink)}
+.feat-stamp,
+.vp-item p,
+.vp-ed p{color:var(--ink-70)}
+.vp-item h3{color:var(--ink)}
+/* gold-hi is a dark-ground stroke colour; on white it is under 2:1 */
+.vp-ic{stroke:var(--gold-lo)}
+.vp-sub{color:var(--gold-lo)}
+
+/* .ph--dark is a dark-ground placeholder and .vp now sits on white, so its
+   label was landing at 1.06:1. Caught by measuring the flipped page against
+   the original: master has one contrast failure, the first pass of this
+   branch had three. Light variant, scoped to the flipped section only. */
+.vp .ph--dark{background:repeating-linear-gradient(135deg,
+  rgba(23,20,15,.05) 0 14px, rgba(23,20,15,.09) 14px 28px);
+  border-color:var(--ink-14)}
+.vp .ph--dark .lbl .mono{color:var(--ink-muted)}
+.vp .ph--dark .lbl .mono.k{color:var(--ink)}
 </style>
 </head>
 <body>
