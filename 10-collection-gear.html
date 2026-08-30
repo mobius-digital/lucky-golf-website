@@ -301,14 +301,9 @@ button{font:inherit;color:inherit}
      gold   #C29A2B  1.84:1  FAIL        -> never use on green, at any size
      gold-hi #EDD27C 3.27:1  PASS 3:1 non-text only -> rules, borders, badges
    That is why the hover underline moved gold -> gold-hi and nav text is white. */
-.hdr{position:sticky;top:0;z-index:60;background:var(--ink);
+.hdr{position:sticky;top:0;z-index:60;background:var(--brand);
   border-bottom:2px solid var(--brand-accent);
   box-shadow:0 10px 28px -22px rgba(23,20,15,.55)}
-/* 2026-08-29, Cole's call: the header was the last green rectangle on a page
-   whose every other surface is ink, white or gold - chrome competing with the
-   composition instead of framing it. Ink header over the ink hero makes the
-   top of the page one uninterrupted piece, mirroring the ink ending. Green
-   stays a brand accent (clover marks, PDP band), not a bar. */
 .hdr::before{content:'';position:absolute;inset:0;background:var(--brand-groove);pointer-events:none}
 .hdr > *{position:relative;z-index:1}
 .hdr-in{display:flex;align-items:center;gap:clamp(18px,3vw,46px);padding:8px var(--pad)}
@@ -338,7 +333,7 @@ button{font:inherit;color:inherit}
 .burger[aria-expanded="true"] i:nth-child(1){top:22px;rotate:45deg}
 .burger[aria-expanded="true"] i:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] i:nth-child(3){top:22px;rotate:-45deg}
-.mnav{display:none;border-top:1px solid var(--on-brand-22);background:var(--ink);padding:8px var(--pad) 18px}
+.mnav{display:none;border-top:1px solid var(--on-brand-22);background:var(--brand);padding:8px var(--pad) 18px}
 .mnav[data-open="true"]{display:block}
 .mnav a{display:flex;align-items:center;min-height:48px;padding:8px 0;border-bottom:1px solid var(--on-brand-22);
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;
@@ -1375,6 +1370,69 @@ html[data-rev="b"] .rev-bar{display:flex}
    radius, so neither does the image. Caught by comparing each image
    against a .ph injected into the same parent. */
 .gtile .home-img{border-radius:0;height:100%}
+
+/* ============================================================================
+   THE COLOUR SYSTEM  (2026-08-29, Cole: "too many colours going on")
+
+   The census that drove it. Surface area at 1440, per template:
+     home        white 30.0M · ink 5.0M · cream 2.9M · green 0
+     club PDP    white 17.1M · cream 5.0M · ink 3.4M · green 1.3M
+     collection  white 11.5M · cream 4.6M · ink 1.6M · green 1.0M
+     story       white  6.5M · cream 1.5M · ink 1.4M · green 0
+   Four surfaces, and every template used a different combination. Nine brand
+   colours in total. That is the "too many colours" feeling, and it was drift
+   rather than a decision - the palette work only ever reached the homepage.
+
+   FOUR COLOURS, ONE JOB EACH:
+     WHITE  the page. Everything reads here.
+     INK    the dark moments INSIDE the page: hero, one band, closing CTA.
+     GREEN  the masthead and the clover. Green appears on all 67 pages.
+     GOLD   the product. Accent, CTA, foil, rules.
+
+   CREAM IS DEMOTED, NOT DELETED. It stays as a card/tile fill and as text on
+   dark grounds (never pure white on ink). It stops being a full-width band,
+   which is where its ~5M of area was coming from.
+
+   WHY GREEN IS THE FRAME AND NOT THE CONTENT DARK. Measured, not assumed:
+     gold on ink    6.95:1  passes AA body
+     gold on green  3.56:1  fails AA body, large text only
+     white on green 9.40:1  excellent
+   So green cannot host gold type, but it is a superb ground for white. Chrome
+   carries white type and no gold type. Content bands carry gold. Each colour
+   goes where it measures well. NEVER put gold text on green.
+   ========================================================================= */
+
+/* --- cream retires as a page band; the groove texture stays -------------- */
+.band-cream{background:var(--white)}
+.band-cream::before{background:var(--groove-light)}
+/* the two sections that defaulted to cream in core */
+.pull{background:var(--white)}
+
+/* Those bands were doing the separating. Without a colour change the eye needs
+   roughly double the gap before it reads two sections as two, which is the
+   same compensation the homepage got when its cream went. */
+.band-cream, .sec-tight.band-cream{padding-block:clamp(84px,7.4vw,136px)}
+
+/* --- the clover is the brand green, not the success green ---------------- */
+/* #008340 stays, but only for STATE (in stock, added, verified) where bright
+   green is a universal convention. Brand marks take --brand so the clover in
+   the page matches the clover in the header. */
+.breath .mk,.cbul,.post-meta .mk,.cd-empty .mk{color:var(--brand)}
+
+/* --- the marquee is a dark moment, not a green one ----------------------- */
+/* It was green on the PDP and ink on the home page. One answer: ink, so it
+   reads as the same device everywhere. */
+.mq{background:var(--ink)}
+
+/* --- green is the FRAME, ink is the content dark ------------------------- */
+/* These full-width bands sat on --brand, so green was doing two different
+   jobs: chrome around the page AND a moment inside it. That is exactly the
+   ambiguity that made the palette feel noisy. They become ink, which is the
+   one dark the content layer uses, and which lets a gold CTA sit on them
+   (6.95:1) where green could not (3.56:1). The header and footer keep green
+   to themselves, so green now means one thing: this is the frame. */
+/* (applied at source in each page stylesheet - those load after core, so an
+   override here would never win.) */
 
 /* ==========================================================================
    COLLECTION / PLP  ·  one stylesheet, seven pages

@@ -57,7 +57,7 @@
   line-height:1.6;border-left:2px solid var(--gold);padding-left:16px}
 
 /* ---- closer ------------------------------------------------------------ */
-.cmp-close{position:relative;overflow:hidden;background:var(--cream);
+.cmp-close{position:relative;overflow:hidden;background:var(--white);
   padding:clamp(56px,7vw,96px) 0}
 .cmp-close-in{max-width:60ch}
 .cmp-close .body{margin-top:16px}

@@ -27,7 +27,7 @@
 .br-stats-note{margin-top:clamp(30px,3.2vw,44px);max-width:56ch;color:var(--cream-70)}
 
 /* ---------- alternating rows ---------- */
-.br-row--cream{position:relative;background:var(--cream)}
+.br-row--cream{position:relative;background:var(--white)}
 .br-row--cream::before{content:'';position:absolute;inset:0;background:var(--groove-light);
   pointer-events:none}
 .br-row--cream > *{position:relative;z-index:1}
@@ -253,7 +253,7 @@
   font-size:clamp(.98rem,1.1vw,1.06rem);max-width:64ch}
 
 /* ---------- the brand moment ---------- */
-.br-fit{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);
+.br-fit{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);
   padding:clamp(62px,7vw,102px) 0;border-block:2px solid var(--brand-accent)}
 .br-fit::before{content:'';position:absolute;inset:0;background:var(--brand-groove);
   pointer-events:none}
