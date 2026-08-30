@@ -1022,6 +1022,11 @@ button{font:inherit;color:inherit}
     grid-auto-flow:column !important;grid-auto-columns:76%;
     overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
     margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);padding-bottom:14px;
+    /* scroll-padding, not just padding. scroll-snap-align:start snaps the first
+       card to the container's raw edge and cancels the gutter, so the card sits
+       flush against the screen. .rail has carried this since it was built,
+       which is why the homepage rails never showed the bug. */
+    scroll-padding-left:var(--pad);
     scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.10)}
   .msnap > *{scroll-snap-align:start}
   .msnap::-webkit-scrollbar{height:4px}
@@ -1146,8 +1151,16 @@ button{font:inherit;color:inherit}
    unstyled <ol> renders as a numbered list in the body font.
    ========================================================================== */
 /* 26px, not 18: the header is sticky, so the breadcrumb is the first thing
-   that slides under it. Flush against a coloured bar it reads as clipped. */
-.crumb{padding:26px 0 0}
+   that slides under it. Flush against a coloured bar it reads as clipped.
+
+   ⚠️ padding-top ONLY, never the shorthand. .crumb is always paired with
+   .wrap, and .wrap's `padding:0 var(--pad)` is what holds the trail on the
+   page's left gutter. This rule loads ~1000 lines later, so a `padding:26px
+   0 0` shorthand here silently zeroed the horizontal padding and pinned the
+   breadcrumb to the bare edge of the viewport on every PDP and collection
+   page. Cole caught it in a screenshot; the overflow and tap-target sweeps
+   never would have, because nothing was overflowing or too small. */
+.crumb{padding-top:26px}
 /* NOWRAP + horizontal scroll rather than wrap. A four-level trail ending in a
    long product name wraps on a phone, and a breadcrumb broken across two lines
    under a sticky bar is exactly what "getting cut off" looks like.
@@ -1562,7 +1575,11 @@ html[data-rev="b"] .rev-bar{display:flex}
    The dot pins to the bottom with margin-top:auto so every dot lands on
    the rail no matter how tall its entry runs. */
 .br-tl-rail{overflow-x:auto;scroll-snap-type:x proximity;
-  padding:0 clamp(20px,4vw,64px) 10px}
+  padding:0 clamp(20px,4vw,64px) 10px;
+  /* Without this the snap container aligns the first entry to its raw edge and
+     scrolls the padding away, so "The Gold Wedge" sat flush at x=0. Measured:
+     57.6px of padding, 64px of scrollLeft, first card at 0. */
+  scroll-padding-left:clamp(20px,4vw,64px)}
 .br-tl-rail::-webkit-scrollbar{height:4px}
 .br-tl-rail::-webkit-scrollbar-track{background:rgba(246,242,232,.14)}
 .br-tl-rail::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}

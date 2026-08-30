@@ -126,7 +126,11 @@
    The dot pins to the bottom with margin-top:auto so every dot lands on
    the rail no matter how tall its entry runs. */
 .br-tl-rail{overflow-x:auto;scroll-snap-type:x proximity;
-  padding:0 clamp(20px,4vw,64px) 10px}
+  padding:0 clamp(20px,4vw,64px) 10px;
+  /* Without this the snap container aligns the first entry to its raw edge and
+     scrolls the padding away, so "The Gold Wedge" sat flush at x=0. Measured:
+     57.6px of padding, 64px of scrollLeft, first card at 0. */
+  scroll-padding-left:clamp(20px,4vw,64px)}
 .br-tl-rail::-webkit-scrollbar{height:4px}
 .br-tl-rail::-webkit-scrollbar-track{background:rgba(246,242,232,.14)}
 .br-tl-rail::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
