@@ -125,6 +125,11 @@ def _pages():
         src="search", built=True)
     add("404", "51-404.html", "Page not found · Lucky Golf",
         src="404", built=True)
+    # The design system. UNLISTED on purpose: built and live, but linked from
+    # no nav, no footer, no sitemap - it is the internal reference for anyone
+    # (human or AI) building Lucky Golf surfaces. Cole's brief 2026-08-30.
+    add("styleguide", "90-styleguide.html", "Lucky Golf Design System",
+        src="styleguide", built=True)
 
     return p
 

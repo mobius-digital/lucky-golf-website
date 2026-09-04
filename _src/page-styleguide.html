@@ -1,0 +1,315 @@
+<!-- ============ THE LUCKY GOLF DESIGN SYSTEM ============
+     UNLISTED: live at 90-styleguide.html, linked from nowhere. This page is
+     the single reference for anyone building a Lucky Golf surface: the web
+     team, the email team, ad designers, and any AI given this URL.
+
+     Every example below renders with the site's real core.css. Change a
+     button, a colour or a card in core and this page changes with it, so it
+     cannot drift out of date. The written specs are the part to keep honest
+     by hand. To update: edit _src/page-styleguide.html, run
+     `python tools/build.py`, commit. -->
+
+<section class="sg-hd">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Internal reference · not linked from the site</span>
+    <h1 class="disp">The Lucky Golf <span class="foil on-dark">design system</span></h1>
+    <p class="body on-dark">Every colour, typeface, device and component on the site, rendered live from the same stylesheet the site uses. If it is not in here, it is not Lucky. Sections at the bottom translate the system to email and to ads.</p>
+  </div>
+</section>
+
+<!-- ============ 1 · COLOUR ============ -->
+<section class="sg-sec" id="colour">
+  <div class="wrap">
+    <h2 class="disp d-m">Colour: four colours, one job each</h2>
+    <p class="sg-lede">If you are unsure what colour something should be, the job answers it. Cream is a material, not a surface: card fills and text on dark, never a full-width band.</p>
+
+    <div class="sg-swatches">
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(23,20,15,.1)"></div>
+        <div class="sg-sw-body"><b>White</b><p>The page. Everything reads here.</p><code>#FFFFFF · --white</code></div></div>
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#17140F"></div>
+        <div class="sg-sw-body"><b>Ink</b><p>Dark moments inside the page: hero, one band, the closing call, footer.</p><code>#17140F · --ink</code></div></div>
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#0B5130"></div>
+        <div class="sg-sw-body"><b>Green</b><p>The masthead and the clover. Chrome, never a content band.</p><code>#0B5130 · --brand</code></div></div>
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#C29A2B"></div>
+        <div class="sg-sw-body"><b>Gold</b><p>The product. Accent, buttons, rules. Ramps into the foil.</p><code>#C29A2B · --gold</code></div></div>
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#F6F2E8"></div>
+        <div class="sg-sw-body"><b>Cream</b><p>Card and tile fill, and body text on dark. Demoted from surface to material.</p><code>#F6F2E8 · --cream</code></div></div>
+      <div class="sg-sw"><div class="sg-sw-chip" style="background:#008340"></div>
+        <div class="sg-sw-body"><b>State green</b><p>Success only: in stock, added to cart, verified buyer. Never decoration.</p><code>#008340 · --green</code></div></div>
+    </div>
+
+    <div class="sg-scroll" style="margin-top:38px">
+      <table class="sg-tbl">
+        <tr><th>Combination</th><th>Where</th><th>Ratio</th><th>Verdict</th></tr>
+        <tr><td>Cream on ink</td><td>Body copy on dark bands</td><td class="n">16.43</td><td class="sg-pass">Pass</td></tr>
+        <tr><td>White on green</td><td>Masthead type</td><td class="n">9.40</td><td class="sg-pass">Pass</td></tr>
+        <tr><td>Green on white</td><td>The clover mark</td><td class="n">9.40</td><td class="sg-pass">Pass</td></tr>
+        <tr><td>Gold on ink</td><td>Buttons and accents on dark</td><td class="n">6.95</td><td class="sg-pass">Pass</td></tr>
+        <tr><td>Gold-lo on white</td><td>Gold accents on light</td><td class="n">5.05</td><td class="sg-pass">Pass</td></tr>
+        <tr><td>Gold on green</td><td>Banned everywhere</td><td class="n">3.56</td><td class="sg-fail">Fail</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · THE FOIL ============ -->
+<section class="sg-sec" id="foil">
+  <div class="wrap">
+    <h2 class="disp d-m">The foil</h2>
+    <p class="sg-lede">Not a colour: a material built from three golds, with the light stop in the middle so it falls away like a real foil stamp. The most distinctive device the brand owns.</p>
+
+    <div class="sg-dark" style="margin-bottom:22px">
+      <p class="disp d-l foil on-dark" style="margin:0">Roll it pure</p>
+    </div>
+
+    <div class="sg-ramps">
+      <div class="sg-ramp"><span class="bar" style="background:var(--lg-foil-v)"></span><b>Vertical</b><p>Display type. The vertical ramp is what reads as metal.</p></div>
+      <div class="sg-ramp"><span class="bar" style="background:var(--lg-foil-h)"></span><b>Horizontal</b><p>Buttons. The highlight travels on hover.</p></div>
+      <div class="sg-ramp"><span class="bar" style="background:var(--lg-foil-v-dark)"></span><b>Vertical, on dark</b><p>Brightened so it holds against ink.</p></div>
+      <div class="sg-ramp"><span class="bar" style="background:var(--lg-foil-tag)"></span><b>Tag</b><p>Chips and flags. Short ramp so it never bands small.</p></div>
+    </div>
+
+    <ul class="sg-rules" style="margin-top:30px">
+      <li><b>Stops:</b> #8A6A1C low, #C29A2B mid, #EDD27C high. Never invent a fourth.</li>
+      <li><b>On white:</b> foil is allowed as one accent word inside a display headline. The ink words carry the sentence; the gold word is the flourish.</li>
+      <li><b>Body-size foil on white is banned.</b> The ramp peaks too light to read.</li>
+      <li><b>Small type on gold</b> is only legal on the tag ramp, in ink.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3 · TYPE ============ -->
+<section class="sg-sec" id="type">
+  <div class="wrap">
+    <h2 class="disp d-m">Type: one family, two voices</h2>
+    <p class="sg-lede">Everything is Archivo, a variable font. The display voice is condensed (width 62), uppercase, weight 800, line-height .85. The reading voice is normal width. There is no second typeface anywhere.</p>
+
+    <div class="sg-type">
+      <div class="sg-type-row"><span class="sample disp d-xl">Attention</span><code>.disp .d-xl · hero only</code></div>
+      <div class="sg-type-row"><span class="sample disp d-l">Gold standard</span><code>.disp .d-l · chapter heads, max 3 per page</code></div>
+      <div class="sg-type-row"><span class="sample disp d-m">Tell us what is costing you shots</span><code>.disp .d-m · section heads</code></div>
+      <div class="sg-type-row"><span class="sample disp d-s">No middlemen</span><code>.disp .d-s · card titles</code></div>
+      <div class="sg-type-row"><span class="sample disp-ed">A sentence set like a thought, not a shop sign.</span><code>.disp-ed · narrative headlines</code></div>
+      <div class="sg-type-row"><span class="sample body" style="max-width:47ch">Body copy is 17px Archivo at width 100, ink at 70 percent, and never runs wider than 47 characters.</span><code>.body · 17px</code></div>
+      <div class="sg-type-row"><span class="sample aside">Still not sure? Every club comes with sixty days to change your mind.</span><code>.aside · the charm voice</code></div>
+      <div class="sg-type-row"><span class="sample eyebrow" style="margin:0">Priced honestly</span><code>.eyebrow · max 1 per 3 sections</code></div>
+      <div class="sg-type-row"><span class="sample stamp">LGP01 · Tracer Blade · 431 stainless</span><code>.stamp · spec data only</code></div>
+    </div>
+
+    <ul class="sg-rules" style="margin-top:30px">
+      <li><b>The ladder is the hierarchy.</b> One d-xl moment per page, at most three d-l chapter heads, d-m for everything else. A page of identical headline sizes reads as a template.</li>
+      <li><b>Sentence-case display (.disp-ed)</b> is for headlines that are a thought. Condensed caps is for short punchy labels.</li>
+      <li><b>Eyebrows orient, never restate.</b> If the eyebrow says what the headline says, delete it.</li>
+      <li><b>No em dashes anywhere.</b> Commas, periods or parentheses.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4 · BUTTONS ============ -->
+<section class="sg-sec" id="buttons">
+  <div class="wrap">
+    <h2 class="disp d-m">Buttons</h2>
+    <p class="sg-lede">All buttons press down when clicked, arrows nudge on hover, and every target is at least 44px tall. One primary intent per page gets one label, used everywhere.</p>
+
+    <div class="sg-row">
+      <div class="sg-demo"><a href="#buttons" class="btn btn-foil"><span>Shop the clubs</span><span class="ar">&rarr;</span></a></div>
+      <div class="sg-spec"><b>Foil primary</b><code>.btn .btn-foil</code>
+        <ul><li>The one primary action per view</li><li>Ink text on the horizontal foil ramp</li><li>Add <code>.sweep</code> for the slow glint, hero only</li></ul></div>
+    </div>
+    <div class="sg-row">
+      <div class="sg-demo"><a href="#buttons" class="btn btn-line"><span>Prefer a mallet?</span></a>&nbsp;&nbsp;<a href="#buttons" class="btn btn-line btn-sm"><span>Shop all gear</span><span class="ar">&rarr;</span></a></div>
+      <div class="sg-spec"><b>Line secondary</b><code>.btn-line · .btn-sm</code>
+        <ul><li>Secondary actions on light grounds</li><li>Fills to ink on hover</li></ul></div>
+    </div>
+    <div class="sg-row">
+      <div class="sg-demo"><div class="sg-dark" style="display:inline-block"><a href="#buttons" class="btn btn-line-cream"><span>Read our story</span></a></div></div>
+      <div class="sg-spec"><b>Cream line, on dark</b><code>.btn-line-cream</code>
+        <ul><li>Secondary on ink or green grounds</li><li>Never on light grounds</li></ul></div>
+    </div>
+    <div class="sg-row">
+      <div class="sg-demo"><button class="btn btn-ink" type="button"><span>Add to cart</span></button></div>
+      <div class="sg-spec"><b>Ink solid</b><code>.btn-ink</code>
+        <ul><li>Commerce actions in cards and drawers</li><li>Goes gold on hover, state-green when added</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · COMPONENTS ============ -->
+<section class="sg-sec" id="components">
+  <div class="wrap">
+    <h2 class="disp d-m">Components</h2>
+    <p class="sg-lede">Rendered by the site's own stylesheet. Copy the markup, keep the classes, and it cannot come out off-brand.</p>
+
+    <div class="sg-row">
+      <div class="sg-demo">
+        <div class="sg-shelf">
+          <article class="ptile" style="opacity:1;transform:none">
+            <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="Lucky Golf Carver in gold" width="2048" height="2048" loading="lazy" decoding="async"></div>
+            <a class="stretch" href="#components"><span class="pt-nm">Carver 01 Gold</span></a>
+            <p class="pt-hook">The one that makes you stop blaming the swing. Six lofts, two grinds, either hand.</p>
+            <span class="pt-meta"><span class="pt-pr">$99</span></span>
+            <span class="pt-tag">Clean</span>
+          </article>
+        </div>
+      </div>
+      <div class="sg-spec"><b>Product tile</b><code>.ptile</code>
+        <ul><li>Cream fill, photo bleeds to the edges, multiply blend drops studio white into the cream</li><li>Name in condensed caps, hook under 20 words, price plain</li><li>Corner tag on the tag foil, one word</li><li>Lifts with a tinted shadow on hover</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="max-width:340px">
+        <article class="rv-card" style="cursor:default">
+          <div class="rv-ph"><img width="2048" height="2048" decoding="async" src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="Carver 01 Gold" loading="lazy"></div>
+          <p class="rv-q">&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball.&rdquo;</p>
+          <div class="rv-foot">
+            <span class="stars" style="--pct:100.0%" role="img" aria-label="5 out of 5"><span class="s-bg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="s-fg"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+            <span class="rv-n">1981 C.o.M.</span>
+            <span class="rv-p">Carver 01 Gold</span>
+          </div>
+        </article>
+      </div>
+      <div class="sg-spec"><b>Review card</b><code>.rv-card</code>
+        <ul><li>Every quote and name is a real Judge.me record. Fabricating one is a firing offence for the page</li><li>Stars in gold, attribution name plus product, never name alone</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="ph" style="min-height:190px"><span class="lbl"><span class="mono k">Photo needed</span><span class="mono">Hands regripping a Carver on the bench. Warm, close.</span></span></div>
+        <div class="ph ph--dark" style="min-height:190px"><span class="lbl"><span class="mono k">Video needed</span><span class="mono">Greenside chip, one hop and stop.</span></span></div>
+      </div>
+      <div class="sg-spec"><b>Placeholder plates</b><code>.ph · .ph--dark</code>
+        <ul><li>An honest slot for photography that does not exist yet. Never fake the shot, never leave an unlabelled hole</li><li>Solid brand plate, gold keyline, the shot brief as the label</li><li>Light plate on light grounds, ink plate anywhere</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo">
+        <span class="eyebrow" style="margin-bottom:14px">Verified review</span>
+        <q style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 84;font-weight:600;font-size:1.45rem;line-height:1.3;display:block;max-width:44ch">All of my friends are jealous from the look. And when they stick on the green and come back two feet, there's no doubt.</q>
+      </div>
+      <div class="sg-spec"><b>Pull quote</b>
+        <ul><li>One per page, three lines max</li><li>Real buyer, real words, attribution follows</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · BANDS AND LAYOUT ============ -->
+<section class="sg-sec" id="layout">
+  <div class="wrap">
+    <h2 class="disp d-m">Bands, layout, and the seam rules</h2>
+
+    <div class="sg-row">
+      <div class="sg-demo">
+        <div class="sg-green">
+          <span class="logo" style="color:#fff;min-height:0"><svg style="width:120px;height:38px" aria-label="Lucky Golf"><use href="#lg-luckygolf"/></svg></span>
+          <p class="aside" style="margin:14px 0 0;color:rgba(255,255,255,.88)">It's better to be lucky.</p>
+        </div>
+      </div>
+      <div class="sg-spec"><b>The green frame</b>
+        <ul><li>Green is chrome: the sticky masthead with its 2px gold rule, and brand punctuation</li><li>White type only. Gold appears on green as the rule or the clover, never as words</li></ul></div>
+    </div>
+
+    <ul class="sg-rules" style="margin-top:8px">
+      <li><b>Page rhythm:</b> green masthead, ink hero, white content with cream cards, one ink moment mid-page, ink closing call, ink footer with the gold rule. Every template follows it.</li>
+      <li><b>Radius law:</b> small surfaces (buttons, chips, inputs) take 6px. Large surfaces (cards, tiles, photographs) take 14px. A corner-anchored chip rounds only its inner corner.</li>
+      <li><b>The seam rule:</b> background emblems crop only at the viewport edge or at a colour change, never at an invisible same-colour seam. Adjacent white sections are one canvas; an emblem may span them.</li>
+      <li><b>Rails:</b> every horizontal scroll rail carries <code>scroll-padding-left</code> so snap never eats the page gutter.</li>
+      <li><b>Container:</b> content lives in <code>.wrap</code>, max 1560px with fluid padding. Full-bleed moments escape it deliberately, one edge at a time.</li>
+      <li><b>Groove texture</b> sits on every band: cream-alpha lines on dark, ink-alpha on light. It is the surface finish, not a decoration to add or remove per section.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7 · MOTION ============ -->
+<section class="sg-sec" id="motion">
+  <div class="wrap">
+    <h2 class="disp d-m">Motion</h2>
+    <ul class="sg-rules">
+      <li><b>Two curves only:</b> <code>--ease-out-s</code> for anything entering or reacting, <code>--ease-io-s</code> for on-screen movement. Never ease-in on UI.</li>
+      <li><b>Buttons press</b> (scale .975), arrows nudge 4px on hover, cards lift 4px with a tinted shadow.</li>
+      <li><b>Sections reveal</b> on scroll (.rv), grids cascade at 60ms steps. Decorative only, content is interactive from frame one.</li>
+      <li><b>One ceremony per page:</b> the hero load-in. Photo settles from a 4.5 percent zoom, copy rises in sequence. Seen once per visit.</li>
+      <li><b>Reduced motion kills all of it.</b> Non-negotiable, already wired globally.</li>
+      <li><b>Hover states are gated</b> behind <code>(hover:hover)</code> so touch never misfires.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 8 · CONTENT RULES ============ -->
+<section class="sg-sec" id="content">
+  <div class="wrap">
+    <h2 class="disp d-m">Content rules that never bend</h2>
+    <p class="sg-lede">Voice lives in How We Write v8. These are the site-side rules any surface must obey regardless of who writes it.</p>
+    <ul class="sg-rules">
+      <li><b>No fabricated reviews, names or numbers.</b> Reviews come from Judge.me. Order counts round down, never up: 30,000+ is honest, 35,000+ is a lie today.</li>
+      <li><b>The sixty-day trial is not on-course.</b> Write "sixty days to decide" or "sixty days to prove us wrong". Never "play it on real grass" next to the trial.</li>
+      <li><b>"Tour-quality construction"</b> is the permitted phrasing. "Tour-proven" is banned without a tour player.</li>
+      <li><b>No warranty language.</b> Lucky has no warranty; the sixty-day return is the promise.</li>
+      <li><b>Placeholders are labelled shot briefs,</b> never stock photos, never renders pretending to be photography.</li>
+      <li><b>No em dashes.</b> Anywhere. This document included.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 9 · EMAIL ============ -->
+<section class="sg-sec" id="email">
+  <div class="wrap">
+    <h2 class="disp d-m">Email: the system, flattened</h2>
+    <p class="sg-lede">Emails should read as a simplified page of the site: same four colours, same voice, same green masthead and gold button. Flattened, because email clients cannot render the devices. Outlook uses Word's engine, Gmail clips at 102KB, and dark mode inverts colours you did not choose.</p>
+
+    <div class="sg-scroll">
+      <table class="sg-tbl">
+        <tr><th>Element</th><th>On the site</th><th>In email</th></tr>
+        <tr><td>Masthead</td><td>Sticky green bar, gold rule</td><td>Green table row, white logo image, 2px gold border-bottom</td></tr>
+        <tr><td>Headlines</td><td>Archivo condensed 800, variable</td><td>Archivo via Google Fonts import where supported; fallback <span class="n">Arial Black</span>, uppercase. Accept the fallback, never image-only text</td></tr>
+        <tr><td>Primary button</td><td>Foil gradient, glint</td><td>Solid gold #C29A2B, ink text, 6px radius, min 44px tall. Bulletproof VML for Outlook</td></tr>
+        <tr><td>The foil</td><td>Live CSS ramps</td><td>Only inside images: hero banners, product shots. Never CSS gradients</td></tr>
+        <tr><td>Body</td><td>17px, ink at 70 percent</td><td>16px+, solid #17140F on white. Alpha colours invert badly in dark mode</td></tr>
+        <tr><td>Cards</td><td>Cream tiles, 14px radius</td><td>Cream table cells, 14px radius where supported, square in Outlook and that is fine</td></tr>
+        <tr><td>Footer</td><td>Ink, gold rule</td><td>Ink table row, cream text, gold top border</td></tr>
+      </table>
+    </div>
+
+    <ul class="sg-rules" style="margin-top:26px">
+      <li><b>Layout:</b> one column, 600px, generous padding. No side-by-side under 480px.</li>
+      <li><b>Structure mirrors the site's sections:</b> hero, product tiles, one review quote, one gold CTA, trust row, ink footer. Build them as Klaviyo blocks once and reuse.</li>
+      <li><b>Never gold text on green</b> in email either. Same 3.56 ratio, same ban.</li>
+      <li><b>Test dark mode</b> in Gmail and Apple Mail before a flow goes live; logos need padding baked into the image.</li>
+      <li><b>One primary CTA per email,</b> the same label discipline as the site.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 10 · ADS AND ORGANIC ============ -->
+<section class="sg-sec" id="ads">
+  <div class="wrap">
+    <h2 class="disp d-m">Ads and organic: the system, rendered to pixels</h2>
+    <p class="sg-lede">Creatives are images and video, so the full device set is available again: foil, grooves, the condensed display voice. The rules travel with them.</p>
+
+    <ul class="sg-rules">
+      <li><b>Grounds:</b> ink or white, exactly like the site. Green appears as a frame element (a top bar, the clover), never as the field behind gold type.</li>
+      <li><b>Type:</b> Archivo, condensed uppercase 800 for the one headline, sentence case for support lines. One headline per asset.</li>
+      <li><b>Gold is the product.</b> If the club is in frame, the foil stays off the type so they never compete. No club in frame, foil headline allowed.</li>
+      <li><b>Photography:</b> real product, gold catching real light. No renders passed off as photos, no stock golfers holding other brands.</li>
+      <li><b>The clover</b> is the watermark and the bullet. Brand green on light, cream or gold on dark. Crop it at the frame edge, never mid-shape against a flat field.</li>
+      <li><b>Claims follow the content rules above:</b> real review quotes with names, verified numbers, trial wording exact. An ad is not exempt.</li>
+      <li><b>Safe areas:</b> build 4:5 first, protect the centre 1:1, keep type inside 9:16 safe zones for placement reuse.</li>
+      <li><b>Organic posts</b> are the light version: white ground, ink type, one gold accent, clover sign-off. Photo-led posts carry the stamp device for spec callouts.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 11 · HOW TO UPDATE ============ -->
+<section class="sg-sec" id="update">
+  <div class="wrap">
+    <h2 class="disp d-m">Updating this page</h2>
+    <div class="sg-how">
+      <p class="body" style="max-width:none">This page is built from the same stylesheet as the site, so visual changes to the site show up here automatically. The written specs are maintained by hand:</p>
+      <ol>
+        <li>Edit <code>_src/page-styleguide.html</code> (specs and examples) or <code>_src/page-styleguide.css</code> (this page's own chrome).</li>
+        <li>Run <code>python tools/build.py</code></li>
+        <li>Commit and push. The page rebuilds at <code>90-styleguide.html</code>.</li>
+      </ol>
+      <p class="body" style="max-width:none;margin-top:14px">Or tell Claude what changed and it updates this page, the shareable copy, and the AI skill together.</p>
+    </div>
+  </div>
+</section>
