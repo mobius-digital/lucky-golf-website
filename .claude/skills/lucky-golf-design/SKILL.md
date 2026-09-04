@@ -130,8 +130,9 @@ Variable font, width axis is the voice switch:
 
 - Curves: `--ease-out-s` cubic-bezier(.23,1,.32,1) for enter/react;
   `--ease-io-s` (.77,0,.175,1) for on-screen movement. Never ease-in.
-- `.rv` scroll reveal; grids cascade 60ms steps; cards lift 4px with tinted
-  shadow behind `(hover:hover)`.
+- `.rv` scroll reveal; grids cascade 60ms steps. Cards stay put on hover:
+  the photo zoom is the feedback. No lifts, no drop shadows (Cole, A/B
+  2026-08-30).
 - One ceremony per page: hero load-in (photo settles from 4.5% zoom, copy
   rises .18/.28/.4/.52s).
 - `prefers-reduced-motion` kills everything. Non-negotiable.

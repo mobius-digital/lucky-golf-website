@@ -820,12 +820,8 @@ button{font:inherit;color:inherit}
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
-/* the lift gets a shadow tinted to the ink, so the card visibly leaves the
-   page instead of just teleporting 3px. Gated to real pointers: on touch,
-   hover states only misfire. */
-@media (hover:hover) and (pointer:fine){
-  .ptile:hover{transform:translateY(-4px);box-shadow:0 12px 26px -16px rgba(23,20,15,.26)}
-}
+/* Cole's call 2026-08-30 after an A/B: cards stay put on hover. No lift,
+   no shadow. The photo zoom inside the tile is the hover feedback. */
 /* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
    rule had no markup left to style. */
 .ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
@@ -3132,7 +3128,7 @@ a.sup-chan-v:hover{color:var(--gold-lo)}
     <h2 class="disp d-m">Motion</h2>
     <ul class="sg-rules">
       <li><b>Two curves only:</b> <code>--ease-out-s</code> for anything entering or reacting, <code>--ease-io-s</code> for on-screen movement. Never ease-in on UI.</li>
-      <li><b>Buttons press</b> (scale .975), arrows nudge 4px on hover, cards lift 4px with a tinted shadow.</li>
+      <li><b>Buttons press</b> (scale .975) and arrows nudge 4px on hover. Cards stay put: the photo zoom inside the tile is the hover feedback. No lifts, no drop shadows.</li>
       <li><b>Sections reveal</b> on scroll (.rv), grids cascade at 60ms steps. Decorative only, content is interactive from frame one.</li>
       <li><b>One ceremony per page:</b> the hero load-in. Photo settles from a 4.5 percent zoom, copy rises in sequence. Seen once per visit.</li>
       <li><b>Reduced motion kills all of it.</b> Non-negotiable, already wired globally.</li>

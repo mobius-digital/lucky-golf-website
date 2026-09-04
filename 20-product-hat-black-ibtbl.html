@@ -820,12 +820,8 @@ button{font:inherit;color:inherit}
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
-/* the lift gets a shadow tinted to the ink, so the card visibly leaves the
-   page instead of just teleporting 3px. Gated to real pointers: on touch,
-   hover states only misfire. */
-@media (hover:hover) and (pointer:fine){
-  .ptile:hover{transform:translateY(-4px);box-shadow:0 12px 26px -16px rgba(23,20,15,.26)}
-}
+/* Cole's call 2026-08-30 after an A/B: cards stay put on hover. No lift,
+   no shadow. The photo zoom inside the tile is the hover feedback. */
 /* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
    rule had no markup left to style. */
 .ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
