@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "bogo-hats",
+      "settings": {
+        "hats_collection": "hats",
+        "bundle_size": 3,
+        "eyebrow": "Buy two, get one free",
+        "heading": "Nobody needs three hats. Take three anyway.",
+        "subheading": "Two at $29, the third one's free. Ten to choose from, so pick the three that don't match.",
+        "facts": "Five-panel snapback, Moisture-wicking sweatband, Laser-cut ventilation",
+        "grid_eyebrow": "The lineup",
+        "grid_heading": "Pick three",
+        "grid_note": "Want the same one twice? Nobody here is going to stop you.",
+        "rail_empty": "Pick your first hat",
+        "cta_cart": "Go to the bag",
+        "modal_eyebrow": "Free one's in",
+        "modal_heading": "You paid for two. Wear all three.",
+        "modal_sub": "You're set on hats. What's left goes on you or in the bag.",
+        "cta_back": "Back to the hats",
+        "deck_1_label": "Goes on you",
+        "apparel_1": "signature-black-classic-polo",
+        "why_1": "The one that goes with all three hats.",
+        "apparel_2": "gold-carnation-classic-polo",
+        "why_2": "Not a subtle shirt. Wear it when you're playing well.",
+        "deck_2_label": "Goes in the bag",
+        "club_1": "v1-gold-lucky-golf-wedge",
+        "why_3": "The one that started the argument.",
+        "club_2": "limited-edition-mallet-putter",
+        "why_4": "Milled, gold, and quietly better than the one in your bag.",
+        "band_eyebrow": "Since you're here",
+        "band_heading": "The hat was the easy part",
+        "band_sub": "A forged wedge for $99. Nobody's tour contract is buried in that number."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,283 @@
+{%- comment -%}
+================================================================================
+  LUCKY GOLF · BUY 2 GET 1 FREE — HATS
+  Shopify section. Drop-in, self-contained, theme-agnostic.
+
+  THREE RULES THIS FILE FOLLOWS, EACH LEARNED THE HARD WAY:
+
+  1. THE DISCOUNT OWNS THE MONEY, NOT THIS PAGE.
+     A storefront cannot set a line price to zero. All three hats are added at
+     full price and Shopify's automatic "Buy 2 get 1 free" discount zeroes one
+     at checkout. Every figure the reader sees is read back out of /cart.js
+     (final_line_price, original_line_price), so if the discount is off, or
+     capped, or changed, the page tells the truth instead of its own guess.
+
+  2. NOTHING LEAKS INTO THE THEME, AND THE THEME CANNOT LEAK IN.
+     Every class is prefixed lgb-/bgo- and every custom property is declared on
+     .lg-bogo, not :root. An earlier build of this page reused a bare class
+     name that already meant something else in the host stylesheet and every
+     product drew a second frame inside its own card. Assume every generic
+     name is taken.
+
+  3. THE CATALOGUE IS READ, NEVER RETYPED.
+     Hats come from the chosen collection; upsell options and variants come
+     from the products themselves. Sold-out sizes and dead loft/grind
+     combinations disable themselves because Shopify says so, not because
+     somebody remembered to update a list.
+================================================================================
+{%- endcomment -%}
+
+{%- assign hat_col = section.settings.hats_collection -%}
+{%- assign bundle_size = section.settings.bundle_size | default: 3 -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+
+{%- comment -%}
+  Liquid has no array push, so the four upsell slots are flattened into one
+  delimited string and re-split. Field separator is ~F~ and record separator ~R~. Do NOT use runs of
+  the same character: an empty one-liner made "~|~" + "" + "~~~" collide,
+  and the record split landed mid-field. Trailing empty fields are dropped by
+  Liquid's split, so bits[2] is simply nil when a one-liner is blank, which a one-liner is free text and will contain commas and pipes.
+{%- endcomment -%}
+{%- assign up = '' -%}
+{%- if section.settings.apparel_1 != blank -%}{%- assign up = up | append: section.settings.apparel_1.handle | append: '~F~apparel~F~' | append: section.settings.why_1 | append: '~R~' -%}{%- endif -%}
+{%- if section.settings.apparel_2 != blank -%}{%- assign up = up | append: section.settings.apparel_2.handle | append: '~F~apparel~F~' | append: section.settings.why_2 | append: '~R~' -%}{%- endif -%}
+{%- if section.settings.club_1 != blank -%}{%- assign up = up | append: section.settings.club_1.handle | append: '~F~club~F~' | append: section.settings.why_3 | append: '~R~' -%}{%- endif -%}
+{%- if section.settings.club_2 != blank -%}{%- assign up = up | append: section.settings.club_2.handle | append: '~F~club~F~' | append: section.settings.why_4 | append: '~R~' -%}{%- endif -%}
+{%- assign up_rows = up | split: '~R~' -%}
+
+<script type="application/json" id="lgb-data">
+{
+  "bundle": {{ bundle_size | json }},
+  "cartUrl": {{ routes.cart_url | json }},
+  "hats": [
+    {%- assign sep = '' -%}
+    {%- for product in hat_col.products -%}
+      {%- assign v = product.variants.first -%}
+      {%- if v.id -%}
+        {{ sep }}{
+          "id": {{ v.id | json }},
+          "name": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "img": {{ product.featured_image | image_url: width: 600 | default: '' | json }},
+          "price": {{ v.price | json }},
+          "available": {{ v.available | json }}
+        }
+        {%- assign sep = ',' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  "upsell": [
+    {%- assign sep2 = '' -%}
+    {%- for rowstr in up_rows -%}
+      {%- assign bits = rowstr | split: '~F~' -%}
+      {%- assign p = all_products[bits[0]] -%}
+      {%- if p.id -%}
+        {{ sep2 }}{
+          "handle": {{ p.handle | json }},
+          "group": {{ bits[1] | json }},
+          "name": {{ p.title | json }},
+          "url": {{ p.url | json }},
+          "img": {{ p.featured_image | image_url: width: 400 | default: '' | json }},
+          "price": {{ p.price_min | json }},
+          "why": {{ bits[2] | default: '' | strip | json }},
+          "options": [
+            {%- for o in p.options_with_values -%}
+              { "name": {{ o.name | json }}, "values": [{%- for val in o.values -%}{{ val.name | default: val | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}] }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ],
+          "variants": [
+            {%- for v in p.variants -%}
+              { "id": {{ v.id | json }}, "opts": {{ v.options | json }},
+                "available": {{ v.available | json }}, "price": {{ v.price | json }} }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+        {%- assign sep2 = ',' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+<div class="lg-bogo" id="lg-bogo">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lgb-clover" viewBox="249.37 127.71 342.59 330.41" fill="currentColor" fill-rule="nonzero"><path d="M 407.070312 266.585938 C 405.578125 265.9375 404.273438 265.566406 403.257812 265.351562 C 413.703125 206.597656 399.175781 137.222656 359.113281 132.644531 C 315.953125 127.710938 320.269531 164.089844 303.007812 181.351562 C 285.742188 198.613281 249.367188 194.300781 254.300781 237.457031 C 258.472656 273.972656 316.492188 289.285156 371.222656 283.804688 L 357.480469 301.097656 C 307.179688 299.261719 258.125 314.910156 254.300781 348.378906 C 249.367188 391.535156 285.742188 387.21875 303.007812 404.484375 C 311.320312 412.796875 314.636719 425.535156 320.65625 435.96875 C 330.203125 450.804688 370.976562 433.75 378.824219 412.824219 C 386.671875 391.898438 369.015625 359.199219 372.9375 336.964844 C 351.359375 324.539062 351.996094 314.980469 357.898438 308.191406 C 358.367188 307.648438 358.9375 306.945312 359.546875 306.175781 C 359.671875 306.015625 359.796875 305.855469 359.929688 305.691406 C 360.503906 304.953125 361.121094 304.152344 361.789062 303.269531 C 362.160156 302.78125 362.570312 302.234375 362.96875 301.707031 C 363.054688 301.59375 363.128906 301.492188 363.21875 301.375 L 363.214844 301.375 C 367.910156 295.136719 374.195312 286.644531 380.261719 279.980469 C 384.300781 275.539062 388.226562 271.925781 391.464844 270.421875 C 392.558594 269.917969 393.632812 269.566406 394.695312 269.308594 L 394.707031 269.320312 C 395.996094 269 397.25 268.871094 398.472656 268.851562 C 398.699219 268.851562 398.921875 268.84375 399.144531 268.847656 C 399.671875 268.863281 400.195312 268.894531 400.703125 268.953125 C 400.914062 268.976562 401.113281 269.011719 401.320312 269.042969 C 409.527344 270.261719 415.445312 276.804688 415.445312 276.804688 C 415.445312 276.804688 413.878906 269.5625 407.070312 266.585938 "/><path d="M 462.964844 308.480469 C 465.089844 328.097656 453.15625 337.582031 438.660156 360.46875 C 429.472656 374.976562 438.902344 425.242188 451.125 445.011719 C 456.632812 449.488281 462.921875 452.378906 470.035156 453.191406 C 513.191406 458.125 508.875 421.746094 526.140625 404.484375 C 537.335938 393.285156 556.558594 391.15625 567.351562 379.273438 Z M 462.964844 308.480469 "/><path d="M 400.621094 290.277344 C 391.902344 285.917969 385.800781 297.253906 387.542969 300.929688 C 387.542969 300.929688 389.285156 301.613281 396.261719 300.929688 C 403.238281 300.25 406.246094 293.089844 400.621094 290.277344 "/><path d="M 578.132812 374.457031 C 577.132812 373.769531 575.042969 372.304688 572.71875 370.660156 C 574.992188 365.03125 575.929688 357.871094 574.847656 348.378906 C 570.804688 313.011719 516.257812 297.53125 463.101562 301.570312 L 570.722656 374.753906 C 570.730469 374.738281 570.738281 374.722656 570.75 374.703125 L 578.132812 379.726562 C 578.132812 379.726562 566.945312 397.761719 567.273438 399.40625 C 567.605469 401.054688 580.765625 403.683594 586.359375 393.8125 C 591.953125 383.941406 581.09375 376.484375 578.132812 374.457031 "/><path d="M 526.140625 181.351562 C 508.875 164.089844 513.191406 127.710938 470.035156 132.644531 C 434.234375 136.734375 418.828125 192.570312 423.402344 246.328125 C 418.386719 246.425781 416.542969 248.917969 416.542969 252.125 C 416.542969 254.703125 424.832031 259.421875 424.832031 259.421875 C 423.824219 258.535156 419.65625 254.761719 419.65625 252.632812 C 419.65625 250.207031 421.042969 248.652344 425.972656 248.652344 C 430.902344 248.652344 447.511719 246.058594 455.640625 254.273438 C 463.773438 262.492188 460.855469 274.171875 457.480469 277.027344 C 457.460938 277.03125 457.421875 277.007812 457.402344 277.007812 C 456.75 279.0625 455.894531 281.191406 454.636719 283.445312 C 510.308594 289.890625 570.589844 274.707031 574.847656 237.457031 C 579.777344 194.300781 543.402344 198.613281 526.140625 181.351562 "/></symbol></svg>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="lgb-sec-tight lgb-band-ink bgo-hero">
+    <span class="bgo-wm" aria-hidden="true"><svg><use href="#lgb-clover"/></svg></span>
+    <div class="lgb-wrap">
+      <p class="lgb-eyebrow on-dark">{{ section.settings.eyebrow }}</p>
+      <h1 class="lgb-disp bgo-h1">{{ section.settings.heading }}</h1>
+      <p class="bgo-lede">{{ section.settings.subheading }}</p>
+
+      <div class="bgo-deal" aria-hidden="true">
+        <span class="d paid" data-unit-price></span>
+        <span class="op">+</span>
+        <span class="d paid" data-unit-price></span>
+        <span class="op">+</span>
+        <span class="d free">$0</span>
+        <span class="op">=</span>
+        <span class="sum" data-deal-sum></span>
+      </div>
+
+      {%- if section.settings.facts != blank -%}
+      <ul class="bgo-facts">
+        {%- assign facts = section.settings.facts | split: ',' -%}
+        {%- for f in facts -%}<li>{{ f | strip }}</li>{%- endfor -%}
+      </ul>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <!-- ===================== THE GRID ===================== -->
+  <section class="lgb-sec bgo-body">
+    <div class="lgb-wrap">
+      <span class="lgb-eyebrow">{{ section.settings.grid_eyebrow }}</span>
+      <h2 class="lgb-disp lgb-disp-m">{{ section.settings.grid_heading }}</h2>
+      <p class="lgb-aside bgo-pick-aside">{{ section.settings.grid_note }}</p>
+      <div class="bgo-grid" id="bgo-grid"></div>
+      <noscript>
+        <p class="bgo-lede" style="color:inherit">This bundle counter needs JavaScript.
+          Every hat is also in the <a href="{{ hat_col.url }}">hats collection</a>.</p>
+      </noscript>
+    </div>
+  </section>
+
+  <div class="lgb-breath"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+
+  <!-- ===================== CLUBS BAND ===================== -->
+  <section class="lgb-sec lgb-band-cream bgo-up">
+    <div class="lgb-wrap">
+      <span class="lgb-eyebrow">{{ section.settings.band_eyebrow }}</span>
+      <h2 class="lgb-disp lgb-disp-m">{{ section.settings.band_heading }}</h2>
+      <p class="bgo-up-lede">{{ section.settings.band_sub }}</p>
+      <div class="bgo-clubs" id="bgo-up-page"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESS RAIL =====================
+       Fixed to the bottom edge for the life of the page. Sticky would only
+       stick inside its own section; this has to survive the whole scroll. -->
+  <div class="bgo-rail" id="bgo-rail" data-show="false" data-state="empty">
+    <span class="flash" aria-hidden="true"></span>
+    <div class="bgo-rail-in">
+      <div class="bgo-slots" id="bgo-slots" aria-hidden="true"></div>
+      <div class="bgo-status">
+        <strong class="hd" id="bgo-hd">{{ section.settings.rail_empty }}</strong>
+        <span class="sub" id="bgo-sub"></span>
+      </div>
+      <div class="bgo-rail-act">
+        <span class="tot" id="bgo-tot" hidden>
+          <span class="l">Bundle</span>
+          <span class="v" id="bgo-tot-v"></span>
+          <span class="sv" id="bgo-tot-sv"></span>
+        </span>
+        <a class="lgb-btn lgb-btn-foil lgb-btn-sm" id="bgo-go" href="{{ routes.cart_url }}" hidden>
+          <span>{{ section.settings.cta_cart }}</span><span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+  <p class="lgb-sr" id="bgo-live" role="status" aria-live="polite"></p>
+
+  <!-- ===================== UPSELL MODAL =====================
+       Fires when the third hat is IN, never at the unlock. A dialog at hat two
+       covers the grid at the one moment the reader has to reach into it.
+       Three flex rows so only the middle scrolls and the buttons never leave. -->
+  <div class="bgo-md" id="bgo-md" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="bgo-md-title">
+    <div class="bgo-md-bd-scrim" data-bgo-close></div>
+    <div class="bgo-md-panel">
+      <button type="button" class="bgo-md-x" data-bgo-close aria-label="Close">&times;</button>
+      <div class="bgo-md-hd">
+        <span class="bgo-wm" aria-hidden="true"><svg><use href="#lgb-clover"/></svg></span>
+        <p class="lgb-eyebrow on-dark">{{ section.settings.modal_eyebrow }}</p>
+        <h2 class="lgb-disp lgb-disp-s" id="bgo-md-title">{{ section.settings.modal_heading }}</h2>
+        <p>{{ section.settings.modal_sub }}</p>
+      </div>
+      <div class="bgo-md-bd">
+        <div class="bgo-updeck" data-deck="apparel">
+          <span class="lgb-eyebrow">{{ section.settings.deck_1_label }}</span>
+          <div class="bgo-clubs" id="bgo-up-apparel"></div>
+        </div>
+        <div class="bgo-updeck" data-deck="club">
+          <span class="lgb-eyebrow">{{ section.settings.deck_2_label }}</span>
+          <div class="bgo-clubs" id="bgo-up-club"></div>
+        </div>
+      </div>
+      <div class="bgo-md-foot">
+        <button type="button" class="lgb-btn lgb-btn-line lgb-btn-sm" data-bgo-close><span>{{ section.settings.cta_back }}</span></button>
+        <a class="lgb-btn lgb-btn-foil lgb-btn-sm" href="{{ routes.cart_url }}"><span>{{ section.settings.cta_cart }}</span><span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{{ 'bogo-hats.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'bogo-hats.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "BOGO hats bundle",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "The bundle" },
+    { "type": "collection", "id": "hats_collection", "label": "Hats collection",
+      "info": "Every product here becomes a pickable tile. Single-variant products only." },
+    { "type": "range", "id": "bundle_size", "label": "Buy this many, get one free",
+      "min": 2, "max": 6, "step": 1, "default": 3,
+      "info": "3 = buy 2 get 1. Must match the automatic discount in Discounts." },
+
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Buy two, get one free" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "Nobody needs three hats. Take three anyway." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading",
+      "default": "Two at $29, the third one's free. Ten to choose from, so pick the three that don't match." },
+    { "type": "text", "id": "facts", "label": "Spec row (comma separated)",
+      "default": "Five-panel snapback, Moisture-wicking sweatband, Laser-cut ventilation" },
+
+    { "type": "header", "content": "Grid" },
+    { "type": "text", "id": "grid_eyebrow", "label": "Eyebrow", "default": "All ten" },
+    { "type": "text", "id": "grid_heading", "label": "Heading", "default": "Pick three" },
+    { "type": "text", "id": "grid_note", "label": "Note",
+      "default": "Want the same one twice? Nobody here is going to stop you." },
+
+    { "type": "header", "content": "Progress bar" },
+    { "type": "text", "id": "rail_empty", "label": "Starting message", "default": "Pick your first hat" },
+    { "type": "text", "id": "cta_cart", "label": "Cart button", "default": "Go to the bag" },
+
+    { "type": "header", "content": "Popup" },
+    { "type": "text", "id": "modal_eyebrow", "label": "Eyebrow", "default": "Free one's in" },
+    { "type": "text", "id": "modal_heading", "label": "Heading", "default": "You paid for two. Wear all three." },
+    { "type": "textarea", "id": "modal_sub", "label": "Subheading",
+      "default": "You're set on hats. What's left goes on you or in the bag." },
+    { "type": "text", "id": "cta_back", "label": "Back button", "default": "Back to the hats" },
+
+    { "type": "header", "content": "Upsell deck 1" },
+    { "type": "text", "id": "deck_1_label", "label": "Label", "default": "Goes on you" },
+    { "type": "product", "id": "apparel_1", "label": "Product 1" },
+    { "type": "text", "id": "why_1", "label": "One-liner 1" },
+    { "type": "product", "id": "apparel_2", "label": "Product 2" },
+    { "type": "text", "id": "why_2", "label": "One-liner 2" },
+
+    { "type": "header", "content": "Upsell deck 2" },
+    { "type": "text", "id": "deck_2_label", "label": "Label", "default": "Goes in the bag" },
+    { "type": "product", "id": "club_1", "label": "Product 3" },
+    { "type": "text", "id": "why_3", "label": "One-liner 3" },
+    { "type": "product", "id": "club_2", "label": "Product 4" },
+    { "type": "text", "id": "why_4", "label": "One-liner 4" },
+
+    { "type": "header", "content": "Clubs band (below the grid)" },
+    { "type": "text", "id": "band_eyebrow", "label": "Eyebrow", "default": "Since you're here" },
+    { "type": "text", "id": "band_heading", "label": "Heading", "default": "The hat was the easy part" },
+    { "type": "textarea", "id": "band_sub", "label": "Subheading",
+      "default": "A forged wedge for $99. Nobody's tour contract is buried in that number." }
+  ],
+  "presets": [{ "name": "BOGO hats bundle" }]
+}
+{% endschema %}
