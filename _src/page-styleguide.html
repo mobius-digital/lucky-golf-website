@@ -189,6 +189,145 @@
       <div class="sg-spec"><b>Pull quote</b>
         <ul><li>One per page, three lines max</li><li>Real buyer, real words, attribution follows</li></ul></div>
     </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="max-width:340px">
+        <article class="ptile" style="opacity:1;transform:none">
+          <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090" alt="Lucky Golf Tracer Blade in gold" width="2048" height="2048" loading="lazy" decoding="async">
+            <div class="pt-add"><button class="qadd" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg><span>Quick add</span></button></div>
+          </div>
+          <a class="stretch" href="#components"><span class="pt-nm">Tracer LGP01 Blade</span></a>
+          <span class="pt-meta"><span class="pt-pr">$199</span></span>
+        </article>
+      </div>
+      <div class="sg-spec"><b>Collection and search card</b><code>.ptile + .pt-add .qadd</code>
+        <ul><li>Same tile as the homepage, plus the quick add sitting on the photo, bottom right</li><li>One sellable variant adds straight to cart; anything with a choice opens the in-card picker</li><li>Sold out: gold corner tag, no quick add</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="max-width:300px">
+        <article class="clp-cmp-i">
+          <a class="clp-cmp-ph" href="#components"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="Carver 01 Gold" loading="lazy" width="800" height="800" decoding="async"></a>
+          <a class="clp-cmp-nm" href="#components">Carver 01 Gold</a>
+          <span class="clp-cmp-for">For the golfer who wants the look and the spin</span>
+          <span class="clp-cmp-pr">From $99</span>
+          <div class="clp-bars">
+            <div class="clp-bar"><span class="k">Spin</span><span class="v">High</span><span class="clp-seg" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i></i></span></div>
+            <div class="clp-bar"><span class="k">Forgiveness</span><span class="v">Mid</span><span class="clp-seg" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i></i><i></i></span></div>
+          </div>
+        </article>
+      </div>
+      <div class="sg-spec"><b>Compare card</b><code>.clp-cmp-i</code>
+        <ul><li>The what is the difference row on club collections</li><li>Segment bars, never filled progress tracks</li><li>A coming-soon slot uses the dashed variant, honestly labelled</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo">
+        <div style="position:relative;height:150px;background:var(--cream);border-radius:var(--r-card);overflow:hidden">
+          <button class="gal-arw" type="button" style="left:12px" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="gal-arw" type="button" style="right:12px" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <p class="bx-stock" style="margin-top:18px"><span class="dot"></span><span>In stock &middot; ships in 1&ndash;2 business days</span></p>
+        <button class="btn-add" type="button" style="margin-top:10px"><span>Add to cart &middot; $99</span></button>
+      </div>
+      <div class="sg-spec"><b>PDP gallery and buy box</b><code>.gal-arw &middot; .bx-stock &middot; .btn-add</code>
+        <ul><li>Gallery: cream stage, 44px arrows, thumb strip below</li><li>Stock line: the state-green dot is the one place a dot means something</li><li>Add to cart: ink, goes gold on hover, state-green when added</li><li>See any product page for the full assembly</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="max-width:420px">
+        <details class="sup-q" open>
+          <summary><span>Do the clubs really come with sixty days?</span><span class="sup-q-x" aria-hidden="true"></span></summary>
+          <div class="sup-a"><p>Yes. Sixty days to decide, and if it does not earn its spot, send it back.</p></div>
+        </details>
+        <p class="sup-fld" style="margin-top:20px"><label for="sg-email-demo">Email</label><input id="sg-email-demo" name="email" type="email" autocomplete="email"></p>
+      </div>
+      <div class="sg-spec"><b>Accordion and form field</b><code>.sup-q &middot; .sup-fld</code>
+        <ul><li>FAQ accordion: native details, gold cross rotates open</li><li>Forms: label above, 44px input, error text below the field, never placeholder-as-label</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo">
+        <nav class="crumb" style="padding-top:0" aria-label="Breadcrumb"><ol><li><a href="#components">Home</a></li><li><a href="#components">Clubs</a></li><li><span aria-current="page">Carver 01 Gold</span></li></ol></nav>
+      </div>
+      <div class="sg-spec"><b>Breadcrumb</b><code>.crumb.wrap</code>
+        <ul><li>Gold diamond separators, current page in ink</li><li>Always paired with .wrap; sits on the page gutter, never the screen edge</li><li>Scrolls sideways on a phone rather than wrapping</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="max-width:380px">
+        <div class="jm-bars">
+          <button class="row" type="button"><span class="k">5&#9733;</span><span class="t"><i style="width:86%"></i></span><span class="v">86%</span></button>
+          <button class="row" type="button"><span class="k">4&#9733;</span><span class="t"><i style="width:9%"></i></span><span class="v">9%</span></button>
+          <button class="row" type="button"><span class="k">3&#9733;</span><span class="t"><i style="width:3%"></i></span><span class="v">3%</span></button>
+        </div>
+      </div>
+      <div class="sg-spec"><b>Rating breakdown</b><code>.jm-bars</code>
+        <ul><li>Rows are buttons: tapping filters the review list</li><li>Gold fill, 44px rows, percentages from real Judge.me data</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <span class="badge-new">New</span>
+        <span class="pt-tag" style="position:static;border-radius:var(--r)">Clean</span>
+        <span class="clp-tag">Most popular</span>
+      </div>
+      <div class="sg-spec"><b>Badges and chips</b><code>.badge-new &middot; .pt-tag &middot; .clp-tag</code>
+        <ul><li>State green for genuinely new, tag foil for the one-word product tag, brand green for collection callouts</li><li>Never more than one badge per card</li></ul></div>
+    </div>
+
+    <div class="sg-row">
+      <div class="sg-demo sg-spec" style="padding-top:0"><b style="margin-bottom:10px">Chrome and overlays, seen live on the site</b>
+        <ul>
+          <li>Header and mega menu, mobile nav: every page</li>
+          <li>Cart drawer and quick-add picker: add anything to cart</li>
+          <li>Review and post lightbox: click a review card</li>
+          <li>Size guide modal: any polo page</li>
+          <li>Club finder tabs: homepage, mid page</li>
+          <li>Hero assembly with load-in: homepage</li>
+        </ul></div>
+      <div class="sg-spec"><b>Why not rendered here</b>
+        <ul><li>These are JS-driven or whole-section devices; a static specimen would lie about how they behave</li><li>Their markup lives in _src/partials and the page templates</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5b · FULL-BLEED DEVICES, LIVE ============ -->
+<div class="mq" aria-label="Marquee specimen">
+  <div class="mq-track"><div class="mq-set" aria-hidden="true"><span>Tour-quality construction</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Priced honestly</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged wedges, milled putters</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>4.78 from verified buyers</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>30,000+ orders shipped</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Tour-quality construction</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Priced honestly</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged wedges, milled putters</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>4.78 from verified buyers</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>30,000+ orders shipped</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div><div class="mq-set" aria-hidden="true"><span>Tour-quality construction</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Priced honestly</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged wedges, milled putters</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>4.78 from verified buyers</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>30,000+ orders shipped</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Tour-quality construction</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Priced honestly</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Sixty-day returns on every club</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>Forged wedges, milled putters</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>4.78 from verified buyers</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span>30,000+ orders shipped</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span></div></div>
+</div>
+
+<section class="bband" aria-label="Brand band specimen">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap"><div class="bband-in">
+    <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
+    <div class="bband-tags"><span>Turns heads</span><span>Forged feel</span><span>True roll</span><span>In thousands of bags</span></div>
+    <p class="aside">It's better to be lucky.</p>
+  </div></div>
+</section>
+
+<section class="sg-sec" id="devices-note" style="border-top:0;padding-top:26px">
+  <div class="wrap"><div class="sg-row" style="border-top:0;padding-top:0">
+    <div class="sg-spec"><b>The marquee</b><code>.mq</code>
+      <ul><li>The offer, on loop: price, trial, proof numbers. Ink band, cream type, clover separators</li><li>Each set must stay wider than the widest viewport or the loop shows a gap</li><li>One per page, directly under the hero</li></ul></div>
+    <div class="sg-spec"><b>The brand band</b><code>.bband</code>
+      <ul><li>Brand punctuation, mid page: what buyers praise, never the marquee offer list again</li><li>Stacked logo, four short tags, the tagline in the charm voice</li></ul></div>
+  </div></div>
+</section>
+
+<!-- ============ 5c · THE LOGO ============ -->
+<section class="sg-sec" id="logo">
+  <div class="wrap">
+    <h2 class="disp d-m">The logo and the clover</h2>
+    <div class="sg-row">
+      <div class="sg-demo" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px">
+        <div class="sg-green" style="padding:22px;display:grid;place-items:center"><span class="logo" style="color:#fff;min-height:0"><svg style="width:110px;height:35px"><use href="#lg-luckygolf"/></svg></span></div>
+        <div class="sg-dark" style="padding:22px;display:grid;place-items:center"><span class="logo" style="color:var(--gold);min-height:0"><svg style="width:110px;height:35px"><use href="#lg-luckygolf"/></svg></span></div>
+        <div style="border:1px solid var(--ink-14);border-radius:var(--r-card);padding:22px;display:grid;place-items:center"><svg style="width:44px;height:44px;color:var(--brand)"><use href="#lg-clover-plain"/></svg></div>
+      </div>
+      <div class="sg-spec"><b>Colour per ground</b>
+        <ul><li>On green: white. On ink: gold or cream. On white or cream: brand green</li><li>Never the green logo on ink (1.95 contrast, invisible)</li><li>The clover alone is the mark for favicons, watermarks, bullets and separators</li><li>Clearspace: one clover-width on every side. Minimum wordmark width 96px on screen</li></ul></div>
+    </div>
   </div>
 </section>
 
@@ -253,28 +392,17 @@
 <!-- ============ 9 · EMAIL ============ -->
 <section class="sg-sec" id="email">
   <div class="wrap">
-    <h2 class="disp d-m">Email: the system, flattened</h2>
-    <p class="sg-lede">Emails should read as a simplified page of the site: same four colours, same voice, same green masthead and gold button. Flattened, because email clients cannot render the devices. Outlook uses Word's engine, Gmail clips at 102KB, and dark mode inverts colours you did not choose.</p>
+    <h2 class="disp d-m">Email: designed in Figma, the full system applies</h2>
+    <p class="sg-lede">Emails are designed in Figma and exported, so everything on this page is available: every colour, the foil, the grooves, the condensed display voice. Design an email like a short page of the site. The constraints below apply only to the parts built as live code in Klaviyo.</p>
 
-    <div class="sg-scroll">
-      <table class="sg-tbl">
-        <tr><th>Element</th><th>On the site</th><th>In email</th></tr>
-        <tr><td>Masthead</td><td>Sticky green bar, gold rule</td><td>Green table row, white logo image, 2px gold border-bottom</td></tr>
-        <tr><td>Headlines</td><td>Archivo condensed 800, variable</td><td>Archivo via Google Fonts import where supported; fallback <span class="n">Arial Black</span>, uppercase. Accept the fallback, never image-only text</td></tr>
-        <tr><td>Primary button</td><td>Foil gradient, glint</td><td>Solid gold #C29A2B, ink text, 6px radius, min 44px tall. Bulletproof VML for Outlook</td></tr>
-        <tr><td>The foil</td><td>Live CSS ramps</td><td>Only inside images: hero banners, product shots. Never CSS gradients</td></tr>
-        <tr><td>Body</td><td>17px, ink at 70 percent</td><td>16px+, solid #17140F on white. Alpha colours invert badly in dark mode</td></tr>
-        <tr><td>Cards</td><td>Cream tiles, 14px radius</td><td>Cream table cells, 14px radius where supported, square in Outlook and that is fine</td></tr>
-        <tr><td>Footer</td><td>Ink, gold rule</td><td>Ink table row, cream text, gold top border</td></tr>
-      </table>
-    </div>
-
-    <ul class="sg-rules" style="margin-top:26px">
-      <li><b>Layout:</b> one column, 600px, generous padding. No side-by-side under 480px.</li>
-      <li><b>Structure mirrors the site's sections:</b> hero, product tiles, one review quote, one gold CTA, trust row, ink footer. Build them as Klaviyo blocks once and reuse.</li>
-      <li><b>Never gold text on green</b> in email either. Same 3.56 ratio, same ban.</li>
-      <li><b>Test dark mode</b> in Gmail and Apple Mail before a flow goes live; logos need padding baked into the image.</li>
-      <li><b>One primary CTA per email,</b> the same label discipline as the site.</li>
+    <ul class="sg-rules">
+      <li><b>Designed sections (exported as images):</b> anything goes that goes on the site. Ink heroes with foil headlines, groove textures, green frames, product tiles, the works. Same rules travel: never gold type on green, real photography, honest claims.</li>
+      <li><b>Structure mirrors the site:</b> green masthead with the gold rule at the top, hero, product tiles, one review quote, one primary CTA, trust row, ink footer with the gold rule. Build these once as Klaviyo blocks.</li>
+      <li><b>Layout:</b> one column, 600px wide, export at 1200px for retina.</li>
+      <li><b>Live-code parts only:</b> body text 16px+ solid ink on white so dark mode cannot mangle it; the coded fallback button is solid gold with ink text, 44px minimum; fallback font Arial bold where Archivo cannot load.</li>
+      <li><b>Alt text on every image</b> so the message survives images-off, and keep total weight under Gmail's 102KB clip for the html part.</li>
+      <li><b>Test dark mode</b> in Gmail and Apple Mail before a flow goes live; bake padding into logo images.</li>
+      <li><b>One primary CTA per email,</b> same label discipline as the site.</li>
     </ul>
   </div>
 </section>
@@ -294,6 +422,9 @@
       <li><b>Claims follow the content rules above:</b> real review quotes with names, verified numbers, trial wording exact. An ad is not exempt.</li>
       <li><b>Safe areas:</b> build 4:5 first, protect the centre 1:1, keep type inside 9:16 safe zones for placement reuse.</li>
       <li><b>Organic posts</b> are the light version: white ground, ink type, one gold accent, clover sign-off. Photo-led posts carry the stamp device for spec callouts.</li>
+      <li><b>Video:</b> product in frame inside the first two seconds, captions in the condensed caps voice, end card is ink ground, foil wordmark, one gold CTA.</li>
+      <li><b>Canvas sizes:</b> build 4:5 (1080&times;1350) first; also export 1:1 (1080), 9:16 (1080&times;1920) for story and reel, 16:9 for placements that need it. Organic uses the same set.</li>
+      <li><b>Logo in creatives:</b> follows the colour-per-ground rules in the logo section above, clearspace one clover-width, never smaller than legible at feed size.</li>
     </ul>
   </div>
 </section>

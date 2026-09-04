@@ -84,6 +84,29 @@ Variable font, width axis is the voice switch:
   light, `.btn-line-cream` secondary dark, `.btn-ink` commerce. All press
   (scale .975), arrows nudge, min 44px tall. One label per intent per page.
 - **Pull quote**: one per page, 3 lines max, real buyer.
+- **Collection/search card**: same `.ptile` + `.qadd` quick-add on the
+  photo, bottom right. Sold out = corner tag, no quick add.
+- **Compare card `.clp-cmp-i`**: segment bars (`.clp-seg`), never filled
+  progress tracks; coming-soon = dashed variant, labelled.
+- **PDP gallery/buy box**: `.gal-arw` 44px arrows on the cream stage,
+  `.bx-stock` state-green dot, `.btn-add` ink to gold to state-green.
+- **Accordion `.sup-q`** (native details, gold cross) and **form fields
+  `.sup-fld`** (label above, 44px input, error below, no placeholder-labels).
+- **Breadcrumb `.crumb.wrap`**: gold diamond separators, page gutter, side
+  scroll on phones.
+- **Rating breakdown `.jm-bars`**: rows are filter buttons, gold fills,
+  real percentages.
+- **Badges**: `.badge-new` state green, `.pt-tag` tag foil, `.clp-tag`
+  brand green. One badge per card max.
+- **Marquee `.mq`**: the offer on loop, under the hero, one per page; each
+  set wider than the widest viewport.
+- **Brand band `.bband`**: mid-page punctuation, what buyers praise, never
+  the marquee's offer list.
+- **Logo**: white on green, gold or cream on ink, brand green on light.
+  Never green-on-ink (1.95). Clearspace one clover-width; min 96px wide.
+- JS overlays (cart drawer, quick-add picker, lightbox, size guide, mega
+  menu, club finder): markup in `_src/partials` and page templates; see
+  them live on the site.
 
 ## Layout and seams
 
@@ -122,21 +145,23 @@ Variable font, width axis is the voice switch:
 - No warranty language (there is no warranty; 60-day return is the promise).
 - Voice: `lucky-golf-copy` skill / How We Write v8 is the authority.
 
-## Email translation (Klaviyo)
+## Email translation (Klaviyo, designed in Figma)
 
-The site, flattened. Same four colours, same voice; devices become images.
+Emails are DESIGNED IN FIGMA and exported, so the FULL system applies in
+designed sections: every colour, the foil, grooves, condensed type. Do not
+strip devices because of assumed email-client limits. Design an email as a
+short page of the site.
 
-- One column, 600px. Green table-row masthead (white logo img, 2px gold
-  bottom border). Ink footer, cream text, gold top border.
-- Buttons: SOLID `#C29A2B`, ink text, 6px radius, 44px min, VML bulletproof
-  for Outlook. Never CSS gradients, never gold-on-green.
-- Type: Archivo via Google Fonts import where supported; fallback Arial
-  Black/Helvetica bold. Live text over image text. Body 16px+ solid
-  `#17140F` (alpha inverts badly in dark mode).
-- Foil only inside images. Cream cells for cards (radius where supported;
-  square in Outlook is fine).
-- Block library mirrors site sections: hero, product tile row, one review
-  quote, one gold CTA, trust row, footer. Test Gmail/Apple Mail dark mode.
+- Structure mirrors the site: green masthead + gold rule, hero, product
+  tiles, one review quote, one primary CTA, trust row, ink footer + gold
+  rule. Build once as Klaviyo blocks.
+- One column, 600px, export at 1200px for retina. Alt text on every image;
+  keep the html part under Gmail's 102KB clip.
+- LIVE-CODED parts only: body text 16px+ solid `#17140F` on white (alpha
+  inverts in dark mode); coded fallback button solid `#C29A2B`, ink text,
+  44px min; fallback font Arial bold.
+- The legibility laws still travel: never gold type on green, real claims,
+  real reviews. Test Gmail/Apple Mail dark mode before a flow ships.
 
 ## Ads and organic translation
 
@@ -148,7 +173,10 @@ Pixels, so the full device set returns.
 - Real product photography, gold catching real light. No renders-as-photos.
 - Clover crops at the frame edge, never mid-shape on a flat field.
 - Claims obey the content rules; ads are not exempt. Real quotes with names.
-- Build 4:5 first, protect centre 1:1, respect 9:16 safe zones.
+- Build 4:5 (1080x1350) first; export 1:1 (1080), 9:16 (1080x1920), 16:9.
+  Protect the centre 1:1 crop.
+- Video: product in frame in the first two seconds, captions in condensed
+  caps, end card = ink ground + foil wordmark + one gold CTA.
 - Organic: white ground, ink type, one gold accent, clover sign-off; stamp
   device for spec callouts on photos.
 
