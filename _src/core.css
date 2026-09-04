@@ -814,7 +814,7 @@ button{font:inherit;color:inherit}
    page instead of just teleporting 3px. Gated to real pointers: on touch,
    hover states only misfire. */
 @media (hover:hover) and (pointer:fine){
-  .ptile:hover{transform:translateY(-4px);box-shadow:0 26px 48px -30px rgba(23,20,15,.38)}
+  .ptile:hover{transform:translateY(-4px);box-shadow:0 12px 26px -16px rgba(23,20,15,.26)}
 }
 /* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
    rule had no markup left to style. */
