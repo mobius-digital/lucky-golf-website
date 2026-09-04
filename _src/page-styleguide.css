@@ -117,3 +117,14 @@
 .sg-how li{margin:6px 0;color:var(--ink-70)}
 .sg-how code{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 82;font-weight:600;
   font-size:var(--fs-md);background:rgba(23,20,15,.06);padding:2px 7px;border-radius:4px}
+
+/* the base .stars block lives in each page's own stylesheet (home, club,
+   clp), not core - the styleguide needs its own copy for the review card
+   and rating specimens. Without it each star svg renders at the svg default
+   of 300x150 and the card blows up to 2000px tall. */
+.stars{position:relative;display:inline-block;line-height:0;vertical-align:-.15em}
+.stars .s-bg,.stars .s-fg{display:flex;gap:3px}
+.stars svg{width:13px;height:13px;flex:none}
+.stars .s-bg svg{fill:rgba(23,20,15,.17)}
+.stars .s-fg{position:absolute;left:0;top:0;width:var(--pct,100%);overflow:hidden}
+.stars .s-fg svg{fill:var(--gold)}

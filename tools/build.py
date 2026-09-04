@@ -1125,6 +1125,12 @@ def build(slug, report):
     # templates render has to be in pdp.css — the same reason .chip and .crumb
     # had to move into core.
     css = read("core.css")
+    # The styleguide renders live specimens from several page stylesheets
+    # (gallery, buy box, compare card, quick add, accordion, form fields).
+    # Collision check 2026-08-30: .qadd identical in clp/plp; rest page-scoped.
+    if src == "styleguide":
+        for extra in ("pdp.css", "page-clp.css", "page-plp.css", "page-support.css"):
+            css += "\n\n" + read(extra)
     if page.kind == "product":
         css += "\n\n" + read("pdp.css")
     css += "\n\n" + read("page-%s.css" % src)
