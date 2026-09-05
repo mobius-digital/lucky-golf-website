@@ -56,9 +56,36 @@ hats = [{'id': i, 'name': n, 'url': '/products/' + h, 'img': CDN + im,
 SIZES = ['Small', 'Medium', 'Large', 'XL', 'XXL', '3XL']
 POLO_A = [49851327381781, 49851327414549, 49851327447317, 49851327480085, 49851327512853, 49851327545621]
 POLO_B = [49851331870997, 49851331903765, 49851331936533, 49851331969301, 49851332002069, 49851332034837]
-LOFTS = ['50°', '52°', '54°', '56°', '58°', '60°']
-WEDGE_R = [48740663951637, 48740663984405, 48740664017173, 48740664049941, 48740664082709, 48740664115477]
-WEDGE_L = [48754274238741, 48754274271509, 48754274304277, 48754274337045, 48754274369813, 48754274402581]
+# The two Gold wedges became ONE product on 2026-09-05: LGW01 and LGW02 now sit
+# on a single Loft & Grind axis, where K is the old 01 head and S is the old 02
+# head. The old `v1-gold-lucky-golf-wedge` went DRAFT the moment that shipped,
+# which killed the upsell here: /cart/update.js answered 422 "Cannot find
+# variant" and the Add button silently did nothing.
+# Availability is listed per variant rather than derived from a rule. The old
+# code guessed "only Left Hand 50 is dead", and a guess like that goes stale
+# without anything failing loudly.
+WEDGE_GRINDS = ['50° K', '52° K', '52° S', '54° K', '56° K', '56° S', '58° K', '60° K', '60° S']
+WEDGE_VARIANTS = [
+    # (id, hand, loft & grind, in stock)
+    (50066568904981, 'Right Hand', '50° K', True),
+    (50066568937749, 'Right Hand', '52° K', True),
+    (50066570248469, 'Right Hand', '52° S', False),
+    (50066568970517, 'Right Hand', '54° K', True),
+    (50066569003285, 'Right Hand', '56° K', True),
+    (50066570281237, 'Right Hand', '56° S', False),
+    (50066569036053, 'Right Hand', '58° K', True),
+    (50066569068821, 'Right Hand', '60° K', True),
+    (50066570314005, 'Right Hand', '60° S', False),
+    (50066569101589, 'Left Hand',  '50° K', False),
+    (50066569134357, 'Left Hand',  '52° K', True),
+    (50066570346773, 'Left Hand',  '52° S', True),
+    (50066569167125, 'Left Hand',  '54° K', True),
+    (50066569199893, 'Left Hand',  '56° K', True),
+    (50066570379541, 'Left Hand',  '56° S', True),
+    (50066569232661, 'Left Hand',  '58° K', True),
+    (50066569265429, 'Left Hand',  '60° K', True),
+    (50066570412309, 'Left Hand',  '60° S', True),
+]
 
 
 def polo(handle, title, img, ids):
@@ -71,25 +98,20 @@ def polo(handle, title, img, ids):
     }
 
 
-wedge_variants = []
-for hand, ids in [('Right Hand', WEDGE_R), ('Left Hand', WEDGE_L)]:
-    for vid, loft in zip(ids, LOFTS):
-        wedge_variants.append({'id': vid, 'opts': [hand, loft],
-                               # only dead combination in the catalogue right now
-                               'available': not (hand == 'Left Hand' and loft == '50°'),
-                               'price': 9900})
+wedge_variants = [{'id': vid, 'opts': [hand, grind], 'available': ok, 'price': 9900}
+                  for (vid, hand, grind, ok) in WEDGE_VARIANTS]
 
 upsell = [
     polo('signature-black-classic-polo', 'Signature Black Classic Polo',
          'Classicpolowithlogointhecollar1_600x.webp?v=1779472786', POLO_A),
     polo('gold-carnation-classic-polo', 'Gold Carnation Classic Polo',
          'WhiteCarnation1_600x.webp?v=1779472693', POLO_B),
-    {'handle': 'v1-gold-lucky-golf-wedge', 'group': 'club', 'name': 'Lucky Golf LGW01 Gold',
-     'url': '/products/v1-gold-lucky-golf-wedge',
+    {'handle': 'lucky-golf-lgw02-gold', 'group': 'club', 'name': 'Lucky Golf LGW02 Gold',
+     'url': '/products/lucky-golf-lgw02-gold',
      'img': CDN + '11_26414fab-14b8-41ae-8ad7-a801c2f646fb_600x.webp?v=1782597869',
      'price': 9900,
      'options': [{'name': 'Hand', 'values': ['Right Hand', 'Left Hand']},
-                 {'name': 'Loft', 'values': LOFTS}],
+                 {'name': 'Loft & Grind', 'values': WEDGE_GRINDS}],
      'variants': wedge_variants},
     {'handle': 'limited-edition-mallet-putter', 'group': 'club', 'name': 'Lucky Golf LGP02 Gold',
      'url': '/products/limited-edition-mallet-putter',
