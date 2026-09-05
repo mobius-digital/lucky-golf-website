@@ -83,6 +83,16 @@
 .lgb-btn[disabled]{opacity:.5;cursor:not-allowed}
 .lgb-btn[data-added]{background:var(--green);border-color:var(--green);color:var(--white)}
 
+/* A write can be refused, and until now that happened in silence: the tile
+   flashed "Added" and reverted with nothing said. That is exactly how the
+   merged-wedge break hid for a day. This says so. Top-centre rather than above
+   the rail, whose height changes with the layout. */
+.bgo-toast{position:fixed;left:50%;top:14px;translate:-50% 0;z-index:10000;margin:0;
+  max-width:min(520px,calc(100vw - 28px));padding:12px 18px;
+  background:var(--ink);color:var(--cream);border:2px solid var(--gold);border-radius:var(--r);
+  font-size:.9rem;line-height:1.4;box-shadow:0 18px 40px -24px rgba(23,20,15,.9)}
+.bgo-toast[hidden]{display:none}
+
 .lgb-breath{display:flex;align-items:center;justify-content:center;gap:18px;padding:0 var(--pad)}
 .lgb-breath .ln{height:1px;flex:1;max-width:200px;background:var(--ink-14)}
 .lgb-breath .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
@@ -374,6 +384,7 @@
     </div>
   </div>
   <p class="lgb-sr" id="bgo-live" role="status" aria-live="polite"></p>
+  <p class="bgo-toast" id="bgo-toast" hidden role="alert"></p>
 
   <div class="bgo-md" id="bgo-md" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="bgo-md-title">
     <div class="bgo-md-bd-scrim" data-bgo-close></div>
@@ -433,7 +444,20 @@
   var totSv  = document.getElementById('bgo-tot-sv');
   var goBtn  = document.getElementById('bgo-go');
   var live   = document.getElementById('bgo-live');
+  var toast  = document.getElementById('bgo-toast');
   var md     = document.getElementById('bgo-md');
+
+  /* Anything the reader needs told goes through here, so it reaches both a
+     screen reader and a pair of eyes. Silence was the old failure mode. */
+  var toastTimer = null;
+  function say(msg){
+    if (live) live.textContent = msg;
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.hidden = true; }, 5000);
+  }
 
   var COPY = {
     empty:   root.querySelector('#bgo-hd').textContent.trim(),
@@ -539,14 +563,25 @@
     armQuietCart();            /* re-arm every time: the app can redefine it */
     settleCart();
     post('cart/update.js', {updates: sent}).then(function(c){
-      if (c && c.items) cart = c;
+      /* A refusal still arrives as a parsed body, just without a cart in it.
+         422 "Cannot find variant" is what a merged, renamed or unpublished
+         product looks like from here, and letting it through quietly is how the
+         wedge upsell stayed broken without anyone seeing an error. */
+      if (!c || !c.items){
+        pending = {}; inFlight = false;
+        paint();
+        say('That one would not go in the bag. Give it another try, or reload the page.');
+        return;
+      }
+      cart = c;
       /* only clear what this request actually carried: anything the reader
          changed while it was in the air must survive and go out next */
       ids.forEach(function(k){ if (pending[k] === sent[k]) delete pending[k]; });
       inFlight = false; paint(); settleCart(); flush();
     }).catch(function(){
       pending = {}; inFlight = false;      /* drop the guess, trust Shopify */
-      getCart().then(function(c){ cart = c; paint(); }).catch(function(){});
+      say('Lost the connection for a second. Give it another try.');
+      getCart().then(function(c){ cart = c; paint(); }).catch(function(){ paint(); });
     });
   }
 
@@ -739,13 +774,33 @@
     }
     return null;
   }
+  /* Can this value be bought at all, given whatever is chosen on the OTHER
+     axes? On the merged wedge every Right Hand S grind is at zero, so a reader
+     picking Right Hand then 56 S walked into a dead Sold out with no warning.
+     The values stay selectable, because switching hand is what makes them
+     available again and disabling them would hide that. They just say so. */
+  function valueUsable(p, axis, val){
+    var want = sel[p.handle];
+    for (var i = 0; i < p.variants.length; i++){
+      var v = p.variants[i];
+      if (!v.available || v.opts[axis] !== val) continue;
+      var ok = true;
+      for (var k = 0; k < want.length; k++){
+        if (k !== axis && v.opts[k] !== want[k]){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
   function rowHtml(p){
     var v = variantOf(p), ok = !!(v && v.available);
     var opts = (p.options || []).map(function(o, i){
       return '<label class="bgo-opt"><span class="l">' + esc(o.name) + '</span>'
         + '<select data-up="' + esc(p.handle) + '" data-axis="' + i + '">'
         + o.values.map(function(val){
-            return '<option value="' + esc(val) + '"' + (sel[p.handle][i] === val ? ' selected' : '') + '>' + esc(val) + '</option>';
+            var dead = !valueUsable(p, i, val);
+            return '<option value="' + esc(val) + '"' + (sel[p.handle][i] === val ? ' selected' : '') + '>'
+                 + esc(val) + (dead ? ' (sold out)' : '') + '</option>';
           }).join('')
         + '</select></label>';
     }).join('');

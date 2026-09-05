@@ -26,7 +26,20 @@
   var totSv  = document.getElementById('bgo-tot-sv');
   var goBtn  = document.getElementById('bgo-go');
   var live   = document.getElementById('bgo-live');
+  var toast  = document.getElementById('bgo-toast');
   var md     = document.getElementById('bgo-md');
+
+  /* Anything the reader needs told goes through here, so it reaches both a
+     screen reader and a pair of eyes. Silence was the old failure mode. */
+  var toastTimer = null;
+  function say(msg){
+    if (live) live.textContent = msg;
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.hidden = true; }, 5000);
+  }
 
   var COPY = {
     empty:   root.querySelector('#bgo-hd').textContent.trim(),
@@ -132,14 +145,25 @@
     armQuietCart();            /* re-arm every time: the app can redefine it */
     settleCart();
     post('cart/update.js', {updates: sent}).then(function(c){
-      if (c && c.items) cart = c;
+      /* A refusal still arrives as a parsed body, just without a cart in it.
+         422 "Cannot find variant" is what a merged, renamed or unpublished
+         product looks like from here, and letting it through quietly is how the
+         wedge upsell stayed broken without anyone seeing an error. */
+      if (!c || !c.items){
+        pending = {}; inFlight = false;
+        paint();
+        say('That one would not go in the bag. Give it another try, or reload the page.');
+        return;
+      }
+      cart = c;
       /* only clear what this request actually carried: anything the reader
          changed while it was in the air must survive and go out next */
       ids.forEach(function(k){ if (pending[k] === sent[k]) delete pending[k]; });
       inFlight = false; paint(); settleCart(); flush();
     }).catch(function(){
       pending = {}; inFlight = false;      /* drop the guess, trust Shopify */
-      getCart().then(function(c){ cart = c; paint(); }).catch(function(){});
+      say('Lost the connection for a second. Give it another try.');
+      getCart().then(function(c){ cart = c; paint(); }).catch(function(){ paint(); });
     });
   }
 
@@ -332,13 +356,33 @@
     }
     return null;
   }
+  /* Can this value be bought at all, given whatever is chosen on the OTHER
+     axes? On the merged wedge every Right Hand S grind is at zero, so a reader
+     picking Right Hand then 56 S walked into a dead Sold out with no warning.
+     The values stay selectable, because switching hand is what makes them
+     available again and disabling them would hide that. They just say so. */
+  function valueUsable(p, axis, val){
+    var want = sel[p.handle];
+    for (var i = 0; i < p.variants.length; i++){
+      var v = p.variants[i];
+      if (!v.available || v.opts[axis] !== val) continue;
+      var ok = true;
+      for (var k = 0; k < want.length; k++){
+        if (k !== axis && v.opts[k] !== want[k]){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
   function rowHtml(p){
     var v = variantOf(p), ok = !!(v && v.available);
     var opts = (p.options || []).map(function(o, i){
       return '<label class="bgo-opt"><span class="l">' + esc(o.name) + '</span>'
         + '<select data-up="' + esc(p.handle) + '" data-axis="' + i + '">'
         + o.values.map(function(val){
-            return '<option value="' + esc(val) + '"' + (sel[p.handle][i] === val ? ' selected' : '') + '>' + esc(val) + '</option>';
+            var dead = !valueUsable(p, i, val);
+            return '<option value="' + esc(val) + '"' + (sel[p.handle][i] === val ? ' selected' : '') + '>'
+                 + esc(val) + (dead ? ' (sold out)' : '') + '</option>';
           }).join('')
         + '</select></label>';
     }).join('');

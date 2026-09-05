@@ -82,6 +82,16 @@
 .lgb-btn[disabled]{opacity:.5;cursor:not-allowed}
 .lgb-btn[data-added]{background:var(--green);border-color:var(--green);color:var(--white)}
 
+/* A write can be refused, and until now that happened in silence: the tile
+   flashed "Added" and reverted with nothing said. That is exactly how the
+   merged-wedge break hid for a day. This says so. Top-centre rather than above
+   the rail, whose height changes with the layout. */
+.bgo-toast{position:fixed;left:50%;top:14px;translate:-50% 0;z-index:10000;margin:0;
+  max-width:min(520px,calc(100vw - 28px));padding:12px 18px;
+  background:var(--ink);color:var(--cream);border:2px solid var(--gold);border-radius:var(--r);
+  font-size:.9rem;line-height:1.4;box-shadow:0 18px 40px -24px rgba(23,20,15,.9)}
+.bgo-toast[hidden]{display:none}
+
 .lgb-breath{display:flex;align-items:center;justify-content:center;gap:18px;padding:0 var(--pad)}
 .lgb-breath .ln{height:1px;flex:1;max-width:200px;background:var(--ink-14)}
 .lgb-breath .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}

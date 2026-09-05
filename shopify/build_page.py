@@ -292,6 +292,7 @@ HTML = u"""<style>
     </div>
   </div>
   <p class="lgb-sr" id="bgo-live" role="status" aria-live="polite"></p>
+  <p class="bgo-toast" id="bgo-toast" hidden role="alert"></p>
 
   <div class="bgo-md" id="bgo-md" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="bgo-md-title">
     <div class="bgo-md-bd-scrim" data-bgo-close></div>
