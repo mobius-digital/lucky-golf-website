@@ -125,10 +125,16 @@ was arithmetic for a per-product migration that is not how this store works.
 Read the group total after the refresh and rebuild `_page-reviews.json` from
 it.
 
-*Why this is not automated:* the Judge.me admin is a cross-origin iframe inside
-Shopify admin. The accessibility tree exposes none of it, so it is
-screenshot-coordinate clicking only, and the coordinate frame drifts mid-session.
-An attempted add could not be confirmed. Do not drive it with automation.
+*Why this is not automated — tried and failed 2026-09-09.* The Judge.me admin
+is a cross-origin iframe inside Shopify admin, invisible to the accessibility
+tree, so it is screenshot-coordinate clicking only. The dialog opens, the
+search works and the row ticks, but **the Add button never commits** — verified
+by re-reading the group afterwards: still 27 products, 563 reviews, 4.82, and
+the storefront badge still 0. About half of all clicks silently fail, and two
+strayed onto Shopify's own nav. The group edit page carries a **Delete** button
+beside the click target, and deleting that group would destroy the pooling for
+563 reviews. Not worth the risk for a 30-second manual task. Nothing was
+changed by the attempt.
 
 ### 2b. The site side — DONE 2026-09-09
 
