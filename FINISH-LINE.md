@@ -317,9 +317,13 @@ have hit it too.
   dead gap between rows; now **24×205.7**, gap moved inside the target. Footer
   is 41.5px shorter and the rows are a 25px pitch instead of ~36px — the one
   visible change, and the reason it needed a decision rather than a patch.
-- **The Judge.me AI summary says "premium"** on the 01 Gold — a word the
-  Spec-to-Benefit guide bans. It is Judge.me's auto-generated text, published
-  verbatim by standing decision. Yours to disable, not to edit.
+- ~~**The Judge.me AI summary says "premium"** on the 01 Gold~~ — **RESOLVED
+  2026-09-09, and not by editing it.** The merge left the live product with no
+  AI summary at all (`ai_summary_text` is empty in the metafield), so the
+  paragraph was no longer live third-party text and the "from all 551 reviews"
+  label was no longer true either. The block is cut. **"premium" now appears
+  nowhere on the site.** Restore it only from a fresh metafield read, never by
+  rewriting the old paragraph.
 - **Homepage review quotes name Vokey, Cleveland and Odyssey.** All inside
   verbatim customer reviews, so not Lucky comparing itself by name — but
   *choosing* those quotes is arguably the comparison by proxy.
@@ -348,9 +352,9 @@ have hit it too.
 - [x] ~~Stock moved onto the six S-grind variants~~ — synced 2026-09-05
 - [x] ~~Draft published~~ — ACTIVE 2026-09-05, $99 flat
 - [x] ~~Both old wedge products archived~~ — DRAFT 2026-09-05 (do not republish)
-- [ ] **URGENT: add the merged wedge to the "All Gold Wedges" Judge.me group**
-      (id 241751) — it shows ZERO reviews on the live site because it is not a
-      member. Then Refresh all Groups. See Round 2a
+- [x] ~~Add the merged wedge to the "All Gold Wedges" Judge.me group~~ — **Cole
+      did it 2026-09-09.** The product went from 0 reviews to **650 at 4.82**,
+      confirmed in the `judgeme.badge` metafield. The site is synced to that.
 - [x] ~~Trybe roster~~ — roster killed 2026-08-13; open program, no names needed
 - [x] ~~Trybe program terms~~ — on the page 2026-08-13, all Cole's
 - [ ] 51 stills shot (`SHOT-LIST.md`, 4 sessions — 23 of them unblock every apparel page)
@@ -362,9 +366,12 @@ have hit it too.
 - [x] ~~Four policy chips replaced with real answers~~ — all four support pages at ZERO chips
 - [x] ~~Catalogue re-pulled, `merge_grinds()` deleted~~ — 2026-09-09; only the
       Black's cosmetic `grind_axis()` remains
-- [ ] Reviews page: S-grind chip removed, count re-derived from the "All Gold
-      Wedges" group total (NOT the assumed 620) — BLOCKED on the group fix
-      above; flipping early would invent a figure
+- [x] ~~Reviews page: S-grind chip removed, count re-derived~~ — **done
+      2026-09-09.** The real figure is **650 at 4.82**, not the assumed 620.
+      Histogram (585/37/12/5/11, sums to 650) read from the
+      `judgeme.review_widget_data` metafield, not derived from our sample. The
+      S grind's 30 verbatim reviews were folded into the wedge's sample rather
+      than dropped, since they are reviews of this club. Clubs-wide reads 914.
 - [x] ~~Product-specific CTAs applied from Product Language Rules~~ — obsolete;
       no locked product language (Cole, 2026-09-09)
 - [x] ~~Roster names and portraits in~~ — obsolete; roster removed, block dormant

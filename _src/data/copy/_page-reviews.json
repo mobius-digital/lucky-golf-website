@@ -1,7 +1,7 @@
 {
  "_": "The all-clubs reviews page. NEXT-PAGES §5. It exists because the homepage's 'Read all 884 reviews' is a clubs-wide figure and cannot point at any single PDP's review block.",
  "_sets": "Which review pulls make up the page, in the order the chips appear. `file` is _src/data/reviews/<file>.json; `product` is the page a review links to. Totals and histograms come from those files — nothing about a count is typed here.",
- "_merge": "lgw02-gold is the S-grind product that HANDOFF §23 folded into the 01. It is no longer in products.json, so its 69 reviews are carried as their own chip and linked to the 01 Gold. They are NOT summed into the 01's 551: merging two review sets into a figure no system currently reports would be inventing one (§23h). After Cole's Shopify merge and the Judge.me migration, the 01 becomes 620 and this entry goes away.",
+ "_merge": "The S-grind product is gone. Cole merged the two Gold wedges in Shopify on 2026-09-05 and added the merged product to the All Gold Wedges Judge.me group on 2026-09-09, so the club now reports one pooled figure: 650 at 4.82, read from the judgeme.review_widget_data metafield. Its 30 sampled S-grind reviews were folded into lgw01-gold rather than dropped, because they are reviews of this club. Note the pooled number is NOT 551+69=620; that assumed a per-product migration, and this store pools by group instead.",
  "crumbName": "Reviews",
  "eyebrow": "Reviews",
  "headline": "Every review we've got",
@@ -16,11 +16,6 @@
    "file": "lgp01-gold",
    "name": "Tracer LGP01 Blade",
    "product": "lgp01-gold"
-  },
-  {
-   "file": "lgw02-gold",
-   "name": "Carver 01 · S grind",
-   "product": "lgw01-gold"
   },
   {
    "file": "lgp02-gold",

@@ -151,7 +151,11 @@ EDITORIAL = {
     "lucky-golf-lgw02-gold": dict(
         id="lgw01-gold", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Gold",
         title="Carver 01 Gold",
-        coll="wedges", rating=[4.81, 551], built=True,
+        # 650 at 4.82, read from the judgeme.review_widget_data metafield on
+        # 2026-09-09. That is the "All Gold Wedges" GROUP pool, which is what
+        # the product page renders: Judge.me pools reviews across a group's
+        # members, it does not attach them per product. It is not 551+69.
+        coll="wedges", rating=[4.82, 650], built=True,
         file="02-pdp-lgw01.html",
         finish="Gold", grind="K", finishGroup="carver-01",
         default="RH|56K"),

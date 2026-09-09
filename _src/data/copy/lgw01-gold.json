@@ -328,11 +328,7 @@
   "name": "Dan T.",
   "meta": "Carver 01 Gold 60&deg; &middot; 5 stars &middot; verified buyer"
  },
- "reviewHeadline": "What 551 golfers said",
- "jmSummary": {
-  "text": "Customers praised this premium forged wedge for its &ldquo;crazy spin and control&rdquo; and eye-catching gold finish. Many said it performs &ldquo;as well as big name brands&rdquo; at a better price. The club features CNC-milled grooves, soft feel, and solid construction. However, one customer reported the head separating from shaft on first swing, and another noted slow customer service response times.",
-  "of": 551
- },
+ "reviewHeadline": "What 650 golfers said",
  "chooseCta": "Pick a loft",
  "closeHeadline": "Go own the",
  "closeFoil": "green",
@@ -340,7 +336,7 @@
  "closeTrust": [
   "60-day returns",
   "Six lofts, one price",
-  "4.81 from verified buyers",
+  "4.82 from verified buyers",
   "Ships in 1&ndash;2 business days"
  ],
  "oav": [
@@ -400,5 +396,6 @@
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_weight": "Cole 2026-08-19: do not write that the wedge weighs the same at every loft. The 300 g row stays in the spec matrix (it is the manufacturer's sheet, and the table is data) but no copy is built on it, and no 'they all feel like the same club' line derives from it. The Design bullet's 'Weighting shifts by loft' also came off: unsourced, and it contradicted the sheet it sits above.",
  "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
- "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones."
+ "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones.",
+ "_jmSummary": "REMOVED 2026-09-09. Judge.me no longer generates a summary for this product (ai_summary_text is empty in the metafield since the merge), so there is nothing to attribute. Restore it only by re-reading the metafield, never by rewriting the old paragraph. The old text is in git."
 }
