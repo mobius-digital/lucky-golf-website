@@ -568,21 +568,17 @@ to output), and only a 30KB size drop gave it away.
 
 ## 11. What is temporary, and must be deleted rather than ported
 
-**`merge_grinds()` in `normalize-products.py`.** Lucky sells one wedge, the 01;
-the K-grind gold and the S-grind gold were two Shopify products at two prices
-for a difference that is not a difference. This function models the merged state
-ahead of the store: it rewrites variant keys (`RH|56` → `RH|56K` / `RH|56S`),
-flattens the price to $99, and removes the merged product from `products.json`
-entirely.
+**`grind_axis()` in `normalize-products.py`** (formerly `merge_grinds()`; the
+merge half was deleted 2026-09-09 after the merge became real in Shopify —
+`lucky-golf-lgw02-gold` now carries "Loft & Grind" natively, one product at $99
+flat, and the overlay no longer overrides Shopify anywhere). What survives is a
+cosmetic transform: the **Black** wedge's Shopify axis is still plain Loft with
+a single K grind, and this function rewrites its variant keys (`RH|56` →
+`RH|56K`) so both finishes read the same combined axis. It goes away the day
+the Black gets the native "Loft & Grind" axis in Shopify too.
 
-**It is the one place the overlay overrides Shopify rather than only adding to
-it.** When the Shopify merge lands — the draft is built and waiting at
-`carver-01-gold` — re-pull the catalogue, delete `merge` / `axisGrind` /
-`priceAll` and the merged handle's overlay entry, and the function stops doing
-anything. Every SKU is already carried verbatim through it: `52° S` is the real
-`LGW02-52-RH`.
-
-**Do not port this function.** Port the state it produces.
+**Do not port this function.** Give the Black the native axis instead, the way
+the Gold has it.
 
 **The front-end cart.** `core.js` persists line items in `localStorage` under
 `lg-cart-v1` and there is no checkout behind the button — the drawer says so.
@@ -678,8 +674,9 @@ refund policy.** That Shopify page needs retiring, not mirroring.
 - [ ] Tap targets ≥44px, footer included — decide it deliberately
 - [ ] Cart swapped to `/cart/add.js`, `[data-add]` contract preserved
 - [ ] Contact form wired to `{% form 'contact' %}`, prototype notice deleted
-- [ ] `merge_grinds()` state landed in Shopify and the function deleted, not
-      ported
+- [x] ~~`merge_grinds()` state landed in Shopify~~ — landed 2026-09-05; only
+      `grind_axis()` (the Black's cosmetic combined axis) remains, and it is
+      deleted, not ported (§11)
 - [ ] Redirects for `10-collection-hybrid-driver.html`, `20-product-lgw02-*.html`
       and the two discontinued products
 - [ ] `.tbd` device kept for every unanswered policy detail

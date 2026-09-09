@@ -98,36 +98,33 @@ gap" is on the right club.
 
 ---
 
-## Round 2 · Shopify — about an hour, and it retires a temporary hack
+## Round 2 · Shopify — DONE 2026-09-05 except the Judge.me migration
 
-### 2a. Finish the wedge merge
+### 2a. The wedge merge — LIVE 2026-09-05
 
-The draft is built and waiting:
-https://admin.shopify.com/store/lucky-wedges/products/9583978905877
+Steps 1–3 happened: the merged **Lucky Golf LGW02 Gold**
+(`lucky-golf-lgw02-gold`, Hand × "Loft & Grind", 18 variants) is ACTIVE at
+**$99 flat** (Cole confirmed the price 2026-09-09), and both old Gold products
+went DRAFT. No double-counting on the storefront.
 
-1. **Move stock onto the six S-grind variants.** They are at zero, so they read
-   sold out. From the live LGW02 Gold: RH 52° **38**, RH 56° **25**,
-   RH 60° **2**, LH 52° **94**, LH 56° **92**, LH 60° **70**.
-2. **Publish the draft.**
-3. **Archive `v1-gold-lucky-golf-wedge` and `v2-signature-gold-wedge-1`.**
-4. **Migrate the Judge.me reviews** — the S grind's 69 onto the 01, so it reads
-   **620** and the clubs-wide total stays 884.
+⚠️ **Step 4 has NOT happened, and it is now urgent: the live merged product has
+ZERO Judge.me reviews.** Verified 2026-09-09 via the product's `judgeme`
+metafields — "No reviews", count 0. The 551 and the 69 are still attached to
+the two DRAFT products, so the flagship wedge on luckygolf.com says "Be the
+first to write a review". Migrate both sets onto product `9583978905877` in
+Judge.me admin; then the 01 reads **620** and the clubs-wide 884 stands.
 
-⚠️ **Inventory is double-counted until step 3.** Shopify's duplicate carried the
-K-grind quantities across, so the draft holds 2,524 units that also still sit on
-the live product. Nothing can sell — it is unpublished — but store-wide
-inventory totals are inflated until the old products are archived.
+### 2b. The site side — DONE 2026-09-09
 
-### 2b. Then, on the site side (me)
-
-Once 2a lands, three things get deleted rather than written:
-
-- Re-pull the catalogue.
-- Delete `merge` / `axisGrind` / `priceAll` and the merged handle's overlay
-  entry from `normalize-products.py`. **`merge_grinds()` is the one place the
-  overlay overrides Shopify rather than adding to it** (HANDOFF §23b) and it is
-  explicitly temporary. It stops doing anything.
-- The reviews page's S-grind chip disappears, and the 01 reads 620.
+- Catalogue re-pulled (wedges): `shopify-raw.json` now carries the merged
+  product; the two old records are gone.
+- `merge` / `axisGrind` / `priceAll` and the overlay hack deleted.
+  `merge_grinds()` is now `grind_axis()` — only the Black's cosmetic combined
+  axis survives, and **nothing in the overlay overrides Shopify any more.**
+- The reviews page's S-grind chip **stays until the Judge.me migration lands**,
+  by the page's own recorded rule (`_page-reviews.json` `_merge`): summing two
+  review sets into a 620 no system reports would be inventing a figure. Flip it
+  the day Judge.me reads 620.
 
 ---
 
@@ -250,10 +247,12 @@ its own document, because it is what ships with the repo.
 - [x] ~~Chat hours + email response target~~ — 24 business hours; chat = email hours, Mon–Fri
 - [x] ~~Returns Portal URL~~ — lucky-golf.loopreturns.com, apparel route only
 - [ ] Product Language Rules sent
-- [ ] Stock moved onto the six S-grind variants
-- [ ] Draft published
-- [ ] Both old wedge products archived
-- [ ] Judge.me reviews migrated (01 reads 620)
+- [x] ~~Stock moved onto the six S-grind variants~~ — synced 2026-09-05
+- [x] ~~Draft published~~ — ACTIVE 2026-09-05, $99 flat
+- [x] ~~Both old wedge products archived~~ — DRAFT 2026-09-05 (do not republish)
+- [ ] **Judge.me reviews migrated — URGENT: the live merged wedge shows ZERO
+      reviews** (both sets still sit on the DRAFT products). Migrate onto
+      product 9583978905877; then the 01 reads 620
 - [x] ~~Trybe roster~~ — roster killed 2026-08-13; open program, no names needed
 - [x] ~~Trybe program terms~~ — on the page 2026-08-13, all Cole's
 - [ ] 51 stills shot (`SHOT-LIST.md`, 4 sessions — 23 of them unblock every apparel page)
@@ -263,8 +262,10 @@ its own document, because it is what ships with the repo.
 
 - [x] ~~Sale page built, or the slug retired~~ — slug retired 2026-08-13
 - [x] ~~Four policy chips replaced with real answers~~ — all four support pages at ZERO chips
-- [ ] Catalogue re-pulled, `merge_grinds()` deleted
-- [ ] Reviews page: S-grind chip removed, 01 reads 620
+- [x] ~~Catalogue re-pulled, `merge_grinds()` deleted~~ — 2026-09-09; only the
+      Black's cosmetic `grind_axis()` remains
+- [ ] Reviews page: S-grind chip removed, 01 reads 620 — BLOCKED on the
+      Judge.me migration above; flipping early would invent a figure
 - [ ] Product-specific CTAs applied from Product Language Rules
 - [x] ~~Roster names and portraits in~~ — obsolete; roster removed, block dormant
 - [ ] Photography dropped into the 26 still slots

@@ -74,6 +74,10 @@ IMG_BASE = "https://cdn.shopify.com/s/files/1/2286/3149/"
 OPTION_KEY = {
     "Hand": "hand",
     "Loft": "loft",
+    # The merged Gold wedge (2026-09-05) carries the combined axis natively in
+    # Shopify. Values arrive as "56° K"; the key compacts to Cole's shorthand
+    # 56K, same keys merge_grinds() used to synthesise, so no page moved.
+    "Loft & Grind": "loftgrind",
     "Size": "size",
     "Grip Size": "gripsize",
 }
@@ -103,6 +107,10 @@ def norm_value(key, raw):
         return m[raw]
     if key == "loft":
         return (raw.replace("°", ""), raw)
+    if key == "loftgrind":
+        # '56° K' -> ('56K', '56° K'). The label keeps the LITERAL degree sign:
+        # the buy box escapes every chip label, so an entity would render raw.
+        return (raw.replace("°", "").replace(" ", ""), raw)
     return (raw, raw)
 
 
@@ -134,27 +142,19 @@ EDITORIAL = {
     # --- clubs -------------------------------------------------------------
     # THE 01. Everything Lucky sells in a wedge today is this club — the K
     # grind and the S grind are options on it, not tiers (Cole 2026-07-31).
-    # `merge` folds another Shopify product's variants in as a second grind;
-    # `axisGrind` turns Loft into a combined "Loft & grind" axis (50K, 52K,
-    # 52S, ...); `priceAll` puts one price on the whole product, which is the
-    # point of the merge. Every SKU is still carried verbatim from Shopify.
-    "v1-gold-lucky-golf-wedge": dict(
+    # The merge is REAL in Shopify since 2026-09-05: one product, Hand x
+    # "Loft & Grind", $99 flat (Cole priced it 2026-09-09), every SKU carried
+    # verbatim from the two old products. The `merge`/`priceAll` overlay hack
+    # that modelled this state is gone; nothing overrides Shopify any more.
+    # Ratings still count the OLD product's 551 — the Judge.me migration has
+    # not happened (the merged product reads 0 reviews live). 620 when it does.
+    "lucky-golf-lgw02-gold": dict(
         id="lgw01-gold", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Gold",
         title="Carver 01 Gold",
         coll="wedges", rating=[4.81, 551], built=True,
         file="02-pdp-lgw01.html",
         finish="Gold", grind="K", finishGroup="carver-01",
-        merge=["v2-signature-gold-wedge-1"], axisGrind=True, priceAll=99,
         default="RH|56K"),
-    # FOLDED INTO lgw01-gold. Cole 2026-07-31: the S-grind gold was never a
-    # different club, only a different grind, and the price gap it carried was
-    # for a difference that did not exist. Its six variants become the "S" half
-    # of the Gold product's Loft & grind axis, at $99 with their real SKUs.
-    # Delete this entry once the merge is done in Shopify and the pull reflects it.
-    "v2-signature-gold-wedge-1": dict(
-        id="lgw02-gold", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Gold",
-        title="Carver 01 Gold", coll="wedges", grind="S",
-        merged_into="lgw01-gold"),
     "lucky-golf-lgw02-black": dict(
         id="lgw01-black", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Black",
         title="Carver 01 Black",
@@ -391,7 +391,9 @@ def build_product(raw):
                      % (o["name"], raw["handle"]))
         options.append({
             "key": key,
-            "name": o["name"],
+            # Shopify capitalises the axis "Loft & Grind"; the site's chips are
+            # sentence case, and the Black's synthesised axis already says so.
+            "name": "Loft & grind" if key == "loftgrind" else o["name"],
             "values": [{"k": norm_value(key, v)[0], "label": norm_value(key, v)[1], "sv": v}
                        for v in o["values"]],
         })
@@ -414,8 +416,8 @@ def build_product(raw):
     live = [k for k, v in variants.items() if v["avail"]]
 
     default = ed.get("default")
-    # A combined-axis product's variant keys do not exist yet — the grind is
-    # appended in merge_grinds() — so its default is validated there instead.
+    # An axisGrind product's variant keys do not exist yet — the grind is
+    # appended in grind_axis() — so its default is validated there instead.
     if default and not ed.get("axisGrind") and default not in variants:
         sys.exit("%s: default %r is not a variant key" % (ed["id"], default))
     if not default:
@@ -461,44 +463,28 @@ def build_product(raw):
     return p
 
 
-def merge_grinds(products):
-    """Fold a merged product's variants into its target as a second grind, and
-    turn the target's Loft axis into a combined "Loft & grind" one.
+def grind_axis(products):
+    """Turn a single-grind wedge's Loft axis into the combined "Loft & grind"
+    one — RH|56 -> RH|56K — so it reads the same as the merged Gold when you
+    flip between finishes.
 
-    WHY THIS EXISTS — Cole, 2026-07-31. Lucky sells one wedge, the 01. The
-    K-grind gold and the S-grind gold were two Shopify products at two prices
-    for a difference that is not a difference: same 1020 forged head, same
-    weight, same face. He is collapsing them in Shopify; this models the
-    collapsed state now so the site is not describing a lineup that is about to
-    stop existing.
+    This used to be merge_grinds(), which also folded the S-grind product into
+    the Gold and flattened its price — the one place the overlay overrode
+    Shopify. That merge became REAL in Shopify on 2026-09-05 (the Gold now
+    carries "Loft & Grind" natively and normalises with no help), so only the
+    axis-combining half survives, for the Black, whose Shopify axis is still
+    plain Loft with one grind.
 
-    THIS IS THE ONE PLACE THE OVERLAY OVERRIDES SHOPIFY DATA rather than just
-    adding to it, and it is deliberate and temporary:
-      * variant keys gain the grind    RH|56  ->  RH|56K / RH|56S
-      * `priceAll` flattens the price  the S variants drop $109 -> $99
-      * the merged product LEAVES products.json entirely
-    Every SKU is still carried verbatim — 56S is the real LGW02-56-RH.
-
-    WHEN SHOPIFY IS MERGED: re-pull, delete `merge`/`axisGrind`/`priceAll` and
-    the merged handle's overlay entry, and this function stops doing anything.
+    Goes away entirely the day the Black gets the native axis too.
     """
-    by_handle = {p["shopifyHandle"]: p for p in products}
-    drop = set()
-
     for p in products:
         ed = EDITORIAL[p["shopifyHandle"]]
         if not ed.get("axisGrind"):
             continue
 
-        # A product with one grind still gets the combined axis, so the Gold
-        # and the Black read the same way when you flip between finishes.
-        sources = [(p, ed.get("grind"))]
-        for h in ed.get("merge", []):
-            src = by_handle.get(h)
-            if src is None:
-                sys.exit("%s merges %r, which is not in the pull" % (p["id"], h))
-            sources.append((src, EDITORIAL[h].get("grind")))
-            drop.add(src["id"])
+        grind = ed.get("grind")
+        if not grind:
+            sys.exit("%s: axisGrind needs a `grind`" % p["id"])
 
         loft_i = [i for i, o in enumerate(p["options"]) if o["key"] == "loft"]
         if len(loft_i) != 1:
@@ -506,48 +492,36 @@ def merge_grinds(products):
         loft_i = loft_i[0]
 
         combined, variants = {}, {}
-        for src, grind in sources:
-            if not grind:
-                sys.exit("%s: every merged product needs a `grind`" % src["id"])
-            src_loft = [i for i, o in enumerate(src["options"]) if o["key"] == "loft"][0]
-            for key, var in src["variants"].items():
-                parts = key.split("|")
-                lo = parts[src_loft]
-                parts[src_loft] = lo + grind
-                combined[lo + grind] = {
-                    "k": lo + grind,
-                    # Cole's own shorthand: 50K, 52K, 52S. The degree sign and
-                    # the space are for the chip; the KEY stays compact.
-                    # LITERAL characters, not HTML entities — the buy box runs
-                    # every chip label through esc(), so "&deg;" would render
-                    # as the four characters "&deg;". norm_value() already uses
-                    # a literal degree sign for the plain loft axis.
-                    "label": "%s° %s" % (lo, grind),
-                    "sv": "%s / %s Grind" % (lo, grind),
-                    "loft": float(lo), "grind": grind,
-                }
-                variants["|".join(parts)] = dict(
-                    var, price=ed["priceAll"] if ed.get("priceAll") else var["price"])
+        for key, var in p["variants"].items():
+            parts = key.split("|")
+            lo = parts[loft_i]
+            parts[loft_i] = lo + grind
+            combined[lo + grind] = {
+                "k": lo + grind,
+                # Cole's own shorthand: 50K, 52K. The degree sign and the
+                # space are for the chip; the KEY stays compact. LITERAL
+                # characters, not HTML entities — the buy box runs every chip
+                # label through esc(), so "&deg;" would render as the four
+                # characters "&deg;". norm_value() already uses a literal
+                # degree sign for the plain loft axis.
+                "label": "%s° %s" % (lo, grind),
+                "sv": "%s / %s Grind" % (lo, grind),
+                "loft": float(lo),
+            }
+            variants["|".join(parts)] = var
 
-        # loft ascending, K before S inside a loft — 50K, 52K, 52S, 54K, ...
-        vals = sorted(combined.values(), key=lambda v: (v["loft"], v["grind"]))
+        vals = sorted(combined.values(), key=lambda v: v["loft"])
         p["options"][loft_i] = {
             "key": "loftgrind", "name": "Loft & grind",
             "values": [{"k": v["k"], "label": v["label"], "sv": v["sv"]} for v in vals],
         }
         p["variants"] = variants
-        prices = sorted(v["price"] for v in variants.values())
-        p["price"], p["priceMax"] = prices[0], prices[-1]
-        p["priceLabel"] = (fmt_price(prices[0]) if prices[0] == prices[-1]
-                           else "%s-%s" % (fmt_price(prices[0]), fmt_price(prices[-1])))
         p["summary"] = axis_summary(p["options"], variants)
-        live = [k for k, v in variants.items() if v["avail"]]
-        p["inStock"] = bool(live)
         if p["default"] not in variants:
-            sys.exit("%s: default %r is not a variant key after the merge"
+            sys.exit("%s: default %r is not a variant key after the grind axis"
                      % (p["id"], p["default"]))
 
-    return [p for p in products if p["id"] not in drop]
+    return products
 
 
 def main():
@@ -558,7 +532,7 @@ def main():
 
     raw = json.load(open(RAW, encoding="utf8"))
     products = [build_product(r) for r in raw["products"]]
-    products = merge_grinds(products)
+    products = grind_axis(products)
 
     ids = [p["id"] for p in products]
     dupes = sorted({i for i in ids if ids.count(i) > 1})

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wedges · Lucky Golf</title>
+<title>Buy 2, Get 1 Free · Hats · Lucky Golf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
@@ -820,8 +820,12 @@ button{font:inherit;color:inherit}
   /* no transparent border: it only existed to reserve space for the old black
      hover border, and it was insetting the corner tag by 2px off the edge */
   transition:transform .3s var(--ease-out-s),box-shadow .3s var(--ease-out-s)}
-/* Cole's call 2026-08-30 after an A/B: cards stay put on hover. No lift,
-   no shadow. The photo zoom inside the tile is the hover feedback. */
+/* the lift gets a shadow tinted to the ink, so the card visibly leaves the
+   page instead of just teleporting 3px. Gated to real pointers: on touch,
+   hover states only misfire. */
+@media (hover:hover) and (pointer:fine){
+  .ptile:hover{transform:translateY(-4px);box-shadow:0 26px 48px -30px rgba(23,20,15,.38)}
+}
 /* .pt-sku is gone: no SKU renders anywhere now (Cole 2026-07-31), so the
    rule had no markup left to style. */
 .ptile .pt-nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 64;
@@ -1444,239 +1448,77 @@ html[data-rev="b"] .rev-bar{display:flex}
    override here would never win.) */
 
 /* ==========================================================================
-   CLUB COLLECTION  ·  one stylesheet, four pages
-   Loads after core.css. Nothing here restyles a core component — .ptile,
-   .pgrid, .chip, .btn, .breath, .ph and .band-* are used as they come, and the
-   quick-add pill is shared with the PLP (see the note at the bottom of this
-   file for why it is duplicated and what to do about it).
+   COLLECTION / PLP  ·  one stylesheet, seven pages
+   Loads after core.css, so anything named here wins. Nothing below restyles
+   a core component — .chip, .ptile, .pgrid, .btn and .breath are used as
+   they come, which is the point of having them.
    ========================================================================== */
 
 /* ---------- head ---------- */
-.clp-hd{position:relative;overflow-x:clip;overflow-y:visible;padding-top:34px}
-.clp-hd .wm{width:min(52vw,620px);height:min(52vw,620px);right:-6%;top:-24%;
+.plp-hd{position:relative;overflow:hidden;padding-top:34px}
+.plp-hd .wm{width:min(52vw,620px);height:min(52vw,620px);right:-6%;top:-24%;
   color:var(--ink);opacity:.035}
-.clp-hd .wrap{position:relative;z-index:1}
-.clp-hd h1{max-width:14ch}
-.clp-lede{margin-top:22px;max-width:56ch}
-.clp-count{margin:22px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
+.plp-hd .wrap{position:relative;z-index:1}
+.plp-hd h1{max-width:14ch}
+.plp-lede{margin-top:22px;max-width:56ch}
+
+/* ---------- toolbar ---------- */
+.plp-body{padding-top:clamp(34px,3.4vw,52px)}
+.plp-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px 24px;padding-bottom:20px;border-bottom:2px solid var(--ink-14)}
+.plp-facets{flex:1 1 auto}
+/* the facet row is empty on single-family collections; without this the flex
+   gap still reserves space and the sort control floats mid-row */
+.plp-facets:empty{display:none}
+.plp-tools{display:flex;align-items:center;gap:14px;flex:none}
+
+.plp-stock{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 4px;
+  background:none;border:0;cursor:pointer;color:var(--ink-muted);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase}
+.plp-stock .bx{width:16px;height:16px;flex:none;border:2px solid var(--ink-14);
+  border-radius:2px;background:var(--white);transition:background .18s,border-color .18s}
+.plp-stock:hover{color:var(--ink)}
+.plp-stock:hover .bx{border-color:var(--ink)}
+.plp-stock[aria-pressed="true"]{color:var(--ink)}
+.plp-stock[aria-pressed="true"] .bx{background:var(--ink);border-color:var(--ink)}
+/* the tick is drawn rather than a glyph so it inherits the cream field exactly */
+.plp-stock[aria-pressed="true"] .bx::after{content:'';display:block;width:4px;height:8px;
+  margin:1px 0 0 4px;border:solid var(--cream);border-width:0 2px 2px 0;rotate:45deg}
+
+.plp-sort{display:inline-flex;align-items:center;gap:9px}
+.plp-sort label{color:var(--ink-muted)}
+.plp-sort select{min-height:44px;padding:7px 12px;border:2px solid var(--ink-14);
+  border-radius:var(--r);background:var(--white);color:var(--ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase}
+.plp-sort select:hover{border-color:var(--ink)}
+
+.plp-count{margin:18px 0 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
   letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
-.clp-count a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;
-  text-decoration-thickness:1px}
-.clp-count a:hover{text-decoration-color:var(--gold)}
 
-/* shared section heading width — d-l runs long and a full-bleed headline
-   across 1560px stops reading as a headline */
-.clp-h2{max-width:18ch}
+/* ---------- grid ----------
+   .pgrid is 3-up for the homepage's curated six. A collection runs to
+   thirteen, so it goes 4-up above 1180 and the tile type scales down with it. */
+.plp-grid{margin-top:26px}
+@media (min-width:1181px){
+  .plp-grid{grid-template-columns:repeat(4,1fr)}
+  .plp-grid .pt-nm{font-size:clamp(1.35rem,1.7vw,1.7rem)}
+}
 
-/* ==========================================================================
-   THE BANDS
-   Takomo's move: a small heading and a line of guidance above each row rather
-   than one flat grid with a filter bar over it. The heading is d-s, not d-l —
-   a band label competing with the H1 makes the page read as several pages.
-   ========================================================================== */
-.clp-bands{padding-top:clamp(34px,3.4vw,52px)}
-.clp-band + .clp-band{margin-top:clamp(48px,5vw,80px)}
-.clp-band-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;
-  padding-bottom:16px;margin-bottom:26px;border-bottom:2px solid var(--ink-14)}
-.clp-band-hd h2{flex:none}
-.clp-band-lede{margin:0;max-width:58ch;font-size:var(--fs-base);line-height:1.5;color:var(--ink-70)}
-
-/* .pgrid is already 3-up, which is the row width the reference uses, and a
-   band of one or two therefore keeps that column width instead of stretching a
-   lone tile across 1560px. Nothing to add here — the note is so the next
-   session does not "fix" the short band into a full-width one. */
-
-/* sold out: legible, but nothing sold out should look live */
-.clp-grid .ptile[data-out] .pt-ph img{filter:grayscale(1);opacity:.5}
-.clp-grid .ptile[data-out] .pt-tag{background:var(--ink);color:var(--cream)}
-
-/* ---------- the character chip ----------
-   Under the price, per the reference. NOT .pt-tag: that one is foil, sits on
-   the photograph and is reserved for genuine news, and Cole's rule is that a
-   badge on every card is wallpaper (HANDOFF §9). This is a different kind of
-   information — the same descriptor slot filled on every card — so it reads as
-   a column rather than as three competing badges.
-   White on --brand #0B5130 measures well past 4.5:1. */
-.clp-tag{display:inline-flex;align-items:center;align-self:center;margin-top:12px;
-  padding:5px 13px;border-radius:999px;background:var(--brand);color:var(--on-brand);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
-
-/* ---------- what's coming ----------
-   A band with no product row: the club exists as a plan, not as a SKU. Cream
-   panel rather than white cards, so it reads as a statement about the range
-   rather than as something you can put in a bag. */
-.clp-next{margin-top:clamp(48px,5vw,80px)}
-.soon{display:inline-block;margin-left:10px;vertical-align:middle;
-  background:var(--green);color:var(--white);border-radius:999px;padding:5px 12px;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase}
-.clp-next-in{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,3.2vw,54px);
-  align-items:start;background:var(--cream);border-radius:var(--r-card);
-  padding:clamp(26px,3vw,42px)}
-.clp-next-copy h3{margin:0 0 18px;max-width:18ch}
-.clp-next-copy .body + .body{margin-top:14px}
-.clp-next-pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.clp-next-pts li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;
-  border-top:1px solid var(--ink-14)}
-.clp-next-pts li:first-child{border-top:2px solid var(--ink-38)}
-.clp-next-pts .k{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-muted);flex:none}
-.clp-next-pts .v{font-size:var(--fs-lg);font-weight:600;text-align:right;line-height:1.4}
-.clp-next-note{margin:20px 0 0;max-width:64ch;color:var(--ink-70)}
-
-/* ==========================================================================
-   START HERE — the family router, All Clubs only
-   ========================================================================== */
-.clp-router-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);
-  margin-top:clamp(30px,3.4vw,46px)}
-.clp-route{display:flex;flex-direction:column;gap:10px;padding:26px 24px 22px;
-  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r-card);
-  transition:border-color .18s,transform .3s}
-.clp-route:hover{border-color:var(--ink);transform:translateY(-3px)}
-.clp-route .q{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.14em;
-  text-transform:uppercase;color:var(--gold-lo)}
-.clp-route .nm{color:var(--ink)}
-.clp-route .bd{font-size:var(--fs-base);line-height:1.55;color:var(--ink-70)}
-.clp-route .go{margin-top:auto;padding-top:12px;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
-  font-size:var(--fs-md);text-transform:uppercase;letter-spacing:.04em}
-.clp-route .ar{display:inline-block;transition:transform .22s}
-.clp-route:hover .ar{transform:translateX(4px)}
-
-/* ==========================================================================
-   WHAT'S THE DIFFERENCE
-   Photo, name, price, spec bars, facts. The bars are the piece with no
-   analogue elsewhere on the site.
-   ========================================================================== */
-.clp-cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);
-  margin-top:clamp(30px,3.4vw,46px)}
-.clp-cmp-i{display:flex;flex-direction:column;padding:0 0 24px;
-  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r-card);
-  overflow:hidden}
-.clp-cmp-ph{display:block;aspect-ratio:1/1;background:var(--cream);overflow:hidden}
-.clp-cmp-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
-  transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.clp-cmp-i:hover .clp-cmp-ph img{transform:scale(1.045)}
-/* Padding, not margin: this is a link, and a 21px line box is not a tap
-   target. 8 + 12 keeps the 20px of visual space above the name, and the 11px
-   below is taken back off .clp-cmp-for's margin so the card reads unchanged. */
-.clp-cmp-nm{display:block;min-height:44px;margin:8px 24px 0;padding:12px 0 11px;
-  font-family:'Archivo',sans-serif;
-  font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;
-  font-size:clamp(1.25rem,1.55vw,1.5rem);line-height:.96;letter-spacing:-.008em;color:var(--ink)}
-.clp-cmp-nm:hover{text-decoration:underline;text-underline-offset:4px;
-  text-decoration-color:var(--gold)}
-.clp-cmp-for{margin:0 24px;font-family:'Archivo',sans-serif;
-  font-variation-settings:'wdth' 76;font-weight:700;font-size:var(--fs-lg);
-  text-transform:uppercase;letter-spacing:.05em;color:var(--gold-lo)}
-.clp-cmp-pr{margin:4px 24px 0;font-family:'Archivo',sans-serif;
-  font-variation-settings:'wdth' 74;font-weight:700;font-size:var(--fs-lead)}
-.clp-cmp-pr em{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-style:normal;font-size:var(--fs-sm);
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
-
-/* ---------- the segmented spec bar ----------
-   Ten-ish segments with some lit, the way the reference draws it. The count of
-   lit segments is derived in build.py from a published number, and that number
-   is printed as .v beside the label — the bar is the shape of the fact, never
-   the fact itself. Some bars are a RANGE (bounce runs 8°–12°), which is why
-   segments carry data-on individually rather than being one filled width. */
-.clp-bars{margin:22px 24px 0;display:flex;flex-direction:column;gap:14px}
-.clp-bar{display:grid;grid-template-columns:1fr auto;gap:4px 12px}
-.clp-bar .k{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.12em;
+/* sold out: the tile stays legible, the photo drops back so the row still
+   reads as a grid of live product rather than a wall of gray */
+.plp-grid .ptile[data-out] .pt-ph img{filter:grayscale(1);opacity:.5}
+.plp-grid .ptile[data-out] .pt-tag{background:var(--ink);color:var(--cream)}
+.plp-grid .pt-sum{margin:2px auto 0;max-width:28ch;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-muted)}
-.clp-bar .v{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
-  font-weight:700;font-size:var(--fs-md);text-align:right;color:var(--ink)}
-.clp-seg{grid-column:1/-1;display:flex;gap:3px;height:9px}
-.clp-seg i{flex:1;background:var(--ink-08);border-radius:1px}
-.clp-seg i[data-on]{background:var(--gold)}
 
-.clp-facts{margin:22px 24px 0;padding:0;display:flex;flex-direction:column}
-.clp-facts div{display:flex;justify-content:space-between;gap:14px;
-  padding:9px 0;border-top:1px solid var(--ink-08)}
-.clp-facts div:first-child{border-top:2px solid var(--ink-14)}
-.clp-facts dt{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);flex:none}
-.clp-facts dd{margin:0;font-size:var(--fs-lg);font-weight:600;text-align:right;line-height:1.4}
-.clp-cmp-cta{margin:22px 24px 0;align-self:flex-start}
+/* ---------- empty state ---------- */
+.plp-empty{margin:54px auto 0;max-width:44ch;text-align:center;padding:0 0 20px}
+.plp-empty .mk{display:block;width:34px;height:34px;margin:0 auto 20px;color:var(--green)}
+.plp-empty .mk svg{width:100%;height:100%}
+.plp-empty .body{margin:14px auto 26px}
 
-.clp-scales{margin-top:clamp(24px,2.6vw,34px)}
-.clp-scale-note{margin:0;max-width:66ch;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
-  font-size:var(--fs-sm);line-height:1.7;letter-spacing:.02em;text-transform:none;
-  color:var(--ink-muted)}
-.clp-scale-note + .clp-scale-note{margin-top:5px}
-
-/* ==========================================================================
-   NEED HELP PICKING — the brand field
-   Green field on a collection page. The header is green and this is the second
-   hit, which is what stops a browse page reading as an unbranded grid.
-   Text is --on-brand (white) throughout: --cream fails 4.5:1 on the field and
-   gold fails at any size (HANDOFF §7).
-   ========================================================================== */
-.clp-fit{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);
-  padding:clamp(64px,7vw,104px) 0;border-block:2px solid var(--brand-accent)}
-.clp-fit::before{content:'';position:absolute;inset:0;background:var(--brand-groove);
-  pointer-events:none}
-.clp-fit .wm{width:min(46vw,540px);height:min(46vw,540px);right:-8%;top:50%;
-  translate:0 -50%;color:var(--on-brand);opacity:.08}
-.clp-fit-in{position:relative;z-index:1;max-width:72ch}
-.clp-fit .eyebrow{color:var(--on-brand-88)}
-.clp-fit .eyebrow::before{background:var(--brand-accent)}
-.clp-fit h2{color:var(--on-brand);max-width:16ch;margin:0}
-.clp-fit .body{margin:22px 0 0;max-width:52ch;color:var(--on-brand-88)}
-.clp-fit-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
-.clp-fit-aside{margin-top:26px;max-width:46ch;color:var(--on-brand)}
-
-/* ==========================================================================
-   THE STORY — alternating image/text rows
-   Every image slot is a written brief until the photography lands. Two rows,
-   not the reference's four: four dashed boxes read as an unfinished page.
-   ========================================================================== */
-.clp-story .clp-h2{margin-bottom:clamp(34px,3.6vw,54px)}
-.clp-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,58px);
-  align-items:center}
-.clp-row + .clp-row{margin-top:clamp(44px,4.6vw,76px)}
-.clp-row--flip .clp-row-ph{order:2}
-.clp-row-ph{aspect-ratio:4/3;position:relative}
-.clp-row-ph .ph{position:absolute;inset:0;border-radius:var(--r-card);padding:30px}
-.clp-row-copy h3{margin:0 0 18px;max-width:16ch}
-.clp-row-copy .body + .body{margin-top:14px}
-
-/* ==========================================================================
-   ONE REAL REVIEW — ink, and the club it is about is named
-   ========================================================================== */
-.clp-quote{position:relative;overflow:hidden;text-align:center;
-  padding:clamp(64px,7vw,104px) 0}
-.clp-quote .wm{width:min(60vw,760px);height:min(60vw,760px);left:50%;top:50%;
-  translate:-50% -50%;opacity:.05}
-.clp-quote-in{position:relative;z-index:1}
-.clp-quote .stars{display:flex;justify-content:center;gap:4px;margin-bottom:22px}
-.clp-quote .stars svg{width:17px;height:17px;fill:var(--gold)}
-.clp-q{margin:0 auto;max-width:20ch;color:var(--cream);text-transform:none;
-  font-variation-settings:'wdth' 68;line-height:1.02;letter-spacing:-.01em}
-.clp-q-by{margin:26px 0 0;display:flex;justify-content:center;align-items:center;gap:12px;
-  flex-wrap:wrap}
-.clp-q-by .mono{color:var(--cream);font-size:var(--fs-sm);letter-spacing:.16em}
-.clp-q-v{color:var(--cream-52)!important;position:relative;padding-left:16px}
-.clp-q-v::before{content:'';position:absolute;left:0;top:50%;translate:0 -50%;
-  width:5px;height:5px;background:var(--gold);rotate:45deg}
-.clp-q-on{margin:12px 0 0;font-size:var(--fs-base);color:var(--cream-70)}
-.clp-q-on a{color:var(--cream);text-decoration:underline;text-underline-offset:3px;
-  text-decoration-color:var(--gold)}
-.clp-q-on a:hover{color:var(--gold-hi)}
-
-/* ==========================================================================
-   THE REST OF THE STORE
-   NOTE: a comment here must never spell out a link token literally — the link
-   resolver runs over the assembled page including its CSS, and a token inside
-   a comment fails the build as a dangling link. (It did.)
-
-   .plp-sibs / .plp-sib come from page-plp.css, which this page does NOT load —
-   a page gets core.css plus one page stylesheet and nothing else. Rather than
-   promote a seven-line component into core for two consumers, the rules are
-   restated here under the same names so the markup and the look stay identical.
-   If a third page type needs them, move them to core (HANDOFF §11b, §12c).
-   ========================================================================== */
+/* ---------- the rest of the store ---------- */
 .plp-more h2{margin:0 0 26px}
 .plp-sibs{display:flex;flex-wrap:wrap;gap:10px}
 .plp-sib{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;
@@ -1686,9 +1528,35 @@ html[data-rev="b"] .rev-bar{display:flex}
 .plp-sib:hover{border-color:var(--ink)}
 .plp-aside{margin-top:30px;color:var(--ink-70)}
 
-/* ==========================================================================
-   QUICK ADD — same pill as the PLP, same reasons (Cole's notes 5 and 7).
-   ========================================================================== */
+/* ---------- responsive ---------- */
+@media (max-width:1180px){
+  .plp-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:980px){
+  .plp-grid{grid-template-columns:repeat(2,1fr)}
+  .plp-hd h1{max-width:none}
+}
+@media (max-width:620px){
+  .plp-bar{align-items:stretch;flex-direction:column}
+  .plp-tools{justify-content:space-between;width:100%}
+  .plp-sort{flex:1;justify-content:flex-end}
+  .plp-sort select{flex:1;max-width:190px}
+  /* two-up survives on a phone: these tiles are image-led and the names are
+     short, and a collection you came here to browse should not be one long
+     column you have to scroll past */
+  .plp-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  /* photo-first here too — a positive top margin on .pt-ph is what put a
+     cream band above every image before */
+  .plp-grid .ptile{padding:20px 14px}
+  .plp-grid .ptile .pt-ph{margin:-20px -14px 14px}
+  .plp-grid .pt-nm{font-size:clamp(1.1rem,4.6vw,1.45rem)}
+  .plp-grid .pt-sum{font-size:var(--fs-xs)}
+}
+
+/* ---------- quick add · Cole's notes 5 and 7 ----------
+   A pill on the photograph, bottom-right, the way Primo does it. It lived under
+   the card first and Cole did not find it — under a name and a price it reads
+   as page furniture rather than as the control it is. */
 .pt-add{position:absolute;right:10px;bottom:10px;z-index:5}
 .qadd{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:11px 14px;
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
@@ -1702,59 +1570,322 @@ html[data-rev="b"] .rev-bar{display:flex}
 .qadd .ar{font-size:var(--fs-md);line-height:1}
 .qadd:hover{border-color:var(--ink);transform:translateY(-1px)}
 .qadd:active{transform:none}
-.clp-grid .ptile .stretch::after{z-index:1}
+/* the tile-wide stretch link would otherwise swallow the click */
+.plp-grid .ptile .stretch::after{z-index:1}
 
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media (max-width:1180px){
-  .clp-grid{grid-template-columns:repeat(3,1fr)}
-  .clp-cmp-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media (max-width:980px){
-  .clp-grid{grid-template-columns:repeat(2,1fr)}
-  .clp-router-grid{grid-template-columns:1fr}
-  .clp-cmp-grid{grid-template-columns:repeat(2,1fr)}
-  .clp-hd h1{max-width:none}
-  .clp-h2{max-width:none}
-  .clp-next-in{grid-template-columns:1fr}
-  .clp-row,.clp-row--flip{grid-template-columns:1fr}
-  /* the flip only means anything with two columns; on one column the photo
-     must lead every row or the alternation reads as a mistake */
-  .clp-row--flip .clp-row-ph{order:0}
-}
 @media (max-width:620px){
-  /* two-up survives on a phone for the same reason it does on the PLP: these
-     tiles are image-led and a collection is something you came here to browse */
-  .clp-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .clp-grid .ptile{padding:20px 14px}
-  .clp-grid .ptile .pt-ph{margin:-20px -14px 14px}
-  .clp-grid .pt-nm{font-size:clamp(1.1rem,4.6vw,1.45rem)}
-  .clp-tag{font-size:var(--fs-xs);padding:4px 10px;letter-spacing:.1em}
-  .clp-band-hd{flex-direction:column;gap:8px}
-  /* the pill would cover a third of a 168px photo */
+  /* on a phone the pill would cover a third of a 168px photo, so it goes
+     full width under the image instead of on it */
   .pt-add{position:static;margin-top:10px}
   .qadd{width:100%;justify-content:center;box-shadow:none;font-size:var(--fs-xs);padding:8px 10px}
-  .clp-fit-cta .btn{width:100%;justify-content:center}
-  .clp-row-ph{aspect-ratio:3/2}
 }
 
-/* ---------- the 02 column ----------
-   A comparison column for a product that does not exist yet. Cream rather than
-   white so it reads as a statement about what is coming instead of something
-   you can put in a bag, and no photo, no price and no button because none of
-   those are real. */
-.clp-cmp-i--next{background:var(--cream);border-style:dashed;border-color:var(--ink-38)}
-.clp-cmp-ph--next{position:relative;aspect-ratio:1/1;background:transparent}
-.clp-cmp-ph--next .ph{position:absolute;inset:0;border:0;border-radius:0;padding:22px}
-.clp-cmp-nm--next{display:block;min-height:44px;margin:8px 24px 0;padding:12px 0 11px;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
-  text-transform:uppercase;font-size:clamp(1.25rem,1.55vw,1.5rem);line-height:.96;
-  letter-spacing:-.008em;color:var(--ink)}
-.clp-cmp-i--next .clp-cmp-pr em{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-style:normal;
-  font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
-.clp-cmp-note{margin:22px 24px 0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);
-  line-height:1.7;text-transform:none;letter-spacing:.01em;color:var(--ink-70)}
+/* ==========================================================================
+   BOGO BUNDLE PAGE  ·  buy two hats, third one free
+   Nothing new in the palette or the type scale. The page is built from the
+   six devices already on every other template: FOIL on the free slot and the
+   primary action, MARK in the hero well and the empty third slot, GROOVE on
+   both dark fields, STAMP on the slot labels, ASIDE under the rail, and the
+   RULE-EYEBROW leading each section.
+
+   The one genuinely new object is .bgo-rail, the fixed progress bar. It is
+   fixed rather than sticky because a sticky element only sticks inside its
+   own section, and this has to stay visible from the hero to the footer.
+   z-index 80 sits above the page and below the header (60 is under it only
+   because the header never overlaps the bottom edge), the lightbox (200),
+   the cart drawer (210) and the modal (220).
+   ========================================================================== */
+
+/* ---------- hero ---------- */
+.bgo-hero{position:relative;overflow:hidden;padding:calc(var(--sec) * .78) 0 calc(var(--sec) * .62)}
+.bgo-hero .wm{position:absolute;right:-6%;top:50%;translate:0 -50%;width:min(520px,46vw);
+  color:var(--cream);opacity:.045;pointer-events:none;z-index:0}
+.bgo-hero .wm svg{width:100%;height:100%;display:block}
+.bgo-hero .wrap{position:relative;z-index:1}
+.bgo-hero h1{max-width:16ch;margin:0 0 20px}
+.bgo-hero .bgo-lede{max-width:46ch;color:var(--cream-70);margin:0 0 30px}
+
+/* the deal, stated as three counters. Two ink discs and one foil disc, the
+   same three shapes the rail repeats at the bottom of the screen, so the
+   reader has already met the object before they have to use it. */
+.bgo-deal{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 34px}
+.bgo-deal .d{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;
+  border:2px solid var(--cream-18);color:var(--cream-70);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  font-size:var(--fs-base)}
+.bgo-deal .d.paid{border-color:var(--cream-52);color:var(--cream)}
+/* --lg-foil-tag, not --lg-foil-h: the full ramp bottoms out at --gold-lo, where
+   ink measures 3.64:1, and "$0" is 15.2px so it needs 4.5. The tag ramp drops
+   the shadow stops and never goes below --gold at 6.95:1. Same rule the
+   emphasis tags follow. */
+.bgo-deal .d.free{border-color:transparent;background:var(--lg-foil-tag);color:var(--ink)}
+.bgo-deal .op{color:var(--cream-52);font-size:var(--fs-lg)}
+.bgo-deal .sum{margin-left:6px;color:var(--cream-70);font-size:var(--fs-md);max-width:15ch;line-height:1.4}
+
+.bgo-facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin:0;padding:0;list-style:none}
+.bgo-facts li{display:flex;align-items:center;gap:9px;color:var(--cream-70);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase}
+.bgo-facts li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+
+/* ---------- the grid ---------- */
+.bgo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gut)}
+.bgo-card{position:relative;display:flex;flex-direction:column;background:var(--cream);
+  border:2px solid var(--ink-14);border-radius:var(--r-card);padding:18px 16px 16px;overflow:hidden;
+  transition:border-color .2s,transform .2s var(--ease-out-s),box-shadow .2s}
+.bgo-card:hover{border-color:var(--ink-38);transform:translateY(-3px);
+  box-shadow:0 18px 34px -26px rgba(23,20,15,.5)}
+.bgo-card[data-picked]{border-color:var(--green);background:var(--white)}
+.bgo-card[data-out]{opacity:.55}
+.bgo-card[data-out]:hover{transform:none;box-shadow:none;border-color:var(--ink-14)}
+
+/* .bgo-ph, NOT .ph. `.ph` is the site's placeholder device: a cream box with
+   a gold keyline inset 10px via ::after. Reusing the name wrapped every hat in
+   a second framed box inside its own card, which is the "boxes within boxes"
+   Cole flagged. The well is white because the product shots have white
+   backgrounds, so image and well read as one block rather than a square
+   floating on cream. */
+.bgo-card .bgo-ph{display:block;position:relative;aspect-ratio:1/1;
+  margin:-18px -16px 14px;overflow:hidden;background:var(--white);
+  border-bottom:2px solid var(--ink-08)}
+.bgo-card .bgo-ph img{width:100%;height:100%;object-fit:contain;
+  transition:transform .5s var(--ease-out-s)}
+.bgo-card:hover .bgo-ph img{transform:scale(1.05)}
+.bgo-card[data-out] .bgo-ph img{filter:grayscale(1)}
+
+/* the picked badge counts, because a bundle page has to allow two of the
+   same hat. A tick alone cannot say "two of these". */
+.bgo-card .tick{position:absolute;right:10px;top:10px;z-index:3;min-width:28px;height:28px;
+  padding:0 8px;border-radius:999px;display:none;place-items:center;background:var(--green);
+  color:var(--white);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:700;font-size:var(--fs-xs);letter-spacing:.06em}
+.bgo-card[data-picked] .tick{display:grid}
+.bgo-card .oos{position:absolute;left:10px;top:10px;z-index:3;padding:5px 10px;border-radius:2px;
+  background:var(--ink);color:var(--cream);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase}
+
+.bgo-card .nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 68;
+  font-weight:700;font-size:var(--fs-base);line-height:1.25;color:var(--ink);margin:0 0 6px}
+.bgo-card .pr{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
+  font-weight:700;font-size:var(--fs-lg);color:var(--ink-muted);margin:0 0 14px}
+.bgo-card .pr .was{text-decoration:line-through;margin-right:7px;color:var(--ink-38)}
+.bgo-card .pr .nowfree{color:var(--green)}
+.bgo-card .act{margin-top:auto}
+.bgo-card .bgo-add{width:100%;justify-content:center;cursor:pointer}
+.bgo-card .bgo-add[disabled]{cursor:not-allowed;opacity:.5}
+
+/* a picked card swaps its button for a stepper, so the grid itself can undo a
+   pick. Making them walk to the drawer to remove one is how a bundle page
+   loses people at the exact moment they are still choosing. */
+.bgo-step{display:flex;align-items:center;justify-content:space-between;gap:6px;
+  border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;min-height:48px}
+.bgo-step button{width:46px;align-self:stretch;border:0;background:none;cursor:pointer;
+  color:var(--ink);font-size:var(--fs-xl);line-height:1;display:grid;place-items:center}
+.bgo-step button:hover{background:var(--ink);color:var(--cream)}
+.bgo-step .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  font-size:var(--fs-base);color:var(--ink)}
+
+/* ---------- the rail ---------- */
+.bgo-rail{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--ink);
+  color:var(--cream);border-top:2px solid var(--gold);
+  box-shadow:0 -18px 40px -28px rgba(23,20,15,.9);
+  translate:0 100%;transition:translate .38s cubic-bezier(.3,.8,.2,1)}
+.bgo-rail[data-show="true"]{translate:0 0}
+.bgo-rail::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.bgo-rail > *{position:relative;z-index:1}
+.bgo-rail-in{max-width:1560px;margin:0 auto;padding:14px var(--pad);
+  display:flex;align-items:center;gap:clamp(16px,2.4vw,38px)}
+
+.bgo-slots{display:flex;align-items:center;gap:10px;flex:none}
+.bgo-slot{position:relative;width:60px;height:60px;border-radius:var(--r);overflow:hidden;
+  border:2px dashed var(--cream-18);display:grid;place-items:center;
+  transition:border-color .25s,background .25s,transform .3s var(--ease-out-s)}
+.bgo-slot .mk{width:22px;height:22px;color:var(--cream-18);transition:color .25s}
+.bgo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  background:var(--cream);opacity:0;transition:opacity .25s}
+.bgo-slot[data-filled] {border-style:solid;border-color:var(--green)}
+.bgo-slot[data-filled] img{opacity:1}
+.bgo-slot .lb{position:absolute;left:0;right:0;bottom:0;z-index:2;text-align:center;padding:2px 0;
+  background:rgba(23,20,15,.82);color:var(--cream-70);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+
+/* the third slot is the whole mechanic, so it gets the foil the moment it is
+   payable and a pulse until it is filled. */
+.bgo-slot.free[data-armed]{border-style:solid;border-color:transparent;
+  background:var(--lg-foil-h);animation:bgo-pulse 1.9s ease-in-out infinite}
+.bgo-slot.free[data-armed] .mk{color:var(--ink)}
+.bgo-slot.free[data-armed] .lb{background:rgba(23,20,15,.86);color:var(--gold-hi)}
+.bgo-slot.free[data-filled]{animation:none;border-color:var(--gold)}
+@keyframes bgo-pulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(237,210,124,.5)}
+  50%{transform:scale(1.045);box-shadow:0 0 0 9px rgba(237,210,124,0)}
+}
+
+.bgo-status{flex:1;min-width:0}
+.bgo-status .hd{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
+  font-weight:700;font-size:var(--fs-xl);line-height:1.15;color:var(--cream);
+  letter-spacing:-.01em;margin:0 0 3px}
+.bgo-status .sub{display:block;font-size:var(--fs-md);color:var(--cream-70);line-height:1.4}
+.bgo-rail[data-state="armed"] .bgo-status .hd{color:var(--gold-hi)}
+
+/* .btn sets display:inline-flex, and an AUTHOR display rule beats the browser's
+   own [hidden]{display:none} no matter the specificity. So `goBtn.hidden = true`
+   left "Go to the bag" fully rendered: visible at zero hats, and eating 141px
+   that squeezed the status headline to 49px and six wrapped lines on a phone.
+   Any .btn on this page that is toggled by the hidden attribute needs this. */
+.btn[hidden]{display:none}
+
+.bgo-rail-act{flex:none;display:flex;align-items:center;gap:10px}
+.bgo-rail-act:empty{display:none}
+.bgo-rail-act .tot{text-align:right;line-height:1.2}
+.bgo-rail-act .tot .l{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-52)}
+.bgo-rail-act .tot .v{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;
+  font-weight:700;font-size:var(--fs-xl);color:var(--cream)}
+.bgo-rail-act .tot .sv{display:block;font-size:var(--fs-xs);color:var(--green-br)}
+
+/* the gold sweep that fires once, the moment the second hat lands */
+.bgo-rail .flash{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,transparent 30%,rgba(237,210,124,.34) 50%,transparent 70%);
+  background-size:260% 100%}
+.bgo-rail.fire .flash{animation:bgo-sweep 1.05s cubic-bezier(.4,.62,.3,1) 1}
+@keyframes bgo-sweep{
+  0%{opacity:0;background-position:130% 0}
+  18%{opacity:1}
+  100%{opacity:0;background-position:-60% 0}
+}
+
+/* ---------- the unlock modal ---------- */
+/* The panel was padding:0 + overflow:hidden, which killed the base .md-panel
+   scroll and cut "Go to the bag" off the bottom of the screen. Three rows
+   instead: header and footer hold still, only the club list scrolls. */
+.bgo-md .md-panel{width:min(680px,100%);padding:0;border-color:var(--ink);
+  max-height:86vh;display:flex;flex-direction:column;overflow:hidden}
+.bgo-md-hd{flex:0 0 auto}
+.bgo-md-bd{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:var(--gold) rgba(23,20,15,.1)}
+.bgo-md-foot{flex:0 0 auto}
+.bgo-md-hd{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);
+  padding:clamp(26px,3vw,36px) clamp(24px,3vw,38px) clamp(22px,2.6vw,30px)}
+.bgo-md-hd::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
+.bgo-md-hd > *{position:relative;z-index:1}
+.bgo-md-hd .wm{position:absolute;right:-30px;top:50%;translate:0 -50%;width:190px;
+  color:var(--cream);opacity:.07;z-index:0}
+.bgo-md-hd .wm svg{width:100%;height:100%;display:block}
+.bgo-md-hd h2{margin:0 0 8px;color:var(--cream)}
+.bgo-md-hd p{margin:0;color:var(--cream-70);font-size:var(--fs-base);line-height:1.55;max-width:42ch}
+.bgo-md-x{position:absolute;right:8px;top:8px;z-index:4;width:44px;height:44px;border:0;background:none;
+  cursor:pointer;font-size:var(--fs-xl);display:grid;place-items:center;color:var(--cream-70)}
+.bgo-md-x:hover{color:var(--cream)}
+.bgo-md-bd{padding:clamp(22px,2.6vw,30px) clamp(24px,3vw,38px);background:var(--white)}
+.bgo-md-bd .eyebrow{margin-bottom:16px}
+.bgo-md-foot{display:flex;gap:10px;background:var(--white);
+  padding:16px clamp(24px,3vw,38px) clamp(20px,2.4vw,26px);
+  border-top:2px solid var(--ink-08)}
+.bgo-md-foot .btn{flex:1;justify-content:center}
+
+/* ---------- the club cross-sell, shared by the modal and the page band ---------- */
+/* One box, not three. These were a bordered row holding a bordered thumbnail
+   inside an already-bordered panel. Now the rows are separated by a hairline
+   and the thumbnail sits on the panel with no frame of its own. */
+.bgo-clubs{display:grid}
+.bgo-club{display:grid;grid-template-columns:74px 1fr auto;align-items:center;gap:16px;
+  padding:16px 0;border-top:1px solid var(--ink-14)}
+.bgo-club:first-child{border-top:0}
+.bgo-club-ph{display:block;width:74px;height:74px}
+.bgo-club img{width:74px;height:74px;object-fit:contain;display:block}
+.bgo-club .info{min-width:0}
+.bgo-club .nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;
+  font-weight:700;font-size:var(--fs-base);color:var(--ink);line-height:1.2;margin:0 0 3px}
+.bgo-club .why{display:block;font-size:var(--fs-md);color:var(--ink-muted);line-height:1.45}
+.bgo-club[data-added] .btn{background:var(--green);border-color:var(--green);color:var(--white)}
+.bgo-club .pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;
+  font-size:var(--fs-lg);color:var(--ink);white-space:nowrap}
+.bgo-club .btn{white-space:nowrap}
+.bgo-club-act{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+
+/* ---------- option pickers on a club row ----------
+   A wedge needs hand and loft/grind before it can be added at all, so the
+   row carries the axes rather than bouncing the reader to the product page
+   and out of the bundle they are halfway through. */
+.bgo-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.bgo-opt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.bgo-opt .l{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--fs-xs);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-muted)}
+.bgo-opt select{min-height:44px;padding:6px 26px 6px 10px;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-size:var(--fs-md);color:var(--ink);
+  background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r);
+  appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2317140F' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;background-size:11px}
+.bgo-opt select:hover{border-color:var(--ink-38)}
+.bgo-opt select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bgo-up .bgo-opt select{background-color:var(--white)}
+
+.bgo-updeck + .bgo-updeck{margin-top:22px;padding-top:20px;border-top:2px solid var(--ink-08)}
+.bgo-updeck .eyebrow{margin-bottom:12px}
+
+/* the on-page version sits on cream, so its rows go white-on-cream */
+.bgo-up .bgo-clubs{max-width:820px}
+.bgo-up-lede{max-width:44ch;margin:0 0 30px}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .bgo-slot.free[data-armed]{animation:none}
+  .bgo-rail.fire .flash{animation:none}
+  .bgo-rail{transition:none}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:1180px){
+  .bgo-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:900px){
+  .bgo-grid{grid-template-columns:repeat(3,1fr)}
+  .bgo-rail-act .tot{display:none}
+  .bgo-hero .wm{opacity:.03}
+}
+
+/* ---------- phone ----------
+   The rail keeps all three slots (dropping to a bar chart would lose the
+   point) but shrinks them, and the status line drops its second row: at
+   this width the headline is the only part that gets read. */
+@media (max-width:720px){
+  .bgo-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .bgo-card{padding:14px 12px 12px}
+  .bgo-rail-in{padding:11px var(--pad);gap:13px;flex-wrap:wrap}
+  .bgo-slot{width:46px;height:46px}
+  .bgo-slot .lb{display:none}
+  .bgo-status .hd{font-size:var(--fs-body)}
+  .bgo-status .sub{display:none}
+  /* Once "Go to the bag" appears there is not enough width for slots, a
+     sentence and a button on one line: measured at 390px the status column
+     collapsed to 49px and wrapped the headline over four lines. The button
+     takes its own row instead. The headline stays, because the pulsing gold
+     slot shows that something is free without ever saying so. */
+  .bgo-rail-in:has(#bgo-go:not([hidden])) .bgo-rail-act{flex:1 0 100%;order:3}
+  .bgo-rail-in:has(#bgo-go:not([hidden])) .bgo-rail-act .btn{width:100%;justify-content:center}
+  .bgo-md-foot{flex-direction:column}
+  .bgo-club{grid-template-columns:60px 1fr;grid-template-areas:'img info' 'act act';gap:12px}
+  .bgo-club-ph{width:60px;height:60px;grid-area:img}
+  .bgo-club img{width:60px;height:60px}
+  .bgo-club .info{grid-area:info}
+  .bgo-club-act{grid-area:act;flex-direction:row;align-items:center;justify-content:space-between;width:100%}
+  .bgo-opt{flex:1 1 140px}
+  .bgo-opt select{width:100%}
+  .bgo-deal .sum{max-width:none;flex-basis:100%;margin-left:0}
+}
+/* Two columns all the way down, matching the collection grid. One hat per row
+   turns a ten-hat pick into a long scroll, and picking three is the job. */
+@media (max-width:420px){
+  .bgo-grid{gap:11px}
+  .bgo-slots{gap:7px}
+  .bgo-slot{width:40px;height:40px}
+  .bgo-card .nm{font-size:var(--fs-lg)}
+}
+
 </style>
 </head>
 <body>
@@ -1885,314 +2016,79 @@ html[data-rev="b"] .rev-bar{display:flex}
   </nav>
 </header>
 
-<!-- ==========================================================================
-     CLUB COLLECTION  ·  clubs · wedges · putters · hybrid
-     Takomo's Iron Sets page is the reference (HANDOFF §19a): products grouped
-     into labelled bands rather than one flat grid, a character chip on every
-     card, a "what's the difference" comparison with segmented spec bars, a
-     fitting CTA, then brand copy. Ours ended at the grid.
-
-     The grid is rendered here, server-side, not painted by JS the way the PLP
-     does it — a club collection has no facets and no sort, so there is nothing
-     for a script to repaint, and a Shopify developer gets markup that maps
-     onto a Liquid {% for %} directly.
-
-     Every template token on this page is filled from
-     _src/data/copy/_collection-<id>.json by build.py's collection_copy().
-     ========================================================================== -->
-
 <!-- ============ BREADCRUMB ============ -->
 <nav class="crumb wrap" aria-label="Breadcrumb">
   <ol>
     <li><a href="01-home.html">Home</a></li>
-    <li><span aria-current="page">Wedges</span></li>
+    <li><a href="10-collection-hats.html">Hats</a></li>
+    <li><span aria-current="page">Buy 2, Get 1 Free</span></li>
   </ol>
 </nav>
 
-<!-- ============ COLLECTION HEAD ============ -->
-<section class="sec-tight clp-hd">
+<!-- ============ HERO ============
+     Ink field so the foil on the free counter has something to sit on, and so
+     the page opens on brand rather than on a grid of product. -->
+<section class="sec-tight band-ink bgo-hero">
   <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <div class="wrap">
-    <p class="eyebrow">The scoring clubs</p>
-    <h1 class="disp d-xl">Wedges</h1>
-    <p class="body lead clp-lede">Pick the loft you keep leaving yourself, and the finish you want to look down at.</p>
-    <p class="clp-count">2 clubs &middot; <a href="#difference">What&rsquo;s the difference?</a></p>
-  </div>
-</section>
+    <p class="eyebrow on-dark">Buy two, get one free</p>
+    <h1 class="disp d-xl">Nobody needs three hats. Take three anyway.</h1>
+    <p class="body lead bgo-lede">Two at $29, the third one's free. Ten to choose from, so pick the three that don't match.</p>
 
-<!-- ============ THE BANDS ============
-     One row per band, each with its own heading and a line saying who the band
-     is for. This is the whole point of the redesign: three wedges under one
-     "Wedges" heading tell you nothing, and three wedges split by grind tell you
-     which one to look at first.
-
-     build.py fails if a product in the collection is not in exactly one band,
-     so adding a club to products.json cannot quietly leave it off the page. -->
-<section class="sec clp-bands">
-  <div class="wrap">
-    <div class="clp-band">
-      <div class="clp-band-hd">
-        <h2 class="disp d-s">The 01</h2>
-        <p class="clp-band-lede">One wedge, two finishes. Forged 1020 carbon steel, so it feels soft off the face, and your choice of sole grind to match the turf you actually play.</p>
-      </div>
-      <div class="pgrid clp-grid">
-        <article class="ptile rv">
-          <div class="pt-ph">
-            <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Carver 01 Gold" loading="lazy" width="800" height="800" decoding="async">
-            
-            <!-- Quick add. Zero axes and one sellable variant -> a plain
-                 [data-add] that drops the real SKU in the bag. Anything with a
-                 choice opens the in-card picker via [data-qa] instead of
-                 linking to the product page (Cole, 2026-07-31 — that is what
-                 Primo's does). Sold out gets no control at all. -->
-            <div class="pt-add">
-              
-              <button class="qadd" type="button" data-qa="lgw01-gold" aria-haspopup="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg><span>Quick add</span></button>
-            </div>
-          </div>
-          <a class="stretch" href="02-pdp-lgw01.html"><span class="pt-nm">Carver 01 Gold</span></a>
-          <span class="pt-meta"><span class="pt-pr">$99</span></span>
-          <!-- Takomo's device: a short word naming the character of the club,
-               under the price rather than on the photo. Not the same thing as
-               .pt-tag, which is foil, sits on the image and is reserved for
-               genuine news (HANDOFF §9). -->
-          <span class="clp-tag">Gold &middot; K or S</span>
-        </article>
-        <article class="ptile rv">
-          <div class="pt-ph">
-            <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436" alt="Carver 01 Black" loading="lazy" width="800" height="800" decoding="async">
-            
-            <!-- Quick add. Zero axes and one sellable variant -> a plain
-                 [data-add] that drops the real SKU in the bag. Anything with a
-                 choice opens the in-card picker via [data-qa] instead of
-                 linking to the product page (Cole, 2026-07-31 — that is what
-                 Primo's does). Sold out gets no control at all. -->
-            <div class="pt-add">
-              
-              <button class="qadd" type="button" data-qa="lgw01-black" aria-haspopup="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg><span>Quick add</span></button>
-            </div>
-          </div>
-          <a class="stretch" href="20-product-lgw01-black.html"><span class="pt-nm">Carver 01 Black</span></a>
-          <span class="pt-meta"><span class="pt-pr">$109</span></span>
-          <!-- Takomo's device: a short word naming the character of the club,
-               under the price rather than on the photo. Not the same thing as
-               .pt-tag, which is foil, sits on the image and is reserved for
-               genuine news (HANDOFF §9). -->
-          <span class="clp-tag">Black &middot; K</span>
-        </article>
-      </div>
+    <div class="bgo-deal" aria-hidden="true">
+      <span class="d paid">$29</span>
+      <span class="op">+</span>
+      <span class="d paid">$29</span>
+      <span class="op">+</span>
+      <span class="d free">$0</span>
+      <span class="op">=</span>
+      <span class="sum">$58 for three</span>
     </div>
 
-<!-- ============ WHAT'S COMING ============
-     A band with no products in it, for a club that is not in Shopify yet. It
-     carries the .soon marker rather than the dashed .tbd chip — "this is
-     coming" and "we have not published this number" are different statements
-     and must not look alike (§9). No price, no buy button, no date: none of
-     those exist yet, and inventing one here is exactly what this site does not
-     do. Set `coming` to false in the collection copy file to pull the whole
-     block, which is the switch if pre-announcing starts costing sales of the
-     clubs that ARE for sale. -->
+    <ul class="bgo-facts">
+      <li>Five-panel snapback</li>
+      <li>Moisture-wicking sweatband</li>
+      <li>Laser-cut ventilation</li>
+    </ul>
   </div>
 </section>
 
+<!-- ============ THE GRID ============
+     One job: pick hats. No filters, no sort, no facet bar. A collection page
+     earns those because you arrived to browse; you arrived here to take a
+     deal, and every control between you and the third hat costs conversions.
+     Painted by JS from HATS so the tile state (picked count, free pricing)
+     has one renderer instead of two. -->
+<section class="sec bgo-body">
+  <div class="wrap">
+    <span class="eyebrow">All ten</span>
+    <h2 class="disp d-m">Pick three</h2>
+    <p class="aside bgo-pick-aside">Want the same one twice? Nobody here is going to stop you.</p>
 
+    <div class="bgo-grid" id="bgo-grid"></div>
 
+    <noscript>
+      <p class="body" style="margin-top:24px">The bundle counter needs JavaScript. Every hat is
+      also on the <a href="10-collection-hats.html">hats page</a>, at $29 each.</p>
+    </noscript>
+  </div>
+</section>
 
 <div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
 
-<!-- ============ WHAT'S THE DIFFERENCE ============
-     The single biggest thing this page lacked (HANDOFF §19a.3). Photo, name,
-     price, segmented spec bars, then a key/value list.
-
-     EVERY BAR IS A REAL PUBLISHED NUMBER and prints that number beside it.
-     There is no forgiveness bar and no workability bar, because nobody has
-     measured one for these clubs — the same rule that puts "Needs spec" in the
-     spec tables instead of a plausible figure. If you add a bar, add the
-     source with it. -->
-<section class="sec band-cream clp-cmp" id="difference">
+<!-- ============ CLUBS ============
+     The same three clubs the modal offers, from one renderer. On the page for
+     anyone who closes the modal or never triggers it, and because a hat buyer
+     who has never seen a Lucky club is the whole reason to run this. -->
+<section class="sec band-cream bgo-up">
   <div class="wrap">
-    <span class="eyebrow">01 or 02</span>
-    <h2 class="disp d-l clp-h2">What actually changes between the 01 and the 02.</h2>
-    <p class="body" style="margin-top:18px">The 01 is the wedge Lucky sells today: a forged head, a milled and sandblasted face, six lofts and your choice of sole grind. The 02 is a different club, not a finish and not a tier. It's cast rather than forged, and that's what makes the rest of it possible.</p>
-
-    <div class="clp-cmp-grid msnap">
-      <article class="clp-cmp-i">
-        
-        <a class="clp-cmp-ph" href="02-pdp-lgw01.html">
-          <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Carver 01 Gold" loading="lazy" width="800" height="800" decoding="async">
-        </a>
-        <a class="clp-cmp-nm" href="02-pdp-lgw01.html">Carver 01 Gold</a>
-        <span class="clp-cmp-for">On sale now &middot; gold or black</span>
-        <span class="clp-cmp-pr">$99</span>
-
-        <div class="clp-bars">
-          <div class="clp-bar">
-            <span class="k">Lofts in production</span>
-            <span class="v">Six &middot; 50&ndash;60&deg;</span>
-            <span class="clp-seg" aria-hidden="true"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i></span>
-          </div>
-          <div class="clp-bar">
-            <span class="k">Bounce across the lofts</span>
-            <span class="v">8&deg;&ndash;12&deg;</span>
-            <span class="clp-seg" aria-hidden="true"><i></i><i></i><i></i><i></i><i data-on></i><i data-on></i><i></i></span>
-          </div>
-        </div>
-        
-
-        <!-- the 02 column: no photograph, no price, no buy link, because none
-             of those exist. The .soon marker says which state this is — it is
-             deliberately not the dashed .tbd chip (§9). -->
-        
-
-        <dl class="clp-facts">
-          <div><dt>Construction</dt><dd>Forged 1020 carbon steel</dd></div>
-          <div><dt>Face</dt><dd>Milled grooves, sandblasted</dd></div>
-          <div><dt>Grooves</dt><dd>Standard face</dd></div>
-          <div><dt>Grinds</dt><dd>K and S</dd></div>
-          <div><dt>Alignment</dt><dd>None</dd></div>
-        </dl>
-
-        <a class="btn btn-line btn-sm clp-cmp-cta" href="02-pdp-lgw01.html"><span>Pick your loft</span><span class="ar">&rarr;</span></a>
-        
-      </article>
-      <article class="clp-cmp-i clp-cmp-i--next">
-        
-
-        <!-- the 02 column: no photograph, no price, no buy link, because none
-             of those exist. The .soon marker says which state this is — it is
-             deliberately not the dashed .tbd chip (§9). -->
-        
-        <div class="clp-cmp-ph clp-cmp-ph--next">
-          <div class="ph"><span class="lbl">
-            <span class="mono k">Photo needed</span>
-            <span class="mono">Landscape 1:1 studio cutout of the 02 head, face-on, so the full-face grooves and the painted first groove read. Matches the 01's studio treatment.</span>
-          </span></div>
-        </div>
-        <span class="clp-cmp-nm clp-cmp-nm--next">Carver 02<span class="soon">Coming</span></span>
-        <span class="clp-cmp-for">A new head, not a new finish</span>
-        <span class="clp-cmp-pr"><em>Not priced yet</em></span>
-        
-
-        <dl class="clp-facts">
-          <div><dt>Construction</dt><dd>Cast, for the weighting</dd></div>
-          <div><dt>Face</dt><dd>Reshaped head and leading edge</dd></div>
-          <div><dt>Grooves</dt><dd>Full face, heel to toe</dd></div>
-          <div><dt>Grinds</dt><dd>More options than the 01</dd></div>
-          <div><dt>Alignment</dt><dd>Painted first groove</dd></div>
-        </dl>
-
-        
-        <p class="clp-cmp-note">The 02 sits above the 01 rather than replacing it. Price, lofts and a date when they're real.</p>
-      </article>
-    </div>
-
-    <div class="clp-scales">
-      <p class="clp-scale-note">Loft bar: one segment per loft in the six-loft lineup, 50&deg; to 60&deg;.</p>
-      <p class="clp-scale-note">Bounce bar: 0&deg; to 14&deg;, one segment per two degrees. Bounce is the angle between the leading edge and the ground, so a wider lit run means the set covers more turf conditions.</p>
-      <!-- "Every figure above is from the manufacturer spec sheet. Nothing on
-           this page is a rating we invented." came off 2026-08-19: the build
-           team's honesty rule in the brand's mouth, on every collection with a
-           comparison. The rule is unchanged and lives in HANDOFF. -->
-    </div>
+    <span class="eyebrow">Since you're here</span>
+    <h2 class="disp d-m">The hat was the easy part</h2>
+    <p class="body lead bgo-up-lede">A forged wedge for $99. Nobody's tour contract is buried in that number.</p>
+    <div class="bgo-clubs" id="bgo-clubs-page"></div>
+    <p class="aside plp-aside">Sixty days to decide on any club. If it doesn't earn its place in the bag, send it back.</p>
   </div>
 </section>
-
-
-<!-- ============ NEED HELP PICKING ============
-     Takomo runs a colored button here. Ours gets the brand field instead —
-     this is where green lands on a collection page, which is the whole reason
-     the header/marquee/band spine exists (HANDOFF §1). -->
-
-<section class="clp-fit">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap clp-fit-in">
-    <span class="eyebrow">Not sure</span>
-    <h2 class="disp d-l">Start with the wedge you already carry.</h2>
-    <p class="body">Almost nobody needs all six lofts. The useful question is what sits in your bag now and where the gap under it is. A 56&deg; next to a pitching wedge leaves a different hole than a 60&deg; does.</p>
-    <div class="clp-fit-cta">
-      <a class="btn btn-foil sweep" href="01-home.html#finder"><span>Use the club finder</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line-cream" href="42-contact.html"><span>Ask a person</span></a>
-    </div>
-    <p class="aside clp-fit-aside">One wedge per order can be opened and hit on a turf mat inside the sixty days. The rest stay sealed.</p>
-  </div>
-</section>
-
-
-<!-- ============ THE STORY ============
-     Takomo runs a full-bleed photo band and three alternating image/text rows.
-     Ours runs two rows, because every image on this site is a written brief
-     until the photography exists (HANDOFF §18b) and four dashed boxes in a row
-     read as an unfinished page rather than an honest one. -->
-
-<section class="sec clp-story">
-  <div class="wrap">
-    <span class="eyebrow">The detail</span>
-    <h2 class="disp d-l clp-h2">What you're actually choosing between.</h2>
-    <div class="clp-row">
-      <div class="clp-row-ph">
-        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-two-soles.webp" alt="Two Lucky Golf Carver wedges on turf with a ball, soles and clover marks visible" width="2048" height="1536" loading="lazy" decoding="async">
-        
-      </div>
-      <div class="clp-row-copy">
-        <h3 class="disp d-m">What bounce actually does</h3>
-        <p class="body">Bounce is the angle between the leading edge of the club and the ground when the sole sits flat. More of it stops the head digging; less of it lets the leading edge get under a ball sitting tight. It's the single spec that decides whether a wedge suits how you take turf.</p>
-        <p class="body">The K runs 8&deg; on the 50 and 52, 12&deg; on the 54 and 56, and 10&deg; on the 58 and 60. The S runs 10&deg; at 52 and 12&deg; at both 56 and 60: more on paper, less through firm turf, because the narrower sole puts less of itself on the ground. The product page explains that properly.</p>
-      </div>
-    </div>
-    <div class="clp-row clp-row--flip">
-      <div class="clp-row-ph">
-        <img class="clp-row-img" src="https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-turf.webp" alt="Milled and sandblasted Carver wedge face against a ball on turf" width="2048" height="1536" loading="lazy" decoding="async">
-        
-      </div>
-      <div class="clp-row-copy">
-        <h3 class="disp d-m">Forged now, cast next, and both on purpose</h3>
-        <p class="body">The 01 is forged from 1020 carbon steel and finished with CNC-milled grooves over a sandblasted face. Forging is what gives a wedge that soft, slightly dead feel off the face, and it's the right call for a club whose whole job is feel at short range.</p>
-        <p class="body">It's also a constraint. A forged blank leaves very little freedom to move mass around or to change what the face carries, which is why the 02 goes the other way. Two construction methods, chosen for two different sets of things they let you do, not a step down to save money.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============ ONE REAL REVIEW ============
-     Takomo puts a testimonial over a dark course photo. We do not have the
-     photo, but we do have the reviews, so this is ink and type — and the club
-     it is actually about is named and linked, because a quote floating free of
-     its product reads as invented even when it is verbatim. -->
-
-<section class="clp-quote band-ink">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap clp-quote-in">
-    <span class="stars" aria-label="5 out of 5">
-      <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
-    </span>
-    <blockquote class="disp d-m clp-q">&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.&rdquo;</blockquote>
-    <p class="clp-q-by"><span class="mono">1981 C.o.M.</span> <span class="mono clp-q-v">Verified buyer</span></p>
-    <p class="clp-q-on">on the <a href="02-pdp-lgw01.html">Carver 01 Gold</a></p>
-  </div>
-</section>
-
-
-<!-- ============ THE REST OF THE STORE ============ -->
-<section class="sec band-cream plp-more clp-more">
-  <div class="wrap">
-    <span class="eyebrow">Keep looking</span>
-    <h2 class="disp d-m">The rest of the store</h2>
-    <div class="plp-sibs">
-      <a class="plp-sib" href="10-collection-clubs.html">All Clubs</a>
-      <a class="plp-sib" href="10-collection-putters.html">Putters</a>
-      <a class="plp-sib" href="10-collection-hybrid.html">Hybrid</a>
-      <a class="plp-sib" href="10-collection-polos.html">Polos</a>
-      <a class="plp-sib" href="10-collection-hats.html">Hats</a>
-      <a class="plp-sib" href="10-collection-gear.html">Gear</a>
-    </div>
-    <p class="aside plp-aside">Sixty days to decide on any club. Club returns need approval and a photo first, and the club has to come back unmarked.</p>
-  </div>
-</section>
-
-<!-- No closing CTA here either, same reason as the PLP (HANDOFF §11d): .close
-     is ink and .ftr is ink, and that seam is a known open problem. The page
-     already gets its brand moment from .clp-fit. -->
 
 <!-- ============ FOOTER ============ -->
 <footer class="ftr">
@@ -2256,6 +2152,82 @@ html[data-rev="b"] .rev-bar{display:flex}
       </div>
     </div>
     <div class="lb-body"><div id="lb-detail"></div></div>
+  </div>
+</div>
+
+<!-- ============ PROGRESS RAIL ============
+     Fixed to the bottom edge for the life of the page. It is the answer to
+     "show the progress of each adding": the three slots fill with the actual
+     hat, so the reader never has to translate a number back into a choice.
+     aria-live is polite and sits on the status text alone, so a screen reader
+     hears one sentence per pick, not the whole bar. -->
+<div class="bgo-rail" id="bgo-rail" data-show="false" data-state="empty">
+  <span class="flash" aria-hidden="true"></span>
+  <div class="bgo-rail-in">
+
+    <div class="bgo-slots" aria-hidden="true">
+      <div class="bgo-slot" data-slot="0"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><img alt="" width="60" height="60"><span class="lb">One</span></div>
+      <div class="bgo-slot" data-slot="1"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><img alt="" width="60" height="60"><span class="lb">Two</span></div>
+      <div class="bgo-slot free" data-slot="2"><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><img alt="" width="60" height="60"><span class="lb">Free</span></div>
+    </div>
+
+    <div class="bgo-status">
+      <strong class="hd" id="bgo-hd">Pick your first hat</strong>
+      <span class="sub" id="bgo-sub">Two at $29, then the third one's free.</span>
+    </div>
+
+    <div class="bgo-rail-act">
+      <span class="tot" id="bgo-tot" hidden>
+        <span class="l">Bundle</span>
+        <span class="v" id="bgo-tot-v">$0</span>
+        <span class="sv" id="bgo-tot-sv"></span>
+      </span>
+      <button type="button" class="btn btn-foil btn-sm" id="bgo-go" hidden><span>Go to the bag</span><span class="ar">&rarr;</span></button>
+    </div>
+
+  </div>
+</div>
+<p class="sr" id="bgo-live" role="status" aria-live="polite"></p>
+
+<!-- ============ UNLOCK / UPSELL MODAL ============
+     Deliberately NOT fired when the free hat is unlocked, only when the third
+     hat is actually in. Popping a dialog at hat two would cover the grid at
+     the one moment the reader has to reach into it. The unlock is celebrated
+     in the rail instead; the modal waits until the hat job is finished and
+     its only job is the handoff to clubs.
+
+     Three flex rows, not one scrolling block: the panel is capped at 86vh and
+     only .bgo-md-bd scrolls, so the club list can run as long as it likes
+     without ever pushing "Go to the bag" off the bottom of the screen. -->
+<div class="md bgo-md" id="bgo-md" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="bgo-md-title">
+  <div class="md-bd" data-bgo-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="bgo-md-x" data-bgo-md-close aria-label="Close">&times;</button>
+    <div class="bgo-md-hd">
+      <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+      <p class="eyebrow on-dark">That's three</p>
+      <h2 class="disp d-s" id="bgo-md-title">Three hats. One was free.</h2>
+      <p>Hats don't fix your short game. Wedges start at $99.</p>
+    </div>
+    <div class="bgo-md-bd">
+      <!-- Two short sections, two rows each. The friction in an upsell is row
+           count and dropdown count, not category count: six rows and eight
+           dropdowns right after an impulse buy is a wall. Four rows reads as a
+           short menu. Polos lead because the person who just bought three hats
+           is an apparel buyer, and a polo needs one choice. -->
+      <div class="bgo-updeck">
+        <span class="eyebrow">Goes with the hats</span>
+        <div class="bgo-clubs" id="bgo-up-polo"></div>
+      </div>
+      <div class="bgo-updeck">
+        <span class="eyebrow">Goes in the bag</span>
+        <div class="bgo-clubs" id="bgo-up-club"></div>
+      </div>
+    </div>
+    <div class="bgo-md-foot">
+      <button type="button" class="btn btn-line btn-sm" data-bgo-md-close><span>Back to the hats</span></button>
+      <button type="button" class="btn btn-foil btn-sm" id="bgo-md-go"><span>Go to the bag</span><span class="ar">&rarr;</span></button>
+    </div>
   </div>
 </div>
 
@@ -2368,23 +2340,190 @@ html[data-rev="b"] .rev-bar{display:flex}
 }));
 
 /* ==========================================================================
-   CLUB COLLECTION
-   The grid, the bands and the comparison are all rendered by build.py into the
-   HTML — there are no facets and no sort on these pages, so there is nothing
-   for a script to repaint. Quick add works through core.js's [data-add]
-   delegation, and the reveal comes from core.js's observer, both of which are
-   already running before this file's only job matters.
-
-   That job: no club ships with a head cover (Product Reference Guide v1.8 says
-   so on every club entry), so the drawer offers one. core.js filters out
-   anything already in the bag and hides the block when nothing is left.
+   COLLECTION / PLP
+   One script, seven pages. Everything it renders comes from the collection
+   record injected by tools/build.py — the tiles, the facet chips and the
+   sort options are all derived, so adding a product to products.json puts it
+   on the right page with no edit here.
    ========================================================================== */
-var LG_CART_UPSELL = [{"sku": "GRP-BLK-STD", "name": "Clover Grips, black", "price": "$9.95", "variant": "Standard", "why": "Grips wear out years before the club does.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3M6A0848.jpg?v=1701474078"}, {"sku": "HeadCover-Blade-SignatureWhite", "name": "Lucky Blade Cover", "price": "$29.95", "variant": "", "why": "No Lucky club ships with a cover.", "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"}];
+var PLP = {"id": "hats", "name": "Hats", "facets": [], "products": [{"id": "hat-white-gold-classic", "code": "HAT", "name": "White | Gold Classic Hat", "title": "White | Gold Classic Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/79.webp?v=1784585346", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-white-gold-classic.html", "addSku": "HAT-5P-SB-CLSC-WHT-GLD"}, {"id": "hat-white-ibtbl", "code": "HAT", "name": "It's Better To Be Lucky Hat, white", "title": "It's Better To Be Lucky Hat, white", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/89.webp?v=1784585347", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-white-ibtbl.html", "addSku": "HAT-5P-SB-IBTBL-WHT"}, {"id": "hat-cream-updown", "code": "HAT", "name": "Cream Upside Down Hat", "title": "Cream Upside Down Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/69.webp?v=1784585346", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-cream-updown.html", "addSku": "HAT-5P-SB-UPDN-CRM"}, {"id": "hat-black-ibtbl", "code": "HAT", "name": "It's Better To Be Lucky Hat, black", "title": "It's Better To Be Lucky Hat, black", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-black-ibtbl.html", "addSku": "HAT-5P-SB-IBTBL-BL"}, {"id": "hat-tan-cursive", "code": "HAT", "name": "Tan Cursive Hat", "title": "Tan Cursive Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_9c446716-791d-48c1-be9d-9e805bda751a.webp?v=1784585347", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-tan-cursive.html", "addSku": "HAT-5P-SB-CRSV-TAN"}, {"id": "hat-black-gold-classic", "code": "HAT", "name": "Black | Gold Classic Hat", "title": "Black | Gold Classic Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?v=1784585346", "price": 29, "priceLabel": "$29", "summary": "", "inStock": false, "href": "20-product-hat-black-gold-classic.html", "chooseLabel": "Choose size"}, {"id": "hat-white-black-updown", "code": "HAT", "name": "White/Black Upside Down Hat", "title": "White/Black Upside Down Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/20.webp?v=1784585346", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-white-black-updown.html", "addSku": "HAT-5P-SB-UPDN-WHTBLK"}, {"id": "hat-white-updown", "code": "HAT", "name": "White Upside Down Hat", "title": "White Upside Down Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/59.webp?v=1784585346", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-white-updown.html", "addSku": "HAT-5P-SB-UPDN-WHT"}, {"id": "hat-white-cursive", "code": "HAT", "name": "White Cursive Hat", "title": "White Cursive Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/49.webp?v=1784585347", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-white-cursive.html", "addSku": "HAT-5P-SB-CRSV-WHT"}, {"id": "hat-baby-blue-cursive", "code": "HAT", "name": "Baby Blue Cursive Hat", "title": "Baby Blue Cursive Hat", "family": "hat", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347", "price": 29, "priceLabel": "$29", "summary": "", "inStock": true, "href": "20-product-hat-baby-blue-cursive.html", "addSku": "HAT-5P-SB-CRSV-BBLU-MONO"}]};
 
 /* Option axes and the real variant map for the in-card Quick add picker.
    core.js owns the panel; this only supplies the data. See build.py's
    quick_add_data() — in-stock products with at least one axis only. */
-var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869", "default": "RH|56K", "options": [{"key": "hand", "name": "Hand", "values": [{"k": "RH", "label": "Right hand", "sv": "Right Hand"}, {"k": "LH", "label": "Left hand", "sv": "Left Hand"}]}, {"key": "loftgrind", "name": "Loft & grind", "values": [{"k": "50K", "label": "50° K", "sv": "50° K"}, {"k": "52K", "label": "52° K", "sv": "52° K"}, {"k": "52S", "label": "52° S", "sv": "52° S"}, {"k": "54K", "label": "54° K", "sv": "54° K"}, {"k": "56K", "label": "56° K", "sv": "56° K"}, {"k": "56S", "label": "56° S", "sv": "56° S"}, {"k": "58K", "label": "58° K", "sv": "58° K"}, {"k": "60K", "label": "60° K", "sv": "60° K"}, {"k": "60S", "label": "60° S", "sv": "60° S"}]}], "variants": {"RH|50K": {"sku": "LGW01-50-RH", "price": 99, "avail": true, "qty": 50}, "RH|52K": {"sku": "LGW01-52-RH", "price": 99, "avail": true, "qty": 728}, "RH|52S": {"sku": "LGW02-52-RH", "price": 99, "avail": false, "qty": 0}, "RH|54K": {"sku": "LGW01-54-RH", "price": 99, "avail": true, "qty": 167}, "RH|56K": {"sku": "LGW01-56-RH", "price": 99, "avail": true, "qty": 61}, "RH|56S": {"sku": "LGW02-56-RH", "price": 99, "avail": false, "qty": 0}, "RH|58K": {"sku": "LGW01-58-RH", "price": 99, "avail": true, "qty": 274}, "RH|60K": {"sku": "LGW01-60-RH", "price": 99, "avail": true, "qty": 577}, "RH|60S": {"sku": "LGW02-60-RH", "price": 99, "avail": false, "qty": 0}, "LH|50K": {"sku": "LGW01-50-LH", "price": 99, "avail": false, "qty": 0}, "LH|52K": {"sku": "LGW01-52-LH", "price": 99, "avail": true, "qty": 265}, "LH|52S": {"sku": "LGW02-52-LH", "price": 99, "avail": true, "qty": 87}, "LH|54K": {"sku": "LGW01-54-LH", "price": 99, "avail": true, "qty": 76}, "LH|56K": {"sku": "LGW01-56-LH", "price": 99, "avail": true, "qty": 108}, "LH|56S": {"sku": "LGW02-56-LH", "price": 99, "avail": true, "qty": 81}, "LH|58K": {"sku": "LGW01-58-LH", "price": 99, "avail": true, "qty": 15}, "LH|60K": {"sku": "LGW01-60-LH", "price": 99, "avail": true, "qty": 2}, "LH|60S": {"sku": "LGW02-60-LH", "price": 99, "avail": true, "qty": 57}}}, "lgw01-black": {"name": "Carver 01 Black", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436", "default": "RH|56K", "options": [{"key": "hand", "name": "Hand", "values": [{"k": "RH", "label": "Right hand", "sv": "Right Hand"}]}, {"key": "loftgrind", "name": "Loft & grind", "values": [{"k": "50K", "label": "50° K", "sv": "50 / K Grind"}, {"k": "52K", "label": "52° K", "sv": "52 / K Grind"}, {"k": "54K", "label": "54° K", "sv": "54 / K Grind"}, {"k": "56K", "label": "56° K", "sv": "56 / K Grind"}, {"k": "58K", "label": "58° K", "sv": "58 / K Grind"}, {"k": "60K", "label": "60° K", "sv": "60 / K Grind"}]}], "variants": {"RH|50K": {"sku": "LGW03-BLK-STOCK-RH-50", "price": 109, "avail": true, "qty": 134}, "RH|52K": {"sku": "LGW03-BLK-STOCK-RH-52", "price": 109, "avail": true, "qty": 94}, "RH|54K": {"sku": "LGW02-BLK-STOCK-RH-54", "price": 109, "avail": true, "qty": 92}, "RH|56K": {"sku": "LGW02-BLK-STOCK-RH-56", "price": 109, "avail": true, "qty": 291}, "RH|58K": {"sku": "LGW02-BLK-STOCK-RH-58", "price": 109, "avail": true, "qty": 96}, "RH|60K": {"sku": "LGW02-BLK-STOCK-RH-60", "price": 109, "avail": true, "qty": 289}}}};
+var LG_QUICKADD = {};
+
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  var grid = $('#plp-grid');
+  if (!grid) return;
+
+  var items = PLP.products || [];
+  var facetOn = null;          /* family key, or null for everything */
+  var stockOnly = false;
+  var sort = 'featured';
+
+  /* ------------------------------------------------------------- controls */
+  function paintFacets(){
+    var box = $('#plp-facets');
+    if (!box) return;
+    /* one family means one chip, which filters nothing — leave the row empty
+       and the stylesheet collapses it */
+    if (!PLP.facets || PLP.facets.length < 2){ box.innerHTML = ''; return; }
+    var out = '<button class="chip" type="button" data-facet="" aria-pressed="'
+      + (facetOn === null) + '">All</button>';
+    for (var i = 0; i < PLP.facets.length; i++){
+      var f = PLP.facets[i];
+      out += '<button class="chip" type="button" data-facet="' + esc(f.k) + '"'
+        + ' aria-pressed="' + (facetOn === f.k) + '">' + esc(f.label) + '</button>';
+    }
+    box.innerHTML = out;
+  }
+
+  /* "Best reviewed" is only honest where reviews exist. Clubs have Judge.me
+     ratings; nothing in apparel or gear does yet, so the option is removed
+     rather than left to sort by a field that is null for every row. */
+  function trimSort(){
+    var sel = $('#plp-sort');
+    if (!sel) return;
+    if (!items.some(function(p){ return p.rating; })){
+      var opt = sel.querySelector('[value="rated"]');
+      if (opt) opt.parentNode.removeChild(opt);
+    }
+  }
+
+  /* ------------------------------------------------------------ selection */
+  function visible(){
+    var list = items.filter(function(p){
+      if (facetOn && p.family !== facetOn) return false;
+      if (stockOnly && !p.inStock) return false;
+      return true;
+    });
+    /* Sold-out products sink to the bottom of every ordering. They are still
+       worth showing — a collection that hides them looks thinner than the
+       range actually is — but nothing sold out should lead a grid. */
+    var by = {
+      'price-asc':  function(a, b){ return a.price - b.price; },
+      'price-desc': function(a, b){ return b.price - a.price; },
+      'name':       function(a, b){ return a.title < b.title ? -1 : a.title > b.title ? 1 : 0; },
+      'rated':      function(a, b){
+                      return (b.rating ? b.rating.avg : -1) - (a.rating ? a.rating.avg : -1); },
+      'featured':   function(){ return 0; }
+    }[sort] || function(){ return 0; };
+
+    return list.map(function(p, i){ return [p, i]; })
+      .sort(function(x, y){
+        if (x[0].inStock !== y[0].inStock) return x[0].inStock ? -1 : 1;
+        return by(x[0], y[0]) || x[1] - y[1];    /* stable: fall back to input order */
+      })
+      .map(function(pair){ return pair[0]; });
+  }
+
+  /* ---------------------------------------------------------------- paint */
+  function stars(r){
+    var pct = (r.avg / 5 * 100).toFixed(1);
+    var five = '<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
+    five = five + five + five + five + five;
+    return '<span class="stars" style="--pct:' + pct + '%" role="img"'
+      + ' aria-label="' + r.avg + ' out of 5, ' + r.count + ' reviews">'
+      + '<span class="s-bg">' + five + '</span><span class="s-fg">' + five + '</span></span>';
+  }
+
+  /* No review count on a product card, ever (Cole, 2026-07-31). The variant
+     summary carries this slot instead — it answers a question the shopper
+     actually has while browsing. */
+  function tile(p){
+    var out = !p.inStock;
+    return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
+      + '<div class="pt-ph">'
+      + (p.img
+          ? '<img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy"'
+            + ' width="800" height="800" decoding="async">'
+          /* Lucky Golf Tees is the one product with no photo in Shopify at all,
+             so it gets a labelled slot rather than a broken image */
+          : '<div class="ph"><span class="lbl"><span class="mono k">Photo needed</span>'
+            + '<span class="mono">' + esc(p.title) + '</span></span></div>')
+      + (out ? '<span class="pt-tag">Sold out</span>' : '')
+      /* Quick add sits ON the photo, bottom-right, the way Primo does it —
+         under the card it was easy to miss entirely. */
+      + '<div class="pt-add">'
+      /* Zero axes and one sellable variant gets a plain [data-add]. Anything
+         with a choice opens the in-card picker via [data-qa] rather than
+         linking to the product page — Cole, 2026-07-31, matching Primo. The
+         panel itself is core.js; this only has to emit the trigger. */
+      + (out
+          ? ''
+          : '<button class="qadd" type="button"'
+            + (p.addSku
+                ? ' data-add data-sku="' + esc(p.addSku) + '"'
+                  + ' data-name="' + esc(p.name) + '"'
+                  + ' data-price="' + esc(p.priceLabel) + '"'
+                  + ' data-img="' + esc(p.img || '') + '" data-variant=""'
+                : ' data-qa="' + esc(p.id) + '" aria-haspopup="true"')
+            + '><svg viewBox="0 0 24 24" aria-hidden="true">'
+            + '<path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/>'
+            + '</svg><span>Quick add</span></button>')
+      + '</div>'
+      + '</div>'
+      /* Name and price. No SKU stamp and no variant summary — Cole's note 4.
+         A collection card is for recognising a product and its price; the
+         detail belongs on the page it links to. */
+      + '<a class="stretch" href="' + esc(p.href) + '"><span class="pt-nm">'
+        + esc(p.name) + '</span></a>'
+      + '<span class="pt-meta"><span class="pt-pr">' + esc(p.priceLabel) + '</span></span>'
+      + '</article>';
+  }
+
+  function paint(){
+    var list = visible();
+    grid.innerHTML = list.map(tile).join('');
+    grid.hidden = !list.length;
+    var empty = $('#plp-empty');
+    if (empty) empty.hidden = !!list.length;
+
+    var count = $('#plp-count');
+    if (count){
+      var total = items.length;
+      count.textContent = list.length === total
+        ? total + (total === 1 ? ' product' : ' products')
+        : list.length + ' of ' + total + (total === 1 ? ' product' : ' products');
+    }
+    /* core.js reveals .rv on scroll; tiles painted after that pass would stay
+       invisible, so they are marked shown as they are created */
+    [].forEach.call(grid.querySelectorAll('.rv'), function(el){ el.classList.add('in'); });
+  }
+
+  /* --------------------------------------------------------------- events */
+  document.addEventListener('click', function(e){
+    var f = e.target.closest('[data-facet]');
+    if (f){
+      facetOn = f.getAttribute('data-facet') || null;
+      paintFacets(); paint();
+      return;
+    }
+    if (e.target.closest('#plp-instock')){
+      stockOnly = !stockOnly;
+      $('#plp-instock').setAttribute('aria-pressed', String(stockOnly));
+      paint();
+      return;
+    }
+    if (e.target.closest('#plp-clear')){
+      facetOn = null; stockOnly = false;
+      $('#plp-instock').setAttribute('aria-pressed', 'false');
+      paintFacets(); paint();
+    }
+  });
+
+  var sortSel = $('#plp-sort');
+  if (sortSel) sortSel.addEventListener('change', function(){ sort = sortSel.value; paint(); });
+
+  trimSort();
+  paintFacets();
+  paint();
+})();
 
 /* reveal-on-scroll */
 (function(){
@@ -2793,6 +2932,7 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
   var live = document.getElementById('cart-live');
   var lastFocus = null;
   var cart = [];
+  var subs = [];
 
   try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ cart = []; }
   if (!Array.isArray(cart)) cart = [];
@@ -2836,6 +2976,7 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
     }
     paintUpsell();
     subEl.textContent = money(total());
+    subs.forEach(function(f){ try { f(); } catch(e){} });
   }
 
   /* Cross-sell inside the drawer. Page supplies LG_CART_UPSELL; anything
@@ -2902,7 +3043,9 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
       var was = label.textContent;
       btn.setAttribute('data-added','true'); label.textContent = 'Added';
       setTimeout(function(){ btn.removeAttribute('data-added'); label.textContent = was; }, 1400);
-      open(btn);          /* show the bag straight away, the way every store does */
+      if (!btn.hasAttribute('data-quiet')) open(btn);   /* the bundle page adds
+         over and over; throwing the drawer up each time covers the grid it is
+         asking you to pick from. Everywhere else, show the bag straight away. */
       return;
     }
     if (e.target.closest('[data-cart-open]')){ e.preventDefault(); open(e.target.closest('[data-cart-open]')); return; }
@@ -2915,6 +3058,22 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && !drawer.hidden && drawer.getAttribute('data-open') === 'true') close();
   });
+
+  /* Read/write access for the bundle page. Line items carrying bogo:true are
+     owned by that module, which recomputes them whole on every change, so it
+     needs to swap the set rather than add one at a time. Everything else on
+     the site keeps using [data-add] and never touches this. */
+  window.LG_CART = {
+    add: add,
+    open: function(){ open(null); },
+    items: function(){ return cart.slice(); },
+    setBogo: function(lines){
+      cart = cart.filter(function(i){ return !i.bogo; }).concat(lines || []);
+      save(); render();
+    },
+    subscribe: function(fn){ if (typeof fn === 'function') subs.push(fn); }
+  };
+
   render();
 })();
 
@@ -3181,6 +3340,440 @@ var LG_QUICKADD = {"lgw01-gold": {"name": "Carver 01 Gold", "img": "https://cdn.
     });
   }
   document.addEventListener('DOMContentLoaded', brDialogs);
+})();
+</script>
+
+<script>
+/* ==========================================================================
+   BOGO BUNDLE  ·  two hats at $29, every third one free
+
+   ONE SOURCE OF TRUTH. The cart owns the bundle; this module owns nothing but
+   the ORDER the hats were picked in, which the cart cannot store. Everything
+   the reader sees (rail, slots, tile state, totals) is derived from the cart
+   on every change, which is why removing a hat from the drawer walks the rail
+   backwards correctly and why a reload lands on the same screen it left.
+
+   The free hat is not a discount line. Negative prices break the drawer's
+   subtotal (priceOf() strips the minus sign), so a free unit is a real line
+   at $0 with the variant "Free hat". The drawer, the count badge and the
+   subtotal then all work with no changes to the cart itself.
+   ========================================================================== */
+(function(){
+  if (!window.LG_CART) return;
+
+  var PICK_KEY = 'lg-bogo-v1';
+  var BUNDLE   = 3;        /* buy 2, get the 3rd. Every third unit is free. */
+  var UNIT     = 29;
+
+  var HATS = [
+    {sku:'HAT-5P-SB-CLSC-WHT-GLD',   name:'White | Gold Classic Hat',        img:'https://cdn.shopify.com/s/files/1/2286/3149/files/79.webp?v=1784585346', href:'20-product-hat-white-gold-classic.html', inStock:true, vid:'50028040192277'},
+    {sku:'HAT-5P-SB-IBTBL-WHT',      name:"It's Better To Be Lucky, white",  img:'https://cdn.shopify.com/s/files/1/2286/3149/files/89.webp?v=1784585347', href:'20-product-hat-white-ibtbl.html', inStock:true, vid:'50029741637909'},
+    {sku:'HAT-5P-SB-UPDN-CRM',       name:'Cream Upside Down Hat',           img:'https://cdn.shopify.com/s/files/1/2286/3149/files/69.webp?v=1784585346', href:'20-product-hat-cream-updown.html', inStock:true, vid:'50029743866133'},
+    {sku:'HAT-5P-SB-IBTBL-BL',       name:"It's Better To Be Lucky, black",  img:'https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347', href:'20-product-hat-black-ibtbl.html', inStock:true, vid:'50029743898901'},
+    {sku:'HAT-5P-SB-CRSV-TAN',       name:'Tan Cursive Hat',                 img:'https://cdn.shopify.com/s/files/1/2286/3149/files/1_9c446716-791d-48c1-be9d-9e805bda751a.webp?v=1784585347', href:'20-product-hat-tan-cursive.html', inStock:true, vid:'50029744193813'},
+    {sku:'HAT-5P-SB-CLSC-BLK-GLD',   name:'Black | Gold Classic Hat',        img:'https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?v=1784585346', href:'20-product-hat-black-gold-classic.html', inStock:true, vid:'50029744292117'},
+    {sku:'HAT-5P-SB-UPDN-WHTBLK',    name:'White/Black Upside Down Hat',     img:'https://cdn.shopify.com/s/files/1/2286/3149/files/20.webp?v=1784585346', href:'20-product-hat-white-black-updown.html', inStock:true, vid:'50029746127125'},
+    {sku:'HAT-5P-SB-UPDN-WHT',       name:'White Upside Down Hat',           img:'https://cdn.shopify.com/s/files/1/2286/3149/files/59.webp?v=1784585346', href:'20-product-hat-white-updown.html', inStock:true, vid:'50029746159893'},
+    {sku:'HAT-5P-SB-CRSV-WHT',       name:'White Cursive Hat',               img:'https://cdn.shopify.com/s/files/1/2286/3149/files/49.webp?v=1784585347', href:'20-product-hat-white-cursive.html', inStock:true, vid:'50029746192661'},
+    {sku:'HAT-5P-SB-CRSV-BBLU-MONO', name:'Baby Blue Cursive Hat',           img:'https://cdn.shopify.com/s/files/1/2286/3149/files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?v=1784585347', href:'20-product-hat-baby-blue-cursive.html', inStock:true, vid:'50048056230165'}
+  ];
+  /* vid = the live Shopify variant id (every hat is a single-variant product,
+     verified against the Admin API 2026-09-03). Unused by this front-end mock,
+     carried so the Shopify build is a lookup rather than a re-mapping job. */
+  var BY_SKU = {};
+  HATS.forEach(function(h){ BY_SKU[h.sku] = h; });
+
+  /* Clubs carry real option axes and the real variant map, lifted from each
+     product's own PD record at build time. A wedge cannot be added without a
+     hand and a loft/grind, so the row picks them; nothing here is invented,
+     and an unavailable combination is refused rather than sold.
+     The Tracer LGP01 Blade is deliberately absent: it is out of stock. */
+  var CLUBS = [{"id":"polo-signature-black","group":"polo","name":"Signature Black Classic Polo","price":"$67","img":"https://cdn.shopify.com/s/files/1/2286/3149/files/Classicpolowithlogointhecollar1.webp?v=1779472786","href":"20-product-polo-signature-black.html","why":"The one that goes with all three hats.","options":[{"key":"size","name":"Size","values":[{"k":"S","label":"Small","sv":"Small"},{"k":"M","label":"Medium","sv":"Medium"},{"k":"L","label":"Large","sv":"Large"},{"k":"XL","label":"XL","sv":"XL"},{"k":"XXL","label":"XXL","sv":"XXL"},{"k":"3XL","label":"3XL","sv":"3XL"}]}],"variants":{"S":{"sku":"LGA-CP-SignatureBlack-Small","price":67,"avail":true,"qty":4,"vid":"49851327381781"},"M":{"sku":"LGA-CP-SignatureBlack-Medium","price":67,"avail":true,"qty":24,"vid":"49851327414549"},"L":{"sku":"LGA-CP-SignatureBlack-Large","price":67,"avail":true,"qty":8,"vid":"49851327447317"},"XL":{"sku":"LGA-CP-SignatureBlack-XL","price":67,"avail":true,"qty":1,"vid":"49851327480085"},"XXL":{"sku":"LGA-CP-SignatureBlack-XXL","price":67,"avail":true,"qty":4,"vid":"49851327512853"},"3XL":{"sku":"LGA-CP-SignatureBlack-3XL","price":67,"avail":true,"qty":1,"vid":"49851327545621"}},"default":"M"},{"id":"polo-gold-carnation","group":"polo","name":"Gold Carnation Classic Polo","price":"$67","img":"https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?v=1779472693","href":"20-product-polo-gold-carnation.html","why":"Not a subtle shirt. Wear it when you're playing well.","options":[{"key":"size","name":"Size","values":[{"k":"S","label":"Small","sv":"Small"},{"k":"M","label":"Medium","sv":"Medium"},{"k":"L","label":"Large","sv":"Large"},{"k":"XL","label":"XL","sv":"XL"},{"k":"XXL","label":"XXL","sv":"XXL"},{"k":"3XL","label":"3XL","sv":"3XL"}]}],"variants":{"S":{"sku":"LGA-CP-GoldCarnation-Small","price":67,"avail":true,"qty":5,"vid":"49851331870997"},"M":{"sku":"LGA-CP-GoldCarnation-Medium","price":67,"avail":true,"qty":17,"vid":"49851331903765"},"L":{"sku":"LGA-CP-GoldCarnation-Large","price":67,"avail":true,"qty":21,"vid":"49851331936533"},"XL":{"sku":"LGA-CP-GoldCarnation-XL","price":67,"avail":true,"qty":5,"vid":"49851331969301"},"XXL":{"sku":"LGA-CP-GoldCarnation-XXL","price":67,"avail":true,"qty":1,"vid":"49851332002069"},"3XL":{"sku":"LGA-CP-GoldCarnation-3XL","price":67,"avail":true,"qty":2,"vid":"49851332034837"}},"default":"M"},{"id":"lgw01-gold","group":"club","name":"Carver 01 Gold","price":"$99","img":"https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869","href":"02-pdp-lgw01.html","why":"The one that started the argument.","options":[{"key":"hand","name":"Hand","values":[{"k":"RH","label":"Right hand","sv":"Right Hand"},{"k":"LH","label":"Left hand","sv":"Left Hand"}]},{"key":"loftgrind","name":"Loft & grind","values":[{"k":"50K","label":"50\u00b0 K","sv":"50 / K Grind"},{"k":"52K","label":"52\u00b0 K","sv":"52 / K Grind"},{"k":"52S","label":"52\u00b0 S","sv":"52 / S Grind"},{"k":"54K","label":"54\u00b0 K","sv":"54 / K Grind"},{"k":"56K","label":"56\u00b0 K","sv":"56 / K Grind"},{"k":"56S","label":"56\u00b0 S","sv":"56 / S Grind"},{"k":"58K","label":"58\u00b0 K","sv":"58 / K Grind"},{"k":"60K","label":"60\u00b0 K","sv":"60 / K Grind"},{"k":"60S","label":"60\u00b0 S","sv":"60 / S Grind"}]}],"variants":{"RH|50K":{"sku":"LGW01-50-RH","price":99,"avail":true,"qty":98},"RH|52K":{"sku":"LGW01-52-RH","price":99,"avail":true,"qty":577},"RH|54K":{"sku":"LGW01-54-RH","price":99,"avail":true,"qty":215},"RH|56K":{"sku":"LGW01-56-RH","price":99,"avail":true,"qty":163},"RH|58K":{"sku":"LGW01-58-RH","price":99,"avail":true,"qty":314},"RH|60K":{"sku":"LGW01-60-RH","price":99,"avail":true,"qty":686},"LH|50K":{"sku":"LGW01-50-LH","price":99,"avail":false,"qty":0},"LH|52K":{"sku":"LGW01-52-LH","price":99,"avail":true,"qty":275},"LH|54K":{"sku":"LGW01-54-LH","price":99,"avail":true,"qty":82},"LH|56K":{"sku":"LGW01-56-LH","price":99,"avail":true,"qty":104},"LH|58K":{"sku":"LGW01-58-LH","price":99,"avail":true,"qty":15},"LH|60K":{"sku":"LGW01-60-LH","price":99,"avail":false,"qty":0},"RH|52S":{"sku":"LGW02-52-RH","price":99,"avail":true,"qty":40},"RH|56S":{"sku":"LGW02-56-RH","price":99,"avail":true,"qty":25},"RH|60S":{"sku":"LGW02-60-RH","price":99,"avail":true,"qty":2},"LH|52S":{"sku":"LGW02-52-LH","price":99,"avail":true,"qty":96},"LH|56S":{"sku":"LGW02-56-LH","price":99,"avail":true,"qty":92},"LH|60S":{"sku":"LGW02-60-LH","price":99,"avail":true,"qty":71}},"default":"RH|56K"},{"id":"lgp02-gold","group":"club","name":"Tracer LGP02 Mallet","price":"$229","img":"https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134","href":"20-product-lgp02-gold.html","why":"Milled, gold, and quietly better than the one in your bag.","options":[{"key":"hand","name":"Hand","values":[{"k":"RH","label":"Right hand","sv":"Right"},{"k":"LH","label":"Left hand","sv":"Left"}]}],"variants":{"RH":{"sku":"LGP02-RH","price":229,"avail":true,"qty":367},"LH":{"sku":"LGP02-LH","price":229,"avail":true,"qty":89}},"default":"RH"}];
+
+  /* ---- elements ---- */
+  var grid   = document.getElementById('bgo-grid');
+  var rail   = document.getElementById('bgo-rail');
+  var hd     = document.getElementById('bgo-hd');
+  var sub    = document.getElementById('bgo-sub');
+  var totBox = document.getElementById('bgo-tot');
+  var totV   = document.getElementById('bgo-tot-v');
+  var totSv  = document.getElementById('bgo-tot-sv');
+  var goBtn  = document.getElementById('bgo-go');
+  var live   = document.getElementById('bgo-live');
+  var slots  = [].slice.call(document.querySelectorAll('.bgo-slot'));
+  if (!grid || !rail) return;
+
+  /* ---- pick order. The cart holds counts; this holds sequence. ---- */
+  var picks = [];
+  try { picks = JSON.parse(localStorage.getItem(PICK_KEY)) || []; } catch(e){ picks = []; }
+  if (!Array.isArray(picks)) picks = [];
+  function savePicks(){ try { localStorage.setItem(PICK_KEY, JSON.stringify(picks)); } catch(e){} }
+
+  function esc(s){ var d = document.createElement('div'); d.textContent = (s==null?'':s); return d.innerHTML; }
+  function money(n){ return '$' + n; }
+
+  /* Bring `picks` back in line with whatever the cart actually holds. Keeps
+     the order for every unit still in the bag, drops the rest, and adopts
+     anything that appeared by another route. */
+  function reconcile(){
+    var remain = {};
+    LG_CART.items().forEach(function(i){ if (i.bogo) remain[i.sku] = (remain[i.sku]||0) + i.q; });
+    var out = [];
+    picks.forEach(function(sku){ if (remain[sku] > 0){ out.push(sku); remain[sku] -= 1; } });
+    Object.keys(remain).forEach(function(sku){
+      if (!BY_SKU[sku]) return;
+      for (var k = 0; k < remain[sku]; k++) out.push(sku);
+    });
+    picks = out;
+  }
+
+  /* Position in the pick order decides which units are free: every third one. */
+  function desiredLines(){
+    var by = {}, order = [];
+    picks.forEach(function(sku, idx){
+      var free = (idx % BUNDLE) === (BUNDLE - 1);
+      var key = sku + '|' + (free ? 'F' : 'P');
+      if (!by[key]){ by[key] = {sku:sku, free:free, q:0}; order.push(key); }
+      by[key].q += 1;
+    });
+    return order.map(function(key){
+      var g = by[key], h = BY_SKU[g.sku];
+      return {sku:g.sku, name:h.name, price: g.free ? '$0' : money(UNIT), img:h.img,
+              variant: g.free ? 'Free hat' : '', q:g.q, bogo:true};
+    });
+  }
+  function sigOf(lines){
+    return lines.map(function(l){
+      return l.sku + '|' + (l.variant||'') + '|' + l.price + '|' + l.q;
+    }).sort().join(';');
+  }
+
+  function counts(){
+    var n = picks.length;
+    var free = Math.floor(n / BUNDLE);
+    return {n:n, free:free, paid:n - free, total:(n - free) * UNIT, saved:free * UNIT,
+            armed:(n % BUNDLE) === (BUNDLE - 1)};
+  }
+  function pickedCount(sku){
+    var c = 0;
+    picks.forEach(function(s){ if (s === sku) c++; });
+    return c;
+  }
+
+  /* ---- the two directions ----
+     They must not share a code path. A pick made HERE is not in the cart yet,
+     so reconciling against the cart first would throw it away before it was
+     ever written. push() then flush() writes outward; adopt() reads inward
+     after the drawer has changed something. Both are guarded, because
+     setBogo() calls the cart's render(), which calls every subscriber, which
+     lands back here. */
+  var syncing = false;
+
+  function writeLines(){
+    var want = desiredLines();
+    var have = LG_CART.items().filter(function(i){ return i.bogo; });
+    if (sigOf(want) !== sigOf(have)) LG_CART.setBogo(want);
+    savePicks();
+  }
+
+  /* picks changed on this page */
+  function flush(announceMsg){
+    if (syncing) return;
+    syncing = true;
+    writeLines();
+    syncing = false;
+    paint(announceMsg);
+  }
+
+  /* the cart changed somewhere else (drawer +, -, remove). Rebuild the order
+     from what is actually in the bag, then re-price: dropping one hat moves
+     every hat after it up a slot, so which units are free has to be redone. */
+  function adopt(){
+    if (syncing) return;
+    syncing = true;
+    reconcile();
+    writeLines();
+    syncing = false;
+    paint();
+  }
+
+  /* ---- tiles ---- */
+  function paintGrid(){
+    var c = counts();
+    grid.innerHTML = HATS.map(function(h){
+      var q = pickedCount(h.sku);
+      var free = c.armed && h.inStock;
+      var price = free
+        ? '<span class="was">' + money(UNIT) + '</span><span class="nowfree">Free</span>'
+        : money(UNIT);
+      var act;
+      if (!h.inStock){
+        act = '<button class="btn btn-line btn-sm bgo-add" type="button" disabled><span>Sold out</span></button>';
+      } else if (q > 0){
+        act = '<div class="bgo-step" role="group" aria-label="How many ' + esc(h.name) + '">'
+            +   '<button type="button" data-bgo-dec="' + esc(h.sku) + '" aria-label="Remove one ' + esc(h.name) + '">&minus;</button>'
+            +   '<span class="n">' + q + ' in bundle</span>'
+            +   '<button type="button" data-bgo-inc="' + esc(h.sku) + '" aria-label="Add another ' + esc(h.name) + '">+</button>'
+            + '</div>';
+      } else {
+        act = '<button class="btn ' + (free ? 'btn-foil' : 'btn-ink') + ' btn-sm bgo-add" type="button" data-bgo-inc="' + esc(h.sku) + '">'
+            +   '<span>' + (free ? 'Add it free' : 'Add to bundle') + '</span></button>';
+      }
+      return '<div class="bgo-card"' + (q ? ' data-picked' : '') + (h.inStock ? '' : ' data-out') + '>'
+        + (q ? '<span class="tick" aria-hidden="true">' + q + '</span>' : '')
+        + (h.inStock ? '' : '<span class="oos">Sold out</span>')
+        + '<a class="bgo-ph" href="' + h.href + '" tabindex="-1" aria-hidden="true">'
+        +   '<img src="' + h.img + '" alt="" width="344" height="344" loading="lazy" decoding="async">'
+        + '</a>'
+        + '<span class="nm">' + esc(h.name) + '</span>'
+        + '<span class="pr">' + price + '</span>'
+        + '<div class="act">' + act + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  /* ---- rail ---- */
+  var lastN = null, lastArmed = null;
+
+  function paintRail(announceMsg){
+    var c = counts();
+
+    /* slots show the last three picks of the bundle in progress, so a fourth
+       hat restarts the row rather than overflowing it */
+    var startOfRow = Math.floor(c.n / BUNDLE) * BUNDLE;
+    if (c.n > 0 && c.n % BUNDLE === 0) startOfRow = c.n - BUNDLE;   /* keep a finished row on screen */
+    slots.forEach(function(el, i){
+      var sku = picks[startOfRow + i];
+      var img = el.querySelector('img');
+      if (sku && BY_SKU[sku]){
+        el.setAttribute('data-filled','true');
+        if (img.getAttribute('src') !== BY_SKU[sku].img) img.setAttribute('src', BY_SKU[sku].img);
+      } else {
+        el.removeAttribute('data-filled');
+        img.removeAttribute('src');
+      }
+      if (i === BUNDLE - 1){
+        if (c.armed) el.setAttribute('data-armed','true'); else el.removeAttribute('data-armed');
+      }
+    });
+
+    var state = 'empty', H, S;
+    if (c.n === 0){
+      H = 'Pick your first hat';
+      S = 'Two at ' + money(UNIT) + ", then the third one's free.";
+    } else if (c.armed){
+      state = 'armed';
+      H = "Third one's free. Go on.";
+      S = "Any hat on the page, we're not fussy.";
+    } else if (c.n % BUNDLE === 0){
+      state = 'done';
+      H = c.free === 1 ? "That's your three" : "That's " + c.free + ' free hats';
+      S = c.n + ' hats, ' + money(c.total) + ', and ' + (c.free === 1 ? 'one of them' : c.free + ' of them')
+        + ' cost you nothing.';
+    } else {
+      state = 'part';
+      H = c.n === 1 ? 'One down' : c.n + ' in';
+      S = "Add one more and the next one's free.";
+    }
+    rail.setAttribute('data-state', state);
+    hd.textContent = H;
+    sub.textContent = S;
+
+    totBox.hidden = c.n === 0;
+    totV.textContent = money(c.total);
+    totSv.textContent = c.saved > 0 ? 'You saved ' + money(c.saved) : '';
+    goBtn.hidden = c.n < BUNDLE;
+
+    rail.setAttribute('data-show','true');
+
+    /* the sweep fires once, on the transition into "next one is free" */
+    if (lastArmed === false && c.armed){
+      rail.classList.remove('fire');
+      void rail.offsetWidth;                       /* restart the animation */
+      rail.classList.add('fire');
+      setTimeout(function(){ rail.classList.remove('fire'); }, 1200);
+    }
+
+    if (live && announceMsg) live.textContent = announceMsg;
+    else if (live && lastN !== null && lastN !== c.n) live.textContent = H + '. ' + S;
+
+    /* the modal waits for the bundle to be FINISHED, never for the unlock */
+    var completed = c.n > 0 && c.n % BUNDLE === 0;
+    if (lastN !== null && c.n > lastN && completed) openMd();
+
+    lastN = c.n;
+    lastArmed = c.armed;
+  }
+
+  /* pad() runs on every paint, not just on resize: the rail grows a row on a
+     phone once "Go to the bag" appears, and reserving only the old height
+     would let it sit over the footer. */
+  function paint(announceMsg){ paintGrid(); paintRail(announceMsg); pad(); }
+
+  /* ======================================================================
+     CLUB ROWS — real option axes, real variant map.
+     A wedge has hand AND loft/grind, so "Add" alone would post a variantless
+     line. Each row keeps its own selection, resolves it against the variant
+     map, and refuses anything the map marks unavailable.
+     ====================================================================== */
+  var sel = {};                                  /* club id -> [axis values] */
+  CLUBS.forEach(function(c){
+    sel[c.id] = c['default'] ? String(c['default']).split('|')
+                             : c.options.map(function(o){ return o.values[0].k; });
+  });
+  function keyOf(c){ return sel[c.id].join('|'); }
+  function variantOf(c){ return c.variants[keyOf(c)] || null; }
+  function labelOf(c){
+    return c.options.map(function(o, i){
+      var v = o.values.filter(function(x){ return x.k === sel[c.id][i]; })[0];
+      return v ? v.label : sel[c.id][i];
+    }).join(' · ');
+  }
+
+  function clubRow(c){
+    var v = variantOf(c), ok = !!(v && v.avail);
+    var opts = c.options.map(function(o, i){
+      return '<label class="bgo-opt"><span class="l">' + esc(o.name) + '</span>'
+        + '<select data-club="' + esc(c.id) + '" data-axis="' + i + '">'
+        + o.values.map(function(x){
+            /* an axis value with no available variant anywhere is still
+               offered, but the row will report it sold out once picked */
+            return '<option value="' + esc(x.k) + '"' + (sel[c.id][i] === x.k ? ' selected' : '') + '>'
+                 + esc(x.label) + '</option>';
+          }).join('')
+        + '</select></label>';
+    }).join('');
+
+    return '<div class="bgo-club" data-club-row="' + esc(c.id) + '">'
+      + '<a class="bgo-club-ph" href="' + c.href + '" tabindex="-1" aria-hidden="true">'
+      +   '<img src="' + c.img + '" alt="" width="74" height="74" loading="lazy" decoding="async"></a>'
+      + '<div class="info">'
+      +   '<span class="nm">' + esc(c.name) + '</span>'
+      +   '<span class="why">' + esc(c.why) + '</span>'
+      +   '<div class="bgo-opts">' + opts + '</div>'
+      + '</div>'
+      + '<div class="bgo-club-act">'
+      +   '<span class="pr">' + esc(c.price) + '</span>'
+      +   (ok
+            ? '<button type="button" class="btn btn-ink btn-sm" data-club-add="' + esc(c.id) + '"><span>Add</span></button>'
+            : '<button type="button" class="btn btn-line btn-sm" disabled><span>Sold out</span></button>')
+      + '</div></div>';
+  }
+  /* The modal splits into two decks; the page band below stays clubs-only,
+     because its copy makes the club argument and a polo does not belong under
+     "the hat was the easy part". */
+  function paintClubs(){
+    var by = {polo:[], club:[]};
+    CLUBS.forEach(function(c){ (by[c.group] || by.club).push(c); });
+    [['bgo-up-polo', by.polo], ['bgo-up-club', by.club], ['bgo-clubs-page', by.club]]
+      .forEach(function(pair){
+        var el = document.getElementById(pair[0]);
+        if (el) el.innerHTML = pair[1].map(clubRow).join('');
+      });
+  }
+
+  document.addEventListener('change', function(e){
+    var s = e.target.closest('select[data-club]');
+    if (!s) return;
+    var id = s.getAttribute('data-club'), i = +s.getAttribute('data-axis');
+    sel[id][i] = s.value;
+    paintClubs();                                 /* both copies stay in step */
+  });
+
+  /* ---- modal ---- */
+  var md = document.getElementById('bgo-md');
+  var mdLast = null;
+  var FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+  function openMd(){
+    if (!md || md.getAttribute('data-open') === 'true') return;
+    mdLast = document.activeElement;
+    md.hidden = false;
+    /* rAF gives the browser a frame to apply hidden=false before the opacity
+       transition starts. It does NOT fire in a backgrounded tab, though, and
+       the third hat can land while the tab is in the background. Without the
+       timeout the reader comes back to a locked page behind an invisible
+       dialog. Setting the attribute twice is harmless. */
+    var reveal = function(){ md.setAttribute('data-open','true'); };
+    requestAnimationFrame(reveal);
+    setTimeout(reveal, 60);
+    document.body.style.overflow = 'hidden';
+    var x = md.querySelector('.bgo-md-x'); if (x) x.focus();
+  }
+  function closeMd(){
+    if (!md || md.getAttribute('data-open') !== 'true') return;
+    md.setAttribute('data-open','false');
+    document.body.style.overflow = '';
+    setTimeout(function(){ md.hidden = true; }, 260);
+    if (mdLast && mdLast.focus) mdLast.focus();
+  }
+
+  /* ---- events ---- */
+  document.addEventListener('click', function(e){
+    var inc = e.target.closest('[data-bgo-inc]');
+    if (inc){
+      e.preventDefault();
+      var sku = inc.getAttribute('data-bgo-inc');
+      var h = BY_SKU[sku];
+      if (!h || !h.inStock) return;
+      var wasArmed = counts().armed;
+      picks.push(sku);
+      flush(h.name + (wasArmed ? ' added free.' : ' added to the bundle.'));
+      return;
+    }
+    var dec = e.target.closest('[data-bgo-dec]');
+    if (dec){
+      e.preventDefault();
+      var s = dec.getAttribute('data-bgo-dec');
+      for (var i = picks.length - 1; i >= 0; i--){ if (picks[i] === s){ picks.splice(i,1); break; } }
+      flush((BY_SKU[s] ? BY_SKU[s].name : 'Hat') + ' removed from the bundle.');
+      return;
+    }
+    var ca = e.target.closest('[data-club-add]');
+    if (ca){
+      e.preventDefault();
+      var id = ca.getAttribute('data-club-add');
+      var c = CLUBS.filter(function(x){ return x.id === id; })[0];
+      var v = c && variantOf(c);
+      if (!v || !v.avail) return;
+      LG_CART.add({sku:v.sku, name:c.name, price:'$' + v.price, img:c.img, variant:labelOf(c)});
+      /* v.vid carries the live Shopify variant id where the data has one, so the
+         Shopify build posts an id to /cart/add.js instead of matching on sku. */
+      var lbl = ca.querySelector('span'), was = lbl.textContent;
+      ca.setAttribute('data-added','true'); lbl.textContent = 'Added';
+      setTimeout(function(){ ca.removeAttribute('data-added'); lbl.textContent = was; }, 1400);
+      if (live) live.textContent = c.name + ', ' + labelOf(c) + ', added to the bag.';
+      return;
+    }
+    if (e.target.closest('[data-bgo-md-close]')){ e.preventDefault(); closeMd(); return; }
+    if (e.target.closest('#bgo-md-go')){ e.preventDefault(); closeMd(); setTimeout(function(){ LG_CART.open(); }, 200); return; }
+    if (e.target.closest('#bgo-go')){ e.preventDefault(); LG_CART.open(); return; }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (!md || md.hidden) return;
+    if (e.key === 'Escape'){ closeMd(); return; }
+    if (e.key !== 'Tab') return;
+    var f = [].slice.call(md.querySelectorAll(FOCUSABLE)).filter(function(el){ return el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
+  /* the drawer can change the bundle too (remove, +, -). Recompute from it. */
+  LG_CART.subscribe(function(){ adopt(); });
+
+  /* keep the fixed rail off the footer */
+  function pad(){ document.body.style.paddingBottom = rail.offsetHeight + 'px'; }
+  window.addEventListener('resize', pad);
+
+  paintClubs();
+  reconcile();
+  lastN = picks.length;                 /* a reload must not re-fire the modal */
+  lastArmed = counts().armed;
+  adopt();
+  pad();
 })();
 </script>
 
