@@ -25,7 +25,10 @@ can open in a browser today.
    reintroduced by accident if nobody says them out loud.
 2. **`SHOT-LIST.md`** — the 51 photographs still to shoot, grouped into four
    sessions. See "What isn't done" below.
-3. **`FINISH-LINE.md`** — the running state of everything outstanding.
+3. **`CART-PLAN.md`** — the cart is the one area still open to decisions. It
+   covers what is live today, what is broken, and the call to make early:
+   whether the cart stays the UpCart app or becomes native theme code.
+4. **`FINISH-LINE.md`** — the running state of everything outstanding.
 
 The four `references-*.md` files are the brand's own source of truth for voice
 and for product specs. Consult them before writing any customer-facing words or
