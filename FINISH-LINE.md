@@ -82,19 +82,15 @@ club page.
 destination country charging the customer import duty on delivery. The site now
 says nothing about it. Cole's call, made knowingly.
 
-### 1c. Send the Product Language Rules document
+### 1c. The Product Language Rules document — DROPPED 2026-09-09
 
-The fifth reference doc. `references-product-guide-v1.8.md` and the
-Spec-to-Benefit guide both point at it, and Golf-Culture Reference v2 names
-three CTAs it defines — **"Go get one", "Roll it pure", "Fill the gap"** —
-which "stay locked to their products" as recognisable brand markers.
-
-Without the mapping, only "Fill the gap" is in use (on the hybrid), and only
-because it also appears independently in Culture v2's Long-game vocabulary.
-"Go get one" and "Roll it pure" are unused rather than guessed at.
-
-**Unblocks:** the product-specific CTA layer, and confirmation that "Fill the
-gap" is on the right club.
+Cole: *"I don't want to lock certain headlines. I don't know where we're
+getting that."* The doc the reference guides pointed at does not exist and the
+idea behind it is dead: no CTA or headline is locked to a product. "Fill the
+gap" stays on the hybrid because it is good copy for that club, not because a
+rulebook assigned it. Write each product's CTA on its merits, same as any
+other line. If a future reference doc revives "locked" product language,
+this ruling wins.
 
 ---
 
@@ -109,10 +105,30 @@ went DRAFT. No double-counting on the storefront.
 
 ⚠️ **Step 4 has NOT happened, and it is now urgent: the live merged product has
 ZERO Judge.me reviews.** Verified 2026-09-09 via the product's `judgeme`
-metafields — "No reviews", count 0. The 551 and the 69 are still attached to
-the two DRAFT products, so the flagship wedge on luckygolf.com says "Be the
-first to write a review". Migrate both sets onto product `9583978905877` in
-Judge.me admin; then the 01 reads **620** and the clubs-wide 884 stands.
+metafields — "No reviews", count 0. The flagship wedge on luckygolf.com says
+"Be the first to write a review".
+
+**But it is not a per-product review migration, and that changes the fix and
+the number.** Judge.me on this store pools reviews through **static product
+review groups**. The relevant one is **"All Gold Wedges"** (group id `241751`):
+27 products, **563 reviews, 4.82**. That pool is where the 551 on the old
+product page came from — those reviews were never attached to the product
+itself. The merged product is simply **not a member of the group**.
+
+**The fix, one action, Cole's to do by hand:** Judge.me app → Settings →
+Product groups → *All Gold Wedges* → Edit → **Add products manually** → search
+"LGW02 Gold" → tick *Lucky Golf LGW02 Gold* → **Add**. Then **Refresh all
+Groups** (otherwise groups repropagate on a daily ~03:00 schedule).
+
+**Then re-derive the site's numbers from the group, do not assume 620.** 620
+was arithmetic for a per-product migration that is not how this store works.
+Read the group total after the refresh and rebuild `_page-reviews.json` from
+it.
+
+*Why this is not automated:* the Judge.me admin is a cross-origin iframe inside
+Shopify admin. The accessibility tree exposes none of it, so it is
+screenshot-coordinate clicking only, and the coordinate frame drifts mid-session.
+An attempted add could not be confirmed. Do not drive it with automation.
 
 ### 2b. The site side — DONE 2026-09-09
 
@@ -246,13 +262,14 @@ its own document, because it is what ships with the repo.
 - [ ] Retire or rewrite the Shopify FAQ page (it contradicts the refund policy)
 - [x] ~~Chat hours + email response target~~ — 24 business hours; chat = email hours, Mon–Fri
 - [x] ~~Returns Portal URL~~ — lucky-golf.loopreturns.com, apparel route only
-- [ ] Product Language Rules sent
+- [x] ~~Product Language Rules sent~~ — dropped 2026-09-09; Cole doesn't want
+      locked headlines, the doc never existed
 - [x] ~~Stock moved onto the six S-grind variants~~ — synced 2026-09-05
 - [x] ~~Draft published~~ — ACTIVE 2026-09-05, $99 flat
 - [x] ~~Both old wedge products archived~~ — DRAFT 2026-09-05 (do not republish)
-- [ ] **Judge.me reviews migrated — URGENT: the live merged wedge shows ZERO
-      reviews** (both sets still sit on the DRAFT products). Migrate onto
-      product 9583978905877; then the 01 reads 620
+- [ ] **URGENT: add the merged wedge to the "All Gold Wedges" Judge.me group**
+      (id 241751) — it shows ZERO reviews on the live site because it is not a
+      member. Then Refresh all Groups. See Round 2a
 - [x] ~~Trybe roster~~ — roster killed 2026-08-13; open program, no names needed
 - [x] ~~Trybe program terms~~ — on the page 2026-08-13, all Cole's
 - [ ] 51 stills shot (`SHOT-LIST.md`, 4 sessions — 23 of them unblock every apparel page)
@@ -264,9 +281,11 @@ its own document, because it is what ships with the repo.
 - [x] ~~Four policy chips replaced with real answers~~ — all four support pages at ZERO chips
 - [x] ~~Catalogue re-pulled, `merge_grinds()` deleted~~ — 2026-09-09; only the
       Black's cosmetic `grind_axis()` remains
-- [ ] Reviews page: S-grind chip removed, 01 reads 620 — BLOCKED on the
-      Judge.me migration above; flipping early would invent a figure
-- [ ] Product-specific CTAs applied from Product Language Rules
+- [ ] Reviews page: S-grind chip removed, count re-derived from the "All Gold
+      Wedges" group total (NOT the assumed 620) — BLOCKED on the group fix
+      above; flipping early would invent a figure
+- [x] ~~Product-specific CTAs applied from Product Language Rules~~ — obsolete;
+      no locked product language (Cole, 2026-09-09)
 - [x] ~~Roster names and portraits in~~ — obsolete; roster removed, block dormant
 - [ ] Photography dropped into the 26 still slots
 - [x] ~~Developer handoff document written~~ — `DEVELOPER-HANDOFF.md` (2026-08-13)
