@@ -113,7 +113,7 @@ upsell = [
      'options': [{'name': 'Hand', 'values': ['Right Hand', 'Left Hand']},
                  {'name': 'Loft & Grind', 'values': WEDGE_GRINDS}],
      'variants': wedge_variants},
-    {'handle': 'limited-edition-mallet-putter', 'group': 'club', 'name': 'Lucky Golf LGP02 Gold',
+    {'handle': 'limited-edition-mallet-putter', 'group': 'club', 'name': 'Tracer LGP02 Mallet',
      'url': '/products/limited-edition-mallet-putter',
      'img': CDN + '11_7388f94c-9c93-4aff-ada6-c6a1163ac214_600x.webp?v=1782598134',
      'price': 22900,

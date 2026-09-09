@@ -2,7 +2,7 @@
 
 **For the developer who turns this prototype into a Shopify theme.**
 
-This repo is 59 built pages, zero dead links, published at
+This repo is 60 built pages, zero dead links, published at
 https://mobius-digital.github.io/lucky-golf-website/ from
 `mobius-digital/lucky-golf-website` (master, GitHub Pages).
 
@@ -24,7 +24,7 @@ Python 3, no dependencies. Node only for the variant test.
 
 ```bash
 python tools/normalize-products.py          # shopify-raw.json -> products.json
-python tools/build.py                       # assemble all 59 pages
+python tools/build.py                       # assemble all 60 pages
 ```
 
 Checks — all three must be clean before anything ships:
@@ -38,11 +38,11 @@ node tools/test-variants.js                 # the axis engine, over all 43 produ
 Two more that are worth knowing:
 
 ```bash
-python tools/build.py --links               # the link registry: 61 pages, 59 built
+python tools/build.py --links               # the link registry: 62 pages, 60 built
 python tools/build.py club                  # build one template's pages only
 ```
 
-Current state: **43 products, 155 variants, 61 declared pages, 59 built.**
+Current state: **43 products, 155 variants, 62 declared pages, 60 built.**
 
 **Never edit an `NN-*.html` file.** They are build output and are overwritten.
 Source of truth is `_src/` plus `_src-logo-symbols.svg`.
@@ -610,29 +610,40 @@ it was extracted out of `pdp.js` in the first place.
 
 Full detail and the checklist are in `FINISH-LINE.md`. In one paragraph each:
 
-**Photography — the largest gap.** 26 stills and 36 video briefs, all written
-into the copy files and extracted to `SHOT-LIST.md`, which is handable to a
-photographer as-is. Every image slot on Our Story, the Ambassador Program and
-the four club collections is currently a *labelled brief* — a `.ph` block that
-states the crop, the light and what has to read in the frame. Video is lower
-priority: a reel slot renders as a labelled card and a page with no footage
-still reads as finished. Photography does not.
+**Photography — the largest and now the only real gap.** 51 stills plus 36
+video briefs, written into the copy files and extracted to `SHOT-LIST.md`, which
+is handable to a photographer as-is. **Cole's developer owns this** as of
+2026-09-09. Every unshot image slot is a *labelled brief* — a `.ph` block
+stating the crop, the light and what has to read in the frame — so a page with
+no photograph still reads as finished. Video is lower priority: a reel slot
+renders as a labelled card. Photography does not degrade as gracefully.
 
-**The ambassador roster.** Five names, five handles, five 4:5 portraits, and the
-program terms. The build **refuses** a real name on the roster without a
-`consent` key.
+> Watch for this when the photos land: a product with **zero** images used to
+> crash its own page. `pdp.js` built gallery thumbnails assuming every slide
+> holds an `<img>`, and the tees (the one product with no shot at all) threw,
+> which killed the rest of the page script including Add to cart. Fixed
+> 2026-09-09 — slides with no image are skipped, and each thumbnail carries the
+> slide index it belongs to so skipping cannot misalign the rest. Keep that
+> behaviour when you port the gallery.
 
-**Three policy answers**, all rendering as `.tbd` chips across the four support
-pages: duties prepaid at checkout or collected on delivery; staffed hours and an
-email response target; the Returns Portal's URL. (Defective-item return shipping
-was answered on 2026-08-02 — Lucky pays it.) The 57 "Needs spec" chips on the
-product pages are the same device: a spec the manufacturer has not published,
-shown as a visible gap rather than guessed at.
+**The ambassador roster is gone** (Cole, 2026-08-13). The program is open to
+anyone meeting the criteria, so a lineup of five faces said the opposite of the
+offer. The grid is off both pages and the terms are on the page instead. The
+dormant block in `page-brand.html` still **refuses** a real name without a
+`consent` key, for the day there are big names to show.
 
-> On the response target specifically: there is deliberately no "we reply within
-> N hours" anywhere on the site. The review corpus contains both a customer
-> emailed back on a Sunday and one who waited weeks, and **a number nobody has
-> committed to internally is worse than no number.**
+**The policy answers are all in** (2026-08-13). The four support pages carry
+**zero** `.tbd` chips. Duties came off the site entirely as not relevant;
+returns run 60 days on clubs and 30 on apparel and gear; the Returns Portal is
+linked on the apparel route only, because **clubs go through support first** so
+a fault is caught before the club is in a box. The remaining "Needs spec" chips
+on product pages are the same device used honestly: a spec the manufacturer has
+not published, shown as a visible gap rather than guessed at.
+
+> On response targets: there is deliberately no "we reply within N hours" in
+> brand copy. The review corpus holds both a customer emailed back on a Sunday
+> and one who waited weeks, and **a number nobody has committed to internally is
+> worse than no number.** The FAQ states an aim, not a promise.
 
 **Sale was removed, not built** (2026-08-13). Shopify's "Summer Warehouse Sale"
 collection holds six grip products plus three archived hats, and no variant
@@ -645,10 +656,31 @@ old prototype had neither.
 **Two discontinued products**, `lgd01` and `lgp02-patriot`, keep their catalogue
 records (the pull is provenance) but are in no collection and have no page.
 
-**One standing conflict worth knowing about:** the store's own Shopify FAQ page
-claims a lifetime guarantee and says the wedge line is right-hand only. Both are
-false, and both contradict Product Reference Guide v1.8. **This site follows the
-refund policy.** That Shopify page needs retiring, not mirroring.
+**The Shopify FAQ conflict is resolved** (2026-09-09). That page used to promise
+a lifetime guarantee and say the wedge line was right-hand only, both false. It
+has been rewritten against the refund policy and against the hand availability
+in `products.json`, so the store and this site now say the same thing. If you
+port an FAQ, port this site's version; they agree.
+
+**Product names now match between the site and the store** (2026-09-09). Shopify
+titles were legacy codes (`Lucky Golf LGW02 Gold`); they are now the site's
+names — Carver 01 Gold, Carver 01 Black, Tracer LGP01 Blade, Tracer LGP02
+Mallet, Stryker LGH01. **Handles were deliberately not touched**, so every
+existing URL, redirect and ad link still resolves. Apparel and hat titles were
+already close enough and were left alone.
+
+> The wedge is **the 01** everywhere on this site, and that is a deliberate
+> resolution of two conflicting instructions: the merged Shopify product was
+> briefly named LGW02. "Carver 01" appears 406 times in the built pages, the
+> merged club contains the original 01 head, and the site's story is *one wedge,
+> the 01, with your pick of sole grind*. If Cole ever flips this to 02, it is a
+> rename in `normalize-products.py` plus two Shopify titles, not a copy rewrite.
+
+**One live page still carries an old product name.** The BOGO hats page on the
+store bakes product titles into its page body at publish time, so its wedge
+upsell card still reads the pre-rename name. `shopify/build_page.py` is fixed
+and `shopify/page-body.html` is rebuilt; it just needs pushing with the next
+deliberate republish of that page. It does not affect this repo.
 
 ---
 
@@ -699,7 +731,7 @@ The four reference documents are the source of truth for facts and voice, in
 this order of precedence: **Product Reference Guide v1.8** outranks everything
 on product facts; **Spec-to-Benefit v1.0** governs what a spec is allowed to
 claim and carries the CLAIMS TO AVOID list; **How We Write v7.3** governs voice;
-**Golf-Culture Reference v2** supplies vocabulary. All 59 pages were audited
+**Golf-Culture Reference v2** supplies vocabulary. All 60 pages were audited
 against the CLAIMS TO AVOID list — the site currently carries **zero banned
 claims in its own copy**, with two flagged exceptions that are somebody else's
 words: a Judge.me AI summary containing "premium", and competitor names inside
@@ -751,7 +783,7 @@ category level and hedged on purpose.
 Added 2026-08-27 because "how many pages are there" is the first question, and
 section 4 answers it by template rather than by page.
 
-**59 built pages.** Two more (`p/lgd01`, `p/lgp02-patriot`) are declared in
+**60 built pages.** Two more (`p/lgd01`, `p/lgp02-patriot`) are declared in
 `tools/sitemap.py` but deliberately not built: both products are discontinued,
 and links to them resolve to `"#"` by design. `build.py --links` prints this
 whole registry at any time and is the source of truth, not this table.
