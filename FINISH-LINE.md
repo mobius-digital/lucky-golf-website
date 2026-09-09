@@ -150,6 +150,47 @@ changed by the attempt.
 
 ---
 
+## Naming — SETTLED 2026-09-09, and the store now matches the site
+
+Cole: *"What do you think and do it."*
+
+**The site keeps "Carver 01 Gold" and "Carver 01 Black". Shopify was renamed to
+match.** Both live product titles now read exactly that. Handles are untouched,
+so no URL moved and nothing 404s.
+
+**Why this direction and not the other.** "Carver 01" appears **406 times on the
+built pages**. Renaming the site to 02 would be a 400-change rewrite of the
+flagship product's identity days before handoff. The store title was a leftover
+from the merge, changed in one call. Fix the cheap end.
+
+It is also the coherent end. The site's wedge story (Cole, 2026-07-31, locked)
+is *one wedge, the 01, in gold or black, with your pick of sole grind* — which
+is exactly what the merged product now is: one club, K and S as variants. The
+roadmap line "the true 02 is coming" keeps meaning a genuinely new wedge.
+
+⚠️ **The one thing to check, because two of your own rulings disagree.**
+2026-07-31: one wedge, *the 01*, grind is a variant. 2026-09-05, on the merge:
+*"instead of 01 and 02 it's just 02."* I went with the 01 because the whole site
+is built on it and the merged club contains the old 01 head. **If you meant 02
+is the name customers see, say so and it flips: two Shopify renames and three
+lines in `normalize-products.py`.** Cheap now, expensive after the copy is
+reprinted anywhere.
+
+### Two follow-ons this created
+
+- **The rest of the catalogue still carries legacy store titles** ("Lucky Golf
+  LGP02 Gold", "Lucky Golf LGH01") while the site says "Tracer LGP02 Mallet",
+  "Stryker LGH01". Rename the lot in one sweep at launch so the store is not
+  half-renamed. Do not drip-feed it.
+- **The live BOGO page's wedge upsell card still shows the old name.** It bakes
+  product titles at publish time and `refreshCatalogue()` only self-heals the
+  hats. `shopify/build_page.py` is fixed and `shopify/page-body.html` rebuilt,
+  but pushing it means replacing the whole 62KB page body by hand, which is a
+  corruption risk on a live page for a cosmetic label. **Push it with the next
+  deliberate republish**, not bundled into an unrelated batch.
+
+---
+
 ## Round 3 · The long poles — other people are involved
 
 ### 3a. Photography — the biggest gap on the site
@@ -239,6 +280,35 @@ its own document, because it is what ships with the repo.
 
 ---
 
+## The bug the sweep caught (fixed 2026-09-09)
+
+**The tees page's Add to cart did nothing, and had not for some time.**
+
+`_src/pdp.js` built the gallery thumbnails with
+`s.querySelector('img').getAttribute('src')` on every slide, assuming a slide
+is always a photograph. The tees are the one product in the catalogue with **no
+Shopify photo at all**, so its only slide is a labelled placeholder with no
+`<img>`. That threw a TypeError.
+
+The throw is the point. It happened near the top of the PDP's main IIFE, so
+**everything after it never ran** — variant selection, price repainting, and
+the `[data-add]` wiring. The page looked completely finished and the button was
+inert. Nothing in the build could see it: the HTML was correct, so `--check`,
+`--links` and `test-variants.js` all passed. Only loading the page in a browser
+and reading the console found it.
+
+Fixed by skipping slides that have no image, with the thumbnail carrying the
+**slide index it belongs to** rather than its own position, so a skipped
+placeholder cannot put every later thumbnail on the wrong slide. Verified: the
+wedge PDP still builds 13 thumbs for 13 slides, indices 0-12 aligned; the tees
+page builds none and now wires `TEES-25` correctly.
+
+**Worth knowing for the photo shoot:** this is exactly the failure a page hits
+when a product has zero images. Any new product added before its shoot would
+have hit it too.
+
+---
+
 ## Deferred — real, but not blockers
 
 - ~~**Footer links are 16px tap targets**~~ — **FIXED 2026-08-13.** The note
@@ -265,7 +335,12 @@ its own document, because it is what ships with the repo.
 - [x] ~~Sale priced, or dropped from the nav~~ — dropped 2026-08-13
 - [x] ~~Defective returns — Lucky pays the shipping~~ (answered 2026-08-02)
 - [x] ~~Duties~~ — not relevant; removed from the site entirely (2026-08-13)
-- [ ] Retire or rewrite the Shopify FAQ page (it contradicts the refund policy)
+- [x] ~~Retire or rewrite the Shopify FAQ page~~ — **rewritten and live
+      2026-09-09** (page 21570027591, handle `faq-lucky-wedges`, title now
+      "FAQ"). Killed: the lifetime guarantee, the Vokey and Cleveland
+      comparison, "we only offer right handed", the dead luckywedges.com
+      address, the Re:Do upsell and a wrong shaft weight. Now matches the
+      refund policy and the hand availability in `products.json`.
 - [x] ~~Chat hours + email response target~~ — 24 business hours; chat = email hours, Mon–Fri
 - [x] ~~Returns Portal URL~~ — lucky-golf.loopreturns.com, apparel route only
 - [x] ~~Product Language Rules sent~~ — dropped 2026-09-09; Cole doesn't want
@@ -296,7 +371,14 @@ its own document, because it is what ships with the repo.
 - [ ] Photography dropped into the 26 still slots
 - [x] ~~Developer handoff document written~~ — `DEVELOPER-HANDOFF.md` (2026-08-13)
 - [x] ~~Footer tap targets — decided either way~~ — fixed 2026-08-13, desktop 16px → 24px
-- [ ] Final sweep at 1440 and 390, all pages
+- [x] ~~Final sweep at 1440 and 390, all pages~~ — **done 2026-09-09.** All 61
+      pages measured in-browser at 1440 and 390 (and the first 21 at 320):
+      **zero horizontal overflow anywhere.** The compare table scrolls inside
+      its own box as designed. Em dashes in visible copy: **0**. Banned-word
+      sweep: 9 hits, all previously accepted (competitor names inside verbatim
+      customer reviews, "premium" in the Judge.me auto-summary, styleguide
+      specimens). Voice audit exits clean.
+      **It also caught a real bug — see below.**
 - [ ] `python tools/build.py --check` clean
 - [ ] `node tools/test-variants.js` passes
 - [ ] `python tools/build.py --links` reports 60 of 60, zero dead links

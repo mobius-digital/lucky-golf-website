@@ -106,7 +106,7 @@ upsell = [
          'Classicpolowithlogointhecollar1_600x.webp?v=1779472786', POLO_A),
     polo('gold-carnation-classic-polo', 'Gold Carnation Classic Polo',
          'WhiteCarnation1_600x.webp?v=1779472693', POLO_B),
-    {'handle': 'lucky-golf-lgw02-gold', 'group': 'club', 'name': 'Lucky Golf LGW02 Gold',
+    {'handle': 'lucky-golf-lgw02-gold', 'group': 'club', 'name': 'Carver 01 Gold',
      'url': '/products/lucky-golf-lgw02-gold',
      'img': CDN + '11_26414fab-14b8-41ae-8ad7-a801c2f646fb_600x.webp?v=1782597869',
      'price': 9900,

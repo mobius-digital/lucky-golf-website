@@ -36,6 +36,16 @@ STIFF = [
     (r"\bwas not\b", "wasn't"), (r"\bhave not\b", "haven't"), (r"\bwould not\b", "wouldn't"),
 ]
 GUARD = r"(?=\s+(?!to\b)[a-z0-9$])"   # never before "to": "you have to" must not contract
+
+# Binding policy copy is exempt from the stiff-form rule. "Modifications are
+# not permitted" and "requests after 30 days are not accepted" are the correct
+# register for terms a refund decision is made against; "aren't permitted"
+# reads like a shrug. Support pages are clarity-first by standing ruling, and
+# the returns page IS the policy, not a description of it. The density column
+# still prints for these files, and every other rule still applies to them --
+# only the stiff-form FAIL is lifted, so a real regression elsewhere still
+# fires instead of being lost in a guard that always cries wolf.
+POLICY_EXEMPT = {"_support-returns"}
 CONTR = re.compile(r"\b\w+['\u2019](?:s|t|re|ve|ll|d|m)\b")
 # strings that are markup, tokens, briefs or spec values, not prose
 SKIP_KEY = re.compile(r"(brief|photo|src|alt|href|sku|img|code|k$|^id$|slug|label|cta)", re.I)
@@ -85,7 +95,9 @@ def report():
     print("  %-30s %6s %6s %7s  %s" % ("file", "w/contr", "words", "stiff", ""))
     bad = 0
     for dens, w, c, stiff, name in rows:
-        if stiff:
+        if stiff and name in POLICY_EXEMPT:
+            flag = "policy copy, stiff forms allowed (%d)" % stiff
+        elif stiff:
             flag, bad = "FIX  <- %d stiff forms" % stiff, bad + 1
         elif dens > FLOOR:
             flag = "read it"

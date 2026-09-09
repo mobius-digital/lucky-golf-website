@@ -2874,22 +2874,33 @@ var PD_KIT = [
     var thumbs = $('.gal-thumbs');
     var at = 0;
     slides.forEach(function(s, i){
-      var src = s.querySelector('img').getAttribute('src');
+      /* A slide can be a labelled placeholder rather than a photograph — the
+         tees are the one product with no shot at all, and every apparel page
+         is placeholders until the shoot lands. Those have no <img> to build a
+         thumbnail from, and a strip of empty boxes is worse than no strip, so
+         they are skipped. The thumb carries the slide index it belongs to
+         rather than its own position, because skipping one would otherwise
+         put every later thumbnail on the wrong slide. */
+      var im = s.querySelector('img');
+      if (!im || !thumbs) return;
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'gal-th';
+      b.setAttribute('data-i', i);
       b.setAttribute('aria-current', i === 0 ? 'true' : 'false');
       b.setAttribute('aria-label', 'Image ' + (i + 1) + ' of ' + slides.length);
-      b.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+      b.innerHTML = '<img src="' + im.getAttribute('src') + '" alt="" loading="lazy">';
       b.addEventListener('click', function(){ show(i); });
       thumbs.appendChild(b);
     });
-    var ths = [].slice.call(thumbs.children);
+    var ths = thumbs ? [].slice.call(thumbs.children) : [];
     function show(i){
       at = (i + slides.length) % slides.length;
       slides.forEach(function(s, n){
         if (n === at) s.setAttribute('data-on', ''); else s.removeAttribute('data-on'); });
-      ths.forEach(function(t, n){ t.setAttribute('aria-current', String(n === at)); });
-      $('#gal-i').textContent = at + 1;
+      ths.forEach(function(t){
+        t.setAttribute('aria-current', String(+t.getAttribute('data-i') === at)); });
+      var counter = $('#gal-i');
+      if (counter) counter.textContent = at + 1;
     }
     $('[data-p]', gal).addEventListener('click', function(){ show(at - 1); });
     $('[data-n]', gal).addEventListener('click', function(){ show(at + 1); });
