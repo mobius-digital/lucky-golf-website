@@ -1,0 +1,112 @@
+{
+ "_": "Shipping. COLE 2026-08-02: rates and thresholds do NOT belong on this page. They change, they are promoted in an announcement bar when they run, and checkout is the only place that can be right about them. This page carries POLICY — the windows, the carriers, and what to do when something goes wrong. Dispatch is 1–2 business days, Cole's number.",
+ "crumbName": "Shipping",
+ "eyebrow": "Delivery",
+ "headline": "Shipping",
+ "lede": "Dispatch times, carriers and tracking. What shipping costs is calculated at checkout.",
+ "quick": {
+  "items": [
+   {
+    "k": "1–2 days",
+    "v": "To leave the warehouse"
+   },
+   {
+    "k": "Tracked",
+    "v": "From the first carrier scan"
+   },
+   {
+    "k": "Worldwide",
+    "v": "We ship internationally"
+   },
+   {
+    "k": "At checkout",
+    "v": "What it costs, and the options"
+   }
+  ]
+ },
+ "jump": true,
+ "sections": [
+  {
+   "id": "dispatch",
+   "nav": "When it leaves",
+   "title": "When it leaves",
+   "paras": [
+    "Orders leave the warehouse in one to two business days. Business days, so an order placed on a Friday evening is a Monday or Tuesday dispatch.",
+    "You get a tracking number as soon as the carrier scans the parcel, which is the moment it's genuinely moving, not the moment the label is printed. A label created and not yet scanned is the most common reason tracking looks stuck on day one."
+   ]
+  },
+  {
+   "id": "arrive",
+   "nav": "When it lands",
+   "cream": true,
+   "title": "When it lands",
+   "paras": [
+    "Ground delivery takes a few business days on top of that, depending on where you are. Checkout shows the options and what each one costs before you pay.",
+    "We ship with USPS, UPS and FedEx. Which one carries your order depends on where it's going and what's in the box."
+   ],
+   "rows": {
+    "items": [
+     {
+      "k": "Carriers",
+      "v": "USPS &middot; UPS &middot; FedEx"
+     },
+     {
+      "k": "Dispatch",
+      "v": "1–2 business days"
+     },
+     {
+      "k": "Cost and speed",
+      "v": "Shown at checkout, before you pay"
+     }
+    ]
+   }
+  },
+  {
+   "id": "where",
+   "nav": "Outside the US",
+   "cream": true,
+   "title": "Where it ships from, and where it goes",
+   "lede": "Long Beach, California, and out to most of the world.",
+   "cta": {
+    "label": "Ask about an international order",
+    "href": "{{link:contact}}"
+   },
+   "paras": [
+    "Orders ship out of Long Beach.",
+    "International shipping is real, and the rate is calculated at checkout like any other."
+   ]
+  },
+  {
+   "id": "tracking",
+   "nav": "Tracking",
+   "title": "Tracking, and when it goes quiet",
+   "paras": [
+    "Tracking updates when the parcel is scanned, so it moves in steps rather than continuously. A day or two without an update mid-route is normal.",
+    "If there's been no movement for longer than that, email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and we'll trace it."
+   ]
+  },
+  {
+   "id": "wrong",
+   "nav": "If the wrong thing turns up",
+   "cream": true,
+   "title": "If the wrong thing turns up",
+   "paras": [
+    "If you receive the wrong item, contact us before sending anything back.",
+    "Email <a href=\"mailto:support@luckygolf.com\">support@luckygolf.com</a> with your order number and a photo of what arrived. A picking error isn't a return and doesn't count against your return window."
+   ],
+   "cta": {
+    "label": "Tell us what arrived",
+    "href": "{{link:contact}}"
+   }
+  }
+ ],
+ "close": {
+  "eyebrow": "Still stuck",
+  "headline": "Where is it?",
+  "body": "If tracking has stopped moving, or the box turned up with the wrong thing in it, that's worth an email rather than another day of waiting.",
+  "ctaLabel": "Go to contact",
+  "ctaHref": "{{link:contact}}",
+  "ctaMail": "Email support",
+  "aside": "The order number is in your confirmation email. It saves a whole exchange."
+ }
+}

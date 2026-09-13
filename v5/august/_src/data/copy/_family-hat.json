@@ -1,0 +1,95 @@
+{
+ "_": "Shared editorial for all ten hats. Merged UNDER each hat's own file, which overrides any key it sets.",
+ "_specs": "Five-panel and snapback are visible in the product photography. Nothing else about construction is published anywhere verifiable — no fabric, no closure detail, no sizing — so the fit block says so rather than guessing.",
+ "_note": "Hats have zero variant axes, so the buy box renders no pickers. They are the simplest thing in the catalogue and the pages are deliberately short.",
+ "eyebrow": "Hats",
+ "galleryTag": "",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+ "priceNote": "One size",
+ "four": [
+  {
+   "k": "Five-panel",
+   "v": "Structured front, holds its shape"
+  },
+  {
+   "k": "Snapback",
+   "v": "One size, adjusts at the back"
+  },
+  {
+   "k": "$29",
+   "v": "The same as every other hat we make"
+  },
+  {
+   "k": "Thirty days",
+   "v": "Unworn, with the tag on"
+  }
+ ],
+ "fabric": [
+  {
+   "k": "Style",
+   "v": "Five-panel, structured front."
+  },
+  {
+   "k": "Closure",
+   "v": "Snapback. One size, adjustable."
+  },
+  {
+   "k": "Fabric",
+   "v": "Light and breathable, moisture-wicking."
+  }
+ ],
+ "marquee": [
+  "Five-panel, snapback",
+  "One size, adjustable",
+  "Thirty-day returns, unworn with tags",
+  "Ships in 1&ndash;2 business days",
+  "It's better to be lucky"
+ ],
+ "reviewHeadline": "Reviews",
+ "sibEyebrow": "The rest of them",
+ "sibHeadline": "Nine other hats",
+ "chooseCta": "Add it",
+ "closeHeadline": "Ten of them, one",
+ "closeFoil": "size",
+ "closeBody": "One size, five-panel snapback. Thirty days to send it back unworn if it isn't you.",
+ "closeTrust": [
+  "30-day apparel returns",
+  "Ships in 1&ndash;2 business days",
+  "One size",
+  "Five-panel snapback"
+ ],
+ "bagHeadline": "The rest of the look",
+ "bag": [
+  {
+   "id": "polo-contour",
+   "name": "Contour Classic Polo",
+   "code": "LGA-CP",
+   "meta": "S–3XL",
+   "hook": "Classic collar, four-way stretch, UPF 50+. The one that goes with everything."
+  },
+  {
+   "id": "polo-blackout",
+   "name": "Blackout Blade Polo",
+   "code": "LGA-BP",
+   "meta": "S–3XL",
+   "hook": "Blade collar, no buttons. Quieter than it sounds."
+  },
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "Forged, gold, and it spins out of wet grass."
+  }
+ ],
+ "pieceEyebrow": "The hat",
+ "_piece": "Cole 2026-07-31: ONE section that works for any design. Every colorway used to carry its own bespoke headline and two paragraphs, which is 22 pages of copy saying the same thing 22 ways. What differs between designs is the photograph, not the garment. Anything genuinely specific to one design goes in that product's own file and overrides these keys.",
+ "pieceHeadline": "Five panels, a snapback, and a sweatband that actually works.",
+ "pieceParas": [
+  "Every Lucky hat is the same build: a five-panel snapback with a moisture-wicking sweatband and laser-cut ventilation. Eighteen holes in July and you still want it on at the end.",
+  "The snapback means one size and no guessing. What changes between them is the front: the mark, the script or the patch, and the color it sits on. Pick whichever one you would actually reach for."
+ ],
+ "_pass": "Copy pass 2026-08-19. The close typed $29 in. The piece copy said you could wear it 'for eighteen holes in July and still want it on your head AT THE TURN' — the turn is hole nine, so the sentence undercut its own claim. The close headline was another 'Go [verb]'.",
+ "buyTerm": "Five-panel, one size fits all",
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25.",
+ "_fabric": "SOURCED 2026-08-25 from the live storefront, not invented. luckygolf.com's hat product pages carry the description 'Light, breathable, and clean enough to wear off the course' and a 'Moisture-Wicking Fabric' badge. That badge is hat-specific: it does NOT render on the head-cover page, so it is a product fact and not a global trust badge. Shopify holds no fabric or care metafields for any hat (checked via Admin API) and the description is one generic line. THE CARE ROW WAS REMOVED rather than filled: nothing about care is published anywhere, and a guessed wash instruction can wreck a customer's hat. It goes back the day the manufacturer supplies one. Fibre composition is still unknown and is the one thing only Cole can get."
+}

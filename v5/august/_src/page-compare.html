@@ -1,0 +1,103 @@
+<!-- ============================================================================
+     WHAT YOU PAY FOR — the comparison page. VOICE-ROLLOUT Job 2.
+
+     Modelled on Takomo's /pages/takomo-vs-big-brands, which is a SPEC TABLE,
+     not an essay. Its power is that two rows are word-for-word identical in
+     both columns: that is how it proves "same club, different price" without
+     arguing it. Ours does the same with head construction and face.
+
+     ⚠️ NEVER NAME A COMPETITOR here. The big-names column is written at
+     category level and hedged, because we cannot speak for every
+     manufacturer. The price range is a verified published MSRP, not a guess —
+     see `_price` in _page-compare.json before touching it.
+
+     ⚠️ THE ROWS MARKED `same` CARRY THE ARGUMENT. If a future edit makes those
+     two cells read differently, the page stops working.
+     ============================================================================ -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><a href="{{link:story}}">Our Story</a></li>
+    <li><span aria-current="page">{{crumbName}}</span></li>
+  </ol>
+</nav>
+
+<section class="sec-tight cmp-hd">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{eyebrow}}</p>
+    <h1 class="disp d-xl">{{headline}}</h1>
+    <p class="body lead cmp-lede">{{lede}}</p>
+  </div>
+</section>
+
+{{#table}}
+<section class="sec cmp-sec">
+  <div class="wrap">
+    <h2 class="disp d-l cmp-h2">{{headline}}</h2>
+    <p class="body cmp-sub">{{sub}}</p>
+
+    <!-- Scrolls inside itself on narrow screens rather than pushing the page
+         sideways. The row label column stays put so a scrolled cell is never
+         orphaned from what it is describing. -->
+    <div class="cmp-scroll">
+      <table class="cmp-t">
+        <thead>
+          <tr>
+            <th scope="col"><span class="vh">Comparison point</span></th>
+            <th scope="col" class="cmp-th">{{colA}}</th>
+            <th scope="col" class="cmp-th cmp-th--us">{{colB}}</th>
+          </tr>
+        </thead>
+        <tbody>
+{{#rows}}          <tr class="cmp-tr{{#same}} cmp-tr--same{{/same}}{{#hero}} cmp-tr--hero{{/hero}}">
+            <th scope="row" class="cmp-rk">{{k}}</th>
+            <td class="cmp-td">{{a}}</td>
+            <td class="cmp-td cmp-td--us">{{b}}</td>
+          </tr>
+{{/rows}}        </tbody>
+      </table>
+    </div>
+    <p class="cmp-foot">{{foot}}</p>
+  </div>
+</section>
+{{/table}}
+
+{{#why}}
+<section class="sec band-cream cmp-sec">
+  <div class="wrap cmp-prose">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+{{#paras}}    <p class="body">{{.}}</p>
+{{/paras}}  </div>
+</section>
+{{/why}}
+
+{{#close}}
+<section class="cmp-close">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap cmp-close-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="cmp-cta">
+      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+      <a class="btn btn-line" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>
+    </div>
+    <p class="aside cmp-close-aside">{{aside}}</p>
+  </div>
+</section>
+{{/close}}
+
+<section class="sec band-cream cmp-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">{{moreHeadline}}</h2>
+    <div class="cmp-sibs">
+      <a class="cmp-sib" href="{{link:c/wedges}}"><span class="cmp-sib-n">The wedges</span><span class="cmp-sib-h">One wedge, two finishes, six lofts and your pick of sole grind.</span></a>
+      <a class="cmp-sib" href="{{link:story}}"><span class="cmp-sib-n">Our Story</span><span class="cmp-sib-h">It started in 2018 with one gold wedge and a grudge about what golf charges.</span></a>
+      <a class="cmp-sib" href="{{link:reviews}}"><span class="cmp-sib-n">Reviews</span><span class="cmp-sib-h">Every review in one place, filterable by club and by rating.</span></a>
+    </div>
+  </div>
+</section>

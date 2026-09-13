@@ -1,0 +1,284 @@
+{
+ "_": "Editorial for lgw01-black. Shared keys come from _family-wedge.json.",
+ "_specs": "Specs from the Product Reference Guide, which Cole confirmed overrides Shopify on any product fact (2026-07-31). v1.8's platform note: the Black is built on the LGW01 platform, so its lies, bounces, head weights and lengths ARE the LGW01 table's, and its grind is K.",
+ "gallery": [
+  [
+   "1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?v=1784586436",
+   "Carver 01 Black wedge, face on"
+  ],
+  [
+   "6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp?v=1784586436",
+   "Carver 01 Black wedge, full club"
+  ],
+  [
+   "2_1034dc77-47fb-4f0c-8bbe-e9887bcad44d.webp?v=1784586436",
+   "Carver 01 Black wedge, sole"
+  ],
+  [
+   "3_12ac0b01-88f5-473c-b7c4-73ce179013d0.webp?v=1784586436",
+   "Carver 01 Black wedge, address position"
+  ],
+  [
+   "4_ebd1b984-579a-4055-a62f-990e06304a00.webp?v=1784586436",
+   "Carver 01 Black wedge, toe profile"
+  ],
+  [
+   "5_b02b2d30-6854-4de6-8da3-6228ca45541d.webp?v=1784586436",
+   "Carver 01 Black wedge, milled face detail"
+  ]
+ ],
+ "_pullQuote": "BORROWED, and labelled as borrowed (Cole, 2026-08-19). The Black has zero reviews of its own: no rating in products.json, no pull in _src/data/reviews/. This is verbatim from the lgw01-gold Judge.me pull, and the `who` line names the Gold so nobody reads it as proof of a product that has none. TITLE AND QUOTE ARE THE SAME REVIEW — Ray O.'s own title, Ray O.'s own words. Chosen over the stronger feel-and-spin reviews because they are titled after the gold finish or untitled, and a quote praising the shine on the page that argues for no shine fights the page. Five stars, which the curated-moment floor requires and the card's markup hard-codes.",
+ "pullQuote": {
+  "title": "Hard to keep it!",
+  "quote": "People borrow it in my league- it&rsquo;s a winner!",
+  "who": "Ray O. &middot; Verified buyer &middot; Carver 01 Gold"
+ },
+ "priceNote": "Six lofts, right hand",
+ "buyBody": "Everything the Gold does around the green, without the gold. Blacked out, with gold only on the clover and the loft stamp. Six lofts, K grind, right hand.",
+ "four": [
+  {
+   "k": "Forged 1020",
+   "v": "The same head as the Gold"
+  },
+  {
+   "k": "Blacked out",
+   "v": "Gold on the clover and the stamp"
+  },
+  {
+   "k": "Six lofts",
+   "v": "50 through 60, all K grind"
+  },
+  {
+   "k": "Right hand",
+   "v": "Left hand is coming"
+  }
+ ],
+ "whatYouGet": [
+  "One Carver 01 Black wedge in the loft you picked",
+  "Lucky Golf stock steel shaft",
+  "Lucky Golf grip",
+  "No headcover (none of our clubs ship with one)"
+ ],
+ "clubHeadline": "All the spin, none of the shine. Same wedge, quieter about it.",
+ "clubParas": [
+  "Some golfers want the spin and not the conversation. The Black is the Carver with the gold taken off everything except the clover and the loft stamp, so it sits down quiet at address and nobody on the tee says a word until you've hit it. Same forged head, same buttery feel, same filthy spin. Six lofts, all K grind, right hand for now."
+ ],
+ "clubSpecs": [
+  {
+   "k": "Type",
+   "v": "Forged players' wedge."
+  },
+  {
+   "k": "Characteristics",
+   "v": "High spin in any conditions, soft feel, and a head that gives away nothing at address."
+  },
+  {
+   "k": "Design",
+   "v": "Forged 1020 head with a dual-texture face: CNC-milled grooves, micro-milled between, sandblasted across. Blacked out, with gold on the clover, the wordmark and the loft stamp."
+  },
+  {
+   "k": "Hand",
+   "v": "Right hand today. Left hand is coming."
+  },
+  {
+   "k": "For who",
+   "v": "Any golfer who wants the Carver's short game without the gold."
+  },
+  {
+   "k": "HCP range",
+   "v": "All"
+  }
+ ],
+ "videoBrief": "16:9 product film, 40&ndash;60s. The pitch is the finish, so shoot it at address in changing light. The club should read almost invisible against grass and then catch the gold on the stamp as it moves.",
+ "reelHeadline": "The Black, in the <span class=\"foil on-dark\">wild</span>",
+ "specHeadline": "The Gold's numbers, in black",
+ "specSub": "Built on the Gold platform, so the numbers are the Gold's. Lie, length and bounce for all six lofts.",
+ "specTabs": [
+  {
+   "label": "Clubs",
+   "caption": "Carver 01 Black · clubs",
+   "head": [
+    {
+     "k": "Head material",
+     "v": "1020 forged carbon steel"
+    },
+    {
+     "k": "Face",
+     "v": "CNC-milled grooves and micro-grooves over a sandblasted face"
+    },
+    {
+     "k": "Finish",
+     "v": "Blacked out, gold on the clover, wordmark and loft stamp"
+    }
+   ],
+   "matrix": {
+    "corner": "Loft",
+    "cols": [
+     "50&deg;",
+     "52&deg;",
+     "54&deg;",
+     "56&deg;",
+     "58&deg;",
+     "60&deg;"
+    ],
+    "rows": [
+     {
+      "k": "Head weight (g)",
+      "v": [
+       "300",
+       "300",
+       "300",
+       "300",
+       "300",
+       "300"
+      ]
+     },
+     {
+      "k": "Lie (&deg;)",
+      "v": [
+       "63",
+       "63",
+       "63",
+       "63",
+       "63",
+       "63"
+      ]
+     },
+     {
+      "k": "Length",
+      "v": [
+       "35.25&Prime;",
+       "35.25&Prime;",
+       "35.125&Prime;",
+       "35.125&Prime;",
+       "35&Prime;",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Bounce / Grind",
+      "v": [
+       "8K",
+       "8K",
+       "12K",
+       "12K",
+       "10K",
+       "10K"
+      ]
+     }
+    ]
+   },
+   "aside": "Bounce steps with the loft: least on the 50 and 52 for full shots, most on the 54 and 56 you take into a bunker."
+  },
+  {
+   "label": "Shafts",
+   "caption": "Carver 01 Black · Lucky stock steel",
+   "head": [
+    {
+     "k": "Shaft material",
+     "v": "Steel"
+    },
+    {
+     "k": "Availability",
+     "v": "Stock option. KBS <span class=\"soon\">Coming soon</span> as an upgrade."
+    }
+   ],
+   "matrix": {
+    "corner": "Flex",
+    "cols": [
+     "Kick point",
+     "Raw weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "Mid",
+       "110 g",
+       "35&Prime;"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "label": "Grips",
+   "caption": "Carver 01 Black · Lucky stock grip",
+   "head": [
+    {
+     "k": "Grip material",
+     "v": "Rubber"
+    },
+    {
+     "k": "Availability",
+     "v": "Stock option"
+    }
+   ],
+   "matrix": {
+    "corner": "Size",
+    "cols": [
+     "Weight"
+    ],
+    "rows": [
+     {
+      "k": "Regular",
+      "v": [
+       "55 g"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "look": {
+  "photo": "Bold, full-bleed, portrait. Black head at address on grass in flat light, gold clover the only thing that catches. The point of the shot is how little the club announces itself.",
+  "headline": "The one nobody notices until you use it",
+  "paras": [
+   "Gold clubs get comments. Some golfers would rather the club said nothing at all.",
+   "This is that club. It still has gold on it, on the clover and the number, but you have to be standing over it to find any.",
+   "If that isn't you, the Carver 01 Gold catches every bit of light there is."
+  ],
+  "aside": "Gold where it counts, and nowhere else.",
+  "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-black-hero.webp?v=1787514597",
+  "photoAlt": "Lucky Golf Carver 01 Black wedge at address on grass, gold clover catching the light"
+ },
+ "closeBody": "Nobody has to know what you're playing. Pick a loft.",
+ "oav": [
+  "lgw01-gold",
+  "lgp02-gold",
+  "lgh01"
+ ],
+ "bag": [
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The original. Six lofts, and the one most people add first."
+  },
+  {
+   "id": "lgp02-gold",
+   "name": "Tracer Mallet",
+   "code": "LGP02",
+   "hook": "The mallet. Oversized 3.0 grip fitted, right or left hand."
+  }
+ ],
+ "helpLoft": {
+  "headline": "Start with the wedge you already carry",
+  "sub": "Same ladder as the Gold. Tell us the loft of your pitching wedge and we'll do the arithmetic."
+ },
+ "_01": "THE 01, BLACK. Same club as the gold on the LGW01 platform (v1.8's platform note), K grind, six lofts. $109 rather than $99 because the blacked-out finish is a real extra process — the one price difference in the wedge line that stands for something (Cole 2026-07-31).",
+ "_signoff": "GRIND COPY — sourced, no longer a draft.\n1. SOURCE IS THE SPEC-TO-BENEFIT TRANSLATION GUIDE v1.0 (Cole supplied it 2026-08-01, references-spec-to-benefit-v1.0.md). It defines both grinds directly: K is \"a wider, flatter sole profile with a standard leading edge... the no-surprises wedge... built for the golfer who strikes cleanly and plays primarily from standard lies\"; S is \"a narrower, more relieved sole with a reshaped leading edge... the versatility wedge... tight lies, awkward angles, open-face lobs\".\n2. THIS REVERSES AN EARLIER CORRECTION. HANDOFF §24d recorded that the S is NOT the open-face versatility grind, on the basis that our letters are Vokey's and that is Vokey's M. Lucky's own written guide says otherwise, and a company document about what Lucky's specs mean outranks an inference from another maker's nomenclature. The site now follows the guide. If Cole wants the Vokey reading back, this is the block to change.\n3. IT ALSO CLOSES §24a's open question. \"Is our S actually narrower, does it have a tapered rear sole\" is answered in writing: narrower, more relieved, reshaped leading edge. This block is no longer the unverified one.\n4. Every number in `facts` is still the manufacturer sheet, and the measured-vs-effective bounce note still stands — a narrow relieved sole carrying more measured bounce than a wide flat one is exactly what the geometry predicts.",
+ "eyebrow": "The 01",
+ "_club": "Fourth pass, 2026-08-19. Cole: 'I feel like you're using the same structure over and over again.' He was right: every intro opened material -> 'so it feels' -> feature -> 'so it' -> spec line. Takomo's intros each open through a different door (a situation, a joke, a problem, a brag, a sibling). THIS ONE OPENS WITH: the person who buys it.",
+ "clubGrinds": [
+  {
+   "k": "K Grind: no surprises",
+   "v": "A wider, flatter sole with a standard leading edge. Set up square, take your divot, same result every time. Fairway, rough, fringe. The only grind on the Black, at all six lofts. The S grind is on the Gold."
+  }
+ ],
+ "_specTabs": "Takomo-shaped 2026-08-19 to match the Gold: three cards (Clubs / Shafts / Grips), each a caption, a stacked key/value head and a black-header matrix. Bounce in Takomo's suffix notation with our letter (8K), so the sheet speaks the picker's language. The old shape was Club / By loft / Shaft & grip and carried two things that had to go: a PRICE row (price is per variant, from products.json, and is never retyped in editorial) and a K-vs-S aside on a club that is only built in K. NOTHING the Product Reference Guide does not publish is on the page: no swing weight, tip diameter or grip length.",
+ "_grinds": "The standalone grind section was deleted 2026-08-19, the same move the Gold made: with the grind now a labelled sub-block inside the description, a whole section for ONE grind was a page of scroll saying what four lines say. Its one genuinely useful sentence, that the S lives on the Gold, moved into the K sub-block. pdp.js already points 'Which grind?' at #club.",
+ "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
+}

@@ -1,0 +1,537 @@
+{
+ "_": "Verbatim Judge.me reviews for LGP02 Tracer Mallet. Real submissions only.",
+ "_complete": "All 58, both widget pages. Mean is 4.7069 -> 4.71, matching the rating Shopify reports, so this is the whole set and the histogram is exact rather than sampled.",
+ "_note": "Both 1-star reviews are 'no left-handed putter' complaints from 2024. LGP02 has shipped a left-hand variant since (LGP02-LH, 89 in stock), so the product answers them now — worth knowing before reading the histogram as a quality signal.",
+ "total": 58,
+ "totals": {
+  "2": 1,
+  "3": 1,
+  "5": 50,
+  "4": 4,
+  "1": 2
+ },
+ "sample": [
+  {
+   "n": "Chris",
+   "r": 2,
+   "t": "",
+   "d": "2026-07-25",
+   "q": "I ordered my putter and next day i get an email saying if you buy today you'll receive a mystery gift I've ordered a few clubs from you before and something like that happened last time",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Adam B.",
+   "r": 3,
+   "t": "Ok club",
+   "d": "2026-05-15",
+   "q": "Club is beautiful but it's just a club and shipping is horrible",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Giff T.",
+   "r": 5,
+   "t": "Awesome putter!!!",
+   "d": "2026-05-01",
+   "q": "I love my mallet putter with the Lucky Golf head cover as well! I'm 6'7 and the 35\" length is perfect for me!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 5,
+   "t": "Perfect Putter",
+   "d": "2026-03-13",
+   "q": "Perfect putter, craftsmanship is second to none, Specs are perfect.  Love my putter!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 5,
+   "t": "Amazing golf putter!!",
+   "d": "2026-01-23",
+   "q": "I bought this for my boyfriend as an anniversary gift and he loved it :) it's a beautiful gold color and I can't wait for him to use it when the weather permits. I would definitely buy from this store again",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 5,
+   "t": "Great gift for golfers!",
+   "d": "2026-01-15",
+   "q": "Bought my boyfriend the limited edition mallet putter for graduation and he loved it! The gold has a very striking look that catches the eye.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 4,
+   "t": "Great quality",
+   "d": "2026-01-11",
+   "q": "Bought for my wife, replacing a big brand putter that has a similar head shape. I like the solid face of the Lucky putter vs. the face insert on her old putter. It might be difficult for a smaller company, but I would have liked to see options for different lengths and grip size, as the stock grip is really big.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 5,
+   "t": "Husband loved Christmas present!",
+   "d": "2026-01-08",
+   "q": "Loved new putter, so excited to use it right away on first golf outing after Christmas.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Anonymous",
+   "r": 5,
+   "t": "",
+   "d": "2025-12-17",
+   "q": "Great feel and looks amazing very satisfied with my putter!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Javier V.",
+   "r": 5,
+   "t": "",
+   "d": "2025-10-01",
+   "q": "Awesomeness",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Ray",
+   "r": 5,
+   "t": "",
+   "d": "2025-09-21",
+   "q": "Absolutely incredible putter!!! No gimmick!!! True putter!!!! I love it!!!!!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Kyle K.",
+   "r": 5,
+   "t": "Great putter!",
+   "d": "2025-08-01",
+   "q": "Love the look and feel of this putter. Definitely a head turner walking up to the green with your buddies.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jamie H.",
+   "r": 5,
+   "t": "Great Company & A Great Product",
+   "d": "2025-07-29",
+   "q": "Customer service was amazing and very responsive to questions and concerns. I love the putter too! I get comments on it all the time.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jesse J.",
+   "r": 5,
+   "t": "I like it",
+   "d": "2025-07-11",
+   "q": "I had bought the 56 so I wanted a putter to match,\nOverall I would say it's a really good quality putter I didn't care for the grip I personally thought it was ugly so I replaced it but to each their own",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Arthur V.",
+   "r": 5,
+   "t": "Best putter",
+   "d": "2025-07-09",
+   "q": "Amazing Putter and looks awesome",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jason",
+   "r": 5,
+   "t": "Great putter",
+   "d": "2025-06-24",
+   "q": "No issues with ordering and I received the club quickly. It looks and works great. Will do repeat business",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Kevin K.",
+   "r": 5,
+   "t": "Great Putter",
+   "d": "2025-06-18",
+   "q": "Big fan of the putter. The bigger grip is great as well.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "CMoney C.",
+   "r": 5,
+   "t": "",
+   "d": "2025-06-11",
+   "q": "Tits",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Austin K.",
+   "r": 5,
+   "t": "Great putter!",
+   "d": "2025-06-09",
+   "q": "Absolutly love this putter! I've gotten tons of compliments on how sweet looking it is. And the way the ball comes off the putter is smooth as silk. I cant wait to get the Lucky golf wedges next.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Brendo",
+   "r": 5,
+   "t": "Great Putter!",
+   "d": "2025-06-08",
+   "q": "Not just bag \"bling\". Love the oversized grip, soft touch of the mallet, and it its ability to easily scoop up your ball.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Amanda S.",
+   "r": 5,
+   "t": "",
+   "d": "2025-06-05",
+   "q": "Limited Edition Mallet Putters",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Steven A.",
+   "r": 5,
+   "t": "Great club!!!",
+   "d": "2025-04-12",
+   "q": "Feels great , looks good \nLove the new putter",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Mark",
+   "r": 5,
+   "t": "",
+   "d": "2025-04-07",
+   "q": "Love it.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "William E.",
+   "r": 5,
+   "t": "Putter",
+   "d": "2025-03-29",
+   "q": "Love the putter!!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "James",
+   "r": 5,
+   "t": "Length size",
+   "d": "2025-03-27",
+   "q": "I'm new to the sport, and I'm wondering if a 35 length putter is a good size ? Does height matter when selecting length ? I'm 5'9\". Any suggestions or advice would be greatly appreciated . Thanks!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Nick N.",
+   "r": 5,
+   "t": "Amazing",
+   "d": "2025-02-17",
+   "q": "Definitely a game changer and I received a lot of compliments on it. Putter is amazing from the design to even putting. Great price then most that are known brands which do the same. Only thing, the grip is white and will get dirty pretty quick. Just a heads up",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Nathan K.",
+   "r": 5,
+   "t": "Gold Putter and 60° Wedge",
+   "d": "2025-02-14",
+   "q": "This putter is amazing everything about it is great. It has a nice touch to it on the putt and it's not like my old putter that was like hitting with a mallet. And the wedge has been the greatest thing for me whether it's a short chip or getting out of the sand the grip and everything about the club is great quality.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "John",
+   "r": 5,
+   "t": "Love the putter",
+   "d": "2025-01-25",
+   "q": "I love the putter's asterisks, though I haven't fully developed my skills yet to realize its full potential, as I'm still a beginner to the game. That said, it feels and looks like a quality putter that I will learn to use and appreciate going forward. I'm currently using the JumboMax JMX (M), and these grips feel just as comfortable.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Sean",
+   "r": 5,
+   "t": "",
+   "d": "2025-01-14",
+   "q": "Love it",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jason V.",
+   "r": 5,
+   "t": "Amazing!",
+   "d": "2025-01-11",
+   "q": "I love the weight, grips and overall fit and feel of this putter. It is a quality piece.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Daniel C.",
+   "r": 5,
+   "t": "Lucky Putter",
+   "d": "2025-01-03",
+   "q": "I have been practicing with my newly bought mallet putter and have noticed the great balance that this putter was designed with. Shots are straight and puts will be made! Great look and great feel especially with the wide grip!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Levi S.",
+   "r": 5,
+   "t": "Mallet Putter",
+   "d": "2025-01-02",
+   "q": "Love it. It takes some getting use to, however I was coming off a blade putter.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "D.G.",
+   "r": 5,
+   "t": "",
+   "d": "2024-12-10",
+   "q": "It's just, simply, awesome",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jimmy",
+   "r": 5,
+   "t": "Beautiful!",
+   "d": "2024-12-06",
+   "q": "Ordered this putter on Black Friday. Its beautiful! The engravings are precise and it has good weight to it. I'm impressed by the overall quality. I am a little bummed it didn't come with the putter cover as I thought it would based on the description. Still a great purchase.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Caleb C.",
+   "r": 1,
+   "t": "Extremely disappointed",
+   "d": "2024-11-24",
+   "q": "Just like every other brand aside from some random ones and top brands, there are no left handed clubs. Pretty disappointing having only clubs for everyone else besides the few lefties. I would buy but I guess I have to miss out.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Hunter F.",
+   "r": 5,
+   "t": "",
+   "d": "2024-10-24",
+   "q": "Limited Edition Mallet Putters",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Nathaniel G.",
+   "r": 5,
+   "t": "Love these clubs",
+   "d": "2024-09-22",
+   "q": "Super happy with the wedges, putter and LOVE the driver!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Wyatt W.",
+   "r": 5,
+   "t": "I use nothing else",
+   "d": "2024-09-14",
+   "q": "These are the best wedges hands down. The cost, quality, look and feel are sick",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Michael R.",
+   "r": 5,
+   "t": "Lucky Mallet Putter",
+   "d": "2024-09-11",
+   "q": "I love this putter. I like that the club came with the extra big grip. I love the weight of putter. Not to mention it looks fantastic. Definitely glad I bought it.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jake H.",
+   "r": 4,
+   "t": "Gold mallet putter",
+   "d": "2024-09-06",
+   "q": "Honestly the club looks great and have been putting much better with it than I had been with my original putter. My only real complaint is being 6'4, the club is on the short side and have to lean down more to use it, but have knocked a few strokes off so there's that. I'd still recommend the club with no regrets after a blind purchase.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Randy W.",
+   "r": 5,
+   "t": "I Absolutely Love the Mallet and the color!",
+   "d": "2024-08-30",
+   "q": "The putter is incredible. It looks amazing and bold. Gives you a confident feel approaching the ball. For me and putting that is the feel needed when addressing my ball on the green. The grip arrived a bit scuffed in some areas and I wasn't too happy about that but that.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Matthew M.",
+   "r": 5,
+   "t": "Quality, Look & Style",
+   "d": "2024-08-28",
+   "q": "I purchased the gold mallet putter and it didn't disappoint. It has a very nice weight and feel and the style it great!",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Chas. M.",
+   "r": 5,
+   "t": "",
+   "d": "2024-08-23",
+   "q": "Limited Edition Mallet Putters",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Eduardo A.G.",
+   "r": 5,
+   "t": "Amazing Putter",
+   "d": "2024-08-21",
+   "q": "Love the mallet style putter. It's a great putter and love the gold it really stands out on the course.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jackson D.",
+   "r": 5,
+   "t": "Best Putter I've ever used",
+   "d": "2024-08-21",
+   "q": "I always love trying out my friends' putters when on a golf outing and nothing has compared to the comfort of using this one! Definitely recommend",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Travis D.",
+   "r": 4,
+   "t": "",
+   "d": "2024-08-16",
+   "q": "Limited Edition Mallet Putters",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "John S.",
+   "r": 5,
+   "t": "Great putter",
+   "d": "2024-08-15",
+   "q": "It's weighted perfect and the oversized grip is amazing.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Patrick S.",
+   "r": 5,
+   "t": "Love this club",
+   "d": "2024-08-15",
+   "q": "Putter is well balanced and the weight is perfect. I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances. I highly recommend. Great putter, great price point, plus the gold is badass",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Chaz B.",
+   "r": 4,
+   "t": "New Putter",
+   "d": "2024-08-12",
+   "q": "I love my new mallet putter but it didn't come with a cover as said in the description",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "k.C.",
+   "r": 1,
+   "t": "Stop the lefty hate",
+   "d": "2024-08-07",
+   "q": "Still no left handed gold putter stop the hate need the putter to drop",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Judi V.",
+   "r": 5,
+   "t": "",
+   "d": "2024-07-28",
+   "q": "It was a gift for my grandson. He loves the club.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "austin s.",
+   "r": 5,
+   "t": "As good as it looks.",
+   "d": "2024-07-21",
+   "q": "I've gone through a few different blade putters and just haven't been able to find something I really like. Bought this and have taken it out a couple of times now. First mallet I've owned and I love it. Great feel, great touch. Looks amazing, people definitely notice and my longer putts outside of 5 feet have gotten better. Look good feel good right. Very happy with the purchase.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jeremy W.W.",
+   "r": 5,
+   "t": "One shot one kill",
+   "d": "2024-07-08",
+   "q": "These clubs are the absolute best",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jason D.",
+   "r": 5,
+   "t": "Legendary",
+   "d": "2024-06-10",
+   "q": "Ordered the mallet about 2-3 weeks ago but just now used it.. first off... its elegance is unrivaled... dang near unprecedented.. the white with gold stitching. The gold shaft and head.. chefs kiss. The 3.0 grip feels superb! It naturally aligns to my form. Feels crisp when I taaaap it in. The best part is all the compliments and eyebrows it raised when I brought it out. Cannot go wrong with this purchase. Seriously. Wow.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jeffrey M.",
+   "r": 5,
+   "t": "Love the Mallet",
+   "d": "2024-06-07",
+   "q": "The looks and feel of my new gold mallet putter feels is amazing.",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Tim M.",
+   "r": 5,
+   "t": "Awesome!",
+   "d": "2024-02-06",
+   "q": "This putter is as solid as I have ever rolled. I have taken it on the course 3 times and have not had more than 31 putts yet. Highly recommend",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Jesse B.",
+   "r": 5,
+   "t": "It works as good as it looks",
+   "d": "2024-02-05",
+   "q": "Will this putter take 5 strokes off my game? Probably not. But it WILL make everyone that I play with jealous every time I'm on the green. That's 18 times per round that guys and gals are wishing they were me. I might not be taking the win but I'll definitely be stealing your girl. -@enduro_bro",
+   "v": true,
+   "rep": ""
+  },
+  {
+   "n": "Blake K.",
+   "r": 5,
+   "t": "Lucky",
+   "d": "2024-01-19",
+   "q": "Putter is awesome but wish it came with a head cover",
+   "v": true,
+   "rep": ""
+  }
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "_": "Our Story. NEXT-PAGES §3 governs this page. Every number is one Shopify or Judge.me actually reports; the quote is verbatim Judge.me.",
+ "_rules": "SUPERSEDED 2026-08-25. The old rule kept the price argument off this page because the homepage owns it. Cole gave the founding account that day and the price IS the founding reason: he went looking for why good clubs cost what they did, found the big names forging the same steel, and concluded the difference was tour contracts and retail rent. Takomo's story page makes exactly this argument in its first timeline entry. So it is told here ONCE, as the reason he started, and it is not re-argued as a pitch. The homepage still owns the selling version.",
+ "_blocked": "ONE image left on this page: row 2's portrait of Cole. It matters more now than it did — the page names him three times and the timeline is his account, so a page that talks about him and never shows him is the remaining gap. Hero and rows 0-1 are real photographs.",
+ "crumbName": "Our Story",
+ "eyebrow": "Our story",
+ "headline": "Golf has a dress code. Ours is gold.",
+ "lede": "Big-name performance, honest prices, and clubs that refuse to blend in.",
+ "hero": {
+  "k": "Hero shot needed",
+  "brief": "21:9. The line together on turf (wedge, putter, hybrid), early light, gold reading warm rather than yellow. No hands, no model.",
+  "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-line-together.webp",
+  "photoAlt": "Lucky Golf clubs together on turf in early light"
+ },
+ "manifesto": {
+  "headA": "Luck favors",
+  "headB": "the bold",
+  "lede": "Golf's a great game. Somewhere along the way it got stiff, quiet, and seriously overpriced. We're here to loosen it up.",
+  "paras": [
+   "This isn't golf with a raised eyebrow. Nobody here cares what your handicap is, what brand your bag is, or whether your polo is tucked in. Show up, swing hard, talk a little trash.",
+   "Is gold subtle? Not even a little. That's the point. You only get so many Saturdays, and none of them should be spent blending in."
+  ],
+  "stack": [
+   "This is golf, the fun way.",
+   "Loud.",
+   "Fair.",
+   "And lucky as hell."
+  ]
+ },
+ "moreHeadline": "The rest of it",
+ "_pass": "Pass 5, 2026-08-25: hero sub cut to one line, What-we-do opener rewritten conversational, the 10,000/884 figs strip removed, the green close band removed (Takomo ends on community; Keep looking already does that job). Page is hero / cards / timeline / keep-looking.",
+ "_photo": "Row 2 (Cole working, packing an order) has NO candidate in the archive and keeps its brief. Row 0 reuses the same macro already on the clubs collection: one file, two slots, and the two paragraphs make the same point about the face.",
+ "_reject": "2026-08-25, Cole: 'Real materials, and nothing hidden behind them - not a good line. I feel like this entire page is reaching for a wink or a clever line.' He was right, and the cause was structural: the page opened with 'There is no origin myth here', so it spent six sections being coy about refusing to tell a story. Everything downstream inherited the posture. The fix was not more restraint. Takomo's story page is full of jokes ('Selling a kidney? Nah.') and they work because they hang off a founder's name, a year, and a list of real events. Ours had no facts to hang anything on, so it hung things on itself.",
+ "timeline": {
+  "headline": "How a gold wedge turned into all this",
+  "items": [
+   {
+    "year": "2018",
+    "title": "The Gold Wedge",
+    "body": "One wedge, in gold. Same steel as the big names, none of the markup. Lucky starts here."
+   },
+   {
+    "year": "2019",
+    "title": "The Blade Putter",
+    "body": "CNC-milled from solid stainless, quiet off the face. Turns out people wanted more than a wedge."
+   },
+   {
+    "year": "2020",
+    "title": "Wedges, Version Two",
+    "body": "The original, refined and re-released. The gold wedge wasn't a fluke."
+   },
+   {
+    "year": "2023",
+    "title": "The Mallet Putter",
+    "body": "More forgiveness for the stroke most golfers actually have."
+   },
+   {
+    "year": "2024",
+    "title": "The Hybrid",
+    "body": "Titanium with a flex-channel face, for the gap your long irons never covered."
+   },
+   {
+    "year": "July 2025",
+    "title": "Somebody Hit the Gas",
+    "body": "Lucky changed hands. Nothing happened to the clubs or the prices. Everything happened to the calendar."
+   },
+   {
+    "year": "May 2026",
+    "title": "The Polos Drop",
+    "body": "The clubs got a wardrobe. Same rule: look good, priced fair."
+   },
+   {
+    "year": "July 2026",
+    "title": "Hats Land",
+    "body": "Ten ways to keep the sun off while you take someone's money."
+   },
+   {
+    "year": "July 2026",
+    "title": "The Patriot Putter",
+    "body": "A limited run for America's 250th. Gone when it's gone."
+   },
+   {
+    "year": "2026",
+    "title": "Nine of Us Now",
+    "body": "Nine people where there used to be a lot fewer. That's what shipping this much at once actually takes."
+   },
+   {
+    "year": "Sept 2026",
+    "title": "First Accessories Drop",
+    "body": "Towels, divot tools, new headcovers. The little stuff, done right.",
+    "soon": true
+   },
+   {
+    "year": "Late 2026",
+    "title": "KBS Shafts",
+    "body": "A name shaft across the line, for everyone who has opinions about shafts.",
+    "soon": true
+   },
+   {
+    "year": "Late 2026",
+    "title": "Irons & Drivers",
+    "body": "The big sticks arrive. Years of asking, answered.",
+    "soon": true
+   },
+   {
+    "year": "2027",
+    "title": "And We're Just Getting Started",
+    "body": "Partnerships, and a few drops we're not allowed to describe yet."
+   }
+  ]
+ },
+ "_bag": "'In the bag' ran SIX times on the first draft: the stats card, timeline 4, row 0's CTA, row 1's title and body, and the close. Cut to two, both in the returns argument where the phrase is load-bearing.",
+ "_story": "Cole's account, 2026-08-25, verbatim in substance: founded 2018. Two reasons. (1) Tired of conforming to what golf had become; wanted personality, wanted to stand out, wanted to have fun out there. (2) Hated that quality gear cost so much. Researched what the big brands use, found the same materials and the same engineering, concluded the price was tour sponsorships and retail real estate, went direct and passed the saving on. First product a wedge; it was a hit; then putters, then hybrids. Driver, irons and a growing apparel line are in the works. Team size NOT SUPPLIED. Dates for putters/hybrid NOT SUPPLIED — the timeline is five beats rather than five years because of that, and turns into a year-marked rail the moment those land.",
+ "_register": "Written under How We Write v8.0 (2026-08-25), the version that gives Lucky its attitude back. Cole's calibration, verbatim: Takomo's 'Golf was built on rules. We're here to break a few. Our clubs hit hard, look sharp and couldn't care less what the clubhouse thinks' IS what Lucky sounds like. The banned failure mode is the flat double-statement ('Eight years, in order'). Every swagger line below hangs on a receipt: a real product, a checkable number, or a thing that happened. Takomo's lines were not copied; their energy was.",
+ "trio": {
+  "cards": [
+   {
+    "id": "why",
+    "tag": "Why we exist",
+    "cap": "Golf's best gear shouldn't cost this much. So now it doesn't.",
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp",
+    "photoAlt": "Golfer at address on course with a Lucky Golf wedge, shot from behind",
+    "title": "Great clubs got too expensive. We took it personally.",
+    "paras": [
+     "We started Lucky for two reasons: good golf gear cost way too much, and golf itself forgot it was supposed to be fun.",
+     "The industry's playbook is simple: charge more, sponsor a tour pro, call it innovation. The steel didn't change. The price did.",
+     "We're not playing that game.",
+     "Same materials as the big names, same engineering, none of the markup. Sold direct, so the savings land in your pocket instead of a sponsorship deal.",
+     "And we made the clubs gold, because standing out is the whole point. Golf has enough gear that whispers.",
+     "Serious about the clubs. Not that serious about ourselves. That's the whole brand."
+    ],
+    "cta": {
+     "label": "See the clubs",
+     "href": "{{link:c/clubs}}"
+    }
+   },
+   {
+    "id": "what",
+    "tag": "What we do",
+    "cap": "Gold clubs that perform like the big names and cost way less.",
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-face-macro.webp",
+    "photoAlt": "Macro of the milled Lucky Golf Carver wedge face and clover mark",
+    "title": "Same steel as the big names. Different math.",
+    "paras": [
+     "Our stuff? Built from the same high-end materials the big names use, engineered for real performance, and finished in gold so it doesn't look like anyone else's bag. Every detail earns its spot.",
+     "We cut out <a href=\"{{link:compare}}\">the middlemen, the retail markup</a> and the hype. No buzzword launches. No four-figure price tags. Just clubs that work, delivered straight to you.",
+     "Every club gets a 60-day test drive. Roll it, hit it, take it to the course. If it doesn't earn its spot in the bag, send it back.",
+     "Thousands of happy golfers so far, and the reviews say it better than we can.",
+     "No gimmicks. No fine-print games. Just great clubs at honest prices."
+    ],
+    "cta": {
+     "label": "Read the reviews",
+     "href": "{{link:reviews}}"
+    }
+   },
+   {
+    "id": "story",
+    "tag": "Our story",
+    "cap": "Tired of overpaying for great clubs? So were we. So we built our own.",
+    "phK": "Photo needed",
+    "phBrief": "Square. Hands-on in the shop or packing an order. Real workspace, no posed headshot, no faces required.",
+    "title": "We built the clubs we wanted",
+    "paras": [
+     "We loved golf. We didn't love the bill, and we really didn't love how seriously golf was taking itself.",
+     "So in 2018 we looked into why. Turns out the big brands use the same materials anyone can buy. The rest of the price tag is tour sponsorships and retail shelf space.",
+     "So we made our own. One gold wedge, built right, priced honestly.",
+     "It hit. The blade putter followed, then the mallet, then the hybrid, then the apparel.",
+     "Same plan since day one: build it right, price it fair, have fun with it.",
+     "Because we didn't just want better clubs. We wanted golf to lighten up."
+    ],
+    "cta": {
+     "label": "Start with the wedge",
+     "href": "{{link:c/wedges}}"
+    }
+   }
+  ]
+ },
+ "_compare": "The What We Do card links out to the comparison page (slug `compare`), Takomo-style. VOICE-ROLLOUT named the phrase \"No crazy retail prices\" as the anchor, but that wording was replaced in the 2026-08-25 story rewrite and is no longer on the page. The link now sits on \"the middlemen, the retail markup\", which is the claim the comparison page actually proves: two of its four rows are exactly those. It is deliberately NOT on \"No four-figure price tags\" — that phrase makes a claim about what others charge, and the comparison page carries no figure that is not ours, so the link would promise proof the page does not offer.",
+ "_layout": "Restructured twice 2026-08-25. First pass compressed nine bands to six; Cole's second ruling: 'ours are left aligned where Takomo's is centered... Takomo doesn't have a button and they can just click on the image... let's really do it instead of making up your own shit.' So: hero and timeline centred, trio cards are Takomo's popup cards verbatim (vertical edge label, caption on a scrim, plus chip, <dialog> with the full copy), no buttons anywhere in the band. The dialog copy is the old alternating-rows copy, which is why nothing was lost in the compression.",
+ "center": true,
+ "_name": "HARD RULE, Cole 2026-08-25: NEVER use his name on this page. That killed the January Z. quote block too (the review says 'Cole personally texted me'). Also: keep trust claims VAGUE — 'thousands of happy golfers', '60-day test drives'. 'Zero tour pros paid' style lines are out.",
+ "_timeline_src": "Cole's dates, 2026-08-25, months approximate until he sends exact ones: 2018 gold wedge -> 2019 blade putter -> 2020 v2 wedges -> 2023 mallet -> 2024 hybrid -> May 2026 polos -> July 2026 hats + Patriot Putter (America 250) -> Sept 2026 accessories (soon) -> late 2026 KBS shafts (soon) -> late 2026 irons + drivers (soon) -> 2027 partnerships. 'Influencer arbitrage' is internal strategy language and stays OFF the public page.",
+ "_ownership": "CORRECTION 2026-08-25, from Cole directly: 'Formed in 2018 I took over in July 2025 - others were added as we went.' COLE IS NOT THE 2018 FOUNDER. The _story note below was recorded as 'Cole's account' and reads as though he founded it; he was relaying the company's founding story, not his own. Nothing on the live page is false because of this: every sentence in trio.cards[2] says 'we', and the company did do those things in 2018. But DO NOT write first-person founder copy ('I started Lucky in 2018', 'our founder') on the strength of that note. Team is 4 to 10 as of Aug 2026, grown after July 2025. Whether the ownership change is disclosed publicly is COLE'S CALL and unanswered as of this writing, so it is not on the timeline. RESOLVED 2026-08-25: Cole approved a July 2025 entry on condition it sounded like a person wrote it. The first draft ('New Hands on the Wheel / What changes is the pace') did not: press-release idiom in the title, analyst voice in the closer. Replaced with 'Somebody Hit the Gas'. His name is still nowhere in it, and the previous owner is neither named nor criticised.",
+ "_press": "Cole 2026-08-25: 'YouTubers, creators, some publishers' have reviewed the clubs. No names supplied and he declined to name anyone on the timeline. So there is still nothing citable: the comparison page's award row stays off until there is a specific, checkable name. A generic 'reviewed by creators' row loses to Takomo's MyGolfSpy award and is worse than no row.",
+ "_team": "Cole 2026-08-25: nine people, reached 2026. Deliberately NOT phrased as 'Nine Strong' - '10 Strong' is Takomo's exact wording and lifting the construction is how you end up sounding like them rather than like us. The body avoids claiming Lucky started as one person: Cole took over in July 2025 and never said the 2018 founder worked alone.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
+}

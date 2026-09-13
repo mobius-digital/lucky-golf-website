@@ -1,0 +1,127 @@
+{
+ "_": "Shared editorial for the three Blade Polos. Merged UNDER each polo's own file.",
+ "_specs": "Fabric, fit, weight, features and care are verbatim from the copy skill's Product Reference Guide (The Blade Polo) — identical to the Classic. The collar is the difference. Body measurements are not published and are not invented.",
+ "_voice": "Rewritten 2026-08-25. Cole: 'Overall copy still doesn't sound like somebody is talking and writing this, it sounds like you are following rules again. Be a PERSON and talk, not so choppy.' The measurable tell was CONTRACTIONS: the approved Our Story page runs one per 29 words; the copy he rejected ran one per 220. Writing 'that is not' and 'it is' instead of \"that's\" and \"it's\" is what made it read like a rulebook. This block also uses direct address and full sentences that run into each other, rather than clipped parallel beats.",
+ "eyebrow": "The Blade &middot; Polos",
+ "galleryTag": "",
+ "galleryBase": "https://cdn.shopify.com/s/files/1/2286/3149/files/",
+ "pieceEyebrow": "The polo",
+ "priceNote": "One price, every size",
+ "four": [
+  {
+   "k": "Blade collar",
+   "v": "No buttons, no placket"
+  },
+  {
+   "k": "88/12",
+   "v": "Poly-spandex, four-way stretch"
+  },
+  {
+   "k": "UPF 50+",
+   "v": "Moisture-wicking, odor-resistant"
+  },
+  {
+   "k": "Sub-180gsm",
+   "v": "Light enough for a hot round"
+  }
+ ],
+ "fabric": [
+  {
+   "k": "Collar",
+   "v": "Blade. No buttons, no placket."
+  },
+  {
+   "k": "Fabric",
+   "v": "88/12 poly-spandex."
+  },
+  {
+   "k": "Weight",
+   "v": "Sub-180gsm: light, not flimsy."
+  },
+  {
+   "k": "Stretch",
+   "v": "Four-way, so it moves in every direction the swing does."
+  },
+  {
+   "k": "Finish",
+   "v": "Moisture-wicking, odor-resistant, color-retentive."
+  },
+  {
+   "k": "UPF",
+   "v": "50+."
+  },
+  {
+   "k": "Care",
+   "v": "Machine wash. No special handling."
+  }
+ ],
+ "marquee": [
+  "Four-way stretch",
+  "UPF 50+",
+  "Machine wash",
+  "Thirty-day returns, unworn with tags",
+  "Ships in 1&ndash;2 business days",
+  "It's better to be lucky"
+ ],
+ "fitTitle": "How it fits",
+ "fitParas": [
+  "Tailored athletic, and the same block as the Classic. If you know your size in one, it's your size in the other.",
+  "The blade collar has no buttons and no placket, so the neckline lies flat instead of gapping. It reads a little more fitted at the shoulders for that reason alone; the body hasn't changed.",
+  "Between sizes, or want room across the chest? Size up. Returns are thirty days, unworn with the tags on."
+ ],
+ "reviewHeadline": "Reviews",
+ "sibEyebrow": "The other blades",
+ "sibHeadline": "Two more, same collar",
+ "chooseCta": "Pick a size",
+ "closeHeadline": "No buttons, no",
+ "closeFoil": "fuss",
+ "closeBody": "Thirty days to send it back unworn if the fit isn't right.",
+ "closeTrust": [
+  "30-day apparel returns",
+  "Ships in 1&ndash;2 business days",
+  "UPF 50+",
+  "Machine wash"
+ ],
+ "bagHeadline": "The rest of the look",
+ "bag": [
+  {
+   "id": "hat-black-ibtbl",
+   "name": "It's Better To Be Lucky Hat",
+   "code": "HAT",
+   "meta": "Five-panel",
+   "hook": "Black snapback, the line on the front. Goes with everything in the range."
+  },
+  {
+   "id": "polo-contour",
+   "name": "Contour Classic Polo",
+   "code": "LGA-CP",
+   "meta": "S–3XL",
+   "hook": "If you want a collar with buttons, this is the same shirt with one."
+  },
+  {
+   "id": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "code": "LGW01",
+   "hook": "The club that started all this. Six lofts, right or left."
+  }
+ ],
+ "upsell": [
+  {
+   "sku": "HAT-5P-SB-IBTBL-BL",
+   "name": "It's Better To Be Lucky Hat",
+   "price": "$29",
+   "variant": "",
+   "why": "Five-panel snapback. Finishes the look.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?v=1784585347"
+  }
+ ],
+ "_piece": "Cole 2026-07-31: ONE section that works for any design. Every colorway used to carry its own bespoke headline and two paragraphs, which is 22 pages of copy saying the same thing 22 ways. What differs between designs is the photograph, not the garment. Anything genuinely specific to one design goes in that product's own file and overrides these keys.",
+ "pieceHeadline": "Same shirt. Sharper collar.",
+ "pieceParas": [
+  "The Blade drops the buttons. No placket means nothing at your throat to sit crooked halfway round, and the collar lies flat instead of curling up on you by the ninth.",
+  "Underneath it's the Classic, unchanged: tailored athletic through the body, 88/12 poly-spandex, four-way stretch that moves at the top of the backswing. UPF 50+ and moisture-wicking, same as everything else we make.",
+  "So you're really choosing a collar and a print. That's it. Everything that matters to how it plays is identical either way."
+ ],
+ "buyTerm": "Four-way stretch, UPF 50+",
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25."
+}

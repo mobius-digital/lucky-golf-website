@@ -1,0 +1,44 @@
+{
+ "_": "Editorial for homepage sections that are driven by the catalogue. Only the club finder so far — the rest of page-home.html is still prose in markup.",
+ "_why": "The finder used to hard-code a name, a price and an image per card. The prices had drifted: both LGW02s said $119 when the store charges $109. Nothing on this site should retype a price that products.json already holds.",
+ "finder": {
+  "tabs": [
+   {
+    "label": "Around the green",
+    "cards": [
+     {
+      "id": "lgw01-gold",
+      "ln": "Two sole grinds, so you can match the club to the turf you actually play."
+     },
+     {
+      "id": "lgw01-black",
+      "ln": "The Carver in black. Same club underneath, quieter on top."
+     }
+    ]
+   },
+   {
+    "label": "On the green",
+    "cards": [
+     {
+      "id": "lgp01-gold",
+      "ln": "Feedback over forgiveness, if that's the trade you want."
+     },
+     {
+      "id": "lgp02-gold",
+      "ln": "More head behind the ball, so the ones you catch thin still finish close."
+     }
+    ]
+   },
+   {
+    "label": "The long ones",
+    "cards": [
+     {
+      "id": "lgh01",
+      "ln": "For the long one that has to end up on the green, not near it."
+     }
+    ]
+   }
+  ]
+ },
+ "_finder": "Two lines changed 2026-08-19: the Black's repeated the Gold PDP's cross-sell hook ('rather not be asked about it') and the Blade's repeated its own buy box ('sits planted behind the ball'). 'Sits planted' now belongs to the Blade PDP alone."
+}

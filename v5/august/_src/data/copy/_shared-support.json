@@ -1,0 +1,36 @@
+{
+ "_": "Shared under every _support-<slug>.json. Same two-layer merge the product pages use (HANDOFF §22b), and the same rule: a key set in the page file wins outright.",
+ "_pages": "The four support pages, in the order they are useful. build.py turns this into each page's sibling row minus itself, so adding a fifth support page needs one entry here and nothing in four editorial files.",
+ "pages": [
+  {
+   "slug": "returns",
+   "name": "Refund Policy",
+   "hook": "Return windows and conditions for clubs, apparel and gear."
+  },
+  {
+   "slug": "shipping",
+   "name": "Shipping",
+   "hook": "Dispatch times, carriers and tracking."
+  },
+  {
+   "slug": "contact",
+   "name": "Contact",
+   "hook": "How to reach us, and what to have ready."
+  },
+  {
+   "slug": "faq",
+   "name": "FAQ",
+   "hook": "The questions we get most often."
+  }
+ ],
+ "moreAside": "",
+ "close": {
+  "eyebrow": "Support",
+  "headline": "Still need help?",
+  "body": "Email or use the chat on the store. Club returns need approval before you send anything back.",
+  "ctaLabel": "Contact us",
+  "ctaHref": "{{link:contact}}",
+  "ctaMail": "Email support",
+  "aside": "Have your order number ready."
+ }
+}
