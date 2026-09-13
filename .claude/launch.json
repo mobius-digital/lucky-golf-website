@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "static",
+      "name": "mock-server",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8788"],
-      "port": 8788
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "C:/Users/wetzl/AppData/Local/Temp/claude/C--Users-wetzl-Lucky-Golf-Website/3187aa12-59fd-4fec-bc84-0161b7896492/scratchpad/mock/out"],
+      "port": 8765
     }
   ]
 }

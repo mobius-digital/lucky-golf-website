@@ -313,30 +313,258 @@
  "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones.",
  "reel": [
   {
-   "kind": "Creator reel",
-   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike"
+   "title": "Down-the-line from behind",
+   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group"
+   "title": "Thirty-footer across a tier",
+   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
+   "title": "Face-on slow motion of the roll of",
+   "brief": "Face-on slow motion of the roll off the face: end over end, no skid",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "The head at address, hands off the club, then the stroke"
+   "title": "The head at address",
+   "brief": "The head at address, hands off the club, then the stroke",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Grip close-up in the hands, then a stroke showing quiet wrists"
+   "title": "Grip close-up in the hands",
+   "brief": "Grip close-up in the hands, then a stroke showing quiet wrists",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Unboxing, putter out of the sleeve, first reaction to the finish"
+   "title": "Unboxing",
+   "brief": "Unboxing, putter out of the sleeve, first reaction to the finish",
+   "kind": "Customer clip"
   }
  ],
  "_reel": "The Blade previously inherited the putter family's reel list. It has its own now, because three of its six cards carry real Blade footage and the Mallet's must not.",
- "_look": "2026-08-25: paras[1] was 'Gold, 385 grams, and no interest in disappearing.' - a near-verbatim repeat of the back half of paras[0], which read as a copy-paste error on a live page. Replaced with the construction fact, which is what the block was missing. paras[2] also picked up a contraction and now echoes the clubSpecs phrasing ('covered a miss than reported it') deliberately."
+ "_look": "2026-08-25: paras[1] was 'Gold, 385 grams, and no interest in disappearing.' - a near-verbatim repeat of the back half of paras[0], which read as a copy-paste error on a live page. Replaced with the construction fact, which is what the block was missing. paras[2] also picked up a contraction and now echoes the clubSpecs phrasing ('covered a miss than reported it') deliberately.",
+ "_v2": "DESIGN SYSTEM v2 keys (2026-09-12).",
+ "buyEyebrow": "The Tracer &middot; Putters",
+ "h1": "Tracer",
+ "h1foil": "Blade",
+ "quoteLine": "Golden blade",
+ "quoteWho": "Michael M.",
+ "buyLine": "It sits planted behind the ball and tells you exactly where the putt came off the face. Milled 431 stainless, 3.5 degrees, 35 inches. Right hand, and sold out at the moment.",
+ "tiles": [
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090",
+   "alt": "Tracer LGP01 Blade putter, full club",
+   "cut": true,
+   "tag": "Milled 431"
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp?v=1782599091",
+   "alt": "Tracer LGP01 Blade putter, face on",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "slot": "Blade head at address on the green, low sun along the top line, from the golfer's eyeline.",
+   "title": "Placed &middot; on the green"
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/2_a3a63c64-3884-4a7c-8adc-f95c92fcd0dd.webp?v=1782599091",
+   "alt": "Tracer LGP01 Blade putter, sole",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "slot": "Macro of the milled face, the LUCKY lettering catching light.",
+   "title": "Macro &middot; the milling"
+  },
+  {
+   "slot": "The gimme: ball an inch from the hole, blade behind it, shot from low.",
+   "title": "Personality &middot; the gimme"
+  }
+ ],
+ "accordion": [
+  {
+   "h": "Details",
+   "b": "A blade is a choice. Less help on the miss, and in return it tells you exactly where on the face you hit it, every single time. The Tracer Blade is CNC-milled 431 stainless, muted and solid off the face with no ping, and it sits planted through a four-footer when your hands want to get involved. If you'd rather know than be forgiven, this is your putter."
+  },
+  {
+   "h": "What is in the box",
+   "b": "One Tracer LGP01 Blade putter, right hand, on the 35 inch Lucky Approved shaft with the Lucky rubber grip. No headcover."
+  },
+  {
+   "h": "Shipping and returns",
+   "b": "Orders leave Long Beach, California in 1 to 2 business days, tracking as soon as the carrier scans it. Sixty days from delivery on every club, contact us first, club comes back in the condition it left. Return shipping is yours."
+  }
+ ],
+ "help": {
+  "eyebrow": "Blade or mallet",
+  "headline": "Both suit an arc. The question is feel or forgiveness.",
+  "sub": "Normally it's mallets for straight strokes and blades for arcs. Not here: both Tracers are built for a stroke with some arc in it. The real question is how much you want the head to help on the ones you miss, and how much you want it to tell you.",
+  "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that's worth waiting for.",
+  "cards": [
+   {
+    "pill": "Blade",
+    "name": "Feel",
+    "body": "For players who release the head through the stroke. It sits more planted and forgives less. The trade is that a blade tells you exactly where on the face you hit it.",
+    "lofts": "This one &middot; 385 g &middot; right hand"
+   },
+   {
+    "pill": "Mallet",
+    "name": "Forgiveness",
+    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-center strike on line. You give up some feedback to get that.",
+    "href": "{{link:p/lgp02-gold}}",
+    "cta": "See the Mallet"
+   }
+  ]
+ },
+ "mood": {
+  "eyebrow": "On the green",
+  "headline": "Less club.<br>More <em class=\"foil\">information.</em>",
+  "default": "gold",
+  "multi": false,
+  "note": "Every frame is this putter in the world it lives in. Labelled frames are the shots we still owe the page.",
+  "finishes": [
+   {
+    "k": "gold",
+    "first": true,
+    "label": "Gold",
+    "tag": "Blade",
+    "heroSlot": "Bold, full-bleed, portrait. Blade head at address on the green, low sun along the top line. Shot from the golfer's eyeline so the small head reads as small. That is the appeal.",
+    "title": "Less club, more information",
+    "body": "Most blades are chrome and try to disappear. This one is gold, 385 grams, and has no interest in disappearing.",
+    "frames": [
+     {
+      "ratio": "r45",
+      "slot": "Blade at address, four-footer, from behind the golfer",
+      "cap": "The four-footer"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Macro of the gold face after a season, milling still sharp",
+      "cap": "Macro &middot; the face"
+     },
+     {
+      "ratio": "r169",
+      "slot": "The walk onto the green, blade in hand, flag in the distance",
+      "cap": "The walk in"
+     },
+     {
+      "ratio": "r34",
+      "slot": "Ball dropping, blade still in the shot",
+      "cap": "The drop"
+     },
+     {
+      "ratio": "r45",
+      "slot": "Blade leaning on the bag, gold catching low sun",
+      "cap": "Placed &middot; the bag"
+     }
+    ]
+   }
+  ]
+ },
+ "specs": {
+  "eyebrow": "LGP01 specs",
+  "headline": "One way to buy it",
+  "sub": "385 grams, 3.5 degrees of loft, 35 inches, right hand. The whole sheet.",
+  "tabs": [],
+  "grindTables": [],
+  "kvTables": [
+   {
+    "corner": "Head shape",
+    "cols": [
+     "Loft",
+     "Lie",
+     "Head weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Blade",
+      "v": [
+       "3.5&deg;",
+       "72&deg;",
+       "385 g",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Head material",
+      "v": [
+       "CNC-milled 431 stainless steel",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Face",
+      "v": [
+       "Milled",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Finish",
+      "v": [
+       "Gold",
+       "",
+       "",
+       ""
+      ]
+     }
+    ],
+    "tab": "clubs",
+    "first": true,
+    "note": "Right hand. Sold out at the moment; the Mallet is not."
+   }
+  ]
+ },
+ "quotes": [
+  {
+   "n": "Michael M.",
+   "t": "Golden blade"
+  },
+  {
+   "n": "Colon,",
+   "t": "Super good quality"
+  },
+  {
+   "n": "Megan D.",
+   "t": "Great club"
+  }
+ ],
+ "wildHeadline": "The Blade, on the green",
+ "wildNote": "Clips of this exact putter being rolled. Creators, customers, anyone who tags us.",
+ "moreHeadline": "Goes with the Blade",
+ "more": [
+  {
+   "id": "lgp02-gold",
+   "hook": "The mallet, and the one in stock"
+  },
+  {
+   "id": "cover-blade",
+   "hook": "Cut for this head"
+  },
+  {
+   "id": "lgw01-gold",
+   "hook": "The short game, forged"
+  },
+  {
+   "id": "hat-white-ibtbl",
+   "hook": "The line on the front"
+  }
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a gold putter. That is rather the point.",
+  "who": "Mags has your line.",
+  "cta": "Back to the top"
+ }
 }

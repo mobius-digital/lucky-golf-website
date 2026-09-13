@@ -120,5 +120,14 @@
  ],
  "_pass": "Copy pass 2026-08-19. The close typed $67 into editorial (price is per variant, from products.json). The fit note ended on 'the guide above is worth a look', and the piece copy commented on its own spec list ('matters more in August than it sounds like it does in a spec list'). The close headline was the sixth 'Go [verb]' on the site.",
  "buyTerm": "Four-way stretch, UPF 50+",
- "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25."
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25.",
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs another polo. That is rather the point.",
+  "who": "Mags has your size.",
+  "cta": "Pick a size"
+ }
 }

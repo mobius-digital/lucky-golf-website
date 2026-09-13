@@ -2,7 +2,7 @@
 
 **The job: turn this prototype into a Shopify theme for luckygolf.com.**
 
-The design, the copy and the page structure are finished and signed off. None of
+The design (system v2, the white gallery, 2026-09-12), the copy and the page structure are finished and signed off. None of
 it is a wireframe or a mockup. Every page in this repo is real, working HTML you
 can open in a browser today.
 

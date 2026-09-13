@@ -1,0 +1,182 @@
+{
+ "_": "Collections pass 2026-08-19. Cole banned 'from one block of X' as tacky (37f); this page had it as a row headline ('One block of stainless, each') and in both comparison fact columns. The story rows also ended on 'That is the whole argument'.",
+ "_facts": "All specs from Product Reference Guide v1.8, including the manufacturer tables (LGP01 385 g, LGP02 365 g, both 3.5° loft, 72° lie, 35\" length).",
+ "_toehang": "The 'slight toe hang / plumber neck' line that v1.1 carried for the LGP02 is NOT used here — v1.8 dropped it and HANDOFF §17a/§18c says treat it as unconfirmed. Note that lgp02-gold.json's helpPick module still asserts it; that needs settling one way or the other.",
+ "_stock": "LGP01 is entirely sold out (qty -12). Tiles and the comparison card both say so from the catalogue — nothing here hard-codes it.",
+ "bands": [
+  {
+   "label": "Blade",
+   "lede": "Solid 431 stainless. The one that tells you exactly where you hit it.",
+   "ids": [
+    "lgp01-gold"
+   ]
+  },
+  {
+   "label": "Mallet",
+   "lede": "More head, and the stability that comes with it. 304 stainless, and the only one of the two in both hands.",
+   "ids": [
+    "lgp02-gold"
+   ]
+  }
+ ],
+ "tags": {
+  "lgp01-gold": "Blade",
+  "lgp02-gold": "Mallet"
+ },
+ "compare": {
+  "eyebrow": "What's the difference",
+  "headline": "Same loft, same lie, same length. The head is the decision.",
+  "sub": "There are only two putters, and almost everything a spec sheet can measure about them is identical: 3.5&deg; of loft, a 72&deg; lie, 35&Prime; long, both CNC-milled stainless. What changes is twenty grams and the shape of what sits behind the face.",
+  "scales": [
+   {
+    "k": "weight",
+    "label": "Head weight",
+    "segs": 8,
+    "note": "Head weight bar: 320&nbsp;g to 400&nbsp;g, one segment per ten grams. It's the only number on the manufacturer sheet that differs between these two."
+   }
+  ],
+  "items": [
+   {
+    "id": "lgp01-gold",
+    "forWho": "Blade &middot; more feedback",
+    "cta": "Bag the blade",
+    "bars": {
+     "weight": {
+      "to": 7,
+      "display": "385&nbsp;g"
+     }
+    },
+    "facts": [
+     {
+      "k": "Head shape",
+      "v": "Blade"
+     },
+     {
+      "k": "Material",
+      "v": "431 stainless steel"
+     },
+     {
+      "k": "Construction",
+      "v": "CNC-milled stainless"
+     },
+     {
+      "k": "Loft &amp; lie",
+      "v": "3.5&deg; &middot; 72&deg;"
+     },
+     {
+      "k": "Length",
+      "v": "35&Prime;"
+     },
+     {
+      "k": "Hand",
+      "v": "Right hand only"
+     }
+    ]
+   },
+   {
+    "id": "lgp02-gold",
+    "forWho": "Mallet &middot; more head",
+    "cta": "Bag the mallet",
+    "bars": {
+     "weight": {
+      "to": 5,
+      "display": "365&nbsp;g"
+     }
+    },
+    "facts": [
+     {
+      "k": "Head shape",
+      "v": "Mallet"
+     },
+     {
+      "k": "Material",
+      "v": "304 stainless steel"
+     },
+     {
+      "k": "Construction",
+      "v": "CNC-milled stainless"
+     },
+     {
+      "k": "Loft &amp; lie",
+      "v": "3.5&deg; &middot; 72&deg;"
+     },
+     {
+      "k": "Length",
+      "v": "35&Prime;"
+     },
+     {
+      "k": "Hand",
+      "v": "Right and left"
+     }
+    ]
+   }
+  ]
+ },
+ "fitting": {
+  "eyebrow": "Not sure",
+  "headline": "A blade tells you more. A mallet forgives more.",
+  "body": "That trade is the whole choice, and it's older than either of these putters. If you like knowing exactly where on the face you struck it, that's the blade. If you would rather the ones you catch thin still finish near the hole, that's the mallet.",
+  "ctaFinder": "Use the club finder",
+  "ctaAsk": "Ask a person",
+  "aside": "Putters can go on the green inside the sixty days. They have to come back unmarked: no face marks, no sole wear, no bag chatter."
+ },
+ "story": {
+  "eyebrow": "The detail",
+  "headline": "Milled, not cast.",
+  "rows": [
+   {
+    "photo": "Landscape 4:3. Both Tracers face-up side by side on a putting green at dawn, milling pattern catching the light across both faces.",
+    "rowHeadline": "Cut, not poured",
+    "paras": [
+     "Both heads are machined out of solid stainless rather than poured into a mold and finished. It's the slower way to make a putter, and it's normally the part of the process that shows up on the price tag. Ours are $199 and $229.",
+     "The blade is 431 stainless, the mallet is 304. Both carry the same 3.5&deg; of loft and the same 72&deg; lie, which means a stroke that works with one will work with the other. Nothing about setup changes when you switch."
+    ],
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-blade-face-macro.webp",
+    "photoAlt": "Milled face of the Lucky Golf Tracer Blade putter"
+   },
+   {
+    "photo": "Landscape 4:3. Over-the-shoulder view down the line at address with the mallet, ball in frame, morning shadows across the green.",
+    "rowHeadline": "Twenty grams, and where they sit",
+    "flip": true,
+    "paras": [
+     "385&nbsp;g against 365&nbsp;g isn't much on a scale and is plenty in your hands. The blade keeps its mass in a small head; the mallet spreads it further from the face.",
+     "Both are worth putting with for a few rounds before you decide, and sixty days is enough time to know. Keep the sole off the cart path while you do."
+    ],
+    "photoSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-putters-downline.webp",
+    "photoAlt": "Down the line at address with a Lucky Golf Tracer putter on the green"
+   }
+  ]
+ },
+ "quote": {
+  "id": "lgp02-gold",
+  "n": "Tim M.",
+  "q": "This putter is as solid as I have ever rolled. I have taken it on the course 3 times and haven't had more than 31 putts yet. Highly recommend"
+ },
+ "upsell": [
+  {
+   "sku": "HeadCover-Blade-SignatureWhite",
+   "name": "Lucky Blade Cover",
+   "price": "$29.95",
+   "variant": "",
+   "why": "No Lucky club ships with a cover. This is the blade one.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/PhotoAug13_102637PM_8b5e9c51-0604-41c0-ab6a-c6f1e43e5631.png?v=1616431397"
+  },
+  {
+   "sku": "HeadCover-Mallet-SignatureWhite-RH",
+   "name": "Lucky Mallet Cover",
+   "price": "$29.95",
+   "variant": "Right hand",
+   "why": "The mallet needs the bigger one.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851"
+  },
+  {
+   "sku": "GRP-PUT-STCK",
+   "name": "Stock Putter Grip",
+   "price": "$19.95",
+   "variant": "",
+   "why": "The oversized one, on its own.",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/image_a6bd82a8-364a-49f0-89f5-287ce3afebc3.png?v=1717445382"
+  }
+ ],
+ "_photo": "Row 0's brief asks for BOTH Tracers face-up side by side. No such frame exists in the archive, so the slot carries the Blade's milled face instead — it supports the paragraph (milling, not alloy) without pretending to be the two-club shot. The brief stays as the record of what to shoot."
+}

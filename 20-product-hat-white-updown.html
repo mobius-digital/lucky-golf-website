@@ -39,10 +39,14 @@
      The header, the marquee and the brand band all share one field. Swap these
      six and the whole spine changes color. --on-brand must clear 4.5:1 against
      --brand for text; --brand-accent only needs 3:1 (rules, marks, badges). */
-  --brand:#0B5130;
-  --on-brand:#FFFFFF;
-  --on-brand-88:rgba(255,255,255,.88);
-  --on-brand-22:rgba(255,255,255,.22);
+  /* 2026-09-12: the brand field is INK now (palette D + ink bands), not green */
+  --brand:#17140F;
+  --on-brand:#F6F2E8;
+  --on-brand-88:rgba(246,242,232,.88);
+  --on-brand-22:rgba(246,242,232,.22);
+  /* the cream FIELDS are white; the cream WELLS (cards, thumbs) are a neutral grey */
+  --field:#F4F4F2;
+  --well:#F4F4F2;
   --brand-accent:#C29A2B;
   --brand-groove:repeating-linear-gradient(180deg,rgba(246,242,232,.13) 0 1px,rgba(246,242,232,0) 1px 6px);
 
@@ -180,7 +184,7 @@ button{font:inherit;color:inherit}
 /* DEVICE 3 · GROOVE bands */
 .band-ink{position:relative;background:var(--ink);color:var(--cream)}
 .band-ink::before{content:'';position:absolute;inset:0;background:var(--groove-dark);pointer-events:none}
-.band-cream{position:relative;background:var(--cream)}
+.band-cream{position:relative;background:var(--field)}
 .band-cream::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none}
 .band-ink > *,.band-cream > *{position:relative;z-index:1}
 
@@ -363,9 +367,9 @@ button{font:inherit;color:inherit}
    8px 0, min-height 48px, flex row) is class+element and beat the plain
    class — the 8px top padding read as a cream strip above the photo. */
 .mnav a.mn-card{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding:0;
-  border:0;border-radius:var(--r-card);overflow:hidden;background:var(--cream);color:var(--ink);
+  border:0;border-radius:var(--r-card);overflow:hidden;background:var(--well);color:var(--ink);
   text-transform:none;letter-spacing:normal;font-size:inherit;text-align:left}
-.mnav a.mn-card:hover{background:var(--cream)}
+.mnav a.mn-card:hover{background:var(--well)}
 /* isolation:isolate makes the well its own stacking context, so the image's
    multiply blend composites against the WHITE well and not the cream card
    behind it. Without it the well's white never painted where the image had
@@ -471,7 +475,7 @@ button{font:inherit;color:inherit}
   padding:0 10px;pointer-events:none}
 .lb-nav button{pointer-events:auto;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
   background:rgba(246,242,232,.9);color:var(--ink);display:grid;place-items:center;transition:background .2s,opacity .2s}
-.lb-nav button:hover{background:var(--cream)}
+.lb-nav button:hover{background:var(--well)}
 .lb-nav button[disabled]{opacity:.25;cursor:default}
 .lb-nav svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .lb-body{padding:clamp(24px,2.6vw,40px);overflow-y:auto;
@@ -490,14 +494,14 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;color:var(--ink-muted);margin:0 0 18px}
 .lb-title{margin:0 0 10px}
 .lb-text{margin:0;font-size:var(--fs-body);line-height:1.62;color:var(--ink-70)}
-.lb-reply{margin-top:18px;padding:14px 16px;border-left:2px solid var(--gold);background:var(--cream)}
+.lb-reply{margin-top:18px;padding:14px 16px;border-left:2px solid var(--gold);background:var(--well)}
 .lb-reply .who{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-xs);letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold-lo);display:block;margin-bottom:6px}
 .lb-reply p{margin:0;font-size:var(--fs-base);line-height:1.55;color:var(--ink-70)}
 /* product buy block */
 .lb-buy{margin-top:24px;border:1px solid var(--ink-14);border-radius:var(--r);padding:16px;
   display:flex;align-items:center;gap:14px}
-.lb-buy img{width:62px;height:62px;object-fit:cover;border-radius:2px;flex:none;background:var(--cream)}
+.lb-buy img{width:62px;height:62px;object-fit:cover;border-radius:2px;flex:none;background:var(--well)}
 .lb-buy .info{flex:1;min-width:0}
 .lb-buy .sku{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-muted);display:block}
@@ -518,7 +522,7 @@ button{font:inherit;color:inherit}
    LABELLED PLACEHOLDER
    ========================================================================== */
 .ph{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;
-  background:var(--cream);
+  background:var(--well);
   border:1px solid var(--ink-14);border-radius:var(--r);overflow:hidden}
 /* REDESIGNED 2026-08-29. The old device was a dashed border over diagonal
    stripes, which is the visual language of a construction site: it made every
@@ -662,7 +666,7 @@ button{font:inherit;color:inherit}
 .mega-side .eyebrow{margin-bottom:14px}
 .mega-side p{margin:0 0 18px;color:var(--ink-muted);font-size:var(--fs-base);line-height:1.5;max-width:24ch}
 .mega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
-.mcard{position:relative;display:flex;align-items:stretch;gap:12px;background:var(--cream);
+.mcard{position:relative;display:flex;align-items:stretch;gap:12px;background:var(--well);
   border:2px solid transparent;padding:14px 14px 14px 16px;transition:border-color .16s,background .16s}
 .mcard:hover{border-color:var(--ink);background:var(--white)}
 .mcard .mc-txt{flex:1;min-width:0;display:flex;flex-direction:column}
@@ -744,7 +748,7 @@ button{font:inherit;color:inherit}
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-muted);text-decoration:underline}
 .ci-rm:hover{color:var(--ink)}
-.cd-foot{flex:none;border-top:2px solid var(--ink-14);padding:18px 20px 22px;background:var(--cream)}
+.cd-foot{flex:none;border-top:2px solid var(--ink-14);padding:18px 20px 22px;background:var(--well)}
 .cd-sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
 .cd-sub .l{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:var(--fs-sm);letter-spacing:.16em;text-transform:uppercase}
 .cd-sub .v{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:var(--fs-xl)}
@@ -766,7 +770,7 @@ button{font:inherit;color:inherit}
 .mega-in{max-width:none;margin:0;padding:26px var(--pad) 30px;display:block}
 .mega-wrap{max-width:700px;margin:0 auto}
 .mega-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.mtile{position:relative;overflow:hidden;background:var(--cream);min-height:158px;
+.mtile{position:relative;overflow:hidden;background:var(--well);min-height:158px;
   border-radius:var(--r-card);
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;
   padding:20px 156px 20px 22px;
@@ -774,7 +778,7 @@ button{font:inherit;color:inherit}
 /* no black hover border (HANDOFF §3). The cream -> white swap and the image
    nudge already carry the hover; the outline was the off-brand part.
    Keyboard focus rings are untouched — those are not decoration. */
-.mtile:hover,.mtile:focus-visible{background:var(--cream)}
+.mtile:hover,.mtile:focus-visible{background:var(--well)}
 /* color is set EXPLICITLY, not inherited: the same tile renders inside the
    green mobile nav, where inherited text is cream — white-on-cream, unreadable
    (Cole, 2026-08-18). A cream tile always carries ink type wherever it sits. */
@@ -814,7 +818,7 @@ button{font:inherit;color:inherit}
    One tile per club, never a family. Price is the real price, no "from".
    ========================================================================== */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
-.ptile{position:relative;isolation:isolate;background:var(--cream);overflow:hidden;
+.ptile{position:relative;isolation:isolate;background:var(--well);overflow:hidden;
   border-radius:var(--r-card);
   display:flex;flex-direction:column;padding:30px 26px 26px;text-align:center;
   /* no transparent border: it only existed to reserve space for the old black
@@ -924,7 +928,7 @@ button{font:inherit;color:inherit}
   font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
 .cu{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--ink-08)}
 .cu:last-child{border-bottom:0}
-.cu img{width:52px;height:52px;object-fit:cover;flex:none;background:var(--cream)}
+.cu img{width:52px;height:52px;object-fit:cover;flex:none;background:var(--well)}
 .cu .info{flex:1;min-width:0}
 .cu .nm{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
   font-weight:700;font-size:var(--fs-md);text-transform:uppercase;letter-spacing:.02em;line-height:1.2}
@@ -942,7 +946,7 @@ button{font:inherit;color:inherit}
    PULL QUOTE — one real review at scale, leading into the review rail.
    Escalation, not repetition: the headline, then the evidence under it.
    ========================================================================== */
-.pull{position:relative;background:var(--cream);overflow:hidden;text-align:center}
+.pull{position:relative;background:var(--field);overflow:hidden;text-align:center;border-bottom:1px solid var(--ink-14)}
 .pull::before{content:'';position:absolute;inset:0;background:var(--groove-light);pointer-events:none;opacity:.85}
 .pull .wm{width:min(36vw,500px);height:min(36vw,500px);left:50%;top:50%;translate:-50% -50%;color:var(--ink);opacity:.05}
 .pull-in{position:relative;z-index:1;max-width:1000px;margin:0 auto}
@@ -1221,7 +1225,7 @@ button{font:inherit;color:inherit}
   text-transform:uppercase;color:var(--ink-muted)}
 .jm-medals .cbul{width:12px;height:12px}
 
-.jm-sum{padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,32px);background:var(--cream);
+.jm-sum{padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,32px);background:var(--well);
   border-bottom:2px solid var(--ink-14)}
 .jm-sum h3{margin:0 0 8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;
   font-weight:700;font-size:var(--fs-lg);text-transform:uppercase;letter-spacing:.05em}
@@ -1344,7 +1348,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   font-size:12px;font-variation-settings:'wdth' 78;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--cream-70)}
 .rev-bar button:hover{color:var(--cream)}
-.rev-bar button[aria-current]{background:var(--cream);color:var(--ink)}
+.rev-bar button[aria-current]{background:var(--well);color:var(--ink)}
 
 /* Real photography in slots that used to hold a labelled brief (2026-08-23).
    EACH ONE COPIES THE BOX OF THE .ph IT REPLACES — Cole spotted that they read
@@ -1463,7 +1467,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    so the 6px control step won and the biggest image well on the PDP rendered
    with a chip's corner. One declaration, and it is --r-card because a square
    image well the width of half the page is a surface (§13.6). */
-.gal-stage{position:relative;background:var(--cream);border-radius:var(--r-card);overflow:hidden;
+.gal-stage{position:relative;background:var(--well);border-radius:var(--r-card);overflow:hidden;
   aspect-ratio:1/1}
 .gal-stage::before{content:'';position:absolute;inset:0;background:var(--groove-light);
   pointer-events:none;z-index:1}
@@ -1490,7 +1494,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 .gal-arw[data-p]{left:12px}
 .gal-arw[data-n]{right:12px}
 .gal-thumbs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:8px}
-.gal-th{position:relative;aspect-ratio:1/1;background:var(--cream);border:2px solid transparent;
+.gal-th{position:relative;aspect-ratio:1/1;background:var(--well);border:2px solid transparent;
   border-radius:var(--r);overflow:hidden;cursor:pointer;padding:0;transition:border-color .2s}
 .gal-th img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .gal-th:hover{border-color:var(--ink-14)}
@@ -1519,7 +1523,7 @@ html[data-rev="b"] .rev-bar{display:flex}
 .bx-rate a:hover{color:var(--ink);text-decoration-color:var(--gold)}
 
 /* DARTEE MOVE — one real review sits above the price, not below the fold */
-.pq{position:relative;background:var(--cream);border-radius:var(--r);
+.pq{position:relative;background:var(--well);border-radius:var(--r);
   border-left:3px solid var(--gold);padding:20px 22px;margin:20px 0 0}
 .pq::before{content:'';position:absolute;inset:0;background:var(--groove-light);
   pointer-events:none;border-radius:var(--r)}
@@ -1576,7 +1580,7 @@ html[data-rev="b"] .rev-bar{display:flex}
    ========================================================================== */
 .sw-row{display:flex;flex-wrap:wrap;gap:8px}
 .sw{position:relative;display:block;width:52px;height:52px;flex:none;overflow:hidden;
-  background:var(--cream);border:2px solid var(--ink-14);border-radius:var(--r);
+  background:var(--well);border:2px solid var(--ink-14);border-radius:var(--r);
   transition:border-color .18s,transform .2s}
 .sw img{width:100%;height:100%;object-fit:cover;display:block}
 .sw:hover{border-color:var(--ink);transform:translateY(-2px)}
@@ -1836,7 +1840,7 @@ html[data-rev="b"] .rev-bar{display:flex}
   background:var(--white);border:2px solid var(--ink-14);border-radius:var(--r-card);
   padding:12px 12px 14px;transition:border-color .18s,transform .3s}
 .sib:hover{border-color:var(--ink);transform:translateY(-2px)}
-.sib-ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);
+.sib-ph{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--well);
   border-radius:2px}
 .sib-ph img{width:100%;height:100%;object-fit:cover;display:block}
 /* a sold-out colorway still belongs in the strip — the range is the point —
@@ -2331,7 +2335,7 @@ html[data-rev="b"] .rev-bar{display:flex}
       </article>
 
       <article class="ptile">
-        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869" alt="Carver 01 Gold" loading="lazy" width="800" height="800">
+        <div class="pt-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868" alt="Carver 01 Gold" loading="lazy" width="800" height="800">
           </div>
         <a class="pt-nm stretch" href="02-pdp-lgw01.html">Carver 01 Gold</a>
         <p class="pt-hook">Forged, gold, and it spins out of wet grass.</p>

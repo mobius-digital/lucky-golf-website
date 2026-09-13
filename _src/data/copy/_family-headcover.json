@@ -29,5 +29,14 @@
    "meta": "25 tees",
    "hook": "You're out of tees. You're always out of tees."
   }
- ]
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a matching cover. That is rather the point.",
+  "who": "Mags has the mallet one.",
+  "cta": "Add it"
+ }
 }

@@ -1,0 +1,399 @@
+<!-- ============================================================================
+     BRAND — one template, two pages: Our Story and The Trybe.
+     Same argument as the support cluster: they share a shape (a title, a lede,
+     alternating photo/copy rows, one brand moment, a way in) and differ only in
+     which blocks they carry. Every block below is gated on its own key.
+
+     FIELD ORDER is the law here (HANDOFF §9.5): ink / white / cream alternate
+     so no two dark bands ever touch, and the brand field lands ONCE, mid-page.
+     The closing band is cream so the ink footer has a light band above it.
+
+     Every image is a labelled brief until the photography exists (§18b). That
+     is not a placeholder to fill in later and forget — `.ph` prints what the
+     shot has to be, so the brief travels with the page.
+     ============================================================================ -->
+
+<nav class="crumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{link:home}}">Home</a></li>
+    <li><span aria-current="page">{{crumbName}}</span></li>
+  </ol>
+</nav>
+
+<!-- ============ HEAD ============
+     `center` (Our Story) sets Takomo's composition: headline, sub and photo
+     all on the centre axis. The Trybe keeps the left-aligned default. -->
+<section class="sec-tight br-hd{{#center}} br-hd--c{{/center}}">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap">
+    <p class="eyebrow">{{eyebrow}}</p>
+    <h1 class="disp d-xl">{{headline}}</h1>
+    <p class="body lead br-lede">{{lede}}</p>
+{{#hero}}
+    {{#photoSrc}}<img class="br-hero br-hero-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="878" loading="lazy" decoding="async">{{/photoSrc}}
+    {{^photoSrc}}<div class="br-hero ph{{#dark}} ph--dark{{/dark}}">
+      <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
+    </div>{{/photoSrc}}
+{{/hero}}
+  </div>
+</section>
+
+
+<!-- ============ THE MANIFESTO ============
+     Takomo's "FAIR WAY TO GOLF" block (Cole, 2026-08-25): big two-tone
+     display left, conviction copy right, staccato closer. Theirs argues
+     access; ours argues fun and standing out, which is the thesis split the
+     whole page runs on. -->
+{{#manifesto}}
+<section class="sec br-man">
+  <div class="wrap br-man-in">
+    <h2 class="br-man-h"><span class="br-man-a">{{headA}}</span> <span>{{headB}}</span></h2>
+    <div class="br-man-c">
+      <p class="br-man-lede">{{lede}}</p>
+{{#paras}}      <p class="br-man-p">{{.}}</p>
+{{/paras}}{{#stack}}      <p class="br-man-s">{{.}}</p>
+{{/stack}}    </div>
+  </div>
+</section>
+{{/manifesto}}
+
+<!-- ============ THE TRIO ============
+     Takomo's device, copied properly this second time (Cole, 2026-08-25:
+     "Takomo doesn't have a button and they can just click on the image...
+     let's really do it"). Each card IS the control: an image with the label
+     running up the left edge, one caption line over a scrim at the bottom,
+     a plus chip in the corner, and the full copy in a <dialog> it opens.
+     No buttons, no text stack under the photo. The card without a photo yet
+     (Cole's portrait) renders the labelled brief inside the same frame and
+     opens its dialog all the same. -->
+{{#trio}}
+<section class="sec-tight br-trio-sec">
+  <div class="wrap">
+    <div class="br-trio msnap">
+{{#cards}}      <button type="button" class="br-tc{{^photoSrc}} br-tc--ph{{/photoSrc}}" data-dlg="dlg-{{id}}" aria-haspopup="dialog">
+        {{#photoSrc}}<img class="br-tc-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="1024" height="768" loading="lazy" decoding="async">{{/photoSrc}}
+        {{^photoSrc}}<span class="br-tc-img ph">
+          <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
+        </span>{{/photoSrc}}
+        <span class="br-tc-side" aria-hidden="true">{{tag}}</span>
+        <span class="br-tc-plus" aria-hidden="true">+</span>
+        <span class="br-tc-cap">{{cap}}</span>
+      </button>
+{{/cards}}    </div>
+  </div>
+{{#cards}}  <dialog class="br-dlg" id="dlg-{{id}}" aria-label="{{tag}}">
+    <button type="button" class="br-dlg-x" data-dlg-close aria-label="Close">&times;</button>
+    <span class="br-dlg-side" aria-hidden="true">{{tag}}</span>
+    <div class="br-dlg-in">
+      <h3 class="disp d-s">{{title}}</h3>
+{{#paras}}      <p class="br-dlg-p">{{.}}</p>
+{{/paras}}{{#cta}}      <p class="br-dlg-p"><a href="{{href}}">{{label}}</a></p>
+{{/cta}}    </div>
+  </dialog>
+{{/cards}}</section>
+{{/trio}}
+
+<!-- ============ THE TIMELINE ============
+     Takomo's device, and the one thing their story page has that ours didn't
+     (Cole, 2026-08-25). Their jokes land because they hang off a founder, a
+     year and a list of real events; ours had nothing to hang on, so the page
+     hung its lines on itself. Same markup and stylesheet as `steps` below —
+     a SECOND gated block rather than a moved one, because the Trybe page
+     renders `steps` after its rows and a founding story has to come first.
+     Five items, always: `.br-steps-list` is a 5-column grid and the connector
+     is measured badge-centre to badge-centre across exactly five. -->
+{{#timeline}}
+<section class="sec band-ink br-tl">
+  <div class="wrap">
+    <h2 class="disp d-m">{{headline}}</h2>
+  </div>
+  <div class="br-tl-rail" tabindex="0" aria-label="Timeline, scrolls sideways">
+    <ol class="br-tl-list">
+{{#items}}      <li>
+        <div class="br-tl-tx">
+          <h3>{{title}}</h3>
+          <p>{{body}}</p>
+          {{#soon}}<span class="br-tl-soon">Coming soon</span>{{/soon}}
+        </div>
+        <span class="br-tl-dot" aria-hidden="true"></span>
+        <span class="br-tl-yr">{{year}}</span>
+      </li>
+{{/items}}    </ol>
+  </div>
+  <div class="wrap">
+{{#figs}}    <dl class="br-figs br-tl-figs">
+{{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/items}}    </dl>
+{{/figs}}  </div>
+</section>
+{{/timeline}}
+
+<!-- ============ THE FORK ============
+     Dartee's device (Cole, 2026-08-13: "follow Dartee's version... it's just so
+     easy to grasp"): two cards, first screen, and the visitor self-sorts.
+     Lucky's terms, not Dartee's — their hero leads with commission, which is
+     the one thing this page must never advertise (§31a). Card two is BY INVITE
+     because a direct creator door needs terms nobody has defined; the links
+     field on the application is the fast lane that makes it unnecessary. -->
+{{#fork}}
+<section class="sec-tight br-fork-sec">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <div class="br-fork">
+{{#cards}}      <div class="br-fk{{#dark}} br-fk--ink{{/dark}}">
+        <span class="br-fk-badge mono">{{badge}}</span>
+        <h3 class="disp d-s">{{title}}</h3>
+        <ul class="br-list br-fk-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+        <p class="br-fk-foot">{{foot}}</p>
+{{#cta}}        <p class="br-fk-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&darr;</span></a></p>
+{{/cta}}      </div>
+{{/cards}}    </div>
+    {{#note}}<p class="aside br-fork-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/fork}}
+
+<!-- ============ THE BAR — who this is for ============
+     Takomo's device (Cole, 2026-08-13), inverted. Theirs states a numeric gate
+     — 5k Instagram, 10k TikTok, 1k YouTube — and its VALUE is that you know
+     before applying whether you fit. Ours states the bar just as plainly, but
+     the bar is quality-shaped rather than audience-shaped, so "explicit" and
+     "inclusive" are not in tension: the loudest column is the one saying what
+     we DON'T ask for. Three columns, so the honest restriction sits beside the
+     two that open the door rather than alone. -->
+{{#bar}}
+<section class="sec band-cream br-bar" id="fit">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <p class="body br-bar-lede">{{lede}}</p>
+    <div class="br-bar-cols">
+{{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
+        <h3 class="br-bar-h">{{title}}</h3>
+        <ul class="br-list br-bar-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+      </div>
+{{/cols}}    </div>
+    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/bar}}
+
+<!-- ============ THE MONEY SIDE ============
+     Dartee-shaped (Cole, 2026-08-13): say commission EXISTS and that it grows,
+     say payout is monthly — and publish no percentage, no cookie window, no
+     payout date, no network name. "All of the contractual detail doesn't need
+     to be on the page; they can learn more after they're accepted."
+
+     Two columns, and the second is the load-bearing one: clubs are never
+     commissioned. That is positioning, not thrift — the homepage sells a price
+     with no middlemen in it, and a commissioned advocate on the hero category
+     contradicts it. Reuses the bar's column styling; `warn` marks the column
+     that closes a door rather than opens one. -->
+{{#earn}}
+<section class="sec br-earn" id="earn">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <div class="br-bar-cols br-bar-cols--2">
+{{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
+        <h3 class="br-bar-h">{{title}}</h3>
+        <ul class="br-list br-bar-list">
+{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}        </ul>
+      </div>
+{{/cols}}    </div>
+    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/earn}}
+
+<!-- ============ THE NUMBERS ============
+     Ink field. Every figure here is one Shopify or Judge.me actually reports —
+     there is no "trusted by" number on this page that nobody can look up. -->
+{{#stats}}
+<section class="sec band-ink br-stats">
+  <div class="wrap">
+    <span class="eyebrow on-dark">{{eyebrow}}</span>
+    <h2 class="disp d-l br-stats-h">{{headline}}</h2>
+    <dl class="br-figs">
+{{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
+{{/items}}    </dl>
+    {{#note}}<p class="aside br-stats-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/stats}}
+
+<!-- ============ ROWS — alternating photo / copy ============
+     `flip` puts the photo on the right. Two or three rows, never four: four
+     dashed boxes in a column read as an unfinished page rather than an honest
+     one (§20, the same call the club collection made). -->
+{{#rows}}
+<section class="sec br-row{{#cream}} br-row--cream{{/cream}}{{#flip}} br-row--flip{{/flip}}">
+  <div class="wrap br-row-in">
+    <div class="br-row-ph">
+      {{#photoSrc}}<img class="br-row-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="1536" loading="lazy" decoding="async">{{/photoSrc}}
+      {{^photoSrc}}<div class="ph">
+        <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
+      </div>{{/photoSrc}}
+    </div>
+    <div class="br-row-copy">
+      {{#eyebrow}}<span class="eyebrow">{{eyebrow}}</span>{{/eyebrow}}
+      <h2 class="disp d-m">{{title}}</h2>
+{{#paras}}      <p class="br-p">{{.}}</p>
+{{/paras}}{{#list}}
+      <ul class="br-list">
+{{#items}}        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{/items}}      </ul>
+{{/list}}{{#cta}}      <p class="br-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
+{{/cta}}    </div>
+  </div>
+</section>
+{{/rows}}
+
+<!-- ============ THE QUOTE ============
+     Verbatim Judge.me, attributed, and the club it is about is named and
+     linked — a quote floating free of the product reads as invented even when
+     it is not (§11's rule, applied here). NOTHING on this site is a written
+     testimonial; if it is in quotation marks a customer typed it. -->
+{{#quote}}
+<section class="sec br-quote">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <figure class="br-q">
+      <blockquote>{{text}}</blockquote>
+      <figcaption>
+        <span class="br-q-who">{{who}}</span>
+        <span class="br-q-meta">{{stars}} &middot; Verified buyer &middot; {{date}}</span>
+        <span class="br-q-on">on <a href="{{href}}">{{product}}</a></span>
+      </figcaption>
+    </figure>
+    {{#note}}<p class="aside br-q-note">{{note}}</p>{{/note}}
+  </div>
+</section>
+{{/quote}}
+
+<!-- ============ ROSTER — DORMANT ============
+     No page sets `roster` since 2026-08-13: Cole ruled the program is open to
+     anyone who meets the criteria, so a lineup of five faces said the opposite
+     and came off. The block stays for the day there ARE big, real names worth
+     showing (his words) — and build.py still refuses any real name that lacks
+     a `consent` key, so re-enabling it cannot quietly name someone who never
+     agreed. Names are BRACKETED until then, never invented. -->
+{{#roster}}
+<section class="sec br-roster" id="roster">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body br-roster-lede">{{lede}}</p>
+    <div class="br-rost-grid msnap">
+{{#slots}}      <div class="br-rost">
+        <div class="ph">
+          <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
+        </div>
+        <span class="br-rost-nm">{{name}}</span>
+        <span class="br-rost-hd">{{handle}}</span>
+      </div>
+{{/slots}}    </div>
+    {{#tbd}}
+    <div class="br-tbd">
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+      {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
+    </div>
+    {{/tbd}}
+  </div>
+</section>
+{{/roster}}
+
+<!-- ============ HOW IT WORKS ============
+     Numbered, and deliberately short. What the program GIVES and what it ASKS
+     is not written down anywhere, so this describes only the part that is
+     real — how to ask — and says so about the rest. -->
+{{#steps}}
+<section class="sec band-cream br-steps">
+  <div class="wrap">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
+    <ol class="br-steps-list">
+{{#items}}      <li>
+        <span class="br-step-n" aria-hidden="true">{{n}}</span>
+        <div>
+          <h3>{{title}}</h3>
+          <p>{{body}}</p>
+        </div>
+      </li>
+{{/items}}    </ol>
+    {{#tbd}}
+    <div class="br-tbd">
+      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+      {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
+    </div>
+    {{/tbd}}
+  </div>
+</section>
+{{/steps}}
+
+<!-- ============ THE BRAND MOMENT — once, mid-page, never against the footer -->
+{{#close}}
+<section class="br-fit">
+  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+  <div class="wrap br-fit-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-l">{{headline}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="br-fit-cta">
+      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+      {{#cta2Href}}<a class="btn btn-line-cream" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>{{/cta2Href}}
+    </div>
+    <p class="aside br-fit-aside">{{aside}}</p>
+  </div>
+</section>
+{{/close}}
+
+<!-- ============ THE APPLICATION ============
+     Inline, Dartee-style (Cole approved 2026-08-13), and the same contract as
+     the contact form (§25g): the prototype notice sits ABOVE the fields, the
+     submit handler stops navigation, and nothing thanks anyone for a message
+     it never sent — the interception repeats the notice instead. The links
+     field is the creator fast lane (§32). -->
+{{#apply}}
+<section class="sec br-apply-sec" id="apply">
+  <div class="wrap br-apply-in">
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{title}}</h2>
+    <p class="body br-apply-lede">{{lede}}</p>
+    <p class="br-proto"><span class="tbd tbd--light">{{protoLabel}}</span> · {{proto}}</p>
+    <form id="amb-apply">
+      <div class="br-f2">
+        <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
+        <p class="br-field"><label for="af-email">Email</label><input id="af-email" name="email" type="email" autocomplete="email" required></p>
+      </div>
+      <p class="br-field"><label for="af-handle">Instagram or TikTok <span class="br-opt">optional</span></label><input id="af-handle" name="handle" type="text"></p>
+      <p class="br-field"><label for="af-play">How do you play? Where, how often, what's in the bag now</label><textarea id="af-play" name="play" rows="4" required></textarea></p>
+      <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional: this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
+      <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>{{cta}}</span><span class="ar">&rarr;</span></button></p>
+      <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">{{sent}}</p>
+    </form>
+    <p class="aside br-apply-note">{{note}}</p>
+  </div>
+</section>
+{{/apply}}
+
+<!-- ============ KEEP LOOKING — ends on cream, above the ink footer ============ -->
+<section class="sec band-cream br-more">
+  <div class="wrap">
+    <span class="eyebrow">Keep looking</span>
+    <h2 class="disp d-m">{{moreHeadline}}</h2>
+    <div class="br-sibs">
+{{#siblings}}      <a class="br-sib" href="{{href}}">
+        <span class="br-sib-n">{{name}}</span>
+        <span class="br-sib-h">{{hook}}</span>
+      </a>
+{{/siblings}}    </div>
+    {{#moreAside}}<p class="aside br-aside">{{moreAside}}</p>{{/moreAside}}
+  </div>
+</section>

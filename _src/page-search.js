@@ -35,13 +35,12 @@ var LG_QUICKADD = {{QUICKADD_JSON}};
 
   function tile(p){
     var out = !p.inStock;
-    return '<article class="ptile rv"' + (out ? ' data-out' : '') + '>'
+    return '<article class="ptile"' + (out ? ' data-out' : '') + '>'
       + '<div class="pt-ph">'
       + (p.img
           ? '<img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy"'
             + ' width="800" height="800" decoding="async">'
-          : '<div class="ph"><span class="lbl"><span class="mono k">Photo needed</span>'
-            + '<span class="mono">' + esc(p.title) + '</span></span></div>')
+          : '<div class="slot"><div><small>Shot needed</small><span>' + esc(p.title) + '</span></div></div>')
       + (out ? '<span class="pt-tag">Sold out</span>' : '')
       + '<div class="pt-add">'
       + (out

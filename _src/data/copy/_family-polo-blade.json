@@ -123,5 +123,14 @@
   "So you're really choosing a collar and a print. That's it. Everything that matters to how it plays is identical either way."
  ],
  "buyTerm": "Four-way stretch, UPF 50+",
- "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25."
+ "_buyTerm": "Feeds the buy-box trust row. Was hardcoded to the polo's fabric line in page-apparel.html, so all ten hat pages claimed four-way stretch and UPF 50+, neither of which is a hat spec. Fixed 2026-08-25.",
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs another polo. That is rather the point.",
+  "who": "Mags has your size.",
+  "cta": "Pick a size"
+ }
 }

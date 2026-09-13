@@ -163,6 +163,9 @@ EDITORIAL = {
         id="lgw01-black", tpl="club", fam="wedge", code="LGW01", name="Carver 01 Black",
         title="Carver 01 Black",
         coll="wedges", finish="Black", grind="K", finishGroup="carver-01",
+        # Judge.me pools the Gold and the Black in one review group, so both
+        # pages show the same 650 at 4.82 and the Black reads the Gold's pull.
+        rating=[4.82, 650], reviewsFrom="lgw01-gold",
         axisGrind=True, default="RH|56K",
         note="RIGHT HAND ONLY today; left hand is coming (Cole). $109 against the "
              "Gold's $99 — the black finish is a real extra process, which is the "
@@ -459,6 +462,8 @@ def build_product(raw):
         p["rating"] = {"avg": ed["rating"][0], "count": ed["rating"][1]}
     if ed.get("note"):
         p["note"] = ed["note"]
+    if ed.get("reviewsFrom"):
+        p["reviewsFrom"] = ed["reviewsFrom"]
     # Finish is a sibling axis expressed as separate products, the way colorways
     # are on the polos: `finishGroup` is what links them into one swatch row.
     for k in ("finish", "grind", "finishGroup"):

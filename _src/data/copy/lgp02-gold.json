@@ -125,28 +125,34 @@
  "reelSub": "Clips of this exact putter being rolled: creators, customers, and anyone who tags us.",
  "reel": [
   {
-   "kind": "Creator reel",
-   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike, no music"
+   "title": "Down-the-line from behind",
+   "brief": "Down-the-line from behind, four-footer, ball dropping. Sound of the strike, no music",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group"
+   "title": "Thirty-footer across a tier",
+   "brief": "Thirty-footer across a tier, ball tracking, reaction from the group",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Face-on slow motion of the roll off the face: end over end, no skid"
+   "title": "Face-on slow motion of the roll of",
+   "brief": "Face-on slow motion of the roll off the face: end over end, no skid",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "The head sitting square at address, hands off the club, then the stroke"
+   "title": "The head sitting square at address",
+   "brief": "The head sitting square at address, hands off the club, then the stroke",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Oversized 3.0 grip close-up in the hands, then a stroke showing the wrists staying quiet"
+   "title": "Oversized 3.0 grip close-up in the",
+   "brief": "Oversized 3.0 grip close-up in the hands, then a stroke showing the wrists staying quiet",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Unboxing, putter out of the sleeve, first reaction to the gold and the grip"
+   "title": "Unboxing",
+   "brief": "Unboxing, putter out of the sleeve, first reaction to the gold and the grip",
+   "kind": "Customer clip"
   }
  ],
  "helpPick": {
@@ -390,5 +396,234 @@
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_neck": "DETERMINED FROM THE PRODUCT PHOTOGRAPHY 2026-08-19 (Cole: 'you look and determine'). Four Shopify studio shots of the LGP02 were examined at full resolution.\n1. NOT A PLUMBER NECK. A plumber neck bends forward, runs horizontally, then drops into a short vertical post offset from and parallel to the shaft. This club has ONE smooth bend where the shaft flows straight into the heel: a short SLANT neck. The word was wrong on both putter pages and in HANDOFF 15, which attributed it to a guide that never contained it.\n2. TOE HANG IS REAL. It is heel-shafted with the shaft axis outside the centre of gravity, so the toe hangs and it is NOT face-balanced. The direction of the claim was right. 'Slight' is dropped: how much it hangs cannot be read off a photo, it needs the club balanced on a finger, and a slant-neck fang mallet is usually moderate rather than slight.\n3. PERIMETER WEIGHTING CONFIRMED. It is a fang mallet: two long rear wings carrying mass at the extremes with the centre hollowed out. Textbook high-MOI perimeter weighting, and Spec-to-Benefit's 'stability through geometry rather than raw weight' describes exactly this shape.",
  "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
- "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones."
+ "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones.",
+ "_v2": "DESIGN SYSTEM v2 keys (2026-09-12).",
+ "buyEyebrow": "The Tracer &middot; Putters",
+ "h1": "Tracer",
+ "h1foil": "Mallet",
+ "quoteLine": "Love this club",
+ "quoteWho": "Patrick S.",
+ "buyLine": "The putter that comes with the big grip already on it. Milled 304 stainless, a slant neck that gives it toe hang for the arc you already have, and enough weight out in the wings that a toe strike still holds its line. Right or left hand.",
+ "tiles": [
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133",
+   "alt": "Tracer LGP02 Mallet putter, full club",
+   "cut": true,
+   "tag": "Milled 304"
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-mallet-hero.webp",
+   "alt": "Tracer LGP02 Mallet on the green",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp?v=1782598134",
+   "alt": "Tracer LGP02 Mallet putter, face on",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/2_4518fe6e-f25e-4eca-a48e-688b1f09cf7e.webp?v=1782598133",
+   "alt": "Tracer LGP02 Mallet putter, sole",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "slot": "The oversized white and gold grip in two hands, from above.",
+   "title": "Macro &middot; the grip"
+  },
+  {
+   "slot": "Ball dropping, mallet still in the frame, from low behind the hole.",
+   "title": "Action &middot; the drop"
+  }
+ ],
+ "accordion": [
+  {
+   "h": "Details",
+   "b": "The short ones coming back are what wreck a round, and most of the time it's the wrists. So the Tracer Mallet ships with the oversized 3.0 grip already on it, which takes the wrists out of the stroke. The slant neck gives it toe hang, so it swings on the arc you already have, and the weight sits out in the wings so a putt off the toe still holds its line. CNC-milled 304 stainless, so it comes off the face muted and solid, with no ping."
+  },
+  {
+   "h": "What is in the box",
+   "b": "One Tracer LGP02 Mallet putter in the hand you picked, on the 35 inch Lucky Approved shaft with the oversized 3.0 white and gold grip already fitted. No headcover."
+  },
+  {
+   "h": "Shipping and returns",
+   "b": "Orders leave Long Beach, California in 1 to 2 business days, tracking as soon as the carrier scans it. Sixty days from delivery on every club, contact us first, club comes back in the condition it left. Return shipping is yours."
+  }
+ ],
+ "help": {
+  "eyebrow": "Blade or mallet",
+  "headline": "Both suit an arc. The question is feel or forgiveness.",
+  "sub": "Normally it's mallets for straight strokes and blades for arcs. Not here: both Tracers are built for a stroke with some arc in it. The real question is how much you want the head to help on the ones you miss, and how much you want it to tell you.",
+  "note": "The blade is out of stock and right hand only when it returns. If you want the feedback rather than the forgiveness, that's worth waiting for.",
+  "cards": [
+   {
+    "pill": "Mallet",
+    "name": "Forgiveness",
+    "body": "Toe hang from a slant neck, so it works with the arc you already have. The weight sits out in the wings, which keeps an off-center strike on line. You give up some feedback to get that.",
+    "lofts": "This one &middot; 365 g &middot; right or left hand"
+   },
+   {
+    "pill": "Blade",
+    "name": "Feel",
+    "body": "For players who release the head through the stroke. It sits more planted and forgives less. The trade is that a blade tells you exactly where on the face you hit it.",
+    "href": "{{link:p/lgp01-gold}}",
+    "cta": "See the Blade"
+   }
+  ]
+ },
+ "mood": {
+  "eyebrow": "On the green",
+  "headline": "It gets noticed<br>on every <em class=\"foil\">green.</em>",
+  "default": "gold",
+  "multi": false,
+  "note": "Every frame is this putter in the world it lives in. Labelled frames are the shots we still owe the page.",
+  "finishes": [
+   {
+    "k": "gold",
+    "first": true,
+    "label": "Gold",
+    "tag": "Mallet &middot; stand-in frame, the real one is on the shoot list",
+    "hero": {
+     "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-mallet-hero.webp",
+     "alt": "Tracer LGP02 Mallet on the green",
+     "pos": "center 60%",
+     "points": [],
+     "tag": "Mallet &middot; stand-in frame, the real one is on the shoot list",
+     "title": "It gets noticed on every green you walk onto",
+     "body": "Putters are the one club everyone in the group sees you use, eighteen times a round, standing still, from four feet away. Most of them are gray. This one is gold and white, and the reviews are close to unanimous about what happens next."
+    },
+    "frames": [
+     {
+      "ratio": "r45",
+      "slot": "Mallet at address from the golfer's eyeline, alignment lines reading",
+      "cap": "Placed &middot; at address"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Macro of the oversized grip, white and gold",
+      "cap": "Macro &middot; the grip"
+     },
+     {
+      "ratio": "r169",
+      "slot": "Thirty-footer across a tier, ball tracking",
+      "cap": "Action &middot; the lag"
+     },
+     {
+      "ratio": "r34",
+      "slot": "Mallet head on the fringe, low sun raking across the gold",
+      "cap": "Mood &middot; golden hour"
+     },
+     {
+      "ratio": "r45",
+      "slot": "The gimme: ball an inch out, mallet behind it",
+      "cap": "Personality &middot; the gimme"
+     }
+    ]
+   }
+  ]
+ },
+ "specs": {
+  "eyebrow": "LGP02 specs",
+  "headline": "365 grams, built to swing easy",
+  "sub": "Loft, lie, weight and length, plus the shaft and the grip. One loft, one length, either hand.",
+  "tabs": [],
+  "grindTables": [],
+  "kvTables": [
+   {
+    "corner": "Head shape",
+    "cols": [
+     "Loft",
+     "Lie",
+     "Head weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "Mallet",
+      "v": [
+       "3.5&deg;",
+       "72&deg;",
+       "365 g",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Head material",
+      "v": [
+       "CNC-milled 304 stainless steel",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Face",
+      "v": [
+       "Milled",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Finish",
+      "v": [
+       "Gold",
+       "",
+       "",
+       ""
+      ]
+     }
+    ],
+    "tab": "clubs",
+    "first": true,
+    "note": "One loft, one length, either hand. The grip is the oversized 3.0, fitted."
+   }
+  ]
+ },
+ "quotes": [
+  {
+   "n": "Patrick S.",
+   "t": "Love this club"
+  },
+  {
+   "n": "Austin K.",
+   "t": "Great putter!"
+  },
+  {
+   "n": "Jackson D.",
+   "t": "Best Putter I've ever used"
+  }
+ ],
+ "wildHeadline": "The Mallet, on the green",
+ "wildNote": "Clips of this exact putter being rolled. Creators, customers, anyone who tags us.",
+ "moreHeadline": "Goes with the Mallet",
+ "more": [
+  {
+   "id": "cover-mallet",
+   "hook": "Made for this head"
+  },
+  {
+   "id": "lgp01-gold",
+   "hook": "The blade. More feel, less help"
+  },
+  {
+   "id": "lgw01-gold",
+   "hook": "The short game, forged"
+  },
+  {
+   "id": "hat-white-ibtbl",
+   "hook": "The line on the front"
+  }
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a gold putter. That is rather the point.",
+  "who": "Mags has your line.",
+  "cta": "Pick a hand"
+ }
 }

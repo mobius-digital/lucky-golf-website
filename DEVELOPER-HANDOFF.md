@@ -18,6 +18,18 @@ nobody says them out loud.
 
 ---
 
+> **DESIGN SYSTEM v2 (2026-09-12).** The whole site now builds on palette D,
+> "white gallery": a white page, `#F3F1EC` tiles for cards and photo wells,
+> hairlines for structure, white bands (header, reel, footer) carrying the
+> groove texture, one gold foil word and one foil button per page, Mags the
+> magpie on the bag button and the sign-off. There are no green or ink bands
+> any more. The measured laws in §9 below still hold where they are about
+> contrast, radius, targets and honesty; where they name a green masthead, an
+> ink hero or a cream band they describe v1 and are superseded. The current
+> rules are in `LUCKY-DESIGN-BRIEF.md`, the styleguide page and the header
+> comment of `_src/core.css`. Palettes A to F are one attribute:
+> `<html data-palette="b">`.
+
 ## 1. Run it
 
 Python 3, no dependencies. Node only for the variant test.

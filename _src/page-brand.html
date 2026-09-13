@@ -13,29 +13,23 @@
      shot has to be, so the brief travels with the page.
      ============================================================================ -->
 
-<nav class="crumb wrap" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{link:home}}">Home</a></li>
-    <li><span aria-current="page">{{crumbName}}</span></li>
-  </ol>
-</nav>
-
 <!-- ============ HEAD ============
      `center` (Our Story) sets Takomo's composition: headline, sub and photo
      all on the centre axis. The Trybe keeps the left-aligned default. -->
-<section class="sec-tight br-hd{{#center}} br-hd--c{{/center}}">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap">
-    <p class="eyebrow">{{eyebrow}}</p>
+<section class="page-hd br-hd{{#hero}}{{#photoSrc}} has-photo{{/photoSrc}}{{/hero}}">
+{{#hero}}  {{#photoSrc}}<div class="ph-bg"><img src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="878" fetchpriority="high" decoding="async"></div>{{/photoSrc}}
+{{/hero}}  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{link:home}}">Home</a></li>
+        <li><span aria-current="page">{{crumbName}}</span></li>
+      </ol>
+        </nav>
+    <span class="eb">{{eyebrow}}</span>
     <h1 class="disp d-xl">{{headline}}</h1>
-    <p class="body lead br-lede">{{lede}}</p>
-{{#hero}}
-    {{#photoSrc}}<img class="br-hero br-hero-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="878" loading="lazy" decoding="async">{{/photoSrc}}
-    {{^photoSrc}}<div class="br-hero ph{{#dark}} ph--dark{{/dark}}">
-      <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
-    </div>{{/photoSrc}}
-{{/hero}}
-  </div>
+    <p class="body lede">{{lede}}</p>
+{{#hero}}    {{^photoSrc}}<div class="br-hero slot"><div><small>{{k}}</small><span>{{brief}}</span></div></div>{{/photoSrc}}
+{{/hero}}  </div>
 </section>
 
 
@@ -45,7 +39,7 @@
      access; ours argues fun and standing out, which is the thesis split the
      whole page runs on. -->
 {{#manifesto}}
-<section class="sec br-man">
+<section class="br-man">
   <div class="wrap br-man-in">
     <h2 class="br-man-h"><span class="br-man-a">{{headA}}</span> <span>{{headB}}</span></h2>
     <div class="br-man-c">
@@ -67,13 +61,13 @@
      (Cole's portrait) renders the labelled brief inside the same frame and
      opens its dialog all the same. -->
 {{#trio}}
-<section class="sec-tight br-trio-sec">
+<section class="br-trio-sec">
   <div class="wrap">
     <div class="br-trio msnap">
 {{#cards}}      <button type="button" class="br-tc{{^photoSrc}} br-tc--ph{{/photoSrc}}" data-dlg="dlg-{{id}}" aria-haspopup="dialog">
         {{#photoSrc}}<img class="br-tc-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="1024" height="768" loading="lazy" decoding="async">{{/photoSrc}}
         {{^photoSrc}}<span class="br-tc-img ph">
-          <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
+          <span class="lbl"><span class="lab k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
         </span>{{/photoSrc}}
         <span class="br-tc-side" aria-hidden="true">{{tag}}</span>
         <span class="br-tc-plus" aria-hidden="true">+</span>
@@ -103,7 +97,7 @@
      Five items, always: `.br-steps-list` is a 5-column grid and the connector
      is measured badge-centre to badge-centre across exactly five. -->
 {{#timeline}}
-<section class="sec band-ink br-tl">
+<section class="band br-tl">
   <div class="wrap">
     <h2 class="disp d-m">{{headline}}</h2>
   </div>
@@ -121,7 +115,7 @@
 {{/items}}    </ol>
   </div>
   <div class="wrap">
-{{#figs}}    <dl class="br-figs br-tl-figs">
+{{#figs}}    <dl class="figs br-tl-figs">
 {{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/items}}    </dl>
 {{/figs}}  </div>
@@ -136,22 +130,22 @@
      because a direct creator door needs terms nobody has defined; the links
      field on the application is the fast lane that makes it unnecessary. -->
 {{#fork}}
-<section class="sec-tight br-fork-sec">
+<section class="br-fork-sec">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{headline}}</h2>
     <div class="br-fork">
 {{#cards}}      <div class="br-fk{{#dark}} br-fk--ink{{/dark}}">
         <span class="br-fk-badge mono">{{badge}}</span>
         <h3 class="disp d-s">{{title}}</h3>
         <ul class="br-list br-fk-list">
-{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{#items}}          <li><span>{{.}}</span></li>
 {{/items}}        </ul>
         <p class="br-fk-foot">{{foot}}</p>
-{{#cta}}        <p class="br-fk-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&darr;</span></a></p>
+{{#cta}}        <p class="br-fk-cta"><a class="btn-line btn btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&darr;</span></a></p>
 {{/cta}}      </div>
 {{/cards}}    </div>
-    {{#note}}<p class="aside br-fork-note">{{note}}</p>{{/note}}
+    {{#note}}<p class="body aside-line br-fork-note">{{note}}</p>{{/note}}
   </div>
 </section>
 {{/fork}}
@@ -165,20 +159,20 @@
      we DON'T ask for. Three columns, so the honest restriction sits beside the
      two that open the door rather than alone. -->
 {{#bar}}
-<section class="sec band-cream br-bar" id="fit">
+<section class="br-bar" id="fit">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{headline}}</h2>
     <p class="body br-bar-lede">{{lede}}</p>
     <div class="br-bar-cols">
 {{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
         <h3 class="br-bar-h">{{title}}</h3>
         <ul class="br-list br-bar-list">
-{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{#items}}          <li><span>{{.}}</span></li>
 {{/items}}        </ul>
       </div>
 {{/cols}}    </div>
-    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+    {{#note}}<p class="body aside-line br-bar-note">{{note}}</p>{{/note}}
   </div>
 </section>
 {{/bar}}
@@ -195,19 +189,19 @@
      contradicts it. Reuses the bar's column styling; `warn` marks the column
      that closes a door rather than opens one. -->
 {{#earn}}
-<section class="sec br-earn" id="earn">
+<section class="br-earn" id="earn">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{headline}}</h2>
     <div class="br-bar-cols br-bar-cols--2">
 {{#cols}}      <div class="br-bar-col{{#warn}} br-bar-col--warn{{/warn}}">
         <h3 class="br-bar-h">{{title}}</h3>
         <ul class="br-list br-bar-list">
-{{#items}}          <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{#items}}          <li><span>{{.}}</span></li>
 {{/items}}        </ul>
       </div>
 {{/cols}}    </div>
-    {{#note}}<p class="aside br-bar-note">{{note}}</p>{{/note}}
+    {{#note}}<p class="body aside-line br-bar-note">{{note}}</p>{{/note}}
   </div>
 </section>
 {{/earn}}
@@ -216,14 +210,14 @@
      Ink field. Every figure here is one Shopify or Judge.me actually reports —
      there is no "trusted by" number on this page that nobody can look up. -->
 {{#stats}}
-<section class="sec band-ink br-stats">
+<section class="br-stats">
   <div class="wrap">
-    <span class="eyebrow on-dark">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-l br-stats-h">{{headline}}</h2>
-    <dl class="br-figs">
+    <dl class="figs">
 {{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/items}}    </dl>
-    {{#note}}<p class="aside br-stats-note">{{note}}</p>{{/note}}
+    {{#note}}<p class="body aside-line br-stats-note">{{note}}</p>{{/note}}
   </div>
 </section>
 {{/stats}}
@@ -233,23 +227,19 @@
      dashed boxes in a column read as an unfinished page rather than an honest
      one (§20, the same call the club collection made). -->
 {{#rows}}
-<section class="sec br-row{{#cream}} br-row--cream{{/cream}}{{#flip}} br-row--flip{{/flip}}">
-  <div class="wrap br-row-in">
-    <div class="br-row-ph">
-      {{#photoSrc}}<img class="br-row-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="1536" loading="lazy" decoding="async">{{/photoSrc}}
-      {{^photoSrc}}<div class="ph">
-        <span class="lbl"><span class="mono k">{{phK}}</span><span class="mono">{{phBrief}}</span></span>
-      </div>{{/photoSrc}}
-    </div>
-    <div class="br-row-copy">
-      {{#eyebrow}}<span class="eyebrow">{{eyebrow}}</span>{{/eyebrow}}
+<section class="br-row">
+  <div class="bleed{{#flip}} flip{{/flip}}">
+    {{#photoSrc}}<figure class="ph" data-zoom="{{photoSrc}}"><img src="{{photoSrc}}" alt="{{photoAlt}}" width="2048" height="1536" loading="lazy" decoding="async"></figure>{{/photoSrc}}
+    {{^photoSrc}}<div class="ph slot"><div><small>{{phK}}</small><span>{{phBrief}}</span></div></div>{{/photoSrc}}
+    <div class="tx br-row-copy">
+      {{#eyebrow}}<span class="eb">{{eyebrow}}</span>{{/eyebrow}}
       <h2 class="disp d-m">{{title}}</h2>
 {{#paras}}      <p class="br-p">{{.}}</p>
 {{/paras}}{{#list}}
       <ul class="br-list">
-{{#items}}        <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{#items}}        <li><span>{{.}}</span></li>
 {{/items}}      </ul>
-{{/list}}{{#cta}}      <p class="br-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
+{{/list}}{{#cta}}      <p class="br-cta"><a class="btn-line btn btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
 {{/cta}}    </div>
   </div>
 </section>
@@ -261,9 +251,9 @@
      it is not (§11's rule, applied here). NOTHING on this site is a written
      testimonial; if it is in quotation marks a customer typed it. -->
 {{#quote}}
-<section class="sec br-quote">
+<section class="br-quote">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <figure class="br-q">
       <blockquote>{{text}}</blockquote>
       <figcaption>
@@ -272,7 +262,7 @@
         <span class="br-q-on">on <a href="{{href}}">{{product}}</a></span>
       </figcaption>
     </figure>
-    {{#note}}<p class="aside br-q-note">{{note}}</p>{{/note}}
+    {{#note}}<p class="body aside-line br-q-note">{{note}}</p>{{/note}}
   </div>
 </section>
 {{/quote}}
@@ -285,23 +275,21 @@
      a `consent` key, so re-enabling it cannot quietly name someone who never
      agreed. Names are BRACKETED until then, never invented. -->
 {{#roster}}
-<section class="sec br-roster" id="roster">
+<section class="br-roster" id="roster">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
-    <h2 class="disp d-l">{{headline}}</h2>
+    <span class="eb">{{eyebrow}}</span>
+    <h2 class="disp d-m">{{headline}}</h2>
     <p class="body br-roster-lede">{{lede}}</p>
     <div class="br-rost-grid msnap">
 {{#slots}}      <div class="br-rost">
-        <div class="ph">
-          <span class="lbl"><span class="mono k">{{k}}</span><span class="mono">{{brief}}</span></span>
-        </div>
+        <div class="tile slot"><div><small>{{k}}</small><span>{{brief}}</span></div></div>
         <span class="br-rost-nm">{{name}}</span>
         <span class="br-rost-hd">{{handle}}</span>
       </div>
 {{/slots}}    </div>
     {{#tbd}}
     <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+      <p class="br-tbd-p"><span class="tbd">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
     {{/tbd}}
@@ -314,9 +302,9 @@
      is not written down anywhere, so this describes only the part that is
      real — how to ask — and says so about the rest. -->
 {{#steps}}
-<section class="sec band-cream br-steps">
+<section class="br-steps">
   <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{headline}}</h2>
     <ol class="br-steps-list">
 {{#items}}      <li>
@@ -329,7 +317,7 @@
 {{/items}}    </ol>
     {{#tbd}}
     <div class="br-tbd">
-      <p class="br-tbd-p"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+      <p class="br-tbd-p"><span class="tbd">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="br-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
     {{/tbd}}
@@ -339,17 +327,20 @@
 
 <!-- ============ THE BRAND MOMENT — once, mid-page, never against the footer -->
 {{#close}}
-<section class="br-fit">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+<section class="br-fit band">
   <div class="wrap br-fit-in">
-    <span class="eyebrow">{{eyebrow}}</span>
-    <h2 class="disp d-l">{{headline}}</h2>
-    <p class="body">{{body}}</p>
-    <div class="br-fit-cta">
-      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
-      {{#cta2Href}}<a class="btn btn-line-cream" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>{{/cta2Href}}
+    <div>
+      <span class="eb">{{eyebrow}}</span>
+      <h2 class="disp d-m">{{headline}}</h2>
+      <p class="body">{{body}}</p>
     </div>
-    <p class="aside br-fit-aside">{{aside}}</p>
+    <div>
+      <div class="br-fit-cta">
+        <a class="btn" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+        {{#cta2Href}}<a class="btn-line btn" href="{{cta2Href}}"><span>{{cta2Label}}</span></a>{{/cta2Href}}
+      </div>
+      <p class="body aside-line">{{aside}}</p>
+    </div>
   </div>
 </section>
 {{/close}}
@@ -361,12 +352,12 @@
      it never sent — the interception repeats the notice instead. The links
      field is the creator fast lane (§32). -->
 {{#apply}}
-<section class="sec br-apply-sec" id="apply">
+<section class="br-apply-sec" id="apply">
   <div class="wrap br-apply-in">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{title}}</h2>
     <p class="body br-apply-lede">{{lede}}</p>
-    <p class="br-proto"><span class="tbd tbd--light">{{protoLabel}}</span> · {{proto}}</p>
+    <p class="br-proto"><span class="tbd">{{protoLabel}}</span> · {{proto}}</p>
     <form id="amb-apply">
       <div class="br-f2">
         <p class="br-field"><label for="af-name">Name</label><input id="af-name" name="name" type="text" autocomplete="name" required></p>
@@ -375,25 +366,28 @@
       <p class="br-field"><label for="af-handle">Instagram or TikTok <span class="br-opt">optional</span></label><input id="af-handle" name="handle" type="text"></p>
       <p class="br-field"><label for="af-play">How do you play? Where, how often, what's in the bag now</label><textarea id="af-play" name="play" rows="4" required></textarea></p>
       <p class="br-field"><label for="af-links">Links to anything you've made <span class="br-opt">optional: this is the fast lane</span></label><textarea id="af-links" name="links" rows="2"></textarea></p>
-      <p class="br-apply-cta"><button type="submit" class="btn btn-foil sweep"><span>{{cta}}</span><span class="ar">&rarr;</span></button></p>
+      <p class="br-apply-cta"><button type="submit" class="btn"><span>{{cta}}</span><span class="ar">&rarr;</span></button></p>
       <p class="br-apply-sent" id="amb-sent" hidden tabindex="-1">{{sent}}</p>
     </form>
-    <p class="aside br-apply-note">{{note}}</p>
+    <p class="body aside-line br-apply-note">{{note}}</p>
   </div>
 </section>
 {{/apply}}
 
 <!-- ============ KEEP LOOKING — ends on cream, above the ink footer ============ -->
-<section class="sec band-cream br-more">
+<section class="br-more">
   <div class="wrap">
-    <span class="eyebrow">Keep looking</span>
-    <h2 class="disp d-m">{{moreHeadline}}</h2>
-    <div class="br-sibs">
-{{#siblings}}      <a class="br-sib" href="{{href}}">
-        <span class="br-sib-n">{{name}}</span>
-        <span class="br-sib-h">{{hook}}</span>
-      </a>
+    <span class="eb">Keep looking</span>
+    <h2 class="disp d-s" style="margin-bottom:22px">{{moreHeadline}}</h2>
+    <div class="cards msnap">
+{{#siblings}}      <a class="card" href="{{href}}"><span class="disp d-xs">{{name}}</span><span class="bd">{{hook}}</span><span class="go">Read <span class="ar">&rarr;</span></span></a>
 {{/siblings}}    </div>
-    {{#moreAside}}<p class="aside br-aside">{{moreAside}}</p>{{/moreAside}}
+    {{#moreAside}}<p class="note">{{moreAside}}</p>{{/moreAside}}
   </div>
 </section>
+
+
+<dialog class="zoom" id="zoom" aria-label="Image">
+  <button type="button" class="md-x" data-zoom-close aria-label="Close">&times;</button>
+  <img src="" alt="">
+</dialog>

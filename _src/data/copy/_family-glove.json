@@ -30,5 +30,14 @@
    "meta": "Blade heads",
    "hook": "Stops the bag chewing your putter."
   }
- ]
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a nicer glove. That is rather the point.",
+  "who": "Mags has two.",
+  "cta": "Add it"
+ }
 }

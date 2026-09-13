@@ -213,7 +213,7 @@
    "title": "Carver 01 Gold",
    "shopifyHandle": "lucky-golf-lgw02-gold",
    "shopifyTitle": "Lucky Golf LGW02 Gold",
-   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+   "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868",
    "price": 99,
    "priceMax": 99,
    "priceLabel": "$99",
@@ -516,7 +516,12 @@
    "inStock": true,
    "built": true,
    "discontinued": false,
+   "rating": {
+    "avg": 4.82,
+    "count": 650
+   },
    "note": "RIGHT HAND ONLY today; left hand is coming (Cole). $109 against the Gold's $99 — the black finish is a real extra process, which is the one price difference in the wedge line that stands for something.",
+   "reviewsFrom": "lgw01-gold",
    "finish": "Black",
    "grind": "K",
    "finishGroup": "carver-01"

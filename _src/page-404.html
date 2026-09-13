@@ -1,31 +1,28 @@
-<!-- ============================================================================
-     404 — the one page that gets to be funny (NEXT-PAGES §7).
-     The joke is dry and it lands once. It does not explain itself, and it does
-     not apologise twice. Then it gets out of the way and offers the four
-     places a lost visitor actually wants.
-     ============================================================================ -->
-
+<!-- ==========================================================================
+     404 · design system v2. The joke lands once, Mags is on the page (one of
+     the approved placements), and it offers the four places a lost visitor
+     actually wants.
+     ========================================================================== -->
 <section class="nf">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
   <div class="wrap nf-in">
-    <p class="eyebrow centre">Error 404</p>
-    <h1 class="disp d-xl nf-h">Lost it right</h1>
-    <p class="body nf-lede">This page isn't where you left it, and we can't find it either.
-      Nothing has gone wrong with your order. Just this link.</p>
-
+    <div class="nf-mags">
+      <img class="on-light" src="img/mags.webp" alt="Mags, the magpie, with a gold wedge" width="797" height="494" decoding="async">
+      <img class="on-dark" src="img/mags-light.webp" alt="" width="797" height="494" decoding="async">
+    </div>
+    <span class="eb">Error 404</span>
+    <h1 class="disp d-xl">Lost it right</h1>
+    <p class="body lede">This page is not where you left it, and we cannot find it either. Nothing has gone wrong with your order. Just this link.</p>
     <div class="nf-cta">
-      <a class="btn btn-foil sweep" href="{{link:c/clubs}}"><span>The clubs</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line" href="{{link:search}}"><span>Search</span></a>
+      <a class="btn" href="{{link:c/clubs}}"><span>The clubs</span><span class="ar">&rarr;</span></a>
+      <a class="btn-line btn" href="{{link:search}}"><span>Search</span></a>
     </div>
-
-    <div class="nf-links">
-      <a href="{{link:home}}">Home</a>
-      <a href="{{link:c/polos}}">Polos</a>
-      <a href="{{link:c/hats}}">Hats</a>
-      <a href="{{link:c/gear}}">Gear</a>
-      <a href="{{link:contact}}">Contact</a>
+    <div class="links-row nf-links">
+      <a class="link-pill" href="{{link:home}}">Home</a>
+      <a class="link-pill" href="{{link:c/polos}}">Polos</a>
+      <a class="link-pill" href="{{link:c/hats}}">Hats</a>
+      <a class="link-pill" href="{{link:c/gear}}">Gear</a>
+      <a class="link-pill" href="{{link:contact}}">Contact</a>
     </div>
-
-    <p class="aside nf-aside">It's better to be lucky.</p>
+    <p class="who">Mags checked. Twice.</p>
   </div>
 </section>

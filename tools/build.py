@@ -26,6 +26,7 @@ import io
 import json
 import os
 import re
+import time
 import sys
 
 import sitemap
@@ -34,6 +35,12 @@ import template
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
 SRC = os.path.join(ROOT, "_src")
+
+# Design system v2 (palette D, 2026-09-12) is the only system. The v1 files
+# were deleted the day the last template moved; git has them.
+# Templates that render a CLUB (for the reviews roll-up and the all-clubs
+# page). "wedge" is the v2 club template; "club" is the v1 one.
+CLUB_TPLS = ("club", "wedge")
 
 SHELL = """<!DOCTYPE html>
 <html lang="en">
@@ -317,6 +324,11 @@ def product_copy(prod):
         want = prod["default"].split("|")[i]
         labels += [v["label"] for v in ax["values"] if v["k"] == want]
     ctx["defaultVariant"] = " &middot; ".join(labels)
+    # v2 templates render an axis row only when the product has the axis
+    keys = [ax["key"] for ax in prod["options"]]
+    ctx["axisHand"] = "hand" in keys
+    ctx["axisLoft"] = "loftgrind" in keys or "loft" in keys
+    ctx["axisSize"] = "size" in keys
 
     # gallery: [path, alt] pairs -> objects, with `first` driving data-on and
     # the eager load on slide one
@@ -427,7 +439,7 @@ def product_copy(prod):
     ctx["REEL_JSON"] = json.dumps(copy.get("reel", []), ensure_ascii=False)
     ctx["UPSELL_JSON"] = json.dumps(copy.get("upsell", []), ensure_ascii=False)
 
-    rpath = os.path.join(SRC, "data", "reviews", "%s.json" % prod["id"])
+    rpath = os.path.join(SRC, "data", "reviews", "%s.json" % prod.get("reviewsFrom", prod["id"]))
     if os.path.exists(rpath):
         rev = json.load(open(rpath, encoding="utf8"))
         rev = {k: v for k, v in rev.items() if not k.startswith("_")}
@@ -437,6 +449,31 @@ def product_copy(prod):
         rev = {"total": 0, "totals": {}, "sample": []}
     ctx["REVIEWS_JSON"] = json.dumps(rev, ensure_ascii=False)
     ctx["reviewSample"] = bool(rev.get("sample"))
+
+    # ---- v2: the three review cards, VERBATIM from the pull -----------------
+    # The copy file names a reviewer and a title; the text comes from the
+    # Judge.me pull, so a card can never carry a quote the customer did not
+    # write. `para: 1` shows the first paragraph of a long review only.
+    quotes = []
+    for want in copy.get("quotes", []):
+        hit = [r for r in rev.get("sample", [])
+               if r.get("n") == want["n"] and r.get("t") == want["t"]]
+        if not hit:
+            sys.exit("%s: quote by %r titled %r is not in the review pull"
+                     % (prod["id"], want["n"], want["t"]))
+        q = hit[0]["q"].strip()
+        if want.get("para"):
+            q = q.split("\n")[want["para"] - 1].strip()
+        quotes.append({"n": hit[0]["n"], "t": hit[0]["t"], "q": q, "first": not quotes})
+    ctx["quotes"] = quotes
+
+    # ---- v2: "more from the bag" tiles, facts from the catalogue ----------
+    more = []
+    for row in copy.get("more", []):
+        p = cross_sell(row["id"], "%s more" % prod["id"])
+        more.append({"nm": p["title"], "pr": p["priceLabel"], "img": p["img"],
+                     "href": "{{link:p/%s}}" % p["id"], "hook": row.get("hook", "")})
+    ctx["more"] = more
 
     # the comparison module names its sibling products, so the tiles it shows
     # resolve through the catalogue the same way cross-sells do
@@ -480,6 +517,7 @@ def collection_tile(pid, tag=None):
         "img": p["img"], "priceLabel": p["priceLabel"],
         "inStock": p["inStock"], "soldOut": not p["inStock"],
         "href": "{{link:p/%s}}" % pid, "tag": tag,
+        "hook": p.get("hook", ""),
     }
     # Same rule as the PLP and the cross-sell tiles: a real Add only where
     # there is genuinely nothing to choose. Every club has at least a hand.
@@ -542,7 +580,7 @@ def hand_rows():
     Availability is `avail`, never `qty > 0` (§10c)."""
     rows = []
     for p in sitemap.PRODUCTS:
-        if not p["built"] or p["template"] != "club":
+        if not p["built"] or p["template"] not in CLUB_TPLS:
             continue
         axes = p["options"]
         hand = next((ax for ax in axes if ax["key"] == "hand"), None)
@@ -785,12 +823,12 @@ def reviews_copy():
             sample.append(row)
 
     catalogue = sum(p["rating"]["count"] for p in sitemap.PRODUCTS
-                    if p["template"] == "club" and p.get("rating"))
+                    if p["template"] in CLUB_TPLS and p.get("rating"))
     clubs_wide = catalogue + merged
     elsewhere = clubs_wide - pulled
     # the same 39 reached the other way: a rated club with no pull in the repo
     unpulled = [p for p in sitemap.PRODUCTS
-                if p["template"] == "club" and p.get("rating")
+                if p["template"] in CLUB_TPLS and p.get("rating")
                 and not os.path.exists(os.path.join(SRC, "data", "reviews",
                                                     "%s.json" % p["id"]))]
     check = sum(p["rating"]["count"] for p in unpulled)
@@ -1112,7 +1150,7 @@ def build(slug, report):
         page.extra_required += ['id="amb-apply"', 'function brApplyIntercept']
     # `close` exists on other templates too (reviews); only brand renders br-fit
     if ctx.get("close") and src == "brand":
-        page.extra_required.append('<section class="br-fit"')
+        page.extra_required.append('<section class="br-fit band">')
 
     symbols = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf8").read().rstrip("\n")
     host = read("partials/symbols-host.html")
@@ -1129,8 +1167,9 @@ def build(slug, report):
     # (gallery, buy box, compare card, quick add, accordion, form fields).
     # Collision check 2026-08-30: .qadd identical in clp/plp; rest page-scoped.
     if src == "styleguide":
-        for extra in ("pdp.css", "page-clp.css", "page-plp.css", "page-support.css"):
+        for extra in ("pdp.css", "page-clp.css"):
             css += "\n\n" + read(extra)
+    # pdp.css is the shared product layer (the fold, the pickers, the grids).
     if page.kind == "product":
         css += "\n\n" + read("pdp.css")
     css += "\n\n" + read("page-%s.css" % src)
@@ -1154,7 +1193,12 @@ def build(slug, report):
         # file — pdp.js only mounts it. Must load BEFORE pdp.js, which calls
         # LG_REVIEWS.mount() at parse time.
         js += read("reviews.js") + "\n\n"
-        js += template.render(read("pdp.js"), ctx, "pdp.js") + "\n\n"
+        # pdp.js is the v1 buy box. v2 templates paint their own from the same
+        # LG_VARIANTS engine, so the axis rules stay one implementation.
+        # the club template paints its own buy box (page-club.js); apparel
+        # and gear use the N-axis one in pdp.js
+        if src != "club":
+            js += template.render(read("pdp.js"), ctx, "pdp.js") + "\n\n"
     # Collection pages get the variant engine too: the in-card Quick add picker
     # runs the same cascading-availability rules as the buy box, and a second
     # implementation of "is this combination sellable" is the last thing this
@@ -1200,42 +1244,30 @@ def build(slug, report):
 # enough that its absence is hard to see belongs here.
 REQUIRED = {
     "home": [
-        ".msnap{",                       # mobile card rails
-        "@media (max-width:980px)",
-        ".hdr{", ".cd-panel{", ".mq{",
-        # the club finder: fixed columns (auto-fit blew a one-card panel up to
-        # full width) and cards that are actually links
-        ".fnd-grid{display:grid;grid-template-columns:repeat(3,1fr)",
-        '<a class="fnd-c"',
+        ".msnap{", "@media (max-width:980px)",
+        ".hdr{", ".cd-panel{", ".tick{", ".news{", ".mhero{",
+        ".fnd-grid{", '<a class="pt2', "function selectTab",
     ],
     "club": [
-        ".msnap{",
-        ".atc-bar--on{transform:translateY(0)}",  # mobile sticky add-to-cart, fallback-only since 2026-08-18
-        ".bx-four{grid-template-columns:repeat(2,1fr)",
-        ".pd-top{grid-template-columns:1fr",
-        ".gal-thumbs{grid-template-columns:repeat(5,1fr)}",
-        ".spec-tab{flex:1",
-        ".md-panel{",                    # policy modals
-        "@media (max-width:760px)",
-        'id="pickers"',                  # N-axis buy box mounts here
-        # JS, not CSS. Splitting the shared PDP behaviour into pdp.js briefly
-        # dropped it from the bundle entirely: the page still built, --check
-        # still said "identical" (it compares output to output), and only the
-        # 30KB size drop gave it away. Anything whose absence leaves a page
-        # that looks right and does nothing belongs here.
-        "function paintPickers",         # pdp.js — the buy box
-        # reviews.js, uniquely. It moved out of pdp.js so 32-reviews.html can
-        # run the same widget, and a missing bundle leaves the histogram, the
-        # star filter and the whole review list silently empty.
-        "var LG_REVIEWS = (function(){",
-        # NOT "LG_VARIANTS": core.js's quick-add now names it too, so the
-        # marker survived emptying variants.js entirely. A smoke marker has to
-        # be a string that exists in exactly ONE source file (§12d again).
-        "function offered(pd, sel, i, val)",   # variants.js — the axis engine
-        "function paintLoftFinder",      # page-club.js — the wedge ladder
+        # v2 (palette D). Each of these is a thing the page looks fine
+        # without and does nothing: the buy box, the multi-variant add, the
+        # sticky bar, the world switch, the review widget, the labelled slots.
+        ".lg9{", ".set{", ".stickybar{", ".pdp{",
+        "data-atc", "data-sticky",
+        "function renderBuy",            # page-club.js - the buy box
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely
+        "var LG_REVIEWS = (function(){",       # reviews.js, uniquely
+        'id="jm-list"', ".jm-f{",
+        ".mood{", ".slot{",
+        ".hdr{", ".cd-panel{", ".md-panel{", ".tick{", ".news{",
+        "@media (max-width:900px)", "@media (max-width:620px)",
     ],
     # The comparison page. Its two-stack grid IS the argument; if that rule
     # goes missing the page still builds and reads as two unrelated lists.
+    # The v2 wedge page (palette D). Each of these is a thing the page looks
+    # fine without and does nothing: the nine-chip loft grid and the set
+    # builder (the buy box), the multi-variant add, the sticky bar, the mood
+    # switch, the K/S spec switch, the review widget, the labelled slots.
     "compare": [
         # the two load-bearing rules: the tinted Lucky column and the marker on
         # the rows whose cells read identically. Lose either and the table is
@@ -1247,102 +1279,65 @@ REQUIRED = {
         "@media (max-width:760px)",
     ],
     "apparel": [
-        'id="pickers"', "function paintPickers",
-        "function offered(pd, sel, i, val)",   # variants.js, uniquely
-        ".sibs{",                        # the colourway strip — the range dies without it
-        # the size guide is a modal now, not a section. Three parts, and the
-        # page looks fine without any of them: the trigger, the panel and the
-        # unit toggle that makes two tables into one control.
-        # the trigger wiring and the toggle styles, which every apparel page
-        # carries. The modal ITSELF is per-page — see smoke()'s `extra`.
-        "md: 'md-size'", ".sg-unit{",
-        # page-apparel.js. Without it the modal still renders and the unit
-        # radios still look like controls — they just do nothing, and the cm
-        # table is never reachable. Marker chosen because it exists in that
-        # file and nowhere else (§21i).
-        "querySelector('.sg-units')",
-        "@media (max-width:620px)",
+        'id="pickers"', "function paintPickers",   # pdp.js - the N-axis buy box
+        "function offered(pd, sel, i, val)",       # variants.js, uniquely
+        ".pdp{", ".sw{", ".atc-bar--on{", ".tiles.six{",
+        "md: 'md-size'", ".sg-tbl",
+        "querySelector('.sg-units')",             # page-apparel.js - the unit toggle
+        ".hdr{", ".cd-panel{", ".md-panel{", ".tick{", ".news{",
+        "@media (max-width:900px)", "@media (max-width:620px)",
     ],
     "gear": [
         'id="pickers"', "function paintPickers", "LG_VARIANTS",
-        ".pd-top{grid-template-columns:1fr",
-        "@media (max-width:760px)",
+        ".pdp{", ".facts{", ".atc-bar--on{", ".kv-facts{",
+        ".hdr{", ".cd-panel{", ".md-panel{", ".tick{", ".news{",
+        "@media (max-width:900px)", "@media (max-width:620px)",
     ],
     "plp": [
-        'id="plp-grid"', 'id="plp-empty"',   # grid and its empty state
-        ".plp-grid{grid-template-columns:repeat(2,1fr);gap:14px}",  # phone grid
-        ".plp-facets:empty{display:none}",   # single-family collections
-        ".chip{",                            # promoted to core; PLP depends on it
+        'id="plp-grid"', 'id="plp-empty"',
+        ".plp-grid{grid-template-columns:repeat(2,1fr);gap:14px}",
+        ".plp-facets:empty{display:none}",
+        ".chip{", ".ptile{", ".qadd{",
         "@media (max-width:620px)",
-        # the in-card Quick add: engine, data and panel. Without any one of the
-        # three the pill still renders and simply does nothing when clicked.
         "function offered(pd, sel, i, val)",   # variants.js, uniquely
         "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
     ],
     "search": [
-        'id="se-grid"', 'id="se-empty"', 'id="se-start"',   # results, empty, pre-query
-        "function offered(pd, sel, i, val)",   # variants.js, uniquely — quick add
+        'id="se-grid"', 'id="se-empty"', 'id="se-start"',
+        "function offered(pd, sel, i, val)",   # variants.js, uniquely
         "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
-        ".ptile{",                             # the tile is core's, not a copy
+        ".ptile{", ".se-form{",
         "@media (max-width:620px)",
     ],
     "404": [
-        ".nf-in{", '<section class="nf"',
+        ".nf-in{", '<section class="nf"', ".nf-mags{",
         "@media (max-width:620px)",
     ],
     "reviews": [
         "var LG_REVIEWS = (function(){",   # reviews.js, uniquely
-        "LG_REVIEWS.mount(",               # page-reviews.js — the mount call
+        "LG_REVIEWS.mount(",               # page-reviews.js - the mount call
         'id="jm-prods"',                   # the club filter, this page only
-        ".jm-p{", ".jm{", ".jr{",          # the widget, promoted to core
-        '<section class="rv-fit"',
+        ".jm-p{", ".jm{", ".jr{", ".figs{",
+        '<section class="band rv-fit"',
         "@media (max-width:620px)",
     ],
     "brand": [
-        # the brand field CSS ships with the template; the SECTION is per-page
-        # now (extra_required) — Our Story dropped its close 2026-08-25,
-        # Takomo-style, while the Trybe keeps one
-        ".br-fit{",
-        # the trio popups: cards that look fine and open nothing are exactly
-        # the silent failure smoke() exists for
-        "function brDialogs", ".br-dlg{",
-        ".ph{",                          # the labelled placeholder — core
-        ".br-row-in{display:grid",       # the alternating photo/copy rows
-        ".tbd{",
-        # .msnap is what stops the roster and the row stack becoming six
-        # screens on a phone; it lives in core and is a layout-mode switch
-        ".msnap{display:grid",
-        "@media (max-width:980px)",
-        "@media (max-width:620px)",
+        ".br-fit{", "function brDialogs", ".br-dlg{",
+        ".slot{", ".row-in{", ".tbd{", ".msnap{",
+        "@media (max-width:980px)", "@media (max-width:620px)",
     ],
     "support": [
-        # The brand field, once per page and never against the ink footer —
-        # the cream sibling band below it is what keeps two dark bands apart.
-        '<section class="sup-still"', ".sup-still{",
-        ".sup-quick{",                   # the answer above the fold
-        ".sup-rows{",                    # the key/value blocks the policy lives in
-        # The FAQ is <details>, so it opens with no JS. This is the one thing
-        # native <details> cannot do, and without it a link into a closed
-        # answer lands on a collapsed row — a page that looks right and does
-        # nothing, which is what this list is for.
+        '<section class="band sup-still"', ".sup-still{",
+        ".figs{", ".sup-rows{",
         "function supOpenFromHash",      # page-support.js, uniquely
-        ".sup-q summary{",
-        # .tbd is the whole reason an unconfirmed policy detail is visible as a
-        # gap rather than as prose. It lives in core, so this also proves core
-        # is bundled ahead of the page stylesheet.
-        ".tbd{",
+        ".sup-q summary{", ".tbd{",
         "@media (max-width:620px)",
     ],
     "clp": [
-        # The grid is server-rendered here, so its absence is a blank page
-        # rather than a page that looks right and does nothing. The bars are
-        # the part with no analogue anywhere else in the site.
         '<section class="sec clp-bands"',
-        ".clp-seg{",                         # the segmented spec bar
-        ".clp-seg i[data-on]{",              # ...and its lit segment
-        ".clp-tag{",                         # the character chip under the price
-        ".clp-fit{",                         # the fitting CTA, on the brand field
-        ".clp-grid{grid-template-columns:repeat(2,1fr)",   # phone grid
+        ".clp-seg{", ".clp-seg i[data-on]{", ".clp-tag{", ".clp-fit{",
+        ".clp-grid{grid-template-columns:repeat(2,1fr)",
+        ".ptile{", ".qadd{",
         "@media (max-width:620px)",
         "function offered(pd, sel, i, val)",   # variants.js, uniquely
         "LG_QUICKADD", ".qa-chip{", "function paint(panel)",
@@ -1441,8 +1436,18 @@ def main():
                 rc = 1
             continue
 
-        with io.open(path, "w", encoding="utf8", newline="\n") as f:
-            f.write(html)
+        # Another process on this machine (a sandbox or file watcher) briefly
+        # holds a page that was just rewritten; the open fails with EINVAL and
+        # succeeds a moment later. Retry rather than abort the whole build.
+        for attempt in range(20):
+            try:
+                with io.open(path, "w", encoding="utf8", newline="\n") as f:
+                    f.write(html)
+                break
+            except OSError:
+                if attempt == 19:
+                    raise
+                time.sleep(0.5)
         print("%-22s %6.1f KB" % (page.file, len(html.encode("utf8")) / 1024.0))
 
     if report["dangling"]:

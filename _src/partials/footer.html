@@ -1,49 +1,56 @@
-<!-- ============ FOOTER ============ -->
+<!-- ============ FOOTER (design system v2) ============
+     Email capture first, then four columns, two hairlines (rev 20). The form
+     has no backend in this prototype: core.js swaps it for a thank-you line.
+     The developer wires it to Klaviyo. ============ -->
 <footer class="ftr">
-  <div class="wrap">
-    <div class="ftr-in">
-      <div>
-        <span class="logo logo--stack logo--cream"><svg><use href="#lg-luckygolf"/></svg></span>
-        <p class="tag">Clubs that perform at the level of the big brands, at prices set by people who chose not to pass the markup along.</p>
-      </div>
-      <div>
-        <h3>Clubs</h3>
-        <ul>
-          <li><a href="{{link:p/lgw01-gold}}">Carver 01 Gold</a></li>
-          <li><a href="{{link:p/lgw01-black}}">Carver 01 Black</a></li>
-          <li><a href="{{link:p/lgp01-gold}}">Tracer LGP01 Blade</a></li>
-          <li><a href="{{link:p/lgp02-gold}}">Tracer LGP02 Mallet</a></li>
-          <li><a href="{{link:p/lgh01}}">Stryker LGH01</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Apparel</h3>
-        <ul>
-          <li><a href="{{link:c/polos}}">The Classic Polo</a></li>
-          <li><a href="{{link:c/polos}}">The Blade Polo</a></li>
-          <li><a href="{{link:c/hats}}">Hats</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul>
-          <li><a href="{{link:story}}">Our Story</a></li>
-          <li><a href="{{link:trybe}}">Ambassador Program</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Support</h3>
-        <ul>
-          <li><a href="{{link:returns}}">Refund Policy</a></li>
-          <li><a href="{{link:shipping}}">Shipping</a></li>
-          <li><a href="{{link:contact}}">Contact</a></li>
-          <li><a href="{{link:faq}}">FAQ</a></li>
-        </ul>
-      </div>
+  <div class="wrap news">
+    <div>
+      <span class="lab">First look</span>
+      <p>New lofts, restocks and the odd bad idea. One email a month, from a person.</p>
     </div>
-    <div class="ftr-btm">
-      <span class="mono">© 2026 Lucky Golf</span>
-      <span class="mono">It's better to be lucky.</span>
+    <form data-news novalidate>
+      <label class="sr" for="news-email">Email</label>
+      <input id="news-email" type="email" name="email" placeholder="you@somewhere.com" autocomplete="email" required>
+      <button class="btn" type="submit">Sign me up</button>
+    </form>
+  </div>
+  <div class="wrap ftr-in">
+    <div>
+      <svg class="word" viewBox="138.34 206.66 565.09 181.17" role="img" aria-label="Lucky Golf"><use href="#lg-luckygolf"/></svg>
+      <p>Clubs that perform at the level of the big names, at prices set by people who chose not to pass the markup along.</p>
     </div>
+    <div>
+      <span class="lab">Clubs</span>
+      <ul>
+        <li><a href="{{link:p/lgw01-gold}}">Carver 01 Gold</a></li>
+        <li><a href="{{link:p/lgw01-black}}">Carver 01 Black</a></li>
+        <li><a href="{{link:p/lgp01-gold}}">Tracer LGP01 Blade</a></li>
+        <li><a href="{{link:p/lgp02-gold}}">Tracer LGP02 Mallet</a></li>
+        <li><a href="{{link:p/lgh01}}">Stryker LGH01</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="lab">Apparel</span>
+      <ul>
+        <li><a href="{{link:c/polos}}">The Classic Polo</a></li>
+        <li><a href="{{link:c/polos}}">The Blade Polo</a></li>
+        <li><a href="{{link:c/hats}}">Hats</a></li>
+        <li><a href="{{link:c/gear}}">Gear</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="lab">Support</span>
+      <ul>
+        <li><a href="{{link:returns}}">Sixty-day returns</a></li>
+        <li><a href="{{link:shipping}}">Shipping</a></li>
+        <li><a href="{{link:contact}}">Contact</a></li>
+        <li><a href="{{link:faq}}">FAQ</a></li>
+        <li><a href="{{link:story}}">Our Story</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ftr-btm">
+    <span>&copy; 2026 Lucky Golf</span>
+    <span><b>It's better to be lucky.</b></span>
   </div>
 </footer>

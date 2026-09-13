@@ -1,10 +1,15 @@
 <!-- ==========================================================================
-     CLUB PDP TEMPLATE
-     Renders any wedge, putter, hybrid or driver from products.json plus the
-     editorial in _src/data/copy/<id>.json. Nothing here names a product.
+     CLUB PDP · design system v2 · built from the look board (rev 23, decided
+     2026-09-12). Renders any wedge, putter or hybrid from products.json plus
+     _src/data/copy/<id>.json. Nothing here names a product.
 
-     {{#x}}…{{/x}} repeats a list or renders once for a truthy value;
-     {{^x}}…{{/x}} is the inverse. See tools/template.py.
+     Page order (the board's page map):
+       fold (tile gallery + buy box) → film (split) → the help cards (grinds
+       on a wedge, blade-or-mallet on a putter, what-it-replaces on the
+       hybrid) → the finishes / the world (mood hero + rail) → specs →
+       reviews → in the wild (band) → more from the bag → sign-off → footer.
+       Sticky add-to-bag on phones.
+     Every photo slot with no photograph is a LABELLED SLOT, never a fake.
      ========================================================================== -->
 
 <nav class="crumb wrap" aria-label="Breadcrumb">
@@ -16,532 +21,312 @@
   </ol>
 </nav>
 
-<!-- ============ THE FOLD — gallery + buy box ============ -->
+<!-- ============ THE FOLD ============ -->
 <div class="wrap">
-<div class="pd-top">
+<div class="pdp">
 
-  <!-- ---- gallery ---- -->
-  <div class="pd-gal">
-    <div class="gal-stage" id="gal">
-      <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-      {{#galleryTag}}<span class="gal-tag">{{galleryTag}}</span>{{/galleryTag}}
-{{#gallery}}      <div class="gal-slide"{{#first}} data-on{{/first}}><img src="{{src}}" alt="{{alt}}"{{^first}} loading="lazy"{{/first}} width="1000" height="1000"></div>
-{{/gallery}}
-      <button class="gal-arw" data-p type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="gal-arw" data-n type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-      <span class="gal-count"><span id="gal-i">1</span> / {{galleryCount}}</span>
-    </div>
-    <div class="gal-thumbs" aria-label="Product images"></div>
+  <div class="galwrap">
+    <div class="gal" data-gal aria-label="Product images">
+{{#tiles}}{{#slot}}      <div class="tile slot" data-md-open="md-shot" data-title="{{title}}" data-brief="{{slot}}"><div><small>Shot needed &middot; {{title}}</small><span>{{slot}}</span></div></div>
+{{/slot}}{{^slot}}      <figure class="tile{{#cut}} cut{{/cut}}" data-zoom="{{src}}"><img src="{{src}}" alt="{{alt}}" width="900" height="900"{{#lazy}} loading="lazy"{{/lazy}} decoding="async"{{#pos}} style="object-position:{{pos}}"{{/pos}}>{{#tag}}<span class="tag">{{tag}}</span>{{/tag}}</figure>
+{{/slot}}{{/tiles}}    </div>
+    <div class="dots" data-dots aria-hidden="true">{{#tiles}}<i></i>{{/tiles}}</div>
   </div>
 
-  <!-- ---- buy box ---- -->
-  <div class="pd-buy">
-    <p class="bx-eye">{{eyebrow}}</p>
-    <!-- no .foil here: the ramp peaks at --gold-hi, which is under 2:1 on white.
-         Foil only ever runs on ink or the brand field. -->
-    <h1 class="disp d-l pd-h1">{{title}}</h1>
-
+  <div class="buy" id="buy">
+    <span class="eb">{{buyEyebrow}}</span>
+    <h1 class="disp d-l">{{h1}} <em class="foil">{{h1foil}}</em></h1>
     {{#rating}}
-    <div class="bx-rate">
-      <span class="stars" role="img" aria-label="Rated {{avg}} out of 5">
-        <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
-      </span>
-      <a href="#reviews">{{avg}} · {{count}} reviews</a>
-    </div>
+    <div class="rvl"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href="#reviews">{{#quoteLine}}&ldquo;{{quoteLine}}&rdquo; {{quoteWho}} &middot; {{/quoteLine}}{{count}} reviews at {{avg}}</a></div>
     {{/rating}}
+    <div class="price" data-price>{{priceLabel}}</div>
+    <p class="body">{{buyLine}}</p>
 
-    <!-- Price only. The note beside it ("Right or left hand", "Same price,
-         every loft") was repeating what the pickers below already say. -->
-    <div class="bx-price">
-      <span class="amt" id="bx-amt">{{priceLabel}}</span>
-    </div>
-
-    <p class="bx-body">{{buyBody}}</p>
-
-    <!-- The four construction chips and the pull quote used to sit HERE,
-         between the price and the pickers. Cole (2026-08-17): get to Add to
-         cart quicker — Takomo puts nothing between price and pickers. The
-         chips are gone (the description section carries construction) and the
-         pull quote moved BELOW the cart button. -->
-
-
-    <!-- ---- variant pickers ----
-         Generated from the product record's option axes, so the same markup
-         serves 0, 1 and 2 axes (GAMEPLAN 2a) and will serve the third when the
-         KBS shaft upgrade lands. Availability is real Shopify state.
-
-         A Shopify theme would render these server-side in Liquid; here they
-         are painted by page-club.js, which is why the container is empty. -->
-    <!-- Finish is two Shopify products, not a variant axis, so this is a row
-         of links — the same device the polo colorways use. It sits ABOVE the
-         pickers because finish is the first decision: which wedge, then which
-         loft and grind. -->
     {{#finishes}}
-    <div class="opt">
-      <div class="opt-hd">
-        <span class="lbl">{{label}}</span>
-        <span class="val">{{current}}</span>
-      </div>
-      <div class="sw-row" role="group" aria-label="{{label}}">
-{{#items}}        <a class="sw{{#isThis}} sw--on{{/isThis}}{{#soldOut}} sw--out{{/soldOut}}" href="{{href}}"{{#isThis}} aria-current="page"{{/isThis}} aria-label="{{name}}, {{priceLabel}}{{#soldOut}}, sold out{{/soldOut}}"><img src="{{img}}" alt="" loading="lazy" width="90" height="90"></a>
-{{/items}}      </div>
-    </div>
+    <div class="row2"><span class="lab">{{label}}</span></div>
+    <div class="fin" data-fin>
+{{#items}}      <a class="f{{#isThis}} on{{/isThis}}{{#soldOut}} so{{/soldOut}}" href="{{href}}"{{#isThis}} aria-current="page"{{/isThis}}><i class="sw-{{name}}"></i>{{name}} &middot; {{priceLabel}}</a>
+{{/items}}    </div>
     {{/finishes}}
 
-    <div id="pickers"></div>
+    {{#axisHand}}
+    <div class="row2"><span class="lab">Hand</span><span class="lab m" data-handnote></span></div>
+    <div class="fin" data-hand role="group" aria-label="Hand"></div>
+    {{/axisHand}}
 
-    <!-- No quantity stepper on a club (Cole, 2026-08-17): nobody buys two of
-         the same loft-and-grind — they add one and pick the next loft. pdp.js
-         already defaults a missing #qty to 1, so removing the markup is safe.
-         Apparel keeps its stepper. -->
-    <div class="atc-row">
-      <button class="btn btn-foil sweep" id="atc" type="button"><span>Add to cart &middot; {{priceLabel}}</span></button>
+    {{#axisLoft}}
+    <div class="row2"><span class="lab">Loft and grind <span class="m" data-pickn></span></span><a href="{{link:none}}" data-md-open="md-helper">Not sure which loft or grind? &rarr;</a></div>
+    <div class="lg9" data-lofts role="group" aria-label="Loft and grind"></div>
+    {{/axisLoft}}
+    <div class="stocknote" data-stocknote hidden></div>
+
+    {{#axisLoft}}
+    <div class="row2"><span class="lab">How many</span><span class="lab m" data-sethint>One wedge</span></div>
+    <div class="set" data-set role="group" aria-label="How many wedges">
+      <button class="s on" type="button" data-n="1" aria-pressed="true"><b>1 wedge</b><span>This one</span></button>
+      <button class="s" type="button" data-n="2" aria-pressed="false"><span class="fl">Most golfers carry two</span><b>2 wedges</b><span>Gap and sand</span></button>
+      <button class="s" type="button" data-n="3" aria-pressed="false"><b>3 wedges</b><span>Gap, sand, lob</span></button>
     </div>
+    {{/axisLoft}}
 
-    <p class="bx-stock" id="stock"><span class="dot"></span><span id="stock-t">In stock · ships in 1&ndash;2 business days</span></p>
-    <!-- Takomo's device: plain underlined links under the button, opening the
-         policy modals. This replaced a three-item accordion (What you get /
-         Shipping & returns / care). Cole 2026-08-17: what-you-get is obvious
-         for a club, care over-promised the finish, and the returns line said
-         "take it to the range, put it in a bunker" — a POLICY VIOLATION; the
-         real policy is one wedge tested on a turf mat, brand-new condition. -->
-    <p class="bx-links"><a href="{{link:none}}" data-md-open="md-returns">Shipping &amp; returns</a> &middot; <a href="{{link:none}}" data-md-open="md-delivery">Estimate delivery time</a></p>
+    <div class="cta"><button class="btn" type="button" id="atc" data-atc>Add to bag &middot; {{priceLabel}}</button></div>
+    <div class="trust"><span data-stockline><b>In stock</b> &middot; ships in 1 to 2 days</span><a href="{{link:none}}" data-md-open="md-returns">Sixty days to decide</a><a href="{{link:none}}" data-md-open="md-delivery">Estimate delivery</a></div>
 
-    <div class="bx-terms">
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Thousands of satisfied golfers</span>
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Sixty-day return window</span>
-      <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Ships in 1&ndash;2 business days</span>
-    </div>
-
-    {{#pullQuote}}
-    <!-- A real review, verbatim from Judge.me — below the cart button now, so
-         the path to Add to cart is price, pickers, button. -->
-    <figure class="pq">
-      <span class="stars" role="img" aria-label="Five stars">
-        <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
-      </span>
-      <p class="pq-t">{{title}}</p>
-      <blockquote class="pq-q">&ldquo;{{quote}}&rdquo;</blockquote>
-      <figcaption class="pq-w">{{who}}</figcaption>
-    </figure>
-    {{/pullQuote}}
+    <div class="acc" data-acc>
+{{#accordion}}      <div><button class="acc-h" type="button" aria-expanded="false">{{h}}<span aria-hidden="true">+</span></button><div class="acc-b" hidden>{{b}}</div></div>
+{{/accordion}}    </div>
   </div>
 
 </div>
 </div>
 
-<!-- ============ MARQUEE — brand field #2 ============ -->
-<div class="mq" aria-label="Lucky Golf, at a glance">
-  <!-- Each set runs the list TWICE: the track animates by one set width, so a
-       set narrower than the viewport shows empty band at the loop point (the
-       homepage measured a 420px gap at 1920 before the same fix). -->
-  <div class="mq-track"><div class="mq-set" aria-hidden="true">{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}</div><div class="mq-set" aria-hidden="true">{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}{{#marquee}}<span>{{.}}</span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span>{{/marquee}}</div></div>
-</div>
-
-<!-- ============ OTHERS ALSO VIEWED — Takomo puts this straight under the fold ============ -->
-<section class="sec-tight band-cream">
-  <div class="wrap">
-    <h2 class="disp d-s oav-hd">Others also viewed</h2>
-    <div class="oav msnap" id="oav"></div>
+<!-- ============ THE FILM · split: text left, film right ============ -->
+<section class="film" id="film">
+  <div class="wrap film-in">
+    <div>
+      <span class="eb">Product description</span>
+      <h2 class="disp d-s">{{clubHeadline}}</h2>
+{{#clubParas}}      <p class="body">{{.}}</p>
+{{/clubParas}}    </div>
+    {{#videoSrc}}<video class="vid" controls preload="none" playsinline poster="{{videoPoster}}" width="1920" height="1080"><source src="{{videoSrc}}" type="video/mp4"></video>{{/videoSrc}}
+    {{^videoSrc}}<div class="vid slot" data-md-open="md-shot" data-title="The film" data-brief="{{videoBrief}}"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed &middot; 16:9 &middot; 40 to 60 s</small><span>{{videoBrief}}</span></div></div>{{/videoSrc}}
   </div>
 </section>
 
-<!-- ============ THE CLUB — description + video, Takomo's second move ============ -->
-<section class="sec" id="club">
+<!-- ============ THE HELP CARDS · grinds / blade or mallet / what it replaces ============ -->
+{{#help}}
+<section class="grinds" id="grinds">
   <div class="wrap">
-    <span class="eyebrow">Product description</span>
-    <h2 class="disp d-m" style="max-width:24ch">{{clubHeadline}}</h2>
-
-    <div class="club-grid">
-      <div class="club-copy">
-{{#clubParas}}        <p class="body">{{.}}</p>
-{{/clubParas}}
-    <!-- Labelled sub-blocks between the intro and the bullets: Takomo's
-         "V GRIND: VERSATILITY / F GRIND: FULL" device. The markup is generic,
-         so `clubGrinds` carries whatever the two beats are that decide the
-         purchase — the grinds on a wedge, the neck and the grip on a putter.
-         A product with nothing to say here renders nothing. -->
-{{#clubGrinds}}        <div class="club-grind"><b>{{k}}</b><p>{{v}}</p></div>
-{{/clubGrinds}}
-    <!-- Takomo's bulleted summary. Facts only; the unpublished row is marked. -->
-        <ul class="club-specs">
-{{#clubSpecs}}          <li><b>{{k}}</b><span>{{#tbd}}<span class="tbd tbd--light">Needs spec</span>{{/tbd}}{{^tbd}}{{v}}{{/tbd}}</span></li>
-{{/clubSpecs}}        </ul>
-      </div>
-
-      <!-- Video slot. No footage exists yet, so this is a labelled brief rather
-           than a faked thumbnail — same contract as the homepage photo gaps. -->
-      <div class="club-media">
-        {{#videoSrc}}<video class="club-video" controls preload="none" playsinline
-               poster="{{videoPoster}}" width="1920" height="1080">
-          <source src="{{videoSrc}}" type="video/mp4">
-        </video>{{/videoSrc}}
-        {{^videoSrc}}<div class="ph ph--video">
-          <span class="lbl">
-            <span class="mono k">Video needed</span>
-            <span class="mono">{{videoBrief}}</span>
-          </span>
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-        </div>{{/videoSrc}}
-      </div>
+    <div class="hd2 two">
+      <div><span class="eb">{{eyebrow}}</span><h2 class="disp d-m">{{headline}}</h2></div>
+      <p class="body">{{sub}}</p>
     </div>
-
+    <div class="kvs">
+{{#cards}}      <div class="kv"><span class="pill">{{pill}}</span><h3 class="disp d-xs">{{name}}</h3><p>{{body}}</p>{{#lofts}}<div class="lofts-in">{{lofts}}</div>{{/lofts}}{{#href}}<a class="lofts-in" href="{{href}}">{{cta}} &rarr;</a>{{/href}}</div>
+{{/cards}}    </div>
+    {{#note}}<p class="note">{{note}}</p>{{/note}}
   </div>
 </section>
+{{/help}}
 
-<!-- ============ SEE IT IN PLAY — highlight reel ============ -->
-<section class="sec band-ink reel" data-rail>
+<!-- ============ THE WORLD · mood hero + rail, one world per finish ============ -->
+{{#mood}}
+<section class="mood" id="finishes" data-mood="{{default}}">
   <div class="wrap">
-    <div class="reel-hd">
-      <div>
-        <span class="eyebrow on-dark">See it in play</span>
-        <h2 class="disp d-m" style="color:var(--cream)">{{reelHeadline}}</h2>
-        <p class="body on-dark" style="margin-top:16px">{{reelSub}}</p>
-      </div>
-      <div class="rail-nav">
-        <button class="rail-btn" type="button" data-rail-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button class="rail-btn" type="button" data-rail-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-      </div>
+    <div class="hd2">
+      <div><span class="eb">{{eyebrow}}</span><h2 class="disp d-m">{{headline}}</h2></div>
+      {{#multi}}<div class="seg" data-moodseg role="group" aria-label="Finish">{{#finishes}}<button type="button" data-m="{{k}}" aria-pressed="{{#first}}true{{/first}}{{^first}}false{{/first}}">{{label}}</button>{{/finishes}}</div>{{/multi}}
     </div>
-    <div class="rail" id="reel-rail"></div>
+  </div>
+  <div class="mhero">
+{{#finishes}}{{#hero}}    <div class="mh" data-mh="{{k}}"{{^first}} hidden{{/first}}>
+      <img src="{{src}}" alt="{{alt}}" width="2400" height="1000" loading="lazy" decoding="async"{{#pos}} style="object-position:{{pos}}"{{/pos}}>
+      <span class="tagf">{{tag}}</span>
+{{#points}}      <div class="pt" style="left:{{x}};top:{{y}}"><i>{{n}}</i><div><b>{{k}}</b>{{v}}</div></div>
+{{/points}}      <div class="cap"><h3 class="disp d-l">{{title}}</h3><p class="body">{{body}}</p></div>
+    </div>
+{{/hero}}{{#heroSlot}}    <div class="mh slot" data-mh="{{k}}"{{^first}} hidden{{/first}}>
+      <span class="tagf">{{tag}}</span>
+      <div class="brief"><small>Hero shot needed &middot; 21:9 &middot; at least 2400px wide</small>{{heroSlot}}</div>
+      <div class="cap"><h3 class="disp d-l">{{title}}</h3><p class="body">{{body}}</p></div>
+    </div>
+{{/heroSlot}}{{/finishes}}  </div>
+  <div class="rail-wrap">
+{{#finishes}}    <div class="rail" data-rail="{{k}}"{{^first}} hidden{{/first}}>
+{{#frames}}{{#slot}}      <figure class="fr slot {{ratio}}" data-md-open="md-shot" data-title="{{cap}}" data-brief="{{slot}}"><div><small>Shot needed</small><span>{{slot}}</span></div><figcaption>{{cap}}</figcaption></figure>
+{{/slot}}{{^slot}}      <figure class="fr {{ratio}}" data-zoom="{{src}}"><img src="{{src}}" alt="{{cap}}" loading="lazy" decoding="async"{{#pos}} style="object-position:{{pos}}"{{/pos}}><figcaption>{{cap}}</figcaption></figure>
+{{/slot}}{{/frames}}    </div>
+{{/finishes}}  </div>
+  <div class="wrap rail-foot">
+    <div class="arrows" data-railarrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
+    <p class="body">{{note}}</p>
   </div>
 </section>
+{{/mood}}
 
-<!-- ============ HELP ME CHOOSE ============
-     The one section that genuinely differs between club families (GAMEPLAN §3).
-     Wedges get the loft ladder; putters get blade-or-mallet; the hybrid gets
-     what-it-replaces; the driver gets nothing at all. -->
+<div class="wrap"><span class="groove"></span></div>
 
-{{#helpLoft}}
-<section class="sec" id="loft">
-  <div class="wrap">
-    <div class="lf-hd">
-      <span class="eyebrow">Which loft</span>
+<!-- ============ SPECS ============ -->
+{{#specs}}
+<section class="spec" id="specs">
+  <div class="wrap spec-in">
+    <div>
+      <span class="eb">{{eyebrow}}</span>
       <h2 class="disp d-m">{{headline}}</h2>
-      <p class="body" style="margin-top:18px">{{sub}}</p>
+      <p class="body">{{sub}}</p>
+      {{#hasTabs}}<div class="seg tabs" data-spectabs role="tablist">{{#tabs}}<button type="button" data-tab="{{k}}" aria-pressed="{{#first}}true{{/first}}{{^first}}false{{/first}}">{{label}}</button>{{/tabs}}</div>{{/hasTabs}}
     </div>
-
-    <div class="lf-pick">
-      <span class="lbl">My pitching wedge is</span>
-      <button class="chip" type="button" data-pw="44">44&deg;</button>
-      <button class="chip" type="button" data-pw="45">45&deg;</button>
-      <button class="chip" type="button" data-pw="46" aria-pressed="true">46&deg;</button>
-      <button class="chip" type="button" data-pw="47">47&deg;</button>
-      <button class="chip" type="button" data-pw="48">48&deg;</button>
-    </div>
-
-    <div class="lf-out">
-      <div class="lf-grid msnap" id="lf-grid"></div>
-      <div class="lf-foot">
-        <p class="aside" id="lf-note" style="color:var(--ink-70);max-width:52ch"></p>
+    <div>
+      {{#grindTables}}{{#first}}<div data-spectab="clubs">
+        <div class="tbar"><div class="seg" data-specseg role="group" aria-label="Grind">{{#grindTables}}<button type="button" data-g="{{g}}" aria-pressed="{{#first}}true{{/first}}{{^first}}false{{/first}}">{{label}}</button>{{/grindTables}}</div><span class="lab m">{{hands}}</span></div>{{/first}}{{/grindTables}}
+{{#grindTables}}        <div class="tbl" data-spec="{{g}}"{{^first}} hidden{{/first}}><table class="t2">
+          <tr class="lofts-row"><th scope="row">Loft</th>{{#cols}}<td>{{.}}</td>{{/cols}}</tr>
+{{#rows}}          <tr><td class="k">{{k}}</td>{{#v}}<td>{{.}}</td>{{/v}}</tr>
+{{/rows}}          <tr><td class="k">Head</td><td colspan="{{span}}">{{head}}</td></tr>
+        </table></div>
+{{/grindTables}}      {{#grindTables}}{{#first}}  <p class="note">{{clubNote}}</p>
+      </div>{{/first}}{{/grindTables}}
+{{#kvTables}}      <div data-spectab="{{tab}}"{{^first}} hidden{{/first}}>
+        <div class="tbl"><table class="t2">
+          <tr class="lofts-row"><th>{{#corner}}{{corner}}{{/corner}}</th>{{#cols}}<td>{{.}}</td>{{/cols}}</tr>
+{{#rows}}          <tr><td class="k">{{k}}</td>{{#v}}<td>{{.}}</td>{{/v}}</tr>
+{{/rows}}        </table></div>
+        {{#note}}<p class="note">{{note}}</p>{{/note}}
       </div>
-    </div>
+{{/kvTables}}    </div>
   </div>
 </section>
-{{/helpLoft}}
+{{/specs}}
 
-{{#helpPick}}
-<section class="sec" id="choose">
+<div class="wrap"><span class="groove"></span></div>
+
+<!-- ============ REVIEWS · Judge.me's shape ============ -->
+<section class="rv" id="reviews">
   <div class="wrap">
-    <div class="lf-hd">
-      <span class="eyebrow">{{eyebrow}}</span>
-      <h2 class="disp d-m">{{headline}}</h2>
-      <p class="body" style="margin-top:18px">{{sub}}</p>
+    <div class="rv-top">
+      <div><span class="eb">Reviews</span><h2 class="disp d-m">{{reviewHeadline}}</h2><button class="btn-line btn btn-sm" type="button" data-md-open="md-write">Write a review</button></div>
+      {{#rating}}<div class="big"><b id="jm-avg">{{avg}}</b><div class="jm-bars" id="jm-bars"></div></div>{{/rating}}
+      {{^rating}}<p class="body">No reviews on this one yet. If you own it, yours would be the first.</p>{{/rating}}
     </div>
-
-    <div class="cmp msnap">
-{{#options}}      <article class="cmp-i"{{#isThis}} data-this{{/isThis}}>
-        <!-- `rank` and `foot` default in build.py to "You're looking at this
-             one" / "The other one" and "You're on this page". The hybrid
-             overrides them: its two options are two ways of using the SAME
-             club (instead of a 3-iron, instead of a 5-wood), so neither the
-             default rank nor a link to a second product applies. -->
-        <span class="rank">{{rank}}</span>
-        <span class="cmp-nm">{{name}}</span>
-        <span class="cmp-for">{{forWho}}</span>
-        <p>{{body}}</p>
-        <dl class="cmp-facts">
-{{#facts}}          <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
-{{/facts}}        </dl>
-        {{#href}}<a class="btn btn-line btn-sm" href="{{href}}"><span>{{cta}}</span><span class="ar">&rarr;</span></a>{{/href}}
-        {{^href}}<span class="cmp-here">{{foot}}</span>{{/href}}
-      </article>
-{{/options}}    </div>
-    <p class="aside cmp-note">{{note}}</p>
-  </div>
-</section>
-{{/helpPick}}
-
-<!-- ============ THE GRINDS ============
-     Cole asked for this when the wedges collapsed into the 01: with grind as
-     an option rather than a product tier, the page has to say what a grind IS
-     and which one to pick. The buy box's "Which grind?" link lands here.
-
-     EVERY performance sentence in this block is DRAFTED and awaiting Cole's
-     sign-off — see the `_signoff` note in the copy file. The reference guide
-     publishes the grind NAMES and the per-loft bounce and nothing about what
-     either does for a player, so this is the one module on the site whose
-     claims are not traceable to a document. Do not treat it as verified. -->
-{{#grinds}}
-<section class="sec" id="grinds">
-  <div class="wrap">
-    <span class="eyebrow">{{eyebrow}}</span>
-    <h2 class="disp d-m" style="max-width:20ch">{{headline}}</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px);max-width:58ch">{{sub}}</p>
-
-    <div class="gr-grid">
-{{#options}}      <article class="gr-card"{{#isThis}} data-this{{/isThis}}>
-        <span class="gr-k">{{k}}</span>
-        <span class="gr-nm disp d-s">{{name}}</span>
-        <span class="gr-for">{{forWho}}</span>
-{{#paras}}        <p>{{.}}</p>
-{{/paras}}        <dl class="gr-facts">
-{{#facts}}          <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
-{{/facts}}        </dl>
-      </article>
-{{/options}}    </div>
-    <!-- Takomo end on a one-line summary and it is the most useful sentence in
-         the block — somebody who reads nothing else reads this. -->
-    <!-- Measured vs effective bounce. This paragraph exists because our S
-         measures MORE bounce than our K at the same loft, which looks like a
-         typo next to Vokey letters until somebody explains why it isn't. The
-         spec table's aside says the same thing so the two never disagree. -->
-    {{#measured}}<p class="gr-measured">{{measured}}</p>{{/measured}}
-    {{#short}}<p class="gr-short">{{short}}</p>{{/short}}
-    <p class="spec-note">{{note}}</p>
-  </div>
-</section>
-{{/grinds}}
-
-<!-- ============ SPECS — on a light field. On ink the groove ran behind the
-     table text at a 6px pitch and made small mono numbers hard to read. ============ -->
-<section class="sec band-cream" id="specs">
-  <div class="wrap">
-    <span class="eyebrow">{{code}} specs</span>
-    <h2 class="disp d-l" style="max-width:18ch">{{specHeadline}}</h2>
-    <p class="body" style="margin:16px 0 clamp(26px,3vw,38px)">{{specSub}}</p>
-
-    <div class="spec-tabs" role="tablist" aria-label="Specification group">
-{{#specTabs}}      <button class="spec-tab" role="tab" aria-selected="{{selected}}" aria-controls="sp{{i}}" id="st{{i}}" type="button">{{label}}</button>
-{{/specTabs}}    </div>
-
-{{#specTabs}}    <div class="spec-panel" role="tabpanel" id="sp{{i}}" aria-labelledby="st{{i}}" data-p="{{i}}"{{#hidden}} hidden{{/hidden}}>
-      <div class="spec-card">
-        <h3 class="spec-cap">{{caption}}</h3>
-        <div class="spec-wrap">{{tableHtml}}</div>
-      </div>
-      {{#aside}}<p class="spec-aside">{{aside}}</p>{{/aside}}
-    </div>
-{{/specTabs}}
-    <!-- A footnote explaining the "Needs spec" chip used to sit here, on every
-         club page. NOT ONE CLUB HAS A NEEDS-SPEC ROW — they are all in gear,
-         which has its own template — so the note explained an absence, in the
-         voice of the people who built the site rather than the brand's.
-         Removed at Cole's instruction, 2026-08-19. The chip is self-describing
-         if a club ever carries one; the honesty rule behind it is unchanged
-         and lives in HANDOFF, which is where a rule belongs. -->
-  </div>
-</section>
-
-<!-- ============ THE LOOK — the brand moment, on the brand field.
-     This slot used to hold a construction band whose four facts were already
-     in "The club" bullets above. Same green break, no duplication. ============ -->
-<section class="look" id="look">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  {{#look}}
-  <div class="look-in">
-    <div class="look-ph">
-      <!-- Real photography when the copy file carries `photoSrc` (a Shopify CDN
-           URL); the labelled brief when it does not. Shot 2026, uploaded to
-           Shopify Files 2026-08-23. -->
-      {{#photoSrc}}<img class="look-img" src="{{photoSrc}}" alt="{{photoAlt}}" width="1366" height="2048" loading="lazy" decoding="async">{{/photoSrc}}
-      {{^photoSrc}}<div class="ph ph--dark">
-        <span class="lbl">
-          <span class="mono k">Photo needed</span>
-          <span class="mono">{{photo}}</span>
-        </span>
-      </div>{{/photoSrc}}
-    </div>
-    <div class="look-copy">
-      <span class="eyebrow centre-none">The look</span>
-      <h2 class="disp d-m">{{headline}}</h2>
-{{#paras}}      <p class="body">{{.}}</p>
-{{/paras}}      <p class="aside">{{aside}}</p>
-      <div class="look-cta">
-        <a href="#gal" class="btn btn-line-cream"><span>{{chooseCta}}</span><span class="ar">&rarr;</span></a>
-      </div>
-    </div>
-  </div>
-  {{/look}}
-</section>
-
-{{#quote}}
-<!-- ============ SIGNATURE QUOTE — leads into the reviews ============ -->
-<section class="pull sec">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <div class="wrap pull-in">
-    <span class="eyebrow centre">Verified review</span>
-    <q>{{q}}</q>
-    <div class="pull-by"><span class="n">{{name}}</span><span class="p">{{meta}}</span></div>
-  </div>
-</section>
-{{/quote}}
-
-<!-- ============ REVIEWS — Judge.me shape ============ -->
-<section class="sec" id="reviews">
-  <div class="wrap">
-    <span class="eyebrow">Reviews</span>
-    <h2 class="disp d-m" style="margin-bottom:clamp(26px,3vw,40px)">{{reviewHeadline}}</h2>
-
-    <div class="jm">
-      {{#rating}}
-      <!-- header: score, histogram, actions. A club with no reviews yet drops
-           the whole header rather than printing a zero. -->
-      <div class="jm-hd">
-        <div class="jm-score">
-          <span class="num">{{avg}}</span>
-          <span class="stars" role="img" aria-label="{{avg}} out of 5">
-            <svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg>
-          </span>
-          <span class="cnt">Based on {{count}} reviews</span>
-        </div>
-        <div class="jm-bars" id="jm-bars"></div>
-        <div class="jm-act">
-          <button class="btn btn-ink btn-sm" type="button"><span>Write a review</span></button>
-          <button class="btn btn-line btn-sm" type="button"><span>Ask a question</span></button>
-          <div class="jm-medals">
-            <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>Platinum authentic shop</span>
-            <span><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>99.2% verified</span>
-          </div>
-        </div>
-      </div>
-      {{/rating}}
-
-      {{#jmSummary}}
-      <!-- Judge.me's own AI summary, verbatim. See HANDOFF §9B. -->
-      <div class="jm-sum">
-        <h3>Customers say</h3>
-        <p>{{text}}</p>
-        <span class="src">Auto-generated by Judge.me from all {{of}} reviews</span>
-      </div>
-      {{/jmSummary}}
-
-      {{^reviewSample}}
-      <!-- Rating is real, but no reviews have been pulled into the repo for
-           this product yet. Score only — a filter over an empty list reads as
-           a bug, and inventing review text is forbidden (HANDOFF). -->
-      <!-- Rating is real, reviews not yet pulled into the repo: say nothing
-           rather than narrate the mock to the customer (Cole, 2026-08-19:
-           the page must not talk about itself). The score block above stands. -->
-      {{/reviewSample}}
-
-      {{#reviewSample}}
-      <!-- filter + sort -->
+    {{#quotes}}{{#first}}<div class="qs">{{/first}}{{/quotes}}
+{{#quotes}}      <div class="q"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>{{t}}</b><p>&ldquo;{{q}}&rdquo;</p><small>{{n}} &middot; <b>Verified buyer</b></small></div>
+{{/quotes}}    {{#quotes}}{{#first}}</div>{{/first}}{{/quotes}}
+    {{#reviewSample}}
+    <button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm"><b>Read all {{#rating}}{{count}} {{/rating}}reviews</b><span>Newest first. Photos when we switch them on.</span><i aria-hidden="true">+</i></button>
+    <div class="jm" id="jm" hidden>
       <div class="jm-bar">
         <div class="jm-filters" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
-        <label class="jm-sort">
-          <span class="sr">Sort reviews</span>
-          <select id="jm-sort">
-            <option value="recent">Most recent</option>
-            <option value="high">Highest rating</option>
-            <option value="low">Lowest rating</option>
-          </select>
+        <label class="jm-sort"><span class="sr">Sort reviews</span>
+          <select id="jm-sort"><option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option></select>
         </label>
       </div>
-
       <p class="jm-count" id="jm-count"></p>
       <div class="jm-list" id="jm-list"></div>
-      <div class="jm-more"><button class="btn btn-line btn-sm" type="button" id="jm-more"><span>Show more reviews</span></button></div>
-      {{/reviewSample}}
-      <!-- The "Live site swaps this block for the Judge.me widget" footer came
-           off 2026-08-19: a build note in the customer's face, on 31 pages.
-           The fact lives in DEVELOPER-HANDOFF. -->
+      <div class="jm-more"><button class="btn-line btn btn-sm" type="button" id="jm-more">Show more reviews</button></div>
     </div>
+    {{/reviewSample}}
   </div>
 </section>
 
-<!-- "The rest of the bag" section removed (Cole, 2026-08-17): it duplicated
-     Others-also-viewed, which sits straight under the fold. Finish-the-look
-     below the reviews is the one cross-sell that stays — his words: "you've
-     got the club, now get the rest — I like actually having that below the
-     reviews". The `bag` key in the copy files is now unused. ============ -->
-<div class="breath"><span class="ln"></span><span class="mk"><svg><use href="#lg-clover-plain"/></svg></span><span class="ln"></span></div>
-
-<!-- ============ FINISH THE LOOK — apparel, not gear ============ -->
-<section class="sec band-cream">
+<!-- ============ IN THE WILD · a band ============ -->
+<section class="band reel" id="wild">
   <div class="wrap">
-    <span class="eyebrow">Complete your kit</span>
-    <h2 class="disp d-m">You've got the club. Now get the rest.</h2>
-    <p class="body" style="margin:16px 0 clamp(28px,3vw,42px)">Polos and hats that go with it.</p>
-    <div class="kit msnap" id="kit"></div>
-    <div class="kit-foot">
-      <a class="btn btn-line btn-sm" href="{{link:c/polos}}"><span>All polos</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line btn-sm" href="{{link:c/hats}}"><span>All hats</span><span class="ar">&rarr;</span></a>
+    <div class="hd2">
+      <div><span class="eb">See it in play</span><h2 class="disp d-m">{{wildHeadline}}</h2></div>
+      <div class="arrows" data-cliparrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
     </div>
+    <div class="clips" id="clips"></div>
+    <p class="body">{{wildNote}}</p>
   </div>
 </section>
 
-<!-- ============ CLOSING CTA ============ -->
-<section class="close">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
-  <span class="halo" aria-hidden="true"></span>
-  <div class="close-in">
-    <div class="wrap">
-      <span class="logo logo--stack"><svg><use href="#lg-luckygolf"/></svg></span>
-      <h2 class="disp d-l">{{closeHeadline}} <span class="foil on-dark">{{closeFoil}}</span></h2>
-      <p class="body on-dark">{{closeBody}}</p>
-      <div class="close-cta">
-        <a href="#gal" class="btn btn-foil sweep"><span>{{chooseCta}}</span><span class="ar">&rarr;</span></a>
-        <a href="{{link:c/clubs}}" class="btn btn-line-cream"><span>See the whole line</span></a>
-      </div>
-      <div class="close-trust">
-{{#closeTrust}}        <span class="mono">{{.}}</span>
-        <span class="div"></span>
-{{/closeTrust}}      </div>
+<!-- ============ MORE FROM THE BAG ============ -->
+<section class="more" id="more">
+  <div class="wrap">
+    <div class="hd2">
+      <div><span class="eb">More from the bag</span><h2 class="disp d-s">{{moreHeadline}}</h2></div>
+      <a class="lab link" href="{{link:c/clubs}}">All clubs &rarr;</a>
     </div>
+    <div class="tiles msnap">
+{{#more}}      <a class="pt2" href="{{href}}"><div class="ph"><img src="{{img}}" alt="" width="600" height="600" loading="lazy" decoding="async"></div><div class="tx"><b>{{nm}}</b><em>{{pr}}</em><span>{{hook}}</span></div></a>
+{{/more}}    </div>
   </div>
 </section>
 
-<!-- ============ STICKY ADD TO CART (mobile) ============ -->
-<div class="atc-bar" id="atc-bar">
-  <div class="sum">
-    <b>{{name}} &middot; {{priceLabel}}</b>
-    <span id="atc-bar-v">{{defaultVariant}}</span>
+<!-- ============ THE LAST WORD ============ -->
+{{#signoff}}
+<section class="sign" id="last">
+  <div class="wrap sign-in">
+    <div>
+      <span class="eb">{{eyebrow}}</span>
+      <blockquote class="disp d-xl">&ldquo;{{line1}}<br>{{line2}} <em class="foil">{{foil}}</em>&rdquo;</blockquote>
+      <p class="body sub">{{sub}}</p>
+      <div class="who">{{who}}</div>
+      <a class="btn-line btn" href="#buy"><span>{{cta}}</span><span class="ar">&rarr;</span></a>
+    </div>
+    <div class="mags-big">
+      <img class="on-light" src="img/mags.webp" alt="Mags, the magpie, with a gold wedge" width="797" height="494" loading="lazy" decoding="async">
+      <img class="on-dark" src="img/mags-light.webp" alt="" width="797" height="494" loading="lazy" decoding="async">
+    </div>
   </div>
-  <button class="btn btn-foil" id="atc2" type="button"><span>Add to cart</span></button>
+  <div class="wrap foot"><span class="groove heavy"></span></div>
+</section>
+{{/signoff}}
+
+<!-- ============ STICKY ADD TO BAG (phones) ============ -->
+<div class="stickybar" data-sticky>
+  <div><b data-sticky-name>{{title}} &middot; {{defaultVariant}}</b><span data-sticky-price>{{priceLabel}}</span></div>
+  <button class="btn" type="button" data-atc-sticky>Add to bag</button>
 </div>
 
-<!-- ============ MODALS — Takomo opens both of these from small links under
-     the buy box. Copy here is Lucky's real policy, not Takomo's. ============ -->
+<!-- ============ MODALS ============ -->
+{{#axisLoft}}
+<div class="md" id="md-helper" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-helper-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <h2 class="disp d-s" id="md-helper-t">Not sure which loft or grind?</h2>
+    <p>Two questions. Wedges work in gaps: four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage.</p>
+    <div data-helper></div>
+  </div>
+</div>
+{{/axisLoft}}
+
+<div class="md" id="md-notify" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-notify-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <h2 class="disp d-s" id="md-notify-t">Tell me when it is back</h2>
+    <p data-notify-line>Leave an email and the day it is in stock you get one message, from a person.</p>
+    <form data-notify novalidate>
+      <label class="sr" for="notify-email">Email</label>
+      <input class="field" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required>
+      <div class="md-foot"><button class="btn" type="submit">Tell me</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="md" id="md-write" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-write-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <h2 class="disp d-s" id="md-write-t">Write a review</h2>
+    <p>The Judge.me form opens here on the live site: stars, a title, your words, a photo if you have one, and the club you play. Verified buyers get the badge.</p>
+    <div class="md-foot"><button type="button" class="btn" data-md-close>Close</button></div>
+  </div>
+</div>
+
+<div class="md" id="md-shot" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-shot-t">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <h2 class="disp d-s" id="md-shot-t" data-shot-title>Shot needed</h2>
+    <h4>The brief</h4>
+    <p data-shot-brief></p>
+    <p>On the shoot list. The photo sits here, full frame, tap to zoom.</p>
+  </div>
+</div>
+
 <div class="md" id="md-returns" hidden data-open="false" role="dialog" aria-modal="true" aria-labelledby="md-returns-t">
   <div class="md-bd" data-md-close></div>
   <div class="md-panel">
     <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
-    <span class="eyebrow">Refund policy</span>
-    <h2 class="disp d-m" id="md-returns-t">Sixty days, no argument</h2>
-
+    <span class="eb">Refund policy</span>
+    <h2 class="disp d-s" id="md-returns-t">Sixty days, no argument</h2>
     <div class="md-sec">
-      <h3>Sixty days, with conditions</h3>
+      <h4>Sixty days, with conditions</h4>
       <p>Sixty days from delivery on every club. <b>Contact us before sending anything back</b>. Club returns need approval and photo verification first, and a club returned without authorization will not be accepted.</p>
       <p>Refunds are issued after the club comes back and is inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
     </div>
-
     <div class="md-sec">
-      <h3>What you can do with it first</h3>
+      <h4>What you can do with it first</h4>
       <p><b>Putters</b> may be used during the sixty days, but must come back in brand-new condition: no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p>
       <p><b>Wedges</b>: one wedge per order may be opened and tested, on a turf mat or another non-abrasive surface. Any others stay factory sealed. The tested one must come back with no groove wear, face marks or sole wear.</p>
       <p><b>Hybrids</b> must appear completely unused, with no visible wear and no modifications.</p>
       <p>Wear beyond these conditions can mean a partial refund or a declined return.</p>
-    </div>
-
-    <div class="md-sec">
-      <h3>Apparel and gear</h3>
-      <p>Thirty days. Apparel unworn and unwashed with all original tags attached. <b>A return without tags has $7 deducted</b>. Gear unused and undamaged.</p>
-      <p>Customized products are final sale unless they arrive defective.</p>
       <p><a href="{{link:returns}}">Read the full refund policy</a></p>
     </div>
-
-    <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
+    <div class="md-foot"><button type="button" class="btn" data-md-close>Close</button></div>
   </div>
 </div>
 
@@ -549,25 +334,23 @@
   <div class="md-bd" data-md-close></div>
   <div class="md-panel">
     <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
-    <span class="eyebrow">Delivery</span>
-    <h2 class="disp d-m" id="md-delivery-t">When it turns up</h2>
-
+    <span class="eb">Delivery</span>
+    <h2 class="disp d-s" id="md-delivery-t">When it turns up</h2>
     <div class="md-carriers"><span>USPS</span><span>UPS</span><span>FedEx</span></div>
-
     <div class="md-sec">
-      <p>Orders leave the warehouse in 1&ndash;2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
+      <p>Orders leave the warehouse in 1 to 2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
       <p>What shipping costs, and how fast, is shown at checkout before you pay. We ship worldwide.</p>
     </div>
-
     <div class="md-sec">
-      <h3>Where it ships from</h3>
-      <p>We ship from Long Beach, California, and worldwide.</p>
-    </div>
-
-    <div class="md-sec">
+      <h4>Where it ships from</h4>
+      <p>Long Beach, California, and worldwide.</p>
       <p><a href="{{link:shipping}}">Read the full shipping policy</a></p>
     </div>
-
-    <div class="md-foot"><button type="button" class="btn btn-ink" data-md-close><span>Close</span></button></div>
+    <div class="md-foot"><button type="button" class="btn" data-md-close>Close</button></div>
   </div>
 </div>
+
+<dialog class="zoom" id="zoom" aria-label="Image">
+  <button type="button" class="md-x" data-zoom-close aria-label="Close">&times;</button>
+  <img src="" alt="">
+</dialog>

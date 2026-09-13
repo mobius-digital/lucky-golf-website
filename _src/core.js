@@ -794,3 +794,20 @@
   }
   document.addEventListener('DOMContentLoaded', brDialogs);
 })();
+
+/* FOOTER SIGNUP (design system v2). No backend in the prototype: a valid
+   address swaps the form for the thank-you line. The developer wires it to
+   Klaviyo. Inert on any page without a [data-news] form. */
+(function () {
+  var f = document.querySelector('form[data-news]');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var i = f.querySelector('input[type="email"]');
+    if (!i || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value)) { if (i) i.focus(); return; }
+    var p = document.createElement('p');
+    p.className = 'done';
+    p.textContent = 'You are in. The first one has the loft ladder in it.';
+    f.replaceWith(p);
+  });
+})();

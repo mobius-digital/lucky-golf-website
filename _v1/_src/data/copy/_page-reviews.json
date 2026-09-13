@@ -1,0 +1,45 @@
+{
+ "_": "The all-clubs reviews page. NEXT-PAGES §5. It exists because the homepage's 'Read all 884 reviews' is a clubs-wide figure and cannot point at any single PDP's review block.",
+ "_sets": "Which review pulls make up the page, in the order the chips appear. `file` is _src/data/reviews/<file>.json; `product` is the page a review links to. Totals and histograms come from those files — nothing about a count is typed here.",
+ "_merge": "The S-grind product is gone. Cole merged the two Gold wedges in Shopify on 2026-09-05 and added the merged product to the All Gold Wedges Judge.me group on 2026-09-09, so the club now reports one pooled figure: 650 at 4.82, read from the judgeme.review_widget_data metafield. Its 30 sampled S-grind reviews were folded into lgw01-gold rather than dropped, because they are reviews of this club. Note the pooled number is NOT 551+69=620; that assumed a per-product migration, and this store pools by group instead.",
+ "crumbName": "Reviews",
+ "eyebrow": "Reviews",
+ "headline": "Every review we've got",
+ "lede": "The whole club line in one place, filterable by product and by rating. Nothing is curated here and nothing is hidden. The one-stars are in the list with everything else.",
+ "sets": [
+  {
+   "file": "lgw01-gold",
+   "name": "Carver 01 Gold",
+   "product": "lgw01-gold"
+  },
+  {
+   "file": "lgp01-gold",
+   "name": "Tracer LGP01 Blade",
+   "product": "lgp01-gold"
+  },
+  {
+   "file": "lgp02-gold",
+   "name": "Tracer LGP02 Mallet",
+   "product": "lgp02-gold"
+  },
+  {
+   "file": "lgh01",
+   "name": "Stryker LGH01",
+   "product": "lgh01"
+  }
+ ],
+ "note": "Filter by rating to read any slice of it.",
+ "close": {
+  "eyebrow": "Sixty days",
+  "headline": "Or find out yourself",
+  "body": "Every club gets sixty days. Roll the putter, hit one wedge on a mat, and decide with the club in your hands rather than from somebody else's review.",
+  "ctaLabel": "Put one in the bag",
+  "ctaHref": "{{link:c/clubs}}",
+  "cta2Label": "Read the refund policy",
+  "cta2Href": "{{link:returns}}",
+  "aside": "The reviews above are what other people found. Yours is the one that counts."
+ },
+ "moreHeadline": "The rest of it",
+ "_pass": "Copy pass 2026-08-19. Two developer notes were rendering to customers: an explanation of the site's OWN four-star curation rule, and 'stored in the repo verbatim. The live site renders the widget itself.' The second names the repo on a live page.",
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
+}

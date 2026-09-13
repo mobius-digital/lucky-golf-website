@@ -128,5 +128,8 @@
    "img": "https://cdn.shopify.com/s/files/1/2286/3149/products/MalletCoverBottom.png?v=1612818851"
   }
  ],
- "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed."
+ "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
+ "heroSrc": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-wedge-sole-turf.webp",
+ "heroAlt": "The sole of a Lucky Golf Carver wedge against turf",
+ "heroPos": "center 50%"
 }

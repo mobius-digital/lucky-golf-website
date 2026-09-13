@@ -203,10 +203,10 @@ var PD_KIT = [
         /* The stock line says WHEN it ships and nothing else. It used to
            publish the exact unit count on anything under 25, which is inventory
            data a shopper has no use for and we have no reason to broadcast. */
-        st.textContent = 'In stock · ships in 1–2 business days';
+        st.textContent = 'In stock · ships in 1 to 2 days';
       }
     }
-    [['#atc', 'Add to cart · ' + money], ['#atc2', 'Add to cart']].forEach(function(p){
+    [['#atc', 'Add to bag · ' + money], ['#atc2', 'Add to bag']].forEach(function(p){
       var b = $(p[0]); if (!b) return;
       b.disabled = !v.avail;
       var s = b.querySelector('span'); if (s) s.textContent = v.avail ? p[1] : 'Out of stock';

@@ -1,23 +1,61 @@
-/* club finder tabs */
+/* HOME · the finder tabs, the in-the-wild slots, the shot briefs, the zoom.
+   Every product fact on the page is a build token; nothing is typed here. */
+var LG_POSTS = [
+  {kind: 'Creator reel', title: 'The walk in', brief: 'Gold Carver in the bag on a cart path, walking shot, vertical crop'},
+  {kind: 'Customer post', title: 'First tee', brief: 'Carver Gold in hand, morning light'},
+  {kind: 'Creator post', title: 'The roll', brief: 'Tracer Blade behind the ball on the green, ball rolling out'},
+  {kind: 'Customer post', title: 'The bag', brief: 'Full bag setup, gold clubs fanned, overhead'},
+  {kind: 'Creator reel', title: 'Off the deck', brief: 'Stryker off the deck, follow-through, mid-flight ball'},
+  {kind: 'Customer post', title: 'The polo', brief: 'Classic Polo on course, three-quarter, clover visible'}
+];
 (function(){
-  var fTabs = [].slice.call(document.querySelectorAll('.fnd-tab'));
-  fTabs.forEach(function(t, i){
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  /* finder tabs */
+  var tabs = $$('.fnd-tab');
+  function selectTab(i){
+    tabs.forEach(function(x, xi){ x.setAttribute('aria-selected', String(xi === i)); x.setAttribute('aria-pressed', String(xi === i)); });
+    $$('.fnd-panel').forEach(function(p){ p.hidden = p.getAttribute('data-p') !== String(i); });
+  }
+  tabs.forEach(function(t, i){
     t.addEventListener('click', function(){ selectTab(i); });
     t.addEventListener('keydown', function(e){
       var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if(!d) return;
+      if (!d) return;
       e.preventDefault();
-      var n = (i + d + fTabs.length) % fTabs.length;
-      selectTab(n); fTabs[n].focus();
+      var n = (i + d + tabs.length) % tabs.length;
+      selectTab(n); tabs[n].focus();
     });
   });
-  function selectTab(i){
-    fTabs.forEach(function(x, xi){ x.setAttribute('aria-selected', String(xi === i)); });
-    document.querySelectorAll('.fnd-panel').forEach(function(p){
-      p.hidden = p.getAttribute('data-p') !== String(i);
+
+  /* the clips */
+  var clips = $('#clips');
+  if (clips) clips.innerHTML = LG_POSTS.map(function(o){
+    return '<div class="clip" data-md-open="md-shot" data-title="' + esc(o.title) + '" data-brief="' + esc(o.brief) + '"><small>' + esc(o.kind) + ' needed</small><b>' + esc(o.title) + '</b>' + esc(o.brief) + '</div>';
+  }).join('');
+  document.addEventListener('click', function(e){
+    var c = e.target.closest('[data-cliparrows] button');
+    if (c){ var cl = $('#clips'); if (cl) cl.scrollBy({left: (c.getAttribute('aria-label') === 'Next' ? 1 : -1) * cl.clientWidth * .5, behavior: 'smooth'}); }
+  });
+
+  /* shot briefs */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-md-open="md-shot"]'); if (!t) return;
+    if (t.closest('a')) e.preventDefault();
+    $('[data-shot-title]').textContent = t.getAttribute('data-title') || 'Shot needed';
+    $('[data-shot-brief]').textContent = t.getAttribute('data-brief') || '';
+  });
+
+  /* zoom */
+  var zoom = $('#zoom');
+  if (zoom && zoom.showModal){
+    document.addEventListener('click', function(e){
+      var t = e.target.closest('[data-zoom]');
+      if (t){ var im = zoom.querySelector('img'); im.src = t.getAttribute('data-zoom'); im.alt = (t.querySelector('img') || {}).alt || ''; zoom.showModal(); return; }
+      if (e.target.closest('[data-zoom-close]') || e.target === zoom) zoom.close();
     });
   }
 })();
-
-var LG_REVIEWS = [{"n": "Michael P.", "r": 5, "p": "Carver 01 Gold", "d": "2026-07-24", "ttl": "The Midas touch", "co": "", "txt": "Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it’s total head turner. You don’t even have to take it out of the bag and people ask you about it. Solid gold baby!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "1981 C.o.M.", "r": 5, "p": "Carver 01 Gold", "d": "2026-06-10", "ttl": "As Good As Gold", "co": "", "txt": "Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Jimmy S.", "r": 5, "p": "Tracer LGP01 Blade", "d": "2023-12-05", "ttl": "Never had so much confidence on the green. Best bang for your buck in the putter market. Hands down.", "co": "", "txt": "I had the original Odyssey two ball with the soft insert face and found myself getting frustrated with how inaccurate my lag putting was. I started looking for a heavier putter with a milled face to try the opposite end of the spectrum and I hit the jackpot stumbling across this beauty. Stroke is minimal inside 5' which helps ensure im rolling the ball well because the putter weight does the work for me. Haven't averaged over 2 putts/hole during a round since delivery and my brother in law just bought himself one for Christmas because of he's seen the change a Lucky has made in my game!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Jay S.", "r": 5, "p": "Tracer LGP01 Blade", "d": "2026-03-06", "ttl": "Unexpected Greatness", "co": "", "txt": "When I found this putter online, I was not sure what to expect. The reviews looked great and some commented on the heavier head weight. I bought one because I love the style and a slightly heavier head. When it arrived, I was blown away by how awesome this putter looked and how solid it feels. It sets up square and rolls true. This bad boy will be staying in the bag!!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Scott B.", "r": 5, "p": "Tracer LGP01 Blade", "d": "2024-10-12", "ttl": "Filled out my set!", "co": "", "txt": "Had a set of Ping irons, with Titleist woods but the irons didn’t come with a SW. so I purchased the 54 degree and the 60 degree wedges. I can’t tell you how much I love playing with them! Seems I’m always hitting whatever shot I need to put it in the hole or right up next to it! Was playing with a Scottie Cameron putter which was damaged by the airline, decided to get the Lucky putter as well and it seems like I’m still using the same putter! Cant tell you how many comments I get on the three and seeing the way I play with them only makes them ask more questions about where to get them!! Do yourself a favor and give them a try, you won’t regret it!!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090", "sku": "LGP01", "price": "$199", "cta": "Roll it pure"}, {"n": "Chris C.", "r": 5, "p": "Carver 01 Gold", "d": "2024-06-06", "ttl": "Signature Gold 56/60 Wedge Review", "co": "", "txt": "These clubs are awesome! Shipping was quick. The material is great and they are very solid clubs. I get a lot of compliments for them on the course. Pretty forgiving as well and they hit how you would expect a high priced wedge to hit. Only thing for me, is they are a little heavier then most wedges I've used. Just something I've adjusted to a little. Otherwise, for the price, an awesome purchase!", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "Carter D.", "r": 5, "p": "Carver 01 Gold", "d": "2026-06-03", "ttl": "The best looking wedge you can find", "co": "", "txt": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all. I now own a putter and 2 wedges… already debating what I’m going to get next from Lucky golf ☘️", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462", "sku": "LGW02", "price": "$109", "cta": "Go get one"}, {"n": "Nick F.", "r": 4, "p": "Carver 01 Gold", "d": "2026-06-20", "ttl": "Great club, Ok customer Service", "co": "", "txt": "The club itself, outstanding. Looks sharp, plays well, nice feel. Definitely a good addition to the bag. First club got lost in transit. Took forever to get a response from anyone. Like weeks. Actually got a notification of a replacement shipping before anyone actually replied to me. So, as long as it ships ok, you’ll love the club! But good luck if there’s an issue. Hope you have patience.", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868", "sku": "LGW01", "price": "$99", "cta": "Go get one"}, {"n": "John L.L.", "r": 5, "p": "Stryker LGH01", "d": "2026-02-14", "ttl": "Best club in my bag", "co": "", "txt": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now", "rep": "", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493", "sku": "LGH01", "price": "$209", "cta": "Fill the gap"}];
-var LG_POSTS   = [{"kind": "Creator reel still", "brief": "Gold Carver in the bag on a cart path, walking shot, vertical crop", "p": "Carver 01 Gold", "who": "creator", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462"}, {"kind": "Customer post", "brief": "First tee, LGW02 Gold in hand, morning light", "p": "Carver 01 Gold", "who": "customer", "sku": "LGW02", "price": "$109", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_27f81f90-a495-4dc4-ba02-0650ea6c4608.webp?v=1781012462"}, {"kind": "Creator post", "brief": "Tracer Blade behind the ball on the green, ball rolling out", "p": "Tracer LGP01 Blade", "who": "creator", "sku": "LGP01", "price": "$199", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp?v=1782599090"}, {"kind": "Customer post", "brief": "Full bag setup, gold clubs fanned, overhead", "p": "Tracer LGP02 Mallet", "who": "customer", "sku": "LGP02", "price": "$229", "cta": "Roll it pure", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp?v=1782598133"}, {"kind": "Creator reel still", "brief": "Stryker off the deck, follow-through, mid-flight ball", "p": "Stryker LGH01", "who": "creator", "sku": "LGH01", "price": "$209", "cta": "Fill the gap", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493"}, {"kind": "Customer post", "brief": "Classic Polo on course, three-quarter, clover visible", "p": "Carver 01 Gold", "who": "customer", "sku": "LGW01", "price": "$99", "cta": "Go get one", "img": "https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?v=1782597868"}];

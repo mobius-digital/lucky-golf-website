@@ -144,28 +144,34 @@
  "reelSub": "Share your shots. Tag Lucky Golf on social and the good ones get reposted.",
  "reel": [
   {
-   "kind": "Creator reel",
-   "brief": "Full swing from 100 yards with the 52°, ball tracked to the pin, reaction"
+   "title": "Full swing from 100",
+   "brief": "Ball tracked to the pin, reaction",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Greenside chip with the 56°, one hop and stop, shot from behind"
+   "title": "Greenside chip",
+   "brief": "One hop and stop, shot from behind",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Bunker shot with the 58°, sand spray, ball releasing to the hole"
+   "title": "Bunker",
+   "brief": "Sand spray, ball releasing to the hole",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Flop over a bunker with the 60°, face wide open, soft landing"
+   "title": "The flop",
+   "brief": "Face wide open, soft landing",
+   "kind": "Customer clip"
   },
   {
-   "kind": "Creator reel",
-   "brief": "Face close-up in sunlight, grooves and the gold finish, slow pan"
+   "title": "Face in sunlight",
+   "brief": "Grooves and finish, slow pan",
+   "kind": "Creator reel"
   },
   {
-   "kind": "Customer clip",
-   "brief": "Unboxing, club out of the sleeve, first reaction to the finish"
+   "title": "Unboxing",
+   "brief": "Out of the sleeve, first reaction",
+   "kind": "Customer clip"
   }
  ],
  "helpLoft": {
@@ -328,7 +334,7 @@
   "name": "Dan T.",
   "meta": "Carver 01 Gold 60&deg; &middot; 5 stars &middot; verified buyer"
  },
- "reviewHeadline": "What 650 golfers said",
+ "reviewHeadline": "What golfers said",
  "chooseCta": "Pick a loft",
  "closeHeadline": "Go own the",
  "closeFoil": "green",
@@ -397,5 +403,473 @@
  "_weight": "Cole 2026-08-19: do not write that the wedge weighs the same at every loft. The 300 g row stays in the spec matrix (it is the manufacturer's sheet, and the table is data) but no copy is built on it, and no 'they all feel like the same club' line derives from it. The Design bullet's 'Weighting shifts by loft' also came off: unsourced, and it contradicted the sheet it sits above.",
  "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
  "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones.",
- "_jmSummary": "REMOVED 2026-09-09. Judge.me no longer generates a summary for this product (ai_summary_text is empty in the metafield since the merge), so there is nothing to attribute. Restore it only by re-reading the metafield, never by rewriting the old paragraph. The old text is in git."
+ "_jmSummary": "REMOVED 2026-09-09. Judge.me no longer generates a summary for this product (ai_summary_text is empty in the metafield since the merge), so there is nothing to attribute. Restore it only by re-reading the metafield, never by rewriting the old paragraph. The old text is in git.",
+ "_wedge": "DESIGN SYSTEM v2 keys (2026-09-12), from look board rev 23. Copy lines were reviewed across 23 board revs and are assumed approved; every photo that does not exist is a labelled slot.",
+ "buyEyebrow": "The 01 &middot; Wedge",
+ "h1": "Carver",
+ "h1foil": "01",
+ "quoteLine": "So nice, I bought it twice.",
+ "quoteWho": "JD M.",
+ "buyLine": "Forged head, milled face, filthy spin. The club the big names charge double for, in gold.",
+ "tiles": [
+  {
+   "cut": true,
+   "src": "img/gold-full-cut.webp",
+   "alt": "Carver 01 Gold wedge, full club",
+   "tag": "Forged 1020"
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+   "alt": "Carver 01 Gold wedge, face on",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-address.webp",
+   "alt": "Carver 01 Gold at address",
+   "pos": "center 40%",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp",
+   "alt": "Lucky Golf bag and glove",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/4_744b4c6e-a04c-4618-9d58-9a36314000d8.webp?v=1782597868",
+   "alt": "Carver 01 Gold wedge, milled face detail",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "slot": "Sand poured over the gold head, low sun from the left, sand mid air.",
+   "title": "Texture &middot; the bunker"
+  }
+ ],
+ "accordion": [
+  {
+   "h": "Details",
+   "b": "Forged feel meets filthy spin. Hit one a little thin out of wet rough and watch it still check up. That's the dual-texture face: it grips the ball everywhere, not just in the grooves, so the spin shows up on the shots you didn't catch pure. The head is forged from 1020 carbon steel, which is why it feels buttery when you do catch one and tells you the truth when you don't."
+  },
+  {
+   "h": "What is in the box",
+   "b": "One wedge in the loft and grind you picked, built on the Lucky stock steel shaft with the Lucky stock grip. KBS shaft coming as an upgrade."
+  },
+  {
+   "h": "Shipping and returns",
+   "b": "Orders leave Long Beach, California in 1 to 2 business days, tracking as soon as the carrier scans it. Sixty days from delivery on every club, contact us first, club comes back in the condition it left. Return shipping is yours."
+  }
+ ],
+ "mood": {
+  "eyebrow": "Two finishes",
+  "headline": "Same wedge.<br>Different <em class=\"foil\">volume.</em>",
+  "default": "gold",
+  "note": "Every frame is the same club in the world it lives in. Switch the finish and the world switches with it. Labelled frames are the shots we still owe the page.",
+  "finishes": [
+   {
+    "k": "gold",
+    "first": true,
+    "label": "Gold &middot; {{price:lgw01-gold}}",
+    "hero": {
+     "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+     "alt": "Carver 01 Gold, face",
+     "pos": "center 55%",
+     "tag": "Gold &middot; stand-in frame, the real one is on the shoot list",
+     "points": [
+      {
+       "n": 1,
+       "x": "40%",
+       "y": "24%",
+       "k": "Forged 1020",
+       "v": "Buttery when you catch one, honest when you don't"
+      },
+      {
+       "n": 2,
+       "x": "60%",
+       "y": "36%",
+       "k": "Milled grooves",
+       "v": "CNC cut, micro milled between"
+      },
+      {
+       "n": 3,
+       "x": "56%",
+       "y": "52%",
+       "k": "Sandblasted face",
+       "v": "Grips the ball everywhere, not just the grooves"
+      },
+      {
+       "n": 4,
+       "x": "34%",
+       "y": "46%",
+       "k": "Sole and bounce",
+       "v": "8 to 12 degrees, by loft"
+      }
+     ],
+     "title": "Get used to the attention",
+     "body": "Gold from heel to toe. It catches the light at address, it looks like nothing else in the group, and your short game becomes the thing somebody brings up on the next hole."
+    },
+    "frames": [
+     {
+      "ratio": "r45",
+      "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-carver-gold-address.webp",
+      "cap": "56 at address, first tee"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Sand poured over the gold head, mid air, low sun from the left",
+      "cap": "Texture &middot; the bunker"
+     },
+     {
+      "ratio": "r169",
+      "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-golfer-address.webp",
+      "pos": "center 30%",
+      "cap": "The walk in, 60 in hand"
+     },
+     {
+      "ratio": "r34",
+      "slot": "Feet in the water hazard, socks off, pants rolled, wedge on the bank",
+      "cap": "Mood &middot; we are Lucky Golf"
+     },
+     {
+      "ratio": "r11",
+      "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?v=1782597869",
+      "cap": "Grooves, after a season"
+     },
+     {
+      "ratio": "r34",
+      "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-bag-glove.webp",
+      "cap": "Glove, bag, the clover"
+     },
+     {
+      "ratio": "r45",
+      "slot": "Water sprayed across the face, droplets on gold, macro",
+      "cap": "Texture &middot; the wet lie"
+     }
+    ]
+   },
+   {
+    "k": "black",
+    "label": "Black &middot; {{price:lgw01-black}}",
+    "tag": "Black",
+    "heroSlot": "Black wedge at address on dark turf, dusk, one low light source from the left so only the gold clover and the loft stamp catch. Room at the bottom left for the headline.",
+    "title": "The one nobody notices",
+    "body": "Blacked out, with gold only on the clover and the loft stamp. It sits down quiet at address and nobody on the tee says a word until you've hit it.",
+    "frames": [
+     {
+      "ratio": "r34",
+      "slot": "Black face, low sun, the milling catching light",
+      "cap": "Black &middot; face, low sun"
+     },
+     {
+      "ratio": "r45",
+      "slot": "Black head in flat light, only the gold clover catching",
+      "cap": "The quiet one"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Sand over the black head, gold stamp showing through",
+      "cap": "Texture &middot; the bunker"
+     },
+     {
+      "ratio": "r169",
+      "slot": "Twilight nine, black wedge against a red sky",
+      "cap": "Mood &middot; one more before dark"
+     },
+     {
+      "ratio": "r34",
+      "slot": "Dew on the black face, macro, gold loft stamp sharp",
+      "cap": "Texture &middot; dawn"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Black wedge leaning on a cart, cap on the seat",
+      "cap": "Mood &middot; the after"
+     }
+    ]
+   }
+  ],
+  "multi": true
+ },
+ "specs": {
+  "eyebrow": "LGW01 specs",
+  "headline": "The numbers",
+  "sub": "Straight off the manufacturer's sheet. Bounce steps with the loft: least on the 50 and 52 you hit full, most on the 54 and 56 you take into sand.",
+  "hands": "Right and left hand",
+  "clubNote": "The S measures more bounce than the K at the same loft and plays less of it, because the narrower sole puts less of itself on the turf.",
+  "grindTables": [
+   {
+    "g": "K",
+    "first": true,
+    "label": "K grind &middot; 6 lofts",
+    "span": 6,
+    "head": "1020 forged carbon steel &middot; CNC milled grooves and micro grooves over a sandblasted face",
+    "cols": [
+     "50&deg;",
+     "52&deg;",
+     "54&deg;",
+     "56&deg;",
+     "58&deg;",
+     "60&deg;"
+    ],
+    "rows": [
+     {
+      "k": "Bounce",
+      "v": [
+       "8&deg;",
+       "8&deg;",
+       "12&deg;",
+       "12&deg;",
+       "10&deg;",
+       "10&deg;"
+      ]
+     },
+     {
+      "k": "Lie",
+      "v": [
+       "63&deg;",
+       "63&deg;",
+       "63&deg;",
+       "63&deg;",
+       "63&deg;",
+       "63&deg;"
+      ]
+     },
+     {
+      "k": "Length",
+      "v": [
+       "35.25&Prime;",
+       "35.25&Prime;",
+       "35.125&Prime;",
+       "35.125&Prime;",
+       "35&Prime;",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Head weight",
+      "v": [
+       "300 g",
+       "300 g",
+       "300 g",
+       "300 g",
+       "300 g",
+       "300 g"
+      ]
+     }
+    ]
+   },
+   {
+    "g": "S",
+    "label": "S grind &middot; 3 lofts",
+    "span": 3,
+    "head": "1020 forged carbon steel &middot; CNC milled grooves and micro grooves over a sandblasted face",
+    "cols": [
+     "52&deg;",
+     "56&deg;",
+     "60&deg;"
+    ],
+    "rows": [
+     {
+      "k": "Bounce",
+      "v": [
+       "10&deg;",
+       "12&deg;",
+       "12&deg;"
+      ]
+     },
+     {
+      "k": "Lie",
+      "v": [
+       "63.5&deg;",
+       "64&deg;",
+       "64&deg;"
+      ]
+     },
+     {
+      "k": "Length",
+      "v": [
+       "35.25&Prime;",
+       "35.125&Prime;",
+       "35&Prime;"
+      ]
+     },
+     {
+      "k": "Head weight",
+      "v": [
+       "300 g",
+       "300 g",
+       "300 g"
+      ]
+     }
+    ]
+   }
+  ],
+  "kvTables": [
+   {
+    "tab": "shafts",
+    "cols": [
+     "Lucky stock steel",
+     "KBS"
+    ],
+    "note": "Straight off the manufacturer's sheet. KBS numbers land when the upgrade does.",
+    "rows": [
+     {
+      "k": "Availability",
+      "v": [
+       "Stock option, every loft",
+       "Coming soon as an upgrade"
+      ]
+     },
+     {
+      "k": "Material",
+      "v": [
+       "Steel",
+       "Steel"
+      ]
+     },
+     {
+      "k": "Flex",
+      "v": [
+       "Regular",
+       "To be confirmed"
+      ]
+     },
+     {
+      "k": "Kick point",
+      "v": [
+       "Mid",
+       "To be confirmed"
+      ]
+     },
+     {
+      "k": "Raw weight",
+      "v": [
+       "110 g",
+       "To be confirmed"
+      ]
+     },
+     {
+      "k": "Length",
+      "v": [
+       "35&Prime;",
+       "To be confirmed"
+      ]
+     }
+    ]
+   },
+   {
+    "tab": "grips",
+    "cols": [
+     "Lucky stock grip"
+    ],
+    "note": "One grip, one size. Midsize and oversize are not on the sheet yet.",
+    "rows": [
+     {
+      "k": "Availability",
+      "v": [
+       "Stock option, every loft"
+      ]
+     },
+     {
+      "k": "Material",
+      "v": [
+       "Rubber"
+      ]
+     },
+     {
+      "k": "Size",
+      "v": [
+       "Regular"
+      ]
+     },
+     {
+      "k": "Weight",
+      "v": [
+       "55 g"
+      ]
+     }
+    ]
+   }
+  ],
+  "hasTabs": true,
+  "tabs": [
+   {
+    "k": "clubs",
+    "label": "Clubs",
+    "first": true
+   },
+   {
+    "k": "shafts",
+    "label": "Shafts"
+   },
+   {
+    "k": "grips",
+    "label": "Grips"
+   }
+  ]
+ },
+ "quotes": [
+  {
+   "n": "JD M.",
+   "t": "So nice, I bought it twice!",
+   "para": 1
+  },
+  {
+   "n": "James B.",
+   "t": "LGW01"
+  },
+  {
+   "n": "Ray O.",
+   "t": "Hard to keep it!"
+  }
+ ],
+ "_quotes": "Resolved at build time from _src/data/reviews/<id>.json by name + title, so the card text is the Judge.me text and cannot drift. para=1 takes the first paragraph only.",
+ "wildHeadline": "The 01, in the wild",
+ "wildNote": "Clips of this exact club being played. Creators, customers, anyone who tags us. Four on screen, swipe for the rest.",
+ "moreHeadline": "Goes with the 01",
+ "more": [
+  {
+   "id": "lgw01-black",
+   "hook": "Same wedge, quieter about it"
+  },
+  {
+   "id": "lgp02-gold",
+   "hook": "The last putt, in gold"
+  },
+  {
+   "id": "lgh01",
+   "hook": "The long walk, shortened"
+  },
+  {
+   "id": "hat-white-ibtbl",
+   "hook": "The line on the front"
+  }
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a gold wedge. That is rather the point.",
+  "who": "Mags has your 56. Again.",
+  "cta": "Pick a loft"
+ },
+ "help": {
+  "eyebrow": "Two grinds",
+  "headline": "Square it up,<br>or open it up.",
+  "sub": "Grind is the one choice on this page that changes how the club plays. The K is the safe pick and comes in every loft. The S is for golfers who lay the face open. If your chips don't stop, either one fixes that.",
+  "cards": [
+   {
+    "pill": "K grind",
+    "name": "No surprises",
+    "body": "A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe.",
+    "lofts": "All six lofts &middot; 50 to 60"
+   },
+   {
+    "pill": "S grind",
+    "name": "Versatility",
+    "body": "A narrower, relieved sole with a reshaped leading edge, so the face opens without the bounce fighting you. Built for tight lies, bunker shots and open-face lobs.",
+    "lofts": "Three lofts &middot; 52 &middot; 56 &middot; 60"
+   }
+  ]
+ }
 }

@@ -10,25 +10,23 @@
      ============================================================================ -->
 
 <!-- ============ BREADCRUMB ============ -->
-<nav class="crumb wrap" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{link:home}}">Home</a></li>
-    <li><span aria-current="page">{{crumbName}}</span></li>
-  </ol>
-</nav>
-
 <!-- ============ HEAD ============
      The lede answers the page's question before anything else on it does. A
      support page that makes you read three sections to find out how long you
      have is a support page nobody reads. -->
-<section class="sec-tight sup-hd">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+<section class="page-hd sup-hd">
   <div class="wrap">
-    <p class="eyebrow">{{eyebrow}}</p>
+    <nav class="crumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{link:home}}">Home</a></li>
+        <li><span aria-current="page">{{crumbName}}</span></li>
+      </ol>
+        </nav>
+    <span class="eb">{{eyebrow}}</span>
     <h1 class="disp d-xl">{{headline}}</h1>
-    <p class="body lead sup-lede">{{lede}}</p>
+    <p class="body lede">{{lede}}</p>
 {{#quick}}
-    <dl class="sup-quick">
+    <dl class="figs">
 {{#items}}      <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/items}}    </dl>
 {{/quick}}
@@ -41,7 +39,7 @@
      a jump list and eight on Returns do. -->
 {{#jump}}
 <nav class="wrap sup-jump" aria-label="On this page">
-  <span class="mono sup-jump-lbl">On this page</span>
+  <span class="lab sup-jump-lbl">On this page</span>
   <ul>
 {{#items}}    <li><a href="#{{id}}">{{label}}</a></li>
 {{/items}}  </ul>
@@ -54,15 +52,15 @@
      guide. A card with no destination carries a chip instead of a link rather
      than a button that goes nowhere. -->
 {{#channels}}
-<section class="sec-tight sup-chan-sec">
+<section class="sup-chan-sec">
   <div class="wrap">
     <div class="sup-chans">
 {{#items}}      <div class="sup-chan">
-        <span class="mono sup-chan-k">{{k}}</span>
+        <span class="lab sup-chan-k">{{k}}</span>
         {{#href}}<a class="sup-chan-v" href="{{href}}">{{v}}</a>{{/href}}
         {{^href}}<span class="sup-chan-v sup-chan-v--flat">{{v}}</span>{{/href}}
         <p class="sup-chan-b">{{body}}</p>
-        {{#tbd}}<p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>{{/tbd}}
+        {{#tbd}}<p class="sup-tbd"><span class="tbd">{{label}}</span> · {{text}}</p>{{/tbd}}
       </div>
 {{/items}}    </div>
   </div>
@@ -75,10 +73,10 @@
      alternates and no two dark bands ever touch, because none of these are
      dark. -->
 {{#sections}}
-<section class="sup-sec{{#cream}} sup-sec--cream{{/cream}}" id="{{id}}">
+<section class="sup-sec" id="{{id}}">
   <div class="wrap sup-sec-in">
-    <h2 class="disp d-m sup-h">{{title}}</h2>
-{{#lede}}    <p class="body lead sup-sec-lede">{{lede}}</p>
+    <h2 class="disp d-s sup-h">{{title}}</h2>
+{{#lede}}    <p class="body lede sup-sec-lede">{{lede}}</p>
 {{/lede}}{{#paras}}    <p class="sup-p">{{.}}</p>
 {{/paras}}{{#rows}}
     <dl class="sup-rows">
@@ -87,7 +85,7 @@
 {{/rows}}{{#list}}
     {{#title}}<h3 class="sup-h3">{{title}}</h3>{{/title}}
     <ul class="sup-list">
-{{#items}}      <li><span class="mk cbul" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span><span>{{.}}</span></li>
+{{#items}}      <li><span>{{.}}</span></li>
 {{/items}}    </ul>
 {{/list}}{{#sub}}
     <div class="sup-sub">
@@ -96,11 +94,11 @@
 {{/paras}}    </div>
 {{/sub}}{{#tbd}}
     <div class="sup-tbd-block">
-      <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+      <p class="sup-tbd"><span class="tbd">{{label}}</span> · {{text}}</p>
       {{#ask}}<p class="sup-tbd-ask">{{ask}}</p>{{/ask}}
     </div>
-{{/tbd}}{{#note}}    <p class="aside sup-note">{{note}}</p>
-{{/note}}{{#cta}}    <p class="sup-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
+{{/tbd}}{{#note}}    <p class="body aside-line sup-note">{{note}}</p>
+{{/note}}{{#cta}}    <p class="sup-cta"><a class="btn-line btn btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
 {{/cta}}  </div>
 </section>
 {{/sections}}
@@ -112,7 +110,7 @@
      accordion that needs JS to open is an accordion that hides answers from
      anyone the JS failed for. -->
 {{#faq}}
-<section class="sec sup-faq" id="questions">
+<section class="sup-faq" id="questions">
   <div class="wrap">
 {{#groups}}
     <div class="sup-fg">
@@ -125,9 +123,9 @@
           <dl class="sup-rows sup-rows--tight">
 {{#items}}            <div><dt>{{k}}</dt><dd>{{v}}</dd></div>
 {{/items}}          </dl>
-{{/rows}}{{#tbd}}          <p class="sup-tbd"><span class="tbd tbd--light">{{label}}</span> · {{text}}</p>
+{{/rows}}{{#tbd}}          <p class="sup-tbd"><span class="tbd">{{label}}</span> · {{text}}</p>
 {{/tbd}}{{#src}}          <p class="sup-src">{{src}}</p>
-{{/src}}{{#cta}}          <p class="sup-cta"><a class="btn btn-line btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
+{{/src}}{{#cta}}          <p class="sup-cta"><a class="btn-line btn btn-sm" href="{{href}}"><span>{{label}}</span><span class="ar">&rarr;</span></a></p>
 {{/cta}}        </div>
       </details>
 {{/items}}    </div>
@@ -141,12 +139,12 @@
      after you press the button — a form that thanks you for a message it never
      sent is worse than no form. -->
 {{#form}}
-<section class="sec-tight sup-form-sec" id="{{id}}">
+<section class="sup-form-sec" id="{{id}}">
   <div class="wrap sup-form-in">
-    <span class="eyebrow">{{eyebrow}}</span>
+    <span class="eb">{{eyebrow}}</span>
     <h2 class="disp d-m">{{title}}</h2>
     <p class="body sup-form-lede">{{lede}}</p>
-    <p class="sup-tbd"><span class="tbd tbd--light">{{protoLabel}}</span> · {{proto}}</p>
+    <p class="sup-tbd"><span class="tbd">{{protoLabel}}</span> · {{proto}}</p>
     <form class="sup-form" id="sup-contact" novalidate>
       <div class="sup-f2">
         <p class="sup-fld"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name"></p>
@@ -161,7 +159,7 @@
         </p>
       </div>
       <p class="sup-fld"><label for="cf-msg">Message</label><textarea id="cf-msg" name="body" rows="6"></textarea></p>
-      <p class="sup-fld sup-fld--btn"><button class="btn btn-ink" type="submit"><span>{{cta}}</span></button></p>
+      <p class="sup-fld sup-fld--btn"><button class="btn" type="submit"><span>{{cta}}</span></button></p>
       <p class="sup-form-out" id="sup-form-out" role="status" hidden></p>
     </form>
   </div>
@@ -173,17 +171,20 @@
      green, and two dark bands touching is the seam §11d already flagged. The
      cream band below carries the page out. -->
 {{#close}}
-<section class="sup-still">
-  <span class="wm" aria-hidden="true"><svg><use href="#lg-clover-plain"/></svg></span>
+<section class="band sup-still">
   <div class="wrap sup-still-in">
-    <span class="eyebrow">{{eyebrow}}</span>
-    <h2 class="disp d-l">{{headline}}</h2>
-    <p class="body">{{body}}</p>
-    <div class="sup-still-cta">
-      <a class="btn btn-foil sweep" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
-      <a class="btn btn-line-cream" href="mailto:support@luckygolf.com"><span>{{ctaMail}}</span></a>
+    <div>
+      <span class="eb">{{eyebrow}}</span>
+      <h2 class="disp d-m">{{headline}}</h2>
+      <p class="body">{{body}}</p>
     </div>
-    <p class="aside sup-still-aside">{{aside}}</p>
+    <div>
+      <div class="sup-still-cta">
+        <a class="btn" href="{{ctaHref}}"><span>{{ctaLabel}}</span><span class="ar">&rarr;</span></a>
+        <a class="btn-line btn" href="mailto:support@luckygolf.com"><span>{{ctaMail}}</span></a>
+      </div>
+      <p class="body aside-line">{{aside}}</p>
+    </div>
   </div>
 </section>
 {{/close}}
@@ -192,16 +193,13 @@
      Generated from the shared copy file by build.py, not typed into four
      editorial files — the same reason the PLP's sibling row is generated
      (§11d). Ends on cream, so the ink footer has a light band above it. -->
-<section class="sec band-cream sup-more">
+<section class="sup-more">
   <div class="wrap">
-    <span class="eyebrow">Keep reading</span>
-    <h2 class="disp d-m">The rest of it</h2>
-    <div class="sup-sibs">
-{{#siblings}}      <a class="sup-sib" href="{{href}}">
-        <span class="sup-sib-n">{{name}}</span>
-        <span class="sup-sib-h">{{hook}}</span>
-      </a>
+    <span class="eb">Keep reading</span>
+    <h2 class="disp d-s" style="margin-bottom:22px">The rest of it</h2>
+    <div class="cards msnap">
+{{#siblings}}      <a class="card" href="{{href}}"><span class="disp d-xs">{{name}}</span><span class="bd">{{hook}}</span><span class="go">Read <span class="ar">&rarr;</span></span></a>
 {{/siblings}}    </div>
-    {{#moreAside}}<p class="aside sup-aside">{{moreAside}}</p>{{/moreAside}}
+    {{#moreAside}}<p class="note">{{moreAside}}</p>{{/moreAside}}
   </div>
 </section>

@@ -1,7 +1,18 @@
-<!-- ============ HEADER ============ -->
+<!-- ============ TRUST BAR + HEADER (design system v2, palette D) ============
+     The bar and the header are one band: white with the groove texture and
+     a hairline under each. The bag button carries Mags on a stand bag (the
+     stand-in PNG until the designer's SVG lands, see _ref/mascot); the count
+     badge sits bottom-right so it never covers the gold club heads. ============ -->
+<div class="tick" aria-label="Lucky Golf, at a glance">
+  <div class="wrap tick-in">
+    <a href="{{link:returns}}"><b>Sixty days</b> to prove us wrong</a>
+    <a href="{{link:shipping}}">Ships in 1 to 2 business days</a>
+    <a href="{{link:c/wedges}}">Forged, not cast</a>
+  </div>
+</div>
 <header class="hdr">
-  <div class="hdr-in">
-    <a href="{{link:home}}" class="logo logo--lucky" aria-label="Lucky Golf home"><svg><use href="#lg-lucky"/></svg></a>
+  <div class="wrap hdr-in">
+    <a href="{{link:home}}" class="logo" aria-label="Lucky Golf home"><svg class="clv" viewBox="249.37 127.71 342.59 334.65"><use href="#lg-clover"/></svg><svg class="word" viewBox="164.15 237.42 513.48 118.24"><use href="#lg-lucky"/></svg></a>
     <nav class="nav" aria-label="Primary">
       <div class="nav-item" data-open="false">
         <button class="nav-trigger" aria-expanded="false" aria-controls="mega-wedges">Wedges
@@ -42,7 +53,7 @@
         </div>
       </div>
       <div class="nav-item" data-open="false">
-        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-apparel">Apparel &amp; Gear
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-apparel">Apparel
           <svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
         </button>
         <div class="mega" id="mega-apparel">
@@ -61,20 +72,17 @@
       <a href="{{link:story}}">Our Story</a>
     </nav>
     <div class="hdr-act">
-      <a href="{{link:search}}" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></a>
-      <button type="button" class="cart" data-cart-open aria-label="Open bag">
-        <svg class="icn" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 13H5.3z"/><path d="M8.5 7V5.4A3.5 3.5 0 0112 2a3.5 3.5 0 013.5 3.4V7"/></svg>
+      <a class="hdr-search" href="{{link:search}}" aria-label="Search"><svg class="icn" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span>Search</span></a>
+      <button type="button" class="bag" data-cart-open aria-label="Open bag">
+        <img class="on-light" src="img/mags-bag.webp" alt="" width="543" height="598" decoding="async">
+        <img class="on-dark" src="img/mags-bag-light.webp" alt="" width="543" height="598" decoding="async">
         <span class="cart-count" data-n="0" aria-hidden="true">0</span>
       </button>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
     </div>
   </div>
-  <!-- MOBILE NAV (Cole, 2026-08-18): Takomo's exact mobile menu — accordion
-       rows, and each opens to TWO-UP PRODUCT CARDS: photo on top, name and
-       price beneath. Prices are price tokens resolved from
-       products.json at build time; a typed price in the shared header would
-       drift the moment Shopify changed. Every card is a real product or
-       collection page — never a homepage anchor. -->
+  <!-- MOBILE NAV: accordion rows, each opening to two-up product cards. Prices
+       are price tokens resolved from products.json at build time. -->
   <nav class="mnav" id="mnav" data-open="false" aria-label="Mobile">
     <div class="mn-i">
       <button class="mn-hd" type="button" aria-expanded="false" aria-controls="mn-wedges">Wedges<svg class="chev" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></button>

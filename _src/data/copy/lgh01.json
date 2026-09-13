@@ -306,5 +306,269 @@
  "_quote": "Added 2026-08-19, verbatim from the lgh01 pull. Chosen because it says what the what-it-replaces module says, in a customer's mouth.",
  "_rest": "Rest-of-page pass 2026-08-19 (HANDOFF 37g): buy body, sub-blocks, bullets, spec head, look, helper, close, each written as the person and each opening through a different door from the other four clubs. The buy bodies no longer end 'sixty days to decide' (the trust row under the button says it). The closes no longer all end 'Sixty days to decide' (the close trust row says it).",
  "_photo": "Real photography from the 2026 course shoot, chosen from Cole's archive 2026-08-23, resized to 2048px and uploaded to Shopify Files. The `photo` brief stays in the file: it is the record of what the slot asked for, and it renders again if photoSrc is ever removed.",
- "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones."
+ "_video": "Video REMOVED 2026-08-23 at Cole's instruction: he will hand-pick the clips himself later. The template and JS keep the conditional (videoSrc / reel[].src), so dropping the keys back in is all it takes. The files are still in Shopify Files if he wants those exact ones.",
+ "_v2": "DESIGN SYSTEM v2 keys (2026-09-12).",
+ "buyEyebrow": "The Stryker &middot; Hybrid",
+ "h1": "Stryker",
+ "h1foil": "19&deg;",
+ "quoteLine": "Best club in my bag",
+ "quoteWho": "John L.L.",
+ "buyLine": "Nineteen degrees of titanium for the 210-yard shot your long irons keep missing. Gets up easy, stays fast off the heel and toe, and it's gold, which you'll hear about. Right or left hand.",
+ "tiles": [
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp?v=1782597493",
+   "alt": "Stryker LGH01 hybrid, full club",
+   "cut": true,
+   "tag": "Titanium"
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-stryker-hero.webp",
+   "alt": "Stryker LGH01 on the fairway",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?v=1782597493",
+   "alt": "Stryker LGH01 hybrid, face on",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-stryker-in-hand.webp",
+   "alt": "Stryker LGH01 in hand",
+   "lazy": true
+  },
+  {
+   "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/12_65f3a9e3-d92c-481b-87b0-85ac2eb90294.webp?v=1782597493",
+   "alt": "Stryker LGH01 hybrid, sole",
+   "cut": true,
+   "lazy": true
+  },
+  {
+   "slot": "The cart shot: hybrid out of the bag on the back of the cart, fairway behind.",
+   "title": "Personality &middot; the cart"
+  }
+ ],
+ "accordion": [
+  {
+   "h": "Details",
+   "b": "There's a club at the top of your bag you reach for and then put back. This replaces it. Nineteen degrees of titanium, light at 235 grams, so it gets the ball up from the lies a long iron makes you fight. The Flex Channel face keeps the ball speed up on the strikes you don't catch in the middle, and the Glide Sole moves through fairway and rough the same way. Stiff graphite, right or left hand, and 210 yards stops being a shot you think about."
+  },
+  {
+   "h": "What is in the box",
+   "b": "One Stryker LGH01 hybrid in the hand you picked, on the stiff graphite shaft with the natural black rubber grip. No headcover."
+  },
+  {
+   "h": "Shipping and returns",
+   "b": "Orders leave Long Beach, California in 1 to 2 business days, tracking as soon as the carrier scans it. Sixty days from delivery on every club, contact us first, club comes back in the condition it left. Return shipping is yours."
+  }
+ ],
+ "help": {
+  "eyebrow": "What it replaces",
+  "headline": "It goes in the bag where something else comes out",
+  "sub": "Two ways to use it. Most golfers take out the 3-iron. Some take out the 5-wood. Here's how each one goes.",
+  "note": "Either way it's one club, one loft and one flex, in right or left hand. If the gap between your longest iron and your fairway wood is a real one, this is a straightforward decision.",
+  "cards": [
+   {
+    "pill": "Instead of a 3-iron",
+    "name": "The club you avoid",
+    "body": "A 3-iron and a 19&deg; hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones. The hybrid gets airborne from lies where the iron simply does not.",
+    "lofts": "Loft 19&deg; &middot; Lie 59&deg;"
+   },
+   {
+    "pill": "Instead of a 5-wood",
+    "name": "The club you can't keep straight",
+    "body": "A 5-wood and a 19&deg; hybrid cover similar ground, and the hybrid is the shorter club at 40.5&Prime;. That's why it's easier to find the middle of, and why it holds a line off a tight tee.",
+    "lofts": "Length 40.5&Prime;, shorter than a wood &middot; Shaft Stiff graphite, mid kick"
+   }
+  ]
+ },
+ "mood": {
+  "eyebrow": "On the fairway",
+  "headline": "The club you stop<br>worrying <em class=\"foil\">about.</em>",
+  "default": "gold",
+  "multi": false,
+  "note": "Every frame is this club in the world it lives in. Labelled frames are the shots we still owe the page.",
+  "finishes": [
+   {
+    "k": "gold",
+    "first": true,
+    "label": "Gold",
+    "tag": "Stryker &middot; stand-in frame, the real one is on the shoot list",
+    "hero": {
+     "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-stryker-hero.webp",
+     "alt": "Stryker LGH01 on the fairway",
+     "pos": "center 55%",
+     "points": [],
+     "tag": "Stryker &middot; stand-in frame, the real one is on the shoot list",
+     "title": "The club you stop worrying about",
+     "body": "There's a specific relief in standing over a 210-yard shot and not running the numbers on whether you can actually hit the club in your hands."
+    },
+    "frames": [
+     {
+      "ratio": "r45",
+      "src": "https://cdn.shopify.com/s/files/1/2286/3149/files/lucky-stryker-in-hand.webp",
+      "cap": "In hand, first tee"
+     },
+     {
+      "ratio": "r11",
+      "slot": "Macro of the Flex Channel face, brushed gold",
+      "cap": "Macro &middot; the face"
+     },
+     {
+      "ratio": "r169",
+      "slot": "210 yards from the fairway, ball tracked to the green",
+      "cap": "Action &middot; the 210"
+     },
+     {
+      "ratio": "r34",
+      "slot": "The cart shot, hybrid on the back of the cart",
+      "cap": "Personality &middot; the cart"
+     },
+     {
+      "ratio": "r45",
+      "slot": "Gold crown starburst in low sun",
+      "cap": "Macro &middot; the crown"
+     }
+    ]
+   }
+  ]
+ },
+ "specs": {
+  "eyebrow": "LGH01 specs",
+  "headline": "Nineteen degrees and not much else to pick",
+  "sub": "One loft, one flex, one length. The sheet is short because the decision is.",
+  "tabs": [],
+  "grindTables": [],
+  "kvTables": [
+   {
+    "corner": "Loft",
+    "cols": [
+     "Lie",
+     "Head weight",
+     "Length"
+    ],
+    "rows": [
+     {
+      "k": "19&deg;",
+      "v": [
+       "59&deg;",
+       "235 g",
+       "40.5&Prime;"
+      ]
+     },
+     {
+      "k": "Head material",
+      "v": [
+       "Titanium",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Face",
+      "v": [
+       "Flex Channel",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Sole",
+      "v": [
+       "Glide Sole",
+       "",
+       ""
+      ]
+     },
+     {
+      "k": "Finish",
+      "v": [
+       "Brushed satin gold face, mirror gold sole, gloss black crown with a gold starburst, gold ferrule",
+       "",
+       ""
+      ]
+     }
+    ],
+    "tab": "clubs",
+    "first": true,
+    "note": "One loft, one flex, one length. Right or left hand."
+   }
+  ]
+ },
+ "quotes": [
+  {
+   "n": "LB06",
+   "t": "Gorgeous!"
+  },
+  {
+   "n": "John L.L.",
+   "t": "Best club in my bag"
+  },
+  {
+   "n": "Dana S.",
+   "t": "Fancy golden hybrid"
+  }
+ ],
+ "wildHeadline": "The Stryker, in the wild",
+ "wildNote": "Clips of this exact club being played. Creators, customers, anyone who tags us.",
+ "reel": [
+  {
+   "title": "210 yards from the fairway",
+   "brief": "210 yards from the fairway, ball tracked to the green",
+   "kind": "Creator reel"
+  },
+  {
+   "title": "Off a tee on a tight par 4",
+   "brief": "Off a tee on a tight par 4, shot from behind",
+   "kind": "Customer clip"
+  },
+  {
+   "title": "Strike off the toe",
+   "brief": "Strike off the toe, showing what forgiveness actually means",
+   "kind": "Creator reel"
+  },
+  {
+   "title": "Out of light rough: the shot a lon",
+   "brief": "Out of light rough: the shot a long iron cannot play",
+   "kind": "Customer clip"
+  },
+  {
+   "title": "Gold titanium crown at address in ",
+   "brief": "Gold titanium crown at address in sunlight, slow pan",
+   "kind": "Creator reel"
+  },
+  {
+   "title": "Unboxing",
+   "brief": "Unboxing, club out of the sleeve, first reaction",
+   "kind": "Customer clip"
+  }
+ ],
+ "moreHeadline": "Goes with the Stryker",
+ "more": [
+  {
+   "id": "lgw01-gold",
+   "hook": "The short game, forged"
+  },
+  {
+   "id": "lgp02-gold",
+   "hook": "The last putt, in gold"
+  },
+  {
+   "id": "lgw01-black",
+   "hook": "Same wedge, quieter about it"
+  },
+  {
+   "id": "hat-white-ibtbl",
+   "hook": "The line on the front"
+  }
+ ],
+ "signoff": {
+  "eyebrow": "The last word",
+  "line1": "It's better",
+  "line2": "to be",
+  "foil": "lucky.",
+  "sub": "Nobody needs a gold hybrid. That is rather the point.",
+  "who": "Mags has your 210.",
+  "cta": "Pick a hand"
+ }
 }
