@@ -1,0 +1,10 @@
+{
+ "_": "Big-brand wedge list prices, read on each maker's own US site on 2026-09-13. Regular price, steel shaft, one wedge. Re-check before launch; these move. Whether to NAME the brands on the page is an open decision for Cole (he removed a named Vokey/Cleveland comparison from a pull quote on 2026-08-17).",
+ "checked": "September 13, 2026",
+ "rows": [
+  {"brand": "Titleist", "model": "Vokey SM11", "price": 199.00, "url": "https://www.titleist.com/product/vokey-sm11/MASTER-SM11.html"},
+  {"brand": "TaylorMade", "model": "MG5", "price": 199.99, "url": "https://www.taylormadegolf.com/wedges/?lang=en_US"},
+  {"brand": "Callaway", "model": "Opus SP", "price": 199.99, "url": "https://www.callawaygolf.com/golf-clubs/wedges/wedges-2025-opus-sp-chrome.html"}
+ ],
+ "notSure": "Cleveland RTX 6 ZipCore lists at $139.99 but is no longer on Cleveland's own wedges page; Takomo's Skyforger 002 is $99. Neither is on the page."
+}

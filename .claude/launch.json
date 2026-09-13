@@ -4,8 +4,26 @@
     {
       "name": "mock-server",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "C:/Users/wetzl/AppData/Local/Temp/claude/C--Users-wetzl-Lucky-Golf-Website/3187aa12-59fd-4fec-bc84-0161b7896492/scratchpad/mock/out"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765",
+        "--directory",
+        "C:/Users/wetzl/AppData/Local/Temp/claude/C--Users-wetzl-Lucky-Golf-Website/3187aa12-59fd-4fec-bc84-0161b7896492/scratchpad/mock/out"
+      ],
       "port": 8765
+    },
+    {
+      "name": "v4-review",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8790",
+        "--directory",
+        "C:/Users/wetzl/Lucky Golf/Website/v4/out"
+      ],
+      "port": 8790
     }
   ]
 }

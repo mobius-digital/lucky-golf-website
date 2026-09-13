@@ -6,3 +6,10 @@ __pycache__/
 REVIEW-PACK/
 REVIEW-PACK*.zip
 review-input-sheets/
+approval-preview/qa/
+
+# v4: raw downloads and QA screenshots are regenerable
+v4/img-raw/
+v4/qa/
+v4/qa-report.json
+v4/out/luckyqa-*/

@@ -1,0 +1,140 @@
+{
+ "products": {
+  "lgw01-gold": {
+   "pack": "img/lgw01-gold-pack.webp",
+   "gallery": [
+    "img/lgw01-gold-g0.webp",
+    "img/lgw01-gold-g1.webp",
+    "img/lgw01-gold-g2.webp",
+    "img/lgw01-gold-g3.webp"
+   ]
+  },
+  "lgw01-black": {
+   "pack": "img/lgw01-black-pack.webp",
+   "gallery": [
+    "img/lgw01-black-g0.webp",
+    "img/lgw01-black-g1.webp",
+    "img/lgw01-black-g2.webp",
+    "img/lgw01-black-g3.webp"
+   ]
+  },
+  "lgp01-gold": {
+   "pack": "img/lgp01-gold-pack.webp",
+   "gallery": []
+  },
+  "lgp02-gold": {
+   "pack": "img/lgp02-gold-pack.webp",
+   "gallery": []
+  },
+  "lgh01": {
+   "pack": "img/lgh01-pack.webp",
+   "gallery": []
+  },
+  "polo-gold-dust": {
+   "pack": "img/polo-gold-dust-pack.webp"
+  },
+  "polo-shadow": {
+   "pack": "img/polo-shadow-pack.webp"
+  },
+  "polo-signature-black": {
+   "pack": "img/polo-signature-black-pack.webp"
+  },
+  "polo-contour": {
+   "pack": "img/polo-contour-pack.webp"
+  },
+  "polo-marble": {
+   "pack": "img/polo-marble-pack.webp"
+  },
+  "polo-gold-carnation": {
+   "pack": "img/polo-gold-carnation-pack.webp"
+  },
+  "polo-frost": {
+   "pack": "img/polo-frost-pack.webp"
+  },
+  "polo-cruiser": {
+   "pack": "img/polo-cruiser-pack.webp"
+  },
+  "polo-azalea": {
+   "pack": "img/polo-azalea-pack.webp"
+  },
+  "polo-nightshade": {
+   "pack": "img/polo-nightshade-pack.webp"
+  },
+  "polo-swirl": {
+   "pack": "img/polo-swirl-pack.webp"
+  },
+  "polo-spot": {
+   "pack": "img/polo-spot-pack.webp"
+  },
+  "polo-blackout": {
+   "pack": "img/polo-blackout-pack.webp"
+  },
+  "hat-white-gold-classic": {
+   "pack": "img/hat-white-gold-classic-pack.webp"
+  },
+  "hat-white-ibtbl": {
+   "pack": "img/hat-white-ibtbl-pack.webp"
+  },
+  "hat-cream-updown": {
+   "pack": "img/hat-cream-updown-pack.webp"
+  },
+  "hat-black-ibtbl": {
+   "pack": "img/hat-black-ibtbl-pack.webp"
+  },
+  "hat-tan-cursive": {
+   "pack": "img/hat-tan-cursive-pack.webp"
+  },
+  "hat-black-gold-classic": {
+   "pack": "img/hat-black-gold-classic-pack.webp"
+  },
+  "hat-white-black-updown": {
+   "pack": "img/hat-white-black-updown-pack.webp"
+  },
+  "hat-white-updown": {
+   "pack": "img/hat-white-updown-pack.webp"
+  },
+  "hat-white-cursive": {
+   "pack": "img/hat-white-cursive-pack.webp"
+  },
+  "hat-baby-blue-cursive": {
+   "pack": "img/hat-baby-blue-cursive-pack.webp"
+  }
+ },
+ "photos": {
+  "lucky-carver-black-hero.webp": {
+   "src": "img/lucky-carver-black-hero.webp",
+   "w": 1365,
+   "h": 2048
+  },
+  "lucky-carver-gold-address.webp": {
+   "src": "img/lucky-carver-gold-address.webp",
+   "w": 1366,
+   "h": 2048
+  },
+  "lucky-golfer-address.webp": {
+   "src": "img/lucky-golfer-address.webp",
+   "w": 1366,
+   "h": 2048
+  },
+  "lucky-line-together.webp": {
+   "src": "img/lucky-line-together.webp",
+   "w": 2000,
+   "h": 1333
+  },
+  "lucky-wedge-face-turf.webp": {
+   "src": "img/lucky-wedge-face-turf.webp",
+   "w": 1067,
+   "h": 1600
+  },
+  "lucky-wedge-sole-turf.webp": {
+   "src": "img/lucky-wedge-sole-turf.webp",
+   "w": 1067,
+   "h": 1600
+  },
+  "lucky-wedge-two-soles.webp": {
+   "src": "img/lucky-wedge-two-soles.webp",
+   "w": 2000,
+   "h": 1333
+  }
+ }
+}

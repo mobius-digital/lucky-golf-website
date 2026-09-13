@@ -1,0 +1,31 @@
+{
+ "_": "Which raw photo plays which role. Every key under 'products' MUST point at a file whose name starts with that product's id (tools/normalize-images.py refuses otherwise). That is the guard against the hybrid-shows-a-putter bug in the v3 sheets.",
+ "_bag": "lucky-carver-gold-hero.webp is NOT used: the irons around the gold wedge in that bag are another brand's, with the model name readable.",
+ "_pack": "Pack shot = the one studio frame per product used on every card. Chosen for the same family of angle: head low in frame, shaft rising out of the top. The raw angles still differ (the reshoot fixes that); the normaliser fixes size, position and ground.",
+ "products": {
+  "lgw01-gold":  {"pack": "lgw01-gold__6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp",
+                  "gallery": ["lgw01-gold__6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp",
+                              "lgw01-gold__2_b0f7ffdb-e65e-4c7e-ad97-79598e434ae9.webp",
+                              "lgw01-gold__7_b0aefaca-bb58-4481-b70b-efd2a7a63d5e.webp",
+                              "lgw01-gold__1_8996f3e6-4df5-4a4c-9ac6-8a3528b59702.webp"],
+                  "photos":  ["lucky-wedge-two-soles.webp"]},
+  "lgw01-black": {"pack": "lgw01-black__6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp",
+                  "gallery": ["lgw01-black__6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp",
+                              "lgw01-black__2_1034dc77-47fb-4f0c-8bbe-e9887bcad44d.webp",
+                              "lgw01-black__1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp",
+                              "lgw01-black__5_b02b2d30-6854-4de6-8da3-6228ca45541d.webp"],
+                  "photos":  ["lucky-carver-black-hero.webp"]},
+  "lgp01-gold":  {"pack": "lgp01-gold__4_0f5d6078-af78-4ed2-8574-6dc77522bc6f.webp"},
+  "lgp02-gold":  {"pack": "lgp02-gold__6_b48ef32d-d670-47d7-ad36-4bf7a466e2f8.webp"},
+  "lgh01":       {"pack": "lgh01__7_d0504108-60dc-4c66-9750-7755f781fcf6.webp"}
+ },
+ "apparel": "every polo-* and hat-* product uses its Shopify main image as the pack shot",
+ "photos": {
+  "hero":      "lucky-line-together.webp",
+  "finish":    "lucky-wedge-two-soles.webp",
+  "people":    "lucky-golfer-address.webp",
+  "duo":       "lucky-wedge-face-turf.webp",
+  "story":     "lucky-wedge-sole-turf.webp",
+  "duo2":      "lucky-carver-gold-address.webp"
+ }
+}
