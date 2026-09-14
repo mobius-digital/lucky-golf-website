@@ -18,6 +18,7 @@ button{font:inherit;color:inherit}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;padding:3px;gap:3px}
 .seg button{border:0;background:none;padding:8px 13px;border-radius:4px;cursor:pointer;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.seg button em{font-style:normal;margin-left:6px;background:var(--gold);color:var(--ink);border-radius:3px;padding:1px 5px;font-size:10px;letter-spacing:.08em}
 .open{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
 .open:hover{color:var(--text)}
 .info{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--ink-2);font-size:14px}
@@ -30,10 +31,12 @@ button{font:inherit;color:inherit}
 </style>
 
 <header class="top">
-  <div class="brand"><b>The pages you liked</b><span>Exactly as they were saved. Nothing redesigned.</span></div>
+  <div class="brand"><b>The pages you liked</b><span>Home and Carver 01 exactly as saved. The two collection pages are new.</span></div>
   <div class="seg" role="group" aria-label="Page" id="pages">
     <button type="button" data-page="home" aria-pressed="true">Home page</button>
     <button type="button" data-page="carver" aria-pressed="false">Carver 01 product page</button>
+    <button type="button" data-page="clubs" aria-pressed="false">Club collection <em>New</em></button>
+    <button type="button" data-page="polos" aria-pressed="false">Polo collection <em>New</em></button>
   </div>
   <div class="seg" role="group" aria-label="Device" id="devices">
     <button type="button" data-w="1440" aria-pressed="true">Desktop</button>
@@ -53,6 +56,8 @@ button{font:inherit;color:inherit}
 (function(){
   var INFO = {
     home: '<p><b>The August home page</b>, saved September 9 before any of the redesigns. Original colours: green header, cream cards, gold. Clicking the Carver 01 Gold card opens the product page.</p>',
+    clubs: '<p><b>New: the club collection.</b> Built to compare. Each category opens on a course photo, then the clubs, then a side-by-side of what actually changes (tick "Only show differences"). A "Which one is mine?" FAQ closes it. Specs, prices, ratings and stock are the live data.</p>',
+    polos: '<p><b>New: the polo collection.</b> Built to browse everything. Style tiles jump to a filter, the bar filters by collar, colour and your size (in stock only), and the + on each polo adds a size straight to the bag. Fit and fabric answers sit under the grid.</p>',
     carver: '<p><b>The Carver 01 product page</b> from September 12, the one built from the board you approved. The layout is identical in all three; only the colours differ. They are the three colour states it went through that day.</p>'
   };
   var COLOURS = [
@@ -64,7 +69,7 @@ button{font:inherit;color:inherit}
   var $ = function(id){ return document.getElementById(id); };
   var frame = $("frame"), view = $("view"), stage = $("stage");
 
-  function file(){ return page === "home" ? "home.html" : "carver-" + colour + ".html"; }
+  function file(){ return page === "carver" ? "carver-" + colour + ".html" : page + ".html"; }
   function fit(){
     var s = Math.min(1, (stage.clientWidth - 24) / width);
     frame.style.width = width + "px";
@@ -91,7 +96,8 @@ button{font:inherit;color:inherit}
   window.addEventListener("message", function(e){
     var h = e.data && e.data.pvGo; if (!h) return;
     var m = /^carver-([a-z]+)\.html/.exec(h);
-    if (m) { page = "carver"; colour = m[1]; } else if (/^home\.html/.test(h)) { page = "home"; }
+    var n = /^(home|clubs|polos)\.html/.exec(h);
+    if (m) { page = "carver"; colour = m[1]; } else if (n) { page = n[1]; }
     render();
   });
   window.addEventListener("resize", fit);

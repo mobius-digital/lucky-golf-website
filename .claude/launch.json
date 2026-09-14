@@ -24,6 +24,18 @@
         "C:/Users/wetzl/Lucky Golf/Website/v4/out"
       ],
       "port": 8790
+    },
+    {
+      "name": "v7-review",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8791",
+        "--directory",
+        "C:/Users/wetzl/Lucky Golf/Website/v7/out"
+      ],
+      "port": 8791
     }
   ]
 }

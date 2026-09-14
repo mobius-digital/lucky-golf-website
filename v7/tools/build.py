@@ -42,7 +42,7 @@ document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a[href]'); if(!a) return;
   var h=a.getAttribute('href')||'';
   if(h.charAt(0)==='#'||h.indexOf('javascript')===0) return;
-  var ok=/^(home|carver-[a-z]+)\\.html/.test(h);
+  var ok=/^(home|clubs|polos|carver-[a-z]+)\\.html/.test(h);
   if(!ok){e.preventDefault();
     var t=document.getElementById('pv-toast');
     if(!t){t=document.createElement('div');t.id='pv-toast';t.style.cssText='position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#17140F;color:#fff;font:14px system-ui,sans-serif;padding:12px 16px;border-radius:6px;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.25)';document.body.appendChild(t);}
@@ -74,7 +74,13 @@ def localize(s):
     return s
 
 
+COLLECTIONS = {"10-collection-clubs.html": "clubs.html", "10-collection-wedges.html": "clubs.html#wedges",
+               "10-collection-putters.html": "clubs.html#putters", "10-collection-hybrid.html": "clubs.html#hybrid",
+               "10-collection-polos.html": "polos.html"}
+
+
 def finish(s, links):
+    links = {**COLLECTIONS, **links}
     for old, new in links.items():
         s = s.replace(f'href="{old}', f'href="{new}')
     s = localize(s)
@@ -82,6 +88,7 @@ def finish(s, links):
 
 
 def main():
+    os.makedirs(os.path.join(V7, "raw"), exist_ok=True)
     if os.path.exists(OUT):
         for f in os.listdir(OUT):
             if f.endswith(".html") and f != "review.html":
@@ -106,6 +113,11 @@ def main():
             page = page.replace("</head>", f'<style id="pv-colour">:root{{{tokens}}}</style>\n</head>', 1)
         page = finish(page, {"01-home.html": "home.html", "02-pdp-lgw01.html": f"carver-{key}.html"})
         open(os.path.join(OUT, f"carver-{key}.html"), "w", encoding="utf-8").write(page)
+    subprocess.check_call(["python", os.path.join(HERE, "build-collections.py")], cwd=ROOT)
+    for key in ("clubs", "polos"):
+        page = open(os.path.join(V7, "raw", f"{key}-v7.html"), encoding="utf-8").read()
+        page = finish(page, {"01-home.html": "home.html", "02-pdp-lgw01.html": "carver-white.html"})
+        open(os.path.join(OUT, f"{key}.html"), "w", encoding="utf-8").write(page)
     left = sum(open(os.path.join(OUT, f), encoding="utf-8").read().count("cdn.shopify.com")
                for f in os.listdir(OUT) if f.endswith(".html"))
     print(f"built v7/out: home + 3 carver colour states; {len(os.listdir(IMG))} images; {left} remote image refs left")
