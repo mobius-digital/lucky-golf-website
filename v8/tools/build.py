@@ -38,7 +38,7 @@ v7.IMG = os.path.join(OUT, "img")
 SYSTEMS = {
     "a": {"name": "Ink & Gold", "dark": "#17140F", "header": "dark"},
     "b": {"name": "Deep Green & Gold", "dark": "#0B2E1F", "header": "dark"},
-    "c": {"name": "White & Gold", "dark": "#17140F", "header": "white"},
+    "c": {"name": "White & Gold", "dark": "#121212", "header": "white"},  # neutral black: warm ink read brown next to all that white
 }
 
 ON_DARK = ("--on-brand:#F4F3F0;--on-brand-88:rgba(244,243,240,.88);--on-brand-22:rgba(244,243,240,.22);"
