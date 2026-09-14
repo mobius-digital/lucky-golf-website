@@ -1,0 +1,100 @@
+<title>Lucky Pages You Liked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+/* One look on purpose: the shell is quiet ink so the pages carry the colour. */
+:root{--ink:#17140F;--ink-2:#221E17;--line:#3A352C;--text:#F5F2EA;--muted:#B9B2A3;--gold:#C29A2B;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5;display:grid;grid-template-rows:auto auto 1fr;min-height:100vh}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.brand{margin-right:auto;line-height:1.15}
+.brand b{display:block;font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:22px}
+.brand span{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;padding:3px;gap:3px}
+.seg button{border:0;background:none;padding:8px 13px;border-radius:4px;cursor:pointer;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.open{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.open:hover{color:var(--text)}
+.info{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--ink-2);font-size:14px}
+.info p{margin:0;max-width:78ch;color:var(--muted)}
+.info p b{color:var(--text);font-weight:650}
+.info .seg{margin-left:auto}
+.stage{position:relative;overflow:hidden;background:#0E0C09;min-height:60vh}
+.frame{position:absolute;top:0;left:50%;transform-origin:top center;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.frame iframe{border:0;display:block;width:100%;height:100%}
+</style>
+
+<header class="top">
+  <div class="brand"><b>The pages you liked</b><span>Exactly as they were saved. Nothing redesigned.</span></div>
+  <div class="seg" role="group" aria-label="Page" id="pages">
+    <button type="button" data-page="home" aria-pressed="true">Home page</button>
+    <button type="button" data-page="carver" aria-pressed="false">Carver 01 product page</button>
+  </div>
+  <div class="seg" role="group" aria-label="Device" id="devices">
+    <button type="button" data-w="1440" aria-pressed="true">Desktop</button>
+    <button type="button" data-w="834" aria-pressed="false">Tablet</button>
+    <button type="button" data-w="390" aria-pressed="false">Phone</button>
+  </div>
+  <a class="open" id="openNew" href="home.html" target="_blank" rel="noopener">Open full page</a>
+</header>
+
+<div class="info" id="info"></div>
+
+<div class="stage" id="stage">
+  <div class="frame" id="frame"><iframe id="view" src="home.html" title="Page preview"></iframe></div>
+</div>
+
+<script>
+(function(){
+  var INFO = {
+    home: '<p><b>The August home page</b>, saved September 9 before any of the redesigns. Original colours: green header, cream cards, gold. Clicking the Carver 01 Gold card opens the product page.</p>',
+    carver: '<p><b>The Carver 01 product page</b> from September 12, the one built from the board you approved. The layout is identical in all three; only the colours differ. They are the three colour states it went through that day.</p>'
+  };
+  var COLOURS = [
+    ["white", "All white", "White header, white bands. The palette you picked."],
+    ["bands", "Dark bands", "White header, dark bands low on the page."],
+    ["saved", "Dark header", "Dark header and dark bands. The last saved version."]
+  ];
+  var page = "home", colour = "white", width = 1440;
+  var $ = function(id){ return document.getElementById(id); };
+  var frame = $("frame"), view = $("view"), stage = $("stage");
+
+  function file(){ return page === "home" ? "home.html" : "carver-" + colour + ".html"; }
+  function fit(){
+    var s = Math.min(1, (stage.clientWidth - 24) / width);
+    frame.style.width = width + "px";
+    frame.style.height = (stage.clientHeight / s) + "px";
+    frame.style.transform = "translateX(-50%) scale(" + s + ")";
+  }
+  function render(){
+    [].forEach.call(document.querySelectorAll("#pages button"), function(b){ b.setAttribute("aria-pressed", String(b.dataset.page === page)); });
+    [].forEach.call(document.querySelectorAll("#devices button"), function(b){ b.setAttribute("aria-pressed", String(+b.dataset.w === width)); });
+    var info = INFO[page];
+    if (page === "carver") {
+      info += '<div class="seg" role="group" aria-label="Colour">' + COLOURS.map(function(c){
+        return '<button type="button" data-c="' + c[0] + '" title="' + c[2] + '" aria-pressed="' + (c[0] === colour) + '">' + c[1] + '</button>';
+      }).join("") + '</div>';
+    }
+    $("info").innerHTML = info;
+    if (view.getAttribute("src") !== file()) view.setAttribute("src", file());
+    $("openNew").href = file();
+    fit();
+  }
+  $("pages").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { page = b.dataset.page; render(); } });
+  $("devices").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { width = +b.dataset.w; render(); } });
+  $("info").addEventListener("click", function(e){ var b = e.target.closest("button[data-c]"); if (b) { colour = b.dataset.c; render(); } });
+  window.addEventListener("message", function(e){
+    var h = e.data && e.data.pvGo; if (!h) return;
+    var m = /^carver-([a-z]+)\.html/.exec(h);
+    if (m) { page = "carver"; colour = m[1]; } else if (/^home\.html/.test(h)) { page = "home"; }
+    render();
+  });
+  window.addEventListener("resize", fit);
+  render();
+})();
+</script>
