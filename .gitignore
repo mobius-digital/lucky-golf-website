@@ -23,3 +23,8 @@ v6/qa-report.json
 v7/raw/
 v7/qa/
 v7/qa-report.json
+v8/site/
+v8/qa/
+v8/qa-report.json
+v8/*.log
+v8/raw/

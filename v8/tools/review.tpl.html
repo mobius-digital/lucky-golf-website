@@ -1,0 +1,151 @@
+<title>Lucky Colour System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+/* One look on purpose: a quiet ink shell so the pages carry the colour. */
+:root{--ink:#17140F;--ink-2:#221E17;--line:#3A352C;--text:#F5F2EA;--muted:#B9B2A3;--gold:#C29A2B;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5;display:grid;grid-template-rows:auto auto 1fr;min-height:100vh}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.brand{margin-right:auto;line-height:1.15}
+.brand b{display:block;font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:22px}
+.brand span{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;padding:3px;gap:3px}
+.seg button{border:0;background:none;padding:7px 11px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.seg button em{font-style:normal;margin-left:5px;background:var(--gold);color:var(--ink);border-radius:3px;padding:1px 5px;font-size:10px}
+.open{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.panel{display:grid;grid-template-columns:minmax(260px,1.1fr) minmax(300px,1.4fr) minmax(240px,1fr);gap:14px 26px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--ink-2)}
+@media (max-width:1100px){.panel{grid-template-columns:1fr}}
+.panel h2{margin:0 0 4px;font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:26px;line-height:1}
+.panel h3{margin:0 0 8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:650}
+.panel p{margin:0;color:var(--muted);font-size:13.5px;max-width:60ch}
+.panel p b{color:var(--text)}
+.sys-seg{margin-top:10px}
+.bar{display:flex;height:34px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;min-width:2px;position:relative}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
+.legend s{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid rgba(255,255,255,.18);text-decoration:none}
+.legend b{color:var(--text);font-weight:650}
+.roles{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.roles li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;font-size:13px}
+.roles .sw{width:30px;height:30px;border-radius:5px;border:1px solid rgba(255,255,255,.2)}
+.roles b{display:block;color:var(--text);font-weight:650}
+.roles small{color:var(--muted)}
+.stage{position:relative;overflow:hidden;background:#0E0C09;min-height:55vh}
+.frame{position:absolute;top:0;left:50%;transform-origin:top center;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.frame iframe{border:0;display:block;width:100%;height:100%}
+</style>
+
+<header class="top">
+  <div class="brand"><b>Lucky colour system</b><span>Every page you liked. One colour switch for all of them.</span></div>
+  <div class="seg" role="group" aria-label="Page" id="pages">
+    <button type="button" data-page="home" aria-pressed="true">Home</button>
+    <button type="button" data-page="carver" aria-pressed="false">Carver 01</button>
+    <button type="button" data-page="clubs" aria-pressed="false">Clubs</button>
+    <button type="button" data-page="polos" aria-pressed="false">Polos</button>
+    <button type="button" data-page="polo" aria-pressed="false">Polo product <em>New</em></button>
+  </div>
+  <div class="seg" role="group" aria-label="Device" id="devices">
+    <button type="button" data-w="1440" aria-pressed="true">Desktop</button>
+    <button type="button" data-w="834" aria-pressed="false">Tablet</button>
+    <button type="button" data-w="390" aria-pressed="false">Phone</button>
+  </div>
+  <a class="open" id="openNew" href="home.html" target="_blank" rel="noopener">Open full page</a>
+</header>
+
+<section class="panel" aria-live="polite">
+  <div>
+    <h2 id="sysName"></h2>
+    <p id="sysWhy"></p>
+    <div class="seg sys-seg" role="group" aria-label="Colour system" id="systems"></div>
+  </div>
+  <div>
+    <h3 id="barTitle"></h3>
+    <div class="bar" id="bar"></div>
+    <div class="legend" id="legend"></div>
+    <p style="margin-top:8px;font-size:12px" id="barNote"></p>
+  </div>
+  <div>
+    <h3>The colours and their one job</h3>
+    <ul class="roles" id="roles"></ul>
+  </div>
+</section>
+
+<div class="stage" id="stage">
+  <div class="frame" id="frame"><iframe id="view" src="home.html" title="Page preview"></iframe></div>
+</div>
+
+<script>
+(function(){
+  var MEASURE = __MEASURE__;
+  var PAGES = {home:"home.html", carver:"carver.html", clubs:"clubs.html", polos:"polos.html", polo:"20-product-polo-azalea.html"};
+  var PAGE_NAME = {home:"Home", carver:"Carver 01", clubs:"Club collection", polos:"Polo collection", polo:"Polo product"};
+  var ROLE = {
+    white:["#FFFFFF","White","The page"], stone:["#F4F3F0","Stone","Product tiles, wells, the fit note"],
+    ink:["#17140F","Ink","Text, and dark bands where the system uses ink"], deep:["#0B2E1F","Deep green","The dark bands and header"],
+    gold:["#C29A2B","Gold","Buttons, one word per headline, stars"], photo:["linear-gradient(135deg,#5b7a3a,#c9b27a)","Photos","Course photography and products"],
+    cream:["#F6F2E8","Cream","Old August fields"], clover:["#0B5130","Clover green","Old August header and bands"], other:["#888","Other","Everything else"]
+  };
+  var SYS = {
+    saved:{name:"As saved", why:"Each page exactly as it was saved. This is the problem: the home page is green, cream and ink, the product page is ink and white, and the new pages sit on the August green. No two pages share a system.",
+      roles:[]},
+    a:{name:"Ink & Gold", why:"One dark colour, ink, for the header, the dark bands and the footer. Neutral and safe, and it lets the gold read as metal. The risk: black with gold is where most premium brands already live, so it says less that it's Lucky.",
+      roles:[["#FFFFFF","White","The page. Most of every screen"],["#F4F3F0","Stone","Product tiles and wells. Replaces cream everywhere"],["#17140F","Ink","Header, dark bands, footer, and all text"],["#C29A2B","Gold","The one accent: buttons, one word, stars"],["#008340","Signal green","In stock, and the clover inside the logo. Nothing else"]]},
+    b:{name:"Deep Green & Gold", why:"My pick. The same structure as Ink & Gold, but the one dark colour is Lucky's green taken deep enough that gold passes on it (5.6 to 1). It keeps the green you liked on the August home page without the second and third colours, so it reads as Lucky, not as a black-and-gold template.",
+      roles:[["#FFFFFF","White","The page. Most of every screen"],["#F4F3F0","Stone","Product tiles and wells. Replaces cream everywhere"],["#0B2E1F","Deep green","Header, dark bands, footer. The brand colour, used as the only dark"],["#17140F","Ink","Text only. Never a band"],["#C29A2B","Gold","The one accent: buttons, one word, stars"]]},
+    c:{name:"White & Gold", why:"The lightest: white header and white bands, with ink only in the footer. Most gallery-like and most photo-first. The risk you already felt on September 12: without a dark band anywhere, pages without great photography read like a wireframe.",
+      roles:[["#FFFFFF","White","The page, the header and every band"],["#F4F3F0","Stone","Product tiles and wells"],["#17140F","Ink","Text, and the footer only"],["#C29A2B","Gold","Buttons, one word, stars. Deeper gold for small text on white"],["#008340","Signal green","In stock and the clover inside the logo"]]}
+  };
+  var page = "home", width = 1440, sys = "b";
+  var $ = function(id){ return document.getElementById(id); };
+  var view = $("view"), frame = $("frame"), stage = $("stage");
+
+  $("systems").innerHTML = ["saved","a","b","c"].map(function(k){ return '<button type="button" data-sys="'+k+'">'+SYS[k].name+(k==="b"?' <em>My pick</em>':'')+'</button>'; }).join("");
+
+  function send(){ try{ view.contentWindow.postMessage({sys: sys}, "*"); }catch(e){} }
+  function fit(){
+    var s = Math.min(1, (stage.clientWidth - 24) / width);
+    frame.style.width = width + "px"; frame.style.height = (stage.clientHeight / s) + "px";
+    frame.style.transform = "translateX(-50%) scale(" + s + ")";
+  }
+  function paint(){
+    [].forEach.call(document.querySelectorAll("#pages button"), function(b){ b.setAttribute("aria-pressed", String(b.dataset.page === page)); });
+    [].forEach.call(document.querySelectorAll("#devices button"), function(b){ b.setAttribute("aria-pressed", String(+b.dataset.w === width)); });
+    [].forEach.call(document.querySelectorAll("#systems button"), function(b){ b.setAttribute("aria-pressed", String(b.dataset.sys === sys)); });
+    var S = SYS[sys];
+    $("sysName").textContent = S.name; $("sysWhy").textContent = S.why;
+    var m = (MEASURE[PAGES[page]] || (page === "polo" ? MEASURE["20-product-polo-azalea.html"] : null) || {})[sys] || {};
+    var keys = Object.keys(m).filter(function(k){ return m[k] >= 0.3; });
+    $("barTitle").textContent = "How much of each colour the " + PAGE_NAME[page] + " page shows";
+    $("bar").innerHTML = keys.map(function(k){ var r = ROLE[k] || ROLE.other; return '<i style="flex:'+m[k]+';background:'+r[0]+'" title="'+r[1]+' '+m[k]+'%"></i>'; }).join("");
+    $("legend").innerHTML = keys.map(function(k){ var r = ROLE[k] || ROLE.other; return '<span><s style="background:'+r[0]+'"></s>'+r[1]+' <b>'+Math.round(m[k])+'%</b></span>'; }).join("");
+    $("barNote").textContent = "Measured on the full desktop page, by what sits behind each point: a colour surface or a photo. Gold here is surfaces only (buttons, tags); gold words and the gold clubs in photos are not counted as gold.";
+    var roles = S.roles.length ? S.roles : null;
+    $("roles").innerHTML = roles ? roles.map(function(r){ return '<li><span class="sw" style="background:'+r[0]+'"></span><span><b>'+r[1]+' <small>'+r[0]+'</small></b><small>'+r[2]+'</small></span></li>'; }).join("")
+      : '<li><span class="sw" style="background:#0B5130"></span><span><b>Clover green</b><small>August header, marquee and brand band</small></span></li><li><span class="sw" style="background:#F6F2E8"></span><span><b>Cream</b><small>August cards and fields</small></span></li><li><span class="sw" style="background:#17140F"></span><span><b>Ink</b><small>Carver header and bands, August footer</small></span></li><li><span class="sw" style="background:#C29A2B"></span><span><b>Gold</b><small>Everywhere, the one thing that was consistent</small></span></li>';
+    var f = PAGES[page];
+    if (view.getAttribute("src") !== f) view.setAttribute("src", f); else send();
+    $("openNew").href = f + (sys === "saved" ? "" : "?sys=" + sys);
+    fit();
+  }
+  view.addEventListener("load", send);
+  window.addEventListener("message", function(e){
+    if (e.data && e.data.ready) send();
+    var h = e.data && e.data.pvGo; if (!h) return;
+    for (var k in PAGES) if (h.split("#")[0] === PAGES[k]) { page = k; paint(); return; }
+    if (/^20-product-polo-/.test(h)) { PAGES.polo = h.split("#")[0]; page = "polo"; paint(); }
+  });
+  $("pages").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { page = b.dataset.page; if (page === "polo") PAGES.polo = "20-product-polo-azalea.html"; paint(); } });
+  $("devices").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { width = +b.dataset.w; paint(); } });
+  $("systems").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { sys = b.dataset.sys; paint(); } });
+  window.addEventListener("resize", fit);
+  paint();
+})();
+</script>
