@@ -95,8 +95,85 @@ LISTENER = """<script>
 </script>"""
 
 
+# ----------------------------------------------------------------- logo + Mags
+_SPRITE = open(os.path.join(ROOT, "_src-logo-symbols.svg"), encoding="utf-8").read()
+SYMBOLS = {m.group(1): (m.group(2), m.group(3)) for m in
+           re.finditer(r'<symbol id="(lg-[\w-]+)" viewBox="([^"]+)"[^>]*>(.*?)</symbol>', _SPRITE, re.S)}
+WORD_VB = SYMBOLS["lg-lucky"][0]
+WORD_W = round(26 * float(WORD_VB.split()[2]) / float(WORD_VB.split()[3]))
+
+
+def inline_symbols(html):
+    """<use href="#lg-..."> draws blank in some browsers (Cole saw the header
+    wordmark vanish). Every logo symbol is written into its own svg instead."""
+    def sub(m):
+        attrs, sid = m.group(1), m.group(2)
+        vb, inner = SYMBOLS[sid]
+        if "viewBox" not in attrs:
+            attrs += f' viewBox="{vb}"'
+        return f'<svg{attrs} fill="currentColor" fill-rule="nonzero">{inner}</svg>'
+    return re.sub(r'<svg([^>]*)>\s*<use href="#(lg-[\w-]+)"\s*/>\s*</svg>', sub, html)
+
+
+MAGS = {  # context -> light version (dark grounds), ink version (white grounds)
+    "bag": ("img/mags-bag-light.webp", "img/mags-bag-ink.webp", 543, 598),
+    "big": ("img/mags-light.webp", "img/mags-ink.webp", 797, 494),
+}
+
+
+def mags_imgs(kind, alt=""):
+    light, ink, w, h = MAGS[kind]
+    return (f'<img class="mags-light" src="{light}" alt="{alt}" width="{w}" height="{h}" decoding="async">'
+            f'<img class="mags-ink" src="{ink}" alt="" width="{w}" height="{h}" decoding="async">')
+
+
+MAGS_CSS = """
+/* Logo on the left, always the LUCKY wordmark. Mags: cream on dark grounds, ink on white. */
+.hdr .logo .clv{display:none}
+.hdr .logo .word{height:26px;width:""" + str(WORD_W) + """px}
+.logo--lucky svg{width:100%;height:100%;display:block}
+.cart.has-mags{width:54px;height:54px}
+.cart.has-mags img,.bag img{width:48px;height:48px;object-fit:contain}
+.mags-ink{display:none!important}
+.mags-light{display:block!important}
+html[data-sys="c"] .hdr .mags-light,html[data-sys="c"] .sign .mags-light{display:none!important}
+html[data-sys="c"] .hdr .mags-ink,html[data-sys="c"] .sign .mags-ink{display:block!important}
+"""
+
+
+def logo_and_mags(html):
+    html = inline_symbols(html)
+    # v2 header: drop the separate clover (the wordmark already carries it)
+    html = re.sub(r'(<a href="home\.html" class="logo"[^>]*>)<svg class="clv".*?</svg>(<svg class="word")',
+                  lambda m: m.group(1) + m.group(2).replace('class="word"', f'class="word" width="{WORD_W}" height="26"'), html, count=1, flags=re.S)
+    # v2 bag button and sign-off: light + ink, never the green on a dark ground
+    html = re.sub(r'<img class="on-light" src="img/mags-bag\.webp"[^>]*>\s*<img class="on-dark" src="img/mags-bag-light\.webp"[^>]*>',
+                  mags_imgs("bag"), html)
+    html = re.sub(r'<img class="on-light" src="img/mags\.webp"[^>]*>\s*<img class="on-dark" src="img/mags-light\.webp"[^>]*>',
+                  mags_imgs("big", "Mags, the magpie, with a gold wedge"), html)
+    # August header: Mags on the bag button, like the product pages
+    html = re.sub(r'<button type="button" class="cart" data-cart-open aria-label="Open bag">\s*<svg class="icn".*?</svg>',
+                  '<button type="button" class="cart has-mags" data-cart-open aria-label="Open bag">' + mags_imgs("bag"), html, count=1, flags=re.S)
+    return html.replace("</head>", f"<style id=\"mags\">{MAGS_CSS}</style>\n</head>", 1)
+
+
+def make_ink_mags():
+    """The emblem is drawn in deep green. Ink and White systems have no green,
+    so an ink copy is made by recolouring only the green pixels; the gold club
+    and the transparent belly stay as they are."""
+    import numpy as np
+    from PIL import Image
+    for f in ("mags", "mags-bag"):
+        a = np.array(Image.open(os.path.join(ROOT, "img", f + ".webp")).convert("RGBA")).astype(int)
+        r, g, b, al = a[..., 0], a[..., 1], a[..., 2], a[..., 3]
+        green = (al > 0) & (g > r + 8) & (g >= b) & ((r + g + b) < 330)
+        a[green, 0], a[green, 1], a[green, 2] = 23, 20, 15
+        Image.fromarray(a.astype("uint8"), "RGBA").save(os.path.join(OUT, "img", f + "-ink.webp"), "WEBP", quality=90)
+
+
 def inject(html):
     css = aug_css() if "--brand:" in html else v2_css()
+    html = logo_and_mags(html)
     html = html.replace("</head>", f'<style id="sys">{css}</style>\n</head>', 1)
     html = html.replace("var ok=/^(home|clubs|polos|carver-[a-z]+)\\.html/.test(h);",
                         "var ok=/^(home|clubs|polos|carver|20-product-polo-[a-z-]+)\\.html/.test(h);")
@@ -171,6 +248,7 @@ def main():
         json.dump(m, open(os.path.join(V8, "measure.json"), "w"), indent=1)
         return
     os.makedirs(os.path.join(OUT, "img"), exist_ok=True)
+    make_ink_mags()
     for f in os.listdir(os.path.join(V7OUT, "img")):
         shutil.copy(os.path.join(V7OUT, "img", f), os.path.join(OUT, "img"))
     pages = {"home.html": "home.html", "carver.html": "carver-saved.html", "clubs.html": "clubs.html", "polos.html": "polos.html"}
