@@ -62,7 +62,7 @@ def aug_css():
                "html[data-sys] .mq,html[data-sys] .bband,html[data-sys] .v7-fit-tile,html[data-sys] .v7-tray,html[data-sys] .v7-band-ph,html[data-sys] .v7-pill,html[data-sys] .v7-tag.out{background-color:var(--sys-dark)}")
     out.append("html[data-sys] .badge-new,html[data-sys] .mtile .chip,html[data-sys] .jr-av{background:var(--sys-dark)}")
     out.append('html[data-sys="c"] .mq,html[data-sys="c"] .bband{background:#FFFFFF;color:#17140F;border-block:1px solid rgba(23,20,15,.12)}'
-               'html[data-sys="c"] .mq-set span{color:#17140F}html[data-sys="c"] .hdr{border-bottom:1px solid rgba(23,20,15,.12)}')
+               'html[data-sys="c"] .mq-set span{color:#17140F}html[data-sys="c"]{--on-brand-22:rgba(23,20,15,.12)}')
     return "\n".join(out)
 
 
@@ -171,9 +171,78 @@ def make_ink_mags():
         Image.fromarray(a.astype("uint8"), "RGBA").save(os.path.join(OUT, "img", f + "-ink.webp"), "WEBP", quality=90)
 
 
+# ----------------------------------------------------------------- one header, solid chrome
+def groove_tile(hex_, alpha):
+    """The pinstripe as a 6px image tile instead of a repeating CSS gradient.
+    Chrome rasterises long repeating gradients unevenly (some lines darker,
+    some fainter); a tile repeats the exact same pixels every 6px."""
+    return ("url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E"
+            f"%3Crect width='6' height='1' fill='%23{hex_}' fill-opacity='{alpha}'/%3E%3C/svg%3E\")")
+
+
+TICK = """<div class="tick v8-tick" aria-label="Lucky Golf, at a glance"><div class="tick-in">
+<a href="40-returns.html"><b>Sixty days</b> to prove us wrong</a><a href="41-shipping.html">Ships in 1 to 2 business days</a><a href="clubs.html#wedges">Forged, not cast</a>
+</div></div>
+"""
+
+CHROME_CSS = """
+/* ONE HEADER on every page: announcement bar, then the nav. Solid colour, no
+   pinstripe: the chrome sits over every page and every photo, so it stays
+   quiet. The pinstripe is kept for the dark feature bands only. */
+:root{--v8-pad:clamp(20px,4.2vw,68px)}
+html body .v8-tick{position:relative;background:var(--v8-chrome);color:var(--v8-on-m);border:0;margin:0}
+html body .v8-tick::before,html body .hdr::before,html body .ftr::before,html body .mq::before{display:none!important;background:none!important}
+html body .v8-tick .tick-in{max-width:none;margin:0;padding:0 var(--v8-pad);min-height:34px;display:flex;align-items:center;justify-content:center;gap:28px;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+html body .v8-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+html body .v8-tick b{color:var(--v8-acc);font-weight:600;margin-right:.35em}
+html body .hdr{background:var(--v8-chrome);border-bottom:1px solid var(--v8-rule);box-shadow:none}
+html body .hdr .hdr-in{max-width:none;margin:0;padding:0 var(--v8-pad);min-height:72px;height:72px;display:grid;
+  grid-template-columns:1fr auto 1fr;grid-template-areas:"l n a";align-items:center;gap:24px}
+html body .hdr .logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;width:132px;height:44px;color:var(--v8-on)}
+html body .hdr .logo svg{width:132px!important;height:30px!important;display:block}
+html body .hdr .nav{grid-area:n;display:flex;gap:30px;margin:0;justify-self:center}
+html body .hdr .nav-trigger,html body .hdr .nav > a{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;text-transform:uppercase;color:var(--v8-on)}
+html body .hdr .hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px;margin:0}
+html body .hdr .hdr-act > a{width:44px;height:44px;display:grid;place-items:center;color:var(--v8-on)}
+html body .hdr .hdr-search span{display:none}
+html body .hdr .hdr-act .icn{width:21px;height:21px;stroke:var(--v8-on)}
+html body .hdr .cart,html body .hdr .bag{width:54px;height:54px;display:grid;place-items:center;position:relative}
+html body .hdr .burger i{background:var(--v8-on)}
+@media (max-width:980px){
+  html body .hdr .nav{display:none}
+  html body .hdr .hdr-in{grid-template-columns:auto 1fr;grid-template-areas:"l a";height:64px;min-height:64px}
+  html body .hdr .burger{display:block;margin:0}
+  html body .v8-tick .tick-in{justify-content:flex-start;gap:22px}
+  html body .v8-tick .tick-in a:nth-child(n+2){display:none}
+  html body .v8-tick .tick-in{justify-content:center}
+}
+/* the footer: solid, with a soft light falling from the top edge instead of lines */
+html body .ftr{background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%)}
+"""
+AUG_CHROME_VARS = ":root{--v8-chrome:var(--brand);--v8-on:var(--on-brand);--v8-on-m:var(--on-brand-88);--v8-acc:var(--brand-accent);--v8-rule:var(--on-brand-22)}"
+V2_CHROME_VARS = ":root{--v8-chrome:var(--chrome);--v8-on:var(--on-chrome);--v8-on-m:var(--on-chrome-m);--v8-acc:var(--accent-on-chrome);--v8-rule:var(--chrome-rule)}"
+GROOVES = (":root{--groove-dark:" + groove_tile("F6F2E8", ".10") + ";--brand-groove:" + groove_tile("F6F2E8", ".10") +
+           ";--groove-light:" + groove_tile("17140F", ".03") + ";--groove-band:" + groove_tile("F6F2E8", ".08") +
+           ";--groove-tile:" + groove_tile("17140F", ".03") + ";--groove-chrome:none}")
+
+
+def one_header(html, august):
+    if august:
+        html = html.replace('<header class="hdr">', TICK + '<header class="hdr">', 1)
+        html = re.sub(r'(<button class="nav-trigger"[^>]*>)Apparel &amp; Gear', r'\1Apparel', html)
+        html = html.replace('<a href="50-search.html" aria-label="Search">', '<a class="hdr-search" href="50-search.html" aria-label="Search">', 1)
+    else:
+        html = re.sub(r'<div class="tick" aria-label="Lucky Golf, at a glance">.*?</div>\s*</div>', TICK.strip(), html, count=1, flags=re.S)
+    css = (AUG_CHROME_VARS if august else V2_CHROME_VARS) + CHROME_CSS + GROOVES
+    return html.replace("</head>", f'<style id="chrome">{css}</style>\n</head>', 1)
+
+
 def inject(html):
-    css = aug_css() if "--brand:" in html else v2_css()
+    august = "--brand:" in html
+    css = aug_css() if august else v2_css()
     html = logo_and_mags(html)
+    html = one_header(html, august)
     html = html.replace("</head>", f'<style id="sys">{css}</style>\n</head>', 1)
     html = html.replace("var ok=/^(home|clubs|polos|carver-[a-z]+)\\.html/.test(h);",
                         "var ok=/^(home|clubs|polos|carver|20-product-polo-[a-z-]+)\\.html/.test(h);")
