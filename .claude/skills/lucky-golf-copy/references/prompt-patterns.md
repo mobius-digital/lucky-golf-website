@@ -1,0 +1,379 @@
+# Lucky Golf — Format-Specific Guidance
+
+This document describes what each type of Lucky Golf copy **is for** — not how to structure it, not how many words to use, not what template to follow. The tone stays consistent across all of them (see `how-we-write.md`). What changes is the job the piece is doing.
+
+Read the relevant section for whatever format the user has asked for. If the format isn't listed, use the closest match and apply the tone guide.
+
+---
+
+## Product descriptions
+
+**What it is:** A short piece of copy that describes a club well enough to make someone want to read further or look closer. Not a summary of features. Not a list of what the club has. A description.
+
+**What it does:** Makes a golfer curious. Promises something. Uses simple language anyone can understand. Feels like someone in the pro shop describing a club they actually like.
+
+**What to avoid:** Listing features in sequence. Opening with construction terms. Trying to cover every aspect of the club. Selling.
+
+**Good example:** *"The kind of putter that makes short ones feel like a formality and long ones feel possible. It works with the arc your stroke already has instead of asking you to build a new one, and the roll comes off the face clean enough that you stop thinking about the stroke and start thinking about the line. Milled, muted, and quietly gold — a putter that gets out of your way."*
+
+**Bad example:** *"A CNC-milled mallet with a slight toe hang. The deep, fully milled face gets the ball rolling end-over-end sooner, and perimeter weighting holds the line on strikes that miss the center. Soft but solid at impact — no ping, no hollow ring, no vibration."*
+
+The good example describes what the putter is like to use. The bad example lists what the putter has. Both are accurate. Only one makes you want to read more.
+
+---
+
+## Feature callouts / benefit blocks
+
+**What it is:** Short, feature-forward blocks. Usually 3-4 callouts per section. Each one names a feature and explains what it does for the golfer.
+
+**What it does:** Communicates specifics fast. This is the section where feature-forward writing is *appropriate* — it's what the reader is there for. Descriptions promise; callouts prove.
+
+**Length:** One tight sentence per callout, sometimes two. Never a paragraph.
+
+**Structure to allow:** Feature name (bolded or in a heading), then a plainspoken sentence about what it does. Golfer language, not lab language.
+
+**Good example:**
+- **Forged 1020 carbon steel.** Soft, buttery feel and pure feedback at impact.
+- **CNC-milled grooves, micro-milled between them.** More texture on the ball for higher spin and tighter control.
+- **Sandblasted face.** Added grip across the face for shots that check.
+
+**What to avoid:** Overexplaining. Marketing adjectives ("premium," "engineered," "innovative") stacked on top of each other. Making the feature name longer than the benefit.
+
+---
+
+## Ad headlines
+
+**What it is:** A short claim, question, or provocation designed to stop a scroll. Usually 3-10 words.
+
+**What it does:** Names the promise, the price, or the problem in as few words as possible. Attitude in the closer often helps.
+
+**What to avoid:** Setup-and-punchline headlines. Cute-clever wordplay. Multiple ideas jammed into one line. Ads that don't lead with anything specific.
+
+**Good examples:**
+- *$99 for a forged wedge. The new normal.*
+- *Titanium hybrid. About time.*
+- *Still using stock wedges?*
+- *Your putter probably wasn't milled.*
+
+**Bad examples:**
+- *Introducing the LGH01 Stryker: A Revolutionary New Hybrid* (too long, too selly)
+- *Distance meets forgiveness. Meet the Stryker.* (setup-and-punchline)
+- *Wedges so good, you'll ditch your old ones!* (exclamation, begging)
+
+---
+
+## Subheads and support lines
+
+**What it is:** A short line that sits under a primary headline — on a product page, an ad, a landing page hero, or an email preheader. Usually one sentence.
+
+**What it does:** Extends the headline. Makes the promise the headline gestured at. Or undercuts the headline with a small dry beat.
+
+**What to avoid:** Defaulting to construction and specs. A subhead is not the place to name the material or the process — that's what the specs section is for. If the headline gestured at a benefit or a promise, the subhead should follow through on that gesture. If the subhead reads like the top of a features table, rewrite it.
+
+**Good example (under a "Made for a natural arc" page headline):**
+*A milled mallet that works with the stroke you already have.*
+
+**Bad example (same headline):**
+*CNC-milled 304 stainless with a slight toe hang — built to work with the arc, not against it.*
+
+Both are accurate. The good one extends the promise of the headline. The bad one pivots to specs and construction, which the reader will get further down the page anyway.
+
+---
+
+## Ad body copy
+
+**What it is:** 1-3 short sentences under a headline that explain the claim or make the pitch. Everything earns its space.
+
+**What it does:** Follows through on the headline. Adds substance without adding length. Often names the price, the model, or the mechanism in a plainspoken way.
+
+**Length:** Rarely more than 25 words. Sometimes just one sentence.
+
+**Good example (under a "$99 for a forged wedge" headline):** *"We cut out the middlemen, sponsorships, and retail markups. What's left is the club."*
+
+**What to avoid:** Long paragraphs. Feature lists. Repeating the headline in different words. Trying to cover multiple selling points.
+
+---
+
+## Email subject lines
+
+**What it is:** A short phrase, question, or statement that earns the open. 3-8 words typical.
+
+**What it does:** Creates curiosity. Doesn't oversell. Uses lowercase or sentence case (not title case). Sounds like a person, not a marketing template.
+
+**Good examples:**
+- *still using stock wedges?*
+- *your putter probably wasn't milled.*
+- *the carver ships next week.*
+- *not all upgrades are obvious.*
+
+**Bad examples:**
+- *LIMITED TIME: Save on the New Carver Wedge!* (all-caps, exclamation, pressure)
+- *your short game called. it's not happy.* (crafted-clever, straining)
+- *Introducing the Tracer Mallet* (title case, no curiosity)
+
+---
+
+## Email openers / hooks
+
+**What it is:** The first 1-3 sentences of an email. Talks to the reader before it talks about the product.
+
+**What it does:** Names the problem, makes a small claim, or opens a thought that the rest of the email will follow through on. Sets the tone.
+
+**What to avoid:** Immediately launching into product specs. Starting with "Introducing…" or "We're excited to announce…" Starting with the brand name.
+
+**Good example:** *"The short game is where rounds are decided, and where most golfers quietly lose them. The Carver is built for the golfer who's tired of blaming the swing when the real issue is the club."*
+
+---
+
+## Email body
+
+**What it is:** The middle of the email. Explains the product, the drop, the update — whatever the email is actually about.
+
+**What it does:** Delivers the substance. Can hold a theme, tell a small story, or just plainly describe. Length varies based on purpose.
+
+**What to allow:** Longer sentences than an ad. Descriptive prose. Occasional callout sections (a small feature block, an image with caption). One paragraph should flow into the next.
+
+**What to avoid:** Excessive length. Marketing-speak. Repeating what the opener already said. Multiple CTAs that compete with each other.
+
+---
+
+## Email CTAs
+
+**What it is:** The action link or button copy. Usually at the end of the email or between sections.
+
+**What it does:** Points the reader somewhere specific. Not "Learn More" — something with intent.
+
+**Good options:**
+- *Shop the Carver*
+- *See the drop*
+- *Read the story*
+- *Get up and down*
+- *Roll it pure*
+
+**What to avoid:** Vague CTAs ("Click here," "Learn more"). Overly punny CTAs that don't tell the reader what they'll get. Multiple CTAs in the same email trying to compete.
+
+---
+
+## Landing page hero
+
+**What it is:** The top of a landing page. Usually a big headline, a subhead, and a CTA button.
+
+**What it does:** Makes the promise of the page in as few words as possible. Sets expectations. Visual usually does heavy lifting alongside.
+
+**Length:** Headline 3-8 words. Subhead 1-2 short sentences.
+
+**Good example:**
+- Headline: *A wedge that doesn't cost like one.*
+- Subhead: *Forged 1020 carbon steel. Six lofts. $99.*
+
+**What to avoid:** Long headlines that try to explain the whole product. Marketing adjectives stacked ("The ultimate premium tour-inspired wedge experience"). Subheads that repeat the headline.
+
+---
+
+## Landing page body sections
+
+**What it is:** The scrollable sections below the hero. Each section usually has a small header, a short body, and often a visual.
+
+**What it does:** Builds the argument for the product across a few clear moves. Each section should have one job — the story, the specs, the promise, the proof, the drop details.
+
+**What to allow:** A mix of flowing prose and short callouts. Section headers can be short and punchy. Body copy should flow like an email body, not like an ad.
+
+---
+
+## Product tile / card copy
+
+**What it is:** The short text that shows up on a homepage or category page — usually a name, a one-line description, and a price.
+
+**What it does:** Names the club, gives one specific reason to look closer, and shows the price. Extremely short.
+
+**Good example (Takomo-style):**
+- Iron 101 MKII — *Max distance. Max forgiveness. Max bag appeal. Game Improvement never looked so good.*
+- Iron 201 MKII — *Premium materials, jaw-dropping performance. A Players Distance iron where sleek design hides powerful tech.*
+
+**Length:** 1-2 short sentences per tile.
+
+**What to avoid:** Long descriptions. Feature summaries. Repeating what other tiles say.
+
+---
+
+## Social captions
+
+**What it is:** The text under a social post (Instagram feed, story, TikTok, etc.). Usually 1-3 lines.
+
+**What it does:** Adds context or attitude to the visual. Sometimes just a phrase. Sometimes a question. Sometimes silence works too.
+
+**Good examples:**
+- *Made the clubs first. Priced them second. In that order.*
+- *Not every wedge needs a Super Bowl ad.*
+- *A putter that gets out of your way.*
+- *NICE.* (yes, one word)
+
+**What to avoid:** Hashtag stuffing. Long captions that duplicate the visual. Multiple ideas fighting for space. Emojis (except in very specific contexts).
+
+---
+
+## Video scripts (short-form and spoken)
+
+**What it is:** Copy written to be said out loud, not read on a page. Usually 15-60 seconds of spoken content.
+
+**What it does:** Sounds natural when spoken. Plainer than written copy. One personality beat max — the rest is straight information.
+
+**Key rule:** Read the script out loud. If you stumble, rewrite. Crafted-sounding copy that looks good on a page will sound scripted out loud.
+
+**What to avoid:** Written-style sentences with complex structure. Multiple witty asides. Long lists. Anything that requires the speaker to memorize a specific phrasing.
+
+---
+
+## Drop announcements
+
+**What it is:** Copy for a limited-run or special release. Can appear in emails, landing pages, ads, or social.
+
+**What it does:** Treats the drop as a cultural moment, not a promotion. Names the drop (e.g., "The Patriot Mallet," "Fifty for Two-Fifty"). Commits to the angle across every channel.
+
+**What to allow:** More narrative than usual. A theme. A character. A cultural reference. The angle can stretch further into the body than in regular product copy.
+
+**What to avoid:** Manufactured urgency ("HURRY! ENDS SOON!"). Generic promotional language. Drops without a name or angle.
+
+---
+
+## Homepage copy
+
+**What it is:** The hero and section headers on the homepage.
+
+**What it does:** Says what Lucky is, in a way that makes someone want to explore. Highest brand-level voice.
+
+**Length:** Hero headline 3-8 words. Section headers similar. Body copy on the homepage is minimal — the products do most of the talking.
+
+**Good examples for a Lucky homepage hero:**
+- *Golf clubs, priced honestly.*
+- *Real clubs. Fair prices. That's the whole thing.*
+- *We built the clubs. We priced them right.*
+
+---
+
+## PDP (product detail page) sections
+
+**What it is:** The various sections of a full product page — hero, description, features, specs, story, reviews, cross-sell.
+
+**What it does:** Each section has one job. The hero introduces. The description makes the pitch. The features prove it. The specs verify it. The story adds depth. The reviews reinforce.
+
+**What to allow:** Different registers per section on the same page. The description can flow. The specs table stays tight. The story can be a paragraph. The features can be tight callouts. It's not inconsistent — it's a page doing its job.
+
+---
+
+## Return / policy / support copy
+
+**What it is:** Copy for support pages, return policies, shipping info, warranty, FAQs.
+
+**What it does:** Clear, factual, warm but not overly cute. Answers the question quickly.
+
+**What to avoid:** Legalese. Marketing tone in support content. Trying to be clever in the return policy.
+
+**Good example:** *"Try any Lucky club for 60 days. If it's not right, send it back — we'll refund you, and you don't pay return shipping."*
+
+---
+
+## Working from inspiration (analyzing reference copy)
+
+**When to use this workflow:** Any time the user provides reference copy from another brand — an ad, an email, a product page, a subject line, a headline — and asks for a Lucky version, a Lucky-style equivalent, or something inspired by it. This is common; Lucky benchmarks Takomo, Vice, and other DTC brands regularly.
+
+**The core rule:** Translate the underlying move, not the surface language.
+
+Reference copy has two layers. The **surface** is the specific words, phrases, brand references, structural choices. The **move** is the underlying argument or approach — what the copy is *doing*, not what it's *saying*. Lucky uses the move; Lucky writes its own surface.
+
+Getting this wrong produces mimicry. Getting it right produces copy that's clearly Lucky but strategically informed by what works elsewhere.
+
+### What to analyze in the source
+
+Before writing anything, break the reference down into its underlying components:
+
+- **The angle.** What is this ad/email/page arguing? "Price is wrong industry-wide." "Their product is better looking than ours." "Golfers should stop overpaying." The angle is the strategic point.
+- **The hook.** What makes someone stop and read? A specific number. A provocation. A category-shift claim. A rhetorical question. A visual promise.
+- **The structural move.** Setup-and-punchline? Statement of fact + tax phrase + CTA? Question that opens a loop? Parallel-beat callout? Price-first? Product-first?
+- **The register.** Is it short and sharp? Flowing and editorial? Dry? Warm?
+- **The closer.** How does the piece end? With attitude? With restraint? With a plain CTA? With a P.S.?
+
+Once you have those five components, you have the *move*. That's what translates. Everything else is source-specific and doesn't.
+
+### What NOT to carry over
+
+- **Specific phrases and language.** "First-of-its-kind." "The new normal." "Big brand performance." These are the source brand's language.
+- **Brand-specific invented terms.** Takomo's "Legacy Tax" is Takomo's. Lucky has its own tax phrases (Tour Tax, Logo Tax, Sponsorship Tax, Middleman Markup, Legacy Markup).
+- **Cultural anchors from the source.** Takomo leans on being Finnish. Lucky doesn't have an equivalent cultural anchor and shouldn't invent one to fit.
+- **Structural mimicry.** Exact sentence count, exact rhythm patterns, exact placement of the closer. If the Lucky version has the same structure as the source, the AI is templating.
+- **The source's specific facts.** Takomo's iron sets are $579. Lucky's wedges are $99. Never carry the source's numbers, models, or specs into Lucky's copy.
+
+### What to translate
+
+- The strategic angle (with Lucky's argument, not the source's)
+- The hook type (with Lucky's specifics)
+- The structural move (with Lucky's rhythm and length appropriate to the format)
+- The register (calibrated to Lucky's voice, which may be slightly different from the source's)
+- The closer type (with Lucky's phrasing and CTA options)
+
+### Worked example
+
+**Source (Takomo static ad):**
+
+> *Headline: "$579 FOR IRONS: THE NEW NORMAL"*
+>
+> *Subhead: "No matter what the golf industry says."*
+>
+> *Body: [Explains that legacy brands anchor prices high, walks through the industry's manufacturing playbook, points at the psychological anchor, states that Takomo doesn't play that game because they're Finnish and believe golf shouldn't have a financial barrier.]*
+>
+> *Closer: "Stop paying the Legacy Tax and grab some irons that actually make sense."*
+
+**Breakdown:**
+- **Angle:** Legacy pricing is a psychological anchor, not a real cost. There's a "new normal" available.
+- **Hook:** Specific price in the headline, framed as inevitability ("the new normal").
+- **Structural move:** Price + category-shift claim in headline → subhead that undercuts industry authority → body that walks through why industry pricing is broken → tax phrase + CTA closer.
+- **Register:** Confident, plainspoken, a little argumentative. Not aggressive.
+- **Closer:** Named villain (Legacy Tax) + directive CTA.
+
+**Lucky version (Carver wedge, using the same move):**
+
+> *Headline: "$99 for a forged wedge. That's the number."*
+>
+> *Subhead: "No matter what the industry priced them at."*
+>
+> *Body: "Wedges cost what wedges cost — until someone questions the model. Legacy brands stack tour sponsorships, retail markups, and marketing budgets on top of the club, then charge you for all of it. The forging costs what the forging costs. The gold finish is a rounding error. The wedge is $99 because it should be."*
+>
+> *Closer: "Stop paying the Tour Tax. Pick up a Carver."*
+
+**What translated:** The angle (industry pricing is inflated). The hook (specific price + category claim). The structural move (price → subhead undercut → body argument → tax phrase + CTA). The register (confident, argumentative-not-angry).
+
+**What didn't:** "New normal" (Takomo's phrase). "Legacy Tax" (Takomo's phrase — Lucky uses Tour Tax instead). The Finnish cultural anchor (Lucky doesn't have one). The exact sentence count. The specific numbers ($579 vs $99).
+
+### Anti-patterns to catch
+
+- **The Lucky version sounds too much like the source.** If a reader familiar with Takomo could confuse the Lucky ad for a Takomo ad, the translation failed. Rewrite with more Lucky-specific language and rhythm.
+- **The Lucky version changes the words but keeps the exact structure.** Sentence-for-sentence swaps produce structural mimicry. Vary the length, vary the rhythm, vary the closer type.
+- **The Lucky version ignores Lucky's facts to fit the source's angle.** If the source ad is about a $579 iron set and Lucky doesn't make iron sets, don't force a Lucky iron-set argument. Translate the *move* to a Lucky product (wedges, putters, hybrid, apparel).
+- **The Lucky version uses source-specific invented terms.** "Legacy Tax" is Takomo's. Lucky has its own list.
+
+### How to receive inspiration
+
+The user might provide reference copy in several ways:
+- Pasting the text of the source directly
+- Uploading a screenshot or image of the ad/email
+- Describing the source verbally
+- Referencing a source by name ("that Takomo ad we looked at")
+
+Handle any of these by extracting the five components (angle, hook, structural move, register, closer) and translating from there. If the source is unclear or ambiguous, ask the user to specify which components they want to carry over and which they want changed.
+
+### Prompt shape that produces good inspo work
+
+Vaguer prompts ("make this like Takomo") produce mimicry. More specific prompts produce translation. A good prompt names:
+
+- What the source is
+- What Lucky product/angle to target
+- Which components to keep (angle? structural move? register?)
+- Which components to change or avoid (specific phrases? cultural anchors? specific facts?)
+
+Example: *"Here's the Takomo '$579 for irons' ad. Make me a Lucky version for the Carver wedge. Keep the angle of industry pricing being an anchor, and keep the structural move of price-headline + subhead-undercut + body-argument + tax-phrase closer. Don't use 'Legacy Tax' — use one of our tax phrases. Don't reference being Finnish."*
+
+---
+
+## When something doesn't fit these categories
+
+Use the tone guide as the default and pick the closest format above as a shape reference. The tone is always the constant. What the piece is *doing* changes; how it sounds should not.
