@@ -23,7 +23,11 @@ There are four reference documents. Two are read every single time; two are open
 
 **The hierarchy, when they seem to disagree:** the product reference guide wins on what is TRUE. The tone guide wins on how it SOUNDS. Spec-to-benefit and culture are raw material for the writer, never phrasing to copy out. If a line from any of them appears verbatim in published copy, that is a failure.
 
-## Adding a new product
+## When someone brings a new product
+
+If the user gives you specs for something Lucky hasn't sold before, or says they're adding a product (a driver, an iron set, a new category), **do not write copy yet.** Open `references/new-product-intake.md` and run the intake: pull out what they gave you, ask for what's missing in one short batch, then draft the additions to all three reference docs (product guide, spec-to-benefit, culture) and get a yes before anything else. The three docs have almost nothing on drivers or irons today, so skipping the intake means writing from nothing.
+
+## Writing about a product that has no copy yet
 
 When a product exists in the product reference guide but has no Lucky copy yet (a driver, an iron set, a new category), do not pattern-match off an existing club. A driver is not a big wedge.
 
