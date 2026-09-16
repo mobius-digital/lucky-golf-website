@@ -41,6 +41,22 @@ Technically: Titanium has a higher strength-to-weight ratio than steel. A titani
 For the golfer: A lighter-feeling head with easy launch and solid contact. Titanium allows the Stryker to deliver ball speed and forgiveness from a compact shape. It works in partnership with the Flex Channel face and Glide Sole rather than standing alone as a benefit.
 
 
+SP700 Titanium Face on a 6-4 Titanium Body
+Products: LGD02 Driver
+
+Technically: SP700 is a titanium alloy with more rebound than the standard 6-4 titanium used for the body. Putting the springier alloy in the face and the standard alloy in the body puts the performance where the ball actually is.
+
+For the golfer: The ball comes off the face hot. More speed on the drives you catch well, without a heavier head to swing.
+
+
+460cc Head
+Products: LGD02 Driver
+
+Technically: 460cc is the largest driver head the rules allow. A bigger head spreads its weight further from the centre, which makes it more stable on strikes away from the middle.
+
+For the golfer: More club to stand over and more face to hit. It looks confident at address, and the mishits stay closer to the good ones.
+
+
 FACE FEATURES
 Dual-Texture Face
 Products: All wedges (LGW01, LGW02 Gold, LGW02 Black)
@@ -62,6 +78,22 @@ Technically: Channels machined into the titanium face reduce stiffness in specif
 For the golfer: More distance from the same swing, especially on the shots you don't catch perfectly. The centered strike goes far. The toe or heel strike goes farther than expected. The bad swings don't cost as much.
 
 Drafted from engineering logic, not firsthand playing experience. Flagged for play-test verification.
+
+
+Variable-Thickness Driver Face
+Products: LGD02 Driver
+
+Technically: The face is thicker in the centre and thinner toward the edges, so the outer part of the face flexes more than a uniform face would.
+
+For the golfer: A strike off the centre keeps more of its ball speed. The toe hit that would have died short still gets out there.
+
+
+12-Inch Bulge and Roll
+Products: LGD02 Driver
+
+Technically: The face is curved heel to toe (bulge) and top to bottom (roll), each on a 12-inch radius. On a heel or toe strike, the curve works with gear effect to start the ball slightly outward so the spin turns it back.
+
+For the golfer: Heel and toe mishits curve back toward the fairway instead of running away from it.
 
 
 SOLE AND GRIND FEATURES
@@ -108,6 +140,39 @@ Technically: The blade's heavier head provides stability through the stroke and 
 For the golfer: Both feel stable and controlled. The blade feels planted and deliberate. The mallet feels balanced and easy to swing on its arc. The weight difference supports each head shape's stroke style rather than creating a dramatically different feel.
 
 
+Interchangeable Driver Weights (9g back, two 3g side)
+Products: LGD02 Driver
+
+Technically: A 9g back weight and two 3g screws in the heel and toe can all swap positions with the included wrench. Moving the heavy weight toward the heel helps the face close through impact; toward the toe, it helps it stay open. In the back, it lowers and deepens the centre of gravity for a more stable, higher flight.
+
+For the golfer: You set the flight yourself. Fighting a slice, move the heavy weight to the heel. Fighting a hook, move it to the toe. No fitting appointment.
+
+
+Adjustable Hosel
+Products: LGD02 Driver
+
+Technically: An adapter with 8 settings. Each setting changes loft, lie and face angle together, because that is how an angled sleeve works. (Exact range to confirm.)
+
+For the golfer: Change how the ball launches without buying another driver. More loft to get it up, less to flatten a flight that climbs.
+
+
+SHAFTS
+Wenst Stiff (stock driver shaft)
+Products: LGD02 Driver
+
+Technically: A mid kick point sits between a high-launch and a low-launch profile. 260 CPM and 3.7 torque put it in a conventional stiff range.
+
+For the golfer: A predictable, middle-of-the-road flight that suits most golfers who already play a stiff shaft.
+
+
+KBS PGW CB 60 (driver upgrade shaft)
+Products: LGD02 Driver
+
+Technically: A low-launch, low-spin profile in stiff and extra stiff.
+
+For the golfer: For faster swingers whose drives balloon and spin. A flatter, more penetrating flight with more roll after landing.
+
+
 CLAIMS TO AVOID
 These apply across all products and all copy formats.
 
@@ -118,6 +183,10 @@ Don't say "game-changing," "disruptive," or "affordable luxury."
 Don't compare to brands by name. Never "better than Vokey" or "outperforms Cleveland." Let the customer make the connection.
 Don't make specific handicap claims. No "drop 5 strokes." Keep score language aspirational: "save more pars," "fewer bogeys."
 Don't say "tour-proven" without an actual tour player. "Tour-quality construction" describing materials and process is fine. "Tour-proven" requires proof.
+"Tour performance" and "tour-level performance" are allowed (Cole, 2026-09-16) as a comparison of how the club performs against the big names. They must never suggest a tour player uses the club.
+Driver: don't say "USGA conforming", "legal" or "tournament legal" until the head is on the USGA conforming list. It has not been submitted yet.
+Driver: don't quote the CT number, and don't say "maximum legal rebound" or "at the limit". Say what the face does, not where it sits against a rule.
+Driver: don't say "unmatched", "best in class" or "top performing in its class". There is no test data to back a ranking.
 Don't claim durability on forged wedges. The grooves wear faster than harder alloys. That's the tradeoff for the feel.
 Don't overclaim 431 vs. 304. The feel difference isn't dramatic. The milling matters more than the alloy. Be honest about that.
 Don't imply Lucky invented channel-face technology. Flex Channel is Lucky's name for its implementation. Describe what it does, not that it's a first.

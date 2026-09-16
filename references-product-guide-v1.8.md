@@ -1,4 +1,5 @@
-LUCKY GOLF — PRODUCT REFERENCE GUIDE
+
+LUCKY GOLF — PRODUCT REFERENCE GUIDE
 
 *Version 1.8 · Product facts and specs.
 
@@ -8,7 +9,7 @@ Voice, positioning, language rules, and CTAs live in a separate document — Luc
 
 
 The line
-Lucky Golf currently sells across four categories: wedges, putters, hybrids, and apparel.
+Lucky Golf currently sells across four categories: wedges, putters, hybrids, and apparel. A driver (LGD02) is in development and listed below; it is not yet on sale.
 
 
 Wedges
@@ -95,6 +96,56 @@ Grip: stock grip
 Hand: right-hand and left-hand
 Headcover: not included
 Price: $209
+
+
+Drivers
+Added 2026-09-16 from the Wenst spec emails and Tina Wu's replies of 2026-09-16. Not yet on sale. Head specs and shaft specs are listed separately because each shaft has its own profile.
+
+LGD02 Driver
+Category: driver
+Status: not yet on sale
+Price: not set
+
+Head
+Body material: 6-4 titanium, cast
+Face material: SP700 titanium, variable thickness (thicker in the centre, thinner toward the perimeter)
+Head size: 460cc
+Head weight: 204g
+Loft: 10.5°
+Lie: 58°
+Face angle: square (0°)
+Bulge and roll: 12" / 12" (radius)
+Hosel: adjustable adapter, 8 settings; changing the setting changes loft, lie and face angle together. Loft range and compatibility with other brands' sleeves: to confirm (the Wenst engineer is sending the settings chart)
+Weighting: one 9g back weight and two 3g side screws (toe and heel), all interchangeable using the included torque wrench. The heavier weight moved toward the heel biases a draw; toward the toe, a fade.
+Finish: gold, matte
+Branding: "Lucky" filled in black on the sole
+USGA: not on the conforming driver head list; the head has not been submitted for testing
+
+Build
+Assembled length: 45"
+Swing weight: D2
+Grip: unbranded, the factory's own mould, black rubber, 0.58" core
+
+Shaft: Wenst (stock)
+Flexes offered: Stiff. Regular is available to order from Wenst.
+Stiff: 260 CPM and 3.7 torque (measured at 45" uncut), mid kick point, approximately 65g
+Regular: specs to confirm
+
+Shaft: KBS PGW CB 60 (upgrade)
+Finish: black
+Profile: low launch, low spin
+Flexes: Stiff, Extra Stiff
+Stiff (60 S BLK): 64g, 4.6 torque, tip flex 95, 4" parallel tip trim
+Extra Stiff (60 X BLK): specs to confirm
+Kick point: to confirm (requested from KBS)
+Upgrade price: not set
+
+In the box: white headcover, black torque wrench, driver box
+Hand: not specified
+
+Internal only, never in copy: production heads measure a CT of about 250, which is inside the USGA tolerance. The head is still not on the conforming list, so no copy may say "USGA conforming", "legal" or "tournament legal" until it is.
+
+Note: LGD01 is the code of the earlier, discontinued $299 driver. Do not reuse it and do not carry its copy over.
 
 
 Apparel

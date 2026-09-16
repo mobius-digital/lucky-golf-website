@@ -119,6 +119,22 @@ moon it
 send it
 fill the gap
 
+The driver
+Added 2026-09-16 for the LGD02. The driver is the ego club: the one golfers talk about most and swing the fewest times. The first tee is a stage, everyone watches, and a driver gets judged on its sound before its distance. The slice is the most common miss; the two-way miss is the one that scares good players. Tinkerers love adjustability, and most golfers set it once and never touch it again. Keep MOI, CT and spin numbers out of consumer copy and say what they do instead.
+
+the big dog
+let the big dog eat
+the big stick
+first-tee nerves
+off the first tee
+find the short grass
+keep it in play
+sounds hot
+banana ball
+fighting a slice
+two-way miss
+dial it in
+
 
 Confidence and command
 Plainspoken phrases for competence, trust, or belonging in the bag.

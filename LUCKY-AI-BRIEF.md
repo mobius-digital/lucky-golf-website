@@ -149,9 +149,15 @@ If a fact you need is not here, say so instead of guessing.
 | Tracer Blade (LGP01) | $199 | CNC-milled from solid 431 stainless. 3.5° loft, 72° lie, 35 inches, 385 g. Right hand only. Currently out of stock. |
 | Tracer Mallet (LGP02) | $229 | CNC-milled from solid 304 stainless. 3.5° loft, 72° lie, 35 inches, 365 g. Slant neck, toe hang. Oversized 3.0 grip fitted. Right and left hand. |
 | Stryker (LGH01) | $209 | Titanium head, Flex Channel face, Glide Sole. 19°, 235 g, 59° lie. Stiff graphite only, 40.5 inches. Right and left hand. |
+| Driver (LGD02), **not yet on sale** | not set | 460cc, 204 g. SP700 titanium variable-thickness face on a cast 6-4 titanium body. 10.5°, 58° lie, square face. Adjustable hosel with 8 settings (range to confirm). 9 g back weight and two 3 g side weights, all interchangeable: heavy weight to the heel for a draw, to the toe for a fade. 45 inches, D2. Stock shaft Wenst stiff, mid kick point. Upgrade shaft KBS PGW CB 60, low launch and spin, stiff or extra stiff. Gold matte finish. Headcover and wrench included. |
 
-No club ships with a head cover. A new driver and irons are expected late 2026.
-No specs exist yet, so do not write them.
+No club ships with a head cover except the driver. Irons are expected late 2026
+and have no specs yet, so do not write them.
+
+Driver rules: never say "USGA conforming", "legal" or "tournament legal" (it is
+not on the USGA list), never quote a CT number, and never say "unmatched" or
+"best in class". "Tour performance" is allowed as a comparison with the big
+names, but never suggest a tour player uses it. "Tour-proven" stays banned.
 
 ### Apparel
 
