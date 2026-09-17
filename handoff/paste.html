@@ -1,0 +1,910 @@
+<title>Lucky System Handoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* One committed world: the Lucky dark ground, cream type, gold as the only accent. */
+  :root{
+    --dark:#0B2E1F; --dark-2:#0A2419; --cream:#F4F3F0; --cream-m:rgba(244,243,240,.70);
+    --gold:#C29A2B; --gold-hi:#EDD27C; --rule:rgba(244,243,240,.18);
+    --sans:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  body{margin:0;background:var(--dark);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.55}
+  .shell{max-width:980px;margin:0 auto;padding:28px 16px 64px}
+  header h1{margin:0;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;
+    font-size:clamp(2rem,5.4vw,3.2rem);line-height:.92;text-wrap:balance}
+  header h1 em{font-style:normal;background:linear-gradient(178deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 14px;color:var(--gold);
+    font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:11.5px}
+  .eyebrow::before{content:'';width:22px;height:2px;background:var(--gold);flex:none}
+  .sub{margin:16px 0 0;max-width:62ch;color:var(--cream-m);font-size:17px}
+  .steps{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:s}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+  .steps li::before{content:counter(s);width:28px;height:28px;border-radius:6px;background:rgba(244,243,240,.08);
+    border:1px solid var(--rule);display:grid;place-items:center;font-variation-settings:'wdth' 78;
+    font-weight:700;font-size:12px;color:var(--gold)}
+  .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin:30px 0 0;padding:14px 0;
+    background:var(--dark);border-block:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border:0;border-radius:6px;
+    cursor:pointer;font-family:var(--sans);font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;
+    letter-spacing:.06em;font-size:13px;color:#17140F;
+    background-image:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);background-size:200% 100%;
+    transition:background-position .45s cubic-bezier(.23,1,.32,1)}
+  .btn:hover{background-position:100% 0}
+  .btn.ghost{background-image:none;background:transparent;color:var(--cream);border:2px solid var(--cream);min-height:46px}
+  .btn.ghost:hover{background:var(--cream);color:var(--dark)}
+  .stat{color:var(--cream-m);font-size:13px;font-variation-settings:'wdth' 78;letter-spacing:.06em;text-transform:uppercase}
+  .say{color:var(--gold);font-size:13px;font-variation-settings:'wdth' 78;letter-spacing:.06em;text-transform:uppercase}
+  .prompt{margin:26px 0 0;border:1px solid var(--rule);border-radius:10px;background:var(--dark-2);padding:18px}
+  .prompt h2,.doc-h{margin:0 0 10px;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;
+    letter-spacing:.14em;font-size:11.5px;color:var(--cream-m)}
+  .prompt p{margin:0;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--cream)}
+  .doc-wrap{margin:26px 0 0}
+  pre{margin:0;max-height:62vh;overflow:auto;background:var(--dark-2);border:1px solid var(--rule);border-radius:10px;
+    padding:18px;font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--cream);
+    white-space:pre-wrap;word-break:break-word;-webkit-overflow-scrolling:touch}
+  footer{margin:34px 0 0;padding-top:18px;border-top:1px solid var(--rule);color:var(--cream-m);font-size:13.5px}
+  @media (max-width:520px){.bar{gap:8px}.btn{flex:1 1 100%}}
+</style>
+
+<div class="shell">
+  <header>
+    <p class="eyebrow">Hand this to the other chat</p>
+    <h1>The Lucky system,<br>in one <em>paste.</em></h1>
+    <p class="sub">Everything the other chat needs to put your landing page on the Lucky design system:
+      what to do, the full stylesheet, the markup for every component, the page order, the colour rules
+      and the voice. Deep Green &amp; Gold.</p>
+    <ol class="steps">
+      <li><span>Press <b>Copy everything</b>. That puts the whole document on your clipboard.</span></li>
+      <li><span>Open the other chat and paste it in as one message.</span></li>
+      <li><span>Then send the short prompt below as your next message.</span></li>
+      <li><span>Send them two files from your <b>handoff/img</b> folder: <b>lucky-wordmark.svg</b> and <b>mags-light.webp</b>.</span></li>
+    </ol>
+  </header>
+
+  <div class="bar">
+    <button class="btn" id="copyAll" type="button">Copy everything</button>
+    <button class="btn ghost" id="copyPrompt" type="button">Copy the prompt</button>
+    <span class="stat" id="stat">4,064 words &middot; 39 KB</span>
+    <span class="say" id="say" hidden>Copied</span>
+  </div>
+
+  <section class="prompt">
+    <h2>The prompt to send after the paste</h2>
+    <p id="promptText">Above is the Lucky Golf design system. Read all of it before changing anything. Apply it to the landing page you built for me: add the font and the stylesheet, re-skin every section using the markup in STEP 2, and delete the old visual CSS it replaces. Keep my copy, images, links and tracking. Do not add any colour, font, shadow or animation that is not in that document. When you are done, show me the page and list anything you removed and anything the document did not cover.</p>
+  </section>
+
+  <div class="doc-wrap">
+    <p class="doc-h">The document, in full</p>
+    <pre id="doc"># LUCKY GOLF: apply this design system to the page you built
+
+**Read this whole file before you change anything.** It contains the exact
+stylesheet, the markup for every component, and the rules. You are not
+designing a new look. You are moving an existing page onto a system that
+already exists, so the page sits next to the rest of the Lucky Golf site and
+reads as the same brand.
+
+## What to do
+
+1. **Add the font and the stylesheet.** Put the two blocks in STEP 1 into the
+   page. If the project uses Tailwind, styled-components or anything else,
+   keep it, but let these classes win for anything visual: colour,
+   typography, spacing, buttons, cards, bands, header and footer.
+2. **Re-skin the page you already have, section by section**, using the
+   markup in STEP 2. Keep the page&#x27;s existing copy, images, links and
+   tracking. Do not rewrite the offer or change what the page says, except
+   where STEP 4 says a line breaks a rule.
+3. **Delete the old visual CSS** that the new classes replace. Two systems
+   fighting is what makes a page look almost right and not right. Do not
+   keep a second set of colours, shadows or fonts around &quot;just in case&quot;.
+4. **Do not add colours, fonts, shadows, gradients, rounded pills or scroll
+   animations that are not in this file.** If something you need is missing,
+   say so and ask. Do not invent it, and do not substitute a similar colour.
+5. **Hand back**: the updated page, a list of anything you removed, and a
+   list of anything you could not do because this file did not cover it.
+
+## The three things that go wrong, so check them last
+
+- **The page is too dark.** White is 78 to 88% of a Lucky screen. There is
+  ONE dark band in the body of the page, plus the announcement bar, the
+  header, the sign-off and the footer. If half your page is deep green, it
+  is wrong.
+- **Gold is everywhere.** Gold is under 1.5% of the screen. One foil button
+  and one foil word per view. Not five.
+- **The type is not Archivo at the right widths.** Display is width 62 and
+  uppercase. Labels are width 78, tracked caps. Body is width 100. A page
+  set in default Archivo at one width reads generic and it is the fastest
+  way to lose the brand.
+
+---
+
+# STEP 1: the font and the stylesheet
+
+Put this in `&lt;head&gt;`:
+
+```html
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+```
+
+Save the CSS below as `lucky.css` and link it, or paste it into a global
+stylesheet. Put `class=&quot;lg&quot;` on `&lt;body&gt;`, or `class=&quot;lg-scope&quot;` on the
+wrapper that holds the page.
+
+```css
+/* ==========================================================================
+   LUCKY GOLF - the design system as one stylesheet.
+   Version 3.0 · 2026-09-17 · System: DEEP GREEN &amp; GOLD.
+
+   Drop this file in, load Archivo, and build with the classes below. Every
+   class is prefixed lg- so it cannot collide with anything already on a page.
+
+   The whole system in one paragraph: the page is white, type is ink, product
+   sits on a stone tile, and ONE dark colour (deep green) carries the
+   announcement bar, the header, the bands low on the page and the footer.
+   Gold is the only accent and it never appears as a large field: buttons,
+   one word per headline, stars, hairline marks. Signal green means in stock
+   and nothing else. No cream, no brown, no second green.
+
+   Measured on the real pages: white 78 to 88% of the screen, photography 6
+   to 22%, deep green 3 to 12%, stone under 5%, gold under 1.5%.
+
+   Fonts (put in &lt;head&gt;):
+   &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+   &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+   &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+
+   To try another system, change ONE value: --lg-dark.
+     Deep green &amp; gold  #0B2E1F   (this file, the pick)
+     Ink &amp; gold         #17140F
+     White &amp; gold       keep the bands white and use #121212 for the footer.
+   ========================================================================== */
+
+:root{
+  /* ---------------- ground ---------------- */
+  --lg-page:#FFFFFF;          /* the page. Most of every screen. */
+  --lg-tile:#F4F3F0;          /* stone. Product wells, cards, table fills. A material, never a band. */
+  --lg-dark:#0B2E1F;          /* THE one dark. Announcement bar, header, bands, footer. */
+
+  /* ---------------- type on the ground ---------------- */
+  --lg-ink:#17140F;           /* all text on white */
+  --lg-ink-70:rgba(23,20,15,.70);
+  --lg-ink-64:rgba(23,20,15,.64);
+  --lg-ink-38:rgba(23,20,15,.38);
+  --lg-on-dark:#F4F3F0;       /* text on the dark. 13.2:1 */
+  --lg-on-dark-m:rgba(244,243,240,.72);
+  --lg-rule:rgba(23,20,15,.14);
+  --lg-rule-08:rgba(23,20,15,.08);
+  --lg-rule-dark:rgba(244,243,240,.18);
+
+  /* ---------------- accent ---------------- */
+  --lg-gold:#C29A2B;          /* gold as a SURFACE: stars, rules, bars, buttons. 5.6:1 on the dark. */
+  --lg-gold-hi:#EDD27C;
+  --lg-gold-text:#8A6A1C;     /* gold as TYPE on white only. 5.05:1 */
+  --lg-ok:#008340;            /* in stock, added, verified. Never decoration. */
+  --lg-ok-on-dark:#7FB69A;
+  --lg-clover:#0B5130;        /* the clover inside the logo. Nowhere else. */
+
+  /* The foil is a material, not a colour. Ink type on it reads 6.9:1.
+     Two places per view: the primary button, and ONE display word. */
+  --lg-foil:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+  --lg-foil-text:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);
+
+  /* The pinstripe. Dark FEATURE bands only: never the header, bar or footer.
+     Drawn as a 6px tile, because long CSS gradients rasterise unevenly. */
+  --lg-groove:url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;6&#x27; height=&#x27;6&#x27;%3E%3Crect width=&#x27;6&#x27; height=&#x27;1&#x27; fill=&#x27;%23F6F2E8&#x27; fill-opacity=&#x27;.10&#x27;/%3E%3C/svg%3E&quot;);
+  --lg-groove-light:url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;6&#x27; height=&#x27;6&#x27;%3E%3Crect width=&#x27;6&#x27; height=&#x27;1&#x27; fill=&#x27;%2317140F&#x27; fill-opacity=&#x27;.03&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* ---------------- measure ---------------- */
+  --lg-wrap:1180px;
+  --lg-pad:clamp(20px,4.2vw,68px);
+  --lg-gut:clamp(16px,2vw,28px);
+  --lg-sec:clamp(64px,7vw,112px);   /* space between page sections */
+  --lg-r:6px;                       /* controls */
+  --lg-r-card:14px;                 /* surfaces */
+  --lg-ease:cubic-bezier(.23,1,.32,1);
+
+  /* ---------------- type scale ---------------- */
+  --lg-fs-xs:.72rem;
+  --lg-fs-sm:.8rem;
+  --lg-fs-base:.95rem;
+  --lg-fs-body:1.0625rem;
+  --lg-fs-lead:clamp(1.1rem,1.5vw,1.3rem);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.lg-scope,
+body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
+  font-family:&#x27;Archivo&#x27;,system-ui,-apple-system,&#x27;Segoe UI&#x27;,Roboto,Arial,sans-serif;
+  font-variation-settings:&#x27;wdth&#x27; 100;font-size:var(--lg-fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.lg-wrap{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad)}
+.lg-sec{padding-block:var(--lg-sec)}
+.lg-hr{height:1px;background:var(--lg-rule);border:0;margin:0}
+.lg-center{text-align:center}
+:where(.lg-scope,body.lg) :focus-visible{outline:2px solid var(--lg-gold);outline-offset:2px}
+
+/* ==========================================================================
+   TYPE
+   Display is Archivo at width 62, uppercase, 800. Labels at width 78, 600,
+   tracked caps. Body is plain 100 width. Nothing else.
+   ========================================================================== */
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 62;
+  font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.lg-d1{font-size:clamp(2.6rem,6.2vw,5.2rem)}
+.lg-d2{font-size:clamp(2rem,3.9vw,3.2rem)}
+.lg-d3{font-size:clamp(1.25rem,1.8vw,1.6rem);line-height:1}
+
+/* ONE word per headline carries the foil. Never body size. */
+.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* The eyebrow orients the section. It never restates the headline. */
+.lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
+  font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
+.lg-eyebrow::before{content:&#x27;&#x27;;width:22px;height:2px;background:var(--lg-gold);flex:none}
+.lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
+.lg-body{margin:14px 0 0;max-width:62ch;color:var(--lg-ink-70)}
+.lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+/* The aside is the charm voice: one line, sentence case, medium weight. */
+.lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
+.lg-label{font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:&#x27;Archivo&#x27;,sans-serif;
+  font-variation-settings:&#x27;wdth&#x27; 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
+  display:inline-flex;align-items:center;gap:8px}
+.lg-link span{transition:transform .22s var(--lg-ease)}
+.lg-link:hover span{transform:translateX(4px)}
+
+/* On a dark ground everything flips to cream, and gold stays gold. Put
+   .lg-on-dark on any block you build yourself over a dark field or a photo. */
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
+
+/* ==========================================================================
+   BUTTONS · one foil button per view, everything else is the ghost.
+   44px minimum on a phone, always.
+   ========================================================================== */
+.lg-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:0 26px;border:0;border-radius:var(--lg-r);cursor:pointer;text-decoration:none;
+  font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
+  color:var(--lg-ink);background-image:var(--lg-foil);background-size:200% 100%;
+  background-position:0 0;transition:background-position .45s var(--lg-ease),transform .12s var(--lg-ease)}
+.lg-btn:hover,.lg-btn:focus-visible{background-position:100% 0}
+.lg-btn:active{transform:scale(.975)}
+.lg-btn[disabled],.lg-btn[aria-disabled=&quot;true&quot;]{opacity:.55;cursor:not-allowed}
+.lg-btn-line{background:transparent;background-image:none;color:var(--lg-ink);
+  border:2px solid var(--lg-ink);min-height:48px}
+.lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line{color:var(--lg-on-dark);border-color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line:hover{background:var(--lg-on-dark);color:var(--lg-dark)}
+.lg-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ==========================================================================
+   CHROME · the announcement bar and the header. Solid colour, no pinstripe,
+   because they sit over every page and every photo.
+   ========================================================================== */
+.lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
+.lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
+  justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
+  font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.lg-tick-in::-webkit-scrollbar{display:none}
+.lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+
+.lg-hdr{position:sticky;top:0;z-index:40;background:var(--lg-dark);color:var(--lg-on-dark);
+  border-bottom:1px solid var(--lg-rule-dark)}
+.lg-hdr-in{padding:0 var(--lg-pad);height:72px;display:grid;grid-template-columns:1fr auto 1fr;
+  grid-template-areas:&quot;l n a&quot;;align-items:center;gap:24px}
+.lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
+.lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
+.lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:&#x27;Archivo&#x27;,sans-serif;
+  font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
+  text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
+.lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
+.lg-hdr-act a,.lg-hdr-act button{min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--lg-on-dark);cursor:pointer}
+@media (max-width:980px){
+  .lg-hdr-in{grid-template-columns:auto 1fr;grid-template-areas:&quot;l a&quot;;height:64px}
+  .lg-nav{display:none}
+  .lg-tick-in a:nth-child(n+2){display:none}
+}
+
+/* ==========================================================================
+   BANDS · the dark beats low on the page. These carry the pinstripe.
+   Rhythm for a landing page: bar, header, hero photo, white sections,
+   ONE band, the sign-off, the footer. No two bands touch.
+   ========================================================================== */
+.lg-band{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:var(--lg-sec)}
+.lg-band-tile{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark);
+  border-radius:var(--lg-r-card);padding:24px}
+
+/* The hero: one full bleed photograph, headline bottom left over the scrim. */
+.lg-hero{position:relative;isolation:isolate;background:#0f0d09;overflow:hidden}
+.lg-hero img{display:block;width:100%;height:min(86vh,860px);min-height:520px;object-fit:cover}
+.lg-hero::after{content:&#x27;&#x27;;position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(92deg,rgba(11,20,15,.82) 0%,rgba(11,20,15,.52) 38%,rgba(11,20,15,.04) 68%),
+             linear-gradient(0deg,rgba(11,20,15,.55) 0%,rgba(11,20,15,0) 42%)}
+.lg-hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;
+  padding-bottom:clamp(40px,6vw,96px);color:var(--lg-on-dark)}
+.lg-hero-copy .lg-wrap{width:100%}
+
+/* ==========================================================================
+   SURFACES · tiles and cards. Product sits on stone, photography sits full.
+   ========================================================================== */
+.lg-tile{background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-grid{display:grid;gap:var(--lg-gut);align-items:start;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.lg-card{display:flex;flex-direction:column;color:var(--lg-ink);text-decoration:none}
+.lg-card-ph{position:relative;aspect-ratio:4/5;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.lg-card:hover .lg-card-ph img{transform:scale(1.03)}
+.lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.lg-card-nm{font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 66;font-weight:800;
+  text-transform:uppercase;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1}
+.lg-card-pr{font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 74;font-weight:700}
+.lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
+
+/* A photograph that does not exist yet is a LABELLED SLOT, never a grey box
+   and never a stock photo. Put the shot brief on it. */
+.lg-slot{display:grid;place-items:center;text-align:center;padding:24px;aspect-ratio:4/5;
+  background:var(--lg-tile) repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 8px,transparent 8px 16px);
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card);color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Review card. Only ever a real review, quoted exactly, with a real name. */
+.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+  flex-direction:column;gap:12px}
+.lg-quote p{margin:0;font-size:var(--lg-fs-body)}
+.lg-quote footer{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Stat tile: a number that is real, and what it means underneath. */
+.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
+.lg-stat b{display:block;font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 66;
+  font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   SMALL PARTS · the stamp. Condensed caps on chips, tags, trust rows, tables.
+   ========================================================================== */
+.lg-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;
+  background:var(--lg-ink);color:var(--lg-page);
+  font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
+.lg-tag-gold{background-image:var(--lg-foil);color:var(--lg-ink)}
+.lg-tag-ok{background:var(--lg-ok);color:#fff}
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);cursor:pointer;
+  font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.lg-chip[aria-pressed=&quot;true&quot;],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
+.lg-stock::before{content:&#x27;&#x27;;width:8px;height:8px;border-radius:50%;background:currentColor}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
+
+/* Stars are a graphic: gold on white needs a darker gold to stay legible. */
+.lg-stars{display:inline-flex;gap:2px;color:#9A7619;line-height:0}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+.lg-stars svg{width:15px;height:15px;fill:currentColor}
+
+.lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
+  padding-block:20px;border-block:1px solid var(--lg-rule)}
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:&#x27;Archivo&#x27;,sans-serif;
+  font-variation-settings:&#x27;wdth&#x27; 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-sm)}
+.lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+
+/* Compare table: stone fill, hairlines, condensed caps in the head column. */
+.lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
+.lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
+.lg-table thead th{background:var(--lg-tile);font-family:&#x27;Archivo&#x27;,sans-serif;
+  font-variation-settings:&#x27;wdth&#x27; 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:var(--lg-fs-xs)}
+.lg-table tbody th{font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
+
+/* Email capture. One field, one button, the reason to give it. */
+.lg-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.lg-input{flex:1 1 240px;min-height:52px;padding:0 16px;border:1px solid var(--lg-rule);
+  border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-base)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input::placeholder{color:var(--lg-on-dark-m)}
+
+/* ==========================================================================
+   THE SIGN-OFF and THE FOOTER
+   Mags is the emblem, never a cartoon with a face doing an action. He stands
+   on the rule at the sign-off, and rides the bag button in the header.
+   Use the cream artwork on dark grounds and the ink artwork on white ones.
+   ========================================================================== */
+.lg-sign{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:clamp(56px,6vw,96px);overflow:hidden}
+.lg-sign-in{display:grid;grid-template-columns:1.2fr auto;gap:32px;align-items:end}
+.lg-sign img{width:clamp(140px,18vw,240px);height:auto;justify-self:end}
+.lg-sign hr{margin:22px 0 0;height:2px;background:var(--lg-gold);border:0}
+@media (max-width:760px){.lg-sign-in{grid-template-columns:1fr}.lg-sign img{justify-self:start;width:150px}}
+
+.lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
+  padding-block:clamp(40px,4.4vw,64px)}
+.lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.lg-ftr h3{margin:0 0 12px;font-family:&#x27;Archivo&#x27;,sans-serif;font-variation-settings:&#x27;wdth&#x27; 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
+.lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
+.lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   MOTION · the system is still. The foil slides on hover, photos ease on
+   hover, and that is the whole vocabulary. No scroll reveals, no lifts,
+   no drop shadows anywhere.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+```
+
+---
+
+# STEP 2: the markup, component by component
+
+Every class below is in the CSS above. Copy the structure, swap in the
+page&#x27;s own words and images.
+
+### Announcement bar and header
+
+```html
+&lt;div class=&quot;lg-tick&quot;&gt;
+  &lt;div class=&quot;lg-tick-in&quot;&gt;
+    &lt;a href=&quot;/returns&quot;&gt;&lt;b&gt;Sixty days&lt;/b&gt; to prove us wrong&lt;/a&gt;
+    &lt;a href=&quot;/shipping&quot;&gt;Ships in 1 to 2 business days&lt;/a&gt;
+    &lt;a href=&quot;/wedges&quot;&gt;Forged, not cast&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;header class=&quot;lg-hdr&quot;&gt;
+  &lt;div class=&quot;lg-hdr-in&quot;&gt;
+    &lt;a class=&quot;lg-logo&quot; href=&quot;/&quot; aria-label=&quot;Lucky Golf home&quot;&gt;
+      &lt;!-- the LUCKY wordmark, on the LEFT, 132px wide, currentColor --&gt;
+      &lt;img src=&quot;/lucky-wordmark.svg&quot; alt=&quot;Lucky Golf&quot; width=&quot;132&quot; height=&quot;30&quot;&gt;
+    &lt;/a&gt;
+    &lt;nav class=&quot;lg-nav&quot; aria-label=&quot;Main&quot;&gt;
+      &lt;a href=&quot;/wedges&quot;&gt;Wedges&lt;/a&gt;&lt;a href=&quot;/putters&quot;&gt;Putters&lt;/a&gt;
+      &lt;a href=&quot;/hybrid&quot;&gt;Hybrid&lt;/a&gt;&lt;a href=&quot;/apparel&quot;&gt;Apparel&lt;/a&gt;
+      &lt;a href=&quot;/story&quot;&gt;Our Story&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class=&quot;lg-hdr-act&quot;&gt;
+      &lt;a href=&quot;/search&quot; aria-label=&quot;Search&quot;&gt;&lt;!-- 21px stroke icon --&gt;&lt;/a&gt;
+      &lt;button type=&quot;button&quot; aria-label=&quot;Open bag&quot;&gt;
+        &lt;img src=&quot;/mags-bag-light.webp&quot; alt=&quot;&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+```
+
+The header is 72px, solid colour, sticky. Logo left, nav centred, search and
+the Mags bag button right. Below 980px the nav hides behind a burger in
+`.lg-hdr-act` and the bar shows only its first claim.
+
+### Hero: one full-bleed photograph
+
+```html
+&lt;section class=&quot;lg-hero&quot;&gt;
+  &lt;img src=&quot;/hero.webp&quot; alt=&quot;A gold Lucky wedge behind the ball on fairway grass&quot;&gt;
+  &lt;div class=&quot;lg-hero-copy&quot;&gt;
+    &lt;div class=&quot;lg-wrap&quot;&gt;
+      &lt;p class=&quot;lg-eyebrow&quot;&gt;The Carver 01&lt;/p&gt;
+      &lt;h1 class=&quot;lg-d1&quot;&gt;Golf has a dress code.&lt;br&gt;Ours is &lt;span class=&quot;lg-foil-word&quot;&gt;gold.&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class=&quot;lg-lede&quot;&gt;One sentence that says what it is and what it costs.&lt;/p&gt;
+      &lt;div class=&quot;lg-btn-row&quot;&gt;
+        &lt;a class=&quot;lg-btn&quot; href=&quot;#buy&quot;&gt;Shop the Carver &lt;span aria-hidden=&quot;true&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;
+        &lt;a class=&quot;lg-btn lg-btn-line&quot; href=&quot;#grinds&quot;&gt;See the grinds&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+Headline bottom left over the scrim. One photo, no slider, no video
+background, no text centred in the middle of the image.
+
+### Trust row
+
+```html
+&lt;div class=&quot;lg-wrap&quot;&gt;
+  &lt;div class=&quot;lg-trust&quot;&gt;
+    &lt;span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;!-- 20px stroke icon --&gt;&lt;/svg&gt;Sixty days to decide&lt;/span&gt;
+    &lt;span&gt;...&lt;/span&gt;&lt;span&gt;...&lt;/span&gt;&lt;span&gt;...&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+```
+
+### A white section with product cards
+
+```html
+&lt;section class=&quot;lg-sec&quot;&gt;
+  &lt;div class=&quot;lg-wrap&quot;&gt;
+    &lt;p class=&quot;lg-eyebrow&quot;&gt;The line&lt;/p&gt;
+    &lt;h2 class=&quot;lg-d2&quot;&gt;Four clubs. No &lt;span class=&quot;lg-foil-word&quot;&gt;filler.&lt;/span&gt;&lt;/h2&gt;
+    &lt;p class=&quot;lg-body&quot;&gt;One or two sentences. Never a wall.&lt;/p&gt;
+
+    &lt;div class=&quot;lg-grid&quot; style=&quot;margin-top:36px&quot;&gt;
+      &lt;a class=&quot;lg-card&quot; href=&quot;/carver&quot;&gt;
+        &lt;span class=&quot;lg-card-ph&quot;&gt;&lt;img src=&quot;/carver.webp&quot; alt=&quot;Carver 01 Gold wedge&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;lg-card-bd&quot;&gt;
+          &lt;span class=&quot;lg-card-nm&quot;&gt;Carver 01 Gold&lt;/span&gt;&lt;span class=&quot;lg-card-pr&quot;&gt;$99&lt;/span&gt;
+          &lt;span class=&quot;lg-card-ln&quot;&gt;One line on what the club is for.&lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/a&gt;
+      &lt;!-- more cards --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+A card is: photo on stone, name, price, one line. Nothing else goes on it.
+
+### The one dark band (the argument)
+
+```html
+&lt;section class=&quot;lg-band&quot;&gt;
+  &lt;div class=&quot;lg-wrap&quot;&gt;
+    &lt;p class=&quot;lg-eyebrow&quot;&gt;Different math&lt;/p&gt;
+    &lt;h2 class=&quot;lg-d2&quot;&gt;Same steel as the big names.&lt;br&gt;A &lt;span class=&quot;lg-foil-word&quot;&gt;third&lt;/span&gt; of the counter price.&lt;/h2&gt;
+    &lt;p class=&quot;lg-lede&quot;&gt;Why the price is what it is, in one sentence.&lt;/p&gt;
+    &lt;div class=&quot;lg-grid&quot; style=&quot;margin-top:36px&quot;&gt;
+      &lt;div class=&quot;lg-band-tile&quot;&gt;
+        &lt;p class=&quot;lg-label&quot; style=&quot;color:var(--lg-gold)&quot;&gt;Forged, not cast&lt;/p&gt;
+        &lt;p class=&quot;lg-body&quot; style=&quot;margin-top:8px&quot;&gt;Two lines, maximum.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;!-- two more --&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;lg-btn-row&quot;&gt;&lt;a class=&quot;lg-btn&quot; href=&quot;#buy&quot;&gt;Shop the line&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+One band per page. It sits low, after the offer, before the proof.
+
+### Proof: a real review, a real number, a missing photo
+
+```html
+&lt;figure class=&quot;lg-quote&quot;&gt;
+  &lt;span class=&quot;lg-stars&quot; aria-label=&quot;5 out of 5&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;...&lt;/svg&gt;&lt;!-- x5 --&gt;&lt;/span&gt;
+  &lt;p&gt;The review, quoted exactly as the customer wrote it.&lt;/p&gt;
+  &lt;figcaption class=&quot;lg-meta&quot;&gt;David L. &lt;span class=&quot;lg-tag lg-tag-ok&quot;&gt;Verified&lt;/span&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;div class=&quot;lg-stat&quot;&gt;&lt;b&gt;60 days&lt;/b&gt;&lt;span&gt;To decide, on your own course.&lt;/span&gt;&lt;/div&gt;
+
+&lt;div class=&quot;lg-slot&quot;&gt;Photo slot: Carver 01 at address, low angle, morning light.&lt;/div&gt;
+```
+
+`.lg-slot` is what a photo we do not have yet looks like: a labelled slot
+carrying the shot brief. Never a grey box, never a stock photo.
+
+### Small parts
+
+```html
+&lt;span class=&quot;lg-tag&quot;&gt;New&lt;/span&gt;
+&lt;span class=&quot;lg-tag lg-tag-gold&quot;&gt;Best seller&lt;/span&gt;
+&lt;span class=&quot;lg-stock&quot;&gt;In stock&lt;/span&gt;
+&lt;button class=&quot;lg-chip&quot; type=&quot;button&quot; aria-pressed=&quot;false&quot;&gt;54&amp;deg;&lt;/button&gt;
+&lt;table class=&quot;lg-table&quot;&gt;...&lt;/table&gt;
+```
+
+### Sign-off and footer
+
+```html
+&lt;section class=&quot;lg-sign&quot;&gt;
+  &lt;div class=&quot;lg-wrap lg-sign-in&quot;&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;lg-eyebrow&quot;&gt;The last word&lt;/p&gt;
+      &lt;h2 class=&quot;lg-d2&quot;&gt;&amp;ldquo;It&amp;rsquo;s better&lt;br&gt;to be &lt;span class=&quot;lg-foil-word&quot;&gt;lucky.&lt;/span&gt;&amp;rdquo;&lt;/h2&gt;
+      &lt;p class=&quot;lg-lede&quot;&gt;One line of charm.&lt;/p&gt;
+      &lt;div class=&quot;lg-form&quot;&gt;
+        &lt;input class=&quot;lg-input&quot; type=&quot;email&quot; placeholder=&quot;you@email.com&quot; autocomplete=&quot;email&quot;&gt;
+        &lt;button class=&quot;lg-btn&quot; type=&quot;submit&quot;&gt;Keep me posted&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;hr&gt;
+    &lt;/div&gt;
+    &lt;img src=&quot;/mags-light.webp&quot; alt=&quot;Mags, the magpie, with a gold wedge&quot;&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;footer class=&quot;lg-ftr&quot;&gt;
+  &lt;div class=&quot;lg-wrap&quot;&gt;
+    &lt;div class=&quot;lg-ftr-in&quot;&gt;&lt;!-- four columns: h3 + ul of links --&gt;&lt;/div&gt;
+    &lt;div class=&quot;lg-ftr-base&quot;&gt;&lt;span&gt;&amp;copy; 2026 Lucky Golf&lt;/span&gt;&lt;span&gt;It&amp;rsquo;s better to be lucky.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+```
+
+Mags is cream artwork on dark grounds and ink artwork on white ones. If you
+do not have the file, leave a labelled slot and say so.
+
+---
+
+# STEP 3: page order
+
+```
+announcement bar  (solid, three claims, first one gold)
+header            (logo left, nav centre, search and bag right, 72px, solid)
+hero              (one full-bleed photograph, headline bottom left)
+trust row         (four facts, hairline top and bottom)
+the offer         (cards on stone, or a two-up with one photo)
+ONE dark band     (the argument: why the price is what it is)
+proof             (real reviews, a real number, a compare table)
+sign-off          (the brand line, the email capture, Mags on a gold rule)
+footer            (solid, links, one hairline)
+```
+
+No two dark sections touch. The page always comes back to white.
+
+---
+
+# STEP 4: the rules, the colour maths and the voice
+
+Everything below is the system document. Follow it exactly.
+
+## The brand in one line
+
+Gold clubs, honest prices, a magpie called Mags. Serious about the clubs,
+not that serious about ourselves. Premium with attitude, never templated,
+never fake.
+
+The two legs of every Lucky argument, and there is no third:
+
+1. **You are not overpaying.** Same materials and engineering as the big
+   names, minus tour contracts and retail rent, sold direct.
+2. **You are not blending in.** Gold, on purpose, because golf got too
+   serious and we did not.
+
+If a line would sit unchanged on a competitor&#x27;s site, it is wrong for us.
+
+---
+
+### Colour: one dark, one accent, and a lot of white
+
+| Role | Value | The one job | Roughly how much of a screen |
+|---|---|---|---|
+| The page | `#FFFFFF` | Everything reads here | 78 to 88% |
+| Photography | the shots | The only other big field | 6 to 22% |
+| Deep green | `#0B2E1F` | Announcement bar, header, the band low on the page, the sign-off, the footer | 3 to 12% |
+| Stone | `#F4F3F0` | Product wells, cards, table fills. A material, never a band | under 5% |
+| Ink | `#17140F` | All text on white. Body at 70%, meta at 64% | type only |
+| Gold | `#C29A2B` | The only accent: buttons, one word per headline, stars, hairline marks | under 1.5% |
+| Gold as type | `#8A6A1C` | Eyebrows and links on white. The only gold you set text in on white | type only |
+| Signal green | `#008340` | In stock, added, verified. Never decoration | tiny |
+| Clover green | `#0B5130` | The clover inside the logo. Nowhere else | tiny |
+
+Those percentages are measured off the live pages, not aspirational. If your
+page is 30% dark green, it is not this system.
+
+**What is gone, on purpose:** cream fields, brown, the old clover-green
+masthead, a second green, any third colour. The old palette failed because
+cream, green and brown were all fighting. One dark, one accent, white.
+
+**Contrast, measured (not guessed):**
+
+| Pair | Ratio |
+|---|---|
+| Cream `#F4F3F0` on deep green | 13.3:1 |
+| Gold `#C29A2B` on deep green | 5.6:1 |
+| Gold as type `#8A6A1C` on white | 5.1:1 |
+| Ink on the foil button (darkest stop) | 7.0:1 |
+| Stars `#9A7619` on white (a graphic, 3:1 floor) | 4.2:1 |
+| **Gold on clover green `#0B5130`, BANNED** | 3.6:1 |
+
+Floor: 4.5:1 for body, 3:1 for display and graphics. Measure it before you
+hand anything back.
+
+### The foil
+Gold as a material, not a flat fill: `#C29A2B` to `#EDD27C` and back. It
+appears in exactly two places per view: **the primary button**, and **one
+display word** (&quot;Ours is **gold**&quot;, &quot;to be **lucky**&quot;). Never at body size,
+never as a background field, never twice in the same headline.
+
+### The pinstripe
+1px cream lines at 10%, every 6px, drawn as a tile (a long CSS gradient
+rasterises unevenly and the lines look crooked). It goes on **dark feature
+bands and the sign-off only**. The announcement bar, the header and the
+footer are solid, because they sit over everything and should stay quiet.
+The footer gets a soft light from the top edge instead.
+
+---
+
+### Type: Archivo, nothing else
+
+Load the variable font with width and weight axes. Three registers:
+
+- **Display**: width 62, weight 800, uppercase, line height .9. Headlines
+  and card names. Balance the line breaks by hand.
+- **Labels**: width 78, weight 600, uppercase, tracked .12em to .2em.
+  Eyebrows, chips, tags, table heads, trust rows, the announcement bar.
+- **Body**: width 100, 17px, ink at 70%, 46 to 62 characters a line.
+
+The eyebrow is a 22px gold rule plus a label. It orients the section; it
+never restates the headline. No exclamation marks, no all caps for emphasis
+inside a sentence.
+
+---
+
+### The six devices. A page missing them reads generic
+
+1. **Foil** on one word and one button.
+2. **Mags**, the magpie, as an emblem: on the bag button and at the
+   sign-off. Never a cartoon with a face doing an action. Cream artwork on
+   dark grounds, ink artwork on white ones. Folklore stays folklore
+   (&quot;legend has it&quot;).
+3. **The pinstripe** on the dark bands, one hairline between page sections.
+4. **The stamp**: condensed caps on chips, tags, tables and trust rows.
+5. **The aside**: one line of charm, sentence case. &quot;Nobody needs a gold
+   wedge. That is rather the point.&quot;
+6. **The eyebrow** leading every section.
+
+---
+
+### Layout and rhythm
+
+Content width 1180px. Sections 64 to 112px apart. Radius 6px on controls,
+14px on surfaces. Everything tappable is at least 44px on a phone. Photos
+never round themselves inside an already rounded card.
+
+Page order that works, and the one a landing page should follow:
+
+```
+announcement bar  (solid, three claims, first one gold)
+header            (logo LEFT, nav centre, search + Mags bag right, 72px)
+hero              (one full-bleed photograph, headline bottom left)
+trust row         (four facts, hairline top and bottom)
+the offer         (cards on stone, or a two-up with one photo)
+ONE dark band     (the argument: why the price is what it is)
+proof             (real reviews, a real number, a compare table)
+sign-off          (the brand line, the email capture, Mags on a gold rule)
+footer            (solid, links, one hairline)
+```
+
+No two dark bands touch. The page never goes dark for more than one
+section at a time, and it always comes back to white.
+
+**Motion is still.** The foil slides on hover, photos ease on hover. No
+scroll reveals, no card lifts, no drop shadows anywhere.
+
+---
+
+### Imagery
+
+Three formats and nothing else: **full bleed** for the hero and the band,
+**4:5 frames** for course photography, **4:5 tiles** for product on stone.
+
+Real gold catching real light, never a render. A photograph that does not
+exist yet is a **labelled slot** carrying the shot brief (`.lg-slot`), never
+a grey box, never a stock photo, never a placeholder from another brand.
+
+---
+
+### How Lucky sounds
+
+Someone talking, not copy. Confident without straining, warm without
+trying, sharp without needing to prove it. Simple language any golfer
+understands. When something bold gets said, it gets said plainly, because
+the size of the claim carries it.
+
+The voice has range: bold, plainspoken, dry. Same person at different
+volumes; the piece picks the volume. A hero can be bold. A spec block is
+plainspoken. A closer is often quiet.
+
+**The test: attitude with receipts.** Every swagger line has to land on
+something real, a product, a price, a thing that happened. &quot;Golf has a
+dress code. Ours is gold&quot; works. Attitude with nothing behind it is noise.
+
+**The failure mode to write against** is the flat double-statement: one
+plain sentence followed by another plain sentence with nobody home in
+between. If a line could open an investor deck, it is not Lucky. If it
+sounds like the funniest guy in your foursome telling the truth, it is.
+
+Approved lines, verbatim, for calibration:
+
+- &quot;Golf has a dress code. Ours is gold.&quot;
+- &quot;Great clubs got too expensive. We took it personally.&quot;
+- &quot;Same steel as the big names. Different math.&quot;
+- &quot;Serious about the clubs. Not that serious about ourselves.&quot;
+
+### Hard rules, no exceptions
+
+- **No em dashes.** Anywhere, in any copy.
+- **No invented numbers.** No price, percentage or multiplier that is not
+  in the Product Reference Guide. Counts round down.
+- **No fabricated reviews, names or photos.** A review is quoted exactly as
+  the customer wrote it, typos and all, with their real name and a verified
+  mark, or it does not appear.
+- **Trust claims stay vague.** &quot;Thousands of happy golfers&quot; and &quot;sixty days
+  to decide&quot; are approved shapes. Counted claims are not.
+- **The founder is never named**, and a review that names him cannot be
+  quoted.
+- **No competitor named.** The phrase is &quot;the big names&quot;.
+- **Banned words:** premium, luxury, revolutionary, cheap, tour-proven.
+  &quot;Tour-quality construction&quot; is allowed. No warranty language.
+- **No process vocabulary** in brand copy. A page never narrates how it
+  was built.
+- Never write a spec from memory. Open the Product Reference Guide.
+
+---
+
+### Using `lucky.css`
+
+```html
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;lucky.css&quot;&gt;
+&lt;body class=&quot;lg&quot;&gt;   &lt;!-- or put class=&quot;lg-scope&quot; on a wrapper --&gt;
+```
+
+The parts, all in `kit.html`:
+
+| Class | What it is |
+|---|---|
+| `.lg-tick` / `.lg-tick-in` | announcement bar |
+| `.lg-hdr` / `.lg-hdr-in` / `.lg-logo` / `.lg-nav` / `.lg-hdr-act` | the header |
+| `.lg-hero` + `.lg-hero-copy` | full-bleed photo hero with the scrim |
+| `.lg-wrap` / `.lg-sec` | the 1180px measure and section spacing |
+| `.lg-d1` `.lg-d2` `.lg-d3` `.lg-foil-word` | display type |
+| `.lg-eyebrow` `.lg-lede` `.lg-body` `.lg-meta` `.lg-aside` `.lg-label` `.lg-link` | text |
+| `.lg-btn` (foil) `.lg-btn-line` (ghost) `.lg-btn-row` | buttons |
+| `.lg-band` `.lg-band-tile` | the dark band and its inner tiles |
+| `.lg-grid` `.lg-card` `.lg-tile` `.lg-slot` `.lg-quote` `.lg-stat` | surfaces |
+| `.lg-tag` `.lg-tag-gold` `.lg-tag-ok` `.lg-chip` `.lg-stock` `.lg-stars` `.lg-trust` `.lg-table` | small parts |
+| `.lg-form` `.lg-input` | email capture |
+| `.lg-sign` `.lg-ftr` | sign-off and footer |
+| `.lg-on-dark` | put it on anything you build over a dark field |
+
+To test another colour system, change one token: `--lg-dark`. Ink &amp; gold is
+`#17140F`; White &amp; gold keeps the bands white and uses `#121212` for the
+footer. Deep green is the pick being tested.
+
+---
+
+### Before you hand anything back
+
+1. One foil button and one foil word per view, not five.
+2. Any gold type on green? Fix it.
+3. Contrast measured, not guessed.
+4. Is the page still mostly white, with one dark band?
+5. Every card on stone; every missing photo a labelled slot.
+6. Every review, name and number real. No em dashes.
+7. Would this sit next to the Carver 01 page and read as the same brand?
+   If not, start over.
+</pre>
+  </div>
+
+  <footer>This is the Deep Green &amp; Gold system. If you land on Ink or White later, one line changes
+    (<code>--lg-dark</code>) and the document gets reissued.</footer>
+</div>
+
+<script>
+  var say = document.getElementById('say'), t;
+  function flash(msg){ say.textContent = msg; say.hidden = false; clearTimeout(t); t = setTimeout(function(){ say.hidden = true; }, 2600); }
+  function copy(text, ok){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ flash(ok); }, function(){ flash('Could not copy. Select the text and copy it.'); });
+    } else { flash('Could not copy. Select the text and copy it.'); }
+  }
+  document.getElementById('copyAll').addEventListener('click', function(){
+    copy(document.getElementById('doc').textContent, 'Copied. Paste it into the other chat.');
+  });
+  document.getElementById('copyPrompt').addEventListener('click', function(){
+    copy(document.getElementById('promptText').textContent, 'Prompt copied.');
+  });
+</script>
