@@ -1,0 +1,708 @@
+{%- comment -%}
+================================================================================
+  LUCKY GOLF · FREE HAT, FREE POLO · ends Friday, Sept 25
+  $90 gets the hat. $140 gets the polo too. $198 and shipping's free.
+
+  Built on lucky.css v3.0, Deep Green & Gold. gwp-promo.css adds only what the
+  system has no component for, and adds no colour of its own.
+
+  THE PAGE, AND NOTHING ELSE ON IT (Cole, 2026-09-18: "a lot of extra fat"):
+
+    hero          one real on-course photo, the offer in two lines
+    rail          the sticky bar: how far to the hat, the polo, free shipping
+    the clubs     the clubs you can actually buy, one line each
+    free stuff    pick the real hat and the real polo by picture
+    reviews       three real customers, verbatim. The one dark band.
+    faq           five short answers
+
+  Cut on purpose: the trust row, the tier cards, the argument band, the photo
+  grid, how-it-works, and the sign-off. Every one of them said something the
+  hero, the rail or the FAQ already says.
+
+  FOUR RULES THIS FILE FOLLOWS:
+
+  1. SHOPIFY OWNS THE MONEY. The subtotal driving both tiers is read back out
+     of /cart.js on every change. Gift lines are $0 and are stripped out of
+     it, so a free hat can never pay for a free polo.
+  2. THE CATALOGUE IS READ, NEVER RETYPED. Clubs are picked as blocks, gifts
+     are real products, prices and stock come from Shopify.
+  3. THE MARKUP SHIPS FROM LIQUID. JS only changes state.
+  4. NO REVIEW IS WRITTEN HERE. Quotes are verbatim from Judge.me, typos and
+     all, with the customer's own name, or they do not appear.
+================================================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign hat = s.gift_hat_product
+  assign polo = s.gift_polo_product
+
+  assign t1 = s.tier1_threshold | times: 100 | round
+  assign t2 = s.tier2_threshold | times: 100 | round
+  if t2 <= t1
+    assign t2 = t1 | plus: 100
+  endif
+  assign ship = s.ship_threshold | times: 100 | round
+  assign bar_max = t2
+  if ship > t2
+    assign bar_max = ship
+  endif
+  assign t1_pct = t1 | times: 100.0 | divided_by: bar_max
+  assign t2_pct = t2 | times: 100.0 | divided_by: bar_max
+
+  assign clubs = section.blocks | where: 'type', 'club'
+  assign reviews = section.blocks | where: 'type', 'review'
+  assign faqs = section.blocks | where: 'type', 'faq'
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+{{ 'lucky.css' | asset_url | stylesheet_tag }}
+{{ 'gwp-promo.css' | asset_url | stylesheet_tag }}
+
+<script type="application/json" id="gwp-data">
+{
+  "moneyFormat": {{ shop.money_format | strip_html | json }},
+  "gifts": {
+    {%- assign gift_sep = '' -%}
+    {%- assign gift_slots = 'hat,polo' | split: ',' -%}{%- for pair in gift_slots -%}
+      {%- if pair == 'hat' -%}{%- assign gp = hat -%}{%- else -%}{%- assign gp = polo -%}{%- endif -%}
+      {%- if gp != blank -%}
+        {{ gift_sep }}{{ pair | json }}: {
+          "title": {{ gp.title | json }},
+          "variants": [
+            {%- for v in gp.variants -%}
+              {"id": {{ v.id | json }}, "opts": {{ v.options | json }}, "available": {{ v.available | json }}, "price": {{ v.price | json }}}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+        {%- assign gift_sep = ',' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  },
+  "products": [
+    {%- assign p_sep = '' -%}
+    {%- for b in clubs -%}
+      {%- assign product = b.settings.product -%}
+      {%- if product != blank -%}
+        {{ p_sep }}{
+          "id": {{ product.id | json }},
+          "variants": [
+            {%- for v in product.variants -%}
+              {"id": {{ v.id | json }}, "opts": {{ v.options | json }}, "available": {{ v.available | json }}, "price": {{ v.price | json }}}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+        {%- assign p_sep = ',' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+<div class="lg-scope gwp" id="gwp"
+     data-ground="{{ s.ground | default: 'twilight' }}" data-yardage="{% if s.yardage %}on{% else %}off{% endif %}"
+     style="--gwp-top:{{ s.sticky_offset | default: 0 }}px;--gwp-contour-day:url({{ 'gwp-contour-day.svg' | file_url }});--gwp-contour-tw:url({{ 'gwp-contour-tw.svg' | file_url }})"
+     data-tier1="{{ t1 }}" data-tier2="{{ t2 }}" data-ship="{{ ship }}"
+     data-gift1-short="{{ s.tier1_short | escape }}"
+     data-gift2-short="{{ s.tier2_short | escape }}"
+     data-bar-gift1="{{ s.bar_gift_1 | escape }}"
+     data-bar-gift2="{{ s.bar_gift_2 | escape }}"
+     data-copy-start="{{ s.bar_start | escape }}"
+     data-copy-away1="{{ s.bar_away_tier1 | escape }}"
+     data-copy-away2="{{ s.bar_away_tier2 | escape }}"
+     data-copy-pick="{{ s.bar_pick | escape }}"
+     data-copy-hit1="{{ s.bar_tier1_hit | escape }}"
+     data-copy-ship-away="{{ s.bar_ship_away | escape }}"
+     data-copy-hit2="{{ s.bar_all_done | escape }}"
+     data-copy-locked="{{ s.gift_locked_template | escape }}"
+     data-copy-add="{{ s.add_label | escape }}"
+     data-copy-adding="{{ s.adding_label | escape }}"
+     data-copy-added="{{ s.added_label | escape }}"
+     data-copy-soldout="{{ s.soldout_label | escape }}"
+     data-copy-claim="{{ s.claim_label | escape }}"
+     data-copy-claimed="{{ s.claimed_label | escape }}"
+     data-copy-gift-lost="{{ s.toast_gift_lost | escape }}"
+     data-copy-gift-won="{{ s.toast_gift_won | escape }}"
+     data-copy-error="{{ s.toast_error | escape }}"
+     data-copy-soldout-gift="{{ s.toast_gift_soldout | escape }}"
+     data-mags-hat="{{ s.mags_hat | escape }}"
+     data-mags-polo="{{ s.mags_polo | escape }}"
+     data-mags-go="{{ s.mags_go | escape }}"
+     data-pop1-title="{{ s.pop1_title | escape }}"
+     data-pop1-body="{{ s.pop1_body | escape }}"
+     data-pop1-more="{{ s.pop1_more | escape }}"
+     data-pop2-title="{{ s.pop2_title | escape }}"
+     data-pop2-body="{{ s.pop2_body | escape }}"
+     data-pop2-more="{{ s.pop2_more | escape }}"
+     data-pop-ship="{{ s.pop_ship | escape }}">
+
+  <!-- ══════════ HERO · the math: club + gift = price ══════════
+       The tiles are plain on purpose: nothing sits over the product. The
+       threshold amounts in the headline pick up the gold gradient on their
+       own, so the headline stays a plain text setting. -->
+  {%- liquid
+    assign t1s = t1 | money_without_trailing_zeros | strip_html
+    assign t2s = t2 | money_without_trailing_zeros | strip_html
+  -%}
+  {%- capture t1span -%}<span class="gwp-num">{{ t1s }}</span>{%- endcapture -%}
+  {%- capture t2span -%}<span class="gwp-num">{{ t2s }}</span>{%- endcapture -%}
+  {%- liquid
+    assign h1 = s.hero_heading | escape | replace: t2s, t2span | replace: t1s, t1span
+    if s.hero_gold_word != blank
+      capture gw
+        echo '<span class="gwp-num">' | append: s.hero_gold_word | append: '</span>'
+      endcapture
+      assign h1 = h1 | replace_first: s.hero_gold_word, gw
+    endif
+    assign hat_img = s.hero_hat_image | default: hat.variants.first.image | default: hat.featured_image
+    assign polo_img = s.hero_polo_image | default: polo.variants.first.image | default: polo.featured_image
+  -%}
+  {%- if s.hero_photo != blank -%}
+  <!-- ══════════ HERO · the photo leads: the hat, the polo and a gold club in one frame ══════════ -->
+  <section class="gwp-p-hero" style="--focus:{{ s.hero_focus | default: '60% 40%' }};--focus-m:{{ s.hero_focus_m | default: '58% 40%' }}">
+    {{ s.hero_photo | image_url: width: 2400 | image_tag: widths: '750,1100,1600,2000,2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', class: 'gwp-p-img', alt: s.hero_photo.alt }}
+    <div class="lg-wrap gwp-p-in">
+      <p class="lg-eyebrow gwp-p-eb">{{ s.hero_eyebrow }}</p>
+      <h1 class="lg-d1 gwp-h-h1">{{ h1 }}</h1>
+      <p class="lg-lede gwp-h-lede">{{ s.hero_sub }}</p>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">{{ s.hero_cta }} <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          {%- if s.trust_1 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>{{ s.trust_1 }}</li>{%- endif -%}
+          {%- if s.trust_2 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>{{ s.trust_2 }}</li>{%- endif -%}
+          {%- if s.trust_3 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>{{ s.trust_3 }}</li>{%- endif -%}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {%- else -%}
+  <section class="gwp-h-hero">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">{{ s.hero_eyebrow }}</p>
+      <h1 class="lg-d1 gwp-h-h1">{{ h1 }}</h1>
+      <p class="lg-lede gwp-h-lede">{{ s.hero_sub }}</p>
+      <div class="gwp-h-sums">
+        {%- for n in (1..2) -%}
+          {%- liquid
+            if n == 1
+              assign sp = s.sum1_product
+              assign si = s.sum1_image_index | default: 1 | minus: 1
+              assign snote = s.sum1_note
+              assign gcap = s.sum_gift1_label
+              assign gtag = s.free_tag
+            else
+              assign sp = s.sum2_product
+              assign si = s.sum2_image_index | default: 1 | minus: 1
+              assign snote = s.sum2_note
+              assign gcap = s.sum_gift2_label
+              assign gtag = s.both_free_tag
+            endif
+          -%}
+          {%- if sp != blank -%}
+            {%- assign simg = sp.images[si] | default: sp.featured_image -%}
+            <div class="gwp-h-sum">
+              <figure class="gwp-h-fig">
+                <div class="gwp-h-tile">
+                  {%- if simg -%}{{ simg | image_url: width: 600 | image_tag: widths: '300,600', sizes: '(max-width:760px) 44vw, 260px', loading: 'eager', alt: sp.title }}{%- endif -%}
+                  <span class="lg-tag">{{ sp.price_min | money_without_trailing_zeros }}</span>
+                </div>
+                <figcaption class="lg-label">{{ sp.title }}</figcaption>
+              </figure>
+              <span class="gwp-h-op" aria-hidden="true">+</span>
+              <figure class="gwp-h-fig">
+                <div class="gwp-h-tile{% if n == 2 %} gwp-h-pair{% endif %}">
+                  {%- if hat_img -%}{{ hat_img | image_url: width: 500 | image_tag: loading: 'eager', alt: hat.title }}{%- endif -%}
+                  {%- if n == 2 and polo_img -%}{{ polo_img | image_url: width: 500 | image_tag: loading: 'eager', alt: polo.title }}{%- endif -%}
+                  <span class="lg-tag lg-tag-gold">{{ gtag }}</span>
+                </div>
+                <figcaption class="lg-label">{{ gcap }}</figcaption>
+              </figure>
+              <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+              <div class="gwp-h-res"><b class="gwp-num-d">{{ sp.price_min | money_without_trailing_zeros }}</b><span>{{ snote }}</span></div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">{{ s.hero_cta }} <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          {%- if s.trust_1 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>{{ s.trust_1 }}</li>{%- endif -%}
+          {%- if s.trust_2 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>{{ s.trust_2 }}</li>{%- endif -%}
+          {%- if s.trust_3 != blank -%}<li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>{{ s.trust_3 }}</li>{%- endif -%}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  <!-- ══════════ THE RAIL ══════════ -->
+  <div class="gwp-rail" id="gwp-rail" data-tier="0">
+    <div class="gwp-rail-in">
+      <div class="gwp-rail-copy">
+        <div class="gwp-say-row">
+          <p class="gwp-say" id="gwp-say" role="status" aria-live="polite" aria-atomic="true">{{ s.bar_start }}</p>
+          <a class="gwp-rail-pick" id="gwp-pick" href="#gwp-gifts" data-scroll-to="gwp-gifts" hidden>{{ s.pick_label }} <span aria-hidden="true">&darr;</span></a>
+        </div>
+        <div class="gwp-track" aria-hidden="true">
+          <span class="gwp-fill" id="gwp-fill"></span>
+          <span class="gwp-ball" id="gwp-ball"></span>
+          <span class="gwp-node" data-node="1" style="left:{{ t1_pct }}%"><i></i><b>{{ s.node1_label }}</b></span>
+          <span class="gwp-node" data-node="2" style="left:{{ t2_pct }}%"{% unless ship > t2 %} data-last{% endunless %}><i></i><b>{{ s.node2_label }}</b></span>
+          {%- if ship > t2 -%}<span class="gwp-node" data-node="3" style="left:100%" data-last><i></i><b>{{ s.node3_label }}</b></span>{%- endif -%}
+        </div>
+      </div>
+      <div class="gwp-rail-act">
+        <span class="gwp-rail-sum"><span class="l lg-label">{{ s.bar_subtotal_label }}</span><span class="v" id="gwp-rail-sum">{{ 0 | money }}</span></span>
+        <a class="lg-btn lg-btn-line" href="/checkout">{{ s.checkout_label }}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ THE TRACER · the one Yardage moment between offer and clubs ══════════ -->
+  {%- if s.yardage -%}
+    <div class="yd yd-tracer" id="gwp-tracer" data-tee="{{ s.tee_label | escape }}" aria-hidden="true"><div class="lg-wrap"></div></div>
+  {%- endif -%}
+
+  <!-- ══════════ THE CLUBS ══════════ -->
+  <section class="lg-sec" id="gwp-clubs" tabindex="-1">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">{{ s.clubs_eyebrow }}</p>
+      <h2 class="lg-d2">{{ s.clubs_heading }}</h2>
+      {%- if s.clubs_aside != blank -%}<p class="lg-aside">{{ s.clubs_aside }}</p>{%- endif -%}
+
+      <div class="gwp-clubs">
+        {%- for b in clubs -%}
+          {%- assign product = b.settings.product -%}
+          {%- if product != blank -%}
+            {%- liquid
+              assign first_v = product.selected_or_first_available_variant
+              assign has_stock = product.available
+              assign pmin = product.price_min
+            -%}
+            <article class="lg-card gwp-card" data-pid="{{ product.id }}"{% unless has_stock %} data-out{% endunless %} {{ b.shopify_attributes }}>
+              {%- liquid
+                assign ci = b.settings.image_index | default: 1 | minus: 1
+                assign card_img = product.images[ci] | default: product.featured_image
+              -%}
+              <span class="lg-card-ph gwp-cut">
+                {%- if card_img -%}
+                  {{ card_img | image_url: width: 700 | image_tag:
+                     widths: '280,420,700', sizes: '(max-width:749px) 90vw, 270px',
+                     loading: 'lazy', alt: product.title }}
+                {%- endif -%}
+                {%- if pmin >= t2 -%}<span class="lg-tag lg-tag-gold gwp-unlock">{{ s.tag_tier2 }}</span>
+                {%- elsif pmin >= t1 -%}<span class="lg-tag gwp-unlock">{{ s.tag_tier1 }}</span>{%- endif -%}
+              </span>
+              <span class="lg-card-bd">
+                <span class="lg-card-nm">{{ product.title }}</span>
+                <span class="lg-card-pr" data-price>{{ first_v.price | money_without_trailing_zeros }}</span>
+                {%- if b.settings.line != blank -%}<span class="lg-card-ln">{{ b.settings.line }}</span>{%- endif -%}
+              </span>
+
+              {%- unless product.has_only_default_variant -%}
+                <div class="gwp-opts">
+                  {%- for o in product.options_with_values -%}
+                    {%- assign ax = forloop.index0 -%}
+                    {%- if o.values.size > 1 -%}
+                      <div class="gwp-opt">
+                        <span class="lg-label">{{ o.name }}</span>
+                        <div class="gwp-chips" role="group" aria-label="{{ o.name }}">
+                          {%- for val in o.values -%}
+                            <button type="button" class="lg-chip" data-axis="{{ ax }}" data-val="{{ val | escape }}"
+                                    aria-pressed="{% if first_v.options[ax] == val %}true{% else %}false{% endif %}">{{ val }}</button>
+                          {%- endfor -%}
+                        </div>
+                      </div>
+                    {%- else -%}
+                      {%- comment -%} one value: nothing to choose, but JS still needs it to match a variant {%- endcomment -%}
+                      <button type="button" hidden data-axis="{{ ax }}" data-val="{{ o.values.first | escape }}" aria-pressed="true"></button>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endunless -%}
+
+              <div class="gwp-buy">
+                <button type="button" class="lg-btn lg-btn-line gwp-add" data-add data-variant-id="{{ first_v.id }}"{% unless has_stock %} disabled{% endunless %}>
+                  <span class="lb">{% if has_stock %}{{ s.add_label }}{% else %}{{ s.soldout_label }}{% endif %}</span>
+                  <span class="gwp-sp" aria-hidden="true"></span>
+                </button>
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PHOTO BAND · the page breathes on photography, not on colour ══════════ -->
+  {%- if s.band_1 != blank or s.band_2 != blank or s.band_3 != blank -%}
+    <section class="gwp-band-ph" aria-label="{{ s.band_label | escape }}">
+      {%- for k in (1..3) -%}
+        {%- assign bkey = 'band_' | append: k -%}
+        {%- assign bim = s[bkey] -%}
+        {%- if bim != blank -%}
+          <figure class="gwp-band-f{% if k == 1 %} w2{% endif %}">
+            {{ bim | image_url: width: 1600 | image_tag: widths: '600,1000,1600', sizes: '(max-width:749px) 100vw, 50vw', loading: 'lazy', alt: bim.alt }}
+          </figure>
+        {%- endif -%}
+      {%- endfor -%}
+    </section>
+  {%- endif -%}
+
+  <!-- ══════════ THE FREE STUFF ══════════ -->
+  <section class="lg-sec" id="gwp-gifts">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">{{ s.gift_eyebrow }}</p>
+      <h2 class="lg-d2">{{ s.gift_heading }}</h2>
+      {%- if s.gift_note != blank -%}<p class="lg-body">{{ s.gift_note }}</p>{%- endif -%}
+
+      <div class="gwp-gifts-grid{% if s.fit_photo != blank %} has-ph{% endif %}">
+      {%- if s.fit_photo != blank -%}
+        <figure class="gwp-fit-ph">
+          {{ s.fit_photo | image_url: width: 1400 | image_tag: widths: '600,1000,1400', sizes: '(max-width:749px) 100vw, 40vw', loading: 'lazy', alt: s.fit_photo.alt }}
+          {%- if s.fit_caption != blank -%}<figcaption class="lg-label">{{ s.fit_caption }}</figcaption>{%- endif -%}
+        </figure>
+      {%- endif -%}
+      <div class="gwp-gift-row">
+        {%- assign gift_slots = 'hat,polo' | split: ',' -%}{%- for slot in gift_slots -%}
+          {%- liquid
+            if slot == 'hat'
+              assign gp = hat
+              assign gt = t1
+              assign gtier = 1
+              assign gtitle = s.gift_hat_title
+              assign gsub = s.gift_hat_sub
+            else
+              assign gp = polo
+              assign gt = t2
+              assign gtier = 2
+              assign gtitle = s.gift_polo_title
+              assign gsub = s.gift_polo_sub
+            endif
+          -%}
+          {%- if gp != blank -%}
+            <article class="lg-tile gwp-gift" id="gwp-gift-{{ slot }}" tabindex="-1" data-gift="{{ slot }}" data-gift-tier="{{ gtier }}" data-threshold="{{ gt }}" data-state="locked">
+              <div class="gwp-gift-hd">
+                <h3 class="lg-d3">{{ gtitle }}</h3>
+                <span class="lg-tag lg-tag-gold">{{ s.free_tag }}</span>
+              </div>
+              {%- if gsub != blank -%}<p class="lg-body gwp-gift-sub">{{ gsub }}</p>{%- endif -%}
+
+              <p class="gwp-lock lg-label" data-lock>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.6" y="7" width="10.8" height="7.2" rx="1.4"/><path d="M5 7V4.9a3 3 0 0 1 6 0V7"/></svg>
+                <span data-lock-text></span>
+              </p>
+
+              {%- comment -%}
+                The pickers render for a locked gift too, so the reader can see
+                exactly what they are working toward. They are inert until the
+                tier opens (the [data-state="locked"] rule dims them).
+              {%- endcomment -%}
+              <div class="gwp-opts gwp-gift-opts">
+                {%- for o in gp.options_with_values -%}
+                  {%- assign ax = forloop.index0 -%}
+                  <div class="gwp-opt">
+                    <span class="lg-label">{{ o.name }}</span>
+                    <div class="gwp-chips{% if ax == 0 %} gwp-swatches{% endif %}" role="group" aria-label="{{ o.name }}">
+                      {%- for val in o.values -%}
+                        {%- assign sw = nil -%}
+                        {%- for v in gp.variants -%}
+                          {%- if v.options[ax] == val and v.image -%}{%- assign sw = v.image -%}{%- break -%}{%- endif -%}
+                        {%- endfor -%}
+                        {%- if sw and ax == 0 -%}
+                          <button type="button" class="gwp-swatch" data-gift-axis="{{ ax }}" data-val="{{ val | escape }}"
+                                  aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" title="{{ val | escape }}">
+                            {{ sw | image_url: width: 160 | image_tag: width: 72, height: 72, loading: 'lazy', alt: val }}
+                          </button>
+                        {%- else -%}
+                          <button type="button" class="lg-chip" data-gift-axis="{{ ax }}" data-val="{{ val | escape }}"
+                                  aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ val }}</button>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+
+              <div class="gwp-pick" data-pick hidden>
+                <p class="lg-meta gwp-picked" data-picked></p>
+                <button type="button" class="lg-btn gwp-claim" data-claim data-variant-id="{{ gp.variants.first.id }}">
+                  <span class="lb">{{ s.claim_label }}</span><span class="gwp-sp" aria-hidden="true"></span>
+                </button>
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ REVIEWS · the one dark band ══════════ -->
+  {%- if reviews.size > 0 -%}
+    <section class="lg-band{% if s.reviews_photo != blank %} gwp-rev-ph{% endif %}"{% if s.reviews_photo != blank %} style="--rev-bg:url({{ s.reviews_photo | image_url: width: 2000 }});--rev-pos:{{ s.reviews_focus | default: 'center 60%' }}"{% endif %}>
+      <div class="lg-wrap">
+        <p class="lg-eyebrow">{{ s.rev_eyebrow }}</p>
+        <h2 class="lg-d2">{{ s.rev_heading }}</h2>
+        <div class="lg-grid gwp-revs">
+          {%- for b in reviews -%}
+            <figure class="lg-band-tile gwp-rev" {{ b.shopify_attributes }}>
+              <span class="lg-stars" aria-label="{{ b.settings.stars }} out of 5">
+                {%- for i in (1..b.settings.stars) -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg>{%- endfor -%}
+              </span>
+              <blockquote>{{ b.settings.quote }}</blockquote>
+              <figcaption class="lg-meta">{{ b.settings.name }}{% if b.settings.club != blank %} · {{ b.settings.club }}{% endif %}
+                {%- if b.settings.verified -%} <span class="lg-stock">{{ s.verified_label }}</span>{%- endif -%}
+              </figcaption>
+            </figure>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  <!-- ══════════ FAQ ══════════ -->
+  {%- if faqs.size > 0 -%}
+    <section class="lg-sec">
+      <div class="lg-wrap gwp-faq-grid{% if s.faq_photo != blank %} has-ph{% endif %}">
+      <div class="gwp-faq-wrap">
+        <h2 class="lg-d2">{{ s.faq_heading }}</h2>
+        <div class="gwp-faq">
+          {%- for b in faqs -%}
+            <details class="gwp-fq" {{ b.shopify_attributes }}>
+              <summary><span>{{ b.settings.q }}</span><span class="mk" aria-hidden="true"></span></summary>
+              <div class="gwp-fq-a">{{ b.settings.a }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if s.faq_photo != blank -%}
+        <figure class="gwp-faq-ph">{{ s.faq_photo | image_url: width: 1200 | image_tag: widths: '600,1200', sizes: '(max-width:749px) 100vw, 40vw', loading: 'lazy', alt: s.faq_photo.alt }}</figure>
+      {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  <!-- ══════════ SIGN-OFF · Mags closes the page ══════════ -->
+  {%- if s.sign_line != blank -%}
+    <section class="gwp-sign">
+      <div class="lg-wrap">
+        {%- if s.sign_eyebrow != blank -%}<p class="lg-eyebrow">{{ s.sign_eyebrow }}</p>{%- endif -%}
+        <h2 class="lg-d1 gwp-sign-h">{{ s.sign_line }}</h2>
+        {%- if s.sign_sub != blank -%}<p class="lg-lede gwp-sign-sub">{{ s.sign_sub }}</p>{%- endif -%}
+        <a class="lg-btn lg-btn-line" href="#gwp-clubs" data-scroll-to="gwp-clubs">{{ s.sign_cta }} <span aria-hidden="true">&rarr;</span></a>
+        <div class="gwp-sign-mags" aria-hidden="true"><img src="{{ 'gwp-mags-ink.webp' | file_url }}" alt="" width="96" height="60" loading="lazy"></div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  <!-- ══════════ PHONE CART BAR ══════════ -->
+  <div class="gwp-bar" id="gwp-bar">
+    <div class="gwp-bar-in">
+      <span class="gwp-bar-sum"><span class="l lg-label">{{ s.bar_subtotal_label }}</span><span class="v" id="gwp-bar-sum">{{ 0 | money }}</span></span>
+      <span class="gwp-bar-gift" id="gwp-bar-gift" data-none>{{ s.bar_no_gift }}</span>
+      <a class="lg-btn" href="/checkout">{{ s.checkout_label }}</a>
+    </div>
+  </div>
+
+  <!-- ══════════ MAGS · the guide. Always the one next step; tap and he does it ══════════ -->
+  <button type="button" class="gwp-mags" id="gwp-mags" hidden>
+    <img src="{{ 'gwp-mags-ink.webp' | file_url }}" alt="" width="84" height="52">
+    <span class="gwp-mags-say" data-mags-say aria-live="polite"></span>
+  </button>
+
+  <div class="gwp-pop" id="gwp-pop" hidden role="dialog" aria-modal="true" aria-labelledby="gwp-pop-h">
+    <div class="gwp-pop-card">
+      <button type="button" class="gwp-pop-x" data-pop-close aria-label="Close">&times;</button>
+      <img class="gwp-pop-mags" src="{{ 'gwp-mags-ink.webp' | file_url }}" alt="" width="96" height="60">
+      <h2 class="lg-d3" id="gwp-pop-h" data-pop-title></h2>
+      <p class="lg-body" data-pop-body></p>
+      <div class="gwp-pop-act">
+        <a class="lg-btn" href="/checkout" data-pop-go>{{ s.pop_checkout }} <span aria-hidden="true">&rarr;</span></a>
+        <button type="button" class="lg-btn lg-btn-line" data-pop-more></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gwp-toast" id="gwp-toast" hidden role="alert">
+    {%- if s.toast_mags -%}<img class="gwp-toast-mags" src="{{ 'gwp-mags.webp' | file_url }}" alt="" width="64" height="40" hidden>{%- endif -%}
+    <span data-toast-text></span>
+  </div>
+</div>
+
+<script src="{{ 'gwp-promo.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Free hat + polo promo",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "The offer" },
+    { "type": "paragraph", "content": "Tiers are tested against what the customer is paying for, with every $0 gift line taken out. See GWP-PROMO-README.md before launch." },
+    { "type": "number", "id": "tier1_threshold", "label": "Hat unlocks at ($)", "default": 90 },
+    { "type": "number", "id": "tier2_threshold", "label": "Polo unlocks at ($)", "default": 140 },
+    { "type": "number", "id": "ship_threshold", "label": "Free shipping at ($)", "info": "Must match Settings > Shipping. Checked live 2026-09-18: $198.", "default": 198 },
+    { "type": "product", "id": "gift_hat_product", "label": "Free hat product ($0 variants)" },
+    { "type": "product", "id": "gift_polo_product", "label": "Free polo product ($0 variants)" },
+    { "type": "number", "id": "sticky_offset", "label": "Theme header height (px)", "info": "The tier bar parks under it. 0 if the header does not stick.", "default": 0 },
+
+    { "type": "header", "content": "Look" },
+    { "type": "select", "id": "ground", "label": "Ground", "default": "twilight",
+      "options": [{ "value": "twilight", "label": "Twilight round (promos, drops)" }, { "value": "day", "label": "Daylight (everyday)" }] },
+    { "type": "checkbox", "id": "yardage", "label": "Yardage layer (tracer, ruler, contour, section numbers)", "default": true },
+    { "type": "text", "id": "tee_label", "label": "Tracer start label", "default": "Tee · $0" },
+
+    { "type": "header", "content": "Photos (the page leads with these)" },
+    { "type": "image_picker", "id": "hero_photo", "label": "Hero photo", "info": "Full-bleed behind the headline. Blank = the club + gift = price hero instead." },
+    { "type": "text", "id": "hero_focus", "label": "Hero photo focus, desktop", "default": "60% 40%", "info": "Where the photo centres: left% top%." },
+    { "type": "text", "id": "hero_focus_m", "label": "Hero photo focus, phone", "default": "58% 40%" },
+    { "type": "image_picker", "id": "band_1", "label": "Photo band 1 (wide)" },
+    { "type": "image_picker", "id": "band_2", "label": "Photo band 2" },
+    { "type": "image_picker", "id": "band_3", "label": "Photo band 3" },
+    { "type": "text", "id": "band_label", "label": "Photo band label (screen readers)", "default": "On the course" },
+    { "type": "image_picker", "id": "fit_photo", "label": "The fit, worn (beside the gift pickers)" },
+    { "type": "text", "id": "fit_caption", "label": "Fit photo caption", "default": "The fit: hat + polo, both free over $140" },
+    { "type": "image_picker", "id": "reviews_photo", "label": "Photo behind the reviews" },
+    { "type": "text", "id": "reviews_focus", "label": "Reviews photo focus", "default": "center 60%" },
+    { "type": "image_picker", "id": "faq_photo", "label": "Photo beside the FAQ" },
+
+    { "type": "header", "content": "Hero (the math)" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "One week only · Ends Friday, Sept 25" },
+    { "type": "text", "id": "hero_heading", "label": "Headline", "info": "The two threshold amounts turn gold on their own.", "default": "$90 gets the hat. $140 gets the fit." },
+    { "type": "text", "id": "hero_gold_word", "label": "Extra gold word (optional)", "info": "Only for a headline with no dollar amounts in it." },
+    { "type": "textarea", "id": "hero_sub", "label": "Subhead", "default": "The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own." },
+    { "type": "text", "id": "hero_cta", "label": "Button", "default": "Show me the clubs" },
+    { "type": "product", "id": "sum1_product", "label": "Row 1 club (clears the hat)" },
+    { "type": "number", "id": "sum1_image_index", "label": "Row 1 photo (1 = first)", "default": 5 },
+    { "type": "text", "id": "sum1_note", "label": "Row 1 note", "default": "Any club gets you the hat." },
+    { "type": "text", "id": "sum_gift1_label", "label": "Row 1 gift caption", "default": "Any hat" },
+    { "type": "product", "id": "sum2_product", "label": "Row 2 club (clears both)" },
+    { "type": "number", "id": "sum2_image_index", "label": "Row 2 photo (1 = first)", "default": 5 },
+    { "type": "text", "id": "sum2_note", "label": "Row 2 note", "default": "Over $140 the polo comes too. Over $198, shipping's free." },
+    { "type": "text", "id": "sum_gift2_label", "label": "Row 2 gift caption", "default": "The fit: hat + polo" },
+    { "type": "text", "id": "both_free_tag", "label": "Row 2 tag", "default": "Both free" },
+    { "type": "image_picker", "id": "hero_hat_image", "label": "Hero hat photo (optional)", "info": "Blank = the free hat's first variant photo. Use the black and gold hat." },
+    { "type": "image_picker", "id": "hero_polo_image", "label": "Hero polo photo (optional)", "info": "Blank = the free polo's first variant photo." },
+    { "type": "text", "id": "trust_1", "label": "Trust line 1", "default": "Secure checkout" },
+    { "type": "text", "id": "trust_2", "label": "Trust line 2", "default": "Sixty days to prove us wrong" },
+    { "type": "text", "id": "trust_3", "label": "Trust line 3", "default": "Free shipping over $198" },
+
+    { "type": "header", "content": "The sticky bar" },
+    { "type": "text", "id": "bar_start", "label": "Empty bag", "default": "Your bag's empty. $90 gets you a free hat." },
+    { "type": "text", "id": "bar_away_tier1", "label": "Short of the hat", "info": "{amount} and {gift} fill in.", "default": "{amount} away from {gift}" },
+    { "type": "text", "id": "bar_away_tier2", "label": "Short of the polo", "info": "{amount} and {gift} fill in.", "default": "{amount} away from {gift}" },
+    { "type": "text", "id": "bar_pick", "label": "Unlocked, not picked yet", "info": "{gift} fills in.", "default": "Nice, you've got {gift}. Go pick one below." },
+    { "type": "text", "id": "bar_tier1_hit", "label": "Hat claimed, no polo on offer", "default": "Hat's in the bag. You're all set." },
+    { "type": "text", "id": "bar_ship_away", "label": "Both claimed, short of free shipping", "info": "{amount} fills in.", "default": "Hat and polo are in. {amount} more and shipping's free." },
+    { "type": "text", "id": "bar_all_done", "label": "Everything unlocked", "default": "Hat, polo, free shipping. Check out before it ends Friday." },
+    { "type": "text", "id": "pick_label", "label": "Go-pick-it link", "default": "Pick yours" },
+    { "type": "text", "id": "node1_label", "label": "Bar marker 1", "default": "$90 hat" },
+    { "type": "text", "id": "node2_label", "label": "Bar marker 2", "default": "$140 polo" },
+    { "type": "text", "id": "node3_label", "label": "Bar marker 3 (free shipping)", "default": "$198 free ship" },
+    { "type": "text", "id": "tier1_short", "label": "Hat, mid-sentence", "default": "your free hat" },
+    { "type": "text", "id": "tier2_short", "label": "Polo, mid-sentence", "default": "your free polo" },
+    { "type": "text", "id": "bar_subtotal_label", "label": "Subtotal label", "default": "Subtotal" },
+    { "type": "text", "id": "checkout_label", "label": "Checkout button", "default": "Checkout" },
+    { "type": "text", "id": "bar_no_gift", "label": "Phone bar, nothing earned", "default": "No free stuff yet" },
+    { "type": "text", "id": "bar_gift_1", "label": "Phone bar, hat earned", "default": "Free hat earned" },
+    { "type": "text", "id": "bar_gift_2", "label": "Phone bar, both earned", "default": "Hat + polo earned" },
+
+    { "type": "header", "content": "The clubs" },
+    { "type": "paragraph", "content": "Add a Club block per club. Its tag (hat, or hat + polo) is worked out from the price." },
+    { "type": "text", "id": "clubs_eyebrow", "label": "Eyebrow", "default": "Start here" },
+    { "type": "text", "id": "clubs_heading", "label": "Heading", "default": "Every one of these gets you a hat" },
+    { "type": "textarea", "id": "clubs_aside", "label": "Aside", "default": "The Mallet and the Stryker get you the polo too. Two wedges and shipping's free on top of it." },
+    { "type": "text", "id": "tag_tier1", "label": "Tag, gets the hat", "default": "Free hat" },
+    { "type": "text", "id": "tag_tier2", "label": "Tag, gets both", "default": "Free hat + polo" },
+    { "type": "text", "id": "add_label", "label": "Add button", "default": "Add to bag" },
+    { "type": "text", "id": "adding_label", "label": "Add button, working", "default": "Adding" },
+    { "type": "text", "id": "added_label", "label": "Add button, done", "default": "In the bag" },
+    { "type": "text", "id": "soldout_label", "label": "Sold out", "default": "Sold out" },
+
+    { "type": "header", "content": "The free stuff" },
+    { "type": "text", "id": "gift_eyebrow", "label": "Eyebrow", "default": "The free stuff" },
+    { "type": "text", "id": "gift_heading", "label": "Heading", "default": "Pick your hat. Then your polo." },
+    { "type": "textarea", "id": "gift_note", "label": "Line", "default": "They unlock as your bag fills up. Take the one you'd actually wear." },
+    { "type": "text", "id": "gift_locked_template", "label": "Locked message", "info": "{amount} fills in.", "default": "Unlocks at {amount}" },
+    { "type": "text", "id": "free_tag", "label": "Free tag", "default": "Free" },
+    { "type": "text", "id": "gift_hat_title", "label": "Hat title", "default": "Your hat" },
+    { "type": "text", "id": "gift_hat_sub", "label": "Hat line", "default": "Any of these. They're $29 any other week." },
+    { "type": "text", "id": "gift_polo_title", "label": "Polo title", "default": "Your polo" },
+    { "type": "text", "id": "gift_polo_sub", "label": "Polo line", "default": "Four-way stretch, and it doesn't come out of the bag wrinkled. $67 any other week." },
+    { "type": "text", "id": "claim_label", "label": "Claim button", "default": "Throw it in" },
+    { "type": "text", "id": "claimed_label", "label": "Claim button, done", "default": "It's in" },
+
+    { "type": "header", "content": "Reviews" },
+    { "type": "paragraph", "content": "Review blocks hold REAL Judge.me reviews, verbatim, typos and all, with the customer's own name. Never write one. Never use one that names the founder." },
+    { "type": "text", "id": "rev_eyebrow", "label": "Eyebrow", "default": "Overheard" },
+    { "type": "text", "id": "rev_heading", "label": "Heading", "default": "People keep borrowing them" },
+    { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified buyer" },
+
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_heading", "label": "Heading", "default": "Before you ask" },
+
+    { "type": "header", "content": "Sign-off" },
+    { "type": "text", "id": "sign_eyebrow", "label": "Eyebrow", "default": "Ends Friday, Sept 25" },
+    { "type": "text", "id": "sign_line", "label": "Line", "info": "Leave empty to hide the sign-off.", "default": "The hat's free. So's the polo." },
+    { "type": "text", "id": "sign_sub", "label": "Sub", "default": "Legend has it Mags hasn't paid for a hat in years. This week you get to find out how that feels." },
+    { "type": "text", "id": "sign_cta", "label": "Button", "default": "Pick your club" },
+
+    { "type": "header", "content": "Mags, the guide" },
+    { "type": "paragraph", "content": "Mags sits in the corner once a gift is unlocked and always says the one next step. {amount} fills in." },
+    { "type": "text", "id": "mags_hat", "label": "Mags: free hat is waiting", "default": "Congrats, the hat's free. Tap me and I'll show you where." },
+    { "type": "text", "id": "mags_polo", "label": "Mags: free polo is waiting", "default": "The polo's free now too. Tap me, it's right down here." },
+    { "type": "text", "id": "mags_go", "label": "Mags: ready to check out", "default": "You're set. Tap me to check out." },
+    { "type": "text", "id": "pop1_title", "label": "Pop-up after the hat: title", "default": "The hat's in your bag." },
+    { "type": "text", "id": "pop1_body", "label": "Pop-up after the hat: body", "default": "Check out now, or add {amount} more and the polo's free too." },
+    { "type": "text", "id": "pop1_more", "label": "Pop-up after the hat: second button", "default": "Add more for the polo" },
+    { "type": "text", "id": "pop2_title", "label": "Pop-up after both: title", "default": "Hat and polo. Both free." },
+    { "type": "text", "id": "pop2_body", "label": "Pop-up after both: body", "default": "Check out now, or keep shopping. They'll wait in your bag." },
+    { "type": "text", "id": "pop2_more", "label": "Pop-up after both: second button", "default": "Keep shopping" },
+    { "type": "text", "id": "pop_ship", "label": "Pop-up: free shipping line", "default": "Add {amount} more and shipping's free too." },
+    { "type": "text", "id": "pop_checkout", "label": "Pop-up: checkout button", "default": "Check out" },
+
+    { "type": "header", "content": "Toasts" },
+    { "type": "checkbox", "id": "toast_mags", "label": "Mags on the unlock message", "info": "Uses gwp-mags.webp from Content > Files. Only on unlocks, never on errors.", "default": true },
+    { "type": "text", "id": "toast_gift_won", "label": "Tier unlocked", "info": "{gift} fills in.", "default": "That's {gift} unlocked. Go pick one." },
+    { "type": "text", "id": "toast_gift_lost", "label": "Tier lost", "info": "{gift} fills in.", "default": "Your bag dropped under the line, so {gift} came back out." },
+    { "type": "text", "id": "toast_gift_soldout", "label": "Gift sold out", "default": "That one's gone. Pick another, it's still free." },
+    { "type": "text", "id": "toast_error", "label": "Cart error", "default": "That didn't go in the bag. Give it another go, or reload the page." }
+  ],
+  "blocks": [
+    {
+      "type": "club",
+      "name": "Club",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Club" },
+        { "type": "number", "id": "image_index", "label": "Which photo for the card (1 = first)", "info": "Pick a studio shot on white. It sits on the stone tile.", "default": 1 },
+        { "type": "text", "id": "line", "label": "One line", "info": "What your buddy would say about it. One line." }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "paragraph", "content": "Verbatim from Judge.me. Typos and all. Real name as the customer gave it." },
+        { "type": "textarea", "id": "quote", "label": "The review, exactly" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "club", "label": "Which club" },
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "q", "label": "Question" },
+        { "type": "richtext", "id": "a", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Free hat + polo promo" }]
+}
+{% endschema %}

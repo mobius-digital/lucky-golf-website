@@ -1,141 +1,52 @@
 ---
 name: lucky-golf-design
-description: Build any Lucky Golf visual surface on-brand - web pages, sections, components, landing pages, email templates, ad creatives, social assets. Trigger whenever the user asks to design, build, mock up, or style anything visual for Lucky Golf, Lucky Wedges, or any Lucky product. Also trigger when reviewing or fixing existing Lucky Golf design work. Contains the complete design system v2 (palette D, white gallery) - tokens, the six devices, type, components, layout, motion - plus the email and ads translations. Voice/copy questions route to lucky-golf-copy; this skill owns how things LOOK.
+description: Build any Lucky Golf visual surface on-brand - web pages, Shopify sections, components, landing pages, email templates, ad creatives, social assets. Trigger whenever the user asks to design, build, mock up, or style anything visual for Lucky Golf, Lucky Wedges, or any Lucky product. Also trigger when reviewing or fixing existing Lucky Golf design work. Contains design system v4 (Daylight + Twilight grounds, photo-led, Mags the checkout guide, the Yardage layer) - where the code lives, the rules, the components, page recipes, and the Shopify build rules. Voice/copy questions route to lucky-golf-copy; this skill owns how things LOOK and BEHAVE.
 ---
 
-# Lucky Golf Design System v2 (skill)
+# Lucky Golf design system v4 (skill)
 
-The living reference is the styleguide page `90-styleguide.html` (unlisted on
-the live site) and `_src/core.css`. If they ever disagree with this file, the
-CSS wins; update this file to match, never the other way around.
+**Read `design/LUCKY-SYSTEM.md` before building anything.** It is the one
+written system (v4, 2026-09-18). The code is the source of truth:
 
-**v2 landed 2026-09-12: palette D, "white gallery", with the groove texture.**
-Decided by Cole after 23 revs of the look board. There are no dark bands, no
-green masthead and no cream page any more. If a memory or an older doc says
-"green header", "ink hero" or "cream band", it is describing v1: ignore it.
+- `shopify/assets/lucky.css` : tokens + every component, all `lg-`, px only
+- `shopify/assets/lucky.js` : Mags the guide, the pop-up, the toast, the hole bar, the tracer
+- `design/styleguide.html` : every piece live, both grounds, desktop + phone
+  (rebuild with `node tools/styleguide/build.cjs` after any change)
+- The reference build: the live free hat / free polo page
+  (`shopify/sections/gwp-promo.liquid`, `gwp-promo.css`, `gwp-promo.js`)
 
-## The brand in one line
+If a doc and the CSS disagree, the CSS wins; fix the doc. Retired, do not
+follow: the v2 "white gallery" brief (`LUCKY-DESIGN-BRIEF.md`), v3
+`handoff/LUCKY-SYSTEM.md`, `_src/core.css` for new work, and the groove texture
+on white bands.
 
-Gold clubs, honest prices, a magpie called Mags. Premium with attitude,
-never templated, never fake, Takomo-level restraint.
+## The system in eight lines
 
-## Colour: tokens only
+1. **Photos lead.** Every page opens on a real photo; a photo beat at least every couple of sections. Order on any page: photography, voice, Mags, Yardage.
+2. **Daylight is the whole site** (white, ink, stone tiles). **Twilight** (`data-ground="twilight"`, night green) only for short events or one band. Components never fork per ground; tokens swap.
+3. **Deep green `#0B2E1F`** carries the bar, header, one band low on the page, and the footer. At most one dark band on a Daylight page.
+4. **Gold is the only accent.** Foil on one button and one display word per screen, on the action we most want. Gold type on white is `#8A6A1C`; `#EDD27C` is type on dark only.
+5. **Mags has a job: checkout.** Guide card bottom-left (white, gold border, ink), one next step, tap does it; pop-up after good news ("Check out" or "keep going"), which shrinks into Mags. Black Mags on light, light Mags on dark, never a third colour. Never on errors. Every page ends on a Mags sign-off.
+6. **Yardage, the personality layer (replaced the pinstripe):** hole bar, tracer (one per page), launch monitor A (product pages), HUD strip, review proximity A (every reviews block), section numbers (long pages), and the contour map (one per page, behind a quiet no-photo section; one big map, a different part every time). The pinstripe is retired.
+7. **Shape:** 10px controls, 12px buttons, 18px surfaces. Shadows only on things that float. Motion mostly still.
+8. **Photos keep their shape** (the shoot is 3:2). Never a portrait crop of a landscape frame. Missing photo = labelled `.lg-slot`, never fake.
 
-Every component uses a SEMANTIC token from `:root` in `core.css`. A component
-that names a hex or a primitive (`--ink`, `--cream`, `--gold`) is a bug.
-Palette D values:
+## Hard rules
 
-| Token | D value | The one job |
-|---|---|---|
-| `--page` | `#FFFFFF` | the page |
-| `--tile` | `#F3F1EC` | cards, photo wells, table fills (a material, never a band) |
-| `--text` / `--text-muted` | `#17140F` / 64% | type; muted for body and meta |
-| `--rule` / `--rule-08` | ink 14% / 8% | the hairline |
-| `--band` / `--on-band` | white / ink | header, reel, footer. White bands get `--band-edge` hairlines |
-| `--accent` | `#C29A2B` | gold as a surface: rules, stars, bars, the tag foil |
-| `--accent-text` | `#8A6A1C` | gold as TYPE (5.05:1 on white). Never `--accent` as text |
-| `--clover` | `#0B5130` | the mark, inside the logo only |
-| `--ok` | `#008340` | state green: in stock, added, verified. Never decoration |
-| `--foil` / `--foil-text` | the three-stop ramp | the primary button / one display word |
-| `--groove-band` | ink 2.8% lines, 6px pitch | the texture on every band |
-
-**Palettes A-F are one attribute:** `<html data-palette="b">`. The styleguide
-has the switch. Never fork a component per palette.
-
-Contrast law: floor 4.5 body, 3.0 large. Gold type is `--accent-text` on light
-fields and `--accent-on-band` on bands. **Gold on the clover green is banned
-as type everywhere.** The foil is display-size only.
-
-## The six devices (carry all six before polishing anything)
-
-1. **Foil** - gold as a material. The primary button and ONE display word per
-   page (`<em class="foil">`). Never body size, never a paragraph.
-2. **Mark** - Mags the magpie on the bag button (`.bag`), the sign-off
-   (`.sign`), the 404 and the empty bag. Stand-in art is `img/mags*.webp`;
-   the designer's SVG replaces it in place. Folklore only: "legend has it".
-3. **Groove** - 1px lines on a 6px pitch over whole bands (`.band`, `.tick`,
-   `.hdr`, `.ftr`). Page sections divide with ONE hairline (`.groove`).
-4. **Stamp** - `.lab` / `.eb`: Archivo width 78, weight 600, tracked caps.
-5. **Aside** - the charm voice, `.aside` or the sign-off `.sub`. Attitude
-   with receipts. Never a flat double statement, never an em dash.
-6. **Eyebrow** - `.eb`: a 22px gold rule and a label leads every section. It
-   orients; it never restates the headline.
-
-## Type: Archivo, nothing else
-
-- `.disp` = width 62, weight 800, caps, line-height .88. Sizes `.d-xl` (the
-  sign-off, one per page), `.d-l` (H1), `.d-m` (sections), `.d-s`, `.d-xs`
-  (card titles).
-- `.body` 15px muted, max 47ch. `.lab` labels. `.aside` the charm voice.
-- Base 15px; 16px on phones. `text-wrap:balance` on display. No em dashes.
-
-## Components (markup in the styleguide; keep the classes)
-
-- **Buttons**: `.btn` foil primary (one per view), `.btn-line` ghost,
-  `.btn-sm`. All 44px+ on touch, press scale .975, arrows nudge.
-- **Pills and chips**: `.fin .f` two-way pills (finish, hand); `.lg9` the
-  nine loft-and-grind chips, multi-select up to three; `.set .s` the 1/2/3
-  tiles; `.chip` single-select (facets); `.seg` segmented control.
-- **Tiles**: `.tile` photo well (`.cut` for studio cutouts on a multiply
-  well), `.tile.slot` the LABELLED SLOT for a photo we do not have (never a
-  fake shot, never an unlabelled hole), `.pt2` product card, `.ptile` the
-  collection card with `.qadd` quick add and the `.qa` picker, `.kv` copy
-  card with a pill, `.q` review card, `.card` link card, `.figs` stat tiles.
-- **Bands**: `.band` = white, hairline top and bottom, groove. Only the
-  header, the reel and the footer.
-- **Mood**: `.mood` + `.mhero` + `.rail`: one full-bleed world per page,
-  headline bottom-left over the scrim, numbered callouts on the photo, a
-  mixed-ratio rail under it. Every page gets exactly one.
-- **Tables**: `.t2` with the `.lofts-row` (big numerals, 2px rule under).
-- **Reviews**: `.rv-top` score + `.jm-bars`, three `.q` cards VERBATIM from
-  the Judge.me pull (the build refuses a quote it cannot find), then the
-  `.jm` list behind "Read all". FABRICATING A REVIEW IS BANNED.
-- **Sign-off**: `.sign`: eyebrow, the line with the foil word, the sub, the
-  who ("Mags has your 56. Again."), a ghost button, Mags on a 2px line.
-- **Sticky bar**: `.stickybar` / `.atc-bar` on phones only, from the buy
-  button leaving the screen to the footer arriving.
-- **Chrome**: `.tick` trust bar, `.hdr` with mega menu and the mobile
-  accordion, `.ftr` with the email capture first and two hairlines, `.cd`
-  cart drawer, `.md` modals, `dialog.zoom`.
-
-## Layout
-
-- `.wrap` max 1180px, gutter `--pad`. Sections `var(--sec)` (48 to 64px).
-- Page rhythm: trust bar > header > page (white) > one band mid-page (the
-  reel) > sign-off > footer. No two bands touch; the page never goes dark.
-- Radius: 6px controls, 14px surfaces. Photos never round themselves inside
-  a rounded card.
-- Rails: `scroll-padding-left` matches the padding or snap eats the gutter.
-- Phones: galleries swipe with dots, grids carrying `.msnap` become rails,
-  the buy box goes static, every target is 44px.
-
-## Motion: still
-
-The foil slides on hover, the film plays, Gold/Black crossfade. No scroll
-reveals, no lifts, no drop shadows. `prefers-reduced-motion` kills all of it.
-
-## Content rules (any surface)
-
-No fabricated reviews, names or numbers; counts round down. Trial wording is
-"sixty days to decide / prove us wrong", never "on real grass". No warranty
-language. Voice is the `lucky-golf-copy` skill / How We Write v8.
-
-## Email and ads
-
-Designed in Figma, so the full system applies: white page, tile cards, the
-foil on one word or the button, Mags to sign off, real photography, real
-quotes. Live-coded email parts: 16px ink on white, solid gold fallback
-button. Ads: white or ink ground, one condensed-caps headline, foil headline
-only when no club is in frame, 4:5 first.
+- "Added"/done is **ink**, never green. Green = in stock / verified only.
+- No quantity steppers on club cards.
+- Nothing floating covers a sticky bar, its message, or a buy button.
+- No em dashes, no exclamation marks, no invented numbers, **no fabricated reviews** (verbatim Judge.me or nothing), founder never named, no competitor named.
+- Archivo only.
 
 ## Workflow
 
-1. Building web: copy component markup from `90-styleguide.html` or the
-   page templates in `_src/`, keep the classes, let `core.css` do the work.
-2. New page: register in `tools/sitemap.py`, add `_src/page-NAME.html/.css`,
-   add its smoke markers to `REQUIRED` in `tools/build.py`, run
-   `python tools/build.py` then `--check` and `--links`.
-3. Verify before shipping: no console errors, no horizontal overflow at 1440
-   and 390, no `{{` left in the output, 44px targets, one foil word.
-4. Changed the system? Update `core.css`, the styleguide page and this skill
-   in the same commit.
+1. **New page or section:** pick the recipe in `LUCKY-SYSTEM.md` §10, copy markup from `design/styleguide.html`, keep the classes, let `lucky.css` do the work. Wrap Shopify sections in `.lg-scope`.
+2. **No structure changes to existing pages without Cole seeing it first** (the site board rule). Show, then he decides.
+3. **Verify before shipping:** no console errors, no horizontal overflow at 1280 and 375, 44px targets, one foil button per screen, real numbers only, photos not cropped badly.
+4. **Shopify:** never switch or publish themes (page builders are tied to the live theme). `theme check` first; push via the admin code editor with Chrome on screen; confirm with `checksumMd5`. px not rem (root font 10px). Files (photos, Mags) go in Content > Files.
+5. **Changed the system?** Update `lucky.css`/`lucky.js`, rebuild the styleguide, update `LUCKY-SYSTEM.md` and this skill in the same pass.
+
+## Email and ads
+
+Same system: white page, stone cards, foil on one word or the button, real photography, real quotes, Mags to sign off. Live-coded email: 16px ink on white, solid gold fallback button. Ads: a real photo first, one condensed-caps headline, foil headline only when no club is in frame, 4:5 first.

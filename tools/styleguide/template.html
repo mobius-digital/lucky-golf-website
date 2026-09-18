@@ -1,0 +1,568 @@
+<title>Lucky Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<style>
+/* lucky.css v4, inlined by tools/styleguide/build.cjs. Do not edit here. */
+{{LUCKY_CSS}}
+
+/* ---------------- the styleguide's own chrome (not part of the system) ---------------- */
+html,body{background:#FFFFFF}
+.sg-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--lg-rule);color:#17140F}
+.sg-bar-in{max-width:var(--lg-wrap);margin:0 auto;padding:10px var(--lg-pad);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.sg-bar-t{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;margin-right:auto}
+.sg-seg{display:inline-flex;border:1px solid rgba(23,20,15,.18);border-radius:10px;overflow:hidden}
+.sg-seg button{min-height:40px;padding:0 14px;border:0;background:#fff;color:#17140F;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:11.5px}
+.sg-seg button[aria-pressed="true"]{background:#17140F;color:#fff}
+.sg-toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:28px}
+.sg-toc a{color:var(--lg-ink-70);font-size:14px;text-decoration:none;border-bottom:1px solid var(--lg-rule)}
+.sg-toc a:hover{color:var(--lg-ink);border-color:var(--lg-gold)}
+.sg-sec{padding-block:clamp(56px,6vw,88px);border-top:1px solid var(--lg-rule)}
+.sg-sec > .lg-wrap > .lg-body{margin-bottom:28px}
+.sg-where{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;margin:0 0 28px;color:var(--lg-ink-64);font-size:14px}
+.sg-where b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--lg-gold-text)}
+.sg-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sg-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut)}
+.sg-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:820px){.sg-grid2,.sg-grid3{grid-template-columns:1fr}}
+.sg-cap{margin:10px 0 0;color:var(--lg-ink-64);font-size:13.5px;line-height:1.45}
+.sg-box{border:1px dashed var(--lg-rule);border-radius:14px;padding:22px}
+.sg-darkbox{background:var(--lg-dark);color:var(--lg-on-dark);border-radius:14px;padding:22px}
+/* colour table */
+.sg-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.sg-sw figure{margin:0;border:1px solid var(--lg-rule);border-radius:14px;overflow:hidden;background:var(--lg-page)}
+.sg-sw i{display:block;height:74px}
+.sg-sw figcaption{padding:10px 12px 12px;font-size:13px;line-height:1.4;color:var(--lg-ink-70)}
+.sg-sw figcaption b{display:block;color:var(--lg-ink);font-size:14px}
+.sg-sw code{font:600 12px ui-monospace,Menlo,Consolas,monospace;color:var(--lg-ink)}
+/* type specimens */
+.sg-spec{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 24px;align-items:baseline;padding-block:16px;border-bottom:1px solid var(--lg-rule-08)}
+.sg-spec > span{font:600 12px ui-monospace,Menlo,Consolas,monospace;color:var(--lg-ink-64)}
+@media (max-width:640px){.sg-spec{grid-template-columns:1fr}}
+/* recipes */
+.sg-recipes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--lg-gut)}
+.sg-recipe{border:1px solid var(--lg-rule);border-radius:18px;padding:20px}
+.sg-recipe h3{margin:0 0 4px}
+.sg-recipe ol{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:5px;counter-reset:r}
+.sg-recipe li{counter-increment:r;display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;line-height:1.35;color:var(--lg-ink-70)}
+.sg-recipe li::before{content:counter(r);font:800 13px 'Archivo',sans-serif;font-variation-settings:'wdth' 62;color:var(--lg-gold-text)}
+.sg-recipe li.is-photo{color:var(--lg-ink);font-weight:600}
+.sg-recipe li.is-dark{color:var(--lg-ink)}
+.sg-recipe li.is-dark::after{content:'dark';margin-left:6px;font:700 10px 'Archivo',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--lg-dark);padding:2px 6px;border-radius:99px;justify-self:start;grid-column:2}
+/* do / don't */
+.sg-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:820px){.sg-rules{grid-template-columns:1fr}}
+.sg-rules ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.sg-rules li{padding-left:22px;position:relative;color:var(--lg-ink-70);line-height:1.45}
+.sg-rules li::before{position:absolute;left:0;top:0;font-weight:800}
+.sg-do li::before{content:'+';color:var(--lg-gold-text)}
+.sg-dont li::before{content:'\00D7';color:var(--lg-ink-64)}
+/* demo console */
+.sg-demo{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.sg-rail{border:1px solid var(--lg-rule);border-radius:18px;padding:20px 22px 6px;background:var(--lg-page)}
+.sg-rail-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;margin-bottom:12px}
+.sg-rail-say{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:17px;color:var(--lg-ink)}
+.sg-rail-sum{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:20px}
+/* phone preview */
+.sg-phone{display:none;justify-content:center;padding:28px 16px 60px;background:#EDEBE6}
+.sg-phone iframe{width:390px;max-width:100%;height:844px;border:10px solid #17140F;border-radius:44px;background:#fff}
+body.is-phone .sg-phone{display:flex}
+body.is-phone #sg{display:none}
+body.is-frame .sg-bar{display:none}
+.sg-head{padding-block:clamp(40px,6vw,80px) clamp(24px,3vw,36px)}
+.sg-head .lg-d1{max-width:15ch}
+.sg-order{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:30px}
+.sg-order div{border-top:2px solid var(--lg-gold);padding-top:10px}
+.sg-order b{display:block;font:800 30px 'Archivo',sans-serif;font-variation-settings:'wdth' 62;line-height:1}
+.sg-order span{display:block;margin-top:4px;font-size:14px;color:var(--lg-ink-70)}
+@media (max-width:640px){.sg-order{grid-template-columns:1fr 1fr}}
+.sg-pieces{list-style:none;margin:8px 0 44px;padding:0;border-top:1px solid var(--lg-rule)}
+.sg-pieces li{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,1.4fr);gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--lg-rule-08)}
+.sg-pieces b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:15px}
+.sg-pieces li > span:last-child{color:var(--lg-ink-70);font-size:14.5px;line-height:1.4}
+.sg-pieces .lg-tag{justify-self:start;white-space:nowrap}
+@media (max-width:700px){.sg-pieces li{grid-template-columns:1fr auto}.sg-pieces li > span:last-child{grid-column:1/-1}}
+.sg-contours{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--lg-gut);margin-top:48px}
+@media (max-width:900px){.sg-contours{grid-template-columns:1fr}}
+.sg-contour{min-height:300px;padding:28px;border:1px solid var(--lg-rule);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+</style>
+
+<div class="sg-bar" role="toolbar" aria-label="Styleguide view">
+  <div class="sg-bar-in">
+    <span class="sg-bar-t">Lucky design system · v4</span>
+    <div class="sg-seg" aria-label="Ground">
+      <button type="button" id="sg-day" aria-pressed="true">Daylight</button>
+      <button type="button" id="sg-tw" aria-pressed="false">Twilight</button>
+    </div>
+    <div class="sg-seg" aria-label="Device">
+      <button type="button" id="sg-desk" aria-pressed="true">Desktop</button>
+      <button type="button" id="sg-mob" aria-pressed="false">Phone</button>
+    </div>
+  </div>
+</div>
+
+<div class="sg-phone" aria-label="Phone preview"><iframe id="sg-frame" title="The styleguide at phone width" loading="lazy"></iframe></div>
+
+<div class="lg-scope" id="sg" data-ground="day" style="--lg-contour-day:url(sg/lucky-contour-day.svg);--lg-contour-tw:url(sg/lucky-contour-tw.svg)">
+
+  <!-- chrome -->
+  <div class="lg-tick"><div class="lg-tick-in">
+    <a href="#"><b>Free shipping</b> over $198</a><a href="#">Sixty days to prove us wrong</a><a href="#">Thousands of happy golfers</a>
+  </div></div>
+  <header class="lg-hdr"><div class="lg-hdr-in">
+    <a class="lg-logo" href="#" aria-label="Lucky Golf">{{WORDMARK}}</a>
+    <nav class="lg-nav" aria-label="Example navigation"><a href="#">Wedges</a><a href="#">Putters</a><a href="#">Hybrid</a><a href="#">Apparel</a><a href="#">Our story</a></nav>
+    <div class="lg-hdr-act"><button type="button" aria-label="Bag"><span class="lg-mags" style="width:40px"><img class="is-ink" src="sg/mags-bag-ink.webp" alt=""><img class="is-light" src="sg/mags-bag-light.webp" alt=""></span></button></div>
+  </div></header>
+
+  <section class="lg-wrap sg-head">
+    <p class="lg-eyebrow lg-unnumbered">The one system every page is built from</p>
+    <h1 class="lg-d1">Photos lead. <span class="lg-foil-word">Gold</span> points. Mags gets you there.</h1>
+    <p class="lg-lede">Everything here is live code from <b>lucky.css</b> and <b>lucky.js</b>. Flip the ground and the device above: every piece should still hold.</p>
+    <div class="sg-order" aria-label="Order of importance on any page">
+      <div><b class="lg-num">1</b><span>Photography. Every page opens on one.</span></div>
+      <div><b class="lg-num">2</b><span>The voice. Attitude with receipts.</span></div>
+      <div><b class="lg-num">3</b><span>Mags. He has a job: checkout.</span></div>
+      <div><b class="lg-num">4</b><span>Yardage, the golf instruments. Only where a number is real.</span></div>
+    </div>
+    <nav class="sg-toc" aria-label="Sections">
+      <a href="#s-colour">Colour</a><a href="#s-type">Type</a><a href="#s-buttons">Buttons</a><a href="#s-parts">Chips and tags</a>
+      <a href="#s-hero">Photo hero</a><a href="#s-band">Photo band</a><a href="#s-cards">Product cards</a><a href="#s-yardage">Personality</a>
+      <a href="#s-reviews">Reviews</a><a href="#s-faq">FAQ</a><a href="#s-mags">Mags</a><a href="#s-signoff">Sign-off</a>
+      <a href="#s-recipes">Page recipes</a><a href="#s-rules">Rules</a>
+    </nav>
+  </section>
+
+  <!-- COLOUR -->
+  <section class="sg-sec" id="s-colour"><div class="lg-wrap">
+    <p class="lg-eyebrow">Colour</p>
+    <h2 class="lg-d2">One dark. One accent. A lot of white.</h2>
+    <p class="lg-body">Daylight is the whole site. Twilight is for short events, or one band on a white page. The components never change between them; the tokens do.</p>
+    <div class="sg-sw">
+      <figure><i style="background:#FFFFFF;border-bottom:1px solid rgba(23,20,15,.1)"></i><figcaption><b>Page</b><code>#FFFFFF</code> · most of every screen</figcaption></figure>
+      <figure><i style="background:#F4F3F0"></i><figcaption><b>Stone</b><code>#F4F3F0</code> · product wells, cards. Never a band</figcaption></figure>
+      <figure><i style="background:#17140F"></i><figcaption><b>Ink</b><code>#17140F</code> · all type on white, and black Mags</figcaption></figure>
+      <figure><i style="background:#0B2E1F"></i><figcaption><b>Deep green</b><code>#0B2E1F</code> · bar, header, one band, footer</figcaption></figure>
+      <figure><i style="background:#06110B"></i><figcaption><b>Night</b><code>#06110B</code> · Twilight's page, events only</figcaption></figure>
+      <figure><i style="background:var(--lg-foil)"></i><figcaption><b>Foil</b><code>#C29A2B → #EDD27C</code> · one button, one word per screen</figcaption></figure>
+      <figure><i style="background:#8A6A1C"></i><figcaption><b>Gold as type</b><code>#8A6A1C</code> · on white, any size. 5.05:1</figcaption></figure>
+      <figure><i style="background:#EDD27C"></i><figcaption><b>Light gold</b><code>#EDD27C</code> · type on dark only. Never on white</figcaption></figure>
+      <figure><i style="background:#008340"></i><figcaption><b>Signal green</b><code>#008340</code> · in stock, verified. Not "added"</figcaption></figure>
+      <figure><i style="background:#0B5130"></i><figcaption><b>Clover</b><code>#0B5130</code> · inside the logo. Nowhere else</figcaption></figure>
+    </div>
+  </div></section>
+
+  <!-- TYPE -->
+  <section class="sg-sec" id="s-type"><div class="lg-wrap">
+    <p class="lg-eyebrow">Type</p>
+    <h2 class="lg-d2">Archivo. Nothing else.</h2>
+    <p class="lg-body">Three registers: condensed caps for display, tracked caps for labels, plain for reading. No em dashes, no exclamation marks.</p>
+    <div class="sg-spec"><span>.lg-d1 · display</span><p class="lg-d1">Golf has a dress code. Ours is <span class="lg-foil-word">gold</span>.</p></div>
+    <div class="sg-spec"><span>.lg-d2 · section</span><p class="lg-d2">Square it up, or open it up.</p></div>
+    <div class="sg-spec"><span>.lg-d3 · card</span><p class="lg-d3">Carver 01 Gold</p></div>
+    <div class="sg-spec"><span>.lg-num · real numbers</span><p class="lg-d1"><span class="lg-num">$99</span> · <span class="lg-num">56°</span></p></div>
+    <div class="sg-spec"><span>.lg-eyebrow</span><p class="lg-eyebrow lg-unnumbered" style="margin:0">Start here</p></div>
+    <div class="sg-spec"><span>.lg-lede</span><p class="lg-lede" style="margin:0">Same steel as the big names, minus the tour contracts and the retail rent.</p></div>
+    <div class="sg-spec"><span>.lg-body</span><p class="lg-body" style="margin:0">Body copy sits at 17px, ink at 70%, 46 to 62 characters a line. It talks like a person who plays, to a golfer who already knows the game.</p></div>
+    <div class="sg-spec"><span>.lg-aside · the charm</span><p class="lg-aside" style="margin:0">Nobody needs a gold wedge. That is rather the point.</p></div>
+    <div class="sg-spec"><span>.lg-label / .lg-link</span><div class="sg-row"><span class="lg-label">Loft &amp; grind</span><a class="lg-link" href="#">See the wedges <span aria-hidden="true">&rarr;</span></a></div></div>
+  </div></section>
+
+  <!-- BUTTONS -->
+  <section class="sg-sec" id="s-buttons"><div class="lg-wrap">
+    <p class="lg-eyebrow">Buttons</p>
+    <h2 class="lg-d2">One gold button per screen.</h2>
+    <p class="sg-where"><b>Rule</b> The foil goes on the action we most want on that screen. Everything else is the ghost. "Added" turns ink, never green.</p>
+    <div class="sg-row">
+      <a class="lg-btn" href="#">Check out <span aria-hidden="true">&rarr;</span></a>
+      <button type="button" class="lg-btn-line">Add to bag</button>
+      <button type="button" class="lg-btn-line lg-btn-sm">Small</button>
+      <button type="button" class="lg-btn-line" data-done>In the bag</button>
+      <button type="button" class="lg-btn-line" data-busy disabled><span>Adding</span><span class="lg-sp" aria-hidden="true"></span></button>
+      <button type="button" class="lg-btn" disabled>Sold out</button>
+    </div>
+    <div class="sg-darkbox lg-on-dark" style="margin-top:18px"><div class="sg-row"><a class="lg-btn" href="#">Shop the wedges</a><a class="lg-btn-line" href="#">Our story</a></div><p class="sg-cap" style="color:var(--lg-on-dark-m)">On deep green: same buttons, the ghost flips to cream.</p></div>
+  </div></section>
+
+  <!-- PARTS -->
+  <section class="sg-sec" id="s-parts"><div class="lg-wrap">
+    <p class="lg-eyebrow">Chips, tags, swatches</p>
+    <h2 class="lg-d2">The stamp.</h2>
+    <p class="sg-where"><b>Rule</b> Condensed caps, 44px tall on a phone. A value you can't buy is dashed and struck, never faded out of reach.</p>
+    <div class="sg-grid2">
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">Loft &amp; grind</span>
+        <div class="lg-chips" style="margin-top:8px">
+          <button type="button" class="lg-chip" aria-pressed="true">50° K</button><button type="button" class="lg-chip" aria-pressed="false">52° K</button><button type="button" class="lg-chip" aria-pressed="false" data-dead>52° S</button><button type="button" class="lg-chip" aria-pressed="false">54° K</button><button type="button" class="lg-chip" aria-pressed="false">56° K</button><button type="button" class="lg-chip" aria-pressed="false">60° K</button>
+        </div>
+        <div class="sg-row" style="margin-top:18px"><span class="lg-tag">New</span><span class="lg-tag lg-tag-gold">Free over $90</span><span class="lg-tag lg-tag-ok">Verified</span><span class="lg-stock">In stock</span>
+          <span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></div>
+      </div>
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">Pick by picture</span>
+        <div class="sg-row" style="margin-top:8px">
+          <button type="button" class="lg-swatch" aria-pressed="true" title="Black | Gold Classic"><img src="sg/hat-cut.webp" alt="Black and gold hat"></button>
+          <button type="button" class="lg-swatch" aria-pressed="false" title="Carver Gold"><img src="sg/gold-3q-cut.webp" alt="Carver Gold"></button>
+          <button type="button" class="lg-swatch" aria-pressed="false" title="Carver Black"><img src="sg/black-full-cut.webp" alt="Carver Black"></button>
+        </div>
+        <form class="lg-form" onsubmit="return false"><label class="lg-label" for="sg-email" style="flex-basis:100%">Email</label><input class="lg-input" id="sg-email" type="email" placeholder="you@yourgolfbag.com"><button type="button" class="lg-btn-line">Sign up</button></form>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- PHOTO HERO -->
+  <section id="s-hero" class="sg-sec" style="padding-bottom:0"><div class="lg-wrap">
+    <p class="lg-eyebrow">Photo hero</p>
+    <h2 class="lg-d2">Every page opens on a photo.</h2>
+    <p class="sg-where"><b>Rule</b> Real people, real course, real gold. Headline bottom-left over the scrim. <code>--focus</code> sets the crop for desktop, <code>--focus-m</code> for phones.</p>
+  </div></section>
+  <section class="lg-hero" style="--focus:62% 38%;--focus-m:58% 40%">
+    <img class="lg-hero-img" src="sg/green-read-fit.webp" alt="A golfer in the Lucky hat and polo reading a putt, gold putter in hand">
+    <div class="lg-hero-copy"><div class="lg-wrap">
+      <p class="lg-eyebrow lg-unnumbered">One week only · Ends Friday</p>
+      <h2 class="lg-d1"><span class="lg-num">$90</span> gets the hat. <span class="lg-num">$140</span> gets the fit.</h2>
+      <p class="lg-lede">The fit's a hat and a polo, both on us, both your pick.</p>
+      <div class="lg-btn-row"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a></div>
+    </div></div>
+  </section>
+
+  <!-- PHOTO BAND + SPLIT -->
+  <section class="sg-sec" id="s-band"><div class="lg-wrap">
+    <p class="lg-eyebrow">Photo band and frames</p>
+    <h2 class="lg-d2">A photo beat every couple of sections.</h2>
+    <p class="sg-where"><b>Rule</b> The shoot is 3:2, so the tiles are 3:2. Never a tall crop of a wide frame. A photo beside text uses <code>.lg-split</code> + <code>.lg-frame</code>.</p>
+  </div>
+  <div class="lg-pband" aria-label="On the course">
+    <figure><img src="sg/two-gold-wedges.webp" alt="Two gold wedges on the fringe"></figure>
+    <figure><img src="sg/black-hat-mallet.webp" alt="Black Lucky hat and the gold mallet on the green"></figure>
+    <figure><img src="sg/putter-in-hand.webp" alt="The gold putter in hand"></figure>
+  </div>
+  <div class="lg-wrap" style="margin-top:clamp(40px,6vw,72px)">
+    <div class="lg-split">
+      <div>
+        <p class="lg-eyebrow">The fit</p>
+        <h3 class="lg-d2">Shown worn, not floating on a tile.</h3>
+        <p class="lg-body">Cutouts are for choosing: cards, pickers, the cart. Photos are for wanting. Apparel is always on a person; clubs are always on the course.</p>
+      </div>
+      <figure class="lg-frame is-tall"><img src="sg/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" style="object-position:52% center"><figcaption class="lg-label">Hat + polo, both free over $140</figcaption></figure>
+    </div>
+  </div></section>
+
+  <!-- CARDS -->
+  <section class="sg-sec" id="s-cards"><div class="lg-wrap">
+    <p class="lg-eyebrow">Product cards</p>
+    <h2 class="lg-d2">Product sits on stone.</h2>
+    <p class="sg-where"><b>Rule</b> Studio cutout on the stone tile, name and real price, one line a buddy would say. <code>.is-cut</code> multiplies the white away. The compact spec strip (HUD) can sit under the line.</p>
+    <div class="lg-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+      <a class="lg-card" href="#"><span class="lg-card-ph is-cut"><img src="sg/gold-3q-cut.webp" alt="Carver 01 Gold"><span class="lg-tag">Hat free</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 01 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Checks up where you aimed it.</span></span></a>
+      <a class="lg-card" href="#"><span class="lg-card-ph is-cut"><img src="sg/black-full-cut.webp" alt="Carver 01 Black"><span class="lg-tag">Hat free</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 01 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The Gold's quieter brother.</span></span></a>
+      <a class="lg-card" href="#"><span class="lg-card-ph is-cut"><img src="sg/mallet-full-cut.webp" alt="Tracer LGP02 Mallet"><span class="lg-tag lg-tag-gold">Hat + polo free</span></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Lines up so easy the four-footers get boring.</span></span></a>
+      <a class="lg-card" href="#"><span class="lg-card-ph is-cut"><img src="sg/stryker-full-cut.webp" alt="Stryker LGH01"><span class="lg-tag lg-tag-gold">Hat + polo free</span></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker LGH01</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">Way easier to hit than your 3 wood.</span></span></a>
+    </div>
+    <div class="lg-slot" style="aspect-ratio:3/1;margin-top:var(--lg-gut)">Shot we don't have yet: a second golfer in the Blade polo, walking off the 18th, low sun, 3:2. Labelled, never faked.</div>
+  </div></section>
+
+  <!-- PERSONALITY -->
+  <section class="sg-sec" id="s-yardage"><div class="lg-wrap">
+    <p class="lg-eyebrow">Personality</p>
+    <h2 class="lg-d2">Yardage: the golf instruments.</h2>
+    <p class="lg-body">This is where the personality lives, next to Mags. Each piece reads a real number the way golf reads it: a hole, a launch monitor, balls around a cup. They replaced the pinstripe. The rule: a piece only shows up where it has a real number to show, so they season a page and never cover it.</p>
+    <ul class="sg-pieces">
+      <li><b>Hole bar</b><span class="lg-tag lg-tag-gold">In the system</span><span>Cart free-shipping bar, any "spend $X" promo</span></li>
+      <li><b>Tracer (ball flight)</b><span class="lg-tag lg-tag-gold">In the system</span><span>Promos and launches, once, between the offer and the products</span></li>
+      <li><b>Launch monitor A</b><span class="lg-tag lg-tag-gold">In the system</span><span>Product pages: the full readout</span></li>
+      <li><b>HUD strip (monitor B)</b><span class="lg-tag lg-tag-gold">In the system</span><span>Product cards, cart lines, sticky bars</span></li>
+      <li><b>Review proximity A</b><span class="lg-tag lg-tag-gold">In the system</span><span>Every reviews block</span></li>
+      <li><b>Section numbers</b><span class="lg-tag lg-tag-gold">In the system</span><span>Long pages: promos, story, guides</span></li>
+      <li><b>Tick ruler</b><span class="lg-tag lg-tag-gold">In the system</span><span>A divider when a section needs one</span></li>
+      <li><b>Contour map</b><span class="lg-tag lg-tag-gold">In the system</span><span>One per page, behind a quiet section with no photo: the FAQ, "why the price", a spec block</span></li>
+      <li><b>Loft chart, spec card, elevation bands, dot matrix, terrain, ridgelines, other review charts</b><span class="lg-tag">On the bench</span><span>Ads, technical pages, the app. Kept in the Yardage library</span></li>
+    </ul>
+
+    <span class="lg-label" style="color:var(--lg-ink-64)">Hole bar + tracer · try it: the promo's whole checkout flow, with Mags</span>
+    <div class="lg-tracer" id="sg-tracer" aria-hidden="true" style="margin-top:8px"></div>
+    <div class="sg-rail">
+      <div class="sg-rail-top"><p class="sg-rail-say" id="sg-say">Every club gets you the hat. Start with one.</p><span class="sg-rail-sum" id="sg-sum">$0</span></div>
+      <div class="lg-hole" id="sg-hole"></div>
+    </div>
+    <div class="sg-demo">
+      <button type="button" class="lg-btn-line lg-btn-sm" data-add="9900">Add Carver Gold · $99</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" data-add="20900">Add Stryker · $209</button>
+      <button type="button" class="lg-btn lg-btn-sm" id="sg-claim" disabled>Claim the free hat</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" id="sg-claim2" disabled>Claim the free polo</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" id="sg-reset">Reset</button>
+    </div>
+
+    <span class="lg-label" style="display:block;margin-top:48px;color:var(--lg-ink-64)">Launch monitor A · product pages</span>
+    <div class="lg-monitor" style="margin-top:10px">
+      <div class="lg-monitor-hd"><span class="lg-label">Carver 01 Gold</span><span class="lg-label lg-live"><i></i>In stock</span></div>
+      <div class="lg-monitor-in">
+        <div class="lg-monitor-ph"><img src="sg/gold-3q-cut.webp" alt="Carver 01 Gold"></div>
+        <div class="lg-monitor-tiles">
+          <div class="lg-mt"><span>Lofts</span><b>6</b><div class="lg-vals"><i>50°</i><i>52°</i><i>54°</i><i>56°</i><i>58°</i><i>60°</i></div></div>
+          <div class="lg-mt"><span>Grinds</span><b>2</b><div class="lg-vals"><i>K</i><i>S</i></div></div>
+          <div class="lg-mt"><span>Price</span><b class="lg-num">$99</b><em>Pick any loft. Same number.</em></div>
+          <div class="lg-mt"><span>Test drive</span><b>60</b><em>days to prove us wrong.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-grid2" style="margin-top:40px">
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">HUD strip (monitor B) · cards and cart lines</span>
+        <div class="lg-hud" style="margin-top:14px"><span><b>50 to 60°</b>Lofts</span><span><b>K · S</b>Grinds</span><span><b>$99</b>Any loft</span><span><b>60</b>Days</span></div>
+        <span class="lg-label" style="display:block;margin-top:30px;color:var(--lg-ink-64)">Spec tiles · the per-loft detail · LGW01 56°</span>
+        <div class="lg-specs" style="margin-top:10px">
+          <div class="lg-spec"><b>12<small>°</small></b><span>Bounce</span></div>
+          <div class="lg-spec"><b>63<small>°</small></b><span>Lie</span></div>
+          <div class="lg-spec"><b>300<small>g</small></b><span>Head</span></div>
+        </div>
+        <p class="sg-cap">Manufacturer spec sheet, 2025-11-13. Never a made-up number.</p>
+      </div>
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">Section numbers · long pages only</span>
+        <p class="sg-cap" style="margin-top:8px">Put <code>.lg-numbered</code> on a promo, story or guide and the eyebrows count like holes: 01, 02, 03. This page is numbered that way.</p>
+        <span class="lg-label" style="display:block;margin-top:24px;color:var(--lg-ink-64)">Tick ruler · a quiet divider</span>
+        <div class="lg-ruler" style="margin-top:12px"></div>
+      </div>
+    </div>
+
+    <div class="sg-contours">
+      <div class="lg-contour sg-contour">
+        <span class="lg-tag lg-tag-gold">In the system</span>
+        <h3 class="lg-d3" style="margin-top:14px">Contour map</h3>
+        <p class="lg-body" style="max-width:34ch">One big map of a green. Every section that uses it shows a different part, so it never repeats. One per page, behind a quiet section with no photo, fading in on one side and staying out from behind the words. The base map gets swapped for the final artwork when it lands.</p>
+      </div>
+      <div class="lg-contour sg-contour is-left"><p class="lg-label" style="margin:auto 0 0;text-align:right">Same map, another spot</p></div>
+      <div class="lg-contour sg-contour is-flip"><p class="lg-label" style="margin:auto 0 0">And another, mirrored</p></div>
+    </div>
+  </div></section>
+
+  <!-- REVIEWS -->
+  <section class="sg-sec" id="s-reviews"><div class="lg-wrap">
+    <p class="lg-eyebrow">Reviews</p>
+    <h2 class="lg-d2">Real ones, word for word.</h2>
+    <p class="sg-where"><b>Rule</b> Verbatim from Judge.me, typos and all, with the customer's real name, or nothing. The proximity chart is drawn from the real Carver 01 Gold counts (650), average rounded down.</p>
+    <div id="sg-prox"></div>
+  </div></section>
+  <section class="lg-band is-photo" style="--band-bg:url(sg/two-hats-mallet.webp);--band-pos:center 70%"><div class="lg-wrap">
+    <p class="lg-eyebrow lg-unnumbered">Overheard</p>
+    <h2 class="lg-d2">People keep borrowing them.</h2>
+    <div class="lg-grid" style="margin-top:32px">
+      <figure class="lg-band-tile" style="margin:0"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote style="margin:12px 0;font-size:var(--lg-fs-lead);line-height:1.4">People borrow it in my league- it’s a winner!</blockquote><figcaption class="lg-meta">Ray O. · Carver 01 Gold <span class="lg-stock">Verified buyer</span></figcaption></figure>
+      <figure class="lg-band-tile" style="margin:0"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote style="margin:12px 0;font-size:var(--lg-fs-lead);line-height:1.4">This club is MONEY!!' Please make a 3 wood!</blockquote><figcaption class="lg-meta">Jeff C. · Stryker <span class="lg-stock">Verified buyer</span></figcaption></figure>
+      <figure class="lg-band-tile" style="margin:0"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote style="margin:12px 0;font-size:var(--lg-fs-lead);line-height:1.4">Amazing Putter and looks awesome</blockquote><figcaption class="lg-meta">Arthur V. · Tracer Mallet <span class="lg-stock">Verified buyer</span></figcaption></figure>
+    </div>
+  </div></section>
+
+  <!-- FAQ -->
+  <section class="sg-sec" id="s-faq"><div class="lg-wrap">
+    <div class="lg-split">
+      <div>
+        <p class="lg-eyebrow">FAQ</p>
+        <h2 class="lg-d2">Before you ask</h2>
+        <div class="lg-faq">
+          <details class="lg-fq" open><summary>Can I pick the colour of the free hat?</summary><div class="lg-fq-a"><p>Yes. Pick it by picture right on the page, then it goes in your bag at $0.</p></div></details>
+          <details class="lg-fq"><summary>What if I return the club?</summary><div class="lg-fq-a"><p>The free stuff is yours to keep once the order ships.</p></div></details>
+          <details class="lg-fq"><summary>Does it stack with other codes?</summary><div class="lg-fq-a"><p>One offer per order. The gifts come off automatically.</p></div></details>
+        </div>
+      </div>
+      <figure class="lg-frame"><img src="sg/from-the-cup.webp" alt="Pulling the ball out of the cup, gold putter on the green"></figure>
+    </div>
+  </div></section>
+
+  <!-- MAGS -->
+  <section class="sg-sec" id="s-mags"><div class="lg-wrap">
+    <p class="lg-eyebrow">Mags</p>
+    <h2 class="lg-d2">He has a job: getting you to checkout.</h2>
+    <p class="sg-where"><b>Rule</b> Black Mags on light, light Mags on dark, never a third colour. Guide card, pop-up, sign-off, empty bag, 404, good news, the bag button. Never on an error.</p>
+    <div class="sg-grid3">
+      <div class="sg-box" style="display:grid;place-items:center;min-height:160px"><span class="lg-mags" style="width:150px"><img class="is-ink" src="sg/mags-ink.webp" alt="Mags"><img class="is-light" src="sg/mags-light.webp" alt="Mags"></span><p class="sg-cap">On the page: follows the ground.</p></div>
+      <div class="sg-darkbox lg-on-dark" style="display:grid;place-items:center;min-height:160px"><span class="lg-mags" style="width:150px"><img class="is-ink" src="sg/mags-ink.webp" alt="Mags"><img class="is-light" src="sg/mags-light.webp" alt="Mags"></span><p class="sg-cap" style="color:var(--lg-on-dark-m)">On deep green: switches to light.</p></div>
+      <div class="sg-box">
+        <span class="lg-label" style="color:var(--lg-ink-64)">Try him</span>
+        <div class="lg-btn-row" style="margin-top:12px">
+          <button type="button" class="lg-btn-line lg-btn-sm" id="sg-g1">Guide: gift waiting</button>
+          <button type="button" class="lg-btn-line lg-btn-sm" id="sg-g2">Guide: check out</button>
+          <button type="button" class="lg-btn-line lg-btn-sm" id="sg-p1">Pop-up</button>
+          <button type="button" class="lg-btn-line lg-btn-sm" id="sg-t1">Toast</button>
+        </div>
+        <p class="sg-cap">Close the pop-up and watch it shrink into Mags.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- SIGN-OFF -->
+  <section class="lg-signoff" id="s-signoff"><div class="lg-wrap">
+    <p class="lg-eyebrow lg-unnumbered">Every page ends here</p>
+    <h2 class="lg-d1">It's better to be <span class="lg-foil-word">lucky</span>.</h2>
+    <p class="lg-lede">Legend has it Mags hasn't paid for a hat in years. He's not telling us how.</p>
+    <a class="lg-btn-line" href="#">Pick your club <span aria-hidden="true">&rarr;</span></a>
+    <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="sg/mags-ink.webp" alt=""><img class="is-light" src="sg/mags-light.webp" alt=""></span></div>
+  </div></section>
+
+  <!-- RECIPES -->
+  <section class="sg-sec" id="s-recipes"><div class="lg-wrap">
+    <p class="lg-eyebrow">Page recipes</p>
+    <h2 class="lg-d2">What goes where.</h2>
+    <p class="lg-body">Every page, top to bottom. Bold lines are photo beats. At most one dark band on a white page, and the page always comes back to white.</p>
+    <div class="sg-recipes">
+      <div class="sg-recipe"><h3 class="lg-d3">Home</h3><span class="lg-meta">Daylight</span><ol>
+        <li>Announcement bar, header</li><li class="is-photo">Photo hero</li><li>Trust row</li><li>The clubs: product cards</li><li class="is-photo">Photo band</li><li>Why the price: split with a frame</li><li class="is-photo is-dark">Reviews on a photo</li><li>Apparel, worn</li><li>Mags sign-off</li><li>Footer</li></ol></div>
+      <div class="sg-recipe"><h3 class="lg-d3">Collection</h3><span class="lg-meta">Daylight</span><ol>
+        <li>Header</li><li class="is-photo">Short photo hero</li><li>Filter chips</li><li>Product cards with HUD</li><li class="is-photo">Photo band after row two</li><li>Compare table, contour behind</li><li>Review score</li><li>Mags sign-off</li></ol></div>
+      <div class="sg-recipe"><h3 class="lg-d3">Product page</h3><span class="lg-meta">Daylight</span><ol>
+        <li>Header</li><li class="is-photo">Gallery: studio + on course</li><li>Buy box: chips, foil Add to bag, stock</li><li>Spec tiles</li><li class="is-photo">Split: in use</li><li>Review score + real quotes</li><li>FAQ, contour behind</li><li>Mags sign-off</li><li>After add: Mags guide to checkout</li></ol></div>
+      <div class="sg-recipe"><h3 class="lg-d3">Promo / landing</h3><span class="lg-meta">Daylight, or Twilight for a night event</span><ol>
+        <li>Numbered page</li><li class="is-photo">Photo hero with the offer</li><li>Sticky hole bar</li><li>Tracer, once</li><li>Product cards</li><li class="is-photo">Photo band</li><li>Gift panels + a worn frame</li><li class="is-photo is-dark">Reviews on a photo</li><li>FAQ + frame</li><li>Mags sign-off</li><li>Mags guide + pop-up</li></ol></div>
+      <div class="sg-recipe"><h3 class="lg-d3">Our story</h3><span class="lg-meta">Daylight</span><ol>
+        <li>Numbered page</li><li class="is-photo">Photo hero</li><li>Splits, alternating</li><li class="is-photo">Photo band</li><li class="is-dark">One band: the quote</li><li>Timeline, contour behind</li><li>Mags sign-off</li></ol></div>
+      <div class="sg-recipe"><h3 class="lg-d3">Cart, 404, empty bag</h3><span class="lg-meta">Daylight</span><ol>
+        <li>Hole bar to free shipping</li><li>Lines with the HUD strip</li><li>Foil Check out</li><li>Empty bag: Mags + one line + a ghost button</li><li>404: Mags, one line, two buttons</li></ol></div>
+    </div>
+  </div></section>
+
+  <!-- RULES -->
+  <section class="sg-sec" id="s-rules"><div class="lg-wrap">
+    <p class="lg-eyebrow">Rules</p>
+    <h2 class="lg-d2">Do, and don't.</h2>
+    <div class="sg-rules" style="margin-top:24px">
+      <ul class="sg-do">
+        <li>Open every page on a real photo, and keep its shape.</li>
+        <li>Put the foil on the one action you most want.</li>
+        <li>Let Mags say the next step, and do it when tapped.</li>
+        <li>Show a number only if it's real, and round counts down.</li>
+        <li>Keep floating things off the bars and the buy button.</li>
+        <li>Label a missing photo with its shot brief.</li>
+      </ul>
+      <ul class="sg-dont">
+        <li>No em dashes, no exclamation marks, no invented reviews.</li>
+        <li>No green for "added". Green means in stock or verified.</li>
+        <li>No light gold as type on white. No gold type on clover green.</li>
+        <li>No shadows on things in the page. Only things that float.</li>
+        <li>No two dark bands in a row. No dark page outside an event. No pinstripe: it's retired.</li>
+        <li>No quantity steppers on clubs. One tap, one club.</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <footer class="lg-ftr"><div class="lg-wrap">
+    <div class="lg-ftr-in">
+      <div><h3>Shop</h3><ul><li><a href="#">Wedges</a></li><li><a href="#">Putters</a></li><li><a href="#">Hybrid</a></li><li><a href="#">Apparel</a></li></ul></div>
+      <div><h3>Help</h3><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h3>Lucky</h3><ul><li><a href="#">Our story</a></li><li><a href="#">Reviews</a></li></ul></div>
+    </div>
+    <div class="lg-ftr-base"><span>Lucky Golf</span><span>It's better to be lucky.</span></div>
+  </div></footer>
+</div>
+
+<script>
+{{LUCKY_JS}}
+</script>
+<script>
+(function () {
+  var sg = document.getElementById('sg');
+  var frameMode = /[?&]frame=1/.test(location.search);
+  if (frameMode) document.body.classList.add('is-frame');
+  sg.classList.add('lg-numbered');
+  Lucky.mags = { ink: 'sg/mags-ink.webp', light: 'sg/mags-light.webp' };
+  Lucky.guide.init({ host: sg, avoid: [] });
+
+  /* ground + device toggles */
+  function ground(g) {
+    sg.setAttribute('data-ground', g);
+    document.querySelectorAll('.lg-guide,.lg-pop,.lg-toast').forEach(function (e) { e.setAttribute('data-ground', g); });
+    document.getElementById('sg-day').setAttribute('aria-pressed', g === 'day');
+    document.getElementById('sg-tw').setAttribute('aria-pressed', g === 'twilight');
+    document.body.style.background = g === 'twilight' ? '#06110B' : '#FFFFFF';
+    var f = document.getElementById('sg-frame');
+    try { if (f.contentWindow && f.contentWindow.sgGround) f.contentWindow.sgGround(g); } catch (e) {}
+  }
+  window.sgGround = ground;
+  document.getElementById('sg-day').onclick = function () { ground('day'); };
+  document.getElementById('sg-tw').onclick = function () { ground('twilight'); };
+  function device(phone) {
+    document.body.classList.toggle('is-phone', phone);
+    document.getElementById('sg-desk').setAttribute('aria-pressed', !phone);
+    document.getElementById('sg-mob').setAttribute('aria-pressed', phone);
+    var f = document.getElementById('sg-frame');
+    if (phone && !f.getAttribute('src')) {
+      f.onload = function () { ground(sg.getAttribute('data-ground')); };
+      f.setAttribute('src', location.pathname + (location.search ? location.search + '&' : '?') + 'frame=1');
+    }
+    if (phone) Lucky.guide.hide();
+  }
+  document.getElementById('sg-desk').onclick = function () { device(false); };
+  document.getElementById('sg-mob').onclick = function () { device(true); };
+
+  /* chips and swatches behave */
+  sg.addEventListener('click', function (e) {
+    var c = e.target.closest('.lg-chip,.lg-swatch');
+    if (c) { c.parentElement.querySelectorAll('.lg-chip,.lg-swatch').forEach(function (x) { x.setAttribute('aria-pressed', x === c); }); }
+    var a = e.target.closest('a[href="#"]'); if (a) e.preventDefault();
+  });
+
+  /* the promo flow, as a demo: real thresholds, Mags does the rest */
+  var STOPS = [{ at: 9000, label: '$90 hat' }, { at: 14000, label: '$140 polo' }, { at: 19800, label: '$198 free ship' }];
+  var hole = Lucky.hole(document.getElementById('sg-hole'), { stops: STOPS });
+  var tracer = Lucky.tracer(document.getElementById('sg-tracer'), { stops: STOPS, tee: 'Tee' });
+  var S = { sub: 0, hat: false, polo: false };
+  var sayEl = document.getElementById('sg-say'), sumEl = document.getElementById('sg-sum');
+  var claim = document.getElementById('sg-claim'), claim2 = document.getElementById('sg-claim2');
+  function $(c) { return '$' + Math.round(c / 100); }
+  function paint() {
+    hole.set(S.sub); tracer.set(S.sub);
+    sumEl.textContent = $(S.sub);
+    var t1 = S.sub >= 9000, t2 = S.sub >= 14000;
+    claim.disabled = !t1 || S.hat; claim2.disabled = !t2 || S.polo;
+    claim.classList.toggle('lg-btn-line', !(t1 && !S.hat)); claim.classList.toggle('lg-btn', t1 && !S.hat);
+    claim2.classList.toggle('lg-btn', t2 && !S.polo && S.hat); claim2.classList.toggle('lg-btn-line', !(t2 && !S.polo && S.hat));
+    if (!t1) sayEl.textContent = S.sub ? $(9000 - S.sub) + ' more and the hat is free.' : 'Every club gets you the hat. Start with one.';
+    else if (!S.hat) sayEl.textContent = "Nice, you've got your free hat. Go pick one.";
+    else if (!t2) sayEl.textContent = $(14000 - S.sub) + ' more and the polo is free too.';
+    else if (!S.polo) sayEl.textContent = 'Polo unlocked. Go pick one.';
+    else if (S.sub < 19800) sayEl.textContent = $(19800 - S.sub) + ' more and shipping is free.';
+    else sayEl.textContent = 'Hat, polo, free shipping. Check out before it ends.';
+    if (document.body.classList.contains('is-phone')) return;
+    if (!t1) Lucky.guide.hide();
+    else if (!S.hat) Lucky.guide.say("Congrats, the hat's free. Tap me and I'll show you where.", function () { claim.scrollIntoView({ behavior: 'smooth', block: 'center' }); claim.focus({ preventScroll: true }); });
+    else if (t2 && !S.polo) Lucky.guide.say("The polo's free now too. Tap me, it's right down here.", function () { claim2.scrollIntoView({ behavior: 'smooth', block: 'center' }); claim2.focus({ preventScroll: true }); });
+    else Lucky.guide.say("You're set. Tap me to check out.", function () { Lucky.toast('In the real page, that goes straight to checkout.'); });
+  }
+  sg.querySelectorAll('[data-add]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      S.sub += parseInt(b.getAttribute('data-add'), 10);
+      b.setAttribute('data-done', ''); var l = b.textContent; b.textContent = 'In the bag';
+      setTimeout(function () { b.removeAttribute('data-done'); b.textContent = l; }, 1400);
+      paint();
+    });
+  });
+  claim.onclick = function () {
+    S.hat = true; paint();
+    if (S.sub < 14000) Lucky.pop.open({ title: "The hat's in your bag.", body: 'Check out now, or add ' + $(14000 - S.sub) + " more and the polo's free too.",
+      primary: { label: 'Check out', onClick: function (e) { e.preventDefault(); Lucky.pop.close(); Lucky.toast('In the real page, that goes straight to checkout.'); } },
+      secondary: { label: 'Add more for the polo', action: function () { document.querySelector('[data-add="20900"]').focus(); } } });
+  };
+  claim2.onclick = function () {
+    S.polo = true; paint();
+    Lucky.pop.open({ title: 'Hat and polo. Both free.', body: "Check out now, or keep shopping. They'll wait in your bag." + (S.sub < 19800 ? ' Add ' + $(19800 - S.sub) + " more and shipping's free too." : ''),
+      primary: { label: 'Check out', onClick: function (e) { e.preventDefault(); Lucky.pop.close(); Lucky.toast('In the real page, that goes straight to checkout.'); } },
+      secondary: { label: 'Keep shopping' } });
+  };
+  document.getElementById('sg-reset').onclick = function () { S = { sub: 0, hat: false, polo: false }; paint(); };
+  paint();
+  Lucky.proximity(document.getElementById('sg-prox'), { counts: { 5: 585, 4: 37, 3: 12, 2: 5, 1: 11 }, label: '650 reviews on the Carver 01 Gold' });
+
+  /* Mags on demand */
+  document.getElementById('sg-g1').onclick = function () { Lucky.guide.say("Congrats, the hat's free. Tap me and I'll show you where.", '#s-yardage'); };
+  document.getElementById('sg-g2').onclick = function () { Lucky.guide.say("You're set. Tap me to check out.", function () { Lucky.toast('In the real page, that goes straight to checkout.'); }); };
+  document.getElementById('sg-p1').onclick = function () {
+    if (!Lucky.guide.el() || Lucky.guide.el().hidden) Lucky.guide.say("You're set. Tap me to check out.", function () { Lucky.toast('In the real page, that goes straight to checkout.'); });
+    Lucky.pop.open({ title: "The hat's in your bag.", body: "Check out now, or add $41 more and the polo's free too.",
+      primary: { label: 'Check out', onClick: function (e) { e.preventDefault(); Lucky.pop.close(); } }, secondary: { label: 'Add more for the polo' } });
+  };
+  document.getElementById('sg-t1').onclick = function () { Lucky.toast("That's your free hat. Go pick one.", { mags: true }); };
+})();
+</script>

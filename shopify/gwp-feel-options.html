@@ -1,0 +1,1646 @@
+<!doctype html>
+<html lang="en" data-feel="light" data-h="1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucky Golf · Feel options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<style>/* ==========================================================================
+   LUCKY GOLF - the design system as one stylesheet.
+   Version 3.0 · 2026-09-17 · System: DEEP GREEN & GOLD.
+
+   Drop this file in, load Archivo, and build with the classes below. Every
+   class is prefixed lg- so it cannot collide with anything already on a page.
+
+   The whole system in one paragraph: the page is white, type is ink, product
+   sits on a stone tile, and ONE dark colour (deep green) carries the
+   announcement bar, the header, the bands low on the page and the footer.
+   Gold is the only accent and it never appears as a large field: buttons,
+   one word per headline, stars, hairline marks. Signal green means in stock
+   and nothing else. No cream, no brown, no second green.
+
+   Measured on the real pages: white 78 to 88% of the screen, photography 6
+   to 22%, deep green 3 to 12%, stone under 5%, gold under 1.5%.
+
+   Fonts (put in <head>):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+
+   To try another system, change ONE value: --lg-dark.
+     Deep green & gold  #0B2E1F   (this file, the pick)
+     Ink & gold         #17140F
+     White & gold       keep the bands white and use #121212 for the footer.
+   ========================================================================== */
+
+:root{
+  /* ---------------- ground ---------------- */
+  --lg-page:#FFFFFF;          /* the page. Most of every screen. */
+  --lg-tile:#F4F3F0;          /* stone. Product wells, cards, table fills. A material, never a band. */
+  --lg-dark:#0B2E1F;          /* THE one dark. Announcement bar, header, bands, footer. */
+
+  /* ---------------- type on the ground ---------------- */
+  --lg-ink:#17140F;           /* all text on white */
+  --lg-ink-70:rgba(23,20,15,.70);
+  --lg-ink-64:rgba(23,20,15,.64);
+  --lg-ink-38:rgba(23,20,15,.38);
+  --lg-on-dark:#F4F3F0;       /* text on the dark. 13.2:1 */
+  --lg-on-dark-m:rgba(244,243,240,.72);
+  --lg-rule:rgba(23,20,15,.14);
+  --lg-rule-08:rgba(23,20,15,.08);
+  --lg-rule-dark:rgba(244,243,240,.18);
+
+  /* ---------------- accent ---------------- */
+  --lg-gold:#C29A2B;          /* gold as a SURFACE: stars, rules, bars, buttons. 5.6:1 on the dark. */
+  --lg-gold-hi:#EDD27C;
+  --lg-gold-text:#8A6A1C;     /* gold as TYPE on white only. 5.05:1 */
+  --lg-ok:#008340;            /* in stock, added, verified. Never decoration. */
+  --lg-ok-on-dark:#7FB69A;
+  --lg-clover:#0B5130;        /* the clover inside the logo. Nowhere else. */
+
+  /* The foil is a material, not a colour. Ink type on it reads 6.9:1.
+     Two places per view: the primary button, and ONE display word. */
+  --lg-foil:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+  --lg-foil-text:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);
+
+  /* The pinstripe. Dark FEATURE bands only: never the header, bar or footer.
+     Drawn as a 6px tile, because long CSS gradients rasterise unevenly. */
+  --lg-groove:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%23F6F2E8' fill-opacity='.10'/%3E%3C/svg%3E");
+  --lg-groove-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%2317140F' fill-opacity='.03'/%3E%3C/svg%3E");
+
+  /* ---------------- measure ---------------- */
+  --lg-wrap:1180px;
+  --lg-pad:clamp(20px,4.2vw,68px);
+  --lg-gut:clamp(16px,2vw,28px);
+  --lg-sec:clamp(64px,7vw,112px);   /* space between page sections */
+  --lg-r:6px;                       /* controls */
+  --lg-r-card:14px;                 /* surfaces */
+  --lg-ease:cubic-bezier(.23,1,.32,1);
+
+  /* ---------------- type scale ---------------- */
+  --lg-fs-xs:.72rem;
+  --lg-fs-sm:.8rem;
+  --lg-fs-base:.95rem;
+  --lg-fs-body:1.0625rem;
+  --lg-fs-lead:clamp(1.1rem,1.5vw,1.3rem);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.lg-scope,
+body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-variation-settings:'wdth' 100;font-size:var(--lg-fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.lg-wrap{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad)}
+.lg-sec{padding-block:var(--lg-sec)}
+.lg-hr{height:1px;background:var(--lg-rule);border:0;margin:0}
+.lg-center{text-align:center}
+:where(.lg-scope,body.lg) :focus-visible{outline:2px solid var(--lg-gold);outline-offset:2px}
+
+/* ==========================================================================
+   TYPE
+   Display is Archivo at width 62, uppercase, 800. Labels at width 78, 600,
+   tracked caps. Body is plain 100 width. Nothing else.
+   ========================================================================== */
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;
+  font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.lg-d1{font-size:clamp(2.6rem,6.2vw,5.2rem)}
+.lg-d2{font-size:clamp(2rem,3.9vw,3.2rem)}
+.lg-d3{font-size:clamp(1.25rem,1.8vw,1.6rem);line-height:1}
+
+/* ONE word per headline carries the foil. Never body size. */
+.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* The eyebrow orients the section. It never restates the headline. */
+.lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
+.lg-eyebrow::before{content:'';width:22px;height:2px;background:var(--lg-gold);flex:none}
+.lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
+.lg-body{margin:14px 0 0;max-width:62ch;color:var(--lg-ink-70)}
+.lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+/* The aside is the charm voice: one line, sentence case, medium weight. */
+.lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
+.lg-label{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
+  display:inline-flex;align-items:center;gap:8px}
+.lg-link span{transition:transform .22s var(--lg-ease)}
+.lg-link:hover span{transform:translateX(4px)}
+
+/* On a dark ground everything flips to cream, and gold stays gold. Put
+   .lg-on-dark on any block you build yourself over a dark field or a photo. */
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
+
+/* ==========================================================================
+   BUTTONS · one foil button per view, everything else is the ghost.
+   44px minimum on a phone, always.
+   ========================================================================== */
+.lg-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:0 26px;border:0;border-radius:var(--lg-r);cursor:pointer;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
+  color:var(--lg-ink);background-image:var(--lg-foil);background-size:200% 100%;
+  background-position:0 0;transition:background-position .45s var(--lg-ease),transform .12s var(--lg-ease)}
+.lg-btn:hover,.lg-btn:focus-visible{background-position:100% 0}
+.lg-btn:active{transform:scale(.975)}
+.lg-btn[disabled],.lg-btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.lg-btn-line{background:transparent;background-image:none;color:var(--lg-ink);
+  border:2px solid var(--lg-ink);min-height:48px}
+.lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line{color:var(--lg-on-dark);border-color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line:hover{background:var(--lg-on-dark);color:var(--lg-dark)}
+.lg-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ==========================================================================
+   CHROME · the announcement bar and the header. Solid colour, no pinstripe,
+   because they sit over every page and every photo.
+   ========================================================================== */
+.lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
+.lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
+  justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.lg-tick-in::-webkit-scrollbar{display:none}
+.lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+
+.lg-hdr{position:sticky;top:0;z-index:40;background:var(--lg-dark);color:var(--lg-on-dark);
+  border-bottom:1px solid var(--lg-rule-dark)}
+.lg-hdr-in{padding:0 var(--lg-pad);height:72px;display:grid;grid-template-columns:1fr auto 1fr;
+  grid-template-areas:"l n a";align-items:center;gap:24px}
+.lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
+.lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
+.lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
+  text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
+.lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
+.lg-hdr-act a,.lg-hdr-act button{min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--lg-on-dark);cursor:pointer}
+@media (max-width:980px){
+  .lg-hdr-in{grid-template-columns:auto 1fr;grid-template-areas:"l a";height:64px}
+  .lg-nav{display:none}
+  .lg-tick-in a:nth-child(n+2){display:none}
+}
+
+/* ==========================================================================
+   BANDS · the dark beats low on the page. These carry the pinstripe.
+   Rhythm for a landing page: bar, header, hero photo, white sections,
+   ONE band, the sign-off, the footer. No two bands touch.
+   ========================================================================== */
+.lg-band{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:var(--lg-sec)}
+.lg-band-tile{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark);
+  border-radius:var(--lg-r-card);padding:24px}
+
+/* The hero: one full bleed photograph, headline bottom left over the scrim. */
+.lg-hero{position:relative;isolation:isolate;background:#0f0d09;overflow:hidden}
+.lg-hero img{display:block;width:100%;height:min(86vh,860px);min-height:520px;object-fit:cover}
+.lg-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(92deg,rgba(11,20,15,.82) 0%,rgba(11,20,15,.52) 38%,rgba(11,20,15,.04) 68%),
+             linear-gradient(0deg,rgba(11,20,15,.55) 0%,rgba(11,20,15,0) 42%)}
+.lg-hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;
+  padding-bottom:clamp(40px,6vw,96px);color:var(--lg-on-dark)}
+.lg-hero-copy .lg-wrap{width:100%}
+
+/* ==========================================================================
+   SURFACES · tiles and cards. Product sits on stone, photography sits full.
+   ========================================================================== */
+.lg-tile{background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-grid{display:grid;gap:var(--lg-gut);align-items:start;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.lg-card{display:flex;flex-direction:column;color:var(--lg-ink);text-decoration:none}
+.lg-card-ph{position:relative;aspect-ratio:4/5;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.lg-card:hover .lg-card-ph img{transform:scale(1.03)}
+.lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.lg-card-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  text-transform:uppercase;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1}
+.lg-card-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
+.lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
+
+/* A photograph that does not exist yet is a LABELLED SLOT, never a grey box
+   and never a stock photo. Put the shot brief on it. */
+.lg-slot{display:grid;place-items:center;text-align:center;padding:24px;aspect-ratio:4/5;
+  background:var(--lg-tile) repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 8px,transparent 8px 16px);
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card);color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Review card. Only ever a real review, quoted exactly, with a real name. */
+.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+  flex-direction:column;gap:12px}
+.lg-quote p{margin:0;font-size:var(--lg-fs-body)}
+.lg-quote footer{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Stat tile: a number that is real, and what it means underneath. */
+.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
+.lg-stat b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   SMALL PARTS · the stamp. Condensed caps on chips, tags, trust rows, tables.
+   ========================================================================== */
+.lg-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;
+  background:var(--lg-ink);color:var(--lg-page);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
+.lg-tag-gold{background-image:var(--lg-foil);color:var(--lg-ink)}
+.lg-tag-ok{background:var(--lg-ok);color:#fff}
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.lg-chip[aria-pressed="true"],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
+.lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
+
+/* Stars are a graphic: gold on white needs a darker gold to stay legible. */
+.lg-stars{display:inline-flex;gap:2px;color:#9A7619;line-height:0}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+.lg-stars svg{width:15px;height:15px;fill:currentColor}
+
+.lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
+  padding-block:20px;border-block:1px solid var(--lg-rule)}
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-sm)}
+.lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+
+/* Compare table: stone fill, hairlines, condensed caps in the head column. */
+.lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
+.lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
+.lg-table thead th{background:var(--lg-tile);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:var(--lg-fs-xs)}
+.lg-table tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
+
+/* Email capture. One field, one button, the reason to give it. */
+.lg-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.lg-input{flex:1 1 240px;min-height:52px;padding:0 16px;border:1px solid var(--lg-rule);
+  border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-base)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input::placeholder{color:var(--lg-on-dark-m)}
+
+/* ==========================================================================
+   THE SIGN-OFF and THE FOOTER
+   Mags is the emblem, never a cartoon with a face doing an action. He stands
+   on the rule at the sign-off, and rides the bag button in the header.
+   Use the cream artwork on dark grounds and the ink artwork on white ones.
+   ========================================================================== */
+.lg-sign{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:clamp(56px,6vw,96px);overflow:hidden}
+.lg-sign-in{display:grid;grid-template-columns:1.2fr auto;gap:32px;align-items:end}
+.lg-sign img{width:clamp(140px,18vw,240px);height:auto;justify-self:end}
+.lg-sign hr{margin:22px 0 0;height:2px;background:var(--lg-gold);border:0}
+@media (max-width:760px){.lg-sign-in{grid-template-columns:1fr}.lg-sign img{justify-self:start;width:150px}}
+
+.lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
+  padding-block:clamp(40px,4.4vw,64px)}
+.lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
+.lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
+.lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   MOTION · the system is still. The foil slides on hover, photos ease on
+   hover, and that is the whole vocabulary. No scroll reveals, no lifts,
+   no drop shadows anywhere.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style><style>/* ==========================================================================
+   LUCKY GOLF · FREE HAT, FREE POLO — the parts lucky.css does not have.
+
+   THIS FILE ADDS NO COLOUR, NO FONT AND NO SHADOW. Every value below is a
+   lucky.css token or a measurement. If you find a hex in here, it is a bug.
+
+   What is here, and only this: the sticky rail, the phone cart bar, the
+   toast, the quantity stepper, the chip rows and the picture swatches, the
+   club card's buy box, the gift lock, the working/done button state, the
+   review band's quotes, and the FAQ.
+   ========================================================================== */
+
+.gwp{
+  --gwp-rail-h:74px;
+  --gwp-rail-hm:80px;
+  --gwp-bar-h:66px;
+  --gwp-top:0px;
+}
+.gwp img{display:block;max-width:100%}
+@media (max-width:749px){
+  .gwp{padding-bottom:calc(var(--gwp-rail-hm) + var(--gwp-bar-h) + 8px)}
+}
+#gwp-clubs{scroll-margin-top:calc(var(--gwp-top) + var(--gwp-rail-h) + 8px);outline:none}
+@media (max-width:749px){ #gwp-clubs{scroll-margin-top:8px} }
+
+/* ---------------------------------------------------------------- hero
+   The real on-course shot is square; the hero is wide. The club head and the
+   ball sit just below centre, so the crop holds there. */
+.gwp-hero img{object-position:50% 62%}
+.gwp-ends{align-self:center}
+
+/* ---------------------------------------------------------------- rail
+   White, because it never leaves the screen: 100px of dark chrome is 11% of
+   EVERY screen, not 1.6% of the page. */
+.gwp-rail{position:sticky;top:var(--gwp-top);z-index:30;
+  background:var(--lg-page);color:var(--lg-ink);border-bottom:1px solid var(--lg-rule)}
+.gwp-rail-in{max-width:var(--lg-wrap);margin:0 auto;padding:12px var(--lg-pad);
+  min-height:var(--gwp-rail-h);display:flex;align-items:center;gap:clamp(16px,3vw,44px)}
+.gwp-rail-copy{flex:1;min-width:0}
+.gwp-say{margin:0 0 9px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
+  font-weight:700;font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.25;color:var(--lg-ink)}
+.gwp-rail[data-tier="1"] .gwp-say,.gwp-rail[data-tier="2"] .gwp-say{color:var(--lg-gold-text)}
+.gwp-track{position:relative;height:6px;border-radius:999px;background:var(--lg-rule)}
+.gwp-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background-image:var(--lg-foil);transition:width .45s var(--lg-ease)}
+.gwp-node{position:absolute;top:50%;translate:0 -50%;pointer-events:none}
+.gwp-node i{display:block;width:2px;height:14px;background:var(--lg-ink-38);translate:-50% 0;transition:background .3s}
+.gwp-node b{position:absolute;top:13px;left:0;translate:-50% 0;white-space:nowrap;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--lg-fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--lg-ink-64);transition:color .3s}
+.gwp-node[data-node="2"] b{translate:-100% 0}
+.gwp-node[data-hit] i{background:var(--lg-gold)}
+.gwp-node[data-hit] b{color:var(--lg-gold-text)}
+.gwp-rail-act{flex:none;display:flex;align-items:center;gap:14px}
+.gwp-rail-sum{text-align:right;line-height:1.15}
+.gwp-rail-sum .l{display:block;color:var(--lg-ink-64)}
+.gwp-rail-sum .v{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;
+  font-weight:700;font-size:1.25rem}
+.gwp-rail .lg-btn-line{min-height:44px;padding:0 18px}
+
+/* ---------------------------------------------------------------- phone bar
+   An exact height, so the rail can park exactly on top of it. */
+.gwp-bar{position:fixed;left:0;right:0;bottom:0;z-index:35;display:none;box-sizing:border-box;
+  height:calc(var(--gwp-bar-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+  background:var(--lg-page);color:var(--lg-ink);border-top:1px solid var(--lg-rule)}
+.gwp-bar-in{display:flex;align-items:center;gap:10px;padding:0 var(--lg-pad);height:calc(var(--gwp-bar-h) - 1px)}
+.gwp-bar-sum{flex:none;line-height:1.1}
+.gwp-bar-sum .l{display:block;color:var(--lg-ink-64)}
+.gwp-bar-sum .v{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:1.15rem}
+.gwp-bar-gift{flex:1;min-width:0;color:var(--lg-gold-text);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-xs);line-height:1.3}
+.gwp-bar-gift[data-none]{color:var(--lg-ink-64)}
+.gwp-bar .lg-btn{flex:none;min-height:46px;padding:0 18px}
+
+/* ---------------------------------------------------------------- toast */
+.gwp-toast{position:fixed;left:50%;top:14px;translate:-50% 0;z-index:100;margin:0;
+  max-width:min(520px,calc(100vw - 28px));padding:13px 18px;background:var(--lg-dark);
+  color:var(--lg-on-dark);border:1px solid var(--lg-gold);border-radius:var(--lg-r);
+  font-size:var(--lg-fs-base);line-height:1.45}
+.gwp-toast[hidden]{display:none}
+
+/* ---------------------------------------------------------------- the clubs */
+.gwp-clubs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut);margin-top:36px;align-items:start}
+.gwp-card{display:flex;flex-direction:column}
+/* studio shots are shot on white; multiply drops the white into the stone */
+.gwp-cut img{object-fit:contain;mix-blend-mode:multiply;padding:6%}
+.gwp-card[data-out] .lg-card-ph img{filter:grayscale(1);opacity:.55}
+.gwp-unlock{position:absolute;left:12px;top:12px;z-index:2}
+.gwp-card .lg-card-ln{font-size:var(--lg-fs-base)}
+
+.gwp-opts{display:grid;gap:12px;margin-top:14px}
+.gwp-opt > .lg-label{display:block;margin-bottom:6px;color:var(--lg-ink-64)}
+.gwp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.gwp-card .gwp-chips .lg-chip{padding:0 10px;min-width:44px}
+/* A dead value is marked with a dash and a strike, never faded out of reach:
+   --lg-ink-38 measured 2.4:1 on white. */
+.gwp-chips .lg-chip[data-dead]{color:var(--lg-ink-64);border-style:dashed;text-decoration:line-through}
+.gwp-chips .lg-chip[data-dead][aria-pressed="true"]{color:var(--lg-page)}
+
+.gwp-buy{margin-top:14px;display:flex;gap:8px;align-items:stretch}
+.gwp-buy .gwp-add{flex:1;min-width:0;min-height:46px;padding:0 12px}
+.gwp-add .lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gwp-qty{display:inline-flex;align-items:center;flex:none;border:1px solid var(--lg-rule);border-radius:var(--lg-r);overflow:hidden}
+.gwp-qty button{width:38px;min-height:46px;border:0;background:none;cursor:pointer;color:var(--lg-ink);
+  font:inherit;font-size:1.2rem;line-height:1;display:grid;place-items:center}
+.gwp-qty button:hover{background:var(--lg-ink);color:var(--lg-page)}
+.gwp-qty output{min-width:22px;text-align:center;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 74;font-weight:700;font-size:var(--lg-fs-base)}
+
+/* ---------------------------------------------------------------- the free stuff */
+.gwp-gift-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut);margin-top:32px;align-items:start}
+.gwp-gift{padding:24px;border:1px solid transparent;transition:border-color .3s var(--lg-ease)}
+.gwp-gift[data-state="open"]{border-color:var(--lg-gold)}
+.gwp-gift[data-state="claimed"]{border-color:var(--lg-ok)}
+.gwp-gift-hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.gwp-gift[data-state="locked"] .gwp-gift-hd .lg-tag{background-image:none;background:var(--lg-ink);color:var(--lg-page)}
+.gwp-gift-sub{margin-top:8px}
+
+/* Picture swatches: the real hat, the real polo. Tapping one is the choice. */
+.gwp-swatches{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px;
+  scrollbar-width:thin;margin:0 -2px}
+.gwp-swatch{flex:none;width:72px;height:72px;padding:0;cursor:pointer;scroll-snap-align:start;overflow:hidden;
+  background:var(--lg-page);border:1px solid var(--lg-rule);border-radius:var(--lg-r);position:relative}
+.gwp-swatch img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.gwp-swatch[aria-pressed="true"]{border:2px solid var(--lg-ink)}
+.gwp-swatch[data-dead]::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top right,transparent calc(50% - 1px),var(--lg-ink-64) 50%,transparent calc(50% + 1px))}
+.gwp-swatch[data-dead] img{opacity:.45}
+
+.gwp-lock{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 14px;
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r);color:var(--lg-ink-64)}
+.gwp-lock[hidden]{display:none}
+.gwp-lock svg{flex:none;width:15px;height:15px;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+.gwp-pick{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.gwp-pick[hidden]{display:none}
+.gwp-picked{margin:0;flex:1;min-width:0}
+.gwp-pick .lg-btn{flex:none}
+
+/* ---------------------------------------------------------------- working / done */
+.gwp-sp{width:0;height:14px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;
+  opacity:0;transition:width .18s,opacity .18s}
+[data-busy] .gwp-sp{width:14px;opacity:.85;animation:gwp-spin .7s linear infinite}
+@keyframes gwp-spin{to{transform:rotate(360deg)}}
+.lg-btn[data-done],.lg-btn-line[data-done]{background-image:none;background:var(--lg-ok);color:var(--lg-page);border-color:var(--lg-ok)}
+
+/* ---------------------------------------------------------------- reviews */
+.gwp-revs{margin-top:32px}
+.gwp-rev{margin:0;display:flex;flex-direction:column;gap:12px}
+.gwp-rev blockquote{margin:0;font-size:var(--lg-fs-lead);line-height:1.4;color:var(--lg-on-dark)}
+.gwp-rev figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+
+/* ---------------------------------------------------------------- faq */
+.gwp-faq-wrap{max-width:820px}
+.gwp-faq{margin-top:20px}
+.gwp-fq{border-top:1px solid var(--lg-rule)}
+.gwp-fq:last-child{border-bottom:1px solid var(--lg-rule)}
+.gwp-fq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;
+  cursor:pointer;list-style:none;min-height:48px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:700;font-size:var(--lg-fs-body);line-height:1.35;color:var(--lg-ink)}
+.gwp-fq summary::-webkit-details-marker{display:none}
+.gwp-fq summary:hover{color:var(--lg-gold-text)}
+.gwp-fq .mk{position:relative;flex:none;width:14px;height:14px}
+.gwp-fq .mk::before,.gwp-fq .mk::after{content:'';position:absolute;left:50%;top:50%;background:var(--lg-gold-text);translate:-50% -50%;transition:opacity .2s}
+.gwp-fq .mk::before{width:14px;height:2px}
+.gwp-fq .mk::after{width:2px;height:14px}
+.gwp-fq[open] .mk::after{opacity:0}
+.gwp-fq-a{padding:0 0 18px;max-width:62ch;color:var(--lg-ink-70)}
+.gwp-fq-a > :first-child{margin-top:0}
+.gwp-fq-a > :last-child{margin-bottom:0}
+
+/* ---------------------------------------------------------------- hero slot (no photo yet) */
+.gwp-hero-slot{display:grid;align-content:start;justify-items:center;padding:clamp(28px,7vw,72px) var(--lg-pad) 0;
+  width:100%;height:min(86vh,860px);min-height:520px;
+  background:var(--lg-dark) repeating-linear-gradient(135deg,rgba(244,243,240,.05) 0 10px,transparent 10px 20px)}
+.gwp-hero-slot p{margin:0;max-width:34ch;text-align:center;color:var(--lg-on-dark-m);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);line-height:1.8}
+
+/* ---------------------------------------------------------------- responsive */
+@media (max-width:1080px){ .gwp-clubs{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:860px){ .gwp-gift-row{grid-template-columns:1fr} }
+@media (max-width:749px){
+  .gwp-rail{position:fixed;left:0;right:0;top:auto;z-index:34;bottom:calc(var(--gwp-bar-h) + env(safe-area-inset-bottom));
+    border-bottom:0;border-top:1px solid var(--lg-rule)}
+  .gwp-rail-in{padding:9px var(--lg-pad);min-height:0}
+  .gwp-rail-act{display:none}
+  .gwp-say{font-size:var(--lg-fs-base);margin-bottom:8px}
+  .gwp-node b{display:none}
+  .gwp-bar{display:block}
+  .gwp-gift{padding:18px}
+}
+@media (max-width:560px){
+  .gwp-clubs{grid-template-columns:1fr}
+}
+@media (max-width:420px){ .gwp-bar-gift{font-size:11px} }
+</style>
+<style>
+/* ===================== shared: the hero (option D, the math) ===================== */
+.gwp-num,.gwp-num-d{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.gwp-num{background-image:var(--num)}
+.gwp-num-d{background-image:var(--num-d)}
+.gs-hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,76px) 0 clamp(34px,4vw,60px)}
+.gs-hero .lg-wrap{position:relative;z-index:1}
+.gs-h1{font-size:clamp(2.5rem,6vw,5.4rem);max-width:17ch}
+.gs-lede{max-width:52ch}
+.gs-sums{display:grid;gap:clamp(10px,1.4vw,16px);margin-top:clamp(24px,3.4vw,40px)}
+.gs-sum{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.15fr);align-items:stretch;gap:clamp(8px,1.6vw,20px)}
+.gs-tile{position:relative;margin:0;height:clamp(150px,16vw,210px);border-radius:var(--rc);overflow:hidden}
+.gs-tile img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:9% 9% 16%}
+.gs-pair{display:grid;grid-template-columns:1fr 1fr}
+.gs-tile .lg-tag{position:absolute;left:12px;top:12px;z-index:2}
+.gs-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 8px 9px;text-align:center;z-index:2;color:#17140F;
+  background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.92) 62%)}
+.gs-op{align-self:center;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2rem,4vw,3.4rem);line-height:1;
+  background-image:var(--num);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.gs-res{border-radius:var(--rc);padding:clamp(16px,2vw,26px);display:flex;flex-direction:column;justify-content:center;min-height:clamp(150px,16vw,210px)}
+.gs-res b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2.6rem,5.2vw,4.8rem);line-height:.86;letter-spacing:-.01em}
+.gs-res span{margin-top:8px;font-size:var(--lg-fs-base);line-height:1.4}
+.gs-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(22px,3vw,34px)}
+.gs-trust{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;padding:0}
+.gs-trust li{display:flex;align-items:center;gap:8px;color:var(--lg-ink-64)}
+.gs-trust svg{width:16px;height:16px;fill:none;stroke:var(--lg-gold-text);stroke-width:1.8}
+@media (max-width:760px){
+  .gs-sum{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);row-gap:10px}
+  .gs-eq{display:none}
+  .gs-res{grid-column:1/-1;min-height:0}
+  .gs-tile{height:150px}
+}
+
+/* ===================== FEEL 1 · GOLD LIGHT ===================== */
+html[data-feel="light"]{--rc:22px;
+  --num:linear-gradient(100deg,#6B4F0E 0%,#A8821C 30%,#7A5C12 52%,#A8821C 76%,#6B4F0E 100%);
+  --num-d:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%)}
+[data-feel="light"] .gs-hero{background:radial-gradient(55% 80% at 92% 0%,rgba(237,210,124,.26),transparent 62%),radial-gradient(40% 60% at 0% 100%,rgba(11,46,31,.06),transparent 70%),#fff}
+[data-feel="light"] .gs-tile{background:radial-gradient(75% 75% at 50% 45%,#fff 0%,#F4F3F0 72%);border:1px solid rgba(23,20,15,.06)}
+[data-feel="light"] .gs-res{color:var(--lg-on-dark);background:radial-gradient(120% 110% at 100% 0%,rgba(237,210,124,.30),transparent 55%),linear-gradient(160deg,#124530 0%,#0B2E1F 55%,#061C12 100%)}
+[data-feel="light"] .gs-res span{color:var(--lg-on-dark-m)}
+[data-feel="light"] .lg-card-ph{border-radius:var(--rc);background:radial-gradient(75% 70% at 50% 45%,#fff 0%,#F2F0EB 75%);border:1px solid rgba(23,20,15,.05)}
+[data-feel="light"] .gwp-gift{border-radius:var(--rc);background:linear-gradient(180deg,#F9F8F5,#F1EFEA)}
+[data-feel="light"] .gwp-gift[data-state="open"]{border-color:transparent;box-shadow:0 0 0 1px rgba(194,154,43,.6),0 14px 40px -18px rgba(194,154,43,.55)}
+[data-feel="light"] .gwp-swatch{border-radius:12px}
+[data-feel="light"] .lg-chip,[data-feel="light"] .gwp-qty{border-radius:10px}
+[data-feel="light"] .lg-btn{border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 22px -12px rgba(194,154,43,.7)}
+[data-feel="light"] .lg-btn-line{border-radius:12px;box-shadow:none}
+[data-feel="light"] .gwp-rail{background:rgba(255,255,255,.74);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px);border-bottom-color:rgba(23,20,15,.07)}
+[data-feel="light"] .gwp-track{height:8px;background:rgba(23,20,15,.07)}
+[data-feel="light"] .gwp-fill{background-image:linear-gradient(90deg,#C29A2B,#EDD27C 60%,#C29A2B);box-shadow:0 0 14px rgba(237,210,124,.75)}
+[data-feel="light"] .gwp-node[data-hit] i{background:#C29A2B;box-shadow:0 0 10px rgba(237,210,124,.9)}
+[data-feel="light"] .lg-band{background:radial-gradient(70% 120% at 88% 0%,rgba(237,210,124,.18),transparent 60%),linear-gradient(170deg,#0F3A27,#0B2E1F 55%,#071F15)}
+[data-feel="light"] .gwp-rev{border-radius:var(--rc);background:rgba(255,255,255,.045);border-color:rgba(237,210,124,.2)}
+[data-feel="light"] .gwp-bar{background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+
+/* ===================== FEEL 2 · AFTER DARK ===================== */
+html[data-feel="dark"]{--rc:20px;
+  --num:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%);--num-d:var(--num);
+  --lg-page:#06110B;--lg-ink:#F4F3F0;--lg-ink-70:rgba(244,243,240,.76);--lg-ink-64:rgba(244,243,240,.68);--lg-ink-38:rgba(244,243,240,.42);
+  --lg-rule:rgba(244,243,240,.13);--lg-rule-08:rgba(244,243,240,.07);--lg-gold-text:#EDD27C;--lg-ok:#3FBF7F}
+html[data-feel="dark"] body.lg{background:#06110B;color:#F4F3F0}
+[data-feel="dark"] .gs-hero{background:radial-gradient(50% 75% at 85% 5%,rgba(237,210,124,.20),transparent 62%),radial-gradient(50% 60% at 5% 100%,rgba(63,191,127,.08),transparent 70%),#06110B}
+[data-feel="dark"] .gs-tile,[data-feel="dark"] .lg-card-ph,[data-feel="dark"] .gwp-swatch{background:radial-gradient(75% 75% at 50% 42%,#FFFFFF 0%,#E7E3D9 80%)}
+[data-feel="dark"] .gs-tile{box-shadow:0 20px 50px -24px rgba(237,210,124,.35)}
+[data-feel="dark"] .gs-res{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(237,210,124,.28);color:#F4F3F0}
+[data-feel="dark"] .gs-res span{color:rgba(244,243,240,.72)}
+[data-feel="dark"] .lg-card-ph{border-radius:var(--rc)}
+[data-feel="dark"] .lg-btn{color:#17140F;border-radius:12px;box-shadow:0 0 0 1px rgba(255,243,196,.25),0 10px 30px -10px rgba(237,210,124,.55)}
+[data-feel="dark"] .lg-btn-line{color:#F4F3F0;border-color:rgba(244,243,240,.5);box-shadow:none}
+[data-feel="dark"] .lg-btn-line:hover{background:#F4F3F0;color:#06110B}
+[data-feel="dark"] .lg-tag{background:#F4F3F0;color:#06110B}
+[data-feel="dark"] .lg-tag-gold{background-image:var(--lg-foil);color:#17140F}
+[data-feel="dark"] .gwp-gift{border-radius:var(--rc);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(237,210,124,.16)}
+[data-feel="dark"] .gwp-gift[data-state="open"]{border-color:rgba(237,210,124,.7);box-shadow:0 0 40px -12px rgba(237,210,124,.45)}
+[data-feel="dark"] .gwp-gift[data-state="locked"] .gwp-gift-hd .lg-tag{background:#F4F3F0;color:#06110B}
+[data-feel="dark"] .lg-chip{background:rgba(255,255,255,.03);border-color:rgba(244,243,240,.2);color:#F4F3F0;border-radius:10px}
+[data-feel="dark"] .lg-chip[aria-pressed="true"]{background:#F4F3F0;color:#06110B;border-color:#F4F3F0}
+[data-feel="dark"] .gwp-swatch{border-radius:12px;border-color:rgba(244,243,240,.18)}
+[data-feel="dark"] .gwp-swatch[aria-pressed="true"]{border:2px solid #EDD27C;box-shadow:0 0 18px -4px rgba(237,210,124,.6)}
+[data-feel="dark"] .gwp-qty{border-radius:10px}
+[data-feel="dark"] .gwp-rail{background:rgba(6,17,11,.72);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border-bottom-color:rgba(237,210,124,.16)}
+[data-feel="dark"] .gwp-track{height:8px;background:rgba(244,243,240,.09)}
+[data-feel="dark"] .gwp-fill{background-image:linear-gradient(90deg,#C29A2B,#FFF3C4 55%,#EDD27C);box-shadow:0 0 18px rgba(237,210,124,.8)}
+[data-feel="dark"] .gwp-node[data-hit] i{background:#EDD27C;box-shadow:0 0 12px rgba(237,210,124,.9)}
+[data-feel="dark"] .lg-band{background:radial-gradient(60% 110% at 85% 0%,rgba(237,210,124,.14),transparent 60%),#0A1D14;border-block:1px solid rgba(237,210,124,.12)}
+[data-feel="dark"] .gwp-rev{border-radius:var(--rc);background:rgba(255,255,255,.04);border-color:rgba(237,210,124,.2)}
+[data-feel="dark"] .gwp-bar{background:rgba(6,17,11,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+[data-feel="dark"] .gwp-toast{background:#0A1D14}
+
+/* ===================== FEEL 3 · YARDAGE ===================== */
+html[data-feel="yard"]{--rc:4px;
+  --num:linear-gradient(180deg,#A8821C 0%,#7A5C12 60%,#6B4F0E 100%);
+  --num-d:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 45%,#C29A2B 100%)}
+[data-feel="yard"] .gwp{background-color:#fff;
+  background-image:linear-gradient(rgba(23,20,15,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,20,15,.05) 1px,transparent 1px);
+  background-size:56px 56px;counter-reset:yd}
+[data-feel="yard"] .gs-hero{background:transparent}
+[data-feel="yard"] .gwp section .lg-eyebrow{counter-increment:yd}
+[data-feel="yard"] .gwp section .lg-eyebrow::before{content:counter(yd,decimal-leading-zero);width:auto;height:auto;background:none;
+  font-variation-settings:'wdth' 62;font-weight:800;font-size:1.05rem;letter-spacing:0;color:var(--lg-ink);padding-right:10px;border-right:2px solid var(--lg-gold)}
+[data-feel="yard"] .gs-tile,[data-feel="yard"] .lg-card-ph{background:#fff;border:1px solid rgba(23,20,15,.18);border-radius:var(--rc)}
+[data-feel="yard"] .gs-tile::before,[data-feel="yard"] .lg-card-ph::before{content:'';position:absolute;right:8px;bottom:8px;width:12px;height:12px;
+  border-right:2px solid var(--lg-gold);border-bottom:2px solid var(--lg-gold);z-index:2}
+[data-feel="yard"] .gs-res{background:#17140F;color:#F4F3F0;border-radius:var(--rc);position:relative}
+[data-feel="yard"] .gs-res::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:repeating-linear-gradient(90deg,#C29A2B 0 10px,transparent 10px 14px)}
+[data-feel="yard"] .gs-res span{color:rgba(244,243,240,.72)}
+[data-feel="yard"] .gwp-gift{background:#fff;border:1px solid rgba(23,20,15,.18);border-radius:var(--rc)}
+[data-feel="yard"] .gwp-gift[data-state="open"]{border:2px solid #C29A2B}
+[data-feel="yard"] .lg-chip,[data-feel="yard"] .gwp-qty,[data-feel="yard"] .gwp-swatch,[data-feel="yard"] .lg-btn,[data-feel="yard"] .lg-btn-line{border-radius:2px}
+[data-feel="yard"] .lg-tag{border-radius:2px}
+[data-feel="yard"] .gwp-rail{background:rgba(255,255,255,.92);border-bottom:2px solid #17140F}
+[data-feel="yard"] .gwp-track{height:12px;border-radius:0;background:repeating-linear-gradient(90deg,rgba(23,20,15,.12) 0 10px,transparent 10px 14px)}
+[data-feel="yard"] .gwp-fill{border-radius:0;background:repeating-linear-gradient(90deg,#C29A2B 0 10px,transparent 10px 14px);box-shadow:none}
+[data-feel="yard"] .gwp-node i{height:20px;width:2px;background:#17140F}
+[data-feel="yard"] .lg-band{background-color:#0B2E1F;background-image:linear-gradient(rgba(244,243,240,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(244,243,240,.06) 1px,transparent 1px);background-size:56px 56px}
+[data-feel="yard"] .gwp-rev{border-radius:var(--rc)}
+[data-feel="yard"] .gwp-fq summary::before{content:'';width:8px;height:8px;background:#C29A2B;flex:none;margin-right:4px}
+[data-feel="yard"] .lg-card-nm,[data-feel="yard"] .lg-card-pr{font-variation-settings:'wdth' 62}
+
+/* ===================== the switcher (preview only, not part of the page) ===================== */
+.fx{position:fixed;right:14px;top:14px;z-index:9999;display:grid;gap:8px;padding:12px;border-radius:14px;
+  background:rgba(23,20,15,.92);color:#F4F3F0;font:600 11px/1.2 Archivo,system-ui;letter-spacing:.1em;text-transform:uppercase;
+  box-shadow:0 18px 40px -16px rgba(0,0,0,.5)}
+.fx div{display:flex;align-items:center;gap:6px}
+.fx span{width:62px;opacity:.6}
+.fx button{font:inherit;letter-spacing:inherit;text-transform:inherit;min-height:34px;padding:0 11px;border-radius:8px;border:1px solid rgba(244,243,240,.2);background:none;color:inherit;cursor:pointer}
+.fx button[aria-pressed="true"]{background:linear-gradient(96deg,#C29A2B,#EDD27C,#C29A2B);color:#17140F;border-color:transparent}
+@media (max-width:760px){.fx{left:8px;right:8px;top:6px;padding:7px;gap:5px;border-radius:10px}.fx span{width:52px;font-size:9px}.fx button{min-height:28px;padding:0 8px;font-size:9px}}
+</style></head><body class="lg">
+<div class="fx" role="group" aria-label="Preview controls">
+  <div><span>Feel</span><button data-feel-set="light">Gold light</button><button data-feel-set="dark">After dark</button><button data-feel-set="yard">Yardage</button></div>
+  <div><span>Headline</span><button data-h-set="1">1</button><button data-h-set="2">2</button><button data-h-set="3">3</button></div>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg-lucky" viewBox="164.15 237.42 513.48 118.24" fill="currentColor" fill-rule="nonzero"><path d="M 294.949219 282.929688 C 294.460938 282.714844 294.03125 282.59375 293.699219 282.523438 C 297.121094 263.269531 292.363281 240.539062 279.234375 239.039062 C 265.09375 237.421875 266.507812 249.339844 260.847656 254.996094 C 255.191406 260.65625 243.273438 259.242188 244.890625 273.382812 C 246.257812 285.347656 265.269531 290.367188 283.203125 288.570312 L 278.699219 294.238281 C 262.21875 293.636719 246.140625 298.761719 244.890625 309.730469 C 243.273438 323.871094 255.191406 322.457031 260.847656 328.113281 C 263.574219 330.835938 264.660156 335.011719 266.632812 338.429688 C 269.761719 343.292969 283.121094 337.703125 285.691406 330.847656 C 288.265625 323.988281 282.480469 313.277344 283.765625 305.988281 C 276.691406 301.917969 276.902344 298.785156 278.835938 296.5625 C 278.992188 296.382812 279.175781 296.152344 279.375 295.898438 C 279.417969 295.847656 279.457031 295.796875 279.5 295.742188 C 279.691406 295.5 279.890625 295.238281 280.109375 294.949219 C 280.234375 294.789062 280.367188 294.609375 280.496094 294.4375 C 280.523438 294.398438 280.550781 294.363281 280.578125 294.328125 C 282.117188 292.28125 284.175781 289.5 286.164062 287.316406 C 287.488281 285.863281 288.773438 284.675781 289.835938 284.183594 C 290.195312 284.019531 290.546875 283.90625 290.894531 283.820312 L 290.898438 283.824219 C 291.320312 283.71875 291.730469 283.675781 292.132812 283.671875 C 292.207031 283.667969 292.277344 283.667969 292.351562 283.667969 C 292.523438 283.671875 292.695312 283.683594 292.863281 283.703125 C 292.929688 283.710938 292.996094 283.722656 293.0625 283.734375 C 295.753906 284.132812 297.695312 286.277344 297.695312 286.277344 C 297.695312 286.277344 297.179688 283.902344 294.949219 282.929688 "/><path d="M 313.265625 296.65625 C 313.960938 303.082031 310.050781 306.191406 305.300781 313.691406 C 302.289062 318.445312 305.378906 334.914062 309.382812 341.394531 C 311.1875 342.859375 313.25 343.808594 315.582031 344.074219 C 329.722656 345.691406 328.308594 333.769531 333.964844 328.113281 C 337.632812 324.445312 343.933594 323.746094 347.46875 319.851562 Z M 313.265625 296.65625 "/><path d="M 292.835938 290.691406 C 289.980469 289.261719 287.980469 292.976562 288.550781 294.179688 C 288.550781 294.179688 289.121094 294.40625 291.40625 294.179688 C 293.691406 293.957031 294.679688 291.613281 292.835938 290.691406 "/><path d="M 351.003906 318.273438 C 350.675781 318.046875 349.992188 317.570312 349.226562 317.03125 C 349.972656 315.183594 350.28125 312.839844 349.925781 309.730469 C 348.601562 298.140625 330.726562 293.066406 313.308594 294.390625 L 348.574219 318.371094 C 348.578125 318.367188 348.582031 318.363281 348.582031 318.355469 L 351.003906 320 C 351.003906 320 347.335938 325.910156 347.445312 326.449219 C 347.550781 326.988281 351.863281 327.851562 353.699219 324.617188 C 355.53125 321.382812 351.972656 318.9375 351.003906 318.273438 "/><path d="M 333.964844 254.996094 C 328.308594 249.339844 329.722656 237.421875 315.582031 239.039062 C 303.851562 240.378906 298.800781 258.675781 300.300781 276.289062 C 298.65625 276.320312 298.054688 277.136719 298.054688 278.1875 C 298.054688 279.035156 300.769531 280.578125 300.769531 280.578125 C 300.4375 280.289062 299.074219 279.050781 299.074219 278.355469 C 299.074219 277.5625 299.527344 277.050781 301.144531 277.050781 C 302.757812 277.050781 308.199219 276.199219 310.863281 278.894531 C 313.53125 281.585938 312.574219 285.414062 311.46875 286.347656 C 311.460938 286.351562 311.449219 286.339844 311.441406 286.34375 C 311.230469 287.015625 310.949219 287.714844 310.535156 288.453125 C 328.777344 290.5625 348.53125 285.585938 349.925781 273.382812 C 351.542969 259.242188 339.621094 260.65625 333.964844 254.996094 "/><path d="M 177.238281 327.636719 L 219.746094 327.636719 L 219.746094 340.023438 L 164.148438 340.023438 L 164.148438 241.492188 L 177.238281 241.492188 Z M 177.238281 327.636719 "/><path d="M 393.703125 327.074219 C 383.992188 317.222656 379.207031 305.117188 379.207031 290.757812 C 379.207031 276.402344 383.992188 264.296875 393.703125 254.441406 C 403.417969 244.589844 415.804688 239.664062 430.726562 239.664062 C 448.742188 239.664062 464.789062 248.953125 473.234375 263.589844 L 461.832031 270.207031 C 456.203125 259.367188 444.238281 252.332031 430.726562 252.332031 C 419.324219 252.332031 410.03125 255.992188 402.855469 263.3125 C 395.675781 270.632812 392.15625 279.78125 392.15625 290.757812 C 392.15625 301.597656 395.675781 310.746094 402.855469 318.0625 C 410.03125 325.386719 419.324219 329.046875 430.726562 329.046875 C 444.238281 329.046875 456.203125 322.007812 461.832031 311.308594 L 473.234375 317.785156 C 469.152344 325.105469 463.242188 331.015625 455.636719 335.378906 C 448.035156 339.742188 439.734375 341.855469 430.726562 341.855469 C 415.804688 341.855469 403.417969 336.925781 393.703125 327.074219 "/><path d="M 569.875 340.023438 L 553.828125 340.023438 L 511.316406 292.726562 L 511.316406 340.023438 L 498.226562 340.023438 L 498.226562 241.492188 L 511.316406 241.492188 L 511.316406 285.972656 L 552.417969 241.492188 L 568.464844 241.492188 L 524.972656 289.351562 Z M 569.875 340.023438 "/><path d="M 677.632812 241.492188 L 642.726562 300.1875 L 642.726562 340.023438 L 629.632812 340.023438 L 629.632812 300.046875 L 594.867188 241.492188 L 609.503906 241.492188 L 636.25 287.664062 L 662.992188 241.492188 Z M 677.632812 241.492188 "/><path d="M 343.609375 338.0625 L 343.609375 341.878906 L 345.386719 341.878906 C 346.871094 341.878906 347.761719 341.136719 347.761719 339.988281 C 347.761719 338.695312 346.984375 338.0625 345.386719 338.0625 Z M 348.277344 343.878906 L 351.132812 349.109375 L 348.019531 349.109375 L 345.613281 344.472656 L 343.609375 344.472656 L 343.609375 349.109375 L 340.757812 349.109375 L 340.757812 335.394531 L 345.386719 335.394531 C 348.613281 335.394531 350.613281 337.320312 350.613281 339.839844 C 350.613281 341.769531 349.835938 343.101562 348.277344 343.878906 M 353.765625 350.960938 C 356.171875 348.550781 357.359375 345.660156 357.359375 342.25 C 357.359375 338.84375 356.171875 335.953125 353.765625 333.539062 C 351.390625 331.132812 348.539062 329.945312 345.167969 329.945312 C 341.792969 329.945312 338.902344 331.132812 336.492188 333.539062 C 334.121094 335.953125 332.9375 338.84375 332.9375 342.25 C 332.9375 345.660156 334.121094 348.550781 336.492188 350.960938 C 338.902344 353.367188 341.792969 354.554688 345.167969 354.554688 C 348.539062 354.554688 351.390625 353.367188 353.765625 350.960938 M 345.167969 328.835938 C 348.871094 328.835938 352.023438 330.132812 354.652344 332.765625 C 357.285156 335.394531 358.582031 338.542969 358.582031 342.25 C 358.582031 345.957031 357.285156 349.109375 354.652344 351.738281 C 352.023438 354.371094 348.871094 355.664062 345.167969 355.664062 C 341.460938 355.664062 338.3125 354.371094 335.679688 351.738281 C 333.046875 349.109375 331.75 345.957031 331.75 342.25 C 331.75 338.542969 333.046875 335.394531 335.679688 332.765625 C 338.3125 330.132812 341.460938 328.835938 345.167969 328.835938 "/></symbol></svg>
+
+<div class="lg-tick"><div class="lg-tick-in">
+  <a href="#"><b>Free hat</b> with any club this weekend</a><a href="#">Free shipping over $198</a><a href="#">Sixty days to prove us wrong</a>
+</div></div>
+<header class="lg-hdr"><div class="lg-hdr-in">
+  <a class="lg-logo" href="#" aria-label="Lucky Golf home"><svg viewBox="0 0 513.48 118.24" width="132" height="30" fill="currentColor"><use href="#lg-lucky"/></svg></a>
+  <nav class="lg-nav" aria-label="Main"><a href="#">Wedges</a><a href="#">Putters</a><a href="#">Hybrid</a><a href="#">Apparel</a><a href="#">Our Story</a></nav>
+  <div class="lg-hdr-act">
+    <a href="#" aria-label="Search"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+    <button type="button" aria-label="Open bag"><img src="data:image/webp;base64,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" alt="" width="40" height="40" onerror="this.remove()"></button>
+  </div>
+</div></header>
+
+<script type="application/json" id="gwp-data">{"moneyFormat":"${{amount}}","gifts":{"hat":{"title":"Free Hat (Gift)","variants":[{"id":900001,"opts":["Baby Blue Monochrome Cursive Hat"],"available":true,"price":0},{"id":900002,"opts":["White Cursive Hat"],"available":true,"price":0},{"id":900003,"opts":["White Upside Down Hat"],"available":true,"price":0},{"id":900004,"opts":["White/Black Upside Down Hat"],"available":true,"price":0},{"id":900005,"opts":["Black | Gold Classic Lucky Hat"],"available":true,"price":0},{"id":900006,"opts":["Tan Cursive Hat"],"available":true,"price":0},{"id":900007,"opts":["Black \"IT'S BETTER TO BE LUCKY\" Patch Hat"],"available":true,"price":0},{"id":900008,"opts":["Cream Upside Down Hat"],"available":true,"price":0},{"id":900009,"opts":["White \"IT'S BETTER TO BE LUCKY\" Patch Hat"],"available":true,"price":0},{"id":900010,"opts":["White | Gold Classic Hat"],"available":true,"price":0}]},"polo":{"title":"Free Polo (Gift)","variants":[{"id":900011,"opts":["Nightshade Classic Polo","Small"],"available":true,"price":0},{"id":900012,"opts":["Nightshade Classic Polo","Medium"],"available":true,"price":0},{"id":900013,"opts":["Nightshade Classic Polo","Large"],"available":true,"price":0},{"id":900014,"opts":["Nightshade Classic Polo","XL"],"available":true,"price":0},{"id":900015,"opts":["Nightshade Classic Polo","XXL"],"available":true,"price":0},{"id":900016,"opts":["Nightshade Classic Polo","3XL"],"available":true,"price":0},{"id":900017,"opts":["Azalea Classic Polo","Small"],"available":true,"price":0},{"id":900018,"opts":["Azalea Classic Polo","Medium"],"available":true,"price":0},{"id":900019,"opts":["Azalea Classic Polo","Large"],"available":true,"price":0},{"id":900020,"opts":["Azalea Classic Polo","XL"],"available":false,"price":0},{"id":900021,"opts":["Azalea Classic Polo","XXL"],"available":false,"price":0},{"id":900022,"opts":["Azalea Classic Polo","3XL"],"available":false,"price":0},{"id":900023,"opts":["Cruiser Classic Polo","Small"],"available":true,"price":0},{"id":900024,"opts":["Cruiser Classic Polo","Medium"],"available":true,"price":0},{"id":900025,"opts":["Cruiser Classic Polo","Large"],"available":true,"price":0},{"id":900026,"opts":["Cruiser Classic Polo","XL"],"available":true,"price":0},{"id":900027,"opts":["Cruiser Classic Polo","XXL"],"available":true,"price":0},{"id":900028,"opts":["Cruiser Classic Polo","3XL"],"available":false,"price":0},{"id":900029,"opts":["Blackout Blade Polo","Small"],"available":true,"price":0},{"id":900030,"opts":["Blackout Blade Polo","Medium"],"available":true,"price":0},{"id":900031,"opts":["Blackout Blade Polo","Large"],"available":true,"price":0},{"id":900032,"opts":["Blackout Blade Polo","XL"],"available":true,"price":0},{"id":900033,"opts":["Blackout Blade Polo","XXL"],"available":false,"price":0},{"id":900034,"opts":["Blackout Blade Polo","3XL"],"available":false,"price":0},{"id":900035,"opts":["Spot Blade Polo","Small"],"available":true,"price":0},{"id":900036,"opts":["Spot Blade Polo","Medium"],"available":true,"price":0},{"id":900037,"opts":["Spot Blade Polo","Large"],"available":true,"price":0},{"id":900038,"opts":["Spot Blade Polo","XL"],"available":true,"price":0},{"id":900039,"opts":["Spot Blade Polo","XXL"],"available":true,"price":0},{"id":900040,"opts":["Spot Blade Polo","3XL"],"available":true,"price":0},{"id":900041,"opts":["Swirl Blade Polo","Small"],"available":true,"price":0},{"id":900042,"opts":["Swirl Blade Polo","Medium"],"available":true,"price":0},{"id":900043,"opts":["Swirl Blade Polo","Large"],"available":true,"price":0},{"id":900044,"opts":["Swirl Blade Polo","XL"],"available":true,"price":0},{"id":900045,"opts":["Swirl Blade Polo","XXL"],"available":true,"price":0},{"id":900046,"opts":["Swirl Blade Polo","3XL"],"available":false,"price":0},{"id":900047,"opts":["Frost Classic Polo","Small"],"available":true,"price":0},{"id":900048,"opts":["Frost Classic Polo","Medium"],"available":true,"price":0},{"id":900049,"opts":["Frost Classic Polo","Large"],"available":true,"price":0},{"id":900050,"opts":["Frost Classic Polo","XL"],"available":true,"price":0},{"id":900051,"opts":["Frost Classic Polo","XXL"],"available":true,"price":0},{"id":900052,"opts":["Frost Classic Polo","3XL"],"available":true,"price":0},{"id":900053,"opts":["Gold Carnation Classic Polo","Small"],"available":true,"price":0},{"id":900054,"opts":["Gold Carnation Classic Polo","Medium"],"available":true,"price":0},{"id":900055,"opts":["Gold Carnation Classic Polo","Large"],"available":true,"price":0},{"id":900056,"opts":["Gold Carnation Classic Polo","XL"],"available":true,"price":0},{"id":900057,"opts":["Gold Carnation Classic Polo","XXL"],"available":false,"price":0},{"id":900058,"opts":["Gold Carnation Classic Polo","3XL"],"available":true,"price":0},{"id":900059,"opts":["Marble Classic Polo","Small"],"available":true,"price":0},{"id":900060,"opts":["Marble Classic Polo","Medium"],"available":true,"price":0},{"id":900061,"opts":["Marble Classic Polo","Large"],"available":true,"price":0},{"id":900062,"opts":["Marble Classic Polo","XL"],"available":false,"price":0},{"id":900063,"opts":["Marble Classic Polo","XXL"],"available":false,"price":0},{"id":900064,"opts":["Marble Classic Polo","3XL"],"available":false,"price":0},{"id":900065,"opts":["Contour Classic Polo","Small"],"available":true,"price":0},{"id":900066,"opts":["Contour Classic Polo","Medium"],"available":true,"price":0},{"id":900067,"opts":["Contour Classic Polo","Large"],"available":true,"price":0},{"id":900068,"opts":["Contour Classic Polo","XL"],"available":false,"price":0},{"id":900069,"opts":["Contour Classic Polo","XXL"],"available":true,"price":0},{"id":900070,"opts":["Contour Classic Polo","3XL"],"available":true,"price":0},{"id":900071,"opts":["Signature Black Classic Polo","Small"],"available":true,"price":0},{"id":900072,"opts":["Signature Black Classic Polo","Medium"],"available":true,"price":0},{"id":900073,"opts":["Signature Black Classic Polo","Large"],"available":true,"price":0},{"id":900074,"opts":["Signature Black Classic Polo","XL"],"available":true,"price":0},{"id":900075,"opts":["Signature Black Classic Polo","XXL"],"available":true,"price":0},{"id":900076,"opts":["Signature Black Classic Polo","3XL"],"available":true,"price":0},{"id":900077,"opts":["Shadow Classic Polo","Small"],"available":true,"price":0},{"id":900078,"opts":["Shadow Classic Polo","Medium"],"available":true,"price":0},{"id":900079,"opts":["Shadow Classic Polo","Large"],"available":true,"price":0},{"id":900080,"opts":["Shadow Classic Polo","XL"],"available":false,"price":0},{"id":900081,"opts":["Shadow Classic Polo","XXL"],"available":false,"price":0},{"id":900082,"opts":["Shadow Classic Polo","3XL"],"available":false,"price":0},{"id":900083,"opts":["Gold Dust Classic Polo","Small"],"available":true,"price":0},{"id":900084,"opts":["Gold Dust Classic Polo","Medium"],"available":true,"price":0},{"id":900085,"opts":["Gold Dust Classic Polo","Large"],"available":true,"price":0},{"id":900086,"opts":["Gold Dust Classic Polo","XL"],"available":true,"price":0},{"id":900087,"opts":["Gold Dust Classic Polo","XXL"],"available":false,"price":0},{"id":900088,"opts":["Gold Dust Classic Polo","3XL"],"available":false,"price":0}]}},"products":[{"id":9583978905877,"variants":[{"id":50066568904981,"opts":["Right Hand","50° K"],"available":true,"price":9900},{"id":50066568937749,"opts":["Right Hand","52° K"],"available":true,"price":9900},{"id":50066570248469,"opts":["Right Hand","52° S"],"available":false,"price":9900},{"id":50066568970517,"opts":["Right Hand","54° K"],"available":true,"price":9900},{"id":50066569003285,"opts":["Right Hand","56° K"],"available":true,"price":9900},{"id":50066570281237,"opts":["Right Hand","56° S"],"available":false,"price":9900},{"id":50066569036053,"opts":["Right Hand","58° K"],"available":true,"price":9900},{"id":50066569068821,"opts":["Right Hand","60° K"],"available":true,"price":9900},{"id":50066570314005,"opts":["Right Hand","60° S"],"available":false,"price":9900},{"id":50066569101589,"opts":["Left Hand","50° K"],"available":false,"price":9900},{"id":50066569134357,"opts":["Left Hand","52° K"],"available":true,"price":9900},{"id":50066570346773,"opts":["Left Hand","52° S"],"available":true,"price":9900},{"id":50066569167125,"opts":["Left Hand","54° K"],"available":true,"price":9900},{"id":50066569199893,"opts":["Left Hand","56° K"],"available":true,"price":9900},{"id":50066570379541,"opts":["Left Hand","56° S"],"available":true,"price":9900},{"id":50066569232661,"opts":["Left Hand","58° K"],"available":true,"price":9900},{"id":50066569265429,"opts":["Left Hand","60° K"],"available":false,"price":9900},{"id":50066570412309,"opts":["Left Hand","60° S"],"available":true,"price":9900}]},{"id":9574093717781,"variants":[{"id":50025466265877,"opts":["Right Hand","50°"],"available":true,"price":10900},{"id":50025463251221,"opts":["Right Hand","52°"],"available":true,"price":10900},{"id":50025466298645,"opts":["Right Hand","54°"],"available":true,"price":10900},{"id":50025463283989,"opts":["Right Hand","56°"],"available":true,"price":10900},{"id":50025466331413,"opts":["Right Hand","58°"],"available":true,"price":10900},{"id":50025463316757,"opts":["Right Hand","60°"],"available":true,"price":10900}]},{"id":8973333496085,"variants":[{"id":49956772544789,"opts":["Right"],"available":true,"price":22900},{"id":49956772577557,"opts":["Left"],"available":true,"price":22900}]},{"id":9226792304917,"variants":[{"id":49956773167381,"opts":["Right"],"available":true,"price":20900},{"id":49956773200149,"opts":["Left"],"available":true,"price":20900}]}]}</script>
+<div class="lg-scope gwp" id="gwp" style="--gwp-top:72px"
+     data-tier1="9000"
+     data-tier2="14000"
+     data-ship="19800"
+     data-gift1-short="your free hat"
+     data-gift2-short="your free polo"
+     data-bar-gift1="Free hat earned"
+     data-bar-gift2="Hat + polo earned"
+     data-copy-start="Your bag's empty. $90 gets you a free hat."
+     data-copy-away1="{amount} away from {gift}"
+     data-copy-away2="{amount} away from {gift}"
+     data-copy-pick="Nice, you've got {gift}. Go pick one below."
+     data-copy-hit1="Hat's in the bag. You're all set."
+     data-copy-ship-away="Hat and polo are in. {amount} more and shipping's free."
+     data-copy-hit2="Hat, polo, free shipping. Go check out before Sunday."
+     data-copy-locked="Unlocks at {amount}"
+     data-copy-add="Add to bag"
+     data-copy-adding="Adding"
+     data-copy-added="In the bag"
+     data-copy-soldout="Sold out"
+     data-copy-claim="Throw it in"
+     data-copy-claimed="It's in"
+     data-copy-gift-lost="Your bag dropped under the line, so {gift} came back out."
+     data-copy-gift-won="That's {gift} unlocked. Go pick one."
+     data-copy-error="That didn't go in the bag. Give it another go, or reload the page."
+     data-copy-soldout-gift="That one's gone. Pick another, it's still free.">
+
+  <section class="gs-hero" id="gs-hero">
+  <div class="lg-wrap">
+    <p class="lg-eyebrow">This weekend only · Ends Sunday, Sept 20</p>
+    <h1 class="lg-d1 gs-h1" id="gs-h1"><span class="gwp-num">$90</span> gets the hat. <span class="gwp-num">$140</span> gets the fit.</h1>
+    <p class="lg-lede gs-lede" id="gs-lede">The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.</p>
+    <div class="gs-sums">
+      <div class="gs-sum">
+        <figure class="gs-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=700" alt="Carver 01 Gold"><span class="lg-tag">$99</span><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+        <span class="gs-op" aria-hidden="true">+</span>
+        <figure class="gs-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=600" alt="Lucky hat"><span class="lg-tag lg-tag-gold">Free</span><figcaption class="lg-label">Any hat</figcaption></figure>
+        <span class="gs-op gs-eq" aria-hidden="true">=</span>
+        <div class="gs-res"><b class="gwp-num-d">$99</b><span>Any club gets you the hat.</span></div>
+      </div>
+      <div class="gs-sum">
+        <figure class="gs-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=700" alt="Stryker hybrid"><span class="lg-tag">$209</span><figcaption class="lg-label">Stryker</figcaption></figure>
+        <span class="gs-op" aria-hidden="true">+</span>
+        <figure class="gs-tile gs-pair"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Lucky hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=500" alt="Gold Dust polo"><span class="lg-tag lg-tag-gold">Both free</span><figcaption class="lg-label">The fit: hat + polo</figcaption></figure>
+        <span class="gs-op gs-eq" aria-hidden="true">=</span>
+        <div class="gs-res"><b class="gwp-num-d">$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+      </div>
+    </div>
+    <div class="gs-foot">
+      <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">Show me the clubs <span aria-hidden="true">&rarr;</span></a>
+      <ul class="gs-trust" role="list">
+        <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li>
+        <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>Sixty days to prove us wrong</li>
+        <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Free shipping over $198</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <div class="gwp-rail" id="gwp-rail" data-tier="0"><div class="gwp-rail-in">
+    <div class="gwp-rail-copy">
+      <p class="gwp-say" id="gwp-say" role="status" aria-live="polite" aria-atomic="true">Your bag's empty. $90 gets you a free hat.</p>
+      <div class="gwp-track" aria-hidden="true"><span class="gwp-fill" id="gwp-fill"></span>
+        <span class="gwp-node" data-node="1" style="left:64.2857%"><i></i><b>$90 hat</b></span>
+        <span class="gwp-node" data-node="2" style="left:100%"><i></i><b>$140 polo</b></span></div>
+    </div>
+    <div class="gwp-rail-act"><span class="gwp-rail-sum"><span class="l lg-label">Subtotal</span><span class="v" id="gwp-rail-sum">$0.00</span></span>
+      <a class="lg-btn lg-btn-line" href="#">Checkout</a></div>
+  </div></div>
+
+  <section class="lg-sec" id="gwp-clubs" tabindex="-1"><div class="lg-wrap">
+    <p class="lg-eyebrow">Start here</p>
+    <h2 class="lg-d2">Every one of these gets you a hat</h2>
+    <p class="lg-aside">The Mallet and the Stryker get you the polo too. Two wedges and shipping's free on top of it.</p>
+    <div class="gwp-clubs"><article class="lg-card gwp-card" data-pid="9583978905877">
+  <span class="lg-card-ph gwp-cut"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=700" width="700" height="700" loading="lazy" alt="Carver 01 Gold"><span class="lg-tag gwp-unlock">Free hat</span></span>
+  <span class="lg-card-bd"><span class="lg-card-nm">Carver 01 Gold</span><span class="lg-card-pr" data-price>$99</span>
+    <span class="lg-card-ln">Checks up where you aimed it. Where you aimed it is on you.</span></span>
+  <div class="gwp-opts"><div class="gwp-opt"><span class="lg-label">Hand</span><div class="gwp-chips" role="group" aria-label="Hand"><button type="button" class="lg-chip" data-axis="0" data-val="Right Hand" aria-pressed="true">Right Hand</button><button type="button" class="lg-chip" data-axis="0" data-val="Left Hand" aria-pressed="false">Left Hand</button></div></div><div class="gwp-opt"><span class="lg-label">Loft &amp; Grind</span><div class="gwp-chips" role="group" aria-label="Loft &amp; Grind"><button type="button" class="lg-chip" data-axis="1" data-val="50° K" aria-pressed="true">50° K</button><button type="button" class="lg-chip" data-axis="1" data-val="52° K" aria-pressed="false">52° K</button><button type="button" class="lg-chip" data-axis="1" data-val="52° S" aria-pressed="false">52° S</button><button type="button" class="lg-chip" data-axis="1" data-val="54° K" aria-pressed="false">54° K</button><button type="button" class="lg-chip" data-axis="1" data-val="56° K" aria-pressed="false">56° K</button><button type="button" class="lg-chip" data-axis="1" data-val="56° S" aria-pressed="false">56° S</button><button type="button" class="lg-chip" data-axis="1" data-val="58° K" aria-pressed="false">58° K</button><button type="button" class="lg-chip" data-axis="1" data-val="60° K" aria-pressed="false">60° K</button><button type="button" class="lg-chip" data-axis="1" data-val="60° S" aria-pressed="false">60° S</button></div></div></div>
+  <div class="gwp-buy">
+    <div class="gwp-qty" role="group" aria-label="How many"><button type="button" data-qty="-1" aria-label="One fewer">&minus;</button><output data-qty-out>1</output><button type="button" data-qty="1" aria-label="One more">+</button></div>
+    <button type="button" class="lg-btn lg-btn-line gwp-add" data-add data-variant-id="50066568904981"><span class="lb">Add to bag</span><span class="gwp-sp" aria-hidden="true"></span></button>
+  </div>
+</article>
+<article class="lg-card gwp-card" data-pid="9574093717781">
+  <span class="lg-card-ph gwp-cut"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp?width=700" width="700" height="700" loading="lazy" alt="Carver 01 Black"><span class="lg-tag gwp-unlock">Free hat</span></span>
+  <span class="lg-card-bd"><span class="lg-card-nm">Carver 01 Black</span><span class="lg-card-pr" data-price>$109</span>
+    <span class="lg-card-ln">The Gold's quieter brother. Righty only.</span></span>
+  <div class="gwp-opts"><button type="button" hidden data-axis="0" data-val="Right Hand" aria-pressed="true"></button><div class="gwp-opt"><span class="lg-label">Loft &amp; Grind</span><div class="gwp-chips" role="group" aria-label="Loft &amp; Grind"><button type="button" class="lg-chip" data-axis="1" data-val="50°" aria-pressed="true">50°</button><button type="button" class="lg-chip" data-axis="1" data-val="52°" aria-pressed="false">52°</button><button type="button" class="lg-chip" data-axis="1" data-val="54°" aria-pressed="false">54°</button><button type="button" class="lg-chip" data-axis="1" data-val="56°" aria-pressed="false">56°</button><button type="button" class="lg-chip" data-axis="1" data-val="58°" aria-pressed="false">58°</button><button type="button" class="lg-chip" data-axis="1" data-val="60°" aria-pressed="false">60°</button></div></div></div>
+  <div class="gwp-buy">
+    <div class="gwp-qty" role="group" aria-label="How many"><button type="button" data-qty="-1" aria-label="One fewer">&minus;</button><output data-qty-out>1</output><button type="button" data-qty="1" aria-label="One more">+</button></div>
+    <button type="button" class="lg-btn lg-btn-line gwp-add" data-add data-variant-id="50025466265877"><span class="lb">Add to bag</span><span class="gwp-sp" aria-hidden="true"></span></button>
+  </div>
+</article>
+<article class="lg-card gwp-card" data-pid="8973333496085">
+  <span class="lg-card-ph gwp-cut"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_b48ef32d-d670-47d7-ad36-4bf7a466e2f8.webp?width=700" width="700" height="700" loading="lazy" alt="Tracer LGP02 Mallet"><span class="lg-tag lg-tag-gold gwp-unlock">Free hat + polo</span></span>
+  <span class="lg-card-bd"><span class="lg-card-nm">Tracer LGP02 Mallet</span><span class="lg-card-pr" data-price>$229</span>
+    <span class="lg-card-ln">Lines up so easy the four-footers get boring.</span></span>
+  <div class="gwp-opts"><div class="gwp-opt"><span class="lg-label">Hand</span><div class="gwp-chips" role="group" aria-label="Hand"><button type="button" class="lg-chip" data-axis="0" data-val="Right" aria-pressed="true">Right</button><button type="button" class="lg-chip" data-axis="0" data-val="Left" aria-pressed="false">Left</button></div></div></div>
+  <div class="gwp-buy">
+    <div class="gwp-qty" role="group" aria-label="How many"><button type="button" data-qty="-1" aria-label="One fewer">&minus;</button><output data-qty-out>1</output><button type="button" data-qty="1" aria-label="One more">+</button></div>
+    <button type="button" class="lg-btn lg-btn-line gwp-add" data-add data-variant-id="49956772544789"><span class="lb">Add to bag</span><span class="gwp-sp" aria-hidden="true"></span></button>
+  </div>
+</article>
+<article class="lg-card gwp-card" data-pid="9226792304917">
+  <span class="lg-card-ph gwp-cut"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=700" width="700" height="700" loading="lazy" alt="Stryker LGH01"><span class="lg-tag lg-tag-gold gwp-unlock">Free hat + polo</span></span>
+  <span class="lg-card-bd"><span class="lg-card-nm">Stryker LGH01</span><span class="lg-card-pr" data-price>$209</span>
+    <span class="lg-card-ln">Way easier to hit than your 3 wood. Your 3 wood knows it.</span></span>
+  <div class="gwp-opts"><div class="gwp-opt"><span class="lg-label">Hand</span><div class="gwp-chips" role="group" aria-label="Hand"><button type="button" class="lg-chip" data-axis="0" data-val="Right" aria-pressed="true">Right</button><button type="button" class="lg-chip" data-axis="0" data-val="Left" aria-pressed="false">Left</button></div></div></div>
+  <div class="gwp-buy">
+    <div class="gwp-qty" role="group" aria-label="How many"><button type="button" data-qty="-1" aria-label="One fewer">&minus;</button><output data-qty-out>1</output><button type="button" data-qty="1" aria-label="One more">+</button></div>
+    <button type="button" class="lg-btn lg-btn-line gwp-add" data-add data-variant-id="49956773167381"><span class="lb">Add to bag</span><span class="gwp-sp" aria-hidden="true"></span></button>
+  </div>
+</article></div>
+  </div></section>
+
+  <section class="lg-sec" id="gwp-gifts" style="padding-top:0"><div class="lg-wrap">
+    <p class="lg-eyebrow">The free stuff</p>
+    <h2 class="lg-d2">Pick your hat. Then your polo.</h2>
+    <p class="lg-body">They unlock as your bag fills up. Take the one you'd actually wear.</p>
+    <div class="gwp-gift-row"><article class="lg-tile gwp-gift" data-gift="hat" data-gift-tier="1" data-threshold="9000" data-state="locked">
+  <div class="gwp-gift-hd"><h3 class="lg-d3">Your hat</h3><span class="lg-tag lg-tag-gold">Free</span></div>
+  <p class="lg-body gwp-gift-sub">Any of these. They're $29 any other week.</p>
+  <p class="gwp-lock lg-label" data-lock><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.6" y="7" width="10.8" height="7.2" rx="1.4"/><path d="M5 7V4.9a3 3 0 0 1 6 0V7"/></svg><span data-lock-text></span></p>
+  <div class="gwp-opts gwp-gift-opts"><div class="gwp-opt"><span class="lg-label">Hat</span><div class="gwp-chips gwp-swatches" role="group" aria-label="Hat"><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Baby Blue Monochrome Cursive Hat" aria-pressed="true" title="Baby Blue Monochrome Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/30_203d7c7f-8680-4d32-bf41-18d0d4877086.webp?width=160" width="72" height="72" loading="lazy" alt="Baby Blue Monochrome Cursive Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="White Cursive Hat" aria-pressed="false" title="White Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/49.webp?width=160" width="72" height="72" loading="lazy" alt="White Cursive Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="White Upside Down Hat" aria-pressed="false" title="White Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/59.webp?width=160" width="72" height="72" loading="lazy" alt="White Upside Down Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="White/Black Upside Down Hat" aria-pressed="false" title="White/Black Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/20.webp?width=160" width="72" height="72" loading="lazy" alt="White/Black Upside Down Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Black | Gold Classic Lucky Hat" aria-pressed="false" title="Black | Gold Classic Lucky Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=160" width="72" height="72" loading="lazy" alt="Black | Gold Classic Lucky Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Tan Cursive Hat" aria-pressed="false" title="Tan Cursive Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/1_9c446716-791d-48c1-be9d-9e805bda751a.webp?width=160" width="72" height="72" loading="lazy" alt="Tan Cursive Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Black &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat" aria-pressed="false" title="Black &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/39.webp?width=160" width="72" height="72" loading="lazy" alt="Black &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Cream Upside Down Hat" aria-pressed="false" title="Cream Upside Down Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/69.webp?width=160" width="72" height="72" loading="lazy" alt="Cream Upside Down Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="White &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat" aria-pressed="false" title="White &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/89.webp?width=160" width="72" height="72" loading="lazy" alt="White &quot;IT'S BETTER TO BE LUCKY&quot; Patch Hat"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="White | Gold Classic Hat" aria-pressed="false" title="White | Gold Classic Hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/79.webp?width=160" width="72" height="72" loading="lazy" alt="White | Gold Classic Hat"></button></div></div></div>
+  <div class="gwp-pick" data-pick hidden><p class="lg-meta gwp-picked" data-picked></p>
+    <button type="button" class="lg-btn gwp-claim" data-claim data-variant-id="900001"><span class="lb">Throw it in</span><span class="gwp-sp" aria-hidden="true"></span></button></div>
+</article><article class="lg-tile gwp-gift" data-gift="polo" data-gift-tier="2" data-threshold="14000" data-state="locked">
+  <div class="gwp-gift-hd"><h3 class="lg-d3">Your polo</h3><span class="lg-tag lg-tag-gold">Free</span></div>
+  <p class="lg-body gwp-gift-sub">Four-way stretch, and it doesn't come out of the bag wrinkled. $67 any other week.</p>
+  <p class="gwp-lock lg-label" data-lock><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.6" y="7" width="10.8" height="7.2" rx="1.4"/><path d="M5 7V4.9a3 3 0 0 1 6 0V7"/></svg><span data-lock-text></span></p>
+  <div class="gwp-opts gwp-gift-opts"><div class="gwp-opt"><span class="lg-label">Polo</span><div class="gwp-chips gwp-swatches" role="group" aria-label="Polo"><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Nightshade Classic Polo" aria-pressed="true" title="Nightshade Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Blackwhiteflower1.webp?width=160" width="72" height="72" loading="lazy" alt="Nightshade Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Azalea Classic Polo" aria-pressed="false" title="Azalea Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Flower1.webp?width=160" width="72" height="72" loading="lazy" alt="Azalea Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Cruiser Classic Polo" aria-pressed="false" title="Cruiser Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Golfcart1.webp?width=160" width="72" height="72" loading="lazy" alt="Cruiser Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Blackout Blade Polo" aria-pressed="false" title="Blackout Blade Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/StrokePlay1.webp?width=160" width="72" height="72" loading="lazy" alt="Blackout Blade Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Spot Blade Polo" aria-pressed="false" title="Spot Blade Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/FreshMint1.webp?width=160" width="72" height="72" loading="lazy" alt="Spot Blade Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Swirl Blade Polo" aria-pressed="false" title="Swirl Blade Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldTwist1.webp?width=160" width="72" height="72" loading="lazy" alt="Swirl Blade Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Frost Classic Polo" aria-pressed="false" title="Frost Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Whitecome1.webp?width=160" width="72" height="72" loading="lazy" alt="Frost Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Gold Carnation Classic Polo" aria-pressed="false" title="Gold Carnation Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/WhiteCarnation1.webp?width=160" width="72" height="72" loading="lazy" alt="Gold Carnation Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Marble Classic Polo" aria-pressed="false" title="Marble Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/GoldMirage1.webp?width=160" width="72" height="72" loading="lazy" alt="Marble Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Contour Classic Polo" aria-pressed="false" title="Contour Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/TopographyStyle1.webp?width=160" width="72" height="72" loading="lazy" alt="Contour Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Signature Black Classic Polo" aria-pressed="false" title="Signature Black Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Classicpolowithlogointhecollar1.webp?width=160" width="72" height="72" loading="lazy" alt="Signature Black Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Shadow Classic Polo" aria-pressed="false" title="Shadow Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Graycamofour-leafclover1.webp?width=160" width="72" height="72" loading="lazy" alt="Shadow Classic Polo"></button><button type="button" class="gwp-swatch" data-gift-axis="0" data-val="Gold Dust Classic Polo" aria-pressed="false" title="Gold Dust Classic Polo"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=160" width="72" height="72" loading="lazy" alt="Gold Dust Classic Polo"></button></div></div><div class="gwp-opt"><span class="lg-label">Size</span><div class="gwp-chips" role="group" aria-label="Size"><button type="button" class="lg-chip" data-gift-axis="1" data-val="Small" aria-pressed="true">Small</button><button type="button" class="lg-chip" data-gift-axis="1" data-val="Medium" aria-pressed="false">Medium</button><button type="button" class="lg-chip" data-gift-axis="1" data-val="Large" aria-pressed="false">Large</button><button type="button" class="lg-chip" data-gift-axis="1" data-val="XL" aria-pressed="false">XL</button><button type="button" class="lg-chip" data-gift-axis="1" data-val="XXL" aria-pressed="false">XXL</button><button type="button" class="lg-chip" data-gift-axis="1" data-val="3XL" aria-pressed="false">3XL</button></div></div></div>
+  <div class="gwp-pick" data-pick hidden><p class="lg-meta gwp-picked" data-picked></p>
+    <button type="button" class="lg-btn gwp-claim" data-claim data-variant-id="900011"><span class="lb">Throw it in</span><span class="gwp-sp" aria-hidden="true"></span></button></div>
+</article></div>
+  </div></section>
+
+  <section class="lg-band"><div class="lg-wrap">
+    <p class="lg-eyebrow">Overheard</p>
+    <h2 class="lg-d2">People keep borrowing them</h2>
+    <div class="lg-grid gwp-revs">
+      <figure class="lg-band-tile gwp-rev"><span class="lg-stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg></span>
+        <blockquote>People borrow it in my league- it’s a winner!</blockquote>
+        <figcaption class="lg-meta">Ray O. · Carver 01 Gold <span class="lg-stock">Verified buyer</span></figcaption></figure>
+      <figure class="lg-band-tile gwp-rev"><span class="lg-stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg></span>
+        <blockquote>This club is MONEY!!' Please make a 3 wood!</blockquote>
+        <figcaption class="lg-meta">Jeff C. · Stryker <span class="lg-stock">Verified buyer</span></figcaption></figure>
+      <figure class="lg-band-tile gwp-rev"><span class="lg-stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.9 1.4 7L12 17.8 5.8 21.3l1.4-7L2 9.4l7-.8z"/></svg></span>
+        <blockquote>Amazing Putter and looks awesome</blockquote>
+        <figcaption class="lg-meta">Arthur V. · Tracer Mallet <span class="lg-stock">Verified buyer</span></figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="lg-sec"><div class="lg-wrap gwp-faq-wrap">
+    <h2 class="lg-d2">Before you ask</h2>
+    <div class="gwp-faq">
+      <details class="gwp-fq"><summary><span>When does it end?</span><span class="mk" aria-hidden="true"></span></summary><div class="gwp-fq-a"><p>Sunday, September 20. After that the hat's $29 again.</p></div></details>
+      <details class="gwp-fq"><summary><span>Do they stack?</span><span class="mk" aria-hidden="true"></span></summary><div class="gwp-fq-a"><p>At $140 you get the hat and the polo. Not two hats. Nice try.</p></div></details>
+      <details class="gwp-fq"><summary><span>What size polo?</span><span class="mk" aria-hidden="true"></span></summary><div class="gwp-fq-a"><p>They run S to 3XL, athletic fit. Stuck between two? Size up.</p></div></details>
+      <details class="gwp-fq"><summary><span>Is shipping free?</span><span class="mk" aria-hidden="true"></span></summary><div class="gwp-fq-a"><p>Over $198 it is. Two wedges gets you there.</p></div></details>
+      <details class="gwp-fq"><summary><span>What if I send the clubs back?</span><span class="mk" aria-hidden="true"></span></summary><div class="gwp-fq-a"><p>The free stuff goes back in the box with them. Keep the clubs, keep the hat.</p></div></details>
+    </div>
+  </div></section>
+
+  <div class="gwp-bar" id="gwp-bar"><div class="gwp-bar-in">
+    <span class="gwp-bar-sum"><span class="l lg-label">Subtotal</span><span class="v" id="gwp-bar-sum">$0.00</span></span>
+    <span class="gwp-bar-gift" id="gwp-bar-gift" data-none>No free stuff yet</span>
+    <a class="lg-btn" href="#">Checkout</a>
+  </div></div>
+  <p class="gwp-toast" id="gwp-toast" hidden role="alert"></p>
+</div>
+
+<footer class="lg-ftr"><div class="lg-wrap">
+  <div class="lg-ftr-in">
+    <div><h3>Clubs</h3><ul><li><a href="#">Wedges</a></li><li><a href="#">Putters</a></li><li><a href="#">Hybrid</a></li></ul></div>
+    <div><h3>Wear</h3><ul><li><a href="#">Polos</a></li><li><a href="#">Hats</a></li></ul></div>
+    <div><h3>Help</h3><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="lg-ftr-base"><span>&copy; 2026 Lucky Golf</span><span>It&rsquo;s better to be lucky.</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var PRICE = {"900001":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900002":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900003":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900004":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900005":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900006":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900007":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900008":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900009":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900010":{"price":0,"available":true,"title":"Free Hat (Gift)"},"900011":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900012":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900013":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900014":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900015":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900016":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900017":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900018":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900019":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900020":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900021":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900022":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900023":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900024":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900025":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900026":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900027":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900028":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900029":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900030":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900031":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900032":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900033":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900034":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900035":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900036":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900037":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900038":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900039":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900040":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900041":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900042":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900043":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900044":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900045":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900046":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900047":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900048":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900049":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900050":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900051":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900052":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900053":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900054":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900055":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900056":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900057":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900058":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900059":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900060":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900061":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900062":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900063":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900064":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900065":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900066":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900067":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900068":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900069":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900070":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900071":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900072":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900073":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900074":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900075":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900076":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900077":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900078":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900079":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900080":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900081":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900082":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900083":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900084":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900085":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900086":{"price":0,"available":true,"title":"Free Polo (Gift)"},"900087":{"price":0,"available":false,"title":"Free Polo (Gift)"},"900088":{"price":0,"available":false,"title":"Free Polo (Gift)"},"50066568904981":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066568937749":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066570248469":{"price":9900,"available":false,"title":"Carver 01 Gold"},"50066568970517":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569003285":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066570281237":{"price":9900,"available":false,"title":"Carver 01 Gold"},"50066569036053":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569068821":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066570314005":{"price":9900,"available":false,"title":"Carver 01 Gold"},"50066569101589":{"price":9900,"available":false,"title":"Carver 01 Gold"},"50066569134357":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066570346773":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569167125":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569199893":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066570379541":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569232661":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50066569265429":{"price":9900,"available":false,"title":"Carver 01 Gold"},"50066570412309":{"price":9900,"available":true,"title":"Carver 01 Gold"},"50025466265877":{"price":10900,"available":true,"title":"Carver 01 Black"},"50025463251221":{"price":10900,"available":true,"title":"Carver 01 Black"},"50025466298645":{"price":10900,"available":true,"title":"Carver 01 Black"},"50025463283989":{"price":10900,"available":true,"title":"Carver 01 Black"},"50025466331413":{"price":10900,"available":true,"title":"Carver 01 Black"},"50025463316757":{"price":10900,"available":true,"title":"Carver 01 Black"},"49956772544789":{"price":22900,"available":true,"title":"Tracer LGP02 Mallet"},"49956772577557":{"price":22900,"available":true,"title":"Tracer LGP02 Mallet"},"49956773167381":{"price":20900,"available":true,"title":"Stryker LGH01"},"49956773200149":{"price":20900,"available":true,"title":"Stryker LGH01"},"50048056230165":{"price":2900,"available":true,"title":"Baby Blue Monochrome Cursive Hat"},"50029746192661":{"price":2900,"available":true,"title":"White Cursive Hat"},"50029746159893":{"price":2900,"available":true,"title":"White Upside Down Hat"},"50029746127125":{"price":2900,"available":true,"title":"White/Black Upside Down Hat"},"50029744292117":{"price":2900,"available":true,"title":"Black | Gold Classic Lucky Hat"},"50029744193813":{"price":2900,"available":true,"title":"Tan Cursive Hat"},"50029743898901":{"price":2900,"available":true,"title":"Black \"IT'S BETTER TO BE LUCKY\" Patch Hat"},"50029743866133":{"price":2900,"available":true,"title":"Cream Upside Down Hat"},"50029741637909":{"price":2900,"available":true,"title":"White \"IT'S BETTER TO BE LUCKY\" Patch Hat"},"50028040192277":{"price":2900,"available":true,"title":"White | Gold Classic Hat"},"50004813709589":{"price":22900,"available":false,"title":"LGP02 Mallet Putter - Patriot"},"49932894765333":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49932894798101":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49932894830869":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49932894863637":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49932894896405":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49932894929173":{"price":6700,"available":true,"title":"Nightshade Classic Polo"},"49851336655125":{"price":6700,"available":true,"title":"Azalea Classic Polo"},"49851336687893":{"price":6700,"available":true,"title":"Azalea Classic Polo"},"49851336720661":{"price":6700,"available":true,"title":"Azalea Classic Polo"},"49851336753429":{"price":6700,"available":false,"title":"Azalea Classic Polo"},"49851336786197":{"price":6700,"available":false,"title":"Azalea Classic Polo"},"49851336818965":{"price":6700,"available":false,"title":"Azalea Classic Polo"},"49851335704853":{"price":6700,"available":true,"title":"Cruiser Classic Polo"},"49851335737621":{"price":6700,"available":true,"title":"Cruiser Classic Polo"},"49851335770389":{"price":6700,"available":true,"title":"Cruiser Classic Polo"},"49851335803157":{"price":6700,"available":true,"title":"Cruiser Classic Polo"},"49851335835925":{"price":6700,"available":true,"title":"Cruiser Classic Polo"},"49851335868693":{"price":6700,"available":false,"title":"Cruiser Classic Polo"},"49851334787349":{"price":6700,"available":true,"title":"Blackout Blade Polo"},"49851334820117":{"price":6700,"available":true,"title":"Blackout Blade Polo"},"49851334852885":{"price":6700,"available":true,"title":"Blackout Blade Polo"},"49851334885653":{"price":6700,"available":true,"title":"Blackout Blade Polo"},"49851334918421":{"price":6700,"available":false,"title":"Blackout Blade Polo"},"49851334951189":{"price":6700,"available":false,"title":"Blackout Blade Polo"},"49851334295829":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851334328597":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851334361365":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851334394133":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851334426901":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851334459669":{"price":6700,"available":true,"title":"Spot Blade Polo"},"49851333902613":{"price":6700,"available":true,"title":"Swirl Blade Polo"},"49851333935381":{"price":6700,"available":true,"title":"Swirl Blade Polo"},"49851333968149":{"price":6700,"available":true,"title":"Swirl Blade Polo"},"49851334000917":{"price":6700,"available":true,"title":"Swirl Blade Polo"},"49851334033685":{"price":6700,"available":true,"title":"Swirl Blade Polo"},"49851334066453":{"price":6700,"available":false,"title":"Swirl Blade Polo"},"49851333345557":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851333378325":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851333411093":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851333443861":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851333476629":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851333509397":{"price":6700,"available":true,"title":"Frost Classic Polo"},"49851331870997":{"price":6700,"available":true,"title":"Gold Carnation Classic Polo"},"49851331903765":{"price":6700,"available":true,"title":"Gold Carnation Classic Polo"},"49851331936533":{"price":6700,"available":true,"title":"Gold Carnation Classic Polo"},"49851331969301":{"price":6700,"available":true,"title":"Gold Carnation Classic Polo"},"49851332002069":{"price":6700,"available":false,"title":"Gold Carnation Classic Polo"},"49851332034837":{"price":6700,"available":true,"title":"Gold Carnation Classic Polo"},"49851330461973":{"price":6700,"available":true,"title":"Marble Classic Polo"},"49851330494741":{"price":6700,"available":true,"title":"Marble Classic Polo"},"49851330527509":{"price":6700,"available":true,"title":"Marble Classic Polo"},"49851330560277":{"price":6700,"available":false,"title":"Marble Classic Polo"},"49851330593045":{"price":6700,"available":false,"title":"Marble Classic Polo"},"49851330625813":{"price":6700,"available":false,"title":"Marble Classic Polo"},"49851329741077":{"price":6700,"available":true,"title":"Contour Classic Polo"},"49851329773845":{"price":6700,"available":true,"title":"Contour Classic Polo"},"49851329806613":{"price":6700,"available":true,"title":"Contour Classic Polo"},"49851329839381":{"price":6700,"available":false,"title":"Contour Classic Polo"},"49851329872149":{"price":6700,"available":true,"title":"Contour Classic Polo"},"49851329904917":{"price":6700,"available":true,"title":"Contour Classic Polo"},"49851327381781":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851327414549":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851327447317":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851327480085":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851327512853":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851327545621":{"price":6700,"available":true,"title":"Signature Black Classic Polo"},"49851326005525":{"price":6700,"available":true,"title":"Shadow Classic Polo"},"49851326038293":{"price":6700,"available":true,"title":"Shadow Classic Polo"},"49851326071061":{"price":6700,"available":true,"title":"Shadow Classic Polo"},"49851326103829":{"price":6700,"available":false,"title":"Shadow Classic Polo"},"49851326136597":{"price":6700,"available":false,"title":"Shadow Classic Polo"},"49851326169365":{"price":6700,"available":false,"title":"Shadow Classic Polo"},"49830436307221":{"price":6700,"available":true,"title":"Gold Dust Classic Polo"},"49830436339989":{"price":6700,"available":true,"title":"Gold Dust Classic Polo"},"49830436372757":{"price":6700,"available":true,"title":"Gold Dust Classic Polo"},"49830436405525":{"price":6700,"available":true,"title":"Gold Dust Classic Polo"},"49830436438293":{"price":6700,"available":false,"title":"Gold Dust Classic Polo"},"49830436471061":{"price":6700,"available":false,"title":"Gold Dust Classic Polo"},"49123151020309":{"price":298,"available":true,"title":"Free Returns + Package Protection"},"49123151118613":{"price":179,"available":true,"title":"Free Returns + Package Protection"},"49123151151381":{"price":209,"available":true,"title":"Free Returns + Package Protection"},"49123151184149":{"price":239,"available":true,"title":"Free Returns + Package Protection"},"49123151216917":{"price":289,"available":true,"title":"Free Returns + Package Protection"},"49123151249685":{"price":329,"available":true,"title":"Free Returns + Package Protection"},"49123151282453":{"price":379,"available":true,"title":"Free Returns + Package Protection"},"49123151315221":{"price":419,"available":true,"title":"Free Returns + Package Protection"},"49123151347989":{"price":469,"available":true,"title":"Free Returns + Package Protection"},"49123151380757":{"price":519,"available":true,"title":"Free Returns + Package Protection"},"49123151413525":{"price":569,"available":true,"title":"Free Returns + Package Protection"},"49123151446293":{"price":619,"available":true,"title":"Free Returns + Package Protection"},"49123151479061":{"price":689,"available":true,"title":"Free Returns + Package Protection"},"49123151511829":{"price":769,"available":true,"title":"Free Returns + Package Protection"},"49123151544597":{"price":839,"available":true,"title":"Free Returns + Package Protection"},"49123151577365":{"price":929,"available":true,"title":"Free Returns + Package Protection"},"49123151610133":{"price":1019,"available":true,"title":"Free Returns + Package Protection"},"49123151642901":{"price":1109,"available":true,"title":"Free Returns + Package Protection"},"49123151675669":{"price":1199,"available":true,"title":"Free Returns + Package Protection"},"49123151708437":{"price":1289,"available":true,"title":"Free Returns + Package Protection"},"49123151741205":{"price":1379,"available":true,"title":"Free Returns + Package Protection"},"49123151773973":{"price":1489,"available":true,"title":"Free Returns + Package Protection"},"49123151806741":{"price":1589,"available":true,"title":"Free Returns + Package Protection"},"49123151839509":{"price":1699,"available":true,"title":"Free Returns + Package Protection"},"49123151872277":{"price":1799,"available":true,"title":"Free Returns + Package Protection"},"49123151905045":{"price":1909,"available":true,"title":"Free Returns + Package Protection"},"49123151937813":{"price":2009,"available":true,"title":"Free Returns + Package Protection"},"49123151970581":{"price":2129,"available":true,"title":"Free Returns + Package Protection"},"49123152003349":{"price":2249,"available":true,"title":"Free Returns + Package Protection"},"49123152036117":{"price":2419,"available":true,"title":"Free Returns + Package Protection"},"49123152068885":{"price":2549,"available":true,"title":"Free Returns + Package Protection"},"49123152101653":{"price":2689,"available":true,"title":"Free Returns + Package Protection"},"49123152134421":{"price":2879,"available":true,"title":"Free Returns + Package Protection"},"49123152167189":{"price":3079,"available":true,"title":"Free Returns + Package Protection"},"49123152199957":{"price":3269,"available":true,"title":"Free Returns + Package Protection"},"49123152232725":{"price":3469,"available":true,"title":"Free Returns + Package Protection"},"49123152265493":{"price":3659,"available":true,"title":"Free Returns + Package Protection"},"49123152298261":{"price":3869,"available":true,"title":"Free Returns + Package Protection"},"49123152331029":{"price":4079,"available":true,"title":"Free Returns + Package Protection"},"49123152363797":{"price":4289,"available":true,"title":"Free Returns + Package Protection"},"49123152396565":{"price":4499,"available":true,"title":"Free Returns + Package Protection"},"49123152429333":{"price":4709,"available":true,"title":"Free Returns + Package Protection"},"49123152462101":{"price":4919,"available":true,"title":"Free Returns + Package Protection"},"49123152494869":{"price":5129,"available":true,"title":"Free Returns + Package Protection"},"49123152527637":{"price":5339,"available":true,"title":"Free Returns + Package Protection"},"49123152560405":{"price":5549,"available":true,"title":"Free Returns + Package Protection"},"49123152593173":{"price":5759,"available":true,"title":"Free Returns + Package Protection"},"49123152625941":{"price":5999,"available":true,"title":"Free Returns + Package Protection"},"49123152658709":{"price":6239,"available":true,"title":"Free Returns + Package Protection"},"49123152691477":{"price":6479,"available":true,"title":"Free Returns + Package Protection"},"49123152724245":{"price":6719,"available":true,"title":"Free Returns + Package Protection"},"49123152757013":{"price":6959,"available":true,"title":"Free Returns + Package Protection"},"49123152789781":{"price":7199,"available":true,"title":"Free Returns + Package Protection"},"49123152822549":{"price":7439,"available":true,"title":"Free Returns + Package Protection"},"49123152855317":{"price":7679,"available":true,"title":"Free Returns + Package Protection"},"49123152888085":{"price":7919,"available":true,"title":"Free Returns + Package Protection"},"49123152920853":{"price":8159,"available":true,"title":"Free Returns + Package Protection"},"49123152953621":{"price":8399,"available":true,"title":"Free Returns + Package Protection"},"49123152986389":{"price":8669,"available":true,"title":"Free Returns + Package Protection"},"49123153019157":{"price":8939,"available":true,"title":"Free Returns + Package Protection"},"49123153051925":{"price":9209,"available":true,"title":"Free Returns + Package Protection"},"49123153084693":{"price":9479,"available":true,"title":"Free Returns + Package Protection"},"49123153117461":{"price":9899,"available":true,"title":"Free Returns + Package Protection"},"49123153150229":{"price":10349,"available":true,"title":"Free Returns + Package Protection"},"49123153182997":{"price":10799,"available":true,"title":"Free Returns + Package Protection"},"49123153215765":{"price":11249,"available":true,"title":"Free Returns + Package Protection"},"48329285009685":{"price":1995,"available":true,"title":"Stock Putter Grips"},"39650316681287":{"price":995,"available":false,"title":"Lucky Golf Tees"},"39648431996999":{"price":995,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Pink)"},"39648431112263":{"price":995,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Blue)"},"39648431145031":{"price":1195,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Blue)"},"39648431177799":{"price":1495,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Blue)"},"39648429211719":{"price":995,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (White)"},"39648429244487":{"price":1195,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (White)"},"39648429277255":{"price":1495,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (White)"},"39648423936071":{"price":995,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Black)"},"39648423968839":{"price":1195,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Black)"},"39648424001607":{"price":1495,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Black)"},"39545200672839":{"price":1995,"available":false,"title":"Lucky Golf Clovers Oversized Putter Grip"},"39545200705607":{"price":2295,"available":false,"title":"Lucky Golf Clovers Oversized Putter Grip"},"39545200738375":{"price":2495,"available":false,"title":"Lucky Golf Clovers Oversized Putter Grip"},"39545200771143":{"price":2695,"available":false,"title":"Lucky Golf Clovers Oversized Putter Grip"},"39545199525959":{"price":1995,"available":false,"title":"Lucky Golf Green Oversized Putter Grip"},"39545199558727":{"price":2295,"available":false,"title":"Lucky Golf Green Oversized Putter Grip"},"39545199591495":{"price":2495,"available":false,"title":"Lucky Golf Green Oversized Putter Grip"},"39545199624263":{"price":2695,"available":false,"title":"Lucky Golf Green Oversized Putter Grip"},"39470755315783":{"price":995,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Green)"},"39470755348551":{"price":1195,"available":true,"title":"Lucky Golf Tour Performance Clover Grips (Green)"},"39470755381319":{"price":1495,"available":false,"title":"Lucky Golf Tour Performance Clover Grips (Green)"},"39471215476807":{"price":995,"available":false,"title":"Lucky Golf Tour Performance Clover Grips (Green)"},"32765051338823":{"price":1795,"available":true,"title":"Lucky Tour Glove"},"32765051371591":{"price":1795,"available":true,"title":"Lucky Tour Glove"},"32765051404359":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"32765051437127":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"32765051469895":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"32765051502663":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"32765051535431":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"32765051568199":{"price":1795,"available":false,"title":"Lucky Tour Glove"},"50019147546901":{"price":2995,"available":true,"title":"Lucky Mallet Cover"},"50019147579669":{"price":2995,"available":true,"title":"Lucky Mallet Cover"},"49993074409749":{"price":19900,"available":false,"title":"Tracer LGP01 Blade"},"44299078435093":{"price":4000,"available":true,"title":"Driver Head Cover"},"39655543210055":{"price":29900,"available":true,"title":"Lucky Golf LGD01"},"39278277066823":{"price":2995,"available":true,"title":"Lucky Blade Cover"},"17937232363591":{"price":1000,"available":true,"title":"Lucky Wedges Gift Card"},"17937232396359":{"price":2500,"available":true,"title":"Lucky Wedges Gift Card"},"17937232429127":{"price":5000,"available":true,"title":"Lucky Wedges Gift Card"},"17937232461895":{"price":10000,"available":true,"title":"Lucky Wedges Gift Card"},"17937232494663":{"price":15000,"available":true,"title":"Lucky Wedges Gift Card"},"17937232527431":{"price":20000,"available":true,"title":"Lucky Wedges Gift Card"},"17937232560199":{"price":25000,"available":true,"title":"Lucky Wedges Gift Card"},"17937233281095":{"price":30000,"available":true,"title":"Lucky Wedges Gift Card"},"17937234165831":{"price":50000,"available":true,"title":"Lucky Wedges Gift Card"}};
+  var items = [], seq = 0;
+  window.__calls = [];
+  function body(){ var t = items.reduce(function(a,i){return a+i.line_price;},0);
+    return { items: items.slice(), item_count: items.reduce(function(a,i){return a+i.quantity;},0), total_price: t, items_subtotal_price: t }; }
+  function json(o, st){ return Promise.resolve(new Response(JSON.stringify(o), {status: st||200, headers:{'Content-Type':'application/json'}})); }
+  window.fetch = function(url, opts){
+    opts = opts || {}; var p = String(url).replace(/^https?:\/\/[^/]+/, '');
+    var payload = opts.body ? JSON.parse(opts.body) : null; window.__calls.push({path:p, payload:payload});
+    if (p.indexOf('cart.js') > -1) return json(body());
+    if (p.indexOf('cart/add.js') > -1) {
+      var it = payload.items[0], v = PRICE[it.id];
+      if (!v) return json({status:404, description:'Cannot find variant'}, 404);
+      if (!v.available) return json({status:422, description:'sold out'}, 422);
+      var ex = items.filter(function(l){ return l.variant_id===it.id && JSON.stringify(l.properties||null)===JSON.stringify(it.properties||null); })[0];
+      if (ex) { ex.quantity += it.quantity; ex.line_price = ex.quantity*v.price; ex.final_line_price = ex.line_price; }
+      else items.push({ key:(++seq)+':k', variant_id:it.id, quantity:it.quantity, price:v.price, line_price:v.price*it.quantity,
+        final_line_price:v.price*it.quantity, product_title:v.title, properties:it.properties||null });
+      return json({items: payload.items});
+    }
+    if (p.indexOf('cart/change.js') > -1) {
+      var i = items.findIndex(function(l){ return l.key === payload.id; });
+      if (i < 0) return json({status:404, description:'line not found'}, 404);
+      if (payload.quantity <= 0) items.splice(i,1);
+      else { items[i].quantity = payload.quantity; items[i].line_price = items[i].price*payload.quantity; items[i].final_line_price = items[i].line_price; }
+      return json(body());
+    }
+    return json({}, 404);
+  };
+  window.__cart = function(){ return body(); };
+})();
+</script>
+<script>/* ============================================================================
+   LUCKY GOLF · TIERED GIFT WITH PURCHASE
+
+   Five things this file is careful about, four of them learned on the BOGO
+   page and one of them learned from the store's cart app:
+
+   1. SHOPIFY OWNS THE SUBTOTAL. Both tiers are decided by a number read back
+      out of /cart.js after every write. Nothing here accumulates a running
+      total, so the page cannot drift from checkout.
+
+   2. GIFT LINES ARE NOT MONEY. They are stripped out of that subtotal before
+      either threshold is tested, which is what stops a free polo from paying
+      for itself.
+
+   3. WRITES ARE SERIALISED, NOT FIRED. Every cart call goes on one promise
+      chain. Two fast clicks queue instead of racing, and a gift can only be
+      added by the one handler that holds the chain. That is the double-add
+      guard: not a flag somebody has to remember to clear.
+
+   4. A REFUSAL IS SAID OUT LOUD. 422 is what a sold-out gift variant looks
+      like from here. Silence is how a broken cart hides for a day.
+
+   5. THE DRAWER IS NOT OURS. This store's slide cart is the UpCart app, which
+      intercepts add-to-cart and opens itself. We opt out for the life of this
+      page and tell it to re-read the cart afterwards, or it shows a stale bag.
+
+   The page is built on lucky.css, so this file never touches a colour, a font
+   or a layout. It toggles aria-pressed, hidden, data-state and text. Nothing
+   here rebuilds markup with innerHTML, which is why a reader on a keyboard
+   never loses their place.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var root = document.getElementById('gwp');
+  var dataEl = document.getElementById('gwp-data');
+  if (!root || !dataEl) return;
+
+  var D;
+  try { D = JSON.parse(dataEl.textContent); } catch (e) { return; }
+
+  /* ---------------------------------------------------------------- config
+     Every id and every string arrives from Liquid. Nothing below is typed
+     into this file, which is why changing a threshold in the theme editor
+     changes the behaviour without a deploy. */
+  var T1 = parseInt(root.getAttribute('data-tier1'), 10) || 0;
+  var T2 = parseInt(root.getAttribute('data-tier2'), 10) || 0;
+  /* Free shipping. Checked against the live store on 2026-09-18: $128 and
+     $166 carts paid $18 ground, a $198 cart got FREE SHIPPING. It is the
+     third line the bar counts toward once both gifts are in. */
+  var SHIP = parseInt(root.getAttribute('data-ship'), 10) || 0;
+  var COPY = {
+    /* Two labels per tier and they are not interchangeable. g1/g2 are the
+       mid-sentence ones ("your free polo") because every template below drops
+       them somewhere other than the first word. bar1/bar2 are the standalone
+       ones on the phone bar, where the label IS the sentence. Using the card
+       headline in both places produced "The hat and a polo is waiting". */
+    g1: root.getAttribute('data-gift1-short') || '',
+    g2: root.getAttribute('data-gift2-short') || '',
+    bar1: root.getAttribute('data-bar-gift1') || '',
+    bar2: root.getAttribute('data-bar-gift2') || '',
+    start: root.getAttribute('data-copy-start') || '',
+    away1: root.getAttribute('data-copy-away1') || '',
+    away2: root.getAttribute('data-copy-away2') || '',
+    hit1: root.getAttribute('data-copy-hit1') || '',
+    hit2: root.getAttribute('data-copy-hit2') || '',
+    shipAway: root.getAttribute('data-copy-ship-away') || '',
+    pick: root.getAttribute('data-copy-pick') || '',
+    locked: root.getAttribute('data-copy-locked') || '',
+    add: root.getAttribute('data-copy-add') || '',
+    adding: root.getAttribute('data-copy-adding') || '',
+    added: root.getAttribute('data-copy-added') || '',
+    soldout: root.getAttribute('data-copy-soldout') || '',
+    claim: root.getAttribute('data-copy-claim') || '',
+    claimed: root.getAttribute('data-copy-claimed') || '',
+    giftLost: root.getAttribute('data-copy-gift-lost') || '',
+    giftWon: root.getAttribute('data-copy-gift-won') || '',
+    error: root.getAttribute('data-copy-error') || '',
+    giftSoldOut: root.getAttribute('data-copy-soldout-gift') || ''
+  };
+
+  var GIFTS = D.gifts || {};
+  var PRODUCTS = {};
+  (D.products || []).forEach(function (p) { PRODUCTS[p.id] = p; });
+
+  /* Which variant ids are gifts, and which tier each belongs to. This is the
+     set that gets subtracted from the subtotal. */
+  var GIFT_TIER_OF = {};
+  Object.keys(GIFTS).forEach(function (slot) {
+    var tier = slot === 'polo' ? 2 : 1;
+    (GIFTS[slot].variants || []).forEach(function (v) { GIFT_TIER_OF[v.id] = tier; });
+  });
+  var GIFT_PROP = '_gwp_gift';
+
+  /* ------------------------------------------------------------------ dom */
+  var railEl = document.getElementById('gwp-rail');
+  var sayEl = document.getElementById('gwp-say');
+  var fillEl = document.getElementById('gwp-fill');
+  var railSumEl = document.getElementById('gwp-rail-sum');
+  var barSumEl = document.getElementById('gwp-bar-sum');
+  var barGiftEl = document.getElementById('gwp-bar-gift');
+  var toastEl = document.getElementById('gwp-toast');
+  var nodeEls = [].slice.call(root.querySelectorAll('.gwp-node'));
+  var giftEls = [].slice.call(root.querySelectorAll('[data-gift]'));
+  var cardEls = [].slice.call(root.querySelectorAll('.gwp-card'));
+
+  /* ---------------------------------------------------------------- money
+     The store's own format string, so a currency change in Shopify does not
+     need a change here. */
+  var FMT = D.moneyFormat || '${{amount}}';
+  function money(cents) {
+    cents = Math.round(cents || 0);
+    var neg = cents < 0;
+    cents = Math.abs(cents);
+    function group(str, sep) { return str.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + sep); }
+    var out = FMT.replace(/\{\{\s*(\w+)\s*\}\}/g, function (_, name) {
+      var whole = Math.floor(cents / 100);
+      var part = ('0' + (cents % 100)).slice(-2);
+      switch (name) {
+        case 'amount_no_decimals': return group(String(whole), ',');
+        case 'amount_with_comma_separator': return group(String(whole), '.') + ',' + part;
+        case 'amount_no_decimals_with_comma_separator': return group(String(whole), '.');
+        case 'amount_with_apostrophe_separator': return group(String(whole), "'") + '.' + part;
+        default: return group(String(whole), ',') + '.' + part;
+      }
+    });
+    return (neg ? '-' : '') + out;
+  }
+  /* A threshold is a round number, so "$90" reads better than "$90.00" in a
+     sentence. Anything with cents in it keeps them. */
+  function moneyShort(cents) {
+    var s = money(cents);
+    return cents % 100 === 0 ? s.replace(/([.,])00\b/, '') : s;
+  }
+  function fill(tpl, vars) {
+    return String(tpl || '').replace(/\{(\w+)\}/g, function (m, k) {
+      return Object.prototype.hasOwnProperty.call(vars, k) ? vars[k] : m;
+    });
+  }
+
+  /* ---------------------------------------------------------------- speak */
+  var toastTimer = null;
+  function toast(msg) {
+    if (!msg || !toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 5200);
+  }
+
+  /* ----------------------------------------------------------- the drawer */
+  function armQuietCart() {
+    try { window.upcartShouldSkipAddToCart = function () { return true; }; } catch (e) {}
+  }
+  function settleCart() {
+    try { if (typeof window.upcartRefreshCart === 'function') window.upcartRefreshCart(); } catch (e) {}
+    var until = Date.now() + 1500;
+    (function tick() {
+      if (document.body.classList.contains('upcartPopupShow')) {
+        try { if (typeof window.upcartCloseCart === 'function') window.upcartCloseCart(); } catch (e) {}
+        document.body.classList.remove('upcartPopupShow');
+      }
+      var n = document.querySelector('cart-notification');
+      if (n) n.classList.remove('active', 'animate');
+      var d = document.querySelector('cart-drawer');
+      if (d && d.classList.contains('active')) {
+        if (typeof d.close === 'function') d.close(); else d.classList.remove('active', 'animate');
+      }
+      document.body.classList.remove('overflow-hidden');
+      if (Date.now() < until) setTimeout(tick, 90);
+    })();
+  }
+
+  /* ------------------------------------------------------------ cart calls
+     The three documented Cart AJAX endpoints and nothing else. Every one
+     resolves with a parsed body, including a refusal, because a 422 from
+     /cart/add.js carries the reason and throwing it away is how a sold-out
+     gift looks like a bug. */
+  function base() { return (window.Shopify && Shopify.routes && Shopify.routes.root) || '/'; }
+  function call(method, path, body) {
+    var opts = { method: method, headers: { 'Accept': 'application/json' }, credentials: 'same-origin' };
+    if (body) {
+      opts.headers['Content-Type'] = 'application/json';
+      opts.body = JSON.stringify(body);
+    }
+    return fetch(base() + path, opts).then(function (r) {
+      return r.json().then(
+        function (j) { return { ok: r.ok, status: r.status, body: j }; },
+        function () { return { ok: r.ok, status: r.status, body: null }; }
+      );
+    });
+  }
+  function getCart() { return call('GET', 'cart.js'); }
+  function addToCart(id, qty, props) {
+    var item = { id: id, quantity: qty };
+    if (props) item.properties = props;
+    return call('POST', 'cart/add.js', { items: [item] });
+  }
+  function changeLine(key, qty) { return call('POST', 'cart/change.js', { id: key, quantity: qty }); }
+
+  /* One chain. Every write is appended to it, so two clicks land in the order
+     they were made and a gift add can never interleave with a gift removal. */
+  var chain = Promise.resolve();
+  function queue(fn) {
+    var run = chain.then(fn, fn);
+    chain = run.catch(function () {});
+    return run;
+  }
+
+  /* Reads are coalesced: a burst of cart changes from elsewhere on the page
+     produces one /cart.js call, not one per event. */
+  var refreshTimer = null;
+  function refresh(delay) {
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(function () {
+      queue(function () {
+        return getCart().then(function (r) {
+          if (r.body && r.body.items) { cart = r.body; return reconcile(); }
+        });
+      });
+    }, delay == null ? 220 : delay);
+  }
+
+  /* ------------------------------------------------------------ cart model */
+  var cart = { items: [] };
+
+  function isGiftLine(line) {
+    if (GIFT_TIER_OF[line.variant_id]) return true;
+    return !!(line.properties && line.properties[GIFT_PROP]);
+  }
+  function giftTierOfLine(line) {
+    if (GIFT_TIER_OF[line.variant_id]) return GIFT_TIER_OF[line.variant_id];
+    var p = line.properties && line.properties[GIFT_PROP];
+    return p === 'polo' ? 2 : p ? 1 : 0;
+  }
+  /* The number both tiers are tested against: everything the reader is
+     actually paying for, with the gifts taken out. */
+  function paidSubtotal() {
+    var n = 0;
+    (cart.items || []).forEach(function (line) {
+      if (isGiftLine(line)) return;
+      n += (line.final_line_price != null ? line.final_line_price : line.line_price) || 0;
+    });
+    return n;
+  }
+  function giftLines(slot) {
+    var tier = slot === 'polo' ? 2 : 1;
+    return (cart.items || []).filter(function (l) {
+      return isGiftLine(l) && giftTierOfLine(l) === tier;
+    });
+  }
+  function tierOf(sub) {
+    if (T2 && sub >= T2) return 2;
+    if (T1 && sub >= T1) return 1;
+    return 0;
+  }
+
+  /* --------------------------------------------------------- reconciliation
+     Runs after every read. It only ever REMOVES: a gift the reader no longer
+     qualifies for, and any duplicate of one they do. Adding is always the
+     reader's own click, because they choose the colour. */
+  var lastTier = null;
+  var reconciling = false;
+
+  function reconcile() {
+    if (reconciling) { paint(); return Promise.resolve(); }
+    var tier = tierOf(paidSubtotal());
+    var jobs = [];
+    var lost = [];
+
+    ['hat', 'polo'].forEach(function (slot) {
+      if (!GIFTS[slot]) return;
+      var need = slot === 'polo' ? 2 : 1;
+      var lines = giftLines(slot);
+      if (!lines.length) return;
+
+      if (tier < need) {
+        lines.forEach(function (l) { jobs.push({ key: l.key, qty: 0 }); });
+        lost.push(slot === 'polo' ? COPY.g2 : COPY.g1);
+        return;
+      }
+      /* Qualified, but holding more than one. Two tabs, a double tap that beat
+         the queue, or a line that survived from an older cart. Trim to one
+         rather than shipping two free polos. */
+      lines.forEach(function (l, i) {
+        if (i > 0) jobs.push({ key: l.key, qty: 0 });
+        else if (l.quantity > 1) jobs.push({ key: l.key, qty: 1 });
+      });
+    });
+
+    if (!jobs.length) { announceTier(tier); paint(); return Promise.resolve(); }
+
+    reconciling = true;
+    var p = Promise.resolve();
+    jobs.forEach(function (j) {
+      p = p.then(function () {
+        armQuietCart();
+        return changeLine(j.key, j.qty).then(function (r) {
+          if (r.body && r.body.items) cart = r.body;
+        });
+      });
+    });
+    return p.then(function () {
+      reconciling = false;
+      settleCart();
+      if (lost.length) toast(fill(COPY.giftLost, { gift: lost.join(' and ') }));
+      announceTier(tierOf(paidSubtotal()));
+      paint();
+    }, function () { reconciling = false; paint(); });
+  }
+
+  /* A tier crossing is worth a toast. A tier already open on page load is
+     not, which is what lastTier === null guards. */
+  function announceTier(tier) {
+    if (lastTier !== null && tier > lastTier) {
+      toast(fill(COPY.giftWon, { gift: tier >= 2 ? COPY.g2 : COPY.g1 }));
+    }
+    lastTier = tier;
+  }
+
+  /* ============================== CHIP PICKERS ==============================
+     lucky.css gives .lg-chip and no dropdown, so every option axis is a row of
+     chips with aria-pressed. Reading a selection means reading the pressed
+     chip in each group.
+     ====================================================================== */
+  function chipsIn(scope, attr) { return [].slice.call(scope.querySelectorAll('[' + attr + ']')); }
+  function axisCount(chips, attr) {
+    var max = -1;
+    chips.forEach(function (c) { max = Math.max(max, parseInt(c.getAttribute(attr), 10)); });
+    return max + 1;
+  }
+  function readSel(chips, attr) {
+    var out = [];
+    chips.forEach(function (c) {
+      if (c.getAttribute('aria-pressed') === 'true') out[parseInt(c.getAttribute(attr), 10)] = c.getAttribute('data-val');
+    });
+    for (var i = 0; i < axisCount(chips, attr); i++) if (out[i] == null) out[i] = '';
+    return out;
+  }
+  function writeSel(chips, attr, want) {
+    chips.forEach(function (c) {
+      var ax = parseInt(c.getAttribute(attr), 10);
+      c.setAttribute('aria-pressed', c.getAttribute('data-val') === want[ax] ? 'true' : 'false');
+    });
+  }
+  function matchVariant(spec, want) {
+    if (!want || !want.length) return (spec.variants || [])[0] || null;
+    for (var i = 0; i < spec.variants.length; i++) {
+      var v = spec.variants[i], ok = true;
+      for (var k = 0; k < want.length; k++) { if (v.opts[k] !== want[k]) { ok = false; break; } }
+      if (ok) return v;
+    }
+    return null;
+  }
+  /* Can this value be bought at all, given what is chosen on the OTHER axes?
+     The chip stays clickable either way: switching to it is what makes it
+     available again, and disabling it would hide that. It just says so, and
+     the other axes repair themselves on the click. */
+  function usable(spec, want, axis, val) {
+    for (var i = 0; i < spec.variants.length; i++) {
+      var v = spec.variants[i];
+      if (!v.available || v.opts[axis] !== val) continue;
+      var ok = true;
+      for (var k = 0; k < want.length; k++) {
+        if (k !== axis && v.opts[k] !== want[k]) { ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function markChips(chips, attr, spec, want) {
+    chips.forEach(function (c) {
+      var ax = parseInt(c.getAttribute(attr), 10);
+      var dead = !usable(spec, want, ax, c.getAttribute('data-val'));
+      if (dead) c.setAttribute('data-dead', 'true'); else c.removeAttribute('data-dead');
+      c.setAttribute('aria-label', c.getAttribute('data-val') + (dead ? ', ' + COPY.soldout.toLowerCase() : ''));
+    });
+  }
+  /* The reader picked a value that does not exist alongside their other
+     choices. Rather than a dead end, move the other axes to the first
+     combination that keeps the value they just asked for. */
+  function repair(spec, want, axis) {
+    var v = matchVariant(spec, want);
+    if (v && v.available) return want;
+    for (var i = 0; i < spec.variants.length; i++) {
+      var c = spec.variants[i];
+      if (c.available && c.opts[axis] === want[axis]) return c.opts.slice(0, want.length);
+    }
+    return want;
+  }
+
+  /* ------------------------------------------------------------- the rail */
+  function paintRail(sub, tier) {
+    fillEl.style.width = (T2 ? Math.min(1, sub / T2) * 100 : 0).toFixed(2) + '%';
+    railEl.setAttribute('data-tier', String(tier));
+
+    nodeEls.forEach(function (n) {
+      var which = parseInt(n.getAttribute('data-node'), 10);
+      if (tier >= which) n.setAttribute('data-hit', 'true'); else n.removeAttribute('data-hit');
+    });
+
+    var hatClaimed = giftLines('hat').length > 0;
+    var poloClaimed = giftLines('polo').length > 0;
+    var hasPolo = !!GIFTS.polo;
+    var msg;
+
+    if (sub <= 0) {
+      msg = COPY.start;
+    } else if (tier === 0) {
+      msg = fill(COPY.away1, { amount: moneyShort(T1 - sub), gift: COPY.g1 });
+    } else if (tier === 1) {
+      if (GIFTS.hat && !hatClaimed) msg = fill(COPY.pick, { gift: COPY.g1 });
+      else if (hasPolo) msg = fill(COPY.away2, { amount: moneyShort(T2 - sub), gift: COPY.g2 });
+      else msg = COPY.hit1;
+    } else {
+      if (hasPolo && !poloClaimed) msg = fill(COPY.pick, { gift: COPY.g2 });
+      else if (GIFTS.hat && !hatClaimed) msg = fill(COPY.pick, { gift: COPY.g1 });
+      else if (SHIP && sub < SHIP) msg = fill(COPY.shipAway, { amount: moneyShort(SHIP - sub) });
+      else msg = COPY.hit2;
+    }
+
+    /* Only write when it changed. An aria-live region re-announces on every
+       write, and a bar that repainted on scroll would talk over the page. */
+    if (sayEl.textContent !== msg) sayEl.textContent = msg;
+
+    var m = money(sub);
+    if (railSumEl) railSumEl.textContent = m;
+    if (barSumEl) barSumEl.textContent = m;
+
+    if (barGiftEl) {
+      if (tier >= 2) { barGiftEl.textContent = COPY.bar2; barGiftEl.removeAttribute('data-none'); }
+      else if (tier === 1) { barGiftEl.textContent = COPY.bar1; barGiftEl.removeAttribute('data-none'); }
+      else { barGiftEl.textContent = barGiftEl.getAttribute('data-empty') || ''; barGiftEl.setAttribute('data-none', 'true'); }
+    }
+  }
+
+  /* ------------------------------------------------------------ the gifts
+     THE FOIL RULE. lucky.css allows one foil button per view, and the band can
+     show two gift cards at once. So only the FIRST gift that is unlocked and
+     unclaimed wears the foil; the other drops to the ghost. That keeps the
+     rule, and it also reads as an order: claim the hat, and the polo lights up
+     behind it. A claimed button is neither, it is the done state. */
+  function paintGifts(sub, tier) {
+    var foilTaken = false;
+    giftEls.forEach(function (el) {
+      var slot = el.getAttribute('data-gift');
+      var spec = GIFTS[slot];
+      if (!spec) return;
+      var need = parseInt(el.getAttribute('data-gift-tier'), 10) || 1;
+      var threshold = parseInt(el.getAttribute('data-threshold'), 10) || 0;
+      var unlocked = tier >= need;
+      var claimed = giftLines(slot).length > 0;
+
+      var lock = el.querySelector('[data-lock]');
+      var lockTx = el.querySelector('[data-lock-text]');
+      var pick = el.querySelector('[data-pick]');
+      var btn = el.querySelector('[data-claim]');
+      var chips = chipsIn(el, 'data-gift-axis');
+
+      el.setAttribute('data-state', claimed ? 'claimed' : unlocked ? 'open' : 'locked');
+
+      if (!unlocked) {
+        if (lockTx) {
+          lockTx.textContent = fill(COPY.locked, {
+            amount: moneyShort(threshold),
+            away: moneyShort(Math.max(0, threshold - sub)),
+            gift: need === 2 ? COPY.g2 : COPY.g1
+          });
+        }
+        if (lock) lock.hidden = false;
+        if (pick) pick.hidden = true;
+        return;
+      }
+
+      if (lock) lock.hidden = true;
+      if (pick) pick.hidden = false;
+
+      var want = readSel(chips, 'data-gift-axis');
+      markChips(chips, 'data-gift-axis', spec, want);
+      var picked = el.querySelector('[data-picked]');
+      if (picked) picked.textContent = want.filter(Boolean).join(' · ');
+      var v = matchVariant(spec, want);
+      var ok = !!(v && v.available);
+
+      if (btn && !btn.hasAttribute('data-busy')) {
+        btn.setAttribute('data-variant-id', v ? String(v.id) : '');
+        var lb = btn.querySelector('.lb');
+        if (claimed) {
+          btn.disabled = true;
+          btn.setAttribute('data-done', 'true');
+          if (lb) lb.textContent = COPY.claimed;
+        } else {
+          btn.removeAttribute('data-done');
+          btn.disabled = !ok;
+          if (lb) lb.textContent = ok ? COPY.claim : COPY.soldout;
+          if (ok && !foilTaken) { btn.classList.remove('lg-btn-line'); foilTaken = true; }
+          else btn.classList.add('lg-btn-line');
+        }
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------- the grid */
+  function paintCard(card) {
+    var spec = PRODUCTS[card.getAttribute('data-pid')];
+    if (!spec) return;
+    var chips = chipsIn(card, 'data-axis');
+    var want = readSel(chips, 'data-axis');
+    markChips(chips, 'data-axis', spec, want);
+
+    var v = matchVariant(spec, want);
+    var btn = card.querySelector('[data-add]');
+    var priceEl = card.querySelector('[data-price]');
+
+    if (priceEl && v) priceEl.textContent = moneyShort(v.price);
+    if (v && v.img) {
+      var img = card.querySelector('.lg-card-ph img');
+      if (img && img.getAttribute('src') !== v.img) {
+        img.setAttribute('src', v.img);
+        img.removeAttribute('srcset');
+      }
+    }
+    if (btn && !btn.hasAttribute('data-busy') && !btn.hasAttribute('data-done')) {
+      var ok = !!(v && v.available);
+      btn.setAttribute('data-variant-id', v ? String(v.id) : '');
+      btn.disabled = !ok;
+      var lb = btn.querySelector('.lb');
+      if (lb) lb.textContent = ok ? COPY.add : COPY.soldout;
+      if (ok) card.removeAttribute('data-out'); else card.setAttribute('data-out', 'true');
+    }
+  }
+
+  function paint() {
+    var sub = paidSubtotal();
+    var tier = tierOf(sub);
+    paintRail(sub, tier);
+    paintGifts(sub, tier);
+  }
+
+  /* ----------------------------------------------------------- the writes */
+  function busy(btn, on) {
+    if (!btn) return;
+    if (on) {
+      btn.setAttribute('data-busy', 'true');
+      btn.setAttribute('aria-busy', 'true');
+      btn.disabled = true;
+      var lb = btn.querySelector('.lb');
+      if (lb) lb.textContent = COPY.adding;
+    } else {
+      btn.removeAttribute('data-busy');
+      btn.removeAttribute('aria-busy');
+      btn.disabled = false;
+    }
+  }
+  function flashDone(btn, label, back) {
+    var lb = btn.querySelector('.lb');
+    btn.setAttribute('data-done', 'true');
+    if (lb) lb.textContent = label;
+    setTimeout(function () {
+      btn.removeAttribute('data-done');
+      if (lb) lb.textContent = back;
+    }, 1600);
+  }
+  function refused(r) {
+    if (!r || !r.ok || !r.body) return true;
+    return !!(r.body.status && parseInt(r.body.status, 10) >= 400);
+  }
+  function reasonFor(r, isGift) {
+    if (r && r.status === 422) return isGift ? COPY.giftSoldOut : ((r.body && r.body.description) || COPY.error);
+    return COPY.error;
+  }
+
+  function addProduct(btn) {
+    var id = parseInt(btn.getAttribute('data-variant-id'), 10);
+    if (!id) return;
+    var card = btn.closest('.gwp-card');
+    var out = card && card.querySelector('[data-qty-out]');
+    var qty = out ? Math.max(1, parseInt(out.textContent, 10) || 1) : 1;
+
+    busy(btn, true);
+    queue(function () {
+      armQuietCart();
+      return addToCart(id, qty).then(function (r) {
+        busy(btn, false);
+        if (refused(r)) {
+          var lb = btn.querySelector('.lb');
+          if (lb) lb.textContent = COPY.add;
+          toast(reasonFor(r, false));
+          return getCart().then(function (c) {
+            if (c.body && c.body.items) { cart = c.body; paint(); }
+          });
+        }
+        flashDone(btn, COPY.added, COPY.add);
+        settleCart();
+        return getCart().then(function (c) {
+          if (c.body && c.body.items) { cart = c.body; return reconcile(); }
+        });
+      }, function () {
+        busy(btn, false);
+        var lb = btn.querySelector('.lb');
+        if (lb) lb.textContent = COPY.add;
+        toast(COPY.error);
+      });
+    });
+  }
+
+  /* Claiming a gift. The whole operation sits inside one link of the chain,
+     so nothing can add a second one while this is in the air. It re-reads the
+     cart first rather than trusting the last paint, then swaps any existing
+     gift for the chosen variant. */
+  function claimGift(btn) {
+    var el = btn.closest('[data-gift]');
+    if (!el) return;
+    var slot = el.getAttribute('data-gift');
+    var need = parseInt(el.getAttribute('data-gift-tier'), 10) || 1;
+    var id = parseInt(btn.getAttribute('data-variant-id'), 10);
+    if (!id) return;
+
+    busy(btn, true);
+    queue(function () {
+      armQuietCart();
+      return getCart().then(function (c) {
+        if (c.body && c.body.items) cart = c.body;
+
+        if (tierOf(paidSubtotal()) < need) {      /* the bag moved under them */
+          busy(btn, false); paint();
+          return;
+        }
+        var existing = giftLines(slot);
+        var same = existing.filter(function (l) { return l.variant_id === id; });
+        if (existing.length === 1 && same.length === 1 && same[0].quantity === 1) {
+          busy(btn, false); paint();
+          return;
+        }
+
+        var p = Promise.resolve();
+        existing.forEach(function (l) {
+          p = p.then(function () {
+            return changeLine(l.key, 0).then(function (r) {
+              if (r.body && r.body.items) cart = r.body;
+            });
+          });
+        });
+        return p.then(function () {
+          var props = {};
+          props[GIFT_PROP] = slot;
+          return addToCart(id, 1, props);
+        }).then(function (r) {
+          busy(btn, false);
+          if (refused(r)) {
+            toast(reasonFor(r, true));
+            /* The variant died under us. Mark it gone so the picker stops
+               offering it, then repaint from the real cart. */
+            var spec = GIFTS[slot];
+            if (spec) spec.variants.forEach(function (v) { if (v.id === id) v.available = false; });
+          }
+          settleCart();
+          return getCart().then(function (c2) {
+            if (c2.body && c2.body.items) { cart = c2.body; return reconcile(); }
+          });
+        });
+      }, function () {
+        busy(btn, false);
+        toast(COPY.error);
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------- events */
+  root.addEventListener('click', function (e) {
+    /* a chip in the grid */
+    var chip = e.target.closest('[data-axis],[data-gift-axis]');
+    if (chip) {
+      e.preventDefault();
+      var isGift = chip.hasAttribute('data-gift-axis');
+      var attr = isGift ? 'data-gift-axis' : 'data-axis';
+      var scope = chip.closest(isGift ? '[data-gift]' : '.gwp-card');
+      var spec = isGift ? GIFTS[scope.getAttribute('data-gift')] : PRODUCTS[scope.getAttribute('data-pid')];
+      if (!spec) return;
+      var chips = chipsIn(scope, attr);
+      var axis = parseInt(chip.getAttribute(attr), 10);
+      var want = readSel(chips, attr);
+      want[axis] = chip.getAttribute('data-val');
+      want = repair(spec, want, axis);
+      writeSel(chips, attr, want);
+      if (isGift) paint(); else paintCard(scope);
+      return;
+    }
+
+    var q = e.target.closest('[data-qty]');
+    if (q) {
+      e.preventDefault();
+      var out = q.parentElement.querySelector('[data-qty-out]');
+      var next = Math.min(99, Math.max(1, (parseInt(out.textContent, 10) || 1) + parseInt(q.getAttribute('data-qty'), 10)));
+      out.textContent = String(next);
+      return;
+    }
+
+    var add = e.target.closest('[data-add]');
+    if (add && !add.disabled) { e.preventDefault(); addProduct(add); return; }
+
+    var claim = e.target.closest('[data-claim]');
+    if (claim && !claim.disabled) { e.preventDefault(); claimGift(claim); return; }
+
+    /* The hero CTA stays a real anchor so the keyboard and the back button
+       both behave. This only upgrades the jump to a glide, and steps aside
+       when the reader has asked for less motion. */
+    var jump = e.target.closest('[data-scroll-to]');
+    if (jump) {
+      var target = document.getElementById(jump.getAttribute('data-scroll-to'));
+      if (target && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.focus({ preventScroll: true });
+      }
+    }
+  });
+
+  /* The cart can move without this page touching it: a drawer, a second tab,
+     the theme's own add-to-cart in the header. */
+  ['cart:refresh', 'cart:update', 'cart-updated', 'upcart:cart:updated'].forEach(function (ev) {
+    document.addEventListener(ev, function () { refresh(); });
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) refresh(0); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') refresh(300);
+  });
+
+  /* ------------------------------------------------------------------ boot */
+  if (barGiftEl) barGiftEl.setAttribute('data-empty', barGiftEl.textContent);
+  cardEls.forEach(paintCard);
+  armQuietCart();
+  paint();
+  queue(function () {
+    return getCart().then(function (r) {
+      if (r.body && r.body.items) { cart = r.body; return reconcile(); }
+      paint();
+    }, paint);
+  });
+})();
+</script>
+<script>
+(function(){
+  var HEADS={"1":{"h":"<span class=\"gwp-num\">$90</span> gets the hat. <span class=\"gwp-num\">$140</span> gets the fit.","l":"The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own."},"2":{"h":"The more you bag, the more you <span class=\"gwp-num\">wear</span>.","l":"Spend $90 and the hat's on us. Hit $140 and the polo comes with it. Your pick on both."},"3":{"h":"Hit <span class=\"gwp-num\">$90</span>, the hat's yours. Hit <span class=\"gwp-num\">$140</span>, grab the polo too.","l":"Every club on this page clears the first one. The Mallet and the Stryker clear both."}};
+  function set(feel,h){
+    feel=feel||document.documentElement.getAttribute('data-feel')||'light';
+    h=h||document.documentElement.getAttribute('data-h')||'1';
+    document.documentElement.setAttribute('data-feel',feel);
+    document.documentElement.setAttribute('data-h',h);
+    document.getElementById('gs-h1').innerHTML=HEADS[h].h;
+    document.getElementById('gs-lede').textContent=HEADS[h].l;
+    document.querySelectorAll('[data-feel-set]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.feelSet===feel)});
+    document.querySelectorAll('[data-h-set]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.hSet===h)});
+    try{history.replaceState(null,'','#feel='+feel+'&h='+h)}catch(e){}
+  }
+  document.addEventListener('click',function(e){
+    var f=e.target.closest('[data-feel-set]'); if(f){set(f.dataset.feelSet,null);return;}
+    var h=e.target.closest('[data-h-set]'); if(h){set(null,h.dataset.hSet);}
+  });
+  var m=/feel=(\w+)&h=(\d)/.exec(location.hash); set(m?m[1]:'light', m?m[2]:'1');
+})();
+</script>
+</body></html>

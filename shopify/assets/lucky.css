@@ -1,0 +1,703 @@
+/* ==========================================================================
+   LUCKY GOLF · the design system as one stylesheet.
+   Version 4.0 · 2026-09-18 · Daylight + Twilight, photo-led, Mags the guide.
+
+   The written rules are in design/LUCKY-SYSTEM.md. Every piece, both grounds,
+   phone and desktop: design/styleguide.html. If this file and a doc ever
+   disagree, this file wins and the doc gets fixed.
+
+   THE SYSTEM IN ONE PARAGRAPH. Photos lead; everything else supports them.
+   The page is white (Daylight), type is ink, product sits on a stone tile,
+   gold is the only accent and never a big field. Deep green carries the
+   announcement bar, the header, at most one band low on the page, and the
+   footer. Twilight (night green) is a whole page only for short events, or a
+   band. Mags is the guide: he tells the shopper the one next step and takes
+   them there. The "yardage" pieces only appear where there is a real number.
+
+   HOW TO USE IT
+   - Load Archivo (below), then wrap your markup in .lg-scope (inside a theme)
+     or put class="lg" on <body> (a page of our own).
+   - Twilight: data-ground="twilight" on .lg-scope, or on any one section to
+     make it a Twilight band. Components never fork per ground; tokens swap.
+   - Every class is prefixed lg-. Every size is px: the Shopify theme sets
+     the root font to 10px, which shrinks rem to 62%.
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+   ========================================================================== */
+
+/* ==========================================================================
+   TOKENS · DAYLIGHT (the default for the whole site)
+   ========================================================================== */
+:root,.lg-scope,body.lg{
+  /* ---- ground ---- */
+  --lg-page:#FFFFFF;          /* the page. Most of every screen. */
+  --lg-tile:#F4F3F0;          /* stone: product wells, cards, table fills. A material, never a band. */
+  --lg-surface:#FFFFFF;       /* raised things that float: the Mags card, the pop-up, the drawer */
+  --lg-dark:#0B2E1F;          /* deep green: announcement bar, header, the one band, footer */
+  --lg-night:#06110B;         /* Twilight's page. Only via data-ground="twilight". */
+
+  /* ---- type ---- */
+  --lg-ink:#17140F;           /* all text on white; also the black Mags */
+  --lg-ink-70:rgba(23,20,15,.70);
+  --lg-ink-64:rgba(23,20,15,.64);
+  --lg-ink-38:rgba(23,20,15,.38);   /* lines and disabled marks. NEVER text (2.4:1) */
+  --lg-on-dark:#F4F3F0;       /* text on the dark; also the light Mags. 13.2:1 */
+  --lg-on-dark-m:rgba(244,243,240,.72);
+  --lg-rule:rgba(23,20,15,.14);
+  --lg-rule-08:rgba(23,20,15,.08);
+  --lg-rule-dark:rgba(244,243,240,.18);
+
+  /* ---- gold: one accent, three jobs ---- */
+  --lg-gold:#C29A2B;          /* gold as a SURFACE: buttons, rules, bars, flags, stars on dark */
+  --lg-gold-hi:#EDD27C;       /* the light end of the foil; gold TYPE on dark */
+  --lg-gold-text:#8A6A1C;     /* gold as TYPE on white, any size. 5.05:1 */
+  --lg-gold-display:#A8821C;  /* the lightest gold allowed on white, display sizes only. 3.57:1 */
+  --lg-star:#9A7619;          /* stars on white (a graphic). 4.2:1 */
+  /* The foil is a material, not a colour. Two places per screen: the primary
+     button and ONE display word. Ink on it reads 6.9:1. */
+  --lg-foil:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+  --lg-foil-text:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);
+  /* Big gold numbers ($90, 56°): the foil lit for the ground. On white it runs
+     one shade deeper so it still reads (2.6 to 5:1 at display size). */
+  --lg-num:linear-gradient(180deg,#C29A2B 0%,#B8912A 38%,#8A6A1C 78%,#A8821C 100%);
+
+  /* ---- state ---- */
+  --lg-ok:#008340;            /* in stock and verified. NOT "added": added is ink. */
+  --lg-ok-on-dark:#7FB69A;
+  --lg-clover:#0B5130;        /* the clover inside the logo. Nowhere else. Never under gold type. */
+
+  /* ---- the dark band's light. The pinstripe is RETIRED (Sept 18): photos
+     and the Yardage pieces carry the texture now. A dark band gets one soft
+     gold light from the top corner instead, like the promo's. ---- */
+  --lg-band-light:radial-gradient(70% 120% at 88% 0%,rgba(237,210,124,.18),transparent 60%),linear-gradient(170deg,#0F3A27,#0B2E1F 55%,#071F15);
+
+  /* ---- yardage marks ---- */
+  --lg-yd:rgba(23,20,15,.30);
+  --lg-yd-soft:rgba(23,20,15,.16);
+  --lg-yd-gold:#A8821C;
+
+  /* ---- measure ---- */
+  --lg-wrap:1180px;
+  --lg-pad:clamp(20px,4.2vw,68px);
+  --lg-gut:clamp(16px,2vw,28px);
+  --lg-sec:clamp(64px,7vw,112px);
+  --lg-r:10px;                /* controls: chips, inputs, swatches */
+  --lg-r-btn:12px;            /* buttons */
+  --lg-r-card:18px;           /* surfaces: cards, tiles, photos in the page */
+  --lg-ease:cubic-bezier(.23,1,.32,1);
+  /* Shadows exist for ONE reason: something floats over the page (Mags,
+     the pop-up, the drawer). Nothing that sits in the page casts a shadow. */
+  --lg-float:0 8px 24px rgba(23,20,15,.12);
+  --lg-float-lg:0 24px 64px -12px rgba(6,17,11,.35);
+  --lg-btn-lift:inset 0 1px 0 rgba(255,255,255,.55),0 8px 22px -12px rgba(194,154,43,.7);
+
+  /* ---- layers ---- */
+  --lg-z-rail:30;             /* sticky bars in the page */
+  --lg-z-hdr:40;
+  --lg-z-float:90;            /* Mags, toasts */
+  --lg-z-modal:120;           /* the pop-up */
+
+  /* ---- type scale ---- */
+  --lg-fs-xs:11.52px;
+  --lg-fs-sm:12.8px;
+  --lg-fs-base:15.2px;
+  --lg-fs-body:17px;
+  --lg-fs-lead:clamp(17.6px,1.5vw,20.8px);
+}
+
+/* ==========================================================================
+   TOKENS · TWILIGHT. Same components, lit for the night.
+   A whole page (short events: a night drop, a limited release, Black Friday)
+   or one band inside a Daylight page. Glow lives here and only here.
+   ========================================================================== */
+[data-ground="twilight"]{
+  --lg-band-light:radial-gradient(60% 110% at 85% 0%,rgba(237,210,124,.14),transparent 60%),#0A1D14;
+  --lg-page:#06110B;
+  --lg-surface:#0B1911;
+  --lg-tile:#F1EEE6;          /* product photos always sit on light, even at night */
+  --lg-ink:#F4F3F0;
+  --lg-ink-70:rgba(244,243,240,.76);
+  --lg-ink-64:rgba(244,243,240,.68);
+  --lg-ink-38:rgba(244,243,240,.42);
+  --lg-rule:rgba(244,243,240,.13);
+  --lg-rule-08:rgba(244,243,240,.07);
+  --lg-gold-text:#EDD27C;
+  --lg-gold-display:#EDD27C;
+  --lg-star:#C29A2B;
+  --lg-num:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%);
+  --lg-ok:#7FB69A;
+  --lg-yd:rgba(244,243,240,.34);
+  --lg-yd-soft:rgba(244,243,240,.15);
+  --lg-yd-gold:#EDD27C;
+  --lg-float:0 10px 30px rgba(0,0,0,.45);
+  --lg-btn-lift:0 0 0 1px rgba(255,243,196,.25),0 10px 30px -10px rgba(237,210,124,.55);
+  background:var(--lg-page);color:var(--lg-ink);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.lg-scope,
+body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-variation-settings:'wdth' 100;font-size:var(--lg-fs-body);line-height:1.55;
+  font-weight:400;letter-spacing:normal;
+  -webkit-font-smoothing:antialiased}
+/* Inside a theme, the theme's own heading colour and body weight/spacing must
+   not leak in (found live on the Ride theme: dark headings on the dark ground,
+   300-weight body, 0.6px tracking). */
+.lg-scope :is(h1,h2,h3,h4,h5,h6){color:inherit}
+:where(.lg-scope,body.lg) img{max-width:100%}
+.lg-wrap{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad)}
+.lg-sec{padding-block:var(--lg-sec)}
+.lg-hr{height:1px;background:var(--lg-rule);border:0;margin:0}
+.lg-center{text-align:center}
+:where(.lg-scope,body.lg) :focus-visible{outline:2px solid var(--lg-gold);outline-offset:2px}
+
+/* ==========================================================================
+   TYPE · Archivo only. Display at width 62, weight 800, caps. Labels at
+   width 78, 600, tracked caps. Body plain width 100.
+   ========================================================================== */
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;
+  font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.lg-d1{font-size:clamp(41.6px,6.2vw,83.2px)}
+.lg-d2{font-size:clamp(32px,3.9vw,51.2px)}
+.lg-d3{font-size:clamp(20px,1.8vw,25.6px);line-height:1}
+
+/* ONE word per headline carries the foil. Never body size. */
+.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* A real number at display size ($90, 56°, 651 reviews) wears the ground's gold. */
+.lg-num{background-image:var(--lg-num);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* The eyebrow orients the section. It never restates the headline. */
+.lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
+.lg-eyebrow::before{content:'';width:22px;height:2px;background:var(--lg-gold);flex:none}
+.lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
+.lg-body{margin:14px 0 0;max-width:62ch;color:var(--lg-ink-70)}
+.lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+/* The aside is the charm voice: one line, sentence case, medium weight. */
+.lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
+.lg-label{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
+  display:inline-flex;align-items:center;gap:8px}
+.lg-link span{transition:transform .22s var(--lg-ease)}
+.lg-link:hover span{transform:translateX(4px)}
+
+/* Over a dark field or a photo, everything flips to cream and gold stays gold.
+   Put .lg-on-dark on any block you build yourself over a dark field. */
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold-hi)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow::before{background:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-num{background-image:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%)}
+
+/* ==========================================================================
+   BUTTONS · one foil button per screen, on the action we most want.
+   Everything else is the ghost. 44px minimum on a phone, always.
+   ========================================================================== */
+/* .lg-btn-line works on its own or paired with .lg-btn */
+.lg-btn,.lg-btn-line{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:0 26px;border:0;border-radius:var(--lg-r-btn);cursor:pointer;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
+  color:#17140F;background-image:var(--lg-foil);background-size:200% 100%;background-position:0 0;
+  box-shadow:var(--lg-btn-lift);
+  transition:background-position .45s var(--lg-ease),transform .12s var(--lg-ease)}
+.lg-btn:hover,.lg-btn:focus-visible{background-position:100% 0}
+.lg-btn:active,.lg-btn-line:active{transform:scale(.975)}
+:is(.lg-btn,.lg-btn-line)[disabled],:is(.lg-btn,.lg-btn-line)[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.lg-btn-line{background:transparent;background-image:none;color:var(--lg-ink);box-shadow:none;
+  border:2px solid var(--lg-ink);min-height:48px;transition:background-color .2s,color .2s,transform .12s var(--lg-ease)}
+.lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+.lg-btn-sm{min-height:44px;padding:0 18px}
+.lg-btn-block{width:100%}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line{color:var(--lg-on-dark);border-color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line:hover{background:var(--lg-on-dark);color:var(--lg-dark)}
+[data-ground="twilight"] .lg-btn-line{border-color:rgba(244,243,240,.5)}
+.lg-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+/* Working and done. Done is INK, never green: "added" is not a colour event. */
+.lg-sp{width:0;height:14px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;opacity:0;transition:width .18s,opacity .18s}
+[data-busy] .lg-sp{width:14px;opacity:.85;animation:lg-spin .7s linear infinite}
+@keyframes lg-spin{to{transform:rotate(360deg)}}
+:is(.lg-btn,.lg-btn-line)[data-done]{background-image:none;background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink);box-shadow:none}
+
+/* ==========================================================================
+   CHROME · announcement bar, header, footer. Solid deep green, no pinstripe:
+   they sit over every page and every photo, so they stay quiet.
+   ========================================================================== */
+.lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
+.lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
+  justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.lg-tick-in::-webkit-scrollbar{display:none}
+.lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+
+.lg-hdr{position:sticky;top:0;z-index:var(--lg-z-hdr);background:var(--lg-dark);color:var(--lg-on-dark);
+  border-bottom:1px solid var(--lg-rule-dark)}
+.lg-hdr-in{padding:0 var(--lg-pad);height:72px;display:grid;grid-template-columns:1fr auto 1fr;
+  grid-template-areas:"l n a";align-items:center;gap:24px}
+.lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
+.lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
+.lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
+  text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
+.lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
+.lg-hdr-act a,.lg-hdr-act button{min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--lg-on-dark);cursor:pointer}
+@media (max-width:980px){
+  .lg-hdr-in{grid-template-columns:auto 1fr;grid-template-areas:"l a";height:64px}
+  .lg-nav{display:none}
+  .lg-tick-in a:nth-child(n+2){display:none}
+}
+
+.lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
+  padding-block:clamp(40px,4.4vw,64px)}
+.lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
+.lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
+.lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   PHOTOGRAPHY · photos lead. Every page opens on one, and a photo beat comes
+   at least every couple of sections. Photos keep their real shape (the shoot
+   is 3:2): never a portrait crop of a landscape frame.
+   ========================================================================== */
+
+/* The hero: one full-bleed photograph, headline bottom-left over a scrim.
+   --focus sets the crop (desktop), --focus-m on phones. */
+.lg-hero{position:relative;isolation:isolate;background:#0B1911;overflow:hidden;color:var(--lg-on-dark)}
+.lg-hero > img,.lg-hero-img{display:block;width:100%;height:min(86vh,860px);min-height:560px;object-fit:cover;object-position:var(--focus,50% 50%)}
+.lg-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(6,17,11,.82) 0%,rgba(6,17,11,.45) 38%,rgba(6,17,11,0) 68%),
+             linear-gradient(90deg,rgba(6,17,11,.55) 0%,rgba(6,17,11,0) 55%)}
+.lg-hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;
+  padding-bottom:clamp(40px,6vw,96px);color:var(--lg-on-dark)}
+.lg-hero-copy .lg-wrap{width:100%}
+.lg-hero .lg-d1{max-width:20ch}
+.lg-hero .lg-lede{color:rgba(255,255,255,.9)}
+/* the eyebrow on a photo sits on a glass chip so it reads on any frame */
+.lg-hero .lg-eyebrow{display:inline-flex;background:rgba(6,17,11,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--lg-gold-hi);padding:8px 12px;border-radius:8px}
+.lg-hero .lg-eyebrow::before{display:none}
+@media (max-width:749px){
+  .lg-hero > img,.lg-hero-img{height:620px;min-height:0;object-position:var(--focus-m,var(--focus,50% 50%))}
+  .lg-hero::after{background:linear-gradient(0deg,rgba(6,17,11,.9) 0%,rgba(6,17,11,.55) 45%,rgba(6,17,11,.05) 75%)}
+  .lg-hero-copy{padding-bottom:32px}
+}
+
+/* Photo band: three 3:2 frames across, full bleed. Phones: one wide, two under. */
+.lg-pband{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}
+.lg-pband figure{margin:0;overflow:hidden;min-width:0;aspect-ratio:3/2;background:var(--lg-tile)}
+.lg-pband img{display:block;width:100%;height:100%;object-fit:cover}
+@media (max-width:749px){
+  .lg-pband{grid-template-columns:1fr 1fr}
+  .lg-pband figure:first-child{grid-column:1/-1}
+}
+
+/* A photo frame inside the page, beside text. 3:2 by default; .is-tall (4:5)
+   only when the frame itself is portrait. Optional glass caption. */
+.lg-frame{position:relative;margin:0;border-radius:var(--lg-r-card);overflow:hidden;aspect-ratio:3/2;background:var(--lg-tile)}
+.lg-frame.is-tall{aspect-ratio:4/5}
+.lg-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
+.lg-frame figcaption{position:absolute;left:14px;bottom:14px;background:rgba(6,17,11,.72);color:#F4F3F0;padding:8px 12px;border-radius:8px}
+
+/* Text beside a photo: 7/5 split, stacks on phones. .is-flip puts the photo first. */
+.lg-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:center}
+.lg-split.is-flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+@media (max-width:900px){.lg-split,.lg-split.is-flip{grid-template-columns:1fr}}
+
+/* A photograph that does not exist yet is a LABELLED SLOT with the shot brief
+   on it. Never a grey box, never a stock photo, never another brand's photo. */
+.lg-slot{display:grid;place-items:center;text-align:center;padding:24px;aspect-ratio:4/5;
+  background:var(--lg-tile) repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 8px,transparent 8px 16px);
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card);color:#5a564e;font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   BANDS · at most ONE dark beat on a Daylight page, low down, and the page
+   always comes back to white. Plain: deep green with one soft gold light.
+   .is-photo: the band sits on a photo under a dark scrim (reviews, a quote).
+   ========================================================================== */
+.lg-band{position:relative;background:var(--lg-band-light);
+  color:var(--lg-on-dark);padding-block:var(--lg-sec)}
+.lg-band.is-photo{background:var(--band-bg) var(--band-pos,center)/cover no-repeat,#0B1911}
+.lg-band.is-photo::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(6,17,11,.84) 0%,rgba(6,17,11,.62) 55%,rgba(6,17,11,.4) 100%)}
+.lg-band > .lg-wrap{position:relative;z-index:1}
+.lg-band-tile{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark);
+  border-radius:var(--lg-r-card);padding:24px}
+.lg-band.is-photo .lg-band-tile{background:rgba(6,17,11,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-color:rgba(237,210,124,.25)}
+
+/* ==========================================================================
+   SURFACES · product sits on stone, photography sits full.
+   ========================================================================== */
+.lg-tile{background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-grid{display:grid;gap:var(--lg-gut);align-items:start;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.lg-card{display:flex;flex-direction:column;color:var(--lg-ink);text-decoration:none}
+.lg-card-ph{position:relative;aspect-ratio:4/5;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+/* studio cutouts are shot on white: multiply drops the white into the stone */
+.lg-card-ph.is-cut img{object-fit:contain;mix-blend-mode:multiply;padding:16px}
+.lg-card:hover .lg-card-ph img{transform:scale(1.03)}
+.lg-card-ph .lg-tag{position:absolute;left:12px;top:12px;z-index:2}
+.lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.lg-card-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  text-transform:uppercase;font-size:clamp(16.8px,1.3vw,20px);line-height:1}
+.lg-card-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
+.lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
+[data-ground="twilight"] .lg-card-ph{background:var(--lg-tile)}
+
+/* A card that holds controls (a gift, a picker) rather than a photo. */
+.lg-panel{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;border:1px solid transparent}
+.lg-panel.is-open{border-color:var(--lg-gold)}
+[data-ground="twilight"] .lg-panel{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),var(--lg-surface);border-color:rgba(237,210,124,.16)}
+[data-ground="twilight"] .lg-panel.is-open{border-color:rgba(237,210,124,.7);box-shadow:0 0 40px -12px rgba(237,210,124,.45)}
+
+/* Review card. Only ever a real review, quoted exactly, with a real name. */
+.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+  flex-direction:column;gap:12px;margin:0}
+.lg-quote p,.lg-quote blockquote{margin:0;font-size:var(--lg-fs-body)}
+.lg-quote footer,.lg-quote figcaption{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+.lg-band .lg-quote{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark)}
+.lg-band .lg-quote footer,.lg-band .lg-quote figcaption{color:var(--lg-on-dark-m)}
+
+/* Stat tile: a number that is real, and what it means underneath. */
+.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
+.lg-stat b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;font-size:clamp(28.8px,3vw,41.6px);line-height:1}
+.lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   SMALL PARTS · the stamp: condensed caps on chips, tags, trust rows, tables.
+   ========================================================================== */
+.lg-tag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;justify-self:start;border-radius:999px;padding:5px 11px;
+  background:#17140F;color:#F4F3F0;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
+.lg-tag-gold{background-image:var(--lg-foil);color:#17140F}
+.lg-tag-ok{background:#008340;color:#fff}
+[data-ground="twilight"] .lg-tag:not(.lg-tag-gold):not(.lg-tag-ok){background:#F4F3F0;color:#06110B}
+
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.lg-chip[aria-pressed="true"],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+/* A value that can't be bought: dashed and struck, never faded out of reach. */
+.lg-chip[data-dead]{color:var(--lg-ink-64);border-style:dashed;text-decoration:line-through}
+.lg-chip[data-dead][aria-pressed="true"]{color:var(--lg-page)}
+.lg-chips{display:flex;flex-wrap:wrap;gap:6px}
+[data-ground="twilight"] .lg-chip{background:rgba(255,255,255,.03);border-color:rgba(244,243,240,.2)}
+
+/* Picture swatch: the real product, tapped to choose it. */
+.lg-swatch{flex:none;width:72px;height:72px;padding:0;cursor:pointer;overflow:hidden;position:relative;
+  background:#FFFFFF;border:1px solid var(--lg-rule);border-radius:12px}
+.lg-swatch img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.lg-swatch[aria-pressed="true"]{border:2px solid var(--lg-ink)}
+[data-ground="twilight"] .lg-swatch[aria-pressed="true"]{border-color:#EDD27C;box-shadow:0 0 18px -4px rgba(237,210,124,.6)}
+
+.lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
+.lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
+
+/* Stars are a graphic: on white they need the darker gold to stay legible. */
+.lg-stars{display:inline-flex;gap:2px;color:var(--lg-star);line-height:0}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+.lg-stars svg{width:15px;height:15px;fill:currentColor}
+
+.lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
+  padding-block:20px;border-block:1px solid var(--lg-rule)}
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-sm)}
+.lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+
+.lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
+.lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
+.lg-table thead th{background:var(--lg-tile);color:#17140F;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:var(--lg-fs-xs)}
+.lg-table tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
+
+/* Forms. One field, one button, the reason to give it. */
+.lg-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.lg-input{flex:1 1 240px;min-height:52px;padding:0 16px;border:1px solid var(--lg-rule);
+  border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-base)}
+.lg-input::placeholder{color:var(--lg-ink-64)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input::placeholder{color:var(--lg-on-dark-m)}
+
+/* FAQ: native details, a gold plus that turns to a minus. */
+.lg-faq{margin-top:20px}
+.lg-fq{border-top:1px solid var(--lg-rule)}
+.lg-fq:last-child{border-bottom:1px solid var(--lg-rule)}
+.lg-fq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;
+  cursor:pointer;list-style:none;min-height:48px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:700;font-size:var(--lg-fs-body);line-height:1.35;color:var(--lg-ink)}
+.lg-fq summary::-webkit-details-marker{display:none}
+.lg-fq summary:hover{color:var(--lg-gold-text)}
+.lg-fq summary::after{content:'';flex:none;width:14px;height:14px;
+  background:linear-gradient(var(--lg-gold-text),var(--lg-gold-text)) center/14px 2px no-repeat,
+             linear-gradient(var(--lg-gold-text),var(--lg-gold-text)) center/2px 14px no-repeat}
+.lg-fq[open] summary::after{background:linear-gradient(var(--lg-gold-text),var(--lg-gold-text)) center/14px 2px no-repeat}
+.lg-fq-a{padding:0 0 18px;max-width:62ch;color:var(--lg-ink-70)}
+.lg-fq-a > :first-child{margin-top:0}
+.lg-fq-a > :last-child{margin-bottom:0}
+
+/* ==========================================================================
+   THE SIGN-OFF · every page ends on one. Eyebrow, one display line with the
+   foil word, a charm sub ("Legend has it..."), a ghost button, Mags standing
+   on a gold line. Daylight pages use the light one; .lg-sign is the dark
+   version for Twilight pages and the old dark-band layouts.
+   ========================================================================== */
+.lg-signoff{padding:clamp(56px,8vw,112px) 0 clamp(40px,6vw,72px);text-align:center;border-top:1px solid var(--lg-rule)}
+.lg-signoff .lg-eyebrow{justify-content:center}
+.lg-signoff .lg-d1{max-width:16ch;margin:14px auto 0}
+.lg-signoff .lg-lede{max-width:46ch;margin:16px auto 28px}
+.lg-signoff-mags{position:relative;margin-top:44px;height:60px}
+.lg-signoff-mags::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:var(--lg-foil)}
+.lg-signoff-mags .lg-mags{position:relative;display:block;width:96px;margin:0 auto;background:var(--lg-page);padding:0 16px;box-sizing:content-box}
+
+.lg-sign{position:relative;background:var(--lg-band-light);
+  color:var(--lg-on-dark);padding-block:clamp(56px,6vw,96px);overflow:hidden}
+.lg-sign-in{display:grid;grid-template-columns:1.2fr auto;gap:32px;align-items:end}
+.lg-sign img{width:clamp(140px,18vw,240px);height:auto;justify-self:end}
+.lg-sign hr{margin:22px 0 0;height:2px;background:var(--lg-gold);border:0}
+@media (max-width:760px){.lg-sign-in{grid-template-columns:1fr}.lg-sign img{justify-self:start;width:150px}}
+
+/* ==========================================================================
+   MAGS · the magpie. He has a JOB: getting the shopper to checkout.
+   Art: black Mags on light grounds, light Mags on dark ones, never a third
+   colour. Ship both images inside .lg-mags and the ground picks:
+     <span class="lg-mags"><img class="is-ink" src="…mags-ink.webp" alt=""><img class="is-light" src="…mags.webp" alt=""></span>
+   He appears on: the guide card, the pop-up, the sign-off, the empty bag,
+   the 404, success messages, the bag button. Never on an error.
+   ========================================================================== */
+/* lucky.js builds these in <body>, outside .lg-scope, so they carry the type themselves */
+:is(.lg-guide,.lg-pop,.lg-toast){font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-variation-settings:'wdth' 100;letter-spacing:normal;-webkit-font-smoothing:antialiased}
+.lg-pop :is(h2,p){color:inherit}
+.lg-mags{display:inline-block;line-height:0}
+.lg-mags img{display:block;width:100%;height:auto}
+.lg-mags .is-light{display:none}
+:is([data-ground="twilight"],.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hdr,.lg-tick,.lg-toast) .lg-mags .is-ink{display:none}
+:is([data-ground="twilight"],.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hdr,.lg-tick,.lg-toast) .lg-mags .is-light{display:block}
+
+/* The guide: one card, bottom-left (the chat bubble owns bottom-right).
+   Always ONE next step, and tapping it does that step. A card, because it
+   floats over photos and has to look tappable. */
+.lg-guide{position:fixed;left:20px;bottom:24px;z-index:var(--lg-z-float);display:flex;align-items:center;gap:10px;
+  margin:0;padding:8px 16px 8px 10px;border:1px solid var(--lg-gold);border-radius:16px;
+  background:var(--lg-surface);color:var(--lg-ink);box-shadow:var(--lg-float);
+  cursor:pointer;font:inherit;text-align:left;-webkit-tap-highlight-color:transparent;transition:border-color .2s}
+.lg-guide[hidden]{display:none}
+.lg-guide .lg-mags{flex:none;width:64px}
+.lg-guide-say{max-width:240px;font-size:14.4px;line-height:1.35;font-weight:500}
+.lg-guide:hover{border-color:var(--lg-gold-text)}
+.lg-guide:focus-visible{outline:2px solid var(--lg-gold);outline-offset:3px}
+.lg-guide.is-hop .lg-mags{animation:lg-hop .7s var(--lg-ease) 1}
+.lg-guide.is-hop .lg-guide-say{animation:lg-say .4s var(--lg-ease) 1}
+@keyframes lg-hop{0%{translate:0 0}30%{translate:0 -16px}55%{translate:0 0}75%{translate:0 -6px}100%{translate:0 0}}
+@keyframes lg-say{from{opacity:0;scale:.94}to{opacity:1;scale:1}}
+@media (max-width:749px){
+  .lg-guide{left:10px;bottom:calc(var(--lg-guide-lift,16px) + env(safe-area-inset-bottom));padding:7px 12px 7px 8px;gap:8px}
+  .lg-guide .lg-mags{width:50px}
+  .lg-guide-say{max-width:calc(100vw - 170px);font-size:13.6px}
+}
+
+/* The pop-up: asks the question outright after something good happens.
+   Primary = the foil (usually Check out), secondary = the ghost. Closing it
+   shrinks it into the guide card (lucky.js). */
+.lg-pop{position:fixed;inset:0;z-index:var(--lg-z-modal);display:grid;place-items:center;padding:16px;
+  background:rgba(6,17,11,.46);transition:background .35s}
+.lg-pop[hidden]{display:none}
+.lg-pop.is-out{background:rgba(6,17,11,0)}
+.lg-pop-card{position:relative;width:min(420px,100%);padding:30px 26px 24px;background:var(--lg-surface);color:var(--lg-ink);
+  border-radius:var(--lg-r-card);text-align:center;overflow:hidden;box-shadow:var(--lg-float-lg)}
+.lg-pop-card::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--lg-foil)}
+.lg-pop.is-in:not(.is-out) .lg-pop-card{animation:lg-pop-in .34s var(--lg-ease) 1}
+@keyframes lg-pop-in{from{opacity:0;translate:0 14px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+.lg-pop-card > .lg-mags{width:96px;margin:0 auto 12px}
+.lg-pop .lg-d3{margin:0 0 10px}
+.lg-pop .lg-body{margin:0 auto 22px;max-width:34ch}
+.lg-pop-act{display:grid;gap:10px}
+.lg-pop-act :is(.lg-btn,.lg-btn-line){width:100%;min-height:50px}
+.lg-pop-x{position:absolute;top:6px;right:6px;width:44px;height:44px;border:0;background:none;cursor:pointer;
+  color:var(--lg-ink-64);font-size:26px;line-height:1;display:grid;place-items:center}
+.lg-pop-x:hover{color:var(--lg-ink)}
+
+/* The toast: news that isn't a question. Good news can carry Mags; an error never does.
+   Bottom-centre on desktop, top on phones (the bottom belongs to the bars). */
+.lg-toast{position:fixed;left:50%;bottom:28px;translate:-50% 0;z-index:var(--lg-z-float);margin:0;
+  display:flex;align-items:center;gap:14px;max-width:min(520px,calc(100vw - 28px));padding:13px 18px;
+  background:var(--lg-dark);color:var(--lg-on-dark);border:1px solid var(--lg-gold);border-radius:var(--lg-r-btn);
+  font-size:var(--lg-fs-base);line-height:1.45}
+.lg-toast[hidden]{display:none}
+.lg-toast .lg-mags{flex:none;width:56px}
+@media (max-width:749px){.lg-toast{bottom:auto;top:14px}}
+
+/* ==========================================================================
+   YARDAGE · the personality layer. Instruments, never wallpaper: every
+   number it shows is real (prices, thresholds, lofts, review counts).
+   Where each piece goes is in LUCKY-SYSTEM.md. One moving thing per page.
+   ========================================================================== */
+
+/* The hole bar: progress toward real thresholds. Tee at 0, a flag per tier,
+   the green at the last one. The ball rides the front of the fill. */
+.lg-hole{position:relative;height:10px;border-radius:2px;margin:6px 0 26px;
+  background:repeating-linear-gradient(90deg,var(--lg-yd) 0 1px,transparent 1px calc(100%/39.6)) bottom/100% 100% no-repeat,var(--lg-rule-08)}
+.lg-hole-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;
+  background-image:linear-gradient(90deg,#C29A2B,#EDD27C 70%,#FFF3C4);transition:width .45s var(--lg-ease)}
+[data-ground="twilight"] .lg-hole-fill{box-shadow:0 0 14px rgba(237,210,124,.7)}
+.lg-hole-ball{position:absolute;top:50%;left:0;z-index:2;width:12px;height:12px;border-radius:50%;translate:-50% -50%;
+  background:#FFFFFF;border:2px solid #17140F;transition:left .7s var(--lg-ease)}
+.lg-hole-ball.is-fly{animation:lg-ballhop .7s var(--lg-ease) 1}
+@keyframes lg-ballhop{0%,100%{translate:-50% -50%}45%{translate:-50% -240%}}
+[data-ground="twilight"] .lg-hole-ball{box-shadow:0 0 10px rgba(237,210,124,.8);border-color:#06110B}
+.lg-hole-flag{position:absolute;top:50%;translate:0 -50%;pointer-events:none}
+.lg-hole-flag i{position:relative;display:block;width:2px;height:22px;translate:-50% -6px;background:var(--lg-ink-38)}
+.lg-hole-flag i::after{content:'';position:absolute;left:2px;top:0;border:5px solid transparent;border-left:9px solid var(--lg-ink-38);border-right:0}
+.lg-hole-flag b{position:absolute;top:16px;left:0;translate:-50% 0;white-space:nowrap;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--lg-fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--lg-ink-64)}
+.lg-hole-flag[data-last] b{translate:-100% 0}
+.lg-hole-flag[data-hit] i{background:var(--lg-yd-gold)}
+.lg-hole-flag[data-hit] i::after{border-left-color:var(--lg-yd-gold)}
+.lg-hole-flag[data-hit] b{color:var(--lg-gold-text)}
+
+/* The tracer: a launch-monitor arc built from real stops by lucky.js.
+   One per page, promos and launches only. Hidden on phones. */
+.lg-tracer svg{display:block;width:100%;height:auto;overflow:visible}
+.lg-tracer .yd-ticks line{stroke:var(--lg-yd-soft);stroke-width:1}
+.lg-tracer .yd-path{fill:none;stroke:var(--lg-yd-gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.lg-tracer.is-in .yd-path{stroke-dashoffset:0;transition:stroke-dashoffset 2.2s cubic-bezier(.3,.6,.2,1)}
+.lg-tracer .yd-flag line{stroke:var(--lg-yd);stroke-width:1.5}
+.lg-tracer .yd-flag path{fill:var(--lg-yd-gold)}
+.lg-tracer .yd-flag text,.lg-tracer .yd-tee{font:600 12px 'Archivo',sans-serif;letter-spacing:.12em;fill:var(--lg-ink-64)}
+.lg-tracer .yd-ball{fill:#F4F3F0;stroke:#17140F;stroke-width:1.5}
+[data-ground="twilight"] .lg-tracer .yd-ball{filter:drop-shadow(0 0 6px rgba(237,210,124,.9))}
+@media (max-width:749px){.lg-tracer{display:none}}
+
+/* The tick ruler: a quiet divider when a section needs one. */
+.lg-ruler{height:14px;border-bottom:1px solid var(--lg-yd-soft);
+  background:repeating-linear-gradient(90deg,var(--lg-yd) 0 1px,transparent 1px 60px) bottom/100% 14px no-repeat,
+             repeating-linear-gradient(90deg,var(--lg-yd-soft) 0 1px,transparent 1px 12px) bottom/100% 7px no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+
+/* Section numbers like hole numbers: put .lg-numbered on a LONG page's
+   wrapper (promo, story, guide) and every section eyebrow counts 01, 02...
+   Add .lg-unnumbered to an eyebrow that shouldn't count (the hero, the sign-off). */
+.lg-numbered{counter-reset:lg-hole}
+.lg-numbered section .lg-eyebrow:not(.lg-unnumbered){counter-increment:lg-hole}
+.lg-numbered section .lg-eyebrow:not(.lg-unnumbered)::before{content:counter(lg-hole,decimal-leading-zero);width:auto;height:auto;background:none;
+  font-variation-settings:'wdth' 62;font-weight:800;font-size:16.8px;letter-spacing:0;color:var(--lg-ink);padding-right:10px;border-right:2px solid var(--lg-gold)}
+
+/* Spec tiles (launch monitor A): the product page's real specs, big numbers. */
+.lg-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.lg-spec{background:var(--lg-tile);border-radius:var(--lg-r);padding:14px 16px}
+.lg-spec b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:30px;line-height:1}
+.lg-spec b small{font-size:.5em;margin-left:2px}
+.lg-spec span{display:block;margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+[data-ground="twilight"] .lg-spec{background:rgba(255,255,255,.05);border:1px solid var(--lg-rule)}
+
+/* HUD strip (launch monitor B): the compact version, for cards and cart lines. */
+.lg-hud{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+.lg-hud b{color:var(--lg-ink);font-weight:700;margin-right:4px}
+
+/* Review score: the real average and the real counts per star, as bars. */
+.lg-score{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;align-items:center}
+.lg-score > b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:64px;line-height:.9}
+.lg-score-bars{display:grid;gap:6px;min-width:0}
+.lg-score-row{display:grid;grid-template-columns:28px 1fr 44px;gap:10px;align-items:center;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.lg-score-row i{height:6px;border-radius:3px;background:var(--lg-rule-08);position:relative;overflow:hidden}
+.lg-score-row i::after{content:'';position:absolute;inset:0 auto 0 0;width:var(--pct,0%);background:var(--lg-gold);border-radius:3px}
+
+/* The launch monitor (A, the pick): the product page's readout. Product on
+   the left, four tiles on the right: a label, a big real number, and the real
+   values as chips (or one line under it). A live "in stock" light in the head. */
+.lg-monitor{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-page)}
+.lg-monitor-hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--lg-rule);color:var(--lg-ink-64)}
+.lg-live{display:inline-flex;align-items:center;gap:7px}
+.lg-live i{width:7px;height:7px;border-radius:50%;background:var(--lg-ok)}
+[data-ground="twilight"] .lg-live i{box-shadow:0 0 8px var(--lg-ok)}
+.lg-monitor-in{display:grid;grid-template-columns:200px minmax(0,1fr)}
+.lg-monitor-ph{background:var(--lg-tile);border-right:1px solid var(--lg-rule);display:grid;place-items:center;min-height:220px}
+.lg-monitor-ph img{width:100%;height:100%;max-height:260px;object-fit:contain;mix-blend-mode:multiply;padding:14px;box-sizing:border-box}
+.lg-monitor-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.lg-mt{display:flex;flex-direction:column;gap:8px;padding:16px 18px;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08);min-height:118px}
+.lg-mt:nth-child(2n){border-right:0}
+.lg-mt:nth-last-child(-n+2){border-bottom:0}
+.lg-mt > span{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+.lg-mt > b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:38px;line-height:.9;font-variant-numeric:tabular-nums}
+.lg-mt > em{margin-top:auto;font-style:normal;font-size:var(--lg-fs-base);color:var(--lg-ink-70)}
+.lg-vals{margin-top:auto;display:flex;flex-wrap:wrap;gap:5px}
+.lg-vals i{font-style:normal;font-family:'Archivo',sans-serif;font-weight:600;font-size:var(--lg-fs-xs);font-variant-numeric:tabular-nums;padding:5px 8px;border:1px solid var(--lg-rule);border-radius:6px}
+@media (max-width:640px){
+  .lg-monitor-in{grid-template-columns:1fr}
+  .lg-monitor-ph{border-right:0;border-bottom:1px solid var(--lg-rule);min-height:180px}
+  .lg-monitor-hd{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+/* Review proximity (A, the pick): every review is a ball on a green, seen
+   from above. Closer to the cup is better: 5 stars on the first ring, 1 star
+   on the outside. Drawn by Lucky.proximity() from the REAL counts; the side
+   carries the real average and the per-star bars. */
+.lg-prox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:center}
+.lg-prox svg{display:block;width:100%;height:auto}
+.lg-prox .px-axis{stroke:var(--lg-rule);fill:none}
+.lg-prox .px-ring{fill:none;stroke:var(--lg-gold);stroke-opacity:.75}
+.lg-prox .px-ring.r2{stroke:var(--lg-ink-38);stroke-opacity:.8;stroke-dasharray:1.5 5}
+.lg-prox .px-dot{fill:var(--lg-gold)}
+.lg-prox .px-cup{fill:var(--lg-ink)}
+.lg-prox .px-rl{font:600 11px 'Archivo',sans-serif;letter-spacing:.08em;fill:var(--lg-ink-64)}
+.lg-prox .px-rl.r5{fill:var(--lg-gold-text)}
+[data-ground="twilight"] .lg-prox .px-dot{filter:drop-shadow(0 0 3px rgba(237,210,124,.8))}
+@media (max-width:760px){.lg-prox{grid-template-columns:1fr}}
+
+/* The contour map (in the system since Sept 18; at most ONE per page, behind a quiet
+   section with no photo: "why the price", the FAQ, a spec block): ONE big map of a green (2400 x 1600,
+   tools/gen-contour-map.cjs), and every use shows a DIFFERENT part of it, so it
+   never looks the same twice. Fading in behind one quiet section; never behind
+   the words (the mask keeps the text side clear).
+   Point the scope at the two files once (Liquid):
+     style="--lg-contour-day:url({{ 'lucky-contour-day.svg' | asset_url }});--lg-contour-tw:url({{ 'lucky-contour-tw.svg' | asset_url }})"
+   Per use, optional: --cx / --cy (which part, 0 to 100%), --cz (zoom, 240% to 400%),
+   .is-left (fade from the other side), .is-flip (mirror). Leave them off and
+   lucky.js (Lucky.contours) picks a different part for every section on the page. */
+.lg-contour{position:relative;isolation:isolate;--lg-contour:var(--lg-contour-day)}
+[data-ground="twilight"] .lg-contour,.lg-contour[data-ground="twilight"]{--lg-contour:var(--lg-contour-tw)}
+.lg-contour::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,300%) auto no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%);mask-image:linear-gradient(90deg,transparent 18%,#000 62%)}
+.lg-contour.is-left::before{-webkit-mask-image:linear-gradient(270deg,transparent 18%,#000 62%);mask-image:linear-gradient(270deg,transparent 18%,#000 62%)}
+.lg-contour.is-flip::before{transform:scaleX(-1)}
+@media (max-width:749px){.lg-contour::before{--cz:520%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
+
+/* ==========================================================================
+   MOTION · mostly still. The vocabulary: the foil slides on hover, photos
+   ease on hover, the tracer draws once, the hole ball hops when the bag
+   changes, Mags hops when his line changes, the pop-up rises and shrinks
+   into Mags. No scroll reveals, no card lifts.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  :where(.lg-scope,body.lg) *,:where(.lg-scope,body.lg) *::before,:where(.lg-scope,body.lg) *::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .lg-tracer .yd-path{stroke-dashoffset:0}
+}

@@ -1,0 +1,839 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daylight gold options</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<style>/* ==========================================================================
+   LUCKY GOLF - the design system as one stylesheet.
+   Version 3.0 · 2026-09-17 · System: DEEP GREEN & GOLD.
+
+   Drop this file in, load Archivo, and build with the classes below. Every
+   class is prefixed lg- so it cannot collide with anything already on a page.
+
+   The whole system in one paragraph: the page is white, type is ink, product
+   sits on a stone tile, and ONE dark colour (deep green) carries the
+   announcement bar, the header, the bands low on the page and the footer.
+   Gold is the only accent and it never appears as a large field: buttons,
+   one word per headline, stars, hairline marks. Signal green means in stock
+   and nothing else. No cream, no brown, no second green.
+
+   Measured on the real pages: white 78 to 88% of the screen, photography 6
+   to 22%, deep green 3 to 12%, stone under 5%, gold under 1.5%.
+
+   Fonts (put in <head>):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+
+   To try another system, change ONE value: --lg-dark.
+     Deep green & gold  #0B2E1F   (this file, the pick)
+     Ink & gold         #17140F
+     White & gold       keep the bands white and use #121212 for the footer.
+   ========================================================================== */
+
+:root{
+  /* ---------------- ground ---------------- */
+  --lg-page:#FFFFFF;          /* the page. Most of every screen. */
+  --lg-tile:#F4F3F0;          /* stone. Product wells, cards, table fills. A material, never a band. */
+  --lg-dark:#0B2E1F;          /* THE one dark. Announcement bar, header, bands, footer. */
+
+  /* ---------------- type on the ground ---------------- */
+  --lg-ink:#17140F;           /* all text on white */
+  --lg-ink-70:rgba(23,20,15,.70);
+  --lg-ink-64:rgba(23,20,15,.64);
+  --lg-ink-38:rgba(23,20,15,.38);
+  --lg-on-dark:#F4F3F0;       /* text on the dark. 13.2:1 */
+  --lg-on-dark-m:rgba(244,243,240,.72);
+  --lg-rule:rgba(23,20,15,.14);
+  --lg-rule-08:rgba(23,20,15,.08);
+  --lg-rule-dark:rgba(244,243,240,.18);
+
+  /* ---------------- accent ---------------- */
+  --lg-gold:#C29A2B;          /* gold as a SURFACE: stars, rules, bars, buttons. 5.6:1 on the dark. */
+  --lg-gold-hi:#EDD27C;
+  --lg-gold-text:#8A6A1C;     /* gold as TYPE on white only. 5.05:1 */
+  --lg-ok:#008340;            /* in stock, added, verified. Never decoration. */
+  --lg-ok-on-dark:#7FB69A;
+  --lg-clover:#0B5130;        /* the clover inside the logo. Nowhere else. */
+
+  /* The foil is a material, not a colour. Ink type on it reads 6.9:1.
+     Two places per view: the primary button, and ONE display word. */
+  --lg-foil:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+  --lg-foil-text:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);
+
+  /* The pinstripe. Dark FEATURE bands only: never the header, bar or footer.
+     Drawn as a 6px tile, because long CSS gradients rasterise unevenly. */
+  --lg-groove:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%23F6F2E8' fill-opacity='.10'/%3E%3C/svg%3E");
+  --lg-groove-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%2317140F' fill-opacity='.03'/%3E%3C/svg%3E");
+
+  /* ---------------- measure ---------------- */
+  --lg-wrap:1180px;
+  --lg-pad:clamp(20px,4.2vw,68px);
+  --lg-gut:clamp(16px,2vw,28px);
+  --lg-sec:clamp(64px,7vw,112px);   /* space between page sections */
+  --lg-r:6px;                       /* controls */
+  --lg-r-card:14px;                 /* surfaces */
+  --lg-ease:cubic-bezier(.23,1,.32,1);
+
+  /* ---------------- type scale ---------------- */
+  --lg-fs-xs:.72rem;
+  --lg-fs-sm:.8rem;
+  --lg-fs-base:.95rem;
+  --lg-fs-body:1.0625rem;
+  --lg-fs-lead:clamp(1.1rem,1.5vw,1.3rem);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.lg-scope,
+body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-variation-settings:'wdth' 100;font-size:var(--lg-fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.lg-wrap{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad)}
+.lg-sec{padding-block:var(--lg-sec)}
+.lg-hr{height:1px;background:var(--lg-rule);border:0;margin:0}
+.lg-center{text-align:center}
+:where(.lg-scope,body.lg) :focus-visible{outline:2px solid var(--lg-gold);outline-offset:2px}
+
+/* ==========================================================================
+   TYPE
+   Display is Archivo at width 62, uppercase, 800. Labels at width 78, 600,
+   tracked caps. Body is plain 100 width. Nothing else.
+   ========================================================================== */
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;
+  font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.lg-d1{font-size:clamp(2.6rem,6.2vw,5.2rem)}
+.lg-d2{font-size:clamp(2rem,3.9vw,3.2rem)}
+.lg-d3{font-size:clamp(1.25rem,1.8vw,1.6rem);line-height:1}
+
+/* ONE word per headline carries the foil. Never body size. */
+.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* The eyebrow orients the section. It never restates the headline. */
+.lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
+.lg-eyebrow::before{content:'';width:22px;height:2px;background:var(--lg-gold);flex:none}
+.lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
+.lg-body{margin:14px 0 0;max-width:62ch;color:var(--lg-ink-70)}
+.lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+/* The aside is the charm voice: one line, sentence case, medium weight. */
+.lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
+.lg-label{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
+  display:inline-flex;align-items:center;gap:8px}
+.lg-link span{transition:transform .22s var(--lg-ease)}
+.lg-link:hover span{transform:translateX(4px)}
+
+/* On a dark ground everything flips to cream, and gold stays gold. Put
+   .lg-on-dark on any block you build yourself over a dark field or a photo. */
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
+
+/* ==========================================================================
+   BUTTONS · one foil button per view, everything else is the ghost.
+   44px minimum on a phone, always.
+   ========================================================================== */
+.lg-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:0 26px;border:0;border-radius:var(--lg-r);cursor:pointer;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
+  color:var(--lg-ink);background-image:var(--lg-foil);background-size:200% 100%;
+  background-position:0 0;transition:background-position .45s var(--lg-ease),transform .12s var(--lg-ease)}
+.lg-btn:hover,.lg-btn:focus-visible{background-position:100% 0}
+.lg-btn:active{transform:scale(.975)}
+.lg-btn[disabled],.lg-btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.lg-btn-line{background:transparent;background-image:none;color:var(--lg-ink);
+  border:2px solid var(--lg-ink);min-height:48px}
+.lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line{color:var(--lg-on-dark);border-color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line:hover{background:var(--lg-on-dark);color:var(--lg-dark)}
+.lg-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ==========================================================================
+   CHROME · the announcement bar and the header. Solid colour, no pinstripe,
+   because they sit over every page and every photo.
+   ========================================================================== */
+.lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
+.lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
+  justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.lg-tick-in::-webkit-scrollbar{display:none}
+.lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+
+.lg-hdr{position:sticky;top:0;z-index:40;background:var(--lg-dark);color:var(--lg-on-dark);
+  border-bottom:1px solid var(--lg-rule-dark)}
+.lg-hdr-in{padding:0 var(--lg-pad);height:72px;display:grid;grid-template-columns:1fr auto 1fr;
+  grid-template-areas:"l n a";align-items:center;gap:24px}
+.lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
+.lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
+.lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
+  text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
+.lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
+.lg-hdr-act a,.lg-hdr-act button{min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--lg-on-dark);cursor:pointer}
+@media (max-width:980px){
+  .lg-hdr-in{grid-template-columns:auto 1fr;grid-template-areas:"l a";height:64px}
+  .lg-nav{display:none}
+  .lg-tick-in a:nth-child(n+2){display:none}
+}
+
+/* ==========================================================================
+   BANDS · the dark beats low on the page. These carry the pinstripe.
+   Rhythm for a landing page: bar, header, hero photo, white sections,
+   ONE band, the sign-off, the footer. No two bands touch.
+   ========================================================================== */
+.lg-band{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:var(--lg-sec)}
+.lg-band-tile{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark);
+  border-radius:var(--lg-r-card);padding:24px}
+
+/* The hero: one full bleed photograph, headline bottom left over the scrim. */
+.lg-hero{position:relative;isolation:isolate;background:#0f0d09;overflow:hidden}
+.lg-hero img{display:block;width:100%;height:min(86vh,860px);min-height:520px;object-fit:cover}
+.lg-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(92deg,rgba(11,20,15,.82) 0%,rgba(11,20,15,.52) 38%,rgba(11,20,15,.04) 68%),
+             linear-gradient(0deg,rgba(11,20,15,.55) 0%,rgba(11,20,15,0) 42%)}
+.lg-hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;
+  padding-bottom:clamp(40px,6vw,96px);color:var(--lg-on-dark)}
+.lg-hero-copy .lg-wrap{width:100%}
+
+/* ==========================================================================
+   SURFACES · tiles and cards. Product sits on stone, photography sits full.
+   ========================================================================== */
+.lg-tile{background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-grid{display:grid;gap:var(--lg-gut);align-items:start;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.lg-card{display:flex;flex-direction:column;color:var(--lg-ink);text-decoration:none}
+.lg-card-ph{position:relative;aspect-ratio:4/5;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.lg-card:hover .lg-card-ph img{transform:scale(1.03)}
+.lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.lg-card-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  text-transform:uppercase;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1}
+.lg-card-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
+.lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
+
+/* A photograph that does not exist yet is a LABELLED SLOT, never a grey box
+   and never a stock photo. Put the shot brief on it. */
+.lg-slot{display:grid;place-items:center;text-align:center;padding:24px;aspect-ratio:4/5;
+  background:var(--lg-tile) repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 8px,transparent 8px 16px);
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card);color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Review card. Only ever a real review, quoted exactly, with a real name. */
+.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+  flex-direction:column;gap:12px}
+.lg-quote p{margin:0;font-size:var(--lg-fs-body)}
+.lg-quote footer{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Stat tile: a number that is real, and what it means underneath. */
+.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
+.lg-stat b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   SMALL PARTS · the stamp. Condensed caps on chips, tags, trust rows, tables.
+   ========================================================================== */
+.lg-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;
+  background:var(--lg-ink);color:var(--lg-page);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
+.lg-tag-gold{background-image:var(--lg-foil);color:var(--lg-ink)}
+.lg-tag-ok{background:var(--lg-ok);color:#fff}
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.lg-chip[aria-pressed="true"],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
+.lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
+
+/* Stars are a graphic: gold on white needs a darker gold to stay legible. */
+.lg-stars{display:inline-flex;gap:2px;color:#9A7619;line-height:0}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+.lg-stars svg{width:15px;height:15px;fill:currentColor}
+
+.lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
+  padding-block:20px;border-block:1px solid var(--lg-rule)}
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-sm)}
+.lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+
+/* Compare table: stone fill, hairlines, condensed caps in the head column. */
+.lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
+.lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
+.lg-table thead th{background:var(--lg-tile);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:var(--lg-fs-xs)}
+.lg-table tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
+
+/* Email capture. One field, one button, the reason to give it. */
+.lg-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.lg-input{flex:1 1 240px;min-height:52px;padding:0 16px;border:1px solid var(--lg-rule);
+  border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-base)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input::placeholder{color:var(--lg-on-dark-m)}
+
+/* ==========================================================================
+   THE SIGN-OFF and THE FOOTER
+   Mags is the emblem, never a cartoon with a face doing an action. He stands
+   on the rule at the sign-off, and rides the bag button in the header.
+   Use the cream artwork on dark grounds and the ink artwork on white ones.
+   ========================================================================== */
+.lg-sign{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:clamp(56px,6vw,96px);overflow:hidden}
+.lg-sign-in{display:grid;grid-template-columns:1.2fr auto;gap:32px;align-items:end}
+.lg-sign img{width:clamp(140px,18vw,240px);height:auto;justify-self:end}
+.lg-sign hr{margin:22px 0 0;height:2px;background:var(--lg-gold);border:0}
+@media (max-width:760px){.lg-sign-in{grid-template-columns:1fr}.lg-sign img{justify-self:start;width:150px}}
+
+.lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
+  padding-block:clamp(40px,4.4vw,64px)}
+.lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
+.lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
+.lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   MOTION · the system is still. The foil slides on hover, photos ease on
+   hover, and that is the whole vocabulary. No scroll reveals, no lifts,
+   no drop shadows anywhere.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+/* ==========================================================================
+   LUCKY GOLF · FREE HAT, FREE POLO — the parts lucky.css does not have.
+
+   THIS FILE ADDS NO COLOUR, NO FONT AND NO SHADOW. Every value below is a
+   lucky.css token or a measurement. If you find a hex in here, it is a bug.
+
+   What is here, and only this: the sticky rail, the phone cart bar, the
+   toast, the quantity stepper, the chip rows and the picture swatches, the
+   club card's buy box, the gift lock, the working/done button state, the
+   review band's quotes, and the FAQ.
+   ========================================================================== */
+
+.gwp{
+  --gwp-rail-h:74px;
+  --gwp-rail-hm:96px;
+  --gwp-bar-h:66px;
+  --gwp-top:0px;
+}
+.gwp img{display:block;max-width:100%}
+@media (max-width:749px){
+  .gwp{padding-bottom:calc(var(--gwp-rail-hm) + var(--gwp-bar-h) + 8px)}
+}
+#gwp-clubs{scroll-margin-top:calc(var(--gwp-top) + var(--gwp-rail-h) + 8px);outline:none}
+@media (max-width:749px){ #gwp-clubs{scroll-margin-top:8px} }
+
+/* ---------------------------------------------------------------- hero
+   The real on-course shot is square; the hero is wide. The club head and the
+   ball sit just below centre, so the crop holds there. */
+.gwp-hero img{object-position:50% 62%}
+.gwp-ends{align-self:center}
+
+/* ---------------------------------------------------------------- rail
+   White, because it never leaves the screen: 100px of dark chrome is 11% of
+   EVERY screen, not 1.6% of the page. */
+.gwp-rail{position:sticky;top:var(--gwp-top);z-index:30;
+  background:var(--lg-page);color:var(--lg-ink);border-bottom:1px solid var(--lg-rule)}
+.gwp-rail-in{max-width:var(--lg-wrap);margin:0 auto;padding:12px var(--lg-pad);
+  min-height:var(--gwp-rail-h);display:flex;align-items:center;gap:clamp(16px,3vw,44px)}
+.gwp-rail-copy{flex:1;min-width:0}
+.gwp-say-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:0 0 9px}
+.gwp-rail-pick{color:var(--lg-gold-text);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);text-decoration:none;border-bottom:2px solid var(--lg-gold);padding-bottom:2px}
+.gwp-rail-pick[hidden]{display:none}
+.gwp-ball{position:absolute;top:50%;left:0;z-index:2;width:12px;height:12px;border-radius:50%;translate:-50% -50%;
+  background:var(--lg-page);border:2px solid var(--lg-ink);transition:left .7s var(--lg-ease)}
+.gwp-ball.is-fly{animation:gwp-hop .7s var(--lg-ease) 1}
+@keyframes gwp-hop{0%,100%{translate:-50% -50%}45%{translate:-50% -240%}}
+.gwp-gift{outline:none}
+.gwp-gift.is-cue{animation:gwp-cue 1.5s ease 1}
+@keyframes gwp-cue{0%,100%{outline:2px solid transparent;outline-offset:0}35%{outline:2px solid var(--lg-gold);outline-offset:7px}}
+.gwp-say{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;
+  font-weight:700;font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.25;color:var(--lg-ink)}
+.gwp-rail[data-tier="1"] .gwp-say,.gwp-rail[data-tier="2"] .gwp-say{color:var(--lg-gold-text)}
+.gwp-track{position:relative;height:6px;border-radius:999px;background:var(--lg-rule)}
+.gwp-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background-image:var(--lg-foil);transition:width .45s var(--lg-ease)}
+.gwp-node{position:absolute;top:50%;translate:0 -50%;pointer-events:none}
+.gwp-node i{display:block;width:2px;height:14px;background:var(--lg-ink-38);translate:-50% 0;transition:background .3s}
+.gwp-node b{position:absolute;top:13px;left:0;translate:-50% 0;white-space:nowrap;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:var(--lg-fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--lg-ink-64);transition:color .3s}
+.gwp-node[data-last] b{translate:-100% 0}
+.gwp-node[data-hit] i{background:var(--lg-gold)}
+.gwp-node[data-hit] b{color:var(--lg-gold-text)}
+.gwp-rail-act{flex:none;display:flex;align-items:center;gap:14px}
+.gwp-rail-sum{text-align:right;line-height:1.15}
+.gwp-rail-sum .l{display:block;color:var(--lg-ink-64)}
+.gwp-rail-sum .v{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;
+  font-weight:700;font-size:1.25rem}
+.gwp-rail .lg-btn-line{min-height:44px;padding:0 18px}
+
+/* ---------------------------------------------------------------- phone bar
+   An exact height, so the rail can park exactly on top of it. */
+.gwp-bar{position:fixed;left:0;right:0;bottom:0;z-index:35;display:none;box-sizing:border-box;
+  height:calc(var(--gwp-bar-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+  background:var(--lg-page);color:var(--lg-ink);border-top:1px solid var(--lg-rule)}
+.gwp-bar-in{display:flex;align-items:center;gap:10px;padding:0 var(--lg-pad);height:calc(var(--gwp-bar-h) - 1px)}
+.gwp-bar-sum{flex:none;line-height:1.1}
+.gwp-bar-sum .l{display:block;color:var(--lg-ink-64)}
+.gwp-bar-sum .v{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;font-size:1.15rem}
+.gwp-bar-gift{flex:1;min-width:0;color:var(--lg-gold-text);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-xs);line-height:1.3}
+.gwp-bar-gift[data-none]{color:var(--lg-ink-64)}
+.gwp-bar .lg-btn{flex:none;min-height:46px;padding:0 18px}
+
+/* ---------------------------------------------------------------- toast */
+.gwp-toast{position:fixed;left:50%;top:14px;translate:-50% 0;z-index:100;margin:0;
+  max-width:min(520px,calc(100vw - 28px));padding:13px 18px;background:var(--lg-dark);
+  color:var(--lg-on-dark);border:1px solid var(--lg-gold);border-radius:var(--lg-r);
+  font-size:var(--lg-fs-base);line-height:1.45}
+.gwp-toast[hidden]{display:none}
+.gwp-toast.has-mags{display:flex;align-items:center;gap:14px;padding-left:12px}
+.gwp-toast-mags{flex:none;width:64px;height:auto;animation:gwp-mags .5s var(--lg-ease) 1}
+.gwp-toast-mags[hidden]{display:none}
+@keyframes gwp-mags{from{opacity:0;translate:-10px 0}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.gwp-toast-mags{animation:none}}
+
+/* ---------------------------------------------------------------- the clubs */
+.gwp-clubs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut);margin-top:36px;align-items:start}
+.gwp-card{display:flex;flex-direction:column}
+/* studio shots are shot on white; multiply drops the white into the stone */
+.gwp-cut img{object-fit:contain;mix-blend-mode:multiply;padding:16px} /* px, never %: % padding is measured off the WIDTH and crushed the club on narrow cards */
+.gwp-card[data-out] .lg-card-ph img{filter:grayscale(1);opacity:.55}
+.gwp-unlock{position:absolute;left:12px;top:12px;z-index:2}
+.gwp-card .lg-card-ln{font-size:var(--lg-fs-base)}
+
+.gwp-opts{display:grid;gap:12px;margin-top:14px}
+.gwp-opt > .lg-label{display:block;margin-bottom:6px;color:var(--lg-ink-64)}
+.gwp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.gwp-card .gwp-chips .lg-chip{padding:0 10px;min-width:44px}
+/* A dead value is marked with a dash and a strike, never faded out of reach:
+   --lg-ink-38 measured 2.4:1 on white. */
+.gwp-chips .lg-chip[data-dead]{color:var(--lg-ink-64);border-style:dashed;text-decoration:line-through}
+.gwp-chips .lg-chip[data-dead][aria-pressed="true"]{color:var(--lg-page)}
+
+.gwp-buy{margin-top:14px;display:flex;gap:8px;align-items:stretch}
+.gwp-buy .gwp-add{flex:1;min-width:0;min-height:46px;padding:0 12px}
+.gwp-add .lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gwp-qty{display:inline-flex;align-items:center;flex:none;border:1px solid var(--lg-rule);border-radius:var(--lg-r);overflow:hidden}
+.gwp-qty button{width:38px;min-height:46px;border:0;background:none;cursor:pointer;color:var(--lg-ink);
+  font:inherit;font-size:1.2rem;line-height:1;display:grid;place-items:center}
+.gwp-qty button:hover{background:var(--lg-ink);color:var(--lg-page)}
+.gwp-qty output{min-width:22px;text-align:center;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 74;font-weight:700;font-size:var(--lg-fs-base)}
+
+/* ---------------------------------------------------------------- the free stuff */
+/* Both cards are the same height, with the pick row pinned to the floor, so the
+   polo's extra size row does not leave the hat card looking unfinished. */
+.gwp-gift-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut);margin-top:32px;align-items:stretch}
+.gwp-gift{display:flex;flex-direction:column;padding:24px;border:1px solid transparent;transition:border-color .3s var(--lg-ease)}
+.gwp-gift[data-state="open"]{border-color:var(--lg-gold)}
+.gwp-gift[data-state="claimed"]{border-color:var(--lg-ok)}
+.gwp-gift-hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.gwp-gift[data-state="locked"] .gwp-gift-hd .lg-tag{background-image:none;background:var(--lg-ink);color:var(--lg-page)}
+.gwp-gift-sub{margin-top:8px}
+
+/* Picture swatches: the real hat, the real polo. Tapping one is the choice. */
+.gwp-swatches{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px;
+  scrollbar-width:thin;margin:0 -2px}
+.gwp-swatch{flex:none;width:72px;height:72px;padding:0;cursor:pointer;scroll-snap-align:start;overflow:hidden;
+  background:var(--lg-page);border:1px solid var(--lg-rule);border-radius:var(--lg-r);position:relative}
+.gwp-swatch img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.gwp-swatch[aria-pressed="true"]{border:2px solid var(--lg-ink)}
+.gwp-swatch[data-dead]::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top right,transparent calc(50% - 1px),var(--lg-ink-64) 50%,transparent calc(50% + 1px))}
+.gwp-swatch[data-dead] img{opacity:.45}
+
+.gwp-lock{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 14px;
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r);color:var(--lg-ink-64)}
+.gwp-lock[hidden]{display:none}
+.gwp-lock svg{flex:none;width:15px;height:15px;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+.gwp-gift-opts{margin-bottom:16px}
+.gwp-pick{margin-top:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.gwp-pick[hidden]{display:none}
+.gwp-picked{margin:0;flex:1;min-width:0}
+.gwp-pick .lg-btn{flex:none}
+
+/* ---------------------------------------------------------------- working / done */
+.gwp-sp{width:0;height:14px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;
+  opacity:0;transition:width .18s,opacity .18s}
+[data-busy] .gwp-sp{width:14px;opacity:.85;animation:gwp-spin .7s linear infinite}
+@keyframes gwp-spin{to{transform:rotate(360deg)}}
+.lg-btn[data-done],.lg-btn-line[data-done]{background-image:none;background:var(--lg-ok);color:var(--lg-page);border-color:var(--lg-ok)}
+
+/* ---------------------------------------------------------------- reviews */
+.gwp-revs{margin-top:32px}
+.gwp-rev{margin:0;display:flex;flex-direction:column;gap:12px}
+.gwp-rev blockquote{margin:0;font-size:var(--lg-fs-lead);line-height:1.4;color:var(--lg-on-dark)}
+.gwp-rev figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+
+/* ---------------------------------------------------------------- faq */
+.gwp-faq-wrap{max-width:820px}
+.gwp-faq{margin-top:20px}
+.gwp-fq{border-top:1px solid var(--lg-rule)}
+.gwp-fq:last-child{border-bottom:1px solid var(--lg-rule)}
+.gwp-fq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;
+  cursor:pointer;list-style:none;min-height:48px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:700;font-size:var(--lg-fs-body);line-height:1.35;color:var(--lg-ink)}
+.gwp-fq summary::-webkit-details-marker{display:none}
+.gwp-fq summary:hover{color:var(--lg-gold-text)}
+.gwp-fq .mk{position:relative;flex:none;width:14px;height:14px}
+.gwp-fq .mk::before,.gwp-fq .mk::after{content:'';position:absolute;left:50%;top:50%;background:var(--lg-gold-text);translate:-50% -50%;transition:opacity .2s}
+.gwp-fq .mk::before{width:14px;height:2px}
+.gwp-fq .mk::after{width:2px;height:14px}
+.gwp-fq[open] .mk::after{opacity:0}
+.gwp-fq-a{padding:0 0 18px;max-width:62ch;color:var(--lg-ink-70)}
+.gwp-fq-a > :first-child{margin-top:0}
+.gwp-fq-a > :last-child{margin-bottom:0}
+
+/* ---------------------------------------------------------------- hero slot (no photo yet) */
+.gwp-hero-slot{display:grid;align-content:start;justify-items:center;padding:clamp(28px,7vw,72px) var(--lg-pad) 0;
+  width:100%;height:min(86vh,860px);min-height:520px;
+  background:var(--lg-dark) repeating-linear-gradient(135deg,rgba(244,243,240,.05) 0 10px,transparent 10px 20px)}
+.gwp-hero-slot p{margin:0;max-width:34ch;text-align:center;color:var(--lg-on-dark-m);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);line-height:1.8}
+
+/* ---------------------------------------------------------------- responsive */
+/* THREE DEVICES, THREE LAYOUTS. Not one layout squeezed.
+     desktop  1081+     clubs 4-up · gifts side by side · swatches wrap
+     tablet   750-1080  clubs 2-up with the photo BESIDE the details (a 2-up
+                        of tall cards wastes a tablet) · gifts stacked full
+                        width · swatches wrap · rail stays on top
+     phone    0-749     clubs 1-up, shorter photo well · swatches swipe ·
+                        rail parks above the cart bar at the bottom       */
+@media (min-width:750px){
+  .gwp-swatches{flex-wrap:wrap;overflow:visible;padding-bottom:2px}
+}
+@media (min-width:750px) and (max-width:1080px){
+  .gwp-clubs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gwp-card{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:16px;align-content:start}
+  .gwp-card .lg-card-ph{grid-row:1 / span 3;aspect-ratio:3/4;align-self:start}
+  .gwp-card .lg-card-bd{padding-top:0}
+  .gwp-card .gwp-opts,.gwp-card .gwp-buy{grid-column:2}
+  .gwp-buy{flex-wrap:wrap}
+  .gwp-buy .gwp-add{flex:1 0 100%}
+  .gwp-buy .gwp-qty{flex:1;justify-content:space-between}
+  .gwp-unlock{left:8px;top:8px;white-space:nowrap;font-size:.6rem;padding:4px 8px;letter-spacing:.06em}
+  .gwp-gift-row{grid-template-columns:1fr}
+}
+@media (max-width:749px){
+  .gwp-card .lg-card-ph{aspect-ratio:4/3}
+  .gwp-buy .gwp-qty{flex:none}
+  .gwp-buy .gwp-add{flex:1}
+  .gwp-gift-row{grid-template-columns:1fr}
+}
+@media (max-width:749px){
+  .gwp-rail{position:fixed;left:0;right:0;top:auto;z-index:34;bottom:calc(var(--gwp-bar-h) + env(safe-area-inset-bottom));
+    border-bottom:0;border-top:1px solid var(--lg-rule)}
+  .gwp-rail-in{padding:9px var(--lg-pad);min-height:0}
+  .gwp-rail-act{display:none}
+  .gwp-say{font-size:var(--lg-fs-base);margin-bottom:8px}
+  .gwp-node b{display:none}
+  .gwp-bar{display:block}
+  .gwp-gift{padding:18px}
+}
+@media (max-width:560px){
+  .gwp-clubs{grid-template-columns:1fr}
+}
+@media (max-width:420px){ .gwp-bar-gift{font-size:11px} }
+
+/* ======================= GROUNDS + YARDAGE (system v4) ======================= */
+
+/* ===================== the hero (the math). Tiles are plain on purpose. ===================== */
+.gwp-num,.gwp-num-d,.gwp-h-op{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.gwp-num,.gwp-h-op{background-image:var(--num)}
+.gwp-num-d{background-image:var(--num-d)}
+.gwp-h-hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,76px) 0 clamp(30px,4vw,52px)}
+.gwp-h-hero .lg-wrap{position:relative;z-index:1}
+.gwp-h-h1{font-size:clamp(2.5rem,6vw,5.4rem);max-width:17ch}
+.gwp-h-lede{max-width:52ch}
+.gwp-h-sums{display:grid;gap:clamp(14px,1.8vw,22px);margin-top:clamp(24px,3.4vw,40px)}
+.gwp-h-sum{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.15fr);align-items:start;gap:clamp(8px,1.6vw,20px)}
+.gwp-h-fig{margin:0}
+.gwp-h-tile{position:relative;height:clamp(150px,16vw,210px);border-radius:var(--rc);overflow:hidden;background:var(--tile)}
+.gwp-h-tile img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:12px}
+.gwp-h-pair{display:grid;grid-template-columns:1fr 1fr}
+.gwp-h-tile .lg-tag{position:absolute;left:12px;top:12px;z-index:2}
+.gwp-h-fig figcaption{margin-top:8px;text-align:center;color:var(--lg-ink-64)}
+.gwp-h-op{align-self:start;margin-top:clamp(52px,6vw,80px);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2rem,4vw,3.4rem);line-height:1}
+.gwp-h-tile,.gwp-h-res{box-sizing:border-box}
+.gwp-h-res{border-radius:var(--rc);padding:clamp(16px,2vw,26px);display:flex;flex-direction:column;justify-content:center;height:clamp(150px,16vw,210px)}
+.gwp-h-res b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2.6rem,5.2vw,4.8rem);line-height:.86;letter-spacing:-.01em}
+.gwp-h-res span{margin-top:8px;font-size:var(--lg-fs-base);line-height:1.4}
+.gwp-h-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(22px,3vw,34px)}
+.gwp-h-trust{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;padding:0}
+.gwp-h-trust li{display:flex;align-items:center;gap:8px;color:var(--lg-ink-64)}
+.gwp-h-trust svg{width:16px;height:16px;fill:none;stroke:var(--lg-gold-text);stroke-width:1.8}
+@media (max-width:760px){
+  .gwp-h-sum{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);row-gap:10px}
+  .gwp-h-eq{display:none}.gwp-h-op{margin-top:56px}
+  .gwp-h-res{grid-column:1/-1;height:auto}.gwp-h-tile{height:150px}
+}
+
+/* ===================== GROUND 1 · DAYLIGHT ===================== */
+.gwp[data-ground="day"]{--rc:18px;--tile:#F4F3F0;--yd:rgba(23,20,15,.30);--yd-soft:rgba(23,20,15,.16);--yd-gold:#A8821C;
+  /* Daylight gold = the Twilight gradient one shade deeper (option C, Sept 18):
+     same direction and shine, starts at the brand gold, readable on white (2.6-5:1). */
+  --num:linear-gradient(180deg,#C29A2B 0%,#B8912A 38%,#8A6A1C 78%,#A8821C 100%);
+  --num-d:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%)}
+.gwp[data-ground="day"] .gwp-h-hero{background:radial-gradient(55% 80% at 92% 0%,rgba(237,210,124,.24),transparent 62%),#fff}
+.gwp[data-ground="day"] .gwp-h-res{color:var(--lg-on-dark);background:radial-gradient(120% 110% at 100% 0%,rgba(237,210,124,.28),transparent 55%),linear-gradient(160deg,#124530,#0B2E1F 55%,#061C12)}
+.gwp[data-ground="day"] .gwp-h-res span{color:var(--lg-on-dark-m)}
+.gwp[data-ground="day"] .lg-card-ph,.gwp[data-ground="day"] .gwp-gift{border-radius:var(--rc)}
+.gwp[data-ground="day"] .gwp-gift[data-state="open"]{border-color:transparent;box-shadow:0 0 0 1px rgba(194,154,43,.6),0 14px 40px -18px rgba(194,154,43,.5)}
+.gwp[data-ground="day"] .lg-btn{border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 22px -12px rgba(194,154,43,.7)}
+.gwp[data-ground="day"] .lg-btn-line{border-radius:12px;box-shadow:none}
+.gwp[data-ground="day"] .lg-chip,.gwp[data-ground="day"] .gwp-qty{border-radius:10px}
+.gwp[data-ground="day"] .gwp-swatch{border-radius:12px}
+.gwp[data-ground="day"] .gwp-rail{background:rgba(255,255,255,.78);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px)}
+.gwp[data-ground="day"] .lg-band{background:radial-gradient(70% 120% at 88% 0%,rgba(237,210,124,.18),transparent 60%),linear-gradient(170deg,#0F3A27,#0B2E1F 55%,#071F15)}
+.gwp[data-ground="day"] .gwp-rev{border-radius:var(--rc)}
+.gwp[data-ground="day"] .gwp-bar{background:rgba(255,255,255,.84);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+
+/* ===================== GROUND 2 · TWILIGHT ROUND ===================== */
+.gwp[data-ground="twilight"]{--rc:18px;--tile:#F1EEE6;--yd:rgba(244,243,240,.34);--yd-soft:rgba(244,243,240,.15);--yd-gold:#EDD27C;
+  --num:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%);--num-d:var(--num);
+  --lg-page:#06110B;--lg-ink:#F4F3F0;--lg-ink-70:rgba(244,243,240,.76);--lg-ink-64:rgba(244,243,240,.68);--lg-ink-38:rgba(244,243,240,.42);
+  --lg-rule:rgba(244,243,240,.13);--lg-rule-08:rgba(244,243,240,.07);--lg-gold-text:#EDD27C;--lg-ok:#3FBF7F}
+.gwp[data-ground="twilight"]{background:#06110B;color:#F4F3F0}
+.gwp[data-ground="twilight"] .gwp-h-hero{background:radial-gradient(50% 75% at 85% 5%,rgba(237,210,124,.18),transparent 62%),#06110B}
+.gwp[data-ground="twilight"] .lg-card-ph,.gwp[data-ground="twilight"] .gwp-swatch{background:var(--tile)}
+.gwp[data-ground="twilight"] .gwp-h-res{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),#0B1911;border:1px solid rgba(237,210,124,.28)}
+.gwp[data-ground="twilight"] .gwp-h-res span{color:rgba(244,243,240,.72)}
+.gwp[data-ground="twilight"] .lg-card-ph{border-radius:var(--rc)}
+.gwp[data-ground="twilight"] .lg-btn{color:#17140F;border-radius:12px;box-shadow:0 0 0 1px rgba(255,243,196,.25),0 10px 30px -10px rgba(237,210,124,.55)}
+.gwp[data-ground="twilight"] .lg-btn-line{color:#F4F3F0;border-color:rgba(244,243,240,.5);box-shadow:none}
+.gwp[data-ground="twilight"] .lg-btn-line:hover{background:#F4F3F0;color:#06110B}
+.gwp[data-ground="twilight"] .lg-tag{background:#17140F;color:#F4F3F0}
+.gwp[data-ground="twilight"] .gwp-gift-hd .lg-tag,.gwp[data-ground="twilight"] .gwp-unlock:not(.lg-tag-gold){background:#F4F3F0;color:#06110B}
+.gwp[data-ground="twilight"] .lg-tag-gold,.gwp[data-ground="twilight"] .gwp-gift:not([data-state="locked"]) .gwp-gift-hd .lg-tag{background-image:var(--lg-foil);color:#17140F}
+.gwp[data-ground="twilight"] .gwp-gift{border-radius:var(--rc);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),#0B1911;border:1px solid rgba(237,210,124,.16)}
+.gwp[data-ground="twilight"] .gwp-gift[data-state="open"]{border-color:rgba(237,210,124,.7);box-shadow:0 0 40px -12px rgba(237,210,124,.45)}
+.gwp[data-ground="twilight"] .lg-chip{background:rgba(255,255,255,.03);border-color:rgba(244,243,240,.2);color:#F4F3F0;border-radius:10px}
+.gwp[data-ground="twilight"] .lg-chip[aria-pressed="true"]{background:#F4F3F0;color:#06110B;border-color:#F4F3F0}
+.gwp[data-ground="twilight"] .gwp-swatch{border-radius:12px;border-color:rgba(244,243,240,.18)}
+.gwp[data-ground="twilight"] .gwp-swatch[aria-pressed="true"]{border:2px solid #EDD27C;box-shadow:0 0 18px -4px rgba(237,210,124,.6)}
+.gwp[data-ground="twilight"] .gwp-qty{border-radius:10px}
+.gwp[data-ground="twilight"] .gwp-rail{background:rgba(6,17,11,.74);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border-bottom-color:rgba(237,210,124,.16)}
+.gwp[data-ground="twilight"] .lg-band{background:radial-gradient(60% 110% at 85% 0%,rgba(237,210,124,.14),transparent 60%),#0A1D14;border-block:1px solid rgba(237,210,124,.12)}
+.gwp[data-ground="twilight"] .gwp-rev{border-radius:var(--rc);background:rgba(255,255,255,.04);border-color:rgba(237,210,124,.2)}
+.gwp[data-ground="twilight"] .gwp-bar{background:rgba(6,17,11,.88);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.gwp[data-ground="twilight"] .gwp-toast{background:#0A1D14}
+.gwp[data-ground="twilight"] .gwp-ball{background:#F4F3F0;border-color:#06110B;box-shadow:0 0 10px rgba(237,210,124,.8)}
+.gwp[data-ground="twilight"] .gwp-fq{background:transparent}
+
+/* ===================== THE YARDAGE LAYER (replaces the pinstripe) ===================== */
+.gwp[data-yardage="off"] .yd{display:none}
+.gwp[data-yardage="off"] .yd-rings::before{display:none}
+
+/* 1 · the hole bar: ruler ticks under the fill, flags at the real thresholds */
+.gwp[data-yardage="on"] .gwp-track{height:10px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--yd) 0 1px,transparent 1px calc(100%/39.6)) bottom/100% 100% no-repeat,var(--lg-rule-08)}
+.gwp[data-yardage="on"] .gwp-fill{border-radius:2px;background-image:linear-gradient(90deg,#C29A2B,#EDD27C 70%,#FFF3C4);box-shadow:0 0 14px rgba(237,210,124,.7)}
+.gwp[data-yardage="on"] .gwp-node i{width:2px;height:22px;translate:-50% -6px;background:var(--lg-ink-38)}
+.gwp[data-yardage="on"] .gwp-node i::after{content:'';position:absolute;left:2px;top:0;border:5px solid transparent;border-left:9px solid var(--lg-ink-38);border-right:0;transition:border-color .3s}
+.gwp[data-yardage="on"] .gwp-node[data-hit] i{background:var(--yd-gold)}
+.gwp[data-yardage="on"] .gwp-node[data-hit] i::after{border-left-color:var(--yd-gold)}
+.gwp[data-yardage="on"] .gwp-node b{top:16px}
+
+/* 2 · the tracer: the transition from the offer into the clubs */
+.yd-tracer{padding:clamp(4px,1vw,14px) 0 0;margin-bottom:calc(var(--lg-sec) * -.45)}
+.yd-tracer svg{display:block;width:100%;height:auto;overflow:visible}
+.yd-ticks line{stroke:var(--yd-soft);stroke-width:1}
+.yd-path{fill:none;stroke:var(--yd-gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.yd-tracer.is-in .yd-path{stroke-dashoffset:0;transition:stroke-dashoffset 2.2s cubic-bezier(.3,.6,.2,1)}
+.yd-apex{fill:var(--yd-gold);opacity:0;transition:opacity .4s .7s}
+.yd-tracer.is-in .yd-apex{opacity:1}
+.yd-ball{fill:#F4F3F0;stroke:#17140F;stroke-width:1.5;filter:drop-shadow(0 0 6px rgba(237,210,124,.9))}
+@media (max-width:749px){.yd-tracer{display:none}}
+.yd-flag line{stroke:var(--yd);stroke-width:1.5}
+.yd-flag path{fill:var(--yd-gold)}
+.yd-flag text,.yd-tee{font:600 12px 'Archivo',sans-serif;font-variation-settings:'wdth' 78;letter-spacing:.12em;fill:var(--lg-ink-64)}
+@media (max-width:760px){.yd-flag text,.yd-tee{font-size:26px}.yd-tracer svg{min-height:90px}}
+@media (prefers-reduced-motion:reduce){.yd-path{stroke-dashoffset:0}.yd-apex{opacity:1}}
+
+/* 3 · the tick ruler: the section divider */
+.yd-rule{height:14px;margin:0 var(--lg-pad);
+  background:repeating-linear-gradient(90deg,var(--yd) 0 1px,transparent 1px 60px) bottom/100% 14px no-repeat,repeating-linear-gradient(90deg,var(--yd-soft) 0 1px,transparent 1px 12px) bottom/100% 7px no-repeat;
+  border-bottom:1px solid var(--yd-soft);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+
+/* 4 · the green map (Contour A, the default): real contour lines fading in behind a
+   flat section. Never behind the type's own column: the mask keeps the left clear. */
+.gwp-contour{position:relative;isolation:isolate}
+.gwp[data-yardage="on"] .gwp-contour::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-repeat:no-repeat;background-size:cover;background-position:right center;
+  -webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 85%);mask-image:linear-gradient(90deg,transparent 30%,#000 85%)}
+.gwp[data-yardage="on"] .gwp-contour-l::before{-webkit-mask-image:linear-gradient(270deg,transparent 30%,#000 85%);mask-image:linear-gradient(270deg,transparent 30%,#000 85%);background-position:left center}
+.gwp[data-ground="day"] .gwp-contour::before{background-image:var(--gwp-contour-day)}
+.gwp[data-ground="twilight"] .gwp-contour::before{background-image:var(--gwp-contour-tw)}
+
+/* 5 · hole numbers on every section */
+.gwp[data-yardage="on"]{counter-reset:yd}
+.gwp[data-yardage="on"] section .lg-eyebrow{counter-increment:yd}
+.gwp[data-yardage="on"] section .lg-eyebrow::before{content:counter(yd,decimal-leading-zero);width:auto;height:auto;background:none;
+  font-variation-settings:'wdth' 62;font-weight:800;font-size:1.05rem;letter-spacing:0;color:var(--lg-ink);padding-right:10px;border-right:2px solid var(--lg-gold)}
+
+
+/* Glow is Twilight only. On Daylight it just reads as blur. */
+.gwp[data-ground="day"] .gwp-fill{box-shadow:none}
+.gwp[data-ground="day"] .yd-ball{filter:none}
+
+/* The Yardage flags stand 12px above the track: give the message row room so a
+   flag never sits on "Pick yours" (Cole, Sept 18). The phone rail grows to match. */
+.gwp[data-yardage="on"]{--gwp-rail-hm:104px}
+.gwp[data-yardage="on"] .gwp-say-row{margin-bottom:17px}
+@media (max-width:749px){ .gwp[data-yardage="on"] .gwp-say{margin-bottom:0} }
+
+body{margin:0;background:#E9E7E1;font-family:Archivo,system-ui;color:#17140F}
+.top{padding:28px 24px 8px;max-width:1260px;margin:0 auto}
+.top h1{font-size:22px;margin:0 0 6px}.top p{margin:0;color:#555;max-width:70ch;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:20px 24px 40px;max-width:1260px;margin:0 auto}
+.cmp{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.cmp figcaption{padding:14px 16px;font-size:14px;line-height:1.45;border-bottom:1px solid #eee}
+.cmp figcaption b{display:inline-block;min-width:34px;padding:2px 8px;margin-right:6px;border-radius:6px;background:#17140F;color:#F4F3F0;text-align:center}
+.cmp figcaption span{display:block;color:#555;margin-top:4px}
+.frame{height:470px;overflow:hidden}
+.frame>.gwp{width:1200px;zoom:.5;padding-bottom:0!important}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.frame>.gwp{zoom:.42}.frame{height:400px}}
+</style></head><body>
+<div class="top"><h1>Daylight gold: A, B or C?</h1>
+<p>The real hero with the real CSS, on Daylight. Only the gold on the headline numbers and the eyebrow changes. The $99 / $209 tiles already use the Twilight gold on both grounds (they sit on green).</p></div>
+<div class="grid"><figure class="cmp">
+  <figcaption><b>A</b> Now: antique gold<span>Darker and sideways-lit. Readable at any size (3.6 to 7.6:1). Reads more bronze than the Twilight gold.</span></figcaption>
+  <div class="frame"><div class="lg-scope gwp" data-ground="day" data-yardage="on" style="--num:linear-gradient(100deg,#6B4F0E 0%,#A8821C 30%,#7A5C12 52%,#A8821C 76%,#6B4F0E 100%);--lg-gold-text:#8A6A1C;"><section class="gwp-h-hero">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">One week only · Ends Friday, Sept 25</p>
+      <h1 class="lg-d1 gwp-h-h1"><span class="gwp-num">$90</span> gets the hat. <span class="gwp-num">$140</span> gets the fit.</h1>
+      <p class="lg-lede gwp-h-lede">The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.</p>
+      <div class="gwp-h-sums"><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=600" alt="Carver 01 Gold"><span class="lg-tag">$99</span></div><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><span class="lg-tag lg-tag-gold">Free</span></div><figcaption class="lg-label">Any hat</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$99</b><span>Any club gets you the hat.</span></div>
+      </div><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=600" alt="Stryker LGH01"><span class="lg-tag">$209</span></div><figcaption class="lg-label">Stryker LGH01</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile gwp-h-pair"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=500" alt="Free Polo (Gift)"><span class="lg-tag lg-tag-gold">Both free</span></div><figcaption class="lg-label">The fit: hat + polo</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+      </div></div>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">Show me the clubs <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>Sixty days to prove us wrong</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Free shipping over $198</li>
+        </ul>
+      </div>
+    </div>
+  </section></div></div>
+</figure>
+<figure class="cmp">
+  <figcaption><b>B</b> Same gold as Twilight<span>Exactly the Twilight numbers. On white the pale top half nearly disappears (1.1 to 2.6:1). Fails readability.</span></figcaption>
+  <div class="frame"><div class="lg-scope gwp" data-ground="day" data-yardage="on" style="--num:linear-gradient(180deg,#FFF3C4 0%,#EDD27C 40%,#C29A2B 78%,#EDD27C 100%);--lg-gold-text:#C29A2B;"><section class="gwp-h-hero">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">One week only · Ends Friday, Sept 25</p>
+      <h1 class="lg-d1 gwp-h-h1"><span class="gwp-num">$90</span> gets the hat. <span class="gwp-num">$140</span> gets the fit.</h1>
+      <p class="lg-lede gwp-h-lede">The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.</p>
+      <div class="gwp-h-sums"><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=600" alt="Carver 01 Gold"><span class="lg-tag">$99</span></div><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><span class="lg-tag lg-tag-gold">Free</span></div><figcaption class="lg-label">Any hat</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$99</b><span>Any club gets you the hat.</span></div>
+      </div><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=600" alt="Stryker LGH01"><span class="lg-tag">$209</span></div><figcaption class="lg-label">Stryker LGH01</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile gwp-h-pair"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=500" alt="Free Polo (Gift)"><span class="lg-tag lg-tag-gold">Both free</span></div><figcaption class="lg-label">The fit: hat + polo</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+      </div></div>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">Show me the clubs <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>Sixty days to prove us wrong</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Free shipping over $198</li>
+        </ul>
+      </div>
+    </div>
+  </section></div></div>
+</figure>
+<figure class="cmp">
+  <figcaption><b>C</b> Same gold, one shade deeper<span>The Twilight gradient (same direction, same bright band) moved down one step so it starts at the brand gold. Reads as the same gold, still passes for big numbers (2.6 to 5:1).</span></figcaption>
+  <div class="frame"><div class="lg-scope gwp" data-ground="day" data-yardage="on" style="--num:linear-gradient(180deg,#C29A2B 0%,#B8912A 38%,#8A6A1C 78%,#A8821C 100%);--lg-gold-text:#8A6A1C;"><section class="gwp-h-hero">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">One week only · Ends Friday, Sept 25</p>
+      <h1 class="lg-d1 gwp-h-h1"><span class="gwp-num">$90</span> gets the hat. <span class="gwp-num">$140</span> gets the fit.</h1>
+      <p class="lg-lede gwp-h-lede">The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.</p>
+      <div class="gwp-h-sums"><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=600" alt="Carver 01 Gold"><span class="lg-tag">$99</span></div><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><span class="lg-tag lg-tag-gold">Free</span></div><figcaption class="lg-label">Any hat</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$99</b><span>Any club gets you the hat.</span></div>
+      </div><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=600" alt="Stryker LGH01"><span class="lg-tag">$209</span></div><figcaption class="lg-label">Stryker LGH01</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile gwp-h-pair"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=500" alt="Free Polo (Gift)"><span class="lg-tag lg-tag-gold">Both free</span></div><figcaption class="lg-label">The fit: hat + polo</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+      </div></div>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">Show me the clubs <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>Sixty days to prove us wrong</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Free shipping over $198</li>
+        </ul>
+      </div>
+    </div>
+  </section></div></div>
+</figure>
+<figure class="cmp">
+  <figcaption><b>Ref</b> Twilight, for comparison<span>What the page ships as today.</span></figcaption>
+  <div class="frame"><div class="lg-scope gwp" data-ground="twilight" data-yardage="on" style=""><section class="gwp-h-hero">
+    <div class="lg-wrap">
+      <p class="lg-eyebrow">One week only · Ends Friday, Sept 25</p>
+      <h1 class="lg-d1 gwp-h-h1"><span class="gwp-num">$90</span> gets the hat. <span class="gwp-num">$140</span> gets the fit.</h1>
+      <p class="lg-lede gwp-h-lede">The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.</p>
+      <div class="gwp-h-sums"><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=600" alt="Carver 01 Gold"><span class="lg-tag">$99</span></div><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><span class="lg-tag lg-tag-gold">Free</span></div><figcaption class="lg-label">Any hat</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$99</b><span>Any club gets you the hat.</span></div>
+      </div><div class="gwp-h-sum">
+        <figure class="gwp-h-fig"><div class="gwp-h-tile"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=600" alt="Stryker LGH01"><span class="lg-tag">$209</span></div><figcaption class="lg-label">Stryker LGH01</figcaption></figure>
+        <span class="gwp-h-op" aria-hidden="true">+</span>
+        <figure class="gwp-h-fig"><div class="gwp-h-tile gwp-h-pair"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=500" alt="Free Hat (Gift)"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=500" alt="Free Polo (Gift)"><span class="lg-tag lg-tag-gold">Both free</span></div><figcaption class="lg-label">The fit: hat + polo</figcaption></figure>
+        <span class="gwp-h-op gwp-h-eq" aria-hidden="true">=</span>
+        <div class="gwp-h-res"><b class="gwp-num-d">$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+      </div></div>
+      <div class="gwp-h-foot">
+        <a class="lg-btn" href="#gwp-clubs" data-scroll-to="gwp-clubs">Show me the clubs <span aria-hidden="true">&rarr;</span></a>
+        <ul class="gwp-h-trust" role="list">
+          <li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>Sixty days to prove us wrong</li><li class="lg-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Free shipping over $198</li>
+        </ul>
+      </div>
+    </div>
+  </section></div></div>
+</figure></div></body></html>

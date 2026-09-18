@@ -1,0 +1,222 @@
+{
+  "sections": {
+    "main": {
+      "type": "gwp-promo",
+      "blocks": {
+        "club-gold": {
+          "type": "club",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "line": "Checks up where you aimed it. Where you aimed it is on you.",
+            "image_index": 5
+          }
+        },
+        "club-black": {
+          "type": "club",
+          "settings": {
+            "product": "lucky-golf-lgw02-black",
+            "line": "The Gold's quieter brother. Righty only.",
+            "image_index": 1
+          }
+        },
+        "club-mallet": {
+          "type": "club",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "line": "Lines up so easy the four-footers get boring.",
+            "image_index": 9
+          }
+        },
+        "club-stryker": {
+          "type": "club",
+          "settings": {
+            "product": "lucky-striker-hybrid-limited-edition",
+            "line": "Way easier to hit than your 3 wood. Your 3 wood knows it.",
+            "image_index": 5
+          }
+        },
+        "rev-ray": {
+          "type": "review",
+          "settings": {
+            "quote": "People borrow it in my league- it’s a winner!",
+            "name": "Ray O.",
+            "club": "Carver 01 Gold",
+            "stars": 5,
+            "verified": true
+          }
+        },
+        "rev-jeff": {
+          "type": "review",
+          "settings": {
+            "quote": "This club is MONEY!!' Please make a 3 wood!",
+            "name": "Jeff C.",
+            "club": "Stryker",
+            "stars": 5,
+            "verified": true
+          }
+        },
+        "rev-arthur": {
+          "type": "review",
+          "settings": {
+            "quote": "Amazing Putter and looks awesome",
+            "name": "Arthur V.",
+            "club": "Tracer Mallet",
+            "stars": 5,
+            "verified": true
+          }
+        },
+        "faq-end": {
+          "type": "faq",
+          "settings": {
+            "q": "When does it end?",
+            "a": "<p>Friday, September 25. After that the hat's $29 again.</p>"
+          }
+        },
+        "faq-stack": {
+          "type": "faq",
+          "settings": {
+            "q": "Do they stack?",
+            "a": "<p>At $140 you get the hat and the polo. Not two hats. Nice try.</p>"
+          }
+        },
+        "faq-size": {
+          "type": "faq",
+          "settings": {
+            "q": "What size polo?",
+            "a": "<p>They run S to 3XL, athletic fit. Stuck between two? Size up.</p>"
+          }
+        },
+        "faq-ship": {
+          "type": "faq",
+          "settings": {
+            "q": "Is shipping free?",
+            "a": "<p>Over $198 it is. Two wedges gets you there.</p>"
+          }
+        },
+        "faq-return": {
+          "type": "faq",
+          "settings": {
+            "q": "What if I send the clubs back?",
+            "a": "<p>The free stuff goes back in the box with them. Keep the clubs, keep the hat.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "club-gold",
+        "club-black",
+        "club-mallet",
+        "club-stryker",
+        "rev-ray",
+        "rev-jeff",
+        "rev-arthur",
+        "faq-end",
+        "faq-stack",
+        "faq-size",
+        "faq-ship",
+        "faq-return"
+      ],
+      "settings": {
+        "tier1_threshold": 90,
+        "tier2_threshold": 140,
+        "ship_threshold": 198,
+        "sticky_offset": 0,
+        "hero_eyebrow": "One week only · Ends Friday, Sept 25",
+        "hero_heading": "$90 gets the hat. $140 gets the fit.",
+        "hero_sub": "The fit's a hat and a polo, both on us, both your pick. Every club here gets you the hat on its own.",
+        "hero_cta": "Show me the clubs",
+        "bar_start": "Your bag's empty. $90 gets you a free hat.",
+        "bar_away_tier1": "{amount} away from {gift}",
+        "bar_away_tier2": "{amount} away from {gift}",
+        "bar_pick": "Nice, you've got {gift}. Go pick one below.",
+        "bar_tier1_hit": "Hat's in the bag. You're all set.",
+        "bar_ship_away": "Hat and polo are in. {amount} more and shipping's free.",
+        "bar_all_done": "Hat, polo, free shipping. Check out before it ends Friday.",
+        "node1_label": "$90 hat",
+        "node2_label": "$140 polo",
+        "tier1_short": "your free hat",
+        "tier2_short": "your free polo",
+        "bar_subtotal_label": "Subtotal",
+        "checkout_label": "Checkout",
+        "bar_no_gift": "No free stuff yet",
+        "bar_gift_1": "Free hat earned",
+        "bar_gift_2": "Hat + polo earned",
+        "clubs_eyebrow": "Start here",
+        "clubs_heading": "Every one of these gets you a hat",
+        "clubs_aside": "The Mallet and the Stryker get you the polo too. Two wedges and shipping's free on top of it.",
+        "tag_tier1": "Free hat",
+        "tag_tier2": "Free hat + polo",
+        "add_label": "Add to bag",
+        "adding_label": "Adding",
+        "added_label": "In the bag",
+        "soldout_label": "Sold out",
+        "gift_eyebrow": "The free stuff",
+        "gift_heading": "Pick your hat. Then your polo.",
+        "gift_note": "They unlock as your bag fills up. Take the one you'd actually wear.",
+        "gift_locked_template": "Unlocks at {amount}",
+        "free_tag": "Free",
+        "gift_hat_title": "Your hat",
+        "gift_hat_sub": "Any of these. They're $29 any other week.",
+        "gift_polo_title": "Your polo",
+        "gift_polo_sub": "Four-way stretch, and it doesn't come out of the bag wrinkled. $67 any other week.",
+        "claim_label": "Throw it in",
+        "claimed_label": "It's in",
+        "rev_eyebrow": "Overheard",
+        "rev_heading": "People keep borrowing them",
+        "verified_label": "Verified buyer",
+        "faq_heading": "Before you ask",
+        "toast_gift_won": "That's {gift} unlocked. Go pick one.",
+        "toast_gift_lost": "Your bag dropped under the line, so {gift} came back out.",
+        "toast_gift_soldout": "That one's gone. Pick another, it's still free.",
+        "toast_error": "That didn't go in the bag. Give it another go, or reload the page.",
+        "gift_hat_product": "free-hat-gift",
+        "gift_polo_product": "free-polo-gift",
+        "node3_label": "$198 free ship",
+        "pick_label": "Pick yours",
+        "ground": "day",
+        "yardage": true,
+        "tee_label": "Tee · $0",
+        "sum1_product": "lucky-golf-lgw02-gold",
+        "sum1_image_index": 5,
+        "sum1_note": "Any club gets you the hat.",
+        "sum_gift1_label": "Any hat",
+        "sum2_product": "lucky-striker-hybrid-limited-edition",
+        "sum2_image_index": 5,
+        "sum2_note": "Over $140 the polo comes too. Over $198, shipping's free.",
+        "sum_gift2_label": "The fit: hat + polo",
+        "both_free_tag": "Both free",
+        "hero_polo_image": "shopify://shop_images/Classicpolowithlogointhecollar1.webp",
+        "trust_1": "Secure checkout",
+        "trust_2": "Sixty days to prove us wrong",
+        "trust_3": "Free shipping over $198",
+        "hero_photo": "shopify://shop_images/gwp-hero-green-read.webp",
+        "hero_focus": "62% 38%",
+        "hero_focus_m": "60% 40%",
+        "band_1": "shopify://shop_images/gwp-band-wedges.webp",
+        "band_2": "shopify://shop_images/gwp-band-hat-mallet.webp",
+        "band_3": "shopify://shop_images/gwp-band-putter.webp",
+        "fit_photo": "shopify://shop_images/gwp-fit-sunset.webp",
+        "reviews_photo": "shopify://shop_images/gwp-reviews-hats.webp",
+        "reviews_focus": "center 70%",
+        "faq_photo": "shopify://shop_images/gwp-faq-cup.webp",
+        "sign_eyebrow": "Ends Friday, Sept 25",
+        "sign_line": "The hat's free. So's the polo.",
+        "sign_sub": "Legend has it Mags hasn't paid for a hat in years. This week you get to find out how that feels.",
+        "sign_cta": "Pick your club",
+        "mags_hat": "Congrats, the hat's free. Tap me and I'll show you where.",
+        "mags_polo": "The polo's free now too. Tap me, it's right down here.",
+        "mags_go": "You're set. Tap me to check out.",
+        "pop1_title": "The hat's in your bag.",
+        "pop1_body": "Check out now, or add {amount} more and the polo's free too.",
+        "pop1_more": "Add more for the polo",
+        "pop2_title": "Hat and polo. Both free.",
+        "pop2_body": "Check out now, or keep shopping. They'll wait in your bag.",
+        "pop2_more": "Keep shopping",
+        "pop_ship": "Add {amount} more and shipping's free too.",
+        "pop_checkout": "Check out"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

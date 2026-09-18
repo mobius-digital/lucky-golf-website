@@ -1,0 +1,83 @@
+  <!-- PERSONALITY -->
+  <section class="sg-sec" id="s-yardage"><div class="lg-wrap">
+    <p class="lg-eyebrow">Personality</p>
+    <h2 class="lg-d2">Yardage: the golf instruments.</h2>
+    <p class="lg-body">This is where the personality lives, next to Mags. Each piece reads a real number the way golf reads it: a hole, a launch monitor, balls around a cup. They replaced the pinstripe. The rule: a piece only shows up where it has a real number to show, so they season a page and never cover it.</p>
+    <ul class="sg-pieces">
+      <li><b>Hole bar</b><span class="lg-tag lg-tag-gold">In the system</span><span>Cart free-shipping bar, any "spend $X" promo</span></li>
+      <li><b>Tracer (ball flight)</b><span class="lg-tag lg-tag-gold">In the system</span><span>Promos and launches, once, between the offer and the products</span></li>
+      <li><b>Launch monitor A</b><span class="lg-tag lg-tag-gold">In the system</span><span>Product pages: the full readout</span></li>
+      <li><b>HUD strip (monitor B)</b><span class="lg-tag lg-tag-gold">In the system</span><span>Product cards, cart lines, sticky bars</span></li>
+      <li><b>Review proximity A</b><span class="lg-tag lg-tag-gold">In the system</span><span>Every reviews block</span></li>
+      <li><b>Section numbers</b><span class="lg-tag lg-tag-gold">In the system</span><span>Long pages: promos, story, guides</span></li>
+      <li><b>Tick ruler</b><span class="lg-tag lg-tag-gold">In the system</span><span>A divider when a section needs one</span></li>
+      <li><b>Contour map</b><span class="lg-tag lg-tag-gold">In the system</span><span>One per page, behind a quiet section with no photo: the FAQ, "why the price", a spec block</span></li>
+      <li><b>Loft chart, spec card, elevation bands, dot matrix, terrain, ridgelines, other review charts</b><span class="lg-tag">On the bench</span><span>Ads, technical pages, the app. Kept in the Yardage library</span></li>
+    </ul>
+
+    <span class="lg-label" style="color:var(--lg-ink-64)">Hole bar + tracer · try it: the promo's whole checkout flow, with Mags</span>
+    <div class="lg-tracer" id="sg-tracer" aria-hidden="true" style="margin-top:8px"></div>
+    <div class="sg-rail">
+      <div class="sg-rail-top"><p class="sg-rail-say" id="sg-say">Every club gets you the hat. Start with one.</p><span class="sg-rail-sum" id="sg-sum">$0</span></div>
+      <div class="lg-hole" id="sg-hole"></div>
+    </div>
+    <div class="sg-demo">
+      <button type="button" class="lg-btn-line lg-btn-sm" data-add="9900">Add Carver Gold · $99</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" data-add="20900">Add Stryker · $209</button>
+      <button type="button" class="lg-btn lg-btn-sm" id="sg-claim" disabled>Claim the free hat</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" id="sg-claim2" disabled>Claim the free polo</button>
+      <button type="button" class="lg-btn-line lg-btn-sm" id="sg-reset">Reset</button>
+    </div>
+
+    <span class="lg-label" style="display:block;margin-top:48px;color:var(--lg-ink-64)">Launch monitor A · product pages</span>
+    <div class="lg-monitor" style="margin-top:10px">
+      <div class="lg-monitor-hd"><span class="lg-label">Carver 01 Gold</span><span class="lg-label lg-live"><i></i>In stock</span></div>
+      <div class="lg-monitor-in">
+        <div class="lg-monitor-ph"><img src="sg/gold-3q-cut.webp" alt="Carver 01 Gold"></div>
+        <div class="lg-monitor-tiles">
+          <div class="lg-mt"><span>Lofts</span><b>6</b><div class="lg-vals"><i>50°</i><i>52°</i><i>54°</i><i>56°</i><i>58°</i><i>60°</i></div></div>
+          <div class="lg-mt"><span>Grinds</span><b>2</b><div class="lg-vals"><i>K</i><i>S</i></div></div>
+          <div class="lg-mt"><span>Price</span><b class="lg-num">$99</b><em>Pick any loft. Same number.</em></div>
+          <div class="lg-mt"><span>Test drive</span><b>60</b><em>days to prove us wrong.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-grid2" style="margin-top:40px">
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">HUD strip (monitor B) · cards and cart lines</span>
+        <div class="lg-hud" style="margin-top:14px"><span><b>50 to 60°</b>Lofts</span><span><b>K · S</b>Grinds</span><span><b>$99</b>Any loft</span><span><b>60</b>Days</span></div>
+        <span class="lg-label" style="display:block;margin-top:30px;color:var(--lg-ink-64)">Spec tiles · the per-loft detail · LGW01 56°</span>
+        <div class="lg-specs" style="margin-top:10px">
+          <div class="lg-spec"><b>12<small>°</small></b><span>Bounce</span></div>
+          <div class="lg-spec"><b>63<small>°</small></b><span>Lie</span></div>
+          <div class="lg-spec"><b>300<small>g</small></b><span>Head</span></div>
+        </div>
+        <p class="sg-cap">Manufacturer spec sheet, 2025-11-13. Never a made-up number.</p>
+      </div>
+      <div>
+        <span class="lg-label" style="color:var(--lg-ink-64)">Section numbers · long pages only</span>
+        <p class="sg-cap" style="margin-top:8px">Put <code>.lg-numbered</code> on a promo, story or guide and the eyebrows count like holes: 01, 02, 03. This page is numbered that way.</p>
+        <span class="lg-label" style="display:block;margin-top:24px;color:var(--lg-ink-64)">Tick ruler · a quiet divider</span>
+        <div class="lg-ruler" style="margin-top:12px"></div>
+      </div>
+    </div>
+
+    <div class="sg-contours">
+      <div class="lg-contour sg-contour">
+        <span class="lg-tag lg-tag-gold">In the system</span>
+        <h3 class="lg-d3" style="margin-top:14px">Contour map</h3>
+        <p class="lg-body" style="max-width:34ch">One big map of a green. Every section that uses it shows a different part, so it never repeats. One per page, behind a quiet section with no photo, fading in on one side and staying out from behind the words. The base map gets swapped for the final artwork when it lands.</p>
+      </div>
+      <div class="lg-contour sg-contour is-left"><p class="lg-label" style="margin:auto 0 0;text-align:right">Same map, another spot</p></div>
+      <div class="lg-contour sg-contour is-flip"><p class="lg-label" style="margin:auto 0 0">And another, mirrored</p></div>
+    </div>
+  </div></section>
+
+  <!-- REVIEWS -->
+  <section class="sg-sec" id="s-reviews"><div class="lg-wrap">
+    <p class="lg-eyebrow">Reviews</p>
+    <h2 class="lg-d2">Real ones, word for word.</h2>
+    <p class="sg-where"><b>Rule</b> Verbatim from Judge.me, typos and all, with the customer's real name, or nothing. The proximity chart is drawn from the real Carver 01 Gold counts (650), average rounded down.</p>
+    <div id="sg-prox"></div>
+  </div></section>

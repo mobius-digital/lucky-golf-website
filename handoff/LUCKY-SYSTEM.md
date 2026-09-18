@@ -1,3 +1,5 @@
+> **RETIRED 2026-09-18. Superseded by `design/LUCKY-SYSTEM.md` (v4).** This v3 pack (Deep Green & Gold) is kept for history. The current code is `shopify/assets/lucky.css` + `lucky.js`; every piece is in `design/styleguide.html`.
+
 # Lucky Golf: the design system, portable
 
 **Version 3.0 · 2026-09-17 · System: Deep Green & Gold**

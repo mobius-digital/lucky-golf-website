@@ -1,3 +1,5 @@
+> **RETIRED 2026-09-18. Superseded by `design/LUCKY-SYSTEM.md` (v4).** Kept for history only.
+
 # LUCKY GOLF: apply this design system to the page you built
 
 **Read this whole file before you change anything.** It contains the exact

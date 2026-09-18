@@ -1,3 +1,5 @@
+> **RETIRED. Superseded by `design/LUCKY-SYSTEM.md` (v4, 2026-09-18).** Kept for history only.
+
 # Lucky Golf: the design system, portable (v2, 2026-09-12)
 
 You are designing something visual for Lucky Golf: a page, an email, an ad, a

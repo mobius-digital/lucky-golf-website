@@ -1,0 +1,519 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucky Golf · Hero options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<style>/* ==========================================================================
+   LUCKY GOLF - the design system as one stylesheet.
+   Version 3.0 · 2026-09-17 · System: DEEP GREEN & GOLD.
+
+   Drop this file in, load Archivo, and build with the classes below. Every
+   class is prefixed lg- so it cannot collide with anything already on a page.
+
+   The whole system in one paragraph: the page is white, type is ink, product
+   sits on a stone tile, and ONE dark colour (deep green) carries the
+   announcement bar, the header, the bands low on the page and the footer.
+   Gold is the only accent and it never appears as a large field: buttons,
+   one word per headline, stars, hairline marks. Signal green means in stock
+   and nothing else. No cream, no brown, no second green.
+
+   Measured on the real pages: white 78 to 88% of the screen, photography 6
+   to 22%, deep green 3 to 12%, stone under 5%, gold under 1.5%.
+
+   Fonts (put in <head>):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+
+   To try another system, change ONE value: --lg-dark.
+     Deep green & gold  #0B2E1F   (this file, the pick)
+     Ink & gold         #17140F
+     White & gold       keep the bands white and use #121212 for the footer.
+   ========================================================================== */
+
+:root{
+  /* ---------------- ground ---------------- */
+  --lg-page:#FFFFFF;          /* the page. Most of every screen. */
+  --lg-tile:#F4F3F0;          /* stone. Product wells, cards, table fills. A material, never a band. */
+  --lg-dark:#0B2E1F;          /* THE one dark. Announcement bar, header, bands, footer. */
+
+  /* ---------------- type on the ground ---------------- */
+  --lg-ink:#17140F;           /* all text on white */
+  --lg-ink-70:rgba(23,20,15,.70);
+  --lg-ink-64:rgba(23,20,15,.64);
+  --lg-ink-38:rgba(23,20,15,.38);
+  --lg-on-dark:#F4F3F0;       /* text on the dark. 13.2:1 */
+  --lg-on-dark-m:rgba(244,243,240,.72);
+  --lg-rule:rgba(23,20,15,.14);
+  --lg-rule-08:rgba(23,20,15,.08);
+  --lg-rule-dark:rgba(244,243,240,.18);
+
+  /* ---------------- accent ---------------- */
+  --lg-gold:#C29A2B;          /* gold as a SURFACE: stars, rules, bars, buttons. 5.6:1 on the dark. */
+  --lg-gold-hi:#EDD27C;
+  --lg-gold-text:#8A6A1C;     /* gold as TYPE on white only. 5.05:1 */
+  --lg-ok:#008340;            /* in stock, added, verified. Never decoration. */
+  --lg-ok-on-dark:#7FB69A;
+  --lg-clover:#0B5130;        /* the clover inside the logo. Nowhere else. */
+
+  /* The foil is a material, not a colour. Ink type on it reads 6.9:1.
+     Two places per view: the primary button, and ONE display word. */
+  --lg-foil:linear-gradient(96deg,#C29A2B 0%,#EDD27C 50%,#C29A2B 100%);
+  --lg-foil-text:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);
+
+  /* The pinstripe. Dark FEATURE bands only: never the header, bar or footer.
+     Drawn as a 6px tile, because long CSS gradients rasterise unevenly. */
+  --lg-groove:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%23F6F2E8' fill-opacity='.10'/%3E%3C/svg%3E");
+  --lg-groove-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='1' fill='%2317140F' fill-opacity='.03'/%3E%3C/svg%3E");
+
+  /* ---------------- measure ---------------- */
+  --lg-wrap:1180px;
+  --lg-pad:clamp(20px,4.2vw,68px);
+  --lg-gut:clamp(16px,2vw,28px);
+  --lg-sec:clamp(64px,7vw,112px);   /* space between page sections */
+  --lg-r:6px;                       /* controls */
+  --lg-r-card:14px;                 /* surfaces */
+  --lg-ease:cubic-bezier(.23,1,.32,1);
+
+  /* ---------------- type scale ---------------- */
+  --lg-fs-xs:.72rem;
+  --lg-fs-sm:.8rem;
+  --lg-fs-base:.95rem;
+  --lg-fs-body:1.0625rem;
+  --lg-fs-lead:clamp(1.1rem,1.5vw,1.3rem);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.lg-scope,
+body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-variation-settings:'wdth' 100;font-size:var(--lg-fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.lg-wrap{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad)}
+.lg-sec{padding-block:var(--lg-sec)}
+.lg-hr{height:1px;background:var(--lg-rule);border:0;margin:0}
+.lg-center{text-align:center}
+:where(.lg-scope,body.lg) :focus-visible{outline:2px solid var(--lg-gold);outline-offset:2px}
+
+/* ==========================================================================
+   TYPE
+   Display is Archivo at width 62, uppercase, 800. Labels at width 78, 600,
+   tracked caps. Body is plain 100 width. Nothing else.
+   ========================================================================== */
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;
+  font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.lg-d1{font-size:clamp(2.6rem,6.2vw,5.2rem)}
+.lg-d2{font-size:clamp(2rem,3.9vw,3.2rem)}
+.lg-d3{font-size:clamp(1.25rem,1.8vw,1.6rem);line-height:1}
+
+/* ONE word per headline carries the foil. Never body size. */
+.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* The eyebrow orients the section. It never restates the headline. */
+.lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
+.lg-eyebrow::before{content:'';width:22px;height:2px;background:var(--lg-gold);flex:none}
+.lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
+.lg-body{margin:14px 0 0;max-width:62ch;color:var(--lg-ink-70)}
+.lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+/* The aside is the charm voice: one line, sentence case, medium weight. */
+.lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
+.lg-label{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
+  display:inline-flex;align-items:center;gap:8px}
+.lg-link span{transition:transform .22s var(--lg-ease)}
+.lg-link:hover span{transform:translateX(4px)}
+
+/* On a dark ground everything flips to cream, and gold stays gold. Put
+   .lg-on-dark on any block you build yourself over a dark field or a photo. */
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
+
+/* ==========================================================================
+   BUTTONS · one foil button per view, everything else is the ghost.
+   44px minimum on a phone, always.
+   ========================================================================== */
+.lg-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:0 26px;border:0;border-radius:var(--lg-r);cursor:pointer;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
+  color:var(--lg-ink);background-image:var(--lg-foil);background-size:200% 100%;
+  background-position:0 0;transition:background-position .45s var(--lg-ease),transform .12s var(--lg-ease)}
+.lg-btn:hover,.lg-btn:focus-visible{background-position:100% 0}
+.lg-btn:active{transform:scale(.975)}
+.lg-btn[disabled],.lg-btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.lg-btn-line{background:transparent;background-image:none;color:var(--lg-ink);
+  border:2px solid var(--lg-ink);min-height:48px}
+.lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line{color:var(--lg-on-dark);border-color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-btn-line:hover{background:var(--lg-on-dark);color:var(--lg-dark)}
+.lg-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ==========================================================================
+   CHROME · the announcement bar and the header. Solid colour, no pinstripe,
+   because they sit over every page and every photo.
+   ========================================================================== */
+.lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
+.lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
+  justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.lg-tick-in::-webkit-scrollbar{display:none}
+.lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+
+.lg-hdr{position:sticky;top:0;z-index:40;background:var(--lg-dark);color:var(--lg-on-dark);
+  border-bottom:1px solid var(--lg-rule-dark)}
+.lg-hdr-in{padding:0 var(--lg-pad);height:72px;display:grid;grid-template-columns:1fr auto 1fr;
+  grid-template-areas:"l n a";align-items:center;gap:24px}
+.lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
+.lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
+.lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
+  text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
+.lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
+.lg-hdr-act a,.lg-hdr-act button{min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--lg-on-dark);cursor:pointer}
+@media (max-width:980px){
+  .lg-hdr-in{grid-template-columns:auto 1fr;grid-template-areas:"l a";height:64px}
+  .lg-nav{display:none}
+  .lg-tick-in a:nth-child(n+2){display:none}
+}
+
+/* ==========================================================================
+   BANDS · the dark beats low on the page. These carry the pinstripe.
+   Rhythm for a landing page: bar, header, hero photo, white sections,
+   ONE band, the sign-off, the footer. No two bands touch.
+   ========================================================================== */
+.lg-band{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:var(--lg-sec)}
+.lg-band-tile{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark);
+  border-radius:var(--lg-r-card);padding:24px}
+
+/* The hero: one full bleed photograph, headline bottom left over the scrim. */
+.lg-hero{position:relative;isolation:isolate;background:#0f0d09;overflow:hidden}
+.lg-hero img{display:block;width:100%;height:min(86vh,860px);min-height:520px;object-fit:cover}
+.lg-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(92deg,rgba(11,20,15,.82) 0%,rgba(11,20,15,.52) 38%,rgba(11,20,15,.04) 68%),
+             linear-gradient(0deg,rgba(11,20,15,.55) 0%,rgba(11,20,15,0) 42%)}
+.lg-hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;
+  padding-bottom:clamp(40px,6vw,96px);color:var(--lg-on-dark)}
+.lg-hero-copy .lg-wrap{width:100%}
+
+/* ==========================================================================
+   SURFACES · tiles and cards. Product sits on stone, photography sits full.
+   ========================================================================== */
+.lg-tile{background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-grid{display:grid;gap:var(--lg-gut);align-items:start;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.lg-card{display:flex;flex-direction:column;color:var(--lg-ink);text-decoration:none}
+.lg-card-ph{position:relative;aspect-ratio:4/5;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-card-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.lg-card:hover .lg-card-ph img{transform:scale(1.03)}
+.lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.lg-card-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+  text-transform:uppercase;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1}
+.lg-card-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
+.lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
+
+/* A photograph that does not exist yet is a LABELLED SLOT, never a grey box
+   and never a stock photo. Put the shot brief on it. */
+.lg-slot{display:grid;place-items:center;text-align:center;padding:24px;aspect-ratio:4/5;
+  background:var(--lg-tile) repeating-linear-gradient(135deg,rgba(23,20,15,.05) 0 8px,transparent 8px 16px);
+  border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card);color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Review card. Only ever a real review, quoted exactly, with a real name. */
+.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+  flex-direction:column;gap:12px}
+.lg-quote p{margin:0;font-size:var(--lg-fs-body)}
+.lg-quote footer{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* Stat tile: a number that is real, and what it means underneath. */
+.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
+.lg-stat b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+  font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   SMALL PARTS · the stamp. Condensed caps on chips, tags, trust rows, tables.
+   ========================================================================== */
+.lg-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;
+  background:var(--lg-ink);color:var(--lg-page);
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
+.lg-tag-gold{background-image:var(--lg-foil);color:var(--lg-ink)}
+.lg-tag-ok{background:var(--lg-ok);color:#fff}
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.lg-chip[aria-pressed="true"],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
+.lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
+
+/* Stars are a graphic: gold on white needs a darker gold to stay legible. */
+.lg-stars{display:inline-flex;gap:2px;color:#9A7619;line-height:0}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+.lg-stars svg{width:15px;height:15px;fill:currentColor}
+
+.lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
+  padding-block:20px;border-block:1px solid var(--lg-rule)}
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--lg-fs-sm)}
+.lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
+
+/* Compare table: stone fill, hairlines, condensed caps in the head column. */
+.lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
+.lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
+.lg-table thead th{background:var(--lg-tile);font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:var(--lg-fs-xs)}
+.lg-table tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
+
+/* Email capture. One field, one button, the reason to give it. */
+.lg-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.lg-input{flex:1 1 240px;min-height:52px;padding:0 16px;border:1px solid var(--lg-rule);
+  border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-base)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr) .lg-input::placeholder{color:var(--lg-on-dark-m)}
+
+/* ==========================================================================
+   THE SIGN-OFF and THE FOOTER
+   Mags is the emblem, never a cartoon with a face doing an action. He stands
+   on the rule at the sign-off, and rides the bag button in the header.
+   Use the cream artwork on dark grounds and the ink artwork on white ones.
+   ========================================================================== */
+.lg-sign{position:relative;background-color:var(--lg-dark);background-image:var(--lg-groove);
+  color:var(--lg-on-dark);padding-block:clamp(56px,6vw,96px);overflow:hidden}
+.lg-sign-in{display:grid;grid-template-columns:1.2fr auto;gap:32px;align-items:end}
+.lg-sign img{width:clamp(140px,18vw,240px);height:auto;justify-self:end}
+.lg-sign hr{margin:22px 0 0;height:2px;background:var(--lg-gold);border:0}
+@media (max-width:760px){.lg-sign-in{grid-template-columns:1fr}.lg-sign img{justify-self:start;width:150px}}
+
+.lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
+  padding-block:clamp(40px,4.4vw,64px)}
+.lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
+.lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
+.lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
+.lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+
+/* ==========================================================================
+   MOTION · the system is still. The foil slides on hover, photos ease on
+   hover, and that is the whole vocabulary. No scroll reveals, no lifts,
+   no drop shadows anywhere.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+<style>
+/* ---- the option labels: not part of any design, just the menu ---- */
+.ho-intro{padding:40px 0 34px;border-bottom:1px solid var(--lg-rule)}
+.ho-intro .lg-d2{margin-bottom:10px}
+.ho-label{position:sticky;top:0;z-index:50;background:var(--lg-ink);color:var(--lg-page)}
+.ho-label .lg-wrap{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-block:12px}
+.ho-label b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:1.9rem;line-height:1;color:var(--lg-gold)}
+.ho-label .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+.ho-label .nt{font-size:.9rem;opacity:.72}
+.ho-gap{height:56px;background:var(--lg-page)}
+.ho-end{display:flex;align-self:center}
+
+/* ---- A · your first version, exactly as sent ---- */
+.hA img{object-position:50% 62%}
+
+/* ---- B · split: photo at full colour, copy on a solid panel ---- */
+.hB{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:min(84vh,780px);background:var(--lg-dark)}
+.hB-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px) var(--lg-pad);color:var(--lg-on-dark)}
+.hB-copy .lg-lede{color:var(--lg-on-dark-m)}
+.hB-ph{position:relative;min-height:420px}
+.hB-ph{overflow:hidden}
+.hB-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;scale:1.6;transform-origin:12% 92%}
+.hB .ho-stamp{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px)}
+
+/* ---- C · poster: white, one giant gold club, loud type ---- */
+.hC{position:relative;overflow:hidden;background:var(--lg-page);min-height:min(84vh,760px);display:flex;align-items:center}
+.hC-club{position:absolute;right:-6%;top:50%;translate:0 -50%;width:min(62vw,860px);aspect-ratio:1;pointer-events:none}
+.hC-club img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;rotate:-8deg}
+.hC .lg-wrap{position:relative;z-index:2;width:100%}
+.hC .lg-d1{font-size:clamp(3.2rem,9vw,8.4rem);max-width:9ch;line-height:.86}
+.hC .lg-lede{max-width:34ch}
+.hC-price{position:absolute;right:clamp(20px,6vw,90px);bottom:clamp(20px,5vw,64px);z-index:3;text-align:right;
+  background:var(--lg-page);padding:12px 16px;border-radius:var(--lg-r);rotate:-4deg;border:2px solid var(--lg-ink)}
+.hC-price b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2.6rem,5vw,4.4rem);line-height:.9;color:var(--lg-ink)}
+.hC-price span{display:block;margin-top:6px}
+
+/* ---- D · the math: the deal as a sum, with the real club and the real hat ---- */
+.hD{background:var(--lg-page);padding:clamp(48px,6vw,96px) 0 clamp(40px,5vw,72px)}
+.hD-sum{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.05fr);align-items:center;gap:clamp(10px,2vw,28px);margin-top:clamp(28px,4vw,48px)}
+.hD-tile{position:relative;aspect-ratio:1;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.hD-tile img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:6%}
+.hD-tile .lg-tag{position:absolute;left:12px;top:12px}
+.hD-tile figcaption{position:absolute;left:0;right:0;bottom:12px;text-align:center}
+.hD-op{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2.4rem,5vw,4.6rem);line-height:1;color:var(--lg-gold)}
+.hD-res{background:var(--lg-dark);color:var(--lg-on-dark);border-radius:var(--lg-r-card);aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,2.4vw,32px)}
+.hD-res b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(2.6rem,6vw,5.6rem);line-height:.86;color:var(--lg-gold)}
+.hD-res span{margin-top:10px;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base);line-height:1.4}
+.hD-row2{margin-top:clamp(14px,2vw,24px)}
+.hD-row2 .hD-tile,.hD-row2 .hD-res{aspect-ratio:auto;height:clamp(150px,18vw,230px)}
+.hD-pair{display:grid;grid-template-columns:1fr 1fr}
+.hD-pair img{padding:8%}
+.hD-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:clamp(24px,3vw,40px)}
+
+/* ---- E · the lineup: every club on the grass, full colour ---- */
+.hE{background:var(--lg-page);padding:clamp(48px,6vw,88px) 0 0}
+.hE-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:clamp(28px,4vw,44px)}
+.hE-strip figure{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden}
+.hE-strip img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--lg-ease)}
+.hE-strip figure:first-child img{scale:1.4;transform-origin:25% 70%}
+.hE-strip figure:hover img{transform:scale(1.04)}
+.hE-strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:var(--lg-on-dark);
+  background:linear-gradient(transparent,rgba(23,20,15,.72))}
+.hE-strip figcaption b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:1.15rem;line-height:1}
+.hE-strip figcaption span{display:block;margin-top:4px;color:var(--lg-gold);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:var(--lg-fs-xs)}
+.hE-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:end}
+.hE-top .lg-btn-row{margin-top:0}
+
+/* ---- F · close and bold: the gold face at full size, only a floor of shadow ---- */
+.hF{position:relative;isolation:isolate;overflow:hidden;background:#0f0d09}
+.hF img{display:block;width:100%;height:min(88vh,880px);min-height:540px;object-fit:cover;object-position:50% 45%}
+.hF img{object-position:50% 58%}
+.hF::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(23,20,15,.78) 0%,rgba(23,20,15,.42) 30%,rgba(23,20,15,0) 52%)}
+.hF .lg-hero-copy{align-items:flex-start;padding-top:clamp(36px,5vw,72px);padding-bottom:0}
+.hF .lg-hero-copy .lg-d1{font-size:clamp(3rem,7.4vw,6.6rem)}
+.hF-foot{background:var(--lg-page);border-bottom:1px solid var(--lg-rule)}
+.hF-foot .lg-wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-block:24px}
+.hF img{height:min(76vh,760px)}
+.hF .ho-stamp{position:absolute;right:clamp(16px,4vw,56px);bottom:clamp(20px,4vw,56px);top:auto;z-index:3}
+
+/* the stamp: the system's gold tag, set big and turned, for a bit of attitude */
+.ho-stamp{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;rotate:-6deg;
+  background-image:var(--lg-foil);color:var(--lg-ink);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem}
+.ho-stamp svg{width:16px;height:16px}
+
+@media (max-width:860px){
+  .hB{grid-template-columns:1fr}
+  .hB-ph{min-height:360px;order:-1}
+  .hC{align-items:flex-start;padding-top:40px;min-height:auto;padding-bottom:280px}
+  .hC-club{top:auto;bottom:-40px;translate:0 0;right:-14%;width:88vw}
+  .hC-price{bottom:24px}
+  .hD-sum{grid-template-columns:1fr auto 1fr;row-gap:14px}
+  .hD-sum .hD-eq{display:none}
+  .hD-res{grid-column:1/-1;aspect-ratio:auto}
+  .hE-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hE-top{grid-template-columns:1fr}
+}
+</style></head><body class="lg">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg-lucky" viewBox="164.15 237.42 513.48 118.24" fill="currentColor" fill-rule="nonzero"><path d="M 294.949219 282.929688 C 294.460938 282.714844 294.03125 282.59375 293.699219 282.523438 C 297.121094 263.269531 292.363281 240.539062 279.234375 239.039062 C 265.09375 237.421875 266.507812 249.339844 260.847656 254.996094 C 255.191406 260.65625 243.273438 259.242188 244.890625 273.382812 C 246.257812 285.347656 265.269531 290.367188 283.203125 288.570312 L 278.699219 294.238281 C 262.21875 293.636719 246.140625 298.761719 244.890625 309.730469 C 243.273438 323.871094 255.191406 322.457031 260.847656 328.113281 C 263.574219 330.835938 264.660156 335.011719 266.632812 338.429688 C 269.761719 343.292969 283.121094 337.703125 285.691406 330.847656 C 288.265625 323.988281 282.480469 313.277344 283.765625 305.988281 C 276.691406 301.917969 276.902344 298.785156 278.835938 296.5625 C 278.992188 296.382812 279.175781 296.152344 279.375 295.898438 C 279.417969 295.847656 279.457031 295.796875 279.5 295.742188 C 279.691406 295.5 279.890625 295.238281 280.109375 294.949219 C 280.234375 294.789062 280.367188 294.609375 280.496094 294.4375 C 280.523438 294.398438 280.550781 294.363281 280.578125 294.328125 C 282.117188 292.28125 284.175781 289.5 286.164062 287.316406 C 287.488281 285.863281 288.773438 284.675781 289.835938 284.183594 C 290.195312 284.019531 290.546875 283.90625 290.894531 283.820312 L 290.898438 283.824219 C 291.320312 283.71875 291.730469 283.675781 292.132812 283.671875 C 292.207031 283.667969 292.277344 283.667969 292.351562 283.667969 C 292.523438 283.671875 292.695312 283.683594 292.863281 283.703125 C 292.929688 283.710938 292.996094 283.722656 293.0625 283.734375 C 295.753906 284.132812 297.695312 286.277344 297.695312 286.277344 C 297.695312 286.277344 297.179688 283.902344 294.949219 282.929688 "/><path d="M 313.265625 296.65625 C 313.960938 303.082031 310.050781 306.191406 305.300781 313.691406 C 302.289062 318.445312 305.378906 334.914062 309.382812 341.394531 C 311.1875 342.859375 313.25 343.808594 315.582031 344.074219 C 329.722656 345.691406 328.308594 333.769531 333.964844 328.113281 C 337.632812 324.445312 343.933594 323.746094 347.46875 319.851562 Z M 313.265625 296.65625 "/><path d="M 292.835938 290.691406 C 289.980469 289.261719 287.980469 292.976562 288.550781 294.179688 C 288.550781 294.179688 289.121094 294.40625 291.40625 294.179688 C 293.691406 293.957031 294.679688 291.613281 292.835938 290.691406 "/><path d="M 351.003906 318.273438 C 350.675781 318.046875 349.992188 317.570312 349.226562 317.03125 C 349.972656 315.183594 350.28125 312.839844 349.925781 309.730469 C 348.601562 298.140625 330.726562 293.066406 313.308594 294.390625 L 348.574219 318.371094 C 348.578125 318.367188 348.582031 318.363281 348.582031 318.355469 L 351.003906 320 C 351.003906 320 347.335938 325.910156 347.445312 326.449219 C 347.550781 326.988281 351.863281 327.851562 353.699219 324.617188 C 355.53125 321.382812 351.972656 318.9375 351.003906 318.273438 "/><path d="M 333.964844 254.996094 C 328.308594 249.339844 329.722656 237.421875 315.582031 239.039062 C 303.851562 240.378906 298.800781 258.675781 300.300781 276.289062 C 298.65625 276.320312 298.054688 277.136719 298.054688 278.1875 C 298.054688 279.035156 300.769531 280.578125 300.769531 280.578125 C 300.4375 280.289062 299.074219 279.050781 299.074219 278.355469 C 299.074219 277.5625 299.527344 277.050781 301.144531 277.050781 C 302.757812 277.050781 308.199219 276.199219 310.863281 278.894531 C 313.53125 281.585938 312.574219 285.414062 311.46875 286.347656 C 311.460938 286.351562 311.449219 286.339844 311.441406 286.34375 C 311.230469 287.015625 310.949219 287.714844 310.535156 288.453125 C 328.777344 290.5625 348.53125 285.585938 349.925781 273.382812 C 351.542969 259.242188 339.621094 260.65625 333.964844 254.996094 "/><path d="M 177.238281 327.636719 L 219.746094 327.636719 L 219.746094 340.023438 L 164.148438 340.023438 L 164.148438 241.492188 L 177.238281 241.492188 Z M 177.238281 327.636719 "/><path d="M 393.703125 327.074219 C 383.992188 317.222656 379.207031 305.117188 379.207031 290.757812 C 379.207031 276.402344 383.992188 264.296875 393.703125 254.441406 C 403.417969 244.589844 415.804688 239.664062 430.726562 239.664062 C 448.742188 239.664062 464.789062 248.953125 473.234375 263.589844 L 461.832031 270.207031 C 456.203125 259.367188 444.238281 252.332031 430.726562 252.332031 C 419.324219 252.332031 410.03125 255.992188 402.855469 263.3125 C 395.675781 270.632812 392.15625 279.78125 392.15625 290.757812 C 392.15625 301.597656 395.675781 310.746094 402.855469 318.0625 C 410.03125 325.386719 419.324219 329.046875 430.726562 329.046875 C 444.238281 329.046875 456.203125 322.007812 461.832031 311.308594 L 473.234375 317.785156 C 469.152344 325.105469 463.242188 331.015625 455.636719 335.378906 C 448.035156 339.742188 439.734375 341.855469 430.726562 341.855469 C 415.804688 341.855469 403.417969 336.925781 393.703125 327.074219 "/><path d="M 569.875 340.023438 L 553.828125 340.023438 L 511.316406 292.726562 L 511.316406 340.023438 L 498.226562 340.023438 L 498.226562 241.492188 L 511.316406 241.492188 L 511.316406 285.972656 L 552.417969 241.492188 L 568.464844 241.492188 L 524.972656 289.351562 Z M 569.875 340.023438 "/><path d="M 677.632812 241.492188 L 642.726562 300.1875 L 642.726562 340.023438 L 629.632812 340.023438 L 629.632812 300.046875 L 594.867188 241.492188 L 609.503906 241.492188 L 636.25 287.664062 L 662.992188 241.492188 Z M 677.632812 241.492188 "/><path d="M 343.609375 338.0625 L 343.609375 341.878906 L 345.386719 341.878906 C 346.871094 341.878906 347.761719 341.136719 347.761719 339.988281 C 347.761719 338.695312 346.984375 338.0625 345.386719 338.0625 Z M 348.277344 343.878906 L 351.132812 349.109375 L 348.019531 349.109375 L 345.613281 344.472656 L 343.609375 344.472656 L 343.609375 349.109375 L 340.757812 349.109375 L 340.757812 335.394531 L 345.386719 335.394531 C 348.613281 335.394531 350.613281 337.320312 350.613281 339.839844 C 350.613281 341.769531 349.835938 343.101562 348.277344 343.878906 M 353.765625 350.960938 C 356.171875 348.550781 357.359375 345.660156 357.359375 342.25 C 357.359375 338.84375 356.171875 335.953125 353.765625 333.539062 C 351.390625 331.132812 348.539062 329.945312 345.167969 329.945312 C 341.792969 329.945312 338.902344 331.132812 336.492188 333.539062 C 334.121094 335.953125 332.9375 338.84375 332.9375 342.25 C 332.9375 345.660156 334.121094 348.550781 336.492188 350.960938 C 338.902344 353.367188 341.792969 354.554688 345.167969 354.554688 C 348.539062 354.554688 351.390625 353.367188 353.765625 350.960938 M 345.167969 328.835938 C 348.871094 328.835938 352.023438 330.132812 354.652344 332.765625 C 357.285156 335.394531 358.582031 338.542969 358.582031 342.25 C 358.582031 345.957031 357.285156 349.109375 354.652344 351.738281 C 352.023438 354.371094 348.871094 355.664062 345.167969 355.664062 C 341.460938 355.664062 338.3125 354.371094 335.679688 351.738281 C 333.046875 349.109375 331.75 345.957031 331.75 342.25 C 331.75 338.542969 333.046875 335.394531 335.679688 332.765625 C 338.3125 330.132812 341.460938 328.835938 345.167969 328.835938 "/></symbol><symbol id="lg-clover-plain" viewBox="249.37 127.71 342.59 330.41" fill="currentColor" fill-rule="nonzero"><path d="M 407.070312 266.585938 C 405.578125 265.9375 404.273438 265.566406 403.257812 265.351562 C 413.703125 206.597656 399.175781 137.222656 359.113281 132.644531 C 315.953125 127.710938 320.269531 164.089844 303.007812 181.351562 C 285.742188 198.613281 249.367188 194.300781 254.300781 237.457031 C 258.472656 273.972656 316.492188 289.285156 371.222656 283.804688 L 357.480469 301.097656 C 307.179688 299.261719 258.125 314.910156 254.300781 348.378906 C 249.367188 391.535156 285.742188 387.21875 303.007812 404.484375 C 311.320312 412.796875 314.636719 425.535156 320.65625 435.96875 C 330.203125 450.804688 370.976562 433.75 378.824219 412.824219 C 386.671875 391.898438 369.015625 359.199219 372.9375 336.964844 C 351.359375 324.539062 351.996094 314.980469 357.898438 308.191406 C 358.367188 307.648438 358.9375 306.945312 359.546875 306.175781 C 359.671875 306.015625 359.796875 305.855469 359.929688 305.691406 C 360.503906 304.953125 361.121094 304.152344 361.789062 303.269531 C 362.160156 302.78125 362.570312 302.234375 362.96875 301.707031 C 363.054688 301.59375 363.128906 301.492188 363.21875 301.375 L 363.214844 301.375 C 367.910156 295.136719 374.195312 286.644531 380.261719 279.980469 C 384.300781 275.539062 388.226562 271.925781 391.464844 270.421875 C 392.558594 269.917969 393.632812 269.566406 394.695312 269.308594 L 394.707031 269.320312 C 395.996094 269 397.25 268.871094 398.472656 268.851562 C 398.699219 268.851562 398.921875 268.84375 399.144531 268.847656 C 399.671875 268.863281 400.195312 268.894531 400.703125 268.953125 C 400.914062 268.976562 401.113281 269.011719 401.320312 269.042969 C 409.527344 270.261719 415.445312 276.804688 415.445312 276.804688 C 415.445312 276.804688 413.878906 269.5625 407.070312 266.585938 "/><path d="M 462.964844 308.480469 C 465.089844 328.097656 453.15625 337.582031 438.660156 360.46875 C 429.472656 374.976562 438.902344 425.242188 451.125 445.011719 C 456.632812 449.488281 462.921875 452.378906 470.035156 453.191406 C 513.191406 458.125 508.875 421.746094 526.140625 404.484375 C 537.335938 393.285156 556.558594 391.15625 567.351562 379.273438 Z M 462.964844 308.480469 "/><path d="M 400.621094 290.277344 C 391.902344 285.917969 385.800781 297.253906 387.542969 300.929688 C 387.542969 300.929688 389.285156 301.613281 396.261719 300.929688 C 403.238281 300.25 406.246094 293.089844 400.621094 290.277344 "/><path d="M 578.132812 374.457031 C 577.132812 373.769531 575.042969 372.304688 572.71875 370.660156 C 574.992188 365.03125 575.929688 357.871094 574.847656 348.378906 C 570.804688 313.011719 516.257812 297.53125 463.101562 301.570312 L 570.722656 374.753906 C 570.730469 374.738281 570.738281 374.722656 570.75 374.703125 L 578.132812 379.726562 C 578.132812 379.726562 566.945312 397.761719 567.273438 399.40625 C 567.605469 401.054688 580.765625 403.683594 586.359375 393.8125 C 591.953125 383.941406 581.09375 376.484375 578.132812 374.457031 "/><path d="M 526.140625 181.351562 C 508.875 164.089844 513.191406 127.710938 470.035156 132.644531 C 434.234375 136.734375 418.828125 192.570312 423.402344 246.328125 C 418.386719 246.425781 416.542969 248.917969 416.542969 252.125 C 416.542969 254.703125 424.832031 259.421875 424.832031 259.421875 C 423.824219 258.535156 419.65625 254.761719 419.65625 252.632812 C 419.65625 250.207031 421.042969 248.652344 425.972656 248.652344 C 430.902344 248.652344 447.511719 246.058594 455.640625 254.273438 C 463.773438 262.492188 460.855469 274.171875 457.480469 277.027344 C 457.460938 277.03125 457.421875 277.007812 457.402344 277.007812 C 456.75 279.0625 455.894531 281.191406 454.636719 283.445312 C 510.308594 289.890625 570.589844 274.707031 574.847656 237.457031 C 579.777344 194.300781 543.402344 198.613281 526.140625 181.351562 "/></symbol></svg>
+
+<div class="lg-wrap ho-intro">
+  <p class="lg-eyebrow">Hero options</p>
+  <h1 class="lg-d2">Pick one. Or mix two.</h1>
+  <p class="lg-body">Same headline and offer in all six, so you're only comparing how hard the club and the gold hit. A is the version you already saw. Every photo is a real shot from the store.</p>
+</div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>A</b><span class="nm">Your first version</span><span class="nt">Kept exactly as sent. Photo under the green wash.</span></div></div>
+<section class="lg-hero hA">
+  <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp?width=2000" alt="Carver 01 Gold behind the ball">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1><p class="lg-lede">Spend $90 and we'll throw in a hat. Get to $140 and there's a polo in it for you too.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a><span class="lg-label ho-end">Ends Sunday, Sept 20</span></div>
+  </div></div>
+</section>
+<div class="ho-gap"></div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>B</b><span class="nm">Split</span><span class="nt">No wash at all. The club gets half the screen at full colour, the words get a solid panel.</span></div></div>
+<section class="hB">
+  <div class="hB-copy">
+    <p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1><p class="lg-lede">Spend $90 and we'll throw in a hat. Get to $140 and there's a polo in it for you too.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a><span class="lg-label ho-end">Ends Sunday, Sept 20</span></div>
+  </div>
+  <div class="hB-ph"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/13_e0814fc8-9c00-480c-9771-fe9a8847b5ff.webp?width=2000" alt="Carver 01 Gold, face and clover">
+    <span class="ho-stamp"><svg viewBox="249.37 127.71 342.59 330.41" fill="currentColor"><use href="#lg-clover-plain"/></svg>Free hat with it</span></div>
+</section>
+<div class="ho-gap"></div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>C</b><span class="nm">Poster</span><span class="nt">White page, one huge gold Carver crashing in from the side, loud type, the price like a sticker.</span></div></div>
+<section class="hC">
+  <div class="hC-club"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=1400" alt=""></div>
+  <div class="lg-wrap">
+    <p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1><p class="lg-lede">Spend $90 and we'll throw in a hat. Get to $140 and there's a polo in it for you too.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a><span class="lg-label ho-end" style="color:var(--lg-ink-64)">Ends Sunday, Sept 20</span></div>
+  </div>
+  <div class="hC-price"><b>$99</b><span class="lg-label" style="color:var(--lg-gold-text)">Carver 01 Gold · hat included</span></div>
+</section>
+<div class="ho-gap"></div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>D</b><span class="nm">The math</span><span class="nt">The deal as a sum, with the real wedge and the real hat. Receipts first, then the button.</span></div></div>
+<section class="hD"><div class="lg-wrap">
+  <p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1>
+  <div class="hD-sum">
+    <figure class="hD-tile" style="margin:0"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp?width=900" alt="Carver 01 Gold"><span class="lg-tag">$99</span><figcaption class="lg-label">Carver 01 Gold</figcaption></figure>
+    <span class="hD-op" aria-hidden="true">+</span>
+    <figure class="hD-tile" style="margin:0"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=900" alt="Black and gold Lucky hat"><span class="lg-tag lg-tag-gold">Free</span><figcaption class="lg-label">Any hat you like</figcaption></figure>
+    <span class="hD-op hD-eq" aria-hidden="true">=</span>
+    <div class="hD-res"><b>$99</b><span>Any club gets you the hat.</span></div>
+  </div>
+  <div class="hD-sum hD-row2">
+    <figure class="hD-tile" style="margin:0"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/6_f5a07216-0d65-4efc-913f-c5d2d1d9afbe.webp?width=900" alt="Stryker hybrid"><span class="lg-tag">$209</span><figcaption class="lg-label">Stryker</figcaption></figure>
+    <span class="hD-op" aria-hidden="true">+</span>
+    <figure class="hD-tile hD-pair" style="margin:0"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/10_96db47c0-e327-4f91-b46b-2f1caced97cf.webp?width=600" alt="Lucky hat"><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/PaintSplatter1.webp?width=600" alt="Gold Dust polo"><span class="lg-tag lg-tag-gold">Both free</span><figcaption class="lg-label">Hat + polo</figcaption></figure>
+    <span class="hD-op hD-eq" aria-hidden="true">=</span>
+    <div class="hD-res"><b>$209</b><span>Over $140 the polo comes too. Over $198, shipping's free.</span></div>
+  </div>
+  <div class="hD-foot"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a><span class="lg-label" style="color:var(--lg-ink-64)">Ends Sunday, Sept 20</span></div>
+</div></section>
+<div class="ho-gap"></div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>E</b><span class="nm">The lineup</span><span class="nt">Every club on the grass, full colour, side by side. Sells all four, not just the wedge.</span></div></div>
+<section class="hE">
+  <div class="lg-wrap hE-top">
+    <div><p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1></div>
+    <div><p class="lg-lede" style="margin-top:0">Spend $90 and we'll throw in a hat. Get to $140 and there's a polo in it for you too.</p><div class="lg-btn-row" style="margin-top:20px"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a></div></div>
+  </div>
+  <div class="hE-strip">
+    <figure><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/13_e0814fc8-9c00-480c-9771-fe9a8847b5ff.webp?width=900" alt="Carver 01 Gold"><figcaption><b>Carver 01 Gold</b><span>$99 · free hat</span></figcaption></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_5bea3d04-db05-40df-b68e-c408d3d70b9c.webp?width=900" alt="Carver 01 Gold at the ball"><figcaption><b>Two Carvers</b><span>$198 · hat, polo, free shipping</span></figcaption></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/Copy_of_LGP02.webp?width=900" alt="Tracer Mallet"><figcaption><b>Tracer Mallet</b><span>$229 · hat + polo</span></figcaption></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/2286/3149/files/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp?width=900" alt="Stryker hybrid"><figcaption><b>Stryker</b><span>$209 · hat + polo</span></figcaption></figure>
+  </div>
+</section>
+<div class="ho-gap"></div>
+
+
+<div class="ho-label"><div class="lg-wrap"><b>F</b><span class="nm">Close and bold</span><span class="nt">The gold face at full size and full colour. No green, just a shadow at the floor so the words read.</span></div></div>
+<section class="hF">
+  <img src="https://cdn.shopify.com/s/files/1/2286/3149/files/12_5bea3d04-db05-40df-b68e-c408d3d70b9c.webp?width=2000" alt="Carver 01 Gold face next to the ball">
+  <span class="ho-stamp"><svg viewBox="249.37 127.71 342.59 330.41" fill="currentColor"><use href="#lg-clover-plain"/></svg>Hat's on us</span>
+  <div class="lg-hero-copy" style="z-index:2"><div class="lg-wrap">
+    <p class="lg-eyebrow">This weekend only</p><h1 class="lg-d1">Grab a <span class="lg-foil-word">club</span>. The hat's on us.</h1>
+  </div></div>
+</section>
+<div class="hF-foot"><div class="lg-wrap">
+  <p class="lg-lede" style="margin:0">Spend $90 and we'll throw in a hat. Get to $140 and there's a polo in it for you too.</p>
+  <div class="lg-btn-row" style="margin:0"><a class="lg-btn" href="#">Show me the clubs <span aria-hidden="true">&rarr;</span></a><span class="lg-label ho-end" style="color:var(--lg-ink-64)">Ends Sunday, Sept 20</span></div>
+</div></div>
+<div class="ho-gap"></div>
+</body></html>
