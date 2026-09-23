@@ -113,7 +113,7 @@ These came out of rewriting the whole website until Cole signed off. Run them on
 
 **10. Never sell a putter on its weight.** Feel, roll and looks, not grams.
 
-**11. On a page or a long email, count the bits.** One big moment and one light touch for the whole piece. More than two means cut the extras to straight. The product's big idea appears once, and no feature is explained in more than two places.
+**11. On a page or a long email, read it whole.** One big moment, the big idea said once, and small asides sprinkled through the rest (not a section built around a joke, not two in one section). If it's stacked, cut some back to straight. If it has no asides at all and reads like labels, it's gone flat.
 
 **Banned outright:** "milled from a single block" or "one block of" anything (say "fully milled"). Mentioning which hand a club is for ("lefties, this one's yours too"): never call it out in copy; the option picker handles it. The words premium, cheap, luxury, revolutionary. Em dashes (Cole banned them 2026-08-15; use a period, comma, colon or parentheses). Exclamation marks. Naming a competitor (say "the big names"). Any price, percentage or multiplier not in the product reference guide, and any invented proof number (real Judge.me or Shopify numbers are fine). The founder's name, anywhere.
 
