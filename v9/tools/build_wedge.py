@@ -26,11 +26,11 @@ GRINDS_BOTH = '''<!-- ============ THE GRINDS ============ -->
 <section class="lg-sec" id="grinds"><div class="lg-wrap">
   <div class="hd two">
     <div><p class="lg-eyebrow">Two grinds</p><h2 class="lg-d2">Square it up,<br>or open it up.</h2></div>
-    <p class="lg-body">Loft decides how far it goes. Grind decides what the sole does when it meets the turf. The K is the safe pick and comes in every loft, and the S is for golfers who like to lay the face open. If your chips won't stop, either one fixes that.</p>
+    <p class="lg-body">Loft sets the distance, and the grind decides how the sole gets through the turf. The K comes in every loft and does the same thing every time you set it up square. The S is for the golfer who likes to lay the face open and get creative around the green.</p>
   </div>
   <div class="kvs">
-    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
-    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole with a reshaped leading edge, so the face opens without the bounce fighting you. Built for tight lies, bunker shots and open-face lobs.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
+    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, and it does the same thing every time, from the fairway, the rough or the fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
+    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole with a reshaped leading edge, so you can open the face without the bounce fighting you. It's the one for tight lies, bunkers and the flop you probably shouldn't try.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
   </div>
 </div></section>'''
 
@@ -38,11 +38,11 @@ GRINDS_K = '''<!-- ============ THE GRIND ============ -->
 <section class="lg-sec" id="grinds"><div class="lg-wrap">
   <div class="hd two">
     <div><p class="lg-eyebrow">One grind</p><h2 class="lg-d2">The K, in every<br>loft we make.</h2></div>
-    <p class="lg-body">Loft decides how far it goes. Grind decides what the sole does when it meets the turf. The black is built on the K, which is the one that behaves the same way every time. If you want the S, it lives on the gold.</p>
+    <p class="lg-body">The black is built on the K grind, the one that does the same thing every time you set it up square, and it comes in all six lofts. Want the S? That one lives on the gold.</p>
   </div>
   <div class="kvs">
-    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, get the same result every time. Built for standard lies: fairway, rough, fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
-    <a class="lg-panel" href="carver.html" style="text-decoration:none;color:inherit"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole with a reshaped leading edge, so the face opens without the bounce fighting you. It comes in gold, in 52, 56 and 60.</p><span class="lg-link">See the gold <span>&rarr;</span></span></a>
+    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, and it does the same thing every time, from the fairway, the rough or the fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
+    <a class="lg-panel" href="carver.html" style="text-decoration:none;color:inherit"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole that opens up clean for tight lies and bunkers. It comes on the gold, in the 52, 56 and 60.</p><span class="lg-link">See the gold <span>&rarr;</span></span></a>
   </div>
 </div></section>'''
 
@@ -80,7 +80,7 @@ BAR_K = '''    <div class="tbar"><span class="lg-label">K grind · six lofts</sp
 REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes ============ -->
 <section class="lg-sec" id="reviews"><div class="lg-wrap">
   <div class="rv-top">
-    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">What golfers said</h2>
+    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">Straight from the people hitting it</h2>
       <p class="lg-body">Every review takes a shot at the pin.</p>
       <button class="lg-btn-line lg-btn-sm" type="button" data-md-open="md-write">Write a review</button></div>
     <div id="prox"></div>
@@ -102,7 +102,7 @@ REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes 
 
 REVIEWS_BLACK = REVIEWS_GOLD.replace(
     '<p class="lg-body">Every review takes a shot at the pin.</p>',
-    '<p class="lg-body">These are the reviews for the Carver 02, in both finishes. Same forged head, same grind, same face: the coat is the only thing that changes.</p>')
+    '<p class="lg-body">These reviews cover the Carver 02 in both finishes. Same forged head, same face, different coat.</p>')
 
 
 CARD_GOLD = '<a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/gold-full-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Same wedge, louder about it</span></span></a>'
@@ -135,17 +135,21 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
         "FIN_B": "" if gold else ' aria-current="page"',
         "RVL": ('<div class="rvl"><span class="lg-stars" aria-label="4.8 out of 5">{{STARS5}}</span>'
                 '<a href="#reviews">&ldquo;So nice, I bought it twice.&rdquo; JD M. · read the reviews</a></div>'),
-        "DESC": ("Forged head, milled face, filthy spin. Everything you'd pay the big names for, in gold, for $99."
+        "DESC": ("Fair warning: this thing spins, so your first few chips might stop shorter than you're used to. "
+                 "It's forged, so it feels buttery off the face, and it's forgiving enough that the mishits still behave. "
+                 "The micro-grooves and sandblasted face are doing the work. And yes, it's gold. People will ask."
                  if gold else
-                 "The same forged head and milled face, blacked out, with the clover and the loft stamp left in gold. "
-                 "Ten dollars buys you the finish and nothing else."),
-        "DETAILS": ("Forged from 1020 carbon steel, with CNC-milled grooves and micro-grooves between them over a "
-                    "sandblasted face. That's the dual-texture face, and it's why a thin one still checks up. The K "
-                    "grind comes in all six lofts, the S in 52, 56 and 60, both in right and left hand."
+                 # the two approved descriptions, verbatim from How We Write v10 (2026-09-23)
+                 "Forged in darkness, lives in the shadows, and nobody sees it coming until it checks up by the pin. "
+                 "The black Carver is built for the player who wants consistency and craftsmanship without announcing it "
+                 "the second it comes out of the bag. With a forged head and a micro-grooved, sandblasted face, the "
+                 "Carver 02 Black delivers serious spin and a consistent feel shot after shot."),
+        "DETAILS": ("The head's forged from 1020 carbon steel. The face gets CNC-milled grooves, micro-grooves and a "
+                    "sandblast, and together that's the dual-texture face. The K grind comes in all six lofts and the S "
+                    "in the 52, 56 and 60."
                     if gold else
-                    "Forged from 1020 carbon steel, with CNC-milled grooves and micro-grooves between them over a "
-                    "sandblasted face, then blacked out with the clover, the wordmark, the loft stamp and the forged "
-                    "stamp left in gold. K grind, all six lofts, right hand."),
+                    "Same forged 1020 carbon steel head and dual-texture face as the gold, blacked out, with the clover, "
+                    "the wordmark, the loft stamp and the forged stamp left in gold. The K grind, in all six lofts."),
         "GRINDS": GRINDS_BOTH if gold else GRINDS_K,
         # mood=True is the demo: the finish world becomes one dark beat, where a
         # finish's own metal finally reads as metal instead of as grey type
@@ -164,7 +168,7 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
         "REVIEWS": REVIEWS_GOLD if gold else REVIEWS_BLACK,
         "OTHER_FIN": CARD_BLACK if gold else CARD_GOLD,
         "SIGN": ("Nobody needs a gold wedge. You'll want one anyway." if gold else
-                 "Nobody will say a word about it until you've hit one."),
+                 "Black on the outside. Gold where it counts."),
         "PD_JSON": js(keep),
         "REVIEWS_JSON": js(reviews("lgw01-gold")),   # one wedge, one pool of reviews
         "REEL_JSON": js(REEL),

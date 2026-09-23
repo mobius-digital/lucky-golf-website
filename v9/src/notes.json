@@ -1,22 +1,17 @@
 {
  "carver": {
-  "why": "Signed off (round 4), plus two small additions from your last questions: the sticky bar can change hand and loft, and the photo band has captions.",
+  "why": "Copy v10 (2026-09-23): every line rewritten against the new voice guide. Layout unchanged.",
   "added": [
-   "<b>Sticky Add to bag at every width:</b> on desktop and tablet you can switch hand and loft right in the bar. On phones, and when you're building a set, a Change link jumps you back to the lofts. Finish stays on the page because Gold and Black are two separate products. Mags and the toasts stand above the bar.",
-   "<b>Photo band</b> between the specs and the reviews, each photo with a short caption: the Black swing, the walk off the green, the sunset polo.",
-   "<b>Finish cards:</b> the club and its name only.",
-   "<b>How many:</b> three even cards. \"Two or more ship free\" sits in gold on the right of the row instead of in pills.",
-   "<b>Mags's line follows your pick:</b> choose the 58 and it reads Mags has your 58. Again.",
-   "<b>Copy audit, against the copy skill:</b> the Details tab no longer repeats the description word for word. \"That is rather the point\" and three more uncontracted lines are fixed. The caption-style headings are replaced (\"Product description\", \"Versatility\"). Two lines that sounded like the page describing itself are gone. The returns heading no longer contradicts itself, and product names now match the menu."
+   "<b>Description:</b> your approved Carver 02 Gold and Black descriptions, word for word.",
+   "<b>Headlines say something:</b> \"Catch it thin out of the wet stuff. It checks up anyway.\", \"Go ahead, check the sheet\", \"Straight from the people hitting it\".",
+   "<b>Specs said, not explained:</b> micro-grooved, sandblasted, dual-texture. No more \"grooves milled between the main ones\".",
+   "<b>Hand never called out</b> in the copy; the picker handles it.",
+   "<b>Facts fixed:</b> the delivery box no longer says we ship anywhere in the world (not decided), and the wedge test rule is one per set, per the policy.",
+   "<b>Black sign-off</b> is new: \"Black on the outside. Gold where it counts.\""
   ],
   "kept": [
-   "<b>Price in ink</b>, and \"any loft, any grind\" is gone. \"Charge double\" came out too: the copy rules don't allow a multiplier that isn't in the product guide.",
-   "<b>Buy box tidy:</b> the two links sit on their own line under the stock line.",
-   "<b>Contour removed</b> from this page until your base map lands.",
-   "<b>Launch monitor</b> now shows the full wedge head.",
-   "<b>More from the bag</b> keeps the hat. The link now says Shop everything.",
-   "<b>Bag count</b> is a gold pill beside Mags, off the bag art.",
-   "<b>Gallery</b> captions are gone. On Shopify the gallery is the product's own media, in the order you upload it."
+   "The one big moment stays the finishes section: \"Same wedge. Different volume.\"",
+   "Price in ink, sticky bar, loft picker and everything else from round 4."
   ]
  },
  "home": {
