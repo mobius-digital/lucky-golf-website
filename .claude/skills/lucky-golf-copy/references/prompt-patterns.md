@@ -45,23 +45,37 @@ Both lead with one big idea about that club, then run the features with energy (
 
 ---
 
-## Ad headlines
+## Ads
 
-**What it is:** A short claim, question, or provocation designed to stop a scroll. Usually 3-10 words.
+**Start from the brief, not the voice.** Every ad has an angle, a concept, and a list of the copy parts the creative actually has. If the brief doesn't say which parts, ask before writing. The skill never decides the layout; the concept and the designer do.
 
-**What it does:** Names the promise, the price, or the problem in as few words as possible. Attitude in the closer often helps.
+**Pick a register for the angle.** The voice stays the same. How it plays depends on the angle:
+- **Witty:** one joke, landed once.
+- **Plain:** says what it is and why it's good.
+- **Dry:** undersells on purpose.
+- **Engineering:** leads with the spec, said with pride.
+- **Proof:** built on a real review, award or number. Never invent one.
 
-**What to avoid:** Setup-and-punchline headlines. Cute-clever wordplay. Multiple ideas jammed into one line. Ads that don't lead with anything specific.
+When writing several variants, change the hook and the register each time. A batch that all lands the same way reads like a template.
 
-**Good examples:**
-- *Titanium hybrid. About time.*
-- *Still using stock wedges?*
-- *Your putter probably wasn't milled.*
+**The parts.** These are what copy can be inside or around a creative. Write only the ones the brief lists.
+- **Headline:** the one line that stops the scroll. Usually a plain, confident claim.
+- **Subline:** a small line under the headline. Often where the wink lives.
+- **Callouts / tooltips:** the spec big, the benefit small underneath. The last one can be the joke.
+- **Annotations:** arrow or circle notes on the image: a comment next to the club, the ball's point of view, a note on the price. One or two, never a caption on every element.
+- **Offer badge:** the price or promo, stated flat.
+- **Button + microline:** the CTA, and sometimes a tiny line under it ("3 minutes, max." is the kind of thing).
+- **Panel sequence:** one beat per frame across a carousel or story.
+- **Primary text and Meta headline:** the text around the ad, not in it. This is where there's room to talk. Still short.
 
-**Bad examples:**
-- *Introducing the LGH01 Stryker: A Revolutionary New Hybrid* (too long, too selly)
-- *Distance meets forgiveness. Meet the Stryker.* (setup-and-punchline)
-- *Wedges so good, you'll ditch your old ones!* (exclamation, begging)
+**In-creative copy is short, and one spot carries the personality.** Takomo's best ads (checked 2026-09-23) keep the headline plain and put the wink in the subline or the last callout. Same budget as a web page.
+
+**Approved creative (angle: the wedge that gets asked about, 2026-09-23).** This shows the parts in practice. It isn't a template to reuse:
+- Headline: *Somebody's going to ask.*
+- Subline: *Tell them it's your lucky wedge.*
+- Callouts: *Forged carbon steel / ..buttery off the face* · *Micro-grooved, sandblasted face / ..spin that checks up* · *Gold finish / ..the reason they asked*
+
+**What to avoid:** begging, exclamation marks, manufactured urgency, numbers the product guide doesn't have, and a joke in every part.
 
 ---
 
@@ -80,20 +94,6 @@ Both lead with one big idea about that club, then run the features with energy (
 *CNC-milled 304 stainless with a slight toe hang — built to work with the arc, not against it.*
 
 Both are accurate. The good one extends the promise of the headline. The bad one pivots to specs and construction, which the reader will get further down the page anyway.
-
----
-
-## Ad body copy
-
-**What it is:** 1-3 short sentences under a headline that explain the claim or make the pitch. Everything earns its space.
-
-**What it does:** Follows through on the headline. Adds substance without adding length. Often names the price, the model, or the mechanism in a plainspoken way.
-
-**Length:** Rarely more than 25 words. Sometimes just one sentence.
-
-**Before writing:** get the angle. An ad without an angle is just the voice with nothing to say.
-
-**What to avoid:** Long paragraphs. Feature lists. Repeating the headline in different words. Trying to cover multiple selling points.
 
 ---
 

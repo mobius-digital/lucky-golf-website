@@ -50,8 +50,7 @@ Different pieces of copy have different jobs. Read `references/prompt-patterns.m
 The formats covered:
 - Product descriptions (short and long)
 - Feature callouts / benefit blocks
-- Ad headlines
-- Ad body copy
+- Ads: the parts list (headline, subline, callouts, annotations, offer badge, button, panels, primary text) and the register menu
 - Email subject lines
 - Email openers / hooks
 - Email body
