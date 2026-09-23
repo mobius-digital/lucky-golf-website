@@ -20,8 +20,9 @@
   ]
  },
  "home": {
-  "why": "Round 6. The dot chart is off Home (it belongs where people compare), the rating and the quotes carry it instead.",
+  "why": "Round 6, plus two updates: the putters are the Eclipse now, and the in-the-wild rail shows the real Community posts.",
   "added": [
+   "<b>In the wild shows real posts:</b> the rail is the Community wall. Tap one and it opens that post on the wall with its products.",
    "<b>Reviews:</b> 4.8, the stars, one line, and the quotes. No chart and no counts on Home.",
    "<b>Best seller</b> tag is back on the Carver Gold. It's true, so it earns its place. Sold out stays on the Blade.",
    "<b>Headline</b> is \"Thousands of golfers bag Lucky\" again.",
@@ -37,7 +38,7 @@
    "<b>Swapped earlier:</b> the first-tee photo (it showed another brand's irons) and the featured putter (the Blade is sold out, so the Mallet leads).",
    "<b>Reviews:</b> three naming other brands came out, and one about slow service. The rest are word for word.",
    "<b>Numbers:</b> no order count (the copy rules don't allow one), and 4.8 is today's average across the clubs, rounded down.",
-   "<b>Needs you:</b> the Instagram handle for that button, the bench photo, the six clips, and your contour base map."
+   "<b>Needs you:</b> the Instagram handle for that button, the bench photo, and your contour base map."
   ]
  },
  "clubs": {
@@ -175,7 +176,7 @@
   ]
  },
  "blade": {
-  "why": "Rebuilt on the Carver's layout. The Blade is sold out, which is a page most sites handle badly.",
+  "why": "The Eclipse (formerly Tracer). Rebuilt on the Carver's layout. The Blade is sold out, which is a page most sites handle badly.",
   "added": [
    "<b>Same page furniture as the Carver:</b> gallery, buy box, film, in the wild, the monitor, photo band, reviews, more from the bag.",
    "<b>Sold out up front:</b> the button asks to be told when it's back and the email modal opens on tap.",
@@ -187,7 +188,7 @@
   ]
  },
  "mallet": {
-  "why": "Rebuilt on the Carver's layout. The putter most golfers should actually buy.",
+  "why": "The Eclipse (formerly Tracer). Rebuilt on the Carver's layout. The putter most golfers should actually buy.",
   "added": [
    "<b>Hand chips</b> where both hands exist, repeated in the sticky bar.",
    "<b>The case for a mallet</b> in two paragraphs, no invented numbers.",
@@ -329,7 +330,8 @@
    "<b>Tap any post</b> and it opens with the products in it: add straight to the bag, or pick a loft or a size.",
    "<b>Filter by Clubs, Apparel or Gear</b>, worked out from the products tagged in each post.",
    "<b>In Shopify each post is one entry in the admin</b> (a metaobject): the photo or clip, the @handle, the link, the products. No app, no monthly fee.",
-   "<b>The same posts can show on Home and on each product page</b>, filtered to the posts that tag that product."
+   "<b>The same posts can show on Home and on each product page</b>, filtered to the posts that tag that product.",
+   "<b>Home's in-the-wild rail is these posts</b>, in the same order. Each one opens straight onto its post here."
   ],
   "kept": [
    "Every post here is OUR OWN shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
