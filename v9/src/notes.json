@@ -1,12 +1,12 @@
 {
  "carver": {
-  "why": "Copy v10, second pass (2026-09-23): every line on the page rewritten, not just the ones I flagged the first time.",
+  "why": "Copy v10, full page (2026-09-23): every line rewritten, down to the buttons, pop-ups, menu and footer.",
   "added": [
-   "<b>Description:</b> your approved Carver 02 Gold and Black descriptions, word for word.",
-   "<b>On the course:</b> \"Watch it bite.\" on the gold, \"They'll notice when it stops.\" on the black.",
-   "<b>Two finishes:</b> gold is \"Get used to the attention\", black is \"Meet the Shadow\". No more listing which stamps are gold.",
-   "<b>Grinds, specs, tooltips, reviews:</b> rewritten, specs said rather than explained, no lists of three.",
-   "<b>Facts fixed:</b> no \"ships anywhere in the world\" (not decided); wedge test rule is one per set."
+   "<b>Kept word for word on purpose:</b> your two approved descriptions, the customer quotes, the tagline, \"Same wedge. Different volume.\" and \"Every review takes a shot at the pin.\"",
+   "<b>Everything else is new:</b> \"Watch it bite.\" / \"They'll notice when it stops.\", \"Two grinds. Zero excuses.\", \"Meet the Shadow\", \"Check every number\", \"Round out the bag\".",
+   "<b>Buttons:</b> \"Put it in the bag\", \"Help me pick\", \"Sixty-day test drive\", \"When will it get here?\".",
+   "<b>Menu and footer lines</b> rewritten too, so they change on every page.",
+   "<b>Facts fixed:</b> no \"ships anywhere in the world\", no \"one email a month\", wedge test rule is one per set."
   ],
   "kept": [
    "The one big moment stays the finishes section: \"Same wedge. Different volume.\"",

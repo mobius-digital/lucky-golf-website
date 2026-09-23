@@ -92,21 +92,21 @@ MAGS = ('<span class="lg-mags"><img class="is-ink" src="img/{a}-ink.webp" alt=""
 # Lines are Lucky copy (copy skill, 2026-09-18 pass), not spec labels.
 NAV = [
     {"label": "Wedges", "title": "Wedges", "all": ("clubs.html#wedges", "All wedges"),
-     "intro": "Forged heads, six lofts, and a price that doesn't come with a tour pro attached.",
+     "intro": "Forged, spin-happy, and priced without a tour contract baked in.",
      "photo": ("two-gold-wedges.webp", "Carver 02 Gold, on the fringe"),
      "items": [("carver.html", "Carver 02 Gold", "$99", "The one they ask about on the next tee.", "6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp"),
-               ("black.html", "Carver 02 Black", "$109", "Same wedge, quieter about it.", "6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp")]},
+               ("black.html", "Carver 02 Black", "$109", "Same forged head, in the dark.", "6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp")]},
     {"label": "Putters", "title": "Putters", "all": ("clubs.html#putters", "All putters"),
-     "intro": "Fully milled and finished in gold, without the price tag the big names hang on theirs.",
+     "intro": "Fully milled, finished in gold, and priced like nobody's paying for a tour van.",
      "photo": ("from-the-cup.webp", "Eclipse, doing its job"),
      "items": [("blade.html", "Eclipse Blade", "$199", "For the stroke with a little arc in it.", "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp"),
-               ("mallet.html", "Eclipse Mallet", "$229", "The last putt, in gold.", "1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp")]},
+               ("mallet.html", "Eclipse Mallet", "$229", "Soft off the face, gold all over.", "1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp")]},
     {"label": "Hybrid", "title": "Hybrid", "all": ("clubs.html#hybrid", "See the hybrid"),
-     "intro": "Titanium, 19 degrees, and far friendlier than the fairway wood you keep leaving in the bag.",
+     "intro": "Titanium, 19 degrees, and a lot friendlier than the fairway wood you keep leaving in the bag.",
      "photo": ("11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp", "Stryker, sitting down"),
-     "items": [("stryker.html", "Stryker", "$209", "The long walk, shortened.", "3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp")]},
+     "items": [("stryker.html", "Stryker", "$209", "High and easy from the rough.", "3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp")]},
     {"label": "Apparel", "title": "Apparel", "all": ("polos.html", "Shop apparel"),
-     "intro": "Polos that stretch when you swing and hats that say it for you. Unworn with tags on, 30 days to send it back.",
+     "intro": "Polos that move when you swing and hats that say it for you. Thirty days to send them back, tags on.",
      "photo": ("fit-sunset.webp", "Nightshade polo, white hat"),
      "items": [("polos.html", "Polos", "$67", "Four-way stretch and UPF 50+, loud or quiet.", "GoldMirage1.webp"),
                ("hats.html", "Hats", "$29", "The line on the front does the talking.", "39.webp"),
@@ -157,11 +157,11 @@ def header():
 def footer():
     return f'''<footer class="lg-ftr"><div class="lg-wrap">
   <div class="ftr-news">
-    <div><span class="lg-label">First look</span><p>New lofts, restocks and the odd bad idea. One email a month, from a person.</p></div>
+    <div><span class="lg-label">First look</span><p>New lofts, restocks and the odd bad idea, straight to your inbox.</p></div>
     <form class="lg-form" data-news novalidate><label class="sr" for="news-email">Email</label><input class="lg-input" id="news-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Sign me up</button></form>
   </div>
   <div class="lg-ftr-in">
-    <div class="ftr-brand"><a class="lg-logo" href="home.html" aria-label="Lucky Golf home">{logo()}</a><p>Clubs that perform at the level of the big names, at prices set by people who chose not to pass the markup along.</p></div>
+    <div class="ftr-brand"><a class="lg-logo" href="home.html" aria-label="Lucky Golf home">{logo()}</a><p>Clubs that play like the big names, without the tour contracts and the retail markup in the price.</p></div>
     <div><h3>Clubs</h3><ul><li><a href="carver.html">Carver 02 Gold</a></li><li><a href="black.html">Carver 02 Black</a></li><li><a href="blade.html">Eclipse Blade</a></li><li><a href="mallet.html">Eclipse Mallet</a></li><li><a href="stryker.html">Stryker</a></li></ul></div>
     <div><h3>Apparel</h3><ul><li><a href="polos.html">The Classic Polo</a></li><li><a href="polos.html">The Blade Polo</a></li><li><a href="hats.html">Hats</a></li><li><a href="gear.html">Gear</a></li></ul></div>
     <div><h3>Support</h3><ul><li><a href="faq.html#returns">Sixty-day returns</a></li><li><a href="faq.html#shipping">Shipping</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="community.html">Community</a></li><li><a href="giftcard.html">Gift cards</a></li><li><a href="story.html">Our Story</a></li></ul></div>
