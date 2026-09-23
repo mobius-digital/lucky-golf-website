@@ -57,7 +57,7 @@ Putters
 LGP01 Tracer Blade
 Category: putter
 Head shape: blade
-Construction: fully CNC-milled from a single block
+Construction: fully CNC-milled
 Material: 431 stainless steel
 Available loft: 3.5°
 Available length: 35"
@@ -70,7 +70,7 @@ Price: $199
 LGP02 Tracer Mallet
 Category: putter
 Head shape: mallet
-Construction: fully CNC-milled from a single block
+Construction: fully CNC-milled
 Material: 304 stainless steel
 Available loft: 3.5°
 Available length: 35"

@@ -84,7 +84,7 @@ The AI's default behavior tends toward these mistakes when writing Lucky Golf co
 
 **Forced personality.** Not every piece needs a wink. A quiet product page or a factual email can close without a joke. If a line requires an exclamation point or an emoji to land, it doesn't land.
 
-**Copy that sells too hard.** Lucky doesn't push. It describes what the club is and what it costs, and trusts the reader to be interested. If the copy feels like it's pressuring, rewrite it plainer.
+**Copy that pressures.** Lucky is excited about its gear, never pushy. Enthusiasm is fine. Urgency, begging and hard sells are not. If the copy feels like it's pressuring, rewrite it plainer.
 
 **Parroting reference-guide phrasing.** The Feature → Benefit pairs in the product reference guide are reference material for the writer. They are not sentences to paste into copy. Translate them into flowing prose. Never copy a line from the reference guide verbatim into published copy.
 
@@ -102,7 +102,19 @@ These came out of rewriting the whole website until Cole signed off. Run them on
 
 **4. Second sentences must turn.** Two plain statements in a row where the second restates the first is the flat double-statement, Cole's most-hated failure. If it doesn't turn, sharpen or pay off the first, cut one.
 
-**Banned outright:** the words premium, cheap, luxury, revolutionary. Em dashes (Cole banned them 2026-08-15; use a period, comma, colon or parentheses). Exclamation marks. Naming a competitor (say "the big names"). Any price, percentage or multiplier not in the product reference guide. The founder's name, anywhere.
+**5. Say the spec, don't explain it.** "It's micro-grooved," not "tiny grooves milled between the main ones." A golfer says the word with pride; the AI translates it into a manual.
+
+**6. Never list product categories in copy meant to last.** "Wedges, putters and a hybrid" dates the page the day irons and drivers ship.
+
+**7. Ads start from an angle.** Before writing an ad, ask what the angle is. The voice carries into ads; the angle decides what the ad says.
+
+**8. Watch for lists of three.** One is fine. Three in a piece is an AI habit.
+
+**9. Two bits, max, in a description.** A hook up top and maybe one closer. A third joke means the middle has stopped doing its job.
+
+**10. Never sell a putter on its weight.** Feel, roll and looks, not grams.
+
+**Banned outright:** "milled from a single block" or "one block of" anything (say "fully milled"). Mentioning which hand a club is for ("lefties, this one's yours too"): never call it out in copy; the option picker handles it. The words premium, cheap, luxury, revolutionary. Em dashes (Cole banned them 2026-08-15; use a period, comma, colon or parentheses). Exclamation marks. Naming a competitor (say "the big names"). Any price, percentage or multiplier not in the product reference guide. The founder's name, anywhere.
 
 **Rule Zero for the tone guide's example lines:** the approved lines quoted in how-we-write are calibration, not a phrase bank. Never reuse a phrase or construction from them. If a reader of the Lucky site could tell you copied a line, rewrite it. "It's better to be lucky" is the tagline and appears only where a tagline belongs.
 

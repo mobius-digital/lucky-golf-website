@@ -17,10 +17,10 @@ Technically: 1020 is a lower-carbon, softer grade of steel than the cast stainle
 For the golfer: Buttery, solid sensation at impact. No hollowness. Feedback is immediate and honest: you know exactly how you struck the ball the moment you hit it. On mishits, the feel stays smooth rather than harsh or thin. The entire face feels responsive, and off-center strikes still produce good spin and accuracy.
 
 
-CNC-Milled from a Single Block
+Fully CNC-Milled
 Products: LGP01 Tracer Blade, LGP02 Tracer Mallet
 
-Technically: The entire putter head is carved from one piece of stainless steel using precision CNC tooling. No casting, no welding, no assembled components, no hollow cavity. Internal density is uniform throughout. At impact, vibration travels through continuous material rather than bouncing between joined surfaces.
+Technically: The whole putter head is CNC-milled from stainless steel. No casting, no welding, no assembled components, no hollow cavity. Internal density is uniform throughout. At impact, vibration travels through continuous material rather than bouncing between joined surfaces.
 
 For the golfer: A muted, solid sensation at impact. No ring, no ping, no vibration buzzing through the hands. The ball comes off the face with a low-resistance, buttery feel. On off-center strikes, you feel where you missed, but it doesn't punish you. Honest feedback without harshness.
 
@@ -30,7 +30,7 @@ Products: LGP01 Tracer Blade (431), LGP02 Tracer Mallet (304)
 
 Technically: 431 is a harder martensitic stainless. 304 is a slightly softer austenitic stainless. Both machine cleanly for CNC milling. In a milled putter, the difference in feel between these two grades is marginal.
 
-For the golfer: Both feel solid and muted. The milling process and single-block construction drive the feel experience, not the alloy. Most golfers could not reliably distinguish the two by feel alone. The steel grade is a spec-table fact, not a headline.
+For the golfer: Both feel solid and muted. The milling drives the feel experience, not the alloy. Most golfers could not reliably distinguish the two by feel alone. The steel grade is a spec-table fact, not a headline.
 
 
 Titanium
@@ -190,7 +190,7 @@ Driver: don't say "unmatched", "best in class" or "top performing in its class".
 Don't claim durability on forged wedges. The grooves wear faster than harder alloys. That's the tradeoff for the feel.
 Don't overclaim 431 vs. 304. The feel difference isn't dramatic. The milling matters more than the alloy. Be honest about that.
 Don't imply Lucky invented channel-face technology. Flex Channel is Lucky's name for its implementation. Describe what it does, not that it's a first.
-Don't lead with "milled from a single block" as a headline. The phrase has been overused across the putter market. Describe what the construction delivers, not the process name.
+Never write "milled from a single block", "one block of X" or any version of it, anywhere: descriptions, spec tables, headlines, tiles. Cole hates the phrase. Say "fully milled" and describe what that does for the golfer.
 
 
 

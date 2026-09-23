@@ -30,7 +30,7 @@ OUT = os.path.join(ROOT, "lucky-golf-copy.zip")
 
 # repo doc  ->  name it takes inside the skill
 DOCS = {
-    "references-how-we-write-v8.1.md": "how-we-write.md",
+    "references-how-we-write-v10.0.md": "how-we-write.md",
     "references-product-guide-v1.8.md": "product-reference-guide.md",
     "references-spec-to-benefit-v1.0.md": "spec-to-benefit.md",
     "references-culture-v2.md": "golf-culture.md",

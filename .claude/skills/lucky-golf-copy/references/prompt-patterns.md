@@ -14,11 +14,15 @@ Read the relevant section for whatever format the user has asked for. If the for
 
 **What to avoid:** Listing features in sequence. Opening with construction terms. Trying to cover every aspect of the club. Selling.
 
-**Good example:** *"The kind of putter that makes short ones feel like a formality and long ones feel possible. It works with the arc your stroke already has instead of asking you to build a new one, and the roll comes off the face clean enough that you stop thinking about the stroke and start thinking about the line. Milled, muted, and quietly gold — a putter that gets out of your way."*
+**Good examples (approved 2026-09-23):**
 
-**Bad example:** *"A CNC-milled mallet with a slight toe hang. The deep, fully milled face gets the ball rolling end-over-end sooner, and perimeter weighting holds the line on strikes that miss the center. Soft but solid at impact — no ping, no hollow ring, no vibration."*
+*"Fair warning: this thing spins, so your first few chips might stop shorter than you're used to. It's forged, so it feels buttery off the face, and it's forgiving enough that the mishits still behave. The micro-grooves and sandblasted face are doing the work. And yes, it's gold. People will ask."*
 
-The good example describes what the putter is like to use. The bad example lists what the putter has. Both are accurate. Only one makes you want to read more.
+*"Forged in darkness, lives in the shadows, and nobody sees it coming until it checks up by the pin. The black Carver is built for the player who wants consistency and craftsmanship without announcing it the second it comes out of the bag. With a forged head and a micro-grooved, sandblasted face, the Carver 02 Black delivers serious spin and a consistent feel shot after shot."*
+
+Both lead with one big idea about that club, then run the features with energy (strong claims, strong verbs), each with what it does. No price: it's already on the page.
+
+**Bad example:** *"A CNC-milled mallet with a slight toe hang. The deep, fully milled face gets the ball rolling end-over-end sooner, and perimeter weighting holds the line on strikes that miss the center. Soft but solid at impact — no ping, no hollow ring, no vibration."* (A list of what the club has, with no one talking.)
 
 ---
 
@@ -50,7 +54,6 @@ The good example describes what the putter is like to use. The bad example lists
 **What to avoid:** Setup-and-punchline headlines. Cute-clever wordplay. Multiple ideas jammed into one line. Ads that don't lead with anything specific.
 
 **Good examples:**
-- *$99 for a forged wedge. The new normal.*
 - *Titanium hybrid. About time.*
 - *Still using stock wedges?*
 - *Your putter probably wasn't milled.*
@@ -88,7 +91,7 @@ Both are accurate. The good one extends the promise of the headline. The bad one
 
 **Length:** Rarely more than 25 words. Sometimes just one sentence.
 
-**Good example (under a "$99 for a forged wedge" headline):** *"We cut out the middlemen, sponsorships, and retail markups. What's left is the club."*
+**Before writing:** get the angle. An ad without an angle is just the voice with nothing to say.
 
 **What to avoid:** Long paragraphs. Feature lists. Repeating the headline in different words. Trying to cover multiple selling points.
 
