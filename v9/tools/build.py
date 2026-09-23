@@ -648,7 +648,7 @@ def build_reviews():
         "REVIEWS_JSON": js({"totals": totals, "sample": sample}), "AVG": f"{avg:.1f}", "CLUBS": clubs})
 
 
-GIFT_AMOUNTS = [10, 25, 50, 100, 150]   # the denominations read off the store; it lists nine
+GIFT_AMOUNTS = [10, 25, 50, 100, 150, 200, 250, 300, 500]   # all nine variants on the store, read 2026-09-23
 
 
 def build_giftcard():
