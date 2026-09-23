@@ -15,16 +15,14 @@
  "manifesto": {
   "headA": "Luck favors",
   "headB": "the bold",
-  "lede": "Golf's a great game. Somewhere along the way it got stiff, quiet, and seriously overpriced. We're here to loosen it up.",
+  "lede": "Golf's the best game there is, and it should feel that way whether it's your first round or your five hundredth. Somewhere along the way it got stiff and way too expensive. We're here to loosen it up.",
   "paras": [
-   "This isn't golf with a raised eyebrow. Nobody here cares what your handicap is, what brand your bag is, or whether your polo is tucked in. Show up, swing hard, talk a little trash.",
-   "Is gold subtle? Not even a little. That's the point. You only get so many Saturdays, and none of them should be spent blending in."
+   "That starts with clubs that forgive the swings you're still working on, cost what they should, and look like nothing else in the bag.",
+   "Nobody here cares about your handicap or whether your polo's tucked in. Show up, swing hard, talk a little trash.",
+   "And when the chip drops and somebody asks what you're hitting, tell them it's your lucky wedge. Whether it was luck is your business."
   ],
   "stack": [
-   "This is golf, the fun way.",
-   "Loud.",
-   "Fair.",
-   "And lucky as hell."
+   "It's better to be lucky."
   ]
  },
  "moreHeadline": "The rest of it",
@@ -183,5 +181,6 @@
  "_ownership": "CORRECTION 2026-08-25, from Cole directly: 'Formed in 2018 I took over in July 2025 - others were added as we went.' COLE IS NOT THE 2018 FOUNDER. The _story note below was recorded as 'Cole's account' and reads as though he founded it; he was relaying the company's founding story, not his own. Nothing on the live page is false because of this: every sentence in trio.cards[2] says 'we', and the company did do those things in 2018. But DO NOT write first-person founder copy ('I started Lucky in 2018', 'our founder') on the strength of that note. Team is 4 to 10 as of Aug 2026, grown after July 2025. Whether the ownership change is disclosed publicly is COLE'S CALL and unanswered as of this writing, so it is not on the timeline. RESOLVED 2026-08-25: Cole approved a July 2025 entry on condition it sounded like a person wrote it. The first draft ('New Hands on the Wheel / What changes is the pace') did not: press-release idiom in the title, analyst voice in the closer. Replaced with 'Somebody Hit the Gas'. His name is still nowhere in it, and the previous owner is neither named nor criticised.",
  "_press": "Cole 2026-08-25: 'YouTubers, creators, some publishers' have reviewed the clubs. No names supplied and he declined to name anyone on the timeline. So there is still nothing citable: the comparison page's award row stays off until there is a specific, checkable name. A generic 'reviewed by creators' row loses to Takomo's MyGolfSpy award and is worse than no row.",
  "_team": "Cole 2026-08-25: nine people, reached 2026. Deliberately NOT phrased as 'Nine Strong' - '10 Strong' is Takomo's exact wording and lifting the construction is how you end up sounding like them rather than like us. The body avoids claiming Lucky started as one person: Cole took over in July 2025 and never said the 2018 founder worked alone.",
- "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed."
+ "_captions": "2026-08-25 caption sweep. Cole: 'Go through every page and fix the caption headings.' The test used: a CAPTION describes the block it sits on ('The Lucky timeline'); a LINE says something; a LABEL does functional wayfinding and is correctly plain (row keys, breadcrumbs, spec names, support page titles) and was deliberately left alone. Meta headings that describe the writing itself ('Bounce, in one paragraph') are the worst kind and were all removed.",
+ "_manifesto": "2026-09-23: manifesto rewritten. The old one followed Takomo's About page sentence for sentence ('This isn't golf with…', 'Is ___? Not even a little', the four-line stack). Cole wanted Takomo's warmth without the abrasiveness: new-golfer welcome, forgiveness as the invitation, one edge ('talk a little trash'), and the lucky-wedge moment as the heart. Keep 'Whether it was luck is your business' (Cole's pick)."
 }
