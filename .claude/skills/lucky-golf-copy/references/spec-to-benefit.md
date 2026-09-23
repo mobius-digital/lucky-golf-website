@@ -69,6 +69,8 @@ Sandblasted finish across the face adds roughness that prevents the ball from sl
 
 For the golfer: Spin that shows up on every shot, not just perfect ones. The ball checks hard on centered strikes, still checks on off-center strikes, and holds its spin in wet conditions. One-hop stops, aggressive check. In testing, spin numbers were consistently higher than expected. The golfer doesn't think about two textures. They think: this wedge spins.
 
+Limit (Cole, 2026-09-23): the Carver's grooves are NOT full-face. Never claim spin or check "off the toe" or from toe strikes. "Forgiving on mishits" and "spin on the shots you don't catch pure" are fine; naming the toe is not. The spin is strong enough that golfers may have to adjust to it, and that is a fair, true brag.
+
 
 Flex Channel Face
 Products: LGH01 Stryker
