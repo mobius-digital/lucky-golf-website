@@ -1,12 +1,12 @@
 {
  "carver": {
-  "why": "Copy v10, full page (2026-09-23): every line rewritten, down to the buttons, pop-ups, menu and footer.",
+  "why": "Copy v10, review round (2026-09-23): one big moment, one light touch, the rest straight.",
   "added": [
-   "<b>Kept word for word on purpose:</b> your two approved descriptions, the customer quotes, the tagline, \"Same wedge. Different volume.\" and \"Every review takes a shot at the pin.\"",
-   "<b>Everything else is new:</b> \"Watch it bite.\" / \"They'll notice when it stops.\", \"Two grinds. Zero excuses.\", \"Meet the Shadow\", \"Check every number\", \"Round out the bag\".",
-   "<b>Buttons:</b> \"Put it in the bag\", \"Help me pick\", \"Sixty-day test drive\", \"When will it get here?\".",
-   "<b>Menu and footer lines</b> rewritten too, so they change on every page.",
-   "<b>Facts fixed:</b> no \"ships anywhere in the world\", no \"one email a month\", wedge test rule is one per set."
+   "<b>Big moment:</b> \"Get used to the attention\" (gold) and \"Meet the Shadow\" (black). <b>Light touch:</b> the top description. Everything else is straight.",
+   "<b>Film:</b> \"Watch it bite.\" / \"Watch it check up.\" with one line about the film. The spin is explained once up top and once in the callouts.",
+   "<b>\"Pick your grind.\"</b> and <b>\"Gold or black. Same wedge.\"</b>",
+   "<b>Reviews:</b> \"4.8 stars from 650 reviews\" (real Judge.me numbers), no duplicate caption, \"Newest first.\", no \"LGW01\" title on the quote.",
+   "<b>Specs:</b> the K bounce by loft, straight from the sheet. Mags's line under the sign-off is gone."
   ],
   "kept": [
    "The one big moment stays the finishes section: \"Same wedge. Different volume.\"",

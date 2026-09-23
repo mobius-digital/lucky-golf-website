@@ -25,12 +25,12 @@ BLACK_GAL = [
 GRINDS_BOTH = '''<!-- ============ THE GRINDS ============ -->
 <section class="lg-sec" id="grinds"><div class="lg-wrap">
   <div class="hd two">
-    <div><p class="lg-eyebrow">Two grinds</p><h2 class="lg-d2">Two grinds.<br>Zero excuses.</h2></div>
+    <div><p class="lg-eyebrow">Two grinds</p><h2 class="lg-d2">Pick your grind.</h2></div>
     <p class="lg-body">The K is the one you set up square and trust from anywhere, in every loft. The S has a narrower sole, so it opens up without a fight when you want to get fancy around the green.</p>
   </div>
   <div class="kvs">
     <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">The one you trust</h3><p>Wide, flat sole and a standard leading edge. Set up square, take your divot, and it does the same thing from the fairway or out of the rough.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
-    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Open it up and get fancy</h3><p>Narrower, relieved sole and a reshaped leading edge, so the face opens as far as you like. Tight lies, bunkers, and the flop shot your group will talk about either way.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
+    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Open it up and get fancy</h3><p>Narrower, relieved sole and a reshaped leading edge, so the face opens as far as you like for tight lies and bunkers.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
   </div>
 </div></section>'''
 
@@ -80,17 +80,16 @@ BAR_K = '''    <div class="tbar"><span class="lg-label">K grind · six lofts</sp
 REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes ============ -->
 <section class="lg-sec" id="reviews"><div class="lg-wrap">
   <div class="rv-top">
-    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">Straight from the people hitting it</h2>
-      <p class="lg-body">Every review takes a shot at the pin.</p>
+    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">4.8 stars from 650 reviews</h2>
       <button class="lg-btn-line lg-btn-sm" type="button" data-md-open="md-write">Write a review</button></div>
     <div id="prox"></div>
   </div>
   <div class="qs">
     <figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><b>So nice, I bought it twice!</b><blockquote>&ldquo;I bought myself a 60 degree last year. I love it so much, and get so many comments/compliments on the look… but the performance speaks even louder!&rdquo;</blockquote><figcaption>JD M. · <span class="lg-stock">Verified buyer</span></figcaption></figure>
-    <figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><b>LGW01</b><blockquote>&ldquo;Super great club, love the feel, the sound, the spin, only problem I have is getting under the ball with it but easy fix none the less. Great club!!&rdquo;</blockquote><figcaption>James B. · <span class="lg-stock">Verified buyer</span></figcaption></figure>
+    <figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Super great club, love the feel, the sound, the spin, only problem I have is getting under the ball with it but easy fix none the less. Great club!!&rdquo;</blockquote><figcaption>James B. · <span class="lg-stock">Verified buyer</span></figcaption></figure>
     <figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><b>Hard to keep it!</b><blockquote>&ldquo;People borrow it in my league- it’s a winner!&rdquo;</blockquote><figcaption>Ray O. · <span class="lg-stock">Verified buyer</span></figcaption></figure>
   </div>
-  <button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm"><b>Read every review</b><span>Newest first, grumpy ones included.</span><i aria-hidden="true">+</i></button>
+  <button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm"><b>Read every review</b><span>Newest first.</span><i aria-hidden="true">+</i></button>
   <div class="jm" id="jm" hidden>
     <div class="jm-bar"><div class="lg-chips" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
       <label><span class="sr">Sort reviews</span><select id="jm-sort"><option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option></select></label></div>
@@ -101,8 +100,8 @@ REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes 
 </div></section>'''
 
 REVIEWS_BLACK = REVIEWS_GOLD.replace(
-    '<p class="lg-body">Every review takes a shot at the pin.</p>',
-    '<p class="lg-body">These reviews cover the Carver 02 in both finishes. Same forged head, same face, different coat.</p>')
+    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>',
+    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>\n      <p class="lg-body">These reviews cover the Carver 02 in both finishes. Same forged head, same face, different coat.</p>')
 
 
 CARD_GOLD = '<a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/gold-full-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Same forged head, in gold</span></span></a>'
@@ -145,17 +144,12 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
                  "the second it comes out of the bag. With a forged head and a micro-grooved, sandblasted face, the "
                  "Carver 02 Black delivers serious spin and a consistent feel shot after shot."),
         "DETAILS": ("A forged 1020 carbon steel head with CNC-milled grooves on a micro-grooved, sandblasted "
-                    "face, which is the dual-texture face that makes it spin like it does. The K grind comes in all six "
-                    "lofts and the S in the 52, 56 and 60."
+                    "face. The K grind comes in all six lofts and the S in the 52, 56 and 60."
                     if gold else
                     "The same forged 1020 carbon steel head and dual-texture face as the gold, finished in black with "
                     "gold accents. The K grind, in all six lofts."),
-        "FILM_H": "Watch it bite." if gold else "They'll notice when it stops.",
-        "FILM_B": ("Chip it off a tight lie or splash it out of the bunker and the "
-                   + ("Carver" if gold else "black Carver")
-                   + " grabs the ball either way. The micro-grooved, sandblasted face keeps spinning when the "
-                   "lie's wet and when you don't find the middle, and the forged 1020 head feels soft and solid "
-                   "the whole way through. You'll know how you hit it before you look up."),
+        "FILM_H": "Watch it bite." if gold else "Watch it check up.",
+        "FILM_B": "Full swing from 100, a chip that checks, a bunker shot. Sound on.",
         "GRINDS": GRINDS_BOTH if gold else GRINDS_K,
         # mood=True is the demo: the finish world becomes one dark beat, where a
         # finish's own metal finally reads as metal instead of as grey type

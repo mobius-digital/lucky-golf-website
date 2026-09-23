@@ -314,7 +314,7 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
 <section class="lg-sec" id="specs" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
   <div class="hd">
     <div><p class="lg-eyebrow">The spec sheet</p><h2 class="lg-d2">Check every number</h2>
-    <p class="lg-body">All of it comes straight from the manufacturer. The bounce climbs with the loft, lowest on the 50 and 52 you hit full, highest on the 54 and 56 you take into the sand.</p></div>
+    <p class="lg-body">All of it comes straight from the manufacturer. On the K grind, bounce runs 8° on the 50 and 52, 12° on the 54 and 56, and 10° on the 58 and 60.</p></div>
   </div>
   <div class="lg-monitor">
     <div class="lg-monitor-hd"><span class="lg-label">{{MON_LABEL}}</span><span class="lg-label lg-live"><i></i>In stock</span></div>
@@ -380,7 +380,6 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
   <p class="lg-eyebrow">The last word</p>
   <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
   <p class="lg-lede">{{SIGN}}</p>
-  <p class="lg-aside who" data-mags-line>Mags has your 56. Again.</p>
   <a class="lg-btn-line" href="#buy">Pick a loft <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
@@ -512,7 +511,6 @@ var SPEC = { K:{50:[8,63,'35.25'],52:[8,63,'35.25'],54:[12,63,'35.125'],56:[12,6
     var sb = $('[data-sticky]'); sb.classList.toggle('is-one', state.n === 1);
     $('[data-sb-hand]').innerHTML = HAND.values.map(function(v){ return '<option value="' + v.k + '"' + (v.k === state.hand ? ' selected' : '') + '>' + esc(v.label) + '</option>'; }).join('');
     $('[data-sb-loft]').innerHTML = LOFT.values.map(function(v){ return '<option value="' + v.k + '"' + (state.picked[0] === v.k ? ' selected' : '') + '>' + esc(v.label) + (dead(v.k) ? ' · back next month' : '') + '</option>'; }).join('');
-    var ml = $('[data-mags-line]'); if (ml && state.picked.length) ml.textContent = 'Mags has your ' + state.picked[state.picked.length - 1].replace(/\D/g, '') + '. Again.';
     readout();
   }
   /* the readout: the launch monitor for what you picked, from the sheet */
