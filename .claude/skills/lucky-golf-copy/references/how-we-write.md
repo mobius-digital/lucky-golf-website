@@ -54,9 +54,9 @@ The feel: Three short beats. Same voice as everything above, just compressed. Th
 
 A subject line
 
-still using stock wedges?
+Your 4-iron had a good run.
 
-The feel: Lowercase, plain, curious. Doesn't strain to be clever. The question is enough to earn the open.
+The feel: Sentence case, one idea, a little cocky. Pair it with a preview line that finishes the thought ("The Stryker takes it from here."). Most subject lines should be plainer than this one and name the product.
 
 A tooltip
 

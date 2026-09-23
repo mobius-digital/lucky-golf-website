@@ -101,13 +101,16 @@ Both are accurate. The good one extends the promise of the headline. The bad one
 
 **What it is:** A short phrase, question, or statement that earns the open. 3-8 words typical.
 
-**What it does:** Creates curiosity. Doesn't oversell. Uses lowercase or sentence case (not title case). Sounds like a person, not a marketing template.
+**What it does:** Earns the open and makes it clear what the email is about. Sentence case, not lowercase and not title case (decided 2026-09-23: lowercase reads like it's trying to look casual). Sounds like a person, not a marketing template.
 
-**Good examples:**
-- *still using stock wedges?*
-- *your putter probably wasn't milled.*
-- *the carver ships next week.*
-- *not all upgrades are obvious.*
+**Mix the kinds across a send calendar:** plain and clear ("Meet the Stryker."), witty ("Your 4-iron had a good run."), a question, and proof when there's real proof. Only about a third should be witty. Most should name the product.
+
+**Use the preview line.** It's the second half of the subject line. Sometimes the joke lives there instead.
+
+**Approved set (Stryker email, 2026-09-23).** This shows the mix in practice. It isn't a template to reuse:
+- *Your 4-iron had a good run.* / The Stryker takes it from here.
+- *When's the last time you liked a long approach?* / Titanium, gold, and easy to launch from anywhere.
+- *Meet the Stryker.* / Launches from the fairway, the rough and anywhere else you end up.
 
 **Bad examples:**
 - *LIMITED TIME: Save on the New Carver Wedge!* (all-caps, exclamation, pressure)
@@ -247,10 +250,10 @@ Both are accurate. The good one extends the promise of the headline. The bad one
 
 **Length:** Hero headline 3-8 words. Section headers similar. Body copy on the homepage is minimal — the products do most of the talking.
 
-**Good examples for a Lucky homepage hero:**
-- *Golf clubs, priced honestly.*
-- *Real clubs. Fair prices. That's the whole thing.*
-- *We built the clubs. We priced them right.*
+**Preferred hero (2026-09-23), for calibration:**
+- *It's not luck. It's the club.* / *Big-name performance, real craftsmanship, and none of the tour markup on the price.*
+
+Specific and confident beats chatty. Never list product categories in a hero ("wedges, putters and a hybrid"): it dates the day irons and drivers ship.
 
 ---
 
