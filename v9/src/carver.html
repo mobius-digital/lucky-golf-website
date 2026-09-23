@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}} · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Carver 02 · page layout only; every look comes from lucky.css ---------- */
+.pdp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding-bottom:var(--lg-sec)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gal figure{margin:0;position:relative;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);aspect-ratio:1;cursor:zoom-in}
+.gal figure.wide{grid-column:1/-1;aspect-ratio:3/2}
+.gal img{display:block;width:100%;height:100%;object-fit:cover}
+.gal figure.cut img{object-fit:contain;mix-blend-mode:multiply;padding:28px}
+.gal .lg-tag{position:absolute;left:14px;top:14px}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,17,11,.72);color:#F4F3F0;padding:6px 10px;border-radius:8px}
+.dots{display:none}
+.buy{position:sticky;top:96px}
+.buy h1{margin-top:4px}
+.rvl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:14px;font-size:var(--lg-fs-base)}
+.rvl a{color:var(--lg-ink-70);text-decoration:none}
+.rvl a:hover{color:var(--lg-ink);text-decoration:underline}
+.price{margin-top:16px;display:flex;align-items:baseline;gap:8px}
+.price b{font-variation-settings:'wdth' 100;font-weight:600;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.price span{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+.buy .lg-body{margin-top:10px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:24px 0 10px}
+.row .lg-label{color:var(--lg-ink)}
+.row .m.hint{color:var(--lg-gold-text);font-weight:600}
+.row .m{color:var(--lg-ink-64);text-transform:none;letter-spacing:0;font-variation-settings:'wdth' 100;font-weight:500;font-size:var(--lg-fs-sm)}
+.row a{font-size:var(--lg-fs-sm);color:var(--lg-gold-text);font-weight:600;text-decoration:none}
+.row a:hover{text-decoration:underline}
+.fins{display:flex;gap:10px}
+.fin{display:flex;align-items:center;gap:12px;padding:6px 18px 6px 6px;border:1px solid var(--lg-rule);border-radius:14px;text-decoration:none;color:var(--lg-ink);min-height:60px}
+.fin .lg-swatch{width:48px;height:48px;border:0;background:var(--lg-tile);border-radius:10px;pointer-events:none}
+.fin b{display:block;font-size:var(--lg-fs-base)}
+.fin span{display:block;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.fin[aria-current]{border:2px solid var(--lg-ink);padding:5px 17px 5px 5px}
+.lofts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.lofts .lg-chip{padding:0 6px;font-size:13px;letter-spacing:.04em}
+.lofts .lg-chip small{margin-left:3px;font-size:11px;opacity:.75}
+.lofts .lg-chip[data-dead]{cursor:not-allowed}
+.stocknote{margin:10px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.stocknote a{color:var(--lg-gold-text);font-weight:600}
+.set{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.set button{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:2px;padding:12px 14px;min-height:64px;
+  border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;text-align:left}
+.set button b{font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:17px;line-height:1}
+.set button span{color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.set button[aria-pressed="true"]{border:2px solid var(--lg-ink);padding:11px 13px}
+.set .fl{position:absolute;top:0;left:12px;translate:0 -50%;padding:3px 9px;border-radius:999px;background:var(--lg-gold);color:#17140F;white-space:nowrap;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px;line-height:1.3}
+.cta{margin-top:22px}
+.cta .lg-btn{width:100%;min-height:58px;font-size:14px}
+.trustl{display:grid;gap:6px;margin-top:14px;font-size:var(--lg-fs-sm)}
+.trustl-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.trustl a{color:var(--lg-ink-70)}
+.lg-stock.is-out{color:var(--lg-ink-70)}
+.lg-stock.is-out::before{background:var(--lg-ink-38)}
+/* your pick: a small launch-monitor readout right under the chips */
+.ro{margin-top:12px;border:1px solid var(--lg-rule);border-radius:14px;overflow:hidden}
+.ro-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--lg-rule);color:var(--lg-ink-64)}
+.ro-hd .lg-live i{background:var(--lg-ok)}
+.ro-hd .lg-live.is-out i{background:var(--lg-ink-38)}
+.ro-g{display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr))}
+.ro-c{padding:12px 14px;border-right:1px solid var(--lg-rule-08)}
+.ro-c:last-child{border-right:0}
+.ro-c > b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:32px;line-height:.9;font-variant-numeric:tabular-nums}
+.ro-c > b small{font-size:.5em;margin-left:3px;color:var(--lg-ink-64)}
+.ro-c dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:10px 0 0;font-size:13px}
+.ro-c dt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--lg-ink-64);align-self:center}
+.ro-c dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.ro-c.is-out > b{color:var(--lg-ink-64)}
+/* one pick: the readout runs across, loft first, the four numbers beside it */
+.ro-g.is-one .ro-c{display:flex;align-items:center;gap:22px}
+.ro-g.is-one dl{flex:1;margin:0;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;grid-auto-flow:column;gap:4px 12px}
+.ro-g.is-one dd{text-align:left;font-size:16px}
+.buy .lg-faq{margin-top:24px}
+.buy .lg-fq summary{font-size:var(--lg-fs-base);padding:13px 0}
+
+/* film */
+.film .lg-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+@media (max-width:900px){.film .lg-split{grid-template-columns:1fr}}
+.film .lg-slot{aspect-ratio:16/9;gap:6px}
+.play{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:20px;color:var(--lg-ink)}
+
+/* grinds */
+.kvs{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut)}
+.kvs .lg-panel{padding:28px}
+.kvs .lg-d3{margin:14px 0 8px}
+.kvs p{margin:0 0 18px;color:var(--lg-ink-70)}
+@media (max-width:760px){.kvs{grid-template-columns:1fr}}
+
+/* the world */
+.mhero{position:relative;overflow:hidden;background:#0B1911;color:var(--lg-on-dark)}
+.mh img{display:block;width:100%;height:clamp(460px,54vw,780px);object-fit:cover}
+.mh::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(6,17,11,.82) 0%,rgba(6,17,11,.3) 40%,rgba(6,17,11,0) 64%)}
+.mh[hidden]{display:none}
+.mh .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:clamp(28px,4vw,56px)}
+.mh .cap .lg-d1{max-width:14ch}
+.mh .cap .lg-body{color:rgba(244,243,240,.86);max-width:52ch}
+.pt{position:absolute;z-index:3;translate:-50% -50%}
+.pt > i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background-image:var(--lg-foil);color:#17140F;font-style:normal;font-weight:800;font-size:13px;
+  box-shadow:0 0 0 6px rgba(237,210,124,.25);cursor:default}
+.pt > div{position:absolute;left:40px;top:50%;translate:0 -50%;width:220px;padding:10px 12px;border-radius:10px;background:rgba(6,17,11,.74);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:13px;line-height:1.35;color:rgba(244,243,240,.86)}
+.pt > div b{display:block;color:#F4F3F0;font-size:14px;margin-bottom:2px}
+.pt.l > div{left:auto;right:40px}
+@media (max-width:900px){.pt > div{display:none}}
+@media (max-width:749px){.pt{display:none}}
+.mh .tagf{position:absolute;right:16px;top:16px;z-index:3}
+.rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px var(--lg-pad) 4px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail[hidden]{display:none}
+.rail figure{margin:0;flex:none;height:clamp(240px,26vw,340px);scroll-snap-align:start;position:relative;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);cursor:zoom-in}
+.rail figure img{height:100%;width:100%;object-fit:cover;display:block}
+.rail .r32{aspect-ratio:3/2}.rail .r23{aspect-ratio:2/3}.rail .r11{aspect-ratio:1}.rail .r45{aspect-ratio:4/5}
+.rail .lg-slot{aspect-ratio:auto;height:clamp(240px,26vw,340px);border-radius:var(--lg-r-card);font-size:14px}
+.rail-foot{display:flex;align-items:center;gap:24px;margin-top:18px}
+.rail-foot .lg-body{margin:0}
+
+/* specs */
+.specs-tabs{margin:20px 0 22px}
+.lg-monitor{margin-bottom:clamp(28px,3vw,40px)}
+.pick{margin:0 0 clamp(28px,3vw,40px)}
+.pick .lg-label{display:block;margin-bottom:10px;color:var(--lg-ink-64)}
+.tbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.tbl{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page)}
+.tbl .lg-table{min-width:560px}
+.tbl .lg-table thead th:not(:first-child){font-variant-numeric:tabular-nums}
+.note{margin:12px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm);max-width:70ch}
+[data-spectab][hidden],[data-spec][hidden]{display:none}
+
+/* reviews */
+.rv-top{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.6fr);gap:clamp(24px,4vw,56px);align-items:center}
+#prox svg{max-width:560px}
+.rv-top .lg-btn-line{margin-top:22px}
+@media (max-width:900px){.rv-top{grid-template-columns:1fr}}
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(28px,3vw,44px)}
+.qs .lg-quote b{font-size:var(--lg-fs-body)}
+@media (max-width:900px){.qs{grid-template-columns:1fr}}
+.readall{display:flex;width:100%;align-items:center;gap:12px;justify-content:space-between;margin-top:var(--lg-gut);padding:18px 22px;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page);cursor:pointer;text-align:left;color:var(--lg-ink)}
+.readall b{font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px}
+.readall span{color:var(--lg-ink-64);font-size:var(--lg-fs-sm);flex:1}
+.readall i{font-style:normal;color:var(--lg-gold-text);font-size:24px}
+.jm[hidden]{display:none}
+.jm-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:20px 0 6px}
+.jm-bar select{min-height:44px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);padding:0 12px;background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:14px}
+.jm-count{color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.jm-item{padding:18px 0;border-bottom:1px solid var(--lg-rule-08)}
+.jm-item b{display:block;margin-top:6px}
+.jm-item p{margin:6px 0;white-space:pre-line;color:var(--lg-ink-70);max-width:70ch}
+.jm-item small{color:var(--lg-ink-64);font-size:13px}
+.jm-more{margin-top:18px}
+
+/* in the wild: the page's one dark band */
+.clips{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:8px}
+.clips::-webkit-scrollbar{display:none}
+.clip{flex:0 0 calc((100% - 36px)/4);min-width:200px;aspect-ratio:9/16;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;
+  padding:18px;border:1px dashed var(--lg-rule-dark);border-radius:var(--lg-r-card);background:rgba(244,243,240,.05);color:var(--lg-on-dark-m);font-size:14px;cursor:pointer}
+.clip small{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--lg-gold-hi)}
+.clip b{color:var(--lg-on-dark);font-size:17px}
+.clip .play{background:transparent;border-color:var(--lg-rule-dark);color:var(--lg-on-dark);margin:0 0 auto}
+.wild-foot{margin-top:18px}
+
+/* more from the bag */
+.more .lg-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.more .lg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sign-off */
+.lg-signoff .who{margin:0 auto 26px}
+
+/* helper modal */
+.hp h4{margin:18px 0 8px;font-size:var(--lg-fs-base)}
+.hp .rec{margin-top:18px;padding:16px 18px;border-radius:12px;background:var(--lg-tile)}
+.hp .rec b{display:block;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;margin-bottom:4px}
+
+/* sticky add to bag, phones only */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:var(--lg-z-rail);display:none;align-items:center;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:var(--lg-page);border-top:1px solid var(--lg-rule)}
+.stickybar b{display:block;font-size:14px;line-height:1.2}
+.stickybar span{color:var(--lg-ink-64);font-size:13px}
+.stickybar > div{flex:1;min-width:0}
+.stickybar .lg-btn{min-height:48px;padding:0 20px}
+.stickybar[data-on]{display:flex}
+.stickybar .sb-pick{display:none;gap:8px;flex:none}
+.sb-sel{min-height:44px;padding:0 34px 0 12px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);
+  font:inherit;font-size:14px;font-weight:600;appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.stickybar .sb-change{flex:none;font-size:14px;font-weight:600;color:var(--lg-ink);min-height:44px;display:flex;align-items:center;padding:0 4px}
+.stickybar.is-one .sb-change{display:none}
+@media (min-width:750px){.stickybar.is-one .sb-pick{display:flex}}
+@media (max-width:749px){.stickybar.is-one .sb-change{display:flex}}
+.stickybar .sb-ph{display:none;width:48px;height:48px;border-radius:10px;background:var(--lg-tile);overflow:hidden;flex:none}
+.stickybar .sb-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:4px}
+@media (min-width:750px){
+  .stickybar{padding:10px max(var(--lg-pad),calc((100vw - var(--lg-wrap)) / 2 + var(--lg-pad)));box-shadow:0 -8px 24px rgba(23,20,15,.08)}
+  .stickybar .sb-ph{display:block}
+  .stickybar b{font-size:16px}
+  .stickybar .lg-btn{min-width:220px}
+}
+.lg-pband .pb{position:relative}
+.lg-pband .pb figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,17,11,.72);color:#F4F3F0;padding:6px 10px;border-radius:8px;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+/* toasts and Mags stand above the bar, never on it */
+body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
+
+@media (max-width:980px){
+  .pdp{grid-template-columns:1fr}
+  .buy{position:static}
+}
+@media (max-width:749px){
+  .gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .gal::-webkit-scrollbar{display:none}
+  .gal figure{flex:0 0 86%;scroll-snap-align:center}
+  .gal figure.wide{flex-basis:92%}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+  .dots i{width:6px;height:6px;border-radius:50%;background:var(--lg-ink-38)}
+  .dots i.on{background:var(--lg-ink)}
+  .lofts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .clip{flex-basis:62%}
+  .mh img{height:560px}
+}
+</style>
+</head>
+<body class="lg"{{METAL}} style="--lg-contour-day:url(img/lucky-contour-day.svg);--lg-contour-tw:url(img/lucky-contour-tw.svg)">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="home.html">Home</a></li><li><a href="clubs.html">Clubs</a></li><li><a href="clubs.html#wedges">Wedges</a></li><li><span aria-current="page">{{TITLE}}</span></li>
+</ol></nav>
+
+<!-- ============ THE FOLD: gallery (studio + on course) and the buy box ============ -->
+<div class="lg-wrap">
+<div class="pdp">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">
+{{GAL}}
+    </div>
+    <div class="dots" data-dots aria-hidden="true">{{DOTS}}</div>
+  </div>
+
+  <div class="buy" id="buy">
+    <p class="lg-eyebrow">The 02 · Wedge</p>
+    <h1 class="lg-d1">Carver <span class="lg-foil-word">02</span></h1>
+    {{RVL}}
+    <div class="price"><b data-price>{{PRICE}}</b><span data-price-note hidden>each</span></div>
+    <p class="lg-body">{{DESC}}</p>
+
+    <div class="row"><span class="lg-label">Finish</span></div>
+    <div class="fins">
+      <a class="fin" href="carver.html"{{FIN_G}}><span class="lg-swatch"><img src="img/gold-3q-cut.webp" alt=""></span><b>Gold</b></a>
+      <a class="fin" href="black.html"{{FIN_B}}><span class="lg-swatch"><img src="img/black-full-cut.webp" alt=""></span><b>Black</b></a>
+    </div>
+
+    <div class="row"><span class="lg-label">Hand</span></div>
+    <div class="lg-chips" data-hand role="group" aria-label="Hand"></div>
+
+    <div class="row" id="lofts"><span class="lg-label">Loft and grind <span class="m" data-pickn></span></span><a href="#" data-md-open="md-helper">Not sure which? &rarr;</a></div>
+    <div class="lofts" data-lofts role="group" aria-label="Loft and grind"></div>
+    <p class="stocknote" data-stocknote hidden></p>
+    <div class="ro" data-readout aria-live="polite"></div>
+
+    <div class="row"><span class="lg-label">How many</span><span class="m hint" data-sethint>Two or more ship free</span></div>
+    <div class="set" data-set role="group" aria-label="How many wedges">
+      <button type="button" data-n="1" aria-pressed="true"><b>1 wedge</b><span>This one</span></button>
+      <button type="button" data-n="2" aria-pressed="false"><b>2 wedges</b><span>Gap and sand</span></button>
+      <button type="button" data-n="3" aria-pressed="false"><b>3 wedges</b><span>Gap, sand, lob</span></button>
+    </div>
+
+    <div class="cta"><button class="lg-btn" type="button" data-atc>Add to bag · {{PRICE}}</button></div>
+    <div class="trustl"><span class="lg-stock" data-stockline>In stock · ships in 1 to 2 days</span><span class="trustl-links"><a href="#" data-md-open="md-returns">Sixty days to decide</a><a href="#" data-md-open="md-delivery">Estimate delivery</a></span></div>
+
+    <div class="lg-faq">
+      <details class="lg-fq"><summary>Details</summary><div class="lg-fq-a"><p>{{DETAILS}}</p></div></details>
+      <details class="lg-fq"><summary>What's in the box</summary><div class="lg-fq-a"><p>One wedge in the loft and grind you picked, built on the Lucky stock steel shaft with the Lucky stock grip. KBS shaft coming as an upgrade.</p></div></details>
+      <details class="lg-fq"><summary>Shipping and returns</summary><div class="lg-fq-a"><p>Orders leave Long Beach, California in 1 to 2 business days, tracking as soon as the carrier scans it. Sixty days from delivery on every club, contact us first, club comes back in the condition it left. Return shipping is yours.</p></div></details>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ THE FILM: split, text left, film right ============ -->
+<section class="lg-sec film" id="film" style="padding-top:0"><div class="lg-wrap">
+  <div class="lg-split">
+    <div>
+      <p class="lg-eyebrow">Why it spins</p>
+      <h2 class="lg-d2">Forged feel meets filthy spin. Rip it back and go tap it in.</h2>
+      <p class="lg-body">Hit one a little thin out of wet rough and watch it still check up. That's the dual-texture face: it grips the ball everywhere, not just in the grooves, so the spin shows up on the shots you didn't catch pure. The head is forged from 1020 carbon steel, which is why it feels buttery when you do catch one and tells you the truth when you don't. Six lofts, two grinds, and you can build the exact short game your bag is missing.</p>
+    </div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="The film" data-brief="16:9 product film, 40 to 60 seconds. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.">
+      <div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 16:9 · 40 to 60 s</small>The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ IN THE WILD: the page's one dark band, up high for proof early (Cole, 2026-09-18) ============ -->
+<section class="lg-band" id="wild"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">See it in play</p><h2 class="lg-d2">The 02, in the wild</h2><p class="lg-body">Hit a good one with it? Tag us and it could end up right here.</p></div>
+    <div class="arrows" data-cliparrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
+  </div>
+  <div class="clips" id="clips"></div>
+  </div></section>
+
+{{GRINDS}}
+
+{{FINISHES}}
+
+<!-- ============ SPECS: the launch monitor and the sheet (no contour: Cole, 2026-09-18, waits on his base map) ============ -->
+<section class="lg-sec" id="specs" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">LGW02 specs</p><h2 class="lg-d2">The numbers</h2>
+    <p class="lg-body">Straight off the manufacturer's sheet. Bounce steps with the loft: least on the 50 and 52 you hit full, most on the 54 and 56 you take into sand.</p></div>
+  </div>
+  <div class="lg-monitor">
+    <div class="lg-monitor-hd"><span class="lg-label">{{MON_LABEL}}</span><span class="lg-label lg-live"><i></i>In stock</span></div>
+    <div class="lg-monitor-in">
+      <div class="lg-monitor-ph"><img src="img/{{MON_IMG}}" alt="{{TITLE}}, the full head"></div>
+      <div class="lg-monitor-tiles">
+        <div class="lg-mt"><span>Lofts</span><b>6</b><div class="lg-vals"><i>50°</i><i>52°</i><i>54°</i><i>56°</i><i>58°</i><i>60°</i></div></div>
+        {{MON_GRINDS}}
+        <div class="lg-mt"><span>Price</span><b class="lg-num">{{PRICE}}</b><em>Pick any loft. Same number.</em></div>
+        <div class="lg-mt"><span>Test drive</span><b>60</b><em>days to prove us wrong.</em></div>
+      </div>
+    </div>
+  </div>
+{{SPECTABS}}
+  <div data-spectab="shafts" hidden>
+    <div class="tbl"><table class="lg-table">
+      <thead><tr><th></th><th>Lucky stock steel</th><th>KBS</th></tr></thead>
+      <tbody>
+      <tr><th scope="row">Availability</th><td>Stock option, every loft</td><td>Coming soon as an upgrade</td></tr>
+      <tr><th scope="row">Material</th><td>Steel</td><td>Steel</td></tr>
+      <tr><th scope="row">Flex</th><td>Regular</td><td>To be confirmed</td></tr>
+      <tr><th scope="row">Kick point</th><td>Mid</td><td>To be confirmed</td></tr>
+      <tr><th scope="row">Raw weight</th><td>110 g</td><td>To be confirmed</td></tr>
+      <tr><th scope="row">Length</th><td>35&Prime;</td><td>To be confirmed</td></tr>
+      </tbody></table></div>
+    <p class="note">KBS numbers land when the upgrade does.</p>
+  </div>
+  <div data-spectab="grips" hidden>
+    <div class="tbl"><table class="lg-table">
+      <thead><tr><th></th><th>Lucky stock grip</th></tr></thead>
+      <tbody>
+      <tr><th scope="row">Availability</th><td>Stock option, every loft</td></tr>
+      <tr><th scope="row">Material</th><td>Rubber</td></tr>
+      <tr><th scope="row">Size</th><td>Regular</td></tr>
+      <tr><th scope="row">Weight</th><td>55 g</td></tr>
+      </tbody></table></div>
+    <p class="note">One grip, one size. Midsize and oversize aren't on the sheet yet.</p>
+  </div>
+</div></section>
+
+<!-- ============ PHOTO BEAT: the Lucky world between the numbers and the reviews ============ -->
+<div class="lg-pband" aria-label="On the course">
+  <figure class="pb"><img src="img/swing-black-wedge.webp" alt="Holding the finish with the Carver 02 Black" loading="lazy" style="object-position:30% 40%"></figure>
+  <figure class="pb"><img src="img/walk-off-green.webp" alt="Walking off the green in the Lucky hat and polo" loading="lazy"></figure>
+  <figure class="pb"><img src="img/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" loading="lazy"></figure>
+</div>
+
+{{REVIEWS}}
+
+<!-- ============ MORE FROM THE BAG ============ -->
+<section class="lg-sec more" id="more"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">Goes with the 02</h2></div><a class="lg-link" href="clubs.html">All five clubs <span>&rarr;</span></a></div>
+  <div class="lg-grid">
+    {{OTHER_FIN}}
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">The last putt, in gold</span></span></a>
+    <a class="lg-card" href="stryker.html"><span class="lg-card-ph"><img src="img/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">The long walk, shortened</span></span></a>
+    <a class="lg-card" href="hat-white-ibtbl.html"><span class="lg-card-ph is-cut"><img src="img/89.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">It's Better To Be Lucky Hat, white</span><span class="lg-card-pr">$29</span><span class="lg-card-ln">The line on the front</span></span></a>
+  </div>
+</div></section>
+
+<!-- ============ THE LAST WORD: Mags signs off ============ -->
+<section class="lg-signoff" id="last"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
+  <p class="lg-lede">{{SIGN}}</p>
+  <p class="lg-aside who" data-mags-line>Mags has your 56. Again.</p>
+  <a class="lg-btn-line" href="#buy">Pick a loft <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+
+<!-- sticky add to bag: every width, after the buy button scrolls away -->
+<div class="stickybar" data-sticky>
+  <span class="sb-ph"><img src="img/{{MON_IMG}}" alt=""></span>
+  <div><b data-sticky-name>{{TITLE}}</b><span data-sticky-price>{{PRICE}}</span></div>
+  <div class="sb-pick" data-sb-pick>
+    <label><span class="sr">Hand</span><select class="sb-sel" data-sb-hand id="sb-hand"></select></label>
+    <label><span class="sr">Loft and grind</span><select class="sb-sel" data-sb-loft id="sb-loft"></select></label>
+  </div>
+  <a class="sb-change" href="#lofts" data-sb-change>Change</a>
+  <button class="lg-btn" type="button" data-atc-sticky>Add to bag</button>
+</div>
+
+<!-- modals -->
+<div class="md" id="md-helper" hidden role="dialog" aria-modal="true" aria-labelledby="md-helper-t"><div class="md-bd" data-md-close></div><div class="md-panel hp">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-helper-t">Not sure which loft or grind?</h2>
+  <p>Two questions. Wedges work in gaps: four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage.</p>
+  <div data-helper></div>
+</div></div>
+<div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
+  <p data-notify-line>Leave an email and you'll get one message the day it's back, from a person.</p>
+  <form class="lg-form" data-notify novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
+</div></div>
+<div class="md" id="md-write" hidden role="dialog" aria-modal="true" aria-labelledby="md-write-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-write-t">Write a review</h2>
+  <p>The Judge.me form opens here on the live site: stars, a title, your words, a photo if you have one, and the club you play. Verified buyers get the badge.</p>
+  <div class="md-foot"><button type="button" class="lg-btn-line lg-btn-sm" data-md-close>Close</button></div>
+</div></div>
+<div class="md" id="md-shot" hidden role="dialog" aria-modal="true" aria-labelledby="md-shot-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-shot-t" data-shot-title>Shot needed</h2>
+  <h4>The brief</h4><p data-shot-brief></p>
+  <p>On the shoot list. The photo sits here, full frame, tap to zoom.</p>
+</div></div>
+<div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Refund policy</p>
+  <h2 class="lg-d3" id="md-returns-t">Sixty days to decide</h2>
+  <h4>Sixty days, with conditions</h4>
+  <p>Sixty days from delivery on every club. <b>Contact us before sending anything back</b>. Club returns need approval and photo verification first, and a club returned without authorization will not be accepted.</p>
+  <p>Refunds are issued after the club comes back and is inspected. Return shipping is the customer's, and original shipping is not refunded.</p>
+  <h4>What you can do with it first</h4>
+  <p><b>Putters</b> may be used during the sixty days, but must come back in brand-new condition: no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p>
+  <p><b>Wedges</b>: one wedge per order may be opened and tested, on a turf mat or another non-abrasive surface. Any others stay factory sealed. The tested one must come back with no groove wear, face marks or sole wear.</p>
+  <p><b>Hybrids</b> must appear completely unused, with no visible wear and no modifications.</p>
+  <p>Wear beyond these conditions can mean a partial refund or a declined return.</p>
+  <p><a href="faq.html#returns">Read the full refund policy</a></p>
+</div></div>
+<div class="md" id="md-delivery" hidden role="dialog" aria-modal="true" aria-labelledby="md-delivery-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Delivery</p>
+  <h2 class="lg-d3" id="md-delivery-t">When it turns up</h2>
+  <div class="md-carriers"><span class="lg-tag">USPS</span><span class="lg-tag">UPS</span><span class="lg-tag">FedEx</span></div>
+  <p>Orders leave the warehouse in 1 to 2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
+  <p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $198 or more ship free.</p>
+  <h4>Where it ships from</h4>
+  <p>Long Beach, California. It'll ship anywhere in the world from there.</p>
+</div></div>
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var PD = {{PD_JSON}};
+var PD_REVIEWS = {{REVIEWS_JSON}};
+var PD_REEL = {{REEL_JSON}};
+var SPEC = { K:{50:[8,63,'35.25'],52:[8,63,'35.25'],54:[12,63,'35.125'],56:[12,63,'35.125'],58:[10,63,'35'],60:[10,63,'35']},
+             S:{52:[10,63.5,'35.25'],56:[12,64,'35.125'],60:[12,64,'35']} };
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var money = function(n){ return '$' + n; };
+  var HAND = PD.options[0], LOFT = PD.options[1];
+  var state = { hand: 'RH', picked: ['56K'], n: 1 };
+  var key = function(k){ return state.hand + '|' + k; };
+  var dead = function(k){ var v = PD.variants[key(k)]; return !(v && v.avail); };
+  var nice = function(k){ var v = LOFT.values.filter(function(x){ return x.k === k; })[0]; return v ? v.label : k; };
+  var handLabel = function(){ return state.hand === 'LH' ? 'Left hand' : 'Right hand'; };
+  function firstLive(){ var l = LOFT.values.filter(function(v){ return !dead(v.k); }); return l.length ? l[Math.min(4, l.length - 1)].k : null; }
+
+  /* One wedge = one loft: tapping another loft swaps it. Two or three wedges
+     only after the golfer picks "2 wedges" or "3 wedges"; then taps fill the
+     set, and a tap past the set swaps out the oldest pick. A sold-out loft
+     can be picked on its own (one wedge) so the golfer can ask to hear when
+     it's back; it can't go into a set. */
+  function isOut(){ return state.n === 1 && state.picked.length === 1 && dead(state.picked[0]); }
+  function render(){
+    state.picked = state.picked.filter(function(k){ return state.n === 1 || !dead(k); });
+    if (!state.picked.length && state.n === 1){ var f = firstLive(); state.picked = f ? [f] : []; }
+    $('[data-hand]').innerHTML = HAND.values.map(function(v){
+      return '<button class="lg-chip" type="button" data-h="' + v.k + '" aria-pressed="' + (v.k === state.hand) + '">' + esc(v.label) + '</button>'; }).join('');
+    $('[data-lofts]').innerHTML = LOFT.values.map(function(v){
+      var d = dead(v.k), m = v.label.match(/^(\d+)°\s*(\w)$/);
+      return '<button class="lg-chip" type="button" data-l="' + v.k + '" aria-pressed="' + (state.picked.indexOf(v.k) > -1) + '"'
+        + (d ? ' data-dead aria-label="' + esc(v.label) + ', back next month"' : ' aria-label="' + esc(v.label) + '"')
+        + '>' + m[1] + '°<small>' + m[2] + '</small></button>'; }).join('');
+    var out = LOFT.values.filter(function(v){ return dead(v.k); }).map(function(v){ return nice(v.k); });
+    var sn = $('[data-stocknote]');
+    if (out.length){ var last = out.pop(), names = out.length ? out.join(', ') + ' and ' + last : last;
+      sn.innerHTML = '<b>' + esc(names) + ', ' + (state.hand === 'LH' ? 'left' : 'right') + '-handed, ' + (out.length ? 'are' : 'is') + ' back next month.</b> Everything else ships now.';
+      sn.hidden = false; } else sn.hidden = true;
+    $$('[data-set] button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-n') === state.n)); });
+    var need = state.n - state.picked.length, unit = PD.price, sum = unit * state.n, o = isOut();
+    $('[data-pickn]').textContent = state.picked.length ? '· ' + state.picked.map(nice).join(', ') : '';
+    $('[data-sethint]').textContent = state.n === 1 ? 'Two or more ship free' : need > 0 ? 'Tap ' + need + ' more loft' + (need > 1 ? 's' : '')
+      : state.n + ' lofts, ' + money(unit) + ' each' + (sum >= 198 ? ", shipping's on us" : '');
+    $('[data-price-note]').hidden = state.n === 1;
+    var btn = $('[data-atc]');
+    btn.textContent = o ? "Tell me when it's back" : need > 0 ? 'Tap ' + need + ' more loft' + (need > 1 ? 's' : '') + ' first'
+      : 'Add ' + (state.n > 1 ? state.n + ' wedges' : 'to bag') + ' · ' + money(sum);
+    btn.setAttribute('aria-disabled', String(need > 0));
+    var line = $('[data-stockline]');
+    line.classList.toggle('is-out', o);
+    line.textContent = o ? nice(state.picked[0]) + ', ' + (state.hand === 'LH' ? 'left' : 'right') + '-handed, is back next month' : 'In stock · ships in 1 to 2 days';
+    $('[data-sticky-name]').textContent = PD.title + ' · ' + state.picked.map(nice).join(', ');
+    $('[data-sticky-price]').textContent = o ? 'Back next month' : money(sum) + (state.n > 1 ? ' · ' + state.n + ' wedges' : '');
+    $('[data-atc-sticky]').textContent = o ? 'Tell me' : 'Add to bag';
+    var sb = $('[data-sticky]'); sb.classList.toggle('is-one', state.n === 1);
+    $('[data-sb-hand]').innerHTML = HAND.values.map(function(v){ return '<option value="' + v.k + '"' + (v.k === state.hand ? ' selected' : '') + '>' + esc(v.label) + '</option>'; }).join('');
+    $('[data-sb-loft]').innerHTML = LOFT.values.map(function(v){ return '<option value="' + v.k + '"' + (state.picked[0] === v.k ? ' selected' : '') + '>' + esc(v.label) + (dead(v.k) ? ' · back next month' : '') + '</option>'; }).join('');
+    var ml = $('[data-mags-line]'); if (ml && state.picked.length) ml.textContent = 'Mags has your ' + state.picked[state.picked.length - 1].replace(/\D/g, '') + '. Again.';
+    readout();
+  }
+  /* the readout: the launch monitor for what you picked, from the sheet */
+  function readout(){
+    var p = state.picked, o = isOut();
+    var cols = p.map(function(k){ var m = k.match(/^(\d+)(\w)$/), s = SPEC[m[2]][m[1]], d = dead(k);
+      return '<div class="ro-c' + (d ? ' is-out' : '') + '"><b>' + m[1] + '°<small>' + m[2] + ' grind</small></b><dl>'
+        + '<dt>Bounce</dt><dd>' + s[0] + '°</dd><dt>Lie</dt><dd>' + s[1] + '°</dd><dt>Length</dt><dd>' + s[2] + '&Prime;</dd><dt>Head</dt><dd>300 g</dd></dl></div>'; });
+    for (var i = p.length; i < state.n; i++) cols.push('<div class="ro-c"><b style="color:var(--lg-ink-38)">&middot;&middot;&middot;</b><dl><dt>Tap a loft</dt><dd></dd></dl></div>');
+    $('[data-readout]').innerHTML = '<div class="ro-hd"><span class="lg-label">' + (state.n > 1 ? 'Your set' : 'Your pick') + '</span>'
+      + '<span class="lg-label lg-live' + (o ? ' is-out' : '') + '"><i></i>' + (o ? 'Back next month' : 'In stock') + '</span></div>'
+      + '<div class="ro-g' + (state.n === 1 ? ' is-one' : '') + '" style="--n:' + state.n + '">' + cols.join('') + '</div>';
+  }
+
+  document.addEventListener('click', function(e){
+    var el;
+    if (el = e.target.closest('[data-lofts] button')){
+      var k = el.getAttribute('data-l'), i = state.picked.indexOf(k);
+      if (el.hasAttribute('data-dead') && state.n > 1){ Lucky.toast(nice(k) + " is back next month, so it can't go in a set yet."); return; }
+      if (state.n === 1) state.picked = [k];
+      else if (i > -1){ if (state.picked.length > 1) state.picked.splice(i, 1); }
+      else if (state.picked.length < state.n) state.picked.push(k);
+      else { state.picked.shift(); state.picked.push(k); }
+      render(); return;
+    }
+    if (el = e.target.closest('[data-set] button')){
+      state.n = +el.getAttribute('data-n');
+      if (state.picked.length > state.n) state.picked = state.picked.slice(-state.n);
+      render(); return;
+    }
+    if (el = e.target.closest('[data-hand] button')){ state.hand = el.getAttribute('data-h'); render(); return; }
+  });
+
+  function addAll(){
+    if (isOut()){ var w = nice(state.picked[0]); $('[data-notify-line]').textContent = 'The ' + w + " is on its way back. Leave an email and you'll get one message the day it lands, from a person."; $('#md-notify').hidden = false; return; }
+    if (state.picked.length < state.n){ Lucky.jump('lofts'); return; }
+    var items = state.picked.map(function(k){ var m = k.match(/^(\d+)(\w)$/);
+      return { name: PD.title + ' ' + m[1] + '°', short: m[1] + '° ' + m[2], price: PD.price, img: PD.img, hud: [handLabel(), m[1] + '°', m[2] + ' grind'] }; });
+    var btn = $('[data-atc]'); btn.setAttribute('data-done', ''); btn.textContent = 'Added';
+    setTimeout(function(){ btn.removeAttribute('data-done'); render(); }, 1600);
+    LuckyBag.add(items, { title: items.length > 1 ? 'Your ' + items.length + ' wedges are in the bag.' : 'The ' + items[0].short + ' is in your bag.',
+      more: LuckyBag.total() + items.length * PD.price >= 198 ? 'Keep shopping' : 'Add another loft', moreAction: '#lofts' });
+  }
+  $('[data-atc]').addEventListener('click', addAll);
+  $('[data-atc-sticky]').addEventListener('click', addAll);
+  $('[data-sb-hand]').addEventListener('change', function(){ state.hand = this.value; render(); });
+  $('[data-sb-loft]').addEventListener('change', function(){ state.picked = [this.value]; render(); });
+
+  /* sticky bar: phones, once the real button has scrolled away, until the footer */
+  (function(){
+    var sticky = $('[data-sticky]'), cta = $('.cta'), ftr = $('.lg-ftr'); LuckySite.setSticky(sticky);
+    function p(){ var on = cta.getBoundingClientRect().bottom < 0 && ftr.getBoundingClientRect().top > innerHeight;
+      if (on !== sticky.hasAttribute('data-on')){ sticky.toggleAttribute('data-on', on); Lucky.guide.place(); } }
+    addEventListener('scroll', p, { passive: true }); addEventListener('resize', p); p();
+  })();
+
+  /* gallery dots (phone) */
+  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'), n = g.children.length; d.children[0].classList.add('on');
+    g.addEventListener('scroll', function(){ var i = Math.round(g.scrollLeft / (g.scrollWidth / n)); [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }, { passive: true }); })();
+
+  /* the helper */
+  (function(){
+    var box = $('[data-helper]'), pw = 46, open = null;
+    function calc(){ var b = pw + 6, l = [b, b + 4, b + 8].map(function(x){ return Math.min(60, Math.max(50, Math.round(x / 2) * 2)); }), g = open === 'yes' ? 'S' : 'K';
+      if (g === 'S') l = l.map(function(x){ return [52, 56, 60].reduce(function(a, c){ return Math.abs(c - x) < Math.abs(a - x) ? c : a; }); });
+      return { lofts: l.filter(function(x, i, a){ return a.indexOf(x) === i; }), g: g }; }
+    function draw(){ var r = calc();
+      box.innerHTML = '<h4>1 · My pitching wedge is</h4><div class="lg-chips">' + [44, 45, 46, 47, 48].map(function(x){ return '<button class="lg-chip" type="button" data-pw="' + x + '" aria-pressed="' + (x === pw) + '">' + x + '°</button>'; }).join('')
+        + '</div><h4>2 · Do you open the face around the green?</h4><div class="lg-chips"><button class="lg-chip" type="button" data-face="no" aria-pressed="' + (open === 'no') + '">Not really, I set up square</button><button class="lg-chip" type="button" data-face="yes" aria-pressed="' + (open === 'yes') + '">Yes, flops and bunkers</button></div>'
+        + '<div class="rec"><b>' + r.lofts.map(function(l){ return l + '°'; }).join(' · ') + ' · ' + r.g + ' grind</b>'
+        + (open === null ? 'Answer question 2 and the grind locks in. K is the default.' : (r.g === 'K' ? 'Wider sole, square setups, no surprises. All six lofts.' : 'Narrower sole, opens up clean. 52, 56 and 60.'))
+        + '</div><div class="md-foot"><button class="lg-btn-line" type="button" data-use>Use these</button></div>'; }
+    box.addEventListener('click', function(e){ var b;
+      if (b = e.target.closest('[data-pw]')){ pw = +b.getAttribute('data-pw'); draw(); return; }
+      if (b = e.target.closest('[data-face]')){ open = b.getAttribute('data-face'); draw(); return; }
+      if (e.target.closest('[data-use]')){ var r = calc(), picks = r.lofts.map(function(l){ return l + r.g; }).filter(function(k){ return PD.variants[key(k)] && !dead(k); }).slice(0, 3);
+        if (!picks.length){ var f = firstLive(); picks = f ? [f] : []; } state.n = Math.max(1, picks.length); state.picked = picks; render();
+        $('#md-helper').hidden = true; Lucky.jump('lofts'); } });
+    draw();
+  })();
+
+  /* restock form */
+  var nf = $('[data-notify]');
+  nf.addEventListener('submit', function(e){ e.preventDefault(); var f = $('input', nf);
+    if (!f.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value)){ f.focus(); return; }
+    nf.outerHTML = '<p class="lg-aside">Done. One email, the day it is back.</p>'; });
+
+  /* the worlds */
+  var mood = $('#finishes');
+  mood.addEventListener('click', function(e){ var b = e.target.closest('[data-moodseg] button'); if (!b) return; var m = b.getAttribute('data-m');
+    $$('[data-moodseg] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+    mood.setAttribute('data-metal', m);
+    $$('[data-mh]', mood).forEach(function(h){ h.hidden = h.getAttribute('data-mh') !== m; });
+    $$('[data-rail]', mood).forEach(function(r){ r.hidden = r.getAttribute('data-rail') !== m; }); });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-railarrows] button');
+    if (b){ var r = $('[data-rail]:not([hidden])'); r.scrollBy({ left: (b.getAttribute('aria-label') === 'Next' ? 1 : -1) * 520, behavior: 'smooth' }); return; }
+    var c = e.target.closest('[data-cliparrows] button');
+    if (c){ var cl = $('#clips'); cl.scrollBy({ left: (c.getAttribute('aria-label') === 'Next' ? 1 : -1) * cl.clientWidth * .5, behavior: 'smooth' }); }
+  });
+
+  /* specs */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-spectabs] button');
+    if (t){ $$('[data-spectabs] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === t)); });
+      $$('[data-spectab]').forEach(function(p){ p.hidden = p.getAttribute('data-spectab') !== t.getAttribute('data-tab'); }); return; }
+    var g = e.target.closest('[data-specseg] button');
+    if (g){ $$('[data-specseg] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === g)); });
+      $$('[data-spec]').forEach(function(tb){ tb.hidden = tb.getAttribute('data-spec') !== g.getAttribute('data-g'); }); }
+  });
+
+  /* the clips */
+  $('#clips').innerHTML = PD_REEL.map(function(o){
+    return '<div class="clip" data-md-open="md-shot" data-title="' + esc(o.title) + '" data-brief="' + esc(o.brief) + '"><span class="play" aria-hidden="true">&#9654;</span><small>Clip needed · ' + esc(o.kind) + '</small><b>' + esc(o.title) + '</b>' + esc(o.brief) + '</div>'; }).join('');
+
+  /* reviews: proximity from the real Judge.me counts, then the list.
+     A listing with no reviews yet (the Black, until Judge.me is migrated)
+     has no chart and no list on the page, so this whole block sits out. */
+  if ($('#prox')) Lucky.proximity($('#prox'), { counts: PD_REVIEWS.totals });
+  if ($('#jm-list')) (function(){
+    var filt = 0, sort = 'recent', shown = 6, S = PD_REVIEWS.sample;
+    var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
+    $('#jm-filters').innerHTML = ['All', 5, 4, 3, 2, 1].map(function(k, i){ return '<button class="lg-chip" type="button" data-f="' + (i ? k : 0) + '" aria-pressed="' + (!i) + '">' + (i ? k + ' ★ · ' + PD_REVIEWS.totals[k] : 'All · ' + PD_REVIEWS.total) + '</button>'; }).join('');
+    function draw(){
+      var l = S.filter(function(r){ return !filt || r.r === filt; }).slice();
+      l.sort(sort === 'high' ? function(a, b){ return b.r - a.r || (b.d > a.d ? 1 : -1); } : sort === 'low' ? function(a, b){ return a.r - b.r || (b.d > a.d ? 1 : -1); } : function(a, b){ return b.d > a.d ? 1 : -1; });
+      $('#jm-count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of the ' + l.length + ' we have loaded' + (filt ? ' at ' + filt + ' stars' : '') + '. The live widget pages through all ' + (filt ? PD_REVIEWS.totals[filt] : PD_REVIEWS.total) + '.';
+      $('#jm-list').innerHTML = l.slice(0, shown).map(function(r){
+        return '<div class="jm-item"><span class="lg-stars" aria-label="' + r.r + ' out of 5" style="line-height:1;color:var(--lg-star)">' + star(r.r) + '</span><b>' + esc(r.t) + '</b><p>' + esc(r.q) + '</p><small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small></div>'; }).join('');
+      $('#jm-more').hidden = shown >= l.length;
+    }
+    $('#jm-filters').addEventListener('click', function(e){ var b = e.target.closest('[data-f]'); if (!b) return; filt = +b.getAttribute('data-f'); shown = 6;
+      $$('#jm-filters button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); });
+    $('#jm-sort').addEventListener('change', function(){ sort = this.value; draw(); });
+    $('#jm-more').addEventListener('click', function(){ shown += 6; draw(); });
+    $('[data-readall]').addEventListener('click', function(){ var jm = $('#jm'), o = !jm.hidden; jm.hidden = o; this.setAttribute('aria-expanded', String(!o)); $('i', this).textContent = o ? '+' : '−'; if (!o) draw(); });
+  })();
+
+  render();
+})();
+</script>
+</body>
+</html>

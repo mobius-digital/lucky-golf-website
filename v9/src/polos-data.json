@@ -1,0 +1,535 @@
+[
+ {
+  "name": "Gold Dust",
+  "full": "Gold Dust Classic Polo",
+  "href": "20-product-polo-gold-dust.html",
+  "img": "img/polo-gold-dust-pack.webp",
+  "collar": "classic",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-GoldDust-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-GoldDust-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-GoldDust-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-GoldDust-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-GoldDust-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in 3XL"
+ },
+ {
+  "name": "Shadow",
+  "full": "Shadow Classic Polo",
+  "href": "20-product-polo-shadow.html",
+  "img": "img/polo-shadow-pack.webp",
+  "collar": "classic",
+  "colour": "dark",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Shadow-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Shadow-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Shadow-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-Shadow-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in XXL, 3XL"
+ },
+ {
+  "name": "Signature Black",
+  "full": "Signature Black Classic Polo",
+  "href": "20-product-polo-signature-black.html",
+  "img": "img/polo-signature-black-pack.webp",
+  "collar": "classic",
+  "colour": "dark",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-SignatureBlack-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-SignatureBlack-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-SignatureBlack-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-SignatureBlack-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-SignatureBlack-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-CP-SignatureBlack-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Contour",
+  "full": "Contour Classic Polo",
+  "href": "20-product-polo-contour.html",
+  "img": "img/polo-contour-pack.webp",
+  "collar": "classic",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Contour-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Contour-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Contour-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-Contour-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-Contour-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-CP-Contour-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Marble",
+  "full": "Marble Classic Polo",
+  "href": "20-product-polo-marble.html",
+  "img": "img/polo-marble-pack.webp",
+  "collar": "classic",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Marble-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Marble-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Marble-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "XXL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in XL, XXL, 3XL"
+ },
+ {
+  "name": "Gold Carnation",
+  "full": "Gold Carnation Classic Polo",
+  "href": "20-product-polo-gold-carnation.html",
+  "img": "img/polo-gold-carnation-pack.webp",
+  "collar": "classic",
+  "colour": "colour",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-GoldCarnation-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-GoldCarnation-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-GoldCarnation-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-GoldCarnation-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-CP-GoldCarnation-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Sold out in XXL"
+ },
+ {
+  "name": "Frost",
+  "full": "Frost Classic Polo",
+  "href": "20-product-polo-frost.html",
+  "img": "img/polo-frost-pack.webp",
+  "collar": "classic",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Frost-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Frost-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Frost-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-Frost-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-Frost-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-CP-Frost-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Cruiser",
+  "full": "Cruiser Classic Polo",
+  "href": "20-product-polo-cruiser.html",
+  "img": "img/polo-cruiser-pack.webp",
+  "collar": "classic",
+  "colour": "colour",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Cruiser-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Cruiser-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Cruiser-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-Cruiser-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-Cruiser-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in 3XL"
+ },
+ {
+  "name": "Azalea",
+  "full": "Azalea Classic Polo",
+  "href": "20-product-polo-azalea.html",
+  "img": "img/polo-azalea-pack.webp",
+  "collar": "classic",
+  "colour": "colour",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Azalea-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Azalea-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "XL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "XXL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in L, XL, XXL, 3XL"
+ },
+ {
+  "name": "Nightshade",
+  "full": "Nightshade Classic Polo",
+  "href": "20-product-polo-nightshade.html",
+  "img": "img/polo-nightshade-pack.webp",
+  "collar": "classic",
+  "colour": "dark",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-CP-Nightshade-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-CP-Nightshade-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-CP-Nightshade-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-CP-Nightshade-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-CP-Nightshade-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-CP-Nightshade-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Swirl",
+  "full": "Swirl Blade Polo",
+  "href": "20-product-polo-swirl.html",
+  "img": "img/polo-swirl-pack.webp",
+  "collar": "blade",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-BP-Swirl-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-BP-Swirl-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-BP-Swirl-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-BP-Swirl-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-BP-Swirl-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-BP-Swirl-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Spot",
+  "full": "Spot Blade Polo",
+  "href": "20-product-polo-spot.html",
+  "img": "img/polo-spot-pack.webp",
+  "collar": "blade",
+  "colour": "light",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-BP-Spot-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-BP-Spot-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-BP-Spot-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-BP-Spot-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": "LGA-BP-Spot-XXL",
+    "ok": true
+   },
+   {
+    "size": "3XL",
+    "sku": "LGA-BP-Spot-3XL",
+    "ok": true
+   }
+  ],
+  "stock": "Every size in stock"
+ },
+ {
+  "name": "Blackout",
+  "full": "Blackout Blade Polo",
+  "href": "20-product-polo-blackout.html",
+  "img": "img/polo-blackout-pack.webp",
+  "collar": "blade",
+  "colour": "dark",
+  "sizes": [
+   {
+    "size": "S",
+    "sku": "LGA-BP-Blackout-Small",
+    "ok": true
+   },
+   {
+    "size": "M",
+    "sku": "LGA-BP-Blackout-Medium",
+    "ok": true
+   },
+   {
+    "size": "L",
+    "sku": "LGA-BP-Blackout-Large",
+    "ok": true
+   },
+   {
+    "size": "XL",
+    "sku": "LGA-BP-Blackout-XL",
+    "ok": true
+   },
+   {
+    "size": "XXL",
+    "sku": null,
+    "ok": false
+   },
+   {
+    "size": "3XL",
+    "sku": null,
+    "ok": false
+   }
+  ],
+  "stock": "Sold out in XXL, 3XL"
+ }
+]

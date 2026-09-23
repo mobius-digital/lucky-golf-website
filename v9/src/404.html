@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lost ball · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- 404 · Mags, one line, two buttons ---------- */
+.nf{text-align:center;padding:clamp(56px,10vw,140px) 0 clamp(40px,7vw,90px)}
+.nf .lg-mags{width:clamp(120px,16vw,180px);margin:0 auto clamp(20px,3vw,28px);display:block}
+.nf .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(20px,3vw,28px)}
+.pop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(40px,6vw,80px)}
+@media (max-width:860px){.pop{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pop a{display:block;color:inherit;text-decoration:none}
+.pop .ph{display:block;aspect-ratio:4/5;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile)}
+.pop .ph img{width:100%;height:100%;object-fit:contain;padding:14px}
+.pop .nm{display:block;margin-top:10px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:14px}
+.pop b{font-weight:600}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<section class="lg-wrap nf">
+  <span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span>
+  <p class="lg-eyebrow" style="justify-content:center">404</p>
+  <h1 class="lg-d1">This one's in the <span class="lg-foil-word">trees</span></h1>
+  <p class="lg-lede" style="max-width:48ch;margin-inline:auto">The page isn't here. Mags swears he didn't take it, which is exactly what he'd say.</p>
+  <div class="btns">
+    <a class="lg-btn" href="clubs.html">See the clubs</a>
+    <a class="lg-btn-line" href="home.html">Back to the start</a>
+  </div>
+
+  <div class="pop">
+    <a href="carver.html"><span class="ph"><img src="img/gold-full-cut.webp" alt="Carver 02 Gold" loading="lazy"></span><span class="nm">Carver 02 Gold</span><b>$99</b></a>
+    <a href="clubs.html"><span class="ph"><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></span><span class="nm">Tracer Mallet</span><b>$229</b></a>
+    <a href="polo-azalea.html"><span class="ph"><img src="img/polo-azalea-cut.webp" alt="Azalea Classic Polo" loading="lazy"></span><span class="nm">Azalea Classic Polo</span><b>$67</b></a>
+    <a href="hats.html"><span class="ph"><img src="img/hat-white-gold-classic-cut.webp" alt="White and gold classic hat" loading="lazy"></span><span class="nm">White | Gold Classic Hat</span><b>$29</b></a>
+  </div>
+</section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+</body>
+</html>

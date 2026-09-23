@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Community · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Community · our own UGC wall. Every post is an entry in the
+     Shopify admin (a metaobject): the photo or clip, the @handle, the link,
+     and the products in it. No app, no monthly fee, and you choose what goes up. ---------- */
+.head{padding-bottom:clamp(20px,3vw,32px)}
+.bar{position:sticky;top:var(--lg-head-h,64px);z-index:22;background:var(--lg-page);border-block:1px solid var(--lg-rule)}
+.bar-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
+.fg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fg .lbl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--lg-ink-64)}
+.fg button{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--lg-rule);background:var(--lg-page);color:var(--lg-ink);font-size:var(--lg-fs-sm);cursor:pointer}
+.fg button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.count{margin-left:auto;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.wall{columns:3 280px;column-gap:var(--lg-gut);padding-block:clamp(24px,3vw,40px)}
+.post{break-inside:avoid;margin:0 0 var(--lg-gut);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);position:relative;cursor:zoom-in;display:block;width:100%;border:0;padding:0;text-align:left;color:inherit}
+.post[hidden]{display:none}
+.post img{display:block;width:100%;height:auto}
+.post .who{position:absolute;left:12px;top:12px;padding:6px 10px;border-radius:999px;background:rgba(6,17,11,.72);color:#F4F3F0;font-size:12px;font-weight:600}
+.post .tags{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px}
+.post .tags span{padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--lg-ink);font-size:12px;font-weight:600}
+.post .play{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;background:rgba(6,17,11,.72);color:#fff;display:grid;place-items:center;font-size:13px}
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:860px){.feat{grid-template-columns:1fr}}
+.steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.steps b{width:34px;height:34px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);display:grid;place-items:center;font-size:14px}
+/* the post, opened */
+.lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(6,17,11,.72)}
+.lb[hidden]{display:none}
+.lb-in{background:var(--lg-page);border-radius:var(--lg-r-card);overflow:hidden;width:min(980px,100%);max-height:calc(100vh - 32px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+@media (max-width:760px){.lb-in{grid-template-columns:1fr;overflow:auto}}
+.lb-ph{background:#0B1911;display:grid;place-items:center}
+.lb-ph img{display:block;width:100%;height:100%;max-height:80vh;object-fit:contain}
+.lb-bd{padding:clamp(18px,2.4vw,26px);overflow:auto;display:flex;flex-direction:column;gap:14px}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-x{width:44px;height:44px;border-radius:50%;border:1px solid var(--lg-rule);background:var(--lg-page);cursor:pointer;font-size:20px}
+.lb-in .cap{margin:0;color:var(--lg-ink-70)}
+.shop{display:grid;gap:10px}
+.sp{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px;border:1px solid var(--lg-rule);border-radius:var(--lg-r)}
+.sp .ph{aspect-ratio:1;border-radius:10px;background:var(--lg-tile);display:grid;place-items:center}
+.sp .ph img{width:100%;height:100%;object-fit:contain;padding:6px}
+.sp b{display:block;font-size:14px;line-height:1.2}
+.sp span{color:var(--lg-ink-64);font-size:13px}
+.sp .go{min-height:40px;padding:0 14px;border-radius:999px;border:0;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:12px;
+  text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Community</span></li></ol></nav>
+
+<section class="lg-wrap head">
+  <p class="lg-eyebrow">Community</p>
+  <h1 class="lg-d1">Out there, playing <span class="lg-foil-word">it</span></h1>
+  <p class="lg-lede" style="max-width:58ch">Rounds, bags and the shots worth posting, from the people who play Lucky. Tap any post to see what's in it and put it in your bag.</p>
+</section>
+
+<div class="bar"><div class="lg-wrap bar-in">
+  <div class="fg" role="group" aria-label="What's in it"><span class="lbl">Show</span>
+    <button type="button" data-k="" aria-pressed="true">Everything</button>
+    <button type="button" data-k="clubs" aria-pressed="false">Clubs</button>
+    <button type="button" data-k="apparel" aria-pressed="false">Apparel</button>
+    <button type="button" data-k="gear" aria-pressed="false">Gear</button>
+  </div>
+  <span class="count"><b id="shown">{{COUNT}}</b> posts</span>
+</div></div>
+
+<section class="lg-wrap"><div class="wall" id="wall">{{POSTS}}</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap feat">
+  <div>
+    <p class="lg-eyebrow">Get on the wall</p>
+    <h2 class="lg-d2">Tag us. We'll <span class="lg-foil-word">ask first</span></h2>
+    <p class="lg-body">Nothing goes up without the golfer saying yes. Post it, tag us, and if it's a good one you'll hear from us.</p>
+    <ol class="steps">
+      <li><b>1</b><span>Post the round, the swing or the bag on Instagram or TikTok.</span></li>
+      <li><b>2</b><span>Tag @luckygolfofficial so we see it.</span></li>
+      <li><b>3</b><span>We message you to ask before anything goes on the site.</span></li>
+    </ol>
+    <a class="lg-btn-line" href="{{IG}}" target="_blank" rel="noopener" style="margin-top:20px">Follow us on Instagram {{ICON:instagram}}</a>
+  </div>
+  <figure class="lg-frame"><img src="img/walk-off-green.webp" alt="Walking off the green in Lucky gear" loading="lazy"></figure>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">The best ads we have are your <span class="lg-foil-word">rounds</span></h2>
+  <p class="lg-lede">Mags has asked to be tagged in all of them. Mags has not played a round.</p>
+  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Post">
+  <div class="lb-in">
+    <div class="lb-ph"><img src="" alt="" id="lb-img"></div>
+    <div class="lb-bd">
+      <div class="lb-top"><b id="lb-who"></b><button class="lb-x" type="button" data-lb-close aria-label="Close">&times;</button></div>
+      <p class="cap" id="lb-cap"></p>
+      <p class="lg-label" style="margin:0">In this one</p>
+      <div class="shop" id="lb-shop"></div>
+    </div>
+  </div>
+</div>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var POSTS = {{POSTS_JSON}};
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var money = function(n){ return '$' + (Math.round(n * 100) % 100 ? n.toFixed(2) : Math.round(n)); };
+
+  document.addEventListener('click', function(e){
+    var k = e.target.closest('[data-k]');
+    if (k){
+      $$('[data-k]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === k)); });
+      var n = 0;
+      $$('.post').forEach(function(p){ var ok = !k.dataset.k || p.dataset.kinds.indexOf(k.dataset.k) > -1; p.hidden = !ok; if (ok) n++; });
+      $('#shown').textContent = n; return;
+    }
+    var p = e.target.closest('.post');
+    if (p){
+      var d = POSTS[+p.dataset.i];
+      $('#lb-img').src = 'img/' + d.img; $('#lb-img').alt = d.alt;
+      $('#lb-who').textContent = d.who; $('#lb-cap').textContent = d.cap;
+      $('#lb-shop').innerHTML = d.products.map(function(x, i){
+        var act = !x.live ? '<a class="go" href="' + x.href + '" style="background:var(--lg-page);color:var(--lg-ink-64);border:1px dashed var(--lg-rule)">Sold out</a>'
+          : x.single ? '<button class="go" type="button" data-add="' + i + '">Add · ' + money(x.price) + '</button>'
+          : '<a class="go" href="' + x.href + '">' + esc(x.pick) + '</a>';
+        return '<div class="sp"><span class="ph"><img src="img/' + x.img + '" alt=""></span><span><b>' + esc(x.name) + '</b><span>' + esc(x.priceLabel) + '</span></span>' + act + '</div>';
+      }).join('');
+      $('#lb').dataset.i = p.dataset.i; $('#lb').hidden = false; return;
+    }
+    var a = e.target.closest('[data-add]');
+    if (a){
+      var x = POSTS[+$('#lb').dataset.i].products[+a.dataset.add];
+      $('#lb').hidden = true;
+      LuckyBag.add([{ name: x.name, short: x.name, price: x.price, img: 'img/' + x.img, hud: ['From the community'] }]);
+      return;
+    }
+    if (e.target.closest('[data-lb-close]') || e.target === $('#lb')) $('#lb').hidden = true;
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') $('#lb').hidden = true; });
+})();
+</script>
+</body>
+</html>

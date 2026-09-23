@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gift card · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Gift card: pick an amount, send it now or on the day ---------- */
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:980px){.pdp{grid-template-columns:1fr}}
+.stage{border-radius:var(--lg-r-card);background:var(--lg-tile);aspect-ratio:1/1;display:grid;place-items:center;padding:clamp(24px,5vw,64px)}
+.gc{width:100%;max-width:460px;aspect-ratio:1.586/1;border-radius:18px;padding:clamp(18px,3vw,28px);position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#0F3A27 0%,#0B2E1F 55%,#06110B 100%);color:#F4F3F0;box-shadow:0 30px 60px -30px rgba(6,17,11,.6);
+  display:flex;flex-direction:column;justify-content:space-between}
+.gc::after{content:'';position:absolute;inset:0;background:radial-gradient(70% 90% at 90% 0%,rgba(237,210,124,.22),transparent 60%);pointer-events:none}
+.gc .lg-logo svg{height:22px;width:auto;color:#F4F3F0}
+.gc .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(46px,7vw,72px);line-height:1;
+  background:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gc .ln{display:flex;justify-content:space-between;align-items:flex-end;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,240,.72);position:relative;z-index:1}
+.buy{position:sticky;top:calc(var(--lg-head-h,64px) + 20px)}
+@media (max-width:980px){.buy{position:static}}
+.price{font-size:24px;font-weight:600;margin:8px 0 14px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:22px 0 8px}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.who button{min-height:56px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;font:inherit;text-align:left;padding:10px 14px}
+.who button[aria-pressed="true"]{border:2px solid var(--lg-ink);padding:9px 13px}
+.who b{display:block;font-size:var(--lg-fs-sm)}
+.who span{color:var(--lg-ink-64);font-size:13px}
+.to[hidden]{display:none}
+.to{margin-top:14px;display:grid;gap:12px}
+.to label .lb{display:block;margin-bottom:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--lg-ink-64)}
+.to input,.to textarea{width:100%;min-height:48px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);padding:12px 14px;font:inherit}
+.to textarea{min-height:90px;resize:vertical}
+.buy .lg-btn{width:100%;margin-top:20px}
+.fine{margin:12px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Gift card</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp">
+  <div class="stage">
+    <div class="gc" aria-label="Lucky gift card preview">
+      <span class="lg-logo" style="position:relative;z-index:1">{{LOGO}}</span>
+      <span class="amt" data-card-amt>$50</span>
+      <span class="ln"><span>Gift card</span><span>It's better to be lucky</span></span>
+    </div>
+  </div>
+
+  <div class="buy">
+    <p class="lg-eyebrow">Gift card</p>
+    <h1 class="lg-d2">For the golfer who says they don't need <span class="lg-foil-word">anything</span></h1>
+    <p class="price" data-price>$50</p>
+    <p class="lg-body">Emailed straight away, or on the day you pick. They choose the loft, the size or the print, which is the part you were going to get wrong.</p>
+
+    <div class="row"><span class="lg-label">Amount</span></div>
+    <div class="lg-chips" data-amts role="group" aria-label="Amount">{{AMOUNTS}}</div>
+
+    <div class="row"><span class="lg-label">Who it's for</span></div>
+    <div class="who" role="group" aria-label="Who it's for">
+      <button type="button" data-who="me" aria-pressed="false"><b>Me</b><span>It comes to my email</span></button>
+      <button type="button" data-who="them" aria-pressed="true"><b>Someone else</b><span>We email them</span></button>
+    </div>
+    <div class="to" data-to>
+      <label><span class="lb">Their name</span><input autocomplete="off"></label>
+      <label><span class="lb">Their email</span><input type="email" autocomplete="off"></label>
+      <label><span class="lb">A note from you</span><textarea placeholder="Get a real wedge."></textarea></label>
+      <label><span class="lb">Send it on</span><input type="date"></label>
+    </div>
+
+    <button class="lg-btn" type="button" data-atc>Put it in the bag · $50</button>
+    <p class="fine">Works on anything in the store. Never expires.</p>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Nobody returns a gift <span class="lg-foil-word">card</span></h2>
+  <p class="lg-lede">They pick, it ships in a day or two, and you get the credit for it. Mags says this is the move.</p>
+  <a class="lg-btn-line" href="clubs.html">Or pick the club yourself <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var amt = 50;
+  function paint(){
+    $$('[data-amts] button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.a === amt)); });
+    $('[data-card-amt]').textContent = '$' + amt;
+    $('[data-price]').textContent = '$' + amt;
+    $('[data-atc]').textContent = 'Put it in the bag · $' + amt;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-amts] button');
+    if (a){ amt = +a.dataset.a; paint(); return; }
+    var w = e.target.closest('[data-who]');
+    if (w){ $$('[data-who]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === w)); });
+      $('[data-to]').hidden = w.dataset.who === 'me'; return; }
+    if (e.target.closest('[data-atc]')){
+      LuckyBag.add([{ name: 'Lucky gift card', short: 'Gift card', price: amt, img: 'img/giftcard-thumb.webp', hud: ['$' + amt, 'Emailed'] }]);
+    }
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

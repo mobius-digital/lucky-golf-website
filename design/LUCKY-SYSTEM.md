@@ -61,6 +61,12 @@ Neither ground works without photos. White alone reads as a wireframe; dark alon
 
 **The foil** (`#C29A2B → #EDD27C`): exactly two places per screen, the primary button and one display word. Never body size, never a field.
 
+**The foil word moves once:** hovering a headline runs a light across its foil word (the same move as the button). Nothing else about it animates.
+
+**The finish's metal (added 2026-09-18, narrowed 2026-09-20):** a finish other than gold may wear its own metal on the product's one display word, **but only on a dark ground**. Tested on the Carver Black page: gunmetal on white has almost no chroma, so it reads as greyed-out type rather than as a finish, and the photography was already saying black three times over. On white, gold stays. Gold is the one accent, it ties the two finishes' pages together, and buttons, stars, prices and links are gold on every page and every ground. `data-metal="black"` / `"silver"` still works, and now only takes effect inside `.lg-band`, `.lg-sign`, `.lg-on-dark` or a Twilight ground.
+
+**Tags say something true** (Sept 19): Best seller, Sold out, In the bag. Not moods. Ink by default; the gold foil tag is for the one thing on a screen we most want noticed.
+
 **The pinstripe is retired** (Sept 18). The Yardage pieces and the photos carry the texture now. A dark band gets one soft gold light from the top corner instead (`--lg-band-light`).
 
 Contrast floor: 4.5:1 body, 3:1 display and graphics. Measure before handing anything back.
@@ -98,7 +104,7 @@ All live in the styleguide. Classes to use:
 | Photo band | `.lg-pband` (3 × 3:2) | Phones: one wide, two under |
 | Frame, split | `.lg-frame` (`.is-tall`) · `.lg-split` (`.is-flip`) | Text beside a photo |
 | Band | `.lg-band` · `.lg-band.is-photo` (`--band-bg`) · `.lg-band-tile` | One per Daylight page |
-| Cards | `.lg-card` `.lg-card-ph` (`.is-cut`) `.lg-card-bd` `-nm` `-pr` `-ln` | Product on stone |
+| Cards | `.lg-card` `.lg-card-ph` (`.is-cut`) `.lg-card-bd` `-nm` `-pr` `-ln` | Product on stone, cut off its studio background. A second real photo (the detail shot) may fade in on hover; never on touch, where there is no hover |
 | Panel | `.lg-panel` (`.is-open`) | A card that holds controls (a gift) |
 | Reviews | `.lg-score` bars · `.lg-quote` · `.lg-stars` | Verbatim only |
 | FAQ | `.lg-faq` `.lg-fq` `.lg-fq-a` | Native `<details>` |
@@ -112,7 +118,7 @@ All live in the styleguide. Classes to use:
 
 - **Art:** black Mags (`gwp-mags-ink.webp`, `#17130E`) on light; light Mags (`gwp-mags.webp`, `#F5F3E8`) on dark. Never a third colour. Put both images in `.lg-mags`; the ground picks.
 - **His job is checkout.** The guide card sits bottom-left (the chat bubble owns bottom-right; on phones he stands above the bottom bars). It always says **one** next step and does it on tap: "the hat's free, tap me and I'll show you where" (scrolls there), then "you're set, tap me to check out" (straight to `/checkout`, skipping the cart page).
-- **The pop-up** asks the question outright after something good happens: **Check out** (foil) or **Add more / Keep shopping** (ghost). Closing it shrinks it into Mags, who then holds the checkout. Each question once per visit.
+- **The pop-up is for promo landing pages only** (the GWP page it was built for). **On a normal page an add to bag opens the cart drawer and nothing else.** No pop-up, no guide card: the shopper asked for the bag, so show them the bag. Where the pop-up does run, it asks the question outright after something good happens: **Check out** (foil) or **Add more / Keep shopping** (ghost). Closing it shrinks it into Mags, who then holds the checkout. Each question once per visit.
 - **The guide is one white card** with a thin gold border, Mags and text in ink. Not a green bubble next to a floating bird (tried Sept 18; it read as two things and the green shouted). A card, because it floats over photos and must look tappable.
 - **Where else:** the sign-off (on a bare gold line), the empty bag, the 404, the bag button, good-news toasts. **Never on an error.**
 - Folklore stays folklore: "Legend has it..."
@@ -139,7 +145,7 @@ The golf instruments. They replaced the pinstripe. Each one reads a real number 
 | Launch monitor A `.lg-monitor` | Product pages: the full readout (lofts, grinds, price, test drive) | Real values only |
 | Spec tiles `.lg-specs` | Product pages, the per-loft detail | Manufacturer sheet only |
 | HUD strip `.lg-hud` | Product cards, cart lines | |
-| Review proximity A `.lg-prox` | Every reviews block (balls around the cup: 5 stars on the first ring) | Real Judge.me counts; average rounds down |
+| Review proximity A `.lg-prox` | Reviews blocks where people COMPARE (collection, product). Not the home page: nothing is being compared there, so the rating, the stars and the quotes do the job | Real Judge.me counts; average rounds down. `Lucky.proximity(el, {counts, nums:false, label})`: `nums:false` hides the per-star counts and the total (a count makes a young brand look smaller than it is), `label` replaces the caption, which defaults to "Every review takes a shot at the pin." The caption stays light and never claims one dot per review: the dots are SCALED (counts divided by `per`), so "every dot is a review" is not true. Only the inner and outer rings are labelled. It flips for a dark band on its own |
 | Tick ruler `.lg-ruler` | A divider when a section needs one | Quiet |
 | Contour map `.lg-contour` | **In the system (Sept 18).** One per page, behind a quiet section with no photo: the FAQ, "why the price", a spec block, the story timeline | ONE big map (`lucky-contour-day/tw.svg`, `node tools/gen-contour-map.cjs`); every use shows a different part (`--cx --cy --cz`, `.is-left`, `.is-flip`, or `Lucky.contours()` picks). Never behind text |
 | Loft chart, dot matrix, terrain | Ads, technical pages, the app | Not shopping pages |
@@ -149,12 +155,24 @@ The golf instruments. They replaced the pinstripe. Each one reads a real number 
 Bold = photo beat. At most one dark band on a Daylight page; the page always comes back to white; no two dark bands touch.
 
 - **Home:** bar, header · **photo hero** · trust row · the clubs (cards) · **photo band** · why the price (split + frame) · **reviews on a photo** (the one dark beat) · apparel, worn · Mags sign-off · footer.
-- **Collection:** header · **short photo hero** · filter chips · cards with HUD · **photo band after row two** · compare table (contour behind) · review proximity · sign-off.
+- **Collection:** header · title and one line · **photo band** (not a big hero: the grid is the point, and the apparel brands we measure ourselves against go straight to it) · filter chips · cards with HUD · compare table (contour behind) · review proximity · sign-off.
 - **Product page:** header · **gallery: studio + on course** · buy box (chips, foil Add to bag, stock) · spec tiles · **split: in use** · review proximity + real quotes · FAQ (contour behind) · sign-off · after add: Mags guide to checkout.
+
+**One product template per family.** Wedges, putters and the hybrid come off a single club template driven by data: the option rows are generated from the real variant keys, so a club with one hand shows no hand chooser and the fact goes in the spec table instead. Apparel has its own two (polo, hat). A page per print and per colourway is generated, never hand-built.
+
+**Two rules that catch us out on product pages:**
+- **A worn photo on a product page has to be THAT product on a body.** A lifestyle frame of a different colourway reads as a photo of the thing you are about to buy. If we do not have the shot, the page runs its own studio photography and we book the shot, we do not borrow another one.
+- **A cross-sell row has to match its link.** "The rest of the look / All apparel" carries apparel only; a wedge in that row sends the eye one way and the link another. Same for "More from the bag / All clubs".
 - **Promo / landing:** numbered · **photo hero with the offer** · sticky hole bar · tracer once · product cards · **photo band** · gift panels + a worn frame · **reviews on a photo** · FAQ + frame · sign-off · Mags guide + pop-up. Twilight for a night event.
 - **Our story:** numbered · **photo hero** · alternating splits · **photo band** · one dark band (the quote) · timeline (contour behind) · sign-off.
 - **Cart / drawer:** hole bar to free shipping · lines with HUD · foil Check out · empty bag = Mags + one line + a ghost button.
-- **404:** Mags, one line, two buttons.
+- **404:** Mags, one line, two buttons, then four things to buy so a dead link still lands somewhere.
+- **Questions / help:** header · sticky jump row · a block per topic (shipping, returns, clubs, apparel, orders) as split + `.lg-faq` · three ways to reach a person · sign-off. Policy answers come from the product reference guide, never from memory.
+- **Ambassador:** **photo hero** · what you get (three cards) · what we ask + the application form · **photo band** · FAQ · sign-off.
+- **Contact:** ways to reach us beside the form, sign-off. No hours or response times we have not confirmed.
+- **Search:** field · common searches · live grid, query in the URL · empty state that points at the clubs.
+- **Cart page:** the drawer's content at full width: lines, hole bar, summary, trust row, Mags empty state. It reads the same bag as the drawer, never a second copy of the state.
+- **Gear collection:** grouped by job (covers, grips, putter grips, glove) with a jump row, not one long grid. A price that varies by size is shown as a range.
 
 ## 11 · Buttons and buying
 

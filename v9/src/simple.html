@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{NAME}} · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- The simple product page: covers, grips, the glove, anything
+     with one photo and zero to two options. Options and prices are generated
+     from the real variants, so a grip that costs more in Jumbo says so. ---------- */
+.pdp{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:980px){.pdp{grid-template-columns:1fr}}
+.gal{display:grid;gap:12px}
+.gal .big{border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);aspect-ratio:1/1;display:grid;place-items:center}
+.gal .big img{width:100%;height:100%;object-fit:contain;padding:clamp(24px,4vw,56px)}
+.gal .big.is-photo img{object-fit:cover;padding:0}
+.thumbs{display:flex;gap:10px}
+.thumbs button{flex:1;max-width:110px;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--lg-tile);border:1px solid transparent;cursor:pointer;padding:0}
+.thumbs button[aria-current="true"]{border-color:var(--lg-ink)}
+.thumbs img{width:100%;height:100%;object-fit:contain;padding:6px}
+.thumbs button.is-photo img{object-fit:cover;padding:0}
+.buy{position:sticky;top:calc(var(--lg-head-h,64px) + 20px)}
+@media (max-width:980px){.buy{position:static}}
+.price{font-size:24px;font-weight:600;margin:8px 0 14px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:20px 0 8px}
+.row .m{font-weight:600}
+.buy .lg-btn{width:100%;margin-top:18px}
+.stock{display:block;margin-top:12px;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.links{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px}
+.links a{font-size:var(--lg-fs-sm)}
+.facts{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--lg-rule)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--lg-rule)}
+.facts span{color:var(--lg-ink-64)}
+.facts b{font-weight:600;text-align:right}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(20px,3vw,32px)}
+.more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:820px){.more{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><a href="gear.html">Gear</a></li><li><span aria-current="page">{{NAME}}</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp">
+  <div class="gal">
+    <div class="big" id="big"><img src="img/{{IMG}}" alt="{{NAME}}" width="1200" height="1200" fetchpriority="high"></div>
+    <div class="thumbs" id="thumbs">
+      <button type="button" data-src="img/{{IMG}}" data-alt="{{NAME}}" aria-current="true" aria-label="The product"><img src="img/{{IMG}}" alt="" loading="lazy"></button>
+      <button type="button" class="is-photo" data-src="img/{{PHOTO}}" data-alt="{{PHOTO_ALT}}" aria-current="false" aria-label="On the course"><img src="img/{{PHOTO}}" alt="" loading="lazy"></button>
+    </div>
+  </div>
+
+  <div class="buy">
+    <p class="lg-eyebrow">{{EYEBROW}}</p>
+    <h1 class="lg-d2">{{NAME}}</h1>
+    <p class="price" data-price>{{PRICE}}</p>
+    <p class="lg-body">{{DESC}}</p>
+    {{OPTS}}
+    <button class="lg-btn" type="button" data-atc>Put it in the bag</button>
+    <span class="stock" data-stock>{{STOCK}}</span>
+    <div class="links">
+      <a class="lg-link" href="faq.html#returns">Thirty days, unused <span>&rarr;</span></a>
+      <a class="lg-link" href="faq.html#shipping">Free over $198 <span>&rarr;</span></a>
+    </div>
+    <ul class="facts">{{FACTS}}</ul>
+  </div>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">Goes with it</p><h2 class="lg-d2">{{MOREHEAD}}</h2></div><a class="lg-link" href="gear.html">All the gear <span>&rarr;</span></a></div>
+  <div class="more">{{MORE}}</div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">{{SIGNHEAD}}</h2>
+  <p class="lg-lede">{{SIGNLEDE}}</p>
+  <a class="lg-btn-line" href="gear.html">Back to the gear <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var PD = {{PD_JSON}};
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var pick = {};
+  var money = function(n){ return '$' + (Math.round(n * 100) % 100 ? n.toFixed(2) : Math.round(n)); };
+
+  function variant(){ return PD.variants[PD.order.map(function(k){ return pick[k]; }).join('|')] || null; }
+  function paint(){
+    PD.order.forEach(function(k){
+      $$('[data-opt="' + k + '"] button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v === pick[k])); });
+      var m = $('[data-pick="' + k + '"]'); if (m) m.textContent = PD.labels[pick[k]] || pick[k] || '';
+    });
+    var v = variant(), live = !!(v && v.avail);
+    $('[data-price]').textContent = v ? money(v.price) : PD.priceLabel;
+    $('[data-stock]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out in this one';
+    $('[data-atc]').textContent = live ? 'Put it in the bag · ' + money(v.price) : "Tell me when it's back";
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('#thumbs button');
+    if (t){
+      $$('#thumbs button').forEach(function(b){ b.setAttribute('aria-current', String(b === t)); });
+      var img = $('#big img'); img.src = t.dataset.src; img.alt = t.dataset.alt || '';
+      $('#big').classList.toggle('is-photo', t.classList.contains('is-photo')); return;
+    }
+    var b = e.target.closest('[data-opt] button');
+    if (b){ pick[b.closest('[data-opt]').dataset.opt] = b.dataset.v; paint(); return; }
+    if (e.target.closest('[data-atc]')){
+      var v = variant();
+      if (!v || !v.avail){ Lucky.toast("That one's sold out. We'll email you when it lands."); return; }
+      var hud = PD.order.map(function(k){ return PD.labels[pick[k]]; }).filter(Boolean);
+      LuckyBag.add([{ name: PD.name, short: PD.name, price: v.price, img: PD.img, hud: hud.length ? hud : ['One size'] }]);
+    }
+  });
+  PD.order.forEach(function(k){ pick[k] = PD.start[k]; });
+  paint();
+})();
+</script>
+</body>
+</html>

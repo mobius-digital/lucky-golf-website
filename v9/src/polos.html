@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Polos · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Polos · browse-all with style tiles and filters, on v4 pieces ---------- */
+.head{padding-bottom:clamp(24px,3vw,40px)}
+
+.styles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut);padding-block:clamp(28px,3vw,44px)}
+@media (max-width:760px){.styles{grid-template-columns:1fr}}
+.style{display:flex;align-items:center;gap:16px;padding:12px 18px 12px 12px;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);
+  background:var(--lg-page);color:var(--lg-ink);cursor:pointer;text-align:left;min-height:96px}
+.style[aria-pressed="true"]{border:2px solid var(--lg-ink);padding:11px 17px 11px 11px}
+.style .ph{flex:none;width:72px;height:90px;border-radius:12px;overflow:hidden;background:var(--lg-tile)}
+.style .ph img{width:100%;height:100%;object-fit:contain;padding:4px}
+.style b{display:block;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.05}
+.style span span{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+
+.bar{position:sticky;top:72px;z-index:var(--lg-z-rail);background:var(--lg-page);border-block:1px solid var(--lg-rule)}
+.bar-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
+.fg{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fg .lbl{color:var(--lg-ink-64);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs);margin-right:2px}
+.fg button{min-height:40px;padding:0 12px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-xs);
+  display:inline-flex;align-items:center;gap:7px}
+.fg button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.fg i{width:12px;height:12px;border-radius:50%;border:1px solid var(--lg-rule)}
+.fg i.light{background:#EDEAE3}.fg i.dark{background:#1B1B1B}.fg i.colour{background:linear-gradient(135deg,#C29A2B,#7B2D3B)}
+.fright{margin-left:auto;display:flex;align-items:center;gap:16px}
+.fright select{min-height:40px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);padding:0 10px;background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:13px}
+.count{color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.count b{color:var(--lg-ink)}
+@media (max-width:860px){.bar-in{gap:8px 14px}.fright{width:100%;margin-left:0;justify-content:space-between}}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut);padding-block:clamp(28px,3vw,44px)}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.polo{display:flex;flex-direction:column}
+.polo[hidden]{display:none}
+.polo-ph{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile)}
+.polo-ph img{width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .5s var(--lg-ease),opacity .3s}
+/* the second photo is the real detail shot: it fades in on hover, full bleed */
+.polo-ph .alt{position:absolute;inset:0;object-fit:cover;padding:0;opacity:0}
+.polo:hover .polo-ph .alt,.polo:focus-within .polo-ph .alt{opacity:1}
+.polo:hover .polo-ph img{transform:none}
+@media (hover:none){.polo-ph .alt{display:none}}
+.qa{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(255,255,255,.96);border-radius:12px;padding:10px;display:none}
+.polo.is-open .qa{display:block}
+.qa > span{display:block;margin-bottom:8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--lg-ink-64)}
+.sizes{display:flex;flex-wrap:wrap;gap:5px}
+.sizes button{min-width:40px;min-height:40px;padding:0 6px;border:1px solid var(--lg-rule);border-radius:9px;background:#fff;color:var(--lg-ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:12px}
+.sizes button:hover{border-color:var(--lg-ink)}
+.sizes button[disabled]{color:var(--lg-ink-38);border-style:dashed;cursor:not-allowed;text-decoration:line-through}
+.qa-open{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--lg-ink);
+  cursor:pointer;font-size:22px;line-height:1;box-shadow:var(--lg-float)}
+.polo.is-open .qa-open{background:var(--lg-ink);color:var(--lg-page)}
+.polo-bd{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding-top:12px;text-decoration:none;color:var(--lg-ink)}
+.polo-bd .nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:17px;line-height:1}
+.polo-bd b{font-weight:700}
+.polo-bd .meta{grid-column:1/-1;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.polo-bd .stock{grid-column:1/-1;margin-top:2px;font-size:var(--lg-fs-sm);color:var(--lg-ok)}
+.polo-bd .stock.few{color:var(--lg-ink-64)}
+.empty{padding:40px 0;text-align:center;color:var(--lg-ink-64)}
+.empty[hidden]{display:none}
+
+.faq-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:860px){.faq-in{grid-template-columns:1fr}}
+.hats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:760px){.hats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hat{text-decoration:none;color:var(--lg-ink)}
+.hat .ph{display:block;aspect-ratio:1;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile)}
+.hat .ph img{width:100%;height:100%;object-fit:contain;padding:14px}
+.hat .nm{display:block;margin-top:10px;font-size:var(--lg-fs-base);line-height:1.3}
+.hat b{font-weight:700}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(20px,3vw,32px)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Polos</span></li></ol></nav>
+
+<section class="lg-wrap head">
+  <div>
+    <p class="lg-eyebrow">On the course, and after</p>
+    <h1 class="lg-d1">Polos</h1>
+    <p class="lg-lede">Cut to play in and comfortable enough to keep on afterwards. Thirteen patterns, and none of them shout.</p>
+  </div>
+</section>
+
+<div class="lg-pband" aria-label="The polos, worn">
+  <figure><img src="img/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" loading="lazy" style="object-position:52% center"></figure>
+  <figure><img src="img/walk-off-green.webp" alt="Walking off the green in a Lucky polo" loading="lazy"></figure>
+  <figure><img src="img/green-read-fit.webp" alt="Reading a putt in the Lucky polo and hat" loading="lazy" style="object-position:60% 40%"></figure>
+</div>
+
+<section class="lg-wrap styles" aria-label="Start with a style">{{STYLES}}</section>
+
+<div class="bar" id="bar"><div class="lg-wrap bar-in">
+  <div class="fg" role="group" aria-label="Collar"><span class="lbl">Collar</span>
+    <button type="button" data-f="collar" data-v="" aria-pressed="true">All</button>
+    <button type="button" data-f="collar" data-v="classic" aria-pressed="false">Classic</button>
+    <button type="button" data-f="collar" data-v="blade" aria-pressed="false">Blade</button></div>
+  <div class="fg" role="group" aria-label="Colour"><span class="lbl">Colour</span>
+    <button type="button" data-f="colour" data-v="" aria-pressed="true">All</button>
+    <button type="button" data-f="colour" data-v="light" aria-pressed="false"><i class="light"></i>Light</button>
+    <button type="button" data-f="colour" data-v="dark" aria-pressed="false"><i class="dark"></i>Dark</button>
+    <button type="button" data-f="colour" data-v="colour" aria-pressed="false"><i class="colour"></i>Colour</button></div>
+  <div class="fg" role="group" aria-label="In stock in my size"><span class="lbl">My size</span>
+    <button type="button" data-f="size" data-v="S" aria-pressed="false">S</button>
+    <button type="button" data-f="size" data-v="M" aria-pressed="false">M</button>
+    <button type="button" data-f="size" data-v="L" aria-pressed="false">L</button>
+    <button type="button" data-f="size" data-v="XL" aria-pressed="false">XL</button>
+    <button type="button" data-f="size" data-v="XXL" aria-pressed="false">XXL</button>
+    <button type="button" data-f="size" data-v="3XL" aria-pressed="false">3XL</button></div>
+  <div class="fright">
+    <span class="count"><b id="shown">13</b> of 13</span>
+    <label><span class="sr">Sort</span><select id="sort"><option value="featured">Featured</option><option value="best">Best selling</option><option value="az">Alphabetically, A to Z</option><option value="za">Alphabetically, Z to A</option><option value="new">Date, new to old</option><option value="old">Date, old to new</option><option value="stock">Most sizes in stock</option></select></label>
+  </div>
+</div></div>
+
+<section class="lg-wrap">
+  <div class="grid" id="grid">{{CARDS}}</div>
+  <p class="empty" id="empty" hidden>Nothing in that combination. <button class="lg-btn-line lg-btn-sm" type="button" data-reset>Clear the filters</button></p>
+</section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap faq-in">
+  <div>
+    <p class="lg-eyebrow">Before you pick</p>
+    <h2 class="lg-d2">Fit, fabric and getting it <span class="lg-foil-word">right</span></h2>
+    <p class="lg-body">One price in every size, four-way stretch, UPF 50+. Thirty days to send it back unworn if the fit isn't right.</p>
+  </div>
+  <div class="lg-faq">
+    <details class="lg-fq"><summary>How does it fit?</summary><div class="lg-fq-a"><p>Tailored athletic. It follows the shoulders and tapers slightly through the body, so it sits closer than a traditional boxy golf polo without restricting the swing. The four-way stretch means the fit is more forgiving than the cut suggests. If you normally wear a large in a performance polo, a large here's right. Between sizes, or want room across the chest? Size up.</p></div></details>
+    <details class="lg-fq"><summary>Classic collar or Blade collar?</summary><div class="lg-fq-a"><p>The Blade drops the buttons. No placket means nothing at your throat to sit crooked halfway round, and the collar lies flat instead of curling up on you by the ninth. Underneath it's the Classic, unchanged: tailored athletic through the body, 88/12 poly-spandex, four-way stretch that moves at the top of the backswing. UPF 50+ and moisture-wicking, same as everything else we make. You're choosing a collar and a print, and nothing that matters to how it plays.</p></div></details>
+    <details class="lg-fq"><summary>What's it made of?</summary><div class="lg-fq-a"><p>88/12 poly-spandex, under 180gsm, so it's light without being flimsy. Four-way stretch, moisture-wicking, odour-resistant and colour-retentive, UPF 50+. Machine wash, no special handling.</p></div></details>
+    <details class="lg-fq"><summary>What if the size is wrong?</summary><div class="lg-fq-a"><p>Apparel comes back within 30 days, unworn with the tags on.</p></div></details>
+  </div>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">Finish it off</p><h2 class="lg-d2">Hats</h2></div><a class="lg-link" href="hats.html">All ten hats <span>&rarr;</span></a></div>
+  <div class="hats">
+    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-white-gold-classic-cut.webp" alt="White and gold classic hat" loading="lazy"></span><span class="nm">White | Gold Classic Hat</span><b>$29</b></a>
+    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-white-ibtbl-cut.webp" alt="It's Better To Be Lucky hat, white" loading="lazy"></span><span class="nm">It's Better To Be Lucky Hat, white</span><b>$29</b></a>
+    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-cream-updown-cut.webp" alt="Cream upside down hat" loading="lazy"></span><span class="nm">Cream Upside Down Hat</span><b>$29</b></a>
+    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-black-ibtbl-cut.webp" alt="It's Better To Be Lucky hat, black" loading="lazy"></span><span class="nm">It's Better To Be Lucky Hat, black</span><b>$29</b></a>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Dress code: <span class="lg-foil-word">ours</span></h2>
+  <p class="lg-lede">Thirty days to send it back if the fit isn't right. Mags never returns anything, but he also never pays.</p>
+  <a class="lg-btn-line" href="#grid">Back to the polos <span aria-hidden="true">&uarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var f = { collar: '', colour: '', size: '' };
+  var grid = $('#grid'), cards = $$('.polo', grid), order = cards.slice();
+
+  function apply(){
+    var n = 0;
+    cards.forEach(function(c){
+      var ok = (!f.collar || c.dataset.collar === f.collar)
+        && (!f.colour || c.dataset.colour === f.colour)
+        && (!f.size || c.dataset.sizes.split(' ').indexOf(f.size) > -1);
+      c.hidden = !ok; if (ok) n++;
+    });
+    $('#shown').textContent = n;
+    $('#empty').hidden = n > 0;
+    $$('[data-f]').forEach(function(b){ b.setAttribute('aria-pressed', String(f[b.dataset.f] === b.dataset.v)); });
+    $$('.style').forEach(function(b){ b.setAttribute('aria-pressed', String(f[b.dataset.f] === b.dataset.v && !!b.dataset.v)); });
+  }
+  function sortBy(how){
+    var list = order.slice(), n = function(el, k){ return +el.dataset[k] || 0; };
+    if (how === 'az') list.sort(function(a, b){ return a.dataset.name.localeCompare(b.dataset.name); });
+    if (how === 'za') list.sort(function(a, b){ return b.dataset.name.localeCompare(a.dataset.name); });
+    if (how === 'best') list.sort(function(a, b){ return n(a, 'best') - n(b, 'best'); });
+    if (how === 'new') list.sort(function(a, b){ return n(b, 'new') - n(a, 'new'); });
+    if (how === 'old') list.sort(function(a, b){ return n(a, 'new') - n(b, 'new'); });
+    if (how === 'stock') list.sort(function(a, b){ return b.dataset.sizes.split(' ').length - a.dataset.sizes.split(' ').length; });
+    list.forEach(function(c){ grid.appendChild(c); });
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-f]');
+    if (b){ var k = b.dataset.f, v = b.dataset.v; f[k] = (f[k] === v && v) ? '' : v; apply();
+      if (b.classList.contains('style')) $('#bar').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if (e.target.closest('[data-reset]')){ f = { collar: '', colour: '', size: '' }; apply(); return; }
+    var q = e.target.closest('.qa-open');
+    if (q){ var card = q.closest('.polo'); var open = card.classList.contains('is-open');
+      $$('.polo.is-open').forEach(function(c){ c.classList.remove('is-open'); $('.qa-open', c).setAttribute('aria-expanded', 'false'); });
+      card.classList.toggle('is-open', !open); q.setAttribute('aria-expanded', String(!open)); return; }
+    var s = e.target.closest('.sizes button:not([disabled])');
+    if (s){ var c2 = s.closest('.polo');
+      LuckyBag.add([{ name: c2.dataset.full, short: c2.dataset.name + ' in ' + s.dataset.size, price: 67,
+        img: c2.dataset.img, hud: ['Size ' + s.dataset.size, c2.dataset.collar === 'blade' ? 'Blade collar' : 'Classic collar'] }],
+        { title: c2.dataset.name + ' is in your bag, size ' + s.dataset.size + '.', more: 'Keep looking', moreAction: '#grid' });
+      c2.classList.remove('is-open'); }
+  });
+  $('#sort').addEventListener('change', function(){ sortBy(this.value); });
+  apply();
+})();
+</script>
+</body>
+</html>

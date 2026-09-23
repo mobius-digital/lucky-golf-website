@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucky Golf · It's better to be lucky</title>
+{{HEAD}}
+<style>
+/* ---------- Home · the August layout, section for section, on v4 pieces ---------- */
+.hero-stamp{position:absolute;right:var(--lg-pad);bottom:clamp(40px,6vw,96px);z-index:3;background:rgba(6,17,11,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:#F4F3F0;padding:10px 14px;border-radius:10px;border:1px solid rgba(237,210,124,.3);text-align:right}
+.hero-stamp b{display:block;color:var(--lg-gold-hi);font-weight:600}
+@media (max-width:900px){.hero-stamp{display:none}}
+.trust-wrap{padding-block:18px}
+.trust-wrap .lg-trust{border:0;padding:0}
+
+.hd{margin-bottom:clamp(24px,3vw,40px)}
+.cards5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:1100px){.cards5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:749px){.cards5{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .cards5::-webkit-scrollbar{display:none}.cards5 > *{flex:0 0 70%;scroll-snap-align:start}}
+
+/* the featured putter: a split with a real photo, not a dark event band */
+.feat .lg-frame{aspect-ratio:3/2}
+.feat .lg-btn-row{margin-top:24px}
+.stampline{display:flex;align-items:center;gap:14px;margin-top:28px;color:var(--lg-ink-64)}
+.stampline::after{content:'';flex:1;height:1px;background:var(--lg-rule)}
+
+/* why the price */
+.claims{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(28px,3vw,44px)}
+.claim{border-top:2px solid var(--lg-gold);padding-top:18px}
+.claim .n{font-variation-settings:'wdth' 62;font-weight:800;font-size:16.8px;color:var(--lg-gold-text)}
+.claim .lg-d3{margin:10px 0 8px}
+.claim p{margin:0;color:var(--lg-ink-70)}
+@media (max-width:760px){.claims{grid-template-columns:1fr}}
+.why-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(24px,4vw,56px);align-items:end}
+.why-top .lg-lede{margin:0}
+@media (max-width:760px){.why-top{grid-template-columns:1fr}}
+
+/* the finder */
+.fnd .lg-chips{margin-bottom:22px}
+.fnd-panel[hidden]{display:none}
+.fnd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,280px));gap:var(--lg-gut)}
+.fnd-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:28px;padding-top:20px;border-top:1px solid var(--lg-rule)}
+.fnd-foot .lg-aside{margin:0}
+
+/* the photo band carries the four things buyers praise */
+.lg-pband .pb{position:relative}
+.pband-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:749px){.pband-4{grid-template-columns:1fr 1fr}.pband-4 figure:first-child{grid-column:auto}}
+
+/* reviews on a photo: the page's one dark beat */
+.pull{margin:0 0 clamp(32px,4vw,56px);max-width:40ch}
+.pull q{display:block;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;font-size:clamp(24px,2.6vw,36px);line-height:1.02;quotes:none}
+.pull figcaption{margin-top:16px;color:var(--lg-on-dark-m)}
+.pull figcaption b{color:var(--lg-on-dark)}
+.proof-hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:24px}
+.agg{display:flex;align-items:center;gap:20px;margin:0 0 clamp(24px,3vw,36px);max-width:620px}
+.agg > b{font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.9}
+.rvrail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rvrail::-webkit-scrollbar{display:none}
+.rvc{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;margin:0}
+.rvc .ph{display:flex;align-items:center;gap:12px}
+.rvc .ph .th{width:56px;height:56px;border-radius:10px;background:var(--lg-tile);overflow:hidden;flex:none}
+.rvc .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:4px}
+.rvc blockquote{margin:0;font-size:var(--lg-fs-base);line-height:1.5;color:var(--lg-on-dark)}
+.rvc figcaption{margin-top:auto;color:var(--lg-on-dark-m);font-size:var(--lg-fs-sm)}
+.rvc figcaption b{color:var(--lg-on-dark)}
+.rail-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:24px}
+.rail-foot .lg-aside{margin:0}
+
+/* value props + the collage */
+.vp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:start}
+@media (max-width:900px){.vp-in{grid-template-columns:1fr}}
+.vp-list{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:18px}
+.vp-list li{display:grid;grid-template-columns:28px 1fr;gap:14px}
+.vp-list .ic{width:22px;height:22px;color:var(--lg-gold-text);stroke-width:1.75;margin-top:2px}
+.lg-trust .ic{width:20px;height:20px;flex:none;color:var(--lg-gold-text);stroke-width:1.75}
+.vp-list h3{margin:0;font-size:var(--lg-fs-body);font-weight:700}
+.vp-list p{margin:2px 0 0;color:var(--lg-ink-70)}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.collage .lg-frame:first-child{grid-column:1/-1}
+.collage .lg-slot{aspect-ratio:3/2}
+.ed{margin-top:clamp(48px,6vw,88px)}
+.ed p{color:var(--lg-ink-70);max-width:58ch}
+
+/* the wild */
+.ugc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.ugc::-webkit-scrollbar{display:none}
+.ugc .lg-slot{flex:0 0 min(240px,62%);aspect-ratio:9/16;scroll-snap-align:start;align-content:end;text-align:left}
+.play{display:grid;place-items:center;width:52px;height:52px;margin-bottom:auto;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:16px;color:var(--lg-ink)}
+.ugc .lg-slot > div{display:flex;flex-direction:column;gap:6px;height:100%}
+.ugc .h{font-weight:700;color:var(--lg-ink);font-size:13px}
+
+/* while you're here */
+.gt{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut)}
+.gt .gtile:first-child{grid-column:1/-1;aspect-ratio:21/9}
+@media (max-width:560px){.gt{grid-template-columns:1fr}.gt .gtile:first-child{aspect-ratio:3/2}}
+body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden;aspect-ratio:3/2;display:flex;align-items:flex-end;color:#F4F3F0;background:#0B1911;text-decoration:none}
+.gtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.gtile:hover img{transform:scale(1.03)}
+.gtile::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,17,11,.9) 0%,rgba(6,17,11,.6) 45%,rgba(6,17,11,0) 75%)}
+.gtile > div{position:relative;z-index:1;padding:22px}
+.gtile .ct{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--lg-gold-hi)}
+.gtile h3{margin:6px 0 6px}
+.gtile p{margin:0 0 14px;color:rgba(244,243,240,.86);max-width:36ch}
+.gtile .lg-tag{position:absolute;left:16px;top:16px;z-index:1}
+.gtile .go{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:3px}
+.gear-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:24px}
+.gear-foot p{margin:0;color:var(--lg-ink-70)}
+
+/* the ambassador program */
+.amb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;padding:clamp(28px,4vw,48px);background:var(--lg-tile);border-radius:var(--lg-r-card)}
+@media (max-width:760px){.amb{grid-template-columns:1fr}}
+
+/* the close */
+.close-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:26px}
+.close-trust span{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:var(--lg-ink-64)}
+.lg-signoff .lg-btn-row{justify-content:center;margin-top:0}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="lg-hero" style="--focus:42% 55%;--focus-m:38% 55%">
+  <img class="lg-hero-img" src="img/two-gold-wedges.webp" alt="Two Carver 02 Gold wedges on the fringe" width="2400" height="1600" fetchpriority="high">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow">It's better to be lucky</p>
+    <h1 class="lg-d1">Get used to the <span class="lg-foil-word">attention</span></h1>
+    <p class="lg-lede">Built to the same standard as the big names, finished in gold, and priced like nobody in the middle is taking a cut. Sixty days to prove us wrong.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="#families">Shop the clubs <span aria-hidden="true">&rarr;</span></a></div>
+  </div></div>
+  <div class="hero-stamp lg-label">Carver 02 · Gold or black<b>Six lofts · K and S grind</b></div>
+</section>
+
+<!-- ============ TRUST ROW (was the marquee) ============ -->
+<div class="trust-wrap" style="border-bottom:1px solid var(--lg-rule)"><div class="lg-wrap"><div class="lg-trust">
+  <span>{{ICON:star}}4.8 from verified buyers</span>
+  <span>{{ICON:badge-check}}Thousands of golfers in the bag</span>
+  <span>{{ICON:truck}}Free shipping at $198</span>
+  <span>{{ICON:credit-card}}Pay later with Shop Pay</span>
+</div></div></div>
+
+<!-- ============ SHOP BY FAMILY ============ -->
+<section class="lg-sec" id="families"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">The clubs</p><h2 class="lg-d2">Here's everything we <span class="lg-foil-word">make</span></h2><p class="lg-body">Most golfers start with a wedge. Carter started with one, ended up with two and a putter, and told us he's already picking the next one.</p></div><a class="lg-link" href="clubs.html">Shop everything <span>&rarr;</span></a></div>
+  <div class="cards5">
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="Carver 02 Gold" loading="lazy"><span class="lg-tag">Best seller</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">People ask about this one before they ask your score.</span></span></a>
+    <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The same wedge with the lights off. Gold shows up on the clover and the stamp, nowhere else.</span></span></a>
+    <a class="lg-card" href="blade.html"><span class="lg-card-ph is-cut"><img src="img/blade-cut.webp" alt="Tracer Blade" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Fully milled, for a stroke with some arc in it. Sold out, and we're not happy about it either.</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">It makes four-footers boring, which is the nicest thing you can say about a putter.</span></span></a>
+    <a class="lg-card" href="stryker.html"><span class="lg-card-ph is-cut"><img src="img/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp" alt="Stryker" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">Goes where your long iron was supposed to go. Titanium, nineteen degrees, gets up from anywhere.</span></span></a>
+  </div>
+</div></section>
+
+<!-- ============ FEATURED PUTTER (was the dark event band) ============ -->
+<section class="lg-sec feat" style="padding-top:0"><div class="lg-wrap">
+  <div class="lg-split is-flip">
+    <figure class="lg-frame"><img src="img/black-hat-mallet.webp" alt="The Tracer Mallet on the green beside the black Lucky hat" loading="lazy"></figure>
+    <div>
+      <p class="lg-eyebrow">On the green</p>
+      <h2 class="lg-d2">No ping. No buzz. Just <span class="lg-foil-word">roll</span></h2>
+      <p class="lg-body">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
+      <div class="lg-btn-row"><a class="lg-btn-line" href="mallet.html">Roll it pure <span aria-hidden="true">&rarr;</span></a><a class="lg-link" href="blade.html" style="align-self:center">Prefer a blade? <span>&rarr;</span></a></div>
+      <div class="stampline lg-label">Tracer Mallet · 304 stainless · $229</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ WHY THE PRICE ============ -->
+<section class="lg-sec" id="why" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="why-top">
+    <div><p class="lg-eyebrow">Priced honestly</p><h2 class="lg-d2">Everything you're paying for is the <span class="lg-foil-word">club</span></h2></div>
+    <p class="lg-lede">Most of what you pay for a big-brand club isn't the club. It's the tour contracts, the distributors and the retail margin stacked on top. We skip all three and sell direct, so the price looks like a mistake right up until you understand why it isn't.</p>
+  </div>
+  <div class="claims">
+    <div class="claim"><span class="n">01</span><h3 class="lg-d3">No middlemen</h3><p>We sell direct, so the savings aren't a sale. They're what the club costs without anyone in between.</p></div>
+    <div class="claim"><span class="n">02</span><h3 class="lg-d3">No tour contracts</h3><p>Nobody's paid to put a Lucky in play on Sunday. That money was never in your price to begin with.</p></div>
+    <div class="claim"><span class="n">03</span><h3 class="lg-d3">What's left is the club</h3><p>The forging, the milling, the finish. The parts you actually hit.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ CLUB FINDER ============ -->
+<section class="lg-sec fnd" id="finder" style="padding-top:0"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">Club finder</p><h2 class="lg-d2">Where's the round getting away from <span class="lg-foil-word">you?</span></h2>
+    <p class="lg-body">Tell us where the round gets away from you. If nothing's broken and you just want the gold one, there's a tab for that too.</p></div></div>
+  <div class="lg-chips" role="tablist" aria-label="What to fix">
+    <button class="lg-chip" type="button" role="tab" aria-pressed="true" data-fp="0">Around the green</button>
+    <button class="lg-chip" type="button" role="tab" aria-pressed="false" data-fp="1">On the green</button>
+    <button class="lg-chip" type="button" role="tab" aria-pressed="false" data-fp="2">The long ones</button>
+    <button class="lg-chip" type="button" role="tab" aria-pressed="false" data-fp="3">Just the gold one</button>
+  </div>
+  <div class="fnd-panel" data-panel="0"><div class="fnd-grid">
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph"><img src="img/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp" alt="Carver 02 Gold at the ball" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Two sole grinds, so you can match the club to the turf you actually play.</span></span></a>
+    <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The Carver in black. Same club underneath, quieter on top.</span></span></a>
+  </div></div>
+  <div class="fnd-panel" data-panel="1" hidden><div class="fnd-grid">
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="Tracer Mallet on the green" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">More head behind the ball, so the ones you catch thin still finish close.</span></span></a>
+    <a class="lg-card" href="blade.html"><span class="lg-card-ph"><img src="img/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp" alt="Tracer Blade on the green" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Feedback over forgiveness, if that's the trade you want.</span></span></a>
+  </div></div>
+  <div class="fnd-panel" data-panel="2" hidden><div class="fnd-grid">
+    <a class="lg-card" href="stryker.html"><span class="lg-card-ph"><img src="img/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp" alt="Stryker behind the ball" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">For the long one that has to end up on the green, not near it.</span></span></a>
+  </div></div>
+  <div class="fnd-panel" data-panel="3" hidden><div class="fnd-grid">
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="Carver 02 Gold" loading="lazy"><span class="lg-tag">Best seller</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">The one people ask about. Six lofts, two grinds, either hand.</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Gold on the green, where everybody's standing around watching.</span></span></a>
+  </div></div>
+  <div class="fnd-foot"><p class="lg-aside">Still not sure? Every club comes with sixty days to change your mind.</p><a class="lg-btn-line lg-btn-sm" href="#families">See every club <span aria-hidden="true">&rarr;</span></a></div>
+</div></section>
+
+<!-- ============ PHOTO BAND: four shoot photos, each carrying one real line from a buyer ============ -->
+<div class="lg-pband pband-4" aria-label="Lucky, out on the course">
+  <figure class="pb"><img src="img/swing-black-wedge.webp" alt="Holding the finish with the Carver 02 Black" loading="lazy" style="object-position:30% 40%"></figure>
+  <figure class="pb"><img src="img/putt-sunset.webp" alt="A putt at sunset with the gold putter" loading="lazy" style="object-position:55% 60%"></figure>
+  <figure class="pb"><img src="img/from-the-cup.webp" alt="Pulling the ball out of the cup, gold putter on the green" loading="lazy"></figure>
+  <figure class="pb"><img src="img/walk-off-green.webp" alt="Walking off the green in the Lucky hat and polo" loading="lazy"></figure>
+</div>
+
+<!-- ============ REVIEWS ON A PHOTO: the page's one dark beat (pull quote + proof) ============ -->
+<section class="lg-band is-photo" id="reviews" style="--band-bg:url(img/putter-in-hand.webp);--band-pos:center 40%"><div class="lg-wrap">
+  <figure class="pull">
+    <q>&ldquo;all of my friends are jealous from the look.And when they stick on the green and come back two feet, there's no doubt their top quality&rdquo;</q>
+    <figcaption><b>Brandon L.</b> · Carver 02 Gold · 5 stars · verified buyer</figcaption>
+  </figure>
+  <div class="proof-hd">
+    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">Thousands of golfers bag <span class="lg-foil-word">Lucky</span></h2></div>
+    </div>
+  <div class="agg"><b class="lg-num">4.8</b><div><span class="lg-stars" aria-label="4.8 out of 5">{{STARS5}}</span><p class="lg-body" style="margin:6px 0 0">Thousands of golfers, and the ones who write in mostly want to talk about the gold.</p></div></div>
+  <div class="rvrail" role="region" aria-label="Customer reviews" tabindex="0">
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it's total head turner. You don't even have to take it out of the bag and people ask you about it. Solid gold baby!&rdquo;</blockquote><figcaption><b>Michael P.</b> · Carver 02 Gold</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;People borrow it in my league- it’s a winner!&rdquo;</blockquote><figcaption><b>Ray O.</b> · Carver 02 Gold</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Amazing Putter and looks awesome&rdquo;</blockquote><figcaption><b>Arthur V.</b> · Tracer Mallet</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;My buddies already named my club “Goldy” because they are jealous of the results!!&rdquo;</blockquote><figcaption><b>Eric F.</b> · Carver 02 Gold</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now&rdquo;</blockquote><figcaption><b>John L.L.</b> · Stryker</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all.&rdquo;</blockquote><figcaption><b>Carter D.</b> · Carver 02 Gold</figcaption></figure>
+  </div>
+  <div class="rail-foot"><p class="lg-aside">Rather make up your own mind?</p><div class="arrows" data-arrows="rvrail"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
+</div></section>
+
+<!-- ============ APPAREL + GEAR: worn, not floating ============ -->
+<section class="lg-sec" id="gear"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">While you're here</p><h2 class="lg-d2">Grab something to go <span class="lg-foil-word">with it</span></h2>
+    <p class="lg-body">The clubs get the attention. These are what you'll actually wear every round.</p></div></div>
+  <div class="gt">
+    <a class="gtile" href="stryker.html"><img src="img/lucky-stryker-in-hand.webp" alt="The Stryker in hand on the course" loading="lazy"><span class="lg-tag">4.6 ★</span><div><span class="ct">$209</span><h3 class="lg-d2">Stryker</h3><p>The long approach, handled. Titanium, nineteen degrees, and it gets up from anywhere.</p><span class="go">Fill the gap &rarr;</span></div></a>
+    <a class="gtile" href="polos.html"><img src="img/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" loading="lazy" style="object-position:52% center"><div><span class="ct">13 styles</span><h3 class="lg-d2">Polos</h3><p>Cut to sit right mid-swing, and still look like something after the round.</p><span class="go">Shop polos &rarr;</span></div></a>
+    <a class="gtile" href="hats.html"><img src="img/two-hats-mallet.webp" alt="The black and tan Lucky hats on the green" loading="lazy" style="object-position:45% center"><div><span class="ct">10 styles</span><h3 class="lg-d2">Hats</h3><p>Five panels, a snapback, and a sweatband that actually works.</p><span class="go">Shop hats &rarr;</span></div></a>
+  </div>
+  <div class="gear-foot"><p>Apparel and gear come back within 30 days, unworn with tags on.</p><a class="lg-btn-line lg-btn-sm" href="gear.html">Shop all gear <span aria-hidden="true">&rarr;</span></a></div>
+</div></section>
+
+<!-- ============ VALUE PROPS + WHY IT SAYS LUCKY ============ -->
+<section class="lg-sec" id="vp" style="padding-top:0"><div class="lg-wrap">
+  <div class="vp-in">
+    <div>
+      <p class="lg-eyebrow">The deal</p>
+      <h2 class="lg-d2">Take <span class="lg-foil-word">sixty days</span> to make up your mind</h2>
+      <ul class="vp-list">
+        <li>{{ICON:hammer}}<div><h3>Built like the expensive ones</h3><p>Wedges are forged, putters are milled from one block, the hybrid is titanium.</p></div></li>
+        <li>{{ICON:tag}}<div><h3>Priced like we mean it</h3><p>You're paying for the club. Nobody in the middle is taking a cut of it.</p></div></li>
+        <li>{{ICON:rotate-ccw}}<div><h3>Sixty days to decide</h3><p>If it doesn't earn a spot in the bag, send it back.</p></div></li>
+        <li>{{ICON:credit-card}}<div><h3>Pay for it later if you'd rather</h3><p>Shop Pay splits it up at checkout.</p></div></li>
+      </ul>
+      <div class="lg-btn-row"><a class="lg-btn-line" href="story.html">Read our story <span aria-hidden="true">&rarr;</span></a></div>
+    </div>
+    <div class="collage">
+      <figure class="lg-frame"><img src="img/lucky-bag-glove.webp" alt="Lucky clubs in the bag with the clover glove" loading="lazy"></figure>
+      <figure class="lg-frame" style="aspect-ratio:3/2"><img src="img/lucky-wedge-sole-turf.webp" alt="The sole of a Carver in the sand" loading="lazy" style="object-position:center 70%"></figure>
+      <div class="lg-slot" data-md-open="md-shot" data-title="The bench" data-brief="Hands regripping a Carver on the bench. Warm, close."><div><small>Shot needed</small>Hands regripping a Carver on the bench. Warm, close.</div></div>
+    </div>
+  </div>
+  <div class="lg-split ed">
+    <div>
+      <p class="lg-eyebrow">Why it says Lucky</p>
+      <h3 class="lg-d2">You're going to be looking down at this club a lot</h3>
+      <p class="lg-body">Golf is luck sometimes. The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows it. That's the name on the club.</p>
+      <p class="lg-body">And when you're standing over the ball, you're either looking down at the same wedge everyone else bought, or at one that says Lucky: the same tour-quality build as the big names, without the overpaid logo.</p>
+      <p class="lg-body">Confidence over the ball, and knowing you didn't pay extra for it.</p>
+      <p class="lg-aside">It's better to be lucky.</p>
+    </div>
+    <figure class="lg-frame"><img src="img/green-read-fit.webp" alt="Reading a putt in the Lucky hat and polo, gold putter in hand" loading="lazy" style="object-position:60% 40%"></figure>
+  </div>
+</div></section>
+
+<!-- ============ LUCKY GOLFERS IN THE WILD ============ -->
+<section class="lg-sec" id="wild" style="padding-top:0"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">See it in play</p><h2 class="lg-d2">Lucky golfers in the <span class="lg-foil-word">wild</span></h2>
+    <p class="lg-body">Real rounds, real people, mostly showing off. Which we encourage.</p></div>
+    <div class="arrows" data-arrows="ugc"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
+  <div class="ugc" id="ugc">
+    <div class="lg-slot" data-md-open="md-shot" data-title="Creator reel still" data-brief="Gold Carver in the bag on a cart path, walking shot, vertical crop"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator reel</small>Gold Carver in the bag on a cart path, walking shot<span class="h">@creator</span></div></div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="First tee, Carver 02 Gold in hand, morning light"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>First tee, Carver 02 Gold in hand, morning light<span class="h">@customer</span></div></div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="Creator post" data-brief="Tracer behind the ball on the green, ball rolling out"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator post</small>Tracer behind the ball on the green, ball rolling out<span class="h">@creator</span></div></div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="Full bag setup, gold clubs fanned, overhead"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>Full bag setup, gold clubs fanned, overhead<span class="h">@customer</span></div></div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="Creator reel still" data-brief="Stryker off the deck, follow-through, ball in flight"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator reel</small>Stryker off the deck, follow-through, ball in flight<span class="h">@creator</span></div></div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="Classic Polo on course, three-quarter, clover visible"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>Classic Polo on course, three-quarter, clover visible<span class="h">@customer</span></div></div>
+  </div>
+  <div class="rail-foot"><p class="lg-aside">Tag us and you might end up on this page.</p><a class="lg-btn-line lg-btn-sm" href="community.html">See the whole wall <span aria-hidden="true">&rarr;</span></a> <a class="lg-btn-line lg-btn-sm" href="{{IG}}" target="_blank" rel="noopener">Follow us on Instagram {{ICON:instagram}}</a></div>
+</div></section>
+
+
+<!-- ============ AMBASSADOR PROGRAM ============ -->
+<section class="lg-sec" id="trybe" style="padding-top:0"><div class="lg-wrap">
+  <div class="amb">
+    <div><p class="lg-eyebrow">Ambassador program</p><h2 class="lg-d2">The people who actually play them</h2>
+      <p class="lg-body">An open program for golfers who put Lucky in the bag and say what they think. First look at drops, a group chat with us in it, and a shot at a club to play. No follower minimum, and you'll get an answer either way.</p></div>
+    <a class="lg-btn-line" href="trybe.html">About the program <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</div></section>
+
+
+<!-- ============ THE CLOSE: Mags signs off ============ -->
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Go put one in the <span class="lg-foil-word">bag</span></h2>
+  <p class="lg-lede">Sixty days to decide. If it doesn't earn its spot, send it back, no hard feelings.</p>
+  <div class="lg-btn-row"><a class="lg-btn" href="#families">Shop the clubs <span aria-hidden="true">&rarr;</span></a><a class="lg-btn-line" href="story.html">Read our story</a></div>
+  <div class="close-trust"><span>Sixty-day returns</span><span>Thousands of golfers</span><span>4.8 from verified buyers</span><span>Ships in 1 to 2 business days</span></div>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+
+<div class="md" id="md-shot" hidden role="dialog" aria-modal="true" aria-labelledby="md-shot-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-shot-t" data-shot-title>Shot needed</h2>
+  <h4>The brief</h4><p data-shot-brief></p>
+  <p>On the shoot list. The photo or clip sits here when it lands.</p>
+</div></div>
+
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+    var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  /* the finder tabs */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-fp]');
+    if (t){ $$('[data-fp]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === t)); });
+      $$('[data-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-panel') !== t.getAttribute('data-fp'); }); return; }
+    var a = e.target.closest('[data-arrows] button');
+    if (a){ var box = a.closest('[data-arrows]').getAttribute('data-arrows'), r = $('.' + box) || $('#' + box);
+      r.scrollBy({ left: (a.getAttribute('aria-label') === 'Next' ? 1 : -1) * r.clientWidth * .6, behavior: 'smooth' }); }
+  });
+})();
+</script>
+</body>
+</html>

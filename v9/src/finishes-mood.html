@@ -1,0 +1,63 @@
+<!-- ============ THE WORLD, as one dark beat (the mood demo) ============
+     Rebuilt 2026-09-20 after the first attempt looked like three stripes glued
+     together: a dark bar, a bright photo hard against it, then cream shot
+     briefs on dark. Now it is ONE dark section, the photo sits in a frame with
+     room around it, the words are beside the picture and not fighting a bright
+     sky, and only real photography is in the rail. -->
+<style>
+#finishes{background:var(--lg-page);padding-block:clamp(48px,6vw,96px)}
+#finishes .hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px 40px}
+#finishes .world{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(20px,3vw,44px);align-items:center;
+  margin-top:clamp(26px,3.5vw,44px)}
+@media (max-width:900px){#finishes .world{grid-template-columns:1fr}}
+#finishes .world[hidden]{display:none}
+#finishes figure{margin:0;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-surface)}
+#finishes figure img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+#finishes .strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+#finishes .strip figure img{aspect-ratio:4/3}
+#finishes .strip figure.is-cut{background:var(--lg-tile)}
+#finishes .strip figure.is-cut img{object-fit:contain;padding:14px}
+</style>
+<section id="finishes" class="lg-on-dark" data-mood="{{MOOD}}" data-metal="{{MOOD}}" data-ground="twilight">
+  <div class="lg-wrap">
+    <div class="hd">
+      <div><p class="lg-eyebrow">Two finishes</p><h2 class="lg-d1">Same wedge.<br>Different <span class="lg-foil-word">volume.</span></h2></div>
+      <div class="seg" data-moodseg role="group" aria-label="Finish">
+        <button class="lg-chip" type="button" data-m="gold" aria-pressed="{{SEG_G}}">Gold</button>
+        <button class="lg-chip" type="button" data-m="black" aria-pressed="{{SEG_B}}">Black</button>
+      </div>
+    </div>
+
+    <div class="world" data-mh="gold"{{MH_G}}>
+      <div>
+        <figure><img src="img/two-gold-wedges.webp" alt="Two Carver 02 Gold wedges on the fringe" loading="lazy" style="object-position:40% 55%"></figure>
+        <div class="strip">
+          <figure><img src="img/lucky-carver-gold-address.webp" alt="The 56 at address" loading="lazy" style="object-position:center 62%"></figure>
+          <figure><img src="img/gold-wedge-bag.webp" alt="Resting on the bag" loading="lazy"></figure>
+          <figure class="is-cut"><img src="img/gold-full-cut.webp" alt="The gold head" loading="lazy"></figure>
+        </div>
+      </div>
+      <div>
+        <h3 class="lg-d2">Get used to the attention</h3>
+        <p class="lg-body">Gold from heel to toe. It catches the light at address, it looks like nothing else in the group, and your short game becomes the thing somebody brings up on the next hole.</p>
+        <a class="lg-btn-line" href="carver.html">See the gold <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <div class="world" data-mh="black"{{MH_B}}>
+      <div>
+        <figure><img src="img/swing-black-wedge.webp" alt="Holding the finish with the Carver 02 Black" loading="lazy" style="object-position:30% 42%"></figure>
+        <div class="strip">
+          <figure><img src="img/lucky-golfer-address.webp" alt="Over the ball with the black wedge" loading="lazy" style="object-position:center 40%"></figure>
+          <figure class="is-cut"><img src="img/black-cut.webp" alt="The black head" loading="lazy"></figure>
+          <figure class="is-cut"><img src="img/black-full-cut.webp" alt="The black head, face on" loading="lazy"></figure>
+        </div>
+      </div>
+      <div>
+        <h3 class="lg-d2">The one nobody notices</h3>
+        <p class="lg-body">Blacked out, with gold left on the clover and the loft stamp. It sits down quiet at address and nobody on the tee says a word until you've hit it.</p>
+        <a class="lg-btn-line" href="black.html">See the black <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>

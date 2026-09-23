@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{FULL}} · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Polo product · the approved apparel page on v4 pieces ---------- */
+.pdp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding-bottom:var(--lg-sec)}
+@media (max-width:980px){.pdp{grid-template-columns:1fr}}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gal figure{margin:0;position:relative;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);aspect-ratio:1;cursor:zoom-in}
+.gal figure.wide{grid-column:1/-1;aspect-ratio:4/5}
+.gal img{display:block;width:100%;height:100%;object-fit:cover}
+.gal figure.cut img{object-fit:contain;padding:22px}
+.dots{display:none}
+
+.buy{position:sticky;top:96px}
+.price{margin-top:14px;display:flex;align-items:baseline;gap:8px}
+.price b{font-variation-settings:'wdth' 100;font-weight:600;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.price span{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:24px 0 10px}
+.row .m{color:var(--lg-ink-64);text-transform:none;letter-spacing:0;font-variation-settings:'wdth' 100;font-weight:500;font-size:var(--lg-fs-sm)}
+.row a{font-size:var(--lg-fs-sm);color:var(--lg-gold-text);font-weight:600;text-decoration:none}
+.row a:hover{text-decoration:underline}
+.sw-row{display:flex;flex-wrap:wrap;gap:8px}
+.sw-row .lg-swatch{width:56px;height:56px;display:block}
+.sw-row .lg-swatch img{object-fit:cover;mix-blend-mode:normal}
+.sw-row a[aria-current]{border:2px solid var(--lg-ink)}
+.all-prints{margin:6px 0 0;font-size:var(--lg-fs-sm)}
+.all-prints a{display:inline-block;padding:12px 2px}
+.sizes{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.sizes .lg-chip{padding:0 4px}
+.fitnote{margin:12px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.atc-row{display:flex;gap:10px;margin-top:22px}
+.qty{display:flex;align-items:center;border:1px solid var(--lg-rule);border-radius:var(--lg-r-btn);overflow:hidden;flex:none}
+.qty button{width:46px;height:58px;border:0;background:none;color:var(--lg-ink);font-size:20px;cursor:pointer}
+.qty input{width:44px;height:58px;border:0;text-align:center;font:inherit;font-weight:700;-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.atc-row .lg-btn{flex:1;min-height:58px}
+.trustl{display:grid;gap:6px;margin-top:14px;font-size:var(--lg-fs-sm)}
+.trustl-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.trustl a{color:var(--lg-ink-70)}
+.facts{margin-top:22px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.buy .lg-faq{margin-top:22px}
+.buy .lg-fq summary{font-size:var(--lg-fs-base);padding:13px 0}
+.buy .lg-fq-a ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+.piece .lg-split{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.piece .lg-frame{aspect-ratio:4/5}
+.more .lg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.more .lg-grid{grid-template-columns:1fr}}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(20px,3vw,32px)}
+
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:var(--lg-z-rail);display:none;align-items:center;gap:12px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--lg-page);border-top:1px solid var(--lg-rule)}
+.stickybar[data-on]{display:flex}
+.stickybar b{display:block;font-size:14px;line-height:1.2}
+.stickybar span{color:var(--lg-ink-64);font-size:13px}
+.stickybar > div{flex:1;min-width:0}
+.stickybar .sb-ph{display:none;width:48px;height:48px;border-radius:10px;background:var(--lg-tile);overflow:hidden;flex:none}
+.stickybar .sb-ph img{width:100%;height:100%;object-fit:contain;padding:3px}
+.stickybar .lg-btn{min-height:48px;padding:0 20px}
+@media (min-width:750px){
+  .stickybar{padding:10px max(var(--lg-pad),calc((100vw - var(--lg-wrap)) / 2 + var(--lg-pad)));box-shadow:0 -8px 24px rgba(23,20,15,.08)}
+  .stickybar .sb-ph{display:block}
+  .stickybar b{font-size:16px}
+  .stickybar .lg-btn{min-width:220px}
+  .stickybar .sb-sizes{display:flex;gap:5px}
+}
+.sb-sizes{display:none;gap:5px}
+.sb-sizes button{min-width:40px;min-height:44px;border:1px solid var(--lg-rule);border-radius:9px;background:var(--lg-page);color:var(--lg-ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;font-size:12px}
+.sb-sizes button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.sb-sizes button[disabled]{color:var(--lg-ink-38);border-style:dashed;text-decoration:line-through;cursor:not-allowed}
+body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
+
+.sg-tbl{width:100%}
+.sg-units{display:flex;gap:6px;margin-bottom:14px}
+[data-unit-panel][hidden]{display:none}
+@media (max-width:749px){
+  .gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .gal::-webkit-scrollbar{display:none}
+  .gal figure{flex:0 0 86%;scroll-snap-align:center}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+  .dots i{width:6px;height:6px;border-radius:50%;background:var(--lg-ink-38)}
+  .dots i.on{background:var(--lg-ink)}
+  .buy{position:static}
+}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="home.html">Home</a></li><li><a href="polos.html">Polos</a></li><li><span aria-current="page">{{FULL}}</span></li>
+</ol></nav>
+
+<!-- ============ THE FOLD ============ -->
+<div class="lg-wrap"><div class="pdp">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">
+      <figure class="wide cut" data-zoom="img/{{STEM}}-cut.webp"><img src="img/{{STEM}}-cut.webp" alt="{{FULL}}, front" width="803" height="1066"></figure>
+      <figure data-zoom="img/{{STEM}}-collar.webp"><img src="img/{{STEM}}-collar.webp" alt="{{FULL}}, the collar" width="900" height="900" loading="lazy"></figure>
+      <figure data-zoom="img/{{STEM}}-print.webp"><img src="img/{{STEM}}-print.webp" alt="{{FULL}}, the print up close" width="900" height="900" loading="lazy"></figure>
+    </div>
+    <div class="dots" data-dots aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="buy" id="buy">
+    <p class="lg-eyebrow">{{COLLAR}} · Polos</p>
+    <h1 class="lg-d1">{{NAME}}</h1>
+    <div class="price"><b>$67</b></div>
+    <p class="lg-body">{{DESC}}</p>
+
+    <div class="row"><span class="lg-label">Print</span><span class="m">{{NAME}}</span></div>
+    <div class="sw-row">{{SWATCHES}}</div>
+    <p class="all-prints"><a href="polos.html">See all thirteen side by side &rarr;</a></p>
+
+    <div class="row" id="sizes"><span class="lg-label">Size <span class="m" data-sizepick></span></span><a href="#" data-md-open="md-size">Size guide &rarr;</a></div>
+    <div class="sizes lg-chips" data-sizes role="group" aria-label="Size"></div>
+    <p class="fitnote"><b>Fit:</b> the four-way stretch makes it more forgiving than the cut suggests. If you wear a large in a performance polo, a large here's right. Between sizes, size up.</p>
+
+    <div class="atc-row">
+      <div class="qty"><button type="button" data-q="-1" aria-label="One fewer">&minus;</button><input id="qty" type="number" value="1" min="1" max="9" aria-label="How many"><button type="button" data-q="1" aria-label="One more">+</button></div>
+      <button class="lg-btn" type="button" data-atc>Add to bag · $67</button>
+    </div>
+    <div class="trustl">
+      <span class="lg-stock" data-stockline>In stock · ships in 1 to 2 days</span>
+      <span class="trustl-links"><a href="#" data-md-open="md-returns">Thirty days, tags on</a><a href="#" data-md-open="md-delivery">Estimate delivery</a></span>
+    </div>
+
+    <div class="lg-specs facts">
+      <div class="lg-spec"><b>88<small>/12</small></b><span>Poly-spandex</span></div>
+      <div class="lg-spec"><b>50<small>+</small></b><span>UPF</span></div>
+      <div class="lg-spec"><b>180<small>gsm</small></b><span>Under, so it's light</span></div>
+      <div class="lg-spec"><b>4<small>way</small></b><span>Stretch</span></div>
+    </div>
+
+    <div class="lg-faq">
+      <details class="lg-fq" open><summary>Fabric and care</summary><div class="lg-fq-a"><ul>
+        <li><b>Fabric</b> 88/12 poly-spandex, under 180gsm. Light, not flimsy.</li>
+        <li><b>Stretch</b> Four-way, so it moves in every direction the swing does.</li>
+        <li><b>Finish</b> Moisture-wicking, odour-resistant, colour-retentive. UPF 50+.</li>
+        <li><b>Care</b> Machine wash. No special handling.</li>
+      </ul></div></details>
+      <details class="lg-fq"><summary>Shipping and returns</summary><div class="lg-fq-a">
+        <p>Orders leave the warehouse in one to two business days, and shipping is worked out at checkout.</p>
+        <p>Apparel comes back within thirty days, unworn with the tags on. That's a shorter window than the clubs get, and it's the one part of the policy we can't be relaxed about.</p>
+      </div></details>
+    </div>
+  </div>
+</div></div>
+
+<!-- ============ THE PIECE ============ -->
+<section class="lg-sec piece" style="padding-top:0"><div class="lg-wrap">
+  <div class="lg-split">
+    <div>
+      <p class="lg-eyebrow">The polo</p>
+      <h2 class="lg-d2">Cut to play in, good enough to keep on after</h2>
+      <p class="lg-body">Here's the thing about most golf polos: they're cut like a box, and you feel it at the top of the backswing when the whole shirt drags across your shoulders. This one doesn't do that. Tailored athletic cut, 88/12 poly-spandex, four-way stretch, and it moves when you do.</p>
+      <p class="lg-body">You'll notice the UPF 50+ and the moisture-wicking in August and then never think about either again, which is how that stuff is supposed to work. It also comes out of a bag without looking like it spent the morning in one.</p>
+      <p class="lg-body">Every print in the range is this same shirt underneath, so there's nothing to weigh up on fabric. Pick the one you actually want to look down at.</p>
+    </div>
+    <figure class="lg-frame is-tall"><img src="img/{{STEM}}-print-tall.webp" alt="The {{NAME}} print up close" loading="lazy"></figure>
+  </div>
+</div></section>
+
+<!-- ============ THE RANGE, WORN ============ -->
+<!-- These frames are the polo range on the course, and they sit under the
+     paragraph that says every print is the same shirt. They are NOT this print:
+     until we shoot this print on a body, nothing here claims to be it. -->
+<div class="lg-pband" aria-label="Lucky polos on the course">
+  <figure><img src="img/fit-sunset.webp" alt="A Lucky polo and a white rope hat at sunset" loading="lazy" style="object-position:52% center"></figure>
+  <figure><img src="img/green-read-fit.webp" alt="Reading a putt in a Lucky polo" loading="lazy" style="object-position:60% 40%"></figure>
+  <figure><img src="img/walk-off-green.webp" alt="Walking off the green in a Lucky polo" loading="lazy"></figure>
+</div>
+
+<!-- ============ WEAR IT WITH ============ -->
+<section class="lg-sec more"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">Wear it with</p><h2 class="lg-d2">The rest of the <span class="lg-foil-word">look</span></h2></div><a class="lg-link" href="polos.html">All apparel <span>&rarr;</span></a></div>
+  <div class="lg-grid">
+    <a class="lg-card" href="hats.html"><span class="lg-card-ph is-cut"><img src="img/hat-black-ibtbl-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">It's Better To Be Lucky Hat</span><span class="lg-card-pr">$29</span><span class="lg-card-ln">Black snapback, the line on the front.</span></span></a>
+    <a class="lg-card" href="{{OTHER_HREF}}"><span class="lg-card-ph is-cut"><img src="img/{{OTHER_IMG}}" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">{{OTHER_NAME}}</span><span class="lg-card-pr">$67</span><span class="lg-card-ln">{{OTHER_LN}}</span></span></a>
+    <a class="lg-card" href="hats.html"><span class="lg-card-ph is-cut"><img src="img/hat-cream-updown-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Up &amp; Down Hat</span><span class="lg-card-pr">$29</span><span class="lg-card-ln">Cream rope hat. Goes with the loud prints.</span></span></a>
+  </div>
+</div></section>
+
+<!-- ============ MAGS SIGNS OFF ============ -->
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Nobody needs another <span class="lg-foil-word">polo</span></h2>
+  <p class="lg-lede">You'll wear this one anyway. Thirty days to send it back if the fit's wrong.</p>
+  <a class="lg-btn-line" href="#sizes">Pick a size <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph"><img src="img/{{STEM}}-cut.webp" alt=""></span>
+  <div><b>{{FULL}}</b><span data-sticky-note>$67</span></div>
+  <div class="sb-sizes" data-sb-sizes></div>
+  <button class="lg-btn" type="button" data-atc-sticky>Add to bag</button>
+</div>
+
+<!-- modals -->
+<div class="md" id="md-size" hidden role="dialog" aria-modal="true" aria-labelledby="md-size-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-size-t">Size guide</h2>
+  <p>Garment measurements, laid flat. Chest is measured across and doubled.</p>
+  <div class="sg-units lg-chips" role="group" aria-label="Units">
+    <button class="lg-chip" type="button" data-unit="in" aria-pressed="true">Inches</button>
+    <button class="lg-chip" type="button" data-unit="cm" aria-pressed="false">Centimetres</button>
+  </div>
+  <div data-unit-panel="in"><table class="lg-table sg-tbl">
+    <thead><tr><th>Athlete fit (in)</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>3XL</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Length</th><td>28.3</td><td>29.1</td><td>29.9</td><td>30.7</td><td>31.5</td><td>32.3</td></tr>
+      <tr><th scope="row">Chest</th><td>20.5</td><td>21.7</td><td>22.8</td><td>24.0</td><td>25.2</td><td>26.4</td></tr>
+      <tr><th scope="row">Shoulder</th><td>17.7</td><td>18.5</td><td>19.3</td><td>20.1</td><td>20.9</td><td>21.7</td></tr>
+    </tbody></table></div>
+  <div data-unit-panel="cm" hidden><table class="lg-table sg-tbl">
+    <thead><tr><th>Athlete fit (cm)</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>3XL</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Length</th><td>72</td><td>74</td><td>76</td><td>78</td><td>80</td><td>82</td></tr>
+      <tr><th scope="row">Chest</th><td>52</td><td>55</td><td>58</td><td>61</td><td>64</td><td>67</td></tr>
+      <tr><th scope="row">Shoulder</th><td>45</td><td>47</td><td>49</td><td>51</td><td>53</td><td>55</td></tr>
+    </tbody></table></div>
+  <h4>How it fits</h4>
+  <p>Tailored athletic. It follows the shoulders and tapers slightly through the body, so it sits closer than a boxy golf polo without restricting the swing. Between sizes, or want room across the chest? Size up.</p>
+</div></div>
+<div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Refund policy</p>
+  <h2 class="lg-d3" id="md-returns-t">Thirty days, tags on</h2>
+  <p>Apparel comes back within thirty days of delivery, unworn, unwashed and in original condition with all original tags attached.</p>
+  <p>No makeup or deodorant marks, odours, pet hair, stretching or laundering. <b>A return without its tags has $7 deducted from the refund.</b></p>
+  <p>Requests after thirty days aren't accepted. Clubs get sixty days; apparel doesn't.</p>
+  <h4>Wrong size</h4>
+  <p>Size is the most common reason anything comes back, which is why the size guide is worth thirty seconds before you order. Refunds are issued after the item is received and inspected. Return shipping is yours, and original shipping isn't refunded.</p>
+</div></div>
+<div class="md" id="md-delivery" hidden role="dialog" aria-modal="true" aria-labelledby="md-delivery-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Delivery</p>
+  <h2 class="lg-d3" id="md-delivery-t">When it turns up</h2>
+  <div class="md-carriers"><span class="lg-tag">USPS</span><span class="lg-tag">UPS</span><span class="lg-tag">FedEx</span></div>
+  <p>Orders leave the warehouse in one to two business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p>
+  <p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $198 or more ship free.</p>
+  <h4>Where it ships from</h4>
+  <p>Long Beach, California. It'll ship anywhere in the world from there.</p>
+</div></div>
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var POLO = {{POLO_JSON}};
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var pick = (POLO.sizes.filter(function(z){ return z.ok; })[0] || {}).size || null;
+
+  function paint(){
+    $('[data-sizes]').innerHTML = POLO.sizes.map(function(z){
+      return '<button class="lg-chip" type="button" data-size="' + z.size + '" aria-pressed="' + (z.size === pick) + '"'
+        + (z.ok ? '' : ' data-dead aria-label="' + z.size + ', sold out"') + '>' + z.size + '</button>'; }).join('');
+    $('[data-sb-sizes]').innerHTML = POLO.sizes.map(function(z){
+      return '<button type="button" data-size="' + z.size + '" aria-pressed="' + (z.size === pick) + '"'
+        + (z.ok ? '' : ' disabled') + '>' + z.size + '</button>'; }).join('');
+    $('[data-sizepick]').textContent = pick ? '· ' + pick : '';
+    $('[data-stockline]').textContent = 'In stock · ships in 1 to 2 days';
+    var n = +$('#qty').value || 1;
+    $('[data-atc]').textContent = 'Add to bag · $' + (67 * n);
+    $('[data-sticky-note]').textContent = pick ? 'Size ' + pick + ' · $' + (67 * n) : '$67';
+  }
+  function add(){
+    if (!pick){ Lucky.jump('sizes'); return; }
+    var n = Math.max(1, Math.min(9, +$('#qty').value || 1)), items = [];
+    for (var i = 0; i < n; i++) items.push({ name: POLO.full, short: POLO.name + ' in ' + pick, price: 67, img: POLO.img,
+      hud: ['Size ' + pick, POLO.collar === 'blade' ? 'Blade collar' : 'Classic collar'] });
+    var b = $('[data-atc]'); b.setAttribute('data-done', ''); b.textContent = 'Added';
+    setTimeout(function(){ b.removeAttribute('data-done'); paint(); }, 1600);
+    LuckyBag.add(items, { title: n > 1 ? n + ' of the ' + POLO.name + ' are in your bag.' : POLO.name + ' is in your bag, size ' + pick + '.',
+      more: 'Keep looking', moreAction: 'polos.html' });
+  }
+  document.addEventListener('click', function(e){
+    var s = e.target.closest('[data-sizes] button,[data-sb-sizes] button');
+    if (s){ if (s.hasAttribute('data-dead') || s.disabled){ Lucky.toast(s.dataset.size + " is sold out in this print. The other prints have it."); return; }
+      pick = s.dataset.size; paint(); return; }
+    var q = e.target.closest('[data-q]');
+    if (q){ var i = $('#qty'); i.value = Math.max(1, Math.min(9, (+i.value || 1) + (+q.dataset.q))); paint(); return; }
+    var u = e.target.closest('[data-unit]');
+    if (u){ $$('[data-unit]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === u)); });
+      $$('[data-unit-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-unit-panel') !== u.dataset.unit; }); }
+  });
+  $('#qty').addEventListener('change', paint);
+  $('[data-atc]').addEventListener('click', add);
+  $('[data-atc-sticky]').addEventListener('click', add);
+
+  /* the sticky bar, once the real button has gone */
+  (function(){
+    var sticky = $('[data-sticky]'), cta = $('.atc-row'), ftr = $('.lg-ftr'); LuckySite.setSticky(sticky);
+    function p(){ var on = cta.getBoundingClientRect().bottom < 0 && ftr.getBoundingClientRect().top > innerHeight;
+      if (on !== sticky.hasAttribute('data-on')){ sticky.toggleAttribute('data-on', on); Lucky.guide.place(); } }
+    addEventListener('scroll', p, { passive: true }); addEventListener('resize', p); p();
+  })();
+  /* gallery dots (phone) */
+  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'), n = g.children.length; d.children[0].classList.add('on');
+    g.addEventListener('scroll', function(){ var i = Math.round(g.scrollLeft / (g.scrollWidth / n));
+      [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }, { passive: true }); })();
+  paint();
+})();
+</script>
+</body>
+</html>

@@ -48,6 +48,42 @@
         "C:/Users/wetzl/Lucky Golf/Website/v8/out"
       ],
       "port": 8792
+    },
+    {
+      "name": "v9-review",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8795",
+        "--directory",
+        "C:/Users/wetzl/Lucky Golf/Website/v9/out"
+      ],
+      "port": 8795
+    },
+    {
+      "name": "styleguide",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8794",
+        "--directory",
+        "C:/Users/wetzl/Lucky Golf/Website/design"
+      ],
+      "port": 8794
+    },
+    {
+      "name": "locus-share",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8793",
+        "--directory",
+        "C:/Users/wetzl/OneDrive/Apps/Desktop/Mobius Digital/Mobius Digital Tools"
+      ],
+      "port": 8793
     }
   ]
 }

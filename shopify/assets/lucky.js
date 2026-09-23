@@ -279,18 +279,23 @@
     var rings = '', labels = '';
     for (var j = 1; j <= 5; j++) {
       rings += '<ellipse class="px-ring' + (j > 1 ? ' r2' : '') + '" cx="' + CX + '" cy="' + CY + '" rx="' + RX[j] + '" ry="' + (RX[j] * Q).toFixed(2) + '"/>';
-      labels += '<text class="px-rl' + (j === 1 ? ' r5' : '') + '" x="' + CX + '" y="' + (CY - RX[j] * Q + 11).toFixed(1) + '" text-anchor="middle">' + (6 - j) + '★</text>';
+      /* only the inner and outer rings get a label: five of them crowded the middle */
+      if (j === 1 || j === 5) labels += '<text class="px-rl' + (j === 1 ? ' r5' : '') + '" x="' + (CX + RX[j] + 8).toFixed(1) + '" y="' + (CY - RX[j] * Q - 6).toFixed(1) + '">' + (6 - j) + ' star' + (j === 1 ? 's' : '') + '</text>';
     }
     var avg = (Math.floor(sum / total * 10) / 10).toFixed(1);   /* rounds DOWN, per the content rules */
+    /* nums:false hides the per-star counts and the total. A count makes a young
+       brand look smaller than it is; the shape of the bars still tells the truth. */
+    var nums = cfg.nums !== false;
     var bars = [5, 4, 3, 2, 1].map(function (k) {
       var pct = (c[k] || 0) / total * 100;
-      return '<div class="lg-score-row"><span>' + k + '★</span><i style="--pct:' + pct.toFixed(1) + '%"></i><span>' + (c[k] || 0) + '</span></div>';
+      return '<div class="lg-score-row"' + (nums ? '' : ' data-nonum') + '><span>' + k + '★</span><i style="--pct:' + pct.toFixed(1) + '%"></i>'
+        + (nums ? '<span>' + (c[k] || 0) + '</span>' : '') + '</div>';
     }).join('');
     host.classList.add('lg-prox');
-    host.innerHTML = '<svg viewBox="0 0 420 300" role="img" aria-label="' + avg + ' out of 5 from ' + total + ' reviews. Closer to the cup is better.">' +
+    host.innerHTML = '<svg viewBox="0 0 420 300" role="img" aria-label="' + avg + ' out of 5 from ' + total + ' reviews, plotted as shots at the pin.">' +
       '<path class="px-axis" d="M' + CX + ' 30V270M27 ' + CY + 'H393"/>' + rings + dots + '<circle class="px-cup" cx="' + CX + '" cy="' + CY + '" r="4"/>' + labels + '</svg>' +
       '<div><div class="lg-score"><b class="lg-num">' + avg + '</b><div class="lg-score-bars">' + bars + '</div>' +
-      '<span class="lg-meta" style="grid-column:1/-1">' + (cfg.label || total + ' reviews') + '. Closer to the cup is better' + (per > 1 ? '; one ball per ' + per + ' reviews' : '') + '.</span></div></div>';
+      '<span class="lg-meta" style="grid-column:1/-1">' + (cfg.label || "Every review takes a shot at the pin.") + '</span></div></div>';
   };
 
   /* ----------------------------------------------------------- the tracer

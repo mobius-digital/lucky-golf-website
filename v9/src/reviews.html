@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reviews · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- All reviews · every club, the misses included ---------- */
+.top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:900px){.top{grid-template-columns:1fr}}
+.bar{position:sticky;top:var(--lg-head-h,64px);z-index:22;background:var(--lg-page);border-block:1px solid var(--lg-rule);margin-top:clamp(28px,4vw,48px)}
+.bar-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
+.fg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fg .lbl{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--lg-ink-64)}
+.fg button{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--lg-rule);background:var(--lg-page);color:var(--lg-ink);font-size:var(--lg-fs-sm);cursor:pointer}
+.fg button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
+.fright{margin-left:auto}
+.fright select{min-height:40px;border-radius:999px;border:1px solid var(--lg-rule);background:var(--lg-page);color:var(--lg-ink);padding:0 12px;font:inherit;font-size:var(--lg-fs-sm)}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px);padding-block:clamp(16px,2vw,24px)}
+@media (max-width:860px){.list{grid-template-columns:1fr}}
+.rv{padding:22px 0;border-bottom:1px solid var(--lg-rule)}
+.rv .st{color:var(--lg-star);letter-spacing:2px}
+.rv b{display:block;margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72;font-weight:700;text-transform:uppercase;font-size:15px}
+.rv p{margin:6px 0 8px;color:var(--lg-ink-70);white-space:pre-line;max-width:64ch}
+.rv small{color:var(--lg-ink-64);font-size:13px}
+.rv .on{display:inline-block;margin-left:6px;padding:2px 8px;border:1px solid var(--lg-rule);border-radius:999px;font-size:12px;color:var(--lg-ink-64)}
+.foot{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding-block:clamp(20px,3vw,32px)}
+.foot p{margin:0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Reviews</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
+  <div class="top">
+    <div>
+      <p class="lg-eyebrow">Every review, every club</p>
+      <h1 class="lg-d1">The good ones, and the <span class="lg-foil-word">grumpy</span> ones</h1>
+      <p class="lg-lede" style="max-width:52ch">All of it, straight from verified buyers through Judge.me. Filter by club or by stars, including the ones that did not go our way.</p>
+      <p style="margin-top:18px"><span class="lg-stars" aria-label="{{AVG}} out of 5">{{STARS5}}</span> <b style="margin-left:8px">{{AVG}} out of five</b></p>
+    </div>
+    <div id="prox"></div>
+  </div>
+</div></section>
+
+<div class="bar"><div class="lg-wrap bar-in">
+  <div class="fg" role="group" aria-label="Club"><span class="lbl">Club</span>{{CLUBS}}</div>
+  <div class="fg" role="group" aria-label="Stars"><span class="lbl">Stars</span>
+    <button type="button" data-s="0" aria-pressed="true">All</button>
+    <button type="button" data-s="5" aria-pressed="false">5 ★</button>
+    <button type="button" data-s="4" aria-pressed="false">4 ★</button>
+    <button type="button" data-s="3" aria-pressed="false">3 ★</button>
+    <button type="button" data-s="2" aria-pressed="false">2 ★</button>
+    <button type="button" data-s="1" aria-pressed="false">1 ★</button>
+  </div>
+  <div class="fright"><label><span class="sr">Sort</span><select id="sort">
+    <option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option>
+  </select></label></div>
+</div></div>
+
+<section class="lg-wrap">
+  <div class="list" id="list"></div>
+  <div class="foot">
+    <p id="count"></p>
+    <button class="lg-btn-line lg-btn-sm" type="button" id="more">Show more</button>
+  </div>
+</section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Bought one? Tell us how it <span class="lg-foil-word">went</span></h2>
+  <p class="lg-lede">The review request lands in your inbox a couple of weeks after delivery. Honest ones are the only ones worth writing.</p>
+  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var ALL = {{REVIEWS_JSON}};
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var club = '', stars = 0, sort = 'recent', shown = 10;
+  var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
+
+  Lucky.proximity($('#prox'), { counts: ALL.totals, nums: false });
+
+  function draw(){
+    var l = ALL.sample.filter(function(r){ return (!club || r.c === club) && (!stars || r.r === stars); });
+    l.sort(sort === 'high' ? function(a, b){ return b.r - a.r || (b.d > a.d ? 1 : -1); }
+         : sort === 'low' ? function(a, b){ return a.r - b.r || (b.d > a.d ? 1 : -1); }
+         : function(a, b){ return b.d > a.d ? 1 : -1; });
+    $('#list').innerHTML = l.slice(0, shown).map(function(r){
+      return '<div class="rv"><span class="st" aria-label="' + r.r + ' out of 5">' + star(r.r) + '</span>'
+        + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p>'
+        + '<small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small><span class="on">' + esc(r.c) + '</span></div>';
+    }).join('') || '<p style="padding:32px 0;color:var(--lg-ink-64)">Nothing at that rating for this club, which is its own kind of review.</p>';
+    $('#count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of the reviews loaded here. The live Judge.me widget pages through every one.';
+    $('#more').hidden = shown >= l.length;
+  }
+  document.addEventListener('click', function(e){
+    var c = e.target.closest('[data-c]');
+    if (c){ club = c.dataset.c; shown = 10; $$('[data-c]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === c)); }); draw(); return; }
+    var s = e.target.closest('[data-s]');
+    if (s){ stars = +s.dataset.s; shown = 10; $$('[data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === s)); }); draw(); return; }
+  });
+  $('#sort').addEventListener('change', function(){ sort = this.value; draw(); });
+  $('#more').addEventListener('click', function(){ shown += 10; draw(); });
+  draw();
+})();
+</script>
+</body>
+</html>

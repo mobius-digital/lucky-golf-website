@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{NAME}} · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Club product page. Cole, 2026-09-20: these have to look like the
+     Carver, so the Carver's page CSS is injected whole and this file only adds
+     what a putter or a hybrid needs on top of it. ---------- */
+{{CARVER_CSS}}
+
+/* the four spec tiles, for clubs with no loft table to show */
+.ctiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(18px,2.5vw,26px)}
+@media (max-width:760px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ctile{border:1px solid var(--lg-rule);border-radius:var(--lg-r);padding:16px 18px}
+.ctile b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(22px,2.4vw,30px);line-height:1}
+.ctile span{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.noreview{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(20px,3vw,32px);max-width:64ch}
+</style>
+</head>
+<body class="lg"{{METAL}}>
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><a href="clubs.html">Clubs</a></li><li><span aria-current="page">{{NAME}}</span></li></ol></nav>
+
+<!-- ============ THE FOLD ============ -->
+<div class="lg-wrap">
+<div class="pdp">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">{{GAL}}</div>
+    <div class="dots" data-dots aria-hidden="true">{{DOTS}}</div>
+  </div>
+
+  <div class="buy" id="buy">
+    <p class="lg-eyebrow">{{EYEBROW}}</p>
+    <h1 class="lg-d1">{{H1}}</h1>
+    {{RVL}}
+    <div class="price"><b data-price>{{PRICE}}</b></div>
+    <p class="lg-body">{{LEDE}}</p>
+
+    {{OPTS}}
+
+    <div class="cta"><button class="lg-btn" type="button" data-atc>{{ATC}} · {{PRICE}}</button></div>
+    <div class="trustl"><span class="lg-stock" data-stockline>{{STOCK}}</span><span class="trustl-links"><a href="faq.html#returns">Sixty days to decide</a><a href="faq.html#shipping">Free over $198</a></span></div>
+
+    <div class="lg-faq">{{DETAILS}}</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ THE FILM ============ -->
+<section class="lg-sec film" id="film" style="padding-top:0"><div class="lg-wrap">
+  <div class="lg-split">
+    <div>
+      <p class="lg-eyebrow">{{STORY_EYEBROW}}</p>
+      <h2 class="lg-d2">{{STORY_HEAD}}</h2>
+      {{STORY_BODY}}
+    </div>
+    <div class="lg-slot" data-md-open="md-shot" data-title="{{FILM_TITLE}}" data-brief="{{FILM_BRIEF}}">
+      <div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 16:9 · 40 to 60 s</small>{{FILM_BRIEF}}</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ IN THE WILD: the page's one dark band ============ -->
+<section class="lg-band" id="wild"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">See it in play</p><h2 class="lg-d2">{{WILD_HEAD}}</h2><p class="lg-body">Hit a good one with it? Tag us and it could end up right here.</p></div>
+    <div class="arrows" data-cliparrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
+  </div>
+  <div class="clips" id="clips"></div>
+</div></section>
+
+<!-- ============ SPECS ============ -->
+<section class="lg-sec" id="specs" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">{{SPEC_EYEBROW}}</p><h2 class="lg-d2">The numbers</h2>
+    <p class="lg-body">{{SPEC_LINE}}</p></div>
+  </div>
+  <div class="lg-monitor">
+    <div class="lg-monitor-hd"><span class="lg-label">{{MON_LABEL}}</span><span class="lg-label lg-live"><i></i>{{MON_STOCK}}</span></div>
+    <div class="lg-monitor-in">
+      <div class="lg-monitor-ph"><img src="img/{{MON_IMG}}" alt="{{NAME}}, the full club"></div>
+      <div class="lg-monitor-tiles">{{MON_TILES}}</div>
+    </div>
+  </div>
+  <div class="tbl" style="margin-top:clamp(18px,2.5vw,26px)"><table class="lg-table">
+    <tbody>{{SPEC_ROWS}}</tbody>
+  </table></div>
+  <p class="note">{{SPEC_NOTE}}</p>
+</div></section>
+
+<!-- ============ PHOTO BEAT ============ -->
+<div class="lg-pband" aria-label="On the course">{{PBAND}}</div>
+
+<!-- ============ REVIEWS ============ -->
+{{REVIEWS}}
+
+<!-- ============ MORE FROM THE BAG ============ -->
+<section class="lg-sec more" id="more"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">{{MOREHEAD}}</h2></div><a class="lg-link" href="clubs.html">All five clubs <span>&rarr;</span></a></div>
+  <div class="lg-grid">{{MORE}}</div>
+</div></section>
+
+<!-- ============ THE LAST WORD ============ -->
+<section class="lg-signoff" id="last"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">{{SIGNHEAD}}</h2>
+  <p class="lg-lede">{{SIGNLEDE}}</p>
+  <p class="lg-aside who">{{MAGS}}</p>
+  <a class="lg-btn-line" href="#buy">{{SIGNCTA}} <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph"><img src="img/{{MON_IMG}}" alt=""></span>
+  <div><b data-sticky-name>{{NAME}}</b><span data-sticky-price>{{PRICE}}</span></div>
+  <div class="sb-pick" data-sb-pick>{{STICKYOPTS}}</div>
+  <a class="sb-change" href="#buy" data-sb-change>Change</a>
+  <button class="lg-btn" type="button" data-atc-sticky>{{ATC}}</button>
+</div>
+
+<div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
+  <p>Leave an email and you'll get one message the day it's back, from a person.</p>
+  <form class="lg-form" data-notify novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
+</div></div>
+<div class="md" id="md-shot" hidden role="dialog" aria-modal="true" aria-labelledby="md-shot-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-shot-t">Shot needed</h2>
+  <p data-shot-brief></p>
+</div></div>
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+var PD = {{PD_JSON}};
+var PD_REVIEWS = {{REVIEWS_JSON}};
+var PD_REEL = {{REEL_JSON}};
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var money = function(n){ return '$' + Math.round(n); };
+  var pick = {};
+
+  /* the gallery dots follow the scroll on a phone */
+  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'); if (!g || !d || !d.children.length) return;
+    d.children[0].classList.add('on');
+    g.addEventListener('scroll', function(){
+      var i = Math.round(g.scrollLeft / g.clientWidth);
+      $$('i', d).forEach(function(x, j){ x.classList.toggle('on', j === i); });
+    }, { passive: true }); })();
+
+  /* the clips rail */
+  $('#clips').innerHTML = PD_REEL.map(function(o){
+    return '<div class="clip" data-md-open="md-shot" data-title="' + esc(o.title) + '" data-brief="' + esc(o.brief) + '"><span class="play" aria-hidden="true">&#9654;</span><small>Clip needed · ' + esc(o.kind) + '</small><b>' + esc(o.title) + '</b>' + esc(o.brief) + '</div>'; }).join('');
+  (function(){ var r = $('#clips'), a = $('[data-cliparrows]'); if (!a) return;
+    $$('button', a).forEach(function(b, i){ b.addEventListener('click', function(){ r.scrollBy({ left: (i ? 1 : -1) * r.clientWidth * .8, behavior: 'smooth' }); }); }); })();
+
+  /* options: generated from the real variants */
+  function key(){ return PD.order.map(function(k){ return pick[k]; }).join('|'); }
+  function variant(){ return PD.variants[key()] || null; }
+  function paint(){
+    PD.order.forEach(function(k){
+      $$('[data-opt="' + k + '"] button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v === pick[k])); });
+      var lb = $('[data-pick="' + k + '"]'); if (lb) lb.textContent = pick[k] ? '· ' + (PD.labels[pick[k]] || pick[k]) : '';
+      var sel = $('[data-sb-opt="' + k + '"]'); if (sel) sel.value = pick[k] || '';
+    });
+    var v = variant(), live = !!(v && v.avail);
+    $('[data-stockline]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out · between runs';
+    $('[data-atc]').textContent = live ? PD.atc + ' · ' + money(PD.price) : "Tell me when it's back";
+    var sn = $('[data-sticky-name]'); if (sn) sn.textContent = PD.name + (pick[PD.order[PD.order.length - 1]] ? ' · ' + (PD.labels[pick[PD.order[PD.order.length - 1]]] || '') : '');
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-opt] button');
+    if (!b) return;
+    pick[b.closest('[data-opt]').dataset.opt] = b.dataset.v; paint();
+  });
+  document.addEventListener('change', function(e){
+    var s = e.target.closest('[data-sb-opt]'); if (!s) return;
+    pick[s.dataset.sbOpt] = s.value; paint();
+  });
+
+  function add(){
+    var v = variant();
+    if (!v || !v.avail){ $('#md-notify').hidden = false; return; }
+    var hud = PD.order.map(function(k){ return PD.labels[pick[k]]; }).filter(Boolean);
+    LuckyBag.add([{ name: PD.name, short: PD.name, price: PD.price, img: PD.img, hud: hud }]);
+    var b = $('[data-atc]'); b.setAttribute('data-done', ''); b.textContent = 'Added';
+    setTimeout(function(){ b.removeAttribute('data-done'); paint(); }, 1600);
+  }
+  $('[data-atc]').addEventListener('click', add);
+  $('[data-atc-sticky]').addEventListener('click', add);
+
+  /* the bar arrives once the buy box has gone */
+  var buy = $('.buy'), sticky = $('[data-sticky]');
+  window.addEventListener('scroll', function(){
+    var on = buy.getBoundingClientRect().bottom < 40;
+    if (on !== sticky.hasAttribute('data-on')) sticky.toggleAttribute('data-on', on);
+  }, { passive: true });
+
+  /* the shot brief modal */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-md-open="md-shot"]'); if (!t) return;
+    $('#md-shot-t').textContent = t.dataset.title || 'Shot needed';
+    $('[data-shot-brief]').textContent = t.dataset.brief || '';
+  });
+
+  PD.order.forEach(function(k){ pick[k] = PD.start[k] || ''; });
+  paint();
+  if ($('#prox') && PD_REVIEWS.total) Lucky.proximity($('#prox'), { counts: PD_REVIEWS.totals, nums: false });
+  if ($('#jm-list')) (function(){
+    var filt = 0, sort = 'recent', shown = 6, S = PD_REVIEWS.sample;
+    var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
+    $('#jm-filters').innerHTML = ['All', 5, 4, 3, 2, 1].map(function(k, i){
+      return '<button class="lg-chip" type="button" data-f="' + (i ? k : 0) + '" aria-pressed="' + (!i) + '">' + (i ? k + ' ★' : 'All') + '</button>'; }).join('');
+    function draw(){
+      var l = S.filter(function(r){ return !filt || r.r === filt; }).slice();
+      l.sort(sort === 'high' ? function(a, b){ return b.r - a.r || (b.d > a.d ? 1 : -1); } : sort === 'low' ? function(a, b){ return a.r - b.r || (b.d > a.d ? 1 : -1); } : function(a, b){ return b.d > a.d ? 1 : -1; });
+      $('#jm-count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of what we have loaded' + (filt ? ' at ' + filt + ' stars' : '') + '. The live widget pages through the rest.';
+      $('#jm-list').innerHTML = l.slice(0, shown).map(function(r){
+        return '<div class="jm-item"><span class="lg-stars" aria-label="' + r.r + ' out of 5" style="line-height:1;color:var(--lg-star)">' + star(r.r) + '</span><b>' + esc(r.t) + '</b><p>' + esc(r.q) + '</p><small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small></div>'; }).join('');
+      $('#jm-more').hidden = shown >= l.length;
+    }
+    $('#jm-filters').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return;
+      filt = +b.dataset.f; shown = 6; $$('button', this).forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); });
+    $('#jm-sort').addEventListener('change', function(){ sort = this.value; draw(); });
+    $('#jm-more').addEventListener('click', function(){ shown += 6; draw(); });
+    $('[data-readall]').addEventListener('click', function(){ var jm = $('#jm'), o = !jm.hidden; jm.hidden = o;
+      this.setAttribute('aria-expanded', String(!o)); $('i', this).textContent = o ? '+' : '−'; if (!o) draw(); });
+  })();
+})();
+</script>
+</body>
+</html>

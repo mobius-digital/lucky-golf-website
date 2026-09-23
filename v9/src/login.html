@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Sign in and create an account ---------- */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px);align-items:start;max-width:960px;margin-inline:auto}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.card{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(22px,3vw,34px)}
+.card h2{margin:0 0 6px}
+.card > p{margin:0 0 20px;color:var(--lg-ink-64)}
+.field{margin-bottom:14px}
+.field .lb{display:block;margin-bottom:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--lg-ink-64)}
+.field input{width:100%;min-height:48px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);padding:12px 14px;font:inherit}
+.card .lg-btn{width:100%;margin-top:6px}
+.fine{margin:14px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.guest{max-width:960px;margin:clamp(28px,4vw,48px) auto 0;padding-top:clamp(24px,3vw,36px);border-top:1px solid var(--lg-rule);
+  display:flex;flex-wrap:wrap;gap:14px 32px;align-items:center;justify-content:space-between}
+.guest p{margin:0;color:var(--lg-ink-64);max-width:52ch}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Sign in</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
+  <div style="max-width:960px;margin:0 auto clamp(24px,3vw,36px)">
+    <p class="lg-eyebrow">Your account</p>
+    <h1 class="lg-d1">Sign in, or don't. Either <span class="lg-foil-word">works</span></h1>
+    <p class="lg-lede" style="max-width:56ch">An account keeps your orders and addresses in one place. You can buy without one, and plenty of people do.</p>
+  </div>
+
+  <div class="two">
+    <form class="card" data-signin novalidate>
+      <h2 class="lg-d3">Sign in</h2>
+      <p>Same email you ordered with.</p>
+      <div class="field"><label><span class="lb">Email</span><input name="email" type="email" autocomplete="email" required></label></div>
+      <div class="field"><label><span class="lb">Password</span><input name="password" type="password" autocomplete="current-password" required></label></div>
+      <button class="lg-btn" type="submit">Sign in</button>
+      <p class="fine"><a class="lg-link" href="#" data-forgot>Forgotten your password?</a></p>
+    </form>
+
+    <form class="card" data-register novalidate>
+      <h2 class="lg-d3">Create an account</h2>
+      <p>Thirty seconds, and the next order fills itself in.</p>
+      <div class="field"><label><span class="lb">First name</span><input name="first" autocomplete="given-name" required></label></div>
+      <div class="field"><label><span class="lb">Last name</span><input name="last" autocomplete="family-name" required></label></div>
+      <div class="field"><label><span class="lb">Email</span><input name="email" type="email" autocomplete="email" required></label></div>
+      <div class="field"><label><span class="lb">Password</span><input name="password" type="password" autocomplete="new-password" required></label></div>
+      <button class="lg-btn-line" type="submit">Create it</button>
+      <p class="fine">We email about orders. The monthly one is a separate box you tick in the footer.</p>
+    </form>
+  </div>
+
+  <div class="guest">
+    <p>Ordered as a guest and just want to know where the box is? The tracking link is in your confirmation email, and we will resend it.</p>
+    <a class="lg-btn-line lg-btn-sm" href="contact.html">Ask us <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">No points, no tiers, no <span class="lg-foil-word">club</span></h2>
+  <p class="lg-lede">An account is a place to find your orders, not a loyalty scheme with a name.</p>
+  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+document.addEventListener('submit', function(e){
+  var f = e.target.closest('[data-signin],[data-register]');
+  if (!f) return;
+  e.preventDefault();
+  if (!f.checkValidity()){ f.reportValidity(); return; }
+  Lucky.toast('Accounts are not wired up in this preview.');
+});
+document.addEventListener('click', function(e){
+  if (e.target.closest('[data-forgot]')){ e.preventDefault(); Lucky.toast('Password reset is not wired up in this preview.'); }
+});
+</script>
+</body>
+</html>

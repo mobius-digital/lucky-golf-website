@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your gift card · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- The gift card itself: what the recipient opens from the email ---------- */
+body.lg{background:var(--lg-tile)}
+.wrap{max-width:620px;margin:0 auto;padding:clamp(28px,6vw,72px) 16px;text-align:center}
+.wrap .lg-logo svg{height:26px;width:auto;color:var(--lg-ink)}
+.gc{margin:clamp(24px,4vw,40px) auto;max-width:460px;aspect-ratio:1.586/1;border-radius:18px;padding:clamp(18px,3vw,28px);position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#0F3A27 0%,#0B2E1F 55%,#06110B 100%);color:#F4F3F0;box-shadow:0 30px 60px -30px rgba(6,17,11,.6);
+  display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+.gc::after{content:'';position:absolute;inset:0;background:radial-gradient(70% 90% at 90% 0%,rgba(237,210,124,.22),transparent 60%);pointer-events:none}
+.gc .lg-logo svg{height:22px;color:#F4F3F0}
+.gc .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(46px,9vw,72px);line-height:1;position:relative;z-index:1;
+  background:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gc .ln{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,240,.72);position:relative;z-index:1}
+.note{max-width:44ch;margin:0 auto 22px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:clamp(18px,2.4vw,22px);line-height:1.3}
+.note small{display:block;margin-top:8px;font-weight:500;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.code{display:flex;gap:8px;align-items:center;justify-content:center;margin:0 auto 12px;max-width:420px;padding:8px 8px 8px 16px;border:1px dashed var(--lg-ink-38);border-radius:var(--lg-r);background:var(--lg-page)}
+.code b{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:18px;letter-spacing:.14em;text-align:left}
+.meta{color:var(--lg-ink-64);font-size:var(--lg-fs-sm);margin:0 0 24px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.how{margin-top:clamp(28px,4vw,44px);text-align:left;border-top:1px solid var(--lg-rule);padding-top:22px}
+.how ol{margin:10px 0 0;padding-left:20px;color:var(--lg-ink-70);display:grid;gap:8px}
+@media print{.btns,.lg-hdr,.lg-tick,.lg-ftr{display:none}body.lg{background:#fff}}
+</style>
+</head>
+<body class="lg">
+<main class="wrap">
+  <a class="lg-logo" href="home.html" aria-label="Lucky Golf home">{{LOGO}}</a>
+
+  <div class="gc" aria-label="Your Lucky gift card, $100">
+    <span class="lg-logo" style="position:relative;z-index:1">{{LOGO}}</span>
+    <span class="amt">$100</span>
+    <span class="ln"><span>Gift card</span><span>It's better to be lucky</span></span>
+  </div>
+
+  <p class="note">&ldquo;Get a real wedge. Happy birthday.&rdquo;<small>From Cole</small></p>
+
+  <div class="code"><b data-code>LUCKY 7Q4X K2M9 88GD</b><button class="lg-btn-line lg-btn-sm" type="button" data-copy>Copy</button></div>
+  <p class="meta">$100 left on it · never expires</p>
+
+  <div class="btns">
+    <a class="lg-btn" href="clubs.html">Spend it</a>
+    <button class="lg-btn-line" type="button" onclick="window.print()">Print it</button>
+  </div>
+
+  <div class="how">
+    <p class="lg-label" style="margin:0">How it works</p>
+    <ol>
+      <li>Pick whatever you want. Clubs, polos, hats, a grip, any of it.</li>
+      <li>At checkout, paste the code into the gift card box.</li>
+      <li>Anything left stays on the card for next time.</li>
+    </ol>
+  </div>
+</main>
+<script src="lucky.js"></script>
+<script>
+document.querySelector('[data-copy]').addEventListener('click', function(){
+  var t = document.querySelector('[data-code]').textContent, b = this;
+  try { navigator.clipboard.writeText(t.replace(/\s/g, '')); } catch (e) {}
+  b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1600);
+});
+</script>
+</body>
+</html>

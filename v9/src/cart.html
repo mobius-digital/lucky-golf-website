@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your bag · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Cart page · the drawer's big brother, same bag underneath ---------- */
+.cart{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:start}
+@media (max-width:900px){.cart{grid-template-columns:1fr}}
+.ln{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--lg-rule)}
+.ln:first-child{border-top:0}
+.ln .ph{border-radius:14px;overflow:hidden;background:var(--lg-tile);aspect-ratio:1/1;display:grid;place-items:center}
+.ln .ph img{width:100%;height:100%;object-fit:contain;padding:10px}
+.ln b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:16px;line-height:1.15}
+.ln .pr{text-align:right;font-weight:600}
+.ln .rm{display:block;margin-top:6px;background:none;border:0;padding:6px 0;color:var(--lg-ink-64);text-decoration:underline;cursor:pointer;font:inherit;font-size:var(--lg-fs-sm)}
+@media (max-width:560px){.ln{grid-template-columns:76px minmax(0,1fr);}.ln .pr{grid-column:2;text-align:left}}
+.sum{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(20px,3vw,28px);position:sticky;top:calc(var(--lg-head-h,64px) + 20px)}
+.sum .row{display:flex;justify-content:space-between;gap:16px;padding:8px 0}
+.sum .row.big{border-top:1px solid var(--lg-rule);margin-top:8px;padding-top:16px;font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px}
+.sum .lg-btn{width:100%;margin-top:16px}
+.sum .note{margin:14px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.ship{margin-bottom:18px}
+.ship p{margin:0 0 10px}
+.empty{text-align:center;padding:clamp(40px,7vw,90px) 0}
+.empty .lg-mags{width:120px;margin:0 auto 18px;display:block}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(28px,4vw,48px)}
+@media (max-width:760px){.trust{grid-template-columns:1fr}}
+.trust div{display:flex;gap:12px;align-items:flex-start}
+.trust .ic{width:20px;height:20px;stroke-width:1.6;flex:none;margin-top:2px}
+.trust b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:14px}
+.trust p{margin:2px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Your bag</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(16px,2vw,24px)"><div class="lg-wrap">
+  <p class="lg-eyebrow">Your bag</p>
+  <h1 class="lg-d1">What you're taking to the <span class="lg-foil-word">course</span></h1>
+
+  <div class="cart" style="margin-top:clamp(24px,3vw,40px)">
+    <div>
+      <div id="lines"></div>
+      <div class="empty" id="empty" hidden>
+        <span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span>
+        <p class="lg-lede" style="margin-bottom:20px">Nothing in here yet. Mags checked twice.</p>
+        <a class="lg-btn" href="clubs.html">See the clubs</a>
+        <a class="lg-btn-line" href="polos.html" style="margin-left:10px">Or the polos</a>
+      </div>
+      <div class="trust">
+        <div>{{ICON:truck}}<div><b>Ships in 1 to 2 days</b><p>Tracking lands when the label is made.</p></div></div>
+        <div>{{ICON:rotate-ccw}}<div><b>Sixty days on clubs</b><p>Thirty on apparel, unworn with tags.</p></div></div>
+        <div>{{ICON:shield-check}}<div><b>Free over $198</b><p>Two Carvers get you there exactly.</p></div></div>
+      </div>
+    </div>
+
+    <aside class="sum" aria-label="Order summary">
+      <div class="ship"><p id="say"></p><div class="lg-hole" id="hole"></div></div>
+      <div class="row"><span>Subtotal</span><span id="sub">$0</span></div>
+      <div class="row"><span>Shipping</span><span id="shipline">Calculated at checkout</span></div>
+      <div class="row big"><span>Total</span><span id="tot">$0</span></div>
+      <a class="lg-btn" id="go" href="#">Check out</a>
+      <p class="note">Tax works itself out at checkout. Nothing here is charged until then.</p>
+    </aside>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Sixty days to prove us <span class="lg-foil-word">wrong</span></h2>
+  <p class="lg-lede">Take it to the course. If it doesn't earn a spot in the bag, send it back.</p>
+  <a class="lg-btn-line" href="faq.html">How returns work <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var FREE = 198, hole = null;
+  var money = function(n){ return '$' + (Math.round(n * 100) % 100 ? n.toFixed(2) : Math.round(n)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  LuckyBag.onChange(function(lines, t){
+    $('#empty').hidden = !!lines.length;
+    $('#lines').innerHTML = lines.map(function(l, i){
+      return '<div class="ln"><span class="ph"><img src="' + esc(l.img) + '" alt=""></span>'
+        + '<span><b>' + esc(l.name) + '</b>'
+        + (l.hud && l.hud.length ? '<span class="lg-hud">' + l.hud.map(function(h){ return '<span>' + esc(h) + '</span>'; }).join('') + '</span>' : '')
+        + '</span><span class="pr">' + money(l.price) + '<button type="button" class="rm" data-cart-rm="' + i + '">Remove</button></span></div>';
+    }).join('');
+    $('#say').innerHTML = !lines.length ? 'Free shipping at <b>$198</b>.'
+      : t >= FREE ? "<b>Shipping's on us.</b>" : '<b>' + money(FREE - t) + "</b> more and shipping's on us.";
+    $('#shipline').textContent = t >= FREE ? 'Free' : 'Calculated at checkout';
+    if (!hole) hole = Lucky.hole($('#hole'), { stops: [{ at: FREE, label: 'Free shipping $198' }] });
+    hole.set(t);
+    $('#sub').textContent = money(t);
+    $('#tot').textContent = money(t);
+    $('#go').setAttribute('aria-disabled', String(!lines.length));
+  });
+
+  document.addEventListener('click', function(e){
+    var r = e.target.closest('[data-cart-rm]');
+    if (r){ LuckyBag.remove(+r.getAttribute('data-cart-rm')); return; }
+    if (e.target.closest('#go')){ e.preventDefault();
+      if (LuckyBag.lines().length) Lucky.toast('Checkout is not wired up in this preview.');
+      else Lucky.jump('lines');
+      return; }
+  });
+})();
+</script>
+</body>
+</html>

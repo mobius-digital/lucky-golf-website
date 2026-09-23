@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clubs · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Clubs · the compare-first collection, on v4 pieces ---------- */
+.head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;padding-bottom:clamp(28px,4vw,48px)}
+@media (max-width:860px){.head{grid-template-columns:1fr}}
+.proof{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0;padding:0}
+.proof li{border-top:2px solid var(--lg-gold);padding-top:12px}
+.proof b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(26px,2.6vw,36px);line-height:1}
+.proof span{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+
+.jump{position:sticky;top:72px;z-index:var(--lg-z-rail);background:var(--lg-page);border-block:1px solid var(--lg-rule)}
+.band{scroll-margin-top:150px}
+.jump-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-block:14px}
+.jump nav{display:flex;gap:6px;flex-wrap:wrap}
+.jump a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:var(--lg-r);text-decoration:none;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
+.jump a:hover,.jump a.on{background:var(--lg-tile)}
+.jump a i{font-style:normal;color:var(--lg-ink-64)}
+@media (max-width:980px){.jump{top:64px}.jump-in span{display:none}}
+
+.band{padding-block:clamp(56px,6vw,96px)}
+.band + .band{padding-top:0}
+.band-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px clamp(24px,4vw,56px);align-items:end;margin-bottom:clamp(20px,3vw,32px)}
+.band-hd .lg-body{margin:0}
+@media (max-width:860px){.band-hd{grid-template-columns:1fr}}
+.row{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:var(--lg-gut);align-items:stretch}
+.row.one{grid-template-columns:1.25fr 1fr}
+@media (max-width:980px){.row,.row.one{grid-template-columns:1fr 1fr}.row .shot{grid-column:1/-1}}
+@media (max-width:620px){.row,.row.one{grid-template-columns:1fr}}
+.shot{position:relative;border-radius:var(--lg-r-card);overflow:hidden;aspect-ratio:3/4;background:var(--lg-tile);margin:0}
+.shot img{width:100%;height:100%;object-fit:cover}
+@media (max-width:980px){.shot{aspect-ratio:3/2}}
+
+.pc{display:flex;flex-direction:column;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-page)}
+.pc-ph{position:relative;display:block;aspect-ratio:4/5;background:var(--lg-tile)}
+.pc-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:12px;transition:transform .5s var(--lg-ease)}
+.pc:hover .pc-ph img{transform:scale(1.03)}
+.pc-ph .lg-tag{position:absolute;left:12px;top:12px}
+.pc-bd{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pc-top h3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1}
+.pc-top h3 a{text-decoration:none}
+.pc-top b{font-weight:700}
+.pc-rate{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.pc p{margin:0;color:var(--lg-ink-70);font-size:var(--lg-fs-base)}
+.pc .lg-hud{margin-top:2px}
+.pc .lg-stock{font-size:var(--lg-fs-sm)}
+.pc .lg-stock.out{color:var(--lg-ink-64)}
+.pc .lg-stock.out::before{background:var(--lg-ink-38)}
+.pc .lg-btn,.pc .lg-btn-line{margin-top:auto;width:100%}
+
+.h2h{margin-top:clamp(28px,3vw,44px)}
+.h2h-hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.h2h-hd h3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px}
+.diff{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--lg-ink-64);font-size:var(--lg-fs-sm);cursor:pointer}
+.diff input{width:18px;height:18px;accent-color:#17140F}
+.tablewrap{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
+.tablewrap table{min-width:620px}
+.lg-table thead th a{display:grid;gap:10px;justify-items:center;text-decoration:none;color:var(--lg-ink);padding:8px 0}
+.lg-table thead th img{width:110px;height:130px;object-fit:contain;mix-blend-mode:multiply}
+.lg-table td.same{color:var(--lg-ink-64)}
+.lg-table td.same em{font-style:normal;margin-left:8px;font-size:var(--lg-fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--lg-ink-38)}
+.h2h.hide-same tr.is-same{display:none}
+
+.hy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,48px);margin-top:clamp(28px,3vw,44px)}
+@media (max-width:860px){.hy{grid-template-columns:1fr}}
+.replace{display:grid;gap:var(--lg-gut)}
+.replace .lg-panel h4{margin:10px 0 6px;font-size:var(--lg-fs-body)}
+.replace .lg-panel p{margin:0;color:var(--lg-ink-70)}
+
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(24px,3vw,36px)}
+@media (max-width:900px){.qs{grid-template-columns:1fr}}
+.faq-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:860px){.faq-in{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Clubs</span></li></ol></nav>
+
+<!-- ============ THE HEAD ============ -->
+<section class="lg-wrap head">
+  <div>
+    <p class="lg-eyebrow">The full bag</p>
+    <h1 class="lg-d1">Clubs</h1>
+    <p class="lg-lede">Wedges, putters and a hybrid. The same materials and the same machining as the big names, without the sponsorships and the middlemen in the price.</p>
+  </div>
+  <ul class="proof">
+    <li><b>5</b><span>clubs</span></li>
+    <li><b class="lg-num">4.8</b><span>from verified buyers</span></li>
+    <li><b>60</b><span>days to decide</span></li>
+  </ul>
+</section>
+
+<!-- ============ PHOTO BAND ============ -->
+<div class="lg-pband" aria-label="Lucky clubs on the course">
+  <figure><img src="img/two-gold-wedges.webp" alt="Two Carver 02 Gold wedges on the fringe" loading="lazy"></figure>
+  <figure><img src="img/from-the-cup.webp" alt="Pulling the ball out of the cup, gold putter on the green" loading="lazy"></figure>
+  <figure><img src="img/lucky-stryker-in-hand.webp" alt="The Stryker hybrid in hand on the course" loading="lazy"></figure>
+</div>
+
+<div class="jump" id="jump"><div class="lg-wrap jump-in">
+  <nav aria-label="Jump to a category"><a href="#wedges">Wedges <i>2</i></a><a href="#putters">Putters <i>2</i></a><a href="#hybrid">Hybrid <i>1</i></a></nav>
+  <span class="lg-meta">Every category has a side-by-side under it</span>
+</div></div>
+
+<!-- ============ WEDGES ============ -->
+<section class="lg-wrap band" id="wedges">
+  <header class="band-hd">
+    <div><p class="lg-eyebrow">Inside 100 yards</p><h2 class="lg-d2">Wedges</h2></div>
+    <p class="lg-body">One wedge, the 02, in gold or black, with your pick of sole grind.</p>
+  </header>
+  <div class="row">
+    <figure class="shot"><img src="img/swing-black-wedge.webp" alt="Finishing a wedge swing on the course" loading="lazy" style="object-position:35% 40%"></figure>
+    <article class="pc">
+      <a class="pc-ph" href="carver.html"><span class="lg-tag">Best seller</span><img src="img/gold-full-cut.webp" alt="Carver 02 Gold" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="carver.html">Carver 02 Gold</a></h3><b>$99</b></div>
+        <a class="pc-rate" href="carver.html#reviews"><span class="lg-stars" aria-label="4.8 out of 5">{{STARS5}}</span>4.82 · 650</a>
+        <p>Six lofts, two grinds, either hand. The one most golfers start with.</p>
+        <div class="lg-hud"><span><b>50 to 60°</b>Lofts</span><span><b>K · S</b>Grinds</span><span><b>RH · LH</b>Hand</span></div>
+        <span class="lg-stock">In stock · ships in 1 to 2 days</span>
+        <a class="lg-btn lg-btn-sm" href="carver.html">Pick a loft <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    <article class="pc">
+      <a class="pc-ph" href="black.html"><img src="img/black-cut.webp" alt="Carver 02 Black" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="black.html">Carver 02 Black</a></h3><b>$109</b></div>
+        <a class="pc-rate" href="black.html#reviews"><span class="lg-stars" aria-label="4.8 out of 5">{{STARS5}}</span>4.8 · read them</a>
+        <p>The same forged head with the lights off. K grind, right hand.</p>
+        <div class="lg-hud"><span><b>50 to 60°</b>Lofts</span><span><b>K</b>Grind</span><span><b>RH</b>Hand</span></div>
+        <span class="lg-stock">In stock · ships in 1 to 2 days</span>
+        <a class="lg-btn lg-btn-sm" href="black.html">Pick a loft <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </div>
+  <div class="h2h" data-h2h>
+    <div class="h2h-hd"><h3>What the extra ten dollars buys you</h3><label class="diff"><input type="checkbox" data-diff> Only show what's different</label></div>
+    <div class="tablewrap"><table class="lg-table">
+      <thead><tr><th></th>
+        <th scope="col"><a href="carver.html"><img src="img/gold-full-cut.webp" alt="" loading="lazy"><span>Carver 02 Gold</span></a></th>
+        <th scope="col"><a href="black.html"><img src="img/black-cut.webp" alt="" loading="lazy"><span>Carver 02 Black</span></a></th></tr></thead>
+      <tbody>
+        <tr class="is-diff"><th scope="row">Price</th><td>$99</td><td>$109</td></tr>
+        <tr class="is-diff"><th scope="row">Rating</th><td>4.82 · 650 reviews</td><td>Shares the Gold's reviews</td></tr>
+        <tr class="is-diff"><th scope="row">Finish</th><td>Gold</td><td>Black, gold clover and stamp</td></tr>
+        <tr class="is-same"><th scope="row">Lofts</th><td colspan="2" class="same">6 lofts, 50 to 60° <em>Same on both</em></td></tr>
+        <tr class="is-diff"><th scope="row">Grinds</th><td>K and S</td><td>K</td></tr>
+        <tr class="is-diff"><th scope="row">Hand</th><td>Right and left</td><td>Right hand</td></tr>
+        <tr class="is-same"><th scope="row">Head</th><td colspan="2" class="same">Forged 1020 carbon steel <em>Same on both</em></td></tr>
+        <tr class="is-same"><th scope="row">Bounce</th><td colspan="2" class="same">8 to 12°, by loft <em>Same on both</em></td></tr>
+        <tr class="is-diff"><th scope="row">Stock</th><td>Out: RH 52 S, RH 56 S, RH 60 S, LH 50 K</td><td>Everything in stock</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ PUTTERS ============ -->
+<section class="lg-wrap band" id="putters">
+  <header class="band-hd">
+    <div><p class="lg-eyebrow">On the green</p><h2 class="lg-d2">Putters</h2></div>
+    <p class="lg-body">A blade and a mallet, both cut from solid stainless so there's nothing inside to rattle. Same loft, same lie, same length.</p>
+  </header>
+  <div class="row">
+    <figure class="shot"><img src="img/putt-sunset.webp" alt="A putt at sunset with the gold putter" loading="lazy" style="object-position:55% 60%"></figure>
+    <article class="pc">
+      <a class="pc-ph" href="blade.html"><span class="lg-tag">Sold out</span><img src="img/blade-cut.webp" alt="Tracer Blade" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="blade.html">Tracer Blade</a></h3><b>$199</b></div>
+        <a class="pc-rate" href="blade.html#reviews"><span class="lg-stars" aria-label="4.8 out of 5">{{STARS5}}</span>4.86 · 147</a>
+        <p>A blade that tells you exactly where the putt came off the face.</p>
+        <div class="lg-hud"><span><b>Blade</b>Head</span><span><b>385 g</b>Weight</span><span><b>35&Prime;</b>Length</span></div>
+        <span class="lg-stock out">Sold out, and we want it back too</span>
+        <a class="lg-btn-line lg-btn-sm" href="blade.html">Tell me when it's back <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    <article class="pc">
+      <a class="pc-ph" href="mallet.html"><span class="lg-tag">In the bag</span><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="mallet.html">Tracer Mallet</a></h3><b>$229</b></div>
+        <a class="pc-rate" href="mallet.html#reviews"><span class="lg-stars" aria-label="4.7 out of 5">{{STARS5}}</span>4.71 · 58</a>
+        <p>More head behind the ball, so the ones you miss still hold their line.</p>
+        <div class="lg-hud"><span><b>Mallet</b>Head</span><span><b>365 g</b>Weight</span><span><b>35&Prime;</b>Length</span></div>
+        <span class="lg-stock">In stock · ships in 1 to 2 days</span>
+        <a class="lg-btn lg-btn-sm" href="mallet.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </div>
+  <div class="h2h" data-h2h>
+    <div class="h2h-hd"><h3>Thirty dollars apart. Here is where it goes</h3><label class="diff"><input type="checkbox" data-diff> Only show what's different</label></div>
+    <div class="tablewrap"><table class="lg-table">
+      <thead><tr><th></th>
+        <th scope="col"><a href="blade.html"><img src="img/blade-cut.webp" alt="" loading="lazy"><span>Tracer Blade</span></a></th>
+        <th scope="col"><a href="mallet.html"><img src="img/mallet-full-cut.webp" alt="" loading="lazy"><span>Tracer Mallet</span></a></th></tr></thead>
+      <tbody>
+        <tr class="is-diff"><th scope="row">Price</th><td>$199</td><td>$229</td></tr>
+        <tr class="is-diff"><th scope="row">Rating</th><td>4.86 · 147 reviews</td><td>4.71 · 58 reviews</td></tr>
+        <tr class="is-diff"><th scope="row">Head</th><td>Blade</td><td>Mallet</td></tr>
+        <tr class="is-diff"><th scope="row">What you get</th><td>Feel. It tells you where you hit it</td><td>Forgiveness. Off-centre putts hold their line</td></tr>
+        <tr class="is-diff"><th scope="row">Material</th><td>CNC-milled 431 stainless</td><td>CNC-milled 304 stainless</td></tr>
+        <tr class="is-diff"><th scope="row">Head weight</th><td>385 g</td><td>365 g</td></tr>
+        <tr class="is-same"><th scope="row">Loft</th><td colspan="2" class="same">3.5° <em>Same on both</em></td></tr>
+        <tr class="is-same"><th scope="row">Length</th><td colspan="2" class="same">35&Prime; <em>Same on both</em></td></tr>
+        <tr class="is-diff"><th scope="row">Hand</th><td>Right hand</td><td>Right and left</td></tr>
+        <tr class="is-diff"><th scope="row">Stock</th><td>Sold out</td><td>Everything in stock</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ HYBRID ============ -->
+<section class="lg-wrap band" id="hybrid">
+  <header class="band-hd">
+    <div><p class="lg-eyebrow">The long approach</p><h2 class="lg-d2">Hybrid</h2></div>
+    <p class="lg-body">One club. Titanium, nineteen degrees, and stiff is the only flex it comes in.</p>
+  </header>
+  <div class="row one">
+    <figure class="shot"><img src="img/walk-off-green.webp" alt="Walking the fairway in the Lucky hat and polo" loading="lazy"></figure>
+    <article class="pc">
+      <a class="pc-ph" href="stryker.html"><img src="img/stryker-full-cut.webp" alt="Stryker" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="stryker.html">Stryker</a></h3><b>$209</b></div>
+        <a class="pc-rate" href="stryker.html#reviews"><span class="lg-stars" aria-label="4.6 out of 5">{{STARS5}}</span>4.6 · 20</a>
+        <p>Nineteen degrees of titanium for the shot your long irons keep missing.</p>
+        <div class="lg-hud"><span><b>19°</b>Loft</span><span><b>Titanium</b>Head</span><span><b>RH · LH</b>Hand</span></div>
+        <span class="lg-stock">In stock · ships in 1 to 2 days</span>
+        <a class="lg-btn lg-btn-sm" href="stryker.html">Fill the gap <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </div>
+  <div class="hy">
+    <div class="lg-specs" style="grid-template-columns:repeat(2,minmax(0,1fr));align-content:start">
+      <div class="lg-spec"><b>19<small>°</small></b><span>Loft</span></div>
+      <div class="lg-spec"><b>59<small>°</small></b><span>Lie</span></div>
+      <div class="lg-spec"><b>235<small>g</small></b><span>Head</span></div>
+      <div class="lg-spec"><b>40.5<small>in</small></b><span>Length</span></div>
+    </div>
+    <div class="replace">
+      <div class="lg-panel"><span class="lg-tag">Instead of a 3-iron</span><h4>The club you avoid</h4><p>A 3-iron and a 19° hybrid go roughly the same distance in the right hands. The difference is what happens in the wrong ones, because the hybrid gets airborne from lies where the iron simply doesn't.</p></div>
+      <div class="lg-panel"><span class="lg-tag">Instead of a 5-wood</span><h4>The club you can't keep straight</h4><p>A 5-wood and a 19° hybrid cover similar ground, and the hybrid is the shorter club at 40.5&Prime;. That's why it's easier to find the middle of, and why it holds a line off a tight tee.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS: the one dark beat ============ -->
+<section class="lg-band is-photo" id="reviews" style="--band-bg:url(img/two-hats-mallet.webp);--band-pos:center 65%"><div class="lg-wrap">
+  <div class="band-hd">
+    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">Thousands of golfers bag <span class="lg-foil-word">Lucky</span></h2></div>
+    <p class="lg-body">Word for word from Judge.me, one from each part of the bag.</p>
+  </div>
+  <div id="prox"></div>
+  <div class="qs">
+    <figure class="lg-quote lg-band-tile"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;My buddies already named my club “Goldy” because they are jealous of the results!!&rdquo;</blockquote><figcaption><b>Eric F.</b> · Carver 02 Gold · verified buyer</figcaption></figure>
+    <figure class="lg-quote lg-band-tile"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Love the look and feel of this putter. Definitely a head turner walking up to the green with your buddies.&rdquo;</blockquote><figcaption><b>Kyle K.</b> · Tracer Mallet · verified buyer</figcaption></figure>
+    <figure class="lg-quote lg-band-tile"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;I'm loving my new hybrid. The gold color is stunning and the performance is unmatched. This club has replaced my sorry 3 wood.&rdquo;</blockquote><figcaption><b>LB06</b> · Stryker · verified buyer</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- ============ TRUST + FAQ ============ -->
+<section class="lg-sec"><div class="lg-wrap">
+  <div class="lg-trust">
+    <span>{{ICON:rotate-ccw}}Sixty days to decide on any club</span>
+    <span>{{ICON:truck}}Ships in 1 to 2 business days</span>
+    <span>{{ICON:credit-card}}Shop Pay splits it at checkout</span>
+  </div>
+  <div class="faq-in" style="margin-top:clamp(40px,5vw,72px)">
+    <div>
+      <p class="lg-eyebrow">Still deciding</p>
+      <h2 class="lg-d2">Which one's mine?</h2>
+      <p class="lg-body">If it's still a coin flip after this, write to us and a person answers.</p>
+    </div>
+    <div class="lg-faq">
+      <details class="lg-fq"><summary>Which wedge loft should I start with?</summary><div class="lg-fq-a"><p>Wedges work in gaps. Four to six degrees between clubs keeps your distances even and stops two wedges going the same yardage. Tell us the loft of your pitching wedge and we'll do the arithmetic.</p></div></details>
+      <details class="lg-fq"><summary>K grind or S grind?</summary><div class="lg-fq-a"><p>Grind is what the sole does when it meets the turf. The K is the safe pick and comes in every loft. The S is for golfers who like to lay the face open. If your chips won't stop, either one fixes that.</p></div></details>
+      <details class="lg-fq"><summary>Blade or mallet?</summary><div class="lg-fq-a"><p>Normally it's mallets for straight strokes and blades for arcs. Not here: both Tracers are built for a stroke with some arc in it. The real question is whether you want the head to help on the ones you miss, or tell you about them. The blade is sold out, and right hand only when it's back.</p></div></details>
+      <details class="lg-fq"><summary>What does the hybrid replace?</summary><div class="lg-fq-a"><p>Most golfers take out the 3-iron, some take out the 5-wood, and the panels above lay out both. Either way it's one club, one loft and one flex, in right or left hand.</p></div></details>
+      <details class="lg-fq"><summary>What if it's not the one?</summary><div class="lg-fq-a"><p>Sixty days to decide on any club. Returns need approval and a photo first, and the club has to come back unmarked.</p></div></details>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ MAGS SIGNS OFF ============ -->
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Five clubs, and one of them is <span class="lg-foil-word">yours</span></h2>
+  <p class="lg-lede">Sixty days to decide. Mags will hold the bag open.</p>
+  <a class="lg-btn-line" href="#wedges">Back to the top <span aria-hidden="true">&uarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  /* the real Judge.me counts across the four clubs */
+  Lucky.proximity($('#prox'), { counts: { 5: 784, 4: 52, 3: 18, 2: 6, 1: 15 }, nums: false });
+  /* only show what's different */
+  document.addEventListener('change', function(e){
+    var d = e.target.closest('[data-diff]'); if (!d) return;
+    d.closest('[data-h2h]').classList.toggle('hide-same', d.checked);
+  });
+  /* which category you're in */
+  var links = $$('.jump a'), secs = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  function mark(){
+    var y = scrollY + 160, k = 0;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) k = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === k); });
+  }
+  addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<title>Lucky Pages on v4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+/* A quiet deep-green shell so the pages carry the look. Same shell in light and dark on purpose. */
+:root{--bg:#06110B;--bg2:#0B1911;--line:#22382B;--text:#F4F3F0;--muted:#A9B5AC;--gold:#C29A2B;--gold-hi:#EDD27C;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color-scheme:dark}
+/* One deliberate look in both themes: a deep-green shell, painted explicitly. */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5;display:grid;grid-template-rows:auto auto 1fr;min-height:100vh}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.brand{margin-right:auto;line-height:1.15;min-width:0}
+.brand b{display:block;font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:22px}
+.brand span{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px}
+.seg button{border:0;background:none;padding:8px 11px;min-height:36px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--text);color:#06110B}
+.seg button[disabled]{opacity:.45;cursor:not-allowed}
+.seg button em{font-style:normal;margin-left:5px;border-radius:4px;padding:1px 5px;font-size:10px;background:rgba(244,243,240,.12);color:var(--muted)}
+.seg button[aria-pressed="true"] em{background:#06110B;color:var(--gold-hi)}
+.ba button[data-v="after"][aria-pressed="true"]{background:linear-gradient(96deg,#C29A2B,#EDD27C 50%,#C29A2B);color:#17140F}
+.open{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);white-space:nowrap}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:14px 26px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.panel[hidden]{display:none}
+@media (max-width:1100px){.panel{grid-template-columns:1fr}}
+.panel h2{margin:0 0 4px;font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:24px;line-height:1}
+.panel h3{margin:0 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);font-weight:650}
+.panel p{margin:0;color:var(--muted);font-size:13.5px;max-width:62ch}
+.panel ul{margin:0;padding:0 0 0 16px;color:var(--muted);font-size:13.5px;display:grid;gap:5px}
+.panel li b{color:var(--text);font-weight:650}
+.tog{border:0;background:none;color:var(--muted);font-size:12px;cursor:pointer;text-decoration:underline;padding:6px 0}
+.stage{position:relative;overflow:hidden;background:#030906;min-height:55vh}
+.frame{position:absolute;top:0;left:50%;transform-origin:top center;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.frame iframe{border:0;display:block;width:100%;height:100%}
+.badge{position:absolute;left:12px;top:12px;z-index:2;padding:6px 10px;border-radius:8px;background:rgba(6,17,11,.85);border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.badge i{font-style:normal;color:var(--gold-hi)}
+.empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted)}
+.empty[hidden]{display:none}
+.empty b{display:block;color:var(--text);font-weight:800;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:28px;margin-bottom:6px}
+@media (max-width:640px){.brand b{font-size:18px}.seg button{padding:7px 8px;font-size:11px}}
+</style>
+<header class="top">
+  <div class="brand"><b>Lucky pages on v4</b><span>Your approved layouts, rebuilt on the new design system. Nothing here is on Shopify.</span></div>
+  <div class="seg" role="group" aria-label="Page" id="pages"></div>
+  <div class="seg" role="group" aria-label="Device" id="devices">
+    <button type="button" data-w="1440" aria-pressed="true">Desktop</button>
+    <button type="button" data-w="834" aria-pressed="false">Tablet</button>
+    <button type="button" data-w="390" aria-pressed="false">Phone</button>
+  </div>
+  <div class="seg ba" role="group" aria-label="Before or after" id="ba">
+    <button type="button" data-v="before" aria-pressed="false">Before</button>
+    <button type="button" data-v="after" aria-pressed="true">After</button>
+  </div>
+  <a class="open" id="openNew" href="#" target="_blank" rel="noopener">Open full page</a>
+</header>
+
+<section class="panel" id="panel" aria-live="polite">
+  <div><h3 id="pTitle"></h3><h2 id="pName"></h2><p id="pWhy"></p><button class="tog" type="button" id="hide">Hide notes</button></div>
+  <div><h3>What the system added</h3><ul id="pAdd"></ul></div>
+  <div><h3>Kept, and still owed</h3><ul id="pKeep"></ul></div>
+</section>
+
+<div class="stage" id="stage">
+  <span class="badge" id="badge"></span>
+  <div class="frame" id="frame"><iframe id="view" title="Page preview"></iframe></div>
+  <div class="empty" id="empty" hidden><div><b>Next in line</b>This page gets rebuilt once you've signed off Carver 02. Before shows your approved version.</div></div>
+</div>
+
+<script>
+(function(){
+  var PAGES = {{PAGES}};
+  var NOTES = {{NOTES}};
+  var page = 'carver', width = 1440, side = 'after';
+  try { var s = JSON.parse(localStorage.getItem('lg-v9') || '{}'); if (s.width) width = s.width; if (s.side) side = s.side; } catch (e) {}
+  var $ = function(id){ return document.getElementById(id); };
+  var view = $('view'), frame = $('frame'), stage = $('stage');
+  var P = function(){ return PAGES.filter(function(p){ return p.key === page; })[0]; };
+
+  $('pages').innerHTML = PAGES.map(function(p){ return '<button type="button" data-page="' + p.key + '">' + p.name + (p.built ? '' : ' <em>Next</em>') + '</button>'; }).join('');
+
+  function src(){ var p = P(); return side === 'before' ? (p.before ? 'before/' + p.before + '?sys=b' : '') : (p.built ? 'after/' + p.file : ''); }
+  function fit(){
+    var avail = stage.clientWidth - 24;
+    var w = width === 1440 ? Math.min(1440, Math.max(1024, avail)) : width;
+    var s = Math.min(1, avail / w);
+    frame.style.width = w + 'px'; frame.style.height = (stage.clientHeight / s) + 'px';
+    frame.style.transform = 'translateX(-50%) scale(' + s + ')';
+  }
+  function paint(){
+    [].forEach.call(document.querySelectorAll('#pages button'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.page === page)); });
+    [].forEach.call(document.querySelectorAll('#devices button'), function(b){ b.setAttribute('aria-pressed', String(+b.dataset.w === width)); });
+    [].forEach.call(document.querySelectorAll('#ba button'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.v === side)); });
+    var p = P(); if (!p.before && side === 'before') side = 'after';
+    var n = NOTES[page] || {}, url = src();
+    $('pTitle').textContent = side === 'before' ? (p.before ? 'Before · your approved page' : 'This page is new: there is nothing to compare it to') : (p.built ? 'After · rebuilt on v4' : 'After · not built yet');
+    [].forEach.call(document.querySelectorAll('#ba button[data-v="before"]'), function(b){ b.disabled = !p.before; });
+    $('pName').textContent = p.name;
+    $('pWhy').textContent = n.why || '';
+    $('pAdd').innerHTML = (n.added || []).map(function(x){ return '<li>' + x + '</li>'; }).join('');
+    $('pKeep').innerHTML = (n.kept || []).map(function(x){ return '<li>' + x + '</li>'; }).join('');
+    $('badge').innerHTML = side === 'before' ? 'Before <i>· approved, Deep Green &amp; Gold</i>' : 'After <i>· design system v4</i>';
+    $('empty').hidden = !!url; frame.style.visibility = url ? 'visible' : 'hidden';
+    if (url && view.getAttribute('src') !== url) view.setAttribute('src', url);
+    $('openNew').href = url || '#';
+    try { localStorage.setItem('lg-v9', JSON.stringify({ width: width, side: side })); } catch (e) {}
+    fit();
+  }
+  window.addEventListener('message', function(e){
+    var h = e.data && e.data.pvGo; if (!h) return;
+    var f = h.split('#')[0];
+    for (var i = 0; i < PAGES.length; i++){
+      var p = PAGES[i];
+      if (f === p.file || f === p.before || (p.key === 'polo' && /^20-product-polo-/.test(f))){ page = p.key; paint(); return; }
+    }
+  });
+  $('pages').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b){ page = b.dataset.page; paint(); } });
+  $('devices').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b){ width = +b.dataset.w; paint(); } });
+  $('ba').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b){ side = b.dataset.v; paint(); } });
+  $('hide').addEventListener('click', function(){ $('panel').hidden = true; fit(); });
+  document.addEventListener('keydown', function(e){
+    if (e.target.closest('input,select,textarea')) return;
+    if (e.key === 'b' || e.key === 'B'){ side = 'before'; paint(); }
+    if (e.key === 'a' || e.key === 'A'){ side = 'after'; paint(); }
+  });
+  window.addEventListener('resize', fit);
+  paint();
+})();
+</script>

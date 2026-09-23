@@ -1,0 +1,339 @@
+{
+ "carver": {
+  "why": "Signed off (round 4), plus two small additions from your last questions: the sticky bar can change hand and loft, and the photo band has captions.",
+  "added": [
+   "<b>Sticky Add to bag at every width:</b> on desktop and tablet you can switch hand and loft right in the bar. On phones, and when you're building a set, a Change link jumps you back to the lofts. Finish stays on the page because Gold and Black are two separate products. Mags and the toasts stand above the bar.",
+   "<b>Photo band</b> between the specs and the reviews, each photo with a short caption: the Black swing, the walk off the green, the sunset polo.",
+   "<b>Finish cards:</b> the club and its name only.",
+   "<b>How many:</b> three even cards. \"Two or more ship free\" sits in gold on the right of the row instead of in pills.",
+   "<b>Mags's line follows your pick:</b> choose the 58 and it reads Mags has your 58. Again.",
+   "<b>Copy audit, against the copy skill:</b> the Details tab no longer repeats the description word for word. \"That is rather the point\" and three more uncontracted lines are fixed. The caption-style headings are replaced (\"Product description\", \"Versatility\"). Two lines that sounded like the page describing itself are gone. The returns heading no longer contradicts itself, and product names now match the menu."
+  ],
+  "kept": [
+   "<b>Price in ink</b>, and \"any loft, any grind\" is gone. \"Charge double\" came out too: the copy rules don't allow a multiplier that isn't in the product guide.",
+   "<b>Buy box tidy:</b> the two links sit on their own line under the stock line.",
+   "<b>Contour removed</b> from this page until your base map lands.",
+   "<b>Launch monitor</b> now shows the full wedge head.",
+   "<b>More from the bag</b> keeps the hat. The link now says Shop everything.",
+   "<b>Bag count</b> is a gold pill beside Mags, off the bag art.",
+   "<b>Gallery</b> captions are gone. On Shopify the gallery is the product's own media, in the order you upload it."
+  ]
+ },
+ "home": {
+  "why": "Round 6. The dot chart is off Home (it belongs where people compare), the rating and the quotes carry it instead.",
+  "added": [
+   "<b>Reviews:</b> 4.8, the stars, one line, and the quotes. No chart and no counts on Home.",
+   "<b>Best seller</b> tag is back on the Carver Gold. It's true, so it earns its place. Sold out stays on the Blade.",
+   "<b>Headline</b> is \"Thousands of golfers bag Lucky\" again.",
+   "<b>The first-tee section is cut</b> (it repeated the hero). One line brings it back.",
+   "<b>Instagram</b> button goes to luckygolfofficial.",
+   "<b>The first icon</b> under \"Take sixty days\" was an anvil and read as a blob. It's a hammer now.",
+   "<b>Photo band:</b> no captions at all. Pinning a quote to a photo made it look like the model said it, and it's the same golfer in most shots.",
+   "<b>Pills:</b> Clean, Solid, Smooth and Money are gone. They were decoration. Only Sold out is left, because it's true.",
+   "<b>In the wild:</b> \"Tag us and you might end up on this page\" with a Follow us on Instagram button. The ambassador program keeps its own section lower down.",
+   "<b>Hero, icons, trust row, Blade cutout and the moved tiles</b> from round 2 are all still in."
+  ],
+  "kept": [
+   "<b>Swapped earlier:</b> the first-tee photo (it showed another brand's irons) and the featured putter (the Blade is sold out, so the Mallet leads).",
+   "<b>Reviews:</b> three naming other brands came out, and one about slow service. The rest are word for word.",
+   "<b>Numbers:</b> no order count (the copy rules don't allow one), and 4.8 is today's average across the clubs, rounded down.",
+   "<b>Needs you:</b> the Instagram handle for that button, the bench photo, the six clips, and your contour base map."
+  ]
+ },
+ "clubs": {
+  "why": "Round 3. Buttons say what happens next, the compare headlines carry a receipt, the photos are bigger, and the chart lost its counts.",
+  "added": [
+   "<b>Buttons:</b> Pick a loft, Put it in the bag, Fill the gap, Tell me when it's back. No more \"Shop the\".",
+   "<b>Compare headlines:</b> \"What the extra ten dollars buys you\" and \"Thirty dollars apart. Here is where it goes.\"",
+   "<b>The Black button</b> is gunmetal with cream type and no gold glow. That glow belongs to gold.",
+   "<b>Photos:</b> cutouts are bigger on the cards and much bigger in the compare tables.",
+   "<b>The chart</b> shows the bars without counts, and the caption reads \"Every dot is a review from a real buyer. Closer to the cup is better.\"",
+   "<b>Tags:</b> Best seller, Sold out and In the bag. Only things that are true.",
+   "<b>The reviews photo</b> is the two hats and the mallet now, so the chart isn't fighting a person's face."
+  ],
+  "kept": [
+   "<b>Kept:</b> the head and its three numbers, the sticky category jump, both head-to-head tables with \"only show what's different\", the hybrid's what-it-replaces panels, and every FAQ answer.",
+   "<b>Checked at all three sizes</b> this round: desktop, tablet and phone, top to bottom. No sideways scroll anywhere.",
+   "<b>Still owed:</b> a photo of the Stryker being played, and one of a wedge shot from behind."
+  ]
+ },
+ "polos": {
+  "why": "Round 3. The stat row is gone (it was placeholder text), the price came off the head, and the cards breathe.",
+  "added": [
+   "<b>Standard sorts</b> added: best selling, A to Z, Z to A, newest, oldest, plus most sizes in stock. Azalea is your actual best seller.",
+   "<b>Hover:</b> the card fades to the real collar photo, full bleed. Nothing on touch, where there is no hover.",
+   "<b>Padding:</b> 18px around each cutout so the shoulders do not touch the card edge.",
+   "<b>Sizes are live:</b> every chip and every sold-out state comes from the variant data.",
+   "<b>No hero:</b> title, one line, then a photo band and the grid. The apparel brands we measure against go straight to the goods."
+  ],
+  "kept": [
+   "The photo band is the same three shoot frames as the product page: one model, one polo, one evening is all we have.",
+   "Per-print worn shots are the shoot we still owe."
+  ]
+ },
+ "polo": {
+  "why": "The Azalea page: gallery, buy box and specs generated from the real variant data, with the range photography low on the page.",
+  "added": [
+   "<b>Swatches and sizes are generated</b> from the catalogue. A sold-out size tells you which prints still have it.",
+   "<b>The stock line is plain</b> again: \"In stock, ships in 1 to 2 days\". The chips already show what is missing.",
+   "<b>Add to bag opens the drawer.</b> No Mags pop-up: that belongs to the promo landing page.",
+   "<b>The apparel row is apparel.</b> The Carver that was sitting under \"All apparel\" is out."
+  ],
+  "kept": [
+   "The worn band sits under the paragraph about the whole range, because the golfer in it is not wearing the Azalea.",
+   "That print on a body is the shot we owe."
+  ]
+ },
+ "hats": {
+  "why": "New page. Ten hats, one price, built on the same collection recipe as the polos.",
+  "added": [
+   "<b>Standard sorts</b> added, off the store's real best-seller order.",
+   "<b>Ten cutouts</b>, cut off their studio sheets the same way the polos were.",
+   "<b>Style and colour filters</b> generated from the catalogue, with the count live.",
+   "<b>Quick add</b> drops a hat straight in the bag: one variant, nothing to choose.",
+   "<b>Real stock:</b> the Black and Gold Classic shows sold out because it is."
+  ],
+  "kept": [
+   "No page before this one: hats were only ever a row at the bottom of the polos page.",
+   "Hats worn on their own is a shoot we still owe: the two frames here have a club in them."
+  ]
+ },
+ "story": {
+  "why": "The Our Story page you signed off in August, rebuilt on v4. Same argument, same lines, new pieces.",
+  "added": [
+   "<b>Photo hero</b> with the approved headline, then two splits and one dark band: the page's single dark beat.",
+   "<b>The timeline</b> is the same 14 entries, set as a proper list with the coming ones marked.",
+   "<b>Keep looking</b> row at the end points at the clubs, the program and the questions page."
+  ],
+  "kept": [
+   "Every approved line is intact: the dress code, taking it personally, different math, is gold subtle.",
+   "No contour behind the timeline until you send the base map."
+  ]
+ },
+ "faq": {
+  "why": "New page. Shipping, returns, clubs, apparel and orders in one place, so the footer stops pointing at pages that do not exist.",
+  "added": [
+   "<b>Sticky jump row</b> across the six blocks.",
+   "<b>Returns answers are the real policy</b>, read off the product reference guide: 60 days on clubs with approval and photos, 30 on apparel unworn with tags, $7 if the tags are gone.",
+   "<b>Shipping and returns links</b> in the header and footer now land on this page's sections instead of 404ing."
+  ],
+  "kept": [
+   "Nothing invented: no delivery windows or hours we have not confirmed."
+  ]
+ },
+ "trybe": {
+  "why": "New page. The ambassador panel on the home page had nowhere to go.",
+  "added": [
+   "<b>What you get</b> is the three real things: first look, the group chat, a shot at a club.",
+   "<b>What we ask</b> is the approved bar: play them, say what you think, tagging is optional.",
+   "<b>An application form</b> with the fields we would actually sort on."
+  ],
+  "kept": [
+   "No follower minimum, an answer either way. Those were your words on the home page."
+  ]
+ },
+ "cart": {
+  "why": "New page. The drawer is the same bag, but Shopify needs a cart template and some people go looking for one.",
+  "added": [
+   "<b>Same bag as the drawer</b>: add in one, it shows in the other, no second copy of the state.",
+   "<b>The $198 hole bar</b> and the trust row sit with the summary.",
+   "<b>Empty state</b> is Mags and two ways back in."
+  ],
+  "kept": [
+   "Checkout is not wired up in the preview: it toasts instead."
+  ]
+ },
+ "search": {
+  "why": "New page. The magnifier in the header had nowhere to go.",
+  "added": [
+   "<b>Live filtering</b> as you type, with the query in the URL so a result is shareable.",
+   "<b>Lofts are searchable</b>: a golfer typing 56 gets the wedges.",
+   "<b>Common searches</b> as chips under the field."
+  ],
+  "kept": [
+   "Twelve products in the preview index. On Shopify this becomes the real search results template."
+  ]
+ },
+ "404": {
+  "why": "New page. Every site needs one, and the system says what it should be: Mags, one line, two buttons.",
+  "added": [
+   "<b>Four things to buy</b> under the buttons, so a dead link still ends somewhere useful."
+  ],
+  "kept": [
+   "Shortest page on the site, on purpose."
+  ]
+ },
+ "black": {
+  "why": "Cole, 2026-09-20: \"thought it was the same page as gold just different colour\". It is now the same page.",
+  "added": [
+   "<b>The Black comes off the Carver page itself</b>, with the black product's data: same layout, same sections, same code.",
+   "<b>What actually differs</b> is the photography, $109, the K grind on its own (the S is gold only) and no reviews yet.",
+   "<b>The finish swatch</b> in the buy box switches between the two, and the Two Finishes section opens on black."
+  ],
+  "kept": [
+   "They are two products in Shopify with two prices, which is why it is two URLs. One product with a Finish option would make it one page: your call."
+  ]
+ },
+ "blade": {
+  "why": "Rebuilt on the Carver's layout. The Blade is sold out, which is a page most sites handle badly.",
+  "added": [
+   "<b>Same page furniture as the Carver:</b> gallery, buy box, film, in the wild, the monitor, photo band, reviews, more from the bag.",
+   "<b>Sold out up front:</b> the button asks to be told when it's back and the email modal opens on tap.",
+   "<b>147 verified reviews</b> behind the rating, the chart and the read-everything list."
+  ],
+  "kept": [
+   "Right hand only, so there is no hand chooser. That fact lives in the spec table.",
+   "No lofts and no grinds, because a putter has neither."
+  ]
+ },
+ "mallet": {
+  "why": "Rebuilt on the Carver's layout. The putter most golfers should actually buy.",
+  "added": [
+   "<b>Hand chips</b> where both hands exist, repeated in the sticky bar.",
+   "<b>The case for a mallet</b> in two paragraphs, no invented numbers.",
+   "<b>The cover</b> is in the cross-sell, because no club we sell ships with one."
+  ],
+  "kept": [
+   "Same milled build story as the Blade, so the two pages read as a pair."
+  ]
+ },
+ "stryker": {
+  "why": "Rebuilt on the Carver's layout. The hybrid sells to a golfer with a specific problem, so the page leads with the problem.",
+  "added": [
+   "<b>Flex channel and glide sole</b> described by what they do on a thin lie, not by their names.",
+   "<b>19 degrees and 40.5 inches</b> straight off the spec sheet.",
+   "<b>Twenty reviews</b> shown as a rating and a chart, with no shouting about volume."
+  ],
+  "kept": [
+   "Twenty reviews is a small number, so the page shows the rating and the chart and does not shout about volume."
+  ]
+ },
+ "gear": {
+  "why": "New page. Covers, grips and the glove were linked from the footer and had nowhere to land.",
+  "added": [
+   "<b>Grouped by job:</b> head covers, club grips, putter grips, glove, with a jump row.",
+   "<b>Twelve cutouts</b> processed off the Shopify files, two sold-out grips shown as sold out.",
+   "<b>Prices with ranges</b> are shown as ranges, because a grip's size changes the price."
+  ],
+  "kept": [
+   "The tees have no product photo in Shopify, so they are not on the page yet."
+  ]
+ },
+ "hat": {
+  "why": "New page. Ten hats needed somewhere to go from the collection.",
+  "added": [
+   "<b>Swatch row of all ten</b>, so picking a different hat is one tap.",
+   "<b>One size said plainly</b>, with the snapback doing the explaining.",
+   "<b>Sold out handled:</b> the Black and Gold Classic page says between runs and offers the email."
+  ],
+  "kept": [
+   "One studio photo per hat is all we have, so the gallery fills out with two course frames.",
+   "Hats worn on their own is still on the shoot list."
+  ]
+ },
+ "collection": {
+  "why": "The everyday collection template. Clubs, Polos, Hats and Gear each earn their own layout; this is the one every other collection uses.",
+  "added": [
+   "<b>One template, any collection.</b> Shown here as All Products (40 items with photography); the same file renders Accessories, Head Covers, Grips, Summer Sale and the rest.",
+   "<b>The standard shop sorts:</b> featured, best selling, A to Z, Z to A, price both ways, newest and oldest. Best selling and the dates are the store's REAL order, pulled off Shopify, not decoration.",
+   "<b>Kind chips are generated</b> from what is actually in the collection, so there is never a filter that returns nothing.",
+   "<b>Sort by price</b> and <b>In stock only</b>, with sold-out items shown honestly rather than hidden."
+  ],
+  "kept": [
+   "Your store has seventeen collections. This covers the ones that do not need a bespoke page.",
+   "A few products (tees, gift card, the unlisted shaft) have no usable photo yet, so they are not on it."
+  ]
+ },
+ "account": {
+  "why": "New. Customer accounts had no design at all, and Shopify needs the whole set.",
+  "added": [
+   "<b>Orders with the products in them</b>, not just a row of order numbers.",
+   "<b>Returns start here</b>, with the club approval explained in place.",
+   "<b>A sign-in page</b> is built too (open it from Sign out): sign in and create an account side by side, plus a line for guests chasing a tracking link.",
+   "<b>Order detail and addresses</b> are built: tap order #11482 or Change address."
+  ],
+  "kept": [
+   "Nothing is wired up in the preview: Shopify owns the real login, orders and addresses."
+  ]
+ },
+ "policy": {
+  "why": "New. The refund policy is the page people read when they are nervous, and it looked like a legal dump.",
+  "added": [
+   "<b>The one-line version first</b>, then the full text underneath.",
+   "<b>A sticky contents list</b> so someone chasing the apparel rule does not read the club rules first.",
+   "<b>Every word is your actual policy</b>, read off the product reference guide: sixty days on clubs with approval and photos, thirty on apparel unworn with tags, the $7 tag fee, customised items final sale."
+  ],
+  "kept": [
+   "Same template renders privacy, terms and shipping when you want them."
+  ]
+ },
+ "blog": {
+  "why": "New. Fourteen articles are live on the store and none of them had a design.",
+  "added": [
+   "<b>Your real articles</b>, newest first, with their real photos pulled off the store.",
+   "<b>One lead piece</b> then a grid, so the page has a front page rather than a list.",
+   "<b>The newsletter block</b> at the bottom, which is where a reader who liked the article actually is."
+  ],
+  "kept": [
+   "Two older posts have no image; they get a plain Lucky tile rather than a broken frame."
+  ]
+ },
+ "article": {
+  "why": "New. The article template, shown with a real piece rewritten in our voice: Are your wedges forged?",
+  "added": [
+   "<b>One column, 72 characters wide</b>, which is the width people actually read at.",
+   "<b>A product card inside the article</b>, where a reader who just learned what forging is can act on it.",
+   "<b>A pull quote</b> and real subheads, so a long read has somewhere to breathe."
+  ],
+  "kept": [
+   "The other thirteen articles need the same rewrite pass. This one shows the shape."
+  ]
+ },
+ "gearpdp": {
+  "why": "New. Every cover, grip and the glove now has its own page, off one template.",
+  "added": [
+   "<b>Options and prices come from the real variants.</b> Tap Jumbo on a grip and the price goes to $14.95, because it does.",
+   "<b>Sold-out combinations say so</b>: the glove in right hand is out in every size, and the oversized putter grips are between runs.",
+   "<b>The gear page links here now</b>, and anything with a size to pick says Pick a size instead of adding a guess to the bag."
+  ],
+  "kept": [
+   "Tees have no product photo on the store, so they have no page yet.",
+   "Every line is written from what the listing already says: no invented materials or weights."
+  ]
+ },
+ "reviews": {
+  "why": "New. Your /pages/reviews, rebuilt: every club's reviews in one place.",
+  "added": [
+   "<b>The chart pools all four clubs</b>, off the real Judge.me totals.",
+   "<b>Filter by club and by stars</b>, sort by recent, highest or lowest. The grumpy ones are one tap away on purpose.",
+   "<b>Each review says which club it is for</b>."
+  ],
+  "kept": [
+   "The preview holds the reviews we pulled; the live Judge.me widget pages through all of them."
+  ]
+ },
+ "giftcard": {
+  "why": "New. The gift card product page, and the card itself that the recipient opens.",
+  "added": [
+   "<b>The card is drawn, not photographed</b>: dark green, gold amount, the logo, and it updates as you pick.",
+   "<b>Send it to them, on a date</b>, with a note. Shopify does this natively; the page just makes it obvious.",
+   "<b>The recipient's view</b> is built too (gift card code, balance, copy, print): open giftcard-view.html from the full-page link."
+  ],
+  "kept": [
+   "Five amounts shown ($10 to $150). The store lists nine; confirm the other four and they drop straight in."
+  ]
+ },
+ "community": {
+  "why": "New. Your answer to Flowbox: our own UGC wall, where you choose every post and every post is shoppable.",
+  "added": [
+   "<b>Tap any post</b> and it opens with the products in it: add straight to the bag, or pick a loft or a size.",
+   "<b>Filter by Clubs, Apparel or Gear</b>, worked out from the products tagged in each post.",
+   "<b>In Shopify each post is one entry in the admin</b> (a metaobject): the photo or clip, the @handle, the link, the products. No app, no monthly fee.",
+   "<b>The same posts can show on Home and on each product page</b>, filtered to the posts that tag that product."
+  ],
+  "kept": [
+   "Every post here is OUR OWN shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
+   "Nothing goes up without the golfer's permission: that step is you asking, not an app."
+  ]
+ }
+}

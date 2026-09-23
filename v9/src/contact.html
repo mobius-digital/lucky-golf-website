@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Contact · a form, an address, and no phone tree ---------- */
+.wrap2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:900px){.wrap2{grid-template-columns:1fr}}
+.ways{list-style:none;margin:clamp(20px,3vw,28px) 0 0;padding:0;display:grid;gap:14px}
+.ways li{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--lg-rule)}
+.ways li:last-child{border-bottom:0}
+.ways .ic{width:22px;height:22px;stroke-width:1.6;flex:none;margin-top:2px}
+.ways b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:15px}
+.ways p{margin:2px 0 0;color:var(--lg-ink-64)}
+.form{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(20px,3vw,32px)}
+.row{display:grid;gap:14px;margin-bottom:14px}
+@media (min-width:640px){.row.two{grid-template-columns:1fr 1fr}}
+.form label{display:block}
+.form .lb{display:block;margin-bottom:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--lg-ink-64)}
+.form input,.form select,.form textarea{width:100%;min-height:48px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);
+  background:var(--lg-page);color:var(--lg-ink);padding:12px 14px;font:inherit}
+.form textarea{min-height:140px;resize:vertical}
+.sent{display:none;padding:14px 16px;border-radius:var(--lg-r);background:var(--lg-tile);margin-top:14px}
+.form[data-sent] .sent{display:block}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Contact</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(16px,2vw,24px)"><div class="lg-wrap wrap2">
+  <div>
+    <p class="lg-eyebrow">Talk to us</p>
+    <h1 class="lg-d1">A person reads <span class="lg-foil-word">these</span></h1>
+    <p class="lg-lede">Sizing, lofts, where your order is, or the one that got away on 17. Ask whatever you need to ask.</p>
+    <ul class="ways">
+      <li>{{ICON:mail}}<div><b>support@luckygolf.com</b><p>Order number in the subject line gets you an answer faster.</p></div></li>
+      <li>{{ICON:message-circle}}<div><b>Chat</b><p>Bottom right of any page. Best for a quick question before you buy.</p></div></li>
+      <li>{{ICON:package}}<div><b>Returns</b><p>Apparel and gear go through the returns portal. Clubs need approval first, so start here and we'll set it up.</p></div></li>
+      <li>{{ICON:circle-help}}<div><b>Already answered</b><p>Shipping times, the 60 days and sizing are all on the <a class="lg-link" href="faq.html">questions page</a>.</p></div></li>
+    </ul>
+  </div>
+  <form class="form" data-contact novalidate>
+    <div class="row two">
+      <label><span class="lb">Name</span><input name="name" autocomplete="name" required></label>
+      <label><span class="lb">Email</span><input name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="row two">
+      <label><span class="lb">Order number</span><input name="order" placeholder="If you have one"></label>
+      <label><span class="lb">What's it about</span><select name="topic">
+        <option>Where my order is</option><option>A return or exchange</option><option>Sizing or fit</option>
+        <option>Which club to pick</option><option>Something arrived damaged</option><option>Something else</option>
+      </select></label>
+    </div>
+    <div class="row"><label><span class="lb">Message</span><textarea name="message" required></textarea></label></div>
+    <button class="lg-btn" type="submit">Send it {{ICON:send}}</button>
+    <p class="sent lg-aside">Got it. We'll come back to you on the email above, usually the same day.</p>
+  </form>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">No phone tree, no ticket <span class="lg-foil-word">number</span></h2>
+  <p class="lg-lede">Nine of us work here. One of them is a magpie and he's no help at all.</p>
+  <a class="lg-btn-line" href="faq.html">Read the questions first <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+document.querySelector('[data-contact]').addEventListener('submit', function(e){
+  e.preventDefault();
+  if (!this.checkValidity()){ this.reportValidity(); return; }
+  this.setAttribute('data-sent', '');
+});
+</script>
+</body>
+</html>

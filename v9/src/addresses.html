@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Addresses · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Addresses: the saved ones, and a form for a new one ---------- */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.addr{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(18px,2.4vw,24px);margin-bottom:var(--lg-gut)}
+.addr address{font-style:normal;color:var(--lg-ink-70);line-height:1.6}
+.addr .tag{display:inline-block;margin-bottom:10px}
+.addr .acts{display:flex;gap:18px;margin-top:14px}
+.addr .acts button{background:none;border:0;padding:8px 0;color:var(--lg-ink);text-decoration:underline;cursor:pointer;font:inherit;font-size:var(--lg-fs-sm);min-height:40px}
+.form{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(20px,3vw,32px)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.field{margin-bottom:14px}
+.field .lb{display:block;margin-bottom:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--lg-ink-64)}
+.field input,.field select{width:100%;min-height:48px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);padding:12px 14px;font:inherit}
+.check{display:flex;gap:10px;align-items:center;margin:4px 0 16px;min-height:40px}
+.check input{width:20px;height:20px}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><a href="account.html">Your account</a></li><li><span aria-current="page">Addresses</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
+  <p class="lg-eyebrow">Your account</p>
+  <h1 class="lg-d1">Where it <span class="lg-foil-word">goes</span></h1>
+  <p class="lg-lede" style="max-width:52ch">Save the addresses you use and checkout fills itself in. The default is the one we pick first.</p>
+
+  <div class="two" style="margin-top:clamp(24px,3vw,36px)">
+    <div>
+      <div class="addr">
+        <span class="lg-tag">Default</span>
+        <address>Cole<br>1412 Ocean Boulevard<br>Long Beach, CA 90802<br>United States</address>
+        <div class="acts"><button type="button" data-act>Edit</button><button type="button" data-act>Delete</button></div>
+      </div>
+      <div class="addr">
+        <address>Cole<br>Course Pro Shop, 88 Fairway Drive<br>Scottsdale, AZ 85255<br>United States</address>
+        <div class="acts"><button type="button" data-act>Edit</button><button type="button" data-act>Make default</button><button type="button" data-act>Delete</button></div>
+      </div>
+    </div>
+
+    <form class="form" data-addr novalidate>
+      <h2 class="lg-d3" style="margin:0 0 16px">Add an address</h2>
+      <div class="grid2">
+        <div class="field"><label><span class="lb">First name</span><input autocomplete="given-name" required></label></div>
+        <div class="field"><label><span class="lb">Last name</span><input autocomplete="family-name" required></label></div>
+      </div>
+      <div class="field"><label><span class="lb">Address</span><input autocomplete="address-line1" required></label></div>
+      <div class="field"><label><span class="lb">Apartment, suite, pro shop</span><input autocomplete="address-line2"></label></div>
+      <div class="grid2">
+        <div class="field"><label><span class="lb">City</span><input autocomplete="address-level2" required></label></div>
+        <div class="field"><label><span class="lb">ZIP code</span><input autocomplete="postal-code" required></label></div>
+      </div>
+      <div class="field"><label><span class="lb">Country</span><select autocomplete="country"><option>United States</option><option>Canada</option></select></label></div>
+      <label class="check"><input type="checkbox"> Make this the default</label>
+      <button class="lg-btn" type="submit">Save it</button>
+    </form>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Ships in one to two <span class="lg-foil-word">days</span></h2>
+  <p class="lg-lede">Wherever it is going, it leaves us fast. Tracking lands when the label is made.</p>
+  <a class="lg-btn-line" href="account.html">Back to your account <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+document.addEventListener('click', function(e){
+  if (e.target.closest('[data-act]')){ Lucky.toast('Accounts are not wired up in this preview.'); }
+});
+document.querySelector('[data-addr]').addEventListener('submit', function(e){
+  e.preventDefault();
+  if (!this.checkValidity()){ this.reportValidity(); return; }
+  Lucky.toast('Accounts are not wired up in this preview.');
+});
+</script>
+</body>
+</html>

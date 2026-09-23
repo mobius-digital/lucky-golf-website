@@ -1,0 +1,6 @@
+# build output: regenerate with python v9/tools/build.py
+out/
+# scratch file lists from artifact publishes
+files.json
+now*.txt
+*.bak

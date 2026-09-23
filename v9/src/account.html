@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your account · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- The account: orders, addresses, and a way out ---------- */
+.acct{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.acct{grid-template-columns:1fr}}
+.orders{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
+.ord{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px 18px;padding:18px clamp(16px,2vw,22px);border-top:1px solid var(--lg-rule);align-items:center}
+.ord:first-child{border-top:0}
+.ord .no{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:15px}
+.ord .what{color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.ord .right{text-align:right}
+.ord .right b{display:block;font-weight:600}
+.ord .lg-stock{font-size:var(--lg-fs-sm)}
+.ord .thumbs{display:flex;gap:6px;margin-top:8px}
+.ord .thumbs span{width:38px;height:38px;border-radius:8px;overflow:hidden;background:var(--lg-tile);display:grid;place-items:center}
+.ord .thumbs img{width:100%;height:100%;object-fit:contain;padding:3px}
+@media (max-width:640px){.ord{grid-template-columns:1fr}.ord .right{text-align:left}}
+.side{display:grid;gap:var(--lg-gut)}
+.panel{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:clamp(20px,2.6vw,28px)}
+.panel h2{margin:0 0 10px}
+.panel address{font-style:normal;color:var(--lg-ink-70);line-height:1.6}
+.panel .lg-btn-line{margin-top:16px}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 32px;margin-bottom:clamp(16px,2.4vw,24px)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Your account</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">Signed in</p><h1 class="lg-d1">Afternoon, <span class="lg-foil-word">Cole</span></h1></div>
+    <a class="lg-link" href="login.html">Sign out <span>&rarr;</span></a>
+  </div>
+
+  <div class="acct">
+    <div>
+      <h2 class="lg-d3" style="margin:0 0 14px">Orders</h2>
+      <div class="orders">
+        <div class="ord">
+          <div><a class="no" href="order.html" style="color:inherit">#11482</a><span class="what" style="display:block">12 September 2026</span></div>
+          <div><span class="what">Carver 02 Gold, 56° K · Carver 02 Gold, 60° K</span>
+            <span class="thumbs"><span><img src="img/gold-full-cut.webp" alt=""></span><span><img src="img/gold-full-cut.webp" alt=""></span></span></div>
+          <div class="right"><b>$198</b><span class="lg-stock">Delivered</span></div>
+        </div>
+        <div class="ord">
+          <div><span class="no">#11205</span><span class="what" style="display:block">28 July 2026</span></div>
+          <div><span class="what">Azalea Classic Polo, M · It's Better To Be Lucky Hat, white</span>
+            <span class="thumbs"><span><img src="img/polo-azalea-cut.webp" alt=""></span><span><img src="img/hat-white-ibtbl-cut.webp" alt=""></span></span></div>
+          <div class="right"><b>$96</b><span class="lg-stock">Delivered</span></div>
+        </div>
+        <div class="ord">
+          <div><span class="no">#10944</span><span class="what" style="display:block">3 June 2026</span></div>
+          <div><span class="what">Tracer Mallet, right hand</span>
+            <span class="thumbs"><span><img src="img/mallet-full-cut.webp" alt=""></span></span></div>
+          <div class="right"><b>$229</b><span class="lg-stock">Delivered</span></div>
+        </div>
+      </div>
+      <p class="lg-aside" style="margin-top:14px">Sixty days runs from delivery on clubs, thirty on apparel. <a class="lg-link" href="faq.html#returns">How returns work</a></p>
+    </div>
+
+    <div class="side">
+      <div class="panel">
+        <h2 class="lg-d3">Where it ships</h2>
+        <address>Cole<br>1412 Ocean Boulevard<br>Long Beach, CA 90802<br>United States</address>
+        <a class="lg-btn-line lg-btn-sm" href="addresses.html">Change address</a>
+      </div>
+      <div class="panel">
+        <h2 class="lg-d3">Start a return</h2>
+        <p class="lg-body" style="margin-top:0">Apparel and gear go straight through the portal. Clubs need a quick approval first, so message us and we will set it up.</p>
+        <a class="lg-btn-line lg-btn-sm" href="contact.html">Start one <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">Three orders, no <span class="lg-foil-word">points</span></h2>
+  <p class="lg-lede">We would rather price it right the first time than run a scheme that pays you back slowly.</p>
+  <a class="lg-btn-line" href="clubs.html">See what's new <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+document.addEventListener('click', function(e){
+  if (e.target.closest('[data-edit]')){ e.preventDefault(); Lucky.toast('Accounts are not wired up in this preview.'); }
+});
+</script>
+</body>
+</html>

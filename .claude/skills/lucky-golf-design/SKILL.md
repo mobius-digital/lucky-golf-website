@@ -25,7 +25,7 @@ on white bands.
 1. **Photos lead.** Every page opens on a real photo; a photo beat at least every couple of sections. Order on any page: photography, voice, Mags, Yardage.
 2. **Daylight is the whole site** (white, ink, stone tiles). **Twilight** (`data-ground="twilight"`, night green) only for short events or one band. Components never fork per ground; tokens swap.
 3. **Deep green `#0B2E1F`** carries the bar, header, one band low on the page, and the footer. At most one dark band on a Daylight page.
-4. **Gold is the only accent.** Foil on one button and one display word per screen, on the action we most want. Gold type on white is `#8A6A1C`; `#EDD27C` is type on dark only.
+4. **Gold is the only accent.** Foil on one button and one display word per screen, on the action we most want. A Black or Silver product's own display word takes its finish's metal (`data-metal`); buttons stay gold. Gold type on white is `#8A6A1C`; `#EDD27C` is type on dark only.
 5. **Mags has a job: checkout.** Guide card bottom-left (white, gold border, ink), one next step, tap does it; pop-up after good news ("Check out" or "keep going"), which shrinks into Mags. Black Mags on light, light Mags on dark, never a third colour. Never on errors. Every page ends on a Mags sign-off.
 6. **Yardage, the personality layer (replaced the pinstripe):** hole bar, tracer (one per page), launch monitor A (product pages), HUD strip, review proximity A (every reviews block), section numbers (long pages), and the contour map (one per page, behind a quiet no-photo section; one big map, a different part every time). The pinstripe is retired.
 7. **Shape:** 10px controls, 12px buttons, 18px surfaces. Shadows only on things that float. Motion mostly still.

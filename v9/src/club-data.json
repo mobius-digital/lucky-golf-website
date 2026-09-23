@@ -1,0 +1,223 @@
+{
+ "blade": {
+  "pid": "lgp01-gold",
+  "name": "Tracer Blade",
+  "h1": "Tracer <span class=\"lg-foil-word\">Blade</span>",
+  "file": "blade.html",
+  "metal": "",
+  "eyebrow": "Putter · milled from a block",
+  "atc": "Put it in the bag",
+  "lede": "A blade for a stroke that arcs. Cut from one piece of 431 stainless, so what you feel at impact is the metal and nothing else.",
+  "gallery": [
+   ["blade-cut.webp", "The Tracer Blade putter", "cut"],
+   ["lgp01-gold-pack.webp", "The Tracer Blade from above", "cut"],
+   ["putter-in-hand.webp", "The Tracer Blade in hand on the green", "wide"],
+   ["from-the-cup.webp", "A putt dropping, shot from the cup", "photo"]
+  ],
+  "details": [
+   ["Details", "Fully CNC-milled 431 stainless steel, 3.5 degrees of loft at 35 inches, finished in gold. Toe hang suits a stroke that arcs back and through. Right hand."],
+   ["What's in the box", "One putter on the Lucky stock shaft with the Lucky stock grip. No head cover, which is why we sell one."],
+   ["Shipping and returns", "Orders leave in 1 to 2 business days. Sixty days from delivery on every club: contact us first, and it comes back in the condition it left in."]
+  ],
+  "story": {
+   "eyebrow": "Why it feels like that",
+   "head": "Fully milled, no <span class=\"lg-foil-word\">inserts</span>",
+   "body": [
+    "Most putters at this price are cast and then given a face insert to make up for it. This one is fully milled from 431 stainless, which is slower to make and more honest to putt with: the feel at impact is the metal, not a softer layer hiding it.",
+    "It's a blade, so it suits a stroke that arcs. The toe hang does the job of squaring the face for you rather than asking your hands to. If your stroke runs straight back and through, the Mallet is the one to look at instead."
+   ]
+  },
+  "film": ["The film", "16:9, 40 to 60 seconds. The head milled, then three putts rolled: a short one, a breaker, a long lag. Sound on for the strike."],
+  "wildhead": "The Blade, in the wild",
+  "speceyebrow": "LGP01 specs",
+  "specline": "Straight off the manufacturer's sheet. One length, one loft, one finish, because a putter does not need a menu.",
+  "specnote": "A blade this size wants a stroke with some arc in it. If yours is dead straight, the extra forgiveness on the Mallet is worth more than the shape.",
+  "monlabel": "Tracer Blade · LGP01",
+  "tiles": [["431", "Stainless, milled whole"], ["3.5°", "Loft"], ["35\"", "Length"], ["60", "Days on the green"]],
+  "specs": [
+   ["Head shape", "Blade"],
+   ["Construction", "Fully CNC-milled"],
+   ["Material", "431 stainless steel"],
+   ["Loft", "3.5 degrees"],
+   ["Length", "35 inches"],
+   ["Finish", "Gold"],
+   ["Hand", "Right"],
+   ["Shaft and grip", "Lucky stock"],
+   ["Headcover", "Not included"]
+  ],
+  "reviews": "lgp01-gold",
+  "quotes": [
+   ["Michael M.", "The look alone is amazing!!! And I haven't putted this good in my life. I should have switched to blades years ago"],
+   ["Megan D.", "I bought it because it's so pretty but it's a real step up from my old putter."],
+   ["Colon,", "The quality and look on this putter is amzing . Everytime i play someone will ask where i bought it ."]
+  ],
+  "reel": [
+   {"title": "The stroke", "brief": "Down the line, gold head through the ball, slow motion", "kind": "Creator reel"},
+   {"title": "Drained it", "brief": "A putt dropping from behind the hole, reaction", "kind": "Customer clip"},
+   {"title": "Milling detail", "brief": "Macro pan across the milled face in low sun", "kind": "Creator reel"},
+   {"title": "In the bag", "brief": "Blade sliding into the bag, cover on", "kind": "Customer clip"},
+   {"title": "Reading it", "brief": "Crouched behind the ball, putter as the plumb line", "kind": "Creator reel"},
+   {"title": "Unboxing", "brief": "Out of the sleeve, first look at the gold", "kind": "Customer clip"}
+  ],
+  "pband": [["from-the-cup.webp", "A putt dropping, shot from the cup"], ["putt-sunset.webp", "A putt at sunset"], ["green-read-fit.webp", "Reading a putt"]],
+  "morehead": "If the blade isn't <span class=\"lg-foil-word\">you</span>",
+  "more": [
+   ["mallet.html", "mallet-full-cut.webp", "Tracer Mallet", "$229", "Straighter stroke, more forgiveness, same milled build."],
+   ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Get it close, then this finishes the job."],
+   ["stryker.html", "stryker-full-cut.webp", "Stryker", "$209", "Titanium hybrid for the long clubs you don't trust."],
+   ["gear.html", "gear-cover-blade.webp", "Lucky Blade Cover", "$29.95", "Cut for a blade head. The putter ships without one."]
+  ],
+  "signhead": "Between runs, and we'd rather say <span class=\"lg-foil-word\">that</span>",
+  "signlede": "Tap the button and you'll hear from us the day it lands, and about nothing else.",
+  "mags": "Mags has been sitting on this one since the last restock.",
+  "signcta": "Tell me when it's back"
+ },
+
+ "mallet": {
+  "pid": "lgp02-gold",
+  "name": "Tracer Mallet",
+  "h1": "Tracer <span class=\"lg-foil-word\">Mallet</span>",
+  "file": "mallet.html",
+  "metal": "",
+  "eyebrow": "Putter · milled from a block",
+  "atc": "Put it in the bag",
+  "lede": "More forgiveness on the stroke most golfers actually have. Milled from one piece of 304 stainless, in both hands.",
+  "gallery": [
+   ["mallet-full-cut.webp", "The Tracer Mallet putter", "cut"],
+   ["lgp02-gold-pack.webp", "The Tracer Mallet from above", "cut"],
+   ["black-hat-mallet.webp", "The Tracer Mallet on the green", "wide"],
+   ["two-hats-mallet.webp", "The Mallet and two Lucky hats", "photo"]
+  ],
+  "details": [
+   ["Details", "Fully CNC-milled 304 stainless steel, 3.5 degrees of loft at 35 inches, finished in gold. Right hand or left."],
+   ["What's in the box", "One putter on the Lucky stock shaft with the Lucky stock grip. No head cover, which is why we sell one."],
+   ["Shipping and returns", "Orders leave in 1 to 2 business days. Sixty days from delivery: roll it on the practice green, and if it doesn't earn its spot, it comes back."]
+  ],
+  "story": {
+   "eyebrow": "Why it forgives",
+   "head": "Built for the stroke you've <span class=\"lg-foil-word\">actually</span> got",
+   "body": [
+    "A mallet pushes its weight out towards the edges of the head. Strike one off the middle of the face and it holds its line instead of leaking away, which is the entire case for the shape and the reason most golfers putt better with one.",
+    "The build is the same as the Blade: fully milled, no face insert, 3.5 degrees at 35 inches. What's different is the shape behind the face, and the fact that this one comes in both hands."
+   ]
+  },
+  "film": ["The film", "16:9, 40 to 60 seconds. Head from above, alignment at address, then three putts: centre, toe, heel, all holding the line."],
+  "wildhead": "The Mallet, in the wild",
+  "speceyebrow": "LGP02 specs",
+  "specline": "Straight off the manufacturer's sheet. One length, one loft, both hands.",
+  "specnote": "Same loft and length as the Blade. What changes is where the weight sits, and what that does to a putt you don't middle.",
+  "monlabel": "Tracer Mallet · LGP02",
+  "tiles": [["304", "Stainless, milled whole"], ["3.5°", "Loft"], ["35\"", "Length"], ["Both", "Hands"]],
+  "specs": [
+   ["Head shape", "Mallet"],
+   ["Construction", "Fully CNC-milled"],
+   ["Material", "304 stainless steel"],
+   ["Loft", "3.5 degrees"],
+   ["Length", "35 inches"],
+   ["Finish", "Gold"],
+   ["Hand", "Right and left"],
+   ["Shaft and grip", "Lucky stock"],
+   ["Headcover", "Not included"]
+  ],
+  "reviews": "lgp02-gold",
+  "quotes": [
+   ["Giff T.", "I love my mallet putter with the Lucky Golf head cover as well! I'm 6'7 and the 35\" length is perfect for me!"],
+   ["Anonymous", "Perfect putter, craftsmanship is second to none, Specs are perfect.  Love my putter!"],
+   ["Anonymous", "Bought my boyfriend the limited edition mallet putter for graduation and he loved it! The gold has a very striking look that catches the eye."]
+  ],
+  "reel": [
+   {"title": "The stroke", "brief": "Down the line, mallet head through the ball, slow motion", "kind": "Creator reel"},
+   {"title": "Off the toe", "brief": "A putt struck off the toe still holding its line", "kind": "Creator reel"},
+   {"title": "Drained it", "brief": "Long putt dropping, playing partners reacting", "kind": "Customer clip"},
+   {"title": "Alignment", "brief": "Overhead at address, the line on the crown", "kind": "Creator reel"},
+   {"title": "In the bag", "brief": "Mallet with the cover on, walking to the next tee", "kind": "Customer clip"},
+   {"title": "Unboxing", "brief": "Out of the sleeve, first look at the gold", "kind": "Customer clip"}
+  ],
+  "pband": [["putt-sunset.webp", "A putt at sunset"], ["two-hats-mallet.webp", "The Mallet and two Lucky hats"], ["from-the-cup.webp", "A putt dropping, shot from the cup"]],
+  "morehead": "The rest of the <span class=\"lg-foil-word\">bag</span>",
+  "more": [
+   ["blade.html", "blade-cut.webp", "Tracer Blade", "$199", "For a stroke that arcs. Between runs right now."],
+   ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Get it close, then this finishes the job."],
+   ["stryker.html", "stryker-full-cut.webp", "Stryker", "$209", "Titanium hybrid for the long clubs you don't trust."],
+   ["gear.html", "gear-cover-mallet.webp", "Lucky Mallet Cover", "$29.95", "Cut for a mallet head. The putter ships without one."]
+  ],
+  "signhead": "The club that saves the most <span class=\"lg-foil-word\">shots</span>",
+  "signlede": "Sixty days on the green to prove that. Roll it, and send it back if it doesn't hold up.",
+  "mags": "Mags rates this one. He cannot hold it.",
+  "signcta": "Pick a hand"
+ },
+
+ "stryker": {
+  "pid": "lgh01",
+  "name": "Stryker",
+  "h1": "<span class=\"lg-foil-word\">Stryker</span>",
+  "file": "stryker.html",
+  "metal": "",
+  "eyebrow": "Hybrid · 19 degrees",
+  "atc": "Put it in the bag",
+  "lede": "Titanium, with a flex channel behind the face. For the gap between the longest iron you trust and the fairway wood you don't.",
+  "gallery": [
+   ["stryker-full-cut.webp", "The Stryker hybrid", "cut"],
+   ["lgh01-pack.webp", "The Stryker from above", "cut"],
+   ["lucky-stryker-in-hand.webp", "The Stryker in hand", "wide"],
+   ["walk-off-green.webp", "Walking off the green", "photo"]
+  ],
+  "details": [
+   ["Details", "Titanium head with a Flex Channel face and a Glide Sole, 19 degrees, 40.5 inches, on a stiff flex shaft. Face in brushed satin gold, sole in mirror gold, crown in gloss black with a gold starburst. Right hand or left."],
+   ["What's in the box", "One hybrid on the stiff flex shaft with the Lucky stock grip. No head cover, which is why we sell one."],
+   ["Shipping and returns", "Orders leave in 1 to 2 business days. Sixty days from delivery: take it to the range and the course, and send it back if the gap it fills turns out not to be yours."]
+  ],
+  "story": {
+   "eyebrow": "Why it goes",
+   "head": "The club that replaces the one you keep <span class=\"lg-foil-word\">skipping</span>",
+   "body": [
+    "Everybody has a yardage they hate. Too long for the iron they trust, too short to bother with a wood, so they pull something they don't believe in and make a swing to match. Nineteen degrees covers that number, and a titanium head means the weight sits where it helps rather than in the material.",
+    "There's a flex channel behind the face, so a strike low on the face keeps more of its speed than it has any right to. The sole is shaped to glide rather than dig, which is what matters on the lies this club actually comes out for: thin ones, sat-down ones, and the rough."
+   ]
+  },
+  "film": ["The film", "16:9, 40 to 60 seconds. Address view, face detail, then three shots: off the deck, out of the rough, and off a tee on a long par three."],
+  "wildhead": "The Stryker, in the wild",
+  "speceyebrow": "LGH01 specs",
+  "specline": "Straight off the manufacturer's sheet. One loft, one length, both hands.",
+  "specnote": "Nineteen degrees sits where a 3 iron or a 5 wood would. If you carry both and trust neither, this is the club that ends the argument.",
+  "monlabel": "Stryker · LGH01",
+  "tiles": [["19°", "Loft"], ["40.5\"", "Length"], ["Ti", "Titanium head"], ["S", "Stiff flex"]],
+  "specs": [
+   ["Head", "Titanium"],
+   ["Face", "Flex Channel"],
+   ["Sole", "Glide Sole"],
+   ["Loft", "19 degrees"],
+   ["Length", "40.5 inches"],
+   ["Shaft", "Stiff flex"],
+   ["Finish", "Brushed satin gold face, mirror gold sole, gloss black crown with a gold starburst"],
+   ["Hand", "Right and left"],
+   ["Headcover", "Not included"]
+  ],
+  "reviews": "lgh01",
+  "quotes": [
+   ["John L.L.", "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now"],
+   ["LB06", "I'm loving my new hybrid. The gold color is stunning and the performance is unmatched. This club has replaced my sorry 3 wood."],
+   ["Dana S.", "I really like this hybrid. I'm still getting used to hitting it but I played it last night and what a beautiful sound it made when I struck it right!"]
+  ],
+  "reel": [
+   {"title": "Off the deck", "brief": "Down the line, ball flight tracked against sky", "kind": "Creator reel"},
+   {"title": "Out of the rough", "brief": "Sole gliding through thick grass, ball away", "kind": "Creator reel"},
+   {"title": "Long par three", "brief": "Off a tee, pin high, reaction", "kind": "Customer clip"},
+   {"title": "Crown detail", "brief": "Slow pan across the starburst crown in low sun", "kind": "Creator reel"},
+   {"title": "The gap", "brief": "Bag shot: irons, the Stryker, the wood it replaced", "kind": "Customer clip"},
+   {"title": "Unboxing", "brief": "Out of the sleeve, first look at the gold", "kind": "Customer clip"}
+  ],
+  "pband": [["walk-off-green.webp", "Walking off the green"], ["lucky-bag-glove.webp", "A Lucky bag and glove"], ["putt-sunset.webp", "A putt at sunset"]],
+  "morehead": "The rest of the <span class=\"lg-foil-word\">bag</span>",
+  "more": [
+   ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Once you're up near the green, this is the club."],
+   ["mallet.html", "mallet-full-cut.webp", "Tracer Mallet", "$229", "Milled from a block, forgiving where it counts."],
+   ["black.html", "black-cut.webp", "Carver 02 Black", "$109", "Same wedge, no glare off the face."],
+   ["gear.html", "gear-cover-driver.webp", "Driver Head Cover", "$40", "The hybrid ships without one too."]
+  ],
+  "signhead": "One club for the number you <span class=\"lg-foil-word\">dread</span>",
+  "signlede": "Sixty days to find out whether it's the gap you thought it was.",
+  "mags": "Mags claims he hits it 240. Mags is a bird.",
+  "signcta": "Pick a hand"
+ }
+}

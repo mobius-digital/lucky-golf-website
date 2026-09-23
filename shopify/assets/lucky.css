@@ -166,8 +166,26 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-d2{font-size:clamp(32px,3.9vw,51.2px)}
 .lg-d3{font-size:clamp(20px,1.8vw,25.6px);line-height:1}
 
-/* ONE word per headline carries the foil. Never body size. */
-.lg-foil-word{background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* ONE word per headline carries the foil. Never body size. The light runs
+   across it once when you hover the headline (same move as the button). */
+.lg-foil-word{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  background-image:linear-gradient(100deg,transparent 35%,rgba(255,250,228,.9) 50%,transparent 65%),var(--lg-foil-text);
+  background-size:250% 100%,100% 100%;background-position:130% 0,0 0;background-repeat:no-repeat;transition:background-position 0s}
+:is(h1,h2,h3,.lg-d1,.lg-d2,.lg-d3):hover .lg-foil-word{background-position:-30% 0,0 0;transition:background-position .9s var(--lg-ease)}
+
+/* THE FINISH'S METAL. A finish other than gold can wear its own metal on the
+   product's one display word, but ONLY on a dark ground. Tested 2026-09-20 on
+   the Carver Black page: gunmetal on white has almost no chroma, so it reads as
+   greyed-out type rather than as a finish, and the photography was already
+   saying "black" three times over. On white, gold stays: it is Lucky's one
+   accent and it ties the two finishes' pages together. Buttons, stars, prices
+   and links are gold everywhere, on every ground. */
+:is(.lg-band,.lg-sign,.lg-on-dark,[data-ground="twilight"])[data-metal="black"],
+:is(.lg-band,.lg-sign,.lg-on-dark,[data-ground="twilight"]) [data-metal="black"],
+[data-metal="black"] :is(.lg-band,.lg-sign,.lg-on-dark){--lg-foil-text:linear-gradient(178deg,#8D9297 0%,#D9DDE0 46%,#F4F5F6 54%,#7E8388 100%)}
+:is(.lg-band,.lg-sign,.lg-on-dark,[data-ground="twilight"])[data-metal="silver"],
+:is(.lg-band,.lg-sign,.lg-on-dark,[data-ground="twilight"]) [data-metal="silver"],
+[data-metal="silver"] :is(.lg-band,.lg-sign,.lg-on-dark){--lg-foil-text:linear-gradient(178deg,#AEB4BA 0%,#E3E6E9 46%,#FFFFFF 54%,#9AA0A6 100%)}
 /* A real number at display size ($90, 56°, 651 reviews) wears the ground's gold. */
 .lg-num{background-image:var(--lg-num);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 
@@ -403,6 +421,8 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-chip[data-dead][aria-pressed="true"]{color:var(--lg-page)}
 .lg-chips{display:flex;flex-wrap:wrap;gap:6px}
 [data-ground="twilight"] .lg-chip{background:rgba(255,255,255,.03);border-color:rgba(244,243,240,.2)}
+/* ...and the picked one still has to read as picked at night. */
+[data-ground="twilight"] .lg-chip[aria-pressed="true"],[data-ground="twilight"] .lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
 
 /* Picture swatch: the real product, tapped to choose it. */
 .lg-swatch{flex:none;width:72px;height:72px;padding:0;cursor:pointer;overflow:hidden;position:relative;
@@ -627,6 +647,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-score > b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:64px;line-height:.9}
 .lg-score-bars{display:grid;gap:6px;min-width:0}
 .lg-score-row{display:grid;grid-template-columns:28px 1fr 44px;gap:10px;align-items:center;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.lg-score-row[data-nonum]{grid-template-columns:28px 1fr}
 .lg-score-row i{height:6px;border-radius:3px;background:var(--lg-rule-08);position:relative;overflow:hidden}
 .lg-score-row i::after{content:'';position:absolute;inset:0 auto 0 0;width:var(--pct,0%);background:var(--lg-gold);border-radius:3px}
 
@@ -670,6 +691,15 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-prox .px-rl{font:600 11px 'Archivo',sans-serif;letter-spacing:.08em;fill:var(--lg-ink-64)}
 .lg-prox .px-rl.r5{fill:var(--lg-gold-text)}
 [data-ground="twilight"] .lg-prox .px-dot{filter:drop-shadow(0 0 3px rgba(237,210,124,.8))}
+/* On a dark band the chart has to flip with everything else: ink rings and ink
+   labels vanished on the photo (caught 2026-09-19). */
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-axis{stroke:rgba(244,243,240,.22)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-ring.r2{stroke:rgba(244,243,240,.38)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-cup{fill:#F4F3F0}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-rl{fill:var(--lg-on-dark-m)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-rl.r5{fill:var(--lg-gold-hi)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-score-row i{background:rgba(244,243,240,.16)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-score-row{color:var(--lg-on-dark-m)}
 @media (max-width:760px){.lg-prox{grid-template-columns:1fr}}
 
 /* The contour map (in the system since Sept 18; at most ONE per page, behind a quiet
