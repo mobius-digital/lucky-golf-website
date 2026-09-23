@@ -49,6 +49,10 @@ Both lead with one big idea about that club, then run the features with energy (
 
 **Start from the brief, not the voice.** Every ad has an angle, a concept, and a list of the copy parts the creative actually has. If the brief doesn't say which parts, ask before writing. The skill never decides the layout; the concept and the designer do.
 
+**Only when you're rewriting someone else's copy:** start from the angle and concept, never from their words. Write it fresh, the way you would if their copy didn't exist. Use their copy only to explain what went wrong. (Writing from a fresh brief? This doesn't apply.)
+
+**Register:** if the brief names one, use it. If not, pick what fits the angle, whether that's one register or a mix, like the approved wedge ad (engineering callouts with a witty last line). Say what you picked, and offer one alternative that plays it differently.
+
 **Pick a register for the angle.** The voice stays the same. A register is how the ad *sounds*, not what it's about. Comparison, drops, gifts and receipts are concepts, and any of them can be played in any register. This is a starting set, not a closed list:
 - **Witty:** one joke, landed once. *Somebody's going to ask. / Tell them it's your lucky wedge.*
 - **Plain:** what it is and why it's good. *Meet the Stryker. / A titanium hybrid that launches easy from the fairway, the rough and anywhere else you end up.*
