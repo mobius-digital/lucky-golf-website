@@ -78,7 +78,7 @@ When writing several variants, change the hook and the register each time. A bat
 - **Offer badge:** the price or promo, stated flat.
 - **Button + microline:** the CTA, and sometimes a tiny line under it ("3 minutes, max." is the kind of thing).
 - **Panel sequence:** one beat per frame across a carousel or story.
-- **Primary text and Meta headline:** the text around the ad, not in it. This is where there's room to talk. Still short.
+- **Primary text, Meta headline, description:** the text around the ad, not in it. See "Meta copy" below.
 
 **In-creative copy is short, and one spot carries the personality.** Takomo's best ads (checked 2026-09-23) keep the headline plain and put the wink in the subline or the last callout. Same budget as a web page.
 
@@ -97,6 +97,15 @@ When writing several variants, change the hook and the register each time. A bat
 
 *The bailout (empathetic): three panels*
 - *Reaching for the Texas wedge again?* / *Forged, micro-grooved, and it checks up.* / *Take the real wedge back out.*
+
+**Meta copy (primary text, Meta headline, description) always belongs to one creative.** Never write it without knowing the angle and what's on the image. Each piece does a different job, and none repeats another: the image makes the claim, the primary text answers the question the image raises, the Meta headline names what you're buying, and the description takes the risk away. The primary text gets line breaks for scanning, but every line has the energy of a Lucky description, not a list. Lead with how it plays, not what it's made of.
+
+*Approved full ad (price angle, 2026-09-23). An example, not a template:*
+- Angle: the big-name price is the logo and the tour contracts, not the club. Creative: the Carver 02 Gold close up on turf.
+- On the image: *Nobody believes what this cost.* / *$99. Stupid spin included.*
+- Primary text: *Every time someone asks, they guess high. Can't really blame them. / It's forged, so it feels buttery at impact, and the micro-grooved face grabs the ball and checks it up by the pin. / The big names charge you for that, plus the logo and the tour contracts. We just charge for the wedge. / Go get one.*
+- Meta headline: *Your new lucky wedge.*
+- Description: *Try it for 60 days.*
 
 **What to avoid:** begging, exclamation marks, manufactured urgency, invented numbers, and a joke in every part. Proof numbers must be real and checkable (Judge.me, Shopify). Never make one up.
 
