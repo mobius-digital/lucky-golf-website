@@ -102,6 +102,7 @@ Drivers
 Added 2026-09-16 from the Wenst spec emails and Tina Wu's replies of 2026-09-16. Not yet on sale. Head specs and shaft specs are listed separately because each shaft has its own profile.
 
 LGD02 Driver
+Name: Havoc (chosen by Cole 2026-09-23; trademark search still to do)
 Category: driver
 Status: not yet on sale
 Price: not set
