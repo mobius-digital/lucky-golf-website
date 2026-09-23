@@ -262,6 +262,13 @@ Both are accurate. The good one extends the promise of the headline. The bad one
 
 **What to allow:** Different registers per section on the same page. The description can flow. The specs table stays tight. The story can be a paragraph. The features can be tight callouts. It's not inconsistent — it's a page doing its job.
 
+**Section titles, one budget per page:** one big moment, one light touch, and the rest straight. If every title is a bit, the page is trying too hard. Straight still says something ("Find your loft"); it never just labels the block ("Specs").
+
+**Approved set (Carver 02 Gold, 2026-09-23).** This shows the budget in practice. It isn't a template to reuse:
+- Description: *Soft off the face, nasty on the spin.* (the big one)
+- Specs: *Find your loft.* (straight and useful)
+- Reviews: *What the lucky ones are saying.* (a light touch from the name)
+
 ---
 
 ## Return / policy / support copy

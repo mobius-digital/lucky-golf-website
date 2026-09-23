@@ -22,6 +22,8 @@ The personality doesn't change from product to product. What it's about does. Th
 
 Most pieces have one spot where the personality lands: an opening line, a headline, a closer, a section title. It's often near the top, but it goes wherever it fits, and some pieces don't need one. Everything else is confident copy with energy: strong claims, strong verbs, the occasional aside, each feature with what it does, in sentences that join up. It sounds like someone happy to be telling you about this. Not a joke in every line, but never flat: "keeps the stroke steady" is flat, "cuts through the rough like it isn't there" has energy. A bit in every sentence sounds like someone trying too hard. Specs crammed into one breath sound like a datasheet.
 
+The same goes for a whole page: one big moment, one light touch, and the rest straight.
+
 Headlines and subheads can be clean, confident statements. Specific beats chatty: "none of the tour markup" lands, "costs a lot less" sounds soft.
 Approved descriptions (2026-09-23)
 Use these to calibrate. Don't reuse the phrases.
