@@ -147,7 +147,7 @@ Both are accurate. The good one extends the promise of the headline. The bad one
 **Bad examples:**
 - *LIMITED TIME: Save on the New Carver Wedge!* (all-caps, exclamation, pressure)
 - *your short game called. it's not happy.* (crafted-clever, straining)
-- *Introducing the Tracer Mallet* (title case, no curiosity)
+- *Introducing the Eclipse Mallet* (title case, no curiosity)
 
 ---
 

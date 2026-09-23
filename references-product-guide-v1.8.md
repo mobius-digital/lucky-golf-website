@@ -54,7 +54,8 @@ Platform note: LGW02 Black shares its underlying construction and manufacturer s
 
 
 Putters
-LGP01 Tracer Blade
+LGP01 Eclipse Blade
+Formerly: Tracer Blade (renamed by Cole 2026-09-23; the live store still says Tracer until the switch, planned alongside the Havoc launch)
 Category: putter
 Head shape: blade
 Construction: fully CNC-milled
@@ -67,7 +68,8 @@ Grip: stock grip
 Hand: right-hand only (currently)
 Headcover: not included
 Price: $199
-LGP02 Tracer Mallet
+LGP02 Eclipse Mallet
+Formerly: Tracer Mallet (renamed 2026-09-23, same timing)
 Category: putter
 Head shape: mallet
 Construction: fully CNC-milled
@@ -263,7 +265,7 @@ Length
 40.5"
 
 Shaft: Stiff (S) flex, mid kick point, 40" original length, 68g original weight Grip: 58g (±3g)
-LGP01 Tracer Blade Putter — spec table
+LGP01 Eclipse Blade Putter — spec table
 Loft
 Lie
 Head Weight
@@ -274,7 +276,7 @@ Length
 35"
 
 Shaft: Regular (R) flex, mid kick point, 35" original length, 110g original weight Grip: 75g (±3g)
-LGP02 Tracer Mallet Putter — spec table
+LGP02 Eclipse Mallet Putter — spec table
 Loft
 Lie
 Head Weight

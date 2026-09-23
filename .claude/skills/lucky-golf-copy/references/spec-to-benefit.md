@@ -18,7 +18,7 @@ For the golfer: Buttery, solid sensation at impact. No hollowness. Feedback is i
 
 
 Fully CNC-Milled
-Products: LGP01 Tracer Blade, LGP02 Tracer Mallet
+Products: LGP01 Eclipse Blade, LGP02 Eclipse Mallet
 
 Technically: The whole putter head is CNC-milled from stainless steel. No casting, no welding, no assembled components, no hollow cavity. Internal density is uniform throughout. At impact, vibration travels through continuous material rather than bouncing between joined surfaces.
 
@@ -26,7 +26,7 @@ For the golfer: A muted, solid sensation at impact. No ring, no ping, no vibrati
 
 
 431 Stainless Steel (Blade) vs. 304 Stainless Steel (Mallet)
-Products: LGP01 Tracer Blade (431), LGP02 Tracer Mallet (304)
+Products: LGP01 Eclipse Blade (431), LGP02 Eclipse Mallet (304)
 
 Technically: 431 is a harder martensitic stainless. 304 is a slightly softer austenitic stainless. Both machine cleanly for CNC milling. In a milled putter, the difference in feel between these two grades is marginal.
 
@@ -135,7 +135,7 @@ For the golfer: Every wedge in the bag swings the same. The transition from your
 
 
 Putter Head Weights: Blade (385g) vs. Mallet (365g)
-Products: LGP01 Tracer Blade, LGP02 Tracer Mallet
+Products: LGP01 Eclipse Blade, LGP02 Eclipse Mallet
 
 Technically: The blade's heavier head provides stability through the stroke and resists face manipulation. The mallet's lighter head (relative to its larger shape) achieves stability through geometry (higher MOI from mass distribution) rather than raw weight.
 
