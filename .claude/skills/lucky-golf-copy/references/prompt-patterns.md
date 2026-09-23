@@ -49,12 +49,20 @@ Both lead with one big idea about that club, then run the features with energy (
 
 **Start from the brief, not the voice.** Every ad has an angle, a concept, and a list of the copy parts the creative actually has. If the brief doesn't say which parts, ask before writing. The skill never decides the layout; the concept and the designer do.
 
-**Pick a register for the angle.** The voice stays the same. How it plays depends on the angle:
-- **Witty:** one joke, landed once.
-- **Plain:** says what it is and why it's good.
-- **Dry:** undersells on purpose.
-- **Engineering:** leads with the spec, said with pride.
-- **Proof:** built on a real review, award or number. Never invent one.
+**Pick a register for the angle.** The voice stays the same. A register is how the ad *sounds*, not what it's about. Comparison, drops, gifts and receipts are concepts, and any of them can be played in any register. This is a starting set, not a closed list:
+- **Witty:** one joke, landed once. *Somebody's going to ask. / Tell them it's your lucky wedge.*
+- **Plain:** what it is and why it's good. *Meet the Stryker. / A titanium hybrid that launches easy from the fairway, the rough and anywhere else you end up.*
+- **Dry:** undersells on purpose, and has to make sense without the visual. *Their receipt has four lines. Ours has one.*
+- **Engineering:** the spec, said with pride, with what you'd feel. *Flex Channel face / ..keeps the ball flying on mishits*
+- **Proof:** real reviews, awards or numbers, and it can carry a joke. *Thousands of golfers already have one in the bag. The rest keep asking about it.*
+- **Hype:** loud, short, pure energy. *RIP IT BACK* / *Buttery feel. Stupid spin.*
+- **Empathetic:** names the problem kindly, a little ribbing allowed. *Reaching for the Texas wedge again?*
+- **Cocky:** swagger without a joke. *It's not luck. It's the club.*
+- **Mood:** a short, atmospheric line where the image does the work. *Dew on the grass. Gold in the bag.*
+
+These are calibration, not lines to reuse.
+
+**Registers mix.** An ad can stay in one, or combine them. The approved wedge ad below is engineering callouts with a witty last line, and that mix is what makes it work. Let the angle decide.
 
 When writing several variants, change the hook and the register each time. A batch that all lands the same way reads like a template.
 
@@ -70,12 +78,23 @@ When writing several variants, change the hook and the register each time. A bat
 
 **In-creative copy is short, and one spot carries the personality.** Takomo's best ads (checked 2026-09-23) keep the headline plain and put the wink in the subline or the last callout. Same budget as a web page.
 
-**Approved creative (angle: the wedge that gets asked about, 2026-09-23).** This shows the parts in practice. It isn't a template to reuse:
+**Approved creatives (2026-09-23).** These show the parts and registers in practice. They aren't templates to reuse:
+
+*The wedge that gets asked about (engineering + witty): headline, subline, callouts*
 - Headline: *Somebody's going to ask.*
 - Subline: *Tell them it's your lucky wedge.*
 - Callouts: *Forged carbon steel / ..buttery off the face* · *Micro-grooved, sandblasted face / ..spin that checks up* · *Gold finish / ..the reason they asked*
 
-**What to avoid:** begging, exclamation marks, manufactured urgency, numbers the product guide doesn't have, and a joke in every part.
+*The receipt (dry): headline, receipt lines, one annotation*
+- Headline: *Their receipt has four lines. Ours has one.*
+- Big-name receipt: *Tour staff · TV spots · The logo · The wedge*
+- Lucky receipt: *The wedge*
+- Annotation: *That's the whole receipt.*
+
+*The bailout (empathetic): three panels*
+- *Reaching for the Texas wedge again?* / *Forged, micro-grooved, and it checks up.* / *Take the real wedge back out.*
+
+**What to avoid:** begging, exclamation marks, manufactured urgency, invented numbers, and a joke in every part. Proof numbers must be real and checkable (Judge.me, Shopify). Never make one up.
 
 ---
 

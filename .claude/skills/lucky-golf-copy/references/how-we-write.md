@@ -110,7 +110,7 @@ Hard rules, from the same session:
 
 Never use the founder's name. Not in brand copy, not in a pulled review, nowhere on the site. A customer review that names him is disqualified from being quoted.
 
-Keep trust claims vague. "Thousands of happy golfers" and "60-day test drive" are approved shapes. Counted claims are not: no order counts, no review counts, no "zero tour pros paid."
+Trust claims are real or vague, never invented. "Thousands of happy golfers" and "60-day test drive" are approved vague shapes. A real, checkable number (a Judge.me rating, a review count, a Shopify order count) is allowed as of 2026-09-23. A number nobody can check, and anything like "zero tour pros paid," is not.
 
 No process vocabulary in brand copy. Photo briefs, placeholder notes, editorial decisions, and anything describing how the site was made stay in the JSON's underscore keys. A page never narrates its own construction.
 

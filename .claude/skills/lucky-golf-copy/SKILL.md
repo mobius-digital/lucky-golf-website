@@ -113,7 +113,7 @@ These came out of rewriting the whole website until Cole signed off. Run them on
 
 **10. Never sell a putter on its weight.** Feel, roll and looks, not grams.
 
-**Banned outright:** "milled from a single block" or "one block of" anything (say "fully milled"). Mentioning which hand a club is for ("lefties, this one's yours too"): never call it out in copy; the option picker handles it. The words premium, cheap, luxury, revolutionary. Em dashes (Cole banned them 2026-08-15; use a period, comma, colon or parentheses). Exclamation marks. Naming a competitor (say "the big names"). Any price, percentage or multiplier not in the product reference guide. The founder's name, anywhere.
+**Banned outright:** "milled from a single block" or "one block of" anything (say "fully milled"). Mentioning which hand a club is for ("lefties, this one's yours too"): never call it out in copy; the option picker handles it. The words premium, cheap, luxury, revolutionary. Em dashes (Cole banned them 2026-08-15; use a period, comma, colon or parentheses). Exclamation marks. Naming a competitor (say "the big names"). Any price, percentage or multiplier not in the product reference guide, and any invented proof number (real Judge.me or Shopify numbers are fine). The founder's name, anywhere.
 
 **Rule Zero for the tone guide's example lines:** the approved lines quoted in how-we-write are calibration, not a phrase bank. Never reuse a phrase or construction from them. If a reader of the Lucky site could tell you copied a line, rewrite it. "It's better to be lucky" is the tagline and appears only where a tagline belongs.
 
