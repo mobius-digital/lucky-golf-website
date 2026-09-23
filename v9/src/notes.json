@@ -1,13 +1,12 @@
 {
  "carver": {
-  "why": "Copy v10 (2026-09-23): every line rewritten against the new voice guide. Layout unchanged.",
+  "why": "Copy v10, second pass (2026-09-23): every line on the page rewritten, not just the ones I flagged the first time.",
   "added": [
    "<b>Description:</b> your approved Carver 02 Gold and Black descriptions, word for word.",
-   "<b>Headlines say something:</b> \"Catch it thin out of the wet stuff. It checks up anyway.\", \"Go ahead, check the sheet\", \"Straight from the people hitting it\".",
-   "<b>Specs said, not explained:</b> micro-grooved, sandblasted, dual-texture. No more \"grooves milled between the main ones\".",
-   "<b>Hand never called out</b> in the copy; the picker handles it.",
-   "<b>Facts fixed:</b> the delivery box no longer says we ship anywhere in the world (not decided), and the wedge test rule is one per set, per the policy.",
-   "<b>Black sign-off</b> is new: \"Black on the outside. Gold where it counts.\""
+   "<b>On the course:</b> \"Watch it bite.\" on the gold, \"They'll notice when it stops.\" on the black.",
+   "<b>Two finishes:</b> gold is \"Get used to the attention\", black is \"Meet the Shadow\". No more listing which stamps are gold.",
+   "<b>Grinds, specs, tooltips, reviews:</b> rewritten, specs said rather than explained, no lists of three.",
+   "<b>Facts fixed:</b> no \"ships anywhere in the world\" (not decided); wedge test rule is one per set."
   ],
   "kept": [
    "The one big moment stays the finishes section: \"Same wedge. Different volume.\"",

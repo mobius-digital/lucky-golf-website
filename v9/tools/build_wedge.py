@@ -26,11 +26,11 @@ GRINDS_BOTH = '''<!-- ============ THE GRINDS ============ -->
 <section class="lg-sec" id="grinds"><div class="lg-wrap">
   <div class="hd two">
     <div><p class="lg-eyebrow">Two grinds</p><h2 class="lg-d2">Square it up,<br>or open it up.</h2></div>
-    <p class="lg-body">Loft sets the distance, and the grind decides how the sole gets through the turf. The K comes in every loft and does the same thing every time you set it up square. The S is for the golfer who likes to lay the face open and get creative around the green.</p>
+    <p class="lg-body">The K is the one you set up square and trust from anywhere, in every loft. The S has a narrower sole, so it opens up without a fight when you want to get fancy around the green.</p>
   </div>
   <div class="kvs">
-    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, and it does the same thing every time, from the fairway, the rough or the fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
-    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole with a reshaped leading edge, so you can open the face without the bounce fighting you. It's the one for tight lies, bunkers and the flop you probably shouldn't try.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
+    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>Wide, flat sole and a standard leading edge. Set up square, take your divot, and it does the same thing from the fairway or out of the rough.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
+    <div class="lg-panel"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>Narrower, relieved sole and a reshaped leading edge, so the face opens as far as you like. Tight lies, bunkers, and the flop shot your group will talk about either way.</p><div class="lg-hud"><span><b>3</b>Lofts</span><span><b>52 · 56 · 60°</b>Range</span><span><b>10 to 12°</b>Bounce</span></div></div>
   </div>
 </div></section>'''
 
@@ -38,11 +38,11 @@ GRINDS_K = '''<!-- ============ THE GRIND ============ -->
 <section class="lg-sec" id="grinds"><div class="lg-wrap">
   <div class="hd two">
     <div><p class="lg-eyebrow">One grind</p><h2 class="lg-d2">The K, in every<br>loft we make.</h2></div>
-    <p class="lg-body">The black is built on the K grind, the one that does the same thing every time you set it up square, and it comes in all six lofts. Want the S? That one lives on the gold.</p>
+    <p class="lg-body">The black runs on the K grind in all six lofts. Set it up square and it does the same thing every time. Want to lay the face wide open? The S lives on the gold.</p>
   </div>
   <div class="kvs">
-    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>A wider, flatter sole with a standard leading edge. Set up square, take your divot, and it does the same thing every time, from the fairway, the rough or the fringe.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
-    <a class="lg-panel" href="carver.html" style="text-decoration:none;color:inherit"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>A narrower, relieved sole that opens up clean for tight lies and bunkers. It comes on the gold, in the 52, 56 and 60.</p><span class="lg-link">See the gold <span>&rarr;</span></span></a>
+    <div class="lg-panel"><span class="lg-tag">K grind</span><h3 class="lg-d3">No surprises</h3><p>Wide, flat sole and a standard leading edge. Set up square, take your divot, and it does the same thing from the fairway or out of the rough.</p><div class="lg-hud"><span><b>6</b>Lofts</span><span><b>50 to 60°</b>Range</span><span><b>8 to 12°</b>Bounce</span></div></div>
+    <a class="lg-panel" href="carver.html" style="text-decoration:none;color:inherit"><span class="lg-tag">S grind</span><h3 class="lg-d3">Lay it wide open</h3><p>Narrower sole that opens up clean for tight lies and bunkers. Gold only, in the 52, 56 and 60.</p><span class="lg-link">See the gold <span>&rarr;</span></span></a>
   </div>
 </div></section>'''
 
@@ -150,6 +150,12 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
                     if gold else
                     "Same forged 1020 carbon steel head and dual-texture face as the gold, blacked out, with the clover, "
                     "the wordmark, the loft stamp and the forged stamp left in gold. The K grind, in all six lofts."),
+        "FILM_H": "Watch it bite." if gold else "They'll notice when it stops.",
+        "FILM_B": ("Chip it off a tight lie or splash it out of the bunker and the "
+                   + ("Carver" if gold else "black Carver")
+                   + " grabs the ball either way. The micro-grooved, sandblasted face keeps spinning when the "
+                   "lie's wet and when you don't find the middle, and the forged 1020 head feels soft and solid "
+                   "the whole way through. You'll know how you hit it before you look up."),
         "GRINDS": GRINDS_BOTH if gold else GRINDS_K,
         # mood=True is the demo: the finish world becomes one dark beat, where a
         # finish's own metal finally reads as metal instead of as grey type
