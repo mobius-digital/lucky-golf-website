@@ -36,7 +36,7 @@ Shaft: stock shaft
 Grip: stock grip
 Hand: right-hand and left-hand
 Headcover: not included
-Price: $109
+Price: $99 (live store, checked 2026-09-23; sold as "Carver 02 Gold")
 LGW02 Carver — Black
 Category: wedge
 Head material: 1020 forged carbon steel
