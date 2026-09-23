@@ -153,6 +153,9 @@ var POSTS = {{POSTS_JSON}};
     if (e.target.closest('[data-lb-close]') || e.target === $('#lb')) $('#lb').hidden = true;
   });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') $('#lb').hidden = true; });
+  /* ?post=N opens that post: the Home rail links straight to it */
+  var want = new URLSearchParams(location.search).get('post'), el = want != null && $('.post[data-i="' + want + '"]');
+  if (el){ el.scrollIntoView({block:'center'}); el.click(); }
 })();
 </script>
 </body>

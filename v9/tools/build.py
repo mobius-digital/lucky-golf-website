@@ -39,8 +39,8 @@ PAGES = [
     {"key": "search", "name": "Search", "file": "search.html", "before": None, "built": True},
     {"key": "404", "name": "404", "file": "404.html", "before": None, "built": True},
     {"key": "black", "name": "Carver Black", "file": "black.html", "before": None, "built": True},
-    {"key": "blade", "name": "Tracer Blade", "file": "blade.html", "before": None, "built": True},
-    {"key": "mallet", "name": "Tracer Mallet", "file": "mallet.html", "before": None, "built": True},
+    {"key": "blade", "name": "Eclipse Blade", "file": "blade.html", "before": None, "built": True},
+    {"key": "mallet", "name": "Eclipse Mallet", "file": "mallet.html", "before": None, "built": True},
     {"key": "stryker", "name": "Stryker", "file": "stryker.html", "before": None, "built": True},
     {"key": "gear", "name": "Gear", "file": "gear.html", "before": None, "built": True},
     {"key": "hat", "name": "Hat product", "file": "hat-white-gold-classic.html", "before": None, "built": True},
@@ -98,9 +98,9 @@ NAV = [
                ("black.html", "Carver 02 Black", "$109", "Same wedge, quieter about it.", "6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp")]},
     {"label": "Putters", "title": "Putters", "all": ("clubs.html#putters", "All putters"),
      "intro": "Fully milled and finished in gold, without the price tag the big names hang on theirs.",
-     "photo": ("from-the-cup.webp", "Tracer, doing its job"),
-     "items": [("blade.html", "Tracer Blade", "$199", "For the stroke with a little arc in it.", "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp"),
-               ("mallet.html", "Tracer Mallet", "$229", "The last putt, in gold.", "1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp")]},
+     "photo": ("from-the-cup.webp", "Eclipse, doing its job"),
+     "items": [("blade.html", "Eclipse Blade", "$199", "For the stroke with a little arc in it.", "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp"),
+               ("mallet.html", "Eclipse Mallet", "$229", "The last putt, in gold.", "1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp")]},
     {"label": "Hybrid", "title": "Hybrid", "all": ("clubs.html#hybrid", "See the hybrid"),
      "intro": "Titanium, 19 degrees, and far friendlier than the fairway wood you keep leaving in the bag.",
      "photo": ("11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp", "Stryker, sitting down"),
@@ -162,7 +162,7 @@ def footer():
   </div>
   <div class="lg-ftr-in">
     <div class="ftr-brand"><a class="lg-logo" href="home.html" aria-label="Lucky Golf home">{logo()}</a><p>Clubs that perform at the level of the big names, at prices set by people who chose not to pass the markup along.</p></div>
-    <div><h3>Clubs</h3><ul><li><a href="carver.html">Carver 02 Gold</a></li><li><a href="black.html">Carver 02 Black</a></li><li><a href="blade.html">Tracer Blade</a></li><li><a href="mallet.html">Tracer Mallet</a></li><li><a href="stryker.html">Stryker</a></li></ul></div>
+    <div><h3>Clubs</h3><ul><li><a href="carver.html">Carver 02 Gold</a></li><li><a href="black.html">Carver 02 Black</a></li><li><a href="blade.html">Eclipse Blade</a></li><li><a href="mallet.html">Eclipse Mallet</a></li><li><a href="stryker.html">Stryker</a></li></ul></div>
     <div><h3>Apparel</h3><ul><li><a href="polos.html">The Classic Polo</a></li><li><a href="polos.html">The Blade Polo</a></li><li><a href="hats.html">Hats</a></li><li><a href="gear.html">Gear</a></li></ul></div>
     <div><h3>Support</h3><ul><li><a href="faq.html#returns">Sixty-day returns</a></li><li><a href="faq.html#shipping">Shipping</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="community.html">Community</a></li><li><a href="giftcard.html">Gift cards</a></li><li><a href="story.html">Our Story</a></li></ul></div>
   </div>
@@ -255,7 +255,15 @@ def build_carver(finish="gold", mood=False):
 
 
 def build_home():
-    return fill(open(os.path.join(SRC, "home.html"), encoding="utf-8").read(), {})
+    """The in-the-wild rail is the Community wall: same posts, same order.
+    Each tile opens that post on the wall (community.html?post=N)."""
+    by_id = {p["id"]: p for p in PRODUCTS["products"]}
+    wild = ""
+    for i, (img, alt, cap, ids) in enumerate(COMMUNITY):
+        first = by_id[ids[0]]["name"] + (f" +{len(ids) - 1}" if len(ids) > 1 else "")
+        wild += (f'<a class="wild" href="community.html?post={i}"><img src="img/{img}" alt="{esc(alt)}" loading="lazy">'
+                 f'<span class="who">@luckygolfofficial</span><span class="tag">{esc(first)}</span></a>')
+    return fill(open(os.path.join(SRC, "home.html"), encoding="utf-8").read(), {"WILD": wild})
 
 
 def build_clubs():
@@ -319,8 +327,8 @@ SEARCHABLE = [
     # what a shopper would actually type, per product, from the catalogue
     ("carver.html", "Carver 02 Gold", "$99", "Wedge", "gold-full-cut.webp", "wedge carver 02 gold 50 52 54 56 58 60 forged lob sand gap"),
     ("black.html", "Carver 02 Black", "$109", "Wedge", "black-cut.webp", "wedge carver 02 black 50 52 54 56 58 60 forged lob sand gap dark"),
-    ("blade.html", "Tracer Blade", "$199", "Putter", "blade-cut.webp", "putter tracer blade milled arc gold"),
-    ("mallet.html", "Tracer Mallet", "$229", "Putter", "mallet-full-cut.webp", "putter tracer mallet forgiving straight gold"),
+    ("blade.html", "Eclipse Blade", "$199", "Putter", "blade-cut.webp", "putter tracer blade milled arc gold"),
+    ("mallet.html", "Eclipse Mallet", "$229", "Putter", "mallet-full-cut.webp", "putter eclipse tracer mallet forgiving straight gold"),
     ("stryker.html", "Stryker", "$209", "Hybrid", "stryker-full-cut.webp", "hybrid stryker titanium 3 4 iron replacement gold"),
     ("polo-azalea.html", "Azalea Classic Polo", "$67", "Polo", "polo-azalea-cut.webp", "polo azalea classic collar floral green apparel shirt"),
     ("polos.html", "Blackout Blade Polo", "$67", "Polo", "polo-blackout-cut.webp", "polo blackout blade collar black apparel shirt"),
@@ -620,7 +628,7 @@ def build_collection(key):
     return run
 
 
-REVIEW_CLUBS = [("lgw01-gold", "Carver 02"), ("lgp01-gold", "Tracer Blade"), ("lgp02-gold", "Tracer Mallet"), ("lgh01", "Stryker")]
+REVIEW_CLUBS = [("lgw01-gold", "Carver 02"), ("lgp01-gold", "Eclipse Blade"), ("lgp02-gold", "Eclipse Mallet"), ("lgh01", "Stryker")]
 
 
 def build_reviews():
@@ -673,7 +681,7 @@ COMMUNITY = [
      ["lgp02-gold", "hat-black-gold-classic", "hat-tan-cursive"]),
     ("green-read-fit.webp", "Reading a putt in the Nightshade", "Reading it twice, hitting it once.",
      ["polo-nightshade", "hat-white-gold-classic"]),
-    ("putter-in-hand.webp", "The Tracer Blade in hand", "Milled from a block. You can feel it.",
+    ("putter-in-hand.webp", "The Eclipse Blade in hand", "Milled from a block. You can feel it.",
      ["lgp01-gold"]),
     ("lucky-carver-gold-address.webp", "The gold Carver at address", "Square it up.",
      ["lgw01-gold"]),

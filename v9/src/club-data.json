@@ -1,17 +1,17 @@
 {
  "blade": {
   "pid": "lgp01-gold",
-  "name": "Tracer Blade",
-  "h1": "Tracer <span class=\"lg-foil-word\">Blade</span>",
+  "name": "Eclipse Blade",
+  "h1": "Eclipse <span class=\"lg-foil-word\">Blade</span>",
   "file": "blade.html",
   "metal": "",
   "eyebrow": "Putter · milled from a block",
   "atc": "Put it in the bag",
   "lede": "A blade for a stroke that arcs. Cut from one piece of 431 stainless, so what you feel at impact is the metal and nothing else.",
   "gallery": [
-   ["blade-cut.webp", "The Tracer Blade putter", "cut"],
-   ["lgp01-gold-pack.webp", "The Tracer Blade from above", "cut"],
-   ["putter-in-hand.webp", "The Tracer Blade in hand on the green", "wide"],
+   ["blade-cut.webp", "The Eclipse Blade putter", "cut"],
+   ["lgp01-gold-pack.webp", "The Eclipse Blade from above", "cut"],
+   ["putter-in-hand.webp", "The Eclipse Blade in hand on the green", "wide"],
    ["from-the-cup.webp", "A putt dropping, shot from the cup", "photo"]
   ],
   "details": [
@@ -32,7 +32,7 @@
   "speceyebrow": "LGP01 specs",
   "specline": "Straight off the manufacturer's sheet. One length, one loft, one finish, because a putter does not need a menu.",
   "specnote": "A blade this size wants a stroke with some arc in it. If yours is dead straight, the extra forgiveness on the Mallet is worth more than the shape.",
-  "monlabel": "Tracer Blade · LGP01",
+  "monlabel": "Eclipse Blade · LGP01",
   "tiles": [["431", "Stainless, milled whole"], ["3.5°", "Loft"], ["35\"", "Length"], ["60", "Days on the green"]],
   "specs": [
    ["Head shape", "Blade"],
@@ -62,7 +62,7 @@
   "pband": [["from-the-cup.webp", "A putt dropping, shot from the cup"], ["putt-sunset.webp", "A putt at sunset"], ["green-read-fit.webp", "Reading a putt"]],
   "morehead": "If the blade isn't <span class=\"lg-foil-word\">you</span>",
   "more": [
-   ["mallet.html", "mallet-full-cut.webp", "Tracer Mallet", "$229", "Straighter stroke, more forgiveness, same milled build."],
+   ["mallet.html", "mallet-full-cut.webp", "Eclipse Mallet", "$229", "Straighter stroke, more forgiveness, same milled build."],
    ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Get it close, then this finishes the job."],
    ["stryker.html", "stryker-full-cut.webp", "Stryker", "$209", "Titanium hybrid for the long clubs you don't trust."],
    ["gear.html", "gear-cover-blade.webp", "Lucky Blade Cover", "$29.95", "Cut for a blade head. The putter ships without one."]
@@ -75,17 +75,17 @@
 
  "mallet": {
   "pid": "lgp02-gold",
-  "name": "Tracer Mallet",
-  "h1": "Tracer <span class=\"lg-foil-word\">Mallet</span>",
+  "name": "Eclipse Mallet",
+  "h1": "Eclipse <span class=\"lg-foil-word\">Mallet</span>",
   "file": "mallet.html",
   "metal": "",
   "eyebrow": "Putter · milled from a block",
   "atc": "Put it in the bag",
   "lede": "More forgiveness on the stroke most golfers actually have. Milled from one piece of 304 stainless, in both hands.",
   "gallery": [
-   ["mallet-full-cut.webp", "The Tracer Mallet putter", "cut"],
-   ["lgp02-gold-pack.webp", "The Tracer Mallet from above", "cut"],
-   ["black-hat-mallet.webp", "The Tracer Mallet on the green", "wide"],
+   ["mallet-full-cut.webp", "The Eclipse Mallet putter", "cut"],
+   ["lgp02-gold-pack.webp", "The Eclipse Mallet from above", "cut"],
+   ["black-hat-mallet.webp", "The Eclipse Mallet on the green", "wide"],
    ["two-hats-mallet.webp", "The Mallet and two Lucky hats", "photo"]
   ],
   "details": [
@@ -106,7 +106,7 @@
   "speceyebrow": "LGP02 specs",
   "specline": "Straight off the manufacturer's sheet. One length, one loft, both hands.",
   "specnote": "Same loft and length as the Blade. What changes is where the weight sits, and what that does to a putt you don't middle.",
-  "monlabel": "Tracer Mallet · LGP02",
+  "monlabel": "Eclipse Mallet · LGP02",
   "tiles": [["304", "Stainless, milled whole"], ["3.5°", "Loft"], ["35\"", "Length"], ["Both", "Hands"]],
   "specs": [
    ["Head shape", "Mallet"],
@@ -136,7 +136,7 @@
   "pband": [["putt-sunset.webp", "A putt at sunset"], ["two-hats-mallet.webp", "The Mallet and two Lucky hats"], ["from-the-cup.webp", "A putt dropping, shot from the cup"]],
   "morehead": "The rest of the <span class=\"lg-foil-word\">bag</span>",
   "more": [
-   ["blade.html", "blade-cut.webp", "Tracer Blade", "$199", "For a stroke that arcs. Between runs right now."],
+   ["blade.html", "blade-cut.webp", "Eclipse Blade", "$199", "For a stroke that arcs. Between runs right now."],
    ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Get it close, then this finishes the job."],
    ["stryker.html", "stryker-full-cut.webp", "Stryker", "$209", "Titanium hybrid for the long clubs you don't trust."],
    ["gear.html", "gear-cover-mallet.webp", "Lucky Mallet Cover", "$29.95", "Cut for a mallet head. The putter ships without one."]
@@ -211,7 +211,7 @@
   "morehead": "The rest of the <span class=\"lg-foil-word\">bag</span>",
   "more": [
    ["carver.html", "gold-full-cut.webp", "Carver 02 Gold", "$99", "Once you're up near the green, this is the club."],
-   ["mallet.html", "mallet-full-cut.webp", "Tracer Mallet", "$229", "Milled from a block, forgiving where it counts."],
+   ["mallet.html", "mallet-full-cut.webp", "Eclipse Mallet", "$229", "Milled from a block, forgiving where it counts."],
    ["black.html", "black-cut.webp", "Carver 02 Black", "$109", "Same wedge, no glare off the face."],
    ["gear.html", "gear-cover-driver.webp", "Driver Head Cover", "$40", "The hybrid ships without one too."]
   ],

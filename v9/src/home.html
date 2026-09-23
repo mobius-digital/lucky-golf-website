@@ -87,10 +87,12 @@
 /* the wild */
 .ugc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .ugc::-webkit-scrollbar{display:none}
-.ugc .lg-slot{flex:0 0 min(240px,62%);aspect-ratio:9/16;scroll-snap-align:start;align-content:end;text-align:left}
-.play{display:grid;place-items:center;width:52px;height:52px;margin-bottom:auto;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:16px;color:var(--lg-ink)}
-.ugc .lg-slot > div{display:flex;flex-direction:column;gap:6px;height:100%}
-.ugc .h{font-weight:700;color:var(--lg-ink);font-size:13px}
+body.lg a.wild{flex:0 0 min(240px,62%);aspect-ratio:4/5;scroll-snap-align:start;position:relative;display:block;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);color:inherit;text-decoration:none}
+.wild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+@media (hover:hover){.wild:hover img{transform:scale(1.04)}}
+.wild .who,.wild .tag{position:absolute;left:12px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.wild .who{top:12px;background:rgba(6,17,11,.72);color:#F4F3F0}
+.wild .tag{bottom:12px;background:rgba(255,255,255,.94);color:var(--lg-ink)}
 
 /* while you're here */
 .gt{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut)}
@@ -149,8 +151,8 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
   <div class="cards5">
     <a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="Carver 02 Gold" loading="lazy"><span class="lg-tag">Best seller</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">People ask about this one before they ask your score.</span></span></a>
     <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/6_cef3d6fc-8907-4866-b6aa-6301f8c614b5.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The same wedge with the lights off. Gold shows up on the clover and the stamp, nowhere else.</span></span></a>
-    <a class="lg-card" href="blade.html"><span class="lg-card-ph is-cut"><img src="img/blade-cut.webp" alt="Tracer Blade" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Fully milled, for a stroke with some arc in it. Sold out, and we're not happy about it either.</span></span></a>
-    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">It makes four-footers boring, which is the nicest thing you can say about a putter.</span></span></a>
+    <a class="lg-card" href="blade.html"><span class="lg-card-ph is-cut"><img src="img/blade-cut.webp" alt="Eclipse Blade" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Fully milled, for a stroke with some arc in it. Sold out, and we're not happy about it either.</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Eclipse Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">It makes four-footers boring, which is the nicest thing you can say about a putter.</span></span></a>
     <a class="lg-card" href="stryker.html"><span class="lg-card-ph is-cut"><img src="img/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp" alt="Stryker" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">Goes where your long iron was supposed to go. Titanium, nineteen degrees, gets up from anywhere.</span></span></a>
   </div>
 </div></section>
@@ -158,13 +160,13 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <!-- ============ FEATURED PUTTER (was the dark event band) ============ -->
 <section class="lg-sec feat" style="padding-top:0"><div class="lg-wrap">
   <div class="lg-split is-flip">
-    <figure class="lg-frame"><img src="img/black-hat-mallet.webp" alt="The Tracer Mallet on the green beside the black Lucky hat" loading="lazy"></figure>
+    <figure class="lg-frame"><img src="img/black-hat-mallet.webp" alt="The Eclipse Mallet on the green beside the black Lucky hat" loading="lazy"></figure>
     <div>
       <p class="lg-eyebrow">On the green</p>
       <h2 class="lg-d2">No ping. No buzz. Just <span class="lg-foil-word">roll</span></h2>
       <p class="lg-body">Muted off the face, and it holds the line you picked. The short ones stop feeling like a coin flip.</p>
       <div class="lg-btn-row"><a class="lg-btn-line" href="mallet.html">Roll it pure <span aria-hidden="true">&rarr;</span></a><a class="lg-link" href="blade.html" style="align-self:center">Prefer a blade? <span>&rarr;</span></a></div>
-      <div class="stampline lg-label">Tracer Mallet · 304 stainless · $229</div>
+      <div class="stampline lg-label">Eclipse Mallet · 304 stainless · $229</div>
     </div>
   </div>
 </div></section>
@@ -197,15 +199,15 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
     <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The Carver in black. Same club underneath, quieter on top.</span></span></a>
   </div></div>
   <div class="fnd-panel" data-panel="1" hidden><div class="fnd-grid">
-    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="Tracer Mallet on the green" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">More head behind the ball, so the ones you catch thin still finish close.</span></span></a>
-    <a class="lg-card" href="blade.html"><span class="lg-card-ph"><img src="img/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp" alt="Tracer Blade on the green" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Feedback over forgiveness, if that's the trade you want.</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="Eclipse Mallet on the green" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">More head behind the ball, so the ones you catch thin still finish close.</span></span></a>
+    <a class="lg-card" href="blade.html"><span class="lg-card-ph"><img src="img/1_7fbd8d34-2c10-48fc-bcfb-b00b50dfbfab.webp" alt="Eclipse Blade on the green" loading="lazy"><span class="lg-tag">Sold out</span></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Blade</span><span class="lg-card-pr">$199</span><span class="lg-card-ln">Feedback over forgiveness, if that's the trade you want.</span></span></a>
   </div></div>
   <div class="fnd-panel" data-panel="2" hidden><div class="fnd-grid">
     <a class="lg-card" href="stryker.html"><span class="lg-card-ph"><img src="img/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp" alt="Stryker behind the ball" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">For the long one that has to end up on the green, not near it.</span></span></a>
   </div></div>
   <div class="fnd-panel" data-panel="3" hidden><div class="fnd-grid">
     <a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="Carver 02 Gold" loading="lazy"><span class="lg-tag">Best seller</span></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">The one people ask about. Six lofts, two grinds, either hand.</span></span></a>
-    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Tracer Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Tracer Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Gold on the green, where everybody's standing around watching.</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/mallet-full-cut.webp" alt="Eclipse Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Gold on the green, where everybody's standing around watching.</span></span></a>
   </div></div>
   <div class="fnd-foot"><p class="lg-aside">Still not sure? Every club comes with sixty days to change your mind.</p><a class="lg-btn-line lg-btn-sm" href="#families">See every club <span aria-hidden="true">&rarr;</span></a></div>
 </div></section>
@@ -231,7 +233,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
   <div class="rvrail" role="region" aria-label="Customer reviews" tabindex="0">
     <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Every shot I touch now turns to gold since I got this lucky golf wedge. Pure beauty in each stroke, it's total head turner. You don't even have to take it out of the bag and people ask you about it. Solid gold baby!&rdquo;</blockquote><figcaption><b>Michael P.</b> · Carver 02 Gold</figcaption></figure>
     <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;People borrow it in my league- it’s a winner!&rdquo;</blockquote><figcaption><b>Ray O.</b> · Carver 02 Gold</figcaption></figure>
-    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Amazing Putter and looks awesome&rdquo;</blockquote><figcaption><b>Arthur V.</b> · Tracer Mallet</figcaption></figure>
+    <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Amazing Putter and looks awesome&rdquo;</blockquote><figcaption><b>Arthur V.</b> · Eclipse Mallet</figcaption></figure>
     <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;My buddies already named my club “Goldy” because they are jealous of the results!!&rdquo;</blockquote><figcaption><b>Eric F.</b> · Carver 02 Gold</figcaption></figure>
     <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/3_a032f79a-78ab-436e-81c9-eea7bb5f7f40.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now&rdquo;</blockquote><figcaption><b>John L.L.</b> · Stryker</figcaption></figure>
     <figure class="lg-band-tile rvc"><span class="ph"><span class="th"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt=""></span><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span></span><blockquote>&ldquo;Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all.&rdquo;</blockquote><figcaption><b>Carter D.</b> · Carver 02 Gold</figcaption></figure>
@@ -289,14 +291,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
   <div class="hd"><div><p class="lg-eyebrow">See it in play</p><h2 class="lg-d2">Lucky golfers in the <span class="lg-foil-word">wild</span></h2>
     <p class="lg-body">Real rounds, real people, mostly showing off. Which we encourage.</p></div>
     <div class="arrows" data-arrows="ugc"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
-  <div class="ugc" id="ugc">
-    <div class="lg-slot" data-md-open="md-shot" data-title="Creator reel still" data-brief="Gold Carver in the bag on a cart path, walking shot, vertical crop"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator reel</small>Gold Carver in the bag on a cart path, walking shot<span class="h">@creator</span></div></div>
-    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="First tee, Carver 02 Gold in hand, morning light"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>First tee, Carver 02 Gold in hand, morning light<span class="h">@customer</span></div></div>
-    <div class="lg-slot" data-md-open="md-shot" data-title="Creator post" data-brief="Tracer behind the ball on the green, ball rolling out"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator post</small>Tracer behind the ball on the green, ball rolling out<span class="h">@creator</span></div></div>
-    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="Full bag setup, gold clubs fanned, overhead"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>Full bag setup, gold clubs fanned, overhead<span class="h">@customer</span></div></div>
-    <div class="lg-slot" data-md-open="md-shot" data-title="Creator reel still" data-brief="Stryker off the deck, follow-through, ball in flight"><div><span class="play" aria-hidden="true">&#9654;</span><small>Creator reel</small>Stryker off the deck, follow-through, ball in flight<span class="h">@creator</span></div></div>
-    <div class="lg-slot" data-md-open="md-shot" data-title="Customer post" data-brief="Classic Polo on course, three-quarter, clover visible"><div><span class="play" aria-hidden="true">&#9654;</span><small>Customer post</small>Classic Polo on course, three-quarter, clover visible<span class="h">@customer</span></div></div>
-  </div>
+  <div class="ugc" id="ugc">{{WILD}}</div>
   <div class="rail-foot"><p class="lg-aside">Tag us and you might end up on this page.</p><a class="lg-btn-line lg-btn-sm" href="community.html">See the whole wall <span aria-hidden="true">&rarr;</span></a> <a class="lg-btn-line lg-btn-sm" href="{{IG}}" target="_blank" rel="noopener">Follow us on Instagram {{ICON:instagram}}</a></div>
 </div></section>
 

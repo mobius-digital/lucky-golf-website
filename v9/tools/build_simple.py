@@ -13,12 +13,12 @@ LABELS = {"RH": "Right hand", "LH": "Left hand", "STD": "Standard", "MID": "Mids
 GEAR_COPY = {
     "cover-blade": {
         "eyebrow": "Putter cover · blade",
-        "desc": "Cut for a blade head, white with the clover on it. The Tracer ships without a cover, so this is the thing that stops it rattling around in the bag.",
+        "desc": "Cut for a blade head, white with the clover on it. The Eclipse ships without a cover, so this is the thing that stops it rattling around in the bag.",
         "facts": [["Fits", "Blade putters"], ["Colour", "White, green clover"]],
         "sign": ("The putter ships <span class=\"lg-foil-word\">naked</span>", "Twenty-nine ninety-five to keep the face off the irons.")},
     "cover-mallet": {
         "eyebrow": "Putter cover · mallet",
-        "desc": "Shaped for a mallet head, in both hands. The Tracer Mallet comes without a cover, and a mallet is the one that picks up the most bag chatter.",
+        "desc": "Shaped for a mallet head, in both hands. The Eclipse Mallet comes without a cover, and a mallet is the one that picks up the most bag chatter.",
         "facts": [["Fits", "Mallet putters"], ["Hand", "Right and left"]],
         "sign": ("Keep the gold <span class=\"lg-foil-word\">gold</span>", "A cover is the cheapest insurance on a $229 putter.")},
     "cover-driver": {
@@ -48,8 +48,8 @@ GEAR_COPY = {
         "sign": ("Quiet hands, straight <span class=\"lg-foil-word\">putts</span>", "Sold out right now. Tap the button and we will email you the day it lands.")},
     "grip-putter-stock": {
         "eyebrow": "Putter grip",
-        "desc": "The grip that comes on a Tracer, sold on its own. For when yours has worn smooth and you want it back the way it arrived.",
-        "facts": [["Fits", "Tracer Blade and Mallet"], ["Size", "Stock"]],
+        "desc": "The grip that comes on an Eclipse, sold on its own. For when yours has worn smooth and you want it back the way it arrived.",
+        "facts": [["Fits", "Eclipse Blade and Mallet"], ["Size", "Stock"]],
         "sign": ("Back the way it <span class=\"lg-foil-word\">arrived</span>", "Nineteen ninety-five for the grip you already know.")},
 }
 
