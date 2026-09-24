@@ -73,13 +73,12 @@
   ]
  },
  "hats": {
-  "why": "New page. Ten hats, one price, built on the same collection recipe as the polos.",
+  "why": "Copy v10 (2026-09-24): every line rewritten.",
   "added": [
-   "<b>Standard sorts</b> added, off the store's real best-seller order.",
-   "<b>Ten cutouts</b>, cut off their studio sheets the same way the polos were.",
-   "<b>Style and colour filters</b> generated from the catalogue, with the count live.",
-   "<b>Quick add</b> drops a hat straight in the bag: one variant, nothing to choose.",
-   "<b>Real stock:</b> the Black and Gold Classic shows sold out because it is."
+   "<b>Headline:</b> \"Same hat. Pick the front.\" with the real specs (five-panel snapback, wicking sweatband, laser-cut vents, $29).",
+   "<b>Add to cart</b> on the quick add.",
+   "<b>Removed:</b> \"a rope across the front\" (not every hat has one) and the counts that date the page (\"ten of them\").",
+   "<b>Sign-off:</b> \"It's better to be lucky.\" then \"Tell them it's your lucky hat.\""
   ],
   "kept": [
    "No page before this one: hats were only ever a row at the bottom of the polos page.",
@@ -212,11 +211,12 @@
   ]
  },
  "hat": {
-  "why": "New page. Ten hats needed somewhere to go from the collection.",
+  "why": "Copy v10 (2026-09-24): the hat template and all 10 hat lines rewritten.",
   "added": [
-   "<b>Swatch row of all ten</b>, so picking a different hat is one tap.",
-   "<b>One size said plainly</b>, with the snapback doing the explaining.",
-   "<b>Sold out handled:</b> the Black and Gold Classic page says between runs and offers the email."
+   "<b>Hat lines:</b> one idea each, e.g. Black | Gold Classic \"The Carver 02 Black of hats.\"",
+   "<b>Big moment:</b> \"Made for the ninth hole in July.\"",
+   "<b>Fixed:</b> the Baby Blue hat's line called it mint; \"always goes first\" and \"moves fastest\" (sales claims we can't back) are gone.",
+   "<b>Sold out now asks for an email.</b> \"Tell me when it's back\" used to promise an email without asking for one."
   ],
   "kept": [
    "One studio photo per hat is all we have, so the gallery fills out with two course frames.",

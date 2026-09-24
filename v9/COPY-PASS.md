@@ -28,8 +28,8 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 | 3 | Clubs | signed off 2026-09-24 |
 | 4 | Eclipse Blade + Eclipse Mallet (club template) | signed off 2026-09-24 |
 | 5 | Stryker | signed off 2026-09-24 |
-| 6 | Polos + polo template + 13 print lines | done 2026-09-24, awaiting Cole |
-| 7 | Hats + hat template + 10 hat lines | to do |
+| 6 | Polos + polo template + 13 print lines | signed off 2026-09-24 |
+| 7 | Hats + hat template + 10 hat lines | done 2026-09-24, awaiting Cole |
 | 8 | Gear + gear template + item lines | to do |
 | 9 | Cart, drawer, search, 404 | to do |
 | 10 | Our story | to do |

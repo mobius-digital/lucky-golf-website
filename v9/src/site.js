@@ -121,7 +121,14 @@
     var f = e.target.closest('[data-news]'); if (!f) return;
     e.preventDefault(); var i = $('input', f);
     if (!i.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value)){ i.focus(); return; }
-    f.outerHTML = '<p class="lg-aside" style="margin:0">Done. One email a month, from a person.</p>';
+    f.outerHTML = '<p class="lg-aside" style="margin:0">Done. You&rsquo;re on the list.</p>';
+  });
+  /* back-in-stock: any [data-notify] form a page doesn't handle itself */
+  document.addEventListener('submit', function(e){
+    var f = e.target.closest('[data-notify]'); if (!f || e.defaultPrevented) return;
+    e.preventDefault(); var i = $('input', f);
+    if (!i.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value)){ i.focus(); return; }
+    f.outerHTML = '<p class="lg-aside" style="margin:0">Done. You&rsquo;ll get one email when it&rsquo;s back.</p>';
   });
 
   /* ------------------------------------------------------- preview links */

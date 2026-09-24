@@ -449,17 +449,17 @@ def build_gear():
     return fill(open(os.path.join(SRC, "gear.html"), encoding="utf-8").read(), {"GROUPS": out})
 
 
-HAT_COPY = {
-    "hat-white-gold-classic": "White with the wordmark in gold across the front and a rope to match. The one that goes with every polo in the rack, which is why it moves fastest.",
-    "hat-white-ibtbl": "The line we put on everything, stitched across a white crown. If somebody asks what it means, you have already won the conversation.",
-    "hat-cream-updown": "Cream, with the wordmark flipped. You will see people notice it a beat later than they expect to.",
-    "hat-black-ibtbl": "Black, with the line in white. The version for golfers who want the joke without the brightness.",
-    "hat-tan-cursive": "Cream with the script across the front and a dark rope. The softest thing we make, and it goes with the loud prints.",
-    "hat-black-gold-classic": "Black with the wordmark in gold. Between runs at the moment, and it always goes first.",
-    "hat-white-black-updown": "White crown, black brim, wordmark upside down. The most contrast in the row without going to a black hat.",
-    "hat-white-updown": "All white, wordmark flipped. Clean from the front, and it keeps the sun off exactly the same.",
-    "hat-white-cursive": "White with the script in black. The quietest hat here, and the easiest one to wear off the course.",
-    "hat-baby-blue-cursive": "Mint, with the script tonal on the crown. One of one in the row: nothing else we make is this colour.",
+HAT_COPY = {   # copy v10, 2026-09-24
+    "hat-white-gold-classic": "White, with the wordmark in gold across the front. It goes with every polo in the rack.",
+    "hat-white-ibtbl": "The line we put on everything, on a white patch hat. If somebody asks what it means, you've already won the conversation.",
+    "hat-cream-updown": "Cream, with the wordmark flipped. People notice it a beat later than they expect to.",
+    "hat-black-ibtbl": "Black, with the line on a patch across the front. The joke, minus the brightness.",
+    "hat-tan-cursive": "Tan with the script across the front. Easy on the eyes, and it calms down the loud prints.",
+    "hat-black-gold-classic": "Black with the wordmark in gold. The Carver 02 Black of hats.",
+    "hat-white-black-updown": "White crown, black brim, wordmark upside down. All the contrast without going to a black hat.",
+    "hat-white-updown": "All white, wordmark flipped. Clean from the front, and it keeps the sun off just the same.",
+    "hat-white-cursive": "White with the script in black. The easiest one here to wear off the course.",
+    "hat-baby-blue-cursive": "Baby blue, with the script tonal across the front. Nothing else we make is this colour.",
 }
 
 
@@ -483,8 +483,8 @@ def build_hat(pid):
                  '<span class="lg-card-nm">Azalea Classic Polo</span><span class="lg-card-pr">$67</span></span></a>')
         return fill(open(os.path.join(SRC, "hat.html"), encoding="utf-8").read(), {
             "NAME": esc(me["name"]), "IMG": pid + "-cut.webp", "DESC": HAT_COPY[pid], "SWATCHES": sw, "MORE": more,
-            "ATC": "Put it in the bag" if live else "Tell me when it’s back",
-            "STOCK": "In stock · ships in 1 to 2 days" if live else "Sold out · between runs",
+            "ATC": "Add to cart" if live else "Tell me when it’s back",
+            "STOCK": "In stock · ships in 1 to 2 days" if live else "Sold out",
             "HAT_JSON": js({"name": me["name"], "img": pid + "-cut.webp", "live": live})})
     return run
 
@@ -769,7 +769,7 @@ def build_hats():
         img = f'img/{p["id"]}-cut.webp'
         name = esc(p["name"])
         dead = "" if v["avail"] else " data-dead"
-        btn = ('<button type="button">Add · $29</button>' if v["avail"]
+        btn = ('<button type="button">Add to cart · $29</button>' if v["avail"]
                else '<button type="button" disabled>Sold out</button>')
         meta = "Five-panel snapback" if v["avail"] else "Sold out"
         cards.append(
