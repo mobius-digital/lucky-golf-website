@@ -75,17 +75,13 @@ def sticky_opts(pd, order, labels):
     return out
 
 
-def reviews_block(c, rv, stars5):
-    """The Carver's review layout: the chart, three real quotes, read them all."""
-    if not rv:
-        return ('<section class="lg-sec" id="reviews"><div class="lg-wrap">'
-                '<p class="lg-eyebrow">Reviews</p>'
-                '<h2 class="lg-d2">Nothing on this one <span class="lg-foil-word">yet</span></h2>'
-                f'<div class="noreview" style="margin-top:18px"><p class="lg-body" style="margin:0">{c["noreview"]}</p>'
-                '</div></div></section>'), None
+def reviews_block(c, rv, stars5, live):
+    """The Carver's review layout: the chart, three real quotes, read them all.
+    Under 10 live reviews there is no section at all (Cole, 2026-09-24)."""
+    if not rv or live[0] < 10:
+        return '', None
     counts = {int(k): v for k, v in rv["totals"].items()}
-    total = sum(counts.values())
-    avg = int(sum(k * v for k, v in counts.items()) / total * 10) / 10
+    total, avg = live[0], int(live[1] * 10) / 10
     quotes = "".join(
         f'<figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{stars5}</span>'
         f'<blockquote>&ldquo;{q}&rdquo;</blockquote>'
@@ -118,13 +114,14 @@ def build(SRC, ROOT, fill, esc, js, stars5, key):
 
     gal, dots = gallery(c["gallery"])
     order, groups, start, labels = options(pd)
-    block, prox = reviews_block(c, rv, stars5)
+    rcf = json.load(open(os.path.join(ROOT, "_src", "data", "review-counts.json"), encoding="utf-8"))
+    rvlive = tuple(rcf["counts"].get(pd.get("shopifyHandle", ""), [0, 0]))
+    block, prox = reviews_block(c, rv, stars5, rvlive)
     live = any(v["avail"] for v in pd["variants"].values())
 
     rate = ""
-    if rv:
-        counts = {int(k): v for k, v in rv["totals"].items()}
-        avg = int(sum(k * v for k, v in counts.items()) / sum(counts.values()) * 10) / 10
+    if rv and rvlive[0] >= rcf["_threshold"]:
+        avg = int(rvlive[1] * 10) / 10
         first = c["quotes"][0]
         rate = (f'<div class="rvl"><span class="lg-stars" aria-label="{avg} out of 5">{stars5}</span>'
                 f'<a href="#reviews">&ldquo;{esc(first[1][:52].rstrip())}…&rdquo; {esc(first[0])} · read the reviews</a></div>')
@@ -164,6 +161,6 @@ def build(SRC, ROOT, fill, esc, js, stars5, key):
         "SIGNCTA": c.get("signcta", "Back to the top"),
         "STICKYOPTS": sticky_opts(pd, order, labels),
         "PD_JSON": js(PD),
-        "REVIEWS_JSON": js({"total": rv["total"], "totals": rv["totals"], "sample": rv["sample"]} if rv
+        "REVIEWS_JSON": js({"total": rvlive[0] or rv["total"], "totals": rv["totals"], "sample": rv["sample"]} if rv
                            else {"total": 0, "totals": {}, "sample": []}),
         "REEL_JSON": js(c["reel"])})

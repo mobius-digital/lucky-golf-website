@@ -88,6 +88,30 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
   .dots i.on{background:var(--lg-ink)}
   .buy{position:static}
 }
+/* size guide: the site's own panel, a real chart, the picked size highlighted */
+.md-panel.sg{width:min(860px,100%);max-width:none}
+.sg .lg-d2{margin:4px 0 14px}
+.sg-grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:700px){.sg-grid{grid-template-columns:1fr}.sg-fig{max-width:220px;margin:0 auto}}
+.sg-fig{margin:0;padding:14px;border-radius:var(--lg-r-card);background:var(--lg-tile)}
+.sg-fig svg{display:block;width:100%;height:auto}
+.sg-fig figcaption{margin-top:8px;font-size:12px;color:var(--lg-ink-70);text-align:center}
+.sg-shirt{fill:none;stroke:var(--lg-ink);stroke-width:1.6;stroke-linejoin:round}
+.sg-m path{stroke:var(--lg-gold);stroke-width:2;fill:none}
+.sg-m text{font:600 10px/1 var(--lg-font,Archivo,sans-serif);fill:var(--lg-gold-text);text-anchor:middle;letter-spacing:.06em;text-transform:uppercase}
+.sg-m text.v{text-anchor:start}
+.sg-m path.lead{stroke-width:1;stroke-dasharray:2 2}
+.sg-tables{overflow-x:auto}
+.sg-tbl{width:100%;min-width:420px}
+.sg-tbl th small{display:block;font-weight:400;font-size:11px;color:var(--lg-ink-70);text-transform:none;letter-spacing:0}
+.sg-tbl [data-c]{text-align:center}
+.sg-tbl .on{background:var(--lg-gold-soft,rgba(194,154,43,.14));font-weight:700;color:var(--lg-ink)}
+.sg-note{margin:16px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.sg-note b{color:var(--lg-ink)}
+@media (max-width:700px){.sg-fig{max-width:180px}.sg-tbl{min-width:0;font-size:13px}.sg-tbl th,.sg-tbl td{padding-top:10px;padding-bottom:10px;padding-left:6px;padding-right:6px}.sg-tbl thead th:first-child{font-size:0}.sg-tbl th small{display:none}}
+.modelfit{margin:10px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.modelfit[hidden]{display:none}
+.polo-rv .lg-body{max-width:60ch}
 </style>
 </head>
 <body class="lg">
@@ -121,11 +145,12 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
 
     <div class="row" id="sizes"><span class="lg-label">Size <span class="m" data-sizepick></span></span><a href="#" data-md-open="md-size">Size guide &rarr;</a></div>
     <div class="sizes lg-chips" data-sizes role="group" aria-label="Size"></div>
+    <p class="modelfit" data-model{{MODEL_HIDDEN}}>{{MODEL}}</p>
     <p class="fitnote"><b>Fit:</b> athletic, with four-way stretch, so it's more forgiving than the cut suggests. If you wear a large in a performance polo, a large here's right. Between sizes, size up.</p>
 
     <div class="atc-row">
       <div class="qty"><button type="button" data-q="-1" aria-label="One fewer">&minus;</button><input id="qty" type="number" value="1" min="1" max="9" aria-label="How many"><button type="button" data-q="1" aria-label="One more">+</button></div>
-      <button class="lg-btn" type="button" data-atc>Put it in the bag · $67</button>
+      <button class="lg-btn" type="button" data-atc>Add to cart · $67</button>
     </div>
     <div class="trustl">
       <span class="lg-stock" data-stockline>In stock · ships in 1 to 2 days</span>
@@ -143,8 +168,8 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
       <details class="lg-fq" open><summary>Fabric and care</summary><div class="lg-fq-a"><ul>
         <li><b>Fabric</b> 88% polyester, 12% spandex.</li>
         <li><b>Stretch</b> Four-way, so it moves the way your swing does.</li>
-        <li><b>Finish</b> Moisture-wicking, wrinkle-resistant, UPF 50+.</li>
-        <li><b>Care</b> Easy to clean.</li>
+        <li><b>Finish</b> Moisture-wicking, wrinkle-resistant, and UPF 50+, so the back of your neck makes it to the back nine.</li>
+        <li><b>Care</b> Machine wash cold. Tumble dry low.</li>
       </ul></div></details>
       <details class="lg-fq"><summary>Shipping and returns</summary><div class="lg-fq-a">
         <p>Orders leave Long Beach, California in 1 to 2 business days, and the tracking number shows up as soon as the carrier scans it.</p>
@@ -178,6 +203,7 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
   <figure><img src="img/walk-off-green.webp" alt="Walking off the green in a Lucky polo" loading="lazy"></figure>
 </div>
 
+{{REVIEWS}}
 <!-- ============ WEAR IT WITH ============ -->
 <section class="lg-sec more"><div class="lg-wrap">
   <div class="hd"><div><p class="lg-eyebrow">Wear it with</p><h2 class="lg-d2">Round out the look</h2></div><a class="lg-link" href="polos.html">All apparel <span>&rarr;</span></a></div>
@@ -204,34 +230,18 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
   <span class="sb-ph"><img src="img/{{STEM}}-cut.webp" alt=""></span>
   <div><b>{{FULL}}</b><span data-sticky-note>$67</span></div>
   <div class="sb-sizes" data-sb-sizes></div>
-  <button class="lg-btn" type="button" data-atc-sticky>Put it in the bag</button>
+  <button class="lg-btn" type="button" data-atc-sticky>Add to cart</button>
 </div>
 
 <!-- modals -->
-<div class="md" id="md-size" hidden role="dialog" aria-modal="true" aria-labelledby="md-size-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+<div class="md" id="md-size" hidden role="dialog" aria-modal="true" aria-labelledby="md-size-t"><div class="md-bd" data-md-close></div><div class="md-panel sg">
   <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
-  <h2 class="lg-d3" id="md-size-t">Size guide</h2>
-  <p>Garment measurements, laid flat. Chest is measured straight across, armpit to armpit.</p>
-  <div class="sg-units lg-chips" role="group" aria-label="Units">
-    <button class="lg-chip" type="button" data-unit="in" aria-pressed="true">Inches</button>
-    <button class="lg-chip" type="button" data-unit="cm" aria-pressed="false">Centimetres</button>
-  </div>
-  <div data-unit-panel="in"><table class="lg-table sg-tbl">
-    <thead><tr><th>Athlete fit (in)</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>3XL</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Length</th><td>28.3</td><td>29.1</td><td>29.9</td><td>30.7</td><td>31.5</td><td>32.3</td></tr>
-      <tr><th scope="row">Chest</th><td>20.5</td><td>21.7</td><td>22.8</td><td>24.0</td><td>25.2</td><td>26.4</td></tr>
-      <tr><th scope="row">Shoulder</th><td>17.7</td><td>18.5</td><td>19.3</td><td>20.1</td><td>20.9</td><td>21.7</td></tr>
-    </tbody></table></div>
-  <div data-unit-panel="cm" hidden><table class="lg-table sg-tbl">
-    <thead><tr><th>Athlete fit (cm)</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>3XL</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Length</th><td>72</td><td>74</td><td>76</td><td>78</td><td>80</td><td>82</td></tr>
-      <tr><th scope="row">Chest</th><td>52</td><td>55</td><td>58</td><td>61</td><td>64</td><td>67</td></tr>
-      <tr><th scope="row">Shoulder</th><td>45</td><td>47</td><td>49</td><td>51</td><td>53</td><td>55</td></tr>
-    </tbody></table></div>
-  <h4>How it fits</h4>
-  <p>Athletic, so it sits closer than a boxy golf polo, and the four-way stretch keeps it out of the way of your swing. Between sizes, or want room across the chest? Size up.</p>
+  <p class="lg-eyebrow">Size guide</p>
+  <h2 class="lg-d2" id="md-size-t">Find your size</h2>
+  <div class="sg-units lg-chips" role="group" aria-label="Units"><button class="lg-chip" type="button" data-unit="in" aria-pressed="true">Inches</button><button class="lg-chip" type="button" data-unit="cm" aria-pressed="false">Centimeters</button></div>
+  <div class="sg-grid"><figure class="sg-fig"><svg viewBox="0 -6 200 226" role="img" aria-label="Where chest, length and shoulder are measured"><path class="sg-shirt" d="M72 28 L86 20 Q100 32 114 20 L128 28 L162 42 L182 86 L156 96 L150 82 L150 206 L50 206 L50 82 L44 96 L18 86 L38 42 Z"/><path class="sg-shirt" d="M86 20 L93 46 L100 38 L107 46 L114 20 M100 38 L100 70"/><g class="sg-m"><path d="M40 44 H160"/><path d="M40 39 V49 M160 39 V49"/><path d="M100 8 V16" class="lead"/><text x="100" y="4">Shoulder</text></g><g class="sg-m"><path d="M50 104 H150"/><path d="M50 99 V109 M150 99 V109"/><text x="100" y="98">Chest</text></g><g class="sg-m"><path d="M66 32 V206"/><path d="M61 32 H71 M61 206 H71"/><text x="72" y="150" class="v">Length</text></g></svg><figcaption>How to measure: lay the polo flat.</figcaption></figure>
+  <div class="sg-tables"><div data-unit-panel="in"><table class="lg-table sg-tbl"><thead><tr><th scope="col">Inches</th><th scope="col" data-c="S">S</th><th scope="col" data-c="M">M</th><th scope="col" data-c="L">L</th><th scope="col" data-c="XL">XL</th><th scope="col" data-c="XXL">XXL</th><th scope="col" data-c="3XL">3XL</th></tr></thead><tbody><tr><th scope="row">Chest<small>flat, pit to pit</small></th><td data-c="S">20.5</td><td data-c="M">21.7</td><td data-c="L">22.8</td><td data-c="XL">24.0</td><td data-c="XXL">25.2</td><td data-c="3XL">26.4</td></tr><tr><th scope="row">Length<small>shoulder to hem</small></th><td data-c="S">28.3</td><td data-c="M">29.1</td><td data-c="L">29.9</td><td data-c="XL">30.7</td><td data-c="XXL">31.5</td><td data-c="3XL">32.3</td></tr><tr><th scope="row">Shoulder<small>seam to seam</small></th><td data-c="S">17.7</td><td data-c="M">18.5</td><td data-c="L">19.3</td><td data-c="XL">20.1</td><td data-c="XXL">20.9</td><td data-c="3XL">21.7</td></tr></tbody></table></div><div data-unit-panel="cm" hidden><table class="lg-table sg-tbl"><thead><tr><th scope="col">Centimeters</th><th scope="col" data-c="S">S</th><th scope="col" data-c="M">M</th><th scope="col" data-c="L">L</th><th scope="col" data-c="XL">XL</th><th scope="col" data-c="XXL">XXL</th><th scope="col" data-c="3XL">3XL</th></tr></thead><tbody><tr><th scope="row">Chest<small>flat, pit to pit</small></th><td data-c="S">52.1</td><td data-c="M">55.1</td><td data-c="L">57.9</td><td data-c="XL">61.0</td><td data-c="XXL">64.0</td><td data-c="3XL">67.1</td></tr><tr><th scope="row">Length<small>shoulder to hem</small></th><td data-c="S">71.9</td><td data-c="M">73.9</td><td data-c="L">75.9</td><td data-c="XL">78.0</td><td data-c="XXL">80.0</td><td data-c="3XL">82.0</td></tr><tr><th scope="row">Shoulder<small>seam to seam</small></th><td data-c="S">45.0</td><td data-c="M">47.0</td><td data-c="L">49.0</td><td data-c="XL">51.1</td><td data-c="XXL">53.1</td><td data-c="3XL">55.1</td></tr></tbody></table></div></div></div>
+  <p class="sg-note"><b>Athletic fit, with four-way stretch.</b> Between sizes, size up.</p>
 </div></div>
 <div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
   <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
@@ -274,7 +284,7 @@ var POLO = {{POLO_JSON}};
     $('[data-sizepick]').textContent = pick ? '· ' + pick : '';
     $('[data-stockline]').textContent = 'In stock · ships in 1 to 2 days';
     var n = +$('#qty').value || 1;
-    $('[data-atc]').textContent = 'Put it in the bag · $' + (67 * n);
+    $('[data-atc]').textContent = 'Add to cart · $' + (67 * n);
     $('[data-sticky-note]').textContent = pick ? 'Size ' + pick + ' · $' + (67 * n) : '$67';
   }
   function add(){
@@ -282,7 +292,7 @@ var POLO = {{POLO_JSON}};
     var n = Math.max(1, Math.min(9, +$('#qty').value || 1)), items = [];
     for (var i = 0; i < n; i++) items.push({ name: POLO.full, short: POLO.name + ' in ' + pick, price: 67, img: POLO.img,
       hud: ['Size ' + pick, POLO.collar === 'blade' ? 'Blade collar' : 'Classic collar'] });
-    var b = $('[data-atc]'); b.setAttribute('data-done', ''); b.textContent = 'In the bag';
+    var b = $('[data-atc]'); b.setAttribute('data-done', ''); b.textContent = 'Added';
     setTimeout(function(){ b.removeAttribute('data-done'); paint(); }, 1600);
     LuckyBag.add(items, { title: n > 1 ? n + ' of the ' + POLO.name + ' are in your bag.' : POLO.name + ' is in your bag, size ' + pick + '.',
       more: 'Keep looking', moreAction: 'polos.html' });
@@ -297,6 +307,9 @@ var POLO = {{POLO_JSON}};
     if (u){ $$('[data-unit]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === u)); });
       $$('[data-unit-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-unit-panel') !== u.dataset.unit; }); }
   });
+  /* the size guide opens on the picked size */
+  document.addEventListener('click', function(e){ if (!e.target.closest('[data-md-open="md-size"]')) return;
+    $$('.sg-tbl [data-c]').forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-c') === pick); }); }, true);
   $('#qty').addEventListener('change', paint);
   $('[data-atc]').addEventListener('click', add);
   $('[data-atc-sticky]').addEventListener('click', add);

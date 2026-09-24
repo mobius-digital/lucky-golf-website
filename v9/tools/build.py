@@ -266,8 +266,44 @@ def build_home():
     return fill(open(os.path.join(SRC, "home.html"), encoding="utf-8").read(), {"WILD": wild})
 
 
+# ---- reviews: live Judge.me counts (review-counts.json, refreshed from the Shopify
+# metafields). Cole, 2026-09-24: stars and a reviews section show ONLY at 10+
+# reviews, by count, never by rating. Polos and hats pool into one group each.
+RC = json.load(open(os.path.join(ROOT, "_src", "data", "review-counts.json"), encoding="utf-8"))
+REVIEW_MIN = RC["_threshold"]
+
+
+def rc(pid):
+    """(count, rating) for a product id, or for a pooled group name."""
+    if pid in RC["groups"]:
+        return RC["groups"][pid]["count"], None
+    p = [x for x in PRODUCTS["products"] if x["id"] == pid]
+    return tuple(RC["counts"].get(p[0].get("shopifyHandle", ""), [0, None])) if p else (0, None)
+
+
+def shows_reviews(pid):
+    return rc(pid)[0] >= REVIEW_MIN
+
+
+def rate_link(pid, href):
+    n, avg = rc(pid)
+    if n < REVIEW_MIN:
+        return ""
+    return (f'<a class="pc-rate" href="{href}#reviews"><span class="lg-stars" aria-label="{avg:.1f} out of 5">{STARS5}</span>'
+            f'{avg:.2f} · {n}</a>')
+
+
 def build_clubs():
-    return fill(open(os.path.join(SRC, "clubs.html"), encoding="utf-8").read(), {})
+    w, b, m, s = rc("lgw01-gold"), rc("lgp01-gold"), rc("lgp02-gold"), rc("lgh01")
+    row_w = (f'<tr class="is-same"><th scope="row">Rating</th><td colspan="2" class="same">{w[1]:.2f} · {w[0]} reviews <em>Shared by both</em></td></tr>'
+             if w[0] >= REVIEW_MIN else "")
+    cell = lambda r: f"{r[1]:.2f} · {r[0]} reviews" if r[0] >= REVIEW_MIN else "Not enough reviews yet"
+    row_p = (f'<tr class="is-diff"><th scope="row">Rating</th><td>{cell(b)}</td><td>{cell(m)}</td></tr>'
+             if max(b[0], m[0]) >= REVIEW_MIN else "")
+    return fill(open(os.path.join(SRC, "clubs.html"), encoding="utf-8").read(), {
+        "RATE_GOLD": rate_link("lgw01-gold", "carver.html"), "RATE_BLACK": rate_link("lgw01-black", "black.html"),
+        "RATE_BLADE": rate_link("lgp01-gold", "blade.html"), "RATE_MALLET": rate_link("lgp02-gold", "mallet.html"),
+        "RATE_STRYKER": rate_link("lgh01", "stryker.html"), "ROW_RATING_W": row_w, "ROW_RATING_P": row_p})
 
 
 def polo_pid(x):
@@ -754,6 +790,17 @@ def polo_slug(x):
     return "polo-" + x["img"].split("/")[-1].replace("polo-", "").replace("-pack.webp", "") + ".html"
 
 
+def polo_reviews():
+    """One review group for every polo (both collars, every print). Shown only at 10+."""
+    n = RC["groups"]["polos"]["count"]
+    if n < REVIEW_MIN:
+        return ""
+    return ('<section class="lg-sec polo-rv" id="reviews" style="padding-top:0"><div class="lg-wrap">'
+            f'<p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">{n} reviews</h2>'
+            '<p class="lg-body">Reviews from every Lucky polo. Same fabric and fit, different print.</p>'
+            '<div class="jdgm-widget" data-group="polos"></div></div></section>')
+
+
 def build_polo(name="Azalea"):
     """One product page per print. Sizes, stock, swatches and the cross-sell
     all come from polos-data.json; the words come from polos-copy.json."""
@@ -773,6 +820,9 @@ def build_polo(name="Azalea"):
                     {"SWATCHES": sw, "POLO_JSON": js(polo), "NAME": esc(me["name"]), "FULL": esc(me["full"]),
                      "STEM": stem, "COLLAR": "The Blade" if me["collar"] == "blade" else "The Classic",
                      "DESC": POLO_COPY[me["name"]],
+                     # "[Name] is [height], [weight] and wears a [size]." per product, once the polos are shot on people
+                     "MODEL": esc(me.get("model", "")), "MODEL_HIDDEN": "" if me.get("model") else " hidden",
+                     "REVIEWS": polo_reviews(),
                      "OTHER_HREF": polo_slug(other), "OTHER_IMG": other["img"].split("/")[-1].replace("-pack", "-cut"),
                      "OTHER_NAME": esc(other["full"]),
                      "OTHER_LN": "No buttons, nothing at your throat." if other["collar"] == "blade"

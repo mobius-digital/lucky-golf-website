@@ -5,6 +5,7 @@ It is. Both come off v9/src/carver.html with the product's own data; what
 changes is the photography, the price, the grinds that exist in that finish,
 and whether there are reviews yet. Imported by build.py.
 """
+import json
 
 GOLD_GAL = [
     ("gold-full-cut.webp", "Carver 02 Gold wedge, full club", "cut", "Forged 1020"),
@@ -80,7 +81,7 @@ BAR_K = '''    <div class="tbar"><span class="lg-label">K grind · 6 lofts</span
 REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes ============ -->
 <section class="lg-sec" id="reviews"><div class="lg-wrap">
   <div class="rv-top">
-    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">4.8 stars from 650 reviews</h2>
+    <div><p class="lg-eyebrow">Reviews</p><h2 class="lg-d2">{{RV_HEAD}}</h2>
       <button class="lg-btn-line lg-btn-sm" type="button" data-md-open="md-write">Write a review</button></div>
     <div id="prox"></div>
   </div>
@@ -99,9 +100,7 @@ REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes 
   </div>
 </div></section>'''
 
-REVIEWS_BLACK = REVIEWS_GOLD.replace(
-    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>',
-    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>')   # identical on both finishes (Cole, 2026-09-23)
+REVIEWS_BLACK = REVIEWS_GOLD   # identical on both finishes (Cole, 2026-09-23)
 
 
 CARD_GOLD = '<a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/gold-full-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Same forged head, in gold</span></span></a>'
@@ -176,6 +175,15 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
         "REVIEWS_JSON": js(reviews("lgw01-gold")),   # one wedge, one pool of reviews
         "REEL_JSON": js(REEL),
     }
+    # live Judge.me count; stars and reviews only at 10+ (Cole, 2026-09-24)
+    rcf = json.load(open(os.path.join(SRC, "..", "..", "_src", "data", "review-counts.json"), encoding="utf-8"))
+    n, avg = rcf["counts"].get("lucky-golf-lgw02-gold" if gold else "lucky-golf-lgw02-black", [0, 0])
+    if n >= rcf["_threshold"]:
+        t["REVIEWS"] = t["REVIEWS"].replace("{{RV_HEAD}}", f"{int(avg * 10) / 10:.1f} stars from {n} reviews")
+    else:
+        t["REVIEWS"], t["RVL"] = "", ""
     for k in ("RVL", "REVIEWS"):
         t[k] = t[k].replace("{{STARS5}}", stars5)
+    rj = reviews("lgw01-gold"); rj["total"] = n   # the list says the live total, not the sampled one
+    t["REVIEWS_JSON"] = js(rj)
     return fill(open(os.path.join(SRC, "carver.html"), encoding="utf-8").read(), t)

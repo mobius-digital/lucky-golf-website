@@ -1,0 +1,31 @@
+{
+ "_": "Judge.me review counts per Shopify handle, read from the product metafields reviews.rating_count and reviews.rating (Shopify Admin API). Pulled 2026-09-24. Refresh before every board publish; the theme reads the same metafields live, so nothing here is hardcoded on the store.",
+ "_rule": "Cole, 2026-09-24: a product shows its star badge and reviews section only at 10 or more reviews (count, never rating). Polos pool into one group, hats into one group.",
+ "_threshold": 10,
+ "_pulled": "2026-09-24",
+ "counts": {
+  "lucky-golf-lgw02-gold": [661, 4.82],
+  "lucky-golf-lgw02-black": [661, 4.82],
+  "signature-gold-putters": [148, 4.86],
+  "limited-edition-mallet-putter": [61, 4.72],
+  "lucky-striker-hybrid-limited-edition": [21, 4.52],
+  "lucky-clover-tour-glove": [50, 4.72],
+  "lucky-putter-head-cover-blade": [12, 4.92],
+  "lucky-putter-head-cover-mallet-large": [24, 4.79],
+  "driver-head-cover": [7, 3.86],
+  "copy-of-lucky-golf-clover-grips-green": [17, 4.88],
+  "lucky-golf-oversized-putter-grip": [8, 4.75],
+  "lucky-golf-clovers-oversized-putter-grip": [12, 4.83],
+  "lucky-golf-performance-x2-clover-grips-black": [2, 4.5],
+  "copy-of-lucky-golf-performance-x2-clover-grips-white": [5, 4.8],
+  "lucky-golf-performance-x2-clover-grips-blue": [4, 5.0],
+  "lucky-golf-performance-x2-clover-grips-pink": [2, 5.0],
+  "stock-putter-grips": [2, 4.5],
+  "lucky-golf-tees": [10, 4.9],
+  "lucky-wedges-gift-card": [4, 5.0]
+ },
+ "groups": {
+  "polos": {"count": 7, "members": {"signature-black-classic-polo": 1, "marble-classic-polo": 1, "frost-classic-polo": 1, "blackout-blade-polo": 1, "cruiser-classic-polo": 2, "azalea-classic-polo": 1, "gold-dust-classic-polo": 0, "shadow-classic-polo": 0, "contour-classic-polo": 0, "gold-carnation-classic-polo": 0, "swirl-blade-polo": 0, "spot-blade-polo": 0, "nightshade-classic-polo": 0}},
+  "hats": {"count": 0}
+ }
+}

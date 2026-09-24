@@ -59,10 +59,13 @@
  "polo": {
   "why": "Copy v10 (2026-09-24): the polo template and all 13 print lines rewritten.",
   "added": [
+   "<b>Add to cart</b> on apparel (\"Put it in the bag\" stays on clubs).",
+   "<b>Size guide rebuilt:</b> \"Find your size\", inches or centimeters, chest / length / shoulder with a how-to-measure drawing, and the size you picked highlighted.",
+   "<b>Fabric and care:</b> \"...so the back of your neck makes it to the back nine.\" and \"Machine wash cold. Tumble dry low.\"",
+   "<b>Model sizing line</b> is built and hidden until a polo is shot on a person.",
+   "<b>Reviews:</b> all polos pool into one group. It's at 7 reviews, so under the 10 rule nothing shows yet.",
    "<b>Print line (the light touch):</b> one idea per print, e.g. Contour \"like a map of the green you're about to misread\", Cruiser \"you're going to enjoy answering\".",
-   "<b>Big moment:</b> \"Swing in it. Stay out after.\"",
-   "<b>Buttons:</b> \"Put it in the bag\", \"Thirty days to send it back\", \"When will it get here?\"",
-   "<b>Fixed:</b> the size guide said the chest was \"measured across and doubled\", but the numbers are half-chest; it now says armpit to armpit. \"Ships anywhere in the world\" is gone (not decided). The sold-out toast no longer promises another print has your size."
+   "<b>Big moment:</b> \"Swing in it. Stay out after.\""
   ],
   "kept": [
    "The worn band sits under the paragraph about the whole range, because the golfer in it is not wearing the Azalea.",
