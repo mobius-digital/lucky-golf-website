@@ -161,6 +161,15 @@ Sizing: S–3XL
 Technical features: moisture-wicking, UPF 50+, four-way stretch, wrinkle-resistant, easy to clean
 Colorways: rotating — not tracked here
 Price: $67
+Care: machine wash cold, tumble dry low (from the live product page, 2026-09-24)
+Size chart (inches; from the live size guide, 2026-09-24). Chest is measured flat, pit to pit.
+  S: length 28.3, chest 20.5, shoulder 17.7
+  M: length 29.1, chest 21.7, shoulder 18.5
+  L: length 29.9, chest 22.8, shoulder 19.3
+  XL: length 30.7, chest 24.0, shoulder 20.1
+  XXL: length 31.5, chest 25.2, shoulder 20.9
+  3XL: length 32.3, chest 26.4, shoulder 21.7
+Model sizing: none. Current polo photos are product shots with no model.
 The Blade Polo
 Category: polo
 Fabric: 88% polyester, 12% spandex
