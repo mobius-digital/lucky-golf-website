@@ -152,6 +152,8 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
         "FILM_B": ("From 100 yards in, this is the club you want. The forged 1020 head feels soft and solid, and the "
                    "micro-grooved, sandblasted face grabs the ball and keeps it checking, even when the grass is wet. "
                    "Six lofts, so there's one for every shot you actually hit."),
+        "WHO": ("Anyone who chips. Go K if you set up square and play from the fairway, and S if you like to lay the face open around the green."
+                if gold else "Anyone who chips and likes a square setup. It's all K grind, so it does the same thing every time."),
         "GRINDS": GRINDS_BOTH if gold else GRINDS_K,
         # mood=True is the demo: the finish world becomes one dark beat, where a
         # finish's own metal finally reads as metal instead of as grey type

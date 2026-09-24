@@ -223,6 +223,10 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
   .clip{flex-basis:62%}
   .mh img{height:560px}
 }
+/* "Who it's for": the one-line fit under the story copy (Takomo's "For who:") */
+.whofor{margin-top:22px;padding-top:16px;border-top:1px solid var(--lg-rule);max-width:52ch}
+body.lg .whofor .lg-label{color:var(--lg-gold-text)}
+.whofor p{margin:6px 0 0;color:var(--lg-ink);font-size:16px;line-height:1.55}
 </style>
 </head>
 <body class="lg"{{METAL}} style="--lg-contour-day:url(img/lucky-contour-day.svg);--lg-contour-tw:url(img/lucky-contour-tw.svg)">
@@ -272,7 +276,7 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
     </div>
 
     <div class="cta"><button class="lg-btn" type="button" data-atc>Put it in the bag · {{PRICE}}</button></div>
-    <div class="trustl"><span class="lg-stock" data-stockline>In stock · ships in 1 to 2 days</span><span class="trustl-links"><a href="#" data-md-open="md-returns">Sixty-day test drive</a><a href="#" data-md-open="md-delivery">When will it get here?</a></span></div>
+    <div class="trustl"><span class="lg-stock" data-stockline>In stock · ships in 1 to 2 days</span><span class="trustl-links"><a href="#" data-md-open="md-returns">Sixty days to make up your mind</a><a href="#" data-md-open="md-delivery">When will it get here?</a></span></div>
 
     <div class="lg-faq">
       <details class="lg-fq"><summary>What it's made of</summary><div class="lg-fq-a"><p>{{DETAILS}}</p></div></details>
@@ -290,6 +294,7 @@ body:has(.stickybar[data-on]) .lg-toast{bottom:92px}
       <p class="lg-eyebrow">On the course</p>
       <h2 class="lg-d2">{{FILM_H}}</h2>
       <p class="lg-body">{{FILM_B}}</p>
+      <div class="whofor"><span class="lg-label">Who it's for</span><p>{{WHO}}</p></div>
     </div>
     <div class="lg-slot" data-md-open="md-shot" data-title="The film" data-brief="16:9 product film, 40 to 60 seconds. The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.">
       <div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 16:9 · 40 to 60 s</small>The club in hand, face detail, then three shots played: full swing from 100, a greenside check-up, a bunker out. Sound on.</div>

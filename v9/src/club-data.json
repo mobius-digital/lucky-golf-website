@@ -207,7 +207,8 @@
   ],
   "signlede": "Tell them it's your lucky putter.",
   "signcta": "Tell me when it's back",
-  "spechead": "One loft. One length. Nothing to fit."
+  "spechead": "One loft. One length. Nothing to fit.",
+  "who": "Golfers who want to feel every putt, with a stroke that has some arc in it."
  },
  "mallet": {
   "pid": "lgp02-gold",
@@ -417,7 +418,8 @@
   ],
   "signlede": "Tell them it's your lucky putter.",
   "signcta": "Pick a hand",
-  "spechead": "One loft. One length. Nothing to fit."
+  "spechead": "One loft. One length. Nothing to fit.",
+  "who": "Golfers who want the misses to stay on line. If you've ever lost a four-footer off the toe, start here."
  },
  "stryker": {
   "pid": "lgh01",
@@ -627,6 +629,7 @@
   ],
   "signlede": "Tell them it's your lucky hybrid.",
   "signcta": "Pick a hand",
-  "spechead": "Nineteen degrees. No fitting appointment required."
+  "spechead": "Nineteen degrees. No fitting appointment required.",
+  "who": "Anyone who'd rather not hit a long iron. If your 3-iron only comes out on the range, this is its replacement."
  }
 }
