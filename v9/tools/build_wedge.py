@@ -75,7 +75,7 @@ TABS = '''  <div class="seg specs-tabs" data-spectabs role="tablist"><button cla
 '''
 
 BAR_BOTH = '''    <div class="tbar"><div class="seg" data-specseg role="group" aria-label="Grind"><button class="lg-chip" type="button" data-g="K" aria-pressed="true">K grind · 6 lofts</button><button class="lg-chip" type="button" data-g="S" aria-pressed="false">S grind · 3 lofts</button></div><span class="lg-meta">Right and left hand</span></div>'''
-BAR_K = '''    <div class="tbar"><span class="lg-label">K grind · six lofts</span><span class="lg-meta">Right hand</span></div>'''
+BAR_K = '''    <div class="tbar"><span class="lg-label">K grind · 6 lofts</span><span class="lg-meta">Right hand</span></div>'''
 
 REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes ============ -->
 <section class="lg-sec" id="reviews"><div class="lg-wrap">
@@ -101,7 +101,7 @@ REVIEWS_GOLD = '''<!-- ============ REVIEWS: review proximity + the real quotes 
 
 REVIEWS_BLACK = REVIEWS_GOLD.replace(
     '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>',
-    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>\n      <p class="lg-body">These reviews cover the Carver 02 in both finishes. Same forged head, same face, different coat.</p>')
+    '<h2 class="lg-d2">4.8 stars from 650 reviews</h2>')   # identical on both finishes (Cole, 2026-09-23)
 
 
 CARD_GOLD = '<a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/gold-full-cut.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Same forged head, in gold</span></span></a>'
@@ -146,10 +146,12 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
         "DETAILS": ("A forged 1020 carbon steel head with CNC-milled grooves on a micro-grooved, sandblasted "
                     "face. The K grind comes in all six lofts and the S in the 52, 56 and 60."
                     if gold else
-                    "The same forged 1020 carbon steel head and dual-texture face as the gold, finished in black with "
-                    "gold accents. The K grind, in all six lofts."),
-        "FILM_H": "Watch it bite." if gold else "Watch it check up.",
-        "FILM_B": "Full swing from 100, a chip that checks, a bunker shot. Sound on.",
+                    "A forged 1020 carbon steel head with CNC-milled grooves on a micro-grooved, sandblasted "
+                    "face, finished in black with gold accents. The K grind comes in all six lofts."),
+        "FILM_H": "Soft off the face, nasty on the spin. Go stick one close.",
+        "FILM_B": ("From 100 yards in, this is the club you want. The forged 1020 head feels soft and solid, and the "
+                   "micro-grooved, sandblasted face grabs the ball and keeps it checking, even when the grass is wet. "
+                   "Six lofts, so there's one for every shot you actually hit."),
         "GRINDS": GRINDS_BOTH if gold else GRINDS_K,
         # mood=True is the demo: the finish world becomes one dark beat, where a
         # finish's own metal finally reads as metal instead of as grey type
@@ -167,8 +169,7 @@ def build(SRC, fill, js, product, reviews, REEL, stars5, finish, mood=False):
                                 TABLES=(SPEC_K_TABLE + "\n" + SPEC_S_TABLE) if gold else SPEC_K_TABLE),
         "REVIEWS": REVIEWS_GOLD if gold else REVIEWS_BLACK,
         "OTHER_FIN": CARD_BLACK if gold else CARD_GOLD,
-        "SIGN": ("Nobody needs a gold wedge. You'll want one anyway." if gold else
-                 "Black on the outside. Gold where it counts."),
+        "SIGN": "Tell them it's your lucky wedge.",
         "PD_JSON": js(keep),
         "REVIEWS_JSON": js(reviews("lgw01-gold")),   # one wedge, one pool of reviews
         "REEL_JSON": js(REEL),
