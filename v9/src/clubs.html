@@ -35,6 +35,9 @@
 @media (max-width:620px){.row,.row.one{grid-template-columns:1fr}}
 .shot{position:relative;border-radius:var(--lg-r-card);overflow:hidden;aspect-ratio:3/4;background:var(--lg-tile);margin:0}
 .shot img{width:100%;height:100%;object-fit:cover}
+/* side by side, the photo takes its height from the cards; its 3:4 ratio was widening it past its column over the first card */
+@media (min-width:981px){.shot{aspect-ratio:auto;min-height:100%}}
+.row>*{min-width:0}
 @media (max-width:980px){.shot{aspect-ratio:3/2}}
 
 .pc{display:flex;flex-direction:column;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-page)}
