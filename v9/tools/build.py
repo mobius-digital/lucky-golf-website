@@ -775,8 +775,8 @@ def build_polo(name="Azalea"):
                      "DESC": POLO_COPY[me["name"]],
                      "OTHER_HREF": polo_slug(other), "OTHER_IMG": other["img"].split("/")[-1].replace("-pack", "-cut"),
                      "OTHER_NAME": esc(other["full"]),
-                     "OTHER_LN": "Blade collar, no buttons. The quieter half of the rack." if other["collar"] == "blade"
-                                 else "Classic collar, three buttons. The other half of the rack."})
+                     "OTHER_LN": "No buttons, nothing at your throat." if other["collar"] == "blade"
+                                 else "The classic collar, same shirt underneath."})
     return run
 
 
