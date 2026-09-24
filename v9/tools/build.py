@@ -99,7 +99,7 @@ NAV = [
     {"label": "Putters", "title": "Putters", "all": ("clubs.html#putters", "All putters"),
      "intro": "Fully milled, finished in gold, and priced like nobody's paying for a tour van.",
      "photo": ("from-the-cup.webp", "Eclipse, doing its job"),
-     "items": [("blade.html", "Eclipse Blade", "$199", "For the stroke with a little arc in it.", "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp"),
+     "items": [("blade.html", "Eclipse Blade", "$199", "Fully milled, and it tells you where you hit it.", "3_f3d878d3-a4bb-4cc9-82df-f68e8eec3f61.webp"),
                ("mallet.html", "Eclipse Mallet", "$229", "Soft off the face, gold all over.", "1_b00c01f0-8116-464a-a39c-08a6ebf82b6f.webp")]},
     {"label": "Hybrid", "title": "Hybrid", "all": ("clubs.html#hybrid", "See the hybrid"),
      "intro": "Titanium, 19 degrees, and a lot friendlier than the fairway wood you keep leaving in the bag.",

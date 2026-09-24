@@ -15,6 +15,7 @@
  "home": {
   "why": "Copy v10, review round (2026-09-24): the price argument lives in the hero and \"Priced honestly\" only.",
   "added": [
+   "<b>Putters body (your line):</b> \"Fully milled 304 stainless in a mallet head that holds its line when you miss the middle, and a face that gets the ball rolling true from the first inch.\"",
    "<b>Putters:</b> \"Quiet off the face. Loud in the bag.\"",
    "<b>No tour contracts:</b> \"The big names build their tour deals into the price of the club. We don't have any to build in.\"",
    "<b>Why it says Lucky</b> is only about the name now.",
@@ -29,15 +30,13 @@
   ]
  },
  "clubs": {
-  "why": "Round 3. Buttons say what happens next, the compare headlines carry a receipt, the photos are bigger, and the chart lost its counts.",
+  "why": "Copy v10 (2026-09-24): every line rewritten. Big moment: the head. Light touch: the sign-off. The rest straight.",
   "added": [
-   "<b>Buttons:</b> Pick a loft, Put it in the bag, Fill the gap, Tell me when it's back. No more \"Shop the\".",
-   "<b>Compare headlines:</b> \"What the extra ten dollars buys you\" and \"Thirty dollars apart. Here is where it goes.\"",
-   "<b>The Black button</b> is gunmetal with cream type and no gold glow. That glow belongs to gold.",
-   "<b>Photos:</b> cutouts are bigger on the cards and much bigger in the compare tables.",
-   "<b>The chart</b> shows the bars without counts, and the caption reads \"Every dot is a review from a real buyer. Closer to the cup is better.\"",
-   "<b>Tags:</b> Best seller, Sold out and In the bag. Only things that are true.",
-   "<b>The reviews photo</b> is the two hats and the mallet now, so the chart isn't fighting a person's face."
+   "<b>Head:</b> \"Built like theirs. Priced like ours.\" No list of categories (it dates the page the day a driver ships), and \"5 clubs\" became \"1 to 2 days to ship\".",
+   "<b>Sections say something:</b> \"One forged wedge, two finishes\", \"Fully milled, blade or mallet\", \"The long approach, sorted\".",
+   "<b>Sign-off:</b> \"Your bag's missing one of these\" then \"It's better to be lucky.\"",
+   "<b>Facts fixed:</b> the \"built for a stroke with some arc\" claim isn't in the product guide, so it's gone here, on Home's Blade card and in the menu. No hand callouts in the copy (the spec rows still show hand). Black shows the shared 4.82 · 650.",
+   "<b>Kept because you liked them:</b> \"What the extra ten dollars buys you\", \"Thirty dollars apart. Here's where it goes\", \"Thousands of golfers bag Lucky\", \"Which one's mine?\"."
   ],
   "kept": [
    "<b>Kept:</b> the head and its three numbers, the sticky category jump, both head-to-head tables with \"only show what's different\", the hybrid's what-it-replaces panels, and every FAQ answer.",
