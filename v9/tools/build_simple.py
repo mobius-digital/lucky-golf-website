@@ -65,7 +65,8 @@ def copy_for(pid):
 
 
 def build(SRC, ROOT, fill, esc, js, pid):
-    products = json.load(open(os.path.join(ROOT, "_src", "data", "products.json"), encoding="utf-8"))
+    import live as livedata
+    products = livedata.products()
     p = [x for x in products["products"] if x["id"] == pid][0]
     c = copy_for(pid)
     names = [o["name"] for o in p.get("options", [])]
@@ -113,6 +114,6 @@ def build(SRC, ROOT, fill, esc, js, pid):
     return fill(open(os.path.join(SRC, "simple.html"), encoding="utf-8").read(), {
         "NAME": esc(p["name"]), "IMG": img, "PHOTO": photo, "PHOTO_ALT": photo_alt,
         "EYEBROW": c["eyebrow"], "PRICE": esc(PD["priceLabel"]), "DESC": c["desc"], "OPTS": opts,
-        "STOCK": "In stock · ships in 1 to 2 days" if live_any else "Sold out · between runs",
+        "STOCK": "In stock · ships in 1 to 2 days" if live_any else "Sold out",
         "FACTS": facts, "MOREHEAD": "The rest of the <span class=\"lg-foil-word\">small stuff</span>", "MORE": more,
         "SIGNHEAD": c["sign"][0], "SIGNLEDE": c["sign"][1], "PD_JSON": js(PD)})

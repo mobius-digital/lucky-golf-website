@@ -198,12 +198,14 @@ def scripts():
 
 
 # ------------------------------------------------------------------ data
+import live as livedata   # live Shopify stock over the saved catalogue (Cole, 2026-09-24)
+
+
 def product(pid):
-    p = json.load(open(os.path.join(ROOT, "_src", "data", "products.json"), encoding="utf-8"))
-    return [x for x in p["products"] if x["id"] == pid][0]
+    return [x for x in livedata.products()["products"] if x["id"] == pid][0]
 
 
-PRODUCTS = json.load(open(os.path.join(ROOT, "_src", "data", "products.json"), encoding="utf-8"))
+PRODUCTS = livedata.products()
 
 
 def esc(t):
@@ -263,7 +265,7 @@ def build_home():
         first = by_id[ids[0]]["name"] + (f" +{len(ids) - 1}" if len(ids) > 1 else "")
         wild += (f'<a class="wild" href="community.html?post={i}"><img src="img/{img}" alt="{esc(alt)}" loading="lazy">'
                  f'<span class="who">@luckygolfofficial</span><span class="tag">{esc(first)}</span></a>')
-    return fill(open(os.path.join(SRC, "home.html"), encoding="utf-8").read(), {"WILD": wild})
+    return fill(open(os.path.join(SRC, "home.html"), encoding="utf-8").read(), {"WILD": wild, "BLADE_TAG": blade_tag()})
 
 
 # ---- reviews: live Judge.me counts (review-counts.json, refreshed from the Shopify
@@ -293,6 +295,14 @@ def rate_link(pid, href):
             f'{avg:.2f} · {n}</a>')
 
 
+def in_stock(pid):
+    return any(v["avail"] for v in product(pid)["variants"].values())
+
+
+def blade_tag():
+    return "" if in_stock("lgp01-gold") else '<span class="lg-tag">Sold out</span>'
+
+
 def build_clubs():
     w, b, m, s = rc("lgw01-gold"), rc("lgp01-gold"), rc("lgp02-gold"), rc("lgh01")
     row_w = (f'<tr class="is-same"><th scope="row">Rating</th><td colspan="2" class="same">{w[1]:.2f} · {w[0]} reviews <em>Shared by both</em></td></tr>'
@@ -303,7 +313,11 @@ def build_clubs():
     return fill(open(os.path.join(SRC, "clubs.html"), encoding="utf-8").read(), {
         "RATE_GOLD": rate_link("lgw01-gold", "carver.html"), "RATE_BLACK": rate_link("lgw01-black", "black.html"),
         "RATE_BLADE": rate_link("lgp01-gold", "blade.html"), "RATE_MALLET": rate_link("lgp02-gold", "mallet.html"),
-        "RATE_STRYKER": rate_link("lgh01", "stryker.html"), "ROW_RATING_W": row_w, "ROW_RATING_P": row_p})
+        "RATE_STRYKER": rate_link("lgh01", "stryker.html"), "ROW_RATING_W": row_w, "ROW_RATING_P": row_p,
+        "BLADE_TAG": blade_tag(),
+        "BLADE_STOCK": ('<span class="lg-stock">In stock · ships in 1 to 2 days</span>\n        <a class="lg-btn lg-btn-sm" href="blade.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>'
+                        if in_stock("lgp01-gold") else
+                        '<span class="lg-stock out">Sold out</span>\n        <a class="lg-btn-line lg-btn-sm" href="blade.html">Tell me when it\'s back <span aria-hidden="true">&rarr;</span></a>')})
 
 
 def polo_pid(x):
@@ -313,7 +327,7 @@ def polo_pid(x):
 def build_polos():
     """Cards come from the approved page's own data: names, collars, colours,
     per-size SKUs and what is actually sold out. Nothing retyped."""
-    P = json.load(open(os.path.join(SRC, "polos-data.json"), encoding="utf-8"))
+    P = livedata.polos(SRC)
     styles = [("collar", "classic", "Classic collar", "Three buttons, one placket", "polo-gold-dust-cut.webp"),
               ("collar", "blade", "Blade collar", "No buttons, nothing at your throat", "polo-swirl-cut.webp")]
     st = "".join(
@@ -806,7 +820,7 @@ def build_polo(name="Azalea"):
     """One product page per print. Sizes, stock, swatches and the cross-sell
     all come from polos-data.json; the words come from polos-copy.json."""
     def run():
-        P = json.load(open(os.path.join(SRC, "polos-data.json"), encoding="utf-8"))
+        P = livedata.polos(SRC)
         me = [x for x in P if x["name"] == name][0]
         stem = me["img"].split("/")[-1].replace("-pack.webp", "")
         sw = "".join(
@@ -872,7 +886,7 @@ def main():
             continue
         BUILDERS["gear:" + g["id"]] = build_gear_product(g["id"])
         extra_pages.append({"key": "gear:" + g["id"], "file": "gear-" + g["id"] + ".html"})
-    POLOS = json.load(open(os.path.join(SRC, "polos-data.json"), encoding="utf-8"))
+    POLOS = livedata.polos(SRC)
     for x in POLOS:
         if x["name"] == "Azalea":
             continue                       # that one is a board row already
@@ -898,6 +912,8 @@ def main():
     n = sum(len(fs) for _, _, fs in os.walk(OUT))
     size = sum(os.path.getsize(os.path.join(d, f)) for d, _, fs in os.walk(OUT) for f in fs)
     print(f"built {[p['key'] for p in PAGES if p['built']]} · {n} files · {size / 1e6:.1f} MB")
+    if livedata.MISSING:
+        print('NO LIVE STOCK for', sorted(str(x) for x in livedata.MISSING))
 
 
 if __name__ == "__main__":

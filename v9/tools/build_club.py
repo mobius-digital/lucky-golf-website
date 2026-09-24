@@ -106,7 +106,8 @@ def reviews_block(c, rv, stars5, live):
 
 def build(SRC, ROOT, fill, esc, js, stars5, key):
     c = json.load(open(os.path.join(SRC, "club-data.json"), encoding="utf-8"))[key]
-    products = json.load(open(os.path.join(ROOT, "_src", "data", "products.json"), encoding="utf-8"))
+    import live as livedata
+    products = livedata.products()
     pd = [p for p in products["products"] if p["id"] == c["pid"]][0]
     rv = None
     if c.get("reviews"):

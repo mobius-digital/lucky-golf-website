@@ -31,3 +31,13 @@ Each one is already how the v9 preview behaves.
   until it's filled in.
 - The size guide opens on the size picked in the buy box, with that column
   highlighted.
+
+## Stock (Cole, 2026-09-24)
+
+- Every product card, buy box, size chip and "Sold out" tag reads
+  availability live (`variant.available` / `product.available` in Liquid).
+  Nothing in a section setting or a metafield may say a product is sold out.
+- The preview does the same from `_src/data/stock.json`, pulled per SKU from
+  the Shopify Admin API; `v9/tools/live.py` overrides the saved catalogue with
+  it and the build prints any SKU it couldn't find. Refresh it before every
+  board publish.
