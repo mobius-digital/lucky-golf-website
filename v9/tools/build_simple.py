@@ -64,6 +64,19 @@ def copy_for(pid):
     return GEAR_COPY["cover-blade"]
 
 
+STAR = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>'
+
+
+def rvl(ROOT, p):
+    """Stars and the count, only at 10+ live Judge.me reviews (Cole, 2026-09-24)."""
+    rc = json.load(open(os.path.join(ROOT, "_src", "data", "review-counts.json"), encoding="utf-8"))
+    n, avg = rc["counts"].get(p.get("shopifyHandle", ""), [0, 0])
+    if n < rc["_threshold"]:
+        return ""
+    return (f'<div class="rvl"><span class="lg-stars" aria-label="{avg:.1f} out of 5">{STAR * 5}</span>'
+            f'<span>{avg:.2f} · {n} reviews</span></div>')
+
+
 def build(SRC, ROOT, fill, esc, js, pid):
     import live as livedata
     products = livedata.products()
@@ -112,6 +125,7 @@ def build(SRC, ROOT, fill, esc, js, pid):
     PD = {"name": p["name"], "img": "img/" + img, "variants": variants, "order": order,
           "start": start, "labels": labels, "priceLabel": p["priceLabel"].replace(chr(8211), " to ")}
     return fill(open(os.path.join(SRC, "simple.html"), encoding="utf-8").read(), {
+        "RVL": rvl(ROOT, p),
         "NAME": esc(p["name"]), "IMG": img, "PHOTO": photo, "PHOTO_ALT": photo_alt,
         "EYEBROW": c["eyebrow"], "PRICE": esc(PD["priceLabel"]), "DESC": c["desc"], "OPTS": opts,
         "STOCK": "In stock · ships in 1 to 2 days" if live_any else "Sold out",

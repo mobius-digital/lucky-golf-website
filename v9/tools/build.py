@@ -441,6 +441,9 @@ def build_gear():
                 "Sold out" if not live else "In stock")
             if not live:
                 meta = "Sold out"
+            n_rv, avg_rv = RC["counts"].get(p.get("shopifyHandle", ""), [0, 0])
+            if n_rv >= REVIEW_MIN:
+                meta += f" · ★ {avg_rv:.1f} ({n_rv})"
             # one variant: add straight from the card. More than one: the card takes
             # you to the page to pick, because adding "a grip" with no size is a guess
             multi = len(p["variants"]) > 1

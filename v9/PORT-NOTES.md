@@ -41,3 +41,16 @@ Each one is already how the v9 preview behaves.
   the Shopify Admin API; `v9/tools/live.py` overrides the saved catalogue with
   it and the build prints any SKU it couldn't find. Refresh it before every
   board publish.
+
+## Restock notes (Cole, 2026-09-24)
+
+- Each product gets a **restock date** field (product metafield
+  `custom.restock_date`, a date), edited on the product in the Shopify admin,
+  not in the theme editor.
+- The note only appears on a variant that's sold out. With a date it reads
+  "Back in October" (the month of the date); with no date it just says
+  "Sold out" and offers "Tell me when it's back".
+- Once the date has passed, the note hides itself, so a missed restock never
+  keeps promising a month that's gone.
+- Shopify Flow (free) sends Cole an email when a variant hits 0 and when a
+  restock date passes with the product still at 0, so he knows to update it.
