@@ -23,8 +23,8 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 
 | # | Page | Status |
 |---|------|--------|
-| 1 | Carver 02 Gold + Black (one template) | done 2026-09-23, awaiting Cole |
-| 2 | Home | to do |
+| 1 | Carver 02 Gold + Black (one template) | signed off 2026-09-24 |
+| 2 | Home | done 2026-09-24, awaiting Cole |
 | 3 | Clubs | to do |
 | 4 | Eclipse Blade + Eclipse Mallet (club template) | to do |
 | 5 | Stryker | to do |
