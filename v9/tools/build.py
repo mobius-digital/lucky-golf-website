@@ -138,7 +138,7 @@ def header():
                '<a class="mn-photo" href="story.html"><img src="img/walk-off-green.webp" alt="" loading="lazy"><span>It\'s better to be lucky.</span></a>'
                '<div class="mn-foot"><a href="faq.html#shipping">Shipping</a><a href="faq.html#returns">Sixty-day returns</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a></div>')
     return f'''<div class="lg-tick"><div class="lg-tick-in">
-  <a href="faq.html#returns"><b>Sixty days</b> to prove us wrong</a><a href="faq.html#shipping">Ships in 1 to 2 business days</a><a href="clubs.html#wedges">Forged, not cast</a>
+  <a href="faq.html#returns"><b>Sixty days</b> to prove us wrong</a><a href="faq.html#shipping">Ships in 1 to 2 business days</a><a href="faq.html#shipping">Free shipping at $198</a>
 </div></div>
 <header class="lg-hdr">
   <div class="lg-hdr-in" style="position:relative">

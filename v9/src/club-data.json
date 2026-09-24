@@ -56,7 +56,7 @@
    "16:9, 40 to 60 seconds. The head milled, then three putts rolled: a short one, a breaker, a long lag. Sound on for the strike."
   ],
   "specline": "All of it comes straight from the manufacturer. One loft, one length and a gold finish.",
-  "specnote": "Same loft and length as the Mallet. The difference is the head shape and how it feels on the putts you miss.",
+  "specnote": "Same loft and length as the Mallet. The head shape is the difference.",
   "monlabel": "Eclipse Blade · LGP01",
   "tiles": [
    [
@@ -265,7 +265,7 @@
    "16:9, 40 to 60 seconds. Head from above, alignment at address, then three putts: centre, toe, heel, all holding the line."
   ],
   "specline": "All of it comes straight from the manufacturer. One loft, one length and a gold finish.",
-  "specnote": "Same loft and length as the Blade. What changes is where the weight sits, and what that does to a putt you don't middle.",
+  "specnote": "Same loft and length as the Blade. The head shape is the difference.",
   "monlabel": "Eclipse Mallet · LGP02",
   "tiles": [
    [
@@ -466,7 +466,7 @@
    "eyebrow": "On the course",
    "head": "Hit it from <span class=\"lg-foil-word\">anywhere.</span>",
    "body": [
-    "Nineteen degrees covers the number that's too long for your irons and too short for a wood. The titanium head and Flex Channel face keep the ball speed up when the strike's a little low, so the long approach stops being a guess."
+    "It takes the long iron's job and makes it easy. The titanium head and Flex Channel face keep the ball flying on the strikes you don't catch pure, and the Glide Sole gets through the rough instead of snagging."
    ]
   },
   "film": [
@@ -616,11 +616,11 @@
     "The same forged wedge, in black."
    ],
    [
-    "gear.html",
-    "gear-cover-driver.webp",
-    "Driver Head Cover",
-    "$40",
-    "The hybrid ships without one."
+    "hat-white-ibtbl.html",
+    "89.webp",
+    "It's Better To Be Lucky Hat, white",
+    "$29",
+    "Says it before you do."
    ]
   ],
   "signlede": "Tell them it's your lucky hybrid.",
