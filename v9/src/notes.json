@@ -75,10 +75,10 @@
  "hats": {
   "why": "Copy v10 (2026-09-24): every line rewritten.",
   "added": [
-   "<b>Headline:</b> \"Same hat. Pick the front.\" with the real specs (five-panel snapback, wicking sweatband, laser-cut vents, $29).",
-   "<b>Add to cart</b> on the quick add.",
-   "<b>Removed:</b> \"a rope across the front\" (not every hat has one) and the counts that date the page (\"ten of them\").",
-   "<b>Sign-off:</b> \"It's better to be lucky.\" then \"Tell them it's your lucky hat.\""
+   "<b>Headline:</b> \"Hats that go with every polo.\" with \"Five-panel snapbacks with a moisture-wicking sweatband and laser-cut vents. $29 each.\"",
+   "<b>Cards say what's on the front:</b> Gold wordmark, The tagline on a patch, Script front (Upside Down hats keep \"Five-panel snapback\" for now).",
+   "<b>Names</b> are the live Shopify titles, everywhere: White & Gold Classic Hat, Black & Gold Classic Hat, White/Black It's Better To Be Lucky Hat, White & Black Upside Down Hat.",
+   "<b>\"Why are they all $29?\"</b> is gone from the FAQ."
   ],
   "kept": [
    "No page before this one: hats were only ever a row at the bottom of the polos page.",
@@ -213,7 +213,7 @@
  "hat": {
   "why": "Copy v10 (2026-09-24): the hat template and all 10 hat lines rewritten.",
   "added": [
-   "<b>Hat lines:</b> one idea each, e.g. Black | Gold Classic \"The Carver 02 Black of hats.\"",
+   "<b>Hat lines:</b> one idea each, e.g. Black & Gold Classic \"The Carver 02 Black of hats.\"",
    "<b>Big moment:</b> \"Made for the ninth hole in July.\"",
    "<b>Fixed:</b> the Baby Blue hat's line called it mint; \"always goes first\" and \"moves fastest\" (sales claims we can't back) are gone.",
    "<b>Sold out now asks for an email.</b> \"Tell me when it's back\" used to promise an email without asking for one."

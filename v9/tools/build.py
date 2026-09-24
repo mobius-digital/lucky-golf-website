@@ -370,8 +370,8 @@ SEARCHABLE = [
     ("polos.html", "Blackout Blade Polo", "$67", "Polo", "polo-blackout-cut.webp", "polo blackout blade collar black apparel shirt"),
     ("polos.html", "Gold Dust Classic Polo", "$67", "Polo", "polo-gold-dust-cut.webp", "polo gold dust classic collar light apparel shirt"),
     ("polos.html", "Swirl Blade Polo", "$67", "Polo", "polo-swirl-cut.webp", "polo swirl blade collar light apparel shirt"),
-    ("hats.html", "White | Gold Classic Hat", "$29", "Hat", "hat-white-gold-classic-cut.webp", "hat cap snapback white gold classic rope"),
-    ("hats.html", "It's Better To Be Lucky Hat, black", "$29", "Hat", "hat-black-ibtbl-cut.webp", "hat cap snapback black better to be lucky rope"),
+    ("hats.html", "White & Gold Classic Hat", "$29", "Hat", "hat-white-gold-classic-cut.webp", "hat cap snapback white gold classic rope"),
+    ("hats.html", "Black It's Better To Be Lucky Hat", "$29", "Hat", "hat-black-ibtbl-cut.webp", "hat cap snapback black better to be lucky rope"),
     ("hats.html", "Cream Upside Down Hat", "$29", "Hat", "hat-cream-updown-cut.webp", "hat cap snapback cream upside down rope"),
 ]
 
@@ -771,7 +771,8 @@ def build_hats():
         dead = "" if v["avail"] else " data-dead"
         btn = ('<button type="button">Add to cart · $29</button>' if v["avail"]
                else '<button type="button" disabled>Sold out</button>')
-        meta = "Five-panel snapback" if v["avail"] else "Sold out"
+        front = {"classic": "Gold wordmark", "ibtbl": "The tagline, on a patch", "cursive": "Script front"}
+        meta = front.get(style, "Five-panel snapback") if v["avail"] else "Sold out"
         cards.append(
             f'<article class="hat" data-i="{i}" data-style="{style}" data-colour="{colour}" data-name="{name}" data-img="{img}" '
             f'data-best="{rank(p["id"])[0]}" data-new="{rank(p["id"])[1]}"{dead}>'
