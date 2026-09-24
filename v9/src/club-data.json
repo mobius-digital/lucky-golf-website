@@ -55,7 +55,7 @@
    "The film",
    "16:9, 40 to 60 seconds. The head milled, then three putts rolled: a short one, a breaker, a long lag. Sound on for the strike."
   ],
-  "specline": "All of it comes straight from the manufacturer. One loft, one length and a gold finish.",
+  "specline": "One loft, one length and a gold finish.",
   "specnote": "Same loft and length as the Mallet. The head shape is the difference.",
   "monlabel": "Eclipse Blade · LGP01",
   "tiles": [
@@ -206,7 +206,8 @@
    ]
   ],
   "signlede": "Tell them it's your lucky putter.",
-  "signcta": "Tell me when it's back"
+  "signcta": "Tell me when it's back",
+  "spechead": "One loft. One length. Nothing to fit."
  },
  "mallet": {
   "pid": "lgp02-gold",
@@ -264,7 +265,7 @@
    "The film",
    "16:9, 40 to 60 seconds. Head from above, alignment at address, then three putts: centre, toe, heel, all holding the line."
   ],
-  "specline": "All of it comes straight from the manufacturer. One loft, one length and a gold finish.",
+  "specline": "One loft, one length and a gold finish.",
   "specnote": "Same loft and length as the Blade. The head shape is the difference.",
   "monlabel": "Eclipse Mallet · LGP02",
   "tiles": [
@@ -415,7 +416,8 @@
    ]
   ],
   "signlede": "Tell them it's your lucky putter.",
-  "signcta": "Pick a hand"
+  "signcta": "Pick a hand",
+  "spechead": "One loft. One length. Nothing to fit."
  },
  "stryker": {
   "pid": "lgh01",
@@ -473,7 +475,7 @@
    "The film",
    "16:9, 40 to 60 seconds. Address view, face detail, then three shots: off the deck, out of the rough, and off a tee on a long par three."
   ],
-  "specline": "All of it comes straight from the manufacturer. One loft, one length and a stiff shaft.",
+  "specline": "One loft, one length and a stiff shaft.",
   "specnote": "Nineteen degrees sits where a 3-iron or a 5-wood would.",
   "monlabel": "Stryker · LGH01",
   "tiles": [
@@ -624,6 +626,7 @@
    ]
   ],
   "signlede": "Tell them it's your lucky hybrid.",
-  "signcta": "Pick a hand"
+  "signcta": "Pick a hand",
+  "spechead": "Nineteen degrees. No fitting appointment required."
  }
 }

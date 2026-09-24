@@ -155,7 +155,7 @@ def build(SRC, ROOT, fill, esc, js, stars5, key):
         "STORY_EYEBROW": c["story"]["eyebrow"], "STORY_HEAD": c["story"]["head"],
         "STORY_BODY": "".join(f'<p class="lg-body">{p}</p>' for p in c["story"]["body"]),
         "FILM_TITLE": c["film"][0], "FILM_BRIEF": c["film"][1],
-        "SPEC_LINE": c["specline"], "SPEC_NOTE": c["specnote"],
+        "SPEC_HEAD": c["spechead"], "SPEC_LINE": c["specline"], "SPEC_NOTE": c["specnote"],
         "MON_LABEL": c["monlabel"], "MON_IMG": c["gallery"][0][0],
         "MON_STOCK": "In stock" if live else "Sold out",
         "MON_TILES": tiles, "SPEC_ROWS": rows, "PBAND": pband,
