@@ -162,11 +162,13 @@
   ]
  },
  "blade": {
-  "why": "The Eclipse (formerly Tracer). Rebuilt on the Carver's layout. The Blade is sold out, which is a page most sites handle badly.",
+  "why": "Copy v10 (2026-09-24): every line rewritten on the Carver's model.",
   "added": [
-   "<b>Same page furniture as the Carver:</b> gallery, buy box, film, in the wild, the monitor, photo band, reviews, more from the bag.",
-   "<b>Sold out up front:</b> the button asks to be told when it's back and the email modal opens on tap.",
-   "<b>147 verified reviews</b> behind the rating, the chart and the read-everything list."
+   "<b>Description:</b> \"Set it down behind the ball and it just looks right...\" (solid and muted, you'll know where you caught it).",
+   "<b>Big moment:</b> \"The putter that tells you the truth\".",
+   "<b>Sold out</b> now just says Sold out. No \"between runs\" until you decide if it's coming back.",
+   "<b>Same page as the Carver</b> except where the club matters: \"Caught in the wild\", \"Check every number\", real star count in the reviews headline, \"Round out the bag\", and the sign-off \"It's better to be lucky.\" then \"Tell them it's your lucky putter/hybrid.\"",
+   "<b>Banned lines gone:</b> \"milled from a block\" / \"cut from one piece\" (now \"fully milled\"), and the \"built for a stroke that arcs\" and \"toe hang\" claims, which aren't in the product guide. No hand callouts in the copy."
   ],
   "kept": [
    "Right hand only, so there is no hand chooser. That fact lives in the spec table.",
@@ -174,22 +176,24 @@
   ]
  },
  "mallet": {
-  "why": "The Eclipse (formerly Tracer). Rebuilt on the Carver's layout. The putter most golfers should actually buy.",
+  "why": "Copy v10 (2026-09-24): every line rewritten on the Carver's model.",
   "added": [
-   "<b>Hand chips</b> where both hands exist, repeated in the sticky bar.",
-   "<b>The case for a mallet</b> in two paragraphs, no invented numbers.",
-   "<b>The cover</b> is in the cross-sell, because no club we sell ships with one."
+   "<b>Description:</b> \"Line it up and let it go...\" (fully milled 304, a putt you don't middle still holds its line).",
+   "<b>Big moment:</b> \"Miss the middle. Make it anyway.\"",
+   "<b>Same page as the Carver</b> except where the club matters: \"Caught in the wild\", \"Check every number\", real star count in the reviews headline, \"Round out the bag\", and the sign-off \"It's better to be lucky.\" then \"Tell them it's your lucky putter/hybrid.\"",
+   "<b>Banned lines gone:</b> \"milled from a block\" / \"cut from one piece\" (now \"fully milled\"), and the \"built for a stroke that arcs\" and \"toe hang\" claims, which aren't in the product guide. No hand callouts in the copy."
   ],
   "kept": [
    "Same milled build story as the Blade, so the two pages read as a pair."
   ]
  },
  "stryker": {
-  "why": "Rebuilt on the Carver's layout. The hybrid sells to a golfer with a specific problem, so the page leads with the problem.",
+  "why": "Copy v10 (2026-09-24): same club template, so it came along with the Eclipse.",
   "added": [
-   "<b>Flex channel and glide sole</b> described by what they do on a thin lie, not by their names.",
-   "<b>19 degrees and 40.5 inches</b> straight off the spec sheet.",
-   "<b>Twenty reviews</b> shown as a rating and a chart, with no shouting about volume."
+   "<b>Description:</b> your approved Stryker description, word for word (\"Your 4-iron's retirement plan...\").",
+   "<b>Big moment:</b> \"Hit it from anywhere.\"",
+   "<b>Same page as the Carver</b> except where the club matters: \"Caught in the wild\", \"Check every number\", real star count in the reviews headline, \"Round out the bag\", and the sign-off \"It's better to be lucky.\" then \"Tell them it's your lucky putter/hybrid.\"",
+   "<b>Banned lines gone:</b> \"milled from a block\" / \"cut from one piece\" (now \"fully milled\"), and the \"built for a stroke that arcs\" and \"toe hang\" claims, which aren't in the product guide. No hand callouts in the copy."
   ],
   "kept": [
    "Twenty reviews is a small number, so the page shows the rating and the chart and does not shout about volume."

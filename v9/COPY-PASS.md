@@ -25,9 +25,9 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 |---|------|--------|
 | 1 | Carver 02 Gold + Black (one template) | signed off 2026-09-24 |
 | 2 | Home | signed off 2026-09-24 |
-| 3 | Clubs | done 2026-09-24, awaiting Cole |
-| 4 | Eclipse Blade + Eclipse Mallet (club template) | to do |
-| 5 | Stryker | to do |
+| 3 | Clubs | signed off 2026-09-24 |
+| 4 | Eclipse Blade + Eclipse Mallet (club template) | done 2026-09-24, awaiting Cole |
+| 5 | Stryker | done 2026-09-24 with the club template, awaiting Cole |
 | 6 | Polos + polo template + 13 print lines | to do |
 | 7 | Hats + hat template + 10 hat lines | to do |
 | 8 | Gear + gear template + item lines | to do |

@@ -93,12 +93,11 @@ def reviews_block(c, rv, stars5):
         for n, q in c["quotes"])
     return ('<section class="lg-sec" id="reviews"><div class="lg-wrap">'
             '<div class="rv-top"><div><p class="lg-eyebrow">Reviews</p>'
-            f'<h2 class="lg-d2">{avg:.1f} out of five, and we show the <span class="lg-foil-word">misses</span></h2>'
-            '<p class="lg-body">Every review takes a shot at the pin.</p></div>'
+            f'<h2 class="lg-d2">{avg:.1f} stars from {total} reviews</h2></div>'
             '<div id="prox"></div></div>'
             f'<div class="qs">{quotes}</div>'
             '<button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm">'
-            '<b>Read every review</b><span>Newest first, the good ones and the grumpy ones.</span>'
+            '<b>Read every review</b><span>Newest first.</span>'
             '<i aria-hidden="true">+</i></button>'
             '<div class="jm" id="jm" hidden>'
             '<div class="jm-bar"><div class="lg-chips" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>'
@@ -150,19 +149,18 @@ def build(SRC, ROOT, fill, esc, js, stars5, key):
         "METAL": f' data-metal="{c["metal"]}"' if c["metal"] else "",
         "EYEBROW": c["eyebrow"], "LEDE": c["lede"], "GAL": gal, "DOTS": dots, "RVL": rate,
         "OPTS": groups, "ATC": c.get("atc", "Put it in the bag"),
-        "STOCK": "In stock · ships in 1 to 2 days" if live else "Sold out · between runs",
+        "STOCK": "In stock · ships in 1 to 2 days" if live else "Sold out",
         "DETAILS": "".join(f'<details class="lg-fq"><summary>{esc(q)}</summary><div class="lg-fq-a"><p>{a}</p></div></details>'
                            for q, a in c["details"]),
         "STORY_EYEBROW": c["story"]["eyebrow"], "STORY_HEAD": c["story"]["head"],
         "STORY_BODY": "".join(f'<p class="lg-body">{p}</p>' for p in c["story"]["body"]),
         "FILM_TITLE": c["film"][0], "FILM_BRIEF": c["film"][1],
-        "WILD_HEAD": c["wildhead"],
-        "SPEC_EYEBROW": c["speceyebrow"], "SPEC_LINE": c["specline"], "SPEC_NOTE": c["specnote"],
+        "SPEC_LINE": c["specline"], "SPEC_NOTE": c["specnote"],
         "MON_LABEL": c["monlabel"], "MON_IMG": c["gallery"][0][0],
-        "MON_STOCK": "In stock" if live else "Between runs",
+        "MON_STOCK": "In stock" if live else "Sold out",
         "MON_TILES": tiles, "SPEC_ROWS": rows, "PBAND": pband,
-        "REVIEWS": block, "MOREHEAD": c["morehead"], "MORE": more,
-        "SIGNHEAD": c["signhead"], "SIGNLEDE": c["signlede"], "MAGS": c["mags"],
+        "REVIEWS": block, "MORE": more,
+        "SIGNLEDE": c["signlede"],
         "SIGNCTA": c.get("signcta", "Back to the top"),
         "STICKYOPTS": sticky_opts(pd, order, labels),
         "PD_JSON": js(PD),

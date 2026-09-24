@@ -44,7 +44,7 @@
     {{OPTS}}
 
     <div class="cta"><button class="lg-btn" type="button" data-atc>{{ATC}} · {{PRICE}}</button></div>
-    <div class="trustl"><span class="lg-stock" data-stockline>{{STOCK}}</span><span class="trustl-links"><a href="faq.html#returns">Sixty days to decide</a><a href="faq.html#shipping">Free over $198</a></span></div>
+    <div class="trustl"><span class="lg-stock" data-stockline>{{STOCK}}</span><span class="trustl-links"><a href="faq.html#returns">Sixty-day test drive</a><a href="faq.html#shipping">Free shipping at $198</a></span></div>
 
     <div class="lg-faq">{{DETAILS}}</div>
   </div>
@@ -68,7 +68,7 @@
 <!-- ============ IN THE WILD: the page's one dark band ============ -->
 <section class="lg-band" id="wild"><div class="lg-wrap">
   <div class="hd">
-    <div><p class="lg-eyebrow">See it in play</p><h2 class="lg-d2">{{WILD_HEAD}}</h2><p class="lg-body">Hit a good one with it? Tag us and it could end up right here.</p></div>
+    <div><p class="lg-eyebrow">Tagged</p><h2 class="lg-d2">Caught in the wild</h2><p class="lg-body">Stuck one close with yours? Tag @luckygolfofficial and you might end up on this page.</p></div>
     <div class="arrows" data-cliparrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
   </div>
   <div class="clips" id="clips"></div>
@@ -77,7 +77,7 @@
 <!-- ============ SPECS ============ -->
 <section class="lg-sec" id="specs" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
   <div class="hd">
-    <div><p class="lg-eyebrow">{{SPEC_EYEBROW}}</p><h2 class="lg-d2">The numbers</h2>
+    <div><p class="lg-eyebrow">The spec sheet</p><h2 class="lg-d2">Check every number</h2>
     <p class="lg-body">{{SPEC_LINE}}</p></div>
   </div>
   <div class="lg-monitor">
@@ -101,16 +101,15 @@
 
 <!-- ============ MORE FROM THE BAG ============ -->
 <section class="lg-sec more" id="more"><div class="lg-wrap">
-  <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">{{MOREHEAD}}</h2></div><a class="lg-link" href="clubs.html">All five clubs <span>&rarr;</span></a></div>
+  <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">Round out the bag</h2></div><a class="lg-link" href="clubs.html">See every club <span>&rarr;</span></a></div>
   <div class="lg-grid">{{MORE}}</div>
 </div></section>
 
 <!-- ============ THE LAST WORD ============ -->
 <section class="lg-signoff" id="last"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
-  <h2 class="lg-d1">{{SIGNHEAD}}</h2>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
   <p class="lg-lede">{{SIGNLEDE}}</p>
-  <p class="lg-aside who">{{MAGS}}</p>
   <a class="lg-btn-line" href="#buy">{{SIGNCTA}} <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
@@ -129,7 +128,7 @@
 <div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
   <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
   <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
-  <p>Leave an email and you'll get one message the day it's back, from a person.</p>
+  <p>Drop your email. You'll get one message when it's back, and that's it.</p>
   <form class="lg-form" data-notify novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
 </div></div>
 <div class="md" id="md-shot" hidden role="dialog" aria-modal="true" aria-labelledby="md-shot-t"><div class="md-bd" data-md-close></div><div class="md-panel">
@@ -176,7 +175,7 @@ var PD_REEL = {{REEL_JSON}};
       var sel = $('[data-sb-opt="' + k + '"]'); if (sel) sel.value = pick[k] || '';
     });
     var v = variant(), live = !!(v && v.avail);
-    $('[data-stockline]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out · between runs';
+    $('[data-stockline]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out';
     $('[data-atc]').textContent = live ? PD.atc + ' · ' + money(PD.price) : "Tell me when it's back";
     var sn = $('[data-sticky-name]'); if (sn) sn.textContent = PD.name + (pick[PD.order[PD.order.length - 1]] ? ' · ' + (PD.labels[pick[PD.order[PD.order.length - 1]]] || '') : '');
   }
