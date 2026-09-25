@@ -92,6 +92,8 @@
  "story": {
   "why": "Copy v10 (2026-09-25): every approved line kept; the two lines the new voice guide cut are gone.",
   "added": [
+   "<b>The trio is back:</b> three photo cards (Why we exist / What we do / Our story), each opens its pop-up. It was lost by accident in the rebuild.",
+   "<b>Timeline is one sideways row</b> with arrows on desktop and swipe on phones, so the page is a lot shorter.",
    "<b>Kept word for word:</b> \"Golf has a dress code. Ours is gold.\", \"Great clubs got too expensive. We took it personally.\", \"Same steel as the big names. Different math.\", \"Is gold subtle? Not even a little.\"",
    "<b>Cut (per How We Write v10):</b> \"call it innovation\" and \"Serious about the clubs. Not that serious about ourselves\". Sign-off is now \"It's better to be lucky.\" then \"Tell them where you got it.\"",
    "<b>Black belongs in the story now:</b> \"And we made them gold... Or black, if you'd rather they notice up close.\"",
@@ -115,17 +117,16 @@
   ]
  },
  "trybe": {
-  "why": "New page. The ambassador panel on the home page had nowhere to go.",
+  "why": "Rewritten 2026-09-25 from the live program at creators.luckygolf.com/apply. The old page said it wasn't a paid deal.",
   "added": [
-   "<b>Removed claims we can't check:</b> \"usually inside a week\", \"half the things we've changed started there\", the private-account story.",
-   "<b>\"Will I hear back?\"</b> Yes, either way.",
-   "<b>Apply</b> buttons now go to creators.luckygolf.com/apply (the on-page form is gone).",
-   "<b>What you get</b> is the three real things: first look, the group chat, a shot at a club.",
-   "<b>What we ask</b> is the approved bar: play them, say what you think, tagging is optional.",
-   "<b>An application form</b> with the fields we would actually sort on."
+   "<b>What you get:</b> first wedge free when you ask, the rest of the bag for posting monthly, your video runs as a paid ad with a revenue share, 10% on your link, open ad numbers.",
+   "<b>No follower minimum, no posting quota, no exclusivity.</b> Ads only run from Instagram.",
+   "<b>FAQ</b> answers match the program page, including terms after acceptance.",
+   "<b>Home and Our Story blurbs</b> now describe the same program.",
+   "Every Apply button goes to creators.luckygolf.com/apply."
   ],
   "kept": [
-   "No follower minimum, an answer either way. Those were your words on the home page."
+   "No invented numbers: no share percentage beyond what the program page says."
   ]
  },
  "cart": {
