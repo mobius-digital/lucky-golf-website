@@ -75,7 +75,7 @@
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
   <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
-  <p class="lg-lede">Take it to the course. If it doesn't earn a spot in the bag, send it back.</p>
+  <p class="lg-lede">Sixty days to make up your mind on clubs, thirty on apparel.</p>
   <a class="lg-btn-line" href="faq.html#returns">How returns work <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
@@ -99,7 +99,7 @@
         + (l.hud && l.hud.length ? '<span class="lg-hud">' + l.hud.map(function(h){ return '<span>' + esc(h) + '</span>'; }).join('') + '</span>' : '')
         + '</span><span class="pr">' + money(l.price) + '<button type="button" class="rm" data-cart-rm="' + i + '">Remove</button></span></div>';
     }).join('');
-    $('#say').innerHTML = !lines.length ? 'Free shipping at <b>$198</b>.'
+    $('#say').innerHTML = !lines.length ? ''
       : t >= FREE ? "<b>Shipping's on us.</b>" : '<b>' + money(FREE - t) + "</b> more and shipping's on us.";
     $('#shipline').textContent = t >= FREE ? 'Free' : 'Calculated at checkout';
     if (!hole) hole = Lucky.hole($('#hole'), { stops: [{ at: FREE, label: 'Free shipping $198' }] });
