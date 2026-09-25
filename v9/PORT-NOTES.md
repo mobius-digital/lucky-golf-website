@@ -77,3 +77,8 @@ Adding a product must never mean editing a page. In the theme:
   collection section: pick an image, a line, a link and which position in
   the grid it sits at. Turning one off or adding one is a theme-editor change,
   not a code change.
+- Tiles: as many as he wants per collection, each with an image, eyebrow,
+  headline, optional link and button text, and "show after product #N".
+  Each apparel line gets its own collection template (collection.polos,
+  collection.hats, and later the winter line), so tiles added to Polos never
+  appear on Hats. A new collection just picks a template in the admin.
