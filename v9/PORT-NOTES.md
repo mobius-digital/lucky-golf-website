@@ -54,3 +54,26 @@ Each one is already how the v9 preview behaves.
   keeps promising a month that's gone.
 - Shopify Flow (free) sends Cole an email when a variant hits 0 and when a
   restock date passes with the product still at 0, so he knows to update it.
+
+## Collections and product pages are templates (Cole, 2026-09-25)
+
+Adding a product must never mean editing a page. In the theme:
+
+- **One collection template** (Polos, Hats, Gear, All, Accessories and any new
+  line such as a winter collection) fills its grid from the Shopify
+  collection. Add the product to the collection, or let a smart collection
+  rule (product type or tag) add it, and it appears with its image, price,
+  sizes and live stock.
+- **One product template per kind** (club, polo, hat, gear), each reading
+  the product's own title, description, media, variants and metafields.
+- **What the preview keeps in hand-made tables becomes product data**, set
+  once per product in the Shopify admin:
+  - polo and hat print/front lines (`polos-copy.json`, `HAT_COPY`, `GEAR_COPY`) -> the product description
+  - filter groups (`HAT_META` style/colour, polo collar/colour) -> product tags or a metafield
+  - card cutout -> the product's first image
+  - best-selling and newest order (`BEST_RANK`, `NEWEST`) -> Shopify's own sort, nothing to maintain
+- **In-grid feature tiles** (the Breezy move: a "Pairs well with" or "Layer
+  up" tile dropped into the product grid) are theme-editor blocks on the
+  collection section: pick an image, a line, a link and which position in
+  the grid it sits at. Turning one off or adding one is a theme-editor change,
+  not a code change.
