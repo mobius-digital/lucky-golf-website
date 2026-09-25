@@ -111,6 +111,7 @@
  "trybe": {
   "why": "New page. The ambassador panel on the home page had nowhere to go.",
   "added": [
+   "<b>Apply</b> buttons now go to creators.luckygolf.com/apply (the on-page form is gone).",
    "<b>What you get</b> is the three real things: first look, the group chat, a shot at a club.",
    "<b>What we ask</b> is the approved bar: play them, say what you think, tagging is optional.",
    "<b>An application form</b> with the fields we would actually sort on."
@@ -200,11 +201,13 @@
   ]
  },
  "gear": {
-  "why": "New page. Covers, grips and the glove were linked from the footer and had nowhere to land.",
+  "why": "Copy v10 (2026-09-25): every line rewritten. Big moment: the headline.",
   "added": [
-   "<b>Grouped by job:</b> head covers, club grips, putter grips, glove, with a jump row.",
-   "<b>Twelve cutouts</b> processed off the Shopify files, two sold-out grips shown as sold out.",
-   "<b>Prices with ranges</b> are shown as ranges, because a grip's size changes the price."
+   "<b>Headline:</b> \"Dress the bag.\" with \"None of it lowers your handicap. All of it makes the bag look like it belongs to somebody who cares.\"",
+   "<b>Add to cart</b> on gear (clubs keep \"Put it in the bag\").",
+   "<b>Stars</b> only where a product has 10+ reviews.",
+   "<b>Sign-off:</b> \"It's better to be lucky.\" then \"Tell them it's your lucky bag.\"",
+   "<b>Removed</b> the banned word \"cheap\" and a hardcoded \"Between runs\" on the oversized putter grips (stock now decides)."
   ],
   "kept": [
    "The tees have no product photo in Shopify, so they are not on the page yet."
@@ -282,11 +285,11 @@
   ]
  },
  "gearpdp": {
-  "why": "New. Every cover, grip and the glove now has its own page, off one template.",
+  "why": "Copy v10 (2026-09-25): the gear template and every item line rewritten.",
   "added": [
-   "<b>Options and prices come from the real variants.</b> Tap Jumbo on a grip and the price goes to $14.95, because it does.",
-   "<b>Sold-out combinations say so</b>: the glove in right hand is out in every size, and the oversized putter grips are between runs.",
-   "<b>The gear page links here now</b>, and anything with a size to pick says Pick a size instead of adding a guess to the bag."
+   "<b>Item lines:</b> one idea each, e.g. the driver cover \"the top of the bag stops looking like a rental\".",
+   "<b>Sign-off</b> ends \"Tell them it's your lucky glove / grips / putter cover.\"",
+   "<b>Sold out</b> opens the email pop-up."
   ],
   "kept": [
    "Tees have no product photo on the store, so they have no page yet.",

@@ -414,13 +414,13 @@ def build_simple(name):
 
 
 GEAR_GROUPS = [
-    ("covers", "Head covers", "No club we sell ships with one, so if you want the putter protected in the bag, it starts here.",
+    ("covers", "Head covers", "Our clubs ship without one, so this is where the putter gets its jacket.",
      ["cover-blade", "cover-mallet", "cover-driver"]),
-    ("grips", "Club grips", "The cheapest change in golf you can actually feel. Five colours, more than one size.",
+    ("grips", "Club grips", "A new grip is the easiest change in golf you can actually feel.",
      ["grip-clover-black", "grip-clover-green", "grip-clover-blue", "grip-clover-white", "grip-clover-pink"]),
-    ("putter-grips", "Putter grips", "Oversized, for anyone whose hands get busy over a short one.",
+    ("putter-grips", "Putter grips", "The stock grip, or oversized for hands that get busy over a short one.",
      ["grip-putter-stock", "grip-putter-green", "grip-putter-clovers"]),
-    ("glove", "Glove", "One glove, both hands, with the clover on the back of it.",
+    ("glove", "Glove", "The clover on the back of your hand.",
      ["glove-tour"]),
 ]
 
@@ -452,7 +452,7 @@ def build_gear():
             elif multi:
                 btn = f'<a class="pick" href="gear-{pid}.html">Pick a size</a>' if "cover" not in pid else f'<a class="pick" href="gear-{pid}.html">Pick a hand</a>'
             else:
-                btn = f'<button type="button">Add · {p["priceLabel"].split("–")[0]}</button>'
+                btn = f'<button type="button">Add to cart · {p["priceLabel"].split("–")[0]}</button>'
             cards += (f'<article class="it" data-name="{esc(p["name"])}" data-price="{p["price"]}" data-img="{img}" '
                       f'data-best="{rank(pid)[0]}" data-new="{rank(pid)[1]}" '
                       f'data-hud="{"Gear"}"{"" if live else " data-dead"}>'
@@ -574,9 +574,9 @@ COLLECTIONS = {
         "families": None},
     "accessories": {
         "title": "Accessories", "eyebrow": "The small stuff",
-        "lede": "Covers, grips and a glove. The cheap changes that make the bag feel like yours.",
+        "lede": "Covers, grips and a glove. The small changes that make the bag feel like yours.",
         "signhead": "Ten dollars of <span class=\"lg-foil-word\">better</span>",
-        "signlede": "A fresh grip is the cheapest thing in golf you can actually feel.",
+        "signlede": "Tell them it's your lucky bag.",
         "families": ("headcover", "grip", "glove")},
 }
 

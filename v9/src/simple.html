@@ -61,24 +61,24 @@
     <p class="price" data-price>{{PRICE}}</p>
     <p class="lg-body">{{DESC}}</p>
     {{OPTS}}
-    <button class="lg-btn" type="button" data-atc>Put it in the bag</button>
+    <button class="lg-btn" type="button" data-atc>Add to cart</button>
     <span class="stock" data-stock>{{STOCK}}</span>
     <div class="links">
-      <a class="lg-link" href="faq.html#returns">Thirty days, unused <span>&rarr;</span></a>
-      <a class="lg-link" href="faq.html#shipping">Free over $198 <span>&rarr;</span></a>
+      <a class="lg-link" href="faq.html#returns">Thirty days to send it back <span>&rarr;</span></a>
+      <a class="lg-link" href="faq.html#shipping">Free shipping at $198 <span>&rarr;</span></a>
     </div>
     <ul class="facts">{{FACTS}}</ul>
   </div>
 </div></section>
 
 <section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
-  <div class="hd"><div><p class="lg-eyebrow">Goes with it</p><h2 class="lg-d2">{{MOREHEAD}}</h2></div><a class="lg-link" href="gear.html">All the gear <span>&rarr;</span></a></div>
+  <div class="hd"><div><p class="lg-eyebrow">Goes with it</p><h2 class="lg-d2">{{MOREHEAD}}</h2></div><a class="lg-link" href="gear.html">See all the gear <span>&rarr;</span></a></div>
   <div class="more">{{MORE}}</div>
 </div></section>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
-  <h2 class="lg-d1">{{SIGNHEAD}}</h2>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
   <p class="lg-lede">{{SIGNLEDE}}</p>
   <a class="lg-btn-line" href="gear.html">Back to the gear <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
@@ -111,7 +111,7 @@ var PD = {{PD_JSON}};
     var v = variant(), live = !!(v && v.avail);
     $('[data-price]').textContent = v ? money(v.price) : PD.priceLabel;
     $('[data-stock]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out in this one';
-    $('[data-atc]').textContent = live ? 'Put it in the bag · ' + money(v.price) : "Tell me when it's back";
+    $('[data-atc]').textContent = live ? 'Add to cart · ' + money(v.price) : "Tell me when it's back";
   }
   document.addEventListener('click', function(e){
     var t = e.target.closest('#thumbs button');

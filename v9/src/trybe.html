@@ -28,6 +28,8 @@
 .form textarea{min-height:120px;resize:vertical}
 .sent{display:none;padding:14px 16px;border-radius:var(--lg-r);background:var(--lg-tile);margin-top:14px}
 .form[data-sent] .sent{display:block}
+.apply{align-self:start}
+.apply .lg-btn{margin-top:16px}
 </style>
 </head>
 <body class="lg">
@@ -40,6 +42,7 @@
     <p class="lg-eyebrow">Ambassador program</p>
     <h1 class="lg-d1">Play the clubs. Say what you actually <span class="lg-foil-word">think</span></h1>
     <p class="lg-lede">That's the entire bar. No follower count, no contract, no hashtag we make you use.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="https://creators.luckygolf.com/apply" target="_blank" rel="noopener">Apply now <span aria-hidden="true">&rarr;</span></a></div>
   </div></div>
 </section>
 
@@ -66,27 +69,12 @@
     <p class="lg-body" style="margin-top:clamp(18px,2.5vw,24px)">We read every application and answer either way, usually inside a week. A no now isn't a no forever.</p>
   </div>
 
-  <form class="form" data-amb novalidate>
-    <div class="row two-up">
-      <label><span class="lb">Name</span><input name="name" autocomplete="name" required></label>
-      <label><span class="lb">Email</span><input name="email" type="email" autocomplete="email" required></label>
-    </div>
-    <div class="row two-up">
-      <label><span class="lb">Instagram</span><input name="ig" placeholder="@you"></label>
-      <label><span class="lb">Where you play</span><input name="course" placeholder="Home course or city"></label>
-    </div>
-    <div class="row two-up">
-      <label><span class="lb">Handicap</span><select name="hcp">
-        <option>Scratch to 5</option><option>6 to 12</option><option>13 to 20</option><option>21 and up</option><option>I don't keep one</option>
-      </select></label>
-      <label><span class="lb">Already play Lucky?</span><select name="own">
-        <option>Yes, a few</option><option>Yes, one</option><option>Not yet</option>
-      </select></label>
-    </div>
-    <div class="row"><label><span class="lb">What's in the bag, and what's letting you down</span><textarea name="bag" required></textarea></label></div>
-    <button class="lg-btn" type="submit">Send it in</button>
-    <p class="sent lg-aside">In. We'll come back to you either way, usually inside a week.</p>
-  </form>
+  <div class="apply lg-panel">
+    <p class="lg-eyebrow">Apply</p>
+    <h3 class="lg-d3">Two minutes, on our creator page</h3>
+    <p>Tell us who you are, where you play and what's in the bag. Applications go through creators.luckygolf.com.</p>
+    <a class="lg-btn" href="https://creators.luckygolf.com/apply" target="_blank" rel="noopener">Apply now <span aria-hidden="true">&rarr;</span></a>
+  </div>
 </div></section>
 
 <div class="lg-pband" aria-label="Lucky on the course">
@@ -120,12 +108,5 @@
 {{FOOTER}}
 {{DRAWER}}
 {{SCRIPTS}}
-<script>
-document.querySelector('[data-amb]').addEventListener('submit', function(e){
-  e.preventDefault();
-  if (!this.checkValidity()){ this.reportValidity(); return; }
-  this.setAttribute('data-sent', '');
-});
-</script>
 </body>
 </html>
