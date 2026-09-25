@@ -16,7 +16,7 @@ GEAR_COPY = {   # copy v10, 2026-09-24
     "cover-blade": {
         "eyebrow": "Putter cover · blade",
         "desc": "Cut for a blade head, white with the clover on it. The Eclipse Blade ships without a cover, and this keeps the face off your irons.",
-        "facts": [["Fits", "Blade putters"], ["Colour", "White, green clover"]],
+        "facts": [["Fits", "Blade putters"], ["Color", "White, green clover"]],
         "sign": ("", "Tell them it's your lucky putter cover.")},
     "cover-mallet": {
         "eyebrow": "Putter cover · mallet",
@@ -26,7 +26,7 @@ GEAR_COPY = {   # copy v10, 2026-09-24
     "cover-driver": {
         "eyebrow": "Head cover · driver",
         "desc": "White with the stripes and the clover. It fits a driver or a fairway wood, and the top of the bag stops looking like a rental.",
-        "facts": [["Fits", "Driver and fairway woods"], ["Colour", "White, green stripes"]],
+        "facts": [["Fits", "Driver and fairway woods"], ["Color", "White, green stripes"]],
         "sign": ("", "Tell them it's your lucky head cover.")},
     "glove-tour": {
         "eyebrow": "Glove",

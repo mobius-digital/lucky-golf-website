@@ -125,11 +125,12 @@
   ]
  },
  "cart": {
-  "why": "New page. The drawer is the same bag, but Shopify needs a cart template and some people go looking for one.",
+  "why": "Copy v10 (2026-09-25): every line reviewed; no Mags jokes, sign-off on the tagline.",
   "added": [
-   "<b>Same bag as the drawer</b>: add in one, it shows in the other, no second copy of the state.",
-   "<b>The $198 hole bar</b> and the trust row sit with the summary.",
-   "<b>Empty state</b> is Mags and two ways back in."
+   "<b>Kept:</b> \"What you're taking to the course\".",
+   "<b>Empty bag:</b> \"Nothing in here yet.\" (the drawer too).",
+   "<b>Trust:</b> tracking \"as soon as the carrier scans it\", \"Free shipping at $198 / Two Carvers get you there.\"",
+   "<b>Summary:</b> \"Tax is added at checkout, and nothing's charged until you place the order.\""
   ],
   "kept": [
    "Checkout is not wired up in the preview: it toasts instead."
@@ -138,6 +139,8 @@
  "search": {
   "why": "New page. The magnifier in the header had nowhere to go.",
   "added": [
+   "<b>\"What are you after?\"</b> gets its question mark.",
+   "<b>No results:</b> \"...or see every club\" (no \"all five\", which dates the page).",
    "<b>Live filtering</b> as you type, with the query in the URL so a result is shareable.",
    "<b>Lofts are searchable</b>: a golfer typing 56 gets the wedges.",
    "<b>Common searches</b> as chips under the field."
@@ -149,6 +152,7 @@
  "404": {
   "why": "New page. Every site needs one, and the system says what it should be: Mags, one line, two buttons.",
   "added": [
+   "<b>\"This one's in the trees\"</b> stays; the line under it is \"Take a drop and try one of these.\"",
    "<b>Four things to buy</b> under the buttons, so a dead link still ends somewhere useful."
   ],
   "kept": [
@@ -169,6 +173,7 @@
  "blade": {
   "why": "Copy v10 (2026-09-24): every line rewritten on the Carver's model.",
   "added": [
+   "<b>Who it's for:</b> \"Golfers who want to feel every putt. A fully milled blade tells you exactly where you struck it.\" (The arc claim needs the Blade's toe hang checked first.)",
    "<b>Description:</b> \"Set it down behind the ball and it just looks right...\" (solid and muted, you'll know where you caught it).",
    "<b>Big moment:</b> \"The putter that tells you the truth\".",
    "<b>Sold out</b> now just says Sold out. No \"between runs\" until you decide if it's coming back.",

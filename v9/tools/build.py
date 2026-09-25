@@ -503,7 +503,7 @@ HAT_COPY = {   # copy v10, 2026-09-24
     "hat-white-black-updown": "White crown, black brim, wordmark upside down. All the contrast without going to a black hat.",
     "hat-white-updown": "All white, wordmark flipped. Clean from the front, and it keeps the sun off just the same.",
     "hat-white-cursive": "White with the script in black. The easiest one here to wear off the course.",
-    "hat-baby-blue-cursive": "Baby blue, with the script tonal across the front. Nothing else we make is this colour.",
+    "hat-baby-blue-cursive": "Baby blue, with the script tonal across the front. Nothing else we make is this color.",
 }
 
 

@@ -49,7 +49,7 @@
     var t = total();
     if (!lines.length){
       list.innerHTML = '<div class="cd-empty"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span>'
-        + '<p class="lg-aside" style="margin:0 auto 18px">Nothing in here yet. Mags checked twice.</p>'
+        + '<p class="lg-aside" style="margin:0 auto 18px">Nothing in here yet.</p>'
         + '<a class="lg-btn-line lg-btn-sm" href="clubs.html">See the clubs</a></div>';
     } else {
       list.innerHTML = lines.map(function(l, i){
