@@ -90,11 +90,12 @@
   ]
  },
  "story": {
-  "why": "The Our Story page you signed off in August, rebuilt on v4. Same argument, same lines, new pieces.",
+  "why": "Copy v10 (2026-09-25): every approved line kept; the two lines the new voice guide cut are gone.",
   "added": [
-   "<b>Photo hero</b> with the approved headline, then two splits and one dark band: the page's single dark beat.",
-   "<b>The timeline</b> is the same 14 entries, set as a proper list with the coming ones marked.",
-   "<b>Keep looking</b> row at the end points at the clubs, the program and the questions page."
+   "<b>Kept word for word:</b> \"Golf has a dress code. Ours is gold.\", \"Great clubs got too expensive. We took it personally.\", \"Same steel as the big names. Different math.\", \"Is gold subtle? Not even a little.\"",
+   "<b>Cut (per How We Write v10):</b> \"call it innovation\" and \"Serious about the clubs. Not that serious about ourselves\". Sign-off is now \"It's better to be lucky.\" then \"Tell them where you got it.\"",
+   "<b>Black belongs in the story now:</b> \"And we made them gold... Or black, if you'd rather they notice up close.\"",
+   "<b>Fixed:</b> \"take it to the course\" (wedges can only be tested on a mat), \"the stroke most golfers actually have\", and the club count that dates the page."
   ],
   "kept": [
    "Every approved line is intact: the dress code, taking it personally, different math, is gold subtle.",
@@ -102,11 +103,12 @@
   ]
  },
  "faq": {
-  "why": "New page. Shipping, returns, clubs, apparel and orders in one place, so the footer stops pointing at pages that do not exist.",
+  "why": "Copy v10 (2026-09-25): every answer checked against the product guide and the return policy.",
   "added": [
-   "<b>Sticky jump row</b> across the six blocks.",
-   "<b>Returns answers are the real policy</b>, read off the product reference guide: 60 days on clubs with approval and photos, 30 on apparel unworn with tags, $7 if the tags are gone.",
-   "<b>Shipping and returns links</b> in the header and footer now land on this page's sections instead of 404ing."
+   "<b>Blade or mallet?</b> now matches Clubs (no arc claim until the toe hang is checked).",
+   "<b>Removed claims we can't back:</b> \"forged rather than cast\" for every club, \"under 180gsm\", \"usually the same day\", \"you're not paying to ship a broken thing back\".",
+   "<b>Polo care</b> is machine wash cold, tumble dry low. US spellings.",
+   "<b>Sign-off:</b> \"It's better to be lucky.\" then \"Sixty days to make up your mind on clubs, thirty on apparel.\""
   ],
   "kept": [
    "Nothing invented: no delivery windows or hours we have not confirmed."
@@ -115,6 +117,8 @@
  "trybe": {
   "why": "New page. The ambassador panel on the home page had nowhere to go.",
   "added": [
+   "<b>Removed claims we can't check:</b> \"usually inside a week\", \"half the things we've changed started there\", the private-account story.",
+   "<b>\"Will I hear back?\"</b> Yes, either way.",
    "<b>Apply</b> buttons now go to creators.luckygolf.com/apply (the on-page form is gone).",
    "<b>What you get</b> is the three real things: first look, the group chat, a shot at a club.",
    "<b>What we ask</b> is the approved bar: play them, say what you think, tagging is optional.",
@@ -264,6 +268,8 @@
  "policy": {
   "why": "New. The refund policy is the page people read when they are nervous, and it looked like a legal dump.",
   "added": [
+   "<b>Same policy, clearer:</b> the one-liner no longer implies you can play every club; putters can be rolled, one wedge per set tested on a mat.",
+   "<b>Removed</b> the free-return-shipping promise on damaged items (the guide doesn't say it).",
    "<b>The one-line version first</b>, then the full text underneath.",
    "<b>A sticky contents list</b> so someone chasing the apparel rule does not read the club rules first.",
    "<b>Every word is your actual policy</b>, read off the product reference guide: sixty days on clubs with approval and photos, thirty on apparel unworn with tags, the $7 tag fee, customised items final sale."
