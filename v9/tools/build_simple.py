@@ -7,6 +7,8 @@ not already back up: no invented materials, no invented weights.
 import json
 import os
 
+# a glove is worn on the other hand, so the glove says who each one is for (Cole, 2026-09-25)
+GLOVE_HANDS = {"LH": "Left hand (right-handed golfers)", "RH": "Right hand (left-handed golfers)"}
 LABELS = {"RH": "Right hand", "LH": "Left hand", "STD": "Standard", "MID": "Midsize", "JMB": "Jumbo",
           "LDY": "Lady", "S": "S", "M": "M", "L": "L", "XL": "XL"}
 
@@ -29,7 +31,8 @@ GEAR_COPY = {   # copy v10, 2026-09-24
     "glove-tour": {
         "eyebrow": "Glove",
         "desc": "The clover on the back of the hand, in four sizes. Pick the size you already wear, and if you're between two, go down: a glove stretches and never shrinks back.",
-        "facts": [["Hands", "Left and right"], ["Sizes", "S, M, L, XL"]],
+        "note": "Cabretta leather, with the clover embroidered on the wrist strap.",
+        "facts": [["Hands", "Left (for right-handed golfers) and right"], ["Sizes", "S, M, L, XL"]],
         "sign": ("", "Tell them it's your lucky glove.")},
     "grip-clover": {
         "eyebrow": "Club grip",
@@ -96,7 +99,7 @@ def build(SRC, ROOT, fill, esc, js, pid):
         live = [v for v in vals if any(p["variants"][kk]["avail"] for kk in p["variants"] if kk.split("|")[i] == v)]
         start[key] = (live or vals)[0]
         for v in vals:
-            labels[v] = LABELS.get(v, v)
+            labels[v] = (GLOVE_HANDS.get(v) if pid == "glove-tour" else None) or LABELS.get(v, v)
         if len(vals) < 2:
             continue
         chips = ""
@@ -127,7 +130,7 @@ def build(SRC, ROOT, fill, esc, js, pid):
     return fill(open(os.path.join(SRC, "simple.html"), encoding="utf-8").read(), {
         "RVL": rvl(ROOT, p),
         "NAME": esc(p["name"]), "IMG": img, "PHOTO": photo, "PHOTO_ALT": photo_alt,
-        "EYEBROW": c["eyebrow"], "PRICE": esc(PD["priceLabel"]), "DESC": c["desc"], "OPTS": opts,
+        "EYEBROW": c["eyebrow"], "PRICE": esc(PD["priceLabel"]), "DESC": c["desc"] + (f'</p><p class="lg-body">{c["note"]}' if c.get("note") else ""), "OPTS": opts,
         "STOCK": "In stock · ships in 1 to 2 days" if live_any else "Sold out",
         "FACTS": facts, "MOREHEAD": "Round out the bag", "MORE": more,
         "SIGNHEAD": c["sign"][0], "SIGNLEDE": c["sign"][1], "PD_JSON": js(PD)})
