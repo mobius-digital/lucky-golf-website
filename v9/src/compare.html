@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucky vs the big names · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Lucky vs the big names · Takomo's vs-big-brands page, our way:
+   hero, bestsellers, the side-by-side, where the money goes, the safety net, real reviews ---------- */
+.proof{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;color:var(--lg-ink-70);font-size:var(--lg-fs-sm)}
+.proof .lg-stars{margin-right:6px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px)}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.pc{display:flex;flex-direction:column;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-page)}
+.pc-ph{position:relative;display:block;aspect-ratio:4/5;background:var(--lg-tile)}
+.pc-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:12px;transition:transform .5s var(--lg-ease)}
+.pc:hover .pc-ph img{transform:scale(1.03)}
+.pc-ph .lg-tag{position:absolute;left:12px;top:12px}
+.pc-bd{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pc-top h3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1}
+.pc-top h3 a{text-decoration:none;color:inherit;display:inline-block;padding:11px 0;margin:-11px 0}
+.pc-top b{font-weight:700}
+.pc-rate{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.pc p{margin:0;color:var(--lg-ink-70);font-size:var(--lg-fs-base)}
+.pc .lg-btn{margin-top:auto;width:100%}
+.tablewrap{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);margin-top:clamp(20px,3vw,32px)}
+.tablewrap table{min-width:620px}
+.lg-table th[scope=col]{text-align:left}
+.lg-table td.us{color:var(--lg-ink);font-weight:600}
+.lg-table td.them{color:var(--lg-ink-64)}
+@media (max-width:640px){
+.tablewrap table{min-width:0}
+.lg-table thead tr,.lg-table tbody tr{display:grid;grid-template-columns:1fr 1fr}
+.lg-table thead th:first-child{display:none}
+.lg-table tbody th{grid-column:1/-1;padding-bottom:0;border-bottom:0;font-size:var(--lg-fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--lg-ink-64)}
+}
+.after{max-width:62ch;margin-top:clamp(18px,2.5vw,24px)}
+.goes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px)}
+@media (max-width:900px){.goes{grid-template-columns:1fr}}
+.goes .n{display:block;color:var(--lg-gold-deep,#8A6A14);font-weight:700;font-size:var(--lg-fs-sm);margin-bottom:10px}
+.goes p{color:var(--lg-ink-70);margin:8px 0 0}
+.net{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px)}
+@media (max-width:760px){.net{grid-template-columns:1fr}}
+.net > div{border-top:2px solid var(--lg-gold,#C29A2B);padding-top:14px}
+.net b{display:block;font-size:17px;margin-bottom:4px}
+.net p{margin:0;color:var(--lg-ink-70)}
+.rqs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px)}
+@media (max-width:900px){.rqs{grid-template-columns:1fr}}
+.rq{margin:0;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);padding:22px;display:flex;flex-direction:column;gap:12px;background:var(--lg-page)}
+.rq blockquote{margin:0;font-size:17px;line-height:1.45;color:var(--lg-ink)}
+.rq figcaption{margin-top:auto;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+.rq figcaption b{color:var(--lg-ink)}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+<main id="main">
+
+<section class="lg-hero" style="--focus:50% 50%;--focus-m:50% 50%">
+  <img class="lg-hero-img" src="img/two-gold-wedges.webp" alt="Two gold Carver wedges" width="2400" height="1600" fetchpriority="high">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow">Lucky vs the big names</p>
+    <h1 class="lg-d1">Why is a wedge two hundred <span class="lg-foil-word">dollars?</span></h1>
+    <p class="lg-lede">You're not paying for the wedge. You're paying for the tour pro who plays one on TV, the shop that stocks it, and everybody in between.</p>
+    <div class="lg-btn-row"><a class="lg-btn" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a><a class="lg-btn-line" href="#breakdown">See the breakdown <span aria-hidden="true">&darr;</span></a></div>
+  </div></div>
+</section>
+
+<section class="lg-sec" style="padding-bottom:0"><div class="lg-wrap">
+  <div class="proof">{{PROOF}}</div>
+</div></section>
+
+<section class="lg-sec"><div class="lg-wrap">
+  <p class="lg-eyebrow">Where most people start</p>
+  <h2 class="lg-d2">Three clubs, none of them over <span class="lg-foil-word">$230</span></h2>
+  <div class="cards">
+    <article class="pc">
+      <a class="pc-ph" href="carver.html"><span class="lg-tag">Best seller</span><img src="img/gold-full-cut.webp" alt="Carver 02 Gold" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="carver.html">Carver 02 Gold</a></h3><b>$99</b></div>
+        {{RATE_GOLD}}
+        <p>Forged carbon steel with a milled face. Half what the shelf charges for one.</p>
+        <a class="lg-btn lg-btn-sm" href="carver.html">Pick a loft <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    <article class="pc">
+      <a class="pc-ph" href="mallet.html"><img src="img/mallet-full-cut.webp" alt="Eclipse Mallet" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="mallet.html">Eclipse Mallet</a></h3><b>$229</b></div>
+        {{RATE_MALLET}}
+        <p>Fully milled, like the ones that cost twice as much, and it holds its line when you miss the middle.</p>
+        <a class="lg-btn lg-btn-sm" href="mallet.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    <article class="pc">
+      <a class="pc-ph" href="stryker.html"><img src="img/stryker-full-cut.webp" alt="Stryker hybrid" loading="lazy"></a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="stryker.html">Stryker</a></h3><b>$209</b></div>
+        {{RATE_STRYKER}}
+        <p>A titanium hybrid with a Flex Channel face, for the long shots you used to dread.</p>
+        <a class="lg-btn lg-btn-sm" href="stryker.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="lg-sec" id="breakdown" style="padding-top:0"><div class="lg-wrap">
+  <p class="lg-eyebrow">The breakdown</p>
+  <h2 class="lg-d2">Spot the <span class="lg-foil-word">difference</span></h2>
+  <p class="lg-body" style="max-width:62ch">A big-name wedge and putter next to ours. We're not naming names, because this isn't about one company. It's how the whole shelf is priced.</p>
+  <div class="tablewrap"><table class="lg-table">
+    <thead><tr><th scope="col"><span class="sr">What we compared</span></th><th scope="col">The big names</th><th scope="col">Lucky</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">One wedge, new</th><td class="them">$170 to $200</td><td class="us">$99 to $109</td></tr>
+      <tr><th scope="row">Wedge head</th><td class="them">Carbon steel, cast or forged by model</td><td class="us">Forged 1020 carbon steel</td></tr>
+      <tr><th scope="row">Wedge face</th><td class="them">Milled grooves</td><td class="us">CNC-milled grooves and a micro-grooved face</td></tr>
+      <tr><th scope="row">Fully milled putter</th><td class="them">$499 and up</td><td class="us">$199 to $229</td></tr>
+      <tr><th scope="row">Where you buy it</th><td class="them">Golf shops and online</td><td class="us">Online, direct from us</td></tr>
+      <tr><th scope="row">Trying it</th><td class="them">A few swings in the shop</td><td class="us">Sixty days: roll the putter, hit a wedge on a mat</td></tr>
+    </tbody>
+  </table></div>
+  <p class="lg-body after">Look at the head and the face. Those are the parts that hit the ball, and they're not where the extra hundred dollars goes.</p>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <p class="lg-eyebrow">So where does it go</p>
+  <h2 class="lg-d2">Three things, none of them the <span class="lg-foil-word">club</span></h2>
+  <div class="goes">
+    <div><span class="n">01</span><h3 class="lg-d3">The tour contract</h3><p>Somebody's getting paid to have that wedge in the bag on Sunday. That money's in the price you pay.</p></div>
+    <div><span class="n">02</span><h3 class="lg-d3">The shop</h3><p>Floor space, staff and rent, in a building you've got to drive to, and the club's carrying all of it.</p></div>
+    <div><span class="n">03</span><h3 class="lg-d3">Everybody in between</h3><p>A distributor sits between the factory and the shop, and takes a cut on the way past.</p></div>
+  </div>
+  <p class="lg-body after">We don't have any of those, so none of it got added in the first place. It's not a sale. There's just less in there.</p>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <p class="lg-eyebrow">Don't take our word for it</p>
+  <h2 class="lg-d2">A table on a website is still just a <span class="lg-foil-word">table</span></h2>
+  <div class="net">
+    <div><b>Sixty days on clubs</b><p>Roll the putter, hit a wedge on a mat, and send it back if it doesn't earn a spot.</p></div>
+    <div><b>Ships in 1 to 2 days</b><p>Tracking shows up as soon as the carrier scans it.</p></div>
+    <div><b>Free shipping at $198</b><p>Two Carvers get you there.</p></div>
+  </div>
+  <p class="lg-body after"><a class="lg-link" href="policy.html">Read the return policy <span aria-hidden="true">&rarr;</span></a></p>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <p class="lg-eyebrow">From people who switched</p>
+  <h2 class="lg-d2">They had the big names in the bag <span class="lg-foil-word">first</span></h2>
+  <div class="rqs">
+    <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.&rdquo;</blockquote><figcaption><b>1981 C.o.M.</b> · Carver, verified buyer</figcaption></figure>
+    <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Love the weight of this club! Great looking bag candy! It&rsquo;s so pretty I&rsquo;m almost afraid to use it. I like it more than my titleist vokey&rdquo;</blockquote><figcaption><b>Christopher V.</b> · Carver 56&deg;, verified buyer</figcaption></figure>
+    <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances. I highly recommend. Great putter, great price point, plus the gold is badass&rdquo;</blockquote><figcaption><b>Patrick S.</b> · Eclipse Mallet, verified buyer</figcaption></figure>
+  </div>
+  <p class="lg-body after"><a class="lg-link" href="reviews.html">Read every review <span aria-hidden="true">&rarr;</span></a></p>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
+  <p class="lg-lede">Spend the difference on green fees.</p>
+  <a class="lg-btn" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+</body>
+</html>

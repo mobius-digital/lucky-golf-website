@@ -24,10 +24,20 @@
 .nx b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px;margin-bottom:6px}
 .nx span{color:var(--lg-ink-64)}
 .nx .go{display:block;margin-top:14px;font-size:var(--lg-fs-sm)}
-.three .lg-split + .lg-split{margin-top:clamp(48px,7vw,96px)}
-@media (min-width:901px){.three .lg-split.is-flip > figure{order:2}}
-.three .lg-body + .lg-body{margin-top:12px}
-.three .lg-btn-line{margin-top:18px}
+/* the trio: image cards that open the pop-ups */
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:760px){.trio{grid-template-columns:1fr}}
+.tc{position:relative;display:block;width:100%;padding:0;border:0;border-radius:var(--lg-r-card);overflow:hidden;cursor:pointer;background:#0B1911;text-align:left;aspect-ratio:1/1}
+.tc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--lg-ease)}
+.tc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,17,11,0) 45%,rgba(6,17,11,.78) 100%)}
+.tc:hover img{transform:scale(1.04)}
+.tc-side{position:absolute;left:14px;bottom:18px;z-index:1;writing-mode:vertical-rl;transform:rotate(180deg);color:#EDD27C;font:700 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.tc-plus{position:absolute;top:14px;right:14px;z-index:1;width:40px;height:40px;border-radius:50%;background:#F4F3F0;color:#141413;display:grid;place-items:center;font-size:22px;line-height:1;transition:transform .2s}
+.tc:hover .tc-plus{transform:scale(1.1)}
+.tc-cap{position:absolute;left:44px;right:18px;bottom:18px;z-index:1;color:#F4F3F0;font-size:17px;line-height:1.35;font-weight:500}
+.story-md{width:min(640px,100%)}
+.story-md p{color:var(--lg-ink-70)}
+.story-md .lg-btn-line{margin-top:10px}
 /* the timeline, one row you swipe instead of fourteen stacked rows */
 .tl-hd{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-top:10px}
 @media (max-width:640px){.tl-hd .arrows{display:none}}
@@ -52,42 +62,55 @@
   </div></div>
 </section>
 
-<!-- ============ THE THREE PARTS: Why we exist / What we do / Our story. Open on the page,
-     photo and text alternating sides. In the theme: three image-with-text blocks. -->
-<section class="lg-sec three"><div class="lg-wrap">
-  <div class="lg-split">
-    <figure class="lg-frame"><img src="img/lucky-golfer-address.webp" alt="A golfer at address with a Lucky wedge, from behind" loading="lazy"></figure>
-    <div>
-      <p class="lg-eyebrow">Why we exist</p>
-      <h2 class="lg-d2">Great clubs got too expensive. We took it <span class="lg-foil-word">personally</span></h2>
-      <p class="lg-body">We started Lucky for two reasons: good golf gear cost way too much, and golf itself forgot it was supposed to be fun.</p>
-      <p class="lg-body">The industry's playbook is simple: sponsor a tour pro and add it to the price. The steel didn't change. The price did. We're not playing that game. Same materials as the big names, same engineering, none of the markup. Sold direct, so the saving lands in your pocket instead of a sponsorship deal.</p>
-      <p class="lg-body">And we made them gold, because standing out is the whole point. Or black, if you'd rather they notice up close.</p>
-      <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </div>
-  <div class="lg-split is-flip">
-    <figure class="lg-frame"><img src="img/lucky-wedge-face-macro.webp" alt="The milled face of a Carver and the clover" loading="lazy"></figure>
-    <div>
-      <p class="lg-eyebrow">What we do</p>
-      <h2 class="lg-d2">Same steel as the big names. Different <span class="lg-foil-word">math</span></h2>
-      <p class="lg-body">Our stuff is built from the same high-end materials the big names use, engineered for real performance, and finished in gold or black so it doesn't look like anyone else's bag.</p>
-      <p class="lg-body">We cut out the middlemen, the retail markup and the hype. No buzzword launches, no four-figure price tags. Every club gets sixty days to make up your mind. If it doesn't earn its spot in the bag, send it back.</p>
-      <a class="lg-btn-line" href="reviews.html">Read the reviews <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </div>
-  <div class="lg-split">
-    <figure class="lg-frame"><img src="img/lucky-bag-glove.webp" alt="A Lucky bag and glove" loading="lazy"></figure>
-    <div>
-      <p class="lg-eyebrow">Our story</p>
-      <h2 class="lg-d2">We built the clubs we <span class="lg-foil-word">wanted</span></h2>
-      <p class="lg-body">We loved golf. We didn't love the bill, and we really didn't love how seriously golf was taking itself. So in 2018 we looked into why.</p>
-      <p class="lg-body">Turns out the big brands use the same materials anyone can buy. The rest of the price tag is tour sponsorships and retail shelf space. So we made our own: one gold wedge, built right, priced honestly. It hit.</p>
-      <p class="lg-body">The blade putter followed, then the mallet, then the hybrid, then the apparel. Same plan since day one: build it right, price it fair, have fun with it.</p>
-      <a class="lg-btn-line" href="carver.html">Start with the wedge <span aria-hidden="true">&rarr;</span></a>
-    </div>
+<!-- ============ THE TRIO: the approved August device (Cole, 2026-08-25). Each card IS the
+     control: photo, label up the left edge, one caption line, a plus chip, and the full
+     copy in a pop-up. In the theme: three blocks (image, label, caption, pop-up text). -->
+<section class="lg-sec trio-sec"><div class="lg-wrap">
+  <div class="trio">
+    <button type="button" class="tc" data-md-open="md-why" aria-haspopup="dialog">
+      <img src="img/lucky-golfer-address.webp" alt="A golfer at address with a Lucky wedge, from behind" loading="lazy">
+      <span class="tc-side" aria-hidden="true">Why we exist</span><span class="tc-plus" aria-hidden="true">+</span>
+      <span class="tc-cap">Golf's best gear shouldn't cost this much. So now it doesn't.</span>
+    </button>
+    <button type="button" class="tc" data-md-open="md-what" aria-haspopup="dialog">
+      <img src="img/lucky-wedge-face-macro.webp" alt="The milled face of a Carver and the clover" loading="lazy">
+      <span class="tc-side" aria-hidden="true">What we do</span><span class="tc-plus" aria-hidden="true">+</span>
+      <span class="tc-cap">Clubs that perform like the big names and cost way less.</span>
+    </button>
+    <button type="button" class="tc" data-md-open="md-story" aria-haspopup="dialog">
+      <img src="img/lucky-bag-glove.webp" alt="A Lucky bag and glove" loading="lazy">
+      <span class="tc-side" aria-hidden="true">Our story</span><span class="tc-plus" aria-hidden="true">+</span>
+      <span class="tc-cap">Tired of overpaying for great clubs? So were we. So we built our own.</span>
+    </button>
   </div>
 </div></section>
+
+<div class="md" id="md-why" hidden role="dialog" aria-modal="true" aria-labelledby="md-why-t"><div class="md-bd" data-md-close></div><div class="md-panel story-md">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Why we exist</p>
+  <h2 class="lg-d2" id="md-why-t">Great clubs got too expensive. We took it <span class="lg-foil-word">personally</span></h2>
+  <p>We started Lucky for two reasons: good golf gear cost way too much, and golf itself forgot it was supposed to be fun.</p>
+  <p>The industry's playbook is simple: sponsor a tour pro and add it to the price. The steel didn't change. The price did. We're not playing that game. Same materials as the big names, same engineering, none of the markup. Sold direct, so the saving lands in your pocket instead of a sponsorship deal.</p>
+  <p>And we made them gold, because standing out is the whole point. Or black, if you'd rather they notice up close.</p>
+  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+</div></div>
+<div class="md" id="md-what" hidden role="dialog" aria-modal="true" aria-labelledby="md-what-t"><div class="md-bd" data-md-close></div><div class="md-panel story-md">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">What we do</p>
+  <h2 class="lg-d2" id="md-what-t">Same steel as the big names. Different <span class="lg-foil-word">math</span></h2>
+  <p>Our stuff is built from the same high-end materials the big names use, engineered for real performance, and finished in gold or black so it doesn't look like anyone else's bag.</p>
+  <p>We cut out <a class="lg-link" href="compare.html">the middlemen, the retail markup</a> and the hype. No buzzword launches, no four-figure price tags. Every club gets sixty days to make up your mind. If it doesn't earn its spot in the bag, send it back.</p>
+  <div class="lg-btn-row"><a class="lg-btn-line" href="compare.html">See the breakdown <span aria-hidden="true">&rarr;</span></a><a class="lg-link" href="reviews.html" style="align-self:center">Read the reviews <span>&rarr;</span></a></div>
+</div></div>
+<div class="md" id="md-story" hidden role="dialog" aria-modal="true" aria-labelledby="md-story-t"><div class="md-bd" data-md-close></div><div class="md-panel story-md">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Our story</p>
+  <h2 class="lg-d2" id="md-story-t">We built the clubs we <span class="lg-foil-word">wanted</span></h2>
+  <p>We loved golf. We didn't love the bill, and we really didn't love how seriously golf was taking itself. So in 2018 we looked into why.</p>
+  <p>Turns out the big brands use the same materials anyone can buy. The rest of the price tag is tour sponsorships and retail shelf space. So we made our own: one gold wedge, built right, priced honestly. It hit.</p>
+  <p>The blade putter followed, then the mallet, then the hybrid, then the apparel. Same plan since day one: build it right, price it fair, have fun with it.</p>
+  <a class="lg-btn-line" href="carver.html">Start with the wedge <span aria-hidden="true">&rarr;</span></a>
+</div></div>
 
 <section class="lg-band is-photo" style="--band-bg:url(img/putt-sunset.webp);--band-pos:center 60%"><div class="lg-wrap">
   <p class="lg-eyebrow">The gold question</p>

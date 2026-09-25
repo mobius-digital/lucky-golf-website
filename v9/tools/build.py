@@ -35,6 +35,7 @@ PAGES = [
     {"key": "story", "name": "Our story", "file": "story.html", "before": None, "built": True},
     {"key": "faq", "name": "Questions", "file": "faq.html", "before": None, "built": True},
     {"key": "trybe", "name": "Ambassadors", "file": "trybe.html", "before": None, "built": True},
+    {"key": "compare", "name": "Lucky vs the big names", "file": "compare.html", "before": None, "built": True},
     {"key": "cart", "name": "Cart", "file": "cart.html", "before": None, "built": True},
     {"key": "search", "name": "Search", "file": "search.html", "before": None, "built": True},
     {"key": "404", "name": "404", "file": "404.html", "before": None, "built": True},
@@ -164,7 +165,7 @@ def footer():
     <div class="ftr-brand"><a class="lg-logo" href="home.html" aria-label="Lucky Golf home">{logo()}</a><p>Clubs that play like the big names, without the tour contracts and the retail markup in the price.</p></div>
     <div><h3>Clubs</h3><ul><li><a href="carver.html">Carver 02 Gold</a></li><li><a href="black.html">Carver 02 Black</a></li><li><a href="blade.html">Eclipse Blade</a></li><li><a href="mallet.html">Eclipse Mallet</a></li><li><a href="stryker.html">Stryker</a></li></ul></div>
     <div><h3>Apparel</h3><ul><li><a href="polos.html">The Classic Polo</a></li><li><a href="polos.html">The Blade Polo</a></li><li><a href="hats.html">Hats</a></li><li><a href="gear.html">Gear</a></li></ul></div>
-    <div><h3>Support</h3><ul><li><a href="faq.html#returns">Sixty-day returns</a></li><li><a href="faq.html#shipping">Shipping</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="community.html">Community</a></li><li><a href="giftcard.html">Gift cards</a></li><li><a href="story.html">Our Story</a></li></ul></div>
+    <div><h3>Support</h3><ul><li><a href="faq.html#returns">Sixty-day returns</a></li><li><a href="faq.html#shipping">Shipping</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="community.html">Community</a></li><li><a href="giftcard.html">Gift cards</a></li><li><a href="story.html">Our Story</a></li><li><a href="compare.html">Lucky vs the big names</a></li></ul></div>
   </div>
   <div class="lg-ftr-base"><span>&copy; 2026 Lucky Golf</span><span>It's better to be lucky.</span></div>
 </div></footer>'''
@@ -795,6 +796,16 @@ def build_community():
                 {"POSTS": posts, "POSTS_JSON": js(data), "COUNT": str(len(COMMUNITY))})
 
 
+def build_compare():
+    n, avg = rc("lgw01-gold")
+    proof = (f'<span><span class="lg-stars" aria-label="{avg:.1f} out of 5">{STARS5}</span>{avg:.2f} from {n} Carver reviews</span>'
+             if n >= REVIEW_MIN else "")
+    proof += '<span>Sixty days on every club</span><span>Sold direct, no shop markup</span>'
+    return fill(open(os.path.join(SRC, "compare.html"), encoding="utf-8").read(), {
+        "PROOF": proof, "RATE_GOLD": rate_link("lgw01-gold", "carver.html"),
+        "RATE_MALLET": rate_link("lgp02-gold", "mallet.html"), "RATE_STRYKER": rate_link("lgh01", "stryker.html")})
+
+
 def build_story():
     return fill(open(os.path.join(SRC, "story.html"), encoding="utf-8").read(), {})
 
@@ -885,7 +896,7 @@ BUILDERS = {"carver": build_carver("gold"), "home": build_home, "clubs": build_c
             "giftcard-view": build_giftcard_view, "order": build_simple("order.html"),
             "addresses": build_simple("addresses.html"), "policy": build_simple("policy.html"),
             "login": build_simple("login.html"),
-            "collection-accessories": build_collection("accessories"), "article": build_article, "hat": build_hat("hat-white-gold-classic"), "story": build_story, "search": build_search,
+            "collection-accessories": build_collection("accessories"), "article": build_article, "hat": build_hat("hat-white-gold-classic"), "story": build_story, "compare": build_compare, "search": build_search,
             "faq": build_simple("faq.html"), "trybe": build_simple("trybe.html"),
             "cart": build_simple("cart.html"), "404": build_simple("404.html"),
             "contact": build_simple("contact.html"),

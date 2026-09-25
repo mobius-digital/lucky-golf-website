@@ -92,7 +92,7 @@
  "story": {
   "why": "Copy v10 (2026-09-25): every approved line kept; the two lines the new voice guide cut are gone.",
   "added": [
-   "<b>The three parts are back, open on the page:</b> Why we exist / What we do / Our story, photo and text switching sides. No pop-ups, so the best lines get read without a click.",
+   "<b>The trio pop-ups are back</b>, the way Takomo's About page does it: the card faces carry the point, so the page stays short. I tried them open on the page and it added about 1,350px of scrolling.",
    "<b>Timeline is one sideways row</b> with arrows on desktop and swipe on phones, so the page is a lot shorter.",
    "<b>Kept word for word:</b> \"Golf has a dress code. Ours is gold.\", \"Great clubs got too expensive. We took it personally.\", \"Same steel as the big names. Different math.\", \"Is gold subtle? Not even a little.\"",
    "<b>Cut (per How We Write v10):</b> \"call it innovation\" and \"Serious about the clubs. Not that serious about ourselves\". Sign-off is now \"It's better to be lucky.\" then \"Tell them where you got it.\"",
@@ -347,6 +347,19 @@
   "kept": [
    "Every post here is OUR OWN shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
    "Nothing goes up without the golfer's permission: that step is you asking, not an app."
+  ]
+ },
+ "compare": {
+  "why": "Rebuilt 2026-09-25. The August site had this page and v9 dropped it. Takomo runs the same page (Takomo vs Big Brands).",
+  "added": [
+   "<b>Takomo's order:</b> hero, three bestsellers with real ratings, the side-by-side table, where the money goes, the safety net, real reviews.",
+   "<b>Big-name prices checked 2026-09-25:</b> new-model wedges list at $170 to $200 before sales; big-name fully milled putters start at $499. No brand named in our copy.",
+   "<b>Fixed from August:</b> it said every big-name wedge is forged. Many are cast, so the row says 'cast or forged by model'. Dropped 'theirs is thirty days' (not checkable).",
+   "<b>Reviews are real</b> Judge.me quotes, in full, from customers who compare us to the big names.",
+   "<b>Linked from</b> the Our Story pop-up, Home's price section and the footer."
+  ],
+  "kept": [
+   "The August headline and the 'Spot the difference' table idea."
   ]
  }
 }
