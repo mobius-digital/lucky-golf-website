@@ -181,6 +181,16 @@ Colorways: rotating — not tracked here
 Price: $67
 
 
+Gloves
+Lucky Tour Glove
+Category: glove
+Material: cabretta leather (live product page, 2026-09-25)
+Detail: embroidered clover logo on the wrist strap
+Hands: left and right (a left-hand glove is worn by right-handed golfers)
+Sizes: S, M, L, XL
+Price: $17.95
+Reviews: 50 on Judge.me, 4.72 (2026-09-24)
+
 Hats
 Five-panel snapback
 Category: hat
