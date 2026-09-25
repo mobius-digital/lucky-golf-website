@@ -373,9 +373,7 @@ def build_polos():
             f'<a class="polo-bd" href="{polo_slug(x)}"><span class="nm">{x["name"]}</span><b>$67</b>'
             f'<span class="meta">{"Blade" if x["collar"] == "blade" else "Classic"} collar</span>'
             f'<span class="{cls}">{stock}</span></a></article>')
-    tiles = (ftile(3, "Every polo", "Same shirt underneath", "green-read-fit.webp",
-                   ["Four-way stretch", "UPF 50+", "Moisture-wicking", "S to 3XL, same $67"]) +
-             ftile(8, "Pairs well with", "A hat that matches", "two-hats-mallet.webp", href="hats.html", cta="Shop hats"))
+    tiles = (ftile(8, "Pairs well with", "A hat that matches", "two-hats-mallet.webp", href="hats.html", cta="Shop hats"))
     pg = open(os.path.join(SRC, "polo.html"), encoding="utf-8").read()
     size_md = re.search(r'<div class="md" id="md-size".*?</div></div>\n', pg, flags=re.S).group(0)
     size_css = re.search(r"/\* size guide:.*?(?=\.modelfit\{)", pg, flags=re.S).group(0)
@@ -817,8 +815,9 @@ def build_hats():
         dead = "" if v["avail"] else " data-dead"
         btn = ('<button type="button">Add to cart · $29</button>' if v["avail"]
                else '<button type="button" disabled>Sold out</button>')
-        front = {"classic": "Gold wordmark", "ibtbl": "The tagline, on a patch", "cursive": "Script front"}
-        meta = front.get(style, "Five-panel snapback") if v["avail"] else "Sold out"
+        front = {"classic": "Gold wordmark", "ibtbl": "The tagline, on a patch", "cursive": "Script front", "updown": "LUCKY, upside down"}
+        front_by_id = {"hat-baby-blue-cursive": "Script front, tone on tone"}
+        meta = front_by_id.get(p["id"], front.get(style, "Five-panel snapback")) if v["avail"] else "Sold out"
         cards.append(
             f'<article class="hat" data-i="{i}" data-style="{style}" data-colour="{colour}" data-name="{name}" data-img="{img}" '
             f'data-best="{rank(p["id"])[0]}" data-new="{rank(p["id"])[1]}"{dead}>'
@@ -826,9 +825,7 @@ def build_hats():
             f'<div class="qa">{btn}</div></div>'
             f'<a class="hat-bd" href="{p["id"]}.html"><span class="nm">{name}</span><b>$29</b>'
             f'<span class="meta">{meta}</span></a></article>')
-    tiles = (ftile(3, "Every hat", "Same hat underneath", None,
-                   ["Five-panel snapback", "Moisture-wicking sweatband", "Laser-cut vents", "$29 each"]) +
-             ftile(7, "Pairs well with", "A polo worth asking about", "fit-sunset.webp", href="polos.html", cta="Shop polos"))
+    tiles = (ftile(7, "Pairs well with", "A polo worth asking about", "fit-sunset.webp", href="polos.html", cta="Shop polos"))
     return fill(open(os.path.join(SRC, "hats.html"), encoding="utf-8").read(),
                 {"STYLES": "".join(st), "CARDS": "".join(cards) + tiles, "COUNT": str(len(hats)),
                  "RELATED": related([("polos.html", "Polos"), ("gear.html", "Gear"), ("clubs.html", "Clubs"), ("collection-all.html", "All products")],

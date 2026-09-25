@@ -47,7 +47,7 @@
  "polos": {
   "why": "The Breezy moves (2026-09-25): feature tiles in the grid, related categories at the bottom, less up top.",
   "added": [
-   "<b>Two feature tiles in the grid:</b> \"Same shirt underneath\" (four-way stretch, UPF 50+, moisture-wicking, S to 3XL) and \"Pairs well with: a hat that matches\". They keep their spot when you filter or sort. In Shopify each tile is a theme-editor block: image, line, link, and which spot in the grid.",
+   "<b>One feature tile in the grid:</b> \"Pairs well with: a hat that matches\". It keeps its spot when you filter or sort. In Shopify each tile is a theme-editor block: image, line, link, and which spot in the grid.",
    "<b>Simpler top:</b> the big Classic/Blade tiles are gone (the Collar filter does that); a Size guide link and the count sit under the headline.",
    "<b>Bottom:</b> Keep browsing (Hats, Gear, Clubs, All products) and a trust strip, in place of the hats row.",
    "<b>Fixed:</b> a stray \"f\" that sat at the top of every polo card since the first build.",
@@ -77,7 +77,7 @@
  "hats": {
   "why": "Copy v10 (2026-09-24): every line rewritten.",
   "added": [
-   "<b>Two feature tiles:</b> \"Same hat underneath\" and \"Pairs well with: a polo worth asking about\".",
+   "<b>One feature tile:</b> \"Pairs well with: a polo worth asking about\".",
    "<b>Bottom:</b> Keep browsing and a trust strip, in place of the polos row.",
    "<b>Headline:</b> \"Hats that go with every polo.\" with \"Five-panel snapbacks with a moisture-wicking sweatband and laser-cut vents. $29 each.\"",
    "<b>Cards say what's on the front:</b> Gold wordmark, The tagline on a patch, Script front (Upside Down hats keep \"Five-panel snapback\" for now).",
