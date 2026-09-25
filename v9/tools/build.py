@@ -324,6 +324,25 @@ def polo_pid(x):
     return x["img"].split("/")[-1].replace("-pack.webp", "")
 
 
+def ftile(pos, eyebrow, head, img=None, lines=(), href=None, cta=None):
+    """A feature tile that sits in a product grid at position `pos` (0-based)."""
+    tag = "a" if href else "div"
+    attrs = f' href="{href}"' if href else ""
+    media = f'<img src="img/{img}" alt="" loading="lazy">' if img else ""
+    items = "".join(f"<li>{esc(x)}</li>" for x in lines)
+    return (f'<{tag} class="ftile{"" if img else " is-flat"}" data-pos="{pos}"{attrs}>{media}<div class="ft-in">'
+            f'<p class="lg-eyebrow">{esc(eyebrow)}</p><h3>{esc(head)}</h3>'
+            + (f"<ul>{items}</ul>" if items else "") + (f'<span class="go">{esc(cta)} &rarr;</span>' if cta else "")
+            + f"</div></{tag}>")
+
+
+def related(links, trust):
+    chips = "".join(f'<a href="{h}">{esc(t)}</a>' for h, t in links)
+    strip = "".join(f"<span>{icon(i)}{esc(t)}</span>" for i, t in trust)
+    return (f'<nav class="related" aria-label="Keep browsing"><span class="lg-label">Keep browsing</span>{chips}</nav>'
+            f'<div class="coll-trust"><div class="lg-trust">{strip}</div></div>')
+
+
 def build_polos():
     """Cards come from the approved page's own data: names, collars, colours,
     per-size SKUs and what is actually sold out. Nothing retyped."""
@@ -348,14 +367,22 @@ def build_polos():
             f'<article class="polo" data-collar="{x["collar"]}" data-colour="{x["colour"]}" data-name="{x["name"]}" '
             f'data-i="{i}" data-best="{rank(polo_pid(x))[0]}" data-new="{rank(polo_pid(x))[1]}" '
             f'data-full="{x["full"]}" data-img="{x["img"].replace("-pack", "-cut")}" data-sizes="{" ".join(z["size"] for z in live)}">'
-            f'<div class="polo-ph"><a href="{polo_slug(x)}" tabindex="-1" aria-hidden="true">f<img src="{x["img"].replace("-pack", "-cut")}" alt="{x["full"]}" loading="lazy">f<img class="alt" src="{x["img"].replace("-pack", "-collar")}" alt="" loading="lazy"></a>'
+            f'<div class="polo-ph"><a href="{polo_slug(x)}" tabindex="-1" aria-hidden="true"><img src="{x["img"].replace("-pack", "-cut")}" alt="{x["full"]}" loading="lazy"><img class="alt" src="{x["img"].replace("-pack", "-collar")}" alt="" loading="lazy"></a>'
             f'<button class="qa-open" type="button" aria-expanded="false" aria-label="Add a size of the {x["name"]}">+</button>'
             f'<div class="qa"><span>Add a size</span><div class="sizes">{sizes}</div></div></div>'
             f'<a class="polo-bd" href="{polo_slug(x)}"><span class="nm">{x["name"]}</span><b>$67</b>'
             f'<span class="meta">{"Blade" if x["collar"] == "blade" else "Classic"} collar</span>'
             f'<span class="{cls}">{stock}</span></a></article>')
+    tiles = (ftile(3, "Every polo", "Same shirt underneath", "green-read-fit.webp",
+                   ["Four-way stretch", "UPF 50+", "Moisture-wicking", "S to 3XL, same $67"]) +
+             ftile(8, "Pairs well with", "A hat that matches", "two-hats-mallet.webp", href="hats.html", cta="Shop hats"))
+    pg = open(os.path.join(SRC, "polo.html"), encoding="utf-8").read()
+    size_md = re.search(r'<div class="md" id="md-size".*?</div></div>\n', pg, flags=re.S).group(0)
+    size_css = re.search(r"/\* size guide:.*?(?=\.modelfit\{)", pg, flags=re.S).group(0)
     return fill(open(os.path.join(SRC, "polos.html"), encoding="utf-8").read(),
-                {"STYLES": st, "CARDS": "".join(cards), "COUNT": str(len(P))})
+                {"CARDS": "".join(cards) + tiles, "COUNT": str(len(P)), "SIZE_MODAL": size_md, "SIZE_CSS": size_css,
+                 "RELATED": related([("hats.html", "Hats"), ("gear.html", "Gear"), ("clubs.html", "Clubs"), ("collection-all.html", "All products")],
+                                    [("truck", "Free shipping at $198"), ("rotate-ccw", "Thirty days to send it back"), ("tag", "S to 3XL, one price")])})
 
 
 HAT_STYLES = [("classic", "Classic"), ("ibtbl", "Better To Be Lucky"), ("updown", "Upside Down"), ("cursive", "Cursive")]
@@ -463,7 +490,9 @@ def build_gear():
         out += (f'<section class="lg-sec grp" id="{anchor}" style="padding-top:clamp(28px,3vw,44px)"><div class="lg-wrap">'
                 f'<div class="hd"><div><h2 class="lg-d2">{title}</h2><p>{line}</p></div></div>'
                 f'<div class="grid">{cards}</div></div></section>')
-    return fill(open(os.path.join(SRC, "gear.html"), encoding="utf-8").read(), {"GROUPS": out})
+    return fill(open(os.path.join(SRC, "gear.html"), encoding="utf-8").read(), {"GROUPS": out,
+        "RELATED": related([("clubs.html", "Clubs"), ("polos.html", "Polos"), ("hats.html", "Hats"), ("collection-all.html", "All products")],
+                           [("truck", "Free shipping at $198"), ("rotate-ccw", "Thirty days to send it back"), ("package", "Ships in 1 to 2 business days")])})
 
 
 HAT_COPY = {   # copy v10, 2026-09-24
@@ -797,8 +826,13 @@ def build_hats():
             f'<div class="qa">{btn}</div></div>'
             f'<a class="hat-bd" href="{p["id"]}.html"><span class="nm">{name}</span><b>$29</b>'
             f'<span class="meta">{meta}</span></a></article>')
+    tiles = (ftile(3, "Every hat", "Same hat underneath", None,
+                   ["Five-panel snapback", "Moisture-wicking sweatband", "Laser-cut vents", "$29 each"]) +
+             ftile(7, "Pairs well with", "A polo worth asking about", "fit-sunset.webp", href="polos.html", cta="Shop polos"))
     return fill(open(os.path.join(SRC, "hats.html"), encoding="utf-8").read(),
-                {"STYLES": "".join(st), "CARDS": "".join(cards), "COUNT": str(len(hats))})
+                {"STYLES": "".join(st), "CARDS": "".join(cards) + tiles, "COUNT": str(len(hats)),
+                 "RELATED": related([("polos.html", "Polos"), ("gear.html", "Gear"), ("clubs.html", "Clubs"), ("collection-all.html", "All products")],
+                                    [("truck", "Free shipping at $198"), ("rotate-ccw", "Thirty days to send it back"), ("tag", "One size, $29")])})
 
 
 POLO_COPY = json.load(open(os.path.join(SRC, "polos-copy.json"), encoding="utf-8"))

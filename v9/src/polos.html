@@ -77,6 +77,9 @@
 .hat .nm{display:block;margin-top:10px;font-size:var(--lg-fs-base);line-height:1.3}
 .hat b{font-weight:700}
 .hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(20px,3vw,32px)}
+{{SIZE_CSS}}
+.head-meta{display:flex;gap:18px;align-items:center;margin:14px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.head-meta a{color:var(--lg-ink);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
 </style>
 </head>
 <body class="lg">
@@ -90,6 +93,7 @@
     <p class="lg-eyebrow">Polos</p>
     <h1 class="lg-d1">Wear something worth asking <span class="lg-foil-word">about</span></h1>
     <p class="lg-lede">An athletic cut with four-way stretch, in prints that run from quiet to very much not.</p>
+    <p class="head-meta"><a href="#" data-md-open="md-size">Size guide &rarr;</a><span>{{COUNT}} polos</span></p>
   </div>
 </section>
 
@@ -99,7 +103,6 @@
   <figure><img src="img/green-read-fit.webp" alt="Reading a putt in the Lucky polo and hat" loading="lazy" style="object-position:60% 40%"></figure>
 </div>
 
-<section class="lg-wrap styles" aria-label="Start with a style">{{STYLES}}</section>
 
 <div class="bar" id="bar"><div class="lg-wrap bar-in">
   <div class="fg" role="group" aria-label="Collar"><span class="lbl">Collar</span>
@@ -143,15 +146,7 @@
   </div>
 </div></section>
 
-<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
-  <div class="hd"><div><p class="lg-eyebrow">Hats</p><h2 class="lg-d2">Top it off</h2></div><a class="lg-link" href="hats.html">See every hat <span>&rarr;</span></a></div>
-  <div class="hats">
-    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-white-gold-classic-cut.webp" alt="White & Gold Classic Hat" loading="lazy"></span><span class="nm">White & Gold Classic Hat</span><b>$29</b></a>
-    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-white-ibtbl-cut.webp" alt="White It's Better To Be Lucky Hat" loading="lazy"></span><span class="nm">White It's Better To Be Lucky Hat</span><b>$29</b></a>
-    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-cream-updown-cut.webp" alt="Cream Upside Down Hat" loading="lazy"></span><span class="nm">Cream Upside Down Hat</span><b>$29</b></a>
-    <a class="hat" href="hats.html"><span class="ph"><img src="img/hat-black-ibtbl-cut.webp" alt="Black It's Better To Be Lucky Hat" loading="lazy"></span><span class="nm">Black It's Better To Be Lucky Hat</span><b>$29</b></a>
-  </div>
-</div></section>
+<div class="lg-wrap">{{RELATED}}</div>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
@@ -163,14 +158,17 @@
 </main>
 
 {{FOOTER}}
-{{DRAWER}}
+{{SIZE_MODAL}}{{DRAWER}}
 {{SCRIPTS}}
 <script>
 (function(){
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
   var f = { collar: '', colour: '', size: '' };
-  var grid = $('#grid'), cards = $$('.polo', grid), order = cards.slice();
+  var grid = $('#grid'), cards = $$('.polo', grid), order = cards.slice(), tiles = $$('.ftile', grid);
+  /* feature tiles sit before the Nth visible card, whatever the filter or sort */
+  function place(){ var seq = [].slice.call(grid.children).filter(function(c){ return c.classList.contains('polo') && !c.hidden; });
+    tiles.forEach(function(t){ var at = seq[+t.dataset.pos]; if (at) grid.insertBefore(t, at); else grid.appendChild(t); }); }
 
   function apply(){
     var n = 0;
@@ -181,7 +179,7 @@
       c.hidden = !ok; if (ok) n++;
     });
     $('#shown').textContent = n;
-    $('#empty').hidden = n > 0;
+    $('#empty').hidden = n > 0; place();
     $$('[data-f]').forEach(function(b){ b.setAttribute('aria-pressed', String(f[b.dataset.f] === b.dataset.v)); });
     $$('.style').forEach(function(b){ b.setAttribute('aria-pressed', String(f[b.dataset.f] === b.dataset.v && !!b.dataset.v)); });
   }
@@ -193,7 +191,7 @@
     if (how === 'new') list.sort(function(a, b){ return n(b, 'new') - n(a, 'new'); });
     if (how === 'old') list.sort(function(a, b){ return n(a, 'new') - n(b, 'new'); });
     if (how === 'stock') list.sort(function(a, b){ return b.dataset.sizes.split(' ').length - a.dataset.sizes.split(' ').length; });
-    list.forEach(function(c){ grid.appendChild(c); });
+    list.forEach(function(c){ grid.appendChild(c); }); place();
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-f]');
@@ -212,6 +210,9 @@
       c2.classList.remove('is-open'); }
   });
   $('#sort').addEventListener('change', function(){ sortBy(this.value); });
+  document.addEventListener('click', function(e){ var u = e.target.closest('[data-unit]'); if (!u) return;
+    $$('[data-unit]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === u)); });
+    $$('[data-unit-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-unit-panel') !== u.dataset.unit; }); });
   apply();
 })();
 </script>

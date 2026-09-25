@@ -104,15 +104,7 @@
   </div>
 </div></section>
 
-<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
-  <div class="hd"><div><p class="lg-eyebrow">Polos</p><h2 class="lg-d2">Finish the look</h2></div><a class="lg-link" href="polos.html">See every polo <span>&rarr;</span></a></div>
-  <div class="polos">
-    <a class="polo-x" href="polo-azalea.html"><span class="ph"><img src="img/polo-azalea-cut.webp" alt="The Azalea Classic Polo" loading="lazy"></span><span class="nm">Azalea Classic Polo</span><b>$67</b></a>
-    <a class="polo-x" href="polos.html"><span class="ph"><img src="img/polo-blackout-cut.webp" alt="The Blackout Blade Polo" loading="lazy"></span><span class="nm">Blackout Blade Polo</span><b>$67</b></a>
-    <a class="polo-x" href="polos.html"><span class="ph"><img src="img/polo-gold-dust-cut.webp" alt="The Gold Dust Classic Polo" loading="lazy"></span><span class="nm">Gold Dust Classic Polo</span><b>$67</b></a>
-    <a class="polo-x" href="polos.html"><span class="ph"><img src="img/polo-swirl-cut.webp" alt="The Swirl Blade Polo" loading="lazy"></span><span class="nm">Swirl Blade Polo</span><b>$67</b></a>
-  </div>
-</div></section>
+<div class="lg-wrap">{{RELATED}}</div>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
@@ -130,7 +122,10 @@
 (function(){
   var $ = function(s,r){ return (r||document).querySelector(s); };
   var $$ = function(s,r){ return [].slice.call((r||document).querySelectorAll(s)); };
-  var grid = $('#grid'), cards = $$('.hat', grid), f = { style: '', colour: '' };
+  var grid = $('#grid'), cards = $$('.hat', grid), tiles = $$('.ftile', grid), f = { style: '', colour: '' };
+  /* feature tiles sit before the Nth visible card, whatever the filter */
+  function place(){ var seq = [].slice.call(grid.children).filter(function(c){ return c.classList.contains('hat') && !c.hidden; });
+    tiles.forEach(function(t){ var at = seq[+t.dataset.pos]; if (at) grid.insertBefore(t, at); else grid.appendChild(t); }); }
 
   function paint(){
     var n = 0;
@@ -139,7 +134,7 @@
       c.hidden = !ok; if (ok) n++;
     });
     $('#shown').textContent = n;
-    $('#empty').hidden = n > 0;
+    $('#empty').hidden = n > 0; place();
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('.fg button');
@@ -167,8 +162,9 @@
     else if (v === 'new') list.sort(function(a, b){ return n(b, 'new') - n(a, 'new'); });
     else if (v === 'old') list.sort(function(a, b){ return n(a, 'new') - n(b, 'new'); });
     else list.sort(function(a, b){ return n(a, 'i') - n(b, 'i'); });
-    list.forEach(function(c){ grid.appendChild(c); });
+    list.forEach(function(c){ grid.appendChild(c); }); place();
   });
+  paint();
 })();
 </script>
 </body>
