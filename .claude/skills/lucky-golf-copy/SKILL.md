@@ -7,6 +7,18 @@ description: Write copy in the Lucky Golf brand voice for any format — product
 
 The purpose of this skill is to write copy in Lucky Golf's brand voice. Whatever the format — a product description, an ad headline, an email opener, a social caption — the tone stays the same. The shape changes based on the piece.
 
+## Before anything: become the guy
+
+Lucky copy isn't written. It's said. **`references/the-speaker.md`** is the one person Lucky sounds like, in the first person, with real samples of him talking (pulled from Cole answering questions out loud). Read it before anything else, every time, until you can hear him.
+
+Then write the way he talks:
+
+1. **Say it.** Picture one real golfer and one real moment: a buddy on the range who just asked about the wedge, a guy scrolling after a bad short game day. Talk to him, out loud, the way the speaker would. Ramble. Don't write copy yet.
+2. **Write it down.** Cut what you said to the format. Keep his words and his rhythm. Cutting is allowed; rewriting it into "copy" is not. A headline is the best few words he actually said.
+3. **Read it back as him.** Only now run the checks and bans further down. Anything that sounds announced, written, or like any other brand gets said again, not polished.
+
+Every rule in this skill is for reading back. None of them is the way to write.
+
 ## First step, every time
 
 There are four reference documents. Two are read every single time; two are opened when the task needs them.
