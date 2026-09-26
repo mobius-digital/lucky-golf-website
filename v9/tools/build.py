@@ -746,7 +746,13 @@ GIFT_AMOUNTS = [10, 25, 50, 100, 150, 200, 250, 300, 500]   # all nine variants 
 def build_giftcard():
     chips = "".join(f'<button class="lg-chip" type="button" data-a="{a}" aria-pressed="{str(a == 50).lower()}">${a}</button>'
                     for a in GIFT_AMOUNTS)
-    return fill(open(os.path.join(SRC, "giftcard.html"), encoding="utf-8").read(), {"AMOUNTS": chips, "LOGO": logo()})
+    # four real products, live name and price: the page's version of Takomo's "Others also viewed"
+    by_id = {p["id"]: p for p in PRODUCTS["products"]}
+    picks = "".join(
+        f'<a href="{coll_href(p)}"><span class="ph"><img src="img/{coll_img(p)}" alt="{esc(p["name"])}" loading="lazy"></span>'
+        f'<span class="nm">{esc(p["name"])}</span><b>{esc(p["priceLabel"].replace(chr(8211), " to "))}</b></a>'
+        for p in (by_id[i] for i in ("lgw01-gold", "lgp02-gold", "lgh01", "hat-white-gold-classic")))
+    return fill(open(os.path.join(SRC, "giftcard.html"), encoding="utf-8").read(), {"AMOUNTS": chips, "LOGO": logo(), "PICKS": picks})
 
 
 def build_giftcard_view():

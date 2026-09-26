@@ -34,6 +34,18 @@
 .to textarea{min-height:90px;resize:vertical}
 .buy .lg-btn{width:100%;margin-top:20px}
 .fine{margin:12px 0 0;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
+/* below the buy box: the answers, then four things to pick instead (Takomo's "Others also viewed") */
+.qa{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:860px){.qa{grid-template-columns:1fr}}
+.pick-hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 32px;margin-bottom:clamp(18px,2.6vw,28px)}
+.pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:860px){.pick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pick a{display:block;color:inherit;text-decoration:none}
+.pick .ph{display:block;aspect-ratio:4/5;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile)}
+.pick .ph img{width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .4s ease}
+@media (hover:hover){.pick a:hover .ph img{transform:scale(1.04)}}
+.pick .nm{display:block;margin-top:10px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:700;text-transform:uppercase;font-size:14px}
+.pick b{font-weight:600}
 </style>
 </head>
 <body class="lg">
@@ -53,7 +65,7 @@
 
   <div class="buy">
     <p class="lg-eyebrow">Gift card</p>
-    <h1 class="lg-d2">For the golfer who says they don't need <span class="lg-foil-word">anything</span></h1>
+    <h1 class="lg-d2">For the golfer who swears they don't need <span class="lg-foil-word">anything</span></h1>
     <p class="price" data-price>$50</p>
     <p class="lg-body">Emailed straight away, or on the day you pick. They choose the loft, the size or the print, which is the part you were going to get wrong.</p>
 
@@ -68,20 +80,41 @@
     <div class="to" data-to>
       <label><span class="lb">Their name</span><input autocomplete="off"></label>
       <label><span class="lb">Their email</span><input type="email" autocomplete="off"></label>
-      <label><span class="lb">A note from you</span><textarea placeholder="Get a real wedge."></textarea></label>
+      <label><span class="lb">A note from you</span><textarea placeholder="Happy birthday. Go fix that short game."></textarea></label>
       <label><span class="lb">Send it on</span><input type="date"></label>
     </div>
 
-    <button class="lg-btn" type="button" data-atc>Put it in the bag · $50</button>
-    <p class="fine">Works on anything in the store. Never expires.</p>
+    <button class="lg-btn" type="button" data-atc>Add to cart · $50</button>
+    <p class="fine">Good on anything in the store, and it arrives by email, so there's nothing to wrap.</p>
   </div>
+</div></section>
+
+<section class="lg-sec"><div class="lg-wrap qa">
+  <div>
+    <p class="lg-eyebrow">Before you send it</p>
+    <h2 class="lg-d2">The quick <span class="lg-foil-word">answers</span></h2>
+  </div>
+  <div class="lg-faq">
+    <details class="lg-fq" open><summary>How does it get to them?</summary><div class="lg-fq-a"><p>By email, with your note on it, either straight away or on the date you picked.</p></div></details>
+    <details class="lg-fq"><summary>What can they spend it on?</summary><div class="lg-fq-a"><p>Anything in the store. If they find something that costs more than the card, they pay the difference at checkout.</p></div></details>
+    <details class="lg-fq"><summary>Can they check what's left on it?</summary><div class="lg-fq-a"><p>Yes. The email links to their card, with the code and the balance, and whatever they don't spend stays on it.</p></div></details>
+  </div>
+</div></section>
+
+<section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <div class="pick-hd">
+    <div><p class="lg-eyebrow">Or pick it out yourself</p>
+    <h2 class="lg-d2">What they'd buy with it <span class="lg-foil-word">anyway</span></h2></div>
+    <a class="lg-link" href="collection-all.html">See everything <span>&rarr;</span></a>
+  </div>
+  <div class="pick">{{PICKS}}</div>
 </div></section>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
   <h2 class="lg-d1">Nobody returns a gift <span class="lg-foil-word">card</span></h2>
-  <p class="lg-lede">They pick, it ships in a day or two, and you get the credit for it. Mags says this is the move.</p>
-  <a class="lg-btn-line" href="clubs.html">Or pick the club yourself <span aria-hidden="true">&rarr;</span></a>
+  <p class="lg-lede">It lands in their inbox, whatever they pick ships in one to two business days, and you still get the credit.</p>
+  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
 </main>
@@ -98,7 +131,7 @@
     $$('[data-amts] button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.a === amt)); });
     $('[data-card-amt]').textContent = '$' + amt;
     $('[data-price]').textContent = '$' + amt;
-    $('[data-atc]').textContent = 'Put it in the bag · $' + amt;
+    $('[data-atc]').textContent = 'Add to cart · $' + amt;
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest('[data-amts] button');

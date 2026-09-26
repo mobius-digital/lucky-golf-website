@@ -92,6 +92,7 @@
  "story": {
   "why": "Copy v10 (2026-09-25): every approved line kept; the two lines the new voice guide cut are gone.",
   "added": [
+   "<b>Your fixes (2026-09-26):<\\/b> the price argument is told once, in Why we exist. Cut from What we do, the Our story card, the 2018 timeline entry and the hero line, and \"That's the point.\" is gone from Gold, on purpose.",
    "<b>Manifesto back</b> (Luck favors the bold, four paragraphs, 'It's better to be lucky.'), verbatim from the approved copy file. Gold band is now 'Gold, on purpose.' Timeline 2019 says fully milled. Laid out like Takomo's 'Fair way to golf': headline left, text right, no photo.",
    "<b>Why we exist / What we do / Our story, side by side and open.</b> No pop-ups: photo, approved headline, two sentences each, one link. Adds about 200px on desktop (the stacked version added 1,350). The long pop-up text is cut down, including the 'Or black' line.",
    "<b>Timeline is one sideways row</b> with arrows on desktop and swipe on phones, so the page is a lot shorter.",
@@ -329,14 +330,18 @@
   ]
  },
  "giftcard": {
-  "why": "New. The gift card product page, and the card itself that the recipient opens.",
+  "why": "Step 14 (2026-09-26): checked against Takomo's gift card page, then copy v10 on every line.",
   "added": [
-   "<b>The card is drawn, not photographed</b>: dark green, gold amount, the logo, and it updates as you pick.",
-   "<b>Send it to them, on a date</b>, with a note. Shopify does this natively; the page just makes it obvious.",
-   "<b>The recipient's view</b> is built too (gift card code, balance, copy, print): open giftcard-view.html from the full-page link."
+   "<b>Takomo's page is plain:<\\/b> image, amount, add to cart, one line, then \"Others also viewed\". Our buy box already does more (the card updates as you pick, send it to someone on a date with a note), so it stays.",
+   "<b>New: the quick answers<\\/b>: how it gets to them, what they can spend it on, checking the balance.",
+   "<b>New: \"What they'd buy with it anyway\"<\\/b>: four real products with live prices (Takomo's \"Others also viewed\").",
+   "<b>Removed \"Never expires\"<\\/b> on both pages: nothing on Shopify or in the product guide backs it.",
+   "<b>Button:<\\/b> \"Add to cart\", like gear and apparel. <b>Note placeholder:<\\/b> \"Happy birthday. Go fix that short game.\"",
+   "<b>Recipient's view:<\\/b> the sample note no longer says \"Get a real wedge\" (no digs at gear) or \"From Cole\" (no founder name)."
   ],
   "kept": [
-   "All nine amounts the store sells, $10 to $500, read off Shopify."
+   "Headline, now \"For the golfer who swears they don't need anything\". Sign-off \"Nobody returns a gift card\".",
+   "All nine amounts the store sells, $10 to $500, read off Shopify today."
   ]
  },
  "community": {

@@ -36,7 +36,7 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 | 11 | Questions (FAQ) + policy | done 2026-09-25, awaiting Cole |
 | 12 | Ambassadors | done 2026-09-25, awaiting Cole |
 | 13 | Community + All reviews | done 2026-09-26, awaiting Cole |
-| 14 | Gift card + recipient view | to do |
+| 14 | Gift card + recipient view | done 2026-09-26, awaiting Cole |
 | 15 | Collection template | to do |
 | 16 | Account, login, order, addresses | to do |
 | 17 | Blog + article | to do |
