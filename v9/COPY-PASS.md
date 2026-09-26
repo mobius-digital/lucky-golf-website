@@ -37,9 +37,9 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 | 12 | Ambassadors | signed off 2026-09-26 |
 | 13 | Community + All reviews | signed off 2026-09-26 |
 | 14 | Gift card + recipient view | signed off 2026-09-26 |
-| 15 | Collection template | done 2026-09-26, awaiting Cole |
+| 15 | Collection template | signed off 2026-09-26 |
 | 16 | Account, login, order, addresses | not going live: Shopify hosts accounts (branding in PORT-NOTES) |
-| 17 | Blog + article | done 2026-09-26, awaiting Cole |
+| 17 | Blog + article | signed off 2026-09-26 |
 
 ## Where it sits in the plan
 
