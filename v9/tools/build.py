@@ -709,24 +709,31 @@ def build_collection(key):
     return run
 
 
-REVIEW_CLUBS = [("lgw01-gold", "Carver 02"), ("lgp01-gold", "Eclipse Blade"), ("lgp02-gold", "Eclipse Mallet"), ("lgh01", "Stryker")]
+# (review file, label, live Shopify handle for the count)
+REVIEW_CLUBS = [("lgw01-gold", "Carver 02", "lucky-golf-lgw02-gold"), ("lgp01-gold", "Eclipse Blade", "signature-gold-putters"),
+                ("lgp02-gold", "Eclipse Mallet", "limited-edition-mallet-putter"), ("lgh01", "Stryker", "lucky-striker-hybrid-limited-edition")]
 
 
 def build_reviews():
     """Every club's reviews in one pool: the real Judge.me counts and samples."""
-    totals, sample = {}, []
-    for pid, label in REVIEW_CLUBS:
+    totals, by_club, sample = {}, {}, []
+    for pid, label, _ in REVIEW_CLUBS:
         r = json.load(open(os.path.join(ROOT, "_src", "data", "reviews", pid + ".json"), encoding="utf-8"))
+        by_club[label] = r["totals"]
         for k, v in r["totals"].items():
             totals[k] = totals.get(k, 0) + v
         for x in r["sample"]:
             y = dict(x); y["c"] = label; sample.append(y)
-    n = sum(totals.values())
-    avg = int(sum(int(k) * v for k, v in totals.items()) / n * 10) / 10
+    # headline count and average: the live Judge.me numbers, not the snapshot
+    live = [RC["counts"][h] for _, _, h in REVIEW_CLUBS]
+    n = sum(c for c, _ in live)
+    avg = int(sum(c * r for c, r in live) / n * 10) / 10
     clubs = '<button type="button" data-c="" aria-pressed="true">All</button>' + "".join(
-        f'<button type="button" data-c="{esc(l)}" aria-pressed="false">{esc(l)}</button>' for _, l in REVIEW_CLUBS)
+        f'<button type="button" data-c="{esc(l)}" aria-pressed="false">{esc(l)}</button>' for _, l, _ in REVIEW_CLUBS)
     return fill(open(os.path.join(SRC, "reviews.html"), encoding="utf-8").read(), {
-        "REVIEWS_JSON": js({"totals": totals, "sample": sample}), "AVG": f"{avg:.1f}", "CLUBS": clubs})
+        "REVIEWS_JSON": js({"totals": totals, "byClub": by_club, "sample": sample,
+                           "live": {l: RC["counts"][h][0] for _, l, h in REVIEW_CLUBS}, "n": n}), "AVG": f"{avg:.1f}",
+        "N": f"{n:,}", "CLUBS": clubs})
 
 
 GIFT_AMOUNTS = [10, 25, 50, 100, 150, 200, 250, 300, 500]   # all nine variants on the store, read 2026-09-23
@@ -746,27 +753,27 @@ def build_giftcard_view():
 # Shopify admin: media, @handle, link, and a product list. These are OUR OWN
 # shoot photos, posted as our own account: no fabricated customers.
 COMMUNITY = [
-    ("swing-black-wedge.webp", "A swing with the Carver 02 Black", "Black on black, gold on the clover.",
+    ("swing-black-wedge.webp", "A swing with the Carver 02 Black", "Blacked out, except for the gold on the clover.",
      ["lgw01-black", "hat-black-gold-classic", "polo-signature-black"]),
-    ("two-gold-wedges.webp", "Two gold Carvers on the fringe", "The 56 and the 60. Nobody needs both. Everybody buys both.",
+    ("two-gold-wedges.webp", "Two gold Carvers on the fringe", "One for the bunker, one for showing off.",
      ["lgw01-gold"]),
-    ("fit-sunset.webp", "Golden hour in the Nightshade and the white rope hat", "Last light, last hole.",
+    ("fit-sunset.webp", "Golden hour in the Nightshade and the White & Gold hat", "Last light, last hole, still in it.",
      ["polo-nightshade", "hat-white-gold-classic"]),
-    ("black-hat-mallet.webp", "The Mallet and the black hat on the green", "The Mallet, doing Mallet things.",
+    ("black-hat-mallet.webp", "The Mallet and the black hat on the green", "Four feet, no drama.",
      ["lgp02-gold", "hat-black-gold-classic"]),
-    ("lucky-stryker-in-hand.webp", "The Stryker in hand", "The gap between the 4 iron and the wood, closed.",
+    ("lucky-stryker-in-hand.webp", "The Stryker in hand", "Long second shot, and nobody misses the 4-iron.",
      ["lgh01"]),
-    ("gold-wedge-bag.webp", "A gold Carver resting on the bag", "Where it lives between shots.",
+    ("gold-wedge-bag.webp", "A gold Carver resting on the bag", "Parked on the bag and still getting looks.",
      ["lgw01-gold"]),
-    ("two-hats-mallet.webp", "Two hats and the Mallet", "Pick a hat. Or don't.",
+    ("two-hats-mallet.webp", "Two hats and the Mallet", "Black or tan. The Mallet doesn't mind.",
      ["lgp02-gold", "hat-black-gold-classic", "hat-tan-cursive"]),
-    ("green-read-fit.webp", "Reading a putt in the Nightshade", "Reading it twice, hitting it once.",
+    ("green-read-fit.webp", "Reading a putt in the Nightshade", "Read it twice, trust it once.",
      ["polo-nightshade", "hat-white-gold-classic"]),
-    ("putter-in-hand.webp", "The Eclipse Blade in hand", "Milled from a block. You can feel it.",
+    ("putter-in-hand.webp", "The Eclipse Blade in hand", "Fully milled, and you feel it off the face.",
      ["lgp01-gold"]),
-    ("lucky-carver-gold-address.webp", "The gold Carver at address", "Square it up.",
+    ("lucky-carver-gold-address.webp", "The gold Carver at address", "Nice to look down at. Nicer when it checks up.",
      ["lgw01-gold"]),
-    ("lucky-bag-glove.webp", "The Lucky glove on the bag", "The small stuff counts.",
+    ("lucky-bag-glove.webp", "The Lucky glove on the bag", "First thing out of the bag, every round.",
      ["glove-tour"]),
 ]
 KIND = {"wedge": "clubs", "putter": "clubs", "hybrid": "clubs", "polo-classic": "apparel", "polo-blade": "apparel",

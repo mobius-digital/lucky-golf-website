@@ -38,9 +38,9 @@
 <section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
   <div class="top">
     <div>
-      <p class="lg-eyebrow">Every review, every club</p>
-      <h1 class="lg-d1">The good ones, and the <span class="lg-foil-word">grumpy</span> ones</h1>
-      <p class="lg-lede" style="max-width:52ch">All of it, straight from verified buyers through Judge.me. Filter by club or by stars, including the ones that did not go our way.</p>
+      <p class="lg-eyebrow">{{N}} reviews on the clubs</p>
+      <h1 class="lg-d1">The raves, and the <span class="lg-foil-word">grumpy</span> ones</h1>
+      <p class="lg-lede" style="max-width:52ch">Verified buyers only, pulled straight from Judge.me. Sort by club or by stars, and the low ones haven't gone anywhere.</p>
       <p style="margin-top:18px"><span class="lg-stars" aria-label="{{AVG}} out of 5">{{STARS5}}</span> <b style="margin-left:8px">{{AVG}} out of five</b></p>
     </div>
     <div id="prox"></div>
@@ -66,14 +66,14 @@
   <div class="list" id="list"></div>
   <div class="foot">
     <p id="count"></p>
-    <button class="lg-btn-line lg-btn-sm" type="button" id="more">Show more</button>
+    <button class="lg-btn-line lg-btn-sm" type="button" id="more">More reviews</button>
   </div>
 </section>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
-  <h2 class="lg-d1">Bought one? Tell us how it <span class="lg-foil-word">went</span></h2>
-  <p class="lg-lede">The review request lands in your inbox a couple of weeks after delivery. Honest ones are the only ones worth writing.</p>
+  <h2 class="lg-d1">Played it yet? Your turn to <span class="lg-foil-word">say so</span></h2>
+  <p class="lg-lede">Good round or rough one, write it straight. It's the honest ones that make this page worth reading.</p>
   <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
@@ -103,7 +103,10 @@ var ALL = {{REVIEWS_JSON}};
         + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p>'
         + '<small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small><span class="on">' + esc(r.c) + '</span></div>';
     }).join('') || '<p style="padding:32px 0;color:var(--lg-ink-64)">Nothing at that rating for this club, which is its own kind of review.</p>';
-    $('#count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of the reviews loaded here. The live Judge.me widget pages through every one.';
+    var tot = function(t){ return stars ? (t[stars] || 0) : Object.keys(t).reduce(function(a, k){ return a + t[k]; }, 0); };
+    /* no star filter: the live Judge.me count; with one: the star split we have */
+    var of = !stars ? (club ? ALL.live[club] : ALL.n) : club ? tot(ALL.byClub[club]) : tot(ALL.totals);
+    $('#count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of ' + of.toLocaleString() + (of === 1 ? ' review' : ' reviews');
     $('#more').hidden = shown >= l.length;
   }
   document.addEventListener('click', function(e){

@@ -315,8 +315,12 @@
   ]
  },
  "reviews": {
-  "why": "New. Your /pages/reviews, rebuilt: every club's reviews in one place.",
+  "why": "Copy v10 (2026-09-26): every line rewritten. Big moment: \"The raves, and the grumpy ones\". The count is the live Judge.me number.",
   "added": [
+   "<b>Eyebrow:</b> \"891 reviews on the clubs\", read from Shopify at build time.",
+   "<b>Count line:</b> \"Showing 10 of 891 reviews\". It no longer talks about widgets.",
+   "<b>Sign-off:</b> \"Played it yet? Your turn to say so\". The \"couple of weeks after delivery\" line is gone: we can't confirm when Judge.me sends it.",
+   "<b>Kept:</b> the empty-state wink, \"which is its own kind of review\".",
    "<b>The chart pools all four clubs</b>, off the real Judge.me totals.",
    "<b>Filter by club and by stars</b>, sort by recent, highest or lowest. The grumpy ones are one tap away on purpose.",
    "<b>Each review says which club it is for</b>."
@@ -337,8 +341,13 @@
   ]
  },
  "community": {
-  "why": "New. Your answer to Flowbox: our own UGC wall, where you choose every post and every post is shoppable.",
+  "why": "Copy v10 (2026-09-26): every line rewritten, all 11 post captions included. Big moment: the sign-off, which now points at the ambassador program.",
   "added": [
+   "<b>Head:</b> \"Straight off the camera roll\". The lede does the shopping job: tap a post, see what's in it.",
+   "<b>Get on the wall:</b> Instagram only (there's no TikTok on the site), and the ask-first rule is said once, not twice.",
+   "<b>Sign-off:</b> \"Posting anyway? Get paid for it\", straight to the ambassador page. The Mags joke is gone: two bits in one section.",
+   "<b>Captions:</b> \"Milled from a block\" is out (banned phrase). Now \"Fully milled, and you feel it off the face.\"",
+   "<b>Pop-up label:</b> \"What's in the shot\".",
    "<b>Tap any post</b> and it opens with the products in it: add straight to the bag, or pick a loft or a size.",
    "<b>Filter by Clubs, Apparel or Gear</b>, worked out from the products tagged in each post.",
    "<b>In Shopify each post is one entry in the admin</b> (a metaobject): the photo or clip, the @handle, the link, the products. No app, no monthly fee.",
@@ -347,7 +356,8 @@
   ],
   "kept": [
    "Every post here is OUR OWN shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
-   "Nothing goes up without the golfer's permission: that step is you asking, not an app."
+   "Nothing goes up without the golfer's permission: that step is you asking, not an app.",
+   "Kept: \"Tag us. We'll ask first\" and \"Last light, last hole\" (now \"...still in it\")."
   ]
  },
  "compare": {
