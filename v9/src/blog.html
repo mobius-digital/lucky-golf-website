@@ -12,7 +12,8 @@
   padding-bottom:clamp(28px,4vw,52px);border-bottom:1px solid var(--lg-rule)}
 @media (max-width:900px){.lead{grid-template-columns:1fr}}
 .lead figure{margin:0;border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile)}
-.lead img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.lead img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.lead{color:inherit;text-decoration:none}
 .meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--lg-ink-64);font-size:var(--lg-fs-sm)}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,36px);padding-block:clamp(28px,4vw,52px)}
 @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -34,15 +35,16 @@
 {{HEADER}}
 
 <main>
-<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">All Things Lucky</span></li></ol></nav>
-
-<section class="lg-wrap head">
-  <p class="lg-eyebrow">All Things Lucky</p>
-  <h1 class="lg-d1">Golf, written by people who <span class="lg-foil-word">play</span> it</h1>
-  <p class="lg-lede" style="max-width:58ch">Wedge shots, putting routines, why forging matters, and the occasional thing that happened to us. No listicles about the top ten golf bags of the year.</p>
+<section class="lg-hero is-short" style="--focus:50% 50%;--focus-m:40% 50%">
+  <img class="lg-hero-img" src="img/gold-wedge-bag.webp" alt="A gold Carver resting on the bag" width="2400" height="1600" fetchpriority="high">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow">All Things Lucky</p>
+    <h1 class="lg-d1">Golf, written by people who <span class="lg-foil-word">play</span> it</h1>
+    <p class="lg-lede" style="max-width:56ch">The short game, the gear, and the occasional thing that happened on the way to the first tee. None of it's a top-ten list.</p>
+  </div></div>
 </section>
 
-<section class="lg-wrap">
+<section class="lg-wrap" style="padding-top:clamp(28px,4vw,48px)">
   {{LEAD}}
   <div class="grid">{{POSTS}}</div>
 </section>
@@ -50,8 +52,8 @@
 <section class="lg-sec" style="padding-top:0"><div class="lg-wrap sub">
   <div>
     <p class="lg-eyebrow">First look</p>
-    <h2 class="lg-d2">One email a month, from a <span class="lg-foil-word">person</span></h2>
-    <p class="lg-body">New lofts, restocks and the odd bad idea. If it turns into three a week, unsubscribe and we deserve it.</p>
+    <h2 class="lg-d2">Get the next one in your <span class="lg-foil-word">inbox</span></h2>
+    <p class="lg-body">New articles land there first, along with restocks and new lofts. Unsubscribe whenever you like, no hard feelings.</p>
   </div>
   <form class="lg-form" data-news novalidate>
     <label class="sr" for="blog-email">Email</label>
@@ -62,8 +64,8 @@
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
-  <h2 class="lg-d1">Reading about golf is not <span class="lg-foil-word">practice</span></h2>
-  <p class="lg-lede">Useful, though. Mags reads none of it and still gets round in under four hours.</p>
+  <h2 class="lg-d1">Reading about golf isn't <span class="lg-foil-word">practice</span></h2>
+  <p class="lg-lede">Useful, though. Take one idea to the range this week and see if it sticks.</p>
   <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>

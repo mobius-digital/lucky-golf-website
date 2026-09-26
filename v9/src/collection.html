@@ -62,8 +62,10 @@
 
 <section class="lg-wrap">
   <div class="grid" id="grid">{{CARDS}}</div>
-  <p class="empty" id="empty" hidden>Nothing in that combination. <button class="lg-btn-line lg-btn-sm" type="button" data-reset>Clear the filters</button></p>
+  <p class="empty" id="empty" hidden>Nothing matches that. <button class="lg-btn-line lg-btn-sm" type="button" data-reset>Clear the filters</button></p>
 </section>
+
+<div class="lg-wrap">{{RELATED}}</div>
 
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
@@ -81,7 +83,11 @@
 (function(){
   var $ = function(s){ return document.querySelector(s); };
   var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
-  var grid = $('#grid'), cards = $$('.it', grid), f = { kind: '', stock: '' };
+  var grid = $('#grid'), cards = $$('.it', grid), tiles = $$('.ftile', grid), f = { kind: '', stock: '' };
+  /* the feature tile sits before the Nth visible card, whatever the filter or sort */
+  function place(){ var seq = cards.filter(function(c){ return !c.hidden; }).sort(function(a, b){
+      return [].indexOf.call(grid.children, a) - [].indexOf.call(grid.children, b); });
+    tiles.forEach(function(t){ var at = seq[+t.dataset.pos]; if (at) grid.insertBefore(t, at); else grid.appendChild(t); }); }
 
   function paint(){
     var n = 0;
@@ -90,7 +96,7 @@
       c.hidden = !ok; if (ok) n++;
     });
     $('#shown').textContent = n;
-    $('#empty').hidden = n > 0;
+    $('#empty').hidden = n > 0; place();
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('.fg button');
@@ -110,8 +116,9 @@
     else if (v === 'new') list.sort(function(a, b){ return n(b, 'new') - n(a, 'new'); });
     else if (v === 'old') list.sort(function(a, b){ return n(a, 'new') - n(b, 'new'); });
     else list.sort(function(a, b){ return n(a, 'i') - n(b, 'i'); });
-    list.forEach(function(c){ grid.appendChild(c); });
+    list.forEach(function(c){ grid.appendChild(c); }); place();
   });
+  place();
 })();
 </script>
 </body>

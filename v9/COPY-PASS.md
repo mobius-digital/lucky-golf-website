@@ -32,14 +32,14 @@ then the per-item lines (polos-copy.json, HAT_COPY, build_simple.py) get theirs.
 | 7 | Hats + hat template + 10 hat lines | signed off 2026-09-24 |
 | 8 | Gear + gear template + item lines | signed off 2026-09-25 |
 | 9 | Cart, drawer, search, 404 | signed off 2026-09-25 |
-| 10 | Our story | done 2026-09-25, awaiting Cole |
-| 11 | Questions (FAQ) + policy | done 2026-09-25, awaiting Cole |
-| 12 | Ambassadors | done 2026-09-25, awaiting Cole |
-| 13 | Community + All reviews | done 2026-09-26, awaiting Cole |
-| 14 | Gift card + recipient view | done 2026-09-26, awaiting Cole |
-| 15 | Collection template | to do |
-| 16 | Account, login, order, addresses | to do |
-| 17 | Blog + article | to do |
+| 10 | Our story | signed off 2026-09-26 |
+| 11 | Questions (FAQ) + policy | signed off 2026-09-26 |
+| 12 | Ambassadors | signed off 2026-09-26 |
+| 13 | Community + All reviews | signed off 2026-09-26 |
+| 14 | Gift card + recipient view | signed off 2026-09-26 |
+| 15 | Collection template | done 2026-09-26, awaiting Cole |
+| 16 | Account, login, order, addresses | not going live: Shopify hosts accounts (branding in PORT-NOTES) |
+| 17 | Blog + article | done 2026-09-26, awaiting Cole |
 
 ## Where it sits in the plan
 

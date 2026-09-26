@@ -82,3 +82,22 @@ Adding a product must never mean editing a page. In the theme:
   Each apparel line gets its own collection template (collection.polos,
   collection.hats, and later the winter line), so tiles added to Polos never
   appear on Hats. A new collection just picks a template in the admin.
+
+## Customer accounts: Shopify hosts them (checked 2026-09-26)
+
+luckygolf.com/account redirects to shopify.com/22863149/account: the store is on
+Shopify's new customer accounts, same as Takomo (account.takomogolf.com). Sign-in,
+orders, order detail and addresses are drawn by Shopify, not the theme, so the
+board's Account / Sign in / Order / Addresses pages are a reference for the look
+only and do NOT get ported as templates.
+
+What we set instead, in Settings > Checkout > Customize (the same editor brands
+checkout and the account pages):
+- Logo: the Lucky wordmark (ink on white), left aligned.
+- Colors: background #FFFFFF, text #17140F, accent and primary button #C29A2B
+  with #17140F text, header #0B2E1F if a colored header is used.
+- Font: Archivo for headings and body if it is in Shopify's list; otherwise the
+  closest condensed sans for headings and a plain sans for body.
+- Corners: match the site's rounded buttons and cards.
+- Optional later: a custom domain for accounts (account.luckygolf.com), like Takomo.
+The theme only needs its account icon pointing at routes.account_url.

@@ -244,28 +244,26 @@
   ]
  },
  "collection": {
-  "why": "The everyday collection template. Clubs, Polos, Hats and Gear each earn their own layout; this is the one every other collection uses.",
+  "why": "Step 15 (2026-09-26): checked against Takomo's collection page (heading, grid, trust line), then copy v10.",
   "added": [
-   "<b>One template, any collection.</b> Shown here as All Products (40 items with photography); the same file renders Accessories, Head Covers, Grips, Summer Sale and the rest.",
-   "<b>The standard shop sorts:</b> featured, best selling, A to Z, Z to A, price both ways, newest and oldest. Best selling and the dates are the store's REAL order, pulled off Shopify, not decoration.",
-   "<b>Kind chips are generated</b> from what is actually in the collection, so there is never a filter that returns nothing.",
-   "<b>Sort by price</b> and <b>In stock only</b>, with sold-out items shown honestly rather than hidden."
+   "<b>New bottom strip</b>, the same as Polos, Hats and Gear: Keep browsing, then 4.8 from 891 club reviews (live), Free shipping at $198, Sixty days on clubs. Takomo ends the same way.",
+   "<b>One feature tile in the grid:</b> \"Can't decide? Let them pick\", to the gift card. It keeps its spot when you filter or sort.",
+   "<b>All Products lede:</b> \"The whole shop on one page. Sort it, filter it, or just scroll until something gold catches your eye.\" No product counts, which date the page.",
+   "<b>Sign-off:</b> \"That's the whole shop\", \"Sixty days to make up your mind on the clubs, thirty on the rest.\" Accessories drops \"Ten dollars of better\" (a price we can't back)."
   ],
   "kept": [
-   "Your store has seventeen collections. This covers the ones that do not need a bespoke page.",
-   "A few products (tees, gift card, the unlisted shaft) have no usable photo yet, so they are not on it."
+   "Photo band under the heading, like the approved Polos page.",
+   "Every Shopify sort (best selling and newest are the store's real order), kind chips built from what's in the collection."
   ]
  },
  "account": {
-  "why": "New. Customer accounts had no design at all, and Shopify needs the whole set.",
+  "why": "Step 16 (2026-09-26): checked, and these pages don't go live. The store uses Shopify's hosted customer accounts (luckygolf.com/account goes to shopify.com), the same as Takomo.",
   "added": [
-   "<b>Orders with the products in them</b>, not just a row of order numbers.",
-   "<b>Returns start here</b>, with the club approval explained in place.",
-   "<b>A sign-in page</b> is built too (open it from Sign out): sign in and create an account side by side, plus a line for guests chasing a tracking link.",
-   "<b>Order detail and addresses</b> are built: tap order #11482 or Change address."
+   "<b>Shopify draws sign-in, orders and addresses itself.</b> The theme can't change them, so this page, sign-in, order detail and addresses are a reference for the look only.",
+   "<b>What we set instead:</b> logo, colors, font and corners in Shopify's checkout and accounts editor, to match the site. The settings are written down for the move to Shopify."
   ],
   "kept": [
-   "Nothing is wired up in the preview: Shopify owns the real login, orders and addresses."
+   "No copy pass on these four: none of the words here would reach a customer."
   ]
  },
  "policy": {
@@ -282,25 +280,29 @@
   ]
  },
  "blog": {
-  "why": "New. Fourteen articles are live on the store and none of them had a design.",
+  "why": "Step 17 (2026-09-26): checked against Takomo's blog (photo banner, latest, grid), then copy v10.",
   "added": [
-   "<b>Your real articles</b>, newest first, with their real photos pulled off the store.",
-   "<b>One lead piece</b> then a grid, so the page has a front page rather than a list.",
-   "<b>The newsletter block</b> at the bottom, which is where a reader who liked the article actually is."
+   "<b>Photo banner</b> at the top, like Takomo's, with \"Golf, written by people who play it\".",
+   "<b>Removed claims we can't back:</b> \"One email a month\" and \"four minute read\".",
+   "<b>US dates</b> (May 3, 2023), contractions and US spelling in the article blurbs (\"Here's the math\").",
+   "<b>Fixed:</b> the lead story's text was underlined and its photo stretched tall.",
+   "<b>Sign-off:</b> \"Reading about golf isn't practice\" then \"Take one idea to the range this week and see if it sticks.\""
   ],
   "kept": [
-   "Two older posts have no image; they get a plain Lucky tile rather than a broken frame."
+   "Takomo's \"Popular posts\" list is skipped: we'd have no real numbers to rank them by.",
+   "Two older posts still have no image on the store."
   ]
  },
  "article": {
-  "why": "New. The article template, shown with a real piece rewritten in our voice: Are your wedges forged?",
+  "why": "Step 17 (2026-09-26): the article template, checked against Takomo's (title, body, FAQ at the end), and the forged article rewritten in the v10 voice.",
   "added": [
-   "<b>One column, 72 characters wide</b>, which is the width people actually read at.",
-   "<b>A product card inside the article</b>, where a reader who just learned what forging is can act on it.",
-   "<b>A pull quote</b> and real subheads, so a long read has somewhere to breathe."
+   "<b>Quick answers at the end</b>, like Takomo's articles: are Lucky wedges forged, does it help full swings, how to tell.",
+   "<b>Banned words gone:</b> \"cheap\" and \"luxury\". <b>Fact fixed:</b> CNC-milled grooves (it said face).",
+   "<b>One claim cut:</b> the rounder-edge tell for cast heads, which we can't back.",
+   "<b>Kept the big line:</b> \"A cast wedge tells you the ball's gone. A forged one tells you how.\""
   ],
   "kept": [
-   "The other thirteen articles need the same rewrite pass. This one shows the shape."
+   "The other thirteen articles need the same rewrite. This one shows the shape."
   ]
  },
  "gearpdp": {

@@ -542,25 +542,31 @@ ARTICLES = [
     ("The top 10 golf shots you can hit using a wedge", "top-10-wedge-shots", "6 May 2023", "art-daniel-berger.webp",
      "If you want to take your game to the next level, start with the shots inside a hundred yards."),
     ("Are your wedges forged?", "are-your-wedges-forged", "3 May 2023", "art-forged-factory.webp",
-     "Picking a wedge puts you in front of a choice nobody explains: forged or cast. It changes the feel, and it changes the price."),
+     "Forged or cast: the choice most golfers never get explained, and why it changes the feel and the price."),
     ("Golf is a mental game", "golf-is-a-mental-game", "27 April 2023", "art-mental-game.webp",
-     "Focus, discipline and a confident mindset. The part of the game you cannot buy your way out of."),
+     "Focus, discipline and a steady head. The part of the game you can't buy your way out of."),
     ("Why golf wedges are the most important club in your bag", "most-important-club", "19 November 2022", "art-most-important.webp",
      "You hit more shots inside a hundred yards than anywhere else on the course. Spend accordingly."),
     ("Golf.com proves why a lucky charm is necessary on the course", "lucky-charm", "16 June 2021", "art-lucky-charm.webp",
-     "Somebody with a press pass finally said what we have been saying since 2018."),
+     "Somebody with a press pass finally said what we've been saying since 2018."),
     ("Why we have the best golf wedges for under $100", "best-under-100", "24 March 2021", "art-under-100.webp",
-     "Same steel as the big names, none of the markup. Here is the maths."),
+     "Same steel as the big names, none of the markup. Here's the math."),
     ("MrShortGame reviews Lucky wedges", "mrshortgame-review", "8 October 2019", "art-mrshortgame.webp",
      "Somebody who tests wedges for a living put ours on camera."),
     ("Use your Lucky wedge to get out of a deep bunker lie", "deep-bunker-lie", "18 March 2019", "", ""),
     ("Using your Lucky wedge from the rough", "from-the-rough", "18 November 2018", "art-rough-tip.webp",
      "Extra weight and balance carry momentum through the shot, which is how you avoid the chili dip."),
     ("The dreaded chili dip", "chili-dip", "9 November 2018", "art-chili-dip.webp",
-     "Everybody has hit one. Here is why it happens and the drill that stops it."),
+     "Everybody has hit one. Here's why it happens, and the drill that stops it."),
     ("Welcome to Lucky", "welcome-to-lucky", "4 November 2018", "art-welcome.webp",
      "One gold wedge, built right, priced honestly. This is where it starts."),
 ]
+
+
+def usdate(d):
+    """'3 May 2023' -> 'May 3, 2023' (US dates sitewide)."""
+    m = re.match(r"(\d{1,2}) (\w+) (\d{4})$", d or "")
+    return f"{m.group(2)} {m.group(1)}, {m.group(3)}" if m else d
 
 
 def build_blog():
@@ -572,7 +578,7 @@ def build_blog():
         f'<figure><img src="img/{lead[3]}" alt="{esc(lead[0])}" width="1024" height="1024"></figure>'
         f'<div><p class="lg-eyebrow">Latest</p><h2 class="lg-d2">{esc(lead[0])}</h2>'
         f'<p class="lg-body">{esc(lead[4])}</p>'
-        f'<p class="meta" style="margin-top:14px">{lead[2]} · four minute read</p>'
+        f'<p class="meta" style="margin-top:14px">{usdate(lead[2])}</p>'
         f'<span class="lg-link" style="margin-top:10px;display:inline-block">Read it <span>&rarr;</span></span></div></a>')
     posts = ""
     for title, slug, date, img, sub in rest:
@@ -581,7 +587,7 @@ def build_blog():
                else '<figure><span class="noimg">Lucky</span></figure>')
         posts += (f'<a class="post" href="{href}">{pic}<h3>{esc(title)}</h3>'
                   + (f'<p>{esc(sub)}</p>' if sub else "")
-                  + (f'<p class="meta" style="margin-top:10px">{date}</p>' if date else "") + "</a>")
+                  + (f'<p class="meta" style="margin-top:10px">{usdate(date)}</p>' if date else "") + "</a>")
     return fill(open(os.path.join(SRC, "blog.html"), encoding="utf-8").read(), {"LEAD": lead_html, "POSTS": posts})
 
 
@@ -596,15 +602,17 @@ def build_article():
 COLLECTIONS = {
     "all": {
         "title": "All Products", "eyebrow": "Everything we make",
-        "lede": "Five clubs, thirteen polos, ten hats and the small stuff. One page, everything on it.",
-        "signhead": "That is the whole <span class=\"lg-foil-word\">shop</span>",
-        "signlede": "Sixty days on the clubs, thirty on everything else. Mags owns one of each and paid for none.",
+        "lede": "The whole shop on one page. Sort it, filter it, or just scroll until something gold catches your eye.",
+        "signhead": "That's the whole <span class=\"lg-foil-word\">shop</span>",
+        "signlede": "Sixty days to make up your mind on the clubs, thirty on the rest.",
+        "related": [("clubs.html", "Clubs"), ("polos.html", "Polos"), ("hats.html", "Hats"), ("gear.html", "Gear")],
         "families": None},
     "accessories": {
         "title": "Accessories", "eyebrow": "The small stuff",
-        "lede": "Covers, grips and a glove. The small changes that make the bag feel like yours.",
-        "signhead": "Ten dollars of <span class=\"lg-foil-word\">better</span>",
+        "lede": "Small changes that make the bag feel like yours, from the covers to the grips.",
+        "signhead": "It's better to be <span class=\"lg-foil-word\">lucky.</span>",
         "signlede": "Tell them it's your lucky bag.",
+        "related": [("clubs.html", "Clubs"), ("polos.html", "Polos"), ("hats.html", "Hats"), ("collection-all.html", "All products")],
         "families": ("headcover", "grip", "glove")},
 }
 
@@ -702,9 +710,16 @@ def build_collection(key):
                         [("two-gold-wedges.webp", "Two gold Carvers on the fringe"),
                          ("fit-sunset.webp", "A Lucky polo and hat at sunset"),
                          ("putt-sunset.webp", "A putt at sunset")])
+        # one feature tile (the approved Polos/Hats move) and the bottom strip; the review
+        # line is Takomo's "Hundreds of 5-star reviews", with our live numbers
+        tile = ftile(7, "Can't decide?", "Let them pick", href="giftcard.html", cta="Send a gift card")
+        live = [RC["counts"][h] for _, _, h in REVIEW_CLUBS]
+        n = sum(x for x, _ in live); avg = int(sum(x * r for x, r in live) / n * 10) / 10
+        rel = related(c["related"], [("star", f"{avg:.1f} from {n:,} club reviews"), ("truck", "Free shipping at $198"),
+                                     ("rotate-ccw", "Sixty days on clubs")])
         return fill(open(os.path.join(SRC, "collection.html"), encoding="utf-8").read(), {
-            "TITLE": c["title"], "EYEBROW": c["eyebrow"], "LEDE": c["lede"], "PBAND": pband,
-            "KINDS": chips, "CARDS": cards, "COUNT": str(len(items)),
+            "TITLE": c["title"], "EYEBROW": c["eyebrow"], "LEDE": c["lede"], "PBAND": pband, "RELATED": rel,
+            "KINDS": chips, "CARDS": cards + tile, "COUNT": str(len(items)),
             "SIGNHEAD": c["signhead"], "SIGNLEDE": c["signlede"]})
     return run
 
