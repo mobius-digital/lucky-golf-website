@@ -318,6 +318,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
   .lg-hero::after{background:linear-gradient(0deg,rgba(6,17,11,.9) 0%,rgba(6,17,11,.55) 45%,rgba(6,17,11,.05) 75%)}
   .lg-hero-copy{padding-bottom:32px}
 }
+/* The short hero: a photo banner for pages where what's under it is the point
+   (the Community wall, All reviews). Same scrim and copy, a third of the height. */
+.lg-hero.is-short > img,.lg-hero.is-short .lg-hero-img{height:clamp(380px,48vh,480px);min-height:0}
+.lg-hero.is-short .lg-hero-copy{padding-bottom:clamp(28px,4vw,48px)}
+@media (max-width:749px){.lg-hero.is-short > img,.lg-hero.is-short .lg-hero-img{height:440px}}
 
 /* Photo band: three 3:2 frames across, full bleed. Phones: one wide, two under. */
 .lg-pband{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}

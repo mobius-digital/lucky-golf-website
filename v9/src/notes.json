@@ -315,18 +315,17 @@
   ]
  },
  "reviews": {
-  "why": "Copy v10 (2026-09-26): every line rewritten. Big moment: \"The raves, and the grumpy ones\". The count is the live Judge.me number.",
+  "why": "Redesigned 2026-09-26 on Takomo's Reviews page: photo banner, the score, then the list. Copy v10 on every line.",
   "added": [
-   "<b>Eyebrow:</b> \"891 reviews on the clubs\", read from Shopify at build time.",
-   "<b>Count line:</b> \"Showing 10 of 891 reviews\". It no longer talks about widgets.",
-   "<b>Sign-off:</b> \"Played it yet? Your turn to say so\". The \"couple of weeks after delivery\" line is gone: we can't confirm when Judge.me sends it.",
-   "<b>Kept:</b> the empty-state wink, \"which is its own kind of review\".",
-   "<b>The chart pools all four clubs</b>, off the real Judge.me totals.",
-   "<b>Filter by club and by stars</b>, sort by recent, highest or lowest. The grumpy ones are one tap away on purpose.",
-   "<b>Each review says which club it is for</b>."
+   "<b>Photo banner</b>: \"891 reviews on the clubs\" and \"The raves, and the grumpy ones\". The 891 is the live Judge.me count.",
+   "<b>The score</b>: 4.8 with the star bars. Tap a bar to see only those reviews, 1 star included.",
+   "<b>One tile per club</b> with its live rating and count (Carver 02 661, Eclipse Blade 148, Eclipse Mallet 61, Stryker 21). Tap one to filter.",
+   "<b>Count line:</b> \"Showing 10 of 891 reviews\".",
+   "<b>Sign-off:</b> \"Played it yet? Your turn to say so.\""
   ],
   "kept": [
-   "The preview holds the reviews we pulled; the live Judge.me widget pages through all of them."
+   "Takomo's reviews page also has an 'In media' block and press logos. We skipped it: the only press is one gift guide.",
+   "On the live theme the list is Judge.me's own widget, styled to match."
   ]
  },
  "giftcard": {
@@ -341,23 +340,19 @@
   ]
  },
  "community": {
-  "why": "Copy v10 (2026-09-26): every line rewritten, all 11 post captions included. Big moment: the sign-off, which now points at the ambassador program.",
+  "why": "Redesigned 2026-09-26 on Takomo's Community page: photo banner, an even grid of posts, the ambassador ask at the end. Copy v10 on every line.",
   "added": [
-   "<b>Head:</b> \"Straight off the camera roll\". The lede does the shopping job: tap a post, see what's in it.",
-   "<b>Get on the wall:</b> Instagram only (there's no TikTok on the site), and the ask-first rule is said once, not twice.",
-   "<b>Sign-off:</b> \"Posting anyway? Get paid for it\", straight to the ambassador page. The Mags joke is gone: two bits in one section.",
-   "<b>Captions:</b> \"Milled from a block\" is out (banned phrase). Now \"Fully milled, and you feel it off the face.\"",
-   "<b>Pop-up label:</b> \"What's in the shot\".",
-   "<b>Tap any post</b> and it opens with the products in it: add straight to the bag, or pick a loft or a size.",
-   "<b>Filter by Clubs, Apparel or Gear</b>, worked out from the products tagged in each post.",
-   "<b>In Shopify each post is one entry in the admin</b> (a metaobject): the photo or clip, the @handle, the link, the products. No app, no monthly fee.",
-   "<b>The same posts can show on Home and on each product page</b>, filtered to the posts that tag that product.",
-   "<b>Home's in-the-wild rail is these posts</b>, in the same order. Each one opens straight onto its post here."
+   "<b>Photo banner up top</b> with \"Straight off the camera roll\" and \"Tag @luckygolfofficial and yours could be next.\" (Takomo: \"Tag @TakomoGolf to get featured\").",
+   "<b>Even grid, four across</b> (three on a tablet, two on a phone). Each post shows the @handle and a bag badge with how many products are in it, like Takomo's.",
+   "<b>Show more</b> after eight posts. The Clubs / Apparel / Gear filter stays: Takomo doesn't have one.",
+   "<b>Tap a post</b> and it opens with what's in the shot: add to bag, or pick a loft or a size.",
+   "<b>The \"Get on the wall\" section is gone.</b> The banner says tag us, and one line under the grid says nothing goes up without a yes.",
+   "<b>Sign-off:</b> \"Posting anyway? Get paid for it\", straight to the ambassador page (Takomo ends on \"Join the crew? Become an Ambassador\").",
+   "<b>Captions rewritten</b>, e.g. \"Four feet, no drama.\" \"Milled from a block\" (banned) is now \"Fully milled, and you feel it off the face.\""
   ],
   "kept": [
-   "Every post here is OUR OWN shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
-   "Nothing goes up without the golfer's permission: that step is you asking, not an app.",
-   "Kept: \"Tag us. We'll ask first\" and \"Last light, last hole\" (now \"...still in it\")."
+   "Every post is our own shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
+   "In Shopify each post is one admin entry (a metaobject). No app, no monthly fee. Home's in-the-wild rail opens straight onto these posts."
   ]
  },
  "compare": {

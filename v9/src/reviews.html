@@ -7,8 +7,21 @@
 {{HEAD}}
 <style>
 /* ---------- All reviews · every club, the misses included ---------- */
-.top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
-@media (max-width:900px){.top{grid-template-columns:1fr}}
+/* the score: the average and the bars on the left, one tile per club on the right.
+   A bar filters by stars, a tile filters by club; both drive the chips below. */
+.sum{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center}
+@media (max-width:900px){.sum{grid-template-columns:1fr}}
+.sum .lg-score > b{font-size:clamp(56px,7vw,80px)}
+.sum .of{display:block;margin-top:8px;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.lg-score-row.is-btn{width:100%;border:0;background:none;padding:6px 0;margin:-6px 0;min-height:40px;cursor:pointer;font:inherit;font-size:var(--lg-fs-sm);color:var(--lg-ink-64);text-align:left}
+.lg-score-row.is-btn:hover,.lg-score-row.is-btn[aria-pressed="true"]{color:var(--lg-ink)}
+.lg-score-row.is-btn[aria-pressed="true"] i{outline:2px solid var(--lg-ink);outline-offset:2px}
+.clubs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut)}
+.ct{display:block;width:100%;text-align:left;padding:clamp(16px,2vw,22px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page);color:inherit;cursor:pointer;font:inherit}
+.ct:hover{border-color:var(--lg-ink)}
+.ct[aria-pressed="true"]{border-color:var(--lg-ink);box-shadow:inset 0 0 0 1px var(--lg-ink)}
+.ct b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px;line-height:1.1}
+.ct > span{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:8px;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
 .bar{position:sticky;top:var(--lg-head-h,64px);z-index:22;background:var(--lg-page);border-block:1px solid var(--lg-rule);margin-top:clamp(28px,4vw,48px)}
 .bar-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px}
 .fg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -16,6 +29,9 @@
 .fg button{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--lg-rule);background:var(--lg-page);color:var(--lg-ink);font-size:var(--lg-fs-sm);cursor:pointer}
 .fg button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
 .fright{margin-left:auto}
+.ct em{font-style:normal;white-space:nowrap}
+/* phones: each chip row scrolls sideways, and the bar stops sticking (the bars and tiles above filter too) */
+@media (max-width:640px){.bar{position:static}.fg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}.fg::-webkit-scrollbar{display:none}.fg button,.fg .lbl{flex:none}.fright{margin-left:0}}
 .fright select{min-height:40px;border-radius:999px;border:1px solid var(--lg-rule);background:var(--lg-page);color:var(--lg-ink);padding:0 12px;font:inherit;font-size:var(--lg-fs-sm)}
 .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px);padding-block:clamp(16px,2vw,24px)}
 @media (max-width:860px){.list{grid-template-columns:1fr}}
@@ -33,18 +49,22 @@
 {{HEADER}}
 
 <main>
-<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="home.html">Home</a></li><li><span aria-current="page">Reviews</span></li></ol></nav>
+<section class="lg-hero is-short" style="--focus:50% 26%;--focus-m:42% 30%">
+  <img class="lg-hero-img" src="img/putt-sunset.webp" alt="A putt at sunset" width="2400" height="1600" fetchpriority="high">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow">{{N}} reviews on the clubs</p>
+    <h1 class="lg-d1">The raves, and the <span class="lg-foil-word">grumpy</span> ones</h1>
+    <p class="lg-lede" style="max-width:52ch">Verified buyers only, pulled straight from Judge.me. Sort by club or by stars, and the low ones haven't gone anywhere.</p>
+  </div></div>
+</section>
 
-<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap">
-  <div class="top">
-    <div>
-      <p class="lg-eyebrow">{{N}} reviews on the clubs</p>
-      <h1 class="lg-d1">The raves, and the <span class="lg-foil-word">grumpy</span> ones</h1>
-      <p class="lg-lede" style="max-width:52ch">Verified buyers only, pulled straight from Judge.me. Sort by club or by stars, and the low ones haven't gone anywhere.</p>
-      <p style="margin-top:18px"><span class="lg-stars" aria-label="{{AVG}} out of 5">{{STARS5}}</span> <b style="margin-left:8px">{{AVG}} out of five</b></p>
-    </div>
-    <div id="prox"></div>
+<section class="lg-sec" style="padding-bottom:0"><div class="lg-wrap sum">
+  <div class="lg-score">
+    <b>{{AVG}}</b>
+    <div><span class="lg-stars" aria-label="{{AVG}} out of 5">{{STARS5}}</span><span class="of">out of five, from {{N}} reviews</span></div>
+    <div class="lg-score-bars" style="grid-column:1/-1" id="bars"></div>
   </div>
+  <div class="clubs">{{CLUBTILES}}</div>
 </div></section>
 
 <div class="bar"><div class="lg-wrap bar-in">
@@ -91,7 +111,22 @@ var ALL = {{REVIEWS_JSON}};
   var club = '', stars = 0, sort = 'recent', shown = 10;
   var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
 
-  Lucky.proximity($('#prox'), { counts: ALL.totals, nums: false });
+  /* the bars: share of each star, from the star split we have; tap one to filter */
+  var tot = function(t){ return Object.keys(t).reduce(function(a, k){ return a + t[k]; }, 0); };
+  var all = tot(ALL.totals);
+  $('#bars').innerHTML = [5, 4, 3, 2, 1].map(function(n){
+    var pct = Math.round((ALL.totals[n] || 0) / all * 100);
+    return '<button class="lg-score-row is-btn" type="button" data-bar="' + n + '" aria-pressed="false" aria-label="Show ' + n + ' star reviews">'
+      + '<span>' + n + ' ★</span><i style="--pct:' + pct + '%"></i><span>' + pct + '%</span></button>';
+  }).join('');
+  function setStars(n){ stars = n; shown = 10;
+    $$('[data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(+x.dataset.s === n)); });
+    $$('[data-bar]').forEach(function(x){ x.setAttribute('aria-pressed', String(+x.dataset.bar === n)); });
+    draw(); }
+  function setClub(c){ club = c; shown = 10;
+    $$('[data-c]').forEach(function(x){ x.setAttribute('aria-pressed', String(x.dataset.c === c)); });
+    $$('[data-ct]').forEach(function(x){ x.setAttribute('aria-pressed', String(x.dataset.ct === c)); });
+    draw(); }
 
   function draw(){
     var l = ALL.sample.filter(function(r){ return (!club || r.c === club) && (!stars || r.r === stars); });
@@ -103,17 +138,20 @@ var ALL = {{REVIEWS_JSON}};
         + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p>'
         + '<small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small><span class="on">' + esc(r.c) + '</span></div>';
     }).join('') || '<p style="padding:32px 0;color:var(--lg-ink-64)">Nothing at that rating for this club, which is its own kind of review.</p>';
-    var tot = function(t){ return stars ? (t[stars] || 0) : Object.keys(t).reduce(function(a, k){ return a + t[k]; }, 0); };
     /* no star filter: the live Judge.me count; with one: the star split we have */
-    var of = !stars ? (club ? ALL.live[club] : ALL.n) : club ? tot(ALL.byClub[club]) : tot(ALL.totals);
+    var of = !stars ? (club ? ALL.live[club] : ALL.n) : ((club ? ALL.byClub[club] : ALL.totals)[stars] || 0);
     $('#count').textContent = 'Showing ' + Math.min(shown, l.length) + ' of ' + of.toLocaleString() + (of === 1 ? ' review' : ' reviews');
     $('#more').hidden = shown >= l.length;
   }
   document.addEventListener('click', function(e){
     var c = e.target.closest('[data-c]');
-    if (c){ club = c.dataset.c; shown = 10; $$('[data-c]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === c)); }); draw(); return; }
+    if (c){ setClub(c.dataset.c); return; }
+    var t = e.target.closest('[data-ct]');
+    if (t){ setClub(t.getAttribute('aria-pressed') === 'true' ? '' : t.dataset.ct); $('.bar').scrollIntoView({behavior:'smooth'}); return; }
     var s = e.target.closest('[data-s]');
-    if (s){ stars = +s.dataset.s; shown = 10; $$('[data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === s)); }); draw(); return; }
+    if (s){ setStars(+s.dataset.s); return; }
+    var b = e.target.closest('[data-bar]');
+    if (b){ setStars(b.getAttribute('aria-pressed') === 'true' ? 0 : +b.dataset.bar); $('.bar').scrollIntoView({behavior:'smooth'}); return; }
   });
   $('#sort').addEventListener('change', function(){ sort = this.value; draw(); });
   $('#more').addEventListener('click', function(){ shown += 10; draw(); });

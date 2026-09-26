@@ -730,7 +730,11 @@ def build_reviews():
     avg = int(sum(c * r for c, r in live) / n * 10) / 10
     clubs = '<button type="button" data-c="" aria-pressed="true">All</button>' + "".join(
         f'<button type="button" data-c="{esc(l)}" aria-pressed="false">{esc(l)}</button>' for _, l, _ in REVIEW_CLUBS)
-    return fill(open(os.path.join(SRC, "reviews.html"), encoding="utf-8").read(), {
+    tiles = "".join(
+        f'<button class="ct" type="button" data-ct="{esc(l)}" aria-pressed="false"><b>{esc(l)}</b>'
+        f'<span><span class="lg-stars" aria-hidden="true">{STARS5}</span><em>{int(RC["counts"][h][1] * 10) / 10:.1f} · {RC["counts"][h][0]:,} reviews</em></span></button>'
+        for _, l, h in REVIEW_CLUBS)
+    return fill(open(os.path.join(SRC, "reviews.html"), encoding="utf-8").read(), {"CLUBTILES": tiles,
         "REVIEWS_JSON": js({"totals": totals, "byClub": by_club, "sample": sample,
                            "live": {l: RC["counts"][h][0] for _, l, h in REVIEW_CLUBS}, "n": n}), "AVG": f"{avg:.1f}",
         "N": f"{n:,}", "CLUBS": clubs})
@@ -794,10 +798,10 @@ def build_community():
                           "single": len(p["variants"]) == 1 and bool(live), "live": bool(live),
                           "pick": {"wedge": "Pick a loft", "putter": "Pick a hand", "hybrid": "Pick a hand"}.get(p.get("family"), "Pick a size")})
         kinds = sorted({KIND.get(by_id[pid].get("family"), "gear") for pid in ids})
-        tags = "".join(f'<span>{esc(x["name"])}</span>' for x in prods[:2]) + (f'<span>+{len(prods) - 2}</span>' if len(prods) > 2 else "")
-        posts += (f'<button class="post" type="button" data-i="{i}" data-kinds="{" ".join(kinds)}" aria-label="{esc(alt)}">'
+        names = ", ".join(x["name"] for x in prods)
+        posts += (f'<button class="post" type="button" data-i="{i}" data-kinds="{" ".join(kinds)}" aria-label="{esc(alt)}. In it: {esc(names)}">'
                   f'<img src="img/{img}" alt="{esc(alt)}" loading="lazy"><span class="who">@luckygolfofficial</span>'
-                  f'<span class="tags">{tags}</span></button>')
+                  f'<span class="bag">{icon("shopping-bag")}{len(prods)}</span></button>')
         data.append({"img": img, "alt": alt, "who": "@luckygolfofficial", "cap": cap, "products": prods})
     return fill(open(os.path.join(SRC, "community.html"), encoding="utf-8").read(),
                 {"POSTS": posts, "POSTS_JSON": js(data), "COUNT": str(len(COMMUNITY))})

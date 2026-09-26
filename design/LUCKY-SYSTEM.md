@@ -100,7 +100,7 @@ All live in the styleguide. Classes to use:
 | Chips, tags | `.lg-chips` `.lg-chip[aria-pressed]` `[data-dead]` · `.lg-tag` `-gold` `-ok` | Dead = dashed and struck |
 | Swatch | `.lg-swatch` | Pick by picture |
 | Chrome | `.lg-tick` `.lg-hdr` `.lg-ftr` | Solid deep green |
-| Photo hero | `.lg-hero` + `.lg-hero-img` + `.lg-hero-copy` | Headline bottom-left |
+| Photo hero | `.lg-hero` + `.lg-hero-img` + `.lg-hero-copy` · `.lg-hero.is-short` | Headline bottom-left. Short = a 380 to 480px banner for pages where what's under it is the point (Community, All reviews), the way Takomo runs theirs |
 | Photo band | `.lg-pband` (3 × 3:2) | Phones: one wide, two under |
 | Frame, split | `.lg-frame` (`.is-tall`) · `.lg-split` (`.is-flip`) | Text beside a photo |
 | Band | `.lg-band` · `.lg-band.is-photo` (`--band-bg`) · `.lg-band-tile` | One per Daylight page |
@@ -169,6 +169,8 @@ Bold = photo beat. At most one dark band on a Daylight page; the page always com
 - **404:** Mags, one line, two buttons, then four things to buy so a dead link still lands somewhere.
 - **Questions / help:** header · sticky jump row · a block per topic (shipping, returns, clubs, apparel, orders) as split + `.lg-faq` · three ways to reach a person · sign-off. Policy answers come from the product reference guide, never from memory.
 - **Ambassador:** **photo hero** · what you get (three cards) · what we ask + the application form · **photo band** · FAQ · sign-off.
+- **Community:** **short photo hero** (tag us, follow button) · sticky filter chips · even 4:5 grid, @handle and a bag badge with the product count on each post, a post opens with its products · Show more · ambassador sign-off.
+- **All reviews:** **short photo hero** · the score (`.lg-score`, bars filter by stars) and one tile per club (live count, filters by club) · sticky filters · the list, club named on each · sign-off.
 - **Contact:** ways to reach us beside the form, sign-off. No hours or response times we have not confirmed.
 - **Search:** field · common searches · live grid, query in the URL · empty state that points at the clubs.
 - **Cart page:** the drawer's content at full width: lines, hole bar, summary, trust row, Mags empty state. It reads the same bag as the drawer, never a second copy of the state.
