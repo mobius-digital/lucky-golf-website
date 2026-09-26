@@ -22,10 +22,6 @@ Read the relevant section for whatever format the user has asked for. If the for
 
 Both lead with one big idea about that club, then run the features with energy (strong claims, strong verbs), each with what it does. No price: it's already on the page.
 
-**Length and specs (checked against Takomo, 2026-09-26):** 40 to 70 words. The three features that matter most, at most, said and not explained; everything else goes in the feature callouts, which is where the reader goes for specs. Takomo's descriptions run 35 to 67 words and carry almost no specs, which is why they read so easy. When ours drift to 90 words, it's always because a fourth and fifth spec got explained in the paragraph.
-
-**The big idea lands hardest as a picture.** Takomo: *"Take your old, crusty hybrid out of the bag, feed it a nice meal, walk it out back, and shoot it."* The golfer can see it, and it's a little absurd. Ours at its best does the same thing: *"Your 4-iron's retirement plan."* Reach for a picture before a label, but only when one's really there. A forced one is worse than a plain line.
-
 **Bad example:** *"A CNC-milled mallet with a slight toe hang. The deep, fully milled face gets the ball rolling end-over-end sooner, and perimeter weighting holds the line on strikes that miss the center. Soft but solid at impact — no ping, no hollow ring, no vibration."* (A list of what the club has, with no one talking.)
 
 ---
@@ -102,7 +98,7 @@ When writing several variants, change the hook and the register each time. A bat
 *The bailout (empathetic): three panels*
 - *Reaching for the Texas wedge again?* / *Forged, micro-grooved, and it checks up.* / *Take the real wedge back out.*
 
-**Meta copy (primary text, Meta headline, description) always belongs to one creative.** Never write it without knowing the angle and what's on the image. Each piece does a different job, and none repeats another: the image makes the claim, the primary text answers the question the image raises, the Meta headline names what you're buying, and the description takes the risk away. The primary text gets line breaks for scanning, but every line has the energy of a Lucky description, not a list. Lead with how it plays, not what it's made of. Same budget as a description: the three features that matter most at most, and the rest belongs on the landing page (checked against Takomo, 2026-09-26).
+**Meta copy (primary text, Meta headline, description) always belongs to one creative.** Never write it without knowing the angle and what's on the image. Each piece does a different job, and none repeats another: the image makes the claim, the primary text answers the question the image raises, the Meta headline names what you're buying, and the description takes the risk away. The primary text gets line breaks for scanning, but every line has the energy of a Lucky description, not a list. Lead with how it plays, not what it's made of.
 
 *Approved full ad (price angle, 2026-09-23). An example, not a template:*
 - Angle: the big-name price is the logo and the tour contracts, not the club. Creative: the Carver 02 Gold close up on turf.
