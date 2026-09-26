@@ -18,7 +18,7 @@
 .gc .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(46px,7vw,72px);line-height:1;
   background:linear-gradient(178deg,#C29A2B 0%,#EDD27C 46%,#EDD27C 56%,#C29A2B 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .gc .ln{display:flex;justify-content:space-between;align-items:flex-end;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,240,.72);position:relative;z-index:1}
-.buy{position:sticky;top:calc(var(--lg-head-h,64px) + 20px)}
+.buy{scroll-margin-top:calc(var(--lg-head-h,64px) + 20px);position:sticky;top:calc(var(--lg-head-h,64px) + 20px)}
 @media (max-width:980px){.buy{position:static}}
 .price{font-size:24px;font-weight:600;margin:8px 0 14px}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:22px 0 8px}
@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <div class="buy">
+  <div class="buy" id="send">
     <p class="lg-eyebrow">Gift card</p>
     <h1 class="lg-d2">For the golfer who swears they don't need <span class="lg-foil-word">anything</span></h1>
     <p class="price" data-price>$50</p>
@@ -113,8 +113,8 @@
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
   <h2 class="lg-d1">Nobody returns a gift <span class="lg-foil-word">card</span></h2>
-  <p class="lg-lede">It lands in their inbox, whatever they pick ships in one to two business days, and you still get the credit.</p>
-  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <p class="lg-lede">It lands in their inbox, whatever they pick ships in one to two business days, and you still get the thanks.</p>
+  <a class="lg-btn" href="#send">Send one</a>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
 </main>
