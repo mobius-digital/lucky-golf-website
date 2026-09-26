@@ -194,3 +194,6 @@ a.ftile:hover img{transform:scale(1.04)}
 .related a{padding:10px 16px;border:1px solid var(--lg-rule);border-radius:999px;font-size:14px;font-weight:600;color:var(--lg-ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .related a:hover{border-color:var(--lg-ink)}
 .coll-trust{padding-bottom:clamp(36px,5vw,64px)}
+
+/* card photo links fill the photo, so the whole picture is the tap target */
+.polo-ph > a,.it-ph > a{position:absolute;inset:0;display:block}

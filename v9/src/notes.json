@@ -92,6 +92,7 @@
  "story": {
   "why": "Copy v10 (2026-09-25): every approved line kept; the two lines the new voice guide cut are gone.",
   "added": [
+   "<b>Manifesto back</b> (Luck favors the bold, four paragraphs, 'It's better to be lucky.'), verbatim from the approved copy file. Gold band is now 'Gold, on purpose.' Timeline 2019 says fully milled.",
    "<b>Why we exist / What we do / Our story, side by side and open.</b> No pop-ups: photo, approved headline, two sentences each, one link. Adds about 200px on desktop (the stacked version added 1,350). The long pop-up text is cut down, including the 'Or black' line.",
    "<b>Timeline is one sideways row</b> with arrows on desktop and swipe on phones, so the page is a lot shorter.",
    "<b>Kept word for word:</b> \"Golf has a dress code. Ours is gold.\", \"Great clubs got too expensive. We took it personally.\", \"Same steel as the big names. Different math.\", \"Is gold subtle? Not even a little.\"",
@@ -352,11 +353,11 @@
  "compare": {
   "why": "Rebuilt 2026-09-25. The August site had this page and v9 dropped it. Takomo runs the same page (Takomo vs Big Brands).",
   "added": [
-   "<b>Wedge only</b>, the way Takomo's page is irons only: their core product against the shelf. Hero, the two Carvers with real ratings, the side-by-side, where the money goes, the safety net, real Carver reviews.",
-   "<b>Big-name price checked 2026-09-25:</b> new-model wedges list at $170 to $200 before sales. No brand named in our copy.",
-   "<b>Fixed from August:</b> it said every big-name wedge is forged. Many are cast, so the row says 'cast or forged by model'. Dropped 'theirs is thirty days' (not checkable).",
-   "<b>Reviews are real</b> Judge.me quotes, in full, from customers who compare us to the big names.",
-   "<b>Linked from</b> the Our Story pop-up, Home's price section and the footer."
+   "<b>Copy chat 2026-09-26:</b> every headline says what the section is about. No brand names anywhere, reviews included.",
+   "<b>Reviews:</b> the two that named brands are swapped for Adam K. (4 stars) and Jason (5), both verified Carver buyers. Kyle M. stays.",
+   "<b>Big-name price checked 2026-09-25:</b> new-model wedges list at $170 to $200 before sales.",
+   "<b>Wedge only</b>, the way Takomo's page is irons only.",
+   "<b>Linked from</b> Our Story, Home's price section and the footer."
   ],
   "kept": [
    "The August headline and the 'Spot the difference' table idea."

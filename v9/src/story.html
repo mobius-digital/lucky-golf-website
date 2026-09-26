@@ -24,6 +24,13 @@
 .nx b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px;margin-bottom:6px}
 .nx span{color:var(--lg-ink-64)}
 .nx .go{display:block;margin-top:14px;font-size:var(--lg-fs-sm)}
+/* the manifesto */
+.man{max-width:760px;text-align:center}
+.man .lg-d1{margin:0 0 clamp(18px,2.5vw,28px)}
+.man .lg-body{margin:0 auto 14px;max-width:62ch}
+.man-close{margin:clamp(18px,2.5vw,28px) 0 0;font-weight:800;text-transform:uppercase;font-variation-settings:'wdth' 66;font-size:clamp(20px,2.4vw,26px);letter-spacing:.01em}
+.man-sec + .parts-sec{padding-top:0}
+@media (max-width:640px){.man{text-align:left}}
 /* the three parts, side by side and open */
 .parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
 @media (max-width:760px){.parts{grid-template-columns:1fr;gap:40px}}
@@ -58,6 +65,16 @@
   </div></div>
 </section>
 
+<!-- ============ THE MANIFESTO: the approved text, verbatim from _src/data/copy/_brand-story.json -->
+<section class="lg-sec man-sec"><div class="lg-wrap man">
+  <h2 class="lg-d1">Luck favors <span class="lg-foil-word">the bold</span></h2>
+  <p class="lg-body">Golf's the best game there is, and it should feel that way whether it's your first round or your five hundredth. Somewhere along the way it got stiff and way too expensive. We're here to loosen it up.</p>
+  <p class="lg-body">That starts with clubs that forgive the swings you're still working on, cost what they should, and look like nothing else in the bag.</p>
+  <p class="lg-body">Nobody here cares about your handicap or whether your polo's tucked in. Show up, swing hard, talk a little trash.</p>
+  <p class="lg-body">And when the chip drops and somebody asks what you're hitting, tell them it's your lucky wedge. Whether it was luck is your business.</p>
+  <p class="man-close">It's better to be lucky.</p>
+</div></section>
+
 <!-- ============ THE THREE PARTS: Why we exist / What we do / Our story, side by side and
      open (no pop-ups). In the theme: three blocks of image, label, heading, text, link. -->
 <section class="lg-sec parts-sec"><div class="lg-wrap">
@@ -88,7 +105,7 @@
 
 <section class="lg-band is-photo" style="--band-bg:url(img/putt-sunset.webp);--band-pos:center 60%"><div class="lg-wrap">
   <p class="lg-eyebrow">The gold question</p>
-  <h2 class="lg-d1" style="max-width:22ch">Is gold subtle? Not even a <span class="lg-foil-word">little</span></h2>
+  <h2 class="lg-d1" style="max-width:22ch">Gold, on <span class="lg-foil-word">purpose.</span></h2>
   <p class="lg-lede" style="max-width:56ch">That's the point. You only get so many Saturdays, and none of them should be spent blending in.</p>
 </div></section>
 
@@ -98,7 +115,7 @@
   <div class="tl-hd"><p class="lg-lede" style="max-width:60ch;margin:0">One gold wedge in 2018. Here's how it went from there.</p><div class="arrows" data-tlarrows><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
   <ol class="tl">
     <li><span class="yr">2018</span><div><h3>The gold wedge</h3><p>One wedge, in gold. Same steel as the big names, none of the markup. Lucky starts here.</p></div></li>
-    <li><span class="yr">2019</span><div><h3>The Blade putter</h3><p>CNC-milled from solid stainless, quiet off the face. Turns out people wanted more than a wedge.</p></div></li>
+    <li><span class="yr">2019</span><div><h3>The Blade putter</h3><p>Fully milled, and quiet off the face. Turns out people wanted more than a wedge.</p></div></li>
     <li><span class="yr">2020</span><div><h3>Wedges, version two</h3><p>The original, refined and re-released. The gold wedge wasn't a fluke.</p></div></li>
     <li><span class="yr">2023</span><div><h3>The Mallet putter</h3><p>More forgiveness on the putts you don't hit perfectly.</p></div></li>
     <li><span class="yr">2024</span><div><h3>The hybrid</h3><p>Titanium with a flex-channel face, for the gap your long irons never covered.</p></div></li>
