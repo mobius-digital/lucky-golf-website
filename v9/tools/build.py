@@ -714,6 +714,15 @@ REVIEW_CLUBS = [("lgw01-gold", "Carver 02", "lucky-golf-lgw02-gold"), ("lgp01-go
                 ("lgp02-gold", "Eclipse Mallet", "limited-edition-mallet-putter"), ("lgh01", "Stryker", "lucky-striker-hybrid-limited-edition")]
 
 
+PRODUCT_LABEL = re.compile(r"^(lucky( golf)?\s+)?(lg[wphd]\s?0\d( gold| black)?|limited edition mallet putters?|"
+                           r"lucky striker hybrid \(limited edition\)|(mallet |blade )?putter|wedge|hybrid)$", re.I)
+
+
+def unmangle(t):
+    """The review export lost some characters to U+FFFD: after a number it was a degree sign, elsewhere an apostrophe."""
+    return re.sub(r"(?<=\d)�", "°", t or "").replace("�", "’")
+
+
 def build_reviews():
     """Every club's reviews in one pool: the real Judge.me counts and samples."""
     totals, by_club, sample = {}, {}, []
@@ -723,7 +732,15 @@ def build_reviews():
         for k, v in r["totals"].items():
             totals[k] = totals.get(k, 0) + v
         for x in r["sample"]:
-            y = dict(x); y["c"] = label; sample.append(y)
+            y = dict(x); y["c"] = label
+            # Cole 2026-09-26: a title that is only the product name or code is hidden,
+            # and a review whose body is only that too is skipped on this page
+            y["q"], y["t"] = unmangle(y["q"]).strip(), unmangle(y["t"]).strip()
+            if not y["q"] or PRODUCT_LABEL.match(y["q"]):
+                continue
+            if PRODUCT_LABEL.match(y["t"]):
+                y["t"] = ""
+            sample.append(y)
     # headline count and average: the live Judge.me numbers, not the snapshot
     live = [RC["counts"][h] for _, _, h in REVIEW_CLUBS]
     n = sum(c for c, _ in live)

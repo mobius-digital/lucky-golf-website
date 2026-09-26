@@ -318,6 +318,8 @@
  "reviews": {
   "why": "Redesigned 2026-09-26 on Takomo's Reviews page: photo banner, the score, then the list. Copy v10 on every line.",
   "added": [
+   "<b>Your fixes (2026-09-26):</b> titles that are just the product name or code (\"Lucky Golf LGW02 Gold\", \"LGW01\") are hidden, and reviews with nothing else in them are skipped. The last word button is now \"Write a review\" (Judge.me's form on the live site).",
+   "<b>Also fixed:</b> the review export had broken characters (\"60�\", \"I�m\"); they now read 60° and I’m.",
    "<b>Photo banner</b>: \"891 reviews on the clubs\" and \"The raves, and the grumpy ones\". The 891 is the live Judge.me count.",
    "<b>The score</b>: 4.8 with the star bars. Tap a bar to see only those reviews, 1 star included.",
    "<b>One tile per club</b> with its live rating and count (Carver 02 661, Eclipse Blade 148, Eclipse Mallet 61, Stryker 21). Tap one to filter.",
@@ -356,6 +358,7 @@
    "<b>Captions rewritten</b>, e.g. \"Four feet, no drama.\" \"Milled from a block\" (banned) is now \"Fully milled, and you feel it off the face.\""
   ],
   "kept": [
+   "<b>Held as is (your call, 2026-09-26):</b> \"Posting anyway? Get paid for it\" stays until the ambassador program is confirmed, then it's rewritten to match the Ambassadors page.",
    "Every post is our own shoot, posted as @luckygolfofficial. Customer and creator clips drop into the same slots once you have them.",
    "In Shopify each post is one admin entry (a metaobject). No app, no monthly fee. Home's in-the-wild rail opens straight onto these posts."
   ]

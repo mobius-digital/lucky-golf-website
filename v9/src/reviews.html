@@ -94,7 +94,7 @@
   <p class="lg-eyebrow">The last word</p>
   <h2 class="lg-d1">Played it yet? Your turn to <span class="lg-foil-word">say so</span></h2>
   <p class="lg-lede">Good round or rough one, write it straight. It's the honest ones that make this page worth reading.</p>
-  <a class="lg-btn-line" href="clubs.html">See the clubs <span aria-hidden="true">&rarr;</span></a>
+  <button class="lg-btn" type="button" data-write>Write a review</button>
   <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
 </div></section>
 </main>
@@ -155,6 +155,8 @@ var ALL = {{REVIEWS_JSON}};
   });
   $('#sort').addEventListener('change', function(){ sort = this.value; draw(); });
   $('#more').addEventListener('click', function(){ shown += 10; draw(); });
+  /* on the live theme this opens Judge.me's write-a-review form */
+  $('[data-write]').addEventListener('click', function(){ Lucky.toast("The review form is Judge.me’s, so it opens on the live site."); });
   draw();
 })();
 </script>
