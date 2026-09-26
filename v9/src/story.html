@@ -24,13 +24,13 @@
 .nx b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:18px;margin-bottom:6px}
 .nx span{color:var(--lg-ink-64)}
 .nx .go{display:block;margin-top:14px;font-size:var(--lg-fs-sm)}
-/* the manifesto */
-.man{max-width:760px;text-align:center}
-.man .lg-d1{margin:0 0 clamp(18px,2.5vw,28px)}
-.man .lg-body{margin:0 auto 14px;max-width:62ch}
-.man-close{margin:clamp(18px,2.5vw,28px) 0 0;font-weight:800;text-transform:uppercase;font-variation-settings:'wdth' 66;font-size:clamp(20px,2.4vw,26px);letter-spacing:.01em}
+/* the manifesto: headline left, the case for it on the right */
+.man{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:start}
+@media (max-width:900px){.man{grid-template-columns:1fr;gap:18px}}
+.man .lg-d1{margin:0}
+.man .lg-body{margin:0 0 14px;max-width:60ch}
+.man-close{margin:clamp(14px,2vw,22px) 0 0;font-weight:800;text-transform:uppercase;font-variation-settings:'wdth' 66;font-size:clamp(20px,2.4vw,26px);letter-spacing:.01em}
 .man-sec + .parts-sec{padding-top:0}
-@media (max-width:640px){.man{text-align:left}}
 /* the three parts, side by side and open */
 .parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
 @media (max-width:760px){.parts{grid-template-columns:1fr;gap:40px}}
@@ -68,11 +68,13 @@
 <!-- ============ THE MANIFESTO: the approved text, verbatim from _src/data/copy/_brand-story.json -->
 <section class="lg-sec man-sec"><div class="lg-wrap man">
   <h2 class="lg-d1">Luck favors <span class="lg-foil-word">the bold</span></h2>
+  <div>
   <p class="lg-body">Golf's the best game there is, and it should feel that way whether it's your first round or your five hundredth. Somewhere along the way it got stiff and way too expensive. We're here to loosen it up.</p>
   <p class="lg-body">That starts with clubs that forgive the swings you're still working on, cost what they should, and look like nothing else in the bag.</p>
   <p class="lg-body">Nobody here cares about your handicap or whether your polo's tucked in. Show up, swing hard, talk a little trash.</p>
   <p class="lg-body">And when the chip drops and somebody asks what you're hitting, tell them it's your lucky wedge. Whether it was luck is your business.</p>
   <p class="man-close">It's better to be lucky.</p>
+  </div>
 </div></section>
 
 <!-- ============ THE THREE PARTS: Why we exist / What we do / Our story, side by side and
