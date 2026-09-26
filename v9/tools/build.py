@@ -555,7 +555,7 @@ ARTICLES = [
      "Somebody who tests wedges for a living put ours on camera."),
     ("Use your Lucky wedge to get out of a deep bunker lie", "deep-bunker-lie", "18 March 2019", "", ""),
     ("Using your Lucky wedge from the rough", "from-the-rough", "18 November 2018", "art-rough-tip.webp",
-     "Extra weight and balance carry momentum through the shot, which is how you avoid the chili dip."),
+     "How to get through thick grass without the chili dip."),
     ("The dreaded chili dip", "chili-dip", "9 November 2018", "art-chili-dip.webp",
      "Everybody has hit one. Here's why it happens, and the drill that stops it."),
     ("Welcome to Lucky", "welcome-to-lucky", "4 November 2018", "art-welcome.webp",
