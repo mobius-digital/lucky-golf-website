@@ -7,17 +7,16 @@
 {{HEAD}}
 <style>
 /* ---------- Lucky vs the big names · Takomo's vs-big-brands page, our way:
-   hero, bestsellers, the side-by-side, where the money goes, the safety net, real reviews ---------- */
+   wedge only, the way theirs is irons only: hero, the two Carvers, the side-by-side, where the money goes, the safety net, real reviews ---------- */
 .proof{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;color:var(--lg-ink-70);font-size:var(--lg-fs-sm)}
 .proof .lg-stars{margin-right:6px}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px)}
-@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(20px,3vw,32px);max-width:860px}
 @media (max-width:560px){.cards{grid-template-columns:1fr}}
 .pc{display:flex;flex-direction:column;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-page)}
-.pc-ph{position:relative;display:block;aspect-ratio:4/5;background:var(--lg-tile)}
-.pc-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:12px;transition:transform .5s var(--lg-ease)}
+.pc-ph{position:relative;display:block;aspect-ratio:4/5;background:var(--lg-tile);overflow:hidden}
+.pc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:12px;transition:transform .5s var(--lg-ease)}
 .pc:hover .pc-ph img{transform:scale(1.03)}
-.pc-ph .lg-tag{position:absolute;left:12px;top:12px}
+.pc-ph .lg-tag{position:absolute;left:12px;top:12px;z-index:1}
 .pc-bd{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
 .pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .pc-top h3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1}
@@ -74,8 +73,8 @@
 </div></section>
 
 <section class="lg-sec"><div class="lg-wrap">
-  <p class="lg-eyebrow">Where most people start</p>
-  <h2 class="lg-d2">Three clubs, none of them over <span class="lg-foil-word">$230</span></h2>
+  <p class="lg-eyebrow">The wedge</p>
+  <h2 class="lg-d2">Two finishes. Neither one's two hundred <span class="lg-foil-word">dollars.</span></h2>
   <div class="cards">
     <article class="pc">
       <a class="pc-ph" href="carver.html"><span class="lg-tag">Best seller</span><img src="img/gold-full-cut.webp" alt="Carver 02 Gold" loading="lazy"></a>
@@ -87,21 +86,12 @@
       </div>
     </article>
     <article class="pc">
-      <a class="pc-ph" href="mallet.html"><img src="img/mallet-full-cut.webp" alt="Eclipse Mallet" loading="lazy"></a>
+      <a class="pc-ph" href="black.html"><img src="img/black-cut.webp" alt="Carver 02 Black" loading="lazy"></a>
       <div class="pc-bd">
-        <div class="pc-top"><h3><a href="mallet.html">Eclipse Mallet</a></h3><b>$229</b></div>
-        {{RATE_MALLET}}
-        <p>Fully milled, like the ones that cost twice as much, and it holds its line when you miss the middle.</p>
-        <a class="lg-btn lg-btn-sm" href="mallet.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </article>
-    <article class="pc">
-      <a class="pc-ph" href="stryker.html"><img src="img/stryker-full-cut.webp" alt="Stryker hybrid" loading="lazy"></a>
-      <div class="pc-bd">
-        <div class="pc-top"><h3><a href="stryker.html">Stryker</a></h3><b>$209</b></div>
-        {{RATE_STRYKER}}
-        <p>A titanium hybrid with a Flex Channel face, for the long shots you used to dread.</p>
-        <a class="lg-btn lg-btn-sm" href="stryker.html">Put it in the bag <span aria-hidden="true">&rarr;</span></a>
+        <div class="pc-top"><h3><a href="black.html">Carver 02 Black</a></h3><b>$109</b></div>
+        {{RATE_BLACK}}
+        <p>The same forged head, blacked out, with the gold clover left on.</p>
+        <a class="lg-btn lg-btn-sm" href="black.html">Pick a loft <span aria-hidden="true">&rarr;</span></a>
       </div>
     </article>
   </div>
@@ -110,16 +100,16 @@
 <section class="lg-sec" id="breakdown" style="padding-top:0"><div class="lg-wrap">
   <p class="lg-eyebrow">The breakdown</p>
   <h2 class="lg-d2">Spot the <span class="lg-foil-word">difference</span></h2>
-  <p class="lg-body" style="max-width:62ch">A big-name wedge and putter next to ours. We're not naming names, because this isn't about one company. It's how the whole shelf is priced.</p>
+  <p class="lg-body" style="max-width:62ch">A big-name wedge next to ours. We're not naming names, because this isn't about one company. It's how the whole shelf is priced.</p>
   <div class="tablewrap"><table class="lg-table">
     <thead><tr><th scope="col"><span class="sr">What we compared</span></th><th scope="col">The big names</th><th scope="col">Lucky</th></tr></thead>
     <tbody>
       <tr><th scope="row">One wedge, new</th><td class="them">$170 to $200</td><td class="us">$99 to $109</td></tr>
       <tr><th scope="row">Wedge head</th><td class="them">Carbon steel, cast or forged by model</td><td class="us">Forged 1020 carbon steel</td></tr>
       <tr><th scope="row">Wedge face</th><td class="them">Milled grooves</td><td class="us">CNC-milled grooves and a micro-grooved face</td></tr>
-      <tr><th scope="row">Fully milled putter</th><td class="them">$499 and up</td><td class="us">$199 to $229</td></tr>
+      <tr><th scope="row">Sole grinds</th><td class="them">Several, by model</td><td class="us">K and S on gold, K on black</td></tr>
       <tr><th scope="row">Where you buy it</th><td class="them">Golf shops and online</td><td class="us">Online, direct from us</td></tr>
-      <tr><th scope="row">Trying it</th><td class="them">A few swings in the shop</td><td class="us">Sixty days: roll the putter, hit a wedge on a mat</td></tr>
+      <tr><th scope="row">Trying it</th><td class="them">A few swings in the shop</td><td class="us">Sixty days, and you can hit one on a mat</td></tr>
     </tbody>
   </table></div>
   <p class="lg-body after">Look at the head and the face. Those are the parts that hit the ball, and they're not where the extra hundred dollars goes.</p>
@@ -140,7 +130,7 @@
   <p class="lg-eyebrow">Don't take our word for it</p>
   <h2 class="lg-d2">A table on a website is still just a <span class="lg-foil-word">table</span></h2>
   <div class="net">
-    <div><b>Sixty days on clubs</b><p>Roll the putter, hit a wedge on a mat, and send it back if it doesn't earn a spot.</p></div>
+    <div><b>Sixty days on clubs</b><p>Hit one on a mat, and send it back if it doesn't earn a spot.</p></div>
     <div><b>Ships in 1 to 2 days</b><p>Tracking shows up as soon as the carrier scans it.</p></div>
     <div><b>Free shipping at $198</b><p>Two Carvers get you there.</p></div>
   </div>
@@ -153,7 +143,7 @@
   <div class="rqs">
     <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Very good club. Performs as well as my Vokey SM10, and Cleveland RTX wedges. Consistent distances and puts good spin on the ball. All around solid performer.&rdquo;</blockquote><figcaption><b>1981 C.o.M.</b> · Carver, verified buyer</figcaption></figure>
     <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;Love the weight of this club! Great looking bag candy! It&rsquo;s so pretty I&rsquo;m almost afraid to use it. I like it more than my titleist vokey&rdquo;</blockquote><figcaption><b>Christopher V.</b> · Carver 56&deg;, verified buyer</figcaption></figure>
-    <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;I switched from a blade style and it took a few rounds to get comfortable. Now I have the feel at all distances. I highly recommend. Great putter, great price point, plus the gold is badass&rdquo;</blockquote><figcaption><b>Patrick S.</b> · Eclipse Mallet, verified buyer</figcaption></figure>
+    <figure class="rq"><span class="lg-stars" aria-label="5 out of 5">{{STARS5}}</span><blockquote>&ldquo;I LOVE my wedges they preform high up with the big name brands and all my friends are jealous of how sexy these clubs are&rdquo;</blockquote><figcaption><b>Kyle M.</b> · Carver, verified buyer</figcaption></figure>
   </div>
   <p class="lg-body after"><a class="lg-link" href="reviews.html">Read every review <span aria-hidden="true">&rarr;</span></a></p>
 </div></section>

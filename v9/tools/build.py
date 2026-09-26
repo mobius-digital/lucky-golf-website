@@ -803,7 +803,7 @@ def build_compare():
     proof += '<span>Sixty days on every club</span><span>Sold direct, no shop markup</span>'
     return fill(open(os.path.join(SRC, "compare.html"), encoding="utf-8").read(), {
         "PROOF": proof, "RATE_GOLD": rate_link("lgw01-gold", "carver.html"),
-        "RATE_MALLET": rate_link("lgp02-gold", "mallet.html"), "RATE_STRYKER": rate_link("lgh01", "stryker.html")})
+        "RATE_BLACK": rate_link("lgw01-black", "black.html")})
 
 
 def build_story():
