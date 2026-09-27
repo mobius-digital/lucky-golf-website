@@ -115,8 +115,8 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
 
 - Stock Guard, Ryze AI, Nitro Upsell & Cross Sell (Ecomrise), Amazon MCF and Buy with Prime: uninstalled, each confirmed by Shopify's "successfully uninstalled" banner.
 - Amazon's own location ("Amazon Fulfillment") held 1 item at 0 stock, so "delete inventory stored at this location" changed nothing.
-- ShipBob: NOT yet. Its location "ShipBobFulfillment-205688" still records on hand (0 available):
+- ShipBob: UNINSTALLED later the same day (Cole: nothing is at ShipBob). Its location "ShipBobFulfillment-205688" still records on hand (0 available):
   LGW01-50-RH 7, LGW01-52-RH 3, LGW01-54-RH 1, LGW01-56-RH 2, LGW01-58-RH 1, LGW01-60-RH 1,
   LGW02-52-RH 1, LGW02-56-RH 1, LGW02-52-LH 1, LGW02-56-LH 3, LGW02-60-LH 3, LGD01-Right 1 (25 wedges + 1 driver).
-  Uninstalling asks to delete or transfer these. Waiting on Cole: are units physically still at ShipBob?
+  All 26 were 'committed' but no open order was assigned to ShipBob (stale). The uninstall only offered transfer, so they went to a NEW location, "ShipBobFulfillment-205688 (app uninstalled)", which does not fulfill online orders (Ceries stock untouched). It can be deactivated any time.
 - The Nitro/Ecomrise app embed and the Amazon pixel are gone from the live theme with the apps; nothing else to strip for them in the move.
