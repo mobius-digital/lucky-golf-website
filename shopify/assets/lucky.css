@@ -443,6 +443,9 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 
 .lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
 .lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+/* sold out: the dot and the words go grey, never the in-stock green */
+.lg-stock.is-out{color:var(--lg-ink-64)}
+.lg-live.is-out i{background:var(--lg-ink-38) !important;animation:none !important;box-shadow:none !important}
 :is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stock{color:var(--lg-ok-on-dark)}
 
 /* Stars are a graphic: on white they need the darker gold to stay legible. */
@@ -726,8 +729,10 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 [data-ground="twilight"] .lg-contour,.lg-contour[data-ground="twilight"]{--lg-contour:var(--lg-contour-tw)}
 .lg-contour::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,190%) auto no-repeat;
-  -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%);mask-image:linear-gradient(90deg,transparent 18%,#000 62%)}
-.lg-contour.is-left::before{-webkit-mask-image:linear-gradient(270deg,transparent 18%,#000 62%);mask-image:linear-gradient(270deg,transparent 18%,#000 62%)}
+  /* fades in from the text side AND out at the top and bottom, so the section edge never cuts the lines */
+  -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%),linear-gradient(180deg,transparent 0,#000 16%,#000 78%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 18%,#000 62%),linear-gradient(180deg,transparent 0,#000 16%,#000 78%,transparent 100%);mask-composite:intersect}
+.lg-contour.is-left::before{-webkit-mask-image:linear-gradient(270deg,transparent 18%,#000 62%),linear-gradient(180deg,transparent 0,#000 16%,#000 78%,transparent 100%);mask-image:linear-gradient(270deg,transparent 18%,#000 62%),linear-gradient(180deg,transparent 0,#000 16%,#000 78%,transparent 100%)}
 .lg-contour.is-flip::before{transform:scaleX(-1)}
 @media (max-width:749px){.lg-contour::before{--cz:340%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
 

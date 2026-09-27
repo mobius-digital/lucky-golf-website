@@ -44,7 +44,7 @@
     {{OPTS}}
 
     <div class="cta"><button class="lg-btn" type="button" data-atc>{{ATC}} · {{PRICE}}</button></div>
-    <div class="trustl"><span class="lg-stock" data-stockline>{{STOCK}}</span><span class="trustl-links"><a href="faq.html#returns">Sixty days to make up your mind</a><a href="faq.html#shipping">Free shipping at $198</a></span></div>
+    <div class="trustl"><span class="lg-stock{{OUT}}" data-stockline>{{STOCK}}</span><span class="trustl-links"><a href="faq.html#returns">Sixty days to make up your mind</a><a href="faq.html#shipping">Free shipping at $198</a></span></div>
 
     <div class="lg-faq">{{DETAILS}}</div>
   </div>
@@ -82,7 +82,7 @@
     <p class="lg-body">{{SPEC_LINE}}</p></div>
   </div>
   <div class="lg-monitor">
-    <div class="lg-monitor-hd"><span class="lg-label">{{MON_LABEL}}</span><span class="lg-label lg-live"><i></i>{{MON_STOCK}}</span></div>
+    <div class="lg-monitor-hd"><span class="lg-label">{{MON_LABEL}}</span><span class="lg-label lg-live{{OUT}}"><i></i>{{MON_STOCK}}</span></div>
     <div class="lg-monitor-in">
       <div class="lg-monitor-ph"><img src="img/{{MON_IMG}}" alt="{{NAME}}, the full club"></div>
       <div class="lg-monitor-tiles">{{MON_TILES}}</div>
@@ -177,6 +177,7 @@ var PD_REEL = {{REEL_JSON}};
     });
     var v = variant(), live = !!(v && v.avail);
     $('[data-stockline]').textContent = live ? 'In stock · ships in 1 to 2 days' : 'Sold out';
+    $('[data-stockline]').classList.toggle('is-out', !live);
     $('[data-atc]').textContent = live ? PD.atc + ' · ' + money(PD.price) : "Tell me when it's back";
     var sn = $('[data-sticky-name]'); if (sn) sn.textContent = PD.name + (pick[PD.order[PD.order.length - 1]] ? ' · ' + (PD.labels[pick[PD.order[PD.order.length - 1]]] || '') : '');
   }

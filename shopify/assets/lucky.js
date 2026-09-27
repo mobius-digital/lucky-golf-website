@@ -242,14 +242,22 @@
      picked by their order on the page (golden-ratio steps, so neighbours never
      land near each other). Same page, same spots, every visit. Runs itself. */
   Lucky.contours = function (root) {
+    /* A different patch of the one map on every page (seeded by the page's
+       address, so a page always shows the same patch, but no two pages match),
+       and a different one per section within a page. Patches only come from the
+       calm part of Cole's map (x 45 to 92%): the tight band down its left side
+       reads as stripes at this zoom. Half the pages mirror it. */
+    var path = location.pathname, h = 0;
+    for (var i = 0; i < path.length; i++) h = (h * 31 + path.charCodeAt(i)) >>> 0;
     var n = 0;
     [].slice.call((root || document).querySelectorAll('.lg-contour')).forEach(function (el) {
       n++;
       if (el.style.getPropertyValue('--cx')) return;
-      var g = 0.61803398875, x = (0.23 + n * g) % 1, y = (0.57 + n * g * 1.7) % 1;
-      el.style.setProperty('--cx', Math.round(10 + x * 80) + '%');
-      el.style.setProperty('--cy', Math.round(10 + y * 80) + '%');
-      el.style.setProperty('--cz', Math.round(170 + ((n * 37) % 60)) + '%');
+      var g = 0.61803398875, k = (h % 997) / 997 + n * g, x = k % 1, y = (k * 1.7 + 0.31) % 1;
+      el.style.setProperty('--cx', Math.round(45 + x * 47) + '%');
+      el.style.setProperty('--cy', Math.round(15 + y * 70) + '%');
+      el.style.setProperty('--cz', Math.round(170 + ((h + n * 37) % 60)) + '%');
+      if ((h >> n) & 1) el.classList.add('is-flip');
     });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { Lucky.contours(); });

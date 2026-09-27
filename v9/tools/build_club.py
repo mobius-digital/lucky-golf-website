@@ -156,6 +156,7 @@ def build(SRC, ROOT, fill, esc, js, stars5, key):
         "WHO": c["who"], "SPEC_HEAD": c["spechead"], "SPEC_LINE": c["specline"], "SPEC_NOTE": c["specnote"],
         "MON_LABEL": c["monlabel"], "MON_IMG": c["gallery"][0][0],
         "MON_STOCK": "In stock" if live else "Sold out",
+        "OUT": "" if live else " is-out",
         "MON_TILES": tiles, "SPEC_ROWS": rows, "PBAND": pband,
         "REVIEWS": block, "MORE": more,
         "SIGNLEDE": c["signlede"],

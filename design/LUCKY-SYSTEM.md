@@ -201,7 +201,7 @@ Change `lucky.css` / `lucky.js`, run `node tools/styleguide/build.cjs`, update t
 
 ## 15 · Swapping the contour base map
 
-**Swapped 2026-09-27:** the site now uses Cole's hand-made map (ChatGPT, dark lines on white). It sits behind the club pages' spec sheet and Home's "Priced honestly"; not behind the Our Story timeline, which is already busy. At the old 300% zoom the raster lines read about 4px thick, so the zoom is 170 to 230% (340% on phones) and the lines are faint. The generated SVG (`node tools/gen-contour-map.cjs`) stays as the fallback. To swap in a new one:
+**Swapped 2026-09-27:** the site now uses Cole's hand-made map (ChatGPT, dark lines on white). It sits behind the club pages' spec sheet only (the technical spot). Off Home's "Priced honestly" (the bunched band ran behind body text) and off the Our Story timeline (already busy). Each page shows its own patch (seeded by the page address, some mirrored), always from the calm right side of the map (x 45 to 92%), and the lines fade out at the section's top and bottom. At the old 300% zoom the raster lines read about 4px thick, so the zoom is 170 to 230% (340% on phones) and the lines are faint. The generated SVG (`node tools/gen-contour-map.cjs`) stays as the fallback. To swap in a new one:
 
 1. Save it as `design/img/contour-source.png`.
 2. `python tools/contour-from-image.py design/img/contour-source.png` makes `shopify/assets/lucky-contour-day.webp` (ink lines) and `-tw.webp` (cream lines) with a see-through background.
