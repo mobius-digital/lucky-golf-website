@@ -213,7 +213,7 @@ every web pixel sees it. Checkout events are unaffected: checkout isn't the them
 - **Back in stock + pre-order:** built into the theme (Klaviyo back in stock + a pre-order switch with Shopify Flow), replacing Notify Me. Move Notify Me's waitlist into Klaviyo before cancelling. PORT-NOTES "Sold out, back in stock and pre-order".
 - **Rivo (loyalty + referrals):** starting now. Switch on its app embed in the new theme and give it a spot (footer link + a rewards page); remember accounts are Shopify-hosted.
 - **Zipify:** no (not installed): drop its renders. **Replo:** in use until the new site is live.
-- **Search Console:** Cole will give access or an export (see section 2).
+- **Search Console:** baseline read 2026-09-27 from Cole's second Chrome: `v9/migration/seo-baseline-gsc.md`. **LGD01's page (/products/lucky-gold-driver-pre-order_) gets 12k impressions: 301 it to Havoc before it's drafted.**
 - **GWP at launch:** still to confirm.
 - **Apps:** full audit in `v9/migration/APP-AUDIT.md`. Cancel the replaced ones after launch; Cole answers the "ask" list.
 
