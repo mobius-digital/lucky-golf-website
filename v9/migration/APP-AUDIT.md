@@ -66,7 +66,7 @@ Shopify Claude Connector App, Shopify ChatGPT MCP App.
 
 | App | Decision |
 |---|---|
-| Notify Me! | **KEEP** (was on the cancel list). It already runs back in stock AND pre-order on the live store. Its Klaviyo integration is OFF (`has_contact_integration: false` on the product page), so sign-ups never reach Klaviyo: switch it on in Notify Me > Integrations. |
+| Notify Me! | **REPLACE with our own** (Cole: why pay $20/mo). New theme does back in stock through Klaviyo and pre-order through a product switch + Shopify Flow (PORT-NOTES). Export its pending waitlist into Klaviyo first, then cancel. Until then note its Klaviyo integration is OFF (`has_contact_integration: false`). |
 | ShipBob | not used: uninstall |
 | Stock Guard | Cole's old custom app, not used: uninstall |
 | Nitro Upsell | not used: uninstall |
@@ -81,3 +81,25 @@ Shopify Claude Connector App, Shopify ChatGPT MCP App.
 | Ryze AI | not used: uninstall |
 | Vibe, Air, Trybe UGC | in use: keep |
 | Lovable | AI landing pages: cancel after the new site is live |
+
+
+## Checked in Shopify admin before uninstalling (2026-09-27)
+
+Cole approved uninstalling ShipBob, Stock Guard, Nitro, Amazon Buy with Prime and Ryze.
+Each app's page showed what it's actually doing, so nothing was uninstalled:
+
+| App | What the admin shows | Call |
+|---|---|---|
+| ShipBob | edited ORDERS 19 minutes before the check | may be shipping orders: don't uninstall until Cole confirms who fulfills |
+| Amazon MCF + Buy with Prime | read products and orders yesterday; pixel connected | may be fulfilling some orders: confirm first |
+| Nitro Upsell & Cross Sell | this IS Ecomrise (app proxy /apps/ecomrise); changed the online store yesterday | active: not a leftover. Decide if its upsells stay |
+| Ryze AI | SEO app installed 6 days ago; edited products 4 days ago and the online store 6 days ago | someone is using it: ask before removing (it may have rewritten SEO titles) |
+| Stock Guard | no activity in 30 days, no billing | safe to uninstall |
+
+Uninstalling deletes the app's data, so Cole clicks Uninstall himself.
+
+Prices seen on the Apps page: Upcart $29.99 / 30 days + usage, Judge.me $15 / 30 days.
+Shopify bills (apps + fees) ran $204 to $556 a month in 2026.
+
+Admin alerts seen: "register and collect sales tax in 3 US states" (every two weeks
+since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).

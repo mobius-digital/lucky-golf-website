@@ -102,17 +102,30 @@ checkout and the account pages):
 - Optional later: a custom domain for accounts (account.luckygolf.com), like Takomo.
 The theme only needs its account icon pointing at routes.account_url.
 
-## Sold out, back in stock and pre-order (Cole, 2026-09-27)
+## Sold out, back in stock and pre-order (Cole, 2026-09-27): built in, no app
 
-One engine, three states, no theme edits to switch between them:
+Cole: "why keep an app we can do ourselves and pay $20 a month?" Right: the
+new theme does it with Klaviyo (already paid for) and Shopify's own tools.
+
 - **In stock:** the normal buy button.
-- **Sold out (automatic):** the moment a variant hits 0, the button becomes
-  "Tell me when it's back", powered by Notify Me! (email or SMS). Notify Me's
-  Klaviyo integration must be ON so every sign-up lands in Klaviyo with the
-  product, for segments and the back-in-stock flow.
-- **Pre-order (Cole flips it per product or variant in Notify Me):** the button
-  becomes "Pre-order, ships in {month}" and takes payment now; Notify Me tags the
-  order as a pre-order. The month comes from `custom.restock_date` (the same field
-  that shows "Back in October" on a sold-out variant).
-- Our product template styles Notify Me's button and form to match the site
-  (its app block / wrapper selector), instead of Notify Me injecting its own look.
+- **Sold out (automatic):** the moment a variant hits 0 the button becomes
+  "Tell me when it's back": an email (and optional SMS) field that subscribes
+  to **Klaviyo Back in Stock** (Klaviyo's client back-in-stock API, catalog
+  already synced from Shopify). Klaviyo's Back in Stock flow emails them when
+  inventory comes back, and every sign-up is a Klaviyo profile with the product,
+  so segments are native.
+- **Pre-order (one switch per product):** product metafield
+  `custom.sold_out_mode` = `notify` (default) or `preorder`. Setting it to
+  `preorder` makes a Shopify Flow run a "Send Admin API request"
+  (productVariantsBulkUpdate, inventoryPolicy CONTINUE) so the variant can be
+  bought at 0; the theme shows "Pre-order, ships in {month}" (month from
+  `custom.restock_date`) and adds a line-item property "Pre-order: ships {month}"
+  that shows in the cart, checkout and order email. A second Flow tags the order
+  `pre-order` (and holds fulfillment). Flipping back to `notify` sets the policy
+  back to DENY.
+- **Before cancelling Notify Me:** export its pending waitlist and import it into
+  Klaviyo (a list, then a one-time back-in-stock send when each item returns), so
+  nobody who signed up gets dropped. Cancel Notify Me only after that and after
+  the new buttons are tested live.
+- Full payment up front only. Deposits or partial payments would need an app
+  (selling plans); not needed today.

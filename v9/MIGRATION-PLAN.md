@@ -207,10 +207,10 @@ every web pixel sees it. Checkout events are unaffected: checkout isn't the them
 
 - **Fudge:** Fudge Agent, a landing page / AI theme app Cole installed. The four
   `[Fudge] Dev Theme` copies are its. Leave them; ask before removing the snippet.
-- **Ecomrise:** not used, and not even installed: remove its leftover embed.
+- **Ecomrise:** it's installed as "Nitro Upsell & Cross Sell" and was active yesterday. Keep its embed until Cole decides on its upsells.
 - **Alia:** yes, email popups. Keep its app embed on.
 - **GemPages:** no. **Best Custom Product Options:** no (not installed): drop its code.
-- **Back in stock + pre-order:** Notify Me! stays (it already does both on the live store). Switch on its Klaviyo integration (currently off). States and switching: PORT-NOTES "Sold out, back in stock and pre-order".
+- **Back in stock + pre-order:** built into the theme (Klaviyo back in stock + a pre-order switch with Shopify Flow), replacing Notify Me. Move Notify Me's waitlist into Klaviyo before cancelling. PORT-NOTES "Sold out, back in stock and pre-order".
 - **Rivo (loyalty + referrals):** starting now. Switch on its app embed in the new theme and give it a spot (footer link + a rewards page); remember accounts are Shopify-hosted.
 - **Zipify:** no (not installed): drop its renders. **Replo:** in use until the new site is live.
 - **Search Console:** Cole will give access or an export (see section 2).
