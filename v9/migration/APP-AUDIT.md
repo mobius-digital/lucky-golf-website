@@ -103,3 +103,10 @@ Shopify bills (apps + fees) ran $204 to $556 a month in 2026.
 
 Admin alerts seen: "register and collect sales tax in 3 US states" (every two weeks
 since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
+
+## Cole, 2026-09-27 (after the checks)
+
+- ShipBob: left long ago, a new 3PL ships now. Remove. Amazon MCF: fulfills nothing. Remove.
+  Nitro (Ecomrise), Ryze, Stock Guard: remove. Cole clicks Uninstall (it deletes app data).
+- Ryze wrote no SEO titles/descriptions: every product's SEO fields are still empty.
+- Gift cards now expire after 5 years (set in Settings > Payments > Gift card expiration, 2026-09-27), matching Takomo and the site copy.
