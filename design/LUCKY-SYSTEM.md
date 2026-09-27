@@ -99,7 +99,7 @@ All live in the styleguide. Classes to use:
 | Buttons | `.lg-btn` (foil) · `.lg-btn-line` (ghost) · `.lg-btn-sm` · `[data-done]` · `[data-busy]` + `.lg-sp` | Done state is ink |
 | Chips, tags | `.lg-chips` `.lg-chip[aria-pressed]` `[data-dead]` · `.lg-tag` `-gold` `-ok` | Dead = dashed and struck |
 | Swatch | `.lg-swatch` | Pick by picture |
-| Chrome | `.lg-tick` `.lg-hdr` `.lg-ftr` | Solid deep green |
+| Chrome | `.lg-tick` `.lg-hdr` `.lg-ftr` (`.lg-ftr-soc`: Instagram, TikTok, YouTube) | Solid deep green. TikTok is its official mark (Simple Icons): Lucide has no TikTok icon |
 | Photo hero | `.lg-hero` + `.lg-hero-img` + `.lg-hero-copy` · `.lg-hero.is-short` | Headline bottom-left. Short = a 380 to 480px banner for pages where what's under it is the point (Community, All reviews), the way Takomo runs theirs |
 | Photo band | `.lg-pband` (3 × 3:2) | Phones: one wide, two under |
 | Frame, split | `.lg-frame` (`.is-tall`) · `.lg-split` (`.is-flip`) | Text beside a photo |

@@ -155,6 +155,11 @@ def header():
 </header>'''
 
 
+# the live store's own social links (luckygolf.com footer, checked 2026-09-27)
+SOCIAL = {"ig": "https://www.instagram.com/luckygolfofficial/", "tt": "https://www.tiktok.com/@luckygolfofficial",
+          "yt": "https://www.youtube.com/@LuckyGolfOfficial"}
+
+
 def footer():
     return f'''<footer class="lg-ftr"><div class="lg-wrap">
   <div class="ftr-news">
@@ -167,7 +172,9 @@ def footer():
     <div><h3>Apparel</h3><ul><li><a href="polos.html">The Classic Polo</a></li><li><a href="polos.html">The Blade Polo</a></li><li><a href="hats.html">Hats</a></li><li><a href="gear.html">Gear</a></li></ul></div>
     <div><h3>Support</h3><ul><li><a href="faq.html#returns">Sixty-day returns</a></li><li><a href="faq.html#shipping">Shipping</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="community.html">Community</a></li><li><a href="giftcard.html">Gift cards</a></li><li><a href="story.html">Our Story</a></li><li><a href="compare.html">Lucky vs the big names</a></li></ul></div>
   </div>
-  <div class="lg-ftr-base"><span>&copy; 2026 Lucky Golf</span><span>It's better to be lucky.</span></div>
+  <div class="lg-ftr-base"><span>&copy; 2026 Lucky Golf</span>
+    <span class="lg-ftr-soc"><a href="{SOCIAL["ig"]}" target="_blank" rel="noopener" aria-label="Lucky Golf on Instagram">{icon("instagram")}</a><a href="{SOCIAL["tt"]}" target="_blank" rel="noopener" aria-label="Lucky Golf on TikTok">{icon("tiktok")}</a><a href="{SOCIAL["yt"]}" target="_blank" rel="noopener" aria-label="Lucky Golf on YouTube">{icon("youtube")}</a></span>
+    <span>It's better to be lucky.</span></div>
 </div></footer>'''
 
 
@@ -242,7 +249,7 @@ def fill(tpl, extra):
     tpl = re.sub(r"\{\{ICON:([a-z0-9-]+)\}\}", lambda m: icon(m.group(1)), tpl)
     base = {"HEAD": HEAD, "HEADER": header(), "FOOTER": footer(), "DRAWER": DRAWER, "SCRIPTS": scripts(), "STARS5": STARS5,
             # Cole owes us the handle; until then the button points at the profile page
-            "IG": "https://www.instagram.com/luckygolfofficial/"}
+            "IG": SOCIAL["ig"], "TT": SOCIAL["tt"]}
     base.update(extra)
     for k, v in base.items():
         tpl = tpl.replace("{{" + k + "}}", v)

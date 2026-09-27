@@ -282,6 +282,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-ftr{background:var(--lg-dark);color:var(--lg-on-dark);
   background-image:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 45%);
   padding-block:clamp(40px,4.4vw,64px)}
+/* footer socials: Instagram, TikTok, YouTube, in the base row between the copyright and the tagline */
+.lg-ftr-soc{display:inline-flex;gap:6px}
+.lg-ftr-soc a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;color:var(--lg-on-dark);opacity:.82}
+.lg-ftr-soc a:hover{opacity:1;background:rgba(244,243,240,.1)}
+.lg-ftr-soc .ic{width:20px;height:20px}
 .lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 .lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
   font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
@@ -289,7 +294,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
 .lg-ftr a:hover{text-decoration:underline;text-underline-offset:4px}
 .lg-ftr-base{margin-top:32px;padding-top:20px;border-top:1px solid var(--lg-rule-dark);
-  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;color:var(--lg-on-dark-m);font-size:var(--lg-fs-base)}
 
 /* ==========================================================================
    PHOTOGRAPHY · photos lead. Every page opens on one, and a photo beat comes
