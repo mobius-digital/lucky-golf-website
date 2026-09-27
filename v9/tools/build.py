@@ -59,7 +59,10 @@ PAGES = [
 # ------------------------------------------------------------------ images
 IMG_SOURCES = [os.path.join(ROOT, "v9", "src"), os.path.join(ROOT, "design", "img", "shoot-0918"), os.path.join(V8OUT, "img"), os.path.join(ROOT, "design", "sg")]
 EXTRA = {"lucky-contour-day.svg": os.path.join(ROOT, "shopify", "assets", "lucky-contour-day.svg"),
-         "lucky-contour-tw.svg": os.path.join(ROOT, "shopify", "assets", "lucky-contour-tw.svg")}
+         "lucky-contour-tw.svg": os.path.join(ROOT, "shopify", "assets", "lucky-contour-tw.svg"),
+         # Cole's hand-made base map (2026-09-27), via tools/contour-from-image.py
+         "lucky-contour-day.webp": os.path.join(ROOT, "shopify", "assets", "lucky-contour-day.webp"),
+         "lucky-contour-tw.webp": os.path.join(ROOT, "shopify", "assets", "lucky-contour-tw.webp")}
 
 
 def find_img(name):
@@ -197,7 +200,8 @@ HEAD = '''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="lucky.css">
-<link rel="stylesheet" href="site.css">'''
+<link rel="stylesheet" href="site.css">
+<style>:root{--lg-contour-day:url(img/lucky-contour-day.webp);--lg-contour-tw:url(img/lucky-contour-tw.webp)}</style>'''
 
 
 def scripts():

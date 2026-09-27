@@ -147,7 +147,7 @@ The golf instruments. They replaced the pinstripe. Each one reads a real number 
 | HUD strip `.lg-hud` | Product cards, cart lines | |
 | Review proximity A `.lg-prox` | Reviews blocks where people COMPARE (collection, product). Not the home page: nothing is being compared there, so the rating, the stars and the quotes do the job | Real Judge.me counts; average rounds down. `Lucky.proximity(el, {counts, nums:false, label})`: `nums:false` hides the per-star counts and the total (a count makes a young brand look smaller than it is), `label` replaces the caption, which defaults to "Every review takes a shot at the pin." The caption stays light and never claims one dot per review: the dots are SCALED (counts divided by `per`), so "every dot is a review" is not true. Only the inner and outer rings are labelled. It flips for a dark band on its own |
 | Tick ruler `.lg-ruler` | A divider when a section needs one | Quiet |
-| Contour map `.lg-contour` | **In the system (Sept 18).** One per page, behind a quiet section with no photo: the FAQ, "why the price", a spec block, the story timeline | ONE big map (`lucky-contour-day/tw.svg`, `node tools/gen-contour-map.cjs`); every use shows a different part (`--cx --cy --cz`, `.is-left`, `.is-flip`, or `Lucky.contours()` picks). Never behind text |
+| Contour map `.lg-contour` | **In the system (Sept 18).** One per page, behind a quiet section with no photo: the FAQ, "why the price", a spec block, the story timeline | ONE big map: Cole's hand-made base (2026-09-27, `design/img/contour-source.png` -> `lucky-contour-day/tw.webp` via `tools/contour-from-image.py`, lines at 16% ink / 18% cream, zoom 170 to 230%); every use shows a different part (`--cx --cy --cz`, `.is-left`, `.is-flip`, or `Lucky.contours()` picks). Never behind text |
 | Loft chart, dot matrix, terrain | Ads, technical pages, the app | Not shopping pages |
 
 ## 10 · Page recipes
@@ -201,7 +201,7 @@ Change `lucky.css` / `lucky.js`, run `node tools/styleguide/build.cjs`, update t
 
 ## 15 · Swapping the contour base map
 
-The current map is generated (`node tools/gen-contour-map.cjs`, SVG). Cole is making a hand-finished base in ChatGPT (dark lines on white, landscape, big). To swap it in:
+**Swapped 2026-09-27:** the site now uses Cole's hand-made map (ChatGPT, dark lines on white). It sits behind the club pages' spec sheet and Home's "Priced honestly"; not behind the Our Story timeline, which is already busy. At the old 300% zoom the raster lines read about 4px thick, so the zoom is 170 to 230% (340% on phones) and the lines are faint. The generated SVG (`node tools/gen-contour-map.cjs`) stays as the fallback. To swap in a new one:
 
 1. Save it as `design/img/contour-source.png`.
 2. `python tools/contour-from-image.py design/img/contour-source.png` makes `shopify/assets/lucky-contour-day.webp` (ink lines) and `-tw.webp` (cream lines) with a see-through background.

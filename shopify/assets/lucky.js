@@ -249,7 +249,7 @@
       var g = 0.61803398875, x = (0.23 + n * g) % 1, y = (0.57 + n * g * 1.7) % 1;
       el.style.setProperty('--cx', Math.round(10 + x * 80) + '%');
       el.style.setProperty('--cy', Math.round(10 + y * 80) + '%');
-      el.style.setProperty('--cz', Math.round(260 + ((n * 37) % 120)) + '%');
+      el.style.setProperty('--cz', Math.round(170 + ((n * 37) % 60)) + '%');
     });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { Lucky.contours(); });

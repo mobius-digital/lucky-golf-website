@@ -30,6 +30,6 @@ def paint(rgb, strength):
     layer.putalpha(a)
     return layer
 
-paint((23, 20, 15), .30).save(OUT + 'lucky-contour-day.webp', 'WEBP', quality=90, method=6)
-paint((244, 243, 240), .30).save(OUT + 'lucky-contour-tw.webp', 'WEBP', quality=90, method=6)
+paint((23, 20, 15), .16).save(OUT + 'lucky-contour-day.webp', 'WEBP', quality=90, method=6)
+paint((244, 243, 240), .18).save(OUT + 'lucky-contour-tw.webp', 'WEBP', quality=90, method=6)
 print('wrote', OUT + 'lucky-contour-day.webp', 'and -tw.webp', im.size)

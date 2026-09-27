@@ -731,11 +731,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-contour{position:relative;isolation:isolate;--lg-contour:var(--lg-contour-day)}
 [data-ground="twilight"] .lg-contour,.lg-contour[data-ground="twilight"]{--lg-contour:var(--lg-contour-tw)}
 .lg-contour::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,300%) auto no-repeat;
+  background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,190%) auto no-repeat;
   -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%);mask-image:linear-gradient(90deg,transparent 18%,#000 62%)}
 .lg-contour.is-left::before{-webkit-mask-image:linear-gradient(270deg,transparent 18%,#000 62%);mask-image:linear-gradient(270deg,transparent 18%,#000 62%)}
 .lg-contour.is-flip::before{transform:scaleX(-1)}
-@media (max-width:749px){.lg-contour::before{--cz:520%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
+@media (max-width:749px){.lg-contour::before{--cz:340%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
 
 /* ==========================================================================
    MOTION · mostly still. The vocabulary: the foil slides on hover, photos
@@ -848,7 +848,7 @@ body.is-frame .sg-bar{display:none}
 
 <div class="sg-phone" aria-label="Phone preview"><iframe id="sg-frame" title="The styleguide at phone width" loading="lazy"></iframe></div>
 
-<div class="lg-scope" id="sg" data-ground="day" style="--lg-contour-day:url(sg/lucky-contour-day.svg);--lg-contour-tw:url(sg/lucky-contour-tw.svg)">
+<div class="lg-scope" id="sg" data-ground="day" style="--lg-contour-day:url(sg/lucky-contour-day.webp);--lg-contour-tw:url(sg/lucky-contour-tw.webp)">
 
   <!-- chrome -->
   <div class="lg-tick"><div class="lg-tick-in">
@@ -1463,7 +1463,7 @@ body.is-frame .sg-bar{display:none}
       var g = 0.61803398875, x = (0.23 + n * g) % 1, y = (0.57 + n * g * 1.7) % 1;
       el.style.setProperty('--cx', Math.round(10 + x * 80) + '%');
       el.style.setProperty('--cy', Math.round(10 + y * 80) + '%');
-      el.style.setProperty('--cz', Math.round(260 + ((n * 37) % 120)) + '%');
+      el.style.setProperty('--cz', Math.round(170 + ((n * 37) % 60)) + '%');
     });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { Lucky.contours(); });

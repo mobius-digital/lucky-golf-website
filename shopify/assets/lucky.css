@@ -725,11 +725,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-contour{position:relative;isolation:isolate;--lg-contour:var(--lg-contour-day)}
 [data-ground="twilight"] .lg-contour,.lg-contour[data-ground="twilight"]{--lg-contour:var(--lg-contour-tw)}
 .lg-contour::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,300%) auto no-repeat;
+  background:var(--lg-contour) var(--cx,70%) var(--cy,40%)/var(--cz,190%) auto no-repeat;
   -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%);mask-image:linear-gradient(90deg,transparent 18%,#000 62%)}
 .lg-contour.is-left::before{-webkit-mask-image:linear-gradient(270deg,transparent 18%,#000 62%);mask-image:linear-gradient(270deg,transparent 18%,#000 62%)}
 .lg-contour.is-flip::before{transform:scaleX(-1)}
-@media (max-width:749px){.lg-contour::before{--cz:520%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
+@media (max-width:749px){.lg-contour::before{--cz:340%;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}
 
 /* ==========================================================================
    MOTION · mostly still. The vocabulary: the foil slides on hover, photos

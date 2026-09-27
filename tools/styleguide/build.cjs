@@ -28,8 +28,8 @@ const copies = {
   'mags-light.webp': 'handoff/img/mags-light.webp',
   'mags-bag-ink.webp': 'handoff/img/mags-bag-ink.webp',
   'mags-bag-light.webp': 'handoff/img/mags-bag-light.webp',
-  'lucky-contour-day.svg': 'shopify/assets/lucky-contour-day.svg',
-  'lucky-contour-tw.svg': 'shopify/assets/lucky-contour-tw.svg',
+  'lucky-contour-day.webp': 'shopify/assets/lucky-contour-day.webp',
+  'lucky-contour-tw.webp': 'shopify/assets/lucky-contour-tw.webp',
 };
 for (const [to, from] of Object.entries(copies)) fs.copyFileSync(path.join(ROOT, from), path.join(IMG, to));
 
