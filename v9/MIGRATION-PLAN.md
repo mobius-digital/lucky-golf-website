@@ -203,7 +203,20 @@ every web pixel sees it. Checkout events are unaffected: checkout isn't the them
 - **Day 30:** speed, rankings and conversion compared with the baselines, then
   the full SEO audit (keywords, content, internal links, the blog).
 
-## 9. Questions for Cole before building
+## 9. Cole's answers (2026-09-27)
+
+- **Fudge:** Fudge Agent, a landing page / AI theme app Cole installed. The four
+  `[Fudge] Dev Theme` copies are its. Leave them; ask before removing the snippet.
+- **Ecomrise:** not used, and not even installed: remove its leftover embed.
+- **Alia:** yes, email popups. Keep its app embed on.
+- **GemPages:** no. **Best Custom Product Options:** no (not installed): drop its code.
+- **Back in stock:** Klaviyo. "Tell me when it's back" feeds Klaviyo; Notify Me gets cancelled after launch.
+- **Zipify:** no (not installed): drop its renders. **Replo:** in use until the new site is live.
+- **Search Console:** Cole will give access or an export (see section 2).
+- **GWP at launch:** still to confirm.
+- **Apps:** full audit in `v9/migration/APP-AUDIT.md`. Cancel the replaced ones after launch; Cole answers the "ask" list.
+
+## 9b. The original questions
 
 1. What is Fudge (the `fudge-head-start` snippet and the four dev themes)?
 2. Are Ecomrise upsells, Alia, GemPages and the product-options app still in use?

@@ -340,6 +340,7 @@
  "giftcard": {
   "why": "Step 14 (2026-09-26): checked against Takomo's gift card page, then copy v10 on every line.",
   "added": [
+   "<b>Matched to Takomo (2026-09-27):</b> good for five years, usable across orders, no refunds or cash. Needs Shopify set the same way: Settings > Gift cards > expire after 5 years.",
    "<b>Your fixes (2026-09-26):</b> the last word ends \"you still get the thanks\", and its button is \"Send one\", which scrolls back up to the gift card form.",
    "<b>Takomo's page is plain:<\\/b> image, amount, add to cart, one line, then \"Others also viewed\". Our buy box already does more (the card updates as you pick, send it to someone on a date with a note), so it stays.",
    "<b>New: the quick answers<\\/b>: how it gets to them, what they can spend it on, checking the balance.",
