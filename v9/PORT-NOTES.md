@@ -101,3 +101,18 @@ checkout and the account pages):
 - Corners: match the site's rounded buttons and cards.
 - Optional later: a custom domain for accounts (account.luckygolf.com), like Takomo.
 The theme only needs its account icon pointing at routes.account_url.
+
+## Sold out, back in stock and pre-order (Cole, 2026-09-27)
+
+One engine, three states, no theme edits to switch between them:
+- **In stock:** the normal buy button.
+- **Sold out (automatic):** the moment a variant hits 0, the button becomes
+  "Tell me when it's back", powered by Notify Me! (email or SMS). Notify Me's
+  Klaviyo integration must be ON so every sign-up lands in Klaviyo with the
+  product, for segments and the back-in-stock flow.
+- **Pre-order (Cole flips it per product or variant in Notify Me):** the button
+  becomes "Pre-order, ships in {month}" and takes payment now; Notify Me tags the
+  order as a pre-order. The month comes from `custom.restock_date` (the same field
+  that shows "Back in October" on a sold-out variant).
+- Our product template styles Notify Me's button and form to match the site
+  (its app block / wrapper selector), instead of Notify Me injecting its own look.

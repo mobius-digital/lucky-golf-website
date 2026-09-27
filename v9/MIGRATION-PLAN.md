@@ -210,7 +210,8 @@ every web pixel sees it. Checkout events are unaffected: checkout isn't the them
 - **Ecomrise:** not used, and not even installed: remove its leftover embed.
 - **Alia:** yes, email popups. Keep its app embed on.
 - **GemPages:** no. **Best Custom Product Options:** no (not installed): drop its code.
-- **Back in stock:** Klaviyo. "Tell me when it's back" feeds Klaviyo; Notify Me gets cancelled after launch.
+- **Back in stock + pre-order:** Notify Me! stays (it already does both on the live store). Switch on its Klaviyo integration (currently off). States and switching: PORT-NOTES "Sold out, back in stock and pre-order".
+- **Rivo (loyalty + referrals):** starting now. Switch on its app embed in the new theme and give it a spot (footer link + a rewards page); remember accounts are Shopify-hosted.
 - **Zipify:** no (not installed): drop its renders. **Replo:** in use until the new site is live.
 - **Search Console:** Cole will give access or an export (see section 2).
 - **GWP at launch:** still to confirm.

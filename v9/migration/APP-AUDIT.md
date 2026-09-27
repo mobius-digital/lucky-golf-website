@@ -61,3 +61,23 @@ Shopify Claude Connector App, Shopify ChatGPT MCP App.
 - Ecomrise upsell bundle: app embed still in the theme, app not installed.
 - Best Custom Product Options (bcpo): scripts in theme.liquid, app not installed.
 - Zipify Pages: renders in theme.liquid, app not installed (Cole: no).
+
+## Decisions and findings (Cole + live check, 2026-09-27)
+
+| App | Decision |
+|---|---|
+| Notify Me! | **KEEP** (was on the cancel list). It already runs back in stock AND pre-order on the live store. Its Klaviyo integration is OFF (`has_contact_integration: false` on the product page), so sign-ups never reach Klaviyo: switch it on in Notify Me > Integrations. |
+| ShipBob | not used: uninstall |
+| Stock Guard | Cole's old custom app, not used: uninstall |
+| Nitro Upsell | not used: uninstall |
+| Parcel Panel | ACTIVE: tracking page at /apps/parcelpanel + a web pixel. Keep until we check where shipping emails link; decide after launch |
+| Rivo | starting now: keep; new theme needs its app embed + a rewards spot (see MIGRATION-PLAN) |
+| AvantLink | ACTIVE web pixel (merchant 1031441). Third-party affiliate network (publishers, deal sites), not the creator program. Keep only if its dashboard shows sales in the last 90 days |
+| Kickfurther | keep (financing, not the site) |
+| Amazon MCF + Buy with Prime | not used: uninstall (needs inventory at Amazon; revisit only if selling on Amazon) |
+| Afterpay On-Site Messaging | its "pay in 4" widget loads on product pages. Check Settings > Payments: if Afterpay isn't a payment method, uninstall (it's advertising something checkout doesn't offer) |
+| PostPilot | starting: keep |
+| Adveronix | sends ad data into Google Sheets for reporting. Cancel unless someone's report sheet feeds from it |
+| Ryze AI | not used: uninstall |
+| Vibe, Air, Trybe UGC | in use: keep |
+| Lovable | AI landing pages: cancel after the new site is live |
