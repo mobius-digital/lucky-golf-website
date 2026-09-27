@@ -110,3 +110,13 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   Nitro (Ecomrise), Ryze, Stock Guard: remove. Cole clicks Uninstall (it deletes app data).
 - Ryze wrote no SEO titles/descriptions: every product's SEO fields are still empty.
 - Gift cards now expire after 5 years (set in Settings > Payments > Gift card expiration, 2026-09-27), matching Takomo and the site copy.
+
+## Uninstalled 2026-09-27 (Cole's go-ahead, done in admin)
+
+- Stock Guard, Ryze AI, Nitro Upsell & Cross Sell (Ecomrise), Amazon MCF and Buy with Prime: uninstalled, each confirmed by Shopify's "successfully uninstalled" banner.
+- Amazon's own location ("Amazon Fulfillment") held 1 item at 0 stock, so "delete inventory stored at this location" changed nothing.
+- ShipBob: NOT yet. Its location "ShipBobFulfillment-205688" still records on hand (0 available):
+  LGW01-50-RH 7, LGW01-52-RH 3, LGW01-54-RH 1, LGW01-56-RH 2, LGW01-58-RH 1, LGW01-60-RH 1,
+  LGW02-52-RH 1, LGW02-56-RH 1, LGW02-52-LH 1, LGW02-56-LH 3, LGW02-60-LH 3, LGD01-Right 1 (25 wedges + 1 driver).
+  Uninstalling asks to delete or transfer these. Waiting on Cole: are units physically still at ShipBob?
+- The Nitro/Ecomrise app embed and the Amazon pixel are gone from the live theme with the apps; nothing else to strip for them in the move.
