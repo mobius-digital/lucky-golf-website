@@ -73,13 +73,14 @@ When the user provides reference copy from another brand (a Takomo ad, a Vice em
 
 ## Before you hand it back
 
-The voice lives in `references/how-we-write.md`. Its hard rules are not optional. Beyond those, check five things:
+The voice lives in `references/how-we-write.md`. Its hard rules are not optional. Beyond those, check six things:
 
 1. **Would the buddy say it out loud?** Pumped, loose, a little dumb. If it sounds like a brochure, a manual or a clever writer, redo it.
 2. **Is it hype or explanation?** "Grabs the ball and checks it up like it hit a wall" is hype. "It's micro-grooved, so it creates more friction" is a manual. Say the result with energy; don't walk through the mechanism.
 3. **Is the bit new?** One bit per product, done a different way from every other page on the site. Gold-gets-looks and big-names-charge-too-much are not the go-to joke.
-4. **Does it flow?** One opener, a hyped middle in sentences that join up, maybe a light close. Not a joke in every line, not a two-word kicker after every sentence, not a stack of fragments.
-5. **Is every fact in the Product Reference Guide?** If not, cut it or ask.
+4. **Does every joke land instantly?** If a reader has to stop and work it out, cut it.
+5. **Does it flow?** One opener, a hyped middle in sentences that join up, maybe a light close. Not a joke in every line, not a two-word kicker after every sentence, not a stack of fragments.
+6. **Is every fact in the Product Reference Guide?** If not, cut it or ask.
 
 The approved lines in the tone guide are calibration. Hear them, don't reuse them. "It's better to be lucky" is the tagline and only goes where a tagline belongs.
 
