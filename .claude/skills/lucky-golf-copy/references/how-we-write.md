@@ -28,7 +28,11 @@ If a joke needs explaining, cut it. Takomo's jokes land the second you read them
 
 Goofy beats clever. Takomo's lines sound tossed off. If a line sounds worked on, polished or poetic ("sits behind the ball like it was drawn there"), make it dumber ("looks sick at address").
 
-Uneven is fine. Clubs get a big bit. Polos, grips and covers can be nearly plain. Support pages are clear first, and a small joke only if it's free.
+Where jokes go. Three levels, like Takomo:
+Joke: the top product description, the "On the course" section, homepage sections, the 404.
+Light touch (a few words, not a bit): trust lines ("Not feeling it? Send it back."), section headings, small tile and cross-sell lines, FAQ intros.
+Straight: collection intros, spec tables, the comparison table, reviews (that's the customer talking, not us), return and shipping answers, sizing, cart and forms.
+Polos, grips and covers can be nearly plain even in their descriptions.
 
 Flow, don't stack. One joke to open, flowing excited sentences in the middle, maybe a light close. Five jokes in seven sentences reads like a stand-up set, not a guy telling you about his wedge.
 
