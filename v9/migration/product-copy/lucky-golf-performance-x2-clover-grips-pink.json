@@ -1,0 +1,18 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/6650116538439",
+   "title": "Tour Performance Clover Grips, pink",
+   "descriptionHtml": "<p>Tour velvet style, soft and tacky, in pink and the Lady size, which is the same grip in a smaller diameter.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Style: Tour velvet\", \"Size: Lady\"]"
+    }
+   ]
+  }
+ }
+}

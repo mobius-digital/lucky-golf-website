@@ -1,144 +1,68 @@
 LUCKY GOLF — HOW WE WRITE
 
-Version 10.0 · A short guide to Lucky's tone.
+Version 11.0 · How Lucky sounds.
 
-This is a tone guide, not a rulebook. It describes how Lucky sounds — not what to write, not how long to make it, not what structure to use. Those things depend on the piece. What doesn't depend on the piece is the voice.
+This is a voice, not a rulebook. Read it, then write like the guy it describes. Product facts live in the Product Reference Guide; never write a spec from memory.
 
-Product facts live in a separate document, the Product Reference Guide. Never write a spec from memory.
 Who Lucky is
-Lucky Golf builds equipment that performs at the level of the big brands and costs a fraction of what they charge. Forged wedges. CNC-milled putters. A titanium hybrid. A gold finish. Real materials, real performance, and prices set by people who chose not to pass along tour sponsorships and retail markups to the golfer.
+Lucky builds clubs that perform with the big names, look like nothing else in the bag, and cost a lot less because nobody in the middle takes a cut. Golf got stiff and expensive, and Lucky thinks that's ridiculous. We say so, with receipts: a real product, a real price, a real review.
 
-That's the brand: something better, priced fairly, from people who think golf got too serious and too expensive and aren't shy about saying so. Lucky has a point of view about the game — the stuffiness, the gatekeeping, the prices — and the copy is allowed to swing at it. What Lucky never does is posture without product behind the punch. Every swagger line hangs on something real: a gold club you can buy, a price you can check, a review a customer actually wrote. Attitude with receipts is Lucky. Attitude floating free is just noise.
 Who's talking
-Lucky talks like the golfer in your group who found something good and can't wait to tell you about it. He leads with how it plays, backs it up with the real spec, and saves the price for last. He says the spec, he doesn't explain it: "it's micro-grooved," never "tiny grooves milled between the main ones."
+The buddy in your group who just got a new club and can't shut up about it. He's pumped. He hypes it, he doesn't explain it. He gives his friends grief about their golf (the three-putt, the chunked chip, the ball in the water), never about their gear. He's a little dumb on purpose, he'd rather be funny than clever, and he's loud when he likes something.
 
-He thinks big-name prices are outrageous and says so. He never trashes their clubs or the people who bought them. Their clubs are good, which is why "same materials as the big names" works. The price is the problem.
+He says: "Fully milled, stupid soft, and it still rolls pure when you catch one off the toe."
+He never says: "It's fully milled, so it feels soft and quiet off the face, and it's easy to line up when you're standing over one that matters." That's a salesman walking you through a feature. Nobody talks like that.
 
-He gives his buddies grief about their golf, never their gear: the bunker, the water, the three-putt. He leans on the name when it's funny, not every time. He never explains a joke.
+How it sounds on a page
+Look at Takomo's product pages. That's the feel.
 
-The language is simple. Any golfer should understand it, whether they've played for thirty years or thirty days. No exclamation marks. No all-caps for emphasis.
-Where the personality goes
-The personality doesn't change from product to product. What it's about does. The gold Carver is the one people ask about. The black Carver was forged in darkness, and nobody sees it coming. Give each product one big, confident idea about what it is, the way the black Carver is "forged in darkness." A situation ("the club for that long second shot") isn't an idea, it's mild. Find what's true and fun about the product, say it big once, and let the rest be plain.
+One bit per product, done a different way every time. Takomo's wedge is a cocktail recipe. Their driving iron tells you to walk your old hybrid out back and shoot it. Their glove was worn by Thor. Their bag is "Yeah, it's a bag." Ours: the Carver 02 Gold is everyone's lucky something, the Carver 02 Black is a heist movie, the Mallet is a support group for missed four-footers, the Blade is the buddy who tells you the truth, the Stryker throws your 4-iron a retirement party. Never the same joke twice on the site.
 
-Most pieces have one spot where the personality lands: an opening line, a headline, a closer, a section title. It's often near the top, but it goes wherever it fits, and some pieces don't need one. Everything else is confident copy with energy: strong claims, strong verbs, the occasional aside, each feature with what it does, in sentences that join up. It sounds like someone happy to be telling you about this. Not a joke in every line, but never flat: "keeps the stroke steady" is flat, "cuts through the rough like it isn't there" has energy. A bit in every sentence sounds like someone trying too hard. Specs crammed into one breath sound like a datasheet.
+Commit to the bit. Play it out for a line or two, then get on with the club. A tidy two-word kicker tacked on the end of every sentence ("Use responsibly." "You're welcome.") is not a bit, it's a tic.
 
-On a page or a long email, think about the whole piece, not each section. It has one big moment, where the product's idea lives, and that idea gets said once. Around it, the personality shows up as small asides: a few words inside an otherwise straight line, the way Takomo drops "New swing not included" above a spec table or "If it breaks, we'll cover it" next to the warranty. Their product pages carry a handful of those, spread out. That's the feel to aim for: sprinkled, not stacked.
+The middle is hype, not explanation. After the opener, say what the club does like you love it: "grabs the ball and checks it up like it hit a wall," "gets the ball up in a hurry," "your putting stats have no idea what's coming." Real facts, said with energy. Not "it's X, so it does Y" on every feature.
 
-What tips it over is a section built around a joke, two bits in the same section, or the big idea coming back in a second section. What makes it go flat is no asides at all, so every line reads like a label. Headings stay mostly straight, and straight still says something ("Find your loft," not "Specs"). Explain any one feature in no more than two places.
+Jokes come from anywhere. Golf (the group chat, the sandbagger, dew sweepers, the bet you're paying up on), life (the sunburn, the bad hair day, the drive home), and the name: luck, superstitions, the ball marker you won't retire, the socks you won't wash. Gold and price are allowed, but they're not the go-to. If the joke is "it's gold, people will look" or "the big names charge too much," find another one.
 
-Before you hand it back, read the whole thing top to bottom and ask whether it feels like Takomo's pages: human all the way through, but only loud once.
+Goofy beats clever. Takomo's lines sound tossed off. If a line sounds worked on, polished or poetic ("sits behind the ball like it was drawn there"), make it dumber ("looks sick at address").
 
-Headlines and subheads can be clean, confident statements. Specific beats chatty: "none of the tour markup" lands, "costs a lot less" sounds soft.
-Approved descriptions (2026-09-23)
-Use these to calibrate. Don't reuse the phrases.
+Uneven is fine. Clubs get a big bit. Polos, grips and covers can be nearly plain. Support pages are clear first, and a small joke only if it's free.
 
-Carver 02 Gold: Fair warning: this thing spins, so your first few chips might stop shorter than you're used to. It's forged, so it feels buttery off the face, and it's forgiving enough that the mishits still behave. The micro-grooves and sandblasted face are doing the work. And yes, it's gold. People will ask.
+Flow, don't stack. One joke to open, flowing excited sentences in the middle, maybe a light close. Five jokes in seven sentences reads like a stand-up set, not a guy telling you about his wedge.
 
-Carver 02 Black: Forged in darkness, lives in the shadows, and nobody sees it coming until it checks up by the pin. The black Carver is built for the player who wants consistency and craftsmanship without announcing it the second it comes out of the bag. With a forged head and a micro-grooved, sandblasted face, the Carver 02 Black delivers serious spin and a consistent feel shot after shot.
+The current site, as calibration (2026-09-29)
+Don't reuse these lines. Hear them.
 
-Stryker: Your 4-iron's retirement plan. The Stryker is a titanium hybrid that launches high and easy from the fairway, the rough and anywhere else you end up. The Flex Channel face keeps the ball flying on the strikes you don't catch pure, and the Glide Sole cuts through the rough like it isn't there. Long approaches just got a lot less scary.
+Carver 02 Gold: Every golfer has a lucky something: a ball marker, a broken tee they won't throw out, socks that haven't been washed since the club championship. This one actually spins. It's forged 1020, buttery off the face, and the micro-grooved, sandblasted face grabs the ball and checks it up like it hit a wall. Six lofts from 50 to 60, one for every shot inside 100. We make the wedge. The luck's on you.
 
-Cole on the Stryker: "You found the energy... it sounds like you're happier conversating." That energy in the body copy is the thing most drafts miss.
-Takomo
-Takomo is the closest brand to us and the one to learn from. Take how their pages are laid out: one fun spot, and energetic, confident copy around it ("performance dialed up to 11," "your ultimate cheat code"). Never take their sentence shapes. If a Lucky line reads like a Takomo line with the words swapped, rewrite it.
-What Lucky sounds like
-The tone stays the same across everything Lucky writes. What changes is the shape — a description flows longer than an ad, a subject line lands in a few words, a caption sits on one line. Same voice, different shapes.
+Eclipse Mallet: Welcome to the meeting. Everybody here has missed a four-footer, and the Eclipse Mallet is how you stop coming back. It's fully milled, stupid soft off the face, and it still rolls pure when you catch one off the toe. That big head is dead simple to line up, and it's gold all over. Your putting stats have no idea what's coming.
 
-An email opener
+Stryker: Time to throw the 4-iron a retirement party. It had a good run. Okay, mostly a bad run, but it showed up. The Stryker takes it from here: a titanium head that gets the ball up in a hurry, and a Glide Sole that goes through thick rough without grabbing. Long approaches go from "please just get it on" to "where's the pin?" The 4-iron gets a gold watch. You get a gold hybrid.
 
-The short game is where rounds are decided, and where most golfers quietly lose them. The Carver is built for the golfer who's tired of blaming the swing when the real issue is the club.
+Before and after
+Explaining → hyping. Before: "It's fully milled, so it feels soft and quiet off the face, and it's easy to line up." After: "Fully milled, stupid soft, and it still rolls pure when you catch one off the toe."
+Stacked → flowing. Before: "Welcome to the meeting. Everybody in this room has missed a four-footer. Some of us twice in one round." (three setups, no club). After: one opener, then the club.
+Clever → goofy. Before: "Nobody has to know which one it was." After: "We won't ask which."
+Flat → alive. Before: "The forged wedge, blacked out." After: "Your buddies won't clock it until they're paying up on the bet."
 
-The feel: Talks to the reader before it talks about the product. Honest, a little dry, doesn't strain to be clever. The confidence lives in the claim, not in the phrasing.
+The approved Our Story lines (2026-08-25)
+"Golf has a dress code. Ours is gold." "Great clubs got too expensive. We took it personally." "Ten ways to keep the sun off while you take someone's money." Attitude with receipts is Lucky. Attitude floating free is noise.
 
-A social caption
-
-Made the clubs first. Priced them second. In that order.
-
-The feel: Three short beats. Same voice as everything above, just compressed. This works because a caption has one job — make someone stop scrolling.
-
-A subject line
-
-Your 4-iron had a good run.
-
-The feel: Sentence case, one idea, a little cocky. Pair it with a preview line that finishes the thought ("The Stryker takes it from here."). Most subject lines should be plainer than this one and name the product.
-
-A tooltip
-
-Micro-grooved face — grabs the ball on the way up.
-
-Reads clean at address.
-
-Deep center of gravity.
-
-The feel: A tooltip can be a spec paired with a warm or punchy outcome, a benefit stated on its own with no anchor, or a bare fact sitting flat. All three are Lucky. Mix them across an ad — a set of tooltips where every one plays the same shape reads flat, even when each line is fine on its own. What isn't Lucky is a spec sitting alone doing no work, or a stack of specs listed as proof.
-
-Notice how different each of these looks. Long, short, question, statement — same voice, different shapes. Lucky's tone travels; the structure adjusts to whatever the piece needs.
-What Lucky doesn't sound like
-Lucky doesn't sound like a spec sheet. Specs themselves aren't the problem. The problem is when they get stacked as proof — several in a row, no voice, no work being done. That reads as datasheet, not copy. A spec earns its place in Lucky writing when it's doing a job: paired with what it delivers, or serving as the plainspoken punch of the line itself. If a spec is just sitting there being technical, it doesn't belong. If it's carrying the line or building the claim, it does.
-
-Lucky doesn't reach for clever. It lands. Playfulness that has to be explained isn't playful, it's straining. If a line needs the reader to work to get the joke, it's not Lucky. The best playful lines feel obvious in hindsight — like anyone could have written them, but no one did. Reaching happens when the writer is trying to prove something. Landing happens when they're just describing what's true and letting the twist come naturally.
-
-Lucky doesn't sound choppy in long-form. Descriptions, emails, and articles read as flow — sentences connect, ideas link, a paragraph feels like a paragraph. Fragments and parallel beats are the shape of short-form: ads, captions, tooltips, subject lines. Both are Lucky. What breaks the voice is fragments where flow belongs — a description written as staccato beats, a paragraph broken into short lines. That reads like a brochure that got cut up to look edgy.
-
-Lucky doesn't sound like it's pressuring anyone. The guy talking is excited about his gear, not pushing it. Enthusiasm is Lucky. Pressure isn't.
-On facts
-Every product fact in Lucky's copy comes from the Product Reference Guide. Every spec, every material, every construction claim, every loft count, every price. If you're about to write a number, an alloy, a construction detail, or a lineup — open the reference guide first. Never write a spec from memory. It changes, and the tone guide can't chase it.
-
-The Product Reference Guide also carries CTA options for each club family. A piece of Lucky copy doesn't need a CTA to be complete. But when a piece calls for a callout, the reference guide is where the options live.
-The approved model
-Cole signed off on the Our Story page on 2026-08-25 with: "You finally found a voice, personality, etc. That is consistent across this entire page." That page is the reference. When a line is in doubt, hold it against these.
-
-The two legs. Every Lucky argument stands on one of two things, and there is no third.
-
-One: you're not overpaying. Same materials as the big names, same engineering, minus tour contracts and retail rent, sold direct. Two: your clubs don't look like everyone else's. Gold if you want people to ask, black if you'd rather they notice up close, and real craftsmanship either way. Golf got stiff. We didn't.
-
-Fun and fair is the thesis, and it's for every golfer, from the first-timer to the one who plays every Saturday. If a line would sit unchanged on a competitor's site, it is wrong for us.
-
-The approved lines, verbatim from the page:
-
-"Golf has a dress code. Ours is gold."
-
-"Great clubs got too expensive. We took it personally."
-
-"Same steel as the big names. Different math."
-
-"Is gold subtle? Not even a little. That's the point. You only get so many Saturdays, and none of them should be spent blending in."
-
-"Ten ways to keep the sun off while you take someone's money."
-
-What those have in common: each one swings, and each one lands on something you can check — a real product, a real price, a thing that happened. That is the test. Attitude with receipts is Lucky. Attitude floating free is noise.
-
-The failure mode to write against. Cole, same session: "I hate whenever we say a statement and then we say another statement after that." The flat double-statement is one plain sentence followed by another plain sentence with nobody home between them — "Eight years, in order" is the killed example. It is what a "no fight" filter produces, and v7.1-7.3 produced a site full of it. A plain sentence is fine. Two plain sentences stacked to sound weighty is not.
-
-Hard rules, from the same session:
-
-Never use the founder's name. Not in brand copy, not in a pulled review, nowhere on the site. A customer review that names him is disqualified from being quoted.
-
-Trust claims are real or vague, never invented. "Thousands of happy golfers" and "60-day test drive" are approved vague shapes. A real, checkable number (a Judge.me rating, a review count, a Shopify order count) is allowed as of 2026-09-23. A number nobody can check, and anything like "zero tour pros paid," is not.
-
-No process vocabulary in brand copy. Photo briefs, placeholder notes, editorial decisions, and anything describing how the site was made stay in the JSON's underscore keys. A page never narrates its own construction.
-
-No competitor named. "The big names" is the phrase.
-
-No invented numbers. No price, percentage or multiplier that isn't in the Product Reference Guide. "Charge triple" was killed for exactly this.
+Hard rules
+No em dashes. No exclamation marks. No all-caps for emphasis.
+Never name a competitor; say "the big names." Never trash their clubs or the people who bought them. The price is the problem, not the gear.
+No invented numbers, prices, percentages or proof. Real Judge.me or Shopify numbers are fine.
+Never say a loft, size or color costs the same or doesn't cost extra.
+Never use the founder's name.
+Never call out which hand a club is for; the picker handles it.
+Banned words: premium, cheap, luxury, revolutionary. Never "milled from a single block" or "one block of"; say "fully milled."
+Never list product categories in copy meant to last ("wedges, putters and a hybrid").
+No process talk on the page: nothing that describes the layout or how the site was made.
+Don't copy Takomo's jokes or signature moves word for word. Copy how they feel.
 
 The bar
-If a piece of Lucky copy sounds like a person talking to a golfer who already knows the game, it's landing. If it sounds like an ad, if it sounds like a brochure, if it sounds like it's straining — start over.
+Read it out loud. If it sounds like a buddy who's pumped about his new club, it's done. If it sounds like a brochure, a manual, or a writer being clever, start over.
 
 Lucky Golf — It's Better to Be Lucky.
 
-Last updated: September 2026 · v10.0
-
-v10.0 (2026-09-23, from a one-question-at-a-time interview with Cole) — replaces "How Lucky sounds" and "The range" with "Who's talking" and "Where the personality goes": one person, same personality on every product, what changes is the subject. Adds the two approved Carver descriptions and the Takomo rule. Cuts the price-first ad and the calm mallet description, the "doesn't try to sell" framing, and two Our Story lines ("call it innovation" says the big names' tech is fake; "not that serious about ourselves" is the wrong frame). Rewrites leg two so it holds for black and chrome, and drops "Access is somebody else's" (Lucky brings new golfers in too). Product names follow the live store: Carver 02 Gold, Carver 02 Black; "the Shadow" is the black Carver's character in copy, not its name. v9 was drafted and reverted on 2026-09-22 and is skipped to avoid confusion.
-
-v8.1 — adds "The approved model": the lines Cole signed off on 2026-08-25, the two legs of the argument, and the hard rules (no founder name, vague trust claims, no process vocabulary in brand copy). This section is the reference for the site-wide re-pass.
-
-v8.0 — reverses v7.1's bold ruling, per Cole (2026-08-25), tested against Takomo's story page: attitude toward golf's stuffiness, gatekeeping and prices IS Lucky, and the guide was killing it. The failure mode was never attitude; it was attitude without receipts, and the flat double-statement the old rule produced instead. Rewrites 'Who Lucky is' to give the brand its point of view back.
-
-v7.3 — expands the tooltip example to model three shapes: anchored pair with warm/punchy outcome, pure benefit with no anchor, and bare fact stated flat. Uses different specs across the examples so no pairing gets held up as canonical. Adds a paragraph to "The range" section naming that range applies within a set, not just across pieces — a batch of copy where every line plays the same shape reads flat.
-
-v7.2 — rewrites the "spec sheet" paragraph so it doesn't over-flag specs. Specs aren't the failure mode; stacking them as proof is. Principle-first rewrite, no locked example specs or benefits.
-
-v7.1 — adds a bold-specific paragraph inside "The range" section. Names the two failure modes that showed up when v7 was tested against bold-headline prompts: combative/defiant framing and metaphorical/wordplay framing. Neither is Lucky. Bold in Lucky is plainspoken with more energy, not a different type of copy.
-
-v7 — adds a "range" section naming Lucky's dynamic range across bold, plainspoken, and quiet volumes so the voice isn't defaulted to quiet by omission. Adds a tooltip example under "What Lucky sounds like." Adds a "reach vs. land" rule against straining for clever, the primary failure mode. Qualifies the fragments rule so it applies to long-form only and doesn't flag short-form work. Strips product facts (loft counts, spec claims) that belong in the Product Reference Guide.
+v11.0 (2026-09-29): rewritten after Cole's review of the full site copy. The rules-heavy v10 produced copy that fit rules instead of talking: a twist on every block, "so" payoffs on every feature, the same two jokes (gold, price) everywhere, and careful explaining where Takomo hypes. Cut: the aside budget, "second sentences must turn", the contraction count, the one-big-moment quota, and the ban on Takomo's rhythm. Added: one bit per product done a different way, hype over explanation, jokes from anywhere, goofy over clever, and the current club pages as calibration.

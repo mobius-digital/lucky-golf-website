@@ -1,0 +1,9 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9503755174165",
+   "descriptionHtml": "<p>A small-flower print named for the week in April every golfer circles on the calendar. It works the other fifty-one weeks too.</p>"
+  }
+ }
+}

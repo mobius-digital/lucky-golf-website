@@ -1,0 +1,17 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9153692795157",
+   "descriptionHtml": "<p>Shaped for a mallet head, white with the clover. The Eclipse Mallet ships without a cover, and a mallet's the one that takes the most bag chatter.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Fits: Mallet putters\", \"Hand: Right and left\"]"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9503754027285",
+   "descriptionHtml": "<p>A tonal swirl through white with a blade collar, so there's nothing at your throat. Goes with everything in your bag.</p>"
+  }
+ }
+}

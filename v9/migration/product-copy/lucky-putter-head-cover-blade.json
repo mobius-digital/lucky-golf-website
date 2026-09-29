@@ -1,0 +1,17 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/6545729093703",
+   "descriptionHtml": "<p>Cut for a blade head, white with the clover on it. The Eclipse Blade ships without a cover, and this keeps the face off your irons.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Fits: Blade putters\", \"Color: White, green clover\"]"
+    }
+   ]
+  }
+ }
+}

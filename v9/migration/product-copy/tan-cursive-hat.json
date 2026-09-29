@@ -1,0 +1,9 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9574804652309",
+   "descriptionHtml": "<p>Tan with the script across the front. Easy on the eyes, and it calms down the loud prints.</p>"
+  }
+ }
+}

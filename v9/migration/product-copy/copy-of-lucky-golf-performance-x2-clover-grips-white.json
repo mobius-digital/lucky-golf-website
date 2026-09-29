@@ -1,0 +1,18 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/6650115489863",
+   "title": "Tour Performance Clover Grips, white",
+   "descriptionHtml": "<p>Tour velvet style, soft and tacky, with the clover on it. Midsize and Jumbo cost a little more because there's more rubber in them.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Style: Tour velvet\", \"Sizes: Standard, Midsize, Jumbo\"]"
+    }
+   ]
+  }
+ }
+}

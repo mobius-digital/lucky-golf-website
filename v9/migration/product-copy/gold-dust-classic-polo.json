@@ -1,0 +1,9 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9497048383765",
+   "descriptionHtml": "<p>White with gold flecked all through it and a gold collar. Wear it with the Carver and go full matching set. We won't judge.</p>"
+  }
+ }
+}

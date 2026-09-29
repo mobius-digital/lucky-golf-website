@@ -3,7 +3,7 @@ Version 1.0 · What the specs mean for the golfer.
 
 
 How to use this guide
-This guide bridges Lucky Golf's product specs to what the golfer actually experiences. Its job is understanding, not copy templates. When you write about a Lucky spec, use this guide to understand what the spec delivers, then write in Lucky's voice from that understanding. Do not paste phrases from this document into copy.
+This guide bridges Lucky Golf's product specs to what the golfer actually experiences. Its job is understanding, not copy templates. In copy, don't walk the reader through the mechanism ("it's X, so it does Y"). Know what the spec does, then hype the result like a golfer would. When you write about a Lucky spec, use this guide to understand what the spec delivers, then write in Lucky's voice from that understanding. Do not paste phrases from this document into copy.
 
 Factual specs live in the Product Reference Guide. Voice and register live in How We Write. Product-specific language rules and CTAs live in Product Language Rules. Golf-culture vocabulary lives in the Golf-Culture Reference.
 

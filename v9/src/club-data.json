@@ -7,7 +7,7 @@
   "metal": "",
   "eyebrow": "Fully milled putter · LGP01",
   "atc": "Put it in the bag",
-  "lede": "Set it down behind the ball and it just looks right. It's fully milled from 431 stainless, so the strike feels solid and muted, with no ring and no buzz, and you'll know exactly where you caught it. It stays planted all the way through the stroke, and it's gold from heel to toe.",
+  "lede": "Every group has one buddy who tells you the truth, and the Eclipse Blade is that buddy in putter form. Fully milled from 431 stainless, it's butter when you middle it, and on the ones you don't, it lets you know exactly where you caught it. It looks sick at address, stays planted through the stroke, and it's gold from heel to toe.",
   "gallery": [
    [
     "blade-cut.webp",
@@ -48,14 +48,14 @@
    "eyebrow": "On the green",
    "head": "The putter that tells you the <span class=\"lg-foil-word\">truth</span>",
    "body": [
-    "Fully milled with no insert, so what you feel at impact is the metal itself. Middle one and it's soft and solid. Miss the middle and you'll feel exactly where, which is how a stroke gets better."
+    "No insert, nothing hiding. Middle one and it feels like nothing at all. Miss it and you'll feel exactly where, which stings for about a week, and then your stroke gets a whole lot better."
    ]
   },
   "film": [
    "The film",
    "16:9, 40 to 60 seconds. The head milled, then three putts rolled: a short one, a breaker, a long lag. Sound on for the strike."
   ],
-  "specline": "One loft, one length and a gold finish.",
+  "specline": "3.5 degrees at 35 inches. Pick it up and go putt.",
   "specnote": "Same loft and length as the Mallet. The head shape is the difference.",
   "monlabel": "Eclipse Blade · LGP01",
   "tiles": [
@@ -208,7 +208,7 @@
   "signlede": "Tell them it's your lucky putter.",
   "signcta": "Tell me when it's back",
   "spechead": "One loft. One length. Nothing to fit.",
-  "who": "Golfers who want to feel every putt. A fully milled blade tells you exactly where you struck it."
+  "who": "Golfers who like their feedback honest and their putter gold."
  },
  "mallet": {
   "pid": "lgp02-gold",
@@ -218,7 +218,7 @@
   "metal": "",
   "eyebrow": "Fully milled putter · LGP02",
   "atc": "Put it in the bag",
-  "lede": "Line it up and let it go. It's fully milled from 304 stainless, and the mallet head spreads its weight out, so a putt you don't middle still holds its line. Soft and muted at impact, gold all over, and easy to look down at when the putt actually matters.",
+  "lede": "Welcome to the meeting. Everybody here has missed a four-footer, and the Eclipse Mallet is how you stop coming back. It's fully milled, stupid soft off the face, and it still rolls pure when you catch one off the toe. That big head is dead simple to line up, and it's gold all over. Your putting stats have no idea what's coming.",
   "gallery": [
    [
     "mallet-full-cut.webp",
@@ -259,14 +259,14 @@
    "eyebrow": "On the green",
    "head": "Miss the middle. Make it <span class=\"lg-foil-word\">anyway.</span>",
    "body": [
-    "The mallet shape pushes weight out toward the edges of the head, so a strike off the toe or heel stays on line instead of leaking away. Same fully milled build as the Blade, with more head behind the ball."
+    "Toe it, heel it, whatever. The head's built wide, so the ones you don't hit dead center still hold their line instead of leaking off. Same fully milled build as the Blade, just a lot more putter behind the ball."
    ]
   },
   "film": [
    "The film",
    "16:9, 40 to 60 seconds. Head from above, alignment at address, then three putts: center, toe, heel, all holding the line."
   ],
-  "specline": "One loft, one length and a gold finish.",
+  "specline": "3.5 degrees at 35 inches, and a head you could line up in your sleep.",
   "specnote": "Same loft and length as the Blade. The head shape is the difference.",
   "monlabel": "Eclipse Mallet · LGP02",
   "tiles": [
@@ -419,7 +419,7 @@
   "signlede": "Tell them it's your lucky putter.",
   "signcta": "Pick a hand",
   "spechead": "One loft. One length. Nothing to fit.",
-  "who": "Golfers who want the misses to stay on line. If you've ever lost a four-footer off the toe, start here."
+  "who": "Golfers who want the misses to stay on line. So, basically everybody."
  },
  "stryker": {
   "pid": "lgh01",
@@ -470,14 +470,14 @@
    "eyebrow": "On the course",
    "head": "Hit it from <span class=\"lg-foil-word\">anywhere.</span>",
    "body": [
-    "It takes the long iron's job and makes it easy. The titanium head and Flex Channel face keep the ball flying on the strikes you don't catch pure, and the Glide Sole gets through the rough instead of snagging."
+    "Time to throw the 4-iron a retirement party. It had a good run. Okay, mostly a bad run, but it showed up. The Stryker takes it from here, and it gets the ball up in a hurry from lies that used to mean a punch-out. That long carry over the bunker goes from \"please just get it on\" to \"where's the pin?\" The old iron gets a gold watch. You get a gold hybrid."
    ]
   },
   "film": [
    "The film",
    "16:9, 40 to 60 seconds. Address view, face detail, then three shots: off the deck, out of the rough, and off a tee on a long par three."
   ],
-  "specline": "One loft, one length and a stiff shaft.",
+  "specline": "Stiff shaft, 40.5 inches, done.",
   "specnote": "Nineteen degrees sits where a 3-iron or a 5-wood would.",
   "monlabel": "Stryker · LGH01",
   "tiles": [
@@ -630,6 +630,6 @@
   "signlede": "Tell them it's your lucky hybrid.",
   "signcta": "Pick a hand",
   "spechead": "Nineteen degrees. No fitting appointment required.",
-  "who": "Anyone who'd rather not hit a long iron. If your 3-iron only comes out on the range, this is its replacement."
+  "who": "Anyone who'd rather not hit a long iron, which is most of us."
  }
 }

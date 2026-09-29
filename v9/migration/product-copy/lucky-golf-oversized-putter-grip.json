@@ -1,0 +1,18 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/6611924090951",
+   "title": "Green Oversized Putter Grip",
+   "descriptionHtml": "<p>An oversized putter grip in four thicknesses. Bigger quiets the hands in the stroke, which is the whole reason people go oversized.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Sizes: 1.0, 2.0, 3.0, 5.0\"]"
+    }
+   ]
+  }
+ }
+}

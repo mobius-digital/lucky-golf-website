@@ -1,0 +1,9 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9574702907669",
+   "descriptionHtml": "<p>White, with the wordmark in gold across the front. It goes with every polo in the rack.</p>"
+  }
+ }
+}

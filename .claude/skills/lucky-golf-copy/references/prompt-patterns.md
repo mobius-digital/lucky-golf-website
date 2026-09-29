@@ -80,7 +80,7 @@ When writing several variants, change the hook and the register each time. A bat
 - **Panel sequence:** one beat per frame across a carousel or story.
 - **Primary text, Meta headline, description:** the text around the ad, not in it. See "Meta copy" below.
 
-**In-creative copy is short, and one spot carries the personality.** Takomo's best ads (checked 2026-09-23) keep the headline plain and put the wink in the subline or the last callout. Same budget as a web page.
+**In-creative copy is short.** Takomo's best ads (checked 2026-09-23) often keep the headline plain and put the wink in the subline or the last callout. That's a pattern, not a quota.
 
 **Approved creatives (2026-09-23).** These show the parts and registers in practice. They aren't templates to reuse:
 
@@ -297,7 +297,7 @@ Specific and confident beats chatty. Never list product categories in a hero ("w
 
 **What to allow:** Different registers per section on the same page. The description can flow. The specs table stays tight. The story can be a paragraph. The features can be tight callouts. It's not inconsistent — it's a page doing its job.
 
-**Section titles, one budget per page:** one big moment, one light touch, and the rest straight. If every title is a bit, the page is trying too hard. Straight still says something ("Find your loft"); it never just labels the block ("Specs").
+**Section titles:** say something ("Find your loft", "Stick it close. Leave no evidence."), never just label the block ("Specs"). Some can be bits, some straight. No quota; read the page top to bottom and make sure it isn't a joke in every heading.
 
 **Approved set (Carver 02 Gold, 2026-09-23).** This shows the budget in practice. It isn't a template to reuse:
 - Description: *Soft off the face, nasty on the spin.* (the big one)

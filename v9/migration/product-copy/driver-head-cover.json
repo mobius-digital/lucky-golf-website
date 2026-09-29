@@ -1,0 +1,17 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/8107856724245",
+   "descriptionHtml": "<p>White with the stripes and the clover. It fits a driver or a fairway wood, and the top of the bag stops looking like a rental.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Fits: Driver and fairway woods\", \"Color: White, green stripes\"]"
+    }
+   ]
+  }
+ }
+}

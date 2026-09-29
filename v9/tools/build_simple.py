@@ -30,7 +30,7 @@ GEAR_COPY = {   # copy v10, 2026-09-24
         "sign": ("", "Tell them it's your lucky head cover.")},
     "glove-tour": {
         "eyebrow": "Glove",
-        "desc": "The clover on the back of the hand, in four sizes. Pick the size you already wear, and if you're between two, go down: a glove stretches and never shrinks back.",
+        "desc": "Cabretta leather, stupid soft, with the clover stitched on the wrist strap. Rip the strap open loud enough that the group ahead hears it, then grip it like you mean it. Pairs well with a lucky ball marker and a questionable pre-shot routine. Get the size you already wear, and if you're between two, go down: a glove stretches and never shrinks back.",
         "note": "Cabretta leather, with the clover embroidered on the wrist strap.",
         "facts": [["Hands", "Left (for right-handed golfers) and right"], ["Sizes", "S, M, L, XL"]],
         "sign": ("", "Tell them it's your lucky glove.")},

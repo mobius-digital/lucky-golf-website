@@ -507,11 +507,11 @@ def build_gear():
 
 HAT_COPY = {   # copy v10, 2026-09-24
     "hat-white-gold-classic": "White, with the wordmark in gold across the front. It goes with every polo in the rack.",
-    "hat-white-ibtbl": "The line we put on everything, on a white patch hat. If somebody asks what it means, you've already won the conversation.",
+    "hat-white-ibtbl": "The line we put on everything, on a white patch hat. Wear it the day you three-putt and see if anybody buys it.",
     "hat-cream-updown": "Cream, with the wordmark flipped. People notice it a beat later than they expect to.",
-    "hat-black-ibtbl": "Black, with the line on a patch across the front. The joke, minus the brightness.",
+    "hat-black-ibtbl": "Black, with the line on a patch across the front. Same words, darker mood. Built for the back nine after a double.",
     "hat-tan-cursive": "Tan with the script across the front. Easy on the eyes, and it calms down the loud prints.",
-    "hat-black-gold-classic": "Black with the wordmark in gold. The Carver 02 Black of hats.",
+    "hat-black-gold-classic": "Black with the wordmark in gold. Goes with the black Carver like they planned it.",
     "hat-white-black-updown": "White crown, black brim, wordmark upside down. All the contrast without going to a black hat.",
     "hat-white-updown": "All white, wordmark flipped. Clean from the front, and it keeps the sun off just the same.",
     "hat-white-cursive": "White with the script in black. The easiest one here to wear off the course.",
@@ -545,33 +545,30 @@ def build_hat(pid):
     return run
 
 
-ARTICLES = [
-    # the real articles on the live blog, newest first (pulled 2026-09-20)
-    ("Mastering your putt: the power of a well-crafted putting routine", "mastering-your-putt", "", "", ""),
-    ("How to improve your golf game according to the pros", "how-to-improve", "12 May 2023", "art-scorecard.webp",
-     "Golf is a challenging game, and also one of the most rewarding. A little practice, a little dedication, and some tips from people who do it for a living."),
-    ("The top 10 golf shots you can hit using a wedge", "top-10-wedge-shots", "6 May 2023", "art-daniel-berger.webp",
-     "If you want to take your game to the next level, start with the shots inside a hundred yards."),
-    ("Are your wedges forged?", "are-your-wedges-forged", "3 May 2023", "art-forged-factory.webp",
-     "Forged or cast: the choice most golfers never get explained, and why it changes the feel and the price."),
-    ("Golf is a mental game", "golf-is-a-mental-game", "27 April 2023", "art-mental-game.webp",
-     "Focus, discipline and a steady head. The part of the game you can't buy your way out of."),
-    ("Why golf wedges are the most important club in your bag", "most-important-club", "19 November 2022", "art-most-important.webp",
-     "You hit more shots inside a hundred yards than anywhere else on the course. Spend accordingly."),
-    ("Golf.com proves why a lucky charm is necessary on the course", "lucky-charm", "16 June 2021", "art-lucky-charm.webp",
-     "Somebody with a press pass finally said what we've been saying since 2018."),
-    ("Why we have the best golf wedges for under $100", "best-under-100", "24 March 2021", "art-under-100.webp",
-     "Same steel as the big names, none of the markup. Here's the math."),
-    ("MrShortGame reviews Lucky wedges", "mrshortgame-review", "8 October 2019", "art-mrshortgame.webp",
-     "Somebody who tests wedges for a living put ours on camera."),
-    ("Use your Lucky wedge to get out of a deep bunker lie", "deep-bunker-lie", "18 March 2019", "", ""),
-    ("Using your Lucky wedge from the rough", "from-the-rough", "18 November 2018", "art-rough-tip.webp",
-     "How to get through thick grass without the chili dip."),
-    ("The dreaded chili dip", "chili-dip", "9 November 2018", "art-chili-dip.webp",
-     "Everybody has hit one. Here's why it happens, and the drill that stops it."),
-    ("Welcome to Lucky", "welcome-to-lucky", "4 November 2018", "art-welcome.webp",
-     "One gold wedge, built right, priced honestly. This is where it starts."),
-]
+def load_articles():
+    """The fourteen articles on the live blog (handle "news"), rewritten 2026-09-27.
+    One file per article in v9/src/articles/<live handle>.html: a JSON header
+    in the first comment, then the body that sits under the hero photo."""
+    d = os.path.join(SRC, "articles")
+    out = []
+    for f in os.listdir(d):
+        if not f.endswith(".html"):
+            continue
+        raw = open(os.path.join(d, f), encoding="utf-8").read()
+        m = re.match(r"\s*<!--meta\s*(\{.*?\})\s*-->\s*(.*)$", raw, re.S)
+        a = json.loads(m.group(1))
+        a["handle"], a["body"] = f[:-5], m.group(2).strip()
+        out.append(a)
+    # newest first; the unpublished draft (no date) sits at the top, as on the store
+    out.sort(key=lambda a: a.get("iso") or "9999", reverse=True)
+    return out
+
+
+ARTICLES = load_articles()
+
+
+def art_href(a):
+    return "article-" + a["handle"] + ".html"
 
 
 def usdate(d):
@@ -582,32 +579,44 @@ def usdate(d):
 
 def build_blog():
     """The blog index, built off the fourteen articles actually on the store."""
-    lead = ARTICLES[3]   # the forged one is the piece worth leading with
+    lead = [a for a in ARTICLES if a["handle"] == "are-your-wedges-forged"][0]   # the piece worth leading with
     rest = [a for a in ARTICLES if a is not lead]
     lead_html = (
-        f'<a class="lead" href="article.html">'
-        f'<figure><img src="img/{lead[3]}" alt="{esc(lead[0])}" width="1024" height="1024"></figure>'
-        f'<div><p class="lg-eyebrow">Latest</p><h2 class="lg-d2">{esc(lead[0])}</h2>'
-        f'<p class="lg-body">{esc(lead[4])}</p>'
-        f'<p class="meta" style="margin-top:14px">{usdate(lead[2])}</p>'
+        f'<a class="lead" href="{art_href(lead)}">'
+        f'<figure><img src="img/{lead["img"]}" alt="{esc(lead["title"])}" width="1024" height="1024"></figure>'
+        f'<div><p class="lg-eyebrow">Latest</p><h2 class="lg-d2">{esc(lead["title"])}</h2>'
+        f'<p class="lg-body">{esc(lead["sub"])}</p>'
+        f'<p class="meta" style="margin-top:14px">{lead.get("date", "")}</p>'
         f'<span class="lg-link" style="margin-top:10px;display:inline-block">Read it <span>&rarr;</span></span></div></a>')
     posts = ""
-    for title, slug, date, img, sub in rest:
-        href = "article.html" if slug == "are-your-wedges-forged" else "blog.html"
-        pic = (f'<figure><img src="img/{img}" alt="{esc(title)}" loading="lazy"></figure>' if img
-               else '<figure><span class="noimg">Lucky</span></figure>')
-        posts += (f'<a class="post" href="{href}">{pic}<h3>{esc(title)}</h3>'
-                  + (f'<p>{esc(sub)}</p>' if sub else "")
-                  + (f'<p class="meta" style="margin-top:10px">{usdate(date)}</p>' if date else "") + "</a>")
+    for a in rest:
+        pic = f'<figure><img src="img/{a["img"]}" alt="{esc(a["title"])}" loading="lazy"></figure>'
+        posts += (f'<a class="post" href="{art_href(a)}">{pic}<h3>{esc(a["title"])}</h3>'
+                  + f'<p>{esc(a["sub"])}</p>'
+                  + (f'<p class="meta" style="margin-top:10px">{a["date"]}</p>' if a.get("date") else "") + "</a>")
     return fill(open(os.path.join(SRC, "blog.html"), encoding="utf-8").read(), {"LEAD": lead_html, "POSTS": posts})
 
 
-def build_article():
-    more = "".join(
-        f'<a class="mp" href="blog.html"><figure><img src="img/{img}" alt="" loading="lazy"></figure>'
-        f'<b>{esc(title)}</b></a>'
-        for title, slug, date, img, sub in ARTICLES[4:7])
-    return fill(open(os.path.join(SRC, "article.html"), encoding="utf-8").read(), {"MORE": more})
+def build_article(handle="are-your-wedges-forged"):
+    def run():
+        me = [a for a in ARTICLES if a["handle"] == handle][0]
+        i = ARTICLES.index(me)
+        others = [a for a in ARTICLES[i + 1:] + ARTICLES[:i]][:3]
+        more = "".join(
+            f'<a class="mp" href="{art_href(a)}"><figure><img src="img/{a["img"]}" alt="" loading="lazy"></figure>'
+            f'<b>{esc(a["title"])}</b></a>' for a in others)
+        faq = "".join(
+            f'<details class="lg-fq"{" open" if n == 0 else ""}><summary>{q}</summary><div class="lg-fq-a"><p>{ans}</p></div></details>'
+            for n, (q, ans) in enumerate(me["faq"]))
+        body = ((f'<p class="meta"><span>{me["date"]}</span></p>\n' if me.get("date") else "")
+                + f'<h1 class="lg-d1">{me["h1"]}</h1>\n<p class="lg-lede">{me["lede"]}</p>\n</div>\n\n'
+                + f'<figure class="hero"><img src="img/{me["img"]}" alt="{esc(me["alt"])}" width="1024" height="1024"></figure>\n\n'
+                + '<div class="art">\n' + me["body"] + '\n\n<h2>Quick answers</h2>\n<div class="lg-faq">' + faq + '</div>')
+        s = me["signoff"]
+        return fill(open(os.path.join(SRC, "article.html"), encoding="utf-8").read(), {
+            "TITLE": esc(me["title"]), "DESC": esc(me["sub"]), "CRUMB": esc(me.get("crumb", me["title"])), "BODY": body,
+            "MORE": more, "SIGN_H": s["h"], "SIGN_LEDE": s["lede"], "SIGN_HREF": s["href"], "SIGN_BTN": s["btn"]})
+    return run
 
 
 COLLECTIONS = {
@@ -957,7 +966,7 @@ BUILDERS = {"carver": build_carver("gold"), "home": build_home, "clubs": build_c
             "giftcard-view": build_giftcard_view, "order": build_simple("order.html"),
             "addresses": build_simple("addresses.html"), "policy": build_simple("policy.html"),
             "login": build_simple("login.html"),
-            "collection-accessories": build_collection("accessories"), "article": build_article, "hat": build_hat("hat-white-gold-classic"), "story": build_story, "compare": build_compare, "search": build_search,
+            "collection-accessories": build_collection("accessories"), "article": build_article(), "hat": build_hat("hat-white-gold-classic"), "story": build_story, "compare": build_compare, "search": build_search,
             "faq": build_simple("faq.html"), "trybe": build_simple("trybe.html"),
             "cart": build_simple("cart.html"), "404": build_simple("404.html"),
             "contact": build_simple("contact.html"),
@@ -992,6 +1001,9 @@ def main():
             continue
         BUILDERS["gear:" + g["id"]] = build_gear_product(g["id"])
         extra_pages.append({"key": "gear:" + g["id"], "file": "gear-" + g["id"] + ".html"})
+    for a in ARTICLES:
+        BUILDERS["article:" + a["handle"]] = build_article(a["handle"])
+        extra_pages.append({"key": "article:" + a["handle"], "file": art_href(a)})
     POLOS = livedata.polos(SRC)
     for x in POLOS:
         if x["name"] == "Azalea":

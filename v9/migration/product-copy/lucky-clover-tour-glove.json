@@ -1,0 +1,17 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/4956017885255",
+   "descriptionHtml": "<p>Cabretta leather, stupid soft, with the clover stitched on the wrist strap. Rip the strap open loud enough that the group ahead hears it, then grip it like you mean it. Pairs well with a lucky ball marker and a questionable pre-shot routine. Get the size you already wear, and if you're between two, go down: a glove stretches and never shrinks back.</p><p>Cabretta leather, with the clover embroidered on the wrist strap.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Hands: Left (for right-handed golfers) and right\", \"Sizes: S, M, L, XL\"]"
+    }
+   ]
+  }
+ }
+}

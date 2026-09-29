@@ -1,0 +1,18 @@
+{
+ "query": "mutation($product: ProductUpdateInput!){ productUpdate(product: $product){ product{ id handle title } userErrors{ field message } } }",
+ "variables": {
+  "product": {
+   "id": "gid://shopify/Product/9139813777685",
+   "title": "Stock Putter Grip",
+   "descriptionHtml": "<p>The grip that comes on an Eclipse, sold on its own, for when yours has worn smooth and you want it back the way it arrived.</p>",
+   "metafields": [
+    {
+     "namespace": "custom",
+     "key": "facts",
+     "type": "list.single_line_text_field",
+     "value": "[\"Fits: Eclipse Blade and Mallet\", \"Size: Stock\"]"
+    }
+   ]
+  }
+ }
+}
