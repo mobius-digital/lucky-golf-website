@@ -33,6 +33,7 @@ Joke: the top product description, the "On the course" section, homepage section
 Light touch (a few words, not a bit): trust lines ("Not feeling it? Send it back."), section headings, small tile and cross-sell lines, FAQ intros.
 Straight: collection intros, spec tables, the comparison table, reviews (that's the customer talking, not us), return and shipping answers, sizing, cart and forms.
 Polos, grips and covers can be nearly plain even in their descriptions.
+The sign-off: "It's better to be lucky." closes the page. The small line under it is written for that page ("Your 4-iron will understand." "Four-footers, you've been warned."), never one line with the product name swapped in.
 
 Flow, don't stack. One joke to open, flowing excited sentences in the middle, maybe a light close. Five jokes in seven sentences reads like a stand-up set, not a guy telling you about his wedge.
 
