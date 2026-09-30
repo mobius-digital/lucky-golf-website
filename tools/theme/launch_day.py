@@ -30,7 +30,7 @@ HATS = ["white-gold-classic-hat", "white-its-better-to-be-lucky-patch-hat", "cre
         "black-gold-classic-lucky-hat", "white-black-upside-down-hat", "white-upside-down-hat", "white-cursive-hat", "baby-blue-cursive-hat"]
 GEAR = ["lucky-clover-tour-glove", "lucky-putter-head-cover-blade", "copy-of-lucky-golf-clover-grips-green", "lucky-golf-oversized-putter-grip",
         "lucky-golf-clovers-oversized-putter-grip", "lucky-golf-performance-x2-clover-grips-black", "copy-of-lucky-golf-performance-x2-clover-grips-white",
-        "lucky-golf-performance-x2-clover-grips-blue", "lucky-golf-performance-x2-clover-grips-pink", "lucky-golf-tees", "driver-head-cover",
+        "lucky-golf-performance-x2-clover-grips-blue", "lucky-golf-performance-x2-clover-grips-pink", "driver-head-cover",
         "stock-putter-grips", "lucky-putter-head-cover-mallet-large"]
 CLUB_TPL = {"lucky-golf-lgw02-gold": "club-carver-gold", "lucky-golf-lgw02-black": "club-carver-black", "signature-gold-putters": "club-blade",
             "limited-edition-mallet-putter": "club-mallet", "lucky-striker-hybrid-limited-edition": "club-stryker"}  # own editable templates (2026-09-30)
