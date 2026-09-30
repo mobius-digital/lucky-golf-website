@@ -1,0 +1,1009 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "colors_solid_button_labels": "#1f1f21",
+    "colors_accent_1": "#ffd700",
+    "gradient_accent_1": "",
+    "colors_accent_2": "#ffffff",
+    "gradient_accent_2": "",
+    "colors_text": "#1f1f21",
+    "colors_outline_button_labels": "#ffd700",
+    "colors_background_1": "#ffffff",
+    "gradient_background_1": "",
+    "colors_background_2": "#ffffff",
+    "gradient_background_2": "",
+    "type_header_font": "poppins_n5",
+    "heading_scale": 140,
+    "type_body_font": "poppins_n3",
+    "body_scale": 100,
+    "page_width": 1600,
+    "spacing_sections": 52,
+    "spacing_grid_horizontal": 40,
+    "spacing_grid_vertical": 40,
+    "buttons_border_thickness": 1,
+    "buttons_border_opacity": 100,
+    "buttons_radius": 4,
+    "buttons_shadow_opacity": 0,
+    "buttons_shadow_horizontal_offset": 0,
+    "buttons_shadow_vertical_offset": 4,
+    "buttons_shadow_blur": 5,
+    "variant_pills_border_thickness": 1,
+    "variant_pills_border_opacity": 55,
+    "variant_pills_radius": 0,
+    "variant_pills_shadow_opacity": 0,
+    "variant_pills_shadow_horizontal_offset": 0,
+    "variant_pills_shadow_vertical_offset": 4,
+    "variant_pills_shadow_blur": 5,
+    "inputs_border_thickness": 1,
+    "inputs_border_opacity": 55,
+    "inputs_radius": 0,
+    "inputs_shadow_opacity": 0,
+    "inputs_shadow_horizontal_offset": 0,
+    "inputs_shadow_vertical_offset": 4,
+    "inputs_shadow_blur": 5,
+    "card_style": "card",
+    "card_image_padding": 0,
+    "card_text_alignment": "left",
+    "card_color_scheme": "background-2",
+    "card_border_thickness": 0,
+    "card_border_opacity": 10,
+    "card_corner_radius": 4,
+    "card_shadow_opacity": 0,
+    "card_shadow_horizontal_offset": 0,
+    "card_shadow_vertical_offset": 4,
+    "card_shadow_blur": 5,
+    "collection_card_corner_radius": 4,
+    "blog_card_corner_radius": 4,
+    "text_boxes_border_thickness": 0,
+    "text_boxes_border_opacity": 10,
+    "text_boxes_radius": 4,
+    "text_boxes_shadow_opacity": 0,
+    "text_boxes_shadow_horizontal_offset": 0,
+    "text_boxes_shadow_vertical_offset": 4,
+    "text_boxes_shadow_blur": 5,
+    "media_border_thickness": 0,
+    "media_border_opacity": 10,
+    "media_radius": 4,
+    "media_shadow_opacity": 0,
+    "media_shadow_horizontal_offset": 0,
+    "media_shadow_vertical_offset": 4,
+    "media_shadow_blur": 5,
+    "popup_border_thickness": 1,
+    "popup_border_opacity": 10,
+    "popup_corner_radius": 4,
+    "popup_shadow_opacity": 0,
+    "popup_shadow_horizontal_offset": 0,
+    "popup_shadow_vertical_offset": 4,
+    "popup_shadow_blur": 5,
+    "drawer_border_thickness": 1,
+    "drawer_border_opacity": 10,
+    "drawer_shadow_opacity": 0,
+    "drawer_shadow_horizontal_offset": 0,
+    "drawer_shadow_vertical_offset": 4,
+    "drawer_shadow_blur": 5,
+    "badge_position": "bottom left",
+    "badge_corner_radius": 4,
+    "sale_badge_color_scheme": "accent-2",
+    "sold_out_badge_color_scheme": "background-1",
+    "accent_icons": "text",
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https://www.instagram.com/luckygolfofficial/",
+    "social_tiktok_link": "https://www.tiktok.com/@luckygolfofficial",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "https://www.youtube.com/@LuckyGolfOfficial",
+    "social_vimeo_link": "",
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "favicon": "shopify://shop_images/New_Project-58.png",
+    "currency_code_enabled": false,
+    "checkout_accent_color": "#ffd700",
+    "checkout_body_background_color": "#000000",
+    "checkout_button_color": "#ffd700",
+    "checkout_input_background_color_mode": "transparent",
+    "checkout_logo_image": "shopify://shop_images/FFF_LUCKYGOLF_LO_02_f313658d-9dc1-40f3-a919-1121523a5bf1.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_sidebar_background_color": "#000000",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement_YAQ4WV": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "🏌️‍♂️",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
+          "announcement-bar-0": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "🔥 Black Friday Deals Are Live 🔥",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": "shopify://pages/black-friday"
+            }
+          },
+          "announcement_MRhr3W": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "🪙 30% OFF Lucky CLUBS 🪙",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": "shopify://pages/black-friday"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_YAQ4WV",
+          "announcement-bar-0",
+          "announcement_MRhr3W"
+        ],
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "custom_css": [
+          ".header__heading-link {color: green !important;}"
+        ],
+        "settings": {
+          "color_scheme": "background-2",
+          "logo": "shopify://shop_images/FFF_LUCKYGOLF_LO_02_f313658d-9dc1-40f3-a919-1121523a5bf1.png",
+          "logo_width": 180,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "menu_type_desktop": "mega",
+          "show_line_separator": true,
+          "enable_sticky_header": true,
+          "mobile_logo_position": "center",
+          "margin_bottom": 0,
+          "padding_top": 20,
+          "padding_bottom": 20
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "link-list": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Help",
+              "menu": "footer"
+            }
+          },
+          "link_list_X4nJyr": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Information",
+              "menu": "footer-menu-information"
+            }
+          },
+          "link_list_MWFXRj": {
+            "type": "link_list",
+            "settings": {
+              "heading": "About",
+              "menu": "footer-menu-about-1"
+            }
+          }
+        },
+        "block_order": [
+          "link-list",
+          "link_list_X4nJyr",
+          "link_list_MWFXRj"
+        ],
+        "settings": {
+          "color_scheme": "inverse",
+          "newsletter_enable": true,
+          "newsletter_heading": "",
+          "show_social": true,
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": false,
+          "margin_top": 0,
+          "padding_top": 40,
+          "padding_bottom": 40
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo_max_width": 100,
+          "color_scheme": "background-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+      "lg-hero": {
+        "type": "lg-hero",
+        "settings": {
+          "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+          "focus_x": 42,
+          "focus_y": 55,
+          "focus_mx": 38,
+          "focus_my": 55,
+          "eyebrow": "It's better to be lucky",
+          "heading": "Get used to the <em>attention</em>",
+          "heading_tag": "h1",
+          "lede": "Big-name performance, finished in gold and shipped straight from us to your bag. Honestly, it's a little unfair.",
+          "btn_label": "Shop the clubs",
+          "btn_url": "#families",
+          "stamp": "Carver 02 · Gold or black",
+          "stamp_b": "Six lofts · K and S grind"
+        }
+      },
+      "lg-trust": {
+        "type": "lg-trust",
+        "settings": {},
+        "blocks": {
+          "t1": {
+            "type": "rating",
+            "settings": {
+              "products": [
+                "lucky-golf-lgw02-gold",
+                "lucky-golf-lgw02-black",
+                "signature-gold-putters",
+                "limited-edition-mallet-putter",
+                "lucky-striker-hybrid-limited-edition"
+              ],
+              "text": "[avg] stars from [count] verified reviews",
+              "url": "/pages/reviews"
+            }
+          },
+          "t2": {
+            "type": "item",
+            "settings": {
+              "icon": "truck",
+              "text": "Free shipping on $198 and up",
+              "url": "/pages/faq-lucky-wedges#shipping"
+            }
+          },
+          "t3": {
+            "type": "item",
+            "settings": {
+              "icon": "rotate-ccw",
+              "text": "Sixty days to prove us wrong",
+              "url": "/pages/faq-lucky-wedges#returns"
+            }
+          }
+        },
+        "block_order": [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      },
+      "lg-cards": {
+        "type": "lg-cards",
+        "settings": {
+          "anchor": "families",
+          "eyebrow": "The clubs",
+          "heading": "Pick your <em>club</em>",
+          "heading_tag": "h2",
+          "link_label": "See every club",
+          "link_url": "shopify://collections/lucky-golf-clubs",
+          "cols": "5",
+          "big": true
+        },
+        "blocks": {
+          "c1": {
+            "type": "card",
+            "settings": {
+              "product": "lucky-golf-lgw02-gold",
+              "line": "Forged, spins like crazy, and your buddies will try to borrow it.",
+              "vibe": "Buttery",
+              "tag": "Best seller",
+              "cut": true
+            }
+          },
+          "c2": {
+            "type": "card",
+            "settings": {
+              "product": "lucky-golf-lgw02-black",
+              "line": "All the spin. None of the spotlight.",
+              "vibe": "Filthy",
+              "cut": true
+            }
+          },
+          "c3": {
+            "type": "card",
+            "settings": {
+              "product": "signature-gold-putters",
+              "line": "Fully milled, and it tells you where you hit it.",
+              "vibe": "Pure",
+              "cut": true
+            }
+          },
+          "c4": {
+            "type": "card",
+            "settings": {
+              "product": "limited-edition-mallet-putter",
+              "line": "Big head, soft face, gold all over.",
+              "vibe": "Smooth",
+              "cut": true
+            }
+          },
+          "c5": {
+            "type": "card",
+            "settings": {
+              "product": "lucky-striker-hybrid-limited-edition",
+              "line": "Gets it up from lies your 4-iron wants no part of.",
+              "vibe": "Flush",
+              "cut": true
+            }
+          }
+        },
+        "block_order": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ]
+      },
+      "lg-split": {
+        "type": "lg-split",
+        "settings": {
+          "image": "shopify://shop_images/lg-black-hat-mallet.webp",
+          "flip": true,
+          "feat": true,
+          "no_top": true,
+          "eyebrow": "On the green",
+          "heading": "Quiet off the face. Loud in the <em>bag.</em>",
+          "heading_tag": "h2",
+          "body": "<p>Catch one off the toe and it still holds its line. Fully milled, soft as anything, and gold all over. Four-footers just got a lot less interesting.</p>",
+          "btn_label": "See the Mallet",
+          "btn_url": "shopify://products/limited-edition-mallet-putter",
+          "link_label": "Prefer a blade?",
+          "link_url": "shopify://products/signature-gold-putters",
+          "stamp": "Eclipse Mallet · 304 stainless · $229"
+        }
+      },
+      "lg-claims": {
+        "type": "lg-claims",
+        "settings": {
+          "anchor": "why",
+          "rule": true,
+          "eyebrow": "Priced honestly",
+          "heading": "You're paying for the <em>club.</em> That's it.",
+          "lede": "",
+          "link_label": "See the side by side",
+          "link_url": "/pages/compare"
+        },
+        "blocks": {
+          "k1": {
+            "type": "claim",
+            "settings": {
+              "title": "Sold direct",
+              "text": "No distributor, no store, nobody in the middle taking a cut. It goes from us to your front door."
+            }
+          },
+          "k2": {
+            "type": "claim",
+            "settings": {
+              "title": "No tour contracts",
+              "text": "We don't pay anybody to carry our clubs on TV, so you're not paying for it either."
+            }
+          },
+          "k3": {
+            "type": "claim",
+            "settings": {
+              "title": "Where the money goes",
+              "text": "Into the forging, the milling and the gold. The stuff you actually swing."
+            }
+          }
+        },
+        "block_order": [
+          "k1",
+          "k2",
+          "k3"
+        ]
+      },
+      "lg-finder": {
+        "type": "lg-finder",
+        "settings": {
+          "anchor": "finder",
+          "no_top": true,
+          "eyebrow": "Club finder",
+          "heading": "Where's the round getting away from <em>you?</em>",
+          "heading_tag": "h2",
+          "sub": "",
+          "chips_label": "What to fix",
+          "foot_label": "See every club",
+          "foot_url": "#families"
+        },
+        "blocks": {
+          "f1": {
+            "type": "tab",
+            "settings": {
+              "label": "Around the green",
+              "p1": "lucky-golf-lgw02-gold",
+              "l1": "Pick the K or the S, depending on how you like to chip.",
+              "p2": "lucky-golf-lgw02-black",
+              "l2": "The K grind, blacked out.",
+              "c2": true
+            }
+          },
+          "f2": {
+            "type": "tab",
+            "settings": {
+              "label": "On the green",
+              "p1": "limited-edition-mallet-putter",
+              "l1": "For anybody done handing back four-footers.",
+              "p2": "signature-gold-putters",
+              "l2": "Tells you exactly where you hit it, whether you wanted to know or not."
+            }
+          },
+          "f3": {
+            "type": "tab",
+            "settings": {
+              "label": "The long ones",
+              "p1": "lucky-striker-hybrid-limited-edition",
+              "l1": "For the long one that has to end up on the green, not near it."
+            }
+          },
+          "f4": {
+            "type": "tab",
+            "settings": {
+              "label": "Just the gold one",
+              "p1": "lucky-golf-lgw02-gold",
+              "l1": "Six lofts, two grinds, one very shiny wedge.",
+              "c1": true,
+              "t1": "Best seller",
+              "p2": "limited-edition-mallet-putter",
+              "l2": "Fully milled and gold. Tap-ins deserve a little drama.",
+              "c2": true
+            }
+          }
+        },
+        "block_order": [
+          "f1",
+          "f2",
+          "f3",
+          "f4"
+        ]
+      },
+      "lg-pband": {
+        "type": "lg-pband",
+        "settings": {
+          "label": "Lucky, out on the course"
+        },
+        "blocks": {
+          "b1": {
+            "type": "photo",
+            "settings": {
+              "image": "shopify://shop_images/lg-swing-black-wedge.webp",
+              "pos": "object-position:30% 40%"
+            }
+          },
+          "b2": {
+            "type": "photo",
+            "settings": {
+              "image": "shopify://shop_images/lg-putt-sunset.webp",
+              "pos": "object-position:55% 60%"
+            }
+          },
+          "b3": {
+            "type": "photo",
+            "settings": {
+              "image": "shopify://shop_images/lg-from-the-cup.webp"
+            }
+          },
+          "b4": {
+            "type": "photo",
+            "settings": {
+              "image": "shopify://shop_images/lg-walk-off-green.webp"
+            }
+          }
+        },
+        "block_order": [
+          "b1",
+          "b2",
+          "b3",
+          "b4"
+        ]
+      },
+      "lg-reviews-band": {
+        "type": "lg-reviews-band",
+        "settings": {
+          "anchor": "reviews",
+          "bg": "shopify://shop_images/lg-putter-in-hand.webp",
+          "bg_pos": "center 40%",
+          "pull": "You don't even have to take it out of the bag and people ask you about it.",
+          "pull_name": "Michael P.",
+          "pull_product": "lucky-golf-lgw02-gold",
+          "pull_stars": 5,
+          "eyebrow": "Reviews",
+          "heading": "Thousands of golfers bag <em>Lucky</em>",
+          "agg_products": [
+            "lucky-golf-lgw02-gold",
+            "lucky-golf-lgw02-black",
+            "signature-gold-putters",
+            "limited-edition-mallet-putter",
+            "lucky-striker-hybrid-limited-edition"
+          ],
+          "agg_line": "Stars from verified buyers, across every club.",
+          "link_label": "Read every review",
+          "link_url": "/pages/reviews"
+        },
+        "blocks": {
+          "r1": {
+            "type": "review",
+            "settings": {
+              "quote": "all of my friends are jealous from the look.And when they stick on the green and come back two feet, there's no doubt their top quality",
+              "name": "Brandon L.",
+              "product": "lucky-golf-lgw02-gold"
+            }
+          },
+          "r2": {
+            "type": "review",
+            "settings": {
+              "quote": "People borrow it in my league- it’s a winner!",
+              "name": "Ray O.",
+              "product": "lucky-golf-lgw02-gold"
+            }
+          },
+          "r3": {
+            "type": "review",
+            "settings": {
+              "quote": "Amazing Putter and looks awesome",
+              "name": "Arthur V.",
+              "product": "limited-edition-mallet-putter"
+            }
+          },
+          "r4": {
+            "type": "review",
+            "settings": {
+              "quote": "My buddies already named my club “Goldy” because they are jealous of the results!!",
+              "name": "Eric F.",
+              "product": "lucky-golf-lgw02-gold"
+            }
+          },
+          "r5": {
+            "type": "review",
+            "settings": {
+              "quote": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now",
+              "name": "John L.L.",
+              "product": "lucky-striker-hybrid-limited-edition"
+            }
+          },
+          "r6": {
+            "type": "review",
+            "settings": {
+              "quote": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all.",
+              "name": "Carter D.",
+              "product": "lucky-golf-lgw02-gold"
+            }
+          }
+        },
+        "block_order": [
+          "r1",
+          "r2",
+          "r3",
+          "r4",
+          "r5",
+          "r6"
+        ]
+      },
+      "lg-gtiles": {
+        "type": "lg-gtiles",
+        "settings": {
+          "anchor": "gear",
+          "eyebrow": "While you're here",
+          "heading": "Dress for the <em>round</em>",
+          "heading_tag": "h2",
+          "foot": "Apparel and gear get thirty days to come back, unworn and unused.",
+          "foot_label": "Shop all gear",
+          "foot_url": "shopify://collections/most-popular"
+        },
+        "blocks": {
+          "g1": {
+            "type": "tile",
+            "settings": {
+              "collection": "polos",
+              "image": "shopify://shop_images/lg-fit-sunset.webp",
+              "pos": "object-position:52% center",
+              "count": true,
+              "title": "Polos",
+              "text": "Stretchy, UPF 50+, and they don't wrinkle in the bag.",
+              "go": "Shop polos"
+            }
+          },
+          "g2": {
+            "type": "tile",
+            "settings": {
+              "collection": "hats",
+              "image": "shopify://shop_images/lg-two-hats-mallet.webp",
+              "pos": "object-position:45% center",
+              "count": true,
+              "title": "Hats",
+              "text": "Five-panel snapbacks, and at least one matches your polo.",
+              "go": "Shop hats"
+            }
+          }
+        },
+        "block_order": [
+          "g1",
+          "g2"
+        ]
+      },
+      "lg-split-2": {
+        "type": "lg-split-2",
+        "settings": {
+          "image": "shopify://shop_images/lg-green-read-fit.webp",
+          "pos": "object-position:60% 40%",
+          "flip": false,
+          "text_first": true,
+          "feat": false,
+          "no_top": true,
+          "eyebrow": "Why it says Lucky",
+          "heading": "Golf takes a little luck. We put it on the club.",
+          "heading_tag": "h3",
+          "body": "<p>The cart-path bounce that somehow ends up on the green. The perfect drive that finds a divot. The putt that lips out and then falls anyway. Everybody who plays has a lucky story or two, and a few unlucky ones they'd rather not talk about. We just figured the club should be in on it.</p>"
+        }
+      },
+      "lg-wild": {
+        "type": "lg-wild",
+        "settings": {
+          "anchor": "wild",
+          "no_top": true,
+          "eyebrow": "See it in play",
+          "heading": "Caught in the <em>wild</em>",
+          "sub": "Stuck one close, holed one out, or rattled the flagstick and stayed on the green? Tag @luckygolfofficial and you might end up here.",
+          "limit": 12,
+          "btn_label": "See the whole wall",
+          "btn_url": "/pages/community",
+          "ig": true
+        }
+      },
+      "lg-callout": {
+        "type": "lg-callout",
+        "settings": {
+          "anchor": "trybe",
+          "no_top": true,
+          "eyebrow": "Ambassador program",
+          "heading": "You post it. We run it.",
+          "body": "We put ad money behind the videos that do well. Ask and your first wedge is free, you earn a share of what your ads sell, and there's no follower minimum.",
+          "btn_label": "See how it works",
+          "btn_url": "/pages/become-apart-of-the-team"
+        }
+      },
+      "lg-signoff": {
+        "type": "lg-signoff",
+        "settings": {
+          "eyebrow": "The last word",
+          "heading": "<em>Bag</em> it.",
+          "lede": "It's better to be lucky.",
+          "btn_label": "Find your club",
+          "btn_url": "#families",
+          "btn2_label": "Read our story",
+          "btn2_url": "/pages/about",
+          "trust": "Sixty-day returns\nThousands of golfers\n4.8 stars from verified buyers\nShips in 1 to 2 business days"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "10864971697205422121": {
+        "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
+        "disabled": false,
+        "settings": {}
+      },
+      "11349500561483629931": {
+        "type": "shopify://apps/notify-me/blocks/app-embed/b399b727-6c85-44fc-9e21-63114bd72054",
+        "disabled": true,
+        "settings": {}
+      },
+      "11521338106245790446": {
+        "type": "shopify://apps/ecomrise-upsell-bundle/blocks/app-embed/acb8bab5-decc-4989-8fb5-41075963cdef",
+        "disabled": true,
+        "settings": {}
+      },
+      "12120936241911852800": {
+        "type": "shopify://apps/judge-me-product-reviews/blocks/reviews_tab/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": true,
+        "settings": {
+          "position": "right"
+        }
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-product-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "14952540001915115444": {
+        "type": "shopify://apps/upcart-cart-drawer/blocks/app-embed/af3da5fb-f5f7-40ec-8273-41bf50059d4b",
+        "disabled": true,
+        "settings": {}
+      },
+      "17676059084223943535": {
+        "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
+        "disabled": false,
+        "settings": {}
+      },
+      "5460033060862993441": {
+        "type": "shopify://apps/essential-announcer/blocks/app-embed/93b5429f-c8d6-4c33-ae14-250fd84f361b",
+        "disabled": true,
+        "settings": {}
+      },
+      "613444038929941147": {
+        "type": "shopify://apps//blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
+        "disabled": true,
+        "settings": {}
+      },
+      "6263565299450869220": {
+        "type": "shopify://apps/loop-returns-exchanges/blocks/return-coverage/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
+        "disabled": false,
+        "settings": {
+          "element-to-watch-for-cart-updates": "",
+          "event-system": "auto-event-system",
+          "auto-refresh": false,
+          "auto-refresh-option": "every-page"
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "10840395464443086010": {
+        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      }
+    },
+    "lg_free_shipping": 198,
+    "lg_review_min": 10,
+    "lg_klaviyo_public_key": "SquHGF",
+    "lg_coverage_product": "free-returns-package-protection"
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "/* Apply Lucky Golf styles to CO+ text and buttons in the side cart */.loop-return-coverage-ace .loop-return-coverage__cta__plus {border: none; letter-spacing: 0.1rem; font-family: \"Inter\", sans-serif;}",
+      ".loop-return-coverage-ace .loop-return-coverage__cta__standard {font-size: 14px !important; letter-spacing: 0.1rem;}",
+      ".loop-return-coverage__title,.picky-cart .loop-return-coverage__price {color: #1b1c30;}",
+      " /* Apply Lucky Golf styles to CO+ text and buttons in the main cart */.cart__footer .cart__ctas .loop-return-coverage__link {color: #00000;}",
+      "@media screen and (min-width: 750px) {.loop-return-coverage__data {position: relative; } .cart__footer .cart__ctas .loop-return-coverage__info {position: absolute !important; top: 22px; left: 30%; }}",
+      ".upcart-checkout-button-container .loop-return-coverage__cta__plus,.upcart-checkout-button-container .loop-return-coverage__cta__standard {border-radius: var(--upcart-internal-global-button-border-radius) !important;}"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "colors_solid_button_labels": "#1f1f21",
+      "colors_accent_1": "#e3fc02",
+      "gradient_accent_1": "",
+      "colors_accent_2": "#ffffff",
+      "gradient_accent_2": "",
+      "colors_text": "#ffffff",
+      "colors_outline_button_labels": "#e3fc02",
+      "colors_background_1": "#1f1f21",
+      "gradient_background_1": "",
+      "colors_background_2": "#1f1f21",
+      "gradient_background_2": "",
+      "type_header_font": "oswald_n5",
+      "heading_scale": 140,
+      "type_body_font": "avenir_next_n5",
+      "body_scale": 100,
+      "page_width": 1600,
+      "spacing_sections": 52,
+      "spacing_grid_horizontal": 40,
+      "spacing_grid_vertical": 40,
+      "buttons_border_thickness": 1,
+      "buttons_border_opacity": 100,
+      "buttons_radius": 0,
+      "buttons_shadow_opacity": 0,
+      "buttons_shadow_horizontal_offset": 0,
+      "buttons_shadow_vertical_offset": 4,
+      "buttons_shadow_blur": 5,
+      "variant_pills_border_thickness": 1,
+      "variant_pills_border_opacity": 55,
+      "variant_pills_radius": 40,
+      "variant_pills_shadow_opacity": 0,
+      "variant_pills_shadow_horizontal_offset": 0,
+      "variant_pills_shadow_vertical_offset": 4,
+      "variant_pills_shadow_blur": 5,
+      "inputs_border_thickness": 1,
+      "inputs_border_opacity": 55,
+      "inputs_radius": 0,
+      "inputs_shadow_opacity": 0,
+      "inputs_shadow_horizontal_offset": 0,
+      "inputs_shadow_vertical_offset": 4,
+      "inputs_shadow_blur": 5,
+      "card_style": "card",
+      "card_image_padding": 0,
+      "card_text_alignment": "left",
+      "card_color_scheme": "background-2",
+      "card_border_thickness": 0,
+      "card_border_opacity": 10,
+      "card_corner_radius": 0,
+      "card_shadow_opacity": 0,
+      "card_shadow_horizontal_offset": 0,
+      "card_shadow_vertical_offset": 4,
+      "card_shadow_blur": 5,
+      "collection_card_style": "card",
+      "collection_card_image_padding": 0,
+      "collection_card_text_alignment": "left",
+      "collection_card_color_scheme": "background-2",
+      "collection_card_border_thickness": 0,
+      "collection_card_border_opacity": 10,
+      "collection_card_corner_radius": 0,
+      "collection_card_shadow_opacity": 0,
+      "collection_card_shadow_horizontal_offset": 0,
+      "collection_card_shadow_vertical_offset": 4,
+      "collection_card_shadow_blur": 5,
+      "blog_card_style": "card",
+      "blog_card_image_padding": 0,
+      "blog_card_text_alignment": "left",
+      "blog_card_color_scheme": "background-2",
+      "blog_card_border_thickness": 0,
+      "blog_card_border_opacity": 10,
+      "blog_card_corner_radius": 0,
+      "blog_card_shadow_opacity": 0,
+      "blog_card_shadow_horizontal_offset": 0,
+      "blog_card_shadow_vertical_offset": 4,
+      "blog_card_shadow_blur": 5,
+      "text_boxes_border_thickness": 0,
+      "text_boxes_border_opacity": 10,
+      "text_boxes_radius": 0,
+      "text_boxes_shadow_opacity": 0,
+      "text_boxes_shadow_horizontal_offset": 0,
+      "text_boxes_shadow_vertical_offset": 4,
+      "text_boxes_shadow_blur": 5,
+      "media_border_thickness": 0,
+      "media_border_opacity": 10,
+      "media_radius": 0,
+      "media_shadow_opacity": 0,
+      "media_shadow_horizontal_offset": 0,
+      "media_shadow_vertical_offset": 4,
+      "media_shadow_blur": 5,
+      "popup_border_thickness": 1,
+      "popup_border_opacity": 10,
+      "popup_corner_radius": 0,
+      "popup_shadow_opacity": 0,
+      "popup_shadow_horizontal_offset": 0,
+      "popup_shadow_vertical_offset": 4,
+      "popup_shadow_blur": 5,
+      "drawer_border_thickness": 1,
+      "drawer_border_opacity": 10,
+      "drawer_shadow_opacity": 0,
+      "drawer_shadow_horizontal_offset": 0,
+      "drawer_shadow_vertical_offset": 4,
+      "drawer_shadow_blur": 5,
+      "badge_position": "bottom left",
+      "badge_corner_radius": 40,
+      "sale_badge_color_scheme": "accent-2",
+      "sold_out_badge_color_scheme": "background-1",
+      "accent_icons": "text",
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tiktok_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "predictive_search_enabled": true,
+      "predictive_search_show_vendor": false,
+      "predictive_search_show_price": false,
+      "currency_code_enabled": true,
+      "cart_type": "notification",
+      "show_vendor": false,
+      "show_cart_note": false,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "text": "WELCOME TO OUR STORE",
+                "text_alignment": "center",
+                "color_scheme": "accent-1",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {}
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "color_scheme": "background-1",
+            "logo": "{{ shop.brand.logo }}",
+            "logo_width": 80,
+            "logo_position": "middle-left",
+            "menu": "main-menu",
+            "menu_type_desktop": "dropdown",
+            "show_line_separator": false,
+            "enable_sticky_header": true,
+            "mobile_logo_position": "center",
+            "margin_bottom": 0,
+            "padding_top": 20,
+            "padding_bottom": 20
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link-list": {
+              "type": "link_list",
+              "settings": {
+                "heading": "ABOUT US",
+                "menu": "footer"
+              }
+            },
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_width": 70,
+                "alignment": "right"
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "heading": "",
+                "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+              }
+            }
+          },
+          "block_order": [
+            "link-list",
+            "image",
+            "text"
+          ],
+          "settings": {
+            "color_scheme": "background-2",
+            "newsletter_enable": false,
+            "newsletter_heading": "",
+            "show_social": true,
+            "enable_country_selector": false,
+            "enable_language_selector": false,
+            "payment_enable": true,
+            "margin_top": 0,
+            "padding_top": 40,
+            "padding_bottom": 40
+          }
+        },
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo": "{{ shop.brand.logo }}",
+            "logo_max_width": 100,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        }
+      }
+    }
+  }
+}

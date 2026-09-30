@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero",
+      "settings": {
+        "image": "shopify://shop_images/lg-gold-wedge-bag.webp",
+        "focus_x": 50,
+        "focus_y": 50,
+        "focus_mx": 40,
+        "focus_my": 50,
+        "short": true,
+        "eyebrow": "All Things Lucky",
+        "heading": "Golf, written by people who <em>play</em> it",
+        "heading_tag": "h1",
+        "lede": "The short game, the gear, and the occasional thing that happened on the way to the first tee."
+      }
+    },
+    "posts": {
+      "type": "lg-blog",
+      "settings": {
+        "lead": "news/are-your-wedges-forged",
+        "lead_eyebrow": "Latest",
+        "read_label": "Read it"
+      }
+    },
+    "news": {
+      "type": "lg-news",
+      "settings": {
+        "eyebrow": "First look",
+        "heading": "Get the next one in your <em>inbox</em>",
+        "body": "New articles land there first, along with restocks and new lofts. Unsubscribe whenever you like, no hard feelings.",
+        "placeholder": "you@somewhere.com",
+        "btn_label": "Sign me up",
+        "source": "Blog",
+        "no_top": true
+      }
+    },
+    "close": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "Reading about golf isn't <em>practice</em>",
+        "lede": "Take one idea from here to the range this week, and give it a whole bucket before you decide it doesn't work.",
+        "btn2_label": "See the clubs →",
+        "btn2_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "posts",
+    "news",
+    "close"
+  ]
+}

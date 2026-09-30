@@ -1,0 +1,8 @@
+{%- comment -%}
+  A heading whose italic words become the gold foil word.
+  {% render 'lg-h', text: section.settings.heading, tag: 'h2', cls: 'lg-d2' %}
+  In the editor: select the word and press Italic.
+{%- endcomment -%}
+{%- if text != blank -%}
+<{{ tag | default: 'h2' }} class="{{ cls | default: 'lg-d2' }}">{{ text | replace: '<em>', '<span class="lg-foil-word">' | replace: '</em>', '</span>' }}</{{ tag | default: 'h2' }}>
+{%- endif -%}

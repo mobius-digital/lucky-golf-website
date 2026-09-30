@@ -1,0 +1,49 @@
+{%- assign s = section.settings -%}
+<div class="lgc-gc"><section class="lg-sec"><div class="lg-wrap qa">
+  <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>
+  <div class="lg-faq">
+    {%- for block in section.blocks -%}<details class="lg-fq"{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}><summary>{{ block.settings.q }}</summary><div class="lg-fq-a">{{ block.settings.a }}</div></details>{%- endfor -%}
+  </div>
+</div></section></div>
+
+{% schema %}
+{
+  "name": "Answers beside heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "q",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "a",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Answers beside heading"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,8 @@
+{%- comment -%}
+  The crossed-out compare-at price beside a product page's live price, plus every variant's
+  [price, compare-at] so lucky-site.js can keep it right as the shopper switches variants.
+  Renders nothing visible unless the variant is actually on sale.
+{%- endcomment -%}
+<s class="lg-was" data-was{% unless variant.compare_at_price > variant.price %} hidden{% endunless %}>{{ variant.compare_at_price | money_without_trailing_zeros }}</s>
+<span class="lg-low" data-low hidden></span>
+<script type="application/json" data-was-map>{ {%- for x in product.variants -%}"{{ x.id }}":[{{ x.price }},{{ x.compare_at_price | default: 0 }}]{% unless forloop.last %},{% endunless %}{%- endfor -%} }</script>

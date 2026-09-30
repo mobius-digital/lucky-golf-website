@@ -1,0 +1,37 @@
+/* big club cards, measured off Takomo's "shop our clubs" grid (1440 wide, 2026-09-27):
+   square card, name 24 / line 14 / price 20 centered on top, the club 256px square sitting
+   on the bottom edge, ONE flat tag flush in the bottom-left corner. Lucky gold replaces
+   Takomo orange. No second tag, no pills. */
+.lg-sec.is-wide .lg-wrap{max-width:1336px}
+.cards-big{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.cards-big > *{flex:0 0 calc((100% - 32px) / 3);min-width:0;display:flex}
+.cards-big > * > .lg-bigcard{flex:1;width:100%}
+.lg-bigcard{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;aspect-ratio:408/406;padding:24px 24px 0;
+  background:linear-gradient(180deg,rgba(11,11,11,.05),rgba(11,11,11,.13)),#F8F8F8;border-radius:var(--lg-r-card);overflow:hidden;text-decoration:none;color:var(--lg-ink)}
+:where(body.lg) a.lg-bigcard{color:var(--lg-ink)}
+.bc-top{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.bc-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;font-size:24px;line-height:1}
+.bc-ln{margin-top:8px;color:#545454;font-size:14px;font-weight:500;line-height:1.2;max-width:256px}
+.bc-pr{margin-top:10px;font-weight:600;font-size:20px;line-height:1;color:var(--lg-ink)}
+.bc-ph{position:absolute;left:0;right:0;bottom:0;margin:0 auto;width:63%;aspect-ratio:1;display:flex;align-items:flex-end;justify-content:center}
+.bc-ph img{width:100%;height:100%;object-fit:contain;object-position:center bottom;mix-blend-mode:multiply;transition:transform .45s var(--lg-ease)}
+@media (hover:hover){.lg-bigcard:hover .bc-ph img{transform:translateY(-6px)}}
+.lg-bigcard .bc-tag{position:absolute;left:0;bottom:0;top:auto;right:auto;z-index:2;margin:0;padding:10px 16px;border-radius:0 4px 0 0;
+  background:var(--lg-dark);color:var(--lg-on-dark);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;font-size:15px;line-height:16px;letter-spacing:.03em;text-transform:uppercase}
+.lg-bigcard .bc-tag.is-out{background:#17140F;color:#F4F3F0}
+.bc-ph img{mix-blend-mode:normal}
+@media (max-width:980px){.cards-big > *{flex-basis:calc((100% - 16px) / 2)}}
+@media (max-width:749px){.cards-big{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .cards-big::-webkit-scrollbar{display:none}
+  .cards-big > *{flex:0 0 82%;scroll-snap-align:start}
+  .bc-nm{font-size:22px}}
+/* the section head for the big grid: centered and quieter, like Takomo's */
+.cards-big-head{text-align:center;margin-bottom:24px;display:flex;flex-direction:column;align-items:center}
+.cards-big-head .lg-eyebrow{justify-content:center}
+.cards-big-head .lg-d2{font-size:clamp(28px,3vw,40px)}
+.cards-big-foot{display:flex;justify-content:center;margin-top:24px}
+
+.is-warm .lg-bigcard{background:var(--lg-tile)}
+/* the contour on Home's price section: only in the open top-right corner, gone before the text */
+#why.lg-contour{--cx:92%!important;--cy:8%!important}
+#why.lg-contour::before{transform:none!important;-webkit-mask-image:radial-gradient(34% 58% at 100% 0,#000 0,rgba(0,0,0,.55) 50%,transparent 100%);mask-image:radial-gradient(34% 58% at 100% 0,#000 0,rgba(0,0,0,.55) 50%,transparent 100%)}

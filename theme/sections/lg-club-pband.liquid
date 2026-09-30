@@ -1,0 +1,62 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+
+{%- assign band = product.metafields.custom.club_band_photos.value -%}{%- assign s = section.settings -%}
+{%- if band.size > 0 -%}
+<div class="lg-pband" aria-label="{{ section.settings.label | escape }}">
+  {%- for im0 in band -%}{%- assign k = forloop.index -%}{%- assign ki = 'p_img' | append: k -%}{%- assign ka = 'p_alt' | append: k -%}{%- assign im = s[ki] | default: im0 -%}{%- assign p = c.pband[forloop.index0] -%}{%- assign alt = s[ka] | default: p[0] | default: im.alt -%}{%- assign pos = p[1] | default: '' -%}
+  <figure class="pb">{{ im | image_url: width: 1000 | image_tag: alt: alt, loading: 'lazy', style: pos, widths: '400,700,1000', sizes: '(max-width: 749px) 50vw, 33vw' }}</figure>{%- endfor -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: photo band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label (for screen readers)",
+      "default": "On the course"
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "image_picker",
+      "id": "p_img1",
+      "label": "Photo 1"
+    },
+    {
+      "type": "text",
+      "id": "p_alt1",
+      "label": "Photo 1 description"
+    },
+    {
+      "type": "image_picker",
+      "id": "p_img2",
+      "label": "Photo 2"
+    },
+    {
+      "type": "text",
+      "id": "p_alt2",
+      "label": "Photo 2 description"
+    },
+    {
+      "type": "image_picker",
+      "id": "p_img3",
+      "label": "Photo 3"
+    },
+    {
+      "type": "text",
+      "id": "p_alt3",
+      "label": "Photo 3 description"
+    }
+  ]
+}
+{% endschema %}

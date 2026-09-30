@@ -1,0 +1,308 @@
+{
+ "data": {
+  "blogs": {
+   "nodes": [
+    {
+     "id": "gid://shopify/Blog/105291797",
+     "handle": "news",
+     "title": "All Things Lucky",
+     "commentPolicy": "AUTO_PUBLISHED",
+     "templateSuffix": null,
+     "articlesCount": {
+      "count": 14
+     },
+     "articles": {
+      "nodes": [
+       {
+        "id": "gid://shopify/Article/14450589767",
+        "handle": "future-videos",
+        "title": "Future Videos",
+        "isPublished": true,
+        "publishedAt": "2018-08-19T16:26:00Z",
+        "templateSuffix": null,
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/40-17008-R56-CA2-M01-Bag_Shot_1_56_GOLD.85-CR-WB.png?v=1541355073",
+         "altText": "Lucky Gold Sand Wedge"
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "We will post user submitted trick shots in this area in the future"
+       },
+       {
+        "id": "gid://shopify/Article/28364734535",
+        "handle": "welcome-to-lucky",
+        "title": "Welcome to Lucky",
+        "isPublished": true,
+        "publishedAt": "2018-11-04T18:09:00Z",
+        "templateSuffix": null,
+        "tags": [
+         "#golffashion",
+         "#golfstyle",
+         "#wedgegamestrong",
+         "#wedgeguide"
+        ],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Gold_With_Lucky_Ball.PNG?v=1541351369",
+         "altText": ""
+        },
+        "summary": "Welcome to Lucky Wedges",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>As a newly launched company Lucky Wedges is starting to make a name for itself in the giant world of golf.  Based on the premise of bringing style to the equipment world, Lucky Wedges offer the first ever production gold golf wedge to short game enthusiasts.  Beyond the equipment itself though, Lucky Golf embodies a style that is alternative to the mainstream brands being marketed on a daily basis.  Lucky Wedges makes high performance golf wedges that offer golfers better shots and better chips all while being better looking out on the course.</p>\n<p>By adding weight and moving the center of gravity lower and closer to the sole, Lucky Wedges are dynamite out of the sand and help golfer improve their pitch shots.  Two of the most difficult shots in golf.  As one customer recently put it, the club almost seems to swing itself in those two situations.</p>\n<p>Lucky Wedges is determined to help golfers improve their wedge game not only through our equipment but also by offering tips and guidance on how to hit better shots with a wedge whether from the fairway, bunker or green side.</p>\n<p>Check back to our blog periodically for helpful information on how to up your wedge game and also for information on the latest in golf fashion and trends.</p>\n<p>Get Lucky!</p>"
+       },
+       {
+        "id": "gid://shopify/Article/28364832839",
+        "handle": "the-dreaded-chili-dip-golf-shot",
+        "title": "The Dreaded Chili Dip Golf Shot",
+        "isPublished": true,
+        "publishedAt": "2018-11-09T08:00:00Z",
+        "templateSuffix": null,
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Chili-Dip-Golf.jpg?v=1541354974",
+         "altText": ""
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<h2>The Dreaded Chili Dip Golf Shot</h2>\n<p>It's every golfers greatest fear.  you're lying 10 yards off the green on a tight lie.  You just smashed your drive but your approach came up just a little bit short.  You now have to pitch the ball off a tight lie close enough to make the putt for par.  Easy enough, right?  and then it comes, the chili dip!  Your wedge comes in too steep, you take too much turf and the ball hobbles 15 ft and is still short of the green.  <br><br>Humbling as it is, the chili dip is a shot that every golfer struggles with and can be fixed easily.<br><br>In order to avoid this momentum killing, frustrating shot we need to fix the angle of attack but also get the leading edge of the wedge under the ball.  There are two things that can help avoid this disaster on the course.  One is changing your swing angle from a more steep attack to a more flat back swing and steeper upswing, the second is playing the correct wedge with a low center of gravity.  By bringing the club back flatter, you reduce the chance that the leading edge will dig into the turf before striking the ball.  The flatter attack angle will produce a more lofted shot and so the golfer should adjust the depth of the back swing to accommodate more distance.  <br><br>Lucky Wedges are designed to have a lower center of gravity and hold more weight in the sole of the club to aid in these shots as well as shots from the sand.  The extra weight makes it easier for the club to maintain on plane and gives the golfer more momentum through the ball and through contact producing more accurate shots and helping the golfer make better contact with the ball in these situations.<br><br>Using the right tool is important but getting the correct swing down is just as imperative to avoiding the chili dip golf shot.  Grab your Lucky Wedge and head to the practice green and practice different swing planes and angles of attach until you get confident you've found the one that will work for you.  Avoiding these types of shots and pitching the ball closer to the hole can shave strokes from your game instantly.</p>\n<p> </p>\n<h1 style=\"text-align: center;\"><a href=\"https://www.luckywedges.com/collections/all\" title=\"Choose Your Wedge\">Find Your Wedge</a></h1>\n<p> </p>\n<p><img src=\"//cdn.shopify.com/s/files/1/2286/3149/files/Chili_Dip_large.PNG?v=1541353842\" alt=\"avoid the chili dip\" style=\"display: block; margin-left: auto; margin-right: auto;\"></p>\n<p> </p>\n<p>In addition to playing a wedge with appropriate weight distribution, the swing angle can help avoid the dreaded chili dip.  As shown in this still borrowed from <a href=\"www.shawnhumphries.com\" target=\"_blank\" title=\"Avoid the Chili Dip Golf Shot\" rel=\"noopener noreferrer\">www.shawnhumphries.com </a>the goal is to have the club follow the swing plane of the upswing and NOT of the back swing</p>"
+       },
+       {
+        "id": "gid://shopify/Article/28401107015",
+        "handle": "using-your-lucky-wedge-from-the-rough",
+        "title": "Using Your Lucky Wedge from the Rough",
+        "isPublished": true,
+        "publishedAt": "2018-11-18T16:32:00Z",
+        "templateSuffix": null,
+        "tags": [
+         "#wedgegamestrong",
+         "#wedgeguide"
+        ],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Colin_McCarthy.jpg?v=1542558868",
+         "altText": ""
+        },
+        "summary": "Lucky Wedges are designed with extra weight and balance to help carry momentum through chips and pitch shots.  Coupled with this tip from Colin McCarthy PGA Professional, you can hit better chips and pitch shots from the rough and avoid the dreaded chili-dip resulting from deceleration through the shot.",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>Hitting any shot from the rough is less desirable than being in the fairway, that's obvious.  Hitting your wedge from the rough can be particularly challenging, especially when chipping or pitching the ball.  Pitching or chipping the ball makes you already susceptible to deceleration and the dreaded chili-dip shot we covered in our last post.  These shots are even more difficult when coupled with thick rough because the grass can catch the club and slow it down or move the face.  </p>\n<p>In his short video below, Colin McCarthy PGA Professional and coach illustrates and easy way to cut down on the friction of the club head going through the grass.  This easy little trick to use with your Lucky Wedges will have you hitting more consistent pitch and chip shots from the rough.</p>\n<p>Lucky Wedges are already designed with extra weight to and balance to help carry momentum through your pitch and chips and avoid deceleration.  Coupled with this tip that Colin offers below, you can hit closer chips and pitch shot from the rough and lower your scores with closer putts.</p>\n<p> </p>\n<p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5S1Fsvf8tNU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe></p>\n<p> </p>"
+       },
+       {
+        "id": "gid://shopify/Article/30067753031",
+        "handle": "use-your-lucky-wedge-to-get-out-of-a-deep-bunker-lie",
+        "title": "Use Your Lucky Wedge to Get Out of a Deep Bunker Lie",
+        "isPublished": true,
+        "publishedAt": "2019-03-18T18:05:00Z",
+        "templateSuffix": null,
+        "tags": [
+         "#luckywedges",
+         "#wedgegamestrong",
+         "#wedgeguide"
+        ],
+        "image": null,
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>In this video, Colin McCarthy PGA Pro shows you how to get a buried ball out of a bunker using his Lucky Wedge and a bit of technique.  In this quick toungue in cheek video, Colin shows that no matter how bad you're ball is sitting in the sand, its always possible to get it out.</p>\n<p>Watch this short video to see how</p>\n<p> </p>\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/gin7QI2QrXM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe>\n<p> </p>"
+       },
+       {
+        "id": "gid://shopify/Article/34666872903",
+        "handle": "mrshortgame-golf-reviews-lucky-wedges",
+        "title": "MrShortGame Golf Reviews Lucky Wedges!",
+        "isPublished": true,
+        "publishedAt": "2019-10-08T05:45:00Z",
+        "templateSuffix": null,
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Screen_Shot_2019-10-07_at_10.45.07_PM.png?v=1570513525",
+         "altText": ""
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>MrShortGame Golf or Matt Fisher reviewed our Gold 60 degree Lucky Wedge and did a side by side comparison with a Vokey wedge.</p>\n<p> </p>\n<p>Who won the club off? Watch the video below to see!</p>\n<p> </p>\n<p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5itsLBGHXkU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe></p>"
+       },
+       {
+        "id": "gid://shopify/Article/592321544263",
+        "handle": "why-we-have-the-best-golf-wedges-for-under-100",
+        "title": "Why We Have The Best Golf Wedges For Under $100",
+        "isPublished": true,
+        "publishedAt": "2021-03-24T04:38:25Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Screen_Shot_2021-03-23_at_9.35.47_PM.png?v=1616560574",
+         "altText": ""
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>Watch the Art of Simple Golf break down exactly why Lucky Wedges will get you best value in todays wedge world.</p>\n<p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/18lgi-Rz2c0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe></p>"
+       },
+       {
+        "id": "gid://shopify/Article/603193770055",
+        "handle": "golf-com-proves-why-a-lucky-charm-is-necessary-on-the-golf-course",
+        "title": "Golf.com Proves Why a \"Lucky\" Charm Is Necessary on the Golf Course",
+        "isPublished": true,
+        "publishedAt": "2021-06-16T18:12:05Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Screen_Shot_2021-06-16_at_11.11.45_AM.png?v=1623867119",
+         "altText": ""
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>In this recent article on <a href=\"https://golf.com/instruction/lucky-golf-balls-study-play-smart/\">Golf.com</a> they explain why it's important to have a \"Lucky\" charm on the golf course. With proven studies, having increased confidence with a piece of luck on you, actually improves players games. Lucky Golf is here to provide increased confidence on the course and around the greens. #LuckyGolfUSA</p>\n<p> </p>\n<p>Find Golf.com Article Here:</p>\n<p><a href=\"https://golf.com/instruction/lucky-golf-balls-study-play-smart/\">https://golf.com/instruction/lucky-golf-balls-study-play-smart/</a></p>"
+       },
+       {
+        "id": "gid://shopify/Article/604352774421",
+        "handle": "why-golf-wedges-are-the-most-important-club-in-your-bag",
+        "title": "Why Golf Wedges are the Most Important Club in Your Bag.",
+        "isPublished": true,
+        "publishedAt": "2022-11-19T03:37:19Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/IMG_3920.jpg?v=1668829035",
+         "altText": ""
+        },
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<meta charset=\"UTF-8\">\n<p>Golf is a game of precision and accuracy. It’s fair to say that it’s not your average round of pitch and putt! As such, you need to have a good understanding of the rules and techniques involved if you want to get the most out of your golfing experience. The key is to practice as often as possible in order to improve your game. However, this doesn’t just apply to mastering the drive or learning how to putt. You also need to immerse yourself in the smaller details of your game that will help take your skills from amateur status straight up pro golfer! One of these smaller details is learning more about the different types of golf wedges and why they are so important for any golfer’s bag. Here we delve into some useful information about these small but mighty clubs.</p>\n<p> </p>\n<p> </p>\n<h2>Why Are Golf Wedges so Important?</h2>\n<p>Before we get into the specific details of each different type of golf wedge and how it can improve your skills, it’s important to understand why wedges are so important in the first place. There are many different clubs in a golfer’s bag and each has its own unique purpose and strength. Having said that, there are only a few clubs that are relied upon as much as the wedge. This is due to the various aspects of your game that the wedge is able to influence. - The short game. The short game is the section of your game that takes place within 30 - 120 yards of the green. Wedges are the clubs you use to hit this section of the game such as chip shots, pitching shots, and sand shots. As such, they are incredibly important and you should always have a good selection of wedges in your bag. - Accuracy. A poor wedge shot from a high-handicapper can lead to terrible results. A great wedge shot can lead to an improved score. This is because the wedges allow for a high-level of accuracy and control. - Distance. Some wedges are designed to travel a long distance. This means that you can save a few strokes when it comes to hitting the green and are responsible for an improved score.</p>\n<p> </p>\n<h2>Types of Golf Wedges</h2>\n<p>There are multiple types of golf wedges that are designed for specific purposes. The standard approach wedge is used for normal shots off the tee or from the fairway. It’s essentially a utility club that is used for a variety of shots. - The sand wedge is used to hit shots out of the bunker. This is due to the special grooves in the club that allow the sand to be cleared out of the club with ease. - The lob wedge is used to hit shots that travel a short distance but with a very high trajectory. This is ideal for shots to greens or areas with a lot of trees that are higher than the rest of the surrounding land. - The gap wedge is one of the most unique wedges and is used to hit a shot that has a short distance but a high trajectory. - The specialty wedges such as the pitching wedge and the hybrid wedges are designed for specific shots and are usually not included in the original set of clubs.</p>\n<p> </p>\n<h2>The Importance of the Short Game</h2>\n<p>As we’ve already discussed, the short game is the most important part of your entire game. It’s what separates a good player from a great player. It’s the part of the game where you can really make a difference to your score. The short game is essential for any golfer but it’s something that is often neglected by players. Perhaps because most golfers don’t have a great deal of knowledge on how to play the short game or they just don’t see the importance in mastering the shots. The fact is that the short game is an extremely important part of golf. It allows you to get the ball on the green with ease, in close proximity to the pin, and with a low amount of shots. It’s the closest and most efficient way to reach a low score and is definitely something you should spend time mastering.</p>\n<p> </p>\n<h2>Why a Good Wedge is so Important</h2>\n<p>Now that we’ve established the importance of the short game, we can talk about why a good wedge is so important for a golfer. A good wedge is so important for a number of reasons. Firstly, it’s essential to have the correct loft to match the type of shot that you’re hoping to play. For instance, you can’t use a sand wedge to hit a shot from the fairway. In addition to the loft, you also need to be sure that the head size and the shaft length are correct for your game. This is because every golfer is different and you need to ensure that the club feels comfortable in your hands and that it is easy to swing.</p>\n<p> </p>\n<h2>Conclusion</h2>\n<p>Golf wedges are the most important club in your bag for a number of reasons. They are used for a variety of shots, including the short game, and are designed to be extremely accurate and precise. They are also used to hit shots from a variety of different situations, from the fairway to a bunker. This is why a golfer needs to be sure that they are well equipped with different types of wedges in their bag. A good wedge will be durable, easy to swing, and have the correct loft and material for your game.</p>"
+       },
+       {
+        "id": "gid://shopify/Article/605083402517",
+        "handle": "golf-is-a-mental-game",
+        "title": "Golf is a Mental Game",
+        "isPublished": true,
+        "publishedAt": "2023-04-27T04:01:17Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/FDC0DC59-178B-47F1-8306-CC92CFAAAD67.jpg?v=1682568078",
+         "altText": ""
+        },
+        "summary": "<span>Welcome to the world of golf, a sport that is much more than just hitting a ball into a hole. Golf is a mental game that requires focus, discipline, and a confident mindset. If you're looking to improve your golf game, then understanding the mental aspect of the sport is key.</span>",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>Welcome to the world of golf, a sport that is much more than just hitting a ball into a hole. Golf is a mental game that requires focus, discipline, and a confident mindset. If you're looking to improve your golf game, then understanding the mental aspect of the sport is key.<br><br>First of all, let's address the elephant in the room. Golf is frustrating! There, I said it. One minute you're feeling like a pro, and the next you're digging your ball out of the bunker. It's the mental strength that separates the pros from the amateurs. When you're out there on the course, you're not just playing against the other golfers; you're playing against yourself. Your mind can either be your greatest ally or your worst enemy.<br><br>One of the biggest challenges in golf is staying focused. It's easy to get distracted by the beautiful scenery, the weather, or even your own thoughts. But when you lose your focus, your game suffers. You might miss an important shot, or make a silly mistake that costs you the game. So, how do you stay focused? One way is to develop a pre-shot routine. This can be as simple as taking a deep breath, visualizing your shot, and stepping up to the ball with confidence. By doing this, you're training your mind to stay focused on the task at hand.<br><br>Another mental challenge in golf is dealing with failure. Golf is a sport where you will fail more than you succeed. Even the best golfers in the world miss shots, hit into the rough, and three-putt. It's how you deal with failure that separates the winners from the losers. Instead of dwelling on your mistakes, learn from them. Analyze what went wrong and what you can do differently next time. This is the mindset of a champion.<br><br>Golf is also a game of patience. It takes time and practice to develop your skills and improve your game. You can't rush it, and you can't expect overnight success. But if you're willing to put in the effort, the results will come. By having a patient mindset, you're able to stay calm under pressure and make better decisions on the course.<br><br>In conclusion, golf is much more than just hitting a ball into a hole. It's a mental game that requires focus, discipline, and a confident mindset. By developing your mental strength, you can improve your game and become a better golfer. Remember to stay focused, learn from your mistakes, be patient, and most importantly, have fun out there on the course! Good luck and happy golfing!</p>\n<p> </p>\n<p>Griff</p>"
+       },
+       {
+        "id": "gid://shopify/Article/605107912981",
+        "handle": "are-your-wedges-forged",
+        "title": "Are Your Wedges Forged?",
+        "isPublished": true,
+        "publishedAt": "2023-05-03T12:32:10Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/Lucky_Golf_Foreged_Wedges_Factory_Pic.png?v=1683117096",
+         "altText": ""
+        },
+        "summary": "<span>when it comes to selecting the best wedge for your game, you will be faced with a choice between two types of manufacturing processes: forging and casting.</span>",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>As a golf enthusiast, you are likely aware of the importance of having the right set of clubs to play your best game. Among these clubs, wedges are perhaps the most crucial, as they are the clubs that provide you with the precision and control you need to make those crucial short game shots. But when it comes to selecting the best wedge for your game, you will be faced with a choice between two types of manufacturing processes: forging and casting.<br><br>In recent years, forged wedges have become increasingly popular among golfers, and for a good reason. While cast wedges were the norm for many years, the unique benefits of forged wedges have made them the preferred choice of many golfers, including professionals. In this blog post, we will explore why forged golf wedges are better than cast golf wedges and why you should consider them for your next wedge purchase.<br><br>1. Better Feel<br><br>One of the main advantages of forged wedges is their superior feel. Forged wedges are made by heating a block of metal and then pounding it into shape with a hammer, creating a more compact and dense metal structure than cast wedges. This process results in a more responsive and soft feel at impact, allowing for greater control and feedback on every shot.<br><br>2. Consistent Performance<br><br>Another advantage of forged wedges is their consistency in performance. Since the forging process compresses the metal, it creates a denser and tighter grain structure, resulting in less variation in weight and balance from wedge to wedge. This consistency in weight and balance translates into more consistent performance on the course, allowing golfers to make more confident swings and better control their shots.<br><br>3. Enhanced Workability<br><br>Workability refers to a golfer's ability to manipulate the ball's trajectory and spin to achieve specific shot shapes and distances. Forged wedges are known for their enhanced workability, which is due to the more compact and dense metal structure. The forged design allows for more precise and subtle adjustments to the clubface, which can result in greater spin control and shot shaping options, making them ideal for golfers looking to take their short game to the next level.<br><br>4. Better Durability<br><br>Finally, forged wedges are typically more durable than cast wedges, thanks to their superior construction. The forging process produces a denser, stronger metal structure that is less prone to wear and tear, which can be especially beneficial for golfers who play frequently or in harsh conditions.<br><br>In conclusion, forged wedges offer several advantages over cast wedges, including better feel, consistent performance, enhanced workability, and better durability. While they may be slightly more expensive than cast wedges, the benefits they offer are well worth the investment, particularly for golfers who are serious about improving their short game. So if you're in the market for new wedges, be sure to consider forged wedges as a top option.</p>\n<p>All Lucky Golf wedges are forged to perfection using only the most technologically advanced forging process.  Checkout out line of top quality wedges at <a href=\"www.luckygolf.com\" target=\"_blank\" title=\"www.luckygolf.com\" rel=\"noopener noreferrer\">www.luckygolf.com</a></p>\n<p> </p>"
+       },
+       {
+        "id": "gid://shopify/Article/605122560277",
+        "handle": "the-top-10-golf-shots-you-can-hit-using-a-wedge",
+        "title": "The Top 10 Golf Shots You Can Hit Using a Wedge",
+        "isPublished": true,
+        "publishedAt": "2023-05-06T16:58:15Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/daniel-berger.jpg?v=1683392296",
+         "altText": ""
+        },
+        "summary": "<span>If you want to take your golf game to the next level, it's time to start mastering the art of wedge shots. </span>",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>If you want to take your golf game to the next level, it's time to start mastering the art of wedge shots. These versatile clubs are essential to a successful short game, and by learning how to hit them properly, you can lower your scores and impress your playing partners. In this article, we'll break down the top 10 golf shots to hit using a wedge and explain why each one is important to your game.<br><br>1. Pitch Shot - The pitch shot is one of the most basic wedge shots, but it's also one of the most important. By hitting a pitch shot, you can get the ball up in the air quickly and land it softly on the green. This shot is essential for getting out of trouble around the green and getting up and down for par.<br><br>2. Chip Shot - The chip shot is another crucial wedge shot that every golfer should master. With this shot, you can hit the ball low and make it roll out to the pin. It's perfect for when you're just off the green and need to get the ball close to the hole.<br><br>3. Flop Shot - The flop shot is a crowd-pleaser, and it's also a shot that can save you strokes. By hitting a high, soft shot with a lot of spin, you can land the ball on the green and have it stop quickly. This shot is perfect for when you need to clear a hazard or get over a bunker.<br><br>4. Bunker Shot - Speaking of bunkers, the bunker shot is another important wedge shot to master. With a sand wedge, you can get the ball out of the bunker and onto the green with ease. It's all about hitting behind the ball and letting the sand do the work.<br><br>5. Lob Shot - The lob shot is similar to the flop shot, but it's even higher and softer. It's perfect for when you need to get over a tree or hit the ball over a hazard. With a lob wedge, you can execute this shot with ease.<br><br>6. Run-out Shot - Sometimes, you need to hit a shot that will run out to the hole. With a pitching wedge, you can hit a low shot that will bounce a few times and then roll out to the pin. It's perfect for when you have a lot of green to work with.<br><br>7. Stinger Shot - The stinger shot is a low, penetrating shot that's perfect for when you need to hit it under the wind. With a gap wedge, you can hit this shot with ease and keep the ball under the elements.<br><br>8. Backspin Shot - If you want to impress your playing partners, learn how to hit a backspin shot. With a lob wedge, you can hit a shot that will spin back towards the hole after it lands on the green. It takes practice to master, but it's worth it.<br><br>9. Punch Shot - The punch shot is a low shot that's perfect for when you need to keep the ball under the tree branches. With a gap wedge, you can hit this shot with ease and have the ball run out to the hole.<br><br>10. Finesse Shot - Finally, the finesse shot is a shot that requires touch and feel. With a sand wedge, you can hit a shot that will land softly on the green and roll out to the hole. It's all about using your creativity and skill to execute the shot.<br><br>Now that you know the top 10 golf shots to hit using a wedge, it's time to put your skills to the test. Lucky Golf Wedges are the best forged wedges on the market and can help you execute all of these shots effortlessly. With their precision and control, you'll be able to lower your scores and impress your playing partners in no time. So what are you waiting</p>\n<p> </p>\n<p>visit <a href=\"www.luckygolf.com\" target=\"_blank\" title=\"www.luckygolf.com\" rel=\"noopener noreferrer\">www.luckygolf.com</a> to find five star reviewed wedges that have helped thousands of customers reach golf glory</p>"
+       },
+       {
+        "id": "gid://shopify/Article/605160145173",
+        "handle": "how-to-improve-your-golf-game-according-to-the-pros",
+        "title": "How to Improve Your Golf Game According to the Pros",
+        "isPublished": true,
+        "publishedAt": "2023-05-12T13:46:51Z",
+        "templateSuffix": "",
+        "tags": [],
+        "image": {
+         "url": "https://cdn.shopify.com/s/files/1/2286/3149/articles/scorecard.jpg?v=1683899212",
+         "altText": ""
+        },
+        "summary": "<span>Golf is a challenging game, but it's also one of the most rewarding. With a little practice and dedication, anyone can improve their golf game. Here are some tips from professional golfers to help you get started:</span>",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<h3>How to Improve Your Golf Game</h3>\n<p>Golf is a challenging game, but it's also one of the most rewarding. With a little practice and dedication, anyone can improve their golf game. Here are some tips from professional golfers to help you get started:</p>\n<p><strong>1. Set goals.</strong></p>\n<p>What do you want to achieve with your golf game? Do you want to break 100, shoot in the 80s, or even qualify for a tournament? Once you know what you want to achieve, you can start setting goals to help you get there.</p>\n<p><strong>2. Get lessons.</strong></p>\n<p>One of the best ways to improve your golf game is to get lessons from a qualified instructor. A good instructor can help you identify and correct any flaws in your swing, and they can also give you tips on how to improve your short game and putting.</p>\n<p><strong>3. Practice regularly.</strong></p>\n<p>The more you practice, the better you'll become at golf. Try to practice at least three times a week, and make sure to include a variety of drills and exercises in your practice routine.</p>\n<p><strong>4. Play with better players.</strong></p>\n<p>One of the best ways to improve your golf game is to play with better players. When you play with people who are better than you, you'll be forced to up your game. You'll also learn from their experience and pick up some new tips and techniques.</p>\n<p><strong>5. Stay positive.</strong></p>\n<p>This one is near to our heart here at Lucky Golf and the reason our brand exists.  Golf is a frustrating game, but it's important to stay positive. If you get discouraged, you'll never reach your full potential. Instead, focus on the positive aspects of your game and keep working hard.  Realize and recognize that there are just as many 'Lucky' breaks as there are 'Unlucky' ones.</p>\n<p><strong>Here are some additional tips from professional golfers:</strong></p>\n<ul>\n<li>\n<strong>\"The key to golf is to make as few mistakes as possible.\"</strong><span> </span>- Jack Nicklaus</li>\n<li>\n<strong>\"The more you practice, the luckier you get.\"</strong><span> </span>- Gary Player</li>\n<li>\n<strong>\"Golf is a game of inches.\"</strong><span> </span>- Tom Watson</li>\n<li>\n<strong>\"The only way to play good golf is to practice bad golf.\"</strong><span> </span>- Ben Hogan</li>\n<li>\n<strong>\"Golf is a game of the mind.\"</strong><span> </span>- Arnold Palmer</li>\n</ul>\n<p>By following these tips, you can improve your golf game and start enjoying the game more.</p>"
+       },
+       {
+        "id": "gid://shopify/Article/605356556565",
+        "handle": "mastering-your-putt-the-power-of-a-well-crafted-putting-routine",
+        "title": "Mastering Your Putt: The Power of a Well-Crafted Putting Routine",
+        "isPublished": false,
+        "publishedAt": null,
+        "templateSuffix": "",
+        "tags": [],
+        "image": null,
+        "summary": "",
+        "seoT": null,
+        "seoD": null,
+        "metafields": {
+         "nodes": []
+        },
+        "body": "<p>Introduction: When it comes to golf, the importance of a strong putting game cannot be overstated. Regardless of your skill level, putting can make or break your score. Recreational golfers often find themselves struggling to consistently sink those critical putts, leading to frustratingly high scores. However, by implementing a well-crafted putting routine, you can significantly improve your chances of success on the green. In this article, we will explore the proper way to create a putting routine and how it can lead to lower scores and increased confidence on the course.</p>\n<ol>\n<li>\n<p>Consistency is Key: One of the fundamental principles of a successful putting routine is consistency. Every professional golfer will attest to the importance of developing a routine and sticking to it. By doing the same thing before every putt, you create a sense of familiarity and confidence that can greatly impact your stroke.</p>\n</li>\n<li>\n<p>Visualize Success: Before stepping up to address the ball, take a moment to visualize the desired outcome. Picture the ball rolling smoothly into the hole, taking note of the line and speed required. Visualization helps train your mind to focus on the target and increases your chances of executing a successful putt.</p>\n</li>\n<li>\n<p>Read the Green: Take a careful look at the green from different angles to assess the slope and break. Observe how the ball might roll and react to the surface. Pay attention to any subtle contours or variations in grass height that could affect your putt. This information will guide your decision-making process during the routine.</p>\n</li>\n<li>\n<p>Choose a Spot: Select a specific spot, preferably a few inches in front of the ball, on the intended line to focus your attention. This intermediate target helps align your clubface and body correctly. It also reduces the tendency to look up too quickly, which can cause misalignment and inconsistent strokes.</p>\n</li>\n<li>\n<p>Address the Ball: When addressing the ball, ensure your feet are shoulder-width apart and parallel to the target line. Align your eyes directly over the ball, and position it slightly ahead of center in your stance. Maintain a light grip on the putter, allowing for smooth control and a more natural pendulum-like stroke.</p>\n</li>\n<li>\n<p>Develop a Pre-Stroke Routine: Your pre-stroke routine should be consistent and purposeful. It helps establish a rhythm and allows you to focus solely on the task at hand. This routine may include a couple of practice swings, a specific number of looks at the hole, or even a deep breath to calm nerves. Find what works best for you and stick to it.</p>\n</li>\n<li>\n<p>Smooth and Controlled Stroke: As you begin your stroke, strive for a smooth and pendulum-like motion. Avoid jerky movements or excessive wrist action, as these can lead to inconsistent results. Let the weight of the putter head do the work and maintain a steady pace throughout. Trust your practice and feel the distance rather than forcing the ball into the hole.</p>\n</li>\n<li>\n<p>Follow-Through and Post-Putt Routine: Complete your stroke with a controlled follow-through, allowing the putter to continue its natural arc. Keep your head down until well after the ball has left the putter face. Developing a post-putt routine, such as marking your scorecard or analyzing the putt, helps maintain focus and reinforces the process.</p>\n</li>\n</ol>\n<p>Conclusion: A well-crafted putting routine is a game-changer for recreational golfers looking to lower their scores. By developing consistency, visualizing success, reading the green, and employing a purposeful routine, you can significantly improve your putting game. Remember, practice is key to mastering your routine and building confidence. So, head out to the practice green, implement these tips, and watch your scores plummet while your enjoyment on the course soars. Here's to sinking those crucial putts</p>"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

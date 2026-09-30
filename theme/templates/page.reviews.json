@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero-plus",
+      "settings": {
+        "image": "shopify://shop_images/lg-putt-sunset.webp",
+        "focus_x": 50,
+        "focus_y": 26,
+        "focus_mx": 42,
+        "focus_my": 30,
+        "short": true,
+        "eyebrow": "[count] reviews on the clubs",
+        "eyebrow_low": "Reviews on the clubs",
+        "count_products": [
+          "lucky-golf-lgw02-gold",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition"
+        ],
+        "heading": "The raves, and the <em>grumpy</em> ones",
+        "lede_w": 52,
+        "lede": "Verified buyers only, pulled straight from Judge.me. Sort by club or by stars, and the low ones haven't gone anywhere."
+      }
+    },
+    "all": {
+      "type": "lg-reviews-all",
+      "settings": {
+        "of_line": "out of five, from [count] reviews",
+        "tile_word": "reviews",
+        "anchor": "all-reviews",
+        "club_label": "Club",
+        "stars_label": "Stars",
+        "all_label": "All",
+        "sort_label": "Sort",
+        "sort_recent": "Most recent",
+        "sort_high": "Highest rating",
+        "sort_low": "Lowest rating"
+      },
+      "blocks": {
+        "b1": {
+          "type": "club",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "label": "Carver 02",
+            "also": [
+              "lucky-golf-lgw02-black"
+            ]
+          }
+        },
+        "b2": {
+          "type": "club",
+          "settings": {
+            "product": "signature-gold-putters",
+            "label": "Eclipse Blade"
+          }
+        },
+        "b3": {
+          "type": "club",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "label": "Eclipse Mallet"
+          }
+        },
+        "b4": {
+          "type": "club",
+          "settings": {
+            "product": "lucky-striker-hybrid-limited-edition",
+            "label": "Stryker"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "Read <em>enough?</em>",
+        "lede": "The clubs are this way.",
+        "btn_arrow": false,
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "all",
+    "signoff"
+  ]
+}

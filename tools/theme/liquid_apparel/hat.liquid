@@ -1,0 +1,107 @@
+{%- liquid
+  assign s = section.settings
+  assign cut = product.featured_media.preview_image
+  assign v = product.selected_or_first_available_variant
+  assign crumb_url = s.crumb_url | default: s.swatches.url | default: routes.all_products_collection_url
+  assign month = ''
+  assign rd = product.metafields.custom.restock_date.value
+  if rd != blank
+    assign rds = rd | date: '%s' | plus: 0
+    assign nows = 'now' | date: '%s' | plus: 0
+    if rds > nows
+      assign month = rd | date: '%B'
+    endif
+  endif
+  assign mode = product.metafields.custom.sold_out_mode.value | default: 'notify' | downcase
+  assign pre = false
+  if mode == 'preorder' and v.available and v.inventory_management != blank and v.inventory_quantity <= 0
+    assign pre = true
+  endif
+  if product.available
+    if pre
+      assign atc = 'Pre-order, ships in ' | append: month
+      assign stock = atc
+    else
+      assign atc = 'Add to cart'
+      assign stock = s.stock_in
+    endif
+  else
+    assign atc = "Tell me when it's back"
+    if month != blank
+      assign stock = 'Back in ' | append: month
+    else
+      assign stock = 'Sold out'
+    endif
+  endif
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><a href="{{ crumb_url }}">{{ s.crumb_label }}</a></li><li><span aria-current="page">{{ product.title }}</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp" id="ap-{{ section.id }}">
+  <div class="gal">
+    <div class="big" id="big">{%- if cut -%}{%- assign calt = product.featured_media.alt | default: product.title -%}{{ cut | image_url: width: 1400 | image_tag: alt: calt, fetchpriority: 'high', widths: '600,900,1400', sizes: '(max-width: 980px) 100vw, 55vw' }}{%- endif -%}</div>
+    <div class="thumbs" id="thumbs">
+      {%- for m in product.media -%}{%- assign malt = m.alt | default: product.title -%}<button type="button" data-src="{{ m.preview_image | image_url: width: 1400 }}" data-alt="{{ malt | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">{{ m.preview_image | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endfor -%}
+      {%- if s.photo1 != blank -%}<button type="button" class="is-photo" data-src="{{ s.photo1 | image_url: width: 1400 }}" data-alt="{{ s.photo1.alt | escape }}" aria-current="false" aria-label="{{ s.photo1_label | escape }}">{{ s.photo1 | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endif -%}
+      {%- if s.photo2 != blank -%}<button type="button" class="is-photo" data-src="{{ s.photo2 | image_url: width: 1400 }}" data-alt="{{ s.photo2.alt | escape }}" aria-current="false" aria-label="{{ s.photo2_label | escape }}">{{ s.photo2 | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endif -%}
+    </div>
+  </div>
+
+  <div class="buy">
+    <p class="lg-eyebrow">{{ s.eyebrow }}</p>
+    <h1 class="lg-d2">{{ product.title }}</h1>
+    <p class="price">{{ v.price | money_without_trailing_zeros }}</p>
+    {%- if product.description != blank %}<div class="lg-body ap-desc">{{ product.description }}</div>{% endif -%}
+
+    {%- if s.swatches != blank -%}
+    <div class="row"><span class="lg-label">{{ s.more_label }}</span>{%- if s.more_link != blank %}<a class="lg-link" href="{{ s.swatches.url }}">{{ s.more_link }} <span>&rarr;</span></a>{% endif %}</div>
+    <div class="sw-row">
+      {%- for p in s.swatches.products -%}{%- if p.available == false and p.id != product.id -%}{%- continue -%}{%- endif -%}
+        {%- assign sw = p.metafields.custom.cutout.value | default: p.featured_image -%}
+        <a class="lg-swatch" href="{{ p.url }}"{% if p.id == product.id %} aria-current="page"{% endif %} aria-label="{{ p.title | escape }}">{%- if sw -%}{{ sw | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}</a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    <form data-lg-add data-hat-form>
+      <input type="hidden" name="id" value="{{ v.id }}">
+      {%- if pre %}<input type="hidden" name="properties[Pre-order]" value="ships {{ month | default: 'at the next restock' }}">{% endif -%}
+      <button class="{% if product.available %}lg-btn{% else %}lg-btn-line{% endif %}" type="submit" data-atc>{{ atc }}</button>
+    </form>
+    <span class="stock">{{ stock }}</span>
+    <div class="links">
+      {%- if s.l1 != blank %}<a class="lg-link" href="{{ s.l1_url }}">{{ s.l1 }} <span>&rarr;</span></a>{% endif -%}
+      {%- if s.l2 != blank %}<a class="lg-link" href="{{ s.l2_url }}">{{ s.l2 }} <span>&rarr;</span></a>{% endif -%}
+    </div>
+    {%- if section.blocks.size > 0 -%}
+    <div class="tiles">{%- for block in section.blocks -%}<div class="tile" {{ block.shopify_attributes }}><b>{{ block.settings.b }}</b><span>{{ block.settings.label }}</span></div>{%- endfor -%}</div>
+    {%- endif -%}
+  </div>
+</div></section>
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph">{%- if cut -%}{{ cut | image_url: width: 120 | image_tag: alt: '' }}{%- endif -%}</span>
+  <div><b>{{ product.title }}</b><span>{{ v.price | money_without_trailing_zeros }}</span></div>
+  <button class="{% if product.available %}lg-btn{% else %}lg-btn-line{% endif %}" type="button" data-atc-sticky>{{ atc }}</button>
+</div>
+{% render 'lg-ap-notify', variant: v %}
+<script>
+(function(){
+  var LIVE = {{ product.available | json }};
+  var root = document.getElementById('ap-{{ section.id }}'); if (!root) return;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var form = $('[data-hat-form]', root);
+  root.addEventListener('click', function(e){
+    var t = e.target.closest('#thumbs button'); if (!t) return;
+    $$('#thumbs button', root).forEach(function(b){ b.setAttribute('aria-current', String(b === t)); });
+    var img = $('#big img', root); if (img){ img.removeAttribute('srcset'); img.src = t.dataset.src; img.alt = t.dataset.alt || ''; }
+    $('#big', root).classList.toggle('is-photo', t.classList.contains('is-photo'));
+  });
+  form.addEventListener('submit', function(e){ if (!LIVE){ e.preventDefault(); e.stopPropagation(); $('#md-notify').hidden = false; } });
+  document.addEventListener('click', function(e){ if (!e.target.closest('[data-atc-sticky]')) return;
+    if (form.requestSubmit) form.requestSubmit(); else $('[data-atc]', form).click(); });
+  var buy = $('.buy', root), sticky = $('[data-sticky]');
+  addEventListener('scroll', function(){ var on = buy.getBoundingClientRect().bottom < 40;
+    if (on !== sticky.hasAttribute('data-on')) sticky.toggleAttribute('data-on', on); }, { passive: true });
+})();
+</script>

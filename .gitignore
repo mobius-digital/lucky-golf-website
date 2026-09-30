@@ -28,3 +28,11 @@ v8/qa/
 v8/qa-report.json
 v8/*.log
 v8/raw/
+
+# creator reels: downloaded videos live in Shopify; the URL lists carry expiring access tokens
+v9/wild/files/
+v9/wild/urls.txt
+v9/wild/resource_urls.json
+v9/wild/create.graphql
+# large review exports (regenerable)
+v9/review-pdfs/

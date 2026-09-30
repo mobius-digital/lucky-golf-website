@@ -1,0 +1,182 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- assign trust = section.blocks | where: 'type', 'trust' -%}
+  {%- if trust.size > 0 -%}
+  <div class="lg-trust">{%- for block in trust -%}<span {{ block.shopify_attributes }}>{% render 'lg-icon', name: block.settings.icon %}{{ block.settings.text }}</span>{%- endfor -%}</div>
+  {%- endif -%}
+  <div class="faq-in{% if s.cols == 'narrow' %} is-narrow{% endif %}"{% if trust.size > 0 and s.trust_gap %} style="margin-top:clamp(40px,5vw,72px)"{% endif %}>
+    <div>
+      {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+      {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+      {%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}
+    </div>
+    <div class="lg-faq">
+      {%- for block in section.blocks -%}{%- if block.type == 'q' -%}
+      <details class="lg-fq" {{ block.shopify_attributes }}><summary>{{ block.settings.q }}</summary><div class="lg-fq-a">{{ block.settings.a }}</div></details>
+      {%- endif -%}{%- endfor -%}
+    </div>
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Questions, two columns",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "trust_gap",
+      "label": "Space between trust row and questions",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Before you pick"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Line under it"
+    },
+    {
+      "type": "select",
+      "id": "cols",
+      "label": "Columns",
+      "options": [
+        {
+          "value": "even",
+          "label": "Even"
+        },
+        {
+          "value": "narrow",
+          "label": "Narrow left"
+        }
+      ],
+      "default": "even"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "q",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "q",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "a",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust line (above)",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            },
+            {
+              "value": "map-pin",
+              "label": "map-pin"
+            },
+            {
+              "value": "search",
+              "label": "search"
+            },
+            {
+              "value": "shopping-bag",
+              "label": "shopping-bag"
+            },
+            {
+              "value": "circle-help",
+              "label": "circle-help"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Questions, two columns"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,174 @@
+{%- assign s = section.settings -%}
+{%- if s.crumb != blank -%}<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><span aria-current="page">{{ s.crumb }}</span></li></ol></nav>{%- endif -%}
+{%- if s.heading != blank -%}
+<section class="lg-wrap faq-intro">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+  {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+</section>
+{%- endif -%}
+{%- if s.jump -%}
+<div class="jump"><nav class="lg-wrap jump-in" aria-label="On this page">
+  {%- for block in section.blocks -%}{%- if block.type == 'topic' and block.settings.anchor != blank -%}<a href="#{{ block.settings.anchor }}">{{ block.settings.jump_label | default: block.settings.eyebrow }}</a>{%- endif -%}{%- endfor -%}
+  {%- if s.jump_extra_label != blank %}<a href="{{ s.jump_extra_url }}">{{ s.jump_extra_label }}</a>{% endif -%}
+</nav></div>
+{%- endif -%}
+{%- assign open = false -%}{%- assign ti = 0 -%}
+{%- for block in section.blocks -%}{%- assign b = block.settings -%}
+  {%- if block.type == 'topic' or open == false -%}
+    {%- if open %}</div></div></section>{% endif -%}
+    <section class="lg-sec blk{% if s.even %} is-even{% endif %}"{% if block.type == 'topic' and b.anchor != blank %} id="{{ b.anchor }}"{% endif %}{% if ti > 0 or s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap blk-in">
+      <div>{%- if block.type == 'topic' -%}
+        {%- if b.eyebrow != blank %}<p class="lg-eyebrow">{{ b.eyebrow }}</p>{% endif -%}
+        {% render 'lg-h', text: b.heading, tag: 'h2', cls: 'lg-d2' %}
+        {%- if b.text != blank %}<p class="lg-body">{{ b.text }}</p>{% endif -%}
+      {%- endif -%}</div>
+      <div class="lg-faq"{% if block.type == 'topic' %} {{ block.shopify_attributes }}{% endif %}>
+    {%- assign open = true -%}{%- assign ti = ti | plus: 1 -%}
+  {%- endif -%}
+  {%- if block.type == 'q' -%}
+    <details class="lg-fq"{% if b.open %} open{% endif %} {{ block.shopify_attributes }}><summary>{{ b.question }}</summary><div class="lg-fq-a">{{ b.answer }}</div></details>
+  {%- endif -%}
+{%- endfor -%}
+{%- if open %}</div></div></section>{% endif -%}
+{%- if s.jsonld -%}
+{%- assign qn = 0 -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{%- for block in section.blocks -%}{%- if block.type == 'q' and block.settings.question != blank -%}
+{%- if qn > 0 %},{% endif %}{"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | strip_html | strip | json }}}}
+{%- assign qn = qn | plus: 1 -%}
+{%- endif -%}{%- endfor -%}
+]}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Questions",
+  "class": "lgc-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb label (empty = none)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Page eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Page heading, H1 (empty = none)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    },
+    {
+      "type": "checkbox",
+      "id": "jump",
+      "label": "Jump links along the top (sticky)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "jump_extra_label",
+      "label": "Extra jump link"
+    },
+    {
+      "type": "url",
+      "id": "jump_extra_url",
+      "label": "Extra jump link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "even",
+      "label": "Two even columns",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above the first group",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "jsonld",
+      "label": "Tell Google these are FAQs (FAQPage)",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "Add a Group, then its Questions under it. Each group gets its own heading, anchor and jump link."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Anchor (e.g. returns)"
+        },
+        {
+          "type": "text",
+          "id": "jump_label",
+          "label": "Jump link label (empty = eyebrow)"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading (italic = gold word)",
+          "info": "Select a word and press Italic to make it the gold word."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Line under it"
+        }
+      ]
+    },
+    {
+      "type": "q",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open to start",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Questions"
+    }
+  ]
+}
+{% endschema %}

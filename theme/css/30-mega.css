@@ -1,0 +1,48 @@
+/* the mega menu, Takomo's way: a white panel of product tiles (name, one line, the club)
+   plus a "Browse all" tile. It fades in on hover, stays while the cursor is on it, and the
+   page behind blurs so the panel is the only thing to look at. Overrides v9's site.css. */
+.mega{display:block;opacity:0;visibility:hidden;translate:0 -8px;pointer-events:none;
+  transition:opacity .22s var(--lg-ease),translate .22s var(--lg-ease),visibility 0s linear .22s;padding:22px 0 26px}
+.nv.is-open .mega{display:block;opacity:1;visibility:visible;translate:0 0;pointer-events:auto;transition-delay:0s}
+.mega::before{content:'';position:absolute;left:0;right:0;bottom:100%;height:28px}
+.mega-in{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;grid-template-columns:none}
+body.lg .lg-nav .mega .mega-intro,body.lg .lg-nav .mega .mega-ph{display:none}
+.mega-cards{display:contents}
+body.lg .lg-nav .mega a.mt{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44%;grid-template-rows:1fr auto auto;column-gap:10px;
+  width:280px;height:156px;padding:14px 12px 14px 16px;background:var(--lg-tile);
+  border-radius:var(--lg-r-card);overflow:hidden;color:var(--lg-ink);text-align:left}
+.mega .mt .mt-ph{grid-column:2;grid-row:1 / 4;position:static;width:auto;height:100%;aspect-ratio:auto;background:none;border-radius:0;display:flex;align-items:center;justify-content:center}
+.mega .mt .mt-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:0;transition:transform .35s var(--lg-ease)}
+.mega a.mt:hover .mt-ph img{transform:scale(1.06) rotate(-3deg)}
+.mega .mt .mt-row{grid-column:1;grid-row:2;display:block;max-width:none}
+.mega .mt .mt-nm{display:block;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;font-size:21px;line-height:1}
+.mega .mt .mt-pr{display:none}
+.mega .mt .mt-sub{grid-column:1;grid-row:3;display:block;max-width:none;margin-top:5px;font-size:12px;line-height:1.3;color:#545454}
+.mega .mt .mt-tag{position:absolute;top:0;left:0;z-index:1;border-radius:0 0 4px 0;padding:6px 10px;background:var(--lg-gold);color:#17140F}
+/* the See-all tile: a photo with the words on it */
+body.lg .lg-nav .mega a.mt-all{display:flex;flex-direction:column;justify-content:flex-end;background:#0B1911;color:#F4F3F0}
+.mega .mt-all .mt-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform .5s var(--lg-ease)}
+.mega a.mt-all:hover .mt-bg{transform:scale(1.04)}
+.mega .mt-all::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,17,11,.88),rgba(6,17,11,.15) 70%)}
+.mega .mt-all .mt-row,.mega .mt-all .mt-sub,.mega .mt-all .mt-arrow{position:relative;z-index:1}
+.mega .mt-all .mt-nm{color:#F4F3F0}
+.mega .mt-all .mt-sub{color:rgba(244,243,240,.8)}
+.mega .mt-all .mt-arrow{position:absolute;right:16px;bottom:14px;font-size:22px;color:var(--lg-on-dark)}
+/* the page behind the open menu blurs */
+.lg-hdr::after{content:'';position:fixed;left:0;right:0;top:0;bottom:0;z-index:-1;background:rgba(6,17,11,.18);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .22s var(--lg-ease)}
+.lg-hdr:has(.nv.is-open)::after{opacity:1}
+.lg-hdr-in{z-index:2}
+.mega{z-index:1}
+
+/* the delivery country (Shopify Markets): shown in the green bar, like Takomo's "Delivery to" */
+.lg-tick-in{position:relative}
+.lg-loc{position:absolute;right:var(--lg-pad);top:50%;translate:0 -50%;display:flex;align-items:center;gap:6px;margin:0}
+.lg-loc label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lg-on-dark-m)}
+.lg-loc select{background:transparent;color:var(--lg-on-dark);border:0;font:inherit;font-size:12px;cursor:pointer;max-width:170px}
+.lg-loc select option{color:#17140F}
+@media (max-width:980px){.lg-loc{display:none}}
+
+/* the header slides away while scrolling down and comes back on the way up (Takomo) */
+.lg-hdr{transition:translate .3s var(--lg-ease)}
+.lg-hdr.is-away{translate:0 -100%}

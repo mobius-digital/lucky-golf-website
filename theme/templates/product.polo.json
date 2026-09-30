@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-ap-polo",
+      "settings": {
+        "crumb_label": "Polos",
+        "crumb_url": "shopify://collections/polos",
+        "drop": "Classic Polo, Blade Polo",
+        "collar_a_tag": "Classic Polo",
+        "collar_a": "The Classic",
+        "collar_b_tag": "Blade Polo",
+        "collar_b": "The Blade",
+        "eyebrow_tail": " · Polos",
+        "swatches": "polos",
+        "all_prints": "See every print side by side",
+        "fitnote": "<p><strong>Fit:</strong> athletic, with four-way stretch, so it's more forgiving than the cut suggests. If you wear a large in a performance polo, a large here's right. Between sizes, size up.</p>",
+        "stock_in": "In stock · ships in 1 to 2 days",
+        "returns_link": "Thirty days to send it back",
+        "delivery_link": "When will it get here?",
+        "ret_eyebrow": "Refund policy",
+        "ret_title": "Thirty days to send it back",
+        "ret_body": "<p>Apparel comes back within thirty days of delivery, unworn, unwashed and in original condition with all original tags attached.</p><p>No makeup or deodorant marks, odors, pet hair, stretching or laundering. <strong>A return without its tags has $7 deducted from the refund.</strong></p><p>Requests after thirty days aren't accepted. Clubs get sixty days; apparel doesn't.</p><h4>How the refund works</h4><p>Refunds go out once the item's back and inspected. Return shipping's on you, and original shipping isn't refunded.</p>",
+        "del_eyebrow": "Delivery",
+        "del_title": "When it shows up",
+        "carriers": "USPS, UPS, FedEx",
+        "del_body": "<p>Orders leave the warehouse in one to two business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p><p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $198 or more ship free.</p><h4>Where it ships from</h4><p>Long Beach, California.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "spec",
+          "settings": {
+            "b": "88",
+            "small": "/12",
+            "label": "Poly-spandex"
+          }
+        },
+        "b2": {
+          "type": "spec",
+          "settings": {
+            "b": "50",
+            "small": "+",
+            "label": "UPF"
+          }
+        },
+        "b3": {
+          "type": "spec",
+          "settings": {
+            "b": "S",
+            "small": "–3XL",
+            "label": "Sizes"
+          }
+        },
+        "b4": {
+          "type": "spec",
+          "settings": {
+            "b": "4",
+            "small": "way",
+            "label": "Stretch"
+          }
+        },
+        "b5": {
+          "type": "fq",
+          "settings": {
+            "title": "Fabric and care",
+            "open": true,
+            "body": "<ul><li><strong>Fabric</strong> 88% polyester, 12% spandex.</li><li><strong>Stretch</strong> Four-way, so it moves the way your swing does.</li><li><strong>Finish</strong> Moisture-wicking, wrinkle-resistant, and UPF 50+, so the back of your neck makes it to the back nine.</li><li><strong>Care</strong> Machine wash cold. Tumble dry low.</li></ul>"
+          }
+        },
+        "b6": {
+          "type": "fq",
+          "settings": {
+            "title": "Shipping and returns",
+            "body": "<p>Orders leave Long Beach, California in 1 to 2 business days, and the tracking number shows up as soon as the carrier scans it.</p><p>Apparel gets thirty days to come back: unworn, unwashed, tags on. Return shipping's on you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "piece": {
+      "type": "lg-ap-piece",
+      "settings": {
+        "eyebrow": "The polo",
+        "heading": "Swing in it. Stay out <em>after.</em>",
+        "tall": true,
+        "body": "<p>Four-way stretch, so the only thing limiting your backswing is your back. It's an athletic fit in 88/12 poly-spandex, it wicks, it's UPF 50+, and it comes out of the bag looking like it didn't spend the morning in one.</p><p>Every print is the same shirt underneath. Pick the one you want your buddies roasting you about.</p>"
+      }
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky polos on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-green-read-fit.webp",
+            "pos": "object-position:60% 40%"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-walk-off-green.webp",
+            "pos": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "reviews": {
+      "type": "lg-ap-reviews",
+      "settings": {
+        "pool": "polos",
+        "eyebrow": "Reviews",
+        "heading": "[count] reviews",
+        "line": "Reviews from every Lucky polo. Same fabric and fit, different print."
+      }
+    },
+    "more": {
+      "type": "lg-ap-more",
+      "settings": {
+        "layout": "three",
+        "eyebrow": "Wear it with",
+        "heading": "Round out the look",
+        "link_label": "All apparel",
+        "link_url": "shopify://collections/polos"
+      },
+      "blocks": {
+        "b1": {
+          "type": "product",
+          "settings": {
+            "product": "black-its-better-to-be-lucky-patch-hat",
+            "line": "Says it before you do."
+          }
+        },
+        "b2": {
+          "type": "collar",
+          "settings": {
+            "collection": "polos",
+            "tag": "Classic Polo",
+            "line_a": "The classic collar, same shirt underneath.",
+            "line_b": "No buttons, nothing at your throat."
+          }
+        },
+        "b3": {
+          "type": "product",
+          "settings": {
+            "product": "cream-upside-down-hat",
+            "line": "Cream rope hat, made for the loud prints."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Wear it the day you shoot your best round, or the day you need to look like you did.",
+        "btn2_label": "Pick a size →",
+        "btn2_url": "#sizes"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "piece",
+    "photos",
+    "reviews",
+    "more",
+    "signoff"
+  ]
+}

@@ -1,0 +1,34 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  assign sum = 0
+  for p in s.rating_products
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign rv = p.metafields.reviews.rating.value.rating | default: 0
+    assign n = n | plus: rc
+    assign sum = rv | times: rc | plus: sum
+  endfor
+  assign avg = ''
+  if n > 0
+    assign avg = sum | divided_by: n | times: 10 | floor | divided_by: 10.0
+  endif
+  assign nf = n
+  if n >= 1000
+    assign th = n | divided_by: 1000
+    assign rest = n | modulo: 1000 | prepend: '00' | slice: -3, 3
+    assign nf = th | append: ',' | append: rest
+  endif
+-%}
+<div class="lg-wrap">
+<nav class="related" aria-label="Keep browsing"><span class="lg-label">{{ s.label }}</span>
+  {%- for block in section.blocks -%}{%- if block.type == 'link' -%}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</a>{%- endif -%}{%- endfor -%}
+</nav>
+<div class="coll-trust"><div class="lg-trust">
+  {%- for block in section.blocks -%}{%- if block.type == 'trust' -%}
+    {%- assign t = block.settings.text -%}
+    {%- if t contains '[count]' or t contains '[avg]' -%}{%- if n < min -%}{%- continue -%}{%- endif -%}{%- assign t = t | replace: '[avg]', avg | replace: '[count]', nf -%}{%- endif -%}
+    <span {{ block.shopify_attributes }}>{% render 'lg-icon', name: block.settings.icon %}{{ t }}</span>
+  {%- endif -%}{%- endfor -%}
+</div></div>
+</div>

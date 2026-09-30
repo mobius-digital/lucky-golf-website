@@ -1,0 +1,70 @@
+<div class="jump" id="jump"><div class="lg-wrap jump-in">
+  <nav aria-label="{{ section.settings.label | escape }}">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}{%- assign c = b.count -%}{%- if b.collection != blank %}{%- assign c = b.collection.products_count -%}{% endif -%}
+    <a href="#{{ b.anchor }}" {{ block.shopify_attributes }}>{{ b.text }}{% if c > 0 %} <i>{{ c }}</i>{% endif %}</a>
+    {%- endfor -%}
+  </nav>
+</div></div>
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('#jump a'));
+  function mark(){ var y = scrollY + 160, k = 0;
+    links.forEach(function(a, i){ var s = document.getElementById(a.getAttribute('href').slice(1)); if (s && s.getBoundingClientRect().top + scrollY <= y) k = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === k); }); }
+  addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Jump bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label (for screen readers)",
+      "default": "Jump to a category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Wedges"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Anchor of the band",
+          "default": "wedges"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Count from collection (optional)"
+        },
+        {
+          "type": "range",
+          "id": "count",
+          "label": "Or this count (0 = none)",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Jump bar"
+    }
+  ]
+}
+{% endschema %}

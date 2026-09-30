@@ -1,0 +1,67 @@
+{%- assign s = section.settings -%}
+<div class="lgc-blog"><section class="lg-wrap" style="padding-top:clamp(28px,4vw,48px)">
+{%- paginate blog.articles by 24 -%}
+  {%- liquid
+    assign lead = s.lead
+    if lead == blank or lead.handle == blank
+      assign lead = blog.articles.first
+    endif
+    if paginate.current_page > 1
+      assign lead = nil
+    endif
+  -%}
+  {%- if lead -%}
+  <a class="lead" href="{{ lead.url }}">
+    <figure>{%- if lead.image -%}{{ lead.image | image_url: width: 1400 | image_tag: alt: lead.title, widths: '600,900,1200,1400', sizes: '(max-width: 900px) 100vw, 55vw' }}{%- else -%}<span class="noimg">Lucky</span>{%- endif -%}</figure>
+    <div>{%- if s.lead_eyebrow != blank %}<p class="lg-eyebrow">{{ s.lead_eyebrow }}</p>{% endif -%}<h2 class="lg-d2">{{ lead.title }}</h2>
+      {%- assign ex = lead.excerpt | strip_html | strip -%}{%- if ex != blank %}<p class="lg-body">{{ ex }}</p>{% endif -%}
+      {%- if lead.published_at %}<p class="meta" style="margin-top:14px">{{ lead.published_at | date: '%B %-d, %Y' }}</p>{% endif -%}
+      <span class="lg-link" style="margin-top:10px;display:inline-block">{{ s.read_label }} <span>&rarr;</span></span></div></a>
+  {%- endif -%}
+  <div class="grid">
+    {%- for a in blog.articles -%}{%- if lead and a.id == lead.id %}{% continue %}{% endif -%}
+      <a class="post" href="{{ a.url }}">
+        {%- if a.image -%}<figure>{{ a.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: a.title, widths: '450,700,900', sizes: '(max-width: 680px) 100vw, (max-width: 1000px) 50vw, 33vw' }}</figure>{%- else -%}<figure><span class="noimg">Lucky</span></figure>{%- endif -%}
+        <h3>{{ a.title }}</h3>
+        {%- assign ex = a.excerpt | strip_html | strip -%}{%- if ex != blank %}<p>{{ ex | truncatewords: 30 }}</p>{% endif -%}
+        {%- if a.published_at %}<p class="meta" style="margin-top:10px">{{ a.published_at | date: '%B %-d, %Y' }}</p>{% endif -%}
+      </a>
+    {%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}<nav class="pages" aria-label="More articles">{{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}</nav>{%- endif -%}
+{%- endpaginate -%}
+</section></div>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "settings": [
+    {
+      "type": "article",
+      "id": "lead",
+      "label": "Article to lead with (empty = newest)"
+    },
+    {
+      "type": "text",
+      "id": "lead_eyebrow",
+      "label": "Lead eyebrow",
+      "default": "Latest"
+    },
+    {
+      "type": "text",
+      "id": "read_label",
+      "label": "Read link",
+      "default": "Read it"
+    },
+    {
+      "type": "paragraph",
+      "content": "The rest are every article on this blog, newest first. The line under each title is the article's excerpt."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog posts"
+    }
+  ]
+}
+{% endschema %}

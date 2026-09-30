@@ -34,3 +34,5 @@ template suffixes back from `v9/migration/live-templates.json`. Keep the old the
 - Restock dates on sold-out variants.
 - Ad team: point the Facebook ads at the real URLs (redirects cover them for now).
 - Apps: see the cancel list (after 7 clean days for UpCart).
+- Code editor cleanup: delete the preview-only mock templates `index.mock.json`, `page.home-a.json`, `page.home-b.json` (harmless; only reachable with ?view=).
+- Community posts: add the creator reels from `v9/wild/posts.json` as permission + original files come in.

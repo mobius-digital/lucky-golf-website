@@ -1,0 +1,299 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-club-main",
+      "settings": {
+        "gal_all": "See all [n] photos",
+        "crumb_label": "Clubs",
+        "crumb_url": "shopify://collections/lucky-golf-clubs",
+        "crumb2_label": "Wedges",
+        "crumb2_url": "/collections/lucky-golf-clubs#wedges",
+        "atc": "Put it in the bag",
+        "in_stock": "In stock · ships in 1 to 2 days",
+        "set_hint": "Two or more and shipping's on us",
+        "set1": "Just the one",
+        "set2": "Gap and sand",
+        "set3": "Gap, sand and lob",
+        "returns_link": "Sixty days to make up your mind",
+        "returns_url": "/pages/faq-lucky-wedges#returns",
+        "delivery_link": "When will it get here?",
+        "ship_link": "Free shipping at $198",
+        "ship_url": "/pages/faq-lucky-wedges#shipping",
+        "helper_title": "Let's find your lofts",
+        "helper_line": "Two quick questions. Keep four to six degrees between your wedges and each one gets its own yardage, instead of two of them going the same distance.",
+        "notify_line": "Drop your email. You'll get one message when it's back, and that's it.",
+        "write_line": "Tell other golfers how it plays: the stars, a few words, and a photo if you've got one. Buy it from us and your review gets the verified badge.",
+        "returns_body": "<h4>How it works</h4><p>Sixty days from delivery on every club. <strong>Contact us before sending anything back</strong>. Club returns need approval and photo verification first, and a club sent back without our OK won't be accepted.</p><p>Refunds are issued after the club comes back and is inspected. Return shipping is the customer's, and original shipping isn't refunded.</p><h4>What you can do with it first</h4><p><strong>Putters</strong> may be used during the sixty days, but must come back in brand-new condition: no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. No regripping, bending, cutting or altering.</p><p><strong>Wedges</strong>: one wedge per set may be opened and tested, on a turf mat or another non-abrasive surface. Any others stay factory sealed. The tested one must come back with no groove wear, face marks or sole wear.</p><p><strong>Hybrids</strong> must appear completely unused, with no visible wear and no modifications.</p><p>Wear beyond these conditions can mean a partial refund or a declined return.</p><p><a href=\"/pages/faq-lucky-wedges#returns\" title=\"Refund policy\">Read the full refund policy</a></p>",
+        "delivery_body": "<p>Orders leave the warehouse in 1 to 2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p><p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $198 or more ship free.</p><h4>Where it ships from</h4><p>Long Beach, California.</p>",
+        "p_eyebrow": "Titanium hybrid · LGH01",
+        "p_h1": "<em>Stryker</em>",
+        "p_lede": "Your 4-iron's retirement plan. The Stryker is a titanium hybrid that launches high and easy from the fairway, the rough and anywhere else you end up. The Flex Channel face keeps the ball flying on the strikes you don't catch pure, and the Glide Sole cuts through the rough like it isn't there. Long approaches just got a lot less scary.",
+        "p_atc": "Put it in the bag",
+        "p_rvl_q": "Played 2 rounds and love swinging and hitting a fair…",
+        "p_rvl_n": "John L.L.",
+        "p_rvl_l": "read the reviews",
+        "p_d1_t": "What it's made of",
+        "p_d1_b": "Titanium head with a Flex Channel face and a Glide Sole, 19° at 40.5 inches, on a stiff flex shaft. Brushed satin gold face, mirror gold sole, and a gloss black crown with a gold starburst.",
+        "p_d2_t": "What's in the box",
+        "p_d2_b": "One hybrid on the stiff flex shaft and our stock grip. No headcover in the box.",
+        "p_d3_t": "Shipping and returns",
+        "p_d3_b": "Orders leave Long Beach, California in 1 to 2 business days, and the tracking number shows up as soon as the carrier scans it. Every club gets sixty days from delivery. Talk to us before anything ships back, because club returns need our OK and a few photos first. Return shipping's on you."
+      }
+    },
+    "film": {
+      "type": "lg-club-film",
+      "settings": {
+        "who_label": "Who it's for",
+        "p_eyebrow": "On the course",
+        "p_head": "Hit it from <em>anywhere.</em>",
+        "p_body": "Time to throw the 4-iron a retirement party. It had a good run. Okay, mostly a bad run, but it showed up. The Stryker takes it from here, and it gets the ball up in a hurry from lies that used to mean a punch-out. That long carry over the bunker goes from \"please just get it on\" to \"where's the pin?\" The 4-iron can finally take up pickleball.",
+        "p_who": "Anyone who'd rather not hit a long iron, which is most of us."
+      }
+    },
+    "grinds": {
+      "type": "lg-club-grinds",
+      "settings": {}
+    },
+    "wild": {
+      "type": "lg-club-wild",
+      "settings": {
+        "eyebrow": "Tagged",
+        "heading": "Caught in the wild",
+        "sub": "Holed one? Stuck one close? Skulled one that somehow ran up to a foot? Tag @luckygolfofficial. We don't ask how it got there.",
+        "limit": 8
+      }
+    },
+    "world": {
+      "type": "lg-club-world",
+      "settings": {
+        "eyebrow": "Two finishes",
+        "heading": "Gold or <em>black.</em>",
+        "foot": ""
+      },
+      "blocks": {
+        "wg": {
+          "type": "world",
+          "settings": {
+            "key": "gold",
+            "label": "Gold",
+            "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+            "pos": "object-position:40% 55%",
+            "heading": "Gold from heel to toe.",
+            "body": "Good luck losing this one in the rough."
+          }
+        },
+        "wb": {
+          "type": "world",
+          "settings": {
+            "key": "black",
+            "label": "Black",
+            "image": "shopify://shop_images/lg-swing-black-wedge.webp",
+            "pos": "object-position:30% 40%",
+            "heading": "Meet the Shadow",
+            "body": "Black from the face to the sole, with just enough gold to show whose it is."
+          }
+        },
+        "p1": {
+          "type": "point",
+          "settings": {
+            "world": "gold",
+            "n": "1",
+            "x": 79,
+            "y": 25,
+            "left": true,
+            "title": "Forged 1020",
+            "text": "Soft on the good ones, honest on the rest"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "world": "gold",
+            "n": "2",
+            "x": 26,
+            "y": 44,
+            "left": true,
+            "title": "Micro-grooved face",
+            "text": "The reason it spins"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "world": "gold",
+            "n": "3",
+            "x": 57,
+            "y": 40,
+            "left": false,
+            "title": "Sandblasted face",
+            "text": "Still grips when the grass is wet. Dew sweepers, you're welcome."
+          }
+        },
+        "p4": {
+          "type": "point",
+          "settings": {
+            "world": "gold",
+            "n": "4",
+            "x": 62,
+            "y": 64,
+            "left": false,
+            "title": "Sole and bounce",
+            "text": "8 to 12 degrees, by loft"
+          }
+        },
+        "g1": {
+          "type": "photo",
+          "settings": {
+            "world": "gold",
+            "image": "shopify://shop_images/lg-lucky-carver-gold-address.webp",
+            "alt": "56 at address, first tee",
+            "ratio": "23"
+          }
+        },
+        "g2": {
+          "type": "photo",
+          "settings": {
+            "world": "gold",
+            "image": "shopify://shop_images/lg-gold-wedge-bag.webp",
+            "alt": "Resting on the bag",
+            "ratio": "32"
+          }
+        },
+        "g4": {
+          "type": "photo",
+          "settings": {
+            "world": "gold",
+            "image": "shopify://shop_images/lg-lucky-golfer-address.webp",
+            "alt": "The walk in, 60 in hand",
+            "ratio": "23"
+          }
+        },
+        "g5": {
+          "type": "photo",
+          "settings": {
+            "world": "gold",
+            "image": "shopify://shop_images/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp",
+            "alt": "Grooves, after a season",
+            "ratio": "11"
+          }
+        },
+        "g7": {
+          "type": "photo",
+          "settings": {
+            "world": "gold",
+            "image": "shopify://shop_images/lg-lucky-bag-glove.webp",
+            "alt": "Glove, bag, the clover",
+            "ratio": "32"
+          }
+        },
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "world": "black",
+            "image": "shopify://shop_images/lg-swing-black-wedge.webp",
+            "alt": "The Carver 02 Black at the finish",
+            "ratio": "32",
+            "pos": "object-position:30% 40%"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "world": "black",
+            "image": "shopify://shop_images/lg-lucky-golfer-address.webp",
+            "alt": "Over the ball with the Carver 02 Black",
+            "ratio": "23"
+          }
+        }
+      },
+      "block_order": [
+        "wg",
+        "wb",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g7",
+        "b1",
+        "b2"
+      ]
+    },
+    "specs": {
+      "type": "lg-club-specs",
+      "settings": {
+        "eyebrow": "The spec sheet",
+        "p_head": "Nineteen degrees. No fitting appointment required.",
+        "p_line": "Stiff shaft, 40.5 inches, done.",
+        "p_note": "Nineteen degrees sits where a 3-iron or a 5-wood would."
+      }
+    },
+    "pband": {
+      "type": "lg-club-pband",
+      "settings": {
+        "label": "On the course",
+        "p_alt1": "Walking off the green",
+        "p_alt2": "A Lucky bag and glove",
+        "p_alt3": "A putt at sunset"
+      }
+    },
+    "reviews": {
+      "type": "lg-club-reviews",
+      "settings": {
+        "eyebrow": "Reviews",
+        "p_q1_q": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now",
+        "p_q1_n": "John L.L.",
+        "p_q2_q": "I'm loving my new hybrid. The gold color is stunning and the performance is unmatched. This club has replaced my sorry 3 wood.",
+        "p_q2_n": "LB06",
+        "p_q3_q": "I really like this hybrid. I'm still getting used to hitting it but I played it last night and what a beautiful sound it made when I struck it right!",
+        "p_q3_n": "Dana S."
+      }
+    },
+    "more": {
+      "type": "lg-club-more",
+      "settings": {
+        "eyebrow": "More from the bag",
+        "heading": "Round out the bag",
+        "link_label": "See every club",
+        "link_url": "shopify://collections/lucky-golf-clubs",
+        "p_m1_product": "lucky-golf-lgw02-gold",
+        "p_m1_name": "Carver 02 Gold",
+        "p_m1_line": "The forged wedge everybody asks about.",
+        "p_m2_product": "limited-edition-mallet-putter",
+        "p_m2_name": "Eclipse Mallet",
+        "p_m2_line": "Soft off the face, gold all over.",
+        "p_m3_product": "lucky-golf-lgw02-black",
+        "p_m3_name": "Carver 02 Black",
+        "p_m3_line": "The same forged wedge, in black.",
+        "p_m4_product": "white-its-better-to-be-lucky-patch-hat",
+        "p_m4_name": "White It's Better To Be Lucky Hat",
+        "p_m4_line": "Says it before you do."
+      }
+    },
+    "last": {
+      "type": "lg-club-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "cta": "Put it in the bag",
+        "cta_out": "Tell me when it's back",
+        "p_sign": "Your 4-iron will understand."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "film",
+    "grinds",
+    "wild",
+    "world",
+    "specs",
+    "pband",
+    "reviews",
+    "more",
+    "last"
+  ]
+}

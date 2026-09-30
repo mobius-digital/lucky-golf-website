@@ -1,0 +1,41 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "lg-footer",
+      "settings": {},
+      "blocks": {
+        "f1": {
+          "type": "column",
+          "settings": {
+            "title": "Clubs",
+            "menu": "lucky-footer-clubs"
+          }
+        },
+        "f2": {
+          "type": "column",
+          "settings": {
+            "title": "Apparel",
+            "menu": "lucky-footer-apparel"
+          }
+        },
+        "f3": {
+          "type": "column",
+          "settings": {
+            "title": "Support",
+            "menu": "lucky-footer-support"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ]
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

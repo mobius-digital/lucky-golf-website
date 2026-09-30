@@ -1,0 +1,25 @@
+/* the real bag: quantity, compare-at, the coverage line, the cart-page link */
+.cd-qty{display:inline-flex;align-items:center;gap:2px;margin-top:8px;border:1px solid var(--lg-rule);border-radius:10px}
+.cd-qty button{width:32px;height:32px;border:0;background:none;cursor:pointer;font-size:18px;color:var(--lg-ink)}
+.cd-qty span{min-width:22px;text-align:center;font-weight:600;font-size:14px}
+.cd-line .pr s{display:block;font-weight:400;color:var(--lg-ink-64);font-size:13px}
+.cd-cover{grid-template-columns:1fr auto}
+.cd-cover .ph{display:none}
+.cd-cover b{font-size:13px}
+.cd-view{margin:12px 0 0;text-align:center;font-size:var(--lg-fs-sm)}
+.lg-skip:focus{position:fixed!important;left:12px;top:12px;width:auto;height:auto;clip:auto;z-index:9999;background:#fff;color:#17140F;padding:10px 14px;border-radius:10px}
+[aria-busy="true"]{opacity:.7;pointer-events:none}
+.bagbtn{text-decoration:none;color:inherit}
+/* a block wrapper around a card keeps the grid's shape */
+.lg-card-wrap{display:flex;min-width:0}
+.lg-card-wrap > .lg-card{flex:1;min-width:0}
+.cards4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--lg-gut)}
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut)}
+@media (max-width:1100px){.cards4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:749px){.cards4,.cards3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .cards4 > *,.cards3 > *{flex:0 0 70%;scroll-snap-align:start}}
+.pband-1{grid-template-columns:1fr}.pband-2{grid-template-columns:1fr 1fr}.pband-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* Loop Checkout+ inside our bag: its two buttons take the bag's look */
+.cd-foot .loop-return-coverage{margin-top:10px}
+.cd-foot .loop-return-coverage__cta__plus{border-radius:var(--lg-r-btn)!important;font-family:'Archivo',sans-serif!important;text-transform:uppercase;letter-spacing:.06em}
+.cd-foot .loop-return-coverage__cta__standard,.cd-foot .loop-return-coverage__link{font-size:13px!important;color:var(--lg-ink-70)!important}

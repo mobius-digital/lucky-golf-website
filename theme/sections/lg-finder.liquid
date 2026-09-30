@@ -1,0 +1,208 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec fnd" id="{{ s.anchor | default: 'finder' }}" data-finder{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {% render 'lg-sec-head', s: s %}
+  <div class="lg-chips" role="tablist" aria-label="{{ s.chips_label | escape }}">
+    {%- for block in section.blocks -%}<button class="lg-chip" type="button" role="tab" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" data-fp="{{ forloop.index0 }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>{%- endfor -%}
+  </div>
+  {%- for block in section.blocks -%}
+  <div class="fnd-panel" data-panel="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}><div class="fnd-grid">
+    {%- for i in (1..3) -%}{%- assign pk = 'p' | append: i -%}{%- assign p = block.settings[pk] -%}{%- if p != blank -%}
+      {%- assign lk = 'l' | append: i -%}{%- assign ik = 'i' | append: i -%}{%- assign ck = 'c' | append: i -%}{%- assign tk = 't' | append: i -%}
+      {% render 'lg-card', product: p, line: block.settings[lk], image: block.settings[ik], cut: block.settings[ck], tag: block.settings[tk] %}
+    {%- endif -%}{%- endfor -%}
+  </div></div>
+  {%- endfor -%}
+  {%- if s.foot_label != blank %}<div class="fnd-foot"><a class="lg-btn-line lg-btn-sm" href="{{ s.foot_url }}">{{ s.foot_label }} <span aria-hidden="true">&rarr;</span></a></div>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Club finder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "finder"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h1",
+          "label": "H1 (one per page)"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "chips_label",
+      "label": "Tabs label (for screen readers)",
+      "default": "What to fix"
+    },
+    {
+      "type": "text",
+      "id": "foot_label",
+      "label": "Button under it"
+    },
+    {
+      "type": "url",
+      "id": "foot_url",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "default": "Around the green"
+        },
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+        {
+          "type": "product",
+          "id": "p1",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "l1",
+          "label": "Line"
+        },
+        {
+          "type": "image_picker",
+          "id": "i1",
+          "label": "Photo (empty = product's)"
+        },
+        {
+          "type": "checkbox",
+          "id": "c1",
+          "label": "Cutout on stone",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "t1",
+          "label": "Tag"
+        },
+        {
+          "type": "header",
+          "content": "Card 2"
+        },
+        {
+          "type": "product",
+          "id": "p2",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "l2",
+          "label": "Line"
+        },
+        {
+          "type": "image_picker",
+          "id": "i2",
+          "label": "Photo (empty = product's)"
+        },
+        {
+          "type": "checkbox",
+          "id": "c2",
+          "label": "Cutout on stone",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "t2",
+          "label": "Tag"
+        },
+        {
+          "type": "header",
+          "content": "Card 3"
+        },
+        {
+          "type": "product",
+          "id": "p3",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "l3",
+          "label": "Line"
+        },
+        {
+          "type": "image_picker",
+          "id": "i3",
+          "label": "Photo (empty = product's)"
+        },
+        {
+          "type": "checkbox",
+          "id": "c3",
+          "label": "Cutout on stone",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "t3",
+          "label": "Tag"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Club finder"
+    }
+  ]
+}
+{% endschema %}

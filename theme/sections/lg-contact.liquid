@@ -1,0 +1,242 @@
+{%- assign s = section.settings -%}
+{%- if s.crumb != blank -%}<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><span aria-current="page">{{ s.crumb }}</span></li></ol></nav>{%- endif -%}
+<section class="lg-sec" style="padding-top:clamp(16px,2vw,24px)"><div class="lg-wrap wrap2">
+  <div>
+    {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+    {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+    {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+    <ul class="ways">
+      {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{% if block.settings.icon != blank %}{% render 'lg-icon', name: block.settings.icon %}{% endif %}<div><b>{{ block.settings.title }}</b><p>{{ block.settings.text }}</p></div></li>{%- endfor -%}
+    </ul>
+  </div>
+  {%- form 'contact', class: 'form', id: 'contact-form' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="sent is-on" role="status">{{ s.sent }}</p>
+    {%- else -%}
+    {%- if form.errors -%}<p class="sent is-on is-err" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+    <div class="row two">
+      <label><span class="lb">{{ s.l_name }}</span><input name="contact[name]" autocomplete="name" required value="{{ form.name }}"></label>
+      <label><span class="lb">{{ s.l_email }}</span><input name="contact[email]" type="email" autocomplete="email" required value="{{ form.email }}"></label>
+    </div>
+    <div class="row two">
+      <label><span class="lb">{{ s.l_order }}</span><input name="contact[Order number]" placeholder="{{ s.p_order }}"></label>
+      <label><span class="lb">{{ s.l_topic }}</span><select name="contact[Topic]">
+        {%- assign ts = s.topics | newline_to_br | split: '<br />' -%}{%- for t in ts -%}{%- assign tt = t | strip -%}{%- if tt != blank %}<option>{{ tt }}</option>{% endif -%}{%- endfor -%}
+      </select></label>
+    </div>
+    <div class="row"><label><span class="lb">{{ s.l_msg }}</span><textarea name="contact[body]" required>{{ form.body }}</textarea></label></div>
+    <button class="lg-btn" type="submit">{{ s.btn }} {% render 'lg-icon', name: 'send' %}</button>
+    {%- endif -%}
+  {%- endform -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "class": "lgc-contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb label (empty = none)",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading, H1 (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    },
+    {
+      "type": "header",
+      "content": "The form"
+    },
+    {
+      "type": "text",
+      "id": "l_name",
+      "label": "Name label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "l_email",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "l_order",
+      "label": "Order label",
+      "default": "Order number"
+    },
+    {
+      "type": "text",
+      "id": "p_order",
+      "label": "Order placeholder",
+      "default": "If you have one"
+    },
+    {
+      "type": "text",
+      "id": "l_topic",
+      "label": "Topic label",
+      "default": "What's it about"
+    },
+    {
+      "type": "textarea",
+      "id": "topics",
+      "label": "Topics (one per line)"
+    },
+    {
+      "type": "text",
+      "id": "l_msg",
+      "label": "Message label",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button",
+      "default": "Send it"
+    },
+    {
+      "type": "textarea",
+      "id": "sent",
+      "label": "After it's sent"
+    },
+    {
+      "type": "paragraph",
+      "content": "Messages go to the store's sender email (Settings > Notifications), same as the old contact page."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "way",
+      "name": "Way to reach us",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "circle-help",
+              "label": "circle-help"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "send",
+              "label": "send"
+            },
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "search",
+              "label": "search"
+            },
+            {
+              "value": "shopping-bag",
+              "label": "shopping-bag"
+            },
+            {
+              "value": "map-pin",
+              "label": "map-pin"
+            },
+            {
+              "value": "instagram",
+              "label": "instagram"
+            },
+            {
+              "value": "tiktok",
+              "label": "tiktok"
+            },
+            {
+              "value": "youtube",
+              "label": "youtube"
+            }
+          ],
+          "default": "mail"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Contact form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,197 @@
+{%- comment -%}
+  The wall: every Community post, four across, filterable by what's in it (clubs / apparel / gear,
+  worked out from the products: tagged "club" = clubs, Apparel or hat = apparel, anything else = gear).
+  Tap a post and the shoppable pop-up (lucky-site.js, [data-posts]) opens it.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{%- assign posts = shop.metaobjects.community_post.values -%}
+<div data-posts>
+<div class="bar"><div class="lg-wrap bar-in">
+  <div class="fg" role="group" aria-label="{{ s.show_label | escape }}"><span class="lbl">{{ s.show_label }}</span>
+    <button type="button" data-k="" aria-pressed="true">{{ s.all_label }}</button>
+    <button type="button" data-k="clubs" aria-pressed="false">{{ s.clubs_label }}</button>
+    <button type="button" data-k="apparel" aria-pressed="false">{{ s.apparel_label }}</button>
+    <button type="button" data-k="gear" aria-pressed="false">{{ s.gear_label }}</button>
+  </div>
+  <span class="count"><b data-shown>{{ posts.size }}</b> {{ s.count_word }}</span>
+</div></div>
+<section class="lg-wrap">
+  <div class="wall" data-wall data-page="{{ s.page }}">
+    {%- for m in posts -%}
+      {%- liquid
+        assign med = m.media.value
+        assign ps = m.products.value
+        assign kinds = ''
+        assign names = ''
+        for p in ps
+          assign pt = p.type | downcase
+          if p.tags contains 'club'
+            assign kinds = kinds | append: ' clubs'
+          elsif pt == 'apparel' or pt == 'hat' or pt contains 'polo'
+            assign kinds = kinds | append: ' apparel'
+          else
+            assign kinds = kinds | append: ' gear'
+          endif
+          if forloop.first
+            assign names = p.title
+          else
+            assign names = names | append: ', ' | append: p.title
+          endif
+        endfor
+        assign alt = m.caption.value | default: m.handle_text.value
+      -%}
+      <button type="button" class="post" data-post="{{ forloop.index0 }}" data-kinds="{{ kinds | strip }}" aria-label="{{ alt | escape }}{% if names != blank %}. In it: {{ names | escape }}{% endif %}"{% if forloop.index > s.page %} hidden{% endif %}>
+        {%- if med.media_type == 'video' -%}{{ med.preview_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: '', widths: '350,500,700', sizes: '(max-width: 640px) 50vw, 25vw' }}<span class="wild-play" aria-hidden="true"></span>
+        {%- elsif med -%}{{ med | image_url: width: 700 | image_tag: loading: 'lazy', alt: alt, widths: '350,500,700', sizes: '(max-width: 640px) 50vw, 25vw' }}{%- endif -%}
+        <span class="who">{{ m.handle_text.value }}</span>
+        {%- if ps.count > 0 %}<span class="bag">{% render 'lg-icon', name: 'shopping-bag' %}{{ ps.count }}</span>{% endif -%}
+      </button>
+    {%- endfor -%}
+  </div>
+  <div class="more">
+    {%- if s.aside != blank %}<p class="lg-aside">{{ s.aside }}</p>{% endif -%}
+    <button class="lg-btn-line lg-btn-sm" type="button" data-more{% if posts.size <= s.page %} hidden{% endif %}>{{ s.more_label }}</button>
+  </div>
+</section>
+
+{%- for m in posts -%}
+  {%- assign med = m.media.value -%}{%- assign ps = m.products.value -%}
+  <template data-post-tpl="{{ forloop.index0 }}">
+    <div class="pm-media">
+      {%- if med.media_type == 'video' -%}{{ med | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+      {%- elsif med -%}{{ med | image_url: width: 1100 | image_tag: alt: m.caption.value, widths: '600,900,1100', sizes: '(max-width: 749px) 100vw, 55vw' }}{%- endif -%}
+    </div>
+    <div class="pm-info">
+      <p class="pm-who">{%- if m.link.value != blank -%}<a href="{{ m.link.value }}" target="_blank" rel="noopener">{{ m.handle_text.value }}</a>{%- else -%}{{ m.handle_text.value }}{%- endif -%}</p>
+      {%- if m.caption.value != blank %}<p class="pm-cap">{{ m.caption.value }}</p>{% endif -%}
+      {%- if ps.count > 0 -%}
+        <p class="lg-label pm-in">{{ s.in_label }}</p>
+        <div class="pm-prods">
+        {%- for p in ps -%}
+          {%- assign pic = p.metafields.custom.cutout.value | default: p.featured_image -%}
+          {%- assign v = p.selected_or_first_available_variant -%}
+          <form class="pm-prod" data-lg-add action="{{ routes.cart_add_url }}" method="post">
+            <a class="pm-ph" href="{{ p.url }}">{%- if pic -%}{{ pic | image_url: width: 200 | image_tag: alt: p.title, loading: 'lazy' }}{%- endif -%}</a>
+            <div class="pm-bd">
+              <a class="pm-nm" href="{{ p.url }}">{{ p.title }}</a>
+              <span class="pm-pr">{{ v.price | money_without_trailing_zeros }}</span>
+              {%- if p.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ v.id }}">
+              {%- else -%}
+                <label class="sr" for="pw-v-{{ forloop.parentloop.index }}-{{ p.id }}">{{ p.options | join: ' / ' }}</label>
+                <select class="lg-input pm-sel" id="pw-v-{{ forloop.parentloop.index }}-{{ p.id }}" name="id">
+                  {%- for x in p.variants -%}<option value="{{ x.id }}"{% unless x.available %} disabled{% endunless %}{% if x.id == v.id %} selected{% endif %}>{{ x.title }}{% unless x.available %} (sold out){% endunless %}</option>{%- endfor -%}
+                </select>
+              {%- endif -%}
+            </div>
+            {%- if p.available -%}<button class="lg-btn-line lg-btn-sm pm-add" type="submit">Add to bag</button>{%- else -%}<a class="lg-btn-line lg-btn-sm pm-add" href="{{ p.url }}">Sold out</a>{%- endif -%}
+          </form>
+        {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </template>
+{%- endfor -%}
+
+<div class="md md-post" hidden role="dialog" aria-modal="true" aria-label="Community post">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel pm">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <div class="pm-body"></div>
+    <div class="pm-nav"><button type="button" data-post-step="-1" aria-label="Previous post">&lsaquo;</button><button type="button" data-post-step="1" aria-label="Next post">&rsaquo;</button></div>
+  </div>
+</div>
+</div>
+<script>
+(function(){
+  var sec = document.currentScript.previousElementSibling, wall = sec.querySelector('[data-wall]'), PAGE = +wall.getAttribute('data-page') || 8, limit = PAGE, kind = '';
+  var posts = [].slice.call(wall.querySelectorAll('.post')), more = sec.querySelector('[data-more]'), shown = sec.querySelector('[data-shown]');
+  function draw(){ var n = 0;
+    posts.forEach(function(p){ var ok = !kind || (' ' + p.getAttribute('data-kinds') + ' ').indexOf(' ' + kind + ' ') > -1; if (ok) n++; p.hidden = !ok || n > limit; });
+    shown.textContent = n; more.hidden = n <= limit; }
+  sec.addEventListener('click', function(e){
+    var k = e.target.closest('[data-k]');
+    if (k){ [].forEach.call(sec.querySelectorAll('[data-k]'), function(x){ x.setAttribute('aria-pressed', String(x === k)); }); kind = k.getAttribute('data-k'); limit = PAGE; draw(); return; }
+    if (e.target.closest('[data-more]')){ limit += PAGE; draw(); }
+  });
+  var m = location.hash.match(/^#post-(\d+)$/); if (m){ limit = Math.max(PAGE, +m[1]); }
+  draw();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Community wall",
+  "class": "lgc-wall",
+  "settings": [
+    {
+      "type": "text",
+      "id": "show_label",
+      "label": "Filter label",
+      "default": "Show"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "Everything",
+      "default": "Everything"
+    },
+    {
+      "type": "text",
+      "id": "clubs_label",
+      "label": "Clubs",
+      "default": "Clubs"
+    },
+    {
+      "type": "text",
+      "id": "apparel_label",
+      "label": "Apparel",
+      "default": "Apparel"
+    },
+    {
+      "type": "text",
+      "id": "gear_label",
+      "label": "Gear",
+      "default": "Gear"
+    },
+    {
+      "type": "text",
+      "id": "count_word",
+      "label": "After the count",
+      "default": "posts"
+    },
+    {
+      "type": "number",
+      "id": "page",
+      "label": "Posts to start (and per tap)",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "more_label",
+      "label": "Show more button",
+      "default": "Show more"
+    },
+    {
+      "type": "textarea",
+      "id": "aside",
+      "label": "Small line under the wall"
+    },
+    {
+      "type": "text",
+      "id": "in_label",
+      "label": "Pop-up: products heading",
+      "default": "What's in the shot"
+    },
+    {
+      "type": "paragraph",
+      "content": "Posts come from Content > Metaobjects > Community post: a photo or video, the @handle, a caption, a link and the products in it. Newest first is the order they're listed there."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community wall"
+    }
+  ]
+}
+{% endschema %}

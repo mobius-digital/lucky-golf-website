@@ -1,0 +1,19 @@
+<script>
+(function(){
+  var S=window.Shopify; if(!S||!S.theme||S.theme.role==='main')return;
+  var M={"/products/lucky-golf-lgw02-gold":"club-carver-gold","/products/lucky-golf-lgw02-black":"club-carver-black","/products/signature-gold-putters":"club-blade","/products/limited-edition-mallet-putter":"club-mallet","/products/lucky-striker-hybrid-limited-edition":"club-stryker","/products/gold-dust-classic-polo":"polo","/products/shadow-classic-polo":"polo","/products/signature-black-classic-polo":"polo","/products/contour-classic-polo":"polo","/products/marble-classic-polo":"polo","/products/gold-carnation-classic-polo":"polo","/products/frost-classic-polo":"polo","/products/swirl-blade-polo":"polo","/products/spot-blade-polo":"polo","/products/blackout-blade-polo":"polo","/products/cruiser-classic-polo":"polo","/products/azalea-classic-polo":"polo","/products/nightshade-classic-polo":"polo","/products/white-gold-classic-hat":"hat","/products/white-its-better-to-be-lucky-patch-hat":"hat","/products/cream-upside-down-hat":"hat","/products/black-its-better-to-be-lucky-patch-hat":"hat","/products/tan-cursive-hat":"hat","/products/black-gold-classic-lucky-hat":"hat","/products/white-black-upside-down-hat":"hat","/products/white-upside-down-hat":"hat","/products/white-cursive-hat":"hat","/products/baby-blue-cursive-hat":"hat","/products/lucky-clover-tour-glove":"gear","/products/lucky-putter-head-cover-blade":"gear","/products/copy-of-lucky-golf-clover-grips-green":"gear","/products/lucky-golf-oversized-putter-grip":"gear","/products/lucky-golf-clovers-oversized-putter-grip":"gear","/products/lucky-golf-performance-x2-clover-grips-black":"gear","/products/copy-of-lucky-golf-performance-x2-clover-grips-white":"gear","/products/lucky-golf-performance-x2-clover-grips-blue":"gear","/products/lucky-golf-performance-x2-clover-grips-pink":"gear","/products/lucky-golf-tees":"gear","/products/driver-head-cover":"gear","/products/stock-putter-grips":"gear","/products/lucky-putter-head-cover-mallet-large":"gear","/products/lucky-wedges-gift-card":"giftcard","/collections/polos":"polos","/collections/classic-polos":"polos","/collections/blade-polos":"polos","/collections/hats":"hats","/collections/lucky-golf-clubs":"clubs","/collections/gear":"gear","/pages/about":"story","/pages/faq-lucky-wedges":"faq","/pages/become-apart-of-the-team":"ambassadors","/pages/contact-us":"contact","/pages/reviews":"reviews","/pages/compare":"compare","/pages/community":"community"};
+  function fix(a){
+    try{var u=new URL(a.href,location.href)}catch(e){return}
+    if(u.hostname.replace(/^www\./,'')!==location.hostname.replace(/^www\./,''))return;
+    var p=u.pathname.replace(/\/$/,''),v=M[p];
+    if(!v){var k=p.match(/\/products\/[^\/]+$/);v=k&&M[k[0]]}
+    if(!v||u.searchParams.has('view'))return;
+    if(p==='/pages/compare'||p==='/pages/community')u.pathname='/pages/about';  // hidden until launch night
+    u.searchParams.set('view',v); a.href=u.toString();
+  }
+  function all(){document.querySelectorAll('a[href]').forEach(fix)}
+  document.addEventListener('DOMContentLoaded',all); all();
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(a)fix(a)},true);
+  document.addEventListener('mouseover',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(a)fix(a)},true);
+})();
+</script>

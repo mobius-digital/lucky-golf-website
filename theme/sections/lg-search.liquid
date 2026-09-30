@@ -1,0 +1,182 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec" style="padding-bottom:0" data-search-sec="{{ section.id }}"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+  <form class="sbox" role="search" action="{{ routes.search_url }}" method="get" data-search>
+    {% render 'lg-icon', name: 'search' %}
+    <label class="sr" for="q-{{ section.id }}">{{ s.label }}</label>
+    <input id="q-{{ section.id }}" name="q" type="search" value="{{ search.terms | escape }}" placeholder="{{ s.placeholder }}" autocomplete="off">
+    <input type="hidden" name="options[prefix]" value="last">
+    <button class="lg-btn" type="submit">{{ s.btn }}</button>
+  </form>
+  {%- if s.sugs != blank -%}
+  <div class="sugs" aria-label="{{ s.sugs_label | escape }}">
+    {%- assign sg = s.sugs | split: ',' -%}{%- for x in sg -%}{%- assign t = x | strip -%}<a href="{{ routes.search_url }}?q={{ t | url_encode }}&amp;options%5Bprefix%5D=last" data-q="{{ t | escape }}">{{ t }}</a>{%- endfor -%}
+  </div>
+  {%- endif -%}
+  <div data-results>
+  {%- if search.performed -%}
+    <p class="count" role="status">{{ search.results_count }} {% if search.results_count == 1 %}{{ s.one }}{% else %}{{ s.many }}{% endif %} &ldquo;{{ search.terms | escape }}&rdquo;</p>
+    {%- if search.results_count > 0 -%}
+    {%- liquid
+      assign np = 0
+      assign nt = 0
+      for r in search.results
+        if r.object_type == 'product'
+          assign np = np | plus: 1
+        else
+          assign nt = nt | plus: 1
+        endif
+      endfor
+    -%}
+    {%- if np > 0 -%}
+    <div class="res">
+      {%- for r in search.results -%}{%- if r.object_type == 'product' -%}
+
+          {%- assign pic = r.metafields.custom.cutout.value | default: r.featured_image -%}
+          {%- capture kind -%}{%- if r.tags contains 'wedge' -%}Wedge{%- elsif r.tags contains 'putter' -%}Putter{%- elsif r.tags contains 'hybrid' -%}Hybrid{%- elsif r.title contains 'Polo' -%}Polo{%- elsif r.title contains 'Hat' -%}Hat{%- else -%}{{ r.type }}{%- endif -%}{%- endcapture -%}
+          <a class="r" href="{{ r.url }}"><span class="ph">{%- if pic -%}{{ pic | image_url: width: 600 | image_tag: loading: 'lazy', alt: r.title, widths: '300,450,600', sizes: '(max-width: 820px) 50vw, 25vw' }}{%- endif -%}</span><span class="nm">{{ r.title }}</span><b>{{ r.price | money_without_trailing_zeros }}</b>{% if kind != blank %}<span class="kind">{{ kind }}</span>{% endif %}</a>
+      {%- endif -%}{%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- if nt > 0 -%}
+    <div class="texts">
+      <h2 class="lg-label">{{ s.texts_label }}</h2>
+      <ul>
+      {%- for r in search.results -%}{%- unless r.object_type == 'product' -%}
+        {%- if r.object_type == 'article' -%}{%- assign ex = r.excerpt_or_content -%}{%- else -%}{%- assign ex = r.content -%}{%- endif -%}
+        <li><a class="tx" href="{{ r.url }}">
+          {%- if r.object_type == 'article' and r.image -%}<span class="tx-ph">{{ r.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: r.title }}</span>{%- endif -%}
+          <span class="tx-bd"><span class="kind">{% if r.object_type == 'article' %}{{ s.article_word }}{% else %}{{ s.page_word }}{% endif %}</span><b>{{ r.title }}</b>
+          {%- assign ex = ex | strip_html | strip_newlines | truncatewords: 26 -%}{%- if ex != blank %}<span class="ex">{{ ex }}</span>{% endif -%}</span></a></li>
+      {%- endunless -%}{%- endfor -%}
+      </ul>
+    </div>
+    {%- endif -%}
+    {%- else -%}
+    <p class="none">{{ s.none }}</p>
+    {%- endif -%}
+  {%- else -%}
+    {%- if s.start.size > 0 -%}
+    <div class="res">
+      {%- for r in s.start -%}
+
+          {%- assign pic = r.metafields.custom.cutout.value | default: r.featured_image -%}
+          {%- capture kind -%}{%- if r.tags contains 'wedge' -%}Wedge{%- elsif r.tags contains 'putter' -%}Putter{%- elsif r.tags contains 'hybrid' -%}Hybrid{%- elsif r.title contains 'Polo' -%}Polo{%- elsif r.title contains 'Hat' -%}Hat{%- else -%}{{ r.type }}{%- endif -%}{%- endcapture -%}
+          <a class="r" href="{{ r.url }}"><span class="ph">{%- if pic -%}{{ pic | image_url: width: 600 | image_tag: loading: 'lazy', alt: r.title, widths: '300,450,600', sizes: '(max-width: 820px) 50vw, 25vw' }}{%- endif -%}</span><span class="nm">{{ r.title }}</span><b>{{ r.price | money_without_trailing_zeros }}</b>{% if kind != blank %}<span class="kind">{{ kind }}</span>{% endif %}</a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  {%- endif -%}
+  </div>
+</div></section>
+<script>
+(function(){
+  var sec = document.currentScript.previousElementSibling, f = sec.querySelector('[data-search]'), q = f.querySelector('[name=q]'), box = sec.querySelector('[data-results]'), t, ctl;
+  function run(v){
+    var p = new URLSearchParams(new FormData(f)); p.set('q', v); p.set('section_id', sec.getAttribute('data-search-sec'));
+    if (ctl) ctl.abort(); ctl = window.AbortController ? new AbortController() : null;
+    fetch(f.action + '?' + p.toString(), ctl ? { signal: ctl.signal } : {}).then(function(r){ return r.text(); }).then(function(h){
+      var d = new DOMParser().parseFromString(h, 'text/html').querySelector('[data-results]'); if (d) box.innerHTML = d.innerHTML;
+      p.delete('section_id'); try { history.replaceState(null, '', v ? f.action + '?' + p.toString() : f.action); } catch (e) {}
+    }).catch(function(){});
+  }
+  q.addEventListener('input', function(){ clearTimeout(t); var v = q.value.trim(); t = setTimeout(function(){ run(v); }, 250); });
+  sec.addEventListener('click', function(e){ var a = e.target.closest('[data-q]'); if (!a) return; e.preventDefault(); q.value = a.getAttribute('data-q'); run(q.value); });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Search",
+  "class": "lgc-search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Search"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading, H1 (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Field label (screen readers)",
+      "default": "Search Lucky Golf"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "sugs",
+      "label": "Quick searches (comma separated)"
+    },
+    {
+      "type": "text",
+      "id": "sugs_label",
+      "label": "Quick searches label (screen readers)",
+      "default": "Common searches"
+    },
+    {
+      "type": "text",
+      "id": "one",
+      "label": "After the count (one)",
+      "default": "result for"
+    },
+    {
+      "type": "text",
+      "id": "many",
+      "label": "After the count (many)",
+      "default": "results for"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "none",
+      "label": "When nothing matches"
+    },
+    {
+      "type": "text",
+      "id": "texts_label",
+      "label": "Heading over pages and posts",
+      "default": "Pages and posts"
+    },
+    {
+      "type": "text",
+      "id": "article_word",
+      "label": "Tag on articles",
+      "default": "Article"
+    },
+    {
+      "type": "text",
+      "id": "page_word",
+      "label": "Tag on pages",
+      "default": "Page"
+    },
+    {
+      "type": "product_list",
+      "id": "start",
+      "label": "Products to show before a search",
+      "limit": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Search"
+    }
+  ]
+}
+{% endschema %}

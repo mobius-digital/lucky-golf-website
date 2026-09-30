@@ -1,0 +1,230 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+  {%- if s.sub != blank %}<p class="lg-body">{{ s.sub }}</p>{% endif -%}
+  <div class="cols cols-{{ s.style }}">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    {%- case s.style -%}
+    {%- when 'links' -%}
+      <a class="nx" href="{{ b.url }}" {{ block.shopify_attributes }}><b>{{ b.title }}</b><span>{{ b.text }}</span>{% if b.go != blank %}<span class="go lg-link">{{ b.go }} <span>&rarr;</span></span>{% endif %}</a>
+    {%- when 'numbers' -%}
+      <div class="num" {{ block.shopify_attributes }}><span class="n">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><h3 class="lg-d3">{{ b.title }}</h3><p>{{ b.text }}</p></div>
+    {%- when 'rules' -%}
+      <div class="rule" {{ block.shopify_attributes }}><b>{{ b.title }}</b><p>{{ b.text }}</p></div>
+    {%- else -%}
+      {%- if b.url != blank -%}<a class="hcard" href="{{ b.url }}" {{ block.shopify_attributes }}>{%- else -%}<div class="hcard" {{ block.shopify_attributes }}>{%- endif -%}
+      {%- if b.icon != blank %}{% render 'lg-icon', name: b.icon %}{% endif -%}<b>{{ b.title }}</b><span>{{ b.text }}</span>
+      {%- if b.url != blank -%}</a>{%- else -%}</div>{%- endif -%}
+    {%- endcase -%}
+    {%- endfor -%}
+  </div>
+  {%- if s.after != blank or s.after_link_label != blank -%}
+  <p class="lg-body after">{{ s.after }}{% if s.after_link_label != blank %}<a class="lg-link" href="{{ s.after_link_url }}">{{ s.after_link_label }} <span aria-hidden="true">&rarr;</span></a>{% endif %}</p>
+  {%- endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Cards in a row",
+  "class": "lgc-cols",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor (for #links)"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Look",
+      "options": [
+        {
+          "value": "links",
+          "label": "Link cards"
+        },
+        {
+          "value": "icons",
+          "label": "Icon cards"
+        },
+        {
+          "value": "numbers",
+          "label": "Numbered (01, 02, 03)"
+        },
+        {
+          "value": "rules",
+          "label": "Gold rule on top"
+        }
+      ],
+      "default": "links"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "after",
+      "label": "Line under the cards"
+    },
+    {
+      "type": "text",
+      "id": "after_link_label",
+      "label": "Link under the cards"
+    },
+    {
+      "type": "url",
+      "id": "after_link_url",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon (icon cards)",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "circle-help",
+              "label": "circle-help"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "send",
+              "label": "send"
+            },
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "search",
+              "label": "search"
+            },
+            {
+              "value": "shopping-bag",
+              "label": "shopping-bag"
+            },
+            {
+              "value": "map-pin",
+              "label": "map-pin"
+            },
+            {
+              "value": "instagram",
+              "label": "instagram"
+            },
+            {
+              "value": "tiktok",
+              "label": "tiktok"
+            },
+            {
+              "value": "youtube",
+              "label": "youtube"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link (link and icon cards)"
+        },
+        {
+          "type": "text",
+          "id": "go",
+          "label": "Link text (link cards)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Cards in a row"
+    }
+  ]
+}
+{% endschema %}

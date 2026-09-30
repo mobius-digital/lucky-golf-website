@@ -1,0 +1,138 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign heading = s.heading
+  if heading == blank
+    assign heading = collection.title | escape
+  endif
+  assign lede = collection.description | strip_html | strip
+  if lede == blank
+    assign lede = s.lede
+  endif
+  assign n = 0
+  assign sum = 0
+  for p in s.rating_products
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign rv = p.metafields.reviews.rating.value.rating | default: 0
+    assign n = n | plus: rc
+    assign sum = rv | times: rc | plus: sum
+  endfor
+  assign avg = ''
+  if n >= min
+    assign avg = sum | divided_by: n | round: 1
+  endif
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><span aria-current="page">{{ s.crumb | default: collection.title }}</span></li></ol></nav>
+<section class="lg-wrap head">
+  <div>
+    {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+    {% render 'lg-h', text: heading, tag: 'h1', cls: 'lg-d1' %}
+    {%- if lede != blank %}<p class="lg-lede"{% if s.narrow %} style="max-width:58ch"{% endif %}>{{ lede }}</p>{% endif -%}
+    {%- if s.guide_label != blank or s.count_word != blank -%}
+    <p class="head-meta">{%- if s.guide_label != blank %}<a href="#" data-md-open="md-size">{{ s.guide_label }} &rarr;</a>{% endif -%}{%- if s.count_word != blank %}<span>{{ collection.products_count }} {{ s.count_word }}</span>{% endif -%}</p>
+    {%- endif -%}
+  </div>
+  {%- if section.blocks.size > 0 -%}
+  <ul class="proof">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+      {%- if b.value contains '[rating]' and avg == '' -%}{%- continue -%}{%- endif -%}
+      <li {{ block.shopify_attributes }}><b{% if b.gold %} class="lg-num"{% endif %}>{{ b.value | replace: '[rating]', avg }}</b><span>{{ b.label }}</span></li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Collection head",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb name (empty = collection's)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (empty = collection's title)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it (used when the collection has no description)"
+    },
+    {
+      "type": "checkbox",
+      "id": "narrow",
+      "label": "Narrow line (58 characters)",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Polos"
+    },
+    {
+      "type": "text",
+      "id": "guide_label",
+      "label": "Size guide link (empty = none)"
+    },
+    {
+      "type": "text",
+      "id": "count_word",
+      "label": "Count after the number, e.g. polos (empty = none)"
+    },
+    {
+      "type": "header",
+      "content": "Numbers on the right"
+    },
+    {
+      "type": "product_list",
+      "id": "rating_products",
+      "label": "Products whose live rating fills [rating]",
+      "limit": 20
+    },
+    {
+      "type": "paragraph",
+      "content": "A number block with [rating] shows the live Judge.me average across the products above."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "proof",
+      "name": "Number",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Number",
+          "default": "60"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Line under it",
+          "default": "days to decide"
+        },
+        {
+          "type": "checkbox",
+          "id": "gold",
+          "label": "Gold number",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Collection head"
+    }
+  ]
+}
+{% endschema %}

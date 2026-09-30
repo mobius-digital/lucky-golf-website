@@ -1,0 +1,25 @@
+{%- comment -%}
+  The big club card (Takomo's "shop our clubs" card, measured): name, line and price
+  centered on top, the club sitting on the bottom edge, one flat tag in the bottom-left
+  corner. A sold-out club shows "Sold out" there instead. Live price and stock.
+{%- endcomment -%}
+{%- liquid
+  assign pic = image | default: product.metafields.custom.cutout.value | default: product.featured_image
+  assign price = product.price | money_without_trailing_zeros
+  if product.price_varies
+    assign price = 'From ' | append: price
+  endif
+  if product.compare_at_price_min > product.price_min
+    assign was = product.compare_at_price_min | money_without_trailing_zeros
+    assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
+  endif
+-%}
+<a class="lg-bigcard" href="{{ product.url }}">
+  <span class="bc-top">
+    <span class="bc-nm">{{ name | default: product.title }}</span>
+    {%- if line != blank %}<span class="bc-ln">{{ line }}</span>{% endif -%}
+    <span class="bc-pr">{{ price }}</span>
+  </span>
+  <span class="bc-ph">{%- if pic != blank -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title, widths: '350,500,700', sizes: '(max-width: 749px) 55vw, 260px' }}{%- endif -%}</span>
+  {%- unless product.available -%}<span class="bc-tag is-out">Sold out</span>{%- else -%}{%- if vibe != blank %}<span class="bc-tag">{{ vibe }}</span>{% endif -%}{%- endunless -%}
+</a>

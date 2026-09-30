@@ -1,0 +1,20 @@
+{%- comment -%} Short size label for a chip: Small -> S, Medium -> M, Large -> L, Extra Large -> XL. {% render 'lg-ap-size', v: value %} {%- endcomment -%}
+{%- liquid
+  assign k = v | downcase | strip
+  case k
+    when 'small', 'sm'
+      echo 'S'
+    when 'medium', 'md'
+      echo 'M'
+    when 'large', 'lg'
+      echo 'L'
+    when 'extra large', 'x-large', 'xlarge'
+      echo 'XL'
+    when 'xx-large', '2xl', 'xxl'
+      echo 'XXL'
+    when 'xxx-large', '3xl'
+      echo '3XL'
+    else
+      echo v
+  endcase
+-%}

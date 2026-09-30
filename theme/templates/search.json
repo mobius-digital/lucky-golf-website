@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-search",
+      "settings": {
+        "eyebrow": "Search",
+        "heading": "What are you <em>after?</em>",
+        "label": "Search Lucky Golf",
+        "placeholder": "Wedge, 56, mallet, polo, hat",
+        "btn": "Search",
+        "sugs": "wedge, 56, putter, polo, hat, gold",
+        "sugs_label": "Common searches",
+        "one": "result for",
+        "many": "results for",
+        "texts_label": "Pages and posts",
+        "article_word": "Article",
+        "page_word": "Page",
+        "none": "Nothing matches that. Try the club, the loft or the color, or <a href=\"/collections/lucky-golf-clubs\">see every club</a>.",
+        "start": [
+          "lucky-golf-lgw02-gold",
+          "lucky-golf-lgw02-black",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition",
+          "azalea-classic-polo",
+          "blackout-blade-polo",
+          "gold-dust-classic-polo",
+          "swirl-blade-polo",
+          "white-gold-classic-hat",
+          "black-its-better-to-be-lucky-patch-hat",
+          "cream-upside-down-hat"
+        ]
+      }
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "Can't find it? <em>Ask</em>",
+        "lede": "Tell us the gap you're trying to cover and we'll tell you which club does it.",
+        "btn2_label": "Talk to a person →",
+        "btn2_url": "shopify://pages/contact-us"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "signoff"
+  ]
+}

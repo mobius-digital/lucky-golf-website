@@ -1,0 +1,11 @@
+{%- comment -%} Mags, black on light and light on dark (lucky.css picks). {% render 'lg-mags', bag: false %} {%- endcomment -%}
+{%- liquid
+  if bag
+    assign a = 'lg-mags-bag-ink.webp' | file_url
+    assign b = 'lg-mags-bag-light.webp' | file_url
+  else
+    assign a = 'lg-mags-ink.webp' | file_url
+    assign b = 'lg-mags-light.webp' | file_url
+  endif
+-%}
+<span class="lg-mags"><img class="is-ink" src="{{ a }}" alt="" loading="lazy"><img class="is-light" src="{{ b }}" alt="" loading="lazy"></span>

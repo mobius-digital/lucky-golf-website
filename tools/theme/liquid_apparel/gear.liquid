@@ -1,0 +1,63 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign pmap = s.sizes_word | newline_to_br | split: '<br />'
+-%}
+<div class="jump"><div class="lg-wrap jump-in">
+  {%- for block in section.blocks -%}<a href="#{{ block.settings.anchor }}">{{ block.settings.jump | default: block.settings.title }}</a>{%- endfor -%}
+</div></div>
+{%- for block in section.blocks -%}{%- assign b = block.settings -%}
+<section class="lg-sec grp" id="{{ b.anchor }}" style="padding-top:clamp(28px,3vw,44px)" {{ block.shopify_attributes }}><div class="lg-wrap">
+  <div class="hd"><div><h2 class="lg-d2">{{ b.title }}</h2>{%- if b.line != blank %}<p>{{ b.line }}</p>{% endif -%}</div></div>
+  <div class="grid">
+  {%- for p in b.collection.products limit: 24 -%}
+    {%- liquid
+      assign pic = p.metafields.custom.cutout.value | default: p.featured_image
+      assign price = p.price | money_without_trailing_zeros
+      if p.price_varies
+        assign pmax = p.price_max | money_without_trailing_zeros
+        assign price = p.price_min | money_without_trailing_zeros | append: ' to ' | append: pmax
+      endif
+      assign multi = false
+      if p.variants.size > 1
+        assign multi = true
+      endif
+      if b.meta == 'sizes'
+        if multi
+          assign meta = 'More than one size'
+        else
+          assign meta = 'One size'
+        endif
+      else
+        assign meta = 'In stock'
+      endif
+      unless p.available
+        assign meta = 'Sold out'
+      endunless
+      assign rc = p.metafields.reviews.rating_count.value | default: 0
+      if rc >= min
+        assign rv = p.metafields.reviews.rating.value.rating | round: 1
+        assign meta = meta | append: ' · ★ ' | append: rv | append: ' (' | append: rc | append: ')'
+      endif
+      assign pick = s.pick
+      for l in pmap
+        assign pr = l | split: '='
+        assign k0 = pr.first | strip
+        if k0 != blank and k0 == p.type
+          assign pick = pr.last | strip
+        endif
+      endfor
+    -%}
+    <article class="it" data-name="{{ p.title | escape }}" data-price="{{ p.price }}"{% unless p.available %} data-dead{% endunless %}>
+      <div class="it-ph"><a href="{{ p.url }}" tabindex="-1" aria-hidden="true">{%- if pic -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: p.title, widths: '350,500,700', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}</a>
+        <div class="qa">
+          {%- if p.available == false -%}<button type="button" disabled>Sold out</button>
+          {%- elsif multi -%}<a class="pick" href="{{ p.url }}">{{ pick }}</a>
+          {%- else -%}<form data-lg-add><input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}"><button type="submit">Add to cart · {{ p.price | money_without_trailing_zeros }}</button></form>{%- endif -%}
+        </div></div>
+      <a class="it-bd" href="{{ p.url }}"><span class="nm">{{ p.title }}</span><b>{{ price }}</b><span class="meta">{{ meta }}</span></a>
+    </article>
+  {%- endfor -%}
+  </div>
+</div></section>
+{%- endfor -%}

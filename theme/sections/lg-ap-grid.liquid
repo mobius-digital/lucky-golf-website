@@ -1,0 +1,437 @@
+{%- liquid
+  assign s = section.settings
+  assign drops = s.drop | split: ','
+  assign kmap = s.kind_map | newline_to_br | split: '<br />'
+  assign smap = s.style_lines | newline_to_br | split: '<br />'
+  assign sizes = s.sizes | split: ','
+  assign cur = collection.sort_by | default: collection.default_sort_by
+  assign kinds = '|'
+  assign styles = '|'
+-%}
+{%- paginate collection.products by 100 -%}
+{%- capture cards -%}
+{%- for p in collection.products -%}
+  {%- liquid
+    assign name = p.title
+    for d in drops
+      assign dd = d | strip
+      if dd != blank
+        assign name = name | remove: dd | strip
+      endif
+    endfor
+    assign pic = p.metafields.custom.cutout.value | default: p.featured_image
+    assign price = p.price | money_without_trailing_zeros
+    if p.price_varies
+      assign pmax = p.price_max | money_without_trailing_zeros
+      assign price = p.price_min | money_without_trailing_zeros | append: ' to ' | append: pmax
+    endif
+    if p.compare_at_price_min > p.price_min
+      assign was = p.compare_at_price_min | money_without_trailing_zeros
+      assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
+    endif
+    assign color = p.metafields.custom.color_family.value | downcase
+  -%}
+  {%- case s.card -%}
+  {%- when 'polo' -%}
+    {%- liquid
+      assign collar = ''
+      assign collar_name = ''
+      if p.tags contains s.collar_a_tag
+        assign collar = s.collar_a | handle
+        assign collar_name = s.collar_a
+      elsif p.tags contains s.collar_b_tag
+        assign collar = s.collar_b | handle
+        assign collar_name = s.collar_b
+      endif
+      assign live = ''
+      assign outs = ''
+      assign btns = ''
+      for v in p.variants
+        capture sz
+          render 'lg-ap-size', v: v.option1
+        endcapture
+        assign sz = sz | strip
+        if v.available
+          assign live = live | append: sz | append: ' '
+          assign btns = btns | append: '<button type="button" data-size="' | append: sz | append: '" data-variant="' | append: v.id | append: '">' | append: sz | append: '</button>'
+        else
+          assign outs = outs | append: sz | append: '|'
+          assign btns = btns | append: '<button type="button" disabled aria-label="' | append: sz | append: ' sold out">' | append: sz | append: '</button>'
+        endif
+      endfor
+      assign hi = s.hover_n | minus: 1
+      assign alt = p.media[hi].preview_image
+      if outs == blank
+        assign stock = 'Every size in stock'
+        assign scls = 'stock'
+      elsif live == blank
+        assign stock = 'Sold out'
+        assign scls = 'stock few'
+      else
+        assign stock = outs | split: '|' | join: ', ' | prepend: 'Sold out in '
+        assign scls = 'stock few'
+      endif
+    -%}
+    <article class="polo" data-card data-i="{{ forloop.index0 }}" data-collar="{{ collar }}" data-color="{{ color }}" data-name="{{ name | escape }}" data-sizes="{{ live | strip }}"{% unless p.available %} data-dead{% endunless %}>
+      <div class="polo-ph"><a href="{{ p.url }}" tabindex="-1" aria-hidden="true">{%- if pic -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: p.title, widths: '350,500,700', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}{%- if alt -%}{{ alt | image_url: width: 700 | image_tag: loading: 'lazy', alt: '', class: 'alt', widths: '350,700', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}</a>
+        {%- if p.available -%}<button class="qa-open" type="button" aria-expanded="false" aria-label="Add a size of the {{ name | escape }}">+</button>
+        <div class="qa"><span>Add a size</span><div class="sizes">{{ btns }}</div></div>{%- endif -%}</div>
+      <a class="polo-bd" href="{{ p.url }}"><span class="nm">{{ name }}</span><b>{{ price }}</b>{%- if collar_name != blank %}<span class="meta">{{ collar_name }} collar</span>{% endif %}<span class="{{ scls }}">{{ stock }}</span></a>
+    </article>
+  {%- when 'hat' -%}
+    {%- liquid
+      assign style = p.metafields.custom.filter_style.value | strip
+      assign meta = ''
+      if style != blank
+        assign key = '|' | append: style | append: '|'
+        unless styles contains key
+          assign styles = styles | append: style | append: '|'
+        endunless
+        for l in smap
+          assign pr = l | split: '='
+          assign k0 = pr.first | strip
+          if k0 == style
+            assign meta = pr.last | strip
+          endif
+        endfor
+      endif
+      unless p.available
+        assign meta = 'Sold out'
+      endunless
+    -%}
+    <article class="hat" data-card data-i="{{ forloop.index0 }}" data-style="{{ style | handle }}" data-color="{{ color }}" data-name="{{ name | escape }}"{% unless p.available %} data-dead{% endunless %}>
+      <div class="hat-ph"><a href="{{ p.url }}" tabindex="-1" aria-hidden="true">{%- if pic -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: p.title, widths: '350,500,700', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}</a>
+        <div class="qa">{%- if p.available -%}<form data-lg-add><input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}"><button type="submit">Add to cart · {{ p.price | money_without_trailing_zeros }}</button></form>{%- else -%}<button type="button" disabled>Sold out</button>{%- endif -%}</div></div>
+      <a class="hat-bd" href="{{ p.url }}"><span class="nm">{{ name }}</span><b>{{ price }}</b>{%- if meta != blank %}<span class="meta">{{ meta }}</span>{% endif %}</a>
+    </article>
+  {%- else -%}
+    {%- liquid
+      assign kind = p.type
+      for l in kmap
+        assign pr = l | split: '='
+        assign k0 = pr.first | strip
+        if k0 != blank and k0 == p.type
+          assign kind = pr.last | strip
+        endif
+      endfor
+      if kind != blank
+        assign key = '|' | append: kind | append: '|'
+        unless kinds contains key
+          assign kinds = kinds | append: kind | append: '|'
+        endunless
+      endif
+    -%}
+    <article class="it" data-card data-i="{{ forloop.index0 }}" data-kind="{{ kind | handle }}" data-name="{{ name | escape }}" data-price="{{ p.price }}"{% unless p.available %} data-dead{% endunless %}>
+      <a class="it-ph" href="{{ p.url }}">{%- if pic -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: p.title, widths: '350,500,700', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}{%- unless p.available %}<span class="lg-tag">Sold out</span>{% endunless -%}</a>
+      <a class="it-bd" href="{{ p.url }}"><span class="nm">{{ name }}</span><b>{{ price }}</b><span class="meta">{% if p.available %}In stock{% else %}Sold out{% endif %}</span></a>
+    </article>
+  {%- endcase -%}
+{%- endfor -%}
+{%- for block in section.blocks -%}{%- assign b = block.settings -%}
+  {%- if b.url != blank %}<a class="ftile{% if b.image == blank %} is-flat{% endif %}" data-pos="{{ b.pos }}" href="{{ b.url }}" {{ block.shopify_attributes }}>{% else %}<div class="ftile{% if b.image == blank %} is-flat{% endif %}" data-pos="{{ b.pos }}" {{ block.shopify_attributes }}>{% endif -%}
+  {%- if b.image != blank -%}{{ b.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: '', widths: '450,700,900', sizes: '(max-width: 749px) 50vw, 25vw' }}{%- endif -%}
+  <div class="ft-in">{%- if b.eyebrow != blank %}<p class="lg-eyebrow">{{ b.eyebrow }}</p>{% endif %}<h3>{{ b.title }}</h3>
+    {%- if b.lines != blank -%}<ul>{%- assign ls = b.lines | newline_to_br | split: '<br />' -%}{%- for l in ls -%}{%- assign t = l | strip -%}{%- if t != blank %}<li>{{ t }}</li>{% endif -%}{%- endfor -%}</ul>{%- endif -%}
+    {%- if b.cta != blank %}<span class="go">{{ b.cta }} &rarr;</span>{% endif %}</div>
+  {%- if b.url != blank %}</a>{% else %}</div>{% endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign total = collection.products.size -%}
+<div class="ap-grid" id="ap-{{ section.id }}">
+<div class="bar" id="bar"><div class="lg-wrap bar-in">
+  {%- if s.f_collar -%}
+  <div class="fg" role="group" aria-label="Collar"><span class="lbl">Collar</span>
+    <button type="button" data-f="collar" data-v="" aria-pressed="true">All</button>
+    <button type="button" data-f="collar" data-v="{{ s.collar_a | handle }}" aria-pressed="false">{{ s.collar_a }}</button>
+    <button type="button" data-f="collar" data-v="{{ s.collar_b | handle }}" aria-pressed="false">{{ s.collar_b }}</button></div>
+  {%- endif -%}
+  {%- if s.f_style -%}
+  <div class="fg" role="group" aria-label="Style"><span class="lbl">Style</span><button type="button" data-f="style" data-v="" aria-pressed="true">All</button>
+    {%- assign st = styles | split: '|' -%}{%- for x in st -%}{%- if x != blank %}<button type="button" data-f="style" data-v="{{ x | handle }}" aria-pressed="false">{{ x }}</button>{% endif -%}{%- endfor -%}</div>
+  {%- endif -%}
+  {%- if s.f_kind -%}
+  <div class="fg" role="group" aria-label="Kind"><span class="lbl">Kind</span><button type="button" data-f="kind" data-v="" aria-pressed="true">All</button>
+    {%- assign ks = kinds | split: '|' -%}{%- for x in ks -%}{%- if x != blank %}<button type="button" data-f="kind" data-v="{{ x | handle }}" aria-pressed="false">{{ x }}</button>{% endif -%}{%- endfor -%}</div>
+  {%- endif -%}
+  {%- if s.f_color -%}
+  <div class="fg" role="group" aria-label="Color"><span class="lbl">Color</span>
+    <button type="button" data-f="color" data-v="" aria-pressed="true">All</button>
+    <button type="button" data-f="color" data-v="light" aria-pressed="false">{% if s.color_dots %}<i class="light"></i>{% endif %}Light</button>
+    <button type="button" data-f="color" data-v="dark" aria-pressed="false">{% if s.color_dots %}<i class="dark"></i>{% endif %}Dark</button>
+    <button type="button" data-f="color" data-v="color" aria-pressed="false">{% if s.color_dots %}<i class="colour"></i>{% endif %}Color</button></div>
+  {%- endif -%}
+  {%- if s.f_stock -%}
+  <div class="fg" role="group" aria-label="Availability"><span class="lbl">Show</span>
+    <button type="button" data-f="stock" data-v="" aria-pressed="true">Everything</button>
+    <button type="button" data-f="stock" data-v="in" aria-pressed="false">In stock</button></div>
+  {%- endif -%}
+  {%- if s.f_size -%}
+  <div class="fg" role="group" aria-label="In stock in my size"><span class="lbl">My size</span>
+    {%- for z in sizes -%}{%- assign zz = z | strip -%}<button type="button" data-f="size" data-v="{{ zz }}" aria-pressed="false">{{ zz }}</button>{%- endfor -%}</div>
+  {%- endif -%}
+  <div class="fright">
+    <span class="count"><b id="shown" data-shown>{{ total }}</b> of {{ total }}</span>
+    <label><span class="sr">Sort</span><select id="sort" data-sort>
+      <option value="{{ collection.default_sort_by }}"{% if cur == collection.default_sort_by %} selected{% endif %}>Featured</option>
+      {%- capture opts -%}best-selling:Best selling|title-ascending:Alphabetically, A to Z|title-descending:Alphabetically, Z to A{% if s.sort_price %}|price-ascending:Price, low to high|price-descending:Price, high to low{% endif %}|created-descending:Date, new to old|created-ascending:Date, old to new{%- endcapture -%}
+      {%- assign os = opts | split: '|' -%}{%- for o in os -%}{%- assign ov = o | split: ':' -%}<option value="{{ ov.first }}"{% if cur == ov.first and cur != collection.default_sort_by %} selected{% endif %}>{{ ov.last }}</option>{%- endfor -%}
+      {%- if s.sort_stock %}<option value="stock">Most sizes in stock</option>{% endif -%}
+    </select></label>
+  </div>
+</div></div>
+
+<section class="lg-wrap">
+  <div class="grid" id="grid">{{ cards }}</div>
+  <p class="empty" id="empty" data-empty hidden>{{ s.empty }} <button class="lg-btn-line lg-btn-sm" type="button" data-reset>Clear the filters</button></p>
+</section>
+</div>
+{%- endpaginate -%}
+{%- if s.card == 'polo' -%}{% render 'lg-ap-sizeguide' %}{%- endif -%}
+<script>
+(function(){
+  var root = document.getElementById('ap-{{ section.id }}'); if (!root) return;
+  var $ = function(s, r){ return (r || root).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || root).querySelectorAll(s)); };
+  var grid = $('.grid'), cards = $$('[data-card]', grid), tiles = $$('.ftile', grid), f = {};
+  $$('.fg [data-f]').forEach(function(b){ f[b.dataset.f] = ''; });
+  /* feature tiles sit after product #N of what is showing, whatever the filter or sort */
+  function place(){ var seq = [].slice.call(grid.children).filter(function(c){ return c.hasAttribute('data-card') && !c.hidden; });
+    tiles.forEach(function(t){ var at = seq[+t.dataset.pos]; if (at) grid.insertBefore(t, at); else grid.appendChild(t); }); }
+  function ok(c, k, v){ if (!v) return true;
+    if (k === 'stock') return !c.hasAttribute('data-dead');
+    if (k === 'size') return (' ' + (c.dataset.sizes || '') + ' ').indexOf(' ' + v + ' ') > -1;
+    return c.getAttribute('data-' + k) === v; }
+  function apply(){
+    var n = 0;
+    cards.forEach(function(c){ var y = Object.keys(f).every(function(k){ return ok(c, k, f[k]); }); c.hidden = !y; if (y) n++; });
+    $('[data-shown]').textContent = n; $('[data-empty]').hidden = n > 0;
+    $$('.fg [data-f]').forEach(function(b){ b.setAttribute('aria-pressed', String(f[b.dataset.f] === b.dataset.v)); });
+    place();
+  }
+  root.addEventListener('click', function(e){
+    var b = e.target.closest('.fg [data-f]');
+    if (b){ var k = b.dataset.f, v = b.dataset.v; f[k] = (f[k] === v) ? '' : v; apply(); return; }
+    if (e.target.closest('[data-reset]')){ Object.keys(f).forEach(function(k){ f[k] = ''; }); apply(); return; }
+    var q = e.target.closest('.qa-open');
+    if (q){ var card = q.closest('.polo'), open = card.classList.contains('is-open');
+      $$('.polo.is-open').forEach(function(c){ c.classList.remove('is-open'); $('.qa-open', c).setAttribute('aria-expanded', 'false'); });
+      card.classList.toggle('is-open', !open); q.setAttribute('aria-expanded', String(!open)); return; }
+    var s = e.target.closest('.sizes button:not([disabled])');
+    if (s){ var c2 = s.closest('.polo'); c2.classList.remove('is-open'); $('.qa-open', c2).setAttribute('aria-expanded', 'false');
+      if (window.LuckyBag) LuckyBag.add([{ id: +s.dataset.variant, quantity: 1 }]).catch(function(){}); }
+  });
+  $('[data-sort]').addEventListener('change', function(){
+    if (this.value === 'stock'){
+      var len = function(c){ return (c.dataset.sizes || '').split(' ').filter(Boolean).length; };
+      cards.slice().sort(function(a, b){ return len(b) - len(a); }).forEach(function(c){ grid.appendChild(c); }); place(); return; }
+    var u = new URL(location.href); u.searchParams.set('sort_by', this.value); location.href = u.toString();
+  });
+  apply();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    {
+      "type": "select",
+      "id": "card",
+      "label": "Card style",
+      "options": [
+        {
+          "value": "item",
+          "label": "Everyday (all products)"
+        },
+        {
+          "value": "polo",
+          "label": "Polo (sizes, hover photo)"
+        },
+        {
+          "value": "hat",
+          "label": "Hat (quick add)"
+        }
+      ],
+      "default": "item"
+    },
+    {
+      "type": "header",
+      "content": "Filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "f_kind",
+      "label": "Kind (from product type)",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "kind_map",
+      "label": "Kind names (product type = chip name, one per line)"
+    },
+    {
+      "type": "checkbox",
+      "id": "f_stock",
+      "label": "Everything / In stock",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "f_collar",
+      "label": "Collar (from product tags)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "collar_a_tag",
+      "label": "Collar A tag",
+      "default": "Classic Polo"
+    },
+    {
+      "type": "text",
+      "id": "collar_a",
+      "label": "Collar A name",
+      "default": "Classic"
+    },
+    {
+      "type": "text",
+      "id": "collar_b_tag",
+      "label": "Collar B tag",
+      "default": "Blade Polo"
+    },
+    {
+      "type": "text",
+      "id": "collar_b",
+      "label": "Collar B name",
+      "default": "Blade"
+    },
+    {
+      "type": "checkbox",
+      "id": "f_style",
+      "label": "Style (metafield Filter style)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "f_color",
+      "label": "Color (metafield Filter color)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "color_dots",
+      "label": "Color dots on the chips",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "f_size",
+      "label": "My size (in stock in that size)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sizes",
+      "label": "Sizes",
+      "default": "S, M, L, XL, XXL, 3XL"
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_stock",
+      "label": "Sort: Most sizes in stock",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_price",
+      "label": "Sort: Price",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "text",
+      "id": "drop",
+      "label": "Words to leave off card names (comma separated)"
+    },
+    {
+      "type": "range",
+      "id": "hover_n",
+      "label": "Polo hover photo = product photo #",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "textarea",
+      "id": "style_lines",
+      "label": "Hat card line per style (Style = line, one per line)"
+    },
+    {
+      "type": "text",
+      "id": "empty",
+      "label": "No-match line",
+      "default": "Nothing matches that."
+    },
+    {
+      "type": "paragraph",
+      "content": "Feature tiles: add a Tile block and set which product it follows. Filters move it with the grid."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Feature tile",
+      "settings": [
+        {
+          "type": "number",
+          "id": "pos",
+          "label": "Show after product #",
+          "default": 8
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = ink tile)"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Pairs well with"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Headline",
+          "default": "A hat that matches"
+        },
+        {
+          "type": "textarea",
+          "id": "lines",
+          "label": "Bullet lines (one per line)"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "Button text",
+          "default": "Shop hats"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection grid"
+    }
+  ]
+}
+{% endschema %}

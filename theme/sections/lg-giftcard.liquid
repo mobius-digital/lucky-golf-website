@@ -1,0 +1,225 @@
+{%- liquid
+  assign s = section.settings
+  assign pick = product.selected_or_first_available_variant
+  assign want = s.default_amount | times: 100
+  for v in product.variants
+    if v.price == want and v.available
+      assign pick = v
+    endif
+  endfor
+  if product.selected_variant
+    assign pick = product.selected_variant
+  endif
+  assign amt = pick.price | money_without_trailing_zeros
+-%}
+<div class="lgc-gc">
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><span aria-current="page">{{ s.crumb }}</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp">
+  <div class="stage">
+    <div class="gc" aria-label="Lucky gift card preview">
+      <span class="lg-logo" style="position:relative;z-index:1">{% render 'lg-logo' %}</span>
+      <span class="amt" data-card-amt>{{ amt }}</span>
+      <span class="ln"><span>{{ s.card_left }}</span><span>{{ s.card_right }}</span></span>
+    </div>
+  </div>
+
+  <div class="buy" id="send">
+    {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+    {%- if s.heading != blank -%}{% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d2' %}{%- else -%}<h1 class="lg-d2">{{ product.title }}</h1>{%- endif -%}
+    <p class="price" data-price>{{ amt }}</p>
+    {%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}
+
+    {%- form 'product', product, id: 'gc-form', novalidate: 'novalidate', data-lg-add: '' -%}
+      <input type="hidden" name="id" value="{{ pick.id }}" data-gc-id>
+      <div class="row"><span class="lg-label">{{ s.amount_label }}</span></div>
+      <div class="lg-chips" data-amts role="group" aria-label="{{ s.amount_label | escape }}">
+        {%- for v in product.variants -%}<button class="lg-chip" type="button" data-v="{{ v.id }}" data-a="{{ v.price | money_without_trailing_zeros }}" aria-pressed="{% if v.id == pick.id %}true{% else %}false{% endif %}"{% unless v.available %} disabled{% endunless %}>{{ v.price | money_without_trailing_zeros }}</button>{%- endfor -%}
+      </div>
+
+      <div class="row"><span class="lg-label">{{ s.who_label }}</span></div>
+      <div class="who" role="group" aria-label="{{ s.who_label | escape }}">
+        <button type="button" data-who="me" aria-pressed="false"><b>{{ s.me_title }}</b><span>{{ s.me_line }}</span></button>
+        <button type="button" data-who="them" aria-pressed="true"><b>{{ s.them_title }}</b><span>{{ s.them_line }}</span></button>
+      </div>
+      <div class="to" data-to>
+        <input type="hidden" name="properties[__shopify_send_gift_card_to_recipient]" value="on" data-rcp>
+        <input type="hidden" name="properties[__shopify_offset]" value="" data-rcp data-offset>
+        <label><span class="lb">{{ s.name_label }}</span><input name="properties[Recipient name]" maxlength="255" autocomplete="off" data-rcp></label>
+        <label><span class="lb">{{ s.email_label }}</span><input type="email" name="properties[Recipient email]" autocomplete="off" required data-rcp></label>
+        <label><span class="lb">{{ s.msg_label }}</span><textarea name="properties[Message]" maxlength="200" placeholder="{{ s.msg_placeholder | escape }}" data-rcp></textarea></label>
+        <label><span class="lb">{{ s.date_label }}</span><input type="date" name="properties[Send on]" data-rcp data-send-on></label>
+      </div>
+
+      <button class="lg-btn" type="submit" data-atc>{{ s.btn_label }} · {{ amt }}</button>
+    {%- endform -%}
+    {%- if s.fine != blank %}<p class="fine">{{ s.fine }}</p>{% endif -%}
+  </div>
+</div></section>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var f = document.getElementById('gc-form'); if (!f) return;
+  var $ = function(s){ return f.closest('.lgc-gc').querySelector(s); };
+  var $$ = function(s){ return [].slice.call(f.closest('.lgc-gc').querySelectorAll(s)); };
+  var label = {{ section.settings.btn_label | json }};
+  var off = $('[data-offset]'); if (off) off.value = new Date().getTimezoneOffset();
+  var d = $('[data-send-on]');
+  if (d){ var iso = function(t){ return new Date(t - new Date(t).getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
+    d.min = iso(Date.now()); d.max = iso(Date.now() + 90 * 864e5); }
+  function amt(b){
+    $$('[data-amts] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+    $('[data-gc-id]').value = b.getAttribute('data-v');
+    $('[data-card-amt]').textContent = b.getAttribute('data-a');
+    $('[data-price]').textContent = b.getAttribute('data-a');
+    $('[data-atc]').textContent = label + ' · ' + b.getAttribute('data-a');
+  }
+  f.addEventListener('click', function(e){
+    var a = e.target.closest('[data-amts] button'); if (a){ amt(a); return; }
+    var w = e.target.closest('[data-who]');
+    if (w){ $$('[data-who]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === w)); });
+      var me = w.getAttribute('data-who') === 'me';
+      $('[data-to]').hidden = me;
+      $$('[data-rcp]').forEach(function(i){ i.disabled = me; }); }
+  });
+  /* the recipient's email is the one thing Shopify needs; check it before the bag does */
+  f.addEventListener('submit', function(e){
+    var em = f.querySelector('[name="properties[Recipient email]"]');
+    if (em && !em.disabled && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){ e.preventDefault(); e.stopImmediatePropagation(); em.focus(); if (window.Lucky && Lucky.toast) Lucky.toast('Add their email and we will send it to them.'); }
+  }, true);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Gift card buy box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb",
+      "default": "Gift card"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Gift card"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word; empty = product title)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Line under the price"
+    },
+    {
+      "type": "number",
+      "id": "default_amount",
+      "label": "Amount picked first ($)",
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "card_left",
+      "label": "Card, bottom left",
+      "default": "Gift card"
+    },
+    {
+      "type": "text",
+      "id": "card_right",
+      "label": "Card, bottom right",
+      "default": "It's better to be lucky"
+    },
+    {
+      "type": "text",
+      "id": "amount_label",
+      "label": "Amount label",
+      "default": "Amount"
+    },
+    {
+      "type": "text",
+      "id": "who_label",
+      "label": "Who label",
+      "default": "Who it's for"
+    },
+    {
+      "type": "text",
+      "id": "me_title",
+      "label": "Me: title",
+      "default": "Me"
+    },
+    {
+      "type": "text",
+      "id": "me_line",
+      "label": "Me: line",
+      "default": "It comes to my email"
+    },
+    {
+      "type": "text",
+      "id": "them_title",
+      "label": "Someone else: title",
+      "default": "Someone else"
+    },
+    {
+      "type": "text",
+      "id": "them_line",
+      "label": "Someone else: line",
+      "default": "We email them"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Their name label",
+      "default": "Their name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Their email label",
+      "default": "Their email"
+    },
+    {
+      "type": "text",
+      "id": "msg_label",
+      "label": "Note label",
+      "default": "A note from you"
+    },
+    {
+      "type": "text",
+      "id": "msg_placeholder",
+      "label": "Note placeholder"
+    },
+    {
+      "type": "text",
+      "id": "date_label",
+      "label": "Send on label",
+      "default": "Send it on"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button",
+      "default": "Add to cart"
+    },
+    {
+      "type": "textarea",
+      "id": "fine",
+      "label": "Small print under the button"
+    },
+    {
+      "type": "paragraph",
+      "content": "Amounts are the product's variants. The recipient fields are Shopify's own gift card recipient fields: Shopify emails the card on the date picked (up to 90 days out)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift card buy box"
+    }
+  ]
+}
+{% endschema %}

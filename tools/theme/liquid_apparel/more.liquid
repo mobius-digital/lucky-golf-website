@@ -1,0 +1,46 @@
+{%- liquid
+  assign s = section.settings
+  assign seen = product.id | append: ','
+-%}
+<section class="lg-sec{% if s.layout == 'three' %} more{% endif %}"><div class="lg-wrap">
+  <div class="hd"><div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>{%- if s.link_label != blank %}<a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}</div>
+  <div class="{% if s.layout == 'three' %}lg-grid{% else %}more{% endif %}">
+  {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    {%- case block.type -%}
+    {%- when 'product' -%}
+      {%- if b.product != blank -%}{%- assign seen = seen | append: b.product.id | append: ',' -%}{% render 'lg-card', product: b.product, line: b.line, image: b.image, cut: true %}{%- endif -%}
+    {%- when 'others' -%}
+      {%- assign k = 0 -%}
+      {%- for p in b.collection.products limit: 50 -%}
+        {%- assign pid = p.id | append: ',' -%}
+        {%- if k >= b.count -%}{%- break -%}{%- endif -%}
+        {%- if p.available == false or seen contains pid -%}{%- continue -%}{%- endif -%}
+        {%- assign seen = seen | append: pid -%}{%- assign k = k | plus: 1 -%}
+        {% render 'lg-card', product: p, cut: true %}
+      {%- endfor -%}
+    {%- when 'collar' -%}
+      {%- liquid
+        assign mine_a = false
+        if product.tags contains b.tag
+          assign mine_a = true
+        endif
+        assign pick = blank
+        for p in b.collection.products limit: 50
+          assign a = false
+          if p.tags contains b.tag
+            assign a = true
+          endif
+          if a != mine_a and p.available
+            assign pick = p
+            break
+          endif
+        endfor
+      -%}
+      {%- if pick != blank -%}
+        {%- if mine_a %}{%- assign ln = b.line_b -%}{% else %}{%- assign ln = b.line_a -%}{% endif -%}
+        {% render 'lg-card', product: pick, line: ln, cut: true %}
+      {%- endif -%}
+    {%- endcase -%}
+  {%- endfor -%}
+  </div>
+</div></section>

@@ -1,0 +1,155 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  assign sum = 0
+  for p in s.agg_products
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign rv = p.metafields.reviews.rating.value.rating | default: 0
+    assign n = n | plus: rc
+    assign sum = rv | times: rc | plus: sum
+  endfor
+  if n > 0
+    assign avg = sum | divided_by: n | round: 1
+  endif
+-%}
+<section class="lg-band is-photo" id="{{ s.anchor | default: 'reviews' }}" style="{% if s.bg != blank %}--band-bg:url({{ s.bg | image_url: width: 2000 }});{% endif %}--band-pos:{{ s.bg_pos }}"><div class="lg-wrap">
+  {%- if s.pull != blank -%}
+  <figure class="pull"><q>&ldquo;{{ s.pull }}&rdquo;</q><figcaption><b>{{ s.pull_name }}</b>{% if s.pull_product != blank %} · {{ s.pull_product.title }}{% endif %}{% if s.pull_stars > 0 %} · {{ s.pull_stars }} stars{% endif %} · verified buyer</figcaption></figure>
+  {%- endif -%}
+  <div class="proof-hd"><div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div></div>
+  {%- if n >= min -%}
+  <div class="agg"><b class="lg-num">{{ avg }}</b><div><span class="lg-stars" aria-label="{{ avg }} out of 5">{% render 'lg-stars' %}</span><p class="lg-body" style="margin:6px 0 0">{{ s.agg_line | replace: '[count]', n }}</p></div></div>
+  {%- endif -%}
+  <div class="rvrail" id="rvrail-{{ section.id }}" role="region" aria-label="Customer reviews" tabindex="0">
+    {%- for block in section.blocks -%}{%- assign p = block.settings.product -%}
+    <figure class="lg-band-tile rvc" {{ block.shopify_attributes }}><span class="ph">{%- if p != blank -%}{%- assign th = p.metafields.custom.cutout.value | default: p.featured_image -%}{%- if th -%}<span class="th">{{ th | image_url: width: 120 | image_tag: alt: '', loading: 'lazy' }}</span>{%- endif -%}{%- endif -%}<span class="lg-stars" aria-label="5 out of 5">{% render 'lg-stars' %}</span></span><blockquote>&ldquo;{{ block.settings.quote }}&rdquo;</blockquote><figcaption><b>{{ block.settings.name }}</b>{% if p != blank %} · {{ p.title }}{% endif %}</figcaption></figure>
+    {%- endfor -%}
+  </div>
+  <div class="rail-foot">{%- if s.link_label != blank %}<a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}<div class="arrows" data-arrows="rvrail-{{ section.id }}"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Reviews on a photo",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "reviews"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Background photo"
+    },
+    {
+      "type": "text",
+      "id": "bg_pos",
+      "label": "Background position",
+      "default": "center 40%"
+    },
+    {
+      "type": "header",
+      "content": "Pull quote"
+    },
+    {
+      "type": "textarea",
+      "id": "pull",
+      "label": "Quote, word for word from Judge.me"
+    },
+    {
+      "type": "text",
+      "id": "pull_name",
+      "label": "Name"
+    },
+    {
+      "type": "product",
+      "id": "pull_product",
+      "label": "Product"
+    },
+    {
+      "type": "range",
+      "id": "pull_stars",
+      "label": "Stars they gave",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Heading and score"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Reviews"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "product_list",
+      "id": "agg_products",
+      "label": "Products whose Judge.me scores make the average",
+      "limit": 20
+    },
+    {
+      "type": "text",
+      "id": "agg_line",
+      "label": "Line by the score ([count] = number of reviews)",
+      "default": "Stars from verified buyers, across every club."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link",
+      "default": "Read every review"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "paragraph",
+      "content": "Tiles are 5-star Judge.me reviews typed in word for word. Never edit or invent a review."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote, word for word from Judge.me"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name as on Judge.me (e.g. Michael P.)"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Reviews on a photo"
+    }
+  ]
+}
+{% endschema %}

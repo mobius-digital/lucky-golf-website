@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-ap-gearp",
+      "settings": {
+        "crumb_label": "Gear",
+        "crumb_url": "shopify://collections/gear",
+        "eyebrows": "Head Cover = Head cover\nGrip = Club grip\nGrips = Putter grip\nGlove = Glove",
+        "labels": "Right = Right hand\nLeft = Left hand\nGlove/Left = Left hand (right-handed golfers)\nGlove/Right = Right hand (left-handed golfers)\nSmall = S\nMedium = M\nLarge = L\nExtra Large = XL",
+        "photo": "shopify://shop_images/lg-lucky-bag-glove.webp",
+        "photo_b": "shopify://shop_images/lg-putter-in-hand.webp",
+        "photo_b_when": "putter, Head Cover",
+        "stock_in": "In stock · ships in 1 to 2 days",
+        "stock_out": "Sold out in this one",
+        "l1": "Thirty days to send it back",
+        "l1_url": "/pages/faq-lucky-wedges#returns",
+        "l2": "Free shipping at $198",
+        "l2_url": "/pages/faq-lucky-wedges#shipping"
+      }
+    },
+    "more": {
+      "type": "lg-ap-more",
+      "settings": {
+        "layout": "four",
+        "eyebrow": "Goes with it",
+        "heading": "Round out the bag",
+        "link_label": "See all the gear",
+        "link_url": "shopify://collections/gear"
+      },
+      "blocks": {
+        "b1": {
+          "type": "others",
+          "settings": {
+            "collection": "head-covers",
+            "count": 2
+          }
+        },
+        "b2": {
+          "type": "others",
+          "settings": {
+            "collection": "gloves",
+            "count": 1
+          }
+        },
+        "b3": {
+          "type": "others",
+          "settings": {
+            "collection": "performance-x2",
+            "count": 1
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Grip it and rip it.",
+        "btn2_label": "Back to the gear →",
+        "btn2_url": "shopify://collections/gear"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "more",
+    "signoff"
+  ]
+}

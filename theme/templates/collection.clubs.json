@@ -1,0 +1,567 @@
+{
+  "sections": {
+    "head": {
+      "type": "lg-ap-head",
+      "settings": {
+        "crumb": "Clubs",
+        "eyebrow": "Clubs",
+        "heading": "Clubs you'll want to show <em>off.</em>",
+        "lede": "Same materials and machining as the big names, a lot more personality, and every one of them gets sixty days to prove itself.",
+        "rating_products": [
+          "lucky-golf-lgw02-gold",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition"
+        ]
+      },
+      "blocks": {
+        "b1": {
+          "type": "proof",
+          "settings": {
+            "value": "1 to 2",
+            "label": "days to ship"
+          }
+        },
+        "b2": {
+          "type": "proof",
+          "settings": {
+            "value": "[rating]",
+            "label": "from verified buyers",
+            "gold": true
+          }
+        },
+        "b3": {
+          "type": "proof",
+          "settings": {
+            "value": "60",
+            "label": "days to decide"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky clubs on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+            "pos": ""
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-from-the-cup.webp",
+            "pos": ""
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-lucky-stryker-in-hand.webp",
+            "pos": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "jump": {
+      "type": "lg-ap-jump",
+      "settings": {
+        "label": "Jump to a category"
+      },
+      "blocks": {
+        "b1": {
+          "type": "link",
+          "settings": {
+            "text": "Wedges",
+            "anchor": "wedges",
+            "count": 2
+          }
+        },
+        "b2": {
+          "type": "link",
+          "settings": {
+            "text": "Putters",
+            "anchor": "putters",
+            "count": 2
+          }
+        },
+        "b3": {
+          "type": "link",
+          "settings": {
+            "text": "Hybrid",
+            "anchor": "hybrid",
+            "count": 1
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "wedges": {
+      "type": "lg-ap-clubs-band",
+      "settings": {
+        "anchor": "wedges",
+        "eyebrow": "Wedges",
+        "heading": "Pick your color. The spin comes standard.",
+        "body": "The Carver 02 in gold or black. Pick your loft, then pick your grind.",
+        "photo": "shopify://shop_images/lg-swing-black-wedge.webp",
+        "photo_pos": "object-position:35% 40%",
+        "style": "big",
+        "cmp_title": "What the extra ten dollars buys you",
+        "cmp_diff": true,
+        "rating_label": "Rating",
+        "rating_same": "Shared by both"
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "name": "Carver 02 Gold",
+            "tag": "Best seller",
+            "vibe": "Buttery",
+            "line": "Six lofts, two grinds, and a whole lot of shine.",
+            "hud": "50 to 60° | Lofts\nK · S | Grinds\nRH · LH | Hand",
+            "cta": "Pick a loft"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-black",
+            "name": "Carver 02 Black",
+            "vibe": "Filthy",
+            "line": "All the spin. None of the spotlight. K grind, six lofts.",
+            "hud": "50 to 60° | Lofts\nK | Grind\nRH · LH | Hand",
+            "cta": "Pick a loft"
+          }
+        },
+        "b3": {
+          "type": "row",
+          "settings": {
+            "label": "Price",
+            "a": "$99",
+            "b": "$109"
+          }
+        },
+        "b4": {
+          "type": "row",
+          "settings": {
+            "label": "Who it's for",
+            "a": "Square setups, and anyone who opens the face",
+            "b": "Square setups, same thing every time"
+          }
+        },
+        "b5": {
+          "type": "row",
+          "settings": {
+            "label": "Finish",
+            "a": "Gold",
+            "b": "Black, gold clover and stamp"
+          }
+        },
+        "b6": {
+          "type": "row",
+          "settings": {
+            "label": "Lofts",
+            "a": "6 lofts, 50 to 60°",
+            "same": true
+          }
+        },
+        "b7": {
+          "type": "row",
+          "settings": {
+            "label": "Grinds",
+            "a": "K and S",
+            "b": "K"
+          }
+        },
+        "b8": {
+          "type": "row",
+          "settings": {
+            "label": "Head",
+            "a": "Forged 1020 carbon steel",
+            "same": true
+          }
+        },
+        "b9": {
+          "type": "row",
+          "settings": {
+            "label": "Bounce",
+            "a": "8 to 12°, by loft",
+            "same": true
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ]
+    },
+    "putters": {
+      "type": "lg-ap-clubs-band",
+      "settings": {
+        "anchor": "putters",
+        "eyebrow": "Putters",
+        "heading": "Blade or mallet? Pick your miss.",
+        "body": "Both are fully milled, both are gold, and both will make your buddies nervous on the green. The difference is how much help you want on the putts you don't middle.",
+        "photo": "shopify://shop_images/lg-putt-sunset.webp",
+        "photo_pos": "object-position:55% 60%",
+        "style": "big",
+        "cmp_title": "Thirty dollars apart. Here's where it goes",
+        "cmp_diff": true,
+        "rating_label": "Rating",
+        "rating_same": "Shared by both"
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "product": "signature-gold-putters",
+            "name": "Eclipse Blade",
+            "vibe": "Pure",
+            "line": "Planted, fully milled, and all feel.",
+            "hud": "Blade | Head\n3.5° | Loft\n35″ | Length",
+            "cta": "Put it in the bag"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "name": "Eclipse Mallet",
+            "tag": "In the bag",
+            "vibe": "Smooth",
+            "line": "More head behind the ball for the putts you don't hit perfectly.",
+            "hud": "Mallet | Head\n3.5° | Loft\n35″ | Length",
+            "cta": "Put it in the bag"
+          }
+        },
+        "b3": {
+          "type": "row",
+          "settings": {
+            "label": "Price",
+            "a": "$199",
+            "b": "$229"
+          }
+        },
+        "b4": {
+          "type": "row",
+          "settings": {
+            "label": "Who it's for",
+            "a": "Golfers who want to feel every putt",
+            "b": "Golfers who want the misses to stay on line"
+          }
+        },
+        "b5": {
+          "type": "row",
+          "settings": {
+            "label": "Head",
+            "a": "Blade",
+            "b": "Mallet"
+          }
+        },
+        "b6": {
+          "type": "row",
+          "settings": {
+            "label": "Material",
+            "a": "CNC-milled 431 stainless",
+            "b": "CNC-milled 304 stainless"
+          }
+        },
+        "b7": {
+          "type": "row",
+          "settings": {
+            "label": "Head weight",
+            "a": "385 g",
+            "b": "365 g"
+          }
+        },
+        "b8": {
+          "type": "row",
+          "settings": {
+            "label": "Loft",
+            "a": "3.5°",
+            "same": true
+          }
+        },
+        "b9": {
+          "type": "row",
+          "settings": {
+            "label": "Length",
+            "a": "35″",
+            "same": true
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ]
+    },
+    "hybrid": {
+      "type": "lg-ap-clubs-band",
+      "settings": {
+        "anchor": "hybrid",
+        "eyebrow": "Hybrid",
+        "heading": "Long approaches, minus the panic",
+        "body": "A titanium hybrid in one loft and one flex: 19° and stiff.",
+        "photo": "shopify://shop_images/lg-walk-off-green.webp",
+        "style": "big",
+        "rating_label": ""
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-striker-hybrid-limited-edition",
+            "name": "Stryker",
+            "vibe": "Flush",
+            "line": "Gets it airborne from lies your long iron can't.",
+            "hud": "19° | Loft\nTitanium | Head\nRH · LH | Hand",
+            "cta": "Fill the gap"
+          }
+        },
+        "b2": {
+          "type": "spec",
+          "settings": {
+            "b": "19",
+            "small": "°",
+            "label": "Loft"
+          }
+        },
+        "b3": {
+          "type": "spec",
+          "settings": {
+            "b": "59",
+            "small": "°",
+            "label": "Lie"
+          }
+        },
+        "b4": {
+          "type": "spec",
+          "settings": {
+            "b": "235",
+            "small": "g",
+            "label": "Head"
+          }
+        },
+        "b5": {
+          "type": "spec",
+          "settings": {
+            "b": "40.5",
+            "small": "in",
+            "label": "Length"
+          }
+        },
+        "b6": {
+          "type": "panel",
+          "settings": {
+            "tag": "Instead of a 3-iron",
+            "title": "Easier to get airborne",
+            "text": "In the right hands, a 3-iron and a 19° hybrid go about the same distance. In everybody else's, the hybrid actually gets off the ground."
+          }
+        },
+        "b7": {
+          "type": "panel",
+          "settings": {
+            "tag": "Instead of a 5-wood",
+            "title": "Easier to keep straight",
+            "text": "Covers the same ground as a 5-wood in a shorter, friendlier club. Easier to find the middle, easier to keep out of the trees."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "reviews": {
+      "type": "lg-ap-clubs-rev",
+      "settings": {
+        "anchor": "reviews",
+        "bg": "shopify://shop_images/lg-two-hats-mallet.webp",
+        "bg_pos": "center 65%",
+        "eyebrow": "Reviews",
+        "heading": "Thousands of golfers bag <em>Lucky</em>",
+        "body": "Straight from people who bought one. Typos included.",
+        "products": [
+          "lucky-golf-lgw02-gold",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition"
+        ]
+      },
+      "blocks": {
+        "b1": {
+          "type": "review",
+          "settings": {
+            "quote": "My buddies already named my club “Goldy” because they are jealous of the results!!",
+            "name": "Eric F.",
+            "product": "Carver 02 Gold",
+            "stars": 5
+          }
+        },
+        "b2": {
+          "type": "review",
+          "settings": {
+            "quote": "Love the look and feel of this putter. Definitely a head turner walking up to the green with your buddies.",
+            "name": "Kyle K.",
+            "product": "Eclipse Mallet",
+            "stars": 5
+          }
+        },
+        "b3": {
+          "type": "review",
+          "settings": {
+            "quote": "I'm loving my new hybrid. The gold color is stunning and the performance is unmatched. This club has replaced my sorry 3 wood.",
+            "name": "LB06",
+            "product": "Stryker",
+            "stars": 5
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "faq": {
+      "type": "lg-ap-faq",
+      "settings": {
+        "no_top": false,
+        "eyebrow": "Still deciding",
+        "heading": "Which one's mine?",
+        "body": "If it's still a coin flip after this, write to us and a person answers.",
+        "cols": "even"
+      },
+      "blocks": {
+        "b1": {
+          "type": "trust",
+          "settings": {
+            "icon": "rotate-ccw",
+            "text": "Sixty days to decide on any club"
+          }
+        },
+        "b2": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Ships in 1 to 2 business days"
+          }
+        },
+        "b3": {
+          "type": "trust",
+          "settings": {
+            "icon": "credit-card",
+            "text": "Shop Pay splits it at checkout"
+          }
+        },
+        "b4": {
+          "type": "q",
+          "settings": {
+            "q": "Which wedge loft should I start with?",
+            "a": "<p>Keep four to six degrees between your wedges and each one gets its own yardage. Tell us your pitching wedge loft and we'll do the math.</p>"
+          }
+        },
+        "b5": {
+          "type": "q",
+          "settings": {
+            "q": "K grind or S grind?",
+            "a": "<p>The K is the one you set up square and trust from anywhere, in every loft. The S has a narrower sole, so it opens up clean when you like to lay the face open around the green.</p>"
+          }
+        },
+        "b6": {
+          "type": "q",
+          "settings": {
+            "q": "Blade or mallet?",
+            "a": "<p>It comes down to the ones you miss. The blade feels planted and tells you exactly where you struck it. The mallet spreads its weight out, so the misses stay closer to your line.</p>"
+          }
+        },
+        "b7": {
+          "type": "q",
+          "settings": {
+            "q": "What does the hybrid replace?",
+            "a": "<p>It slots in where a 3-iron or a 5-wood would go, and the panels above lay out both.</p>"
+          }
+        },
+        "b8": {
+          "type": "q",
+          "settings": {
+            "q": "What if it's not the one?",
+            "a": "<p>Every club gets sixty days. Talk to us first: club returns need our OK and a few photos, and the club has to come back in brand-new condition.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "Your bag's missing one of <em>these</em>",
+        "lede": "It's better to be lucky.",
+        "btn2_label": "Back to the top ↑",
+        "btn2_url": "#wedges"
+      }
+    }
+  },
+  "order": [
+    "head",
+    "photos",
+    "jump",
+    "wedges",
+    "putters",
+    "hybrid",
+    "reviews",
+    "faq",
+    "signoff"
+  ]
+}

@@ -1,0 +1,144 @@
+{%- liquid
+  assign s = section.settings
+  assign fd = s.focus_x | append: '% ' | append: s.focus_y | append: '%'
+  assign fm = s.focus_mx | append: '% ' | append: s.focus_my | append: '%'
+-%}
+<section class="lg-hero{% if s.short %} is-short{% endif %}" style="--focus:{{ fd }};--focus-m:{{ fm }}">
+  {%- if s.image != blank -%}
+    {{ s.image | image_url: width: 2400 | image_tag: class: 'lg-hero-img', alt: s.image.alt, fetchpriority: 'high', loading: 'eager', widths: '750,1100,1500,2000,2400', sizes: '100vw' }}
+  {%- elsif request.design_mode -%}<div class="lg-hero-img lg-slot"><small>Hero photo</small>Pick one in the theme editor</div>{%- endif -%}
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+    {% render 'lg-h', text: s.heading, tag: s.heading_tag, cls: 'lg-d1' %}
+    {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+    {%- if s.btn_label != blank -%}<div class="lg-btn-row"><a class="lg-btn" href="{{ s.btn_url }}">{{ s.btn_label }} <span aria-hidden="true">&rarr;</span></a>
+      {%- if s.btn2_label != blank %}<a class="lg-btn-line" href="{{ s.btn2_url }}">{{ s.btn2_label }}</a>{% endif -%}</div>{%- endif -%}
+  </div></div>
+  {%- if s.stamp != blank -%}<div class="hero-stamp lg-label">{{ s.stamp }}<b>{{ s.stamp_b }}</b></div>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Photo hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "range",
+      "id": "focus_x",
+      "label": "Focus across (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_y",
+      "label": "Focus down (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_mx",
+      "label": "Focus across (phone)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_my",
+      "label": "Focus down (phone)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "checkbox",
+      "id": "short",
+      "label": "Short hero",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1 (one per page)"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Second button"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Second button link"
+    },
+    {
+      "type": "text",
+      "id": "stamp",
+      "label": "Corner stamp, top line"
+    },
+    {
+      "type": "text",
+      "id": "stamp_b",
+      "label": "Corner stamp, bold line"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo hero"
+    }
+  ]
+}
+{% endschema %}

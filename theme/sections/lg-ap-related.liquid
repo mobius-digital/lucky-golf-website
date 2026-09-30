@@ -1,0 +1,168 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  assign sum = 0
+  for p in s.rating_products
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign rv = p.metafields.reviews.rating.value.rating | default: 0
+    assign n = n | plus: rc
+    assign sum = rv | times: rc | plus: sum
+  endfor
+  assign avg = ''
+  if n > 0
+    assign avg = sum | divided_by: n | times: 10 | floor | divided_by: 10.0
+  endif
+  assign nf = n
+  if n >= 1000
+    assign th = n | divided_by: 1000
+    assign rest = n | modulo: 1000 | prepend: '00' | slice: -3, 3
+    assign nf = th | append: ',' | append: rest
+  endif
+-%}
+<div class="lg-wrap">
+<nav class="related" aria-label="Keep browsing"><span class="lg-label">{{ s.label }}</span>
+  {%- for block in section.blocks -%}{%- if block.type == 'link' -%}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</a>{%- endif -%}{%- endfor -%}
+</nav>
+<div class="coll-trust"><div class="lg-trust">
+  {%- for block in section.blocks -%}{%- if block.type == 'trust' -%}
+    {%- assign t = block.settings.text -%}
+    {%- if t contains '[count]' or t contains '[avg]' -%}{%- if n < min -%}{%- continue -%}{%- endif -%}{%- assign t = t | replace: '[avg]', avg | replace: '[count]', nf -%}{%- endif -%}
+    <span {{ block.shopify_attributes }}>{% render 'lg-icon', name: block.settings.icon %}{{ t }}</span>
+  {%- endif -%}{%- endfor -%}
+</div></div>
+</div>
+
+{% schema %}
+{
+  "name": "Keep browsing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Keep browsing"
+    },
+    {
+      "type": "product_list",
+      "id": "rating_products",
+      "label": "Products whose live reviews fill [avg] and [count]",
+      "limit": 20
+    },
+    {
+      "type": "paragraph",
+      "content": "A trust line with [avg] and [count] shows the live Judge.me average and total across those products."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust line",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            },
+            {
+              "value": "map-pin",
+              "label": "map-pin"
+            },
+            {
+              "value": "search",
+              "label": "search"
+            },
+            {
+              "value": "shopping-bag",
+              "label": "shopping-bag"
+            },
+            {
+              "value": "circle-help",
+              "label": "circle-help"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Keep browsing"
+    }
+  ]
+}
+{% endschema %}

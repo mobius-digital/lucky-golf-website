@@ -36,7 +36,7 @@ One attribute, `data-ground`, swaps tokens. Components never fork per ground.
 | Where | The whole site: home, collections, product pages, story, help, cart, promos | A whole page only for short events (night drop, limited release, Black Friday). Or one band inside a Daylight page. |
 | Page | `#FFFFFF` | `#06110B` |
 | Type | ink `#17140F` | `#F4F3F0` |
-| Gold as type | `#8A6A1C` (any size) · `#A8821C` display only | `#EDD27C` |
+| Gold as type | `#8A6A1C` (any size) · `#A8821C` display only | none: type on green is off-white `--lg-on-dark` (Cole, 2026-09-27) |
 | Big numbers (`.lg-num`) | `#C29A2B → #8A6A1C` | `#FFF3C4 → #C29A2B` |
 | Glow | never | buttons, open panels, the ball, the bar |
 | Floating surface | white | `#0B1911` |
@@ -48,14 +48,17 @@ Neither ground works without photos. White alone reads as a wireframe; dark alon
 | Token | Value | The one job |
 |---|---|---|
 | `--lg-page` | `#FFFFFF` | the page, 78 to 88% of a screen |
-| `--lg-tile` | `#F4F3F0` | stone: product wells, cards, table fills. A material, never a band |
+| `--lg-tile` | `#F4F2EE` | warm grey (not cream #F1EEE6, not cold #F5F5F5): product wells, cards, table fills. A material, never a band. Never warm: white product photos multiply onto it, and cream made them look dingy (Cole, 2026-09-27) |
+
+**Grey is only behind product photos.** Text never sits in a filled box: reviews, panels, stats, spec tiles and table heads sit on the page under a hairline (`--lg-rule`). Boxes behind text made every page read busy and forced next to Takomo, which is one calm neutral ground with no boxes around words (Cole, 2026-09-27).
+
 | `--lg-dark` | `#0B2E1F` | deep green: announcement bar, header, the one band, footer |
 | `--lg-night` | `#06110B` | Twilight's page |
 | `--lg-ink` | `#17140F` | all type on white; the black Mags |
 | `--lg-on-dark` | `#F4F3F0` | type on dark; the light Mags |
 | `--lg-gold` | `#C29A2B` | gold as a surface: buttons, rules, flags |
 | `--lg-gold-text` | `#8A6A1C` | gold as type on white (5.05:1) |
-| `--lg-gold-hi` | `#EDD27C` | gold type on dark. **Never on white** (1.5:1) |
+| `--lg-gold-hi` | `#EDD27C` | the light end of the foil only. **No gold TYPE or stars on green or night** (Cole 2026-09-27: gold letters on green read dated); type there is `--lg-on-dark`. Gold on dark = the foil button and small foil markers, nothing else |
 | `--lg-ok` | `#008340` | in stock, verified. **Not "added"** |
 | `--lg-clover` | `#0B5130` | inside the logo only. Gold type on it is banned (3.6:1) |
 
@@ -77,7 +80,7 @@ Archivo only, variable width and weight. Display: width 62, 800, caps, line heig
 
 ## 5 · Shape, space, depth, motion
 
-- Radius: **10px controls** (chips, inputs), **12px buttons**, **18px surfaces** (cards, tiles, photos in the page). Photos never round themselves inside a rounded card.
+- Radius (tightened 2026-09-27 to match Takomo, Cole's call): **6px controls** (chips, inputs), **6px buttons**, **8px surfaces** (cards, tiles, photos in the page). Pills stay round. Photos never round themselves inside a rounded card.
 - Content 1180px wide; sections 64 to 112px apart; every tap target 44px+ on a phone.
 - **Shadows only on things that float over the page:** the Mags card, the pop-up, the drawer. Nothing in the page casts one.
 - Motion is mostly still. The whole vocabulary: the foil slides on hover, photos ease on hover, the tracer draws once, the hole ball hops when the bag changes, Mags hops when his line changes, the pop-up rises and shrinks into Mags. No scroll reveals, no card lifts. `prefers-reduced-motion` stops all of it.

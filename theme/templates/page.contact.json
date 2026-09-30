@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "contact": {
+      "type": "lg-contact",
+      "settings": {
+        "crumb": "Contact",
+        "eyebrow": "Talk to us",
+        "heading": "A person reads <em>these</em>",
+        "lede": "Sizing, lofts, where your order is, or the one that got away on 17. Ask whatever you need to ask.",
+        "l_name": "Name",
+        "l_email": "Email",
+        "l_order": "Order number",
+        "p_order": "If you have one",
+        "l_topic": "What's it about",
+        "topics": "Where my order is\nA return or exchange\nSizing or fit\nWhich club to pick\nSomething arrived damaged\nSomething else",
+        "l_msg": "Message",
+        "btn": "Send it",
+        "sent": "Got it. We'll come back to you on the email above, usually the same day."
+      },
+      "blocks": {
+        "b1": {
+          "type": "way",
+          "settings": {
+            "icon": "mail",
+            "title": "support@luckygolf.com",
+            "text": "Order number in the subject line gets you an answer faster."
+          }
+        },
+        "b2": {
+          "type": "way",
+          "settings": {
+            "icon": "message-circle",
+            "title": "Chat",
+            "text": "Bottom right of any page. Best for a quick question before you buy."
+          }
+        },
+        "b3": {
+          "type": "way",
+          "settings": {
+            "icon": "package",
+            "title": "Returns",
+            "text": "Apparel and gear go through the returns portal. Clubs need approval first, so start here and we'll set it up."
+          }
+        },
+        "b4": {
+          "type": "way",
+          "settings": {
+            "icon": "circle-help",
+            "title": "Already answered",
+            "text": "Shipping times, the 60 days and sizing are all on the <a href=\"/pages/faq-lucky-wedges\">questions page</a>."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "No phone tree, no ticket <em>number</em>",
+        "lede": "Nine of us work here. One of them is a magpie and he's no help at all.",
+        "btn2_label": "Read the questions first →",
+        "btn2_url": "shopify://pages/faq-lucky-wedges"
+      }
+    }
+  },
+  "order": [
+    "contact",
+    "signoff"
+  ]
+}

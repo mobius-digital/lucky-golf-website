@@ -1,0 +1,112 @@
+{%- layout none -%}
+{%- comment -%}
+  The gift card a recipient opens from Shopify's email (v9/src/giftcard-view.html).
+  Its own minimal page, not theme.liquid. Keeps Shopify's gift card output:
+  the code, the balance, the QR code and the Apple Wallet pass.
+{%- endcomment -%}
+{%- liquid
+  assign value = gift_card.initial_value | money_without_trailing_zeros
+  assign balance = gift_card.balance | money_without_trailing_zeros
+-%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B2E1F">
+  <title>Your {{ value }} gift card · {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+  {{ 'lucky.css' | asset_url | stylesheet_tag }}
+  <style>
+    body.lg{background:var(--lg-tile);margin:0}
+    .wrap{max-width:620px;margin:0 auto;padding:clamp(28px,6vw,72px) 16px;text-align:center}
+    .wrap > .lg-logo{display:inline-block;color:var(--lg-ink)}
+    .wrap > .lg-logo svg{height:26px;width:auto}
+    .gc{margin:clamp(24px,4vw,40px) auto;max-width:460px;aspect-ratio:1.586/1;border-radius:var(--lg-r-card);padding:clamp(18px,3vw,28px);position:relative;overflow:hidden;
+      background:var(--lg-band-light);color:var(--lg-on-dark);box-shadow:var(--lg-float-lg);
+      display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+    .gc .lg-logo{position:relative;z-index:1;color:var(--lg-on-dark)}
+    .gc .lg-logo svg{height:22px;width:auto}
+    .gc .amt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(46px,9vw,72px);line-height:1;position:relative;z-index:1;
+      background:var(--lg-foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .gc .ln{display:flex;justify-content:space-between;font-size:var(--lg-fs-sm);letter-spacing:.12em;text-transform:uppercase;color:var(--lg-on-dark-m);position:relative;z-index:1}
+    .note{max-width:44ch;margin:0 auto 22px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700;font-size:clamp(18px,2.4vw,22px);line-height:1.3}
+    .note small{display:block;margin-top:8px;font-weight:500;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+    .code{display:flex;gap:8px;align-items:center;justify-content:center;margin:0 auto 12px;max-width:420px;padding:8px 8px 8px 16px;border:1px dashed var(--lg-ink-38);border-radius:var(--lg-r);background:var(--lg-page)}
+    .code b{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:var(--lg-fs-body);letter-spacing:.14em;text-align:left;overflow-wrap:anywhere}
+    .meta{color:var(--lg-ink-64);font-size:var(--lg-fs-sm);margin:0 0 24px}
+    .meta.is-off{color:var(--lg-ink);font-weight:600}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .extra{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;margin-top:clamp(22px,3vw,32px)}
+    .qr{padding:10px;background:var(--lg-page);border-radius:var(--lg-r);line-height:0}
+    .qr img,.qr canvas{width:120px;height:120px}
+    .wallet img{height:44px;width:auto;display:block}
+    .how{margin-top:clamp(28px,4vw,44px);text-align:left;border-top:1px solid var(--lg-rule);padding-top:22px}
+    .how ol{margin:10px 0 0;padding-left:20px;color:var(--lg-ink-70);display:grid;gap:8px}
+    @media print{.btns,.wallet{display:none}body.lg{background:var(--lg-page)}}
+  </style>
+  {{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
+  {{ content_for_header }}
+</head>
+<body class="lg lg-t-gift-card">
+<main class="wrap">
+  <a class="lg-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">{% render 'lg-logo' %}</a>
+
+  <div class="gc" aria-label="Your Lucky gift card, {{ value }}">
+    <span class="lg-logo">{% render 'lg-logo' %}</span>
+    <span class="amt">{{ value }}</span>
+    <span class="ln"><span>Gift card</span><span>It's better to be lucky</span></span>
+  </div>
+
+  {%- if gift_card.message != blank -%}
+    <p class="note">&ldquo;{{ gift_card.message | escape }}&rdquo;</p>
+  {%- endif -%}
+
+  <div class="code"><b data-code>{{ gift_card.code | format_code }}</b><button class="lg-btn-line lg-btn-sm" type="button" data-copy>Copy</button></div>
+  {%- if gift_card.expired -%}
+    <p class="meta is-off">This card expired on {{ gift_card.expires_on | date: '%B %-d, %Y' }}.</p>
+  {%- elsif gift_card.enabled == false -%}
+    <p class="meta is-off">This card isn't active. Reply to the email and we'll sort it out.</p>
+  {%- else -%}
+    <p class="meta">{{ balance }} left on it{% if gift_card.expires_on %} · good until {{ gift_card.expires_on | date: '%B %-d, %Y' }}{% endif %}</p>
+  {%- endif -%}
+
+  <div class="btns">
+    <a class="lg-btn" href="{{ shop.url }}{{ routes.root_url }}">Spend it</a>
+    <button class="lg-btn-line" type="button" onclick="window.print()">Print it</button>
+  </div>
+
+  <div class="extra">
+    <div class="qr" id="QrCode" data-identifier="{{ gift_card.qr_identifier }}" aria-label="QR code for this gift card"></div>
+    {%- if gift_card.pass_url -%}
+      <a class="wallet" href="{{ gift_card.pass_url }}"><img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add to Apple Wallet" loading="lazy"></a>
+    {%- endif -%}
+  </div>
+
+  <div class="how">
+    <p class="lg-label" style="margin:0">How it works</p>
+    <ol>
+      <li>Pick anything in the store, from a wedge to a grip.</li>
+      <li>At checkout, paste the code into the gift card box.</li>
+      <li>Anything left stays on the card for your next order, for up to five years.</li>
+    </ol>
+  </div>
+</main>
+<script>
+  (function(){
+    var q = document.getElementById('QrCode');
+    if (q && window.QRCode) new QRCode(q, { text: q.getAttribute('data-identifier'), width: 120, height: 120, imageAltText: 'QR code for this gift card' });
+    var b = document.querySelector('[data-copy]');
+    if (b) b.addEventListener('click', function(){
+      var t = document.querySelector('[data-code]').textContent.replace(/\s/g, '');
+      try { navigator.clipboard.writeText(t); } catch (e) {}
+      b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1600);
+    });
+  })();
+</script>
+</body>
+</html>

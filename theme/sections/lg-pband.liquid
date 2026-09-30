@@ -1,0 +1,42 @@
+<div class="lg-pband pband-{{ section.blocks.size }}" aria-label="{{ section.settings.label | escape }}">
+  {%- for block in section.blocks -%}<figure class="pb" {{ block.shopify_attributes }}>{%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: block.settings.image.alt, widths: '400,700,1000', sizes: '(max-width: 749px) 50vw, 25vw', style: block.settings.pos }}{%- endif -%}</figure>{%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Photo band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label (for screen readers)",
+      "default": "Lucky, out on the course"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "pos",
+          "label": "Position (CSS, optional)",
+          "info": "e.g. object-position:30% 40%"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Photo band"
+    }
+  ]
+}
+{% endschema %}

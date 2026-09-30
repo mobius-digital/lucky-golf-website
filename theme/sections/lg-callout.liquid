@@ -1,0 +1,57 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  <div class="amb">
+    <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}{%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}</div>
+    {%- if s.btn_label != blank %}<a class="lg-btn-line" href="{{ s.btn_url }}">{{ s.btn_label }} <span aria-hidden="true">&rarr;</span></a>{% endif -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Callout box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Callout box"
+    }
+  ]
+}
+{% endschema %}

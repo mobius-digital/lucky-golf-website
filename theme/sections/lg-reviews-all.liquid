@@ -1,0 +1,235 @@
+{%- comment -%}
+  All reviews: our live score, star bars and a tile per club, a sticky filter bar, then Judge.me's
+  all-reviews list. Judge.me's own header, medals, store-review button and Shop reviews tab are hidden
+  (70-content.css); our star bars and chips drive its star filter and sort, the club chips filter the
+  reviews on the page by product.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  assign sum = 0
+  for block in section.blocks
+    assign p = block.settings.product
+    if p != blank
+      assign rc = p.metafields.reviews.rating_count.value | default: 0
+      assign rv = p.metafields.reviews.rating.value.rating | default: 0
+      assign n = n | plus: rc
+      assign sum = rv | times: rc | plus: sum
+    endif
+  endfor
+  if n > 0
+    assign avg = sum | divided_by: n | round: 1
+  endif
+-%}
+<div data-rv>
+<section class="lg-sec" style="padding-bottom:0"><div class="lg-wrap sum">
+  <div class="lg-score">
+    {%- if n >= min -%}
+    <b>{{ avg }}</b>
+    <div><span class="lg-stars" aria-label="{{ avg }} out of 5">{% render 'lg-stars' %}</span><span class="of">{{ s.of_line | replace: '[count]', n }}</span></div>
+    {%- endif -%}
+    <div class="lg-score-bars" style="grid-column:1/-1" data-bars></div>
+  </div>
+  <div class="clubs">
+    {%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
+      {%- assign rc = p.metafields.reviews.rating_count.value | default: 0 -%}{%- assign rv = p.metafields.reviews.rating.value.rating | default: 0 -%}
+      <button class="ct" type="button" data-ct="{{ forloop.index }}" aria-pressed="false" {{ block.shopify_attributes }}><b>{{ block.settings.label | default: p.title }}</b>
+        {%- if rc >= min -%}<span><span class="lg-stars" aria-hidden="true">{% render 'lg-stars' %}</span><em>{{ rv | round: 1 }} · {{ rc }} {{ s.tile_word }}</em></span>{%- endif -%}</button>
+    {%- endif -%}{%- endfor -%}
+  </div>
+</div></section>
+
+<div class="bar"><div class="lg-wrap bar-in">
+  <div class="fg" role="group" aria-label="{{ s.club_label | escape }}"><span class="lbl">{{ s.club_label }}</span>
+    <button type="button" data-c="0" aria-pressed="true">{{ s.all_label }}</button>
+    {%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
+      {%- capture hs -%}{{ p.handle }}{% for x in block.settings.also %} {{ x.handle }}{% endfor %}{%- endcapture -%}
+      {%- assign nm = block.settings.label | default: p.title -%}
+      <button type="button" data-c="{{ forloop.index }}" data-handles="{{ hs | strip }}" data-url="{{ p.url }}#reviews" data-name="{{ nm | escape }}" data-count="{{ p.metafields.reviews.rating_count.value | default: 0 }}" aria-pressed="false">{{ nm }}</button>
+    {%- endif -%}{%- endfor -%}
+  </div>
+  <div class="fg" role="group" aria-label="{{ s.stars_label | escape }}"><span class="lbl">{{ s.stars_label }}</span>
+    <button type="button" data-s="0" aria-pressed="true">{{ s.all_label }}</button>
+    {%- for i in (1..5) -%}{%- assign k = 6 | minus: i -%}<button type="button" data-s="{{ k }}" aria-pressed="false">{{ k }} ★</button>{%- endfor -%}
+  </div>
+  <div class="fright"><label><span class="sr">{{ s.sort_label }}</span><select data-sort>
+    <option value="most-recent">{{ s.sort_recent }}</option><option value="highest-rating">{{ s.sort_high }}</option><option value="lowest-rating">{{ s.sort_low }}</option>
+  </select></label></div>
+</div></div>
+
+<section class="lg-wrap jm" id="{{ s.anchor | default: 'all-reviews' }}">
+  <p class="club-note" data-club-note hidden><span></span> <a class="lg-link" href="#"><em></em> <span aria-hidden="true">&rarr;</span></a></p>
+  {% render 'judgeme_all_reviews' %}
+</section>
+</div>
+<script>
+(function(){
+  var sec = document.currentScript.previousElementSibling, $$ = function(s, r){ return [].slice.call((r || sec).querySelectorAll(s)); };
+  var jm = function(){ return sec.querySelector('.jdgm-all-reviews-widget'); };
+  var club = null, note = sec.querySelector('[data-club-note]');
+  var WORD = {{ s.note_line | json }}, LINK = {{ s.note_link | json }};
+  function press(attr, v){ $$('[' + attr + ']').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute(attr) === String(v))); }); }
+  /* the bars: Judge.me's live star split (its hidden histogram) drawn our way; tap one to filter */
+  function bars(){
+    var box = sec.querySelector('[data-bars]'), w = jm(); if (!w || box.childElementCount) return;
+    box.innerHTML = [5, 4, 3, 2, 1].map(function(n){ var r = w.querySelector('.jdgm-histogram__row[data-rating="' + n + '"]'); if (!r) return '';
+      var p = r.getAttribute('data-percentage') || 0;
+      return '<button class="lg-score-row is-btn" type="button" data-s="' + n + '" aria-pressed="false" aria-label="' + n + ' star reviews"><span>' + n + ' \u2605</span><i style="--pct:' + p + '%"></i><span>' + p + '%</span></button>'; }).join('');
+  }
+  function stars(n){
+    press('data-s', n); var w = jm(); if (!w) return;
+    var t = n ? w.querySelector('.jdgm-histogram__row[data-rating="' + n + '"]') : w.querySelector('.jdgm-histogram__clear-filter');
+    if (t) t.click();
+  }
+  function apply(){
+    var w = jm(); if (!w) return;
+    var hs = club ? club.getAttribute('data-handles').split(' ') : null;
+    $$('.jdgm-all-reviews__body .jdgm-rev', w).forEach(function(r){
+      var a = r.querySelector('.jdgm-rev__prod-link'), m = a && (a.getAttribute('href') || '').match(/\/products\/([^/?#]+)/);
+      var hide = !!hs && !(m && hs.indexOf(m[1]) > -1);
+      if (r.hidden !== hide) r.hidden = hide;
+    });
+  }
+  function setClub(i){
+    club = i ? sec.querySelector('[data-c="' + i + '"]') : null;
+    press('data-c', i || 0); press('data-ct', i || 0);
+    if (club){
+      note.hidden = false; note.firstElementChild.textContent = WORD.replace('[club]', club.getAttribute('data-name'));
+      var a = note.querySelector('a'); a.href = club.getAttribute('data-url');
+      a.querySelector('em').textContent = LINK.replace('[club]', club.getAttribute('data-name')).replace('[count]', club.getAttribute('data-count'));
+    } else note.hidden = true;
+    var wr = document.querySelector('.lg-signoff a[href*="#reviews"]'); if (wr && club) wr.href = club.getAttribute('data-url');
+    apply();
+  }
+  sec.addEventListener('click', function(e){
+    var c = e.target.closest('[data-c]'); if (c){ setClub(+c.getAttribute('data-c')); return; }
+    var t = e.target.closest('[data-ct]'); if (t){ setClub(t.getAttribute('aria-pressed') === 'true' ? 0 : +t.getAttribute('data-ct')); sec.querySelector('.bar').scrollIntoView({ behavior: 'smooth' }); return; }
+    var s = e.target.closest('[data-s]');
+    if (s){ var n = +s.getAttribute('data-s'), bar = s.classList.contains('is-btn'); if (bar && s.getAttribute('aria-pressed') === 'true') n = 0;
+      stars(n); if (bar) sec.querySelector('.bar').scrollIntoView({ behavior: 'smooth' }); }
+  });
+  sec.querySelector('[data-sort]').addEventListener('change', function(){
+    var w = jm(), d = w && w.querySelector('.jdgm-sort-dropdown'); if (!d) return;
+    d.value = this.value; d.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  /* Judge.me fills the list after load and on every page / filter: redraw the bars and re-filter */
+  new MutationObserver(function(){ bars(); apply(); }).observe(sec.querySelector('.jm'), { childList: true, subtree: true });
+  bars();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "All reviews",
+  "class": "lgc-rv",
+  "settings": [
+    {
+      "type": "text",
+      "id": "of_line",
+      "label": "Under the score ([count] = live count)",
+      "default": "out of five, from [count] reviews"
+    },
+    {
+      "type": "text",
+      "id": "tile_word",
+      "label": "After each club's count",
+      "default": "reviews"
+    },
+    {
+      "type": "text",
+      "id": "club_label",
+      "label": "Club filter label",
+      "default": "Club"
+    },
+    {
+      "type": "text",
+      "id": "stars_label",
+      "label": "Stars filter label",
+      "default": "Stars"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "All",
+      "default": "All"
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Sort label (screen readers)",
+      "default": "Sort"
+    },
+    {
+      "type": "text",
+      "id": "sort_recent",
+      "label": "Most recent",
+      "default": "Most recent"
+    },
+    {
+      "type": "text",
+      "id": "sort_high",
+      "label": "Highest rating",
+      "default": "Highest rating"
+    },
+    {
+      "type": "text",
+      "id": "sort_low",
+      "label": "Lowest rating",
+      "default": "Lowest rating"
+    },
+    {
+      "type": "text",
+      "id": "note_line",
+      "label": "With a club picked ([club])",
+      "default": "Showing the [club] reviews on this page."
+    },
+    {
+      "type": "text",
+      "id": "note_link",
+      "label": "Link to that club's reviews ([club], [count])",
+      "default": "All [count] [club] reviews"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor for the list",
+      "default": "all-reviews"
+    },
+    {
+      "type": "paragraph",
+      "content": "Scores are read live from each product's Judge.me metafields and only show at the review minimum. One block per review pool; put the pool's other products (Carver 02 Black with the Gold) under Same pool so the club filter catches them. The list is Judge.me's all-reviews widget; the star bars come from its live split."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "club",
+      "name": "Club",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Name (empty = product's)"
+        },
+        {
+          "type": "product_list",
+          "id": "also",
+          "label": "Same pool (other products)",
+          "limit": 5
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "All reviews"
+    }
+  ]
+}
+{% endschema %}

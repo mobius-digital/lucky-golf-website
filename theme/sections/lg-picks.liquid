@@ -1,0 +1,81 @@
+{%- assign s = section.settings -%}
+<div class="lgc-gc"><section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <div class="pick-hd">
+    <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>
+    {%- if s.link_label != blank %}<a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}
+  </div>
+  <div class="pick">
+    {%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
+      {%- liquid
+        assign pic = block.settings.image
+        if pic == blank
+          assign pic = p.metafields.custom.cutout.value
+        endif
+        if pic == blank
+          assign pic = p.featured_image
+        endif
+        assign nm = block.settings.name | default: p.title
+      -%}
+      <a href="{{ p.url }}" {{ block.shopify_attributes }}><span class="ph">{%- if pic != blank -%}{{ pic | image_url: width: 600 | image_tag: loading: 'lazy', alt: nm, widths: '300,450,600', sizes: '(max-width: 860px) 45vw, 22vw' }}{%- endif -%}</span>
+        <span class="nm">{{ nm }}</span><b>{{ p.price_min | money_without_trailing_zeros }}{% if p.price_varies %} to {{ p.price_max | money_without_trailing_zeros }}{% endif %}{% if p.compare_at_price_min > p.price_min %} <s class="lg-was">{{ p.compare_at_price_min | money_without_trailing_zeros }}</s>{% endif %}</b>{% unless p.available %} <span class="lg-aside">Sold out</span>{% endunless %}</a>
+    {%- endif -%}{%- endfor -%}
+  </div>
+</div></section></div>
+
+{% schema %}
+{
+  "name": "Four product picks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pick",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name (empty = product's)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = the product's cutout)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Four product picks"
+    }
+  ]
+}
+{% endschema %}

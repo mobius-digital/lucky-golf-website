@@ -1,0 +1,32 @@
+{%- comment -%}
+  LG.stock: { variantId: quantity } for variants that are low (1 to the setting), tracked by Shopify and
+  stop selling at zero, limited to the scope in Theme settings > Lucky bag > Low stock.
+{%- endcomment -%}
+{%- liquid
+  assign mx = settings.lg_stock_max | default: 5
+  assign scope = settings.lg_stock_scope | default: 'all'
+  assign tag = settings.lg_stock_tag | strip
+  echo '{'
+  if settings.lg_stock_on
+    if scope == 'products'
+      for p in settings.lg_stock_products
+        render 'lg-stock-row', p: p, mx: mx
+      endfor
+    elsif scope == 'collections'
+      for c in settings.lg_stock_collections
+        for p in c.products limit: 60
+          render 'lg-stock-row', p: p, mx: mx
+        endfor
+      endfor
+    else
+      for p in collections.all.products limit: 120
+        if scope == 'tag' and p.tags contains tag
+          render 'lg-stock-row', p: p, mx: mx
+        elsif scope == 'all'
+          render 'lg-stock-row', p: p, mx: mx
+        endif
+      endfor
+    endif
+  endif
+  echo '"_":0}'
+-%}

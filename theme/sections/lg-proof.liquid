@@ -1,0 +1,58 @@
+{%- assign s = section.settings -%}{%- liquid
+  assign min = settings.lg_review_min | default: 10
+-%}
+{%- liquid
+  assign p = s.product
+  assign rc = 0
+  if p != blank
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign rv = p.metafields.reviews.rating.value.rating
+  endif
+-%}
+<section class="lg-sec" style="padding-bottom:0"><div class="lg-wrap"><div class="proof">
+  {%- if rc >= min and rv -%}{%- assign n = rv | round -%}<span><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{%- for i in (1..5) -%}<svg viewBox="0 0 20 20" aria-hidden="true"{% if i > n %} style="opacity:.25"{% endif %}><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>{%- endfor -%}</span>{{ s.rating_line | replace: '[rating]', rv | replace: '[count]', rc }}</span>{%- endif -%}
+  {%- for block in section.blocks -%}<span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>{%- endfor -%}
+</div></div></section>
+
+{% schema %}
+{
+  "name": "Proof line",
+  "class": "lgc-proof",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product whose Judge.me score leads"
+    },
+    {
+      "type": "text",
+      "id": "rating_line",
+      "label": "Score line ([rating], [count])",
+      "default": "[rating] from [count] Carver reviews"
+    },
+    {
+      "type": "paragraph",
+      "content": "The score only shows once the product has the review minimum."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Proof line"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"><div class="lg-wrap tl-in">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+  <div class="tl-hd"><p class="lg-lede">{{ s.lede }}</p><div class="arrows" data-arrows="tl-{{ section.id }}"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
+  <ol class="tl" id="tl-{{ section.id }}">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    <li{% if b.soon %} data-soon{% endif %} {{ block.shopify_attributes }}><span class="yr">{{ b.year }}</span><div><h3>{{ b.title }}{% if b.soon %} <span class="lg-tag soon">{{ b.soon_label }}</span>{% endif %}</h3><p>{{ b.text }}</p></div></li>
+    {%- endfor -%}
+  </ol>
+</div></section>
+
+{% schema %}
+{
+  "name": "Timeline",
+  "class": "lgc-tl",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "When"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "soon",
+          "label": "Still to come (dashed)",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "soon_label",
+          "label": "Tag when still to come",
+          "default": "Coming"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Timeline"
+    }
+  ]
+}
+{% endschema %}

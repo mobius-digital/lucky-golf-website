@@ -1,0 +1,38 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec man-sec"><div class="lg-wrap man">
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d1' %}
+  <div>
+  {{ s.body | replace: '<p>', '<p class="lg-body">' }}
+  {%- if s.close != blank %}<p class="man-close">{{ s.close }}</p>{% endif -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Manifesto",
+  "class": "lgc-man",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "close",
+      "label": "Closing line"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manifesto"
+    }
+  ]
+}
+{% endschema %}

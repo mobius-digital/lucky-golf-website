@@ -1,0 +1,71 @@
+{%- assign s = section.settings -%}
+<section class="lg-signoff"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d1' %}
+  {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+  <div class="lg-btn-row">{%- if s.btn_label != blank %}<a class="lg-btn" href="{{ s.btn_url }}">{{ s.btn_label }}{% if s.btn_arrow %} <span aria-hidden="true">&rarr;</span>{% endif %}</a>{% endif -%}{%- if s.btn2_label != blank %}<a class="lg-btn-line" href="{{ s.btn2_url }}">{{ s.btn2_label }}</a>{% endif -%}</div>
+  {%- if s.trust != blank -%}<div class="close-trust">{%- assign ts = s.trust | newline_to_br | split: '<br />' -%}{%- for t in ts -%}{%- assign tt = t | strip -%}{%- if tt != blank %}<span>{{ tt }}</span>{% endif -%}{%- endfor -%}</div>{%- endif -%}
+  <div class="lg-signoff-mags" aria-hidden="true">{% render 'lg-mags' %}</div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Mags sign-off",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The last word"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "text",
+      "id": "lede",
+      "label": "Line under it",
+      "default": "It's better to be lucky."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Gold button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Gold button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_arrow",
+      "label": "Arrow on the gold button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Second button"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Second button link"
+    },
+    {
+      "type": "textarea",
+      "id": "trust",
+      "label": "Small lines under the buttons (one per line)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mags sign-off"
+    }
+  ]
+}
+{% endschema %}

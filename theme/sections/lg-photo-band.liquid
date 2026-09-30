@@ -1,0 +1,47 @@
+{%- assign s = section.settings -%}
+<section class="lg-band is-photo" style="{% if s.bg != blank %}--band-bg:url({{ s.bg | image_url: width: 2000 }});{% endif %}--band-pos:{{ s.bg_pos }}"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d1' %}
+  {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Photo band, words",
+  "class": "lgc-pband",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Background photo"
+    },
+    {
+      "type": "text",
+      "id": "bg_pos",
+      "label": "Background position",
+      "default": "center 50%"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo band, words"
+    }
+  ]
+}
+{% endschema %}

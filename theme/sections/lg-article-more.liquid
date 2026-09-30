@@ -1,0 +1,65 @@
+{%- liquid
+  assign s = section.settings
+  assign found = false
+  assign after = ''
+  assign before = ''
+  for a in blog.articles
+    if a.id == article.id
+      assign found = true
+      continue
+    endif
+    if found
+      assign after = after | append: a.handle | append: ','
+    else
+      assign before = before | append: a.handle | append: ','
+    endif
+  endfor
+  assign order = after | append: before | split: ','
+  assign shown = 0
+-%}
+<div class="lgc-art"><section class="lg-sec" style="padding-top:0"><div class="lg-wrap">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(20px,3vw,32px)">
+    <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>
+    {%- if s.link_label != blank %}<a class="lg-link" href="{{ blog.url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}
+  </div>
+  <div class="more">
+    {%- for h in order -%}{%- if shown >= 3 %}{% break %}{% endif -%}
+      {%- for a in blog.articles -%}{%- if a.handle == h -%}
+        <a class="mp" href="{{ a.url }}"><figure>{%- if a.image -%}{{ a.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: '', widths: '400,600,800', sizes: '(max-width: 860px) 100vw, 33vw' }}{%- endif -%}</figure><b>{{ a.title }}</b></a>
+        {%- assign shown = shown | plus: 1 -%}
+      {%- endif -%}{%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div></section></div>
+
+{% schema %}
+{
+  "name": "More articles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Keep reading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word.",
+      "default": "More from the <em>blog</em>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right",
+      "default": "All articles"
+    }
+  ],
+  "presets": [
+    {
+      "name": "More articles"
+    }
+  ]
+}
+{% endschema %}

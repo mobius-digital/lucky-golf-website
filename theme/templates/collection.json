@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "head": {
+      "type": "lg-ap-head",
+      "settings": {
+        "eyebrow": "Everything we make",
+        "narrow": true,
+        "lede": "The whole shop on one page. Sort it, filter it, or just scroll until something gold catches your eye."
+      }
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+            "pos": ""
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": ""
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-putt-sunset.webp",
+            "pos": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "grid": {
+      "type": "lg-ap-grid",
+      "settings": {
+        "card": "item",
+        "f_kind": true,
+        "f_stock": true,
+        "sort_price": true,
+        "empty": "Nothing matches that.",
+        "kind_map": "Wedges = Wedges\nPutter = Putters\nHybrids = Hybrid\nApparel = Polos\nHAT = Hats\nHead Cover = Covers\nGrip = Grips\nGrips = Grips\nGlove = Gloves"
+      },
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "pos": 7,
+            "eyebrow": "Can't decide?",
+            "title": "Let them pick",
+            "url": "shopify://products/lucky-wedges-gift-card",
+            "cta": "Send a gift card"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ]
+    },
+    "related": {
+      "type": "lg-ap-related",
+      "settings": {
+        "label": "Keep browsing",
+        "rating_products": [
+          "lucky-golf-lgw02-gold",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition"
+        ]
+      },
+      "blocks": {
+        "b1": {
+          "type": "link",
+          "settings": {
+            "text": "Clubs",
+            "url": "shopify://collections/lucky-golf-clubs"
+          }
+        },
+        "b2": {
+          "type": "link",
+          "settings": {
+            "text": "Polos",
+            "url": "shopify://collections/polos"
+          }
+        },
+        "b3": {
+          "type": "link",
+          "settings": {
+            "text": "Hats",
+            "url": "shopify://collections/hats"
+          }
+        },
+        "b4": {
+          "type": "link",
+          "settings": {
+            "text": "Gear",
+            "url": "shopify://collections/gear"
+          }
+        },
+        "b5": {
+          "type": "trust",
+          "settings": {
+            "icon": "star",
+            "text": "[avg] from [count] club reviews"
+          }
+        },
+        "b6": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping at $198"
+          }
+        },
+        "b7": {
+          "type": "trust",
+          "settings": {
+            "icon": "rotate-ccw",
+            "text": "Sixty days on clubs"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "That's the whole <em>shop</em>",
+        "lede": "Sixty days to make up your mind on the clubs, thirty on the rest.",
+        "btn2_label": "Back to the top ↑",
+        "btn2_url": "#grid"
+      }
+    }
+  },
+  "order": [
+    "head",
+    "photos",
+    "grid",
+    "related",
+    "signoff"
+  ]
+}

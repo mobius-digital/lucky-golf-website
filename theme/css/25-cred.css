@@ -1,0 +1,12 @@
+/* the trust bar under the hero (Takomo's credibility strip): a light grey band, items centered
+   and split by thin rules, the proof (stars or an icon) on top and one short line under it */
+.lg-cred{background:var(--lg-tile);border-bottom:1px solid var(--lg-rule)}
+.cred-in{display:flex;justify-content:center;align-items:stretch}
+.cred{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 40px;text-decoration:none;color:var(--lg-ink);text-align:center}
+.cred + .cred{border-left:1px solid rgba(23,20,15,.14)}
+.cred-top{display:flex;align-items:center;height:18px;color:var(--lg-gold-text)}
+.cred-top.lg-stars svg{width:18px;height:18px;fill:var(--lg-gold)}
+.cred-top .ic{width:20px;height:20px}
+.cred-t{font-size:12.5px;line-height:1.3;color:#545454}
+:where(body.lg) a.cred:hover .cred-t{color:var(--lg-ink)}
+@media (max-width:749px){.cred{padding:12px 14px}.cred-t{font-size:11.5px}.cred-top.lg-stars svg{width:14px;height:14px}}

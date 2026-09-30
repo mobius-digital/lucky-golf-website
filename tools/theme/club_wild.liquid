@@ -1,0 +1,98 @@
+{%- comment -%}
+  "Caught in the wild" on a club page: the shoppable Community posts (Content > Metaobjects >
+  Community post), the ones with this club in them first, then the latest others, up to the limit.
+  Same tile + pop-up as the home page's lg-wild (the JS is in lucky-site.js). A video post plays.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign posts = shop.metaobjects.community_post.values
+  assign lim = s.limit | default: 8
+  assign mine = ','
+  for m in posts
+    for p in m.products.value
+      if p.id == product.id
+        assign mine = mine | append: forloop.parentloop.index0 | append: ','
+        break
+      endif
+    endfor
+  endfor
+-%}
+{%- if posts.size > 0 -%}
+<section class="lg-band club-wild" id="wild" data-posts><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">{{ s.eyebrow }}</p><h2 class="lg-d2">{{ s.heading }}</h2>{%- if s.sub != blank %}<p class="lg-body">{{ s.sub }}</p>{% endif -%}</div>
+    <div class="arrows" data-arrows="ugc-{{ section.id }}"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div>
+  </div>
+  <div class="ugc" id="ugc-{{ section.id }}">
+    {%- assign n = 0 -%}
+    {%- for pass in (1..2) -%}{%- for m in posts -%}
+      {%- assign key = ',' | append: forloop.index0 | append: ',' -%}
+      {%- if pass == 1 %}{% unless mine contains key %}{% continue %}{% endunless %}{% else %}{% if mine contains key %}{% continue %}{% endif %}{% endif -%}
+      {%- if n >= lim %}{% break %}{% endif -%}
+      {%- assign med = m.media.value -%}{%- assign ps = m.products.value -%}
+      <button type="button" class="wild" data-post="{{ n }}" aria-label="Open the post by {{ m.handle_text.value | escape }}">
+        {%- if med.media_type == 'video' -%}{{ med.preview_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}<span class="wild-play" aria-hidden="true"></span>
+        {%- elsif med -%}{{ med | image_url: width: 600 | image_tag: loading: 'lazy', alt: m.caption.value }}{%- endif -%}
+        <span class="who">{{ m.handle_text.value }}</span>
+        {%- if ps.count > 0 %}<span class="tag">{% for x in ps limit: 1 %}{{ x.title }}{% endfor %}{% if ps.count > 1 %} +{{ ps.count | minus: 1 }}{% endif %}</span>{% endif -%}
+      </button>
+      {%- assign n = n | plus: 1 -%}
+    {%- endfor -%}{%- endfor -%}
+  </div>
+  {%- if s.btn_label != blank %}<div class="wild-foot"><a class="lg-btn-line lg-btn-sm" href="{{ s.btn_url }}">{{ s.btn_label }} <span aria-hidden="true">&rarr;</span></a></div>{% endif -%}
+</div>
+
+{%- assign n = 0 -%}
+{%- for pass in (1..2) -%}{%- for m in posts -%}
+  {%- assign key = ',' | append: forloop.index0 | append: ',' -%}
+  {%- if pass == 1 %}{% unless mine contains key %}{% continue %}{% endunless %}{% else %}{% if mine contains key %}{% continue %}{% endif %}{% endif -%}
+  {%- if n >= lim %}{% break %}{% endif -%}
+  {%- assign med = m.media.value -%}{%- assign ps = m.products.value -%}
+  <template data-post-tpl="{{ n }}">
+    <div class="pm-media">
+      {%- if med.media_type == 'video' -%}{{ med | video_tag: autoplay: true, loop: true, muted: true, controls: true, playsinline: true }}
+      {%- elsif med -%}{{ med | image_url: width: 1100 | image_tag: alt: m.caption.value, widths: '600,900,1100', sizes: '(max-width: 749px) 100vw, 55vw' }}{%- endif -%}
+    </div>
+    <div class="pm-info">
+      <p class="pm-who">{%- if m.link.value != blank -%}<a href="{{ m.link.value }}" target="_blank" rel="noopener">{{ m.handle_text.value }}</a>{%- else -%}{{ m.handle_text.value }}{%- endif -%}</p>
+      {%- if m.caption.value != blank %}<p class="pm-cap">{{ m.caption.value }}</p>{% endif -%}
+      {%- if ps.count > 0 -%}
+        <p class="lg-label pm-in">In this post</p>
+        <div class="pm-prods">
+        {%- for p in ps -%}
+          {%- assign pic = p.metafields.custom.cutout.value | default: p.featured_image -%}
+          {%- assign v = p.selected_or_first_available_variant -%}
+          <form class="pm-prod" data-lg-add action="{{ routes.cart_add_url }}" method="post">
+            <a class="pm-ph" href="{{ p.url }}">{%- if pic -%}{{ pic | image_url: width: 200 | image_tag: alt: p.title, loading: 'lazy' }}{%- endif -%}</a>
+            <div class="pm-bd">
+              <a class="pm-nm" href="{{ p.url }}">{{ p.title }}</a>
+              <span class="pm-pr">{{ v.price | money_without_trailing_zeros }}</span>
+              {%- if p.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ v.id }}">
+              {%- else -%}
+                <label class="sr" for="cw-v-{{ n }}-{{ p.id }}">{{ p.options | join: ' / ' }}</label>
+                <select class="lg-input pm-sel" id="cw-v-{{ n }}-{{ p.id }}" name="id">
+                  {%- for x in p.variants -%}<option value="{{ x.id }}"{% unless x.available %} disabled{% endunless %}{% if x.id == v.id %} selected{% endif %}>{{ x.title }}{% unless x.available %} (sold out){% endunless %}</option>{%- endfor -%}
+                </select>
+              {%- endif -%}
+            </div>
+            {%- if p.available -%}<button class="lg-btn-line lg-btn-sm pm-add" type="submit">Add to bag</button>{%- else -%}<a class="lg-btn-line lg-btn-sm pm-add" href="{{ p.url }}">Sold out</a>{%- endif -%}
+          </form>
+        {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </template>
+  {%- assign n = n | plus: 1 -%}
+{%- endfor -%}{%- endfor -%}
+
+<div class="md md-post" id="md-post-{{ section.id }}" hidden role="dialog" aria-modal="true" aria-label="Community post">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel pm">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <div class="pm-body"></div>
+    <div class="pm-nav"><button type="button" data-post-step="-1" aria-label="Previous post">&lsaquo;</button><button type="button" data-post-step="1" aria-label="Next post">&rsaquo;</button></div>
+  </div>
+</div>
+</section>
+{%- endif -%}

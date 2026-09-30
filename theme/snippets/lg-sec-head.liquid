@@ -1,0 +1,10 @@
+{%- comment -%} The section head: eyebrow, heading (italic = foil), optional line and a link on the right. s = section.settings {%- endcomment -%}
+{%- if s.eyebrow != blank or s.heading != blank -%}
+<div class="hd"><div>
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: s.heading_tag, cls: 'lg-d2' %}
+  {%- if s.sub != blank %}<p class="lg-body">{{ s.sub }}</p>{% endif -%}
+</div>
+{%- if s.link_url != blank %}<a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}
+</div>
+{%- endif -%}

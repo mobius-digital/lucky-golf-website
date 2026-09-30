@@ -1,0 +1,148 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}><div class="lg-wrap">
+  {% render 'lg-sec-head', s: s %}
+  <div class="gt">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    <a class="gtile" href="{{ b.collection.url | default: b.url }}" {{ block.shopify_attributes }}>{%- if b.image != blank -%}{{ b.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: b.image.alt, widths: '600,900,1400', sizes: '(max-width: 560px) 100vw, 50vw', style: b.pos }}{%- endif -%}<div>
+      <span class="ct">{%- if b.count and b.collection != blank -%}{{ b.collection.products_count }} styles{%- else -%}{{ b.kicker }}{%- endif -%}</span>
+      <h3 class="lg-d2">{{ b.title | default: b.collection.title }}</h3><p>{{ b.text }}</p><span class="go">{{ b.go }} &rarr;</span></div></a>
+    {%- endfor -%}
+  </div>
+  {%- if s.foot != blank or s.foot_label != blank -%}<div class="gear-foot"><p>{{ s.foot }}</p>{%- if s.foot_label != blank %}<a class="lg-btn-line lg-btn-sm" href="{{ s.foot_url }}">{{ s.foot_label }} <span aria-hidden="true">&rarr;</span></a>{% endif -%}</div>{%- endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Two photo tiles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "gear"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h1",
+          "label": "H1 (one per page)"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "foot",
+      "label": "Line under the tiles"
+    },
+    {
+      "type": "text",
+      "id": "foot_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "foot_url",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Or a link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "pos",
+          "label": "Photo position (CSS, optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "count",
+          "label": "Show '[n] styles' from the collection",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Or a small line"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title (empty = collection's)"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "go",
+          "label": "Link text",
+          "default": "Shop now"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Two photo tiles"
+    }
+  ]
+}
+{% endschema %}

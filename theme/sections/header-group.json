@@ -1,0 +1,144 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "bar": {
+      "type": "lg-announcement",
+      "blocks": {
+        "a1": {
+          "type": "line",
+          "settings": {
+            "text": "<b>Sixty days</b> to prove us wrong",
+            "url": "/pages/faq-lucky-wedges#returns"
+          }
+        },
+        "a2": {
+          "type": "line",
+          "settings": {
+            "text": "Ships in 1 to 2 business days",
+            "url": "/pages/faq-lucky-wedges#shipping"
+          }
+        },
+        "a3": {
+          "type": "line",
+          "settings": {
+            "text": "Free shipping at $198",
+            "url": "/pages/faq-lucky-wedges#shipping"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ]
+    },
+    "header": {
+      "type": "lg-header",
+      "settings": {
+        "m_photo": "shopify://shop_images/lg-walk-off-green.webp",
+        "m_photo_line": "It's better to be lucky.",
+        "m_photo_url": "/pages/about",
+        "m_links": "lucky-phone-footer"
+      },
+      "blocks": {
+        "m1": {
+          "type": "menu",
+          "settings": {
+            "label": "Wedges",
+            "title": "Wedges",
+            "intro": "Forged, full of spin, and ready to make your short game everybody else's problem.",
+            "all_url": "shopify://collections/lucky-golf-clubs",
+            "all_label": "All clubs",
+            "all_line": "Every club we make",
+            "photo": "shopify://shop_images/lg-two-gold-wedges.webp",
+            "photo_caption": "Carver 02 Gold, on the fringe",
+            "p1": "lucky-golf-lgw02-gold",
+            "l1": "The one they ask about on the next tee.",
+            "t1": "Best seller",
+            "p2": "lucky-golf-lgw02-black",
+            "l2": "Same forged head, in the dark."
+          }
+        },
+        "m2": {
+          "type": "menu",
+          "settings": {
+            "label": "Putters",
+            "title": "Putters",
+            "intro": "Fully milled, finished in gold, and ready to take four-footers personally.",
+            "all_url": "shopify://collections/lucky-golf-clubs",
+            "all_label": "All clubs",
+            "all_line": "Every club we make",
+            "photo": "shopify://shop_images/lg-from-the-cup.webp",
+            "photo_caption": "Eclipse, doing its job",
+            "p1": "signature-gold-putters",
+            "l1": "Fully milled, and it tells you where you hit it.",
+            "p2": "limited-edition-mallet-putter",
+            "l2": "Big head, soft face, gold all over."
+          }
+        },
+        "m3": {
+          "type": "menu",
+          "settings": {
+            "label": "Hybrid",
+            "title": "Hybrid",
+            "intro": "Titanium, 19 degrees, and a lot friendlier than the fairway wood you keep leaving in the bag.",
+            "all_url": "shopify://collections/lucky-golf-clubs",
+            "all_label": "All clubs",
+            "all_line": "Every club we make",
+            "photo": "shopify://shop_images/lg-lucky-stryker-in-hand.webp",
+            "photo_caption": "Stryker, sitting down",
+            "p1": "lucky-striker-hybrid-limited-edition",
+            "l1": "High and easy from the rough."
+          }
+        },
+        "m4": {
+          "type": "menu",
+          "settings": {
+            "label": "Apparel",
+            "title": "Apparel",
+            "intro": "Polos that move when you swing and hats that say it for you.",
+            "all_url": "shopify://collections/all-products",
+            "all_label": "Shop all",
+            "all_line": "Polos, hats and gear",
+            "photo": "shopify://shop_images/lg-fit-sunset.webp",
+            "photo_caption": "Nightshade polo, white hat",
+            "c1": "polos",
+            "n1": "Polos",
+            "pr1": "$67",
+            "l1": "Four-way stretch and UPF 50+, loud or quiet.",
+            "i1": "shopify://shop_images/lg-GoldMirage1.webp",
+            "c2": "hats",
+            "n2": "Hats",
+            "pr2": "$29",
+            "l2": "The line on the front does the talking.",
+            "i2": "shopify://shop_images/lg-39.webp",
+            "c3": "most-popular",
+            "n3": "Gear",
+            "pr3": "From $9.95",
+            "l3": "Covers, gloves, grips. The small stuff.",
+            "i3": "shopify://shop_images/lg-DriverHeadCover1.webp"
+          }
+        },
+        "story": {
+          "type": "link",
+          "settings": {
+            "label": "Our Story",
+            "url": "/pages/about"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "story"
+      ]
+    }
+  },
+  "order": [
+    "bar",
+    "header"
+  ]
+}

@@ -1,0 +1,209 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec{% if s.big %} is-wide{% endif %}{% if s.warm %} is-warm{% endif %}"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- if s.big -%}
+    <div class="cards-big-head">{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: s.heading_tag, cls: 'lg-d2' %}</div>
+  {%- else -%}{% render 'lg-sec-head', s: s %}{%- endif -%}
+  <div class="{% if s.big %}cards-big{% else %}cards{{ s.cols }}{% endif %}">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'card' and block.settings.product != blank -%}
+        <div class="lg-card-wrap" {{ block.shopify_attributes }}>
+        {%- if s.big -%}{% render 'lg-bigcard', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, stars: s.stars %}
+        {%- else -%}{% render 'lg-card', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, cut: block.settings.cut, stars: s.stars %}{%- endif -%}
+        </div>
+      {%- elsif block.type == 'tile' -%}{%- assign b = block.settings -%}
+        <a class="ftile" href="{{ b.url }}" {{ block.shopify_attributes }}>{%- if b.image != blank -%}{{ b.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: '', widths: '450,700,900', sizes: '(max-width: 749px) 82vw, 33vw' }}{%- endif -%}
+          <div class="ft-in">{%- if b.eyebrow != blank %}<p class="lg-eyebrow">{{ b.eyebrow }}</p>{% endif %}<h3>{{ b.title }}</h3>{%- if b.text != blank %}<p class="ft-p">{{ b.text }}</p>{% endif %}{%- if b.go != blank %}<span class="go">{{ b.go }} &rarr;</span>{% endif %}</div></a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  {%- if s.big and s.link_url != blank %}<div class="cards-big-foot"><a class="lg-btn-line" href="{{ s.link_url }}">{{ s.link_label }} <span aria-hidden="true">&rarr;</span></a></div>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Product cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor (for #links)",
+      "default": "families"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h1",
+          "label": "H1 (one per page)"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "big",
+      "label": "Big cards (three across, name on top)",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "cols",
+      "label": "Small cards per row",
+      "options": [
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
+      "default": "5"
+    },
+    {
+      "type": "checkbox",
+      "id": "stars",
+      "label": "Show stars (only at the review minimum)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "warm",
+      "label": "Warm card background",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name (empty = product's)"
+        },
+        {
+          "type": "text",
+          "id": "line",
+          "label": "Line under it"
+        },
+        {
+          "type": "text",
+          "id": "vibe",
+          "label": "Vibe tag"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = the product's card cutout)"
+        },
+        {
+          "type": "checkbox",
+          "id": "cut",
+          "label": "Cutout on stone (small cards)",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "tile",
+      "name": "Photo tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Line"
+        },
+        {
+          "type": "text",
+          "id": "go",
+          "label": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product cards"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+{%- assign s = section.settings -%}
+<div class="lgc-blog"><section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap sub">
+  <div>
+    {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+    {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+    {%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}
+  </div>
+  <form class="lg-form" data-news data-source="{{ s.source | escape }}"{% if s.list != blank %} data-list="{{ s.list | escape }}"{% endif %} novalidate>
+    <label class="sr" for="news-{{ section.id }}">Email</label>
+    <input class="lg-input" id="news-{{ section.id }}" type="email" placeholder="{{ s.placeholder | escape }}" autocomplete="email" required>
+    <button class="lg-btn" type="submit">{{ s.btn_label }}</button>
+  </form>
+</div></section></div>
+
+{% schema %}
+{
+  "name": "Newsletter signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "First look"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word.",
+      "default": "Get the next one in your <em>inbox</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Line under it"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "you@somewhere.com"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button",
+      "default": "Sign me up"
+    },
+    {
+      "type": "text",
+      "id": "list",
+      "label": "Klaviyo list ID (empty = the one in Theme settings)"
+    },
+    {
+      "type": "text",
+      "id": "source",
+      "label": "Source name in Klaviyo",
+      "default": "Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter signup"
+    }
+  ]
+}
+{% endschema %}

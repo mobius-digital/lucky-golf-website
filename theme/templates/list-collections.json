@@ -1,0 +1,118 @@
+{
+  "sections": {
+    "clubs": {
+      "type": "lg-cards",
+      "settings": {
+        "anchor": "clubs",
+        "eyebrow": "",
+        "heading": "Collections",
+        "heading_tag": "h1",
+        "link_label": "See every club",
+        "link_url": "shopify://collections/lucky-golf-clubs",
+        "cols": "5",
+        "big": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "line": "The forged wedge everybody asks about.",
+            "vibe": "Buttery",
+            "tag": "Best seller",
+            "cut": true
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-black",
+            "line": "All the spin. None of the spotlight.",
+            "vibe": "Filthy",
+            "cut": true
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "product": "signature-gold-putters",
+            "line": "Fully milled, and it tells you where you hit it.",
+            "vibe": "Pure",
+            "cut": true
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "line": "Soft off the face, gold all over.",
+            "vibe": "Smooth",
+            "cut": true
+          }
+        },
+        "c5": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-striker-hybrid-limited-edition",
+            "line": "A titanium hybrid that gets it up from anywhere.",
+            "vibe": "Flush",
+            "cut": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "apparel": {
+      "type": "lg-gtiles",
+      "settings": {
+        "anchor": "gear",
+        "eyebrow": "While you're here",
+        "heading": "Dress for the <em>round</em>",
+        "heading_tag": "h2",
+        "foot": "Apparel and gear get thirty days to come back, unworn and unused.",
+        "foot_label": "Shop all gear",
+        "foot_url": "shopify://collections/most-popular"
+      },
+      "blocks": {
+        "g1": {
+          "type": "tile",
+          "settings": {
+            "collection": "polos",
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center",
+            "count": true,
+            "title": "Polos",
+            "text": "Four-way stretch and UPF 50+, in prints loud and quiet.",
+            "go": "Shop polos"
+          }
+        },
+        "g2": {
+          "type": "tile",
+          "settings": {
+            "collection": "hats",
+            "image": "shopify://shop_images/lg-two-hats-mallet.webp",
+            "pos": "object-position:45% center",
+            "count": true,
+            "title": "Hats",
+            "text": "Five-panel snapbacks, and at least one matches your polo.",
+            "go": "Shop hats"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2"
+      ]
+    }
+  },
+  "order": [
+    "clubs",
+    "apparel"
+  ]
+}

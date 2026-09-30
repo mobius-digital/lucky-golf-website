@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "head": {
+      "type": "lg-ap-head",
+      "settings": {
+        "eyebrow": "Polos",
+        "heading": "Loud prints, quiet prints, zero boxy <em>ones</em>",
+        "lede": "An athletic cut with four-way stretch, UPF 50+, and nothing tugging at the top of your backswing.",
+        "guide_label": "Size guide",
+        "count_word": "polos"
+      }
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "The polos, worn"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-walk-off-green.webp",
+            "pos": ""
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-green-read-fit.webp",
+            "pos": "object-position:60% 40%"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "grid": {
+      "type": "lg-ap-grid",
+      "settings": {
+        "card": "polo",
+        "f_kind": false,
+        "f_stock": false,
+        "f_collar": true,
+        "f_color": true,
+        "color_dots": true,
+        "f_size": true,
+        "sort_stock": true,
+        "sort_price": false,
+        "drop": "Classic Polo, Blade Polo",
+        "empty": "Nothing in that combination."
+      },
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "pos": 8,
+            "image": "shopify://shop_images/lg-two-hats-mallet.webp",
+            "eyebrow": "Pairs well with",
+            "title": "A hat that matches",
+            "url": "shopify://collections/hats",
+            "cta": "Shop hats"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ]
+    },
+    "faq": {
+      "type": "lg-ap-faq",
+      "settings": {
+        "no_top": true,
+        "eyebrow": "Before you pick",
+        "heading": "Find your size",
+        "body": "Get it wrong and you've got thirty days to send it back, unworn with the tags on.",
+        "cols": "even"
+      },
+      "blocks": {
+        "b1": {
+          "type": "q",
+          "settings": {
+            "q": "How does it fit?",
+            "a": "<p>It's an athletic fit, so it sits closer than a boxy golf polo, and the four-way stretch makes it more forgiving than the cut suggests. If you wear a large in a performance polo, a large here's right. Between sizes, or want room across the chest? Size up.</p>"
+          }
+        },
+        "b2": {
+          "type": "q",
+          "settings": {
+            "q": "Classic collar or Blade collar?",
+            "a": "<p>The Blade has no buttons and no placket, so there's nothing at your throat. Everything else is the same shirt: athletic fit, 88/12 poly-spandex, four-way stretch and UPF 50+. You're picking a collar and a print.</p>"
+          }
+        },
+        "b3": {
+          "type": "q",
+          "settings": {
+            "q": "What's it made of?",
+            "a": "<p>88% polyester and 12% spandex, with four-way stretch. It's moisture-wicking, wrinkle-resistant and UPF 50+. Machine wash cold, tumble dry low.</p>"
+          }
+        },
+        "b4": {
+          "type": "q",
+          "settings": {
+            "q": "What if the size is wrong?",
+            "a": "<p>Send it back within thirty days, unworn with the tags on.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "related": {
+      "type": "lg-ap-related",
+      "settings": {
+        "label": "Keep browsing"
+      },
+      "blocks": {
+        "b1": {
+          "type": "link",
+          "settings": {
+            "text": "Hats",
+            "url": "shopify://collections/hats"
+          }
+        },
+        "b2": {
+          "type": "link",
+          "settings": {
+            "text": "Gear",
+            "url": "shopify://collections/gear"
+          }
+        },
+        "b3": {
+          "type": "link",
+          "settings": {
+            "text": "Clubs",
+            "url": "shopify://collections/lucky-golf-clubs"
+          }
+        },
+        "b4": {
+          "type": "link",
+          "settings": {
+            "text": "All products",
+            "url": "shopify://collections/all-products"
+          }
+        },
+        "b5": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping at $198"
+          }
+        },
+        "b6": {
+          "type": "trust",
+          "settings": {
+            "icon": "rotate-ccw",
+            "text": "Thirty days to send it back"
+          }
+        },
+        "b7": {
+          "type": "trust",
+          "settings": {
+            "icon": "tag",
+            "text": "Sizes S to 3XL"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Wear it the day you shoot your best round, or the day you need to look like you did.",
+        "btn2_label": "Back to the polos ↑",
+        "btn2_url": "#grid"
+      }
+    }
+  },
+  "order": [
+    "head",
+    "photos",
+    "grid",
+    "faq",
+    "related",
+    "signoff"
+  ]
+}

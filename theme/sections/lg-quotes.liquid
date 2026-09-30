@@ -1,0 +1,90 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+  <div class="rqs">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}{%- assign n = b.stars -%}
+    <figure class="rq" {{ block.shopify_attributes }}><span class="lg-stars" aria-label="{{ n }} out of 5">{%- for i in (1..5) -%}<svg viewBox="0 0 20 20" aria-hidden="true"{% if i > n %} style="opacity:.25"{% endif %}><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>{%- endfor -%}</span><blockquote>&ldquo;{{ b.quote }}&rdquo;</blockquote><figcaption><b>{{ b.name }}</b>{% if b.on != blank %} · {{ b.on }}{% endif %}</figcaption></figure>
+    {%- endfor -%}
+  </div>
+  {%- if s.link_label != blank %}<p class="lg-body after"><a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span aria-hidden="true">&rarr;</span></a></p>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Review quotes",
+  "class": "lgc-rq",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link under them"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "paragraph",
+      "content": "Quotes are Judge.me reviews typed in word for word, with the stars they gave. Never edit or invent a review."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars they gave",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote, word for word"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name as on Judge.me"
+        },
+        {
+          "type": "text",
+          "id": "on",
+          "label": "After the name",
+          "default": "Carver, verified buyer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Review quotes"
+    }
+  ]
+}
+{% endschema %}

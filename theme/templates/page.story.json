@@ -1,0 +1,328 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero",
+      "settings": {
+        "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+        "focus_x": 46,
+        "focus_y": 52,
+        "focus_mx": 44,
+        "focus_my": 52,
+        "eyebrow": "Our story",
+        "heading": "Golf has a dress code. Ours is <em>gold</em>",
+        "heading_tag": "h1",
+        "lede": "Clubs nobody mistakes for anyone else's."
+      }
+    },
+    "man": {
+      "type": "lg-man",
+      "settings": {
+        "heading": "Luck favors <em>the bold</em>",
+        "body": "<p>Golf's the best game there is, and it should feel that way whether it's your first round or your five hundredth. Somewhere along the way it got stiff and way too expensive. We're here to loosen it up.</p><p>That starts with clubs that forgive the swings you're still working on, cost what they should, and look like nothing else in the bag.</p><p>Nobody here cares about your handicap or whether your polo's tucked in. Show up, swing hard, talk a little trash.</p><p>And when the chip drops and somebody asks what you're hitting, tell them it's your lucky wedge. Whether it was luck is your business.</p>",
+        "close": "It's better to be lucky."
+      }
+    },
+    "parts": {
+      "type": "lg-parts",
+      "settings": {
+        "no_top": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "part",
+          "settings": {
+            "image": "shopify://shop_images/lg-lucky-golfer-address.webp",
+            "eyebrow": "Why we exist",
+            "heading": "Great clubs got too expensive. We took it <em>personally</em>",
+            "text": "The big names sponsor a tour pro and add it to your price. We skipped that part, so you get the same materials and none of the markup.",
+            "link_label": "See the clubs",
+            "link_url": "shopify://collections/lucky-golf-clubs"
+          }
+        },
+        "b2": {
+          "type": "part",
+          "settings": {
+            "image": "shopify://shop_images/lg-lucky-wedge-face-macro.webp",
+            "eyebrow": "What we do",
+            "heading": "Same steel as the big names. Different <em>math</em>",
+            "text": "Every club gets sixty days to make up your mind, and if it doesn't earn its spot in the bag, send it back.",
+            "link_label": "See the breakdown",
+            "link_url": "/pages/compare"
+          }
+        },
+        "b3": {
+          "type": "part",
+          "settings": {
+            "image": "shopify://shop_images/lg-lucky-bag-glove.webp",
+            "eyebrow": "Our story",
+            "heading": "We built the clubs we <em>wanted</em>",
+            "text": "In 2018 we made one gold wedge, built right and priced honestly. It hit.",
+            "link_label": "Start with the wedge",
+            "link_url": "shopify://products/lucky-golf-lgw02-gold"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "gold": {
+      "type": "lg-photo-band",
+      "settings": {
+        "bg": "shopify://shop_images/lg-putt-sunset.webp",
+        "bg_pos": "center 60%",
+        "eyebrow": "The gold question",
+        "heading": "Gold, on <em>purpose.</em>",
+        "lede": "You only get so many Saturdays, and none of them should be spent blending in."
+      }
+    },
+    "timeline": {
+      "type": "lg-timeline",
+      "settings": {
+        "eyebrow": "2018 to now",
+        "heading": "How a gold wedge turned into all <em>this</em>",
+        "lede": "It started with one gold wedge and escalated from there."
+      },
+      "blocks": {
+        "b1": {
+          "type": "moment",
+          "settings": {
+            "year": "2018",
+            "title": "The gold wedge",
+            "text": "One wedge, in gold. Lucky starts here.",
+            "soon": false
+          }
+        },
+        "b2": {
+          "type": "moment",
+          "settings": {
+            "year": "2019",
+            "title": "The Blade putter",
+            "text": "Fully milled, and quiet off the face. Turns out people wanted more than a wedge.",
+            "soon": false
+          }
+        },
+        "b3": {
+          "type": "moment",
+          "settings": {
+            "year": "2020",
+            "title": "Wedges, version two",
+            "text": "The original, refined and re-released. The gold wedge wasn't a fluke.",
+            "soon": false
+          }
+        },
+        "b4": {
+          "type": "moment",
+          "settings": {
+            "year": "2023",
+            "title": "The Mallet putter",
+            "text": "Bigger head, fewer excuses on the greens.",
+            "soon": false
+          }
+        },
+        "b5": {
+          "type": "moment",
+          "settings": {
+            "year": "2024",
+            "title": "The hybrid",
+            "text": "Titanium with a flex-channel face, for the gap your long irons never covered.",
+            "soon": false
+          }
+        },
+        "b6": {
+          "type": "moment",
+          "settings": {
+            "year": "July 2025",
+            "title": "Somebody hit the gas",
+            "text": "Lucky changed hands. Nothing happened to the clubs or the prices. Everything happened to the calendar.",
+            "soon": false
+          }
+        },
+        "b7": {
+          "type": "moment",
+          "settings": {
+            "year": "May 2026",
+            "title": "The polos drop",
+            "text": "The clubs got a wardrobe. Same rule: look good, priced fair.",
+            "soon": false
+          }
+        },
+        "b8": {
+          "type": "moment",
+          "settings": {
+            "year": "July 2026",
+            "title": "Hats land",
+            "text": "Ten ways to keep the sun off while you take someone's money.",
+            "soon": false
+          }
+        },
+        "b9": {
+          "type": "moment",
+          "settings": {
+            "year": "July 2026",
+            "title": "The Patriot putter",
+            "text": "A limited run for America's 250th. Gone when it's gone.",
+            "soon": false
+          }
+        },
+        "b10": {
+          "type": "moment",
+          "settings": {
+            "year": "2026",
+            "title": "Nine of us now",
+            "text": "Nine people where there used to be a lot fewer. That's what shipping this much at once actually takes.",
+            "soon": false
+          }
+        },
+        "b11": {
+          "type": "moment",
+          "settings": {
+            "year": "Sept 2026",
+            "title": "First accessories drop",
+            "text": "Towels, divot tools, new headcovers. The little stuff, done right.",
+            "soon": true
+          }
+        },
+        "b12": {
+          "type": "moment",
+          "settings": {
+            "year": "Late 2026",
+            "title": "KBS shafts",
+            "text": "A name shaft across the line, for everyone who has opinions about shafts.",
+            "soon": true
+          }
+        },
+        "b13": {
+          "type": "moment",
+          "settings": {
+            "year": "Late 2026",
+            "title": "Irons and drivers",
+            "text": "The big sticks arrive. Years of asking, answered.",
+            "soon": true
+          }
+        },
+        "b14": {
+          "type": "moment",
+          "settings": {
+            "year": "2027",
+            "title": "Just getting started",
+            "text": "Partnerships, and a few drops we're not allowed to describe yet.",
+            "soon": true
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14"
+      ]
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-from-the-cup.webp"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-lucky-bag-glove.webp"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-walk-off-green.webp"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "next": {
+      "type": "lg-cols",
+      "settings": {
+        "style": "links",
+        "eyebrow": "Keep looking",
+        "heading": "The rest of <em>it</em>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "The clubs",
+            "text": "Every club we make, starting at $99.",
+            "url": "shopify://collections/lucky-golf-clubs",
+            "go": "See every club"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Ambassador program",
+            "text": "Post about Lucky and we put ad money behind your videos. No follower minimum.",
+            "url": "shopify://pages/become-apart-of-the-team",
+            "go": "How it works"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Questions",
+            "text": "Shipping, returns, what happens if the fit's wrong, and how the sixty days work.",
+            "url": "shopify://pages/faq-lucky-wedges",
+            "go": "Read the answers"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Tell them where you got it.",
+        "btn_arrow": false,
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "man",
+    "parts",
+    "gold",
+    "timeline",
+    "photos",
+    "next",
+    "signoff"
+  ]
+}

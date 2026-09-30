@@ -1,0 +1,1 @@
+{%- for v in p.variants -%}{%- if v.inventory_management == 'shopify' and v.inventory_policy == 'deny' and v.inventory_quantity > 0 and v.inventory_quantity <= mx -%}"{{ v.id }}":{{ v.inventory_quantity }},{%- endif -%}{%- endfor -%}

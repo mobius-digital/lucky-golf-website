@@ -1,0 +1,19 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- assign trust = section.blocks | where: 'type', 'trust' -%}
+  {%- if trust.size > 0 -%}
+  <div class="lg-trust">{%- for block in trust -%}<span {{ block.shopify_attributes }}>{% render 'lg-icon', name: block.settings.icon %}{{ block.settings.text }}</span>{%- endfor -%}</div>
+  {%- endif -%}
+  <div class="faq-in{% if s.cols == 'narrow' %} is-narrow{% endif %}"{% if trust.size > 0 and s.trust_gap %} style="margin-top:clamp(40px,5vw,72px)"{% endif %}>
+    <div>
+      {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+      {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+      {%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}
+    </div>
+    <div class="lg-faq">
+      {%- for block in section.blocks -%}{%- if block.type == 'q' -%}
+      <details class="lg-fq" {{ block.shopify_attributes }}><summary>{{ block.settings.q }}</summary><div class="lg-fq-a">{{ block.settings.a }}</div></details>
+      {%- endif -%}{%- endfor -%}
+    </div>
+  </div>
+</div></section>

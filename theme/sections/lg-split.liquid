@@ -1,0 +1,140 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec{% if s.feat %} feat{% endif %}"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} style="{% if s.no_top %}padding-top:0;{% endif %}{% if s.rule %}border-top:1px solid var(--lg-rule){% endif %}"><div class="lg-wrap">
+  <div class="lg-split{% if s.flip %} is-flip{% endif %}{% if s.text_first %} ed{% endif %}"{% if s.text_first %} style="margin-top:0"{% endif %}>
+    {%- capture fig -%}<figure class="lg-frame">{%- if s.image != blank -%}{{ s.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: s.image.alt, widths: '600,900,1200,1400', sizes: '(max-width: 749px) 100vw, 50vw', style: s.pos }}{%- elsif request.design_mode -%}<span class="lg-slot"><small>Photo</small>Pick one in the theme editor</span>{%- endif -%}</figure>{%- endcapture -%}
+    {%- unless s.text_first %}{{ fig }}{% endunless -%}
+    <div>
+      {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+      {% render 'lg-h', text: s.heading, tag: s.heading_tag, cls: 'lg-d2' %}
+      {%- if s.body != blank %}<div class="lg-body">{{ s.body }}</div>{% endif -%}
+      {%- if s.btn_label != blank or s.link_label != blank -%}<div class="lg-btn-row">
+        {%- if s.btn_label != blank %}<a class="{% if s.btn_gold %}lg-btn{% else %}lg-btn-line{% endif %}" href="{{ s.btn_url }}">{{ s.btn_label }} <span aria-hidden="true">&rarr;</span></a>{% endif -%}
+        {%- if s.link_label != blank %}<a class="lg-link" href="{{ s.link_url }}" style="align-self:center">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}
+      </div>{%- endif -%}
+      {%- if s.stamp != blank %}<div class="stampline lg-label">{{ s.stamp }}</div>{% endif -%}
+    </div>
+    {%- if s.text_first %}{{ fig }}{% endif -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Photo + text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "pos",
+      "label": "Photo position (CSS, optional)",
+      "info": "e.g. object-position:60% 40%"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip",
+      "label": "Swap sides (is-flip)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "text_first",
+      "label": "Text first, photo second",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_gold",
+      "label": "Gold button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Text link"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Text link URL"
+    },
+    {
+      "type": "text",
+      "id": "stamp",
+      "label": "Stamp line under it"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "rule",
+      "label": "Line above",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "feat",
+      "label": "Wide photo (3:2)",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo + text"
+    }
+  ]
+}
+{% endschema %}

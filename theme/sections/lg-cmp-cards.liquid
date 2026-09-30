@@ -1,0 +1,91 @@
+{%- assign s = section.settings -%}{%- liquid
+  assign min = settings.lg_review_min | default: 10
+-%}
+<section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+  <div class="cards">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}{%- assign p = b.product -%}{%- if p != blank -%}
+    {%- liquid
+      assign pic = b.image | default: p.metafields.custom.cutout.value | default: p.featured_image
+      assign rc = p.metafields.reviews.rating_count.value | default: 0
+      assign rv = p.metafields.reviews.rating.value.rating
+    -%}
+    <article class="pc" {{ block.shopify_attributes }}>
+      <a class="pc-ph" href="{{ p.url }}">{%- if b.tag != blank %}<span class="lg-tag">{{ b.tag }}</span>{% endif -%}{%- if pic -%}{{ pic | image_url: width: 900 | image_tag: loading: 'lazy', alt: p.title, widths: '450,700,900', sizes: '(max-width: 560px) 100vw, 430px' }}{%- endif -%}</a>
+      <div class="pc-bd">
+        <div class="pc-top"><h3><a href="{{ p.url }}">{{ p.title }}</a></h3><b>{{ p.price | money_without_trailing_zeros }}</b></div>
+        {%- if rc >= min and rv -%}{%- assign n = rv | round -%}<a class="pc-rate" href="{{ p.url }}#reviews"><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{%- for i in (1..5) -%}<svg viewBox="0 0 20 20" aria-hidden="true"{% if i > n %} style="opacity:.25"{% endif %}><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>{%- endfor -%}</span>{{ rv }} · {{ rc }}</a>{%- endif -%}
+        {%- if b.line != blank %}<p>{{ b.line }}</p>{% endif -%}
+        <a class="lg-btn lg-btn-sm" href="{{ p.url }}">{{ b.btn_label }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    {%- endif -%}{%- endfor -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Two product cards",
+  "class": "lgc-pc",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = the product's cutout)"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "text",
+          "id": "line",
+          "label": "Line"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button",
+          "default": "Pick a loft"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Two product cards"
+    }
+  ]
+}
+{% endschema %}

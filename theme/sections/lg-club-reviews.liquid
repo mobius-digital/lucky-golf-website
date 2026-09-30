@@ -1,0 +1,118 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+{%- liquid
+  assign min = settings.lg_review_min | default: 10
+  assign rc = product.metafields.reviews.rating_count.value | default: 0
+-%}
+
+{%- liquid
+  assign rv = product.metafields.reviews.rating.value.rating
+  assign jd = product.metafields.judgeme.review_widget_data.value
+-%}
+{%- if rc >= min and rv -%}
+<section class="lg-sec" id="reviews"><div class="lg-wrap">
+  <div class="rv-top">
+    <div><p class="lg-eyebrow">{{ section.settings.eyebrow }}</p><h2 class="lg-d2">{{ rv | round: 1 }} stars from {{ rc }} reviews</h2>
+      {%- if c.rv.write %}<button class="lg-btn-line lg-btn-sm" type="button" data-md-open="md-write">Write a review</button>{% endif -%}</div>
+    <div id="prox"></div>
+  </div>
+  {%- if c.quotes.size > 0 -%}
+  <div class="qs">
+    {%- for q in c.quotes -%}{%- assign k = forloop.index -%}{%- assign kt = 'p_q' | append: k | append: '_t' -%}{%- assign kq = 'p_q' | append: k | append: '_q' -%}{%- assign kn = 'p_q' | append: k | append: '_n' -%}{%- assign q_t = section.settings[kt] | default: q.t -%}{%- assign q_q = section.settings[kq] | default: q.q -%}{%- assign q_n = section.settings[kn] | default: q.n -%}
+    <figure class="lg-quote"><span class="lg-stars" aria-label="5 out of 5">{% render 'lg-stars' %}</span>{% if q_t != blank %}<b>{{ q_t }}</b>{% endif %}<blockquote>&ldquo;{{ q_q }}&rdquo;</blockquote><figcaption>{{ q_n }} · <span class="lg-stock">Verified buyer</span></figcaption></figure>
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+  <button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm"><b>Read every review</b><span>Newest first.</span><i aria-hidden="true">+</i></button>
+  <div class="jm" id="jm" hidden>
+    <div class="jm-bar"><div class="lg-chips" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
+      <label><span class="sr">Sort reviews</span><select id="jm-sort"><option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option></select></label></div>
+    <p class="jm-count" id="jm-count"></p>
+    <div id="jm-list"></div>
+    <div class="jdgm-widget jdgm-review-widget" id="judgeme_product_reviews" data-id="{{ product.id }}" data-jdgm-full hidden>{{ product.metafields.judgeme.widget }}</div>
+    <div class="jm-more"><button class="lg-btn-line lg-btn-sm" type="button" id="jm-more">Show more reviews</button></div>
+  </div>
+</div></section>
+<script>
+window.LG_CLUB_REVIEWS = {
+  total: {{ rc }}, nums: {{ c.rv.nums | default: false }},
+  totals: { {%- for h in jd.histogram -%}{{ h.rating | json }}: {{ h.frequency | default: 0 }}{% unless forloop.last %},{% endunless %}{%- endfor -%} },
+  list: [
+    {%- for r in jd.reviews -%}
+    { r: {{ r.rating | default: 5 }}, t: {{ r.title | default: '' | json }}, q: {{ r.body | default: '' | json }}, n: {{ r.reviewer_name | default: 'Anonymous' | json }}, v: {{ r.verified_buyer | default: false }}, d: {{ r.created_at | date: '%Y-%m-%d' | json }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+};
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Reviews"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shows only at the review minimum (theme settings, 10) from the live Judge.me count. The three quotes come from custom.club_page, verbatim from Judge.me."
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_q1_t",
+      "label": "Quote 1 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_q1_q",
+      "label": "Quote 1"
+    },
+    {
+      "type": "text",
+      "id": "p_q1_n",
+      "label": "Quote 1 name"
+    },
+    {
+      "type": "text",
+      "id": "p_q2_t",
+      "label": "Quote 2 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_q2_q",
+      "label": "Quote 2"
+    },
+    {
+      "type": "text",
+      "id": "p_q2_n",
+      "label": "Quote 2 name"
+    },
+    {
+      "type": "text",
+      "id": "p_q3_t",
+      "label": "Quote 3 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_q3_q",
+      "label": "Quote 3"
+    },
+    {
+      "type": "text",
+      "id": "p_q3_n",
+      "label": "Quote 3 name"
+    }
+  ]
+}
+{% endschema %}

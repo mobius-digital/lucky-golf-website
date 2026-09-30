@@ -1,0 +1,83 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+
+{%- assign s = section.settings -%}
+{%- if c.grinds -%}{%- assign gr = c.grinds -%}
+<section class="lg-sec" id="grinds"><div class="lg-wrap">
+  <div class="hd two">
+    <div><p class="lg-eyebrow">{{ s.p_eyebrow | default: gr.eyebrow }}</p><h2 class="lg-d2">{{ s.p_head | default: gr.head }}</h2></div>
+    <p class="lg-body">{{ s.p_body | default: gr.body }}</p>
+  </div>
+  <div class="kvs">
+    {%- for p in gr.panels -%}{%- assign k = forloop.index -%}{%- assign kt = 'p_g' | append: k | append: '_tag' -%}{%- assign kh = 'p_g' | append: k | append: '_h' -%}{%- assign kp = 'p_g' | append: k | append: '_p' -%}{%- assign g_tag = s[kt] | default: p.tag -%}{%- assign g_h = s[kh] | default: p.h -%}{%- assign g_p = s[kp] | default: p.p -%}
+      {%- if p.link -%}{%- assign lp = all_products[p.link[0]] -%}
+      <a class="lg-panel" href="{{ lp.url }}" style="text-decoration:none;color:inherit"><span class="lg-tag">{{ g_tag }}</span><h3 class="lg-d3">{{ g_h }}</h3><p>{{ g_p }}</p><span class="lg-link">{{ p.link[1] }} <span>&rarr;</span></span></a>
+      {%- else -%}
+      <div class="lg-panel"><span class="lg-tag">{{ g_tag }}</span><h3 class="lg-d3">{{ g_h }}</h3><p>{{ g_p }}</p>
+        {%- if p.hud -%}<div class="lg-hud">{%- for h in p.hud -%}<span><b>{{ h[0] }}</b>{{ h[1] }}</span>{%- endfor -%}</div>{%- endif -%}</div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: grinds",
+  "settings": [
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "p_head",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "p_body",
+      "label": "Line"
+    },
+    {
+      "type": "text",
+      "id": "p_g1_tag",
+      "label": "Panel 1 tag"
+    },
+    {
+      "type": "text",
+      "id": "p_g1_h",
+      "label": "Panel 1 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_g1_p",
+      "label": "Panel 1 text"
+    },
+    {
+      "type": "text",
+      "id": "p_g2_tag",
+      "label": "Panel 2 tag"
+    },
+    {
+      "type": "text",
+      "id": "p_g2_h",
+      "label": "Panel 2 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_g2_p",
+      "label": "Panel 2 text"
+    }
+  ]
+}
+{% endschema %}

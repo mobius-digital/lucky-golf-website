@@ -1,0 +1,134 @@
+{%- assign min = settings.lg_review_min | default: 10 -%}
+<div class="lg-cred"><div class="lg-wrap"><div class="cred-in">
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'rating' -%}
+      {%- liquid
+        assign n = 0
+        assign sum = 0
+        for p in block.settings.products
+          assign rc = p.metafields.reviews.rating_count.value | default: 0
+          assign rv = p.metafields.reviews.rating.value.rating | default: 0
+          assign n = n | plus: rc
+          assign sum = rv | times: rc | plus: sum
+        endfor
+      -%}
+      {%- if n >= min -%}{%- assign avg = sum | divided_by: n | round: 1 -%}
+      {%- assign nf = n -%}{%- if n >= 1000 -%}{%- assign th = n | divided_by: 1000 -%}{%- assign rem = n | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}{%- assign nf = th | append: ',' | append: rem -%}{%- endif -%}
+      <a class="cred" href="{{ block.settings.url }}" {{ block.shopify_attributes }}><span class="cred-top lg-stars" aria-hidden="true">{% render 'lg-stars' %}</span><span class="cred-t">{{ block.settings.text | replace: '[avg]', avg | replace: '[count]', nf }}</span></a>
+      {%- endif -%}
+    {%- else -%}
+      <a class="cred" href="{{ block.settings.url }}" {{ block.shopify_attributes }}><span class="cred-top">{% render 'lg-icon', name: block.settings.icon %}</span><span class="cred-t">{{ block.settings.text }}</span></a>
+    {%- endif -%}
+  {%- endfor -%}
+</div></div></div>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "rating",
+      "name": "Review score (live)",
+      "settings": [
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products whose Judge.me reviews count",
+          "limit": 20
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text ([avg] and [count] fill in live)",
+          "default": "[avg] stars from [count] verified reviews"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "name": "Line with icon",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "star",
+              "label": "star"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free shipping on $198 and up"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Trust bar"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,292 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero",
+      "settings": {
+        "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+        "focus_x": 50,
+        "focus_y": 50,
+        "focus_mx": 50,
+        "focus_my": 50,
+        "eyebrow": "Lucky vs the big names",
+        "heading": "Why do big-name wedges cost what they <em>do?</em>",
+        "heading_tag": "h1",
+        "lede": "Most of it isn't the wedge. It's the tour contract, the shop that stocks it, and everybody in between.",
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs",
+        "btn2_label": "See the breakdown ↓",
+        "btn2_url": "#breakdown"
+      }
+    },
+    "proof": {
+      "type": "lg-proof",
+      "settings": {
+        "product": "lucky-golf-lgw02-gold",
+        "rating_line": "[rating] from [count] Carver reviews"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Sixty days on every club"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Sold direct, no shop markup"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "wedge": {
+      "type": "lg-cmp-cards",
+      "settings": {
+        "eyebrow": "The wedge",
+        "heading": "$99 for gold. $109 for <em>black.</em>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "image": "shopify://shop_images/lg-gold-full-cut.webp",
+            "tag": "Best seller",
+            "line": "Forged, gold, and a face that grabs the ball like it owes it money.",
+            "btn_label": "Pick a loft"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-black",
+            "image": "shopify://shop_images/lg-black-cut.webp",
+            "line": "The same forged head, blacked out, with the gold clover left on.",
+            "btn_label": "Pick a loft"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "table": {
+      "type": "lg-table",
+      "settings": {
+        "anchor": "breakdown",
+        "no_top": true,
+        "eyebrow": "The breakdown",
+        "heading": "Their wedge next to <em>ours.</em>",
+        "sub": "We're not naming names, because this isn't about one company. It's how the whole shelf is priced.",
+        "col0": "What we compared",
+        "col_them": "The big names",
+        "col_us": "Lucky",
+        "after": "Look at the head and the face. Those are the parts that hit the ball, and they're not where the markup goes."
+      },
+      "blocks": {
+        "b1": {
+          "type": "row",
+          "settings": {
+            "label": "One wedge, new",
+            "them": "$170 to $200",
+            "us": "$99 to $109"
+          }
+        },
+        "b2": {
+          "type": "row",
+          "settings": {
+            "label": "Wedge head",
+            "them": "Carbon steel, cast or forged by model",
+            "us": "Forged 1020 carbon steel"
+          }
+        },
+        "b3": {
+          "type": "row",
+          "settings": {
+            "label": "Wedge face",
+            "them": "Milled grooves",
+            "us": "CNC-milled grooves and a micro-grooved face"
+          }
+        },
+        "b4": {
+          "type": "row",
+          "settings": {
+            "label": "Sole grinds",
+            "them": "Several, by model",
+            "us": "K and S on gold, K on black"
+          }
+        },
+        "b5": {
+          "type": "row",
+          "settings": {
+            "label": "Where you buy it",
+            "them": "Golf shops and online",
+            "us": "Online, direct from us"
+          }
+        },
+        "b6": {
+          "type": "row",
+          "settings": {
+            "label": "Trying it",
+            "them": "A few swings in the shop",
+            "us": "Sixty days, and you can hit one on a mat"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "goes": {
+      "type": "lg-cols",
+      "settings": {
+        "style": "numbers",
+        "no_top": true,
+        "eyebrow": "So where does it go",
+        "heading": "Where the extra money <em>goes.</em>",
+        "after": "We don't have any of those, so none of it got added in the first place. It's not a sale. There's just less in there."
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "The tour contract",
+            "text": "Somebody's getting paid to have that wedge in the bag on Sunday. That money's in the price you pay."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "The shop",
+            "text": "Floor space, staff and rent, in a building you've got to drive to, and the club's carrying all of it."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Everybody in between",
+            "text": "A distributor sits between the factory and the shop, and takes a cut on the way past."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "net": {
+      "type": "lg-cols",
+      "settings": {
+        "style": "rules",
+        "no_top": true,
+        "eyebrow": "Don't take our word for it",
+        "heading": "Check it <em>yourself.</em>",
+        "after_link_label": "Read the return policy",
+        "after_link_url": "/policies/refund-policy"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Sixty days on clubs",
+            "text": "Hit one on a mat. Not feeling it? Send it back."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Ships in 1 to 2 days",
+            "text": "Tracking shows up as soon as the carrier scans it."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping at $198",
+            "text": "Two wedges get you there."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "quotes": {
+      "type": "lg-quotes",
+      "settings": {
+        "no_top": true,
+        "eyebrow": "From people who switched",
+        "heading": "They switched from the big <em>names.</em>",
+        "link_label": "Read every review",
+        "link_url": "shopify://pages/reviews"
+      },
+      "blocks": {
+        "b1": {
+          "type": "quote",
+          "settings": {
+            "stars": 4,
+            "name": "Adam K.",
+            "on": "Carver, verified buyer",
+            "quote": "Took a chance on these wedges and have been very pleasantly surprised at their appearance, performance and durability. Would definitely recommend for someone looking for a solid wedge and doesn’t want to pay the price for the large and popular brands and doesn’t have the need or want to get fitted!"
+          }
+        },
+        "b2": {
+          "type": "quote",
+          "settings": {
+            "stars": 5,
+            "name": "Jason",
+            "on": "Carver, verified buyer",
+            "quote": "Great looks and performance for the price"
+          }
+        },
+        "b3": {
+          "type": "quote",
+          "settings": {
+            "stars": 5,
+            "name": "Kyle M.",
+            "on": "Carver, verified buyer",
+            "quote": "I LOVE my wedges they preform high up with the big name brands and all my friends are jealous of how sexy these clubs are"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Spend the difference on green fees.",
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "proof",
+    "wedge",
+    "table",
+    "goes",
+    "net",
+    "quotes",
+    "signoff"
+  ]
+}

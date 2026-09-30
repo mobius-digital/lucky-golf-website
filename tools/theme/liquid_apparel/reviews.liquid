@@ -1,0 +1,21 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  if s.pool != blank
+    for p in s.pool.products limit: 100
+      assign rc = p.metafields.reviews.rating_count.value | default: 0
+      assign n = n | plus: rc
+    endfor
+  else
+    assign n = product.metafields.reviews.rating_count.value | default: 0
+  endif
+-%}
+{%- if n >= min -%}
+<section class="lg-sec polo-rv" id="reviews" style="padding-top:0"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  <h2 class="lg-d2">{{ s.heading | replace: '[count]', n }}</h2>
+  {%- if s.line != blank %}<p class="lg-body">{{ s.line }}</p>{% endif -%}
+  <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget jdgm-outside-widget" data-id="{{ product.id }}">{{ product.metafields.judgeme.widget }}</div>
+</div></section>
+{%- endif -%}

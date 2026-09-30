@@ -1,0 +1,218 @@
+{%- comment -%}
+  The club fold: breadcrumb, gallery, buy box, sticky bar and the modals.
+  Live from the product: title, price, variants (hand, loft and grind), stock, reviews.
+  Per club words and photos: the product metafield custom.club_page (json, see tools/theme/club_data.py).
+  Sold out -> "Tell me when it's back" (Klaviyo, data-notify). custom.sold_out_mode = preorder and a
+  variant at 0 that Shopify still sells -> "Pre-order, ships in {month of custom.restock_date}".
+{%- endcomment -%}
+{%- liquid
+  assign c = product.metafields.custom.club_page.value
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign rc = product.metafields.reviews.rating_count.value | default: 0
+  assign rv = product.metafields.reviews.rating.value.rating
+  assign mode = product.metafields.custom.sold_out_mode.value | default: 'notify' | downcase
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign rd = product.metafields.custom.restock_date.value
+  assign month = ''
+  if rd != blank
+    assign rds = rd | date: '%Y-%m-%d'
+    if rds >= today
+      assign month = rd | date: '%B'
+    endif
+  endif
+  assign hi = -1
+  assign li = -1
+  for o in product.options_with_values
+    assign on = o.name | downcase
+    if on contains 'hand'
+      assign hi = forloop.index0
+    elsif on contains 'loft'
+      assign li = forloop.index0
+    endif
+  endfor
+  assign wedge = false
+  if li > -1
+    assign wedge = true
+  endif
+  assign v0 = product.selected_or_first_available_variant
+  assign price = v0.price | money_without_trailing_zeros
+  assign atc = c.atc | default: s.atc
+  assign mon_img = product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value
+  assign title_plain = product.title
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="{{ routes.root_url }}">Home</a></li>
+  {%- if s.crumb_url != blank %}<li><a href="{{ s.crumb_url }}">{{ s.crumb_label }}</a></li>{% endif -%}
+  {%- if wedge and s.crumb2_url != blank %}<li><a href="{{ s.crumb2_url }}">{{ s.crumb2_label }}</a></li>{% endif -%}
+  <li><span aria-current="page">{{ product.title }}</span></li>
+</ol></nav>
+
+<div class="lg-wrap">
+<div class="pdp">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">
+      {%- comment -%} The gallery is the product's own media, in the product's order, with Shopify's alt text:
+        add or reorder photos in the product admin and the page follows. The card cutout (custom.cutout) leads. {%- endcomment -%}
+      {%- assign cut = product.metafields.custom.cutout.value -%}
+      {%- assign tiles = 0 -%}
+      {%- if cut != blank -%}{%- assign tiles = 1 -%}
+        <figure class="cut wide" data-zoom="{{ cut | image_url: width: 2000 }}">{{ cut | image_url: width: 1200 | image_tag: alt: product.title, loading: 'eager', widths: '500,800,1200', sizes: '(max-width: 749px) 86vw, 30vw' }}
+          {%- if c.gallery_tag != blank %}<span class="lg-tag">{{ c.gallery_tag }}</span>{% endif -%}</figure>
+      {%- endif -%}
+      {%- for m in product.media -%}
+        {%- assign alt = m.alt | default: product.title -%}
+        {%- assign lz = 'lazy' -%}{%- if tiles == 0 %}{% assign lz = 'eager' %}{% endif -%}
+        {%- assign tiles = tiles | plus: 1 -%}
+        {%- assign more = '' -%}{%- if tiles > 5 %}{% assign more = ' is-more' %}{% endif -%}
+        {%- case m.media_type -%}
+          {%- when 'image' -%}
+          <figure class="{% if m.aspect_ratio > 1.2 %}wide{% endif %}{{ more }}" data-zoom="{{ m | image_url: width: 2000 }}">{{ m | image_url: width: 1200 | image_tag: alt: alt, loading: lz, widths: '500,800,1200,1600', sizes: '(max-width: 749px) 86vw, (max-width: 980px) 50vw, 30vw' }}</figure>
+          {%- when 'video' -%}
+          <figure class="wide is-video{{ more }}">{{ m | video_tag: controls: true, muted: true, playsinline: true, preload: 'metadata', image_size: '1200x' }}</figure>
+          {%- when 'external_video' -%}
+          <figure class="wide is-video{{ more }}">{{ m | external_video_tag }}</figure>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div class="dots" data-dots aria-hidden="true">{%- if cut != blank %}<i></i>{% endif -%}{%- for m in product.media -%}<i></i>{%- endfor -%}</div>
+    {%- if tiles > 5 -%}<button type="button" class="lg-btn-line gal-all" data-gal-all aria-expanded="false">{{ s.gal_all | default: 'See all [n] photos' | replace: '[n]', tiles }}</button>{%- endif -%}
+  </div>
+
+  <div class="buy" id="buy">
+    {%- if c.eyebrow != blank %}<p class="lg-eyebrow">{{ c.eyebrow }}</p>{% endif -%}
+    <h1 class="lg-d1">{{ c.h1 | default: product.title | replace: '<em>', '<span class="lg-foil-word">' | replace: '</em>', '</span>' }}</h1>
+    {%- if rc >= min and rv -%}
+      <div class="rvl"><span class="lg-stars" aria-label="{{ rv | times: 10 | floor | divided_by: 10.0 }} out of 5">{% render 'lg-stars' %}</span>
+        {%- if c.rvl -%}<a href="#reviews">&ldquo;{{ c.rvl[0] }}&rdquo; {{ c.rvl[1] }} · {{ c.rvl[2] }}</a>{%- else -%}<a href="#reviews">{{ rc }} reviews</a>{%- endif -%}</div>
+    {%- endif -%}
+    <div class="price"><b data-price>{{ price }}</b>{% if wedge %}<span data-price-note hidden>each</span>{% endif %}</div>
+    <p class="lg-body">{{ c.lede | default: product.description | strip_html }}</p>
+
+    {%- if c.finishes.size > 1 -%}
+    <div class="row"><span class="lg-label">Finish</span></div>
+    <div class="fins">
+      {%- for fi in c.finishes -%}{%- assign fp = all_products[fi.handle] -%}
+      <a class="fin" href="{{ fp.url | default: '#' }}"{% if fi.handle == product.handle %} aria-current="page"{% endif %}><span class="lg-swatch">{%- assign sw = fp.metafields.custom.club_swatch.value | default: fp.metafields.custom.cutout.value -%}{%- if sw != blank %}{{ sw | image_url: width: 144 | image_tag: alt: '' }}{% endif -%}</span><b>{{ fi.label }}</b></a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    {%- if wedge -%}
+    <div class="row"><span class="lg-label">Hand</span></div>
+    <div class="lg-chips" data-hand role="group" aria-label="Hand"></div>
+    <div class="row" id="lofts"><span class="lg-label">Loft and grind <span class="m" data-pickn></span></span><a href="#" data-md-open="md-helper">Help me pick &rarr;</a></div>
+    <div class="lofts" data-lofts role="group" aria-label="Loft and grind"></div>
+    <p class="stocknote" data-stocknote hidden></p>
+    <div class="ro" data-readout aria-live="polite"></div>
+    <div class="row"><span class="lg-label">How many</span><span class="m hint" data-sethint>{{ s.set_hint }}</span></div>
+    <div class="set" data-set role="group" aria-label="How many wedges">
+      <button type="button" data-n="1" aria-pressed="true"><b>1 wedge</b><span>{{ s.set1 }}</span></button>
+      <button type="button" data-n="2" aria-pressed="false"><b>2 wedges</b><span>{{ s.set2 }}</span></button>
+      <button type="button" data-n="3" aria-pressed="false"><b>3 wedges</b><span>{{ s.set3 }}</span></button>
+    </div>
+    {%- else -%}
+      {%- for o in product.options_with_values -%}{%- if o.values.size > 1 -%}
+        {%- assign ol = o.name -%}{%- if forloop.index0 == hi %}{% assign ol = 'Hand' %}{% endif -%}
+        <div class="row"><span class="lg-label">{{ ol }} <span class="m" data-pick="{{ forloop.index0 }}"></span></span></div>
+        <div class="lg-chips" data-opt="{{ forloop.index0 }}" role="group" aria-label="{{ ol | escape }}">
+          {%- for v in o.values -%}{%- assign vl = v -%}{%- if forloop.parentloop.index0 == hi -%}{%- if v contains 'Left' %}{% assign vl = 'Left hand' %}{% elsif v contains 'Right' %}{% assign vl = 'Right hand' %}{% endif -%}{%- endif -%}
+          <button class="lg-chip" type="button" data-v="{{ v | escape }}" aria-label="{{ vl | escape }}">{{ vl }}</button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}{%- endfor -%}
+    {%- endif -%}
+
+    <form class="cta" method="post" action="{{ routes.cart_add_url }}" data-lg-add data-club-form>
+      <input type="hidden" name="id" value="{{ v0.id }}" data-vid>
+      <input type="hidden" name="properties[Pre-order]" value="" data-preprop disabled>
+      <button class="lg-btn" type="submit" data-atc>{{ atc }} · {{ price }}</button>
+    </form>
+    <div class="trustl"><span class="lg-stock{% unless product.available %} is-out{% endunless %}" data-stockline>{% if product.available %}{{ s.in_stock }}{% else %}Sold out{% endif %}</span><span class="trustl-links">
+      {%- if c.modals -%}<a href="#" data-md-open="md-returns">{{ s.returns_link }}</a><a href="#" data-md-open="md-delivery">{{ s.delivery_link }}</a>
+      {%- else -%}<a href="{{ s.returns_url }}">{{ s.returns_link }}</a><a href="{{ s.ship_url }}">{{ s.ship_link }}</a>{%- endif -%}</span></div>
+
+    {%- if c.details.size > 0 -%}
+    <div class="lg-faq">
+      {%- for d in c.details -%}<details class="lg-fq"><summary>{{ d[0] }}</summary><div class="lg-fq-a"><p>{{ d[1] }}</p></div></details>{%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph">{%- if mon_img != blank %}{{ mon_img | image_url: width: 144 | image_tag: alt: '' }}{% endif -%}</span>
+  <div><b data-sticky-name>{{ product.title }}</b><span data-sticky-price>{{ price }}</span></div>
+  <div class="sb-pick" data-sb-pick>
+    {%- if wedge -%}
+    <label><span class="sr">Hand</span><select class="sb-sel" data-sb-hand></select></label>
+    <label><span class="sr">Loft and grind</span><select class="sb-sel" data-sb-loft></select></label>
+    {%- else -%}
+      {%- for o in product.options_with_values -%}{%- if o.values.size > 1 -%}
+      <label><span class="sr">{{ o.name }}</span><select class="sb-sel" data-sb-opt="{{ forloop.index0 }}">{%- for v in o.values -%}<option value="{{ v | escape }}">{{ v }}</option>{%- endfor -%}</select></label>
+      {%- endif -%}{%- endfor -%}
+    {%- endif -%}
+  </div>
+  <a class="sb-change" href="{% if wedge %}#lofts{% else %}#buy{% endif %}" data-sb-change>Change</a>
+  <button class="lg-btn" type="button" data-atc-sticky>{{ atc }}</button>
+</div>
+
+{%- if wedge -%}
+<div class="md" id="md-helper" hidden role="dialog" aria-modal="true" aria-labelledby="md-helper-t"><div class="md-bd" data-md-close></div><div class="md-panel hp">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-helper-t">{{ s.helper_title }}</h2>
+  <p>{{ s.helper_line }}</p>
+  <div data-helper></div>
+</div></div>
+{%- endif -%}
+<div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
+  <p data-notify-line>{{ s.notify_line }}</p>
+  <form class="lg-form" data-notify data-variant="{{ v0.id }}" novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
+</div></div>
+{%- if rc >= min and c.rv.write -%}
+<div class="md" id="md-write" hidden role="dialog" aria-modal="true" aria-labelledby="md-write-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-write-t">Write a review</h2>
+  <p>{{ s.write_line }}</p>
+  <div class="md-foot"><button type="button" class="lg-btn-line lg-btn-sm" data-md-close>Close</button></div>
+</div></div>
+{%- endif -%}
+
+{%- if c.modals -%}
+<div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Refund policy</p>
+  <h2 class="lg-d3" id="md-returns-t">{{ s.returns_link }}</h2>
+  {{ s.returns_body }}
+</div></div>
+<div class="md" id="md-delivery" hidden role="dialog" aria-modal="true" aria-labelledby="md-delivery-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Delivery</p>
+  <h2 class="lg-d3" id="md-delivery-t">When it shows up</h2>
+  <div class="md-carriers"><span class="lg-tag">USPS</span><span class="lg-tag">UPS</span><span class="lg-tag">FedEx</span></div>
+  {{ s.delivery_body }}
+</div></div>
+{%- endif -%}
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+
+<script>
+window.LG_CLUB = {
+  title: {{ product.title | json }},
+  wedge: {{ wedge }}, hi: {{ hi }}, li: {{ li }},
+  grind: {{ c.grind_default | default: 'K' | json }},
+  sheet: {{ c.spec.sheet | json }}, headg: {{ c.spec.head_g | default: '' | json }},
+  atc: {{ atc | json }}, inStock: {{ s.in_stock | json }},
+  mode: {{ mode | json }}, month: {{ month | json }},
+  free: {{ settings.lg_free_shipping | default: 198 | json }},
+  start: {{ product.selected_variant.id | default: 0 }},
+  variants: [
+    {%- for v in product.variants -%}
+    { id: {{ v.id }}, o: {{ v.options | json }}, a: {{ v.available }}, q: {{ v.inventory_quantity | default: 0 }}, c: {{ v.inventory_policy | json }}, m: {{ v.inventory_management | json }}, p: {{ v.price }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+};
+</script>
+<script src="{{ 'lg-club.js' | asset_url }}" defer></script>

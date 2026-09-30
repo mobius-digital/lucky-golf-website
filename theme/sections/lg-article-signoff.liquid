@@ -1,0 +1,62 @@
+{%- liquid
+  assign s = section.settings
+  assign so = article.metafields.lucky.signoff.value
+  assign h = so.h | default: s.heading
+  assign lede = so.lede | default: s.lede
+  assign btn = so.btn | default: s.btn_label
+  assign href = so.href | default: s.btn_url
+-%}
+<section class="lg-signoff"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: h, tag: 'h2', cls: 'lg-d1' %}
+  {%- if lede != blank %}<p class="lg-lede">{{ lede }}</p>{% endif -%}
+  {%- if btn != blank %}<a class="lg-btn" href="{{ href }}">{{ btn }}</a>{% endif -%}
+  <div class="lg-signoff-mags" aria-hidden="true">{% render 'lg-mags' %}</div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Sign-off, no arrow",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The last word"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading when the article has none (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word.",
+      "default": "It's better to be <em>lucky.</em>"
+    },
+    {
+      "type": "text",
+      "id": "lede",
+      "label": "Line when the article has none",
+      "default": "Sixty days to make up your mind on the clubs, thirty on the rest."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button when the article has none",
+      "default": "See the clubs"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "paragraph",
+      "content": "Each article can carry its own sign-off in the metafield lucky.signoff (JSON: h, lede, btn, href)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sign-off, no arrow"
+    }
+  ]
+}
+{% endschema %}

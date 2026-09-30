@@ -9,7 +9,7 @@
 /* ---------- Home · the August layout, section for section, on v4 pieces ---------- */
 .hero-stamp{position:absolute;right:var(--lg-pad);bottom:clamp(40px,6vw,96px);z-index:3;background:rgba(6,17,11,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   color:#F4F3F0;padding:10px 14px;border-radius:10px;border:1px solid rgba(237,210,124,.3);text-align:right}
-.hero-stamp b{display:block;color:var(--lg-gold-hi);font-weight:600}
+.hero-stamp b{display:block;color:var(--lg-on-dark);font-weight:600}
 @media (max-width:900px){.hero-stamp{display:none}}
 .trust-wrap{padding-block:18px}
 .trust-wrap .lg-trust{border:0;padding:0}
@@ -91,7 +91,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 .gtile:hover img{transform:scale(1.03)}
 .gtile::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,17,11,.9) 0%,rgba(6,17,11,.6) 45%,rgba(6,17,11,0) 75%)}
 .gtile > div{position:relative;z-index:1;padding:22px}
-.gtile .ct{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--lg-gold-hi)}
+.gtile .ct{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--lg-on-dark)}
 .gtile h3{margin:6px 0 6px}
 .gtile p{margin:0 0 14px;color:rgba(244,243,240,.86);max-width:36ch}
 .gtile .lg-tag{position:absolute;left:16px;top:16px;z-index:1}
@@ -100,7 +100,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 .gear-foot p{margin:0;color:var(--lg-ink-70)}
 
 /* the ambassador program */
-.amb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;padding:clamp(28px,4vw,48px);background:var(--lg-tile);border-radius:var(--lg-r-card)}
+.amb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;padding:clamp(28px,4vw,48px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
 @media (max-width:760px){.amb{grid-template-columns:1fr}}
 
 /* the close */
@@ -117,9 +117,9 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <section class="lg-hero" style="--focus:42% 55%;--focus-m:38% 55%">
   <img class="lg-hero-img" src="img/two-gold-wedges.webp" alt="Two Carver 02 Gold wedges on the fringe" width="2400" height="1600" fetchpriority="high">
   <div class="lg-hero-copy"><div class="lg-wrap">
-    <p class="lg-eyebrow">Carver 02 Gold · $99</p>
-    <h1 class="lg-d1">It's not luck. It's the <span class="lg-foil-word">club.</span></h1>
-    <p class="lg-lede">Big-name performance, real craftsmanship, and none of the tour markup on the price.</p>
+    <p class="lg-eyebrow">It's better to be lucky</p>
+    <h1 class="lg-d1">Get used to the <span class="lg-foil-word">attention</span></h1>
+    <p class="lg-lede">Built to the same standard as the big names, finished in gold, and sold straight to you.</p>
     <div class="lg-btn-row"><a class="lg-btn" href="#families">Find your club <span aria-hidden="true">&rarr;</span></a></div>
   </div></div>
   <div class="hero-stamp lg-label">Carver 02 · Gold or black<b>Six lofts · K and S grind</b></div>
@@ -152,7 +152,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
     <div>
       <p class="lg-eyebrow">On the green</p>
       <h2 class="lg-d2">Quiet off the face. Loud in the <span class="lg-foil-word">bag.</span></h2>
-      <p class="lg-body">Fully milled 304 stainless in a mallet head that holds its line when you miss the middle, and a face that gets the ball rolling true from the first inch.</p>
+      <p class="lg-body">Catch one off the toe and it still holds its line. It's fully milled, and it makes four-footers a lot less interesting.</p>
       <div class="lg-btn-row"><a class="lg-btn-line" href="mallet.html">See the Mallet <span aria-hidden="true">&rarr;</span></a><a class="lg-link" href="blade.html" style="align-self:center">Prefer a blade? <span>&rarr;</span></a></div>
       <div class="stampline lg-label">Eclipse Mallet · 304 stainless · $229</div>
     </div>
@@ -163,12 +163,12 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <section class="lg-sec" id="why" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
   <div class="why-top">
     <div><p class="lg-eyebrow">Priced honestly</p><h2 class="lg-d2">You're paying for the <span class="lg-foil-word">club.</span> That's it.</h2></div>
-    <p class="lg-lede">A big-name club carries tour contracts and retail markup in its price. We sell direct and skip both, so what you pay for is the club itself.</p>
+    <p class="lg-lede"></p>
   </div>
   <div class="claims">
-    <div class="claim"><span class="n">01</span><h3 class="lg-d3">Sold direct</h3><p>No distributor and no store taking a cut, so the price isn't a sale. It's just the price.</p></div>
-    <div class="claim"><span class="n">02</span><h3 class="lg-d3">No tour contracts</h3><p>The big names build their tour deals into the price of the club. We don't have any to build in.</p></div>
-    <div class="claim"><span class="n">03</span><h3 class="lg-d3">Where the money goes</h3><p>Into the forging, the milling and the gold. The parts you actually hit.</p></div>
+    <div class="claim"><span class="n">01</span><h3 class="lg-d3">Sold direct</h3><p>No distributor and no shop between the factory and your bag.</p></div>
+    <div class="claim"><span class="n">02</span><h3 class="lg-d3">No tour contracts</h3><p>None of your money goes toward a tour player's contract.</p></div>
+    <div class="claim"><span class="n">03</span><h3 class="lg-d3">Where the money goes</h3><p>Straight into the forging, the milling and the gold finish.</p></div>
   </div>
   <p class="lg-body" style="margin-top:clamp(18px,2.5vw,24px)"><a class="lg-link" href="compare.html">See the side by side <span aria-hidden="true">&rarr;</span></a></p>
 </div></section>
@@ -176,7 +176,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <!-- ============ CLUB FINDER ============ -->
 <section class="lg-sec fnd" id="finder" style="padding-top:0"><div class="lg-wrap">
   <div class="hd"><div><p class="lg-eyebrow">Club finder</p><h2 class="lg-d2">Where's the round getting away from <span class="lg-foil-word">you?</span></h2>
-    <p class="lg-body">Pick the part of your game that needs help, or skip straight to the gold.</p></div></div>
+    <p class="lg-body"></p></div></div>
   <div class="lg-chips" role="tablist" aria-label="What to fix">
     <button class="lg-chip" type="button" role="tab" aria-pressed="true" data-fp="0">Around the green</button>
     <button class="lg-chip" type="button" role="tab" aria-pressed="false" data-fp="1">On the green</button>
@@ -184,8 +184,8 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
     <button class="lg-chip" type="button" role="tab" aria-pressed="false" data-fp="3">Just the gold one</button>
   </div>
   <div class="fnd-panel" data-panel="0"><div class="fnd-grid">
-    <a class="lg-card" href="carver.html"><span class="lg-card-ph"><img src="img/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp" alt="Carver 02 Gold at the ball" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Two grinds, so the sole matches the way you chip.</span></span></a>
-    <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The same forged wedge, in black.</span></span></a>
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph"><img src="img/11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp" alt="Carver 02 Gold at the ball" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">Pick the K or the S, depending on how you like to chip.</span></span></a>
+    <a class="lg-card" href="black.html"><span class="lg-card-ph is-cut"><img src="img/1_870950d7-2758-44d5-be0f-d3bd0f03996b.webp" alt="Carver 02 Black" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Black</span><span class="lg-card-pr">$109</span><span class="lg-card-ln">The K grind, blacked out.</span></span></a>
   </div></div>
   <div class="fnd-panel" data-panel="1" hidden><div class="fnd-grid">
     <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="Eclipse Mallet on the green" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">More head behind the ball, so the ones you catch thin still finish close.</span></span></a>
@@ -234,7 +234,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <section class="lg-sec" id="gear"><div class="lg-wrap">
   <div class="hd"><div><p class="lg-eyebrow">While you're here</p><h2 class="lg-d2">Dress for the <span class="lg-foil-word">round</span></h2></div></div>
   <div class="gt">
-    <a class="gtile" href="polos.html"><img src="img/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" loading="lazy" style="object-position:52% center"><div><span class="ct">13 styles</span><h3 class="lg-d2">Polos</h3><p>Four-way stretch and UPF 50+, in prints loud and quiet.</p><span class="go">Shop polos &rarr;</span></div></a>
+    <a class="gtile" href="polos.html"><img src="img/fit-sunset.webp" alt="The Nightshade polo and white Lucky hat at sunset" loading="lazy" style="object-position:52% center"><div><span class="ct">13 styles</span><h3 class="lg-d2">Polos</h3><p>Stretchy, UPF 50+, and they don't wrinkle in the bag.</p><span class="go">Shop polos &rarr;</span></div></a>
     <a class="gtile" href="hats.html"><img src="img/two-hats-mallet.webp" alt="The black and tan Lucky hats on the green" loading="lazy" style="object-position:45% center"><div><span class="ct">10 styles</span><h3 class="lg-d2">Hats</h3><p>Five-panel snapbacks, and at least one matches your polo.</p><span class="go">Shop hats &rarr;</span></div></a>
   </div>
   <div class="gear-foot"><p>Apparel and gear get thirty days to come back, unworn and unused.</p><a class="lg-btn-line lg-btn-sm" href="gear.html">Shop all gear <span aria-hidden="true">&rarr;</span></a></div>
@@ -246,7 +246,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
     <div>
       <p class="lg-eyebrow">Why it says Lucky</p>
       <h3 class="lg-d2">Golf takes a little luck. We put it on the club.</h3>
-      <p class="lg-body">The good bounce, the bad kick, the putt that lips out for no reason. Every golfer knows the feeling, and that's the name on the club.</p>
+      <p class="lg-body">The good bounce, the bad kick, the putt that lips out for no reason. Everybody who plays has had all three.</p>
     </div>
     <figure class="lg-frame"><img src="img/green-read-fit.webp" alt="Reading a putt in the Lucky hat and polo, gold putter in hand" loading="lazy" style="object-position:60% 40%"></figure>
   </div>
@@ -266,7 +266,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <section class="lg-sec" id="trybe" style="padding-top:0"><div class="lg-wrap">
   <div class="amb">
     <div><p class="lg-eyebrow">Ambassador program</p><h2 class="lg-d2">You post it. We run it.</h2>
-      <p class="lg-body">Post about Lucky and we put ad money behind the videos that land. Your first wedge is free when you ask, you earn a share of what your ads sell, and there's no follower minimum.</p></div>
+      <p class="lg-body">We put ad money behind the videos that do well. Ask and your first wedge is free, you earn a share of what your ads sell, and there's no follower minimum.</p></div>
     <a class="lg-btn-line" href="trybe.html">See how it works <span aria-hidden="true">&rarr;</span></a>
   </div>
 </div></section>
@@ -275,7 +275,7 @@ body.lg a.gtile{position:relative;border-radius:var(--lg-r-card);overflow:hidden
 <!-- ============ THE CLOSE: Mags signs off ============ -->
 <section class="lg-signoff"><div class="lg-wrap">
   <p class="lg-eyebrow">The last word</p>
-  <h2 class="lg-d1">Go put one in the <span class="lg-foil-word">bag</span></h2>
+  <h2 class="lg-d1"><span class="lg-foil-word">Bag</span> it.</h2>
   <p class="lg-lede">It's better to be lucky.</p>
   <div class="lg-btn-row"><a class="lg-btn" href="#families">Find your club <span aria-hidden="true">&rarr;</span></a><a class="lg-btn-line" href="story.html">Read our story</a></div>
   <div class="close-trust"><span>Sixty-day returns</span><span>Thousands of golfers</span><span>4.8 stars from verified buyers</span><span>Ships in 1 to 2 business days</span></div>

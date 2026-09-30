@@ -1,0 +1,12 @@
+/* phone + tablet header (Cole, 2026-09-30): menu and search on the left, the logo dead centre, the bag
+   on the right. The action group is flattened with display:contents so no markup changes; equal
+   88px side columns keep the logo on the page's centre line. */
+@media (max-width:980px){
+  body.lg .lg-hdr-in{grid-template-columns:44px 44px 1fr 44px 44px;grid-template-areas:none;gap:0}
+  body.lg .lg-hdr-act{display:contents}
+  body.lg .lg-hdr-in .burger{grid-column:1;grid-row:1;justify-self:start;margin-left:-10px}
+  body.lg .lg-hdr-in .hdr-search{grid-column:2;grid-row:1;justify-self:start}
+  body.lg .lg-hdr-in .lg-logo{grid-column:3;grid-row:1;justify-self:center}
+  body.lg .lg-hdr-in .bagbtn{grid-column:4 / 6;grid-row:1;justify-self:end;margin-right:-4px}
+  body.lg .lg-logo svg,body.lg .lg-logo img{width:112px}
+}

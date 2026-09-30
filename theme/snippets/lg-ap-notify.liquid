@@ -1,0 +1,10 @@
+{%- comment -%}
+  "Tell me when it's back": Klaviyo back-in-stock for one variant (lucky-site.js handles [data-notify]).
+  The polo page swaps data-variant to the picked size. {% render 'lg-ap-notify', variant: v %}
+{%- endcomment -%}
+<div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
+  <p>Drop your email. You'll get one message when it's back, and that's it.</p>
+  <form class="lg-form" data-notify data-variant="{{ variant.id }}" novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
+</div></div>

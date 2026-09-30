@@ -1,0 +1,92 @@
+{%- assign s = section.settings -%}
+<section class="lg-wrap nf">
+  {% render 'lg-mags' %}
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow" style="justify-content:center">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+  {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+  <div class="btns">
+    {%- if s.btn_label != blank %}<a class="lg-btn" href="{{ s.btn_url }}">{{ s.btn_label }}</a>{% endif -%}
+    {%- if s.btn2_label != blank %}<a class="lg-btn-line" href="{{ s.btn2_url }}">{{ s.btn2_label }}</a>{% endif -%}
+  </div>
+  <div class="pop">
+    {%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
+      {%- assign pic = block.settings.image | default: p.metafields.custom.cutout.value | default: p.featured_image -%}
+      <a href="{{ p.url }}" {{ block.shopify_attributes }}><span class="ph">{%- if pic -%}{{ pic | image_url: width: 600 | image_tag: loading: 'lazy', alt: p.title, widths: '300,450,600', sizes: '(max-width: 860px) 50vw, 25vw' }}{%- endif -%}</span><span class="nm">{{ block.settings.name | default: p.title }}</span><b>{{ p.price | money_without_trailing_zeros }}</b></a>
+    {%- endif -%}{%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Not found",
+  "class": "lgc-nf",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "404"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading, H1 (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Gold button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Gold button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Second button"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Second button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = the product's cutout)"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name (empty = product's)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Not found"
+    }
+  ]
+}
+{% endschema %}

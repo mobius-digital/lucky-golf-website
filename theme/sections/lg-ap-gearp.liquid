@@ -1,0 +1,243 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign cut = product.featured_media.preview_image
+  assign v0 = product.selected_or_first_available_variant
+  assign crumb_url = s.crumb_url | default: routes.all_products_collection_url
+  assign emap = s.eyebrows | newline_to_br | split: '<br />'
+  assign lmap = s.labels | newline_to_br | split: '<br />'
+  assign eyebrow = product.type
+  for l in emap
+    assign pr = l | split: '='
+    assign k0 = pr.first | strip
+    if k0 != blank and k0 == product.type
+      assign eyebrow = pr.last | strip
+    endif
+  endfor
+  assign photo = s.photo
+  assign whens = s.photo_b_when | split: ','
+  for w in whens
+    assign ww = w | strip
+    if ww != blank
+      if product.tags contains ww or product.type == ww
+        if s.photo_b != blank
+          assign photo = s.photo_b
+        endif
+      endif
+    endif
+  endfor
+  assign month = ''
+  assign rd = product.metafields.custom.restock_date.value
+  if rd != blank
+    assign rds = rd | date: '%s' | plus: 0
+    assign nows = 'now' | date: '%s' | plus: 0
+    if rds > nows
+      assign month = rd | date: '%B'
+    endif
+  endif
+  assign mode = product.metafields.custom.sold_out_mode.value | default: 'notify' | downcase
+  assign pmax = product.price_max | money_without_trailing_zeros
+  assign plabel = product.price_min | money_without_trailing_zeros
+  if product.price_varies
+    assign plabel = plabel | append: ' to ' | append: pmax
+  endif
+  assign rc = product.metafields.reviews.rating_count.value | default: 0
+  assign rv = product.metafields.reviews.rating.value.rating | default: 0
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><a href="{{ crumb_url }}">{{ s.crumb_label }}</a></li><li><span aria-current="page">{{ product.title }}</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp" id="ap-{{ section.id }}">
+  <div class="gal">
+    <div class="big" id="big">{%- if cut -%}{%- assign calt = product.featured_media.alt | default: product.title -%}{{ cut | image_url: width: 1400 | image_tag: alt: calt, fetchpriority: 'high', widths: '600,900,1400', sizes: '(max-width: 980px) 100vw, 55vw' }}{%- endif -%}</div>
+    <div class="thumbs" id="thumbs">
+      {%- for m in product.media -%}{%- assign malt = m.alt | default: product.title -%}<button type="button" data-src="{{ m.preview_image | image_url: width: 1400 }}" data-alt="{{ malt | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">{{ m.preview_image | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endfor -%}
+      {%- if photo != blank -%}<button type="button" class="is-photo" data-src="{{ photo | image_url: width: 1400 }}" data-alt="{{ photo.alt | escape }}" aria-current="false" aria-label="On the course">{{ photo | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endif -%}
+    </div>
+  </div>
+
+  <div class="buy">
+    <p class="lg-eyebrow">{{ eyebrow }}</p>
+    <h1 class="lg-d2">{{ product.title }}</h1>
+    {%- if rc >= min -%}<div class="rvl"><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{% render 'lg-stars' %}</span><span>{{ rv | round: 2 }} · {{ rc }} reviews</span></div>{%- endif -%}
+    <p class="price"><span data-price>{{ plabel }}</span>{% render 'lg-was', product: product, variant: product.selected_or_first_available_variant %}</p>
+    {%- if product.description != blank %}<div class="lg-body ap-desc">{{ product.description }}</div>{% endif -%}
+    {%- unless product.has_only_default_variant -%}
+    {%- for o in product.options_with_values -%}{%- if o.values.size < 2 -%}{%- continue -%}{%- endif -%}
+      <div class="row"><span class="lg-label">{{ o.name }}</span><span class="m" data-pick="{{ forloop.index0 }}"></span></div>
+      <div class="lg-chips" data-opt="{{ forloop.index0 }}" role="group" aria-label="{{ o.name | escape }}">
+        {%- assign oi = forloop.index0 -%}
+        {%- for val in o.values -%}
+          {%- liquid
+            assign lab = val
+            assign tkey = product.type | append: '/' | append: val
+            for l in lmap
+              assign pr = l | split: '='
+              assign k0 = pr.first | strip
+              if k0 != blank and k0 == val
+                assign lab = pr.last | strip
+              endif
+            endfor
+            for l in lmap
+              assign pr = l | split: '='
+              assign k0 = pr.first | strip
+              if k0 == tkey
+                assign lab = pr.last | strip
+              endif
+            endfor
+            assign dead = true
+            for vv in product.variants
+              if vv.options[oi] == val and vv.available
+                assign dead = false
+              endif
+            endfor
+          -%}
+          <button class="lg-chip" type="button" data-v="{{ val | escape }}" data-label="{{ lab | escape }}"{% if dead %} data-dead{% endif %}>{{ lab }}</button>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+    {%- endunless -%}
+    <form data-lg-add data-gear-form>
+      <input type="hidden" name="id" value="{{ v0.id }}">
+      <input type="hidden" name="properties[Pre-order]" value="" data-pre-prop disabled>
+      <button class="lg-btn" type="submit" data-atc>Add to cart</button>
+    </form>
+    <span class="stock" data-stock>{{ s.stock_in }}</span>
+    <div class="links">
+      {%- if s.l1 != blank %}<a class="lg-link" href="{{ s.l1_url }}">{{ s.l1 }} <span>&rarr;</span></a>{% endif -%}
+      {%- if s.l2 != blank %}<a class="lg-link" href="{{ s.l2_url }}">{{ s.l2 }} <span>&rarr;</span></a>{% endif -%}
+    </div>
+    {%- assign facts = product.metafields.custom.facts.value -%}
+    {%- if facts != blank -%}
+    <ul class="facts">{%- for f in facts -%}{%- assign fp = f | split: ':' -%}<li><span>{{ fp.first | strip }}</span><b>{{ f | remove_first: fp.first | remove_first: ':' | strip }}</b></li>{%- endfor -%}</ul>
+    {%- endif -%}
+  </div>
+</div></section>
+{% render 'lg-ap-notify', variant: v0 %}
+<script>
+(function(){
+  var V = [
+    {%- for v in product.variants -%}
+    {%- assign pre = false -%}{%- if mode == 'preorder' and v.available and v.inventory_management != blank and v.inventory_quantity <= 0 -%}{%- assign pre = true -%}{%- endif -%}
+    { id: {{ v.id }}, o: {{ v.options | json }}, ok: {{ v.available }}, pre: {{ pre }}, price: {{ v.price }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ];
+  var START = {{ v0.options | json }}, MONTH = {{ month | json }}, IN = {{ s.stock_in | json }}, OUT = {{ s.stock_out | json }}, PL = {{ plabel | json }};
+  var root = document.getElementById('ap-{{ section.id }}'); if (!root) return;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var money = function(c){ return '$' + (c % 100 ? (c / 100).toFixed(2) : c / 100); };
+  var pick = START.slice(), form = $('[data-gear-form]', root), vid = form.querySelector('[name="id"]'), atc = $('[data-atc]', form);
+  function variant(){ return V.filter(function(v){ return v.o.every(function(x, i){ return x === pick[i]; }); })[0] || null; }
+  function paint(){
+    $$('[data-opt]', root).forEach(function(g){ var i = +g.dataset.opt;
+      $$('button', g).forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v === pick[i])); });
+      var on = $$('button', g).filter(function(b){ return b.dataset.v === pick[i]; })[0];
+      var m = $('[data-pick="' + i + '"]', root); if (m) m.textContent = on ? on.dataset.label : ''; });
+    var v = variant(), live = !!(v && v.ok);
+    if (v){ vid.value = v.id; $('[data-notify]').setAttribute('data-variant', v.id); }
+    var pre = $('[data-pre-prop]', form); pre.disabled = !(v && v.pre); pre.value = v && v.pre ? 'ships ' + (MONTH || 'at the next restock') : '';
+    $('[data-price]', root).textContent = v ? money(v.price) : PL;
+    $('[data-stock]', root).textContent = live ? (v.pre ? 'Pre-order, ships in ' + (MONTH || 'the next restock') : IN) : (MONTH ? 'Back in ' + MONTH : OUT);
+    atc.textContent = live ? (v.pre ? 'Pre-order, ships in ' + (MONTH || 'the next restock') : 'Add to cart · ' + money(v.price)) : "Tell me when it's back";
+    atc.className = live ? 'lg-btn' : 'lg-btn-line';
+  }
+  root.addEventListener('click', function(e){
+    var t = e.target.closest('#thumbs button');
+    if (t){ $$('#thumbs button', root).forEach(function(b){ b.setAttribute('aria-current', String(b === t)); });
+      var img = $('#big img', root); if (img){ img.removeAttribute('srcset'); img.src = t.dataset.src; img.alt = t.dataset.alt || ''; }
+      $('#big', root).classList.toggle('is-photo', t.classList.contains('is-photo')); return; }
+    var b = e.target.closest('[data-opt] button');
+    if (b){ pick[+b.closest('[data-opt]').dataset.opt] = b.dataset.v; paint(); }
+  });
+  form.addEventListener('submit', function(e){ var v = variant(); if (!v || !v.ok){ e.preventDefault(); e.stopPropagation(); $('#md-notify').hidden = false; } });
+  paint();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Gear buy box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb_label",
+      "label": "Breadcrumb: collection name",
+      "default": "Gear"
+    },
+    {
+      "type": "url",
+      "id": "crumb_url",
+      "label": "Breadcrumb: collection link"
+    },
+    {
+      "type": "textarea",
+      "id": "eyebrows",
+      "label": "Eyebrow by product type (type = eyebrow)"
+    },
+    {
+      "type": "textarea",
+      "id": "labels",
+      "label": "Button names (value = shown as, or Type/value = shown as)"
+    },
+    {
+      "type": "image_picker",
+      "id": "photo",
+      "label": "Second photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "photo_b",
+      "label": "Second photo for putter gear"
+    },
+    {
+      "type": "text",
+      "id": "photo_b_when",
+      "label": "Putter gear = tagged or typed (comma separated)",
+      "default": "putter, Head Cover"
+    },
+    {
+      "type": "text",
+      "id": "stock_in",
+      "label": "In stock line",
+      "default": "In stock · ships in 1 to 2 days"
+    },
+    {
+      "type": "text",
+      "id": "stock_out",
+      "label": "Sold out line",
+      "default": "Sold out in this one"
+    },
+    {
+      "type": "text",
+      "id": "l1",
+      "label": "Link 1",
+      "default": "Thirty days to send it back"
+    },
+    {
+      "type": "url",
+      "id": "l1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "l2",
+      "label": "Link 2",
+      "default": "Free shipping at $198"
+    },
+    {
+      "type": "url",
+      "id": "l2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "paragraph",
+      "content": "Facts under the button are the product's 'Quick facts' metafield (Label: value per line)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gear buy box"
+    }
+  ]
+}
+{% endschema %}

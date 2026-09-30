@@ -1,0 +1,74 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+
+{%- assign s = section.settings -%}{%- assign p_eyebrow = s.p_eyebrow | default: c.story.eyebrow -%}{%- assign p_head = s.p_head | default: c.story.head -%}{%- assign p_who = s.p_who | default: c.who -%}
+{%- if c.story or s.p_head != blank -%}
+<section class="lg-sec film" id="film" style="padding-top:0"><div class="lg-wrap">
+  <div class="lg-split">
+    <div>
+      <p class="lg-eyebrow">{{ p_eyebrow }}</p>
+      <h2 class="lg-d2">{{ p_head | replace: '<em>', '<span class="lg-foil-word">' | replace: '</em>', '</span>' }}</h2>
+      {%- if s.p_body != blank %}<p class="lg-body">{{ s.p_body }}</p>{%- else -%}{%- for p in c.story.body %}<p class="lg-body">{{ p }}</p>{% endfor -%}{%- endif -%}
+      {%- if p_who != blank -%}<div class="whofor"><span class="lg-label">{{ section.settings.who_label }}</span><p>{{ p_who }}</p></div>{%- endif -%}
+    </div>
+    {%- assign vid = section.settings.video -%}
+    {%- if vid == blank -%}{%- for m in product.media -%}{%- if vid == blank -%}{%- if m.media_type == 'video' or m.media_type == 'external_video' -%}{%- assign vid = m -%}{%- endif -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+    {%- assign ph = product.featured_image -%}
+    {%- if product.media.size > 1 -%}{%- assign ph = product.media[1].preview_image -%}{%- endif -%}
+    {%- if vid != blank -%}
+      <div class="film-v">{%- if vid.media_type == 'external_video' -%}{{ vid | external_video_tag }}{%- else -%}{{ vid | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '1400x' }}{%- endif -%}</div>
+    {%- elsif ph != blank -%}
+      {%- assign pha = ph.alt | default: product.title -%}
+      <figure class="film-ph" data-zoom="{{ ph | image_url: width: 2000 }}">{{ ph | image_url: width: 1400 | image_tag: loading: 'lazy', alt: pha, widths: '700,1000,1400', sizes: '(max-width: 900px) 100vw, 55vw' }}</figure>
+    {%- endif -%}
+  </div>
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: story + film",
+  "settings": [
+    {
+      "type": "text",
+      "id": "who_label",
+      "label": "Fit label",
+      "default": "Who it's for"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Film for every club",
+      "info": "Empty: the product's own video, else a product photo"
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "p_head",
+      "label": "Heading (a word in em tags turns gold)"
+    },
+    {
+      "type": "textarea",
+      "id": "p_body",
+      "label": "Text"
+    },
+    {
+      "type": "textarea",
+      "id": "p_who",
+      "label": "Who it's for"
+    }
+  ]
+}
+{% endschema %}

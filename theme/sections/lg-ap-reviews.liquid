@@ -1,0 +1,61 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  if s.pool != blank
+    for p in s.pool.products limit: 100
+      assign rc = p.metafields.reviews.rating_count.value | default: 0
+      assign n = n | plus: rc
+    endfor
+  else
+    assign n = product.metafields.reviews.rating_count.value | default: 0
+  endif
+-%}
+{%- if n >= min -%}
+<section class="lg-sec polo-rv" id="reviews" style="padding-top:0"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  <h2 class="lg-d2">{{ s.heading | replace: '[count]', n }}</h2>
+  {%- if s.line != blank %}<p class="lg-body">{{ s.line }}</p>{% endif -%}
+  <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget jdgm-outside-widget" data-id="{{ product.id }}">{{ product.metafields.judgeme.widget }}</div>
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pooled reviews",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "pool",
+      "label": "Pool: every product in this collection"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading ([count] = the pool's total)",
+      "default": "[count] reviews"
+    },
+    {
+      "type": "text",
+      "id": "line",
+      "label": "Line",
+      "default": "Reviews from every Lucky polo. Same fabric and fit, different print."
+    },
+    {
+      "type": "paragraph",
+      "content": "Shows only when the pool has at least the review minimum (Theme settings). Pool the products in Judge.me too (Product groups) so the widget lists every review."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pooled reviews"
+    }
+  ]
+}
+{% endschema %}

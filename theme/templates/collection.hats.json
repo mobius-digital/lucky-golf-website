@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "head": {
+      "type": "lg-ap-head",
+      "settings": {
+        "eyebrow": "Hats",
+        "heading": "Hats that go with every <em>polo.</em>",
+        "lede": "Five-panel snapbacks with a moisture-wicking sweatband and laser-cut vents. $29 each."
+      }
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky hats on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-two-hats-mallet.webp",
+            "pos": ""
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-black-hat-mallet.webp",
+            "pos": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "grid": {
+      "type": "lg-ap-grid",
+      "settings": {
+        "card": "hat",
+        "f_kind": false,
+        "f_stock": false,
+        "f_style": true,
+        "f_color": true,
+        "sort_price": false,
+        "style_lines": "Classic = Gold wordmark\nBetter To Be Lucky = The tagline, on a patch\nUpside Down = LUCKY, upside down\nCursive = Script front",
+        "empty": "Nothing in that combination."
+      },
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "pos": 7,
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "eyebrow": "Pairs well with",
+            "title": "A polo to match",
+            "url": "shopify://collections/polos",
+            "cta": "Shop polos"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ]
+    },
+    "faq": {
+      "type": "lg-ap-faq",
+      "settings": {
+        "no_top": true,
+        "eyebrow": "Before you pick",
+        "heading": "One size, set it where you like",
+        "body": "Every hat here is the same five-panel snapback underneath. The front is the only thing that changes.",
+        "cols": "narrow"
+      },
+      "blocks": {
+        "b1": {
+          "type": "q",
+          "settings": {
+            "q": "Will it fit me?",
+            "a": "<p>It's a snapback, so you set it where you want it and it stays there, whether you wear it high or pulled down.</p>"
+          }
+        },
+        "b2": {
+          "type": "q",
+          "settings": {
+            "q": "What's in it?",
+            "a": "<p>A moisture-wicking sweatband and laser-cut vents, which you'll notice in July when the group ahead is still looking for a ball.</p>"
+          }
+        },
+        "b3": {
+          "type": "q",
+          "settings": {
+            "q": "What if I don't like it?",
+            "a": "<p>Send it back within thirty days, unworn with the tags on. A hat that's been out on the course can't go back on the shelf, so decide before you play in it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "related": {
+      "type": "lg-ap-related",
+      "settings": {
+        "label": "Keep browsing"
+      },
+      "blocks": {
+        "b1": {
+          "type": "link",
+          "settings": {
+            "text": "Polos",
+            "url": "shopify://collections/polos"
+          }
+        },
+        "b2": {
+          "type": "link",
+          "settings": {
+            "text": "Gear",
+            "url": "shopify://collections/gear"
+          }
+        },
+        "b3": {
+          "type": "link",
+          "settings": {
+            "text": "Clubs",
+            "url": "shopify://collections/lucky-golf-clubs"
+          }
+        },
+        "b4": {
+          "type": "link",
+          "settings": {
+            "text": "All products",
+            "url": "shopify://collections/all-products"
+          }
+        },
+        "b5": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping at $198"
+          }
+        },
+        "b6": {
+          "type": "trust",
+          "settings": {
+            "icon": "rotate-ccw",
+            "text": "Thirty days to send it back"
+          }
+        },
+        "b7": {
+          "type": "trust",
+          "settings": {
+            "icon": "tag",
+            "text": "One size, $29"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "One for the bag, one for the car.",
+        "btn2_label": "Back to the hats ↑",
+        "btn2_url": "#grid"
+      }
+    }
+  },
+  "order": [
+    "head",
+    "photos",
+    "grid",
+    "faq",
+    "related",
+    "signoff"
+  ]
+}

@@ -1,0 +1,47 @@
+{%- liquid
+  assign s = section.settings
+  assign c5 = 0
+  assign c4 = 0
+  assign c3 = 0
+  assign c2 = 0
+  assign c1 = 0
+  for p in s.products
+    assign hist = p.metafields.judgeme.review_widget_data.value.histogram
+    for h in hist
+      case h.rating
+        when 5
+          assign c5 = c5 | plus: h.frequency
+        when 4
+          assign c4 = c4 | plus: h.frequency
+        when 3
+          assign c3 = c3 | plus: h.frequency
+        when 2
+          assign c2 = c2 | plus: h.frequency
+        when 1
+          assign c1 = c1 | plus: h.frequency
+      endcase
+    endfor
+  endfor
+  capture stars
+    render 'lg-stars'
+  endcapture
+-%}
+<section class="lg-band is-photo" id="{{ s.anchor | default: 'reviews' }}" style="{% if s.bg != blank %}--band-bg:url({{ s.bg | image_url: width: 2000 }});{% endif %}--band-pos:{{ s.bg_pos }}"><div class="lg-wrap">
+  <div class="band-hd">
+    <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>
+    {%- if s.body != blank %}<p class="lg-body">{{ s.body }}</p>{% endif -%}
+  </div>
+  <div id="prox-{{ section.id }}"></div>
+  <div class="qs">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    <figure class="lg-quote lg-band-tile" {{ block.shopify_attributes }}><span class="lg-stars" aria-label="{{ b.stars }} out of 5">{{ stars }}</span><blockquote>&ldquo;{{ b.quote }}&rdquo;</blockquote><figcaption><b>{{ b.name }}</b>{% if b.product != blank %} · {{ b.product }}{% endif %} · verified buyer</figcaption></figure>
+    {%- endfor -%}
+  </div>
+</div></section>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var el = document.getElementById('prox-{{ section.id }}');
+  /* the real Judge.me star counts, live from each product's review data */
+  if (el && window.Lucky && Lucky.proximity) Lucky.proximity(el, { counts: { 5: {{ c5 }}, 4: {{ c4 }}, 3: {{ c3 }}, 2: {{ c2 }}, 1: {{ c1 }} }, nums: false });
+});
+</script>

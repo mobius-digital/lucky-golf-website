@@ -1,0 +1,262 @@
+{%- liquid
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign n = 0
+  for p in s.count_products
+    assign rc = p.metafields.reviews.rating_count.value | default: 0
+    assign n = n | plus: rc
+  endfor
+  assign ey = s.eyebrow
+  if ey contains '[count]'
+    if n >= min
+      assign ey = ey | replace: '[count]', n
+    else
+      assign ey = s.eyebrow_low
+    endif
+  endif
+  assign fd = s.focus_x | append: '% ' | append: s.focus_y | append: '%'
+  assign fm = s.focus_mx | append: '% ' | append: s.focus_my | append: '%'
+-%}
+<section class="lg-hero{% if s.short %} is-short{% endif %}" style="--focus:{{ fd }};--focus-m:{{ fm }}">
+  {%- if s.image != blank -%}
+    {{ s.image | image_url: width: 2400 | image_tag: class: 'lg-hero-img', alt: s.image.alt, fetchpriority: 'high', loading: 'eager', widths: '750,1100,1500,2000,2400', sizes: '100vw' }}
+  {%- elsif request.design_mode -%}<div class="lg-hero-img lg-slot"><small>Hero photo</small>Pick one in the theme editor</div>{%- endif -%}
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    {%- if ey != blank %}<p class="lg-eyebrow">{{ ey }}</p>{% endif -%}
+    {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+    {%- if s.lede != blank %}<p class="lg-lede"{% if s.lede_w > 0 %} style="max-width:{{ s.lede_w }}ch"{% endif %}>{{ s.lede }}</p>{% endif -%}
+    {%- if section.blocks.size > 0 -%}<div class="lg-btn-row">
+      {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+      <a class="{% if b.gold %}lg-btn{% else %}lg-btn-line{% endif %}" href="{{ b.url }}"{% if b.new_tab %} target="_blank" rel="noopener"{% endif %} {{ block.shopify_attributes }}>{{ b.label }} {% if b.icon != blank %}{% render 'lg-icon', name: b.icon %}{% else %}<span aria-hidden="true">&rarr;</span>{% endif %}</a>
+      {%- endfor -%}</div>{%- endif -%}
+  </div></div>
+</section>
+
+{% schema %}
+{
+  "name": "Photo hero, buttons",
+  "class": "lgc-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "range",
+      "id": "focus_x",
+      "label": "Focus across (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_y",
+      "label": "Focus down (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_mx",
+      "label": "Focus across (phone)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "focus_my",
+      "label": "Focus down (phone)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "checkbox",
+      "id": "short",
+      "label": "Short hero",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow ([count] = live review count)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_low",
+      "label": "Eyebrow if the count is under the review minimum"
+    },
+    {
+      "type": "product_list",
+      "id": "count_products",
+      "label": "Products whose Judge.me counts make [count]",
+      "limit": 10
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line under it"
+    },
+    {
+      "type": "range",
+      "id": "lede_w",
+      "label": "Line width (0 = default)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 0,
+      "unit": "ch"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "gold",
+          "label": "Gold (one per screen)",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon instead of the arrow",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "circle-help",
+              "label": "circle-help"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "send",
+              "label": "send"
+            },
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hammer",
+              "label": "hammer"
+            },
+            {
+              "value": "anvil",
+              "label": "anvil"
+            },
+            {
+              "value": "search",
+              "label": "search"
+            },
+            {
+              "value": "shopping-bag",
+              "label": "shopping-bag"
+            },
+            {
+              "value": "map-pin",
+              "label": "map-pin"
+            },
+            {
+              "value": "instagram",
+              "label": "instagram"
+            },
+            {
+              "value": "tiktok",
+              "label": "tiktok"
+            },
+            {
+              "value": "youtube",
+              "label": "youtube"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in a new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Photo hero, buttons"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,165 @@
+{%- comment -%}
+  Community posts, shoppable (Takomo's Flowbox move, built in): a rail of posts; tap one and it
+  opens right there with the photo or video and every product in it, each with its own picker
+  and Add to bag. Posts are Content > Metaobjects > Community post.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{%- assign posts = shop.metaobjects.community_post.values -%}
+{%- assign min_posts = section.settings.min_posts | default: 3 -%}
+{%- if posts.size >= min_posts -%}
+<section class="lg-sec lg-wild-sec" id="{{ s.anchor | default: 'wild' }}"{% if s.no_top %} style="padding-top:0"{% endif %} data-posts>
+<div class="lg-wrap">
+  <div class="hd"><div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}{%- if s.sub != blank %}<p class="lg-body">{{ s.sub }}</p>{% endif -%}</div>
+    <div class="arrows" data-arrows="ugc-{{ section.id }}"><button type="button" aria-label="Previous">&lsaquo;</button><button type="button" aria-label="Next">&rsaquo;</button></div></div>
+  <div class="ugc" id="ugc-{{ section.id }}" data-loop>
+    {%- assign n = 0 -%}
+    {%- for pass in (1..2) -%}{%- for m in posts -%}
+      {%- assign is_vid = false %}{% if m.media.value.media_type == 'video' %}{% assign is_vid = true %}{% endif -%}
+      {%- if pass == 1 and is_vid == false %}{% continue %}{% endif %}{% if pass == 2 and is_vid %}{% continue %}{% endif -%}
+      {%- if n >= s.limit %}{% break %}{% endif -%}
+      {%- assign med = m.media.value -%}{%- assign ps = m.products.value -%}
+      {%- assign hv = '' -%}{%- if med.media_type == 'video' -%}{%- for src in med.sources -%}{%- if src.format == 'mp4' and src.height <= 720 -%}{%- assign hv = src.url -%}{%- endif -%}{%- endfor -%}{%- if hv == blank -%}{%- for src in med.sources -%}{%- if src.format == 'mp4' -%}{%- assign hv = src.url -%}{%- endif -%}{%- endfor -%}{%- endif -%}{%- endif -%}
+      <button type="button" class="wild" data-post="{{ n }}"{% if hv != blank %} data-hv="{{ hv }}"{% endif %} aria-label="Open the post by {{ m.handle_text.value | escape }}">
+        {%- if med.media_type == 'video' -%}{{ med.preview_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}<span class="wild-play" aria-hidden="true"></span>
+        {%- elsif med -%}{{ med | image_url: width: 600 | image_tag: loading: 'lazy', alt: m.caption.value }}{%- endif -%}
+        <span class="who">{{ m.handle_text.value }}</span>
+        {%- if ps.count > 0 %}<span class="tag">{% for x in ps limit: 1 %}{{ x.title }}{% endfor %}{% if ps.count > 1 %} +{{ ps.count | minus: 1 }}{% endif %}</span>{% endif -%}
+      </button>
+      {%- assign n = n | plus: 1 -%}
+    {%- endfor -%}{%- endfor -%}
+  </div>
+  <div class="rail-foot">{%- if s.btn_label != blank %}<a class="lg-btn-line lg-btn-sm" href="{{ s.btn_url }}">{{ s.btn_label }} <span aria-hidden="true">&rarr;</span></a>{% endif -%}
+    {%- if settings.social_instagram_link != blank and s.ig %} <a class="lg-btn-line lg-btn-sm" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">Follow us on Instagram {% render 'lg-icon', name: 'instagram' %}</a>{% endif -%}</div>
+</div>
+
+{%- comment -%} one template per post; the pop-up copies the one you tapped {%- endcomment -%}
+{%- assign n = 0 -%}
+{%- for pass in (1..2) -%}{%- for m in posts -%}
+  {%- assign is_vid = false %}{% if m.media.value.media_type == 'video' %}{% assign is_vid = true %}{% endif -%}
+  {%- if pass == 1 and is_vid == false %}{% continue %}{% endif %}{% if pass == 2 and is_vid %}{% continue %}{% endif -%}
+  {%- if n >= s.limit %}{% break %}{% endif -%}
+  {%- assign med = m.media.value -%}{%- assign ps = m.products.value -%}
+  <template data-post-tpl="{{ n }}">
+    <div class="pm-media">
+      {%- if med.media_type == 'video' -%}{{ med | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+      {%- elsif med -%}{{ med | image_url: width: 1100 | image_tag: alt: m.caption.value, widths: '600,900,1100', sizes: '(max-width: 749px) 100vw, 55vw' }}{%- endif -%}
+    </div>
+    <div class="pm-info">
+      <p class="pm-who">{%- if m.link.value != blank -%}<a href="{{ m.link.value }}" target="_blank" rel="noopener">{{ m.handle_text.value }}</a>{%- else -%}{{ m.handle_text.value }}{%- endif -%}</p>
+      {%- if m.caption.value != blank %}<p class="pm-cap">{{ m.caption.value }}</p>{% endif -%}
+      {%- if ps.count > 0 -%}
+        <p class="lg-label pm-in">In this post</p>
+        <div class="pm-prods">
+        {%- for p in ps -%}
+          {%- assign pic = p.metafields.custom.cutout.value | default: p.featured_image -%}
+          {%- assign v = p.selected_or_first_available_variant -%}
+          <form class="pm-prod" data-lg-add action="{{ routes.cart_add_url }}" method="post">
+            <a class="pm-ph" href="{{ p.url }}">{%- if pic -%}{{ pic | image_url: width: 200 | image_tag: alt: p.title, loading: 'lazy' }}{%- endif -%}</a>
+            <div class="pm-bd">
+              <a class="pm-nm" href="{{ p.url }}">{{ p.title }}</a>
+              <span class="pm-pr">{{ v.price | money_without_trailing_zeros }}</span>
+              {%- if p.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ v.id }}">
+              {%- else -%}
+                <label class="sr" for="pm-v-{{ forloop.parentloop.index }}-{{ p.id }}">{{ p.options | join: ' / ' }}</label>
+                <select class="lg-input pm-sel" id="pm-v-{{ forloop.parentloop.index }}-{{ p.id }}" name="id">
+                  {%- for x in p.variants -%}<option value="{{ x.id }}"{% unless x.available %} disabled{% endunless %}{% if x.id == v.id %} selected{% endif %}>{{ x.title }}{% unless x.available %} (sold out){% endunless %}</option>{%- endfor -%}
+                </select>
+              {%- endif -%}
+            </div>
+            {%- if p.available -%}<button class="lg-btn-line lg-btn-sm pm-add" type="submit">Add to bag</button>{%- else -%}<a class="lg-btn-line lg-btn-sm pm-add" href="{{ p.url }}">Sold out</a>{%- endif -%}
+          </form>
+        {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </template>
+  {%- assign n = n | plus: 1 -%}
+{%- endfor -%}{%- endfor -%}
+
+<div class="md md-post" id="md-post-{{ section.id }}" hidden role="dialog" aria-modal="true" aria-label="Community post">
+  <div class="md-bd" data-md-close></div>
+  <div class="md-panel pm">
+    <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+    <div class="pm-body"></div>
+    <div class="pm-nav"><button type="button" data-post-step="-1" aria-label="Previous post">&lsaquo;</button><button type="button" data-post-step="1" aria-label="Next post">&rsaquo;</button></div>
+  </div>
+</div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Community posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "wild"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under it"
+    },
+    {
+      "type": "number",
+      "id": "limit",
+      "label": "How many posts",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "ig",
+      "label": "Show the Instagram button",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "Posts come from Content > Metaobjects > Community post: a photo or video, the @handle, a caption and the products in it."
+    },
+    {
+      "type": "range",
+      "id": "min_posts",
+      "label": "Hide until there are at least this many posts",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community posts"
+    }
+  ]
+}
+{% endschema %}

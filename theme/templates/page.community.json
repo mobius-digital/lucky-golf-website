@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero-plus",
+      "settings": {
+        "image": "shopify://shop_images/lg-walk-off-green.webp",
+        "focus_x": 50,
+        "focus_y": 18,
+        "focus_mx": 50,
+        "focus_my": 20,
+        "short": true,
+        "eyebrow": "Community",
+        "heading": "Straight off the camera <em>roll</em>",
+        "lede_w": 56,
+        "lede": "Real rounds and real bags, from golfers who couldn't keep the shot to themselves. Tag @luckygolfofficial and yours could be next."
+      },
+      "blocks": {
+        "b1": {
+          "type": "button",
+          "settings": {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/luckygolfofficial/",
+            "icon": "instagram",
+            "new_tab": true
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "TikTok",
+            "url": "https://www.tiktok.com/@luckygolfofficial",
+            "icon": "tiktok",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "wall": {
+      "type": "lg-wall",
+      "settings": {
+        "show_label": "Show",
+        "all_label": "Everything",
+        "clubs_label": "Clubs",
+        "apparel_label": "Apparel",
+        "gear_label": "Gear",
+        "count_word": "posts",
+        "page": 8,
+        "more_label": "Show more",
+        "aside": "Nothing goes up here until the golfer in it says yes.",
+        "in_label": "What's in the shot"
+      }
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "Posting anyway? Get paid for <em>it</em>",
+        "lede": "Ambassadors see their best clips run as ads from their own handle and earn a share of what they bring in. There's no follower minimum.",
+        "btn2_label": "See the ambassador program →",
+        "btn2_url": "shopify://pages/become-apart-of-the-team"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "wall",
+    "signoff"
+  ]
+}

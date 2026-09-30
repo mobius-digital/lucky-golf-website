@@ -1,0 +1,53 @@
+{%- comment -%}
+  The footer: newsletter (Klaviyo), the wordmark and brand line, link columns
+  (each a Shopify menu), socials from theme settings.
+{%- endcomment -%}
+<footer class="lg-ftr"><div class="lg-wrap">
+  {%- if section.settings.news_show -%}
+  <div class="ftr-news">
+    <div><span class="lg-label">{{ section.settings.news_label }}</span><p>{{ section.settings.news_line }}</p></div>
+    <form class="lg-form" data-news data-source="Footer" novalidate><label class="sr" for="news-email">Email</label><input class="lg-input" id="news-email" name="email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">{{ section.settings.news_button }}</button></form>
+  </div>
+  {%- endif -%}
+  <div class="lg-ftr-in">
+    <div class="ftr-brand"><a class="lg-logo" href="{{ routes.root_url }}" aria-label="Lucky Golf home">{% render 'lg-logo' %}</a><p>{{ section.settings.brand_line }}</p></div>
+    {%- for block in section.blocks -%}
+      {%- assign menu = block.settings.menu -%}
+      <div {{ block.shopify_attributes }}><h3>{{ block.settings.title | default: menu.title }}</h3><ul>
+        {%- for l in menu.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}
+      </ul></div>
+    {%- endfor -%}
+  </div>
+  <div class="lg-ftr-base"><span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span class="lg-ftr-soc">
+      {%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Lucky Golf on Instagram">{% render 'lg-icon', name: 'instagram' %}</a>{%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%}<a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" aria-label="Lucky Golf on TikTok">{% render 'lg-icon', name: 'tiktok' %}</a>{%- endif -%}
+      {%- if settings.social_youtube_link != blank -%}<a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener" aria-label="Lucky Golf on YouTube">{% render 'lg-icon', name: 'youtube' %}</a>{%- endif -%}
+    </span>
+    <span>{{ section.settings.base_line }}</span></div>
+</div></footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "checkbox", "id": "news_show", "label": "Show the email signup", "default": true },
+    { "type": "text", "id": "news_label", "label": "Signup label", "default": "First look" },
+    { "type": "text", "id": "news_line", "label": "Signup line", "default": "New lofts, restocks and the odd bad idea, straight to your inbox." },
+    { "type": "text", "id": "news_button", "label": "Signup button", "default": "Sign me up" },
+    { "type": "textarea", "id": "brand_line", "label": "Line under the logo", "default": "Clubs that play like the big names and look like nothing else in the bag." },
+    { "type": "text", "id": "base_line", "label": "Bottom line", "default": "It's better to be lucky." },
+    { "type": "paragraph", "content": "Social links come from Theme settings > Social media." }
+  ],
+  "blocks": [
+    {
+      "type": "column", "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading (defaults to the menu's name)" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,275 @@
+{%- assign s = section.settings -%}
+<div class="lgc-cart">
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol><li><a href="{{ routes.root_url }}">Home</a></li><li><span aria-current="page">{{ s.crumb }}</span></li></ol></nav>
+
+<section class="lg-sec" style="padding-top:clamp(16px,2vw,24px)"><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h1', cls: 'lg-d1' %}
+
+  <div class="cart" style="margin-top:clamp(24px,3vw,40px)">
+    <div>
+      <div id="lines" aria-live="polite"></div>
+      <div class="ups ups-page" id="ups" hidden></div>
+      <div class="empty" id="empty"{% if cart.item_count > 0 %} hidden{% endif %}>
+        {% render 'lg-mags' %}
+        <p class="lg-lede" style="margin-bottom:20px">{{ s.empty_text }}</p>
+        {%- if s.empty_btn != blank %}<a class="lg-btn" href="{{ s.empty_url }}">{{ s.empty_btn }}</a>{% endif -%}
+        {%- if s.empty_btn2 != blank %}<a class="lg-btn-line" href="{{ s.empty_url2 }}" style="margin-left:10px">{{ s.empty_btn2 }}</a>{% endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+      <div class="trust">
+        {%- for block in section.blocks -%}<div {{ block.shopify_attributes }}>{% render 'lg-icon', name: block.settings.icon %}<div><b>{{ block.settings.title }}</b><p>{{ block.settings.text }}</p></div></div>{%- endfor -%}
+      </div>
+      {%- endif -%}
+    </div>
+
+    <aside class="sum" aria-label="Order summary">
+      {%- if settings.lg_promo_on and settings.lg_promo_text != blank -%}<p class="cd-promo is-{{ settings.lg_promo_style | default: 'green' }}">{{ settings.lg_promo_text }}</p>{%- endif -%}
+      <div class="ship"><p id="say"></p><div class="lg-hole" id="hole"></div></div>
+      <div class="row"><span>Subtotal</span><span id="sub">{{ cart.total_price | money_without_trailing_zeros }}</span></div>
+      <div class="row save" id="save" hidden>{%- assign save_lbl = settings.lg_save_msg | default: "You're saving" | remove: '{amount}' | strip | remove: ':' -%}<span id="save-lbl">{{ save_lbl }}</span><span id="save-amt"></span></div>
+      <div class="row"><span>Shipping</span><span id="shipline">Calculated at checkout</span></div>
+      <div class="row big"><span>Total</span><span id="tot">{{ cart.total_price | money_without_trailing_zeros }}</span></div>
+      <form action="{{ routes.cart_url }}" method="post" id="cart-go" novalidate>
+      {%- if s.show_note -%}
+      <details class="cnote"{% if cart.note != blank %} open{% endif %}><summary>{{ s.note_label }}</summary>
+        <label class="sr" for="cart-note">{{ s.note_label }}</label>
+        <textarea id="cart-note" name="note" maxlength="500" placeholder="{{ s.note_placeholder | escape }}">{{ cart.note }}</textarea></details>
+      {%- endif -%}
+      <button class="lg-btn" id="go" type="submit" name="checkout" aria-disabled="{% if cart.item_count == 0 %}true{% else %}false{% endif %}">{{ s.checkout_label }}</button>
+      </form>
+      <p class="cd-extra" id="c-extra" hidden></p>
+      {%- if s.note != blank %}<p class="note">{{ s.note }}</p>{% endif -%}
+    </aside>
+  </div>
+</div></section>
+</div>
+
+<script type="application/json" id="lgc-cart-data">{{ cart | json }}</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var FREE = +((window.LG || {}).freeShipping) || 198, hole = null, COVER = 'free-returns-package-protection';
+  var money = function(c){ var n = c / 100; return '$' + (c % 100 ? n.toFixed(2) : Math.round(n)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var CUT = (window.LG || {}).cutouts || {};
+  var pic = function(u, h){ if (h && CUT[h]) return CUT[h]; return u ? u + (u.indexOf('?') > -1 ? '&' : '?') + 'width=260' : ''; };
+  function paint(c){
+    var B = window.LuckyBag, wasOf = function(l){ return B && B.was ? B.was(l) : l.original_line_price; };
+    var lines = c.items || [], goods = lines.filter(function(l){ return l.handle !== COVER; });
+    var t = goods.reduce(function(a, l){ return a + l.final_line_price; }, 0);
+    $('#empty').hidden = !!goods.length;
+    $('#lines').innerHTML = !goods.length ? '' : goods.concat(lines.filter(function(l){ return l.handle === COVER; })).map(function(l){
+      if (l.handle === COVER) return '<div class="ln is-cover"><span><b>' + esc(l.product_title) + '</b><span class="cv">Free returns and lost-package cover</span></span>'
+        + '<span class="pr">' + money(l.final_line_price) + '<button type="button" class="rm" data-rm="' + esc(l.key) + '">Remove</button></span></div>';
+      var opts = (l.options_with_values || []).filter(function(o){ return o.value !== 'Default Title'; }).map(function(o){ return o.value; });
+      var props = l.properties ? Object.keys(l.properties).filter(function(k){ return k.charAt(0) !== '_' && l.properties[k]; }).map(function(k){ return l.properties[k]; }) : [];
+      var hud = opts.concat(props);
+      if (l.properties && l.properties._lucky_gift) return '<div class="ln is-gift"><a class="ph" href="' + esc(l.url) + '">' + (l.image ? '<img src="' + esc(pic(l.image, l.handle)) + '" alt="">' : '') + '</a>'
+        + '<span><a class="nm" href="' + esc(l.url) + '"><b>' + esc(l.product_title) + '</b></a><span class="lg-hud"><span class="gift-tag">Free gift</span>' + hud.map(function(h){ return '<span>' + esc(h) + '</span>'; }).join('') + '</span></span>'
+        + '<span class="pr">' + (l.final_line_price ? money(l.final_line_price) : 'Free') + (l.original_line_price > l.final_line_price ? '<s>' + money(l.original_line_price) + '</s>' : '') + '</span></div>';
+      return '<div class="ln"><a class="ph" href="' + esc(l.url) + '">' + (l.image ? '<img src="' + esc(pic(l.image, l.handle)) + '" alt="">' : '') + '</a>'
+        + '<span><a class="nm" href="' + esc(l.url) + '"><b>' + esc(l.product_title) + '</b></a>'
+        + (hud.length ? '<span class="lg-hud">' + hud.map(function(h){ return '<span>' + esc(h) + '</span>'; }).join('') + '</span>' : '')
+        + '<span class="cd-qty"><button type="button" data-qty="' + esc(l.key) + '" data-to="' + (l.quantity - 1) + '" aria-label="One fewer">&minus;</button><span>' + l.quantity + '</span><button type="button" data-qty="' + esc(l.key) + '" data-to="' + (l.quantity + 1) + '" aria-label="One more">+</button></span>'
+        + ((B && B.lowLine && B.lowLine(l.variant_id)) ? '<span class="low">' + esc(B.lowLine(l.variant_id)) + '</span>' : '')
+        + ((B && B.dealTags && B.dealTags(l).length) ? '<span class="deal">' + B.dealTags(l).map(esc).join(' · ') + '</span>' : '')
+        + '</span><span class="pr">' + money(l.final_line_price) + (wasOf(l) > l.final_line_price ? '<s>' + money(wasOf(l)) + '</s>' : '')
+        + '<button type="button" class="rm" data-rm="' + esc(l.key) + '">Remove</button></span></div>';
+    }).join('');
+    var save = B && B.savings ? B.savings(c) : 0; $('#save').hidden = !save || (window.LG && LG.bag && LG.bag.saveOn === false); $('#save-amt').textContent = save ? '-' + money(save) : '';
+    var rw = B && B.rewards ? B.rewards(c) : { t: t, n: goods.length, freeShip: t >= FREE * 100, stops: [{ at: FREE, label: 'Free shipping ' + money(FREE * 100) }],
+      say: t >= FREE * 100 ? "<b>Shipping's on us.</b>" : '<b>' + money(FREE * 100 - t) + "</b> more and shipping's on us." };
+    $('#say').innerHTML = !goods.length ? '' : rw.say;
+    $('#shipline').textContent = goods.length && rw.freeShip ? 'Free' : 'Calculated at checkout';
+    if (!hole && window.Lucky && Lucky.hole) hole = Lucky.hole($('#hole'), { stops: rw.stops });
+    if (hole) hole.set(rw.t / 100);
+    if (B && B.flagLabels) B.flagLabels($('#hole'), rw);
+    if (B && B.upsell) B.upsell($('#ups'), c);
+    if (B && B.extras) B.extras($('#c-extra'), c);
+    $('#sub').textContent = money(c.total_price || 0);
+    $('#tot').textContent = money(c.total_price || 0);
+    $('#go').setAttribute('aria-disabled', String(!goods.length));
+  }
+  try { paint(JSON.parse($('#lgc-cart-data').textContent)); } catch (e) {}
+  if (window.LuckyBag) LuckyBag.onChange(function(c){ if (c && c.token) paint(c); });
+  /* checkout is Shopify's own form (POST /cart, name="checkout"), so apps that hook [name="checkout"] keep working */
+  document.addEventListener('submit', function(e){
+    if (e.target.id !== 'cart-go' || $('#go').getAttribute('aria-disabled') !== 'true') return;
+    e.preventDefault(); var el = $('#empty'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb",
+      "default": "Your bag"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Your bag"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word.",
+      "default": "What you're taking to the <em>course</em>"
+    },
+    {
+      "type": "header",
+      "content": "Empty bag"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Line",
+      "default": "Nothing in here yet."
+    },
+    {
+      "type": "text",
+      "id": "empty_btn",
+      "label": "Gold button",
+      "default": "See the clubs"
+    },
+    {
+      "type": "url",
+      "id": "empty_url",
+      "label": "Gold button link"
+    },
+    {
+      "type": "text",
+      "id": "empty_btn2",
+      "label": "Second button",
+      "default": "Shop the polos"
+    },
+    {
+      "type": "url",
+      "id": "empty_url2",
+      "label": "Second button link"
+    },
+    {
+      "type": "header",
+      "content": "Summary"
+    },
+    {
+      "type": "text",
+      "id": "checkout_label",
+      "label": "Checkout button",
+      "default": "Check out"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Line under the button",
+      "default": "Tax is added at checkout, and nothing's charged until you place the order."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_note",
+      "label": "Let them leave an order note",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "note_label",
+      "label": "Order note label",
+      "default": "Add a note to your order"
+    },
+    {
+      "type": "text",
+      "id": "note_placeholder",
+      "label": "Order note placeholder",
+      "default": "Anything we should know?"
+    },
+    {
+      "type": "paragraph",
+      "content": "The free-shipping bar reads the threshold in Theme settings. The Loop coverage line shows as a small line, never a card."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "truck"
+            },
+            {
+              "value": "rotate-ccw",
+              "label": "rotate-ccw"
+            },
+            {
+              "value": "shield-check",
+              "label": "shield-check"
+            },
+            {
+              "value": "package",
+              "label": "package"
+            },
+            {
+              "value": "credit-card",
+              "label": "credit-card"
+            },
+            {
+              "value": "star",
+              "label": "star"
+            },
+            {
+              "value": "badge-check",
+              "label": "badge-check"
+            },
+            {
+              "value": "tag",
+              "label": "tag"
+            },
+            {
+              "value": "hand-coins",
+              "label": "hand-coins"
+            },
+            {
+              "value": "message-circle",
+              "label": "message-circle"
+            },
+            {
+              "value": "mail",
+              "label": "mail"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Line"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Cart page"
+    }
+  ]
+}
+{% endschema %}

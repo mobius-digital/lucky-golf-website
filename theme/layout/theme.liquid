@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+{% render 'fudge-head-start' %}
+{% render 'replo-head' %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0B2E1F">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {{- page_title -}}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {%- if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif %}
+  {%- if template.name == 'page' and page.handle == 'home' %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+  {% render 'meta-tags' %}
+
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+  {{ 'lucky.css' | asset_url | stylesheet_tag }}
+  {{ 'lucky-site.css' | asset_url | stylesheet_tag }}
+  <style>:root{--lg-contour-day:url({{ 'lucky-contour-day.webp' | asset_url }});--lg-contour-tw:url({{ 'lucky-contour-tw.webp' | asset_url }})}</style>
+  {%- comment -%} lucky brand overrides {%- endcomment -%}
+{%- capture lg_brand -%}
+{%- assign v = settings.lg_c_page | downcase -%}{%- if settings.lg_c_page != blank and v != '#ffffff' -%}--lg-page:{{ settings.lg_c_page }};{%- endif -%}
+{%- assign v = settings.lg_c_tile | downcase -%}{%- if settings.lg_c_tile != blank and v != '#f4f2ee' -%}--lg-tile:{{ settings.lg_c_tile }};{%- endif -%}
+{%- assign v = settings.lg_c_ink | downcase -%}{%- if settings.lg_c_ink != blank and v != '#17140f' -%}--lg-ink:{{ settings.lg_c_ink }};{%- endif -%}
+{%- assign v = settings.lg_c_dark | downcase -%}{%- if settings.lg_c_dark != blank and v != '#0b2e1f' -%}--lg-dark:{{ settings.lg_c_dark }};{%- endif -%}
+{%- assign v = settings.lg_c_night | downcase -%}{%- if settings.lg_c_night != blank and v != '#06110b' -%}--lg-night:{{ settings.lg_c_night }};{%- endif -%}
+{%- assign v = settings.lg_c_on_dark | downcase -%}{%- if settings.lg_c_on_dark != blank and v != '#f4f3f0' -%}--lg-on-dark:{{ settings.lg_c_on_dark }};{%- endif -%}
+{%- assign v = settings.lg_c_gold | downcase -%}{%- if settings.lg_c_gold != blank and v != '#c29a2b' -%}--lg-gold:{{ settings.lg_c_gold }};{%- endif -%}
+{%- assign v = settings.lg_c_gold_hi | downcase -%}{%- if settings.lg_c_gold_hi != blank and v != '#edd27c' -%}--lg-gold-hi:{{ settings.lg_c_gold_hi }};{%- endif -%}
+{%- assign v = settings.lg_c_gold_text | downcase -%}{%- if settings.lg_c_gold_text != blank and v != '#8a6a1c' -%}--lg-gold-text:{{ settings.lg_c_gold_text }};{%- endif -%}
+{%- assign v = settings.lg_c_gold_display | downcase -%}{%- if settings.lg_c_gold_display != blank and v != '#a8821c' -%}--lg-gold-display:{{ settings.lg_c_gold_display }};{%- endif -%}
+{%- assign v = settings.lg_c_star | downcase -%}{%- if settings.lg_c_star != blank and v != '#9a7619' -%}--lg-star:{{ settings.lg_c_star }};{%- endif -%}
+{%- assign v = settings.lg_c_clover | downcase -%}{%- if settings.lg_c_clover != blank and v != '#0b5130' -%}--lg-clover:{{ settings.lg_c_clover }};{%- endif -%}
+{%- assign v = settings.lg_c_ok | downcase -%}{%- if settings.lg_c_ok != blank and v != '#008340' -%}--lg-ok:{{ settings.lg_c_ok }};{%- endif -%}
+{%- assign v = settings.lg_c_ink | downcase -%}{%- if settings.lg_c_ink != blank and v != '#17140f' -%}--lg-ink-70:{{ settings.lg_c_ink | color_modify: 'alpha', 0.70 }};--lg-ink-64:{{ settings.lg_c_ink | color_modify: 'alpha', 0.64 }};--lg-ink-38:{{ settings.lg_c_ink | color_modify: 'alpha', 0.38 }};--lg-rule:{{ settings.lg_c_ink | color_modify: 'alpha', 0.14 }};--lg-rule-08:{{ settings.lg_c_ink | color_modify: 'alpha', 0.08 }};{%- endif -%}
+{%- assign g1 = settings.lg_c_gold | downcase -%}{%- assign g2 = settings.lg_c_gold_hi | downcase -%}{%- if g1 != '#c29a2b' or g2 != '#edd27c' -%}--lg-foil:linear-gradient(96deg,{{ settings.lg_c_gold }} 0%,{{ settings.lg_c_gold_hi }} 50%,{{ settings.lg_c_gold }} 100%);--lg-foil-text:linear-gradient(178deg,{{ settings.lg_c_gold }} 0%,{{ settings.lg_c_gold_hi }} 46%,{{ settings.lg_c_gold_hi }} 56%,{{ settings.lg_c_gold }} 100%);{%- endif -%}
+{%- assign f = settings.lg_font | strip -%}{%- if f != blank and f != 'Archivo' -%}--lg-font:'{{ f }}';{%- endif -%}
+{%- endcapture -%}
+{%- if lg_brand != blank -%}<style>:root{ {{- lg_brand -}} }</style>{%- endif -%}
+{%- assign f = settings.lg_font | strip -%}{%- if f != blank and f != 'Archivo' -%}<link href="https://fonts.googleapis.com/css2?family={{ f | replace: ' ', '+' }}:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">{%- endif -%}
+
+
+  {{ content_for_header }}
+
+  {% render 'lg-jsonld' %}
+</head>
+<body class="lg lg-t-{{ template.name }}{% if template.suffix %} lg-t-{{ template.suffix | handle }}{% assign sfx = template.suffix | handle %}{% if sfx contains 'club-' %} lg-t-club{% endif %}{% endif %}">
+  <a class="lg-skip sr" href="#main">Skip to content</a>
+  {% sections 'header-group' %}
+
+  <main id="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+  {% render 'lg-cart-drawer' %}
+
+  <script>
+    window.Lucky = window.Lucky || {};
+    Lucky.mags = { ink: {{ 'lg-mags-ink.webp' | file_url | json }}, light: {{ 'lg-mags-light.webp' | file_url | json }} };
+    window.LG = {
+      routes: { root: {{ routes.root_url | json }}, cart: {{ routes.cart_url | json }}, add: {{ routes.cart_add_url | json }}, change: {{ routes.cart_change_url | json }}, update: {{ routes.cart_update_url | json }}, collections: {{ routes.all_products_collection_url | json }} },
+      freeShipping: {{ settings.lg_free_shipping | default: 198 | json }},
+      bag: {
+        tiers: [{%- for i in (1..3) -%}{%- assign k = 'lg_t' | append: i -%}{%- assign k_on = k | append: '_on' -%}{%- assign k_at = k | append: '_at' -%}{%- assign k_lb = k | append: '_label' -%}{%- assign k_ms = k | append: '_msg' -%}{%- assign k_gf = k | append: '_gift' -%}{%- assign g = settings[k_gf] -%}
+          { "on": {{ settings[k_on] | json }}, "at": {{ settings[k_at] | default: 0 | json }}, "label": {{ settings[k_lb] | json }}, "msg": {{ settings[k_ms] | json }},
+            "gift": {% if g != blank and g.selected_or_first_available_variant.available %}{{ g.selected_or_first_available_variant.id }}{% else %}null{% endif %}, "giftHandle": {{ g.handle | json }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}],
+        shipMsg: {{ settings.lg_ship_msg | default: "more and shipping's on us." | json }},
+        allMsg: {{ settings.lg_all_msg | default: "Shipping's on us." | json }},
+        ups: { on: {{ settings.lg_ups_on | json }}, title: {{ settings.lg_ups_title | json }}, collection: {{ settings.lg_ups_collection.handle | default: 'gear' | json }}, max: {{ settings.lg_ups_max | default: 3 | json }} },
+        ship: {{ settings.lg_bag_ship | json }}, trust: {{ settings.lg_bag_trust | json }}, payin4: {{ settings.lg_bag_payin4 | json }},
+        saveOn: {{ settings.lg_save_on | json }}, saveMsg: {{ settings.lg_save_msg | json }},
+        emptyTitle: {{ settings.lg_empty_title | json }}, emptyCol: {{ settings.lg_empty_collection.handle | default: 'lucky-golf-clubs' | json }}
+      },
+      stock: {% render 'lg-stock-map' %},
+      stockMsg: {{ settings.lg_stock_msg | json }},
+      cutouts: { {%- for p in collections.all.products limit: 80 -%}{%- assign cu = p.metafields.custom.cutout.value -%}{%- if cu != blank -%}{{ p.handle | json }}:{{ cu | image_url: width: 240 | json }},{%- endif -%}{%- endfor -%}"_": "" },
+      coverage: {{ settings.lg_coverage_product.selected_or_first_available_variant.id | default: 'null' }},
+      money: {{ shop.money_format | json }},
+      klaviyo: {{ settings.lg_klaviyo_public_key | json }},
+      klaviyoList: {{ settings.lg_klaviyo_list | json }},
+      magsBag: { ink: {{ 'lg-mags-bag-ink.webp' | file_url | json }}, light: {{ 'lg-mags-bag-light.webp' | file_url | json }} }
+    };
+  </script>
+  <script src="{{ 'lucky.js' | asset_url }}" defer></script>
+  <script src="{{ 'lucky-site.js' | asset_url }}" defer></script>
+  {% render 'lg-preview-links' %}
+</body>
+</html>

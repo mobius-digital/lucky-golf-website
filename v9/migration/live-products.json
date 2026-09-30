@@ -1,0 +1,285 @@
+{
+ "_read": "2026-09-27 via the Admin connector (descriptions abbreviated where long)",
+ "products": [
+  {
+   "id": "gid://shopify/Product/9497048383765",
+   "handle": "gold-dust-classic-polo",
+   "title": "Gold Dust Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503750881557",
+   "handle": "shadow-classic-polo",
+   "title": "Shadow Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503751536917",
+   "handle": "signature-black-classic-polo",
+   "title": "Signature Black Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503752585493",
+   "handle": "contour-classic-polo",
+   "title": "Contour Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503752782101",
+   "handle": "marble-classic-polo",
+   "title": "Marble Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503753240853",
+   "handle": "gold-carnation-classic-polo",
+   "title": "Gold Carnation Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503753830677",
+   "handle": "frost-classic-polo",
+   "title": "Frost Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503754879253",
+   "handle": "cruiser-classic-polo",
+   "title": "Cruiser Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503755174165",
+   "handle": "azalea-classic-polo",
+   "title": "Azalea Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9529906692373",
+   "handle": "nightshade-classic-polo",
+   "title": "Nightshade Classic Polo",
+   "description": "This is the polo that you've been missing. Classic collar, athletic fit, and the best logo in golf (we're biased). Looks as good as it feels. As it should.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503754027285",
+   "handle": "swirl-blade-polo",
+   "title": "Swirl Blade Polo",
+   "description": "This is the polo that doesn't follow the rules. Blade collar, athletic fit, and enough quiet confidence to skip the fold entirely. Looks sharp. Feels sharper. (We'll let you decide which matters more.)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503754125589",
+   "handle": "spot-blade-polo",
+   "title": "Spot Blade Polo",
+   "description": "This is the polo that doesn't follow the rules. Blade collar, athletic fit, and enough quiet confidence to skip the fold entirely. Looks sharp. Feels sharper. (We'll let you decide which matters more.)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9503754289429",
+   "handle": "blackout-blade-polo",
+   "title": "Blackout Blade Polo",
+   "description": "This is the polo that doesn't follow the rules. Blade collar, athletic fit, and enough quiet confidence to skip the fold entirely. Looks sharp. Feels sharper. (We'll let you decide which matters more.)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574702907669",
+   "handle": "white-gold-classic-hat",
+   "title": "White & Gold Classic Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804226325",
+   "handle": "white-its-better-to-be-lucky-patch-hat",
+   "title": "White It's Better To Be Lucky Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804554005",
+   "handle": "cream-upside-down-hat",
+   "title": "Cream Upside Down Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804586773",
+   "handle": "black-its-better-to-be-lucky-patch-hat",
+   "title": "Black It's Better To Be Lucky Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804652309",
+   "handle": "tan-cursive-hat",
+   "title": "Tan Cursive Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804717845",
+   "handle": "black-gold-classic-lucky-hat",
+   "title": "Black & Gold Classic Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804848917",
+   "handle": "white-black-upside-down-hat",
+   "title": "White & Black Upside Down Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804881685",
+   "handle": "white-upside-down-hat",
+   "title": "White Upside Down Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9574804914453",
+   "handle": "white-cursive-hat",
+   "title": "White Cursive Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9577816883477",
+   "handle": "baby-blue-cursive-hat",
+   "title": "Baby Blue Monochrome Cursive Hat",
+   "description": "Light, breathable, and clean enough to wear off the course. A hat that stays out of your way.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6545729093703",
+   "handle": "lucky-putter-head-cover-blade",
+   "title": "Lucky Blade Cover",
+   "description": "Spice up your boring blade cover with a Lucky Putter Cover that shows who you really. ...",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/8107856724245",
+   "handle": "driver-head-cover",
+   "title": "Driver Head Cover",
+   "description": "Add some Lucky flare to your bag and show your driver some love. Our driver cover is hand stitched leather on the outside and soft velvety lining on the inside. Its Time to Shine.",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9153692795157",
+   "handle": "lucky-putter-head-cover-mallet-large",
+   "title": "Lucky Mallet Cover",
+   "description": "The small mallet cover is made to fit our Gold Lucky Mallet Putter",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/4956017885255",
+   "handle": "lucky-clover-tour-glove",
+   "title": "Lucky Tour Glove",
+   "description": "With an embroidered logo on the wrist strap and made with the finest cabretta leather around, the Lucky Clover Tour Glove is silky sweet on your sweaty palms. ...",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6592652410951",
+   "handle": "copy-of-lucky-golf-clover-grips-green",
+   "title": "Lucky Golf Tour Performance Clover Grips (Green)",
+   "description": "Lucky Golf Clover Grips are now available in variable sizing including: ... (+ size table: weight, cap, core)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6650114277447",
+   "handle": "lucky-golf-performance-x2-clover-grips-black",
+   "title": "Lucky Golf Tour Performance Clover Grips (Black)",
+   "description": "Lucky Golf Clover Grips are now available in variable sizing including: ... (+ size table: weight, cap, core)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6650115489863",
+   "handle": "copy-of-lucky-golf-performance-x2-clover-grips-white",
+   "title": "Lucky Golf Tour Performance Clover Grips (White)",
+   "description": "Lucky Golf Clover Grips are now available in variable sizing including: ... (+ size table: weight, cap, core)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6650116276295",
+   "handle": "lucky-golf-performance-x2-clover-grips-blue",
+   "title": "Lucky Golf Tour Performance Clover Grips (Blue)",
+   "description": "Lucky Golf Clover Grips are now available in variable sizing including: ... (+ size table: weight, cap, core)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6650116538439",
+   "handle": "lucky-golf-performance-x2-clover-grips-pink",
+   "title": "Lucky Golf Tour Performance Clover Grips (Pink)",
+   "description": "Lucky Golf Clover Grips are now available in variable sizing including: ... (+ size table: weight, cap, core)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6611924090951",
+   "handle": "lucky-golf-oversized-putter-grip",
+   "title": "Lucky Golf Green Oversized Putter Grip",
+   "description": "Looking for a little more meat on the bone? ... (+ size table: length, width, weight)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/6611925008455",
+   "handle": "lucky-golf-clovers-oversized-putter-grip",
+   "title": "Lucky Golf Clovers Oversized Putter Grip",
+   "description": "Looking for a little more meat on the bone? ... (+ size table: length, width, weight)",
+   "facts": null,
+   "model_sizing": null
+  },
+  {
+   "id": "gid://shopify/Product/9139813777685",
+   "handle": "stock-putter-grips",
+   "title": "Stock Putter Grips",
+   "description": "These Lucky Golf Putter Grips are stock grips on the original gold blade, silver blade, and black half mallet putters. ...",
+   "facts": null,
+   "model_sizing": null
+  }
+ ]
+}

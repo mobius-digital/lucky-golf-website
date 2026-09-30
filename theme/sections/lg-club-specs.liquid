@@ -1,0 +1,92 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+
+{%- if c.spec -%}{%- assign sp = c.spec -%}{%- assign s = section.settings -%}
+<section class="lg-sec lg-contour" id="specs" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="hd">
+    <div><p class="lg-eyebrow">{{ s.eyebrow }}</p><h2 class="lg-d2">{{ s.p_head | default: sp.head }}</h2>
+    <p class="lg-body">{{ s.p_line | default: sp.line }}</p></div>
+  </div>
+  <div class="lg-monitor">
+    <div class="lg-monitor-hd"><span class="lg-label">{{ sp.mon_label }}</span><span class="lg-label lg-live{% unless product.available %} is-out{% endunless %}"><i></i><span data-mon-stock>{% if product.available %}In stock{% else %}Sold out{% endif %}</span></span></div>
+    <div class="lg-monitor-in">
+      <div class="lg-monitor-ph">{%- assign mi = product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value -%}{%- if mi != blank %}{{ mi | image_url: width: 900 | image_tag: alt: sp.mon_alt, loading: 'lazy', widths: '450,700,900', sizes: '(max-width: 749px) 90vw, 30vw' }}{% endif -%}</div>
+      <div class="lg-monitor-tiles">
+        {%- for t in sp.tiles -%}
+        <div class="lg-mt"><span>{{ t.l }}</span>{%- if t.price -%}<b class="lg-num">{{ product.price | money_without_trailing_zeros }}</b>{%- else -%}<b>{{ t.b }}</b>{%- endif -%}
+          {%- if t.vals -%}<div class="lg-vals">{%- for v in t.vals -%}<i>{{ v }}</i>{%- endfor -%}</div>{%- endif -%}
+          {%- if t.em != blank %}<em>{{ t.em }}</em>{% endif -%}</div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+  {%- if sp.tabs -%}
+  <div class="seg specs-tabs" data-spectabs role="tablist"><button class="lg-chip" type="button" data-tab="clubs" aria-pressed="true">Clubs</button><button class="lg-chip" type="button" data-tab="shafts" aria-pressed="false">Shafts</button><button class="lg-chip" type="button" data-tab="grips" aria-pressed="false">Grips</button></div>
+  <div data-spectab="clubs">
+    <div class="tbar">
+      {%- if sp.seg.size > 1 -%}<div class="seg" data-specseg role="group" aria-label="Grind">{%- for g in sp.seg -%}<button class="lg-chip" type="button" data-g="{{ g[0] }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ g[1] }}</button>{%- endfor -%}</div>
+      {%- else -%}<span class="lg-label">{{ sp.seg[0][1] }}</span>{%- endif -%}
+      <span class="lg-meta">{{ sp.hands }}</span></div>
+    {%- for tb in sp.tables -%}
+    <div class="tbl" data-spec="{{ tb.id }}"{% unless forloop.first %} hidden{% endunless %}><table class="lg-table">
+      <thead><tr>{%- for h in tb.head -%}<th>{{ h }}</th>{%- endfor -%}</tr></thead>
+      <tbody>
+      {%- for r in tb.rows -%}<tr>{%- for x in r -%}{%- if forloop.first -%}<th scope="row">{{ x }}</th>{%- else -%}<td>{{ x }}</td>{%- endif -%}{%- endfor -%}</tr>{%- endfor -%}
+      <tr><th scope="row">{{ tb.span[0] }}</th><td colspan="{{ tb.head.size | minus: 1 }}">{{ tb.span[1] }}</td></tr>
+      </tbody></table></div>
+    {%- endfor -%}
+    {%- assign tn = s.p_note | default: sp.table_note -%}{%- if tn != blank %}<p class="note">{{ tn }}</p>{% endif -%}
+  </div>
+  {%- for k in (1..2) -%}{%- if k == 1 %}{% assign tb = sp.shafts %}{% assign id = 'shafts' %}{% else %}{% assign tb = sp.grips %}{% assign id = 'grips' %}{% endif -%}
+  <div data-spectab="{{ id }}" hidden>
+    <div class="tbl"><table class="lg-table">
+      <thead><tr>{%- for h in tb.head -%}<th>{{ h }}</th>{%- endfor -%}</tr></thead>
+      <tbody>{%- for r in tb.rows -%}<tr>{%- for x in r -%}{%- if forloop.first -%}<th scope="row">{{ x }}</th>{%- else -%}<td>{{ x }}</td>{%- endif -%}{%- endfor -%}</tr>{%- endfor -%}</tbody></table></div>
+    <p class="note">{{ tb.note }}</p>
+  </div>
+  {%- endfor -%}
+  {%- else -%}
+  <div class="tbl" style="margin-top:clamp(18px,2.5vw,26px)"><table class="lg-table">
+    <tbody>{%- for r in sp.rows -%}<tr><th scope="row">{{ r[0] }}</th><td>{{ r[1] }}</td></tr>{%- endfor -%}</tbody>
+  </table></div>
+  {%- assign tn = s.p_note | default: sp.note -%}{%- if tn != blank %}<p class="note">{{ tn }}</p>{% endif -%}
+  {%- endif -%}
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: spec sheet",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The spec sheet"
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_head",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "p_line",
+      "label": "Line"
+    },
+    {
+      "type": "textarea",
+      "id": "p_note",
+      "label": "Note under the table"
+    }
+  ]
+}
+{% endschema %}

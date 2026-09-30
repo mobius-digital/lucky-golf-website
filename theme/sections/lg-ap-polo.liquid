@@ -1,0 +1,413 @@
+{%- liquid
+  assign s = section.settings
+  assign drops = s.drop | split: ','
+  assign short = product.title
+  for d in drops
+    assign dd = d | strip
+    if dd != blank
+      assign short = short | remove: dd | strip
+    endif
+  endfor
+  assign collar_tag = ''
+  assign collar = ''
+  if product.tags contains s.collar_a_tag
+    assign collar_tag = s.collar_a_tag
+    assign collar = s.collar_a
+  elsif product.tags contains s.collar_b_tag
+    assign collar_tag = s.collar_b_tag
+    assign collar = s.collar_b
+  endif
+  assign sw_i = s.swatch_n | minus: 1
+  assign mode = product.metafields.custom.sold_out_mode.value | default: 'notify' | downcase
+  assign month = ''
+  assign rd = product.metafields.custom.restock_date.value
+  if rd != blank
+    assign rds = rd | date: '%s' | plus: 0
+    assign nows = 'now' | date: '%s' | plus: 0
+    if rds > nows
+      assign month = rd | date: '%B'
+    endif
+  endif
+  assign pick = product.selected_or_first_available_variant
+  unless pick.available
+    assign pick = blank
+  endunless
+  assign crumb_url = s.crumb_url | default: s.swatches.url | default: routes.all_products_collection_url
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="{{ routes.root_url }}">Home</a></li><li><a href="{{ crumb_url }}">{{ s.crumb_label }}</a></li><li><span aria-current="page">{{ product.title }}</span></li>
+</ol></nav>
+
+<div class="lg-wrap"><div class="pdp" id="ap-{{ section.id }}">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">
+      {%- assign shown = 0 -%}
+      {%- for m in product.media -%}{%- assign shown = shown | plus: 1 -%}{%- assign malt = m.alt | default: product.title -%}
+        <figure class="{% if forloop.first %}wide cut{% endif %}" data-zoom="{{ m.preview_image | image_url: width: 1800 }}">{{ m.preview_image | image_url: width: 1400 | image_tag: alt: malt, widths: '600,900,1400', sizes: '(max-width: 980px) 90vw, 50vw' }}</figure>
+      {%- endfor -%}
+    </div>
+    <div class="dots" data-dots aria-hidden="true">{%- for i in (1..shown) -%}<i></i>{%- endfor -%}</div>
+  </div>
+
+  <div class="buy" id="buy">
+    <p class="lg-eyebrow">{% if collar != blank %}{{ collar }}{{ s.eyebrow_tail }}{% else %}{{ s.crumb_label }}{% endif %}</p>
+    <h1 class="lg-d1">{{ short }}</h1>
+    <div class="price"><b data-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</b>{% render 'lg-was', product: product, variant: product.selected_or_first_available_variant %}</div>
+    {%- if product.description != blank %}<div class="lg-body ap-desc">{{ product.description }}</div>{% endif -%}
+
+    {%- if s.swatches != blank -%}
+    <div class="row"><span class="lg-label">Print</span><span class="m">{{ short }}</span></div>
+    <div class="sw-row">
+      {%- for p in s.swatches.products -%}
+        {%- if collar_tag != blank -%}{%- unless p.tags contains collar_tag -%}{%- continue -%}{%- endunless -%}{%- endif -%}
+        {%- liquid
+          assign pn = p.title
+          for d in drops
+            assign dd = d | strip
+            if dd != blank
+              assign pn = pn | remove: dd | strip
+            endif
+          endfor
+          assign sw = p.media[sw_i].preview_image | default: p.featured_image
+        -%}
+        <a class="lg-swatch" href="{{ p.url }}"{% if p.id == product.id %} aria-current="page"{% endif %} aria-label="{{ pn | escape }}">{%- if sw -%}{{ sw | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}</a>
+      {%- endfor -%}
+    </div>
+    {%- if s.all_prints != blank %}<p class="all-prints"><a href="{{ s.swatches.url }}">{{ s.all_prints }} &rarr;</a></p>{% endif -%}
+    {%- endif -%}
+
+    <div class="row" id="sizes"><span class="lg-label">Size <span class="m" data-sizepick></span></span><a href="#" data-md-open="md-size">Size guide &rarr;</a></div>
+    <div class="sizes lg-chips" data-sizes role="group" aria-label="Size">
+      {%- for v in product.variants -%}
+        {%- capture sz %}{% render 'lg-ap-size', v: v.option1 %}{% endcapture -%}{%- assign sz = sz | strip -%}
+        <button class="lg-chip" type="button" data-size="{{ sz }}" data-variant="{{ v.id }}" aria-pressed="{% if pick and v.id == pick.id %}true{% else %}false{% endif %}"{% unless v.available %} data-dead aria-label="{{ sz }}, sold out"{% endunless %}>{{ sz }}</button>
+      {%- endfor -%}
+    </div>
+    {%- assign model = product.metafields.custom.model_sizing.value -%}
+    <p class="modelfit" data-model{% if model == blank %} hidden{% endif %}>{{ model }}</p>
+    {%- if s.fitnote != blank %}<div class="fitnote">{{ s.fitnote }}</div>{% endif -%}
+
+    <form class="atc-row" data-lg-add data-polo-form>
+      <input type="hidden" name="id" value="{{ pick.id | default: product.variants.first.id }}">
+      <input type="hidden" name="properties[Pre-order]" value="" data-pre-prop disabled>
+      <div class="qty"><button type="button" data-q="-1" aria-label="One fewer">&minus;</button><input id="qty" name="quantity" type="number" value="1" min="1" max="9" aria-label="How many"><button type="button" data-q="1" aria-label="One more">+</button></div>
+      <button class="lg-btn" type="submit" data-atc>Add to cart</button>
+    </form>
+    <div class="trustl">
+      <span class="lg-stock" data-stockline>{{ s.stock_in }}</span>
+      <span class="trustl-links">{%- if s.returns_link != blank %}<a href="#" data-md-open="md-returns">{{ s.returns_link }}</a>{% endif %}{%- if s.delivery_link != blank %}<a href="#" data-md-open="md-delivery">{{ s.delivery_link }}</a>{% endif %}</span>
+    </div>
+
+    {%- assign specs = section.blocks | where: 'type', 'spec' -%}
+    {%- if specs.size > 0 -%}
+    <div class="lg-specs facts">{%- for block in specs -%}<div class="lg-spec" {{ block.shopify_attributes }}><b>{{ block.settings.b }}<small>{{ block.settings.small }}</small></b><span>{{ block.settings.label }}</span></div>{%- endfor -%}</div>
+    {%- endif -%}
+    {%- assign fqs = section.blocks | where: 'type', 'fq' -%}
+    {%- if fqs.size > 0 -%}
+    <div class="lg-faq">{%- for block in fqs -%}<details class="lg-fq"{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}><summary>{{ block.settings.title }}</summary><div class="lg-fq-a">{{ block.settings.body }}</div></details>{%- endfor -%}</div>
+    {%- endif -%}
+  </div>
+</div></div>
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph">{%- assign cut = product.featured_image -%}{%- if cut -%}{{ cut | image_url: width: 120 | image_tag: alt: '' }}{%- endif -%}</span>
+  <div><b>{{ product.title }}</b><span data-sticky-note>{{ product.price | money_without_trailing_zeros }}</span></div>
+  <div class="sb-sizes" data-sb-sizes>
+    {%- for v in product.variants -%}{%- capture sz %}{% render 'lg-ap-size', v: v.option1 %}{% endcapture -%}{%- assign sz = sz | strip -%}
+    <button type="button" data-size="{{ sz }}" data-variant="{{ v.id }}" aria-pressed="{% if pick and v.id == pick.id %}true{% else %}false{% endif %}"{% unless v.available %} data-dead{% endunless %}>{{ sz }}</button>
+    {%- endfor -%}
+  </div>
+  <button class="lg-btn" type="button" data-atc-sticky>Add to cart</button>
+</div>
+
+{% render 'lg-ap-sizeguide' %}
+{%- if s.ret_title != blank -%}
+<div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">{{ s.ret_eyebrow }}</p>
+  <h2 class="lg-d3" id="md-returns-t">{{ s.ret_title }}</h2>
+  {{ s.ret_body }}
+</div></div>
+{%- endif -%}
+{%- if s.del_title != blank -%}
+<div class="md" id="md-delivery" hidden role="dialog" aria-modal="true" aria-labelledby="md-delivery-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">{{ s.del_eyebrow }}</p>
+  <h2 class="lg-d3" id="md-delivery-t">{{ s.del_title }}</h2>
+  {%- if s.carriers != blank -%}<div class="md-carriers">{%- assign cs = s.carriers | split: ',' -%}{%- for c in cs -%}<span class="lg-tag">{{ c | strip }}</span>{%- endfor -%}</div>{%- endif -%}
+  {{ s.del_body }}
+</div></div>
+{%- endif -%}
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+{% render 'lg-ap-notify', variant: product.selected_or_first_available_variant %}
+
+<script>
+(function(){
+  var V = [
+    {%- for v in product.variants -%}
+    {%- capture sz %}{% render 'lg-ap-size', v: v.option1 %}{% endcapture -%}
+    {%- assign pre = false -%}{%- if mode == 'preorder' and v.available and v.inventory_management != blank and v.inventory_quantity <= 0 -%}{%- assign pre = true -%}{%- endif -%}
+    { id: {{ v.id }}, size: {{ sz | strip | json }}, ok: {{ v.available }}, pre: {{ pre }}, price: {{ v.price }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ];
+  var MONTH = {{ month | json }}, IN = {{ s.stock_in | json }};
+  var root = document.getElementById('ap-{{ section.id }}'); if (!root) return;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var money = function(c){ return '$' + (c % 100 ? (c / 100).toFixed(2) : c / 100); };
+  var form = $('[data-polo-form]', root), vid = form.querySelector('[name="id"]'), qty = $('#qty', root), atc = $('[data-atc]', root);
+  var pick = V.filter(function(v){ return v.id === +vid.value && v.ok; })[0] || null;
+
+  function label(v, n){
+    if (!v) return "Tell me when it's back";
+    if (!v.ok) return "Tell me when it's back";
+    if (v.pre) return 'Pre-order, ships in ' + (MONTH || 'the next restock');
+    return 'Add to cart · ' + money(v.price * n);
+  }
+  function paint(){
+    var n = Math.max(1, Math.min(9, +qty.value || 1));
+    $$('[data-sizes] button,[data-sb-sizes] button').forEach(function(b){ b.setAttribute('aria-pressed', String(!!pick && +b.dataset.variant === pick.id)); });
+    $('[data-sizepick]', root).textContent = pick ? '· ' + pick.size : '';
+    if (pick){ vid.value = pick.id; $('[data-notify]').setAttribute('data-variant', pick.id); }
+    var pre = $('[data-pre-prop]', form); pre.disabled = !(pick && pick.pre); pre.value = pick && pick.pre ? 'ships ' + (MONTH || 'at the next restock') : '';
+    var line = $('[data-stockline]', root);
+    if (!pick || !pick.ok){ line.textContent = MONTH ? 'Back in ' + MONTH : 'Sold out'; line.classList.add('is-out'); }
+    else { line.textContent = pick.pre ? 'Pre-order, ships in ' + (MONTH || 'the next restock') : IN; line.classList.remove('is-out'); }
+    atc.textContent = label(pick, n);
+    atc.className = (!pick || !pick.ok) ? 'lg-btn-line' : 'lg-btn';
+    $('[data-sticky-note]').textContent = pick ? 'Size ' + pick.size + ' · ' + money(pick.price * n) : money(V[0].price);
+  }
+  document.addEventListener('click', function(e){
+    var s = e.target.closest('[data-sizes] button,[data-sb-sizes] button');
+    if (s){ var v = V.filter(function(x){ return x.id === +s.dataset.variant; })[0];
+      if (v && !v.ok){ pick = v; paint(); if (window.Lucky && Lucky.toast) Lucky.toast(v.size + " is sold out in this print. Tell us and we'll email you when it's back."); return; }
+      pick = v; paint(); return; }
+    var q = e.target.closest('[data-q]');
+    if (q && root.contains(q)){ qty.value = Math.max(1, Math.min(9, (+qty.value || 1) + (+q.dataset.q))); paint(); return; }
+    if (e.target.closest('[data-atc-sticky]')){
+      if (!pick){ if (window.Lucky && Lucky.jump) Lucky.jump('sizes'); return; }
+      if (form.requestSubmit) form.requestSubmit(); else atc.click(); }
+  });
+  /* sold out: the button asks for an email instead (Klaviyo back in stock) */
+  form.addEventListener('submit', function(e){
+    if (!pick || !pick.ok){ e.preventDefault(); e.stopPropagation(); $('#md-notify').hidden = false; return; }
+    atc.setAttribute('data-done', ''); atc.textContent = 'Added';
+    setTimeout(function(){ atc.removeAttribute('data-done'); paint(); }, 1600);
+  });
+  qty.addEventListener('change', paint);
+  /* the size guide opens on the picked size */
+  document.addEventListener('click', function(e){ if (!e.target.closest('[data-md-open="md-size"]')) return;
+    $$('.sg-tbl [data-c]').forEach(function(c){ c.classList.toggle('on', !!pick && c.getAttribute('data-c') === pick.size); }); }, true);
+  /* the sticky bar, once the real button has gone */
+  var sticky = $('[data-sticky]'), ftr = $('.lg-ftr');
+  function sp(){ var on = form.getBoundingClientRect().bottom < 0 && (!ftr || ftr.getBoundingClientRect().top > innerHeight);
+    if (on !== sticky.hasAttribute('data-on')){ sticky.toggleAttribute('data-on', on); if (window.Lucky && Lucky.guide && Lucky.guide.place) Lucky.guide.place(); } }
+  addEventListener('scroll', sp, { passive: true }); addEventListener('resize', sp); sp();
+  /* gallery dots (phone) */
+  var g = $('[data-gal]', root), d = $('[data-dots]', root), n = g.children.length;
+  if (d.children[0]) d.children[0].classList.add('on');
+  g.addEventListener('scroll', function(){ var i = Math.round(g.scrollLeft / (g.scrollWidth / n));
+    [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }, { passive: true });
+  paint();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Polo buy box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb_label",
+      "label": "Breadcrumb: collection name",
+      "default": "Polos"
+    },
+    {
+      "type": "url",
+      "id": "crumb_url",
+      "label": "Breadcrumb: collection link"
+    },
+    {
+      "type": "text",
+      "id": "drop",
+      "label": "Words to leave off the name (comma separated)",
+      "default": "Classic Polo, Blade Polo"
+    },
+    {
+      "type": "text",
+      "id": "collar_a_tag",
+      "label": "Collar A tag",
+      "default": "Classic Polo"
+    },
+    {
+      "type": "text",
+      "id": "collar_a",
+      "label": "Collar A eyebrow",
+      "default": "The Classic"
+    },
+    {
+      "type": "text",
+      "id": "collar_b_tag",
+      "label": "Collar B tag",
+      "default": "Blade Polo"
+    },
+    {
+      "type": "text",
+      "id": "collar_b",
+      "label": "Collar B eyebrow",
+      "default": "The Blade"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_tail",
+      "label": "After the collar in the eyebrow",
+      "default": " · Polos"
+    },
+    {
+      "type": "collection",
+      "id": "swatches",
+      "label": "Prints: the collection to pick from (same collar only)"
+    },
+    {
+      "type": "range",
+      "id": "swatch_n",
+      "label": "Print swatch = product photo #",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "all_prints",
+      "label": "Link under the prints",
+      "default": "See every print side by side"
+    },
+    {
+      "type": "richtext",
+      "id": "fitnote",
+      "label": "Fit note under the sizes"
+    },
+    {
+      "type": "text",
+      "id": "stock_in",
+      "label": "In stock line",
+      "default": "In stock · ships in 1 to 2 days"
+    },
+    {
+      "type": "text",
+      "id": "returns_link",
+      "label": "Returns link",
+      "default": "Thirty days to send it back"
+    },
+    {
+      "type": "text",
+      "id": "delivery_link",
+      "label": "Delivery link",
+      "default": "When will it get here?"
+    },
+    {
+      "type": "header",
+      "content": "Returns pop-up"
+    },
+    {
+      "type": "text",
+      "id": "ret_eyebrow",
+      "label": "Eyebrow",
+      "default": "Refund policy"
+    },
+    {
+      "type": "text",
+      "id": "ret_title",
+      "label": "Title",
+      "default": "Thirty days to send it back"
+    },
+    {
+      "type": "richtext",
+      "id": "ret_body",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Delivery pop-up"
+    },
+    {
+      "type": "text",
+      "id": "del_eyebrow",
+      "label": "Eyebrow",
+      "default": "Delivery"
+    },
+    {
+      "type": "text",
+      "id": "del_title",
+      "label": "Title",
+      "default": "When it shows up"
+    },
+    {
+      "type": "text",
+      "id": "carriers",
+      "label": "Carriers (comma separated)",
+      "default": "USPS, UPS, FedEx"
+    },
+    {
+      "type": "richtext",
+      "id": "del_body",
+      "label": "Text"
+    },
+    {
+      "type": "paragraph",
+      "content": "Photos are the product's own media, in the admin order. The model line under the sizes is the product's 'Model sizing line' metafield; it hides while empty."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Fact tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "b",
+          "label": "Number"
+        },
+        {
+          "type": "text",
+          "id": "small",
+          "label": "Small part"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    },
+    {
+      "type": "fq",
+      "name": "Fold-out",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open at first",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Polo buy box"
+    }
+  ]
+}
+{% endschema %}

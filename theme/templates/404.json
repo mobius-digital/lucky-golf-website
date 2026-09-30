@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-nf",
+      "settings": {
+        "eyebrow": "404",
+        "heading": "This one's in the <em>trees</em>",
+        "lede": "The page isn't here. Take a drop and try one of these.",
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs",
+        "btn2_label": "Back to the start",
+        "btn2_url": "/"
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "image": "shopify://shop_images/lg-gold-full-cut.webp"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "image": "shopify://shop_images/lg-mallet-full-cut.webp"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "product": "azalea-classic-polo",
+            "image": "shopify://shop_images/lg-polo-azalea-cut.webp"
+          }
+        },
+        "b4": {
+          "type": "card",
+          "settings": {
+            "product": "white-gold-classic-hat",
+            "image": "shopify://shop_images/lg-hat-white-gold-classic-cut.webp",
+            "name": "White & Gold Classic Hat"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

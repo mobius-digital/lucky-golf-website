@@ -22,7 +22,7 @@ button{font:inherit}
 .mega{position:absolute;left:0;right:0;top:100%;background:var(--lg-page);color:var(--lg-ink);border-top:2px solid var(--lg-gold);
   box-shadow:var(--lg-float);padding:28px 0 32px;display:none}
 .nv.is-open .mega{display:block}
-.nv.is-open > button{color:var(--lg-gold-hi)}
+.nv.is-open > button{color:var(--lg-on-dark)}
 /* the header's own nav-link style must not reach into the panel */
 .lg-nav .mega a{display:block;min-height:0;text-transform:none;letter-spacing:normal;font-variation-settings:'wdth' 100;font-weight:400;font-size:inherit;color:var(--lg-ink)}
 .mega-in{max-width:var(--lg-wrap);margin:0 auto;padding:0 var(--lg-pad);display:grid;grid-template-columns:220px minmax(0,1fr) 300px;gap:32px;align-items:start}

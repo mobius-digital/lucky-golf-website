@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-article",
+      "settings": {}
+    },
+    "more": {
+      "type": "lg-article-more",
+      "settings": {
+        "eyebrow": "Keep reading",
+        "heading": "More from the <em>blog</em>",
+        "link_label": "All articles"
+      }
+    },
+    "close": {
+      "type": "lg-article-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "It's better to be <em>lucky.</em>",
+        "lede": "Sixty days to make up your mind on the clubs, thirty on the rest.",
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "more",
+    "close"
+  ]
+}

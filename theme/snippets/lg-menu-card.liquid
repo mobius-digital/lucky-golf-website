@@ -1,0 +1,35 @@
+{%- comment -%}
+  One card in a menu panel. b = the menu block, i = 1..3, cls = 'mt' (desktop) or 'mn' (phone).
+{%- endcomment -%}
+{%- liquid
+  assign pk = 'p' | append: i
+  assign ck = 'c' | append: i
+  assign p = b.settings[pk]
+  assign c = b.settings[ck]
+  assign nk = 'n' | append: i
+  assign prk = 'pr' | append: i
+  assign lk = 'l' | append: i
+  assign ik = 'i' | append: i
+  assign tk = 't' | append: i
+  if p != blank
+    assign url = p.url
+    assign name = b.settings[nk] | default: p.title
+    assign price = p.price | money_without_trailing_zeros
+    if p.price_varies
+      assign price = 'From ' | append: price
+    endif
+    if p.compare_at_price_min > p.price_min
+      assign was = p.compare_at_price_min | money_without_trailing_zeros
+      assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
+    endif
+    assign img = b.settings[ik] | default: p.metafields.custom.cutout.value | default: p.featured_image
+  else
+    assign url = c.url
+    assign name = b.settings[nk] | default: c.title
+    assign price = b.settings[prk]
+    assign img = b.settings[ik] | default: c.featured_image
+  endif
+-%}
+{%- if p != blank or c != blank -%}
+<a class="{{ cls }}{% if cls == 'mn' %}-card{% endif %}" href="{{ url }}"><span class="{{ cls }}-ph">{%- if img != blank -%}{{ img | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}</span><span class="{{ cls }}-row"><span class="{{ cls }}-nm">{{ name }}</span><span class="{{ cls }}-pr">{{ price }}</span></span><span class="{{ cls }}-sub">{{ b.settings[lk] }}</span>{%- if cls == 'mt' and b.settings[tk] != blank %}<span class="lg-tag mt-tag">{{ b.settings[tk] }}</span>{% endif -%}</a>
+{%- endif -%}

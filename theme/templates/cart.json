@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-cart",
+      "settings": {
+        "crumb": "Your bag",
+        "eyebrow": "Your bag",
+        "heading": "What you're taking to the <em>course</em>",
+        "empty_text": "Nothing in here yet.",
+        "empty_btn": "See the clubs",
+        "empty_url": "shopify://collections/lucky-golf-clubs",
+        "empty_btn2": "Shop the polos",
+        "empty_url2": "shopify://collections/polos",
+        "checkout_label": "Check out",
+        "note": "Tax is added at checkout, and nothing's charged until you place the order.",
+        "show_note": false
+      },
+      "blocks": {
+        "t1": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "title": "Ships in 1 to 2 days",
+            "text": "Tracking shows up as soon as the carrier scans it."
+          }
+        },
+        "t2": {
+          "type": "trust",
+          "settings": {
+            "icon": "rotate-ccw",
+            "title": "Sixty days on clubs",
+            "text": "Thirty on apparel, unworn with the tags on."
+          }
+        },
+        "t3": {
+          "type": "trust",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Free shipping at $198",
+            "text": "Two wedges get you there."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    "close": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Worst case, it comes back. Sixty days on clubs, thirty on apparel.",
+        "btn2_label": "How returns work →",
+        "btn2_url": "/pages/faq-lucky-wedges#returns"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "close"
+  ]
+}

@@ -1,0 +1,74 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  <div class="parts">
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    <article class="part" {{ block.shopify_attributes }}>
+      <figure>{%- if b.image != blank -%}{{ b.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: b.image.alt, widths: '500,750,1000', sizes: '(max-width: 760px) 100vw, 33vw' }}{%- elsif request.design_mode -%}<span class="lg-slot"><small>Photo</small></span>{%- endif -%}</figure>
+      {%- if b.eyebrow != blank %}<p class="lg-eyebrow">{{ b.eyebrow }}</p>{% endif -%}
+      {% render 'lg-h', text: b.heading, tag: 'h2', cls: 'lg-d3' %}
+      {%- if b.text != blank %}<p>{{ b.text }}</p>{% endif -%}
+      {%- if b.link_label != blank %}<a class="lg-link" href="{{ b.link_url }}">{{ b.link_label }} <span aria-hidden="true">&rarr;</span></a>{% endif -%}
+    </article>
+    {%- endfor -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Three photo parts",
+  "class": "lgc-parts",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "part",
+      "name": "Part",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading (italic = gold word)",
+          "info": "Select a word and press Italic to make it the gold word."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Three photo parts"
+    }
+  ]
+}
+{% endschema %}

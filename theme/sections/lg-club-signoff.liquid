@@ -1,0 +1,61 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- assign c = product.metafields.custom.club_page.value -%}
+
+{%- assign s = section.settings -%}
+<section class="lg-signoff" id="last"><div class="lg-wrap">
+  <p class="lg-eyebrow">{{ s.eyebrow }}</p>
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d1' %}
+  {%- assign p_sign = s.p_sign | default: c.sign -%}{%- if p_sign != blank %}<p class="lg-lede">{{ p_sign }}</p>{% endif -%}
+  <a class="lg-btn-line" href="#buy">{% if product.available %}{{ s.p_signcta | default: c.signcta | default: s.cta }}{% else %}{{ s.cta_out }}{% endif %} <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true">{% render 'lg-mags' %}</div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Club: sign-off",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The last word"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "text",
+      "id": "cta",
+      "label": "Button to the buy box (if the product has none)",
+      "default": "Put it in the bag"
+    },
+    {
+      "type": "text",
+      "id": "cta_out",
+      "label": "Button when sold out",
+      "default": "Tell me when it's back"
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_sign",
+      "label": "Line under the tagline"
+    },
+    {
+      "type": "text",
+      "id": "p_signcta",
+      "label": "Button label"
+    }
+  ]
+}
+{% endschema %}

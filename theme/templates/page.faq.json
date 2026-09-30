@@ -1,0 +1,316 @@
+{
+  "sections": {
+    "faq": {
+      "type": "lg-faq-page",
+      "settings": {
+        "crumb": "Questions",
+        "eyebrow": "Ask away",
+        "heading": "Questions, answered <em>straight</em>",
+        "lede": "Shipping, returns, sizing and what actually happens if a club doesn't earn its spot in the bag. If it isn't here, a person reads the email.",
+        "jump": true,
+        "jump_extra_label": "Still stuck",
+        "jump_extra_url": "#contact",
+        "jsonld": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "topic",
+          "settings": {
+            "anchor": "shipping",
+            "jump_label": "",
+            "eyebrow": "Shipping",
+            "heading": "Out the door in a day or <em>two</em>",
+            "text": "Faster than your buddy pays up on a bet."
+          }
+        },
+        "b2": {
+          "type": "q",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "<p>In one to two business days, and you'll get tracking as soon as the carrier scans it.</p>",
+            "open": true
+          }
+        },
+        "b3": {
+          "type": "q",
+          "settings": {
+            "question": "When is shipping free?",
+            "answer": "<p>At $198. That's two wedges, if you were looking for an excuse.</p>",
+            "open": false
+          }
+        },
+        "b4": {
+          "type": "q",
+          "settings": {
+            "question": "Can I change the address?",
+            "answer": "<p>If it hasn't shipped, yes. Email us the order number and the right address and we'll catch it. Once it's with the carrier it's out of our hands.</p>",
+            "open": false
+          }
+        },
+        "b5": {
+          "type": "topic",
+          "settings": {
+            "anchor": "returns",
+            "jump_label": "",
+            "eyebrow": "Returns",
+            "heading": "Sixty days on clubs, thirty on the <em>rest</em>",
+            "text": "Sixty days to make up your mind, with a few conditions so the club can go back on the shelf."
+          }
+        },
+        "b6": {
+          "type": "q",
+          "settings": {
+            "question": "How does the sixty-day club return work?",
+            "answer": "<p>Start it with us before you send anything back: club returns need approval and a couple of photos first, and the refund goes out after the club is back with us and inspected. Return shipping is on you, and the original shipping fee isn't refunded.</p>",
+            "open": true
+          }
+        },
+        "b7": {
+          "type": "q",
+          "settings": {
+            "question": "Can I actually hit it?",
+            "answer": "<p>Yes, with one condition per club type. A putter can be rolled during the sixty days and has to come back with no face marks, sole wear, scratches, dents, chips, bag chatter or grip wear. With wedges, one wedge in the set can be opened and tested on a turf mat or another non-abrasive surface, with no groove wear or face marks, and the rest stay factory sealed. Regripping, bending or cutting a club ends the return.</p>",
+            "open": false
+          }
+        },
+        "b8": {
+          "type": "q",
+          "settings": {
+            "question": "What about a polo or a hat?",
+            "answer": "<p>Thirty days. Apparel comes back unworn and unwashed with the original tags on: no stains, odors, pet hair or stretching. Tags missing costs $7 off the refund. Gear and accessories come back unused inside the same thirty days.</p>",
+            "open": false
+          }
+        },
+        "b9": {
+          "type": "q",
+          "settings": {
+            "question": "What can't come back?",
+            "answer": "<p>Anything customized is final sale unless it turns up defective. Beyond that: visible wear or damage past the conditions above, modified clubs, anything outside its window, and anything sent back without approval.</p>",
+            "open": false
+          }
+        },
+        "b10": {
+          "type": "q",
+          "settings": {
+            "question": "Something arrived damaged.",
+            "answer": "<p>Email us a photo the day it lands. Defective items get a replacement or a refund once we've taken a look.</p>",
+            "open": false
+          }
+        },
+        "b11": {
+          "type": "topic",
+          "settings": {
+            "anchor": "clubs",
+            "jump_label": "Clubs",
+            "eyebrow": "The clubs",
+            "heading": "Which one you actually <em>need</em>",
+            "text": "No salesperson standing over you. Here's the short version."
+          }
+        },
+        "b12": {
+          "type": "q",
+          "settings": {
+            "question": "Which wedge should I start with?",
+            "answer": "<p>Whatever gap hurts most. If you're carrying a pitching wedge and nothing else, a 56 covers the most ground in one club. If you already have a sand wedge, a 60 gives you the shot over the bunker that a 56 can't hold.</p>",
+            "open": true
+          }
+        },
+        "b13": {
+          "type": "q",
+          "settings": {
+            "question": "Gold or black?",
+            "answer": "<p>Same wedge underneath. The black runs ten dollars more because of the finish, and it's the quieter one at address. Pick the one you want to look down at.</p>",
+            "open": false
+          }
+        },
+        "b14": {
+          "type": "q",
+          "settings": {
+            "question": "Blade or mallet putter?",
+            "answer": "<p>It comes down to the ones you miss. The blade feels planted and tells you exactly where you struck it. The mallet spreads its weight out, so the misses stay closer to your line.</p>",
+            "open": false
+          }
+        },
+        "b15": {
+          "type": "q",
+          "settings": {
+            "question": "Are these actually as good as the big names?",
+            "answer": "<p>Same materials and the same engineering as the big names, without a tour contract or a retail shelf built into the price. You've got sixty days to make up your mind.</p>",
+            "open": false
+          }
+        },
+        "b16": {
+          "type": "topic",
+          "settings": {
+            "anchor": "apparel",
+            "jump_label": "",
+            "eyebrow": "Apparel",
+            "heading": "Sizing and <em>fabric</em>",
+            "text": ""
+          }
+        },
+        "b17": {
+          "type": "q",
+          "settings": {
+            "question": "How do the polos fit?",
+            "answer": "<p>It's an athletic fit, so it sits closer than a boxy golf polo, and the four-way stretch keeps it out of the way of your swing. If you wear a large in a performance polo, a large here's right. Between sizes, size up.</p>",
+            "open": true
+          }
+        },
+        "b18": {
+          "type": "q",
+          "settings": {
+            "question": "What are they made of?",
+            "answer": "<p>88% polyester and 12% spandex, with four-way stretch. Moisture-wicking, wrinkle-resistant and UPF 50+. Machine wash cold, tumble dry low.</p>",
+            "open": false
+          }
+        },
+        "b19": {
+          "type": "q",
+          "settings": {
+            "question": "Classic collar or Blade?",
+            "answer": "<p>The Blade drops the buttons and the placket, so there's nothing at your throat to sit crooked by the ninth. Everything under the collar is identical.</p>",
+            "open": false
+          }
+        },
+        "b20": {
+          "type": "q",
+          "settings": {
+            "question": "Do the hats come in sizes?",
+            "answer": "<p>One size, five-panel snapback, so you set it where you like it. Every one has a moisture-wicking sweatband and laser-cut vents.</p>",
+            "open": false
+          }
+        },
+        "b21": {
+          "type": "topic",
+          "settings": {
+            "anchor": "orders",
+            "jump_label": "",
+            "eyebrow": "Orders",
+            "heading": "After you hit <em>buy</em>",
+            "text": "A confirmation, a tracking number and a box. That's the whole show."
+          }
+        },
+        "b22": {
+          "type": "q",
+          "settings": {
+            "question": "Can I change or cancel an order?",
+            "answer": "<p>If it hasn't shipped, email us straight away with the order number. Once the carrier has it, treat it as a return.</p>",
+            "open": true
+          }
+        },
+        "b23": {
+          "type": "q",
+          "settings": {
+            "question": "Where's my tracking?",
+            "answer": "<p>It goes to the email on the order as soon as the label is made. If it isn't there, check the spam folder, then email us and we'll resend it.</p>",
+            "open": false
+          }
+        },
+        "b24": {
+          "type": "q",
+          "settings": {
+            "question": "Do you restock sold-out lofts and sizes?",
+            "answer": "<p>Yes. Tap the sold-out chip on the product page and we'll email you when that one is back. We don't email you about anything else.</p>",
+            "open": false
+          }
+        },
+        "b25": {
+          "type": "q",
+          "settings": {
+            "question": "Do you take returns on a gift?",
+            "answer": "<p>Same windows, same conditions, and we'll deal with whoever contacts us. You don't need the buyer standing there.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23",
+        "b24",
+        "b25"
+      ]
+    },
+    "help": {
+      "type": "lg-cols",
+      "settings": {
+        "anchor": "contact",
+        "no_top": true,
+        "style": "icons",
+        "eyebrow": "Still stuck",
+        "heading": "Three ways to get a <em>person</em>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icon": "mail",
+            "title": "Email us",
+            "text": "support@luckygolf.com. A person reads every one.",
+            "url": "shopify://pages/contact-us"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icon": "message-circle",
+            "title": "Chat",
+            "text": "Bottom right of any page. Good for a quick sizing or loft question.",
+            "url": "shopify://pages/contact-us"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icon": "package",
+            "title": "Start a return",
+            "text": "Apparel and gear go through the returns portal. Clubs need a quick approval first.",
+            "url": "shopify://pages/contact-us"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Worst case, it comes back. Sixty days on clubs, thirty on apparel.",
+        "btn_arrow": false,
+        "btn_label": "See the clubs",
+        "btn_url": "shopify://collections/lucky-golf-clubs"
+      }
+    }
+  },
+  "order": [
+    "faq",
+    "help",
+    "signoff"
+  ]
+}

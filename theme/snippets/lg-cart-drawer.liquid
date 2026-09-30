@@ -1,0 +1,20 @@
+{%- comment -%} The bag drawer. lucky-site.js fills it from /cart.js. {%- endcomment -%}
+<div class="cd" id="cd" hidden role="dialog" aria-modal="true" aria-labelledby="cd-title">
+  <div class="cd-bd" data-cart-close></div>
+  <div class="cd-panel">
+    <div class="cd-hd"><h2 class="lg-d3" id="cd-title">Your bag</h2><button type="button" class="cd-x" data-cart-close aria-label="Close bag">&times;</button></div>
+    {%- if settings.lg_promo_on and settings.lg_promo_text != blank -%}<p class="cd-promo is-{{ settings.lg_promo_style | default: 'green' }}">{{ settings.lg_promo_text }}</p>{%- endif -%}
+    <div class="cd-ship"><p id="cd-say"></p><div class="lg-hole" id="cd-hole"></div></div>
+    <div class="cd-body"><div id="cd-list" data-empty-url="{{ settings.lg_empty_bag_url | default: routes.all_products_collection_url }}"></div><div class="ups" id="cd-ups" hidden></div></div>
+    <div class="cd-foot">
+      <div class="cd-sub"><span>Subtotal</span><span id="cd-sub">{{ cart.total_price | money_without_trailing_zeros }}</span></div>
+      <p class="cd-save" id="cd-save" hidden></p>
+      <p class="cd-extra" id="cd-extra" hidden></p>
+      <p class="cd-note">Shipping and tax calculated at checkout</p>
+      {%- comment -%} A real cart form with name="checkout": Shopify's standard, and what Loop's Checkout+ (free returns + package protection) attaches to. {%- endcomment -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cd-form"><button type="submit" name="checkout" class="lg-btn lg-btn-block" id="cd-go">Check out <span aria-hidden="true">&rarr;</span></button></form>
+      {%- if settings.lg_express and additional_checkout_buttons -%}<div class="cd-express">{{ content_for_additional_checkout_buttons }}</div>{%- endif -%}
+      <p class="cd-view"><a class="lg-link" href="{{ routes.cart_url }}">View the full bag</a></p>
+    </div>
+  </div>
+</div>

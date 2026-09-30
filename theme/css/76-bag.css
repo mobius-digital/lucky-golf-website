@@ -1,0 +1,106 @@
+/* the bag's add-ons ("Complete the bag"), free-gift lines and the extras line under the subtotal
+   (Theme settings > Lucky bag, 2026-09-30) */
+.ups{margin:18px 0 8px}
+.ups-hd{margin:0 0 6px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+.ups-it{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--lg-rule-08)}
+.ups-it .ph{aspect-ratio:1;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden;display:block}
+.ups-it .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:4px}
+.ups-bd{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ups-bd .nm{color:var(--lg-ink);text-decoration:none;font-weight:600;font-size:var(--lg-fs-sm);line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ups-pr{font-size:var(--lg-fs-sm);font-weight:600}
+.ups-pr s{color:var(--lg-ink-64);font-weight:400;margin-left:4px}
+body.lg .ups-sel{height:32px;min-height:0;padding:0 26px 0 8px;font-size:12px;max-width:180px;line-height:normal}
+.ups-add{min-height:36px!important;padding:0 14px!important;flex:none}
+.ups-add[aria-busy="true"]{opacity:.6;pointer-events:none}
+.ups-page{margin-top:28px}
+.ups-page .ups-it{grid-template-columns:80px minmax(0,1fr) auto}
+.gift-tag{background:var(--lg-dark);color:var(--lg-on-dark)!important;padding:1px 6px;border-radius:var(--lg-r-tag)}
+.cd-line.is-gift .pr,.ln.is-gift .pr{font-weight:700}
+.cd-extra{display:flex;flex-wrap:wrap;gap:4px 14px;margin:-6px 0 12px;color:var(--lg-ink-64);font-size:var(--lg-fs-xs)}
+.cd-extra[hidden]{display:none}
+.cd-extra span::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--lg-gold);margin-right:6px;vertical-align:2px}
+.lgc-cart .cd-extra{margin:12px 0 0}
+
+/* the picker inherited .lg-input's flex:1 1 240px, which in a column became 240px tall */
+body.lg .ups-sel{flex:none!important;width:auto;align-self:flex-start}
+.ups-it{align-items:center}
+
+/* a slimmer foot so the products get the room (Primo-style): one subtotal line, the savings line,
+   Loop's box, the button and the link; the shipping/trust line moved up into the scrolling body */
+.cd-foot{padding:12px 22px 14px!important;box-shadow:0 -10px 24px rgba(23,20,15,.06)}
+.cd-sub{font-size:16px!important}
+#cd .cd-note{display:none}
+.cd-save{margin:4px 0 0;color:var(--lg-ok);font-size:var(--lg-fs-sm);font-weight:500}
+.cd-save[hidden]{display:none}
+#cd .cd-extra{margin:14px 0 18px}
+#cd .loop-return-coverage-ace{margin-top:10px;gap:8px}
+#cd .loop-return-coverage-ace .loop-return-coverage__product{padding:10px 12px!important}
+#cd button.loop-return-coverage__cta__plus{min-height:48px}
+#cd .loop-return-coverage-ace button.loop-return-coverage__cta__standard{min-height:32px!important}
+#cd .cd-view{margin:2px 0 0}
+#cd .cd-view a{font-size:var(--lg-fs-xs)}
+
+/* sales: compare-at and discounts */
+.cd-line .pr s,.ln .pr s{display:block;color:var(--lg-ink-64);font-weight:400;font-size:var(--lg-fs-xs)}
+.deal{display:block;margin-top:6px;color:var(--lg-ok);font-size:var(--lg-fs-xs);font-weight:600}
+.lgc-cart .row.save{color:var(--lg-ok)}
+.lg-hole-flag.is-mute b{visibility:hidden}
+/* a tighter top so the list gets more of the drawer */
+#cd .cd-hd{padding:14px 22px 2px!important}
+#cd .cd-ship{padding:2px 22px 2px!important}
+#cd #cd-say{margin:0 0 4px;font-size:var(--lg-fs-sm)}
+/* sale prices on cards and product pages */
+.lg-was{color:var(--lg-ink-64);font-weight:400;margin-left:8px;font-size:.85em}
+.lg-was[hidden]{display:none}
+/* promo banner (Theme settings > Lucky bag > Promo banner) */
+.cd-promo{margin:0 22px 8px;padding:9px 12px;border-radius:var(--lg-r-card);font-size:var(--lg-fs-sm);font-weight:600;line-height:1.35;text-align:center}
+.lgc-cart .cd-promo{margin:0 0 14px}
+.cd-promo.is-green{background:var(--lg-dark);color:var(--lg-on-dark)}
+.cd-promo.is-gold{background-image:var(--lg-foil);color:#17140F}
+.cd-promo.is-ink{background:var(--lg-ink);color:var(--lg-page)}
+/* express checkout buttons, only with something in the bag */
+.cd-express{margin-top:8px}
+#cd:has(.cd-empty) .cd-express{display:none}
+/* empty bag picks */
+#cd-empty-ups{margin-top:6px}
+.cd-empty + .ups .ups-add{text-decoration:none}
+/* cut-outs already have a clear background; multiply made white ones (glove, covers, white hats) vanish */
+.ph img[src*="/files/lg-"]{mix-blend-mode:normal!important}
+/* low stock: warm gold, not alarm red; the real count only */
+.cd-line .low,.ln .low{display:block;margin-top:6px;color:var(--lg-gold-text);font-size:var(--lg-fs-xs);font-weight:600}
+.lg-low{margin-left:10px;color:var(--lg-gold-text);font-size:var(--lg-fs-sm);font-weight:600;white-space:nowrap}
+.lg-low[hidden]{display:none}
+/* the reassurance line now sits in the foot, under the subtotal, right above the checkout */
+#cd .cd-foot .cd-extra{margin:6px 0 0}
+
+/* ---- a denser bag (Cole on a ~680px-tall window saw about one item) ---- */
+#cd .cd-hd{padding:12px 22px 0!important}
+#cd .cd-hd .lg-d3{font-size:20px}
+#cd .cd-line{grid-template-columns:60px 1fr auto;gap:12px;padding:10px 0}
+#cd .cd-line .ph{border-radius:var(--lg-r)}
+#cd .cd-line b{font-size:14px}
+#cd .cd-line .lg-hud{margin-top:2px}
+#cd .cd-qty{margin-top:6px}
+#cd .cd-qty button{width:28px;height:28px;min-height:0}
+#cd .cd-qty span{min-width:22px;font-size:14px}
+#cd .cd-line .pr{font-size:15px}
+#cd .cd-line .rm{font-size:12px}
+#cd .ups{margin-top:12px}
+#cd .ups-it{grid-template-columns:48px minmax(0,1fr) auto;padding:8px 0}
+/* short windows: the protection box on one line, slightly shorter buttons */
+@media (max-height:820px){
+  #cd .cd-ship{padding-bottom:0!important}
+  #cd .cd-ship .lg-hole-flag b{font-size:9px}
+  #cd .cd-foot{padding:10px 22px 10px!important}
+  #cd .cd-foot .cd-extra{margin-top:4px}
+  #cd .loop-return-coverage-ace{margin-top:8px;gap:6px}
+  #cd .loop-return-coverage-ace .loop-return-coverage__product{padding:8px 12px!important;align-items:center!important}
+  /* keep the Recommended tag, drop only the "What's this?" words */
+  #cd .loop-return-coverage-ace .loop-return-coverage__link{font-size:0!important;line-height:0;margin-top:2px}
+  #cd .loop-return-coverage-ace .loop-return-coverage__link::before{margin-right:0}
+  #cd .loop-return-coverage-ace .loop-return-coverage__caption{gap:0!important}
+  #cd button.loop-return-coverage__cta__plus{min-height:44px}
+  #cd .loop-return-coverage-ace button.loop-return-coverage__cta__standard{min-height:28px!important;padding:2px 0!important}
+  #cd .cd-view{display:none}
+}

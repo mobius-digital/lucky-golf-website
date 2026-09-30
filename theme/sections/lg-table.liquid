@@ -1,0 +1,102 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}{% if s.no_top %} style="padding-top:0"{% endif %}><div class="lg-wrap">
+  {%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}
+  {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
+  {%- if s.sub != blank %}<p class="lg-body">{{ s.sub }}</p>{% endif -%}
+  <div class="tablewrap"><table class="lg-table">
+    <thead><tr><th scope="col"><span class="sr">{{ s.col0 }}</span></th><th scope="col">{{ s.col_them }}</th><th scope="col">{{ s.col_us }}</th></tr></thead>
+    <tbody>
+      {%- for block in section.blocks -%}<tr {{ block.shopify_attributes }}><th scope="row">{{ block.settings.label }}</th><td class="them">{{ block.settings.them }}</td><td class="us">{{ block.settings.us }}</td></tr>{%- endfor -%}
+    </tbody>
+  </table></div>
+  {%- if s.after != blank %}<p class="lg-body after">{{ s.after }}</p>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Side-by-side table",
+  "class": "lgc-table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "breakdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_top",
+      "label": "No space above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "sub",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "text",
+      "id": "col0",
+      "label": "First column (screen readers)",
+      "default": "What we compared"
+    },
+    {
+      "type": "text",
+      "id": "col_them",
+      "label": "Their column",
+      "default": "The big names"
+    },
+    {
+      "type": "text",
+      "id": "col_us",
+      "label": "Our column",
+      "default": "Lucky"
+    },
+    {
+      "type": "textarea",
+      "id": "after",
+      "label": "Line under the table"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Row"
+        },
+        {
+          "type": "text",
+          "id": "them",
+          "label": "Theirs"
+        },
+        {
+          "type": "text",
+          "id": "us",
+          "label": "Ours"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "Side-by-side table"
+    }
+  ]
+}
+{% endschema %}

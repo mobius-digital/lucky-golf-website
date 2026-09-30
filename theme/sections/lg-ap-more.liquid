@@ -1,0 +1,171 @@
+{%- liquid
+  assign s = section.settings
+  assign seen = product.id | append: ','
+-%}
+<section class="lg-sec{% if s.layout == 'three' %} more{% endif %}"><div class="lg-wrap">
+  <div class="hd"><div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>{%- if s.link_label != blank %}<a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span>&rarr;</span></a>{% endif -%}</div>
+  <div class="{% if s.layout == 'three' %}lg-grid{% else %}more{% endif %}">
+  {%- for block in section.blocks -%}{%- assign b = block.settings -%}
+    {%- case block.type -%}
+    {%- when 'product' -%}
+      {%- if b.product != blank -%}{%- assign seen = seen | append: b.product.id | append: ',' -%}{% render 'lg-card', product: b.product, line: b.line, image: b.image, cut: true %}{%- endif -%}
+    {%- when 'others' -%}
+      {%- assign k = 0 -%}
+      {%- for p in b.collection.products limit: 50 -%}
+        {%- assign pid = p.id | append: ',' -%}
+        {%- if k >= b.count -%}{%- break -%}{%- endif -%}
+        {%- if p.available == false or seen contains pid -%}{%- continue -%}{%- endif -%}
+        {%- assign seen = seen | append: pid -%}{%- assign k = k | plus: 1 -%}
+        {% render 'lg-card', product: p, cut: true %}
+      {%- endfor -%}
+    {%- when 'collar' -%}
+      {%- liquid
+        assign mine_a = false
+        if product.tags contains b.tag
+          assign mine_a = true
+        endif
+        assign pick = blank
+        for p in b.collection.products limit: 50
+          assign a = false
+          if p.tags contains b.tag
+            assign a = true
+          endif
+          if a != mine_a and p.available
+            assign pick = p
+            break
+          endif
+        endfor
+      -%}
+      {%- if pick != blank -%}
+        {%- if mine_a %}{%- assign ln = b.line_b -%}{% else %}{%- assign ln = b.line_a -%}{% endif -%}
+        {% render 'lg-card', product: pick, line: ln, cut: true %}
+      {%- endif -%}
+    {%- endcase -%}
+  {%- endfor -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Wear it with",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "three",
+          "label": "Three across (polo)"
+        },
+        {
+          "value": "four",
+          "label": "Four across (hat, gear)"
+        }
+      ],
+      "default": "three"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Wear it with"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Select a word and press Italic to make it the gold word.",
+      "default": "Round out the look"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link on the right",
+      "default": "All apparel"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "line",
+          "label": "Line"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (empty = card cutout)"
+        }
+      ]
+    },
+    {
+      "type": "others",
+      "name": "More from a collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "range",
+          "id": "count",
+          "label": "How many",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "type": "collar",
+      "name": "The other collar",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag of this page's collar A",
+          "default": "Classic Polo"
+        },
+        {
+          "type": "text",
+          "id": "line_a",
+          "label": "Line when showing collar A",
+          "default": "The classic collar, same shirt underneath."
+        },
+        {
+          "type": "text",
+          "id": "line_b",
+          "label": "Line when showing collar B",
+          "default": "No buttons, nothing at your throat."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wear it with"
+    }
+  ]
+}
+{% endschema %}

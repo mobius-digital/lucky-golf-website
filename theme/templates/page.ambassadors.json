@@ -1,0 +1,230 @@
+{
+  "sections": {
+    "hero": {
+      "type": "lg-hero-plus",
+      "settings": {
+        "image": "shopify://shop_images/lg-green-read-fit.webp",
+        "focus_x": 50,
+        "focus_y": 45,
+        "focus_mx": 46,
+        "focus_my": 48,
+        "short": false,
+        "eyebrow": "Ambassador program",
+        "heading": "You post it. We put ad money behind <em>it.</em>",
+        "lede": "No follower minimum, no scripts, and nobody gets paid to say a club is good. You post the videos, and we put ad money behind the best ones."
+      },
+      "blocks": {
+        "b1": {
+          "type": "button",
+          "settings": {
+            "label": "Apply now",
+            "url": "https://creators.luckygolf.com/apply",
+            "gold": true,
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ]
+    },
+    "gets": {
+      "type": "lg-cols",
+      "settings": {
+        "style": "icons",
+        "eyebrow": "What you get",
+        "heading": "Three things, and none of them are a <em>discount code</em>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icon": "hand-coins",
+            "title": "A free wedge, then the bag",
+            "text": "Your first wedge is free when you ask. Post every month and a new club opens up each month."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icon": "send",
+            "title": "Your videos, run as ads",
+            "text": "We put real ad money behind the best ones, from your handle, and you get a share of what they sell. Your link pays 10% on top."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "title": "The Clubhouse",
+            "text": "A leaderboard, weekly races anyone can win, and Charms for posting that turn into hats and polos."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "ask": {
+      "type": "lg-ask",
+      "settings": {
+        "no_top": true,
+        "eyebrow": "What we ask",
+        "heading": "Tell us the truth, including when it's not <em>flattering</em>",
+        "body": "We pay for sales, never for reviews. Nobody gets paid to say a club is good.",
+        "after": "We read every application and answer either way.",
+        "p_eyebrow": "Apply",
+        "p_title": "About two minutes",
+        "p_text": "Linking your best posts gets you a faster yes. Ads can only run from Instagram, so that's the handle worth giving us.",
+        "btn_label": "Apply now",
+        "btn_url": "https://creators.luckygolf.com/apply",
+        "new_tab": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Film with your Lucky clubs: range sessions, real rounds, honest reactions."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Post it as an Instagram Reel and tag @luckygolfofficial. Post it everywhere else too, but the Reel is the one we can run as an ad."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "Say it's a partnership. Every post with our gear gets a clear disclosure, paid or not."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "photos": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-swing-black-wedge.webp"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-walk-off-green.webp"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "faq": {
+      "type": "lg-faq-page",
+      "settings": {
+        "jump": false,
+        "even": true,
+        "jsonld": true
+      },
+      "blocks": {
+        "b1": {
+          "type": "topic",
+          "settings": {
+            "anchor": "",
+            "jump_label": "",
+            "eyebrow": "Before you ask",
+            "heading": "Stuff people always <em>ask</em>",
+            "text": ""
+          }
+        },
+        "b2": {
+          "type": "q",
+          "settings": {
+            "question": "How many followers do I need?",
+            "answer": "<p>None, on any platform.</p>",
+            "open": true
+          }
+        },
+        "b3": {
+          "type": "q",
+          "settings": {
+            "question": "Do I get paid?",
+            "answer": "<p>Yes, for sales. When an ad we run from your video sells, you earn a share, and your rate climbs as your ads sell more. Your link pays 10% on anything bought through it.</p>",
+            "open": false
+          }
+        },
+        "b4": {
+          "type": "q",
+          "settings": {
+            "question": "Do I have to post?",
+            "answer": "<p>To earn, yes. Clubs come from posting every month, and ad money comes from videos we can run. No quota beyond that, and no script.</p>",
+            "open": false
+          }
+        },
+        "b5": {
+          "type": "q",
+          "settings": {
+            "question": "Can I work with other brands?",
+            "answer": "<p>Yes. We don't ask you to stop.</p>",
+            "open": false
+          }
+        },
+        "b6": {
+          "type": "q",
+          "settings": {
+            "question": "Does applying sign me up for anything?",
+            "answer": "<p>No. If you're accepted, you'll agree to the terms and privacy policy before anything else happens.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "“It's better to be <em>lucky.</em>”",
+        "lede": "Post it, and we'll put money behind it.",
+        "btn_label": "Apply now",
+        "btn_url": "https://creators.luckygolf.com/apply"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "gets",
+    "ask",
+    "photos",
+    "faq",
+    "signoff"
+  ]
+}

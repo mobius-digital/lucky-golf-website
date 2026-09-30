@@ -1,0 +1,87 @@
+{%- assign s = section.settings -%}
+<section class="lg-sec{% if s.contour %} lg-contour{% endif %}"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}{% if s.rule %} style="border-top:1px solid var(--lg-rule)"{% endif %}><div class="lg-wrap">
+  <div class="why-top">
+    <div>{%- if s.eyebrow != blank %}<p class="lg-eyebrow">{{ s.eyebrow }}</p>{% endif -%}{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}</div>
+    {%- if s.lede != blank %}<p class="lg-lede">{{ s.lede }}</p>{% endif -%}
+  </div>
+  <div class="claims">
+    {%- for block in section.blocks -%}<div class="claim" {{ block.shopify_attributes }}><span class="n">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><h3 class="lg-d3">{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>{%- endfor -%}
+  </div>
+  {%- if s.link_label != blank %}<p class="lg-body" style="margin-top:clamp(18px,2.5vw,24px)"><a class="lg-link" href="{{ s.link_url }}">{{ s.link_label }} <span aria-hidden="true">&rarr;</span></a></p>{% endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Numbered claims",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "default": "why"
+    },
+    {
+      "type": "checkbox",
+      "id": "rule",
+      "label": "Line above",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = gold word)",
+      "info": "Select a word and press Italic to make it the gold word."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Line beside it"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link under it"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "contour",
+      "label": "Contour map behind this section",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "claim",
+      "name": "Claim",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Numbered claims"
+    }
+  ]
+}
+{% endschema %}
