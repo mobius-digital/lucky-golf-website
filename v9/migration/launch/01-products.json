@@ -3,27 +3,27 @@
   "items": [
     {
       "handle": "lucky-golf-lgw02-gold",
-      "templateSuffix": "club",
+      "templateSuffix": "club-carver-gold",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {
       "handle": "lucky-golf-lgw02-black",
-      "templateSuffix": "club",
+      "templateSuffix": "club-carver-black",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {
       "handle": "signature-gold-putters",
-      "templateSuffix": "club",
+      "templateSuffix": "club-blade",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {
       "handle": "limited-edition-mallet-putter",
-      "templateSuffix": "club",
+      "templateSuffix": "club-mallet",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {
       "handle": "lucky-striker-hybrid-limited-edition",
-      "templateSuffix": "club",
+      "templateSuffix": "club-stryker",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {

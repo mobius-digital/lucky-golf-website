@@ -33,7 +33,7 @@
 :root,.lg-scope,body.lg{
   /* ---- ground ---- */
   --lg-page:#FFFFFF;          /* the page. Most of every screen. */
-  --lg-tile:#F4F3F0;          /* stone: product wells, cards, table fills. A material, never a band. */
+  --lg-tile:#F4F2EE;          /* warm grey: a hair of warmth for the gold, still grey so white product reads white (Cole 2026-09-27: cream looked dingy, pure grey too cold).  product wells, cards, table fills. A material, never a band. */
   --lg-surface:#FFFFFF;       /* raised things that float: the Mags card, the pop-up, the drawer */
   --lg-dark:#0B2E1F;          /* deep green: announcement bar, header, the one band, footer */
   --lg-night:#06110B;         /* Twilight's page. Only via data-ground="twilight". */
@@ -83,9 +83,10 @@
   --lg-pad:clamp(20px,4.2vw,68px);
   --lg-gut:clamp(16px,2vw,28px);
   --lg-sec:clamp(64px,7vw,112px);
-  --lg-r:10px;                /* controls: chips, inputs, swatches */
-  --lg-r-btn:12px;            /* buttons */
-  --lg-r-card:18px;           /* surfaces: cards, tiles, photos in the page */
+  --lg-r:6px;                 /* controls: chips, inputs, swatches */
+  --lg-r-btn:6px;             /* buttons */
+  --lg-r-card:8px;            /* surfaces: cards, tiles, photos in the page (Takomo-tight, 2026-09-27) */
+  --lg-r-tag:4px;             /* tags and badges: flat, small corner (Takomo, 2026-09-27) */
   --lg-ease:cubic-bezier(.23,1,.32,1);
   /* Shadows exist for ONE reason: something floats over the page (Mags,
      the pop-up, the drawer). Nothing that sits in the page casts a shadow. */
@@ -116,7 +117,7 @@
   --lg-band-light:radial-gradient(60% 110% at 85% 0%,rgba(237,210,124,.14),transparent 60%),#0A1D14;
   --lg-page:#06110B;
   --lg-surface:#0B1911;
-  --lg-tile:#F1EEE6;          /* product photos always sit on light, even at night */
+  --lg-tile:#EFEDE9;          /* product photos always sit on light, even at night */
   --lg-ink:#F4F3F0;
   --lg-ink-70:rgba(244,243,240,.76);
   --lg-ink-64:rgba(244,243,240,.68);
@@ -141,7 +142,7 @@
    ========================================================================== */
 .lg-scope,
 body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
-  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-family:var(--lg-font,'Archivo'),system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   font-variation-settings:'wdth' 100;font-size:var(--lg-fs-body);line-height:1.55;
   font-weight:400;letter-spacing:normal;
   -webkit-font-smoothing:antialiased}
@@ -160,7 +161,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
    TYPE · Archivo only. Display at width 62, weight 800, caps. Labels at
    width 78, 600, tracked caps. Body plain width 100.
    ========================================================================== */
-.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;
+.lg-d1,.lg-d2,.lg-d3{margin:0;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;
   font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
 .lg-d1{font-size:clamp(41.6px,6.2vw,83.2px)}
 .lg-d2{font-size:clamp(32px,3.9vw,51.2px)}
@@ -191,7 +192,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 
 /* The eyebrow orients the section. It never restates the headline. */
 .lg-eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 16px;color:var(--lg-gold-text);
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   text-transform:uppercase;letter-spacing:.2em;font-size:var(--lg-fs-xs)}
 .lg-eyebrow::before{content:'';width:22px;height:2px;background:var(--lg-gold);flex:none}
 .lg-lede{margin:18px 0 0;max-width:46ch;font-size:var(--lg-fs-lead);line-height:1.5;color:var(--lg-ink-70)}
@@ -199,9 +200,9 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-meta{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
 /* The aside is the charm voice: one line, sentence case, medium weight. */
 .lg-aside{margin:14px 0 0;max-width:44ch;font-size:var(--lg-fs-body);font-weight:500;color:var(--lg-ink)}
-.lg-label{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+.lg-label{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs)}
-.lg-link{color:var(--lg-ink);text-decoration:none;font-family:'Archivo',sans-serif;
+.lg-link{color:var(--lg-ink);text-decoration:none;font-family:var(--lg-font,'Archivo'),sans-serif;
   font-variation-settings:'wdth' 76;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
   font-size:var(--lg-fs-sm);border-bottom:2px solid var(--lg-gold);padding-bottom:4px;
   display:inline-flex;align-items:center;gap:8px}
@@ -211,7 +212,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 /* Over a dark field or a photo, everything flips to cream and gold stays gold.
    Put .lg-on-dark on any block you build yourself over a dark field. */
 :is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy){color:var(--lg-on-dark)}
-:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-gold-hi)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow{color:var(--lg-on-dark)}
 :is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-eyebrow::before{background:var(--lg-gold)}
 :is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-lede,.lg-body,.lg-meta){color:var(--lg-on-dark-m)}
 :is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-on-dark)}
@@ -224,7 +225,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 /* .lg-btn-line works on its own or paired with .lg-btn */
 .lg-btn,.lg-btn-line{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
   padding:0 26px;border:0;border-radius:var(--lg-r-btn);cursor:pointer;text-decoration:none;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 76;font-weight:700;
   text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-fs-sm);
   color:#17140F;background-image:var(--lg-foil);background-size:200% 100%;background-position:0 0;
   box-shadow:var(--lg-btn-lift);
@@ -254,11 +255,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-tick{background:var(--lg-dark);color:var(--lg-on-dark-m)}
 .lg-tick-in{max-width:none;padding:0 var(--lg-pad);min-height:34px;display:flex;align-items:center;
   justify-content:center;gap:28px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
 .lg-tick-in::-webkit-scrollbar{display:none}
 .lg-tick a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
-.lg-tick b{color:var(--lg-gold);font-weight:600;margin-right:.35em}
+.lg-tick b{color:var(--lg-on-dark);font-weight:600;margin-right:.35em}
 
 .lg-hdr{position:sticky;top:0;z-index:var(--lg-z-hdr);background:var(--lg-dark);color:var(--lg-on-dark);
   border-bottom:1px solid var(--lg-rule-dark)}
@@ -267,7 +268,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-logo{grid-area:l;justify-self:start;display:inline-flex;align-items:center;color:var(--lg-on-dark)}
 .lg-logo svg,.lg-logo img{display:block;width:132px;height:auto}
 .lg-nav{grid-area:n;justify-self:center;display:flex;gap:30px}
-.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:'Archivo',sans-serif;
+.lg-nav a{color:var(--lg-on-dark);text-decoration:none;font-family:var(--lg-font,'Archivo'),sans-serif;
   font-variation-settings:'wdth' 78;font-weight:600;font-size:12.8px;letter-spacing:.06em;
   text-transform:uppercase;display:inline-flex;align-items:center;min-height:44px}
 .lg-hdr-act{grid-area:a;justify-self:end;display:flex;align-items:center;gap:6px}
@@ -288,7 +289,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-ftr-soc a:hover{opacity:1;background:rgba(244,243,240,.1)}
 .lg-ftr-soc .ic{width:20px;height:20px}
 .lg-ftr-in{display:grid;gap:32px var(--lg-gut);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-.lg-ftr h3{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+.lg-ftr h3{margin:0 0 12px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;
   font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--lg-fs-xs);color:var(--lg-on-dark-m)}
 .lg-ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 .lg-ftr a{color:var(--lg-on-dark);text-decoration:none;font-size:var(--lg-fs-base)}
@@ -316,7 +317,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-hero .lg-lede{color:rgba(255,255,255,.9)}
 /* the eyebrow on a photo sits on a glass chip so it reads on any frame */
 .lg-hero .lg-eyebrow{display:inline-flex;background:rgba(6,17,11,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-  color:var(--lg-gold-hi);padding:8px 12px;border-radius:8px}
+  color:var(--lg-on-dark);padding:8px 12px;border-radius:8px}
 .lg-hero .lg-eyebrow::before{display:none}
 @media (max-width:749px){
   .lg-hero > img,.lg-hero-img{height:620px;min-height:0;object-position:var(--focus-m,var(--focus,50% 50%))}
@@ -384,38 +385,39 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-card:hover .lg-card-ph img{transform:scale(1.03)}
 .lg-card-ph .lg-tag{position:absolute;left:12px;top:12px;z-index:2}
 .lg-card-bd{padding:14px 2px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
-.lg-card-nm{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
+.lg-card-nm{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 66;font-weight:800;
   text-transform:uppercase;font-size:clamp(16.8px,1.3vw,20px);line-height:1}
-.lg-card-pr{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
+.lg-card-pr{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 74;font-weight:700}
 .lg-card-ln{grid-column:1/-1;margin:2px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.45}
 [data-ground="twilight"] .lg-card-ph{background:var(--lg-tile)}
 
 /* A card that holds controls (a gift, a picker) rather than a photo. */
-.lg-panel{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;border:1px solid transparent}
+.lg-panel{background:none;border-radius:var(--lg-r-card);padding:24px;border:1px solid var(--lg-rule)}
 .lg-panel.is-open{border-color:var(--lg-gold)}
 [data-ground="twilight"] .lg-panel{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),var(--lg-surface);border-color:rgba(237,210,124,.16)}
 [data-ground="twilight"] .lg-panel.is-open{border-color:rgba(237,210,124,.7);box-shadow:0 0 40px -12px rgba(237,210,124,.45)}
 
-/* Review card. Only ever a real review, quoted exactly, with a real name. */
-.lg-quote{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:24px;display:flex;
+/* Review card. Only ever a real review, quoted exactly, with a real name.
+   No box: text on the page under a hairline (grey is only for product photos). */
+.lg-quote{background:none;border-radius:0;padding:20px 0 0;border-top:1px solid var(--lg-rule);display:flex;
   flex-direction:column;gap:12px;margin:0}
 .lg-quote p,.lg-quote blockquote{margin:0;font-size:var(--lg-fs-body)}
 .lg-quote footer,.lg-quote figcaption{color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
-.lg-band .lg-quote{background:rgba(244,243,240,.06);border:1px solid var(--lg-rule-dark)}
+.lg-band .lg-quote{background:none;border-top-color:var(--lg-rule-dark)}
 .lg-band .lg-quote footer,.lg-band .lg-quote figcaption{color:var(--lg-on-dark-m)}
 
 /* Stat tile: a number that is real, and what it means underneath. */
-.lg-stat{background:var(--lg-tile);border-radius:var(--lg-r-card);padding:22px}
-.lg-stat b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 66;
+.lg-stat{background:none;border-radius:0;padding:16px 0 0;border-top:1px solid var(--lg-rule)}
+.lg-stat b{display:block;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 66;
   font-weight:800;font-size:clamp(28.8px,3vw,41.6px);line-height:1}
 .lg-stat span{display:block;margin-top:6px;color:var(--lg-ink-64);font-size:var(--lg-fs-base)}
 
 /* ==========================================================================
    SMALL PARTS · the stamp: condensed caps on chips, tags, trust rows, tables.
    ========================================================================== */
-.lg-tag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;justify-self:start;border-radius:999px;padding:5px 11px;
+.lg-tag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;justify-self:start;border-radius:var(--lg-r-tag);padding:6px 10px;
   background:#17140F;color:#F4F3F0;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:700;
   text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs)}
 .lg-tag-gold{background-image:var(--lg-foil);color:#17140F}
 .lg-tag-ok{background:#008340;color:#fff}
@@ -423,7 +425,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 
 .lg-chip{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;
   border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs)}
 .lg-chip[aria-pressed="true"],.lg-chip.is-on{background:var(--lg-ink);color:var(--lg-page);border-color:var(--lg-ink)}
 /* A value that can't be bought: dashed and struck, never faded out of reach. */
@@ -439,7 +441,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
   background:#FFFFFF;border:1px solid var(--lg-rule);border-radius:12px}
 .lg-swatch img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .lg-swatch[aria-pressed="true"]{border:2px solid var(--lg-ink)}
-[data-ground="twilight"] .lg-swatch[aria-pressed="true"]{border-color:#EDD27C;box-shadow:0 0 18px -4px rgba(237,210,124,.6)}
+[data-ground="twilight"] .lg-swatch[aria-pressed="true"]{border-color:var(--lg-on-dark);box-shadow:0 0 18px -4px rgba(237,210,124,.6)}
 
 .lg-stock{display:inline-flex;align-items:center;gap:8px;color:var(--lg-ok);font-size:var(--lg-fs-base)}
 .lg-stock::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
@@ -450,22 +452,22 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 
 /* Stars are a graphic: on white they need the darker gold to stay legible. */
 .lg-stars{display:inline-flex;gap:2px;color:var(--lg-star);line-height:0}
-:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-gold)}
+:is(.lg-on-dark,.lg-band,.lg-sign,.lg-ftr,.lg-hero-copy) .lg-stars{color:var(--lg-on-dark)}
 .lg-stars svg{width:15px;height:15px;fill:currentColor}
 
 .lg-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;
   padding-block:20px;border-block:1px solid var(--lg-rule)}
-.lg-trust span{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+.lg-trust span{display:flex;align-items:center;gap:10px;font-family:var(--lg-font,'Archivo'),sans-serif;
   font-variation-settings:'wdth' 80;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
   font-size:var(--lg-fs-sm)}
 .lg-trust svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--lg-gold-text);stroke-width:1.7}
 
 .lg-table{width:100%;border-collapse:collapse;font-size:var(--lg-fs-base)}
 .lg-table th,.lg-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--lg-rule-08);vertical-align:top}
-.lg-table thead th{background:var(--lg-tile);color:#17140F;font-family:'Archivo',sans-serif;
+.lg-table thead th{background:none;border-bottom:1px solid var(--lg-ink);color:#17140F;font-family:var(--lg-font,'Archivo'),sans-serif;
   font-variation-settings:'wdth' 78;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
   font-size:var(--lg-fs-xs)}
-.lg-table tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+.lg-table tbody th{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   text-transform:uppercase;letter-spacing:.08em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64);width:1%;white-space:nowrap}
 
 /* Forms. One field, one button, the reason to give it. */
@@ -481,7 +483,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-fq{border-top:1px solid var(--lg-rule)}
 .lg-fq:last-child{border-bottom:1px solid var(--lg-rule)}
 .lg-fq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;
-  cursor:pointer;list-style:none;min-height:48px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+  cursor:pointer;list-style:none;min-height:48px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;
   font-weight:700;font-size:var(--lg-fs-body);line-height:1.35;color:var(--lg-ink)}
 .lg-fq summary::-webkit-details-marker{display:none}
 .lg-fq summary:hover{color:var(--lg-gold-text)}
@@ -523,7 +525,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
    the 404, success messages, the bag button. Never on an error.
    ========================================================================== */
 /* lucky.js builds these in <body>, outside .lg-scope, so they carry the type themselves */
-:is(.lg-guide,.lg-pop,.lg-toast){font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+:is(.lg-guide,.lg-pop,.lg-toast){font-family:var(--lg-font,'Archivo'),system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   font-variation-settings:'wdth' 100;letter-spacing:normal;-webkit-font-smoothing:antialiased}
 .lg-pop :is(h2,p){color:inherit}
 .lg-mags{display:inline-block;line-height:0}
@@ -607,7 +609,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-hole-flag i{position:relative;display:block;width:2px;height:22px;translate:-50% -6px;background:var(--lg-ink-38)}
 .lg-hole-flag i::after{content:'';position:absolute;left:2px;top:0;border:5px solid transparent;border-left:9px solid var(--lg-ink-38);border-right:0}
 .lg-hole-flag b{position:absolute;top:16px;left:0;translate:-50% 0;white-space:nowrap;
-  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+  font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   font-size:var(--lg-fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--lg-ink-64)}
 .lg-hole-flag[data-last] b{translate:-100% 0}
 .lg-hole-flag[data-hit] i{background:var(--lg-yd-gold)}
@@ -643,21 +645,21 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 
 /* Spec tiles (launch monitor A): the product page's real specs, big numbers. */
 .lg-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
-.lg-spec{background:var(--lg-tile);border-radius:var(--lg-r);padding:14px 16px}
-.lg-spec b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:30px;line-height:1}
+.lg-spec{background:none;border-radius:0;padding:14px 0 0;border-top:1px solid var(--lg-rule)}
+.lg-spec b{display:block;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:30px;line-height:1}
 .lg-spec b small{font-size:.5em;margin-left:2px}
-.lg-spec span{display:block;margin-top:6px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
+.lg-spec span{display:block;margin-top:6px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;
   text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
-[data-ground="twilight"] .lg-spec{background:rgba(255,255,255,.05);border:1px solid var(--lg-rule)}
+[data-ground="twilight"] .lg-spec{background:none;border-top:1px solid var(--lg-rule)}
 
 /* HUD strip (launch monitor B): the compact version, for cards and cart lines. */
-.lg-hud{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;
+.lg-hud{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;
   font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
 .lg-hud b{color:var(--lg-ink);font-weight:700;margin-right:4px}
 
 /* Review score: the real average and the real counts per star, as bars. */
 .lg-score{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;align-items:center}
-.lg-score > b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:64px;line-height:.9}
+.lg-score > b{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:64px;line-height:.9}
 .lg-score-bars{display:grid;gap:6px;min-width:0}
 .lg-score-row{display:grid;grid-template-columns:28px 1fr 44px;gap:10px;align-items:center;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
 .lg-score-row[data-nonum]{grid-template-columns:28px 1fr}
@@ -679,11 +681,11 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 .lg-mt{display:flex;flex-direction:column;gap:8px;padding:16px 18px;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08);min-height:118px}
 .lg-mt:nth-child(2n){border-right:0}
 .lg-mt:nth-last-child(-n+2){border-bottom:0}
-.lg-mt > span{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
-.lg-mt > b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:38px;line-height:.9;font-variant-numeric:tabular-nums}
+.lg-mt > span{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+.lg-mt > b{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:38px;line-height:.9;font-variant-numeric:tabular-nums}
 .lg-mt > em{margin-top:auto;font-style:normal;font-size:var(--lg-fs-base);color:var(--lg-ink-70)}
 .lg-vals{margin-top:auto;display:flex;flex-wrap:wrap;gap:5px}
-.lg-vals i{font-style:normal;font-family:'Archivo',sans-serif;font-weight:600;font-size:var(--lg-fs-xs);font-variant-numeric:tabular-nums;padding:5px 8px;border:1px solid var(--lg-rule);border-radius:6px}
+.lg-vals i{font-style:normal;font-family:var(--lg-font,'Archivo'),sans-serif;font-weight:600;font-size:var(--lg-fs-xs);font-variant-numeric:tabular-nums;padding:5px 8px;border:1px solid var(--lg-rule);border-radius:6px}
 @media (max-width:640px){
   .lg-monitor-in{grid-template-columns:1fr}
   .lg-monitor-ph{border-right:0;border-bottom:1px solid var(--lg-rule);min-height:180px}
@@ -710,7 +712,7 @@ body.lg{margin:0;background:var(--lg-page);color:var(--lg-ink);
 :is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-ring.r2{stroke:rgba(244,243,240,.38)}
 :is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-cup{fill:#F4F3F0}
 :is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-rl{fill:var(--lg-on-dark-m)}
-:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-rl.r5{fill:var(--lg-gold-hi)}
+:is(.lg-on-dark,.lg-band,.lg-sign) .lg-prox .px-rl.r5{fill:var(--lg-on-dark)}
 :is(.lg-on-dark,.lg-band,.lg-sign) .lg-score-row i{background:rgba(244,243,240,.16)}
 :is(.lg-on-dark,.lg-band,.lg-sign) .lg-score-row{color:var(--lg-on-dark-m)}
 @media (max-width:760px){.lg-prox{grid-template-columns:1fr}}
