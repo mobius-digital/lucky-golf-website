@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/28401107015",
+  "article": {
+   "title": "Using your Lucky wedge from the rough",
+   "body": "<p>Nobody wants to be in the rough, and chipping out of it is where a lot of rounds get away. The grass catches the club on the way down, slows it and can twist the face. Chips already tempt you to decelerate, which is exactly how the <a href=\"/blogs/news/the-dreaded-chili-dip-golf-shot\">chili dip</a> happens, and thick grass makes the temptation worse.</p>\n<p>Colin McCarthy, a PGA professional and coach, has an easy way to cut down the friction as the club goes through the grass. It takes less time to watch than your pre-shot routine.</p>\n\n<a class=\"video\" href=\"https://www.youtube.com/watch?v=5S1Fsvf8tNU\" target=\"_blank\" rel=\"noopener\"><img src=\"https://i.ytimg.com/vi/5S1Fsvf8tNU/hqdefault.jpg\" alt=\"Wedge shots from the rough, with Colin McCarthy\" loading=\"lazy\"><span class=\"play\"><i></i></span><span class=\"cap\">Watch on YouTube · Colin McCarthy, PGA</span></a>\n\n<h2>Read the lie before you pick the shot</h2>\n<p>Look at how the ball's sitting before anything else. If it's sitting up on top of the grass, you can nip it almost like a fairway chip, just be careful not to slide under it. If it's settled down, there's grass behind it that you'll have to go through, and that changes everything about the shot.</p>\n\n<h2>Getting through the thick stuff</h2>\n<ul>\n<li><b>Open the face a touch and grip a little firmer.</b> The grass wants to close the face, so give yourself a head start and don't let it twist.</li>\n<li><b>Swing a bit steeper.</b> A steeper path means less grass between the club and the ball.</li>\n<li><b>Commit to the speed.</b> The worst thing you can do in the rough is slow down. Pick a smaller backswing if you need to, then accelerate through.</li>\n<li><b>Plan for run.</b> The ball won't spin much, so land it earlier and let it roll to the hole.</li>\n</ul>\n\n<p class=\"pull\">The rough doesn't care how pretty the swing is. It only cares that you didn't slow down.</p>\n\n<h2>A wedge that tells you the truth</h2>\n<p>The Carver's K Grind has a wide, flat sole that doesn't dig, which is what you want when the grass is trying to grab the club. And because it's forged, you'll know the moment you hit it whether you got through clean.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>Forged, with a K Grind sole for everyday lies. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>Why do my chips from the rough come up short?</summary><div class=\"lg-fq-a\"><p>The grass grabs the club and slows it down, usually because the swing slowed down first. Commit to the speed and let the club keep moving.</p></div></details><details class=\"lg-fq\"><summary>Will the ball spin out of the rough?</summary><div class=\"lg-fq-a\"><p>Less than usual. Grass gets between the face and the ball, so plan for it to land softer and roll further.</p></div></details><details class=\"lg-fq\"><summary>Which wedge is best from the rough?</summary><div class=\"lg-fq-a\"><p>A sand wedge or lob wedge for short pitches over thick grass. If the ball's sitting up, a lower loft that runs out can be the easier play.</p></div></details></div>",
+   "summary": "How to get through thick grass without the chili dip, with a simple trick from a PGA pro.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-rough-tip.webp",
+    "altText": "PGA professional Colin McCarthy with a Lucky wedge in the rough"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Using your Lucky wedge from the <span class=\"lg-foil-word\">rough</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "A chip from the fairway is one shot. The same chip from thick grass is a completely different one. PGA pro Colin McCarthy has a simple trick for it."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Wedges from the rough"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Rough lies, <span class=\\\"lg-foil-word\\\">handled</span>\", \"lede\": \"Sixty days to take a Carver into the long stuff and see what it does.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "How to get through thick grass without the chili dip, with a simple trick from a PGA pro."
+    }
+   ]
+  }
+ }
+}

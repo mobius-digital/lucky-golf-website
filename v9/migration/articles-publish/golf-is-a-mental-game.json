@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/605083402517",
+  "article": {
+   "title": "Golf is a mental game",
+   "body": "<p>Let's get it out of the way: golf is frustrating. You'll hit a shot you'd happily frame, then top the next one forty yards. Nobody's figured out how to stop that, including the people who play for a living. What separates a good round from a bad one is usually how you handle the shot after the bad one.</p>\n\n<h2>Build a routine you can hide in</h2>\n<p>A pre-shot routine isn't a ritual for tour players. It's a way to hit every shot the same way, whether it's the first tee with people watching or a nothing approach on the back nine. Stand behind the ball and pick a small target. Make one practice swing that feels like the shot you're about to hit. Step in, take one look and go.</p>\n<p>The details are yours. What matters is doing it the same way every time, because when the pressure's on, your head gets something to do other than worry.</p>\n\n<h2>Let the bad one go</h2>\n<p>Give yourself until you reach the ball. Be annoyed, replay it, mutter at the sky. Then it's done, and the next shot gets your full attention. Dragging a double bogey onto the next tee is how one bad hole turns into three.</p>\n<p>If you want to learn something from it, pick one thing. Not five. \"I decelerated\" is useful. A full swing rebuild in the cart between holes isn't.</p>\n\n<p class=\"pull\">The best golfers still hit bad shots. They just don't hit the next one angry.</p>\n\n<h2>Play the shot you've actually got</h2>\n<p>Most blow-up holes start with a hero shot: the gap in the trees, the carry over water you make one time in ten. Taking your medicine and chipping back to the fairway feels like giving up a stroke. It's usually saving you two.</p>\n<p>Aim for the fat part of the green, not the flag tucked behind a bunker. A twenty-footer for birdie beats a plugged lie in the sand every time.</p>\n\n<h2>Remember why you're out there</h2>\n<p>You'll get bounces off a cart path onto the green, and you'll get perfect drives that finish in a divot. That's golf. Over a season the lucky breaks and the unlucky ones come out about even, so there's no sense carrying the bad ones around.</p>\n<p>That's the whole reason we exist. Golf got too serious, and the players who seem to enjoy it most are usually the ones playing their best. Laugh at the chunked chip, enjoy the walk and swing like you mean it.</p>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>How do I stay calm on the first tee?</summary><div class=\"lg-fq-a\"><p>Run your normal routine, pick a target you like and make a smooth swing, not a big one. Nobody's watching as closely as you think.</p></div></details><details class=\"lg-fq\"><summary>Is a pre-shot routine really worth it?</summary><div class=\"lg-fq-a\"><p>Yes. Under pressure it gives your head something to do other than worry, and it's the same on the first hole as the eighteenth.</p></div></details><details class=\"lg-fq\"><summary>How do I stop one bad hole wrecking the round?</summary><div class=\"lg-fq-a\"><p>Give it until you reach your next shot, then drop it. The next shot doesn't know what you made on the last hole.</p></div></details></div>",
+   "summary": "Focus, patience and letting the bad ones go. The part of the game you can't buy your way out of.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-mental-game.webp",
+    "altText": "A golfer lining up a shot"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Golf is a <span class=\"lg-foil-word\">mental</span> game"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "One hole you're a genius, the next you're raking a bunker you didn't know existed. The swing matters, but what happens between your ears decides a lot of the card."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Golf is a mental game"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"It's better to be <span class=\\\"lg-foil-word\\\">lucky</span>\", \"lede\": \"Clubs for golfers who came out to enjoy the round, and play better while they're at it.\", \"btn\": \"See the clubs\", \"href\": \"/collections/lucky-golf-clubs\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Focus, patience and letting the bad ones go. The part of the game you can't buy your way out of."
+    }
+   ]
+  }
+ }
+}

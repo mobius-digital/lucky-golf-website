@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/603193770055",
+  "article": {
+   "title": "Golf.com proves why a lucky charm is necessary on the golf course",
+   "body": "<p>In June 2021, Golf.com's Luke Kerr-Dineen wrote about a study golfers are going to like. Lysann Damisch, a psychology researcher at the University of Cologne, ran a series of experiments on whether feeling lucky actually changes how people perform. One of them was on a putting green.</p>\n\n<h2>What the study found</h2>\n<p>People were handed a golf ball and asked to hit putts. Some were told their ball had been lucky so far. The rest were just handed a ball. The group with the \"lucky\" ball holed more putts.</p>\n<p>It wasn't a one-off, either. In another experiment, people who got to keep their own lucky charm did better on the test than people whose charm was taken away. And in a third, people who were told \"I'll keep my fingers crossed for you\" beat the group that got no well-wishes on a dexterity task.</p>\n\n<p class=\"pull\">Call it a placebo if you want. The putt still went in.</p>\n\n<h2>Why it works</h2>\n<p>The researchers put it down to confidence. Believing you've got a bit of luck on your side takes some of the tension out of the moment, and a relaxed stroke is a better stroke. It's strongest when people feel unsure of themselves, which describes just about every golfer over a six-footer to save par.</p>\n<p>You can read the whole Golf.com piece <a href=\"https://golf.com/instruction/lucky-golf-balls-study-play-smart/\" target=\"_blank\" rel=\"noopener\">here</a>.</p>\n\n<h2>We've been saying this since 2018</h2>\n<p>Lucky started with the idea that golf's more fun, and honestly more playable, when you walk up to the ball feeling good. That's why the clover's on our clubs, and why we'd rather you laughed off the bad bounce than carried it to the next tee. Turns out science agrees. We just think it makes for a better round.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-mallet-full-cut.webp\" alt=\"Eclipse Mallet\"></span>\n<div><b>Eclipse Mallet</b><span>Fully milled and finished in gold. $229.</span></div>\n<a class=\"lg-btn\" href=\"/products/limited-edition-mallet-putter\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>Do lucky charms really help your golf?</summary><div class=\"lg-fq-a\"><p>In the study Golf.com covered, people told their ball was lucky holed more putts than people with a regular ball. The researchers put it down to confidence.</p></div></details><details class=\"lg-fq\"><summary>Who ran the study?</summary><div class=\"lg-fq-a\"><p>Lysann Damisch, a psychologist at the University of Cologne. It was published in Psychological Science in 2010.</p></div></details><details class=\"lg-fq\"><summary>What counts as a lucky charm?</summary><div class=\"lg-fq-a\"><p>Whatever makes you stand over the ball feeling good about it: a marker, a hat, a coin in your pocket. A gold wedge works too.</p></div></details></div>",
+   "summary": "People told their golf ball was lucky holed more putts. Golf.com wrote up the study, and we've been saying it since 2018.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-from-the-cup.webp",
+    "altText": "A golf ball dropping into the cup"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Golf.com proves why a lucky charm is necessary on the golf <span class=\"lg-foil-word\">course</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "People who were told their golf ball was lucky holed more putts. That's not us talking. It's a psychology study, and Golf.com wrote it up."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Why a lucky charm works"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Bring your own <span class=\\\"lg-foil-word\\\">luck</span>\", \"lede\": \"Clubs with a little luck built in, and sixty days to see what they do for your confidence.\", \"btn\": \"See the clubs\", \"href\": \"/collections/lucky-golf-clubs\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "People told their golf ball was lucky holed more putts. Golf.com wrote up the study, and we've been saying it since 2018."
+    }
+   ]
+  }
+ }
+}

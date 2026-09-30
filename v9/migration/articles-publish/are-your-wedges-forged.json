@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/605107912981",
+  "article": {
+   "title": "Are your wedges forged?",
+   "body": "<p>Casting is the quick way, and there's nothing sinister about it. Molten steel goes into a mold, cools and comes out as a head that needs very little finishing. It's fast, it's repeatable, and it's how most of the wedges on a pro shop wall get made.</p>\n<p>Forging starts with a solid billet of steel and presses it into shape. It takes longer, it wastes more material, and somebody has to finish the head by hand afterward. What you get for the trouble is a tighter grain in the metal, and that's why a forged wedge feels the way it does at impact: softer, with a lot more coming back up the shaft about where you caught it.</p>\n\n<p class=\"pull\">A cast wedge tells you the ball's gone. A forged one tells you how.</p>\n\n<h2>Does it actually matter to your score?</h2>\n<p>Not much, on a full swing. Hit a stock 56 from a hundred yards and you'll have a hard time telling the two apart. Where it shows up is around the green, where you're judging distance by feel instead of by a number, and a club that tells you the truth is worth having.</p>\n<p>If you never chip and you've made peace with every bunker, the cast one's fine. If half your round happens inside a hundred yards, like it does for most of us, feel isn't a nice extra. It's the whole job.</p>\n\n<h2>So why does forged usually cost more?</h2>\n<p>Partly the process. Mostly the brands charging for it, who also pay for tour contracts, retail shelf space and a marketing department. The steel doesn't know about any of that. Ours is 1020 forged carbon steel with CNC-milled grooves, sold direct for $99.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>1020 forged carbon steel, six lofts, sixty days to send it back.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>How to tell what you already own</h2>\n<ul>\n<li>Look for the word forged stamped on the head. Brands that forge say so, because it costs them more.</li>\n<li>Check the spec sheet. Carbon steel in the 1020 or 1025 range is usually forged, and 431 or 17-4 stainless is almost always cast.</li>\n</ul>\n<p>None of that makes a cast wedge a bad club. It makes it a different one, at a price that should reflect it, and often doesn't.</p>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>Are Lucky wedges forged?</summary><div class=\"lg-fq-a\"><p>Yes. Every Carver, gold or black, is 1020 forged carbon steel.</p></div></details><details class=\"lg-fq\"><summary>Will a forged wedge help on full swings?</summary><div class=\"lg-fq-a\"><p>Not much. The difference shows up on touch shots around the green, where feel decides the distance.</p></div></details><details class=\"lg-fq\"><summary>How do I know if my wedge is forged?</summary><div class=\"lg-fq-a\"><p>Look for forged on the head, or check the spec sheet for carbon steel in the 1020 to 1025 range.</p></div></details></div>",
+   "summary": "Forged or cast: the choice most golfers never get explained, and why it changes the feel and the price.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-forged-factory.webp",
+    "altText": "Forging a Lucky wedge head at the factory"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Are your wedges <span class=\"lg-foil-word\">forged</span>?"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "Pick up a wedge and you're making a choice most golfers never get explained: forged or cast. It changes how the club feels, and it changes what you pay."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Are your wedges forged?"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Forged, not <span class=\\\"lg-foil-word\\\">cast</span>\", \"lede\": \"Every Carver is forged, and you get sixty days to find out if you can feel the difference.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Forged or cast: the choice most golfers never get explained, and why it changes the feel and the price."
+    }
+   ]
+  }
+ }
+}

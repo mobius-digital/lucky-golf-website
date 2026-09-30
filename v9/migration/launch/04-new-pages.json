@@ -1,0 +1,17 @@
+{
+  "query": "mutation($page: PageCreateInput!){ pageCreate(page:$page){ page{ handle } userErrors{ message } } }",
+  "items": [
+    {
+      "handle": "compare",
+      "title": "Lucky vs the big names",
+      "templateSuffix": "compare",
+      "isPublished": true
+    },
+    {
+      "handle": "community",
+      "title": "Community",
+      "templateSuffix": "community",
+      "isPublished": true
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "query": "mutation($id: ID!, $page: PageUpdateInput!){ pageUpdate(id:$id, page:$page){ page{ handle templateSuffix } userErrors{ message } } }",
+  "items": [
+    {
+      "handle": "about",
+      "templateSuffix": "story",
+      "rollback": ""
+    },
+    {
+      "handle": "faq-lucky-wedges",
+      "templateSuffix": "faq",
+      "rollback": ""
+    },
+    {
+      "handle": "become-apart-of-the-team",
+      "templateSuffix": "ambassadors",
+      "rollback": ""
+    },
+    {
+      "handle": "contact-us",
+      "templateSuffix": "contact",
+      "rollback": ""
+    },
+    {
+      "handle": "reviews",
+      "templateSuffix": "reviews",
+      "rollback": ""
+    }
+  ]
+}

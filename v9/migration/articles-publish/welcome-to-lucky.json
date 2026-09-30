@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/28364734535",
+  "article": {
+   "title": "Welcome to Lucky",
+   "body": "<p>The first complaint was how golf looked. Walk down any range and every bag's full of the same silver and black, with the same logos, and the game had started to feel as stiff as the gear. Golf's supposed to be the best four hours of your week. We wanted clubs with some personality, the kind people ask about.</p>\n<p>The second was the price. Good wedges cost a lot, and when we looked into why, it wasn't the steel. The big names use good materials and solid engineering, and then add tour contracts, retail shelf space and ad campaigns on top. We figured we'd use the same materials, skip everything stacked on top and sell straight to golfers.</p>\n\n<p class=\"pull\">If people are going to stare at your wedge, it might as well be gold.</p>\n\n<h2>So we made a gold wedge</h2>\n<p>That's all the plan was at first. One wedge, forged, in gold, and good enough around the green that you'd keep it in the bag long after the novelty wore off. It caught on, more clubs followed, and today it's the Carver: 1020 forged carbon steel with a micro-grooved, sandblasted face that spins more than most golfers are used to.</p>\n\n<h2>What you'll find on this blog</h2>\n<p>Mostly help. How to get out of a buried bunker lie, how to stop chunking chips, which wedge does what, and the odd piece on the mental side of a game that loves to mess with your head. Some of it comes from golf pros we've worked with, and some from our own practice sessions.</p>\n<p>Stick around, and if something here saves you a stroke, we'd love it if you told your buddies where you read it.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>The gold wedge, all grown up. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>When did Lucky Golf start?</summary><div class=\"lg-fq-a\"><p>In 2018, with a gold wedge.</p></div></details><details class=\"lg-fq\"><summary>Why gold?</summary><div class=\"lg-fq-a\"><p>Because every bag on the course looked the same, and golf's more fun when your clubs have some personality.</p></div></details><details class=\"lg-fq\"><summary>Where can I buy Lucky clubs?</summary><div class=\"lg-fq-a\"><p>Right here. We sell direct, which is a big part of how the prices stay where they are.</p></div></details></div>",
+   "summary": "A gold wedge, two complaints about golf, and what this blog is for.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-welcome.webp",
+    "altText": "A gold Lucky wedge beside a golf ball"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Welcome to <span class=\"lg-foil-word\">Lucky</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "Lucky started in 2018 with a gold wedge and two complaints about golf. Here's what they were, and what this blog is for."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Welcome to Lucky"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Start with the <span class=\\\"lg-foil-word\\\">wedge</span>\", \"lede\": \"The club that started it, forged and still in gold. Sixty days to make up your mind.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "A gold wedge, two complaints about golf, and what this blog is for."
+    }
+   ]
+  }
+ }
+}

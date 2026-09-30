@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/592321544263",
+  "article": {
+   "title": "Why we have the best golf wedges for under $100",
+   "body": "<p>Big-name wedges keep creeping up in price, and it's fair to wonder what a $99 wedge is leaving out. The short answer is the stuff you never hit a golf ball with.</p>\n<p>A big chunk of a big-name price tag goes to things that never touch the ball, like tour contracts and the markup a store adds on its way to you. We sell direct and skip both, and the club doesn't lose a thing in the trade.</p>\n\n<h2>What $99 gets you</h2>\n<p>It spins, for starters. The Carver 02 Gold has a micro-grooved, sandblasted face, and the ball checks up faster than most golfers expect the first time out. It's forged from 1020 carbon steel, so it feels soft and tells you exactly where you caught it. Every loft weighs the same, which means your 52 and your 60 swing alike. And it's gold, so nobody's mistaking it for anyone else's.</p>\n\n<p class=\"pull\">At $99, you're paying for the wedge, not the tour van.</p>\n\n<h2>Don't take our word for it</h2>\n<p>The Art of Simple Golf put our gold wedge through a full review, called it a wedge for a Bond villain, and then made the case for why it belongs in a regular golfer's bag too. It's worth a watch if you're deciding.</p>\n\n<a class=\"video\" href=\"https://www.youtube.com/watch?v=18lgi-Rz2c0\" target=\"_blank\" rel=\"noopener\"><img src=\"https://i.ytimg.com/vi/18lgi-Rz2c0/maxresdefault.jpg\" alt=\"Best Golf Wedges Under $100: Lucky Golf Gold Wedge, by The Art of Simple Golf\" loading=\"lazy\"><span class=\"play\"><i></i></span><span class=\"cap\">Watch on YouTube · The Art of Simple Golf</span></a>\n\n<p>If you'd rather see the whole comparison laid out, we've put ours next to the big names <a href=\"/pages/compare\">here</a>.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>Forged and gold, in six lofts. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>How much is the Carver?</summary><div class=\"lg-fq-a\"><p>The Carver 02 Gold is $99. The Carver 02 Black is $109.</p></div></details><details class=\"lg-fq\"><summary>Which wedge is in the video?</summary><div class=\"lg-fq-a\"><p>Our gold wedge, back in 2021. Today it's the Carver 02 Gold.</p></div></details><details class=\"lg-fq\"><summary>What if it's not for me?</summary><div class=\"lg-fq-a\"><p>Every club gets sixty days. If it doesn't earn its spot, send it back.</p></div></details></div>",
+   "summary": "A forged wedge for $99 sounds like a catch. Here's what's behind the price, and a reviewer who went looking.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-under-100.webp",
+    "altText": "The Art of Simple Golf reviewing a gold Lucky wedge"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Why we have the best golf wedges for under <span class=\"lg-foil-word\">$100</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "A forged wedge for $99 sounds like there's a catch. There isn't, and a reviewer who put ours on camera ended up agreeing."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Best wedges under $100"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"No catch, just <span class=\\\"lg-foil-word\\\">spin</span>\", \"lede\": \"Sixty days to decide if it's the best money you've spent on your short game.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "A forged wedge for $99 sounds like a catch. Here's what's behind the price, and a reviewer who went looking."
+    }
+   ]
+  }
+ }
+}

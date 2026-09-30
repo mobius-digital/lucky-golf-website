@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/14450589767",
+  "article": {
+   "title": "Future videos",
+   "body": "<p>Some of the best golf ever hit never makes it past a group chat. The flop over a bunker that stopped dead. The behind-the-back chip your buddy swore you couldn't do. If it happened with a Lucky club in your hands, we'd like it to get a bigger audience.</p>\n\n<h2>Post it, tag us</h2>\n<p>Post it on <a href=\"https://www.instagram.com/luckygolfofficial/\" target=\"_blank\" rel=\"noopener\">Instagram</a> or <a href=\"https://www.tiktok.com/@luckygolfofficial\" target=\"_blank\" rel=\"noopener\">TikTok</a> and tag @luckygolfofficial. That's it. We keep an eye on our tags, and the good ones end up on our <a href=\"/pages/community\">Community page</a>. We'll always ask before we share anything of yours.</p>\n\n<p class=\"pull\">If nobody filmed it, it didn't happen. So film it.</p>\n\n<h2>Posting a lot anyway?</h2>\n<p>Then take a look at the <a href=\"/pages/become-apart-of-the-team\">ambassador program</a>. Your best clips can run as ads from your own handle, and you earn a share of what they sell.</p>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>How do I get my video featured?</summary><div class=\"lg-fq-a\"><p>Post it on Instagram or TikTok and tag @luckygolfofficial. If we'd like to share it, we'll ask you first.</p></div></details><details class=\"lg-fq\"><summary>Does it have to be a trick shot?</summary><div class=\"lg-fq-a\"><p>No. A great chip or a whole round in your Lucky gear counts too.</p></div></details><details class=\"lg-fq\"><summary>Can I get paid for posting?</summary><div class=\"lg-fq-a\"><p>If you join the ambassador program, your best clips can run as ads from your own handle and you earn a share of the sales. There's no follower minimum.</p></div></details></div>",
+   "summary": "Trick shots and hole-outs you'll never repeat. Here's where to send them.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-walk-off-green.webp",
+    "altText": "Walking off the green with a Lucky club"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Future <span class=\"lg-foil-word\">videos</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "Hit something ridiculous with your Lucky club? Holed out, or pulled off a trick shot you'll never repeat? We want to see it."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Future videos"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Show us the <span class=\\\"lg-foil-word\\\">shot</span>\", \"lede\": \"Tag @luckygolfofficial and show us what you've got.\", \"btn\": \"See the Community\", \"href\": \"/pages/community\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Trick shots and hole-outs you'll never repeat. Here's where to send them."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/605356556565",
+  "article": {
+   "title": "Mastering your putt: the power of a well-crafted putting routine",
+   "body": "<p>Putting looks like the simple part. No swing speed, no carry, just a ball and a hole. That's exactly why it gets rushed, and it's why a round can fall apart on the greens even when everything from tee to green was solid.</p>\n<p>A routine won't give you a new stroke. It gives the stroke you've got the same conditions every time, and that's worth more than most golfers expect.</p>\n\n<h2>Read it, pick a spot, feel it, go</h2>\n<ol>\n<li><b>Read it from the low side.</b> Walk to the side of the hole the putt breaks toward and look back at it. Slopes are easier to see from below, and you'll pick up the grain and anything that looks wetter or faster than the rest.</li>\n<li><b>Pick a start line and a spot.</b> Decide where the ball starts, then find a mark a few inches ahead of it on that line: a discolored blade of grass, an old pitch mark. It's a lot easier to roll a ball over a spot than at a hole twenty feet away.</li>\n<li><b>Feel the speed with your eyes on the hole.</b> Make two practice strokes looking at the cup, not the ball, and let your arms work out how big the stroke needs to be.</li>\n<li><b>Set up the same way every time.</b> Ball just forward of center, eyes over it or slightly inside, and a light grip. Squeeze the handle and you'll lose your feel for distance.</li>\n<li><b>One look, then go.</b> Look at the hole once, look back at your spot and start the stroke. Every extra look's another chance for doubt to move in.</li>\n<li><b>Hold the finish.</b> Keep your head still until the ball's well on its way. Listen for it drop instead of watching it.</li>\n</ol>\n\n<p class=\"pull\">Speed first. A perfect line at the wrong speed is still a three-putt.</p>\n\n<h2>Make the stroke boring</h2>\n<p>Think of the stroke as a pendulum from your shoulders: same tempo back and through, hands quiet, wrists out of it. A good putter swings on its own if you let it. And when one misses, you'll know it was the stroke or the read, because nothing else changed.</p>\n\n<h2>Practice it where it counts</h2>\n<p>Run the full routine on the practice green, not just the stroke. Pick a few three-footers and don't leave until you've holed them in a row, then lag from forty feet to a spot beside the hole. Short ones build trust. Long ones build the speed that'll keep you out of three-putt territory.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-mallet-full-cut.webp\" alt=\"Eclipse Mallet\"></span>\n<div><b>Eclipse Mallet</b><span>Fully milled and soft off the face. $229.</span></div>\n<a class=\"lg-btn\" href=\"/products/limited-edition-mallet-putter\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>How long should a putting routine take?</summary><div class=\"lg-fq-a\"><p>Short enough that you'll do it on every putt, including the tap-ins. What matters is that it's the same every time.</p></div></details><details class=\"lg-fq\"><summary>Where should the ball be in my stance?</summary><div class=\"lg-fq-a\"><p>Just forward of center, with your eyes over the ball or just inside it.</p></div></details><details class=\"lg-fq\"><summary>Should I practice line or speed?</summary><div class=\"lg-fq-a\"><p>Speed first. Most three-putts come from a first putt left well short or rolled well past, not from a bad read.</p></div></details></div>",
+   "summary": "Read it, pick a spot, feel the speed, go. A putting routine that holds up when the putt matters.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-putt-sunset.webp",
+    "altText": "Lining up a putt at sunset"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Mastering your putt: the power of a well-crafted putting <span class=\"lg-foil-word\">routine</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "You'll hit more putts than any other shot this weekend, and most golfers walk up and hit each one a little differently. A routine fixes that before you touch the stroke."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Your putting routine"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Roll it <span class=\\\"lg-foil-word\\\">pure</span>\", \"lede\": \"Fully milled, finished in gold, and sixty days to see if it rolls the way it looks.\", \"btn\": \"See the putters\", \"href\": \"/collections/lucky-golf-clubs#putters\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Read it, pick a spot, feel the speed, go. A putting routine that holds up when the putt matters."
+    }
+   ]
+  }
+ }
+}

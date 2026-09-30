@@ -1,0 +1,34 @@
+{
+  "_note": "Rollback snapshot, taken 2026-09-27 before launch. The template suffix each product/collection/page uses on the LIVE site today. To roll back: publish the old theme, then set these suffixes back (null = default template).",
+  "products": {
+    "lucky-wedges-gift-card": null, "lucky-clover-tour-glove": null, "lucky-putter-head-cover-blade": null,
+    "copy-of-lucky-golf-clover-grips-green": null, "lucky-golf-oversized-putter-grip": null, "lucky-golf-clovers-oversized-putter-grip": null,
+    "lucky-golf-performance-x2-clover-grips-black": null, "copy-of-lucky-golf-performance-x2-clover-grips-white": null,
+    "lucky-golf-performance-x2-clover-grips-blue": null, "lucky-golf-performance-x2-clover-grips-pink": null, "lucky-golf-tees": null,
+    "driver-head-cover": null, "stock-putter-grips": "", "lucky-putter-head-cover-mallet-large": null,
+    "signature-gold-putters": "replo.f1da6610-b0d8-463c-9f9d-7c87c3a799f3",
+    "limited-edition-mallet-putter": "replo.f1da6610-b0d8-463c-9f9d-7c87c3a799f3",
+    "lucky-striker-hybrid-limited-edition": "replo.367b234b-5671-47f5-a19b-6540d3d769aa",
+    "lucky-golf-lgw02-gold": "replo.9600ce89-30b2-441d-bee6-27f174863297",
+    "lucky-golf-lgw02-black": "replo.9600ce89-30b2-441d-bee6-27f174863297",
+    "gold-dust-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "shadow-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "signature-black-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "contour-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "marble-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "gold-carnation-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "frost-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "swirl-blade-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "spot-blade-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "blackout-blade-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "cruiser-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80", "azalea-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "nightshade-classic-polo": "replo.16ecce21-f3d6-4878-a62e-9ee8b2aaec80",
+    "white-gold-classic-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0", "white-its-better-to-be-lucky-patch-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0",
+    "cream-upside-down-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0", "black-its-better-to-be-lucky-patch-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0",
+    "tan-cursive-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0", "black-gold-classic-lucky-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0",
+    "white-black-upside-down-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0", "white-upside-down-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0",
+    "white-cursive-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0", "baby-blue-cursive-hat": "replo.d0f130a4-e658-408e-92e4-2b7d5409f9b0"
+  },
+  "collections": {
+    "polos": "", "classic-polos": "", "blade-polos": "", "hats": "", "lucky-golf-clubs": "", "gear": "gear"
+  },
+  "pages": {
+    "about": "", "faq-lucky-wedges": "", "become-apart-of-the-team": "", "contact-us": "contact", "reviews": "judgeme_all_reviews",
+    "home": "replo.976e31ee-cd08-4153-8450-53f4b1f3c1a9"
+  }
+}

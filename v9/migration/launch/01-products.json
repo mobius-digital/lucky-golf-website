@@ -1,0 +1,215 @@
+{
+  "query": "mutation($input: ProductUpdateInput!){ productUpdate(product:$input){ product{ handle templateSuffix } userErrors{ message } } }  # look up id by handle first",
+  "items": [
+    {
+      "handle": "lucky-golf-lgw02-gold",
+      "templateSuffix": "club",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-lgw02-black",
+      "templateSuffix": "club",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "signature-gold-putters",
+      "templateSuffix": "club",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "limited-edition-mallet-putter",
+      "templateSuffix": "club",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-striker-hybrid-limited-edition",
+      "templateSuffix": "club",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "gold-dust-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "shadow-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "signature-black-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "contour-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "marble-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "gold-carnation-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "frost-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "swirl-blade-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "spot-blade-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "blackout-blade-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "cruiser-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "azalea-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "nightshade-classic-polo",
+      "templateSuffix": "polo",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "white-gold-classic-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "white-its-better-to-be-lucky-patch-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "cream-upside-down-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "black-its-better-to-be-lucky-patch-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "tan-cursive-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "black-gold-classic-lucky-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "white-black-upside-down-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "white-upside-down-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "white-cursive-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "baby-blue-cursive-hat",
+      "templateSuffix": "hat",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-clover-tour-glove",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-putter-head-cover-blade",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "copy-of-lucky-golf-clover-grips-green",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-oversized-putter-grip",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-clovers-oversized-putter-grip",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-performance-x2-clover-grips-black",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "copy-of-lucky-golf-performance-x2-clover-grips-white",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-performance-x2-clover-grips-blue",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-performance-x2-clover-grips-pink",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-golf-tees",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "driver-head-cover",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "stock-putter-grips",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-putter-head-cover-mallet-large",
+      "templateSuffix": "gear",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    },
+    {
+      "handle": "lucky-wedges-gift-card",
+      "templateSuffix": "giftcard",
+      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
+    }
+  ]
+}

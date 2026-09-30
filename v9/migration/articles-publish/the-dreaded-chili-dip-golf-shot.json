@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/28364832839",
+  "article": {
+   "title": "The dreaded chili dip golf shot",
+   "body": "<p>You smoked the drive and came up a touch short with the approach. Now it's a tight lie, ten yards to the green, and a putt for par if you get this close. Then the club hits the turf first, a chunk of grass goes further than the ball, and you're still in the same spot, lying one more.</p>\n<p>That's the chili dip, and every golfer has one in them. The good news is it has one cause, which makes it one of the easier misses in golf to fix.</p>\n\n<h2>Why it happens</h2>\n<p>Every swing has a low point, the spot where the club bottoms out. On a good chip that spot is just in front of the ball, so the club catches the ball first and then brushes the turf. On a chili dip the low point is behind the ball, and the ground gets hit first.</p>\n<p>Three habits move it back there. Weight hanging on the back foot is the big one. Trying to help the ball into the air with a scooping flick of the hands is next. Then there's the nervous one: slowing the club down right before impact, which lets the clubhead drop and dig.</p>\n\n<p class=\"pull\">You don't need a new swing. You need the bottom of the one you've got to move forward.</p>\n\n<h2>The fix</h2>\n<ul>\n<li><b>Weight forward, and leave it there.</b> Set most of your weight on your front foot at address and keep it there through the shot.</li>\n<li><b>Ball in the middle or a touch back.</b> Hands just ahead of it, so the shaft leans toward the target.</li>\n<li><b>Turn, don't flick.</b> Let your chest rotate through the shot and keep the club moving at the same speed to the finish. The loft gets the ball up. That's its job, not yours.</li>\n<li><b>Use the sole.</b> A wedge is built to glide on its bottom. Let the sole brush the grass instead of driving the leading edge into it.</li>\n</ul>\n\n<h2>The towel drill</h2>\n<p>Lay a towel on the practice green about four inches behind your ball. Chip without touching the towel. If you're hitting it, your low point's still behind the ball. Ten minutes of this and the club starts finding the ball first on its own.</p>\n<p>Once that's working, draw a line in the fringe, set up with the ball on it and try to make every brush mark land on the target side of the line. When they do, the chili dip's gone.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>A wide, flat K Grind sole that's hard to dig. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>What is a chili dip?</summary><div class=\"lg-fq-a\"><p>A chip or pitch where the club hits the ground before the ball, so the ball only goes a few feet. You'll also hear it called a chunk or a fat one.</p></div></details><details class=\"lg-fq\"><summary>Why do I keep chunking my chips?</summary><div class=\"lg-fq-a\"><p>The bottom of your swing is landing behind the ball. Weight hanging back, trying to lift the ball and slowing down into impact are the usual reasons.</p></div></details><details class=\"lg-fq\"><summary>Can a different wedge help?</summary><div class=\"lg-fq-a\"><p>A little. A wider, flatter sole like the Carver's K Grind resists digging, but the fix that sticks is moving your low point forward.</p></div></details></div>",
+   "summary": "Everybody's hit one. Here's why it happens, and the drill that stops it.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-chili-dip.webp",
+    "altText": "A chunked chip shot short of the green"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "The dreaded chili <span class=\"lg-foil-word\">dip</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "Ten yards off the green, a simple chip for par, and the ball moves about as far as the divot. Here's why it happens and how to stop it."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "The chili dip"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Chip it like you <span class=\\\"lg-foil-word\\\">mean it</span>\", \"lede\": \"A forged Carver, a practice green and a towel. Sixty days to see the difference.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Everybody's hit one. Here's why it happens, and the drill that stops it."
+    }
+   ]
+  }
+ }
+}

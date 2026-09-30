@@ -1,0 +1,35 @@
+{
+  "query": "mutation($input: CollectionInput!){ collectionUpdate(input:$input){ collection{ handle templateSuffix } userErrors{ message } } }",
+  "items": [
+    {
+      "handle": "polos",
+      "templateSuffix": "polos",
+      "rollback": ""
+    },
+    {
+      "handle": "classic-polos",
+      "templateSuffix": "polos",
+      "rollback": ""
+    },
+    {
+      "handle": "blade-polos",
+      "templateSuffix": "polos",
+      "rollback": ""
+    },
+    {
+      "handle": "hats",
+      "templateSuffix": "hats",
+      "rollback": ""
+    },
+    {
+      "handle": "lucky-golf-clubs",
+      "templateSuffix": "clubs",
+      "rollback": ""
+    },
+    {
+      "handle": "gear",
+      "templateSuffix": "gear",
+      "rollback": ""
+    }
+  ]
+}

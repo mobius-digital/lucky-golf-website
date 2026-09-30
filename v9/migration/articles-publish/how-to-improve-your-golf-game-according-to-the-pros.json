@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/605160145173",
+  "article": {
+   "title": "How to improve your golf game according to the pros",
+   "body": "<h2>Pick a number</h2>\n<p>\"Get better\" isn't a goal. Breaking 100 is. So is breaking 90 by the end of the season, or never three-putting more than twice a round. A number tells you what to work on and lets you know when you've done it, which is half the fun.</p>\n\n<h2>Take a lesson before you need ten</h2>\n<p>Nearly every tour player has a coach, and they're the best golfers on the planet. A good teacher spots in five minutes what you'd spend a whole season guessing at, whether that's your grip, your setup or the reason your chips come off the toe. One lesson on the basics saves you from grooving a habit you'll have to un-learn later.</p>\n\n<h2>Practice with a plan</h2>\n<p>The range is where most of us go to hit drivers and feel good. The pros spend a huge share of their time from a hundred yards in, because that's where the strokes are. Split your next session: a third on full swings, the rest on chipping, pitching and putting. It's less fun for the first twenty minutes and a lot more fun on the scorecard.</p>\n<p>Keep some simple stats while you're at it: fairways, greens, putts and how often you get up and down. After a few rounds you'll know exactly where your strokes are going, and it's rarely where you'd guess.</p>\n\n<p class=\"pull\">\"The more I practice, the luckier I get.\" The line's usually credited to Gary Player, and we couldn't agree more.</p>\n\n<h2>Play with people who are better than you</h2>\n<p>You'll pick up more in one round with a single-digit player than in a month of watching videos. Watch how they plan a hole, where they miss on purpose and how little fuss they make about a bad shot. Most good players are happy to share, and you'll find your own game rising to meet theirs.</p>\n\n<h2>Keep your head</h2>\n<p>This one's close to our hearts, because it's why Lucky exists. Golf's frustrating, and you'll get as many bad breaks as good ones. The golfers who improve are the ones still enjoying it on the back nine, so give yourself a break when the ball finds a divot. If you want more on this, we wrote a whole piece on <a href=\"/blogs/news/golf-is-a-mental-game\">the mental game</a>.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>A forged wedge for all that short game practice. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>What's the fastest way to lower my scores?</summary><div class=\"lg-fq-a\"><p>Short game practice. Chipping, pitching and putting make up most of your strokes, and they improve faster than a full swing does.</p></div></details><details class=\"lg-fq\"><summary>Are golf lessons worth it?</summary><div class=\"lg-fq-a\"><p>Yes, especially early. A good coach fixes in one hour what you'd spend a season guessing at.</p></div></details><details class=\"lg-fq\"><summary>How often should I practice?</summary><div class=\"lg-fq-a\"><p>Often and short beats rare and long. Thirty focused minutes on the chipping green is worth more than a large bucket of drivers.</p></div></details></div>",
+   "summary": "Borrow the habits, not the swing. What the people who play for a living actually do, scaled down for a Saturday golfer.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-scorecard.webp",
+    "altText": "A golf scorecard and pencil"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "How to improve your golf game according to the <span class=\"lg-foil-word\">pros</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "You don't need a tour player's swing to borrow their habits. Here's what the people who do this for a living actually do, scaled down for a Saturday golfer with a job."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Improve like the pros"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Practice gets you <span class=\\\"lg-foil-word\\\">lucky</span>\", \"lede\": \"A forged wedge that makes the chipping green something you look forward to. Sixty days to try it.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Borrow the habits, not the swing. What the people who play for a living actually do, scaled down for a Saturday golfer."
+    }
+   ]
+  }
+ }
+}

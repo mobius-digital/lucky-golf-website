@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/605122560277",
+  "article": {
+   "title": "The top 10 golf shots you can hit using a wedge",
+   "body": "<h2>From the fairway</h2>\n<ol>\n<li><b>The full wedge.</b> It's your stock shot from inside a full swing. Ball in the middle of your stance and a smooth swing that finishes balanced, then learn exactly how far it carries with every wedge you've got.</li>\n<li><b>The knockdown.</b> For when the wind's up or the pin's tucked. Move the ball back an inch, keep your hands ahead, shorten the backswing and hold the finish low. It'll stay under the wind and check when it lands.</li>\n<li><b>The pitch from the rough.</b> Grass gets between the face and the ball, so expect less spin and more run. Open the face a touch, swing a little steeper and commit to the speed. Slowing down's what gets the club stuck. We've gone deeper on it <a href=\"/blogs/news/using-your-lucky-wedge-from-the-rough\">here</a>.</li>\n</ol>\n\n<h2>Around the green</h2>\n<ol start=\"4\">\n<li><b>The pitch.</b> Thirty to sixty yards, where a lot of scores quietly leak. Let your chest turn through the shot instead of flicking with your hands, and don't let the club slow down before you finish.</li>\n<li><b>The one-hop-and-stop.</b> The shot everyone wants on camera. Ball slightly back, crisp contact with the ball first, and a clean, dry face. Hit it right and it'll take one bounce and sit down.</li>\n<li><b>The bump and run.</b> Use a pitching or gap wedge, set up like a long putt and make a putting stroke. Land it just on the green and let it roll. It's the least exciting shot here and it saves the most strokes.</li>\n<li><b>The flop.</b> Open the face first, then take your grip. Wide stance, ball forward, and a full, committed swing that slides under the ball. It won't work from a bad lie, and it won't work if you bail on it.</li>\n</ol>\n\n<p class=\"pull\">The flop gets the replays. The bump and run gets the pars.</p>\n\n<h2>From the sand</h2>\n<ol start=\"8\">\n<li><b>The splash.</b> Open the face, aim to hit the sand an inch or two behind the ball and keep swinging to a full finish. You don't touch the ball at all. The sand throws it out.</li>\n<li><b>The buried lie.</b> Square or slightly close the face, ball back, and hit down hard just behind it. It'll come out low with no spin and run, so play for that. There's a video on it <a href=\"/blogs/news/use-your-lucky-wedge-to-get-out-of-a-deep-bunker-lie\">here</a>.</li>\n</ol>\n\n<h2>The one nobody practices</h2>\n<ol start=\"10\">\n<li><b>The bellied wedge.</b> Ball resting against the collar of the rough, where a putter would snag. Take your sand wedge, hover it so the leading edge lines up with the middle of the ball and make a putting stroke. It'll roll out like a putt, and your playing partners will ask where you learned it.</li>\n</ol>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>Forged, micro-grooved, six lofts. $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>Which wedge should I learn first?</summary><div class=\"lg-fq-a\"><p>Your sand wedge. It covers bunkers, pitches and most chips, so the practice pays off everywhere.</p></div></details><details class=\"lg-fq\"><summary>How do I get more spin on my wedge shots?</summary><div class=\"lg-fq-a\"><p>Clean contact, a clean face and a ball that isn't sitting down in the rough. A micro-grooved, sandblasted face like the Carver's helps too.</p></div></details><details class=\"lg-fq\"><summary>Flop or bump and run?</summary><div class=\"lg-fq-a\"><p>Bump and run whenever there's green to work with. Save the flop for when something's in the way.</p></div></details></div>",
+   "summary": "Ten shots, from the fairway to the bottom of a bunker, and how to hit every one of them.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-swing-black-wedge.webp",
+    "altText": "A golfer hitting a Carver 02 Black"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "The top 10 golf shots you can hit using a <span class=\"lg-foil-word\">wedge</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "A lot of golfers own one wedge shot and try to make it fit everywhere. Here are ten, from the middle of the fairway to the bottom of a bunker, and how to hit each one."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Top 10 wedge shots"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Ten shots, one <span class=\\\"lg-foil-word\\\">wedge</span> at a time\", \"lede\": \"Forged, micro-grooved and ready for all of them. Sixty days to try it.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "Ten shots, from the fairway to the bottom of a bunker, and how to hit every one of them."
+    }
+   ]
+  }
+ }
+}

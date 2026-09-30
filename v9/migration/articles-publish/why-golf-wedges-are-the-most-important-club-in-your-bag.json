@@ -1,0 +1,47 @@
+{
+ "query": "mutation UpdateArticle($id: ID!, $article: ArticleUpdateInput!) { articleUpdate(id: $id, article: $article) { article { id handle title isPublished image { url } } userErrors { code field message } } }",
+ "variables": {
+  "id": "gid://shopify/Article/604352774421",
+  "article": {
+   "title": "Why golf wedges are the most important club in your bag",
+   "body": "<p>Count your next round honestly. You'll swing the driver maybe fourteen times. Everything from a hundred yards in, putts included, makes up most of the card, and it's the part of the game most of us practice the least.</p>\n<p>A good drive leaves you a wedge in. A bad one usually leaves you a wedge out. Either way, the next club in your hands has a lot of loft on it, and how close that shot finishes decides whether you're putting for birdie or scrambling for bogey.</p>\n\n<p class=\"pull\">Most of your round happens inside a hundred yards. So should most of your practice.</p>\n\n<h2>Four wedges, four jobs</h2>\n<ul>\n<li><b>Pitching wedge (about 44° to 48°).</b> It usually comes with your irons. Full swings from the fairway and longer chips that need to run.</li>\n<li><b>Gap wedge (about 50° to 52°).</b> It fills the hole between your pitching wedge and sand wedge, for the shot that's too long for one and too short for the other.</li>\n<li><b>Sand wedge (about 54° to 56°).</b> Built for bunkers, and the go-to for most pitches around the green.</li>\n<li><b>Lob wedge (about 58° to 60°).</b> Height in a hurry, for when there's a bunker in the way or a green running away from you.</li>\n</ul>\n<p>Start with the loft on your pitching wedge (it's on the spec sheet or stamped on the club), then add wedges in steps of four to six degrees. Do that and every distance inside a full swing has a club that fits it, instead of a half swing you're guessing at.</p>\n\n<h2>What makes a wedge worth carrying</h2>\n<p>Feel matters most, because around the green you're judging distance by touch, not by a yardage. After that it's spin. The ball should check on the second bounce, not trundle off the back of the green.</p>\n<p>That's what the Carver is built around. It's forged from 1020 carbon steel, so you know exactly how you caught it, and the face is micro-grooved and sandblasted, so it grabs the ball. Every loft from 50° to 60° weighs the same 300 grams, which means your 56 and your 60 swing like they belong in the same bag.</p>\n\n<div class=\"inline-buy\">\n<span class=\"ph\"><img src=\"https://cdn.shopify.com/s/files/1/2286/3149/files/lg-gold-full-cut.webp\" alt=\"Carver 02 Gold\"></span>\n<div><b>Carver 02 Gold</b><span>Forged, six lofts from 50° to 60°, $99.</span></div>\n<a class=\"lg-btn\" href=\"/products/lucky-golf-lgw02-gold\">See it</a>\n</div>\n\n<h2>Where to spend the practice time</h2>\n<p>Pick your two most-used wedges and learn one number for each: how far a full swing carries. Then learn a half swing with the same two. That's four numbers, and it covers more of your round than any hour on the range with the driver.</p>\n\n<h2>Quick answers</h2>\n<div class=\"lg-faq\"><details class=\"lg-fq\" open><summary>How many wedges should I carry?</summary><div class=\"lg-fq-a\"><p>Three or four, counting the pitching wedge that came with your irons. Keep them four to six degrees apart.</p></div></details><details class=\"lg-fq\"><summary>What loft should my sand wedge be?</summary><div class=\"lg-fq-a\"><p>Somewhere between 54° and 56° suits most golfers. It's the club most people reach for in bunkers and for pitches around the green.</p></div></details><details class=\"lg-fq\"><summary>What lofts does the Carver come in?</summary><div class=\"lg-fq-a\"><p>Six, from 50° to 60° in two-degree steps.</p></div></details></div>",
+   "summary": "The driver gets the attention. The wedges decide the score, and here's how to build a set that covers every yard.",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/2286/3149/files/lg-art-most-important.webp",
+    "altText": "A Lucky wedge on the green"
+   },
+   "metafields": [
+    {
+     "namespace": "lucky",
+     "key": "h1",
+     "type": "single_line_text_field",
+     "value": "Why golf wedges are the most important club in your <span class=\"lg-foil-word\">bag</span>"
+    },
+    {
+     "namespace": "lucky",
+     "key": "lede",
+     "type": "multi_line_text_field",
+     "value": "Your driver gets the attention, but your wedges are the ones deciding the score. Here's why, and how to build a set that leaves no gaps."
+    },
+    {
+     "namespace": "lucky",
+     "key": "crumb",
+     "type": "single_line_text_field",
+     "value": "Why wedges matter most"
+    },
+    {
+     "namespace": "lucky",
+     "key": "signoff",
+     "type": "json",
+     "value": "{\"h\": \"Start with the <span class=\\\"lg-foil-word\\\">wedges</span>\", \"lede\": \"Forged, spin-happy, and sixty days to see what they do for your score.\", \"btn\": \"See the Carver\", \"href\": \"/products/lucky-golf-lgw02-gold\"}"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "multi_line_text_field",
+     "value": "The driver gets the attention. The wedges decide the score, and here's how to build a set that covers every yard."
+    }
+   ]
+  }
+ }
+}
