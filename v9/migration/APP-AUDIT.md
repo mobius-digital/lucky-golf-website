@@ -159,3 +159,16 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   The 11 old-polo reviews sit on deleted products; they show nowhere on the new polo pages.
 - Pinterest channel: "Needs attention", pixel Disconnected (it fired nothing before the move either).
 - AvantLink: the login page needs Cole's password.
+
+## Later still, 2026-10-02
+
+- Judge.me: all 8 old-polo reviews (discontinued shirts, 1-3 yrs old) set Hidden, reason "Unrelated to the product"
+  (Cole's call), 5-star and low alike: Thomas Vysocky, Cindi Murphy, Trisha Dunn, Richard Robinson, Tim Elder,
+  jessica rodriguez, Lucky Cruz x2. Their other reviews (wedges, putters, gloves, tees) untouched. The 2 Cody Reid
+  reviews come from the Shop app and Judge.me can't hide them. The Marble Classic Polo review (current) stays.
+- Pinterest uninstall: blocked by the permission check (irreversible); Cole said "no Pinterest ads yet", not "remove".
+- Parcel Panel: KEEP. It syncs every order (activity "1 minute ago"), and /apps/parcelpanel got 205 landing
+  sessions in 90 days (199 direct, so from email/SMS app clicks). Shopify's own shipping email links to the
+  Shopify order page + the carrier, so the traffic comes from somewhere else (likely Parcel Panel's own emails).
+  "Track your order" added back to the footer menus (lucky-footer-support, lucky-phone-footer).
+- AvantLink: Cole pasted a password in chat; Claude doesn't type passwords. The tab sits at verify-device.
