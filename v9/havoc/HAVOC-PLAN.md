@@ -54,3 +54,10 @@ Optional: a small paid "first run" for the list (Takomo did this), feedback in e
 - USGA: not tested yet. Recommendation: submit heads now.
 - Returns: Takomo = 30 days, unused only, custom builds excluded. Vice = 30 days played. Bombtech = 60 days on course. Lucky promises 60 days on every club; decision open.
 - Tina/Wenst emails are NOT in the connected Gmail (that's cole@go-mobius-digital.com); the Lucky Golf mailbox isn't connected.
+- Price: $349 (Cole: yes, 2026-10-02).
+- KBS costs $18.50 more landed. Sub 70 charges +$50 for KBS TD (+$40 UST, +$70 Project X); Takomo charges nothing (both its shafts same price).
+  Recommendation: +$50 (keeps ~63% on the upgrade).
+- Drivers land early November 2026. Thanksgiving = Nov 26, Black Friday = Nov 27.
+- USGA: the brand submits a sample head of each loft (strongly recommended, not mandatory; required for elite events).
+  Takomo's D1 failed with the heavy weight in the toe and was replaced free. Ask Wenst whether this head is already listed under the factory's name.
+- Returns: still open.
