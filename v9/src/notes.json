@@ -398,15 +398,15 @@
   ]
  },
  "havoc": {
-  "why": "Havoc, phase 3 (live about Nov 20): the full product page, $349, KBS +$50, right hand, built on the Carver page's structure.",
+  "why": "Havoc, live (about Nov 20). Round 2 (2026-10-02): Set it up is one tabbed module, the spec sheet matches the wedges (monitor + Head / Shaft / Grip tabs, tables on solid cards so the contour never runs behind text).",
   "added": [
-   "<b>Buy box:</b> two shaft cards (Lucky stock included / KBS PGW 60 +$50, price on the card), flex chips per shaft, a swing-speed flex table, one foil button.",
-   "<b>Set it up:</b> \"Big moves first. Then the small stuff.\" Start here = dot + N. The 8-setting adapter chart (-1 / dot / +1 / +2 x N / D), then the weights diagram (9g back, 3g heel, 3g toe) and a 5-step wrench strip.",
-   "<b>Specs</b> straight from the product guide (Wenst + KBS sheets). Contour behind them.",
-   "<b>Every photo is a labelled slot</b> with the shot brief: we have no Havoc photos yet. Reviews say none yet, honestly.",
-   "<b>Returns</b> use today's site wording, per your call."
+   "<b>Set it up:</b> Start here on top (dot + N, heavy weight in the back), then three tabs: 1 The adapter (chart + three \"if this, do that\" rows), 2 The weights (three rows, one note), 3 Changing it (five wrench steps + a film slot).",
+   "<b>Visuals in Set it up are slots</b>: the sleeve close-up, a sole illustration drawn from a real photo, and a 30 to 45 s wrench film. My hand-drawn sole diagram is gone.",
+   "<b>Spec sheet:</b> launch monitor (460cc, 10.5° with 9.5 to 12.5, $349, 60 days), then Head / Shaft / Grip tabs like Takomo and our wedges.",
+   "<b>Buy box:</b> $349, two shaft cards (KBS +$50 on the card), flex per shaft, one foil button."
   ],
   "kept": [
+   "Round out the bag uses FULL photos here; the live site uses cutouts on stone. Your call which one, everywhere.",
    "Adapter lofts assume -1/+1/+2 mean degrees off 10.5 (Callaway OptiFit style). Wenst's chart confirms, plus how far D stands it up and the face angle per setting.",
    "Regular flex (Wenst) and KBS Extra Stiff specs still to come; the table shows only what we have.",
    "The swing-speed flex table is common fitting guidance, not our test data. Keep or cut?",

@@ -1863,3 +1863,19 @@ body.lg .ups-sel{flex:none!important;width:auto;align-self:flex-start}
 /* image_tag writes width/height: let the CSS ratios win (3:2 cards), and let the article photo keep its own shape */
 .lgc-blog .post img,.lgc-art .mp img{height:auto}
 .lgc-art .hero img{height:auto;aspect-ratio:auto;max-height:80vh}
+
+/* ---- theme/css/80-mobile-bar.css ---- */
+/* Phones (Cole, 2026-10-02, from his iPhone): the sticky add-to-bag bar sat on the screen's rounded
+   corner, clipping the price, and the Gorgias chat bubble covered "Put it in the bag".
+   1. More room inside the bar: off the corner radius and above the home indicator.
+   2. While any sticky bar is showing, the chat bubble lifts above it. */
+@media (max-width:749px){
+  .stickybar{padding:12px 20px max(18px, calc(12px + env(safe-area-inset-bottom)))!important}
+  .stickybar b{font-size:15px}
+}
+body:has(.stickybar[data-on]) #gorgias-chat-container iframe#chat-button,
+body:has(.stickybar[data-on]) #chat-button{bottom:104px!important}
+@media (min-width:750px){
+  body:has(.stickybar[data-on]) #gorgias-chat-container iframe#chat-button,
+  body:has(.stickybar[data-on]) #chat-button{bottom:96px!important}
+}

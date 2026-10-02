@@ -48,42 +48,51 @@
 .buy .lg-faq{margin-top:24px}
 .buy .lg-fq summary{font-size:var(--lg-fs-base);padding:13px 0}
 
-/* set it up */
-.setup .lg-split{align-items:start}
-.start{display:flex;gap:14px;align-items:flex-start;margin-top:20px;padding:16px 18px;border:1px solid var(--lg-gold-text);border-radius:var(--lg-r-card)}
+/* set it up: one module, three tabs */
+.su-hd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:end}
+@media (max-width:860px){.su-hd{grid-template-columns:1fr}}
+.start{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--lg-gold-text);border-radius:var(--lg-r-card)}
 .start .ic{flex:none;width:22px;height:22px;color:var(--lg-gold-text);margin-top:2px}
 .start b{display:block}
 .start span{color:var(--lg-ink-70)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.su-tabs{margin:clamp(24px,4vw,40px) 0 clamp(16px,2vw,22px)}
+.su-tabs .lg-chip{gap:8px;min-height:48px}
+.su-tabs .lg-chip b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-size:12px}
+.su-tabs .lg-chip small{font-weight:500;letter-spacing:0;text-transform:none;color:var(--lg-ink-64)}
+.su-tabs .lg-chip[aria-pressed="true"] small{color:inherit;opacity:.75}
+.su-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,48px);align-items:start;padding:clamp(18px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
+.su-panel[hidden]{display:none}
+@media (max-width:860px){.su-panel{grid-template-columns:1fr}}
+.su-ph{aspect-ratio:4/5;min-width:0}
+.su-ph .play{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:18px;color:var(--lg-ink)}
+.su-panel h3{margin:0 0 16px}
 .chart{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
 .chart table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.chart th,.chart td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08)}
+.chart th,.chart td{padding:12px 8px;text-align:center;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08)}
+.chart tr:last-child td,.chart tr:last-child th{border-bottom:0}
 .chart th:last-child,.chart td:last-child{border-right:0}
-.chart thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px;text-transform:uppercase}
-.chart tbody th{text-align:left;font-weight:600;font-size:var(--lg-fs-sm);white-space:nowrap}
+.chart thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px}
+.chart tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px;width:52px}
 .chart td b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:22px;line-height:1}
 .chart td small{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:12px}
 .chart td.is-start{background:var(--lg-tile);box-shadow:inset 0 0 0 2px var(--lg-ink)}
-.chart-note{margin:10px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
-.moves{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut);margin-top:clamp(28px,4vw,44px)}
-@media (max-width:860px){.moves{grid-template-columns:1fr}}
-.move{padding:clamp(22px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
-.move .lg-tag{margin-bottom:12px}
-.move ul{margin:12px 0 0;padding-left:18px;color:var(--lg-ink-70)}
-.move li{margin:6px 0}
-.sole{display:block;width:100%;max-width:420px;margin:8px auto 0}
-.sole text{font-family:'Archivo',sans-serif;font-size:12px;fill:var(--lg-ink-70)}
-.sole .w{fill:var(--lg-gold-text)}
-.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:clamp(24px,3vw,32px);counter-reset:s}
-@media (max-width:860px){.steps{grid-template-columns:1fr}}
-.steps li{list-style:none;padding:16px;border-radius:var(--lg-r-card);background:var(--lg-tile);font-size:var(--lg-fs-sm)}
-.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;margin-bottom:10px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:13px}
-.steps{padding:0}
+.fix{display:grid;gap:0;margin:18px 0 0;border-top:1px solid var(--lg-rule)}
+.fix > div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--lg-rule)}
+.fix dt{font-weight:600}
+.fix dd{margin:0;color:var(--lg-ink-70)}
+@media (max-width:520px){.fix > div{grid-template-columns:1fr;gap:2px}}
+.su-note{margin:14px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.steps{margin:0;padding:0;counter-reset:s;display:grid;gap:10px}
+.steps li{list-style:none;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;color:var(--lg-ink-70)}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:13px}
+.steps b{color:var(--lg-ink)}
 
-/* specs */
-.tbl{overflow-x:auto}
-.specgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut);margin-top:clamp(20px,3vw,28px)}
-@media (max-width:860px){.specgrid{grid-template-columns:1fr}}
-.specgrid h3{margin:0 0 10px}
+/* specs, same as the wedges: tabs, tables on solid cards */
+.specs-tabs{margin:0 0 12px}
+.tbl{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page)}
+.tbl .lg-table th[scope=row]{width:42%}
+[data-spectab][hidden]{display:none}
 
 /* reviews, none yet */
 .norev{text-align:center;padding:clamp(28px,4vw,40px);border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card)}
@@ -157,94 +166,123 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
 </div>
 </div>
 
-<!-- ============ SET IT UP: big moves (the adapter), then small ones (the weights) ============ -->
+<!-- ============ SET IT UP: one module, three tabs. Start here sits above them. ============ -->
 <section class="lg-sec setup" id="setup" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
-  <div class="lg-split">
+  <div class="su-hd">
     <div>
       <p class="lg-eyebrow">Set it up</p>
       <h2 class="lg-d2">Big moves first. Then the small stuff.</h2>
-      <p class="lg-body">Hit it the way it comes for a round or two. If the ball keeps doing the same thing, the adapter is where you fix it. Once that's close, the weights fine-tune it.</p>
-      <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, 9g weight in the back. That's how it ships.</span></div></div>
+      <p class="lg-body">Play it the way it ships for a round or two. Same miss every time? The adapter fixes the big stuff. Once that's close, the weights fine-tune it.</p>
     </div>
+    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N, heavy weight in the back.</b><span>10.5°, standard lie. That's how it comes out of the box.</span></div></div>
+  </div>
+
+  <div class="seg su-tabs" data-sutabs role="tablist">
+    <button class="lg-chip" type="button" data-tab="adapter" aria-pressed="true"><b>1</b> The adapter <small>Big move</small></button>
+    <button class="lg-chip" type="button" data-tab="weights" aria-pressed="false"><b>2</b> The weights <small>Small move</small></button>
+    <button class="lg-chip" type="button" data-tab="change" aria-pressed="false"><b>3</b> Changing it <small>Two minutes</small></button>
+  </div>
+
+  <div class="su-panel" data-su="adapter">
+    <div class="lg-slot su-ph"><div><small>Shot needed · 4:5</small>The adapter sleeve, close, both rings readable: &minus;1, the dot, +1, +2 on top; N and D below.</div></div>
     <div>
+      <h3 class="lg-d3">Loft and lie. Where it starts and how high it goes.</h3>
       <div class="chart" role="region" aria-label="Adapter settings">
         <table>
-          <thead><tr><th scope="col"><span class="sr">Lie ring</span></th><th scope="col">&minus;1</th><th scope="col">&bull;</th><th scope="col">+1</th><th scope="col">+2</th></tr></thead>
+          <thead><tr><th scope="col"><span class="sr">Lie</span></th><th scope="col">&minus;1</th><th scope="col">&bull;</th><th scope="col">+1</th><th scope="col">+2</th></tr></thead>
           <tbody>
-            <tr><th scope="row">N · standard</th><td><b>9.5°</b><small>Lower</small></td><td class="is-start"><b>10.5°</b><small>How it ships</small></td><td><b>11.5°</b><small>Higher</small></td><td><b>12.5°</b><small>Highest</small></td></tr>
-            <tr><th scope="row">D · draw</th><td><b>9.5°</b><small>Starts it left</small></td><td><b>10.5°</b><small>Starts it left</small></td><td><b>11.5°</b><small>Starts it left</small></td><td><b>12.5°</b><small>Starts it left</small></td></tr>
+            <tr><th scope="row">N</th><td><b>9.5°</b></td><td class="is-start"><b>10.5°</b><small>Stock</small></td><td><b>11.5°</b></td><td><b>12.5°</b></td></tr>
+            <tr><th scope="row">D</th><td><b>9.5°</b></td><td><b>10.5°</b></td><td><b>11.5°</b></td><td><b>12.5°</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="chart-note">Eight settings: four lofts on the top ring, two lies on the bottom one. More loft gets the ball up and adds spin. D stands the club up a touch, which helps the ball start left (for a righty). The face angle moves a little with every loft change, so re-check your aim after a switch.</p>
+      <dl class="fix">
+        <div><dt>Ballooning, spinning out of the sky</dt><dd>Take a click off: &minus;1.</dd></div>
+        <div><dt>Low, dying, no carry</dt><dd>Add a click: +1 or +2.</dd></div>
+        <div><dt>Starting right of where you aimed</dt><dd>Switch N to D.</dd></div>
+      </dl>
     </div>
   </div>
 
-  <div class="moves">
-    <div class="move">
-      <span class="lg-tag lg-tag-gold">Big move</span>
-      <h3 class="lg-d3">The adapter</h3>
-      <p class="lg-body">Loft and lie. This changes how high it flies and where it starts. If you're missing in the same spot every time, start here.</p>
-      <ul><li>Ballooning or spinning too much: go down a click.</li><li>Low and dying: go up a click.</li><li>Starting right of where you aimed: try D.</li></ul>
-    </div>
-    <div class="move">
-      <span class="lg-tag">Small move</span>
-      <h3 class="lg-d3">The weights</h3>
-      <p class="lg-body">One 9g and two 3g. Swap where the heavy one sits to nudge the shape.</p>
-      <svg class="sole" viewBox="0 0 420 220" role="img" aria-label="The sole: a 3 gram weight in the toe, the 9 gram weight in the back, a 3 gram weight in the heel">
-        <path d="M30 120 C30 50 120 22 230 22 C330 22 395 60 395 118 C395 175 330 200 225 200 C110 200 30 185 30 120 Z" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/>
-        <circle class="w" cx="350" cy="110" r="13"/><text x="350" y="148" text-anchor="middle">Toe · 3g</text>
-        <circle class="w" cx="215" cy="172" r="17"/><text x="215" y="212" text-anchor="middle">Back · 9g</text>
-        <rect x="14" y="96" width="30" height="28" rx="8" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/><text x="29" y="88" text-anchor="middle">Hosel</text><circle class="w" cx="78" cy="110" r="13"/><text x="78" y="148" text-anchor="middle">Heel · 3g</text>
-        <text x="215" y="40" text-anchor="middle">Face side</text>
-      </svg>
-      <ul><li>Heavy one in the back: the most forgiving spot. How it ships.</li><li>Heavy one toward the heel: helps turn it over (draw).</li><li>Heavy one toward the toe: helps hold it up (fade).</li></ul>
+  <div class="su-panel" data-su="weights" hidden>
+    <div class="lg-slot su-ph"><div><small>Illustration needed · 4:5</small>The sole from below, drawn from a real photo: hosel at the heel, the three ports (heel, back, toe) with the 9g in the back.</div></div>
+    <div>
+      <h3 class="lg-d3">One 9g, two 3g. Move the heavy one to nudge the shape.</h3>
+      <dl class="fix">
+        <div><dt>Heavy one in the back</dt><dd>The most forgiving spot. How it ships.</dd></div>
+        <div><dt>Heavy one in the heel</dt><dd>Helps the face close: more draw, less slice.</dd></div>
+        <div><dt>Heavy one in the toe</dt><dd>Helps the face stay open: more fade, less hook.</dd></div>
+      </dl>
+      <p class="su-note">The weights fine-tune a shot you've already got close. If the ball's still missing a long way, go back to the adapter first.</p>
     </div>
   </div>
 
-  <ol class="steps" aria-label="Changing a setting">
-    <li>Loosen the screw on the sole by the heel. Lefty loosey.</li>
-    <li>Pull the head off the shaft.</li>
-    <li>Turn the adapter until your setting lines up with the mark.</li>
-    <li>Slide the head back on.</li>
-    <li>Tighten until the wrench clicks. Then stop.</li>
-  </ol>
+  <div class="su-panel" data-su="change" hidden>
+    <div class="lg-slot su-ph is-film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 4:5 · 30 to 45 s</small>Wrench on, head off, sleeve turned, head on, the click. One take, no music.</div></div>
+    <div>
+      <h3 class="lg-d3">Wrench, five steps, done.</h3>
+      <ol class="steps">
+        <li><b>Loosen</b> the screw on the sole by the heel. Lefty loosey.</li>
+        <li><b>Pull</b> the head off the shaft.</li>
+        <li><b>Turn</b> the sleeve until your setting lines up with the mark on the head.</li>
+        <li><b>Slide</b> the head back on.</li>
+        <li><b>Tighten</b> until the wrench clicks. Then stop. Weights use the same wrench, same click.</li>
+      </ol>
+    </div>
+  </div>
 </div></section>
 
-<!-- ============ THE SPEC SHEET: the page's one contour, behind a quiet no-photo section ============ -->
+<!-- ============ THE SPEC SHEET: like the wedges. Monitor up top, then Head / Shaft / Grip tabs. Tables sit on solid cards so the contour never runs behind text. ============ -->
 <section class="lg-sec lg-contour" id="specs" style="border-top:1px solid var(--lg-rule);--cx:30%;--cy:60%;--cz:210%"><div class="lg-wrap">
   <p class="lg-eyebrow">The spec sheet</p>
   <h2 class="lg-d2">Every number we've got.</h2>
-  <div class="specgrid">
-    <div><h3 class="lg-d3">The head</h3>
-      <div class="tbl"><table class="lg-table"><tbody>
-        <tr><th scope="row">Body</th><td>Cast 6-4 titanium</td></tr>
-        <tr><th scope="row">Face</th><td>SP700 titanium, variable thickness</td></tr>
-        <tr><th scope="row">Size</th><td>460cc</td></tr>
-        <tr><th scope="row">Head weight</th><td>204g</td></tr>
-        <tr><th scope="row">Loft</th><td>10.5° (9.5° to 12.5° on the adapter)</td></tr>
-        <tr><th scope="row">Lie</th><td>58°</td></tr>
-        <tr><th scope="row">Face angle</th><td>Square</td></tr>
-        <tr><th scope="row">Bulge / roll</th><td>12&Prime; / 12&Prime;</td></tr>
-        <tr><th scope="row">Weights</th><td>9g back, 3g heel, 3g toe</td></tr>
-        <tr><th scope="row">Length / swing weight</th><td>45&Prime; / D2</td></tr>
-        <tr><th scope="row">Hand</th><td>Right</td></tr>
+  <div class="lg-monitor" style="margin-top:clamp(20px,3vw,28px)">
+    <div class="lg-monitor-hd"><span class="lg-label">Havoc · LGD02</span><span class="lg-label lg-live"><i></i>In stock</span></div>
+    <div class="lg-monitor-in">
+      <div class="lg-monitor-ph lg-slot" style="aspect-ratio:auto;min-height:220px"><div><small>Cutout needed</small>Havoc head, three-quarter, cut out.</div></div>
+      <div class="lg-monitor-tiles">
+        <div class="lg-mt"><span>Head</span><b>460</b><em>cc of titanium.</em></div>
+        <div class="lg-mt"><span>Loft</span><b>10.5°</b><div class="lg-vals"><i>9.5°</i><i>10.5°</i><i>11.5°</i><i>12.5°</i></div></div>
+        <div class="lg-mt"><span>Price</span><b class="lg-num">$349</b></div>
+        <div class="lg-mt"><span>Test drive</span><b>60</b><em>days to decide it's a keeper.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seg specs-tabs" data-spectabs role="tablist"><button class="lg-chip" type="button" data-tab="head" aria-pressed="true">Head</button><button class="lg-chip" type="button" data-tab="shafts" aria-pressed="false">Shafts</button><button class="lg-chip" type="button" data-tab="grip" aria-pressed="false">Grip</button></div>
+  <div data-spectab="head">
+    <div class="tbl"><table class="lg-table"><tbody>
+      <tr><th scope="row">Body</th><td>Cast 6-4 titanium</td></tr>
+      <tr><th scope="row">Face</th><td>SP700 titanium, variable thickness</td></tr>
+      <tr><th scope="row">Size</th><td>460cc</td></tr>
+      <tr><th scope="row">Head weight</th><td>204g</td></tr>
+      <tr><th scope="row">Loft</th><td>10.5° (9.5° to 12.5° on the adapter)</td></tr>
+      <tr><th scope="row">Lie</th><td>58°</td></tr>
+      <tr><th scope="row">Face angle</th><td>Square</td></tr>
+      <tr><th scope="row">Bulge / roll</th><td>12&Prime; / 12&Prime;</td></tr>
+      <tr><th scope="row">Weights</th><td>9g back, 3g heel, 3g toe</td></tr>
+      <tr><th scope="row">Length / swing weight</th><td>45&Prime; / D2</td></tr>
+      <tr><th scope="row">Hand</th><td>Right</td></tr>
+      <tr><th scope="row">In the box</th><td>White headcover, torque wrench</td></tr>
+    </tbody></table></div>
+  </div>
+  <div data-spectab="shafts" hidden>
+    <div class="tbl"><table class="lg-table">
+      <thead><tr><th></th><th>Lucky stock</th><th>KBS PGW 60</th></tr></thead>
+      <tbody>
+      <tr><th scope="row">Price</th><td>Included</td><td>+$50</td></tr>
+      <tr><th scope="row">Flex</th><td>Regular, Stiff</td><td>Stiff, Extra Stiff</td></tr>
+      <tr><th scope="row">Launch / spin</th><td>Mid kick point</td><td>Low launch, low spin</td></tr>
+      <tr><th scope="row">Weight (Stiff)</th><td>About 65g</td><td>64g</td></tr>
+      <tr><th scope="row">Torque (Stiff)</th><td>3.7</td><td>4.6</td></tr>
+      <tr><th scope="row">Finish</th><td>To be confirmed</td><td>Black</td></tr>
       </tbody></table></div>
-    </div>
-    <div><h3 class="lg-d3">The shafts</h3>
-      <div class="tbl"><table class="lg-table">
-        <thead><tr><th></th><th>Lucky stock</th><th>KBS PGW 60</th></tr></thead>
-        <tbody>
-        <tr><th scope="row">Price</th><td>Included</td><td>+$50</td></tr>
-        <tr><th scope="row">Flex</th><td>Regular, Stiff</td><td>Stiff, Extra Stiff</td></tr>
-        <tr><th scope="row">Launch / spin</th><td>Mid kick point</td><td>Low launch, low spin</td></tr>
-        <tr><th scope="row">Weight (Stiff)</th><td>About 65g</td><td>64g</td></tr>
-        <tr><th scope="row">Torque (Stiff)</th><td>3.7</td><td>4.6</td></tr>
-        <tr><th scope="row">Finish</th><td></td><td>Black</td></tr>
-        </tbody></table></div>
-      <h3 class="lg-d3" style="margin-top:24px">The grip</h3>
-      <div class="tbl"><table class="lg-table"><tbody><tr><th scope="row">Grip</th><td>Black rubber, 0.58&Prime; core</td></tr></tbody></table></div>
-    </div>
+  </div>
+  <div data-spectab="grip" hidden>
+    <div class="tbl"><table class="lg-table"><tbody>
+      <tr><th scope="row">Grip</th><td>Lucky stock, black rubber</td></tr>
+      <tr><th scope="row">Core</th><td>0.58&Prime;</td></tr>
+    </tbody></table></div>
   </div>
 </div></section>
 
@@ -317,6 +355,12 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
   }
   $('[data-atc]').addEventListener('click', add);
   $('[data-atc-sticky]').addEventListener('click', add);
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-sutabs] button, [data-spectabs] button'); if (!t) return;
+    var grp = t.parentNode, attr = grp.hasAttribute('data-sutabs') ? 'data-su' : 'data-spectab';
+    $$('button', grp).forEach(function(x){ x.setAttribute('aria-pressed', String(x === t)); });
+    $$('[' + attr + ']').forEach(function(p){ p.hidden = p.getAttribute(attr) !== t.getAttribute('data-tab'); });
+  });
   render();
   /* sticky bar once the real button has scrolled away, until the footer */
   var sticky = $('[data-sticky]'), cta = $('.cta'), ftr = $('.lg-ftr');
