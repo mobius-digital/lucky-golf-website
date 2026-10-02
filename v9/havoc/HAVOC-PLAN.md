@@ -61,3 +61,7 @@ Optional: a small paid "first run" for the list (Takomo did this), feedback in e
 - USGA: the brand submits a sample head of each loft (strongly recommended, not mandatory; required for elite events).
   Takomo's D1 failed with the heavy weight in the toe and was replaced free. Ask Wenst whether this head is already listed under the factory's name.
 - Returns: still open.
+- KBS upcharge: +$50 (Cole: good, 2026-10-02).
+- Returns benchmark: Vice 30 days played, free label; Bombtech 60 days on course; Sub 70 30 days played, 10% restocking;
+  Stix 30 days, used = partial refund; Takomo 30 days unused only, custom builds excluded; Haywood unused only, 10% fee.
+  Lucky today: site says "sixty days to try any club" but the refund policy says drivers/hybrids/woods must be unused (already inconsistent for the Stryker).
