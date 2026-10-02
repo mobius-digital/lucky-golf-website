@@ -181,3 +181,10 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   DontPayFull, couponology, gearchase, price.com. Balance due $294.84 on 10/10 (auto-pay on).
   My earlier "0 of ~500 orders came through AvantLink" was WRONG: Shopify's landing-page data doesn't show
   AvantLink's tracking. KEEP. Open question: coupon sites often take credit for buyers who were already checking out.
+- AvantLink by affiliate, 2026 YTD: dealspotr $14,892 (107 orders), skimlinks $1,719, sovrn $1,510, thecouponbeach $1,410,
+  price.com $788, savinggain $632 cost, DontPayFull $287, savingsays $174, minty $99. The 2 real creators
+  (Ramon Brito FB Raiderray52, Bryan Lippard IG barefootbryan) had 0 clicks / 0 sales. Cole: no message, remove AvantLink.
+- AvantLink has NO fixed fee: invoices are affiliate commissions + AvantLink's commission (Sept: $226.79 + $68.05 = $294.84,
+  auto-pay Oct 10-11). Charges only arise from tracked sales, so removing the Shopify app stops new charges.
+- Closure email DRAFTED in Cole's Gmail to support@avantlink.com (cc griff@luckygolf.com), not sent.
+- Shopify app uninstall: pending, Chrome minimized mid-click (no dialog opened).
