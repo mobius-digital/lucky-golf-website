@@ -43,3 +43,14 @@ Optional: a small paid "first run" for the list (Takomo did this), feedback in e
 7. Compare (vs the big names, no names)
 8. Reviews (empty at launch; plan for it)
 9. FAQ (adjusting, flex, returns, hands)
+
+## Decisions so far (2026-10-02)
+- Landed COGS $119.22 (head + stock shaft + wrench + custom box, not the shaft box). Margin after ~3% card fees and ~$15 shipping:
+  $299 = 52%, $329 = 56%, $349 = 58%, $399 = 63%. Recommendation: $349.
+- KBS upcharge: set from the KBS-vs-stock landed cost difference (Sub 70 charges +$50 for KBS TD). Waiting on that cost.
+- Adapter = Callaway OptiFit style (Cole): loft ring -1 / S (the dot) / +1 / +2, lie ring N / D (D = ~2° upright, draw).
+  4 x 2 = the 8 settings. Face angle moves with loft (~1.5-1.8° per 1°; direction to confirm from Wenst's chart). Start here = dot + N.
+- Hands: right only at launch. Lefties = 10.5% of 2026 club units (365 of 3,466), so a lefty waitlist goes on the tease + Havoc pages.
+- USGA: not tested yet. Recommendation: submit heads now.
+- Returns: Takomo = 30 days, unused only, custom builds excluded. Vice = 30 days played. Bombtech = 60 days on course. Lucky promises 60 days on every club; decision open.
+- Tina/Wenst emails are NOT in the connected Gmail (that's cole@go-mobius-digital.com); the Lucky Golf mailbox isn't connected.
