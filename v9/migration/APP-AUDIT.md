@@ -190,3 +190,4 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
 - Shopify app uninstall: pending, Chrome minimized mid-click (no dialog opened).
 - 2026-10-02: AvantLink closure email SENT to support@avantlink.com (cc griff@luckygolf.com) from Cole's Gmail.
   Shopify app uninstall still pending: Chrome window minimized, clicks don't land.
+- 2026-10-02: AvantLink Shopify app UNINSTALLED (Shopify banner confirmed). No more tracking, so no new commissions.
