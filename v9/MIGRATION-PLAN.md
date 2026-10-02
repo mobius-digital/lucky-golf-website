@@ -310,3 +310,20 @@ every web pixel sees it. Checkout events are unaffected: checkout isn't the them
   archived. Verified live: each old URL now lands on its target. NOT done: /collections/summer-warehouse-sale
   (connector can't unpublish collections; ~4 visits, harmless). LAUNCH NIGHT: hide /pages/home (Replo copy of the
   old home) and redirect it to /. The ad team should still swap the ad links to the real URLs.
+
+**2026-10-02 (LAUNCH DAY)**
+- Cole published "Lucky v4 (build)" `171555127573` as MAIN. Old theme `167760331029` (Ride V3.0) is
+  unpublished and is the 30-day rollback (republish it + `live-templates.json` suffixes).
+- Sent via Admin API, 0 userErrors on every call: template suffixes (41 products, 6 collections,
+  5 pages), Compare + Community published, 35 product descriptions/titles/facts, 14 blog posts,
+  SEO title + description on 5 clubs + 4 collections.
+- `/pages/home` (Replo copy of the old home) unpublished + 301 to `/`.
+  `/products/lucky-golf-tees` (archived) 301 to `/collections/gear`.
+- No handles changed. Every product, collection, page and article URL is the same as before.
+- Checks: 25 key URLs 200 with zero Replo markup; add to cart -> checkout opens (Shop Pay);
+  GA4 `G-8DRJ99ES6W`, Klaviyo, Judge.me, Triple Whale (ONCE now, was 3x), Meta/Google app pixels load.
+- Re-crawl `seo-after.csv`: 97 URLs, only non-200s are the tees (now redirected) and
+  `/collections/non-clubs` (already 404 in the baseline). No noindex. Word count 68k -> 137k.
+- Open: home meta description still the old one (Online Store > Preferences, Cole);
+  Afterpay on-site config 403s for the new theme id (re-save in the Afterpay app);
+  pages/collections still without meta descriptions: reviews, classic-polos, blade-polos, gloves.

@@ -187,11 +187,6 @@
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
     },
     {
-      "handle": "lucky-golf-tees",
-      "templateSuffix": "gear",
-      "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
-    },
-    {
       "handle": "driver-head-cover",
       "templateSuffix": "gear",
       "rollback": "(the suffix recorded in v9/migration/live-templates.json)"
