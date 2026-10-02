@@ -65,3 +65,5 @@ Optional: a small paid "first run" for the list (Takomo did this), feedback in e
 - Returns benchmark: Vice 30 days played, free label; Bombtech 60 days on course; Sub 70 30 days played, 10% restocking;
   Stix 30 days, used = partial refund; Takomo 30 days unused only, custom builds excluded; Haywood unused only, 10% fee.
   Lucky today: site says "sixty days to try any club" but the refund policy says drivers/hybrids/woods must be unused (already inconsistent for the Stryker).
+- Returns DECIDED for now (Cole 2026-10-02): keep the current site policy as is ("sixty days to try any club" on the page,
+  existing refund policy text unchanged). Cole may rewrite the whole policy soon; Havoc copy links to the policy, invents nothing new.
