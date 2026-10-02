@@ -188,3 +188,5 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   auto-pay Oct 10-11). Charges only arise from tracked sales, so removing the Shopify app stops new charges.
 - Closure email DRAFTED in Cole's Gmail to support@avantlink.com (cc griff@luckygolf.com), not sent.
 - Shopify app uninstall: pending, Chrome minimized mid-click (no dialog opened).
+- 2026-10-02: AvantLink closure email SENT to support@avantlink.com (cc griff@luckygolf.com) from Cole's Gmail.
+  Shopify app uninstall still pending: Chrome window minimized, clicks don't land.
