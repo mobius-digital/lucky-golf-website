@@ -5,6 +5,7 @@ open line, so these also make "available" stock look lower than it is.
 Don't archive them: archiving hides the order but leaves it open and the stock held.
 
 **Done:** #36199 (TEST / DO-NOT-SHIP, $0 Whatnot demo) archived.
+**Done 2026-10-02:** Group A marked fulfilled (Cole: "Dec - Jan were shipped"), 25 open fulfillment orders, notifyCustomer false. #32218 had nothing open (closed by its refund).
 
 ## A. Dec 2025 to Jan 2026: 26 orders (ShipBob era). Almost certainly shipped, never marked
 
