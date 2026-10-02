@@ -175,3 +175,9 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
 - Parcel Panel UNINSTALLED 2026-10-02 (Cole: "drop Parcel Panel"), $23/mo + usage. "Track your order" in
   lucky-footer-support, lucky-phone-footer and the old theme's "footer" menu now points to
   https://shopify.com/22863149/account/orders. Redirect /apps/parcelpanel -> same, for links in old emails.
+- AvantLink CHECKED (Cole logged in, merchant 31441): ACTIVE. 2026 YTD 202 orders / $27,197.53 sales /
+  $3,535.98 total cost (13%), vs Shopify YTD 3,391 orders / $513,114 = ~6% of orders, ~5% of sales.
+  42 active affiliates, 10 pending. Top by sales (30d) are coupon/deal sites: savinggain, dealspotr, sovrn,
+  DontPayFull, couponology, gearchase, price.com. Balance due $294.84 on 10/10 (auto-pay on).
+  My earlier "0 of ~500 orders came through AvantLink" was WRONG: Shopify's landing-page data doesn't show
+  AvantLink's tracking. KEEP. Open question: coupon sites often take credit for buyers who were already checking out.
