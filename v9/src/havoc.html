@@ -16,6 +16,11 @@
 .gal .lg-slot{min-width:0;padding:14px}
 .gal .lg-slot{aspect-ratio:1;font-size:13px}
 .gal .lg-slot.wide{grid-column:1/-1;aspect-ratio:3/2}
+@media (max-width:900px){
+  .gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad);scrollbar-width:none}
+  .gal::-webkit-scrollbar{display:none}
+  .gal .lg-slot,.gal .lg-slot.wide{flex:0 0 86%;aspect-ratio:1;scroll-snap-align:start}
+}
 .buy{position:sticky;top:96px}
 @media (max-width:900px){.buy{position:static}}
 .buy h1{margin-top:4px}
@@ -59,12 +64,17 @@
 .su-tabs{margin:clamp(24px,4vw,40px) 0 clamp(16px,2vw,22px)}
 .su-tabs .lg-chip{gap:8px;min-height:48px}
 .su-tabs .lg-chip b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-size:12px}
-.su-tabs .lg-chip small{font-weight:500;letter-spacing:0;text-transform:none;color:var(--lg-ink-64)}
-.su-tabs .lg-chip[aria-pressed="true"] small{color:inherit;opacity:.75}
-.su-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,48px);align-items:start;padding:clamp(18px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
+.su-tabs .lg-chip{padding:0 18px 0 10px}
+.su-tabs .lg-chip[aria-pressed="true"] b{background:var(--lg-page);color:var(--lg-ink)}
+@media (max-width:600px){
+  .su-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .su-tabs .lg-chip{flex-direction:column;justify-content:center;gap:6px;padding:10px 4px;min-height:72px;font-size:11px;text-align:center;line-height:1.2}
+  .su-panel .su-ph{aspect-ratio:3/2}
+}
+.su-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(18px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
 .su-panel[hidden]{display:none}
 @media (max-width:860px){.su-panel{grid-template-columns:1fr}}
-.su-ph{aspect-ratio:4/5;min-width:0}
+.su-ph{aspect-ratio:1;min-width:0}
 .su-ph .play{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:18px;color:var(--lg-ink)}
 .su-panel h3{margin:0 0 16px}
 .chart{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
@@ -89,13 +99,16 @@
 .steps b{color:var(--lg-ink)}
 
 /* specs, same as the wedges: tabs, tables on solid cards */
-.specs-tabs{margin:0 0 12px}
+.specs-tabs{margin:clamp(24px,3vw,32px) 0 12px}
 .tbl{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page)}
-.tbl .lg-table th[scope=row]{width:42%}
+.tbl .lg-table{table-layout:auto;width:100%}
+.tbl .lg-table th[scope=row]{width:32%;white-space:nowrap}
+.tbl .lg-table thead th:first-child{width:32%}
 [data-spectab][hidden]{display:none}
 
+.lg-pband .lg-slot{aspect-ratio:3/2;height:auto;min-width:0;border-radius:0}
 /* reviews, none yet */
-.norev{text-align:center;padding:clamp(28px,4vw,40px);border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card)}
+.norev{margin-top:clamp(20px,3vw,28px);text-align:center;padding:clamp(28px,4vw,40px);border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card)}
 .norev p{margin:6px auto 0;max-width:46ch;color:var(--lg-ink-70)}
 
 .more .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:clamp(18px,3vw,28px)}
@@ -124,10 +137,8 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
 <div class="pdp">
   <div class="gal" aria-label="Product images">
     <div class="lg-slot wide"><div><small>Shot needed · 3:2 · studio</small>Havoc head, three-quarter view, matte gold on the stone tile, cut out.</div></div>
-    <div class="lg-slot"><div><small>Shot needed · 1:1</small>Face-on at address, top line and crown.</div></div>
-    <div class="lg-slot"><div><small>Shot needed · 1:1</small>The sole: the three weights and the adapter screw, wrench beside it.</div></div>
-    <div class="lg-slot"><div><small>Shot needed · 1:1</small>The adapter sleeve close up, markings readable.</div></div>
-    <div class="lg-slot"><div><small>Shot needed · 1:1</small>What's in the box: head, shaft, white headcover, wrench.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>Face-on at address: top line and crown.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>The sole: three weights and the adapter screw.</div></div>
     <div class="lg-slot wide"><div><small>Shot needed · 3:2 · on course</small>A tee shot with Havoc, held finish, ball in the air.</div></div>
   </div>
 
@@ -174,17 +185,17 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
       <h2 class="lg-d2">Big moves first. Then the small stuff.</h2>
       <p class="lg-body">Play it the way it ships for a round or two. Same miss every time? The adapter fixes the big stuff. Once that's close, the weights fine-tune it.</p>
     </div>
-    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N, heavy weight in the back.</b><span>10.5°, standard lie. That's how it comes out of the box.</span></div></div>
+    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, heavy weight in the back. That's how it ships.</span></div></div>
   </div>
 
   <div class="seg su-tabs" data-sutabs role="tablist">
-    <button class="lg-chip" type="button" data-tab="adapter" aria-pressed="true"><b>1</b> The adapter <small>Big move</small></button>
-    <button class="lg-chip" type="button" data-tab="weights" aria-pressed="false"><b>2</b> The weights <small>Small move</small></button>
-    <button class="lg-chip" type="button" data-tab="change" aria-pressed="false"><b>3</b> Changing it <small>Two minutes</small></button>
+    <button class="lg-chip" type="button" data-tab="adapter" aria-pressed="true"><b>1</b>The adapter</button>
+    <button class="lg-chip" type="button" data-tab="weights" aria-pressed="false"><b>2</b>The weights</button>
+    <button class="lg-chip" type="button" data-tab="change" aria-pressed="false"><b>3</b>Changing it</button>
   </div>
 
   <div class="su-panel" data-su="adapter">
-    <div class="lg-slot su-ph"><div><small>Shot needed · 4:5</small>The adapter sleeve, close, both rings readable: &minus;1, the dot, +1, +2 on top; N and D below.</div></div>
+    <div class="lg-slot su-ph"><div><small>Shot needed · 1:1</small>The adapter sleeve, close, both rings readable: &minus;1, the dot, +1, +2 on top; N and D below.</div></div>
     <div>
       <h3 class="lg-d3">Loft and lie. Where it starts and how high it goes.</h3>
       <div class="chart" role="region" aria-label="Adapter settings">
@@ -205,7 +216,7 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
   </div>
 
   <div class="su-panel" data-su="weights" hidden>
-    <div class="lg-slot su-ph"><div><small>Illustration needed · 4:5</small>The sole from below, drawn from a real photo: hosel at the heel, the three ports (heel, back, toe) with the 9g in the back.</div></div>
+    <div class="lg-slot su-ph"><div><small>Illustration needed · 1:1</small>The sole from below, drawn from a real photo: hosel at the heel, the three ports (heel, back, toe) with the 9g in the back.</div></div>
     <div>
       <h3 class="lg-d3">One 9g, two 3g. Move the heavy one to nudge the shape.</h3>
       <dl class="fix">
@@ -218,15 +229,15 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
   </div>
 
   <div class="su-panel" data-su="change" hidden>
-    <div class="lg-slot su-ph is-film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 4:5 · 30 to 45 s</small>Wrench on, head off, sleeve turned, head on, the click. One take, no music.</div></div>
+    <div class="lg-slot su-ph is-film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 1:1 · 30 to 45 s</small>Wrench on, head off, sleeve turned, head on, the click. One take, no music.</div></div>
     <div>
       <h3 class="lg-d3">Wrench, five steps, done.</h3>
       <ol class="steps">
-        <li><b>Loosen</b> the screw on the sole by the heel. Lefty loosey.</li>
-        <li><b>Pull</b> the head off the shaft.</li>
-        <li><b>Turn</b> the sleeve until your setting lines up with the mark on the head.</li>
-        <li><b>Slide</b> the head back on.</li>
-        <li><b>Tighten</b> until the wrench clicks. Then stop. Weights use the same wrench, same click.</li>
+        <li><span><b>Loosen</b> the screw on the sole by the heel. Lefty loosey.</span></li>
+        <li><span><b>Pull</b> the head off the shaft.</span></li>
+        <li><span><b>Turn</b> the sleeve until your setting lines up with the mark on the head.</span></li>
+        <li><span><b>Slide</b> the head back on.</span></li>
+        <li><span><b>Tighten</b> until the wrench clicks. Then stop. Weights use the same wrench, same click.</span></li>
       </ol>
     </div>
   </div>
@@ -304,9 +315,9 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
 <section class="lg-sec more"><div class="lg-wrap">
   <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">Round out the bag</h2></div><a class="lg-link" href="clubs.html">See every club <span>&rarr;</span></a></div>
   <div class="lg-grid">
-    <a class="lg-card" href="stryker.html"><span class="lg-card-ph"><img src="img/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">High and easy from the rough</span></span></a>
-    <a class="lg-card" href="carver.html"><span class="lg-card-ph"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">The one they ask about on the next tee</span></span></a>
-    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Soft off the face, gold all over</span></span></a>
+    <a class="lg-card" href="stryker.html"><span class="lg-card-ph is-cut"><img src="img/lg-card-stryker.webp" alt="Stryker" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">High and easy from the rough</span></span></a>
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph is-cut"><img src="img/lg-card-carver-gold.webp" alt="Carver 02 Gold" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">The one they ask about on the next tee</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph is-cut"><img src="img/lg-card-mallet.webp" alt="Eclipse Mallet" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Soft off the face, gold all over</span></span></a>
   </div>
 </div></section>
 
