@@ -129,3 +129,18 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   Afterpay On-Site Messaging, AvantLink (Cole: the creator program replaces it; also close the AvantLink
   account itself so it stops billing).
 - Later: Upcart (Oct 9), Notify Me (after the waitlist is in Klaviyo), Replo (early Nov, rollback theme uses it).
+
+## Done 2026-10-02 (Cole: "do everything")
+
+- Uninstalled, each confirmed by Shopify's banner or the app list: Afterpay On-Site Messaging, GemPages,
+  Fudge Agent, Essential Announcer, Adveronix, Lovable (Lovable sits under Sales channels, not Apps).
+- AvantLink KEPT: Cole asked "should it go if we still have people on there?" Removing the pixel
+  stops affiliates' sales tracking, so they stop getting paid. 0 of the last ~500 orders
+  (Aug 23 to Oct 2) came in through an AvantLink link. Next: check its dashboard for active
+  affiliates, move any to Lucky Creators with notice, close the program, then uninstall.
+- Notify Me: opening the app asks to GRANT it more access (customer data, orders) before it loads.
+  Not granted. Cole decides: approve that once to export the waitlist, or ask their support for a CSV.
+- Judge.me: NOT pooled. The current 13 polos and 10 hats have 0 reviews. The existing "All Polos"
+  group holds 11 reviews of 5 discontinued shirts at 3.91 avg; pooling would show 3.9 stars from
+  different shirts on the new line. "All Hats" has 0 reviews. Wait for real reviews (request emails run).
+- Seen on Sales channels: Pinterest shows "Action needed".
