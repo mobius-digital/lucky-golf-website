@@ -120,3 +120,12 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   LGW02-52-RH 1, LGW02-56-RH 1, LGW02-52-LH 1, LGW02-56-LH 3, LGW02-60-LH 3, LGD01-Right 1 (25 wedges + 1 driver).
   All 26 were 'committed' but no open order was assigned to ShipBob (stale). The uninstall only offered transfer, so they went to a NEW location, "ShipBobFulfillment-205688 (app uninstalled)", which does not fulfill online orders (Ceries stock untouched). It can be deactivated any time.
 - The Nitro/Ecomrise app embed and the Amazon pixel are gone from the live theme with the apps; nothing else to strip for them in the move.
+
+## After launch (2026-10-02)
+
+- Afterpay: last Afterpay order was #27169 on 2025-02-07; every order since Aug 2026 is shopify_payments.
+  Afterpay isn't at checkout, so the On-Site Messaging app advertises something you can't pick: uninstall.
+- Remove now (Cole: "do everything"): GemPages, Essential Announcer, Lovable, Fudge Agent, Adveronix,
+  Afterpay On-Site Messaging, AvantLink (Cole: the creator program replaces it; also close the AvantLink
+  account itself so it stops billing).
+- Later: Upcart (Oct 9), Notify Me (after the waitlist is in Klaviyo), Replo (early Nov, rollback theme uses it).
