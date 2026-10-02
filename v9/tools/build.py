@@ -54,6 +54,8 @@ PAGES = [
     {"key": "policy", "name": "Policy", "file": "policy.html", "before": None, "built": True},
     {"key": "blog", "name": "Blog", "file": "blog.html", "before": None, "built": True},
     {"key": "article", "name": "Article", "file": "article.html", "before": None, "built": True},
+    {"key": "havoc-tease", "name": "Havoc: the tease", "file": "havoc-tease.html", "before": None, "built": True},
+    {"key": "havoc", "name": "Havoc: product page", "file": "havoc.html", "before": None, "built": True},
 ]
 
 # ------------------------------------------------------------------ images
@@ -972,7 +974,8 @@ BUILDERS = {"carver": build_carver("gold"), "home": build_home, "clubs": build_c
             "contact": build_simple("contact.html"),
             "black": build_carver("black"),
             "mood": build_carver("black", mood=True), "blade": build_club("blade"),
-            "mallet": build_club("mallet"), "stryker": build_club("stryker")}
+            "mallet": build_club("mallet"), "stryker": build_club("stryker"),
+            "havoc-tease": build_simple("havoc-tease.html"), "havoc": build_simple("havoc.html")}
 
 
 def main():

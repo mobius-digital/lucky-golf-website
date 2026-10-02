@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Havoc · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Havoc (LGD02) · the live product page. Layout only; every look comes from lucky.css ---------- */
+.crumb ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:16px 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.crumb li+li::before{content:'/';margin-right:6px;color:var(--lg-ink-38)}
+.crumb a{color:inherit}
+.pdp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding-bottom:var(--lg-sec)}
+@media (max-width:900px){.pdp{grid-template-columns:minmax(0,1fr)}}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gal .lg-slot{min-width:0;padding:14px}
+.gal .lg-slot{aspect-ratio:1;font-size:13px}
+.gal .lg-slot.wide{grid-column:1/-1;aspect-ratio:3/2}
+.buy{position:sticky;top:96px}
+@media (max-width:900px){.buy{position:static}}
+.buy h1{margin-top:4px}
+.rvl{margin-top:12px;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.price{margin-top:14px;display:flex;align-items:baseline;gap:8px}
+.price b{font-variation-settings:'wdth' 100;font-weight:600;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.buy .lg-body{margin-top:10px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:24px 0 10px}
+.row .lg-label{color:var(--lg-ink)}
+.row .m{color:var(--lg-ink-64);text-transform:none;letter-spacing:0;font-variation-settings:'wdth' 100;font-weight:500;font-size:var(--lg-fs-sm)}
+.row a{font-size:var(--lg-fs-sm);color:var(--lg-gold-text);font-weight:600;text-decoration:none}
+.handnote{margin:0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.handnote a{color:var(--lg-gold-text);font-weight:600}
+.shafts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.shafts button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px 16px;min-height:96px;border:1px solid var(--lg-rule);border-radius:var(--lg-r);background:var(--lg-page);color:var(--lg-ink);cursor:pointer;text-align:left}
+.shafts button b{font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.05}
+.shafts button span{color:var(--lg-ink-64);font-size:var(--lg-fs-sm);line-height:1.35}
+.shafts button em{font-style:normal;font-weight:700;font-size:var(--lg-fs-sm);color:var(--lg-ink);margin-top:auto}
+.shafts button[aria-pressed="true"]{border:2px solid var(--lg-ink);padding:13px 15px}
+.flexes{display:flex;gap:6px}
+.flexes .lg-chip{min-width:96px}
+.flexhelp{margin-top:10px}
+.flexhelp summary{font-size:var(--lg-fs-sm);color:var(--lg-gold-text);font-weight:600;cursor:pointer;min-height:32px;display:flex;align-items:center}
+.flexhelp table{margin-top:8px}
+.cta{margin-top:22px}
+.cta .lg-btn{width:100%;min-height:58px;font-size:14px}
+.trustl{display:grid;gap:6px;margin-top:14px;font-size:var(--lg-fs-sm)}
+.trustl-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.trustl a{color:var(--lg-ink-70)}
+.buy .lg-faq{margin-top:24px}
+.buy .lg-fq summary{font-size:var(--lg-fs-base);padding:13px 0}
+
+/* set it up */
+.setup .lg-split{align-items:start}
+.start{display:flex;gap:14px;align-items:flex-start;margin-top:20px;padding:16px 18px;border:1px solid var(--lg-gold-text);border-radius:var(--lg-r-card)}
+.start .ic{flex:none;width:22px;height:22px;color:var(--lg-gold-text);margin-top:2px}
+.start b{display:block}
+.start span{color:var(--lg-ink-70)}
+.chart{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
+.chart table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.chart th,.chart td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08)}
+.chart th:last-child,.chart td:last-child{border-right:0}
+.chart thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px;text-transform:uppercase}
+.chart tbody th{text-align:left;font-weight:600;font-size:var(--lg-fs-sm);white-space:nowrap}
+.chart td b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:22px;line-height:1}
+.chart td small{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:12px}
+.chart td.is-start{background:var(--lg-tile);box-shadow:inset 0 0 0 2px var(--lg-ink)}
+.chart-note{margin:10px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.moves{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut);margin-top:clamp(28px,4vw,44px)}
+@media (max-width:860px){.moves{grid-template-columns:1fr}}
+.move{padding:clamp(22px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
+.move .lg-tag{margin-bottom:12px}
+.move ul{margin:12px 0 0;padding-left:18px;color:var(--lg-ink-70)}
+.move li{margin:6px 0}
+.sole{display:block;width:100%;max-width:420px;margin:8px auto 0}
+.sole text{font-family:'Archivo',sans-serif;font-size:12px;fill:var(--lg-ink-70)}
+.sole .w{fill:var(--lg-gold-text)}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:clamp(24px,3vw,32px);counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.steps li{list-style:none;padding:16px;border-radius:var(--lg-r-card);background:var(--lg-tile);font-size:var(--lg-fs-sm)}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;margin-bottom:10px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:13px}
+.steps{padding:0}
+
+/* specs */
+.tbl{overflow-x:auto}
+.specgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--lg-gut);margin-top:clamp(20px,3vw,28px)}
+@media (max-width:860px){.specgrid{grid-template-columns:1fr}}
+.specgrid h3{margin:0 0 10px}
+
+/* reviews, none yet */
+.norev{text-align:center;padding:clamp(28px,4vw,40px);border:1px dashed var(--lg-rule);border-radius:var(--lg-r-card)}
+.norev p{margin:6px auto 0;max-width:46ch;color:var(--lg-ink-70)}
+
+.more .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:clamp(18px,3vw,28px)}
+
+/* sticky bar */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:var(--lg-z-rail);display:none;align-items:center;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--lg-page);border-top:1px solid var(--lg-rule)}
+.stickybar b{display:block;font-size:14px;line-height:1.2}
+.stickybar span{color:var(--lg-ink-64);font-size:13px}
+.stickybar > div{flex:1;min-width:0}
+.stickybar .lg-btn{min-height:48px;padding:0 20px}
+.stickybar[data-on]{display:flex}
+@media (min-width:750px){.stickybar{padding:10px max(var(--lg-pad),calc((100vw - var(--lg-wrap)) / 2 + var(--lg-pad)));box-shadow:0 -8px 24px rgba(23,20,15,.08)}.stickybar .lg-btn{min-width:220px}}
+body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="home.html">Home</a></li><li><a href="clubs.html">Clubs</a></li><li><span>Drivers</span></li><li><span aria-current="page">Havoc</span></li>
+</ol></nav>
+
+<!-- ============ THE FOLD: gallery (all shots still to come) and the buy box ============ -->
+<div class="lg-wrap">
+<div class="pdp">
+  <div class="gal" aria-label="Product images">
+    <div class="lg-slot wide"><div><small>Shot needed · 3:2 · studio</small>Havoc head, three-quarter view, matte gold on the stone tile, cut out.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>Face-on at address, top line and crown.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>The sole: the three weights and the adapter screw, wrench beside it.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>The adapter sleeve close up, markings readable.</div></div>
+    <div class="lg-slot"><div><small>Shot needed · 1:1</small>What's in the box: head, shaft, white headcover, wrench.</div></div>
+    <div class="lg-slot wide"><div><small>Shot needed · 3:2 · on course</small>A tee shot with Havoc, held finish, ball in the air.</div></div>
+  </div>
+
+  <div class="buy" id="buy">
+    <p class="lg-eyebrow">Adjustable driver · LGD02</p>
+    <h1 class="lg-d1"><span class="lg-foil-word">Havoc</span></h1>
+    <p class="rvl">Brand new. The first reviews show up after the first rounds.</p>
+    <div class="price"><b data-price>$349</b></div>
+    <p class="lg-body">The first tee has a crowd, the group behind you is watching, and you just pulled a gold driver out of the bag. Good luck blending in. Havoc is 460cc of titanium with a face that's thicker in the middle and thinner out toward the edges, so the ball still comes off hot when you don't find the screws. Then the adapter and the weights let you chase your miss until it quits showing up.</p>
+
+    <div class="row"><span class="lg-label">Hand</span></div>
+    <p class="handnote">Right-handed. Lefty? <a href="havoc-tease.html#list">Get on the list</a> and we'll bring it to your side.</p>
+
+    <div class="row"><span class="lg-label">Shaft</span></div>
+    <div class="shafts" data-shafts role="group" aria-label="Shaft">
+      <button type="button" data-shaft="wenst" aria-pressed="true"><b>Lucky stock</b><span>Mid kick point. The all-rounder.</span><em>Included</em></button>
+      <button type="button" data-shaft="kbs" aria-pressed="false"><b>KBS PGW 60</b><span>Low launch, low spin. For swings that send it up too high.</span><em>+$50</em></button>
+    </div>
+
+    <div class="row"><span class="lg-label">Flex</span></div>
+    <div class="lg-chips flexes" data-flexes role="group" aria-label="Flex"></div>
+    <details class="flexhelp"><summary>Which flex?</summary>
+      <table class="lg-table"><thead><tr><th>Driver swing speed</th><th>Flex</th></tr></thead>
+      <tbody><tr><td>Under 90 mph</td><td>Regular</td></tr><tr><td>90 to 105 mph</td><td>Stiff</td></tr><tr><td>Over 105 mph</td><td>Extra Stiff</td></tr></tbody></table>
+    </details>
+
+    <div class="cta"><button class="lg-btn" type="button" data-atc>Put it in the bag · $349</button></div>
+    <div class="trustl"><span class="lg-stock">In stock · ships in 1 to 2 days</span><span class="trustl-links"><a href="faq.html#returns">Sixty days to make up your mind</a><a href="faq.html#shipping">Ships free</a></span></div>
+
+    <div class="lg-faq">
+      <details class="lg-fq"><summary>What it's made of</summary><div class="lg-fq-a"><p>A 460cc head in cast 6-4 titanium, with an SP700 titanium face that's thicker in the centre and thinner toward the edges. 10.5° of loft, a 58° lie and a square face out of the box. Matte gold, with Lucky filled in black on the sole. Built to 45 inches at D2.</p></div></details>
+      <details class="lg-fq"><summary>What's in the box</summary><div class="lg-fq-a"><p>The head on the shaft you picked, our black rubber grip, a white headcover and the black torque wrench, all in the driver box.</p></div></details>
+      <details class="lg-fq"><summary>Shipping and returns</summary><div class="lg-fq-a"><p>Orders leave Long Beach, California in 1 to 2 business days. Every club gets sixty days from delivery. Talk to us before anything ships back, because club returns need our OK and a few photos first. Return shipping's on you.</p></div></details>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ SET IT UP: big moves (the adapter), then small ones (the weights) ============ -->
+<section class="lg-sec setup" id="setup" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="lg-split">
+    <div>
+      <p class="lg-eyebrow">Set it up</p>
+      <h2 class="lg-d2">Big moves first. Then the small stuff.</h2>
+      <p class="lg-body">Hit it the way it comes for a round or two. If the ball keeps doing the same thing, the adapter is where you fix it. Once that's close, the weights fine-tune it.</p>
+      <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, 9g weight in the back. That's how it ships.</span></div></div>
+    </div>
+    <div>
+      <div class="chart" role="region" aria-label="Adapter settings">
+        <table>
+          <thead><tr><th scope="col"><span class="sr">Lie ring</span></th><th scope="col">&minus;1</th><th scope="col">&bull;</th><th scope="col">+1</th><th scope="col">+2</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">N · standard</th><td><b>9.5°</b><small>Lower</small></td><td class="is-start"><b>10.5°</b><small>How it ships</small></td><td><b>11.5°</b><small>Higher</small></td><td><b>12.5°</b><small>Highest</small></td></tr>
+            <tr><th scope="row">D · draw</th><td><b>9.5°</b><small>Starts it left</small></td><td><b>10.5°</b><small>Starts it left</small></td><td><b>11.5°</b><small>Starts it left</small></td><td><b>12.5°</b><small>Starts it left</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chart-note">Eight settings: four lofts on the top ring, two lies on the bottom one. More loft gets the ball up and adds spin. D stands the club up a touch, which helps the ball start left (for a righty). The face angle moves a little with every loft change, so re-check your aim after a switch.</p>
+    </div>
+  </div>
+
+  <div class="moves">
+    <div class="move">
+      <span class="lg-tag lg-tag-gold">Big move</span>
+      <h3 class="lg-d3">The adapter</h3>
+      <p class="lg-body">Loft and lie. This changes how high it flies and where it starts. If you're missing in the same spot every time, start here.</p>
+      <ul><li>Ballooning or spinning too much: go down a click.</li><li>Low and dying: go up a click.</li><li>Starting right of where you aimed: try D.</li></ul>
+    </div>
+    <div class="move">
+      <span class="lg-tag">Small move</span>
+      <h3 class="lg-d3">The weights</h3>
+      <p class="lg-body">One 9g and two 3g. Swap where the heavy one sits to nudge the shape.</p>
+      <svg class="sole" viewBox="0 0 420 220" role="img" aria-label="The sole: a 3 gram weight in the toe, the 9 gram weight in the back, a 3 gram weight in the heel">
+        <path d="M30 120 C30 50 120 22 230 22 C330 22 395 60 395 118 C395 175 330 200 225 200 C110 200 30 185 30 120 Z" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/>
+        <circle class="w" cx="350" cy="110" r="13"/><text x="350" y="148" text-anchor="middle">Toe · 3g</text>
+        <circle class="w" cx="215" cy="172" r="17"/><text x="215" y="212" text-anchor="middle">Back · 9g</text>
+        <rect x="14" y="96" width="30" height="28" rx="8" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/><text x="29" y="88" text-anchor="middle">Hosel</text><circle class="w" cx="78" cy="110" r="13"/><text x="78" y="148" text-anchor="middle">Heel · 3g</text>
+        <text x="215" y="40" text-anchor="middle">Face side</text>
+      </svg>
+      <ul><li>Heavy one in the back: the most forgiving spot. How it ships.</li><li>Heavy one toward the heel: helps turn it over (draw).</li><li>Heavy one toward the toe: helps hold it up (fade).</li></ul>
+    </div>
+  </div>
+
+  <ol class="steps" aria-label="Changing a setting">
+    <li>Loosen the screw on the sole by the heel. Lefty loosey.</li>
+    <li>Pull the head off the shaft.</li>
+    <li>Turn the adapter until your setting lines up with the mark.</li>
+    <li>Slide the head back on.</li>
+    <li>Tighten until the wrench clicks. Then stop.</li>
+  </ol>
+</div></section>
+
+<!-- ============ THE SPEC SHEET: the page's one contour, behind a quiet no-photo section ============ -->
+<section class="lg-sec lg-contour" id="specs" style="border-top:1px solid var(--lg-rule);--cx:30%;--cy:60%;--cz:210%"><div class="lg-wrap">
+  <p class="lg-eyebrow">The spec sheet</p>
+  <h2 class="lg-d2">Every number we've got.</h2>
+  <div class="specgrid">
+    <div><h3 class="lg-d3">The head</h3>
+      <div class="tbl"><table class="lg-table"><tbody>
+        <tr><th scope="row">Body</th><td>Cast 6-4 titanium</td></tr>
+        <tr><th scope="row">Face</th><td>SP700 titanium, variable thickness</td></tr>
+        <tr><th scope="row">Size</th><td>460cc</td></tr>
+        <tr><th scope="row">Head weight</th><td>204g</td></tr>
+        <tr><th scope="row">Loft</th><td>10.5° (9.5° to 12.5° on the adapter)</td></tr>
+        <tr><th scope="row">Lie</th><td>58°</td></tr>
+        <tr><th scope="row">Face angle</th><td>Square</td></tr>
+        <tr><th scope="row">Bulge / roll</th><td>12&Prime; / 12&Prime;</td></tr>
+        <tr><th scope="row">Weights</th><td>9g back, 3g heel, 3g toe</td></tr>
+        <tr><th scope="row">Length / swing weight</th><td>45&Prime; / D2</td></tr>
+        <tr><th scope="row">Hand</th><td>Right</td></tr>
+      </tbody></table></div>
+    </div>
+    <div><h3 class="lg-d3">The shafts</h3>
+      <div class="tbl"><table class="lg-table">
+        <thead><tr><th></th><th>Lucky stock</th><th>KBS PGW 60</th></tr></thead>
+        <tbody>
+        <tr><th scope="row">Price</th><td>Included</td><td>+$50</td></tr>
+        <tr><th scope="row">Flex</th><td>Regular, Stiff</td><td>Stiff, Extra Stiff</td></tr>
+        <tr><th scope="row">Launch / spin</th><td>Mid kick point</td><td>Low launch, low spin</td></tr>
+        <tr><th scope="row">Weight (Stiff)</th><td>About 65g</td><td>64g</td></tr>
+        <tr><th scope="row">Torque (Stiff)</th><td>3.7</td><td>4.6</td></tr>
+        <tr><th scope="row">Finish</th><td></td><td>Black</td></tr>
+        </tbody></table></div>
+      <h3 class="lg-d3" style="margin-top:24px">The grip</h3>
+      <div class="tbl"><table class="lg-table"><tbody><tr><th scope="row">Grip</th><td>Black rubber, 0.58&Prime; core</td></tr></tbody></table></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ PHOTO BEAT: Havoc on the course. Every frame still to shoot ============ -->
+<div class="lg-pband" aria-label="On the course">
+  <div class="lg-slot pb"><div><small>Shot needed · 3:2</small>Teeing it up with Havoc, gold head catching the light.</div></div>
+  <div class="lg-slot pb"><div><small>Shot needed · 3:2</small>Full swing, held finish, early or late light.</div></div>
+  <div class="lg-slot pb"><div><small>Shot needed · 3:2</small>Havoc in the bag beside the Carver and the Mallet, headcover off.</div></div>
+</div>
+
+<!-- ============ REVIEWS: none yet, so we say so ============ -->
+<section class="lg-sec" id="reviews"><div class="lg-wrap">
+  <p class="lg-eyebrow">Reviews</p>
+  <h2 class="lg-d2">Nobody's had a crack at it yet.</h2>
+  <div class="norev"><b>No reviews so far.</b><p>It's brand new. The first reviews land here once the first buyers have played a few rounds with it.</p></div>
+</div></section>
+
+<!-- ============ MORE FROM THE BAG ============ -->
+<section class="lg-sec more"><div class="lg-wrap">
+  <div class="hd"><div><p class="lg-eyebrow">More from the bag</p><h2 class="lg-d2">Round out the bag</h2></div><a class="lg-link" href="clubs.html">See every club <span>&rarr;</span></a></div>
+  <div class="lg-grid">
+    <a class="lg-card" href="stryker.html"><span class="lg-card-ph"><img src="img/11_0464f85e-ccad-487c-bb2a-1c0a5c7b673c.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Stryker</span><span class="lg-card-pr">$209</span><span class="lg-card-ln">High and easy from the rough</span></span></a>
+    <a class="lg-card" href="carver.html"><span class="lg-card-ph"><img src="img/6_2ea13893-f7a8-4035-ad55-75ff49178d48.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Carver 02 Gold</span><span class="lg-card-pr">$99</span><span class="lg-card-ln">The one they ask about on the next tee</span></span></a>
+    <a class="lg-card" href="mallet.html"><span class="lg-card-ph"><img src="img/11_7388f94c-9c93-4aff-ada6-c6a1163ac214.webp" alt="" loading="lazy"></span><span class="lg-card-bd"><span class="lg-card-nm">Eclipse Mallet</span><span class="lg-card-pr">$229</span><span class="lg-card-ln">Soft off the face, gold all over</span></span></a>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
+  <p class="lg-lede">Somebody's taking the honors on the next tee. Might as well be the gold one.</p>
+  <a class="lg-btn-line" href="#buy">Build yours <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+
+<div class="stickybar" data-sticky>
+  <div><b data-sticky-name>Havoc</b><span data-sticky-price>$349</span></div>
+  <button class="lg-btn" type="button" data-atc-sticky>Put it in the bag</button>
+</div>
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); }, $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var SHAFTS = { wenst: { name: 'Lucky stock', add: 0, flexes: ['Regular', 'Stiff'] },
+                 kbs:   { name: 'KBS PGW 60', add: 50, flexes: ['Stiff', 'Extra Stiff'] } };
+  var BASE = 349, state = { shaft: 'wenst', flex: 'Stiff' };
+  function money(n){ return '$' + n; }
+  function price(){ return BASE + SHAFTS[state.shaft].add; }
+  function render(){
+    var s = SHAFTS[state.shaft];
+    if (s.flexes.indexOf(state.flex) < 0) state.flex = s.flexes[0] === 'Regular' ? 'Stiff' : s.flexes[0];
+    $$('[data-shaft]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-shaft') === state.shaft); });
+    $('[data-flexes]').innerHTML = s.flexes.map(function(f){ return '<button type="button" class="lg-chip" aria-pressed="' + (f === state.flex) + '" data-flex="' + f + '">' + f + '</button>'; }).join('');
+    $$('[data-flex]').forEach(function(b){ b.addEventListener('click', function(){ state.flex = b.getAttribute('data-flex'); render(); }); });
+    $('[data-price]').textContent = money(price());
+    $('[data-atc]').textContent = 'Put it in the bag · ' + money(price());
+    $('[data-sticky-name]').textContent = 'Havoc · ' + s.name + ', ' + state.flex;
+    $('[data-sticky-price]').textContent = money(price());
+  }
+  $$('[data-shaft]').forEach(function(b){ b.addEventListener('click', function(){ state.shaft = b.getAttribute('data-shaft'); render(); }); });
+  function add(){
+    var s = SHAFTS[state.shaft], btn = $('[data-atc]');
+    LuckyBag.add([{ name: 'Havoc driver', short: 'Havoc', price: price(), img: 'img/mags-ink.webp', hud: ['Right', '10.5°', s.name, state.flex] }]);
+    btn.setAttribute('data-done', ''); btn.textContent = 'In the bag';
+    setTimeout(function(){ btn.removeAttribute('data-done'); render(); }, 1600);
+  }
+  $('[data-atc]').addEventListener('click', add);
+  $('[data-atc-sticky]').addEventListener('click', add);
+  render();
+  /* sticky bar once the real button has scrolled away, until the footer */
+  var sticky = $('[data-sticky]'), cta = $('.cta'), ftr = $('.lg-ftr');
+  if (window.LuckySite) LuckySite.setSticky(sticky);
+  function onScroll(){
+    var a = cta.getBoundingClientRect().bottom < 0, f = ftr.getBoundingClientRect().top < window.innerHeight;
+    sticky.toggleAttribute('data-on', a && !f);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>

@@ -383,5 +383,35 @@
   "kept": [
    "The August headline and the 'Spot the difference' table idea."
   ]
+ },
+ "havoc-tease": {
+  "why": "Havoc, phase 1 (mid-October to Nov 2): the silent tease. No product, no name, no photos of the driver. One job: grow the list, plus a lefty count.",
+  "added": [
+   "<b>Twilight ground</b> (night green), allowed for a short event; the old driver's URL will point here until Havoc goes live.",
+   "<b>Form:</b> email, optional text, and an \"I swing lefty\" box. On Shopify it posts to a Klaviyo \"Havoc list\" and a \"Havoc lefty\" list.",
+   "<b>Three clues:</b> the list goes first, it lands in November, lefties tick the box. No countdown timer (none of Takomo, Vice, Sub 70, Stix, PXG use one).",
+   "<b>Copy is a first pass</b> for you to react to: \"Your driver's been put on notice.\" / \"Go easy on your old driver. It doesn't know yet.\""
+  ],
+  "kept": [
+   "Phase 2 (reveal, first week of November) reuses this page with photos once the drivers land.",
+   "Building it live needs a copy of the theme; you publish."
+  ]
+ },
+ "havoc": {
+  "why": "Havoc, phase 3 (live about Nov 20): the full product page, $349, KBS +$50, right hand, built on the Carver page's structure.",
+  "added": [
+   "<b>Buy box:</b> two shaft cards (Lucky stock included / KBS PGW 60 +$50, price on the card), flex chips per shaft, a swing-speed flex table, one foil button.",
+   "<b>Set it up:</b> \"Big moves first. Then the small stuff.\" Start here = dot + N. The 8-setting adapter chart (-1 / dot / +1 / +2 x N / D), then the weights diagram (9g back, 3g heel, 3g toe) and a 5-step wrench strip.",
+   "<b>Specs</b> straight from the product guide (Wenst + KBS sheets). Contour behind them.",
+   "<b>Every photo is a labelled slot</b> with the shot brief: we have no Havoc photos yet. Reviews say none yet, honestly.",
+   "<b>Returns</b> use today's site wording, per your call."
+  ],
+  "kept": [
+   "Adapter lofts assume -1/+1/+2 mean degrees off 10.5 (Callaway OptiFit style). Wenst's chart confirms, plus how far D stands it up and the face angle per setting.",
+   "Regular flex (Wenst) and KBS Extra Stiff specs still to come; the table shows only what we have.",
+   "The swing-speed flex table is common fitting guidance, not our test data. Keep or cut?",
+   "Weights: the heavy-weight-in-the-toe setup is exactly what got Takomo's D1 ruled non-conforming. Hold that line until USGA testing is back.",
+   "No copy says legal or conforming until the head is on the USGA list."
+  ]
  }
 }

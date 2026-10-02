@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Something's coming · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Havoc, phase 1: the silent tease. Twilight ground, nothing shown. ---------- */
+.tw{background:var(--lg-page);color:var(--lg-ink)}
+.tz-hero .lg-hero-copy .lg-d1{max-width:13ch}
+.tz-hero .lg-lede{max-width:46ch}
+.tz-form{margin-top:clamp(20px,3vw,28px);max-width:560px}
+.tz-form .row2{display:flex;flex-wrap:wrap;gap:10px}
+.tz-form .lg-input{flex:1 1 220px;min-height:52px}
+.tz-form .lg-btn{min-height:52px}
+.tz-form .opts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-size:var(--lg-fs-sm);color:var(--lg-on-dark-m)}
+.tz-form label.ck{display:inline-flex;align-items:center;gap:8px;cursor:pointer;min-height:44px}
+.tz-form input[type=checkbox]{width:18px;height:18px;accent-color:#EDD27C}
+.tz-form .phone{display:none;margin-top:10px}
+.tz-form .phone.on{display:flex}
+.tz-fine{margin-top:6px;font-size:13px;color:var(--lg-on-dark-m)}
+.tz-done{display:none;margin-top:clamp(20px,3vw,28px);padding:18px 20px;border:1px solid rgba(237,210,124,.45);border-radius:var(--lg-r-card);max-width:560px}
+.tz-done b{display:block;font-size:18px;margin-bottom:4px;color:#F4F3F0}
+.tz-done span{color:var(--lg-on-dark-m)}
+.tz-hero.is-done .tz-form{display:none}
+.tz-hero.is-done .tz-done{display:block}
+/* phones: the copy is too tall to sit on the photo (the sky blows out), so the photo sits on top and the copy runs under it */
+@media (max-width:749px){
+  .tz-hero .lg-hero-img{height:340px;object-position:60% 30%}
+  .tz-hero::after{background:linear-gradient(0deg,rgba(6,17,11,1) 0%,rgba(6,17,11,0) 40%);height:340px;bottom:auto}
+  .tz-hero .lg-hero-copy{position:relative;inset:auto;margin-top:-72px;padding-bottom:40px}
+}
+.clues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--lg-gut);margin-top:clamp(24px,4vw,40px)}
+@media (max-width:860px){.clues{grid-template-columns:1fr}}
+.clue{padding:clamp(22px,3vw,30px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-surface)}
+.clue .ic{width:22px;height:22px;color:var(--lg-gold-text)}
+.clue h3{margin:14px 0 8px}
+.clue p{margin:0;color:var(--lg-ink-70)}
+.clue a{color:var(--lg-gold-text);font-weight:600}
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main class="tw" data-ground="twilight">
+
+<!-- ============ PHASE 1 · THE TEASE: a photo, one line, the list. No product anywhere. ============ -->
+<section class="lg-hero tz-hero" id="list" style="--focus:50% 40%;--focus-m:46% 40%">
+  <img class="lg-hero-img" src="img/fit-sunset.webp" alt="A golfer in the Lucky hat at sunset">
+  <div class="lg-hero-copy"><div class="lg-wrap">
+    <p class="lg-eyebrow lg-unnumbered">Coming this November</p>
+    <h1 class="lg-d1">Your driver's been put on <span class="lg-foil-word">notice</span>.</h1>
+    <p class="lg-lede">Something new is headed for the Lucky bag, and it lives on the tee. We're not showing it yet. Get on the list and you'll see it first, and you'll get to buy one before anybody else can.</p>
+
+    <form class="tz-form lg-form" data-tz novalidate>
+      <div class="row2">
+        <label class="sr" for="tz-email">Email</label>
+        <input class="lg-input" id="tz-email" type="email" placeholder="you@yourgolfbag.com" autocomplete="email" required>
+        <button class="lg-btn" type="submit">Put me on the list</button>
+      </div>
+      <div class="opts">
+        <label class="ck"><input type="checkbox" data-tz-text> Text me too</label>
+        <label class="ck"><input type="checkbox" data-tz-lefty> I swing lefty</label>
+      </div>
+      <div class="row2 phone" data-tz-phone>
+        <label class="sr" for="tz-phone">Mobile number</label>
+        <input class="lg-input" id="tz-phone" type="tel" placeholder="Mobile number" autocomplete="tel">
+      </div>
+      <p class="tz-fine">One heads-up when it's ready. Unsubscribe whenever you like.</p>
+    </form>
+    <div class="tz-done" role="status" aria-live="polite"><b>You're on the list.</b><span>Don't tell your driver.</span></div>
+  </div></div>
+</section>
+
+<!-- ============ WHAT WE CAN TELL YOU: quiet, no photo, so the page's one contour goes here ============ -->
+<section class="lg-sec lg-contour" style="--cx:72%;--cy:30%;--cz:200%"><div class="lg-wrap">
+  <p class="lg-eyebrow">What we can tell you</p>
+  <h2 class="lg-d2">Not much. That's the fun part.</h2>
+  <div class="clues">
+    <div class="clue">{{ICON:bell}}<h3 class="lg-d3">The list goes first</h3><p>Everybody on the list gets in before it goes on sale to everyone else.</p></div>
+    <div class="clue">{{ICON:package}}<h3 class="lg-d3">It lands in November</h3><p>Right around when someone asks what you want this year. The list hears the date first.</p></div>
+    <div class="clue">{{ICON:hand}}<h3 class="lg-d3">Lefties, we see you</h3><p>It starts out right-handed. Tick the lefty box when you sign up, and if enough of you do, it comes in your hand too. <a href="#list">Get on the list</a></p></div>
+  </div>
+</div></section>
+
+<!-- ============ THE LAST WORD ============ -->
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
+  <p class="lg-lede">Go easy on your old driver. It doesn't know yet.</p>
+  <a class="lg-btn-line" href="clubs.html">See what's in the bag now <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+<script>
+(function(){
+  var f = document.querySelector('[data-tz]'), hero = document.querySelector('.tz-hero');
+  var txt = document.querySelector('[data-tz-text]'), ph = document.querySelector('[data-tz-phone]');
+  txt.addEventListener('change', function(){ ph.classList.toggle('on', txt.checked); });
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var em = document.getElementById('tz-email');
+    if (!em.value || !/.+@.+\..+/.test(em.value)){ em.focus(); em.setAttribute('aria-invalid', 'true'); return; }
+    em.removeAttribute('aria-invalid');
+    /* Shopify: this posts to a Klaviyo list ("Havoc list"), plus the "Havoc lefty" list when the box is ticked. Preview only here. */
+    hero.classList.add('is-done');
+  });
+})();
+</script>
+</body>
+</html>
