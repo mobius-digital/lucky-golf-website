@@ -172,3 +172,6 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   Shopify order page + the carrier, so the traffic comes from somewhere else (likely Parcel Panel's own emails).
   "Track your order" added back to the footer menus (lucky-footer-support, lucky-phone-footer).
 - AvantLink: Cole pasted a password in chat; Claude doesn't type passwords. The tab sits at verify-device.
+- Parcel Panel UNINSTALLED 2026-10-02 (Cole: "drop Parcel Panel"), $23/mo + usage. "Track your order" in
+  lucky-footer-support, lucky-phone-footer and the old theme's "footer" menu now points to
+  https://shopify.com/22863149/account/orders. Redirect /apps/parcelpanel -> same, for links in old emails.
