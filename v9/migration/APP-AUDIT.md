@@ -144,3 +144,18 @@ since July) and "There's an issue with TikTok" (the TikTok channel, Aug 24).
   group holds 11 reviews of 5 discontinued shirts at 3.91 avg; pooling would show 3.9 stars from
   different shirts on the new line. "All Hats" has 0 reviews. Wait for real reviews (request emails run).
 - Seen on Sales channels: Pinterest shows "Action needed".
+
+## Later 2026-10-02
+
+- Notify Me UNINSTALLED (Cole). It was $9.90/mo, going to $29.90/mo on Nov 13. It didn't appear in the Apps
+  list (pending permission request); removed from Settings > Apps > app_installations/app/bestpush.
+- Klaviyo has NO live back-in-stock flow (checked the 13 live flows). The site's "Tell me when it's back"
+  signups land in Klaviyo but nobody gets emailed until a Back in Stock flow is built and set live.
+- Sept 15 bill, app charges through Shopify: Alia 200, Upcart 54.99, Parcel Panel 24.50, Avalara 24,
+  Judge.me 15, Essential Announcer 9.99, Notify Me 9.96. The other apps removed (Sept 27 + today) billed $0
+  through Shopify; Lovable/Fudge/Replo may bill a card directly.
+- Judge.me: hiding a review requires a reason (fake, duplicate, spam, unrelated, legal, inappropriate,
+  foreign language, private info, false/misleading). None is true for "old product", so nothing hidden.
+  The 11 old-polo reviews sit on deleted products; they show nowhere on the new polo pages.
+- Pinterest channel: "Needs attention", pixel Disconnected (it fired nothing before the move either).
+- AvantLink: the login page needs Cole's password.
