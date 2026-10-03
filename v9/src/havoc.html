@@ -53,7 +53,38 @@
 .buy .lg-faq{margin-top:24px}
 .buy .lg-fq summary{font-size:var(--lg-fs-base);padding:13px 0}
 
-/* set it up: one module, three tabs */
+/* what's inside */
+.tech-in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(24px,4vw,40px)}
+@media (max-width:860px){.tech-in{grid-template-columns:1fr}}
+.tech-ph{aspect-ratio:4/5;min-width:0}
+@media (max-width:860px){.tech-ph{aspect-ratio:3/2}}
+.tech-list{list-style:none;margin:0;padding:0;display:grid;gap:clamp(18px,2.4vw,26px)}
+.tech-list li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;padding-bottom:clamp(18px,2.4vw,26px);border-bottom:1px solid var(--lg-rule)}
+.tech-list li:last-child{border-bottom:0;padding-bottom:0}
+.tech-list .n{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:34px;line-height:.9;color:var(--lg-gold-text)}
+.tech-list h3{margin:0 0 6px}
+.tech-list p{margin:0;color:var(--lg-ink-70)}
+.tech-list a{color:var(--lg-gold-text);font-weight:600}
+.tech-film{aspect-ratio:21/9;margin-top:clamp(28px,4vw,48px);min-width:0}
+.tech-film .play,.su-ph .play{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:20px;color:var(--lg-ink)}
+/* set it up, short */
+/* miss tables: on phones each row becomes a small card, labels from data-label */
+.miss-t th[scope=row]{min-width:200px}
+@media (max-width:640px){
+  .miss-t,.miss-t tbody,.miss-t tr,.miss-t th,.miss-t td{display:block;width:auto!important;min-width:0!important}
+  .miss-t{min-width:0!important}
+  .miss-t thead{display:none}
+  .miss-t tr{padding:14px 16px;border-bottom:1px solid var(--lg-rule)}
+  .miss-t tr:last-child{border-bottom:0}
+  .miss-t th[scope=row]{padding:0 0 8px!important;border:0!important;font-size:16px!important}
+  .miss-t td{padding:2px 0!important;border:0!important;display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px}
+  .miss-t td::before{content:attr(data-label);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--lg-ink-64);padding-top:3px}
+}
+
+.miss{margin-top:clamp(24px,4vw,36px)}
+.miss .lg-table th[scope=row]{white-space:normal;font-family:inherit;font-variation-settings:normal;text-transform:none;letter-spacing:0;font-size:var(--lg-fs-base);font-weight:600;color:var(--lg-ink)}
+.miss .lg-table td b{color:var(--lg-ink)}
+.su-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:clamp(20px,3vw,28px)}
 .su-hd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:end}
 @media (max-width:860px){.su-hd{grid-template-columns:1fr}}
 .start{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--lg-gold-text);border-radius:var(--lg-r-card)}
@@ -61,42 +92,6 @@
 .start b{display:block}
 .start span{color:var(--lg-ink-70)}
 .seg{display:flex;flex-wrap:wrap;gap:8px}
-.su-tabs{margin:clamp(24px,4vw,40px) 0 clamp(16px,2vw,22px)}
-.su-tabs .lg-chip{gap:8px;min-height:48px}
-.su-tabs .lg-chip b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-size:12px}
-.su-tabs .lg-chip{padding:0 18px 0 10px}
-.su-tabs .lg-chip[aria-pressed="true"] b{background:var(--lg-page);color:var(--lg-ink)}
-@media (max-width:600px){
-  .su-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-  .su-tabs .lg-chip{flex-direction:column;justify-content:center;gap:6px;padding:10px 4px;min-height:72px;font-size:11px;text-align:center;line-height:1.2}
-  .su-panel .su-ph{aspect-ratio:3/2}
-}
-.su-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(18px,3vw,28px);border:1px solid var(--lg-rule);border-radius:var(--lg-r-card)}
-.su-panel[hidden]{display:none}
-@media (max-width:860px){.su-panel{grid-template-columns:1fr}}
-.su-ph{aspect-ratio:1;min-width:0}
-.su-ph .play{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:18px;color:var(--lg-ink)}
-.su-panel h3{margin:0 0 16px}
-.chart{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
-.chart table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.chart th,.chart td{padding:12px 8px;text-align:center;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08)}
-.chart tr:last-child td,.chart tr:last-child th{border-bottom:0}
-.chart th:last-child,.chart td:last-child{border-right:0}
-.chart thead th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px}
-.chart tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px;width:52px}
-.chart td b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:22px;line-height:1}
-.chart td small{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:12px}
-.chart td.is-start{background:var(--lg-tile);box-shadow:inset 0 0 0 2px var(--lg-ink)}
-.fix{display:grid;gap:0;margin:18px 0 0;border-top:1px solid var(--lg-rule)}
-.fix > div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--lg-rule)}
-.fix dt{font-weight:600}
-.fix dd{margin:0;color:var(--lg-ink-70)}
-@media (max-width:520px){.fix > div{grid-template-columns:1fr;gap:2px}}
-.su-note{margin:14px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
-.steps{margin:0;padding:0;counter-reset:s;display:grid;gap:10px}
-.steps li{list-style:none;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;color:var(--lg-ink-70)}
-.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:13px}
-.steps b{color:var(--lg-ink)}
 
 /* specs, same as the wedges: tabs, tables on solid cards */
 .specs-tabs{margin:clamp(24px,3vw,32px) 0 12px}
@@ -177,70 +172,20 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
 </div>
 </div>
 
-<!-- ============ SET IT UP: one module, three tabs. Start here sits above them. ============ -->
-<section class="lg-sec setup" id="setup" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
-  <div class="su-hd">
-    <div>
-      <p class="lg-eyebrow">Set it up</p>
-      <h2 class="lg-d2">Big moves first. Then the small stuff.</h2>
-      <p class="lg-body">Play it the way it ships for a round or two. Same miss every time? The adapter fixes the big stuff. Once that's close, the weights fine-tune it.</p>
-    </div>
-    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, heavy weight in the back. That's how it ships.</span></div></div>
+<!-- ============ WHAT'S INSIDE: the tech, right under the fold (Cole, 2026-10-02) ============ -->
+<section class="lg-sec tech" id="tech" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <p class="lg-eyebrow">What's inside</p>
+  <h2 class="lg-d2">What's under the <span class="lg-foil-word">gold</span>.</h2>
+  <div class="tech-in">
+    <div class="lg-slot tech-ph"><div><small>Shot needed · 4:5 · studio</small>Havoc head on the stone tile, face toward camera. Four numbered pins go on it once we have the shot: the face, the bulge, the crown, the sole.</div></div>
+    <ol class="tech-list">
+      <li><span class="n">01</span><div><h3 class="lg-d3">SP700 face, thick in the middle, thin at the edges</h3><p>A springier titanium right where the ball hits. Catch it flush and it comes off hot. Catch it on the toe and the drive that should've died short still gets out there.</p></div></li>
+      <li><span class="n">02</span><div><h3 class="lg-d3">12&Prime; bulge and roll</h3><p>The face curves heel to toe and top to bottom. Hit one off the heel or the toe and the curve pulls it back toward the fairway instead of letting it run off.</p></div></li>
+      <li><span class="n">03</span><div><h3 class="lg-d3">460cc of titanium</h3><p>The biggest head the rules allow. More face to hit, a confident look at address, and the mishits stay a lot closer to the good ones.</p></div></li>
+      <li><span class="n">04</span><div><h3 class="lg-d3">8 settings, 3 weights</h3><p>Set the flight yourself. Higher, lower, draw, fade. No fitting appointment, no second driver. <a href="#setup">How it works</a></p></div></li>
+    </ol>
   </div>
-
-  <div class="seg su-tabs" data-sutabs role="tablist">
-    <button class="lg-chip" type="button" data-tab="adapter" aria-pressed="true"><b>1</b>The adapter</button>
-    <button class="lg-chip" type="button" data-tab="weights" aria-pressed="false"><b>2</b>The weights</button>
-    <button class="lg-chip" type="button" data-tab="change" aria-pressed="false"><b>3</b>Changing it</button>
-  </div>
-
-  <div class="su-panel" data-su="adapter">
-    <div class="lg-slot su-ph"><div><small>Shot needed · 1:1</small>The adapter sleeve, close, both rings readable: &minus;1, the dot, +1, +2 on top; N and D below.</div></div>
-    <div>
-      <h3 class="lg-d3">Loft and lie. Where it starts and how high it goes.</h3>
-      <div class="chart" role="region" aria-label="Adapter settings">
-        <table>
-          <thead><tr><th scope="col"><span class="sr">Lie</span></th><th scope="col">&minus;1</th><th scope="col">&bull;</th><th scope="col">+1</th><th scope="col">+2</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">N</th><td><b>9.5°</b></td><td class="is-start"><b>10.5°</b><small>Stock</small></td><td><b>11.5°</b></td><td><b>12.5°</b></td></tr>
-            <tr><th scope="row">D</th><td><b>9.5°</b></td><td><b>10.5°</b></td><td><b>11.5°</b></td><td><b>12.5°</b></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <dl class="fix">
-        <div><dt>Ballooning, spinning out of the sky</dt><dd>Take a click off: &minus;1.</dd></div>
-        <div><dt>Low, dying, no carry</dt><dd>Add a click: +1 or +2.</dd></div>
-        <div><dt>Starting right of where you aimed</dt><dd>Switch N to D.</dd></div>
-      </dl>
-    </div>
-  </div>
-
-  <div class="su-panel" data-su="weights" hidden>
-    <div class="lg-slot su-ph"><div><small>Illustration needed · 1:1</small>The sole from below, drawn from a real photo: hosel at the heel, the three ports (heel, back, toe) with the 9g in the back.</div></div>
-    <div>
-      <h3 class="lg-d3">One 9g, two 3g. Move the heavy one to nudge the shape.</h3>
-      <dl class="fix">
-        <div><dt>Heavy one in the back</dt><dd>The most forgiving spot. How it ships.</dd></div>
-        <div><dt>Heavy one in the heel</dt><dd>Helps the face close: more draw, less slice.</dd></div>
-        <div><dt>Heavy one in the toe</dt><dd>Helps the face stay open: more fade, less hook.</dd></div>
-      </dl>
-      <p class="su-note">The weights fine-tune a shot you've already got close. If the ball's still missing a long way, go back to the adapter first.</p>
-    </div>
-  </div>
-
-  <div class="su-panel" data-su="change" hidden>
-    <div class="lg-slot su-ph is-film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 1:1 · 30 to 45 s</small>Wrench on, head off, sleeve turned, head on, the click. One take, no music.</div></div>
-    <div>
-      <h3 class="lg-d3">Wrench, five steps, done.</h3>
-      <ol class="steps">
-        <li><span><b>Loosen</b> the screw on the sole by the heel. Lefty loosey.</span></li>
-        <li><span><b>Pull</b> the head off the shaft.</span></li>
-        <li><span><b>Turn</b> the sleeve until your setting lines up with the mark on the head.</span></li>
-        <li><span><b>Slide</b> the head back on.</span></li>
-        <li><span><b>Tighten</b> until the wrench clicks. Then stop. Weights use the same wrench, same click.</span></li>
-      </ol>
-    </div>
-  </div>
+  <div class="lg-slot tech-film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 16:9 · 40 to 60 s</small>The head turning in the light, the face up close, the sole and weights, then three drives on the range. Sound on: drivers get judged on the sound.</div></div>
 </div></section>
 
 <!-- ============ THE SPEC SHEET: like the wedges. Monitor up top, then Head / Shaft / Grip tabs. Tables sit on solid cards so the contour never runs behind text. ============ -->
@@ -252,10 +197,10 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
     <div class="lg-monitor-in">
       <div class="lg-monitor-ph lg-slot" style="aspect-ratio:auto;min-height:220px"><div><small>Cutout needed</small>Havoc head, three-quarter, cut out.</div></div>
       <div class="lg-monitor-tiles">
-        <div class="lg-mt"><span>Head</span><b>460</b><em>cc of titanium.</em></div>
+        <div class="lg-mt"><span>Head</span><b>460</b><em>cc of 6-4 titanium.</em></div>
         <div class="lg-mt"><span>Loft</span><b>10.5°</b><div class="lg-vals"><i>9.5°</i><i>10.5°</i><i>11.5°</i><i>12.5°</i></div></div>
-        <div class="lg-mt"><span>Price</span><b class="lg-num">$349</b></div>
-        <div class="lg-mt"><span>Test drive</span><b>60</b><em>days to decide it's a keeper.</em></div>
+        <div class="lg-mt"><span>Face</span><b>SP700</b><em>Variable thickness.</em></div>
+        <div class="lg-mt"><span>Bulge / roll</span><b>12&Prime;</b><em>Both ways.</em></div>
       </div>
     </div>
   </div>
@@ -294,6 +239,31 @@ body:has(.stickybar[data-on]) .lg-ftr{padding-bottom:84px}
       <tr><th scope="row">Grip</th><td>Lucky stock, black rubber</td></tr>
       <tr><th scope="row">Core</th><td>0.58&Prime;</td></tr>
     </tbody></table></div>
+  </div>
+</div></section>
+
+<!-- ============ SET IT UP (short): start here, one table, then the full guide. Under the specs (Cole, 2026-10-02) ============ -->
+<section class="lg-sec setup" id="setup" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <div class="su-hd">
+    <div>
+      <p class="lg-eyebrow">Set it up</p>
+      <h2 class="lg-d2">Dial it in yourself.</h2>
+      <p class="lg-body">Play it the way it ships first. If the same miss keeps showing up, here's what to touch. The adapter does the big moves, the weights do the small ones.</p>
+    </div>
+    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, heavy weight in the back. That's how it ships.</span></div></div>
+  </div>
+  <div class="tbl miss"><table class="lg-table miss-t">
+    <thead><tr><th scope="col">Your miss</th><th scope="col">Try this</th><th scope="col">What it does</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Slice, or it starts right</th><td data-label="Try this"><span><b>D</b>, then the heavy weight in the heel</span></td><td data-label="What it does"><span>Stands the club up and helps the face close</span></td></tr>
+      <tr><th scope="row">Hook, or it starts left</th><td data-label="Try this"><span>Stay on <b>N</b>, try <b>&minus;1</b>, then the heavy weight in the toe</span></td><td data-label="What it does"><span>Helps the face stay open</span></td></tr>
+      <tr><th scope="row">Too high, too much spin</th><td data-label="Try this"><span><b>&minus;1</b></span></td><td data-label="What it does"><span>Lower flight, less spin</span></td></tr>
+      <tr><th scope="row">Low, no carry</th><td data-label="Try this"><span><b>+1</b> or <b>+2</b></span></td><td data-label="What it does"><span>Higher flight, more carry</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="su-cta">
+    <a class="lg-btn-line" href="havoc-setup.html">The full setup guide <span aria-hidden="true">&rarr;</span></a>
+    <a class="lg-link" href="havoc-setup.html#film">Watch the setup film <span>&rarr;</span></a>
   </div>
 </div></section>
 

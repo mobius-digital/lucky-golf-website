@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Set up your Havoc · Lucky Golf</title>
+{{HEAD}}
+<style>
+/* ---------- Havoc setup guide: the full version. Video first, then the moves, then the fixes. ---------- */
+.crumb ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:16px 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.crumb li+li::before{content:'/';margin-right:6px;color:var(--lg-ink-38)}
+.crumb a{color:inherit}
+.gd-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,4vw,56px);align-items:center;padding-bottom:var(--lg-sec)}
+@media (max-width:900px){.gd-hd{grid-template-columns:1fr}}
+.gd-hd .lg-lede{max-width:44ch}
+.film{aspect-ratio:16/9;min-width:0}
+.play{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;background:var(--lg-page);border:1px solid var(--lg-rule);font-size:20px;color:var(--lg-ink)}
+.start{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding:16px 18px;border:1px solid var(--lg-gold-text);border-radius:var(--lg-r-card);max-width:520px}
+.start .ic{flex:none;width:22px;height:22px;color:var(--lg-gold-text);margin-top:2px}
+.start b{display:block}
+.start span{color:var(--lg-ink-70)}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.blk{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.blk{grid-template-columns:1fr}}
+.blk .lg-slot{aspect-ratio:1;min-width:0}
+@media (max-width:900px){.blk .lg-slot{aspect-ratio:3/2}}
+.blk h2{margin-bottom:10px}
+.chart{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden;margin-top:20px;background:var(--lg-page)}
+.chart table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.chart th,.chart td{padding:12px 8px;text-align:center;border-bottom:1px solid var(--lg-rule-08);border-right:1px solid var(--lg-rule-08)}
+.chart tr:last-child td,.chart tr:last-child th{border-bottom:0}
+.chart th:last-child,.chart td:last-child{border-right:0}
+.chart thead th,.chart tbody th{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:16px}
+.chart tbody th{width:52px}
+.chart td b{display:block;font-variation-settings:'wdth' 62;font-weight:800;font-size:22px;line-height:1}
+.chart td small{display:block;margin-top:4px;color:var(--lg-ink-64);font-size:12px}
+.chart td.is-start{background:var(--lg-tile);box-shadow:inset 0 0 0 2px var(--lg-ink)}
+.rows{display:grid;margin:20px 0 0;border-top:1px solid var(--lg-rule)}
+.rows > div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--lg-rule)}
+.rows dt{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 70;font-weight:800;font-size:18px;text-transform:uppercase}
+.rows dd{margin:0;color:var(--lg-ink-70)}
+.rows dd b{color:var(--lg-ink)}
+@media (max-width:520px){.rows > div{grid-template-columns:1fr;gap:4px}}
+.note{margin:14px 0 0;font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.tbl{overflow-x:auto;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);background:var(--lg-page);margin-top:clamp(20px,3vw,28px)}
+.tbl .lg-table{width:100%;min-width:620px}
+.tbl .lg-table th[scope=row]{white-space:normal;font-family:inherit;font-variation-settings:normal;text-transform:none;letter-spacing:0;font-size:var(--lg-fs-base);font-weight:600;color:var(--lg-ink)}
+.tbl .lg-table td b{color:var(--lg-ink)}
+.steps{margin:20px 0 0;padding:0;counter-reset:s;display:grid;gap:12px}
+.steps li{list-style:none;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;color:var(--lg-ink-70)}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--lg-ink);color:var(--lg-page);font-weight:700;font-size:13px}
+.steps b{color:var(--lg-ink)}
+.gd-faq{max-width:820px}
+.jump .lg-chip{text-decoration:none}
+.jump{gap:6px}
+/* miss tables: on phones each row becomes a small card, labels from data-label */
+.miss-t th[scope=row]{min-width:200px}
+@media (max-width:640px){
+  .miss-t,.miss-t tbody,.miss-t tr,.miss-t th,.miss-t td{display:block;width:auto!important;min-width:0!important}
+  .miss-t{min-width:0!important}
+  .miss-t thead{display:none}
+  .miss-t tr{padding:14px 16px;border-bottom:1px solid var(--lg-rule)}
+  .miss-t tr:last-child{border-bottom:0}
+  .miss-t th[scope=row]{padding:0 0 8px!important;border:0!important;font-size:16px!important}
+  .miss-t td{padding:2px 0!important;border:0!important;display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px}
+  .miss-t td::before{content:attr(data-label);font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 78;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--lg-ink-64);padding-top:3px}
+}
+
+</style>
+</head>
+<body class="lg">
+{{HEADER}}
+
+<main>
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="home.html">Home</a></li><li><a href="clubs.html">Clubs</a></li><li><a href="havoc.html">Havoc</a></li><li><span aria-current="page">Setup guide</span></li>
+</ol></nav>
+
+<!-- ============ THE FILM FIRST: most people want to watch it done ============ -->
+<section class="lg-wrap gd-hd" id="film">
+  <div>
+    <p class="lg-eyebrow">Setup guide</p>
+    <h1 class="lg-d1">Set up your <span class="lg-foil-word">Havoc</span>.</h1>
+    <p class="lg-lede">Two minutes with the wrench and you can change how high it flies and which way it bends. Watch it done once, then use the charts below.</p>
+    <div class="start">{{ICON:badge-check}}<div><b>Start here: the dot and N.</b><span>10.5°, standard lie, heavy weight in the back. That's how it ships. Hit it like that for a round or two first.</span></div></div>
+    <div class="jump" aria-label="Jump to">
+      <a class="lg-chip" href="#adapter">Adapter</a><a class="lg-chip" href="#weights">Weights</a><a class="lg-chip" href="#fix">Fix your miss</a><a class="lg-chip" href="#wrench">Wrench</a>
+    </div>
+  </div>
+  <div class="lg-slot film"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 16:9 · 60 to 90 s</small>Start-here setting, then one adapter change and one weight swap, start to finish, with the wrench click on mic. Then the same drive before and after.</div></div>
+</section>
+
+<!-- ============ 1 · THE ADAPTER: the big move ============ -->
+<section class="lg-sec" id="adapter" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap blk">
+  <div class="lg-slot"><div><small>Shot needed · 1:1</small>The adapter sleeve close up, both rings readable: &minus;1, the dot, +1, +2 on top, N and D below, with the mark on the hosel.</div></div>
+  <div>
+    <p class="lg-eyebrow">1 · The big move</p>
+    <h2 class="lg-d2">The adapter.</h2>
+    <p class="lg-body">Two rings, eight settings. The top ring sets the loft. The bottom ring sets the lie: N is standard, D stands the club up so the ball starts more left.</p>
+    <div class="chart" role="region" aria-label="All eight adapter settings">
+      <table>
+        <thead><tr><th scope="col"><span class="sr">Lie</span></th><th scope="col">&minus;1</th><th scope="col">&bull;</th><th scope="col">+1</th><th scope="col">+2</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">N</th><td><b>9.5°</b><small>Lower</small></td><td class="is-start"><b>10.5°</b><small>Stock</small></td><td><b>11.5°</b><small>Higher</small></td><td><b>12.5°</b><small>Highest</small></td></tr>
+          <tr><th scope="row">D</th><td><b>9.5°</b><small>Starts left</small></td><td><b>10.5°</b><small>Starts left</small></td><td><b>11.5°</b><small>Starts left</small></td><td><b>12.5°</b><small>Starts left</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <dl class="rows">
+      <div><dt>+1 / +2</dt><dd>Higher flight and more spin. The face also sits a touch closed, so the ball tends to go a little left.</dd></div>
+      <div><dt>&minus;1</dt><dd>Lower flight and less spin. The face sits a touch open, so the ball tends to go a little right.</dd></div>
+      <div><dt>D</dt><dd>Stands the club up. The ball starts further left. <b>For the right miss only.</b></dd></div>
+    </dl>
+    <p class="note">The face moves a little every time the loft does, so check where you're aiming after any change.</p>
+  </div>
+</div></section>
+
+<!-- ============ 2 · THE WEIGHTS: the small move ============ -->
+<section class="lg-sec" id="weights" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap blk">
+  <div class="lg-slot"><div><small>Illustration needed · 1:1</small>The sole from below, drawn from a real photo: hosel at the heel, the three ports (heel, back, toe), the 9g in the back.</div></div>
+  <div>
+    <p class="lg-eyebrow">2 · The small move</p>
+    <h2 class="lg-d2">The weights.</h2>
+    <p class="lg-body">One 9g and two 3g, all swappable with the same wrench. Wherever the heavy one sits, it nudges the shape. Get close with the adapter first, then fine-tune here.</p>
+    <dl class="rows">
+      <div><dt>Back</dt><dd>The most forgiving spot, and the most stable flight. <b>How it ships.</b></dd></div>
+      <div><dt>Heel</dt><dd>Helps the face close through impact. Less slice, more draw.</dd></div>
+      <div><dt>Toe</dt><dd>Helps the face stay open through impact. Less hook, more fade.</dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<!-- ============ 3 · FIX YOUR MISS: both ways a righty misses, plus height ============ -->
+<section class="lg-sec" id="fix" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap">
+  <p class="lg-eyebrow">3 · Fix your miss</p>
+  <h2 class="lg-d2">Same miss every time? Start here.</h2>
+  <p class="lg-body" style="max-width:60ch">One change at a time, then hit a few. If it's better, stop. If it isn't, try the next one on the row.</p>
+  <div class="tbl"><table class="lg-table miss-t">
+    <thead><tr><th scope="col">Your miss</th><th scope="col">First try</th><th scope="col">Then</th><th scope="col">Why it works</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Slice, or it starts right</th><td data-label="First try"><span><b>D</b></span></td><td data-label="Then"><span>Heavy weight in the <b>heel</b></span></td><td data-label="Why"><span>Starts it left and helps the face close</span></td></tr>
+      <tr><th scope="row">Hook, or it starts left</th><td data-label="First try"><span>Stay on <b>N</b>, try <b>&minus;1</b></span></td><td data-label="Then"><span>Heavy weight in the <b>toe</b></span></td><td data-label="Why"><span>Opens the face a touch and helps it stay open</span></td></tr>
+      <tr><th scope="row">Too high, spinning out of the sky</th><td data-label="First try"><span><b>&minus;1</b></span></td><td data-label="Then"><span>Heavy weight stays in the back</span></td><td data-label="Why"><span>Less loft, less spin, a flatter flight</span></td></tr>
+      <tr><th scope="row">Low, dying, no carry</th><td data-label="First try"><span><b>+1</b></span></td><td data-label="Then"><span><b>+2</b></span></td><td data-label="Why"><span>More loft gets it up and carrying</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">There's no "fade" setting on the ring. For a ball that keeps going left, &minus;1 and the toe weight are your fade tools.</p>
+</div></section>
+
+<!-- ============ 4 · THE WRENCH ============ -->
+<section class="lg-sec" id="wrench" style="border-top:1px solid var(--lg-rule)"><div class="lg-wrap blk">
+  <div class="lg-slot"><div><span class="play" aria-hidden="true">&#9654;</span><small>Film needed · 1:1 · 30 to 45 s</small>Wrench on, head off, sleeve turned, head on, the click. One take, no music.</div></div>
+  <div>
+    <p class="lg-eyebrow">4 · The wrench</p>
+    <h2 class="lg-d2">Five steps. Two minutes.</h2>
+    <ol class="steps">
+      <li><span><b>Loosen</b> the screw on the sole by the heel. Lefty loosey.</span></li>
+      <li><span><b>Pull</b> the head off the shaft.</span></li>
+      <li><span><b>Turn</b> the sleeve until your setting lines up with the mark on the head.</span></li>
+      <li><span><b>Slide</b> the head back on.</span></li>
+      <li><span><b>Tighten</b> until the wrench clicks. Then stop. Weights come out and go in the same way, same click.</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<!-- ============ QUESTIONS: the page's one contour, behind a quiet section ============ -->
+<section class="lg-sec lg-contour" id="faq" style="border-top:1px solid var(--lg-rule);--cx:70%;--cy:40%;--cz:190%"><div class="lg-wrap">
+  <p class="lg-eyebrow">Questions</p>
+  <h2 class="lg-d2">The stuff people ask.</h2>
+  <div class="lg-faq gd-faq">
+    <details class="lg-fq" open><summary>Will changing it hurt the club?</summary><div class="lg-fq-a"><p>No. That's what it's built for. Tighten until the wrench clicks and stop there.</p></div></details>
+    <details class="lg-fq"><summary>Does changing the loft change where it aims?</summary><div class="lg-fq-a"><p>A little. Adding loft closes the face a touch and taking it off opens it a touch, so check your aim after a switch.</p></div></details>
+    <details class="lg-fq"><summary>Should I change the adapter or the weights first?</summary><div class="lg-fq-a"><p>The adapter. It makes the bigger change. The weights fine-tune a shot you've already got close.</p></div></details>
+    <details class="lg-fq"><summary>Where's the wrench?</summary><div class="lg-fq-a"><p>In the box, with the white headcover.</p></div></details>
+    <details class="lg-fq"><summary>Is there a lefty Havoc?</summary><div class="lg-fq-a"><p>Not yet. <a href="havoc-tease.html#list">Get on the list</a> and tick the lefty box.</p></div></details>
+  </div>
+</div></section>
+
+<section class="lg-signoff"><div class="lg-wrap">
+  <p class="lg-eyebrow">The last word</p>
+  <h2 class="lg-d1">&ldquo;It's better to be <span class="lg-foil-word">lucky.</span>&rdquo;</h2>
+  <p class="lg-lede">Set it, hit it, and quit blaming the driver.</p>
+  <a class="lg-btn-line" href="havoc.html">Back to Havoc <span aria-hidden="true">&rarr;</span></a>
+  <div class="lg-signoff-mags" aria-hidden="true"><span class="lg-mags"><img class="is-ink" src="img/mags-ink.webp" alt=""><img class="is-light" src="img/mags-light.webp" alt=""></span></div>
+</div></section>
+</main>
+
+{{FOOTER}}
+{{DRAWER}}
+{{SCRIPTS}}
+</body>
+</html>
