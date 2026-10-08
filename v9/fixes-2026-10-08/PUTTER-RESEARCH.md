@@ -55,3 +55,15 @@ Sources: our product guide, the live Shopify descriptions, all 11 + 11 product p
 ## Resolved by Cole, 2026-10-08
 - Both heads are **fully CNC-milled** (the Shopify "Casting" line is wrong).
 - Head weights: **Blade 385 g, Mallet 365 g** (the Shopify "385 g" on the Mallet is wrong).
+
+## Read off Cole's photos, 2026-10-08
+| | Blade | Mallet |
+|---|---|---|
+| Toe hang | **Strong**: toe hangs almost straight down (est. 70 to 90°). Suits a strong arc | **Moderate**: head settles about halfway (est. 30 to 45°). Suits a slight to medium arc |
+| Offset | Small: the neck meets the head right at the face, shaft roughly in line with the leading edge | Small: same, shaft enters at the front corner of the face bar |
+| Neck | Short bent neck at the heel (flow-neck style) | Short slant neck at the heel |
+| Total weight (scale) | **563 g** (spec math 385 + 110 + 75 = 570) | **532 g** (spec math 365 + 110 + 63 = 538) |
+| Face-balanced? | No | No |
+
+- The "760 g" review is wrong for the current Blade.
+- Degrees are estimates from a hand-held photo, not a toe-hang gauge. Publish the words (strong / moderate), not a number, unless the factory confirms one.
