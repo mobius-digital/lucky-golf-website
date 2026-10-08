@@ -1,7 +1,7 @@
 
 LUCKY GOLF — PRODUCT REFERENCE GUIDE
 
-*Version 1.8 · Product facts and specs.
+*Version 1.9 · Product facts and specs.
 
 This is a spec sheet. It carries the factual attributes of every product Lucky sells — materials, construction, face treatments, lofts, dimensions, weights, prices. Nothing else. When copy needs a fact, it comes from here.
 
@@ -55,11 +55,18 @@ Platform note: LGW02 Black shares its underlying construction and manufacturer s
 
 Putters
 LGP01 Eclipse Blade
-Formerly: Tracer Blade (renamed by Cole 2026-09-23; the live store still says Tracer until the switch, planned alongside the Havoc launch)
+Formerly: Tracer Blade (renamed 2026-09-23; never use the old name)
 Category: putter
 Head shape: blade
-Construction: fully CNC-milled
+Construction: fully CNC-milled (confirmed by Cole 2026-10-08; the old "casting" wording on Shopify was wrong and is fixed)
 Material: 431 stainless steel
+Neck: short bent neck at the heel (not a plumber neck)
+Toe hang: strong (the toe hangs close to straight down; measured by balance, not a gauge). Built for a golfer with an arcing stroke
+Face-balanced: no
+Offset: minimal
+Face: milled diamond pattern across the whole face, no insert
+Feel: solid and crisp with honest feedback. Never soft, muted or buttery
+Head weight: 385 g · Total weight: 563 g (Cole's scale, 2026-10-08)
 Available loft: 3.5°
 Available length: 35"
 Finish: gold
@@ -67,21 +74,29 @@ Shaft: stock shaft
 Grip: stock grip
 Hand: right-hand only (currently)
 Headcover: not included
-Price: $199
+Price: $199 (moving to $219 at the Blade restock, so both putters are one price)
 LGP02 Eclipse Mallet
-Formerly: Tracer Mallet (renamed 2026-09-23, same timing)
+Formerly: Tracer Mallet (renamed 2026-09-23; never use the old name)
 Category: putter
 Head shape: mallet
-Construction: fully CNC-milled
+Construction: fully CNC-milled (confirmed by Cole 2026-10-08)
 Material: 304 stainless steel
+Neck: short slant neck at the heel
+Toe hang: moderate (the head settles about halfway). Built for a slight to medium arc
+Face-balanced: no
+Offset: minimal
+Head: fang shape, two rear wings, weight out at the edges for stability on off-centre strikes
+Face: milled diamond pattern across the whole face, no insert
+Feel: solid and crisp with honest feedback. Never soft, muted or buttery
+Head weight: 365 g · Total weight: 532 g (Cole's scale, 2026-10-08)
 Available loft: 3.5°
 Available length: 35"
 Finish: gold
 Shaft: stock shaft
-Grip: stock grip
+Grip: oversized 3.0 grip, white and gold, 63 g, fitted as standard
 Hand: right-hand and left-hand
 Headcover: not included
-Price: $229
+Price: $229 (moving to $219 at the Blade restock, so both putters are one price)
 
 
 Hybrids
@@ -370,3 +385,4 @@ v1.6 — locked in prices, hand availability, headcover status across the line.
 
 v1.5 — restructured as pure spec sheet.
 
+v1.9 (2026-10-08) — putters: fully milled confirmed; toe hang (Blade strong, Mallet moderate), neck, offset, face, feel and total weights from Cole's own measurements; Mallet grip corrected to the oversized 3.0 (was "stock grip"); one putter price of $219 decided, effective at the Blade restock; stale "store still says Tracer" note removed.

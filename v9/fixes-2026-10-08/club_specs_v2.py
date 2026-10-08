@@ -20,10 +20,10 @@ def putter(name, steel, weight, grip, hand):
               {"l": "Lie", "b": "72°"}, {"l": "Loft", "b": "3.5°"}],
     "rows": [["Head shape", name], ["Construction", "Fully CNC-milled"], ["Material", f"{steel} stainless steel"],
              ["Head weight", f"{weight} g"], ["Loft", "3.5 degrees"], ["Lie", "72 degrees"], ["Length", "35 inches"],
-             ["Shaft", "Lucky stock steel, regular flex, mid kick point, 110 g"], ["Grip", f"Lucky stock, {grip} g"],
+             ["Shaft", "Lucky stock steel, regular flex, mid kick point, 110 g"], ["Grip", (f"Oversized 3.0, white and gold, {grip} g" if name == "Mallet" else f"Lucky stock, {grip} g")],
              ["Finish", "Gold"], ["Hand", hand], ["Headcover", "Not included"]],
     "tech": [
-      {"stat": f"{steel} stainless", "t": "Fully CNC-milled", "p": "No ring, no buzz in the hands. It feels muted and solid, and a miss tells you where without punishing you."},
+      {"stat": f"{steel} stainless", "t": "Fully CNC-milled", "p": "Solid and crisp off the face, no insert, nothing to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."},
       {"stat": f"{weight} g head", "t": "Weighted to stay steady", "p": ("A heavier head that holds its line through the stroke." if name == "Blade" else
                                                                        "The wide shape keeps it stable, so a putt off the toe still holds its line.")},
       {"stat": "72° lie · 3.5° loft", "t": "Set up square", "p": "Standard lie and loft at 35 inches, so it sits flat behind the ball."},

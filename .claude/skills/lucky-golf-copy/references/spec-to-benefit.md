@@ -1,5 +1,5 @@
 LUCKY GOLF -- SPEC-TO-BENEFIT TRANSLATION GUIDE
-Version 1.0 · What the specs mean for the golfer.
+Version 1.1 · What the specs mean for the golfer.
 
 
 How to use this guide
@@ -22,7 +22,7 @@ Products: LGP01 Eclipse Blade, LGP02 Eclipse Mallet
 
 Technically: The whole putter head is CNC-milled from stainless steel. No casting, no welding, no assembled components, no hollow cavity. Internal density is uniform throughout. At impact, vibration travels through continuous material rather than bouncing between joined surfaces.
 
-For the golfer: A muted, solid sensation at impact. No ring, no ping, no vibration buzzing through the hands. The ball comes off the face with a low-resistance, buttery feel. On off-center strikes, you feel where you missed, but it doesn't punish you. Honest feedback without harshness.
+For the golfer: A solid, crisp strike. No insert and nothing to rattle, so the feedback is honest: you feel exactly where on the face you hit it. On off-center strikes you know you missed, but it doesn't sting. Never call a Lucky putter soft, muted or buttery (Cole, 2026-10-08): that is insert-putter language, and it isn't true of milled steel.
 
 
 431 Stainless Steel (Blade) vs. 304 Stainless Steel (Mallet)
@@ -30,7 +30,7 @@ Products: LGP01 Eclipse Blade (431), LGP02 Eclipse Mallet (304)
 
 Technically: 431 is a harder martensitic stainless. 304 is a slightly softer austenitic stainless. Both machine cleanly for CNC milling. In a milled putter, the difference in feel between these two grades is marginal.
 
-For the golfer: Both feel solid and muted. The milling drives the feel experience, not the alloy. Most golfers could not reliably distinguish the two by feel alone. The steel grade is a spec-table fact, not a headline.
+For the golfer: Both feel solid and crisp. The milling drives the feel experience, not the alloy. Most golfers could not reliably distinguish the two by feel alone. The steel grade is a spec-table fact, not a headline.
 
 
 Titanium
@@ -142,6 +142,16 @@ Technically: The blade's heavier head provides stability through the stroke and 
 For the golfer: Both feel stable and controlled. The blade feels planted and deliberate. The mallet feels balanced and easy to swing on its arc. The weight difference supports each head shape's stroke style rather than creating a dramatically different feel.
 
 
+Toe Hang: Blade (strong) vs. Mallet (moderate)
+Products: LGP01 Eclipse Blade, LGP02 Eclipse Mallet
+
+Technically: Toe hang is how far the toe drops when the shaft is balanced on a finger. Neither putter is face-balanced. A heel-shafted head with a short neck lets the face open on the way back and close through impact, which matches a putting stroke that swings on an arc. More toe hang suits more arc.
+
+For the golfer: The putter works with the stroke you already have instead of fighting it. Most golfers swing the putter on a slight arc, like a door on a hinge. The Blade, with strong toe hang, is for a golfer with a big arc. The Mallet, with moderate toe hang, is for a smaller arc. This is the "which one is yours" answer, and a better reason to pick between them than looks.
+
+Never claim low torque, face-balanced or zero twist for either putter: they are toe-hang putters by design.
+
+
 Interchangeable Driver Weights (9g back, two 3g side)
 Products: LGD02 Driver
 
@@ -199,3 +209,5 @@ Never write "milled from a single block", "one block of X" or any version of it,
 Last updated: July 2026 · v1.0
 
 v1.0 -- initial build. Covers construction materials, face features, sole/grind, weighting across the full product line. Stryker entries (Flex Channel, Glide Sole) flagged for play-test verification. Cosmetic/finish entries excluded by design: this doc covers specs with a technical-to-benefit bridge only.
+
+v1.1 (2026-10-08) -- putter feel corrected from "muted / buttery" to solid and crisp (milled steel, no insert); added Toe Hang (Blade strong, Mallet moderate) with the stroke-match benefit and a ban on low-torque / face-balanced claims.

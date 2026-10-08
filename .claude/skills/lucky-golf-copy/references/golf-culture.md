@@ -44,6 +44,8 @@ dead center
 off the middle
 forged feel
 crisp
+(Putters: solid, crisp, planted, off the middle. Never buttery, muted or soft: a milled putter has no insert. Cole, 2026-10-08.)
+crisp
 clean strike
 feels dialed
 feels honest
