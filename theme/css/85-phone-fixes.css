@@ -110,3 +110,46 @@
   .lg-t-club .ctech-in{grid-template-columns:1fr}
   .lg-t-club .ctech-ph{aspect-ratio:4/3}
 }
+
+/* 9. Putter pages (2026-10-08): "What's inside" as Takomo's tech cards (a silent loop or a drawn toe-hang
+      diagram per card), and "Which one's yours", Blade vs Mallet side by side. */
+.lg-t-club .ctech.is-cards .ctech-hd{text-align:left}
+.lg-t-club .ctech-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.lg-t-club .ctc{display:flex;flex-direction:column;gap:14px}
+.lg-t-club .ctc-media{position:relative;aspect-ratio:16/9;border-radius:var(--lg-r-card);overflow:hidden;background:#0B0D0C}
+.lg-t-club .ctc-vid{display:block;width:100%;height:100%;object-fit:cover}
+.lg-t-club .ctc-hang{display:block;width:100%;height:100%;background:radial-gradient(70% 90% at 50% 40%,#1d221f,#0B0D0C)}
+.lg-t-club .ctc-head{transform-box:view-box;transform-origin:160px 90px;transform:rotate(0deg);transition:transform 1.8s cubic-bezier(.34,1.45,.5,1) .35s}
+.lg-t-club .ctc-hang.is-on .ctc-head{transform:rotate(var(--hang))}
+.lg-t-club .ctc-arc{opacity:0;transition:opacity .8s ease 1.4s}
+.lg-t-club .ctc-hang.is-on .ctc-arc{opacity:.9}
+.lg-t-club .ctc-lab{opacity:.55;font:700 10px var(--lg-font,'Archivo'),sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:#EDD27C}
+.lg-t-club .ctc-bd h3{margin:2px 0 6px;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1.05}
+.lg-t-club .ctc-bd p{margin:0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.5}
+@media (max-width:749px){ .lg-t-club .ctech-cards{grid-template-columns:1fr;gap:28px} }
+@media (prefers-reduced-motion:reduce){ .lg-t-club .ctc-head,.lg-t-club .ctc-arc{transition:none} }
+
+.lg-t-club .cpick{border-top:1px solid var(--lg-rule)}
+.lg-t-club .cpick-hd{max-width:640px;margin-bottom:clamp(20px,3vw,32px)}
+.lg-t-club .cpick-tbl{border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-t-club .cpick-row{display:grid;grid-template-columns:minmax(110px,.8fr) 1fr 1fr;border-top:1px solid var(--lg-rule)}
+.lg-t-club .cpick-row:first-child{border-top:0}
+.lg-t-club .cpick-row > *{padding:14px 18px;font-size:var(--lg-fs-base);line-height:1.4}
+.lg-t-club .cpick-k{font-size:var(--lg-fs-xs)!important;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lg-ink-64);align-self:center}
+.lg-t-club .cpick-row .is-here{background:rgba(194,154,43,.07)}
+.lg-t-club .cpick-col{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;color:var(--lg-ink);text-decoration:none;padding:18px!important}
+.lg-t-club .cpick-col.is-here{background:rgba(194,154,43,.07);box-shadow:inset 0 3px 0 var(--lg-gold)}
+.lg-t-club .cpick-ph{display:block;width:100%;max-width:200px;aspect-ratio:4/3;background:var(--lg-tile);border-radius:var(--lg-r-card);overflow:hidden}
+.lg-t-club .cpick-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:10px}
+.lg-t-club .cpick-col b{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;margin-top:6px}
+.lg-t-club .cpick-pr{font-weight:600}
+.lg-t-club .cpick-here{font-size:var(--lg-fs-xs);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lg-gold-ink,#8A6A1C)}
+.lg-t-club .cpick-go > *{padding-top:16px;padding-bottom:18px}
+@media (max-width:749px){
+  .lg-t-club .cpick-row{grid-template-columns:1fr 1fr}
+  .lg-t-club .cpick-row > .cpick-k,.lg-t-club .cpick-row > span:first-child:empty{grid-column:1 / -1;padding-bottom:0}
+  .lg-t-club .cpick-top > span:first-child,.lg-t-club .cpick-go > span:first-child{display:none}
+  .lg-t-club .cpick-row > *{padding:10px 14px}
+  .lg-t-club .cpick-col b{font-size:17px}
+  .lg-t-club .cpick-go .lg-btn-line{width:100%;justify-content:center;padding-inline:8px}
+}

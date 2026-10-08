@@ -1,17 +1,60 @@
 {%- comment -%}
   What's inside (2026-10-08, Cole's phone pass + the Takomo Lumo teardown): the club's technology, shown on
-  every screen. Before this the only tech on a club page was four callouts on the finish photo, hidden on
-  phones. Points come from product.metafields.custom.club_specs_v2.tech ({n, t, p, stat}), facts read off
-  the copy skill's product reference guide. Photo: section setting, else the spec photo, else the cutout.
+  every screen. Points come from product.metafields.custom.club_specs_v2.tech ({stat, t, p, vid, hang}),
+  facts read off the copy skill's product reference guide.
+  Two looks:
+  - CARDS (any point has a `vid` or `hang`): Takomo's Lumo tech row. Each card is a short silent loop that
+    plays when it scrolls into view (`vid` = a video URL), or a drawn toe-hang diagram (`hang` = degrees the
+    toe drops: the head turns from face-up to that angle as the card comes into view). Then the heading
+    and one line under it.
+  - LIST (no videos): one photo beside a numbered list. Photo: section setting, else tech_img, else the spec
+    photo, else the cutout.
 {%- endcomment -%}
 {%- assign v2 = product.metafields.custom.club_specs_v2.value -%}
 {%- if v2.tech.size > 0 -%}{%- assign s = section.settings -%}
-{%- assign tphoto = nil -%}{%- if v2.tech_img != blank -%}{%- assign tphoto = images[v2.tech_img] -%}{%- endif -%}
-{%- assign ph = s.image | default: tphoto | default: product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value -%}
-{%- assign is_photo = false -%}{%- if s.image != blank or tphoto != blank -%}{%- assign is_photo = true -%}{%- endif -%}
-<section class="lg-sec ctech" id="tech"><div class="lg-wrap">
+{%- assign cards = false -%}{%- for t in v2.tech -%}{%- if t.vid != blank or t.hang != blank -%}{%- assign cards = true -%}{%- endif -%}{%- endfor -%}
+<section class="lg-sec ctech{% if cards %} is-cards{% endif %}" id="tech"><div class="lg-wrap">
   <div class="ctech-hd"><p class="lg-eyebrow">{{ s.eyebrow }}</p>{%- assign th = v2.tech_head | default: s.heading -%}{% render 'lg-h', text: th, tag: 'h2', cls: 'lg-d2' %}
     {%- assign tl = v2.tech_line | default: s.line -%}{%- if tl != blank %}<p class="lg-body">{{ tl }}</p>{% endif -%}</div>
+  {%- if cards -%}
+  <div class="ctech-cards">
+    {%- for t in v2.tech -%}
+    <article class="ctc">
+      <div class="ctc-media">
+        {%- if t.vid != blank -%}
+        <video class="ctc-vid" muted playsinline loop preload="none" data-src="{{ t.vid }}"{% if t.poster != blank %} poster="{{ t.poster }}"{% endif %} aria-label="{{ t.t | escape }}"></video>
+        {%- elsif t.hang != blank -%}
+        <svg class="ctc-hang" viewBox="0 0 320 180" role="img" aria-label="{{ t.stat | escape }}" style="--hang:{{ t.hang }}deg">
+          <defs><linearGradient id="hg{{ forloop.index }}" x1="0" x2="1"><stop offset="0" stop-color="#8A6A1C"/><stop offset=".5" stop-color="#EDD27C"/><stop offset="1" stop-color="#C29A2B"/></linearGradient></defs>
+          <path class="ctc-arc" d="M 160 90 m -70 0 a 70 70 0 0 0 70 70" fill="none" stroke="#C29A2B" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g class="ctc-ghost" opacity=".28"><rect x="95" y="58" width="130" height="20" rx="5" fill="none" stroke="#EDD27C" stroke-dasharray="4 4"/></g>
+          <g class="ctc-head"><rect x="95" y="58" width="130" height="20" rx="5" fill="url(#hg{{ forloop.index }})"/><line x1="160" y1="78" x2="160" y2="90" stroke="#EDD27C" stroke-width="5"/></g>
+          <circle cx="160" cy="90" r="9" fill="#EDD27C"/><circle cx="160" cy="90" r="3" fill="#0B1911"/>
+          <text x="97" y="50" text-anchor="start" class="ctc-lab ctc-lab-a">Face up</text>
+        </svg>
+        {%- endif -%}
+      </div>
+      <div class="ctc-bd">{%- if t.stat != blank %}<span class="ctech-stat">{{ t.stat }}</span>{% endif %}<h3>{{ t.t }}</h3>{%- if t.p != blank %}<p>{{ t.p }}</p>{% endif %}</div>
+    </article>
+    {%- endfor -%}
+  </div>
+  <script>
+  (function(){
+    var sec = document.currentScript.closest('section'); if (!sec || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+      var el = e.target;
+      if (el.tagName === 'VIDEO'){
+        if (e.isIntersecting){ if (!el.src) el.src = el.getAttribute('data-src'); var p = el.play(); if (p && p.catch) p.catch(function(){}); }
+        else el.pause();
+      } else if (e.isIntersecting) el.classList.add('is-on');
+    }); }, { threshold: 0.35 });
+    sec.querySelectorAll('.ctc-vid, .ctc-hang').forEach(function(el){ io.observe(el); });
+  })();
+  </script>
+  {%- else -%}
+  {%- assign tphoto = nil -%}{%- if v2.tech_img != blank -%}{%- assign tphoto = images[v2.tech_img] -%}{%- endif -%}
+  {%- assign ph = s.image | default: tphoto | default: product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value -%}
+  {%- assign is_photo = false -%}{%- if s.image != blank or tphoto != blank -%}{%- assign is_photo = true -%}{%- endif -%}
   <div class="ctech-in">
     <div class="ctech-ph{% unless is_photo %} is-cut{% endunless %}">{%- if ph != blank -%}{{ ph | image_url: width: 1200 | image_tag: loading: 'lazy', alt: product.title, widths: '500,800,1200', sizes: '(max-width: 749px) 100vw, 45vw' }}{%- endif -%}</div>
     <ol class="ctech-list">
@@ -20,6 +63,7 @@
       {%- endfor -%}
     </ol>
   </div>
+  {%- endif -%}
 </div></section>
 {%- endif -%}
 
@@ -30,8 +74,8 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What's inside" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading (italic = gold word)", "default": "What it's <em>made of.</em>" },
     { "type": "textarea", "id": "line", "label": "Line under it" },
-    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Empty: the club's spec photo or cutout" },
-    { "type": "paragraph", "content": "The numbered points come from the product (custom.club_specs_v2)." }
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "List look only. Empty: the club's spec photo or cutout" },
+    { "type": "paragraph", "content": "The points, videos and toe-hang diagrams come from the product (custom.club_specs_v2)." }
   ]
 }
 {% endschema %}

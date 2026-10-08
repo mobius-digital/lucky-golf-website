@@ -1,0 +1,63 @@
+{%- comment -%}
+  Which one's yours (2026-10-08): Blade vs Mallet side by side on both putter pages, like Takomo's
+  Lumo M1 vs B1 table. Rows are blocks (label + one cell per putter) so every word is editable in the
+  theme editor. The column for the page you're on is marked. Prices are live.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{%- assign pa = s.product_a -%}{%- assign pb = s.product_b -%}
+{%- if pa != blank and pb != blank -%}
+<section class="lg-sec cpick" id="which"><div class="lg-wrap">
+  <div class="cpick-hd"><p class="lg-eyebrow">{{ s.eyebrow }}</p>{% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}{%- if s.line != blank %}<p class="lg-body">{{ s.line }}</p>{% endif -%}</div>
+  <div class="cpick-tbl" role="table" aria-label="{{ s.label_a | escape }} and {{ s.label_b | escape }} compared">
+    <div class="cpick-row cpick-top" role="row">
+      <span role="columnheader"></span>
+      {%- for k in (1..2) -%}{%- if k == 1 %}{% assign p = pa %}{% assign lab = s.label_a %}{% else %}{% assign p = pb %}{% assign lab = s.label_b %}{% endif -%}
+      {%- assign pic = p.metafields.custom.cutout.value | default: p.featured_image -%}
+      <a class="cpick-col{% if p.id == product.id %} is-here{% endif %}" role="columnheader" href="{{ p.url }}">
+        <span class="cpick-ph">{%- if pic -%}{{ pic | image_url: width: 400 | image_tag: alt: p.title, loading: 'lazy' }}{%- endif -%}</span>
+        <b>{{ lab }}</b><span class="cpick-pr">{{ p.price | money_without_trailing_zeros }}</span>
+        {%- if p.id == product.id %}<span class="cpick-here">You're looking at it</span>{% endif -%}
+      </a>
+      {%- endfor -%}
+    </div>
+    {%- for block in section.blocks -%}
+    <div class="cpick-row" role="row" {{ block.shopify_attributes }}>
+      <span class="cpick-k" role="rowheader">{{ block.settings.label }}</span>
+      <span role="cell"{% if pa.id == product.id %} class="is-here"{% endif %}>{{ block.settings.a }}</span>
+      <span role="cell"{% if pb.id == product.id %} class="is-here"{% endif %}>{{ block.settings.b }}</span>
+    </div>
+    {%- endfor -%}
+    <div class="cpick-row cpick-go" role="row">
+      <span></span>
+      {%- for k in (1..2) -%}{%- if k == 1 %}{% assign p = pa %}{% assign lab = s.label_a %}{% else %}{% assign p = pb %}{% assign lab = s.label_b %}{% endif -%}
+      <span role="cell">{%- if p.id == product.id -%}<a class="lg-btn-line lg-btn-sm" href="#buy">{% if p.available %}{{ s.cta_here }}{% else %}{{ s.cta_out }}{% endif %}</a>{%- else -%}<a class="lg-btn-line lg-btn-sm" href="{{ p.url }}">{{ s.cta_other }} {{ lab }}</a>{%- endif -%}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: which one's yours",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Blade or mallet" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading (italic = gold word)", "default": "Which one's <em>yours?</em>" },
+    { "type": "textarea", "id": "line", "label": "Line under it" },
+    { "type": "product", "id": "product_a", "label": "Left putter" },
+    { "type": "text", "id": "label_a", "label": "Left name", "default": "Eclipse Blade" },
+    { "type": "product", "id": "product_b", "label": "Right putter" },
+    { "type": "text", "id": "label_b", "label": "Right name", "default": "Eclipse Mallet" },
+    { "type": "text", "id": "cta_here", "label": "Button, this page", "default": "Put it in the bag" },
+    { "type": "text", "id": "cta_out", "label": "Button, this page sold out", "default": "Tell me when it's back" },
+    { "type": "text", "id": "cta_other", "label": "Button, other putter", "default": "See the" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "label", "label": "Label" },
+      { "type": "text", "id": "a", "label": "Left putter" },
+      { "type": "text", "id": "b", "label": "Right putter" }
+    ] }
+  ]
+}
+{% endschema %}

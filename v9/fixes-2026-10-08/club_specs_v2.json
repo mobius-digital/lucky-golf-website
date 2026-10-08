@@ -183,19 +183,24 @@
   ],
   "tech": [
    {
-    "stat": "431 stainless",
-    "t": "Fully CNC-milled",
-    "p": "Solid and crisp off the face, no insert, nothing to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."
+    "stat": "431 stainless, no insert",
+    "t": "Fully milled",
+    "vid": "https://cdn.shopify.com/videos/c/vp/0a0b70f44c80416c87c12682476b23af/0a0b70f44c80416c87c12682476b23af.HD-720p-3.0Mbps-96861766.mp4",
+    "poster": "https://cdn.shopify.com/s/files/1/2286/3149/files/preview_images/0a0b70f44c80416c87c12682476b23af.thumbnail.0000000000.jpg",
+    "p": "Solid and crisp off the face, nothing inside to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."
+   },
+   {
+    "stat": "Strong toe hang",
+    "t": "Built for a big arc",
+    "hang": 80,
+    "p": "Balance it on a finger and the toe drops almost straight down. That's the putter for a stroke that swings open and shut like a door."
    },
    {
     "stat": "385 g head",
-    "t": "Weighted to stay steady",
-    "p": "A heavier head that holds its line through the stroke."
-   },
-   {
-    "stat": "72° lie · 3.5° loft",
-    "t": "Set up square",
-    "p": "Standard lie and loft at 35 inches, so it sits flat behind the ball."
+    "t": "Planted at address",
+    "vid": "https://cdn.shopify.com/videos/c/vp/73c2fa037c0b4912a394b13264b007bc/73c2fa037c0b4912a394b13264b007bc.HD-720p-1.6Mbps-96861767.mp4",
+    "poster": "https://cdn.shopify.com/s/files/1/2286/3149/files/preview_images/73c2fa037c0b4912a394b13264b007bc.thumbnail.0000000000.jpg",
+    "p": "A heavier head with one clean sight line. It sits flat, and it stays put when your hands want to get involved."
    }
   ]
  },
@@ -271,19 +276,24 @@
   ],
   "tech": [
    {
-    "stat": "304 stainless",
-    "t": "Fully CNC-milled",
-    "p": "Solid and crisp off the face, no insert, nothing to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."
+    "stat": "304 stainless, no insert",
+    "t": "Fully milled",
+    "vid": "https://cdn.shopify.com/videos/c/vp/e0a3e385e0b341debfee320b5d51df85/e0a3e385e0b341debfee320b5d51df85.HD-720p-1.6Mbps-96861768.mp4",
+    "poster": "https://cdn.shopify.com/s/files/1/2286/3149/files/preview_images/e0a3e385e0b341debfee320b5d51df85.thumbnail.0000000000.jpg",
+    "p": "Solid and crisp off the face, nothing inside to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."
    },
    {
-    "stat": "365 g head",
-    "t": "Weighted to stay steady",
-    "p": "The wide shape keeps it stable, so a putt off the toe still holds its line."
+    "stat": "Moderate toe hang",
+    "t": "Built for a smaller arc",
+    "hang": 40,
+    "p": "Balance it on a finger and the toe only drops about halfway. That's the putter for a stroke with a little arc in it."
    },
    {
-    "stat": "72° lie · 3.5° loft",
-    "t": "Set up square",
-    "p": "Standard lie and loft at 35 inches, so it sits flat behind the ball."
+    "stat": "365 g · fang wings",
+    "t": "Holds its line",
+    "vid": "https://cdn.shopify.com/videos/c/vp/1b881115ffd64767b8018f6984efc8d7/1b881115ffd64767b8018f6984efc8d7.HD-720p-1.6Mbps-96861769.mp4",
+    "poster": "https://cdn.shopify.com/s/files/1/2286/3149/files/preview_images/1b881115ffd64767b8018f6984efc8d7.thumbnail.0000000000.jpg",
+    "p": "The weight sits out in the wings, so a putt off the toe still rolls where you aimed it."
    }
   ]
  },

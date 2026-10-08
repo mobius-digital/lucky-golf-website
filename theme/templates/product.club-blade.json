@@ -27,7 +27,7 @@
         "delivery_body": "<p>Orders leave the warehouse in 1 to 2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p><p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $195 or more ship free.</p><h4>Where it ships from</h4><p>Long Beach, California.</p>",
         "p_eyebrow": "Fully milled putter · LGP01",
         "p_h1": "Eclipse <em>Blade</em>",
-        "p_lede": "The Eclipse Blade is for the golfer who doesn't need any help on the greens, or at least likes to pretend. Fully milled from 431 stainless, butter off the middle, planted through the stroke, and it looks sick at address. If you're going to putt with a blade, you might as well do it in gold.",
+        "p_lede": "The Eclipse Blade is for the golfer who doesn't need any help on the greens, or at least likes to pretend. Fully milled from 431 stainless, crisp off the middle, planted through the stroke, and it looks sick at address. If you're going to putt with a blade, you might as well do it in gold.",
         "p_atc": "Put it in the bag",
         "p_rvl_q": "The look alone is amazing!!! And I haven't putted th…",
         "p_rvl_n": "Michael M.",
@@ -290,12 +290,94 @@
         "heading": "What it's <em>made of.</em>",
         "line": ""
       }
+    },
+    "pick": {
+      "type": "lg-club-pick",
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "label": "Shape",
+            "a": "Blade",
+            "b": "Fang mallet"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "label": "Toe hang",
+            "a": "Strong",
+            "b": "Moderate"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "label": "Built for",
+            "a": "A big arc in your stroke",
+            "b": "A smaller arc"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "label": "Head",
+            "a": "385 g, 431 stainless",
+            "b": "365 g, 304 stainless"
+          }
+        },
+        "r5": {
+          "type": "row",
+          "settings": {
+            "label": "Made",
+            "a": "Fully milled, no insert",
+            "b": "Fully milled, no insert"
+          }
+        },
+        "r6": {
+          "type": "row",
+          "settings": {
+            "label": "Grip",
+            "a": "Lucky stock, 75 g",
+            "b": "Oversized 3.0, 63 g"
+          }
+        },
+        "r7": {
+          "type": "row",
+          "settings": {
+            "label": "The feel",
+            "a": "Crisp, and it tells you everything",
+            "b": "Crisp, and steadier when you miss the middle"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "settings": {
+        "eyebrow": "Blade or mallet",
+        "heading": "Which one's <em>yours?</em>",
+        "line": "Watch your putter on the way back. If it swings on a big arc, that's the Blade. If it stays closer to straight with a little arc, that's the Mallet.",
+        "product_a": "signature-gold-putters",
+        "label_a": "Eclipse Blade",
+        "product_b": "limited-edition-mallet-putter",
+        "label_b": "Eclipse Mallet",
+        "cta_here": "Put it in the bag",
+        "cta_other": "See the"
+      }
     }
   },
   "order": [
     "main",
     "film",
     "tech",
+    "pick",
     "grinds",
     "specs",
     "world",

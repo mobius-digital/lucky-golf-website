@@ -1,7 +1,8 @@
 """custom.club_specs_v2 on the five clubs (2026-10-08). Read ONLY by the v4.1 theme (lg-club-specs, lg-club-tech).
 Facts: copy skill product-reference-guide.md; benefit lines: spec-to-benefit.md 'For the golfer' (trimmed).
 Carver lines 1-3 are the approved finish-photo callouts, verbatim."""
-import json
+import json, os
+VIDS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "vids.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "vids.json")) else {}
 WEDGE_TECH = [
   {"stat": "1020 carbon steel", "t": "Forged", "p": "Soft on the good ones, honest on the rest"},
   {"stat": "CNC-milled grooves", "t": "Micro-grooved face", "p": "The reason it spins"},
@@ -23,10 +24,18 @@ def putter(name, steel, weight, grip, hand):
              ["Shaft", "Lucky stock steel, regular flex, mid kick point, 110 g"], ["Grip", (f"Oversized 3.0, white and gold, {grip} g" if name == "Mallet" else f"Lucky stock, {grip} g")],
              ["Finish", "Gold"], ["Hand", hand], ["Headcover", "Not included"]],
     "tech": [
-      {"stat": f"{steel} stainless", "t": "Fully CNC-milled", "p": "Solid and crisp off the face, no insert, nothing to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."},
-      {"stat": f"{weight} g head", "t": "Weighted to stay steady", "p": ("A heavier head that holds its line through the stroke." if name == "Blade" else
-                                                                       "The wide shape keeps it stable, so a putt off the toe still holds its line.")},
-      {"stat": "72° lie · 3.5° loft", "t": "Set up square", "p": "Standard lie and loft at 35 inches, so it sits flat behind the ball."},
+      {"stat": f"{steel} stainless, no insert", "t": "Fully milled", "vid": VIDS.get(name.lower() + "-face", {}).get("u", ""), "poster": VIDS.get(name.lower() + "-face", {}).get("p", ""),
+       "p": "Solid and crisp off the face, nothing inside to rattle. Catch one thin and you'll know exactly where, without it stinging your hands."},
+      ({"stat": "Strong toe hang", "t": "Built for a big arc", "hang": 80,
+        "p": "Balance it on a finger and the toe drops almost straight down. That's the putter for a stroke that swings open and shut like a door."}
+       if name == "Blade" else
+       {"stat": "Moderate toe hang", "t": "Built for a smaller arc", "hang": 40,
+        "p": "Balance it on a finger and the toe only drops about halfway. That's the putter for a stroke with a little arc in it."}),
+      ({"stat": f"{weight} g head", "t": "Planted at address", "vid": VIDS.get("blade-topline", {}).get("u", ""), "poster": VIDS.get("blade-topline", {}).get("p", ""),
+        "p": "A heavier head with one clean sight line. It sits flat, and it stays put when your hands want to get involved."}
+       if name == "Blade" else
+       {"stat": f"{weight} g · fang wings", "t": "Holds its line", "vid": VIDS.get("mallet-wings", {}).get("u", ""), "poster": VIDS.get("mallet-wings", {}).get("p", ""),
+        "p": "The weight sits out in the wings, so a putt off the toe still rolls where you aimed it."}),
     ]}
 DATA = {
   "lucky-golf-lgw02-gold": {"tiles": WEDGE_TILES(True), "tech": WEDGE_TECH, "tech_img": "11_26414fab-14b8-41ae-8ad7-a801c2f646fb.webp"},
