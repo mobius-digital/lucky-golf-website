@@ -1520,7 +1520,7 @@
         "type": "number",
         "id": "lg_free_shipping",
         "label": "Free shipping threshold ($)",
-        "default": 198,
+        "default": 195,
         "info": "Must match the store's real shipping rate. Drives the bar in the bag."
       },
       {

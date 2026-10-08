@@ -274,7 +274,7 @@
             "type": "item",
             "settings": {
               "icon": "truck",
-              "text": "Free shipping on $198 and up",
+              "text": "Free shipping on $195 and up",
               "url": "/pages/faq-lucky-wedges#shipping"
             }
           },
@@ -772,7 +772,7 @@
         "settings": {}
       }
     },
-    "lg_free_shipping": 198,
+    "lg_free_shipping": 195,
     "lg_review_min": 10,
     "lg_klaviyo_public_key": "SquHGF",
     "lg_coverage_product": "free-returns-package-protection"

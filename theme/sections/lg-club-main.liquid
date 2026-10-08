@@ -215,7 +215,7 @@ window.LG_CLUB = {
   sheet: {{ c.spec.sheet | json }}, headg: {{ c.spec.head_g | default: '' | json }},
   atc: {{ atc | json }}, inStock: {{ s.in_stock | json }},
   mode: {{ mode | json }}, month: {{ month | json }},
-  free: {{ settings.lg_free_shipping | default: 198 | json }},
+  free: {{ settings.lg_free_shipping | default: 195 | json }},
   start: {{ product.selected_variant.id | default: 0 }},
   variants: [
     {%- for v in product.variants -%}
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function(){
       "type": "text",
       "id": "ship_link",
       "label": "Shipping link (non-wedges)",
-      "default": "Free shipping at $198"
+      "default": "Free shipping at $195"
     },
     {
       "type": "url",
