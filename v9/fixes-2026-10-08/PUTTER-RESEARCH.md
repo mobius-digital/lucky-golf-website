@@ -51,3 +51,7 @@ Sources: our product guide, the live Shopify descriptions, all 11 + 11 product p
 - **Toe hang:** rest the shaft on one finger near the grip so it balances, face up. Note where the toe points: straight up = face-balanced; pointing down at roughly 4 o'clock = about 30°. A side-on phone photo is enough, I'll read the angle.
 - **Offset:** lie it flat at address and take a photo from straight above the face. I can read whether the shaft sits ahead of the face, and roughly by how much.
 - **Factory:** ask the supplier the toe hang, offset, MOI, and whether the bodies are cast or milled.
+
+## Resolved by Cole, 2026-10-08
+- Both heads are **fully CNC-milled** (the Shopify "Casting" line is wrong).
+- Head weights: **Blade 385 g, Mallet 365 g** (the Shopify "385 g" on the Mallet is wrong).
