@@ -6,7 +6,7 @@ sight line and pulls back; it settles on the real milled photo. Everything drawn
 import base64, os
 from PIL import Image, ImageFilter
 H = os.path.dirname(os.path.abspath(__file__))
-m = Image.open(os.path.join(H, '_facemask.png')).convert('L').filter(ImageFilter.GaussianBlur(2))
+m = Image.open(os.path.join(H, '_facemask.png')).convert('L').filter(ImageFilter.MinFilter(17)).filter(ImageFilter.GaussianBlur(2))
 rgba=Image.new('RGBA',m.size,(255,255,255,0)); rgba.putalpha(m); rgba.save(os.path.join(H, '_facemask-1920.png'))
 b64 = lambda f: base64.b64encode(open(os.path.join(H, f), 'rb').read()).decode()
 
@@ -23,7 +23,7 @@ h1{font-size:20px;margin:0 0 12px}
 canvas{display:block;width:100%;height:100%}
 button{margin-top:12px;font:inherit;padding:8px 14px;border:1px solid currentColor;background:none;color:inherit;border-radius:6px;cursor:pointer}
 </style></head><body><main>
-<h1>Fully milled: cut groove by groove</h1>
+<h1>Fully milled: cut line by line</h1>
 <div class="stage"><canvas id="c"></canvas></div>
 <button id="replay">Replay</button>
 </main>
@@ -57,10 +57,10 @@ Promise.all([load('data:image/webp;base64,SMOOTH'), load('data:image/webp;base64
     list.sort(function(p,q){ return p.dist-q.dist; });
     return list;
   }
-  var P1=grooves(TILT+Math.PI/4), P2=grooves(TILT-Math.PI/4);
-  var T0=400, PASS=3800, GAP=200, FADE=700, HOLD=1500;
-  var LINE=240, STAG1=(PASS-LINE)/P1.length, STAG2=(PASS-LINE)/P2.length;
-  var TOTAL=T0+PASS+GAP+PASS+FADE+HOLD, start=performance.now(), drawn1=[], drawn2=[], AREA=a1;
+  var P1=grooves(TILT+Math.PI/2), P2=[];   // one pass: cuts across the face, spreading out from the sight line
+  var T0=400, PASS=4400, GAP=0, FADE=500, HOLD=1600;
+  var LINE=320, STAG1=(PASS-LINE)/P1.length, STAG2=(PASS-LINE)/P2.length;
+  var TOTAL=T0+PASS+FADE+HOLD, start=performance.now(), drawn1=[], drawn2=[], AREA=a1;
   function reset(){ start=performance.now(); gx.clearRect(0,0,IW,IH); a1.clearRect(0,0,IW,IH); a2.clearRect(0,0,IW,IH); drawn1=P1.map(function(){return 0;}); drawn2=P2.map(function(){return 0;}); }
   reset(); document.getElementById('replay').onclick=reset;
   function cut(L, f0, f1, heads){
@@ -85,12 +85,12 @@ Promise.all([load('data:image/webp;base64,SMOOTH'), load('data:image/webp;base64
     var t=now-start; if (t>TOTAL){ reset(); t=0; }
     var heads=[];
     if (t>T0){ AREA=a1; pass(P1, drawn1, t-T0, STAG1, heads); }
-    if (t>T0+PASS+GAP){ AREA=a2; pass(P2, drawn2, t-T0-PASS-GAP, STAG2, heads); }
+    
     // masked grooves
     tx.globalCompositeOperation='source-over'; tx.clearRect(0,0,IW,IH); tx.drawImage(g,0,0);
     tx.globalCompositeOperation='destination-in'; tx.drawImage(mask,0,0,IW,IH);
     // camera: tight on the sight line, easing back
-    var k=Math.min(1, t/(T0+2*PASS+GAP+FADE)), e=1-Math.pow(1-k,3);
+    var k=Math.min(1, t/(T0+PASS+FADE)), e=1-Math.pow(1-k,3);
     var zoom=2.8-1.75*e, base=Math.max(cv.width/IW, cv.height/IH)*zoom;
     var fx=SIGHT.x+(IW/2-SIGHT.x)*e*0.7, fy=SIGHT.y+(IH*0.56-SIGHT.y)*e*0.7;
     ctx.setTransform(base,0,0,base, cv.width/2-fx*base, cv.height/2-fy*base);
@@ -99,9 +99,9 @@ Promise.all([load('data:image/webp;base64,SMOOTH'), load('data:image/webp;base64
     function metal(area, alpha){ mx2.globalCompositeOperation='source-over'; mx2.clearRect(0,0,IW,IH); mx2.drawImage(milled,0,0,IW,IH);
       mx2.globalCompositeOperation='destination-in'; mx2.drawImage(area,0,0); mx2.drawImage(mask,0,0,IW,IH);
       ctx.globalAlpha=alpha; ctx.drawImage(met,0,0); ctx.globalAlpha=1; }
-    metal(ar1, .3); metal(ar2, 1);
+    metal(ar1, 1);
     ctx.drawImage(tmp,0,0);
-    var tf=t-(T0+2*PASS+GAP); if (tf>0){ ctx.globalAlpha=Math.min(1, tf/FADE); ctx.drawImage(milled,0,0,IW,IH); ctx.globalAlpha=1; }
+    var tf=t-(T0+PASS); if (tf>0){ ctx.globalAlpha=Math.min(1, tf/FADE); ctx.drawImage(milled,0,0,IW,IH); ctx.globalAlpha=1; }
     // the cutting points: small hot glints, only on the face
     heads.forEach(function(h){
       var mx=Math.round(h.x), my=Math.round(h.y); if (mx<0||my<0||mx>=IW||my>=IH||!onFace(mx,my)) return;
