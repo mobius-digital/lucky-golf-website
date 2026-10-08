@@ -426,6 +426,15 @@
     var md = $('.md-post', sec), body = $('.pm-body', md);
     body.innerHTML = ''; body.appendChild(tpls[i].content.cloneNode(true));
     md.setAttribute('data-i', i); md.hidden = false;
+    /* phones: no browser control bar on the reel, tap to pause, one button for sound (2026-10-08) */
+    var v = $('video', body);
+    if (v){ v.setAttribute('playsinline', ''); v.playsInline = true;
+      if (window.matchMedia('(max-width:749px)').matches){ v.controls = false;
+        var snd = document.createElement('button'); snd.type = 'button'; snd.className = 'pm-snd'; snd.textContent = 'Sound on';
+        snd.addEventListener('click', function(){ v.muted = !v.muted; snd.textContent = v.muted ? 'Sound on' : 'Sound off'; });
+        v.addEventListener('click', function(){ if (v.paused) v.play(); else v.pause(); });
+        v.parentNode.appendChild(snd); }
+      var pl = v.play(); if (pl && pl.catch) pl.catch(function(){}); }
     var x = $('.md-x', md); if (x) x.focus({ preventScroll: true });
   }
   document.addEventListener('click', function(e){
@@ -463,4 +472,16 @@
 
   window.LuckySite = { setSticky: function(){} };
   refresh();
+})();
+
+/* Hat + gear galleries on phones (2026-10-08): the thumbnails ARE the gallery, one full-width photo
+   per swipe, with a "3 / 12" count. */
+(function(){
+  document.querySelectorAll('[data-swipe]').forEach(function(row){
+    var n = row.children.length; if (n < 2) return;
+    var c = document.createElement('p'); c.className = 'swipe-n'; c.setAttribute('aria-hidden', 'true');
+    row.parentNode.insertBefore(c, row.nextSibling);
+    var set = function(){ var i = Math.round(row.scrollLeft / Math.max(1, row.clientWidth)); c.textContent = (i + 1) + ' / ' + n; };
+    row.addEventListener('scroll', set, { passive: true }); set();
+  });
 })();

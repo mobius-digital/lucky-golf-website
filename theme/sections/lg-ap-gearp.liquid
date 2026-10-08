@@ -49,9 +49,9 @@
 <section class="lg-sec" style="padding-top:clamp(12px,2vw,20px)"><div class="lg-wrap pdp" id="ap-{{ section.id }}">
   <div class="gal">
     <div class="big" id="big">{%- if cut -%}{%- assign calt = product.featured_media.alt | default: product.title -%}{{ cut | image_url: width: 1400 | image_tag: alt: calt, fetchpriority: 'high', widths: '600,900,1400', sizes: '(max-width: 980px) 100vw, 55vw' }}{%- endif -%}</div>
-    <div class="thumbs" id="thumbs">
-      {%- for m in product.media -%}{%- assign malt = m.alt | default: product.title -%}<button type="button" data-src="{{ m.preview_image | image_url: width: 1400 }}" data-alt="{{ malt | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">{{ m.preview_image | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endfor -%}
-      {%- if photo != blank -%}<button type="button" class="is-photo" data-src="{{ photo | image_url: width: 1400 }}" data-alt="{{ photo.alt | escape }}" aria-current="false" aria-label="On the course">{{ photo | image_url: width: 240 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endif -%}
+    <div class="thumbs" id="thumbs" data-swipe>
+      {%- for m in product.media -%}{%- assign malt = m.alt | default: product.title -%}<button type="button" data-src="{{ m.preview_image | image_url: width: 1400 }}" data-alt="{{ malt | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">{{ m.preview_image | image_url: width: 900 | image_tag: alt: '', loading: 'lazy', widths: '240,600,900', sizes: '(max-width: 749px) 100vw, 110px' }}</button>{%- endfor -%}
+      {%- if photo != blank -%}<button type="button" class="is-photo" data-src="{{ photo | image_url: width: 1400 }}" data-alt="{{ photo.alt | escape }}" aria-current="false" aria-label="On the course">{{ photo | image_url: width: 900 | image_tag: alt: '', loading: 'lazy', widths: '240,600,900', sizes: '(max-width: 749px) 100vw, 110px' }}</button>{%- endif -%}
     </div>
   </div>
 

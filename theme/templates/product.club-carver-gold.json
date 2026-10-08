@@ -296,15 +296,24 @@
         "p_sign": "Tell them it's your lucky wedge.",
         "p_signcta": "Pick a loft"
       }
+    },
+    "tech": {
+      "type": "lg-club-tech",
+      "settings": {
+        "eyebrow": "What's inside",
+        "heading": "What it's <em>made of.</em>",
+        "line": ""
+      }
     }
   },
   "order": [
     "main",
     "film",
+    "tech",
     "grinds",
-    "wild",
-    "world",
     "specs",
+    "world",
+    "wild",
     "pband",
     "reviews",
     "more",

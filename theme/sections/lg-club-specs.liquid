@@ -12,7 +12,9 @@
     <div class="lg-monitor-in">
       <div class="lg-monitor-ph">{%- assign mi = product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value -%}{%- if mi != blank %}{{ mi | image_url: width: 900 | image_tag: alt: sp.mon_alt, loading: 'lazy', widths: '450,700,900', sizes: '(max-width: 749px) 90vw, 30vw' }}{% endif -%}</div>
       <div class="lg-monitor-tiles">
-        {%- for t in sp.tiles -%}
+        {%- comment -%} 2026-10-08: club_specs_v2 = specs only (no price, no test drive), real numbers from the product guide {%- endcomment -%}
+        {%- assign v2 = product.metafields.custom.club_specs_v2.value -%}{%- assign tiles = v2.tiles | default: sp.tiles -%}
+        {%- for t in tiles -%}
         <div class="lg-mt"><span>{{ t.l }}</span>{%- if t.price -%}<b class="lg-num">{{ product.price | money_without_trailing_zeros }}</b>{%- else -%}<b>{{ t.b }}</b>{%- endif -%}
           {%- if t.vals -%}<div class="lg-vals">{%- for v in t.vals -%}<i>{{ v }}</i>{%- endfor -%}</div>{%- endif -%}
           {%- if t.em != blank %}<em>{{ t.em }}</em>{% endif -%}</div>
@@ -47,7 +49,8 @@
   {%- endfor -%}
   {%- else -%}
   <div class="tbl" style="margin-top:clamp(18px,2.5vw,26px)"><table class="lg-table">
-    <tbody>{%- for r in sp.rows -%}<tr><th scope="row">{{ r[0] }}</th><td>{{ r[1] }}</td></tr>{%- endfor -%}</tbody>
+    {%- assign v2 = product.metafields.custom.club_specs_v2.value -%}{%- assign rows = v2.rows | default: sp.rows -%}
+    <tbody>{%- for r in rows -%}<tr><th scope="row">{{ r[0] }}</th><td>{{ r[1] }}</td></tr>{%- endfor -%}</tbody>
   </table></div>
   {%- assign tn = s.p_note | default: sp.note -%}{%- if tn != blank %}<p class="note">{{ tn }}</p>{% endif -%}
   {%- endif -%}

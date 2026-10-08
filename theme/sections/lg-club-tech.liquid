@@ -1,0 +1,37 @@
+{%- comment -%}
+  What's inside (2026-10-08, Cole's phone pass + the Takomo Lumo teardown): the club's technology, shown on
+  every screen. Before this the only tech on a club page was four callouts on the finish photo, hidden on
+  phones. Points come from product.metafields.custom.club_specs_v2.tech ({n, t, p, stat}), facts read off
+  the copy skill's product reference guide. Photo: section setting, else the spec photo, else the cutout.
+{%- endcomment -%}
+{%- assign v2 = product.metafields.custom.club_specs_v2.value -%}
+{%- if v2.tech.size > 0 -%}{%- assign s = section.settings -%}
+{%- assign tphoto = nil -%}{%- if v2.tech_img != blank -%}{%- assign tphoto = images[v2.tech_img] -%}{%- endif -%}
+{%- assign ph = s.image | default: tphoto | default: product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value -%}
+{%- assign is_photo = false -%}{%- if s.image != blank or tphoto != blank -%}{%- assign is_photo = true -%}{%- endif -%}
+<section class="lg-sec ctech" id="tech"><div class="lg-wrap">
+  <div class="ctech-hd"><p class="lg-eyebrow">{{ s.eyebrow }}</p>{%- assign th = v2.tech_head | default: s.heading -%}{% render 'lg-h', text: th, tag: 'h2', cls: 'lg-d2' %}
+    {%- assign tl = v2.tech_line | default: s.line -%}{%- if tl != blank %}<p class="lg-body">{{ tl }}</p>{% endif -%}</div>
+  <div class="ctech-in">
+    <div class="ctech-ph{% unless is_photo %} is-cut{% endunless %}">{%- if ph != blank -%}{{ ph | image_url: width: 1200 | image_tag: loading: 'lazy', alt: product.title, widths: '500,800,1200', sizes: '(max-width: 749px) 100vw, 45vw' }}{%- endif -%}</div>
+    <ol class="ctech-list">
+      {%- for t in v2.tech -%}
+      <li><i aria-hidden="true">{{ forloop.index }}</i><div>{%- if t.stat != blank %}<span class="ctech-stat">{{ t.stat }}</span>{% endif %}<b>{{ t.t }}</b>{%- if t.p != blank %}<p>{{ t.p }}</p>{% endif %}</div></li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Club: what's inside",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What's inside" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading (italic = gold word)", "default": "What it's <em>made of.</em>" },
+    { "type": "textarea", "id": "line", "label": "Line under it" },
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Empty: the club's spec photo or cutout" },
+    { "type": "paragraph", "content": "The numbered points come from the product (custom.club_specs_v2)." }
+  ]
+}
+{% endschema %}

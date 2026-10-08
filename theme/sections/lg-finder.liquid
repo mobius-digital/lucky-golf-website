@@ -5,10 +5,11 @@
     {%- for block in section.blocks -%}<button class="lg-chip" type="button" role="tab" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" data-fp="{{ forloop.index0 }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>{%- endfor -%}
   </div>
   {%- for block in section.blocks -%}
-  <div class="fnd-panel" data-panel="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}><div class="fnd-grid">
+  <div class="fnd-panel" data-panel="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}><div class="cards-big fnd-row">
     {%- for i in (1..3) -%}{%- assign pk = 'p' | append: i -%}{%- assign p = block.settings[pk] -%}{%- if p != blank -%}
       {%- assign lk = 'l' | append: i -%}{%- assign ik = 'i' | append: i -%}{%- assign ck = 'c' | append: i -%}{%- assign tk = 't' | append: i -%}
-      {% render 'lg-card', product: p, line: block.settings[lk], image: block.settings[ik], cut: block.settings[ck], tag: block.settings[tk] %}
+      {%- comment -%} 2026-10-08 (Cole): the same club card as "Pick your club", cutout on the tile, swipe row on phones. The photo setting is no longer used here. {%- endcomment -%}
+      <div class="lg-card-wrap">{% render 'lg-bigcard', product: p, line: block.settings[lk], vibe: block.settings[tk] %}</div>
     {%- endif -%}{%- endfor -%}
   </div></div>
   {%- endfor -%}

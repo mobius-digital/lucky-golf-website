@@ -1,0 +1,112 @@
+/* Cole's phone pass, 2026-10-08 (screenshots from his iPhone). */
+
+/* 1. The toast stretched to fill the whole screen on phones: lucky.css pins it to the TOP on phones
+      (top:14px; bottom:auto) and the club/polo rules below set bottom:92px while the sticky bar shows,
+      so it had both a top and a bottom. Phones: sit just above the sticky bar instead. */
+@media (max-width:749px){
+  body.lg-t-club:has(.stickybar[data-on]) .lg-toast,
+  body.lg-t-product.lg-t-polo:has(.stickybar[data-on]) .lg-toast{top:auto;bottom:calc(132px + env(safe-area-inset-bottom))}
+}
+
+/* 2. Club sticky bar on phones: two rows so it reads as the buy bar and nothing covers the button.
+      Row 1 = what you picked + Change. Row 2 = the full-width gold button. */
+@media (max-width:749px){
+  .lg-t-club .stickybar[data-on]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px;
+    padding:10px 16px max(14px, calc(8px + env(safe-area-inset-bottom)))!important;box-shadow:0 -10px 28px rgba(23,20,15,.12)}
+  .lg-t-club .stickybar > div:first-of-type{grid-column:1;min-width:0}
+  .lg-t-club .stickybar b{font-size:14px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lg-t-club .stickybar span[data-sticky-price]{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lg-t-club .stickybar .sb-change{grid-column:2;min-height:36px;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+  .lg-t-club .stickybar.is-one .sb-change{display:flex}
+  .lg-t-club .stickybar .sb-pick{display:none!important}
+  .lg-t-club .stickybar .lg-btn{grid-column:1 / -1;width:100%;min-height:50px}
+  /* the chat bubble rides above the taller bar */
+  body:has(.stickybar[data-on]) #gorgias-chat-container iframe#chat-button,
+  body:has(.stickybar[data-on]) #chat-button{bottom:128px!important}
+}
+
+/* 3. Swipe rows started flush against the left edge of the phone: scroll-snap lined the first card up
+      with the scroller's edge, not its padding. */
+@media (max-width:749px){ .cards-big{scroll-padding-inline:var(--lg-pad)} }
+
+/* 4. Club finder (home): same big club cards as "Pick your club", a row instead of a narrow stack. */
+.fnd-row{justify-content:flex-start}
+@media (min-width:750px){ .fnd-row > *{flex-basis:calc((100% - 32px) / 3)} }
+
+/* 5. Photos read too dark on a dimmed phone (Cole, outdoors at half brightness): the scrim covered the
+      whole photo. Phones now keep each photo bright and put the words on solid ground below/over
+      only the bottom of it. */
+@media (max-width:749px){
+  /* hero: photo on top, copy on the deep green under it, a short fade where they meet */
+  .lg-hero:not(.is-short){display:flex;flex-direction:column;background:#0B1911}
+  .lg-hero:not(.is-short) > img,.lg-hero:not(.is-short) .lg-hero-img{height:auto;aspect-ratio:400/340;min-height:0}
+  .lg-hero:not(.is-short)::after{inset:0;background:linear-gradient(180deg,rgba(11,25,17,0) 0,rgba(11,25,17,0) calc(85vw - 130px),#0B1911 calc(85vw - 6px),#0B1911 100%)}
+  .lg-hero:not(.is-short) .lg-hero-copy{position:relative;inset:auto;margin-top:-84px;padding-bottom:36px}
+  .lg-hero .lg-eyebrow{background:rgba(6,17,11,.78)}
+
+  /* gear tiles: taller, and the shade only behind the words at the bottom */
+  body.lg a.gtile{aspect-ratio:4/5}
+  .gtile::after{background:linear-gradient(0deg,rgba(6,17,11,.88) 0%,rgba(6,17,11,.62) 30%,rgba(6,17,11,0) 56%)}
+
+  /* reviews / quote bands on a photo: the photo shows clean at the top of the band, the reviews sit on
+     the solid green under it instead of on a darkened, zoomed-in photo */
+  .lg-band.is-photo{background:var(--band-bg) var(--band-pos,center) / auto 300px no-repeat,#0B1911;background-position:center top;padding-top:250px}
+  .lg-band.is-photo::before{background:linear-gradient(180deg,rgba(11,25,17,0) 0,rgba(11,25,17,.15) 150px,#0B1911 300px,#0B1911 100%)}
+}
+
+/* 6. "Caught in the wild" pop-up on phones: a full-screen viewer like a reel. Video fills the top
+      (whole frame, no browser control bar), the product card sits under it, round close + arrows over the video. */
+@media (max-width:749px){
+  .md-post{padding:0;place-items:stretch}
+  .md-post .md-panel.pm{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;max-height:none;border-radius:0;
+    display:flex;flex-direction:column;overflow:hidden;background:#06110B}
+  .md-post .pm-media{flex:1 1 auto;min-height:0;max-height:none;aspect-ratio:auto;position:relative;background:#06110B}
+  .md-post .pm-media img,.md-post .pm-media video{width:100%;height:100%;object-fit:contain}
+  .md-post .pm-info{flex:none;max-height:48vh;max-height:48dvh;overflow:auto;background:var(--lg-page);
+    border-radius:var(--lg-r-card) var(--lg-r-card) 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom))}
+  .md-post .pm-who{font-size:15px;margin-bottom:2px}
+  .md-post .pm-cap{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;margin-bottom:12px}
+  .md-post .pm-in{display:none}
+  .md-post .pm-prod{grid-template-columns:56px minmax(0,1fr);gap:10px 12px}
+  .md-post .pm-add{grid-column:1 / -1;width:100%;justify-content:center;min-height:46px}
+  .md-post .md-panel .md-x{top:calc(12px + env(safe-area-inset-top));right:12px;z-index:3;width:42px;height:42px;border-radius:50%;
+    background:rgba(6,17,11,.62);color:#fff;font-size:26px;line-height:1}
+  .md-post .pm-nav{top:calc(12px + env(safe-area-inset-top));left:12px;right:auto;bottom:auto;z-index:3}
+  .md-post .pm-nav button{width:42px;height:42px;background:rgba(6,17,11,.62);border:0;color:#fff}
+  .pm-snd{position:absolute;right:12px;bottom:12px;z-index:2;min-height:36px;padding:0 14px;border:0;border-radius:var(--lg-r-btn);
+    background:rgba(6,17,11,.62);color:#fff;font:inherit;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+}
+@media (min-width:750px){ .pm-snd{display:none} }
+
+/* 7. Hat + gear pages on phones: twelve thumbnails stacked under a short, cropped photo pushed the buy
+      button down. Now one full-width square photo per swipe, edge to edge, with a count. */
+.swipe-n{display:none}
+@media (max-width:749px){
+  .lg-t-product.lg-t-hat .gal .big,.lg-t-product.lg-t-gear .gal .big{display:none}
+  .lg-t-product.lg-t-hat .gal .thumbs,.lg-t-product.lg-t-gear .gal .thumbs{flex-wrap:nowrap!important;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:0 calc(var(--lg-pad) * -1);scrollbar-width:none}
+  .lg-t-product.lg-t-hat .gal .thumbs::-webkit-scrollbar,.lg-t-product.lg-t-gear .gal .thumbs::-webkit-scrollbar{display:none}
+  .lg-t-product.lg-t-hat .gal .thumbs button,.lg-t-product.lg-t-gear .gal .thumbs button{flex:0 0 100%;max-width:none;aspect-ratio:1/1;border:0!important;border-radius:0;
+    scroll-snap-align:start;cursor:default}
+  .lg-t-product.lg-t-hat .gal .thumbs button:not(.is-photo) img,.lg-t-product.lg-t-gear .gal .thumbs button:not(.is-photo) img{padding:28px}
+  .swipe-n{display:block;margin:10px 0 0;text-align:center;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--lg-ink-64)}
+}
+
+/* 8. Club pages: "What's inside", the technology on every screen (the finish-photo callouts hide on phones). */
+.lg-t-club .ctech{border-top:1px solid var(--lg-rule)}
+.lg-t-club .ctech-hd{max-width:640px;margin-bottom:clamp(20px,3vw,36px)}
+.lg-t-club .ctech-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.lg-t-club .ctech-ph{border-radius:var(--lg-r-card);overflow:hidden;background:var(--lg-tile);aspect-ratio:1/1}
+.lg-t-club .ctech-ph img{display:block;width:100%;height:100%;object-fit:cover}
+.lg-t-club .ctech-ph.is-cut img{object-fit:contain;padding:8%;mix-blend-mode:multiply}
+.lg-t-club .ctech-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.lg-t-club .ctech-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--lg-rule)}
+.lg-t-club .ctech-list li:last-child{border-bottom:1px solid var(--lg-rule)}
+.lg-t-club .ctech-list i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background-image:var(--lg-foil);color:var(--lg-ink);font-style:normal;font-weight:800;font-size:var(--lg-fs-sm)}
+.lg-t-club .ctech-list b{display:block;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 66;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1.1}
+.lg-t-club .ctech-list p{margin:4px 0 0;color:var(--lg-ink-70);font-size:var(--lg-fs-base);line-height:1.5}
+.lg-t-club .ctech-stat{display:block;font-size:var(--lg-fs-xs);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lg-gold-ink,#8A6A1C);margin-bottom:4px}
+@media (max-width:749px){
+  .lg-t-club .ctech-in{grid-template-columns:1fr}
+  .lg-t-club .ctech-ph{aspect-ratio:4/3}
+}

@@ -282,15 +282,24 @@
         "cta_out": "Tell me when it's back",
         "p_sign": "Your 4-iron will understand."
       }
+    },
+    "tech": {
+      "type": "lg-club-tech",
+      "settings": {
+        "eyebrow": "What's inside",
+        "heading": "What it's <em>made of.</em>",
+        "line": ""
+      }
     }
   },
   "order": [
     "main",
     "film",
+    "tech",
     "grinds",
-    "wild",
-    "world",
     "specs",
+    "world",
+    "wild",
     "pband",
     "reviews",
     "more",

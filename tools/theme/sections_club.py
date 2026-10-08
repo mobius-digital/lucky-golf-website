@@ -247,17 +247,15 @@ S["lg-club-reviews"] = section("Club: reviews", C + MIN + """
   {%- endif -%}
   <button class="readall" type="button" data-readall aria-expanded="false" aria-controls="jm"><b>Read every review</b><span>Newest first.</span><i aria-hidden="true">+</i></button>
   <div class="jm" id="jm" hidden>
-    <div class="jm-bar"><div class="lg-chips" id="jm-filters" role="group" aria-label="Filter reviews by rating"></div>
-      <label><span class="sr">Sort reviews</span><select id="jm-sort"><option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option></select></label></div>
+    <div class="jm-bar"><label><span class="sr">Sort reviews</span><select id="jm-sort"><option value="recent">Most recent</option><option value="high">Highest rating</option><option value="low">Lowest rating</option></select></label></div>
     <p class="jm-count" id="jm-count"></p>
     <div id="jm-list"></div>
-    <div class="jdgm-widget jdgm-review-widget" id="judgeme_product_reviews" data-id="{{ product.id }}" data-jdgm-full hidden>{{ product.metafields.judgeme.widget }}</div>
     <div class="jm-more"><button class="lg-btn-line lg-btn-sm" type="button" id="jm-more">Show more reviews</button></div>
   </div>
 </div></section>
 <script>
 window.LG_CLUB_REVIEWS = {
-  total: {{ rc }}, nums: {{ c.rv.nums | default: false }},
+  total: {{ rc }}, pid: {{ product.id }}, shop: {{ shop.permanent_domain | json }}, nums: {{ c.rv.nums | default: false }},
   totals: { {%- for h in jd.histogram -%}{{ h.rating | json }}: {{ h.frequency | default: 0 }}{% unless forloop.last %},{% endunless %}{%- endfor -%} },
   list: [
     {%- for r in jd.reviews -%}

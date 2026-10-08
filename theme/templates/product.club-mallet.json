@@ -283,15 +283,24 @@
         "p_sign": "Four-footers, you've been warned.",
         "p_signcta": "Pick a hand"
       }
+    },
+    "tech": {
+      "type": "lg-club-tech",
+      "settings": {
+        "eyebrow": "What's inside",
+        "heading": "What it's <em>made of.</em>",
+        "line": ""
+      }
     }
   },
   "order": [
     "main",
     "film",
+    "tech",
     "grinds",
-    "wild",
-    "world",
     "specs",
+    "world",
+    "wild",
     "pband",
     "reviews",
     "more",

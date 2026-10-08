@@ -463,25 +463,35 @@ document.addEventListener('DOMContentLoaded', function(){
   var R = window.LG_CLUB_REVIEWS;
   if (R && $('#prox') && window.Lucky && Lucky.proximity) Lucky.proximity($('#prox'), R.nums ? { counts: R.totals } : { counts: R.totals, nums: false });
   if (R && $('#jm-list')) (function(){
-    var filt = 0, sort = 'recent', shown = 6, S = R.list;
+    /* Every review, paged live from Judge.me's public widget feed (the page itself only carries the
+       latest 10). No star filter chips (Cole, 2026-10-08): sort + show more. */
+    var sort = 'recent', page = 0, busy = false, done = false;
     var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
-    $('#jm-filters').innerHTML = ['All', 5, 4, 3, 2, 1].map(function(k, i){ return '<button class="lg-chip" type="button" data-f="' + (i ? k : 0) + '" aria-pressed="' + (!i) + '">' + (i ? k + ' ★ · ' + (R.totals[k] || 0) : 'All · ' + R.total) + '</button>'; }).join('');
-    function draw(){
-      var l = S.filter(function(r){ return !filt || r.r === filt; }).slice();
-      l.sort(sort === 'high' ? function(a, b){ return b.r - a.r || (b.d > a.d ? 1 : -1); } : sort === 'low' ? function(a, b){ return a.r - b.r || (b.d > a.d ? 1 : -1); } : function(a, b){ return b.d > a.d ? 1 : -1; });
-      $('#jm-count').textContent = 'The latest ' + Math.min(shown, l.length) + (filt ? ' at ' + filt + ' stars' : '') + ' of ' + (filt ? (R.totals[filt] || 0) : R.total) + '.';
-      $('#jm-list').innerHTML = l.slice(0, shown).map(function(r){
-        return '<div class="jm-item"><span class="lg-stars" aria-label="' + r.r + ' out of 5" style="line-height:1;color:var(--lg-star)">' + star(r.r) + '</span>' + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p><small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small></div>'; }).join('');
-      var more = shown < l.length, full = $('[data-jdgm-full]');
-      $('#jm-more').hidden = !more && !(full && full.hidden);
+    var SORTS = { recent: 'sort_by=created_at&sort_dir=desc', high: 'sort_by=rating&sort_dir=desc', low: 'sort_by=rating&sort_dir=asc' };
+    var strip = function(h){ var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').trim(); };
+    function item(r){
+      return '<div class="jm-item"><span class="lg-stars" aria-label="' + r.r + ' out of 5" style="line-height:1;color:var(--lg-star)">' + star(r.r) + '</span>' + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p><small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small></div>'; }
+    function count(){ var n = $$('#jm-list .jm-item').length; $('#jm-count').textContent = 'Showing ' + n + ' of ' + R.total + '.'; $('#jm-more').hidden = done; }
+    function load(reset){
+      if (busy) return; busy = true;
+      if (reset){ page = 0; done = false; $('#jm-list').innerHTML = ''; }
+      var btn = $('#jm-more'); btn.disabled = true; btn.textContent = 'Loading…';
+      var u = 'https://judge.me/reviews/reviews_for_widget?platform=shopify&per_page=10&url=' + R.shop + '&shop_domain=' + R.shop + '&product_id=' + R.pid + '&page=' + (page + 1) + '&' + SORTS[sort];
+      fetch(u).then(function(x){ return x.json(); }).then(function(d){
+        page = d.pagination ? d.pagination.current_page : page + 1;
+        done = !d.pagination || page >= d.pagination.total_pages;
+        $('#jm-list').insertAdjacentHTML('beforeend', (d.reviews || []).map(function(r){
+          return item({ r: r.rating, t: r.title, q: strip(r.body_html), n: r.reviewer_name || 'Anonymous', v: r.verified_buyer, d: (r.created_at || '').slice(0, 10) }); }).join(''));
+      }).catch(function(){
+        /* blocked or offline: fall back to the 10 the page carries */
+        if (!page) $('#jm-list').innerHTML = R.list.map(item).join(''); done = true;
+      }).then(function(){ busy = false; btn.disabled = false; btn.textContent = 'Show more reviews'; count(); });
     }
-    $('#jm-filters').addEventListener('click', function(e){ var b = e.target.closest('[data-f]'); if (!b) return; filt = +b.getAttribute('data-f'); shown = 6;
-      $$('#jm-filters button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); });
-    $('#jm-sort').addEventListener('change', function(){ sort = this.value; draw(); });
-    $('#jm-more').addEventListener('click', function(){
-      if (shown < S.length){ shown += 6; draw(); return; }
-      var full = $('[data-jdgm-full]'); if (full){ full.hidden = false; $('#jm-list').hidden = true; $('#jm-count').hidden = true; $('.jm-bar').hidden = true; } this.hidden = true; });
-    $('[data-readall]').addEventListener('click', function(){ var jm = $('#jm'), o = !jm.hidden; jm.hidden = o; this.setAttribute('aria-expanded', String(!o)); $('i', this).textContent = o ? '+' : '−'; if (!o) draw(); });
+    /* newest first: the 10 the page already carries show at once, Judge.me pages in from page 2 */
+    function first(){ if (sort === 'recent' && R.list.length){ $('#jm-list').innerHTML = R.list.map(item).join(''); page = 1; done = R.total <= R.list.length; count(); } else load(true); }
+    $('#jm-sort').addEventListener('change', function(){ sort = this.value; page = 0; $('#jm-list').innerHTML = ''; first(); });
+    $('#jm-more').addEventListener('click', function(){ load(false); });
+    $('[data-readall]').addEventListener('click', function(){ var jm = $('#jm'), o = !jm.hidden; jm.hidden = o; this.setAttribute('aria-expanded', String(!o)); $('i', this).textContent = o ? '+' : '−'; if (!o && !page) first(); });
   })();
 
   paint();
