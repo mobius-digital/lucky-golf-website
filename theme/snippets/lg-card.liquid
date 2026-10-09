@@ -2,13 +2,32 @@
   A product card, live from the product: price, stock ("Sold out" tag), and
   stars only at the review minimum. Optional overrides from a block:
   name, line, vibe tag, tag, photo, cut (cutout on a stone well).
-  {% render 'lg-card', product: p, name: '', line: '', vibe: '', tag: '', image: img, cut: true, stars: false %}
+  {% render 'lg-card', product: p, name: '', line: '', vibe: '', tag: '', image: img, cut: true, stars: false, finish: '' %}
+  finish: a Finish option value (Black) -> that finish's price, photo and link. No tag given -> the product's Badge metafield.
 {%- endcomment -%}
 {%- liquid
   assign min = settings.lg_review_min | default: 10
   assign rc = product.metafields.reviews.rating_count.value | default: 0
   assign rv = product.metafields.reviews.rating.value.rating
+  assign fv = nil
+  if finish != blank
+    for v in product.variants
+      if v.options contains finish
+        assign fv = v
+        break
+      endif
+    endfor
+  endif
+  assign badge = product.metafields.custom.badge.value
+  assign nm = name | default: product.title
+  if name == blank and fv
+    assign nm = product.title | append: ' ' | append: finish
+  endif
+  assign foil = product.metafields.custom.badge_foil.value
   assign pic = image
+  if pic == blank and fv
+    assign pic = fv.featured_image
+  endif
   if pic == blank and cut
     assign pic = product.metafields.custom.cutout.value
   endif
@@ -23,12 +42,27 @@
     assign was = product.compare_at_price_min | money_without_trailing_zeros
     assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
   endif
+  assign href = product.url
+  if fv
+    assign price = fv.price | money_without_trailing_zeros
+    unless product.variants.first.options contains finish
+      assign href = product.url | append: '?finish=' | append: finish
+    endunless
+  endif
+  assign tg = tag
+  assign tcls = 'lg-tag'
+  if tg == blank and badge != blank
+    assign tg = badge
+    if foil
+      assign tcls = 'lg-tag is-foil'
+    endif
+  endif
 -%}
-<a class="lg-card" href="{{ product.url }}"><span class="lg-card-ph{% if cut %} is-cut{% endif %}">
+<a class="lg-card" href="{{ href }}"><span class="lg-card-ph{% if cut %} is-cut{% endif %}">
   {%- if pic != blank -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title, widths: '350,500,700', sizes: '(max-width: 749px) 70vw, 20vw' }}{%- endif -%}
   {%- if vibe != blank %}<span class="lg-tag vibe">{{ vibe }}</span>{% endif -%}
-  {%- unless product.available -%}<span class="lg-tag">Sold out</span>{%- else -%}{%- if tag != blank %}<span class="lg-tag">{{ tag }}</span>{% endif -%}{%- endunless -%}
-</span><span class="lg-card-bd"><span class="lg-card-nm">{{ name | default: product.title }}</span><span class="lg-card-pr">{{ price }}</span>
+  {%- unless product.available -%}<span class="lg-tag">Sold out</span>{%- else -%}{%- if tg != blank %}<span class="{{ tcls }}">{{ tg }}</span>{% endif -%}{%- endunless -%}
+</span><span class="lg-card-bd"><span class="lg-card-nm">{{ nm }}</span><span class="lg-card-pr">{{ price }}</span>
   {%- if stars and rc >= min and rv -%}<span class="lg-card-rate"><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{% render 'lg-stars' %}</span> {{ rc }}</span>{%- endif -%}
   {%- if line != blank %}<span class="lg-card-ln">{{ line }}</span>{% endif -%}
 </span></a>

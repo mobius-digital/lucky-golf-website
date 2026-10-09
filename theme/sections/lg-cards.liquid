@@ -7,8 +7,8 @@
     {%- for block in section.blocks -%}
       {%- if block.type == 'card' and block.settings.product != blank -%}
         <div class="lg-card-wrap" {{ block.shopify_attributes }}>
-        {%- if s.big -%}{% render 'lg-bigcard', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, stars: s.stars %}
-        {%- else -%}{% render 'lg-card', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, cut: block.settings.cut, stars: s.stars %}{%- endif -%}
+        {%- if s.big -%}{% render 'lg-bigcard', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, stars: s.stars, finish: block.settings.finish %}
+        {%- else -%}{% render 'lg-card', product: block.settings.product, name: block.settings.name, line: block.settings.line, vibe: block.settings.vibe, tag: block.settings.tag, image: block.settings.image, cut: block.settings.cut, stars: s.stars, finish: block.settings.finish %}{%- endif -%}
         </div>
       {%- elsif block.type == 'tile' -%}{%- assign b = block.settings -%}
         <a class="ftile" href="{{ b.url }}" {{ block.shopify_attributes }}>{%- if b.image != blank -%}{{ b.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: '', widths: '450,700,900', sizes: '(max-width: 749px) 82vw, 33vw' }}{%- endif -%}
@@ -129,6 +129,11 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "finish",
+          "label": "Finish (optional: Black shows that finish's photo, price and link)"
         },
         {
           "type": "text",

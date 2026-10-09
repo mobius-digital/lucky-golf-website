@@ -11,6 +11,17 @@
   assign lk = 'l' | append: i
   assign ik = 'i' | append: i
   assign tk = 't' | append: i
+  assign fk = 'f' | append: i
+  assign finish = b.settings[fk]
+  assign fv = nil
+  if p != blank and finish != blank
+    for v in p.variants
+      if v.options contains finish
+        assign fv = v
+        break
+      endif
+    endfor
+  endif
   if p != blank
     assign url = p.url
     assign name = b.settings[nk] | default: p.title
@@ -23,6 +34,18 @@
       assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
     endif
     assign img = b.settings[ik] | default: p.metafields.custom.cutout.value | default: p.featured_image
+    if fv
+      if b.settings[nk] == blank
+        assign name = p.title | append: ' ' | append: finish
+      endif
+      unless p.variants.first.options contains finish
+        assign url = p.url | append: '?finish=' | append: finish
+      endunless
+      assign price = fv.price | money_without_trailing_zeros
+      if b.settings[ik] == blank and fv.featured_image
+        assign img = fv.featured_image
+      endif
+    endif
   else
     assign url = c.url
     assign name = b.settings[nk] | default: c.title

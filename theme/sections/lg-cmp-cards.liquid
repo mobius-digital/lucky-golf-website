@@ -6,18 +6,35 @@
   {% render 'lg-h', text: s.heading, tag: 'h2', cls: 'lg-d2' %}
   <div class="cards">
     {%- for block in section.blocks -%}{%- assign b = block.settings -%}{%- assign p = b.product -%}{%- if p != blank -%}
+      {%- liquid
+        assign purl = p.url
+        assign ptitle = p.title
+        assign pprice = p.price
+        if b.finish != blank
+          for v in p.variants
+            if v.options contains b.finish
+              unless p.variants.first.options contains b.finish
+                assign purl = p.url | append: '?finish=' | append: b.finish
+              endunless
+              assign ptitle = p.title | append: ' ' | append: b.finish
+              assign pprice = v.price
+              break
+            endif
+          endfor
+        endif
+      -%}
     {%- liquid
       assign pic = b.image | default: p.metafields.custom.cutout.value | default: p.featured_image
       assign rc = p.metafields.reviews.rating_count.value | default: 0
       assign rv = p.metafields.reviews.rating.value.rating
     -%}
     <article class="pc" {{ block.shopify_attributes }}>
-      <a class="pc-ph" href="{{ p.url }}">{%- if b.tag != blank %}<span class="lg-tag">{{ b.tag }}</span>{% endif -%}{%- if pic -%}{{ pic | image_url: width: 900 | image_tag: loading: 'lazy', alt: p.title, widths: '450,700,900', sizes: '(max-width: 560px) 100vw, 430px' }}{%- endif -%}</a>
+      <a class="pc-ph" href="{{ purl }}">{%- if b.tag != blank %}<span class="lg-tag">{{ b.tag }}</span>{% endif -%}{%- if pic -%}{{ pic | image_url: width: 900 | image_tag: loading: 'lazy', alt: p.title, widths: '450,700,900', sizes: '(max-width: 560px) 100vw, 430px' }}{%- endif -%}</a>
       <div class="pc-bd">
-        <div class="pc-top"><h3><a href="{{ p.url }}">{{ p.title }}</a></h3><b>{{ p.price | money_without_trailing_zeros }}</b></div>
-        {%- if rc >= min and rv -%}{%- assign n = rv | round -%}<a class="pc-rate" href="{{ p.url }}#reviews"><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{%- for i in (1..5) -%}<svg viewBox="0 0 20 20" aria-hidden="true"{% if i > n %} style="opacity:.25"{% endif %}><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>{%- endfor -%}</span>{{ rv }} · {{ rc }}</a>{%- endif -%}
+        <div class="pc-top"><h3><a href="{{ purl }}">{{ ptitle }}</a></h3><b>{{ pprice | money_without_trailing_zeros }}</b></div>
+        {%- if rc >= min and rv -%}{%- assign n = rv | round -%}<a class="pc-rate" href="{{ purl }}#reviews"><span class="lg-stars" aria-label="{{ rv | round: 1 }} out of 5">{%- for i in (1..5) -%}<svg viewBox="0 0 20 20" aria-hidden="true"{% if i > n %} style="opacity:.25"{% endif %}><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>{%- endfor -%}</span>{{ rv }} · {{ rc }}</a>{%- endif -%}
         {%- if b.line != blank %}<p>{{ b.line }}</p>{% endif -%}
-        <a class="lg-btn lg-btn-sm" href="{{ p.url }}">{{ b.btn_label }} <span aria-hidden="true">&rarr;</span></a>
+        <a class="lg-btn lg-btn-sm" href="{{ purl }}">{{ b.btn_label }} <span aria-hidden="true">&rarr;</span></a>
       </div>
     </article>
     {%- endif -%}{%- endfor -%}
@@ -56,6 +73,11 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "finish",
+          "label": "Finish (optional: Black links to that finish)"
         },
         {
           "type": "image_picker",

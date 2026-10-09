@@ -261,7 +261,6 @@
             "settings": {
               "products": [
                 "lucky-golf-lgw02-gold",
-                "lucky-golf-lgw02-black",
                 "signature-gold-putters",
                 "limited-edition-mallet-putter",
                 "lucky-striker-hybrid-limited-edition"
@@ -313,16 +312,21 @@
               "line": "Forged, spins like crazy, and your buddies will try to borrow it.",
               "vibe": "Buttery",
               "tag": "Best seller",
-              "cut": true
+              "cut": true,
+              "name": "Carver 02 Gold",
+              "finish": "Gold"
             }
           },
           "c2": {
             "type": "card",
             "settings": {
-              "product": "lucky-golf-lgw02-black",
+              "product": "lucky-golf-lgw02-gold",
               "line": "All the spin. None of the spotlight.",
               "vibe": "Filthy",
-              "cut": true
+              "cut": true,
+              "name": "Carver 02 Black",
+              "finish": "Black",
+              "image": "shopify://shop_images/lg-card-carver-black.webp"
             }
           },
           "c3": {
@@ -439,9 +443,11 @@
               "label": "Around the green",
               "p1": "lucky-golf-lgw02-gold",
               "l1": "Pick the K or the S, depending on how you like to chip.",
-              "p2": "lucky-golf-lgw02-black",
+              "p2": "lucky-golf-lgw02-gold",
               "l2": "The K grind, blacked out.",
-              "c2": true
+              "c2": true,
+              "f2": "Black",
+              "f1": "Gold"
             }
           },
           "f2": {
@@ -537,7 +543,6 @@
           "heading": "Thousands of golfers bag <em>Lucky</em>",
           "agg_products": [
             "lucky-golf-lgw02-gold",
-            "lucky-golf-lgw02-black",
             "signature-gold-putters",
             "limited-edition-mallet-putter",
             "lucky-striker-hybrid-limited-edition"

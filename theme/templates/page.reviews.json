@@ -41,10 +41,7 @@
           "type": "club",
           "settings": {
             "product": "lucky-golf-lgw02-gold",
-            "label": "Carver 02",
-            "also": [
-              "lucky-golf-lgw02-black"
-            ]
+            "label": "Carver 02"
           }
         },
         "b2": {

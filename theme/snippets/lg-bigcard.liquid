@@ -4,7 +4,26 @@
   corner. A sold-out club shows "Sold out" there instead. Live price and stock.
 {%- endcomment -%}
 {%- liquid
-  assign pic = image | default: product.metafields.custom.cutout.value | default: product.featured_image
+  assign fv = nil
+  if finish != blank
+    for v in product.variants
+      if v.options contains finish
+        assign fv = v
+        break
+      endif
+    endfor
+  endif
+  assign badge = product.metafields.custom.badge.value
+  assign nm = name | default: product.title
+  if name == blank and fv
+    assign nm = product.title | append: ' ' | append: finish
+  endif
+  assign foil = product.metafields.custom.badge_foil.value
+  assign pic = image
+  if pic == blank and fv
+    assign pic = fv.featured_image
+  endif
+  assign pic = pic | default: product.metafields.custom.cutout.value | default: product.featured_image
   assign price = product.price | money_without_trailing_zeros
   if product.price_varies
     assign price = 'From ' | append: price
@@ -13,13 +32,28 @@
     assign was = product.compare_at_price_min | money_without_trailing_zeros
     assign price = price | append: ' <s class="lg-was">' | append: was | append: '</s>'
   endif
+  assign href = product.url
+  if fv
+    assign price = fv.price | money_without_trailing_zeros
+    unless product.variants.first.options contains finish
+      assign href = product.url | append: '?finish=' | append: finish
+    endunless
+  endif
+  assign tg = vibe
+  assign tcls = 'bc-tag'
+  if badge != blank
+    assign tg = badge
+    if foil
+      assign tcls = 'bc-tag is-foil'
+    endif
+  endif
 -%}
-<a class="lg-bigcard" href="{{ product.url }}">
+<a class="lg-bigcard" href="{{ href }}">
   <span class="bc-top">
-    <span class="bc-nm">{{ name | default: product.title }}</span>
+    <span class="bc-nm">{{ nm }}</span>
     {%- if line != blank %}<span class="bc-ln">{{ line }}</span>{% endif -%}
     <span class="bc-pr">{{ price }}</span>
   </span>
   <span class="bc-ph">{%- if pic != blank -%}{{ pic | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title, widths: '350,500,700', sizes: '(max-width: 749px) 55vw, 260px' }}{%- endif -%}</span>
-  {%- unless product.available -%}<span class="bc-tag is-out">Sold out</span>{%- else -%}{%- if vibe != blank %}<span class="bc-tag">{{ vibe }}</span>{% endif -%}{%- endunless -%}
+  {%- unless product.available -%}<span class="bc-tag is-out">Sold out</span>{%- else -%}{%- if tg != blank %}<span class="{{ tcls }}">{{ tg }}</span>{% endif -%}{%- endunless -%}
 </a>

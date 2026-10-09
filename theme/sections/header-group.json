@@ -56,8 +56,10 @@
             "p1": "lucky-golf-lgw02-gold",
             "l1": "The one they ask about on the next tee.",
             "t1": "Best seller",
-            "p2": "lucky-golf-lgw02-black",
-            "l2": "Same forged head, in the dark."
+            "p2": "lucky-golf-lgw02-gold",
+            "l2": "Same forged head, in the dark.",
+            "f2": "Black",
+            "f1": "Gold"
           }
         },
         "m2": {

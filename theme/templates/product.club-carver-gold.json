@@ -27,7 +27,7 @@
         "delivery_body": "<p>Orders leave the warehouse in 1 to 2 business days. Ground delivery takes a few business days after that, and you get a tracking number as soon as the carrier scans it.</p><p>You'll see what shipping costs, and how fast it is, at checkout before you pay. Orders of $195 or more ship free.</p><h4>Where it ships from</h4><p>Long Beach, California.</p>",
         "p_eyebrow": "Forged wedge · LGW02",
         "p_h1": "Carver <em>02</em>",
-        "p_lede": "Fair warning: this thing spins, so your first few chips might stop shorter than you're used to. It's forged, so it feels buttery off the face, and it's forgiving enough that the mishits still behave. The micro-grooves and sandblasted face are doing the work. And yes, it's gold. People will ask.",
+        "p_lede": "Fair warning: this thing spins, so your first few chips might stop shorter than you're used to.",
         "p_tag": "Forged 1020",
         "p_atc": "Put it in the bag",
         "p_rvl_q": "So nice, I bought it twice.",
@@ -39,7 +39,33 @@
         "p_d2_b": "One wedge in the loft and grind you picked, on the stock shaft and grip. No headcover. It's a wedge, it'll be fine.",
         "p_d3_t": "Shipping and returns",
         "p_d3_b": "Orders leave Long Beach, California in 1 to 2 business days, and the tracking number shows up as soon as the carrier scans it. Every club gets sixty days from delivery. Talk to us before anything ships back, because club returns need our OK and a few photos first. Return shipping's on you."
-      }
+      },
+      "blocks": {
+        "fin_gold": {
+          "type": "finish",
+          "settings": {
+            "value": "Gold",
+            "name": "Gold PVD",
+            "tag": "",
+            "image": "shopify://shop_images/lg-gold-full-cut.webp",
+            "lede": "Fair warning: this thing spins, so your first few chips might stop shorter than you're used to."
+          }
+        },
+        "fin_black": {
+          "type": "finish",
+          "settings": {
+            "value": "Black",
+            "name": "Black ED",
+            "tag": "New",
+            "image": "shopify://shop_images/lg-black-full-cut.webp",
+            "lede": "Forged in darkness, lives in the shadows, and nobody sees it coming until it checks up by the pin."
+          }
+        }
+      },
+      "block_order": [
+        "fin_gold",
+        "fin_black"
+      ]
     },
     "film": {
       "type": "lg-club-film",
@@ -272,9 +298,9 @@
         "heading": "Round out the bag",
         "link_label": "See every club",
         "link_url": "shopify://collections/lucky-golf-clubs",
-        "p_m1_product": "lucky-golf-lgw02-black",
-        "p_m1_name": "Carver 02 Black",
-        "p_m1_line": "Same forged head, in the dark",
+        "p_m1_product": "signature-gold-putters",
+        "p_m1_name": "Eclipse Blade",
+        "p_m1_line": "Fully milled, and it tells you where you hit it.",
         "p_m2_product": "limited-edition-mallet-putter",
         "p_m2_name": "Eclipse Mallet",
         "p_m2_line": "Holds its line when you miss the middle.",

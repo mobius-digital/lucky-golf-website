@@ -69,58 +69,239 @@
 {
   "name": "Header",
   "class": "lg-hdr-wrap",
-  "enabled_on": { "groups": ["header"] },
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
   "settings": [
-    { "type": "header", "content": "Phone menu" },
-    { "type": "image_picker", "id": "m_photo", "label": "Photo at the bottom" },
-    { "type": "text", "id": "m_photo_line", "label": "Line on the photo", "default": "It's better to be lucky." },
-    { "type": "url", "id": "m_photo_url", "label": "Photo link" },
-    { "type": "link_list", "id": "m_links", "label": "Small links under it" }
+    {
+      "type": "header",
+      "content": "Phone menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "m_photo",
+      "label": "Photo at the bottom"
+    },
+    {
+      "type": "text",
+      "id": "m_photo_line",
+      "label": "Line on the photo",
+      "default": "It's better to be lucky."
+    },
+    {
+      "type": "url",
+      "id": "m_photo_url",
+      "label": "Photo link"
+    },
+    {
+      "type": "link_list",
+      "id": "m_links",
+      "label": "Small links under it"
+    }
   ],
   "blocks": [
     {
-      "type": "menu", "name": "Menu with cards",
+      "type": "menu",
+      "name": "Menu with cards",
       "settings": [
-        { "type": "text", "id": "label", "label": "Menu label", "default": "Wedges" },
-        { "type": "text", "id": "title", "label": "Panel title" },
-        { "type": "textarea", "id": "intro", "label": "Intro line" },
-        { "type": "url", "id": "all_url", "label": "'See all' link" },
-        { "type": "text", "id": "all_label", "label": "'See all' text", "default": "See all" },
-        { "type": "text", "id": "all_line", "label": "Small line on the 'See all' tile" },
-        { "type": "image_picker", "id": "all_image", "label": "Photo on the 'See all' tile (empty = the panel photo)" },
-        { "type": "image_picker", "id": "photo", "label": "Panel photo" },
-        { "type": "text", "id": "photo_caption", "label": "Photo caption" },
-        { "type": "header", "content": "Card 1" },
-        { "type": "product", "id": "p1", "label": "Product" },
-        { "type": "collection", "id": "c1", "label": "Or a collection" },
-        { "type": "text", "id": "n1", "label": "Name (leave empty to use the product's)" },
-        { "type": "text", "id": "pr1", "label": "Price text (collections only)" },
-        { "type": "text", "id": "l1", "label": "Line under it" },
-        { "type": "image_picker", "id": "i1", "label": "Card photo (optional)" },
-        { "type": "text", "id": "t1", "label": "Tag (e.g. Best seller)" },
-        { "type": "header", "content": "Card 2" },
-        { "type": "product", "id": "p2", "label": "Product" },
-        { "type": "collection", "id": "c2", "label": "Or a collection" },
-        { "type": "text", "id": "n2", "label": "Name (leave empty to use the product's)" },
-        { "type": "text", "id": "pr2", "label": "Price text (collections only)" },
-        { "type": "text", "id": "l2", "label": "Line under it" },
-        { "type": "image_picker", "id": "i2", "label": "Card photo (optional)" },
-        { "type": "text", "id": "t2", "label": "Tag (e.g. Best seller)" },
-        { "type": "header", "content": "Card 3" },
-        { "type": "product", "id": "p3", "label": "Product" },
-        { "type": "collection", "id": "c3", "label": "Or a collection" },
-        { "type": "text", "id": "n3", "label": "Name (leave empty to use the product's)" },
-        { "type": "text", "id": "pr3", "label": "Price text (collections only)" },
-        { "type": "text", "id": "l3", "label": "Line under it" },
-        { "type": "image_picker", "id": "i3", "label": "Card photo (optional)" },
-        { "type": "text", "id": "t3", "label": "Tag (e.g. Best seller)" }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Menu label",
+          "default": "Wedges"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Panel title"
+        },
+        {
+          "type": "textarea",
+          "id": "intro",
+          "label": "Intro line"
+        },
+        {
+          "type": "url",
+          "id": "all_url",
+          "label": "'See all' link"
+        },
+        {
+          "type": "text",
+          "id": "all_label",
+          "label": "'See all' text",
+          "default": "See all"
+        },
+        {
+          "type": "text",
+          "id": "all_line",
+          "label": "Small line on the 'See all' tile"
+        },
+        {
+          "type": "image_picker",
+          "id": "all_image",
+          "label": "Photo on the 'See all' tile (empty = the panel photo)"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Panel photo"
+        },
+        {
+          "type": "text",
+          "id": "photo_caption",
+          "label": "Photo caption"
+        },
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+        {
+          "type": "product",
+          "id": "p1",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f1",
+          "label": "Card 1 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c1",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n1",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr1",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l1",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i1",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t1",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "header",
+          "content": "Card 2"
+        },
+        {
+          "type": "product",
+          "id": "p2",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f2",
+          "label": "Card 2 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c2",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n2",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr2",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l2",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i2",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t2",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "header",
+          "content": "Card 3"
+        },
+        {
+          "type": "product",
+          "id": "p3",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f3",
+          "label": "Card 3 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c3",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n3",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr3",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l3",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i3",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t3",
+          "label": "Tag (e.g. Best seller)"
+        }
       ]
     },
     {
-      "type": "link", "name": "Plain link",
+      "type": "link",
+      "name": "Plain link",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Our Story" },
-        { "type": "url", "id": "url", "label": "Link" }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Our Story"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
       ]
     }
   ]

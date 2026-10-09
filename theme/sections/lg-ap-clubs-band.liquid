@@ -25,7 +25,7 @@
         assign rv = p.metafields.reviews.rating.value.rating | default: 0
       -%}
       {%- if s.style == 'big' -%}
-      <div class="lg-card-wrap" {{ block.shopify_attributes }}>{% render 'lg-bigcard', product: p, name: nm, line: b.line, vibe: b.vibe, image: b.image %}</div>
+      <div class="lg-card-wrap" {{ block.shopify_attributes }}>{% render 'lg-bigcard', product: p, name: nm, line: b.line, vibe: b.vibe, image: b.image, finish: b.finish %}</div>
       {%- else -%}
       <article class="pc" {{ block.shopify_attributes }}>
         <a class="pc-ph" href="{{ p.url }}">{%- if p.available == false -%}<span class="lg-tag">Sold out</span>{%- elsif b.tag != blank -%}<span class="lg-tag">{{ b.tag }}</span>{%- endif -%}
@@ -189,6 +189,11 @@ document.addEventListener('change', function(e){ var d = e.target.closest('[data
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "finish",
+          "label": "Finish (optional: Black shows that finish's photo, price and link)"
         },
         {
           "type": "text",

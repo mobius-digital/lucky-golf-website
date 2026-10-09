@@ -2036,3 +2036,41 @@ body:has(.stickybar[data-on]) #chat-button{bottom:104px!important}
   .lg-t-club .cpick-col b{font-size:17px}
   .lg-t-club .cpick-go .lg-btn-line{width:100%;justify-content:center;padding-inline:8px}
 }
+
+/* ---- Buy box v2 (2026-10-08, Cole + Takomo's Lumo page): finish cards, quiet pickers, lofts set the count, badges ---- */
+.lg-tag.is-foil{background-color:transparent;background-image:var(--lg-foil);color:var(--lg-ink);border-color:transparent;font-weight:700}
+.lg-t-club .gal .lg-tag.is-foil{position:absolute;left:14px;top:14px;z-index:2}
+.lg-t-club .buy .pdp-badge{margin:0 0 12px}
+.lg-t-club .gal figure.is-lead{order:-1}
+@media (min-width:750px){.lg-t-club .gal:not(.is-all) .is-lead{display:block}}
+.lg-t-club .fins2{display:flex;flex-wrap:wrap;gap:10px}
+.lg-t-club .fin2{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:128px;min-height:124px;padding:8px 6px 10px;
+  background:var(--lg-page);color:var(--lg-ink);border:1px solid var(--lg-rule);border-radius:var(--lg-r-tag);cursor:pointer;font:inherit;text-align:center}
+.lg-t-club .fin2-ph{display:block;width:72px;height:72px;pointer-events:none}
+.lg-t-club .fin2-ph img{display:block;width:100%;height:100%;object-fit:contain}
+.lg-t-club .fin2 b{font-size:var(--lg-fs-sm);font-weight:600;line-height:1.25}
+.lg-t-club .fin2-x{min-height:1.2em;font-size:var(--lg-fs-xs);color:var(--lg-ink-64)}
+.lg-t-club .fin2-tag{position:absolute;left:6px;top:6px;padding:3px 6px;border-radius:var(--lg-r-tag);background:var(--lg-ink);color:var(--lg-page);
+  font-style:normal;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+.lg-t-club .fin2[aria-pressed="true"]{background:var(--lg-tile);border:1.5px solid var(--lg-ink);padding:7.5px 5.5px 9.5px}
+.lg-t-club .fin2:focus-visible,.lg-t-club .hands2 .lg-chip:focus-visible,.lg-t-club .lofts2 .lg-chip:focus-visible{outline:2px solid var(--lg-ink);outline-offset:2px}
+.lg-t-club .hands2{display:flex;gap:10px}
+.lg-t-club .hands2 .lg-chip,.lg-t-club .lofts2 .lg-chip{border-radius:var(--lg-r-tag);text-transform:none;letter-spacing:0;font-variation-settings:'wdth' 100}
+.lg-t-club .hands2 .lg-chip{min-width:88px;min-height:48px;font-size:var(--lg-fs-sm);font-weight:500}
+.lg-t-club .hands2 .lg-chip[aria-pressed="true"],.lg-t-club .lofts2 .lg-chip[aria-pressed="true"]{background:var(--lg-tile);color:var(--lg-ink);border:1.5px solid var(--lg-ink)}
+.lg-t-club .hands2 .lg-chip[data-dead]{color:var(--lg-ink-38);border-style:dashed;text-decoration:line-through;cursor:not-allowed}
+.lg-t-club .pickhint{margin:-4px 0 10px;font-size:var(--lg-fs-sm);color:var(--lg-ink-64)}
+.lg-t-club .pickhint.is-full{color:var(--lg-gold-text);font-weight:600}
+.lg-t-club .lofts.lofts2{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.lg-t-club .lofts2 .lg-chip{position:relative;flex-direction:column;gap:2px;min-height:58px;padding:6px 4px;text-decoration:none}
+.lg-t-club .lofts2 .lc-l{font-size:var(--lg-fs-base);font-weight:600;font-variant-numeric:tabular-nums}
+.lg-t-club .lofts2 .lc-l small{margin-left:3px;font-size:.8em;opacity:1}
+.lg-t-club .lofts2 .lc-s{font-size:var(--lg-fs-xs);font-weight:400;color:var(--lg-ink-64)}
+.lg-t-club .lofts2 .lc-ck{position:absolute;right:6px;top:6px;width:12px;height:12px}
+.lg-t-club .lofts2 .lg-chip[data-dead]{color:var(--lg-ink-38);text-decoration:none}
+.lg-t-club .lofts2 .lg-chip[data-dead] .lc-l{text-decoration:line-through}
+.lg-t-club .lofts2 .lg-chip[data-dead] .lc-s{color:var(--lg-ink-38)}
+.lg-t-club .lofts2 .lg-chip[data-dead][aria-pressed="true"]{color:var(--lg-ink-64)}
+.lg-t-club .cta [aria-disabled="true"]{opacity:.55}
+.lg-bigcard .bc-tag.is-foil{background-color:transparent;background-image:var(--lg-foil);color:var(--lg-ink)}
+@media (max-width:749px){.lg-t-club .dots.is-count{font-size:var(--lg-fs-xs);font-weight:600;letter-spacing:.06em;color:var(--lg-ink-64);font-variant-numeric:tabular-nums}}

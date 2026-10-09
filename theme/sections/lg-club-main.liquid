@@ -24,14 +24,19 @@
   endif
   assign hi = -1
   assign li = -1
+  assign fi = -1
   for o in product.options_with_values
     assign on = o.name | downcase
     if on contains 'hand'
       assign hi = forloop.index0
     elsif on contains 'loft'
       assign li = forloop.index0
+    elsif on contains 'finish'
+      assign fi = forloop.index0
     endif
   endfor
+  assign badge = product.metafields.custom.badge.value
+  assign badge_foil = product.metafields.custom.badge_foil.value
   assign wedge = false
   if li > -1
     assign wedge = true
@@ -65,8 +70,8 @@
       {%- assign cut = product.metafields.custom.cutout.value -%}
       {%- assign tiles = 0 -%}
       {%- if cut != blank -%}{%- assign tiles = 1 -%}
-        <figure class="cut wide" data-zoom="{{ cut | image_url: width: 2000 }}">{{ cut | image_url: width: 1200 | image_tag: alt: product.title, loading: 'eager', widths: '500,800,1200', sizes: '(max-width: 749px) 86vw, 30vw' }}
-          {%- if p_tag != blank %}<span class="lg-tag">{{ p_tag }}</span>{% endif -%}</figure>
+        <figure class="cut wide" data-mid="cut" data-zoom="{{ cut | image_url: width: 2000 }}">{{ cut | image_url: width: 1200 | image_tag: alt: product.title, loading: 'eager', widths: '500,800,1200', sizes: '(max-width: 749px) 86vw, 30vw' }}
+          {%- if badge != blank and badge_foil %}<span class="lg-tag is-foil">{{ badge }}</span>{% endif -%}</figure>
       {%- endif -%}
       {%- for m in product.media -%}
         {%- assign alt = m.alt | default: product.title -%}
@@ -75,7 +80,7 @@
         {%- assign more = '' -%}{%- if tiles > 5 %}{% assign more = ' is-more' %}{% endif -%}
         {%- case m.media_type -%}
           {%- when 'image' -%}
-          <figure class="{% if m.aspect_ratio > 1.2 %}wide{% endif %}{{ more }}" data-zoom="{{ m | image_url: width: 2000 }}">{{ m | image_url: width: 1200 | image_tag: alt: alt, loading: lz, widths: '500,800,1200,1600', sizes: '(max-width: 749px) 86vw, (max-width: 980px) 50vw, 30vw' }}</figure>
+          <figure class="{% if m.aspect_ratio > 1.2 %}wide{% endif %}{{ more }}" data-mid="{{ m.id }}" data-zoom="{{ m | image_url: width: 2000 }}">{{ m | image_url: width: 1200 | image_tag: alt: alt, loading: lz, widths: '500,800,1200,1600', sizes: '(max-width: 749px) 86vw, (max-width: 980px) 50vw, 30vw' }}</figure>
           {%- when 'video' -%}
           <figure class="wide is-video{{ more }}">{{ m | video_tag: controls: true, muted: true, playsinline: true, preload: 'metadata', image_size: '1200x' }}</figure>
           {%- when 'external_video' -%}
@@ -88,6 +93,7 @@
   </div>
 
   <div class="buy" id="buy">
+    {%- if badge != blank and badge_foil != true %}<span class="lg-tag pdp-badge">{{ badge }}</span>{% endif -%}
     {%- if p_eyebrow != blank %}<p class="lg-eyebrow">{{ p_eyebrow }}</p>{% endif -%}
     <h1 class="lg-d1">{{ p_h1 | replace: '<em>', '<span class="lg-foil-word">' | replace: '</em>', '</span>' }}</h1>
     {%- if rc >= min and rv -%}
@@ -95,9 +101,24 @@
         {%- if rv0 != blank -%}<a href="#reviews">&ldquo;{{ rv0 }}&rdquo; {{ rv1 }} · {{ rv2 }}</a>{%- else -%}<a href="#reviews">{{ rc }} reviews</a>{%- endif -%}</div>
     {%- endif -%}
     <div class="price"><b data-price>{{ price }}</b>{% render 'lg-was', product: product, variant: v0 %}{% if wedge %}<span data-price-note hidden>each</span>{% endif %}</div>
-    <p class="lg-body">{{ p_lede }}</p>
+    <p class="lg-body" data-lede>{{ p_lede }}</p>
 
-    {%- if c.finishes.size > 1 -%}
+    {%- if wedge and fi > -1 -%}
+    {%- comment -%} Finish = a variant option (Carver 02: Gold / Black, 2026-10-08). Name, tag, photo and
+      line per finish: the "Finish" blocks of this section, matched on the option value. {%- endcomment -%}
+    <div class="row"><span class="lg-label">Finish</span></div>
+    <div class="fins2" data-fins role="group" aria-label="Finish">
+      {%- for o in product.options_with_values -%}{%- if forloop.index0 == fi -%}{%- for v in o.values -%}
+        {%- assign fb = nil -%}{%- assign vv = v | downcase | strip -%}
+        {%- for b in section.blocks -%}{%- if b.type == 'finish' -%}{%- assign bv = b.settings.value | downcase | strip -%}{%- if bv == vv %}{% assign fb = b %}{% endif -%}{%- endif -%}{%- endfor -%}
+        <button type="button" class="fin2" data-f="{{ v | escape }}" aria-pressed="false"{% if fb %} {{ fb.shopify_attributes }}{% endif %}>
+          {%- if fb.settings.tag != blank %}<i class="fin2-tag">{{ fb.settings.tag }}</i>{% endif -%}
+          <span class="fin2-ph">{%- if fb.settings.image != blank -%}{{ fb.settings.image | image_url: width: 240 | image_tag: alt: '' }}{%- endif -%}</span>
+          <b>{{ fb.settings.name | default: v }}</b><span class="fin2-x" data-fx></span>
+        </button>
+      {%- endfor -%}{%- endif -%}{%- endfor -%}
+    </div>
+    {%- elsif c.finishes.size > 1 -%}
     <div class="row"><span class="lg-label">Finish</span></div>
     <div class="fins">
       {%- for fi in c.finishes -%}{%- assign fp = all_products[fi.handle] -%}
@@ -108,17 +129,10 @@
 
     {%- if wedge -%}
     <div class="row"><span class="lg-label">Hand</span></div>
-    <div class="lg-chips" data-hand role="group" aria-label="Hand"></div>
-    <div class="row" id="lofts"><span class="lg-label">Loft and grind <span class="m" data-pickn></span></span><a href="#" data-md-open="md-helper">Help me pick &rarr;</a></div>
-    <div class="lofts" data-lofts role="group" aria-label="Loft and grind"></div>
-    <p class="stocknote" data-stocknote hidden></p>
-    <div class="ro" data-readout aria-live="polite"></div>
-    <div class="row"><span class="lg-label">How many</span><span class="m hint" data-sethint>{{ s.set_hint }}</span></div>
-    <div class="set" data-set role="group" aria-label="How many wedges">
-      <button type="button" data-n="1" aria-pressed="true"><b>1 wedge</b><span>{{ s.set1 }}</span></button>
-      <button type="button" data-n="2" aria-pressed="false"><b>2 wedges</b><span>{{ s.set2 }}</span></button>
-      <button type="button" data-n="3" aria-pressed="false"><b>3 wedges</b><span>{{ s.set3 }}</span></button>
-    </div>
+    <div class="hands2" data-hand role="group" aria-label="Hand"></div>
+    <div class="row" id="lofts"><span class="lg-label">Loft and grind</span><a href="#" data-md-open="md-helper">Help me pick &rarr;</a></div>
+    <p class="pickhint" data-pickhint aria-live="polite">{{ s.pick_hint | default: 'Tap one, or tap a few to build a set.' }}</p>
+    <div class="lofts lofts2" data-lofts role="group" aria-label="Loft and grind"></div>
     {%- else -%}
       {%- for o in product.options_with_values -%}{%- if o.values.size > 1 -%}
         {%- assign ol = o.name -%}{%- if forloop.index0 == hi %}{% assign ol = 'Hand' %}{% endif -%}
@@ -210,7 +224,10 @@
 <script>
 window.LG_CLUB = {
   title: {{ product.title | json }},
-  wedge: {{ wedge }}, hi: {{ hi }}, li: {{ li }},
+  wedge: {{ wedge }}, hi: {{ hi }}, li: {{ li }}, fi: {{ fi }},
+  fins: [{%- for b in section.blocks -%}{%- if b.type == 'finish' -%}{ v: {{ b.settings.value | json }}, n: {{ b.settings.name | json }}, l: {{ b.settings.lede | json }} },{%- endif -%}{%- endfor -%}],
+  fullHint: {{ s.full_hint | default: "That's 3. Tap one to drop it first." | json }},
+  pickLine: {{ s.pick_line | default: 'Pick a loft' | json }},
   grind: {{ c.grind_default | default: 'K' | json }},
   sheet: {{ c.spec.sheet | json }}, headg: {{ c.spec.head_g | default: '' | json }},
   atc: {{ atc | json }}, inStock: {{ s.in_stock | json }},
@@ -219,7 +236,7 @@ window.LG_CLUB = {
   start: {{ product.selected_variant.id | default: 0 }},
   variants: [
     {%- for v in product.variants -%}
-    { id: {{ v.id }}, o: {{ v.options | json }}, a: {{ v.available }}, q: {{ v.inventory_quantity | default: 0 }}, c: {{ v.inventory_policy | json }}, m: {{ v.inventory_management | json }}, p: {{ v.price }} }{% unless forloop.last %},{% endunless %}
+    { id: {{ v.id }}, i: {{ v.featured_media.id | default: 0 }}, o: {{ v.options | json }}, a: {{ v.available }}, q: {{ v.inventory_quantity | default: 0 }}, c: {{ v.inventory_policy | json }}, m: {{ v.inventory_management | json }}, p: {{ v.price }} }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   ]
 };
@@ -261,103 +278,120 @@ document.addEventListener('DOMContentLoaded', function(){
   var paint = function(){};
 
   if (D.wedge) (function(){
-    /* ---------------------------------------------------------- wedges */
+    /* ---------------------------------------------------------- wedges
+       2026-10-08 (Cole, Takomo's Lumo page): finish cards, then hand, then lofts. Tapping lofts IS the
+       count, up to three; a fourth tap says so instead of swapping. Each loft shows its bounce. */
+    var MAX = 3;
+    var finOf = function(v){ return D.fi > -1 ? v.o[D.fi] : ''; };
     var handOf = function(v){ return D.hi > -1 ? v.o[D.hi] : ''; };
     var loftKey = function(raw){ var m = String(raw).match(/(\d+)\s*°?\s*([A-Za-z])?/); return m ? m[1] + (m[2] ? m[2].toUpperCase() : D.grind) : raw; };
-    var HANDS = [], LOFTS = [], seen = {};
+    var FINS = [], HANDS = [], LOFTS = [], seen = {};
     D.variants.forEach(function(v){
+      var f = finOf(v); if (FINS.indexOf(f) < 0) FINS.push(f);
       var h = handOf(v); if (HANDS.indexOf(h) < 0) HANDS.push(h);
-      var k = loftKey(v.o[D.li]); if (!seen[k]){ seen[k] = 1; var m = k.match(/^(\d+)(\w)$/); LOFTS.push({ k: k, n: m[1], g: m[2], label: m[1] + '° ' + m[2] }); }
+      var k = loftKey(v.o[D.li]); if (!seen[k]){ seen[k] = 1; var m = k.match(/^(\d+)(\w)$/); LOFTS.push({ k: k, n: +m[1], g: m[2], label: m[1] + '° ' + m[2] }); }
     });
-    var handLabel = function(h){ return /left/i.test(h) ? 'Left hand' : /right/i.test(h) ? 'Right hand' : h; };
+    LOFTS.sort(function(a, b){ return a.n - b.n || (a.g < b.g ? -1 : a.g > b.g ? 1 : 0); });
+    HANDS.sort(function(a, b){ return (/left/i.test(a) ? 1 : 0) - (/left/i.test(b) ? 1 : 0); });
+    var FB = {}; (D.fins || []).forEach(function(b){ if (b && b.v) FB[String(b.v).toLowerCase().trim()] = b; });
+    var fmeta = function(f){ return FB[String(f).toLowerCase().trim()] || {}; };
+    var fname = function(f){ return fmeta(f).n || f; };
+    var handLabel = function(h){ return /left/i.test(h) ? 'Left' : /right/i.test(h) ? 'Right' : h; };
     var handed = function(){ return /left/i.test(state.hand) ? 'left' : 'right'; };
-    var state = { hand: HANDS[0], picked: [], n: 1 };
-    var find = function(k){ return D.variants.filter(function(v){ return handOf(v) === state.hand && loftKey(v.o[D.li]) === k; })[0]; };
+    var state = { fin: FINS[0], hand: HANDS[0], picked: [], full: false };
+    var find = function(k){ return D.variants.filter(function(v){ return finOf(v) === state.fin && handOf(v) === state.hand && loftKey(v.o[D.li]) === k; })[0]; };
+    var handOK = function(h){ return D.variants.some(function(v){ return finOf(v) === state.fin && handOf(v) === h; }); };
     var dead = function(k){ return st(find(k)) === 'out'; };
     var nice = function(k){ var l = LOFTS.filter(function(x){ return x.k === k; })[0]; return l ? l.label : k; };
-    function firstLive(){ var l = LOFTS.filter(function(v){ return !dead(v.k); }); return l.length ? l[Math.min(4, l.length - 1)].k : null; }
+    var finPrice = function(f){ var p = D.variants.filter(function(v){ return finOf(v) === f; }).map(function(v){ return v.p; }); return p.length ? Math.min.apply(null, p) : 0; };
+    var bounce = function(k){ var m = k.match(/^(\d+)(\w)$/), r = m && ((D.sheet || {})[m[2]] || {})[m[1]]; return r ? r[0] : null; };
+    function firstLive(){ var l = LOFTS.filter(function(x){ return find(x.k) && !dead(x.k); }); return l.length ? l[Math.min(4, l.length - 1)].k : null; }
     var sv = D.variants.filter(function(v){ return v.id === D.start; })[0];
-    if (sv){ state.hand = handOf(sv); state.picked = [loftKey(sv.o[D.li])]; }
-    else if (LOFTS.some(function(l){ return l.k === '56' + D.grind; })) state.picked = ['56' + D.grind];
-    function isOut(){ return state.n === 1 && state.picked.length === 1 && dead(state.picked[0]); }
-    function unit(){ var v = find(state.picked[0]) || D.variants[0]; return v.p; }
+    var qf = (location.search.match(/[?&]finish=([^&]+)/) || [])[1];
+    if (qf){ qf = decodeURIComponent(qf.replace(/\+/g, ' ')).toLowerCase(); FINS.forEach(function(f){ if (f.toLowerCase() === qf) state.fin = f; }); }
+    if (sv){ state.fin = finOf(sv); state.hand = handOf(sv); state.picked = [loftKey(sv.o[D.li])]; }
+    else if (find('56' + D.grind) && !dead('56' + D.grind)) state.picked = ['56' + D.grind];
+    else { var f0 = firstLive(); if (f0) state.picked = [f0]; }
+    function isOut(){ return state.picked.length === 1 && dead(state.picked[0]); }
+    function unit(){ var v = find(state.picked[0]); return v ? v.p : finPrice(state.fin); }
+    var CHECK = '<svg class="lc-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+    /* the finish leads the gallery with its own photo (the variants' image); the cutout leads otherwise */
+    var gal = $('[data-gal]'), cutFig = gal && $('figure[data-mid="cut"]', gal), promoted = null, lead = null;
+    function leadFor(f){
+      if (!gal || f === lead) return; var first = lead === null; lead = f;
+      if (promoted){ promoted.className = promoted.getAttribute('data-cls'); promoted = null; }
+      if (cutFig) cutFig.style.display = '';
+      var vi = D.variants.filter(function(v){ return finOf(v) === f && v.i; })[0];
+      var fig = vi && $('figure[data-mid="' + vi.i + '"]', gal);
+      if (fig){ fig.setAttribute('data-cls', fig.className); fig.className = (fig.className.replace('is-more', '') + ' is-lead wide').trim(); promoted = fig; if (cutFig) cutFig.style.display = 'none'; }
+      if (!first) gal.scrollLeft = 0;
+    }
 
     paint = function(){
-      state.picked = state.picked.filter(function(k){ return state.n === 1 || !dead(k); });
-      if (!state.picked.length && state.n === 1){ var f = firstLive(); state.picked = f ? [f] : [LOFTS[0].k]; }
-      $('[data-hand]').innerHTML = HANDS.map(function(h){
-        return '<button class="lg-chip" type="button" data-h="' + esc(h) + '" aria-pressed="' + (h === state.hand) + '">' + esc(handLabel(h)) + '</button>'; }).join('');
+      if (!handOK(state.hand)) state.hand = HANDS.filter(handOK)[0] || state.hand;
+      var was = state.picked;
+      state.picked = was.filter(function(k){ return find(k) && (was.length === 1 || !dead(k)); }).slice(0, MAX);
+      var n = state.picked.length;
+      var base = finPrice(FINS[0]);
+      $$('[data-fins] [data-f]').forEach(function(b){ var f = b.getAttribute('data-f'), d = finPrice(f) - base;
+        b.setAttribute('aria-pressed', String(f === state.fin));
+        var x = $('[data-fx]', b); if (x) x.textContent = d > 0 ? '+' + money(d) : ''; });
+      $('[data-hand]').innerHTML = HANDS.map(function(h){ var ok = handOK(h);
+        return '<button class="lg-chip" type="button" data-h="' + esc(h) + '" aria-pressed="' + (h === state.hand) + '"'
+          + (ok ? '' : ' data-dead aria-disabled="true" aria-label="' + esc(handLabel(h)) + ' hand, not made in ' + esc(fname(state.fin)) + '"') + '>' + esc(handLabel(h)) + '</button>'; }).join('');
       $('[data-lofts]').innerHTML = LOFTS.map(function(l){
-        var d = dead(l.k), ex = find(l.k);
-        if (!ex) return '';
-        return '<button class="lg-chip" type="button" data-l="' + l.k + '" aria-pressed="' + (state.picked.indexOf(l.k) > -1) + '"'
-          + (d ? ' data-dead aria-label="' + esc(l.label) + ', ' + esc(backLine().toLowerCase()) + '"' : ' aria-label="' + esc(l.label) + '"')
-          + '>' + l.n + '°<small>' + l.g + '</small></button>'; }).join('');
-      var out = LOFTS.filter(function(l){ return find(l.k) && dead(l.k); }).map(function(l){ return l.label; });
-      var sn = $('[data-stocknote]');
-      if (out.length){ var last = out.pop(), names = out.length ? out.join(', ') + ' and ' + last : last;
-        sn.innerHTML = '<b>' + esc(names) + ', ' + handed() + '-handed, ' + (out.length ? 'are' : 'is') + ' ' + (D.month ? 'back in ' + esc(D.month) : 'sold out') + '.</b> Everything else ships now.';
-        sn.hidden = false; } else sn.hidden = true;
-      $$('[data-set] button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-n') === state.n)); });
-      var need = state.n - state.picked.length, u = unit(), sum = u * state.n, o = isOut();
+        if (!find(l.k)) return '';
+        var d = dead(l.k), on = state.picked.indexOf(l.k) > -1, bo = bounce(l.k), sub = d ? backLine() : bo != null ? bo + '° bounce' : '';
+        return '<button class="lg-chip" type="button" data-l="' + l.k + '" aria-pressed="' + on + '"' + (d ? ' data-dead' : '')
+          + ' aria-label="' + esc(l.label + ' grind' + (sub ? ', ' + sub.toLowerCase() : '')) + '">' + (on ? CHECK : '')
+          + '<span class="lc-l">' + l.n + '°<small>' + l.g + '</small></span>' + (sub ? '<span class="lc-s">' + esc(sub) + '</span>' : '') + '</button>'; }).join('');
+      var hint = $('[data-pickhint]');
+      if (hint){ if (hint.getAttribute('data-default') == null) hint.setAttribute('data-default', hint.textContent);
+        hint.textContent = state.full ? D.fullHint : hint.getAttribute('data-default'); hint.classList.toggle('is-full', state.full); }
+      var u = unit(), sum = u * n, o = isOut();
       var pv = find(state.picked[0]), ps = st(pv), anyPre = state.picked.some(function(k){ return st(find(k)) === 'pre'; });
-      $('[data-pickn]').textContent = state.picked.length ? '· ' + state.picked.map(nice).join(', ') : '';
-      $('[data-sethint]').textContent = state.n === 1 ? "Two or more and shipping's on us" : need > 0 ? 'Tap ' + need + ' more loft' + (need > 1 ? 's' : '')
-        : state.n + ' lofts, ' + money(u) + ' each' + (sum >= D.free * 100 ? ", shipping's on us" : '');
-      $('[data-price-note]').hidden = state.n === 1;
+      $('[data-price-note]').hidden = n < 2;
       $('[data-price]').textContent = money(u);
-      btn.textContent = o ? "Tell me when it's back" : need > 0 ? 'Tap ' + need + ' more loft' + (need > 1 ? 's' : '') + ' first'
-        : (anyPre ? preLine() : 'Put ' + (state.n > 1 ? 'all ' + state.n : 'it') + ' in the bag') + ' · ' + money(sum);
-      btn.setAttribute('aria-disabled', String(need > 0));
+      btn.textContent = !n ? D.pickLine : o ? "Tell me when it's back"
+        : (anyPre ? preLine() : 'Put ' + (n > 1 ? 'all ' + n : 'it') + ' in the bag') + ' · ' + money(sum);
+      btn.setAttribute('aria-disabled', String(!n));
       var line = $('[data-stockline]');
       line.classList.toggle('is-out', o);
       line.textContent = o ? nice(state.picked[0]) + ', ' + handed() + '-handed, ' + (D.month ? 'is back in ' + D.month : 'is sold out')
         : anyPre ? preLine() : D.inStock;
       if (pv) vid.value = pv.id;
-      pre.disabled = !(state.n === 1 && ps === 'pre'); pre.value = 'ships ' + (D.month || 'soon');
-      $('[data-sticky-name]').textContent = D.title + ' · ' + state.picked.map(nice).join(', ');
-      $('[data-sticky-price]').textContent = o ? backLine() : money(sum) + (state.n > 1 ? ' · ' + state.n + ' wedges' : '');
+      pre.disabled = !(n === 1 && ps === 'pre'); pre.value = 'ships ' + (D.month || 'soon');
+      var le = $('[data-lede]');
+      if (le){ if (le.getAttribute('data-default') == null) le.setAttribute('data-default', le.textContent); le.textContent = fmeta(state.fin).l || le.getAttribute('data-default'); }
+      leadFor(state.fin);
+      $('[data-sticky-name]').textContent = D.title + (FINS.length > 1 ? ' · ' + fname(state.fin) : '') + (n ? ' · ' + state.picked.map(nice).join(', ') : '');
+      $('[data-sticky-price]').textContent = o ? backLine() : money(sum || u) + (n > 1 ? ' · ' + n + ' wedges' : '');
       $('[data-atc-sticky]').textContent = o ? 'Tell me' : D.atc;
-      sticky.classList.toggle('is-one', state.n === 1);
-      $('[data-sb-hand]').innerHTML = HANDS.map(function(h){ return '<option value="' + esc(h) + '"' + (h === state.hand ? ' selected' : '') + '>' + esc(handLabel(h)) + '</option>'; }).join('');
+      sticky.classList.toggle('is-one', n < 2);
+      $('[data-sb-hand]').innerHTML = HANDS.filter(handOK).map(function(h){ return '<option value="' + esc(h) + '"' + (h === state.hand ? ' selected' : '') + '>' + esc(handLabel(h)) + ' hand</option>'; }).join('');
       $('[data-sb-loft]').innerHTML = LOFTS.filter(function(l){ return find(l.k); }).map(function(l){ return '<option value="' + l.k + '"' + (state.picked[0] === l.k ? ' selected' : '') + '>' + esc(l.label) + (dead(l.k) ? ' · ' + esc(backLine().toLowerCase()) : '') + '</option>'; }).join('');
-      readout(o);
     };
-    function readout(o){
-      var p = state.picked, S = D.sheet || {};
-      var cols = p.map(function(k){ var m = k.match(/^(\d+)(\w)$/), s = (S[m[2]] || {})[m[1]], d = dead(k);
-        return '<div class="ro-c' + (d ? ' is-out' : '') + '"><b>' + m[1] + '°<small>' + m[2] + ' grind</small></b><dl>'
-          + (s ? '<dt>Bounce</dt><dd>' + s[0] + '°</dd><dt>Lie</dt><dd>' + s[1] + '°</dd><dt>Length</dt><dd>' + s[2] + '&Prime;</dd>' : '')
-          + (D.headg ? '<dt>Head</dt><dd>' + esc(D.headg) + '</dd>' : '') + '</dl></div>'; });
-      for (var i = p.length; i < state.n; i++) cols.push('<div class="ro-c"><b style="color:var(--lg-ink-38)">&middot;&middot;&middot;</b><dl><dt>Tap a loft</dt><dd></dd></dl></div>');
-      $('[data-readout]').innerHTML = '<div class="ro-hd"><span class="lg-label">' + (state.n > 1 ? 'Your set' : 'Your pick') + '</span>'
-        + '<span class="lg-label lg-live' + (o ? ' is-out' : '') + '"><i></i>' + (o ? esc(backLine()) : 'In stock') + '</span></div>'
-        + '<div class="ro-g' + (state.n === 1 ? ' is-one' : '') + '" style="--n:' + state.n + '">' + cols.join('') + '</div>';
-    }
     document.addEventListener('click', function(e){
       var el;
+      if (el = e.target.closest('[data-fins] [data-f]')){ state.fin = el.getAttribute('data-f'); state.full = false; paint(); return; }
       if (el = e.target.closest('[data-lofts] button')){
         var k = el.getAttribute('data-l'), i = state.picked.indexOf(k);
-        if (el.hasAttribute('data-dead') && state.n > 1){ toast(nice(k) + " is " + (D.month ? 'back in ' + D.month : 'sold out') + ", so it can't go in a set yet."); return; }
-        if (state.n === 1) state.picked = [k];
-        else if (i > -1){ if (state.picked.length > 1) state.picked.splice(i, 1); }
-        else if (state.picked.length < state.n) state.picked.push(k);
-        else { state.picked.shift(); state.picked.push(k); }
-        paint(); return;
+        if (i > -1){ state.picked.splice(i, 1); state.full = false; paint(); return; }
+        if (state.picked.length === 1 && dead(state.picked[0])) state.picked = [];
+        if (el.hasAttribute('data-dead') && state.picked.length){ toast(nice(k) + ' is ' + (D.month ? 'back in ' + D.month : 'sold out') + ", so it can't go in a set yet."); return; }
+        if (state.picked.length >= MAX){ state.full = true; paint(); return; }
+        state.picked.push(k); state.full = false; paint(); return;
       }
-      if (el = e.target.closest('[data-set] button')){
-        state.n = +el.getAttribute('data-n');
-        if (state.picked.length > state.n) state.picked = state.picked.slice(-state.n);
-        paint(); return;
-      }
-      if (el = e.target.closest('[data-hand] button')){ state.hand = el.getAttribute('data-h'); paint(); return; }
+      if (el = e.target.closest('[data-hand] button')){ if (el.hasAttribute('data-dead')) return; state.hand = el.getAttribute('data-h'); state.full = false; paint(); return; }
     });
     $('[data-sb-hand]').addEventListener('change', function(){ state.hand = this.value; paint(); });
-    $('[data-sb-loft]').addEventListener('change', function(){ state.picked = [this.value]; state.n = 1; paint(); });
+    $('[data-sb-loft]').addEventListener('change', function(){ state.picked = [this.value]; state.full = false; paint(); });
     form.addEventListener('submit', function(e){
+      var n = state.picked.length;
+      if (!n){ e.preventDefault(); e.stopPropagation(); if (window.Lucky) Lucky.jump('lofts'); return; }
       if (isOut()){ e.preventDefault(); e.stopPropagation(); openNotify(find(state.picked[0]), nice(state.picked[0])); return; }
-      if (state.picked.length < state.n){ e.preventDefault(); e.stopPropagation(); if (window.Lucky) Lucky.jump('lofts'); return; }
-      if (state.n > 1){ e.preventDefault(); e.stopPropagation();
+      if (n > 1){ e.preventDefault(); e.stopPropagation();
         var items = state.picked.map(function(k){ var v = find(k), it = { id: v.id, quantity: 1 };
           if (st(v) === 'pre') it.properties = { 'Pre-order': 'ships ' + (D.month || 'soon') }; return it; });
         flash = true; LuckyBag.add(items).catch(function(){ flash = false; }); return; }
@@ -366,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function(){
     /* the helper */
     (function(){
       var box = $('[data-helper]'); if (!box) return; var pw = 46, open = null;
-      var has = function(g){ return LOFTS.some(function(l){ return l.g === g; }); };
+      var has = function(g){ return LOFTS.some(function(l){ return l.g === g && find(l.k); }); };
       function calc(){ var b = pw + 6, l = [b, b + 4, b + 8].map(function(x){ return Math.min(60, Math.max(50, Math.round(x / 2) * 2)); }), g = open === 'yes' && has('S') ? 'S' : 'K';
         if (g === 'S') l = l.map(function(x){ return [52, 56, 60].reduce(function(a, c){ return Math.abs(c - x) < Math.abs(a - x) ? c : a; }); });
         return { lofts: l.filter(function(x, i, a){ return a.indexOf(x) === i; }), g: g }; }
@@ -379,8 +413,8 @@ document.addEventListener('DOMContentLoaded', function(){
       box.addEventListener('click', function(e){ var b;
         if (b = e.target.closest('[data-pw]')){ pw = +b.getAttribute('data-pw'); draw(); return; }
         if (b = e.target.closest('[data-face]')){ open = b.getAttribute('data-face'); draw(); return; }
-        if (e.target.closest('[data-use]')){ var r = calc(), picks = r.lofts.map(function(l){ return l + r.g; }).filter(function(k){ return find(k) && !dead(k); }).slice(0, 3);
-          if (!picks.length){ var f = firstLive(); picks = f ? [f] : []; } state.n = Math.max(1, picks.length); state.picked = picks; paint();
+        if (e.target.closest('[data-use]')){ var r = calc(), picks = r.lofts.map(function(l){ return l + r.g; }).filter(function(k){ return find(k) && !dead(k); }).slice(0, MAX);
+          if (!picks.length){ var f = firstLive(); picks = f ? [f] : []; } state.picked = picks; state.full = false; paint();
           $('#md-helper').hidden = true; if (window.Lucky) Lucky.jump('lofts'); } });
       draw();
     })();
@@ -434,8 +468,13 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 
   /* gallery dots (phone) */
-  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'); if (!g || !d || !d.children.length) return; var n = g.children.length; d.children[0].classList.add('on');
-    g.addEventListener('scroll', function(){ var i = Math.round(g.scrollLeft / (g.scrollWidth / n)); [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }, { passive: true }); })();
+  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'); if (!g || !d || !d.children.length) return;
+    var vis = function(){ return [].filter.call(g.children, function(x){ return x.style.display !== 'none'; }).length; };
+    /* more than eight photos: a "1 / 21" counter instead of a row of dots (2026-10-08) */
+    var many = d.children.length > 8; if (many){ d.innerHTML = ''; d.classList.add('is-count'); }
+    function mark(){ var n = vis(), i = Math.min(n - 1, Math.round(g.scrollLeft / (g.scrollWidth / n)));
+      if (many) d.textContent = (i + 1) + ' / ' + n; else [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }
+    mark(); g.addEventListener('scroll', mark, { passive: true }); })();
 
   /* the gallery shows five; the button opens the rest */
   var ga = $('[data-gal-all]');
@@ -562,6 +601,24 @@ document.addEventListener('DOMContentLoaded', function(){
       "id": "in_stock",
       "label": "In-stock line",
       "default": "In stock · ships in 1 to 2 days"
+    },
+    {
+      "type": "text",
+      "id": "pick_hint",
+      "label": "Wedge loft hint",
+      "default": "Tap one, or tap a few to build a set."
+    },
+    {
+      "type": "text",
+      "id": "full_hint",
+      "label": "Wedge hint at three",
+      "default": "That's 3. Tap one to drop it first."
+    },
+    {
+      "type": "text",
+      "id": "pick_line",
+      "label": "Wedge button with no loft picked",
+      "default": "Pick a loft"
     },
     {
       "type": "text",
@@ -730,6 +787,21 @@ document.addEventListener('DOMContentLoaded', function(){
       "type": "textarea",
       "id": "p_d3_b",
       "label": "Drop-down 3 text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "finish",
+      "name": "Finish",
+      "limit": 4,
+      "settings": [
+        { "type": "paragraph", "content": "For a club whose variants have a Finish option. Matched on the option value, so type it exactly as in the product (Gold, Black)." },
+        { "type": "text", "id": "value", "label": "Finish option value", "default": "Gold" },
+        { "type": "text", "id": "name", "label": "Name on the card" },
+        { "type": "text", "id": "tag", "label": "Small tag (e.g. New)" },
+        { "type": "image_picker", "id": "image", "label": "Card photo (the club on a clear background)" },
+        { "type": "textarea", "id": "lede", "label": "Line under the price when this finish is picked" }
+      ]
     }
   ]
 }

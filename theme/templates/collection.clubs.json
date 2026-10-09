@@ -140,18 +140,21 @@
             "vibe": "Buttery",
             "line": "Six lofts, two grinds, and a whole lot of shine.",
             "hud": "50 to 60° | Lofts\nK · S | Grinds\nRH · LH | Hand",
-            "cta": "Pick a loft"
+            "cta": "Pick a loft",
+            "finish": "Gold"
           }
         },
         "b2": {
           "type": "card",
           "settings": {
-            "product": "lucky-golf-lgw02-black",
+            "product": "lucky-golf-lgw02-gold",
             "name": "Carver 02 Black",
             "vibe": "Filthy",
             "line": "All the spin. None of the spotlight. K grind, six lofts.",
             "hud": "50 to 60° | Lofts\nK | Grind\nRH · LH | Hand",
-            "cta": "Pick a loft"
+            "cta": "Pick a loft",
+            "finish": "Black",
+            "image": "shopify://shop_images/lg-card-carver-black.webp"
           }
         },
         "b3": {
