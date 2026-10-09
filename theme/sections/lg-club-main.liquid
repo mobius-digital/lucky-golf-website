@@ -134,13 +134,19 @@
     <p class="pickhint" data-pickhint aria-live="polite">{{ s.pick_hint | default: 'Tap one, or tap a few to build a set.' }}</p>
     <div class="lofts lofts2" data-lofts role="group" aria-label="Loft and grind"></div>
     {%- else -%}
-      {%- for o in product.options_with_values -%}{%- if o.values.size > 1 -%}
-        {%- assign ol = o.name -%}{%- if forloop.index0 == hi %}{% assign ol = 'Hand' %}{% endif -%}
-        <div class="row"><span class="lg-label">{{ ol }} <span class="m" data-pick="{{ forloop.index0 }}"></span></span></div>
-        <div class="lg-chips" data-opt="{{ forloop.index0 }}" role="group" aria-label="{{ ol | escape }}">
-          {%- for v in o.values -%}{%- assign vl = v -%}{%- if forloop.parentloop.index0 == hi -%}{%- if v contains 'Left' %}{% assign vl = 'Left hand' %}{% elsif v contains 'Right' %}{% assign vl = 'Right hand' %}{% endif -%}{%- endif -%}
-          <button class="lg-chip" type="button" data-v="{{ v | escape }}" aria-label="{{ vl | escape }}">{{ vl }}</button>
+      {%- comment -%} 2026-10-09 (Cole): same quiet Right / Left boxes as the wedges, always shown; a hand the club isn't made in is struck through. {%- endcomment -%}
+      {%- for o in product.options_with_values -%}{%- assign ishand = false -%}{%- if forloop.index0 == hi %}{% assign ishand = true %}{% endif -%}
+      {%- if o.values.size > 1 or ishand -%}
+        {%- assign ol = o.name -%}{%- if ishand %}{% assign ol = 'Hand' %}{% endif -%}
+        <div class="row"><span class="lg-label">{{ ol }}{% unless ishand %} <span class="m" data-pick="{{ forloop.index0 }}"></span>{% endunless %}</span></div>
+        <div class="lg-chips{% if ishand %} hands2{% endif %}" data-opt="{{ forloop.index0 }}" role="group" aria-label="{{ ol | escape }}">
+          {%- for v in o.values -%}{%- assign vl = v -%}{%- if ishand -%}{%- if v contains 'Left' %}{% assign vl = 'Left' %}{% elsif v contains 'Right' %}{% assign vl = 'Right' %}{% endif -%}{%- endif -%}
+          <button class="lg-chip" type="button" data-v="{{ v | escape }}" aria-label="{{ vl | escape }}{% if ishand %} hand{% endif %}">{{ vl }}</button>
           {%- endfor -%}
+          {%- if ishand and o.values.size == 1 -%}{%- assign only = o.values.first | downcase -%}
+            {%- if only contains 'right' -%}<button class="lg-chip" type="button" data-v="" data-none data-dead aria-disabled="true" aria-label="Left hand, not made in this club">Left</button>
+            {%- elsif only contains 'left' -%}<button class="lg-chip" type="button" data-v="" data-none data-dead aria-disabled="true" aria-label="Right hand, not made in this club">Right</button>{%- endif -%}
+          {%- endif -%}
         </div>
       {%- endif -%}{%- endfor -%}
     {%- endif -%}
@@ -448,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function(){
       $('[data-atc-sticky]').textContent = s === 'out' ? 'Tell me' : D.atc;
       var mon = $('[data-mon-stock]'); if (mon){ mon.textContent = s === 'out' ? backLine() : 'In stock'; mon.parentNode.classList.toggle('is-out', s === 'out'); }
     };
-    document.addEventListener('click', function(e){ var b = e.target.closest('[data-opt] button'); if (!b) return;
+    document.addEventListener('click', function(e){ var b = e.target.closest('[data-opt] button'); if (!b || b.hasAttribute('data-none')) return;
       pick[+b.closest('[data-opt]').getAttribute('data-opt')] = b.getAttribute('data-v'); paint(); });
     document.addEventListener('change', function(e){ var s = e.target.closest('[data-sb-opt]'); if (!s) return; pick[+s.getAttribute('data-sb-opt')] = s.value; paint(); });
     form.addEventListener('submit', function(e){
