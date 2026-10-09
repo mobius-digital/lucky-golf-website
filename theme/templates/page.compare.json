@@ -47,7 +47,7 @@
       "type": "lg-cmp-cards",
       "settings": {
         "eyebrow": "The wedge",
-        "heading": "$99 for gold. $109 for <em>black.</em>"
+        "heading": "$99 for gold. $119 for <em>black.</em>"
       },
       "blocks": {
         "b1": {
@@ -96,7 +96,7 @@
           "settings": {
             "label": "One wedge, new",
             "them": "$170 to $200",
-            "us": "$99 to $109"
+            "us": "$99 to $119"
           }
         },
         "b2": {
