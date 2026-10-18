@@ -155,6 +155,13 @@ body:has(.cd:not([hidden])) .lg-guide,body:has(.md:not([hidden])) .lg-guide{disp
 .md-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--lg-ink-64)}
 .md-panel .lg-d3{margin:0 0 12px}
 .md-panel p{margin:0 0 12px;color:var(--lg-ink-70)}
+/* the panel is always light: undo the dark-band colours it inherits when its section is an .lg-band (club page reels) */
+.md .md-panel :is(.lg-link,.lg-aside,.lg-label){color:var(--lg-ink-70)}
+.md .md-panel .lg-btn-line{color:var(--lg-ink);border-color:var(--lg-ink)}
+.md .md-panel .lg-btn-line:hover{background:var(--lg-ink);color:var(--lg-page)}
+.md .md-panel .lg-input{background:var(--lg-page);border-color:var(--lg-rule);color:var(--lg-ink)}
+.md .md-panel .lg-input::placeholder{color:var(--lg-ink-64)}
+.md .md-panel .lg-stars{color:var(--lg-ink)}
 .md-panel h4{margin:18px 0 8px}
 .md-foot{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
 .md-carriers{display:flex;gap:8px;margin:0 0 14px}
