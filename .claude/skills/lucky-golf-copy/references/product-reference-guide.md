@@ -48,7 +48,7 @@ Shaft: stock shaft
 Grip: stock grip
 Hand: right-hand and left-hand
 Headcover: not included
-Price: $109
+Price: $119 (live store, checked 2026-10-21; sold as the Black finish of "Carver 02")
 
 Platform note: LGW02 Black shares its underlying construction and manufacturer specs with the LGW01 platform (K Grind, LGW01 lies and bounces, six-loft lineup). The "LGW02" name signals product tier and pricing — it does not indicate a shared platform with LGW02 Gold. LGW02 Gold and LGW02 Black have different grinds and different dimensional specs despite sharing the LGW02 family name.
 
