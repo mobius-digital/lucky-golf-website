@@ -32,7 +32,7 @@
 .bf-strip svg{width:18px;height:18px;flex:none}
 
 /* the ladder: three rungs, the money huge */
-.bf-ladder{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:28px 0 0;padding:0}
+.bf-ladder{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:12px;margin:28px 0 0;padding:0}
 .bf-rung{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 12px 22px;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);text-align:center}
 .bf-rung.is-best{border:2px solid var(--lg-ink);background:var(--lg-tile);padding:27px 11px 21px}
 .bf-rung-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);padding:4px 9px;border-radius:var(--lg-r-tag);background-image:var(--lg-foil);color:var(--lg-ink);
@@ -58,7 +58,7 @@
   .bf-hero-in{position:static;background:#06110B;padding-top:26px;padding-bottom:32px}
   .bf-h1{font-size:clamp(46px,13vw,68px)}
   .bf-strip{flex-direction:column;align-items:flex-start;gap:10px}
-  .bf-ladder{grid-template-columns:1fr;gap:16px}
+  .bf-ladder{grid-auto-flow:row;grid-auto-columns:auto;gap:16px}
   .bf-rung{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline;text-align:left;padding:18px 16px}
   .bf-rung.is-best{padding:17px 15px}
   .bf-rung-tag{left:16px;transform:none}

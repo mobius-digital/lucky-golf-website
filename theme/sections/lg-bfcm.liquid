@@ -34,7 +34,8 @@
       <div class="bf-ph" data-bf-show="{{ k }}"{% unless k == 'mail' %} hidden{% endunless %}>
         {%- if s[e_key] != blank %}<p class="bf-eye">{{ s[e_key] }}</p>{% endif -%}
         <{% if k == 'mail' %}h1{% else %}h2{% endif %} class="bf-h1">{{ s[h_key] }}</{% if k == 'mail' %}h1{% else %}h2{% endif %}>
-        {%- if s[d_key] != blank %}<p class="bf-deal">{{ s[d_key] }}</p>{% endif -%}
+        {%- if s.gifts_gone and k != 'over' -%}<p class="bf-deal">{{ s.gone_deal }}</p>
+        {%- elsif s[d_key] != blank -%}<p class="bf-deal">{{ s[d_key] }}</p>{%- endif -%}
         {%- if s[l_key] != blank %}<p class="bf-lede">{{ s[l_key] }}</p>{% endif -%}
       </div>
     {%- endfor -%}
@@ -63,7 +64,7 @@
   <h2 class="bf-h" id="bf-deal-h">{{ s.ladder_title }}</h2>
   <p class="bf-l">{{ s.ladder_line }}</p>
   <ol class="bf-ladder">
-    <li class="bf-rung">
+    <li class="bf-rung" data-bf-show="mail">
       <span class="bf-rung-n">1 club</span>
       <b class="bf-rung-v">{{ s.r1_value }}</b>
       <span class="bf-rung-s">{{ s.r1_small }}</span>
@@ -71,13 +72,13 @@
     <li class="bf-rung">
       <span class="bf-rung-n">2 clubs</span>
       <b class="bf-rung-v">$50 off</b>
-      <span class="bf-rung-s">{{ s.r2_small }}</span>
+      <span class="bf-rung-s">{% if s.gifts_gone %}{{ s.r2_small_gone }}{% else %}{{ s.r2_small }}{% endif %}</span>
     </li>
     <li class="bf-rung is-best">
       <i class="bf-rung-tag">{{ s.best }}</i>
       <span class="bf-rung-n">3 or more</span>
       <b class="bf-rung-v">$100 off</b>
-      <span class="bf-rung-s">{{ s.r3_small }}</span>
+      <span class="bf-rung-s">{% if s.gifts_gone %}{{ s.r3_small_gone }}{% else %}{{ s.r3_small }}{% endif %}</span>
     </li>
   </ol>
   {%- if s.example != blank %}<p class="bf-ex">{{ s.example }}</p>{% endif -%}
@@ -101,7 +102,7 @@
     {%- for i in (1..8) -%}
       {%- assign qk = 'q' | append: i -%}{%- assign ak = 'a' | append: i -%}
       {%- if s[qk] != blank -%}
-      <details class="lg-fq"><summary>{{ s[qk] }}</summary><div class="lg-fq-a"><p>{{ s[ak] | replace: '[ship]', ship }}</p></div></details>
+      <details class="lg-fq"><summary>{{ s[qk] }}</summary><div class="lg-fq-a"><p>{% if i == 3 and s.gifts_gone %}{{ s.a3_gone }}{% else %}{{ s[ak] | replace: '[ship]', ship }}{% endif %}</p></div></details>
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -157,15 +158,15 @@ window.LG_BF = {
     { "type": "text", "id": "mail_lede", "label": "Mail: line", "default": "You got the postcard, so you go first. Everyone else waits until Thanksgiving." },
     { "type": "text", "id": "list_eyebrow", "label": "List: eyebrow", "default": "Early access" },
     { "type": "text", "id": "list_heading", "label": "List: heading", "default": "You're in early" },
-    { "type": "text", "id": "list_deal", "label": "List: deal line", "default": "Free towel and divot tool with any club. $50 off two clubs. $100 off three or more." },
+    { "type": "text", "id": "list_deal", "label": "List: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
     { "type": "text", "id": "list_lede", "label": "List: line", "default": "Two days before everyone else. First pick of every loft." },
     { "type": "text", "id": "live_eyebrow", "label": "Black Friday: eyebrow", "default": "Black Friday" },
     { "type": "text", "id": "live_heading", "label": "Black Friday: heading", "default": "The more you bag, the less you pay" },
-    { "type": "text", "id": "live_deal", "label": "Black Friday: deal line", "default": "Free towel and divot tool with any club. $50 off two clubs. $100 off three or more." },
+    { "type": "text", "id": "live_deal", "label": "Black Friday: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
     { "type": "text", "id": "live_lede", "label": "Black Friday: line", "default": "No code. The price drops in your bag." },
     { "type": "text", "id": "cm_eyebrow", "label": "Cyber Monday: eyebrow", "default": "Cyber Monday" },
     { "type": "text", "id": "cm_heading", "label": "Cyber Monday: heading", "default": "Last call" },
-    { "type": "text", "id": "cm_deal", "label": "Cyber Monday: deal line", "default": "Free towel and divot tool with any club. $50 off two clubs. $100 off three or more." },
+    { "type": "text", "id": "cm_deal", "label": "Cyber Monday: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
     { "type": "text", "id": "cm_lede", "label": "Cyber Monday: line", "default": "Ends at midnight Central. After that it's full price until next year." },
     { "type": "text", "id": "over_eyebrow", "label": "After: eyebrow" },
     { "type": "text", "id": "over_heading", "label": "After: heading", "default": "That's a wrap" },
@@ -176,12 +177,16 @@ window.LG_BF = {
     { "type": "text", "id": "trust_days", "label": "Returns", "default": "Sixty days to prove us wrong" },
     { "type": "text", "id": "trust_ships", "label": "Shipping speed", "default": "Ships in 1 to 2 business days" },
     { "type": "header", "content": "The deal" },
+    { "type": "checkbox", "id": "gifts_gone", "label": "Towels and divot tools are gone", "default": false, "info": "Tick when stock hits zero: the gift copy comes off every phase and the line below shows instead." },
+    { "type": "text", "id": "gone_deal", "label": "Deal line once gifts are gone", "default": "Gifts are gone. $50 off 2 clubs, $100 off 3 or more still on." },
     { "type": "text", "id": "ladder_title", "label": "Heading", "default": "The deal" },
     { "type": "text", "id": "ladder_line", "label": "Line", "default": "Mix any clubs you want. Every club counts." },
     { "type": "text", "id": "r1_value", "label": "1 club: value", "default": "Free towel + divot tool" },
     { "type": "text", "id": "r1_small", "label": "1 club: small", "default": "In the box with your club" },
-    { "type": "text", "id": "r2_small", "label": "2 clubs: small", "default": "Plus the towel and divot tool" },
+    { "type": "text", "id": "r2_small", "label": "2 clubs: small", "default": "Plus a free towel and divot tool" },
+    { "type": "text", "id": "r2_small_gone", "label": "2 clubs: small, gifts gone", "default": "Any two clubs" },
     { "type": "text", "id": "r3_small", "label": "3+ clubs: small", "default": "Plus the towel, divot tool and free shipping" },
+    { "type": "text", "id": "r3_small_gone", "label": "3+ clubs: small, gifts gone", "default": "Plus free shipping" },
     { "type": "text", "id": "best", "label": "3+ tag", "default": "Best deal" },
     { "type": "text", "id": "example", "label": "Worked example", "default": "Three Carver 02 Gold wedges: $297, you pay $197, and it ships free." },
     { "type": "header", "content": "Clubs" },
@@ -194,7 +199,8 @@ window.LG_BF = {
     { "type": "text", "id": "q2", "label": "Q2", "default": "Which clubs count?" },
     { "type": "textarea", "id": "a2", "label": "A2", "default": "Every club we sell. Mix lofts, finishes, a putter and the Stryker however you want. Two clubs gets $50 off, three or more gets $100 off." },
     { "type": "text", "id": "q3", "label": "Q3", "default": "Where's my towel and divot tool?" },
-    { "type": "textarea", "id": "a3", "label": "A3", "default": "In the box with your club, nothing to add. One of each per order, while they last." },
+    { "type": "textarea", "id": "a3", "label": "A3", "default": "Postcard orders get one towel and one divot tool with any club. From Nov 24, orders with two or more clubs get them. One set per order, in the box with your clubs, while they last." },
+    { "type": "textarea", "id": "a3_gone", "label": "A3 once gifts are gone", "default": "They're all gone. The $50 and $100 off are still on." },
     { "type": "text", "id": "q4", "label": "Q4", "default": "Is shipping free?" },
     { "type": "textarea", "id": "a4", "label": "A4", "default": "On orders of $[ship] and up. Three Carvers with the deal comes to $197, so that one ships free." },
     { "type": "text", "id": "q5", "label": "Q5", "default": "Does it stack with other codes?" },
