@@ -1,0 +1,70 @@
+/* The Black Friday page (sections/lg-bfcm.liquid). Same grammar as the Carver sets page: caps headline + one line,
+   dark hero, foil only on the best rung and the button. Tokens from lucky.css; px only (the root font is 10px). */
+.bf-page{color:var(--lg-ink);background:var(--lg-page)}
+.bf-h,.bf-h1,.bf-sign-t{margin:0;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;line-height:.95;letter-spacing:-.005em}
+.bf-h{font-size:clamp(34px,4.4vw,60px)}
+.bf-l{margin:10px 0 0;max-width:60ch;font-size:var(--lg-fs-lead);color:var(--lg-ink-70)}
+.bf-sec{padding-top:72px;padding-bottom:16px;scroll-margin-top:90px}
+[data-bf-page] [hidden]{display:none!important}
+
+/* hero: photo whole, copy over the dark left; phones stack photo then copy */
+.bf-hero{position:relative;background:#06110B;color:var(--lg-on-dark);overflow:hidden}
+.bf-hero-ph{aspect-ratio:16/9;max-height:86vh;width:100%}
+.bf-hero-ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.bf-hero-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding-top:24px;padding-bottom:24px;
+  background:linear-gradient(90deg,rgba(6,17,11,.92) 0%,rgba(6,17,11,.74) 38%,rgba(6,17,11,0) 66%)}
+.bf-eye{margin:0 0 14px;font-size:var(--lg-fs-sm);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lg-on-dark-m)}
+.bf-h1{max-width:11ch;font-size:clamp(52px,7.4vw,116px);color:var(--lg-on-dark)}
+.bf-deal{margin:18px 0 0;max-width:32ch;font-size:clamp(18px,1.7vw,24px);font-weight:700;line-height:1.25;color:var(--lg-on-dark)}
+.bf-lede{margin:10px 0 0;max-width:40ch;font-size:var(--lg-fs-base);color:var(--lg-on-dark-m)}
+.bf-code{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;margin-top:22px;padding:10px 14px;border:1.5px dashed rgba(255,255,255,.55);border-radius:var(--lg-r-tag)}
+.bf-code-lbl{font-size:var(--lg-fs-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lg-on-dark-m)}
+.bf-code b{font-size:clamp(20px,1.8vw,26px);letter-spacing:.06em;font-variant-numeric:tabular-nums;color:var(--lg-on-dark)}
+.bf-code.is-on{border-style:solid;border-color:transparent;background-image:var(--lg-foil)}
+.bf-code.is-on .bf-code-lbl,.bf-code.is-on b{color:var(--lg-ink)}
+.bf-go{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:26px}
+.bf-clock{display:inline-flex;align-items:baseline;gap:3px;font-size:var(--lg-fs-sm);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--lg-on-dark-m)}
+.bf-clock > span{margin-right:6px}
+.bf-clock b{font-size:var(--lg-fs-lead);color:var(--lg-on-dark);margin-left:4px}
+
+.bf-strip{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 44px;margin:0;padding:18px var(--lg-pad);border-bottom:1px solid var(--lg-rule);font-size:var(--lg-fs-sm);font-weight:600}
+.bf-strip li{display:flex;align-items:center;gap:8px}
+.bf-strip svg{width:18px;height:18px;flex:none}
+
+/* the ladder: three rungs, the money huge */
+.bf-ladder{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:28px 0 0;padding:0}
+.bf-rung{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 12px 22px;border:1px solid var(--lg-rule);border-radius:var(--lg-r-card);text-align:center}
+.bf-rung.is-best{border:2px solid var(--lg-ink);background:var(--lg-tile);padding:27px 11px 21px}
+.bf-rung-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);padding:4px 9px;border-radius:var(--lg-r-tag);background-image:var(--lg-foil);color:var(--lg-ink);
+  font-style:normal;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.bf-rung-n{font-size:var(--lg-fs-sm);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lg-ink-70)}
+.bf-rung-v{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;line-height:1;font-size:clamp(30px,3.6vw,52px)}
+.bf-rung:first-child .bf-rung-v{font-size:clamp(22px,2.2vw,32px)}
+.bf-rung-s{font-size:var(--lg-fs-sm);color:var(--lg-ink-70)}
+.bf-ex{margin:16px 0 0;font-size:var(--lg-fs-base);font-weight:600}
+
+.bf-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px}
+.bf-card .lg-card{height:100%}
+
+.bf-faq .lg-faq{max-width:760px;margin-top:24px}
+.bf-sign{padding:84px var(--lg-pad) 96px;text-align:center}
+.bf-sign-t{font-size:clamp(40px,6vw,84px)}
+.bf-sign .bf-l{margin:12px auto 26px}
+
+@media (max-width:1100px){.bf-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:749px){
+  .bf-sec{padding-top:48px}
+  .bf-hero-ph{aspect-ratio:3/2;max-height:none}
+  .bf-hero-in{position:static;background:#06110B;padding-top:26px;padding-bottom:32px}
+  .bf-h1{font-size:clamp(46px,13vw,68px)}
+  .bf-strip{flex-direction:column;align-items:flex-start;gap:10px}
+  .bf-ladder{grid-template-columns:1fr;gap:16px}
+  .bf-rung{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline;text-align:left;padding:18px 16px}
+  .bf-rung.is-best{padding:17px 15px}
+  .bf-rung-tag{left:16px;transform:none}
+  .bf-rung-s{flex:1 0 100%}
+  .bf-cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:22px calc(var(--lg-pad) * -1) 0;padding:0 var(--lg-pad) 6px;scrollbar-width:none}
+  .bf-cards::-webkit-scrollbar{display:none}
+  .bf-card{flex:0 0 72%;scroll-snap-align:start}
+  .bf-sign{padding:56px var(--lg-pad) 72px}
+}

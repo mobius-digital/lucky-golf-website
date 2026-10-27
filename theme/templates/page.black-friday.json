@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "lg-bfcm",
+      "blocks": {
+        "c1": { "type": "club", "settings": { "product": "lucky-golf-lgw02-gold", "finish": "Gold", "name": "Carver 02 Gold", "line": "Forged, spins like crazy, and your buddies will try to borrow it." } },
+        "c2": { "type": "club", "settings": { "product": "lucky-golf-lgw02-gold", "finish": "Black", "name": "Carver 02 Black", "line": "All the spin. None of the spotlight.", "image": "shopify://shop_images/lg-card-carver-black.webp" } },
+        "c3": { "type": "club", "settings": { "product": "limited-edition-mallet-putter", "line": "Big head, soft face, gold all over." } },
+        "c4": { "type": "club", "settings": { "product": "signature-gold-putters", "line": "Fully milled, and it tells you where you hit it." } },
+        "c5": { "type": "club", "settings": { "product": "lucky-striker-hybrid-limited-edition", "line": "Gets it up from lies your 4-iron wants no part of." } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5"],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
