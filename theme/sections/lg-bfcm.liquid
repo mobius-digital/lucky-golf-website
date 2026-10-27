@@ -1,21 +1,24 @@
 {%- comment -%}
   The Black Friday / Cyber Monday 2026 page (/pages/black-friday, template page.black-friday).
-  ONE stable URL for every phase, so the PostPilot QR printed on Oct 26 never breaks:
+  ONE stable URL for every phase, so the PostPilot QR printed in October never breaks:
     mail  (until Nov 23)  direct mail early access, code LUCKYMAIL
     list  (Nov 24 to 25)  email/SMS early access
     live  (Nov 26 to 29)  Black Friday for everyone, automatic
     cm    (Nov 30)        Cyber Monday, last day
     over  (Dec 1 on)      deal over, clubs still here
-  The phase switches itself in the browser on Central time (data-bf-*); the dates are settings below.
-  The money is the Lucky Discounts app's "Lucky club ladder" function (repo Mobius Digital Tools/lucky-discounts):
-  products tagged "club" count, $50 off 2, $100 off 3+. LUCKYMAIL is a code discount on that function.
-  Arriving with ?utm_source=postpilot or ?code=X applies the code for them (GET /discount/CODE).
-  Research and the plan behind this page: claude.ai artifact (BFCM page research, 2026-10-26).
+  Round 2 (2026-10-27, Cole: "plain, boring, not optimized"): sell on the page. Hero = the biggest number,
+  a receipt that does the math, one-tap sets, a build-your-own tray with a sticky total and the next-rung nudge.
+  The money is the Lucky Discounts app's "Lucky club ladder" (Mobius Digital Tools/lucky-discounts): products
+  tagged "club" count, $50 off 2, $100 off 3+. Gift: any club on LUCKYMAIL, 2+ clubs from Nov 24 (one set per order).
+  Arriving with ?utm_source=postpilot or ?code=X applies the code (GET /discount/CODE). Preview a phase: ?bf_phase=live
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
   assign hero = s.hero_image | default: images['lg-carver-sets-hero.jpg']
   assign ship = settings.lg_free_shipping | default: 195
+  assign carver = all_products['lucky-golf-lgw02-gold']
+  assign rc = carver.metafields.reviews.rating_count.value | default: 0
+  assign rv = carver.metafields.reviews.rating.value.rating
 -%}
 <div class="bf-page" data-bf-page data-phase="mail">
 
@@ -30,70 +33,70 @@
         {%- when 4 -%}{%- assign k = 'cm' -%}
         {%- when 5 -%}{%- assign k = 'over' -%}
       {%- endcase -%}
-      {%- assign h_key = k | append: '_heading' -%}{%- assign d_key = k | append: '_deal' -%}{%- assign l_key = k | append: '_lede' -%}{%- assign e_key = k | append: '_eyebrow' -%}
+      {%- assign e_key = k | append: '_eyebrow' -%}{%- assign h_key = k | append: '_heading' -%}{%- assign h2_key = k | append: '_heading2' -%}{%- assign d_key = k | append: '_deal' -%}{%- assign l_key = k | append: '_lede' -%}
       <div class="bf-ph" data-bf-show="{{ k }}"{% unless k == 'mail' %} hidden{% endunless %}>
-        {%- if s[e_key] != blank %}<p class="bf-eye">{{ s[e_key] }}</p>{% endif -%}
-        <{% if k == 'mail' %}h1{% else %}h2{% endif %} class="bf-h1">{{ s[h_key] }}</{% if k == 'mail' %}h1{% else %}h2{% endif %}>
+        {%- if s[e_key] != blank %}<p class="bf-stamp">{{ s[e_key] }}</p>{% endif -%}
+        <{% if k == 'mail' %}h1{% else %}h2{% endif %} class="bf-h1"><span class="bf-big">{{ s[h_key] }}</span>{% if s[h2_key] != blank %}<span class="bf-big2">{{ s[h2_key] }}</span>{% endif %}</{% if k == 'mail' %}h1{% else %}h2{% endif %}>
         {%- if s.gifts_gone and k != 'over' -%}<p class="bf-deal">{{ s.gone_deal }}</p>
         {%- elsif s[d_key] != blank -%}<p class="bf-deal">{{ s[d_key] }}</p>{%- endif -%}
         {%- if s[l_key] != blank %}<p class="bf-lede">{{ s[l_key] }}</p>{% endif -%}
       </div>
     {%- endfor -%}
 
-    <div class="bf-code" data-bf-show="mail list" data-bf-code hidden>
-      <span class="bf-code-lbl" data-code-off>Code at checkout</span>
-      <span class="bf-code-lbl" data-code-on hidden>Already in your bag</span>
-      <b data-code-text>{{ s.mail_code }}</b>
+    <div class="bf-ticket" data-bf-show="mail list" data-bf-code hidden>
+      <span class="bf-ticket-l"><small data-code-off>Code at checkout</small><small data-code-on hidden>Already in your bag</small><b data-code-text>{{ s.mail_code }}</b></span>
+      <span class="bf-ticket-r" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
     </div>
 
     <div class="bf-go" data-bf-show="mail list live cm">
-      <a class="lg-btn" href="#clubs">{{ s.hero_btn }}</a>
-      <span class="bf-clock" data-bf-clock><span>{{ s.clock_label }}</span> <b data-d>0</b>d <b data-h>00</b>h <b data-m>00</b>m</span>
+      <a class="lg-btn" href="#sets">{{ s.hero_btn }}</a>
+      <a class="bf-go-2" href="#build">{{ s.hero_btn2 }}</a>
     </div>
-    <div class="bf-go" data-bf-show="over" hidden><a class="lg-btn" href="#clubs">{{ s.over_btn }}</a></div>
+    <p class="bf-clock" data-bf-show="mail list live cm" data-bf-clock><span>{{ s.clock_label }}</span> <b data-d>0</b>d <b data-h>00</b>h <b data-m>00</b>m</p>
+    <div class="bf-go" data-bf-show="over" hidden><a class="lg-btn" href="#build">{{ s.over_btn }}</a></div>
   </div>
 </section>
 
 <ul class="bf-strip">
+  {%- if rc >= 10 and rv %}<li>{% render 'lg-icon', name: 'star' %}{{ rv | round: 1 }} stars from {{ rc }} golfers</li>{% endif -%}
   <li>{% render 'lg-icon', name: 'truck' %}Free shipping on ${{ ship }} and up</li>
   <li>{% render 'lg-icon', name: 'rotate-ccw' %}{{ s.trust_days }}</li>
-  <li>{% render 'lg-icon', name: 'star' %}{{ s.trust_ships }}</li>
 </ul>
 
-<section class="lg-wrap bf-sec" id="deal" data-bf-show="mail list live cm" aria-labelledby="bf-deal-h">
-  <h2 class="bf-h" id="bf-deal-h">{{ s.ladder_title }}</h2>
-  <p class="bf-l">{{ s.ladder_line }}</p>
-  <ol class="bf-ladder">
-    <li class="bf-rung" data-bf-show="mail">
-      <span class="bf-rung-n">1 club</span>
-      <b class="bf-rung-v">{{ s.r1_value }}</b>
-      <span class="bf-rung-s">{{ s.r1_small }}</span>
-    </li>
-    <li class="bf-rung">
-      <span class="bf-rung-n">2 clubs</span>
-      <b class="bf-rung-v">$50 off</b>
-      <span class="bf-rung-s">{% if s.gifts_gone %}{{ s.r2_small_gone }}{% else %}{{ s.r2_small }}{% endif %}</span>
-    </li>
-    <li class="bf-rung is-best">
-      <i class="bf-rung-tag">{{ s.best }}</i>
-      <span class="bf-rung-n">3 or more</span>
-      <b class="bf-rung-v">$100 off</b>
-      <span class="bf-rung-s">{% if s.gifts_gone %}{{ s.r3_small_gone }}{% else %}{{ s.r3_small }}{% endif %}</span>
-    </li>
-  </ol>
-  {%- if s.example != blank %}<p class="bf-ex">{{ s.example }}</p>{% endif -%}
+<section class="lg-wrap bf-sec bf-math" id="math" data-bf-show="mail list live cm" aria-labelledby="bf-math-h">
+  <div class="bf-math-copy">
+    <h2 class="bf-h" id="bf-math-h">{{ s.math_title }}</h2>
+    <p class="bf-l">{{ s.math_line }}</p>
+    <div class="bf-n" role="tablist" aria-label="How many clubs">
+      {%- for n in (1..3) -%}<button type="button" role="tab" class="bf-n-b" data-n="{{ n }}" aria-selected="{% if n == 3 %}true{% else %}false{% endif %}">{{ n }}{% if n == 3 %}+{% endif %} {% if n == 1 %}club{% else %}clubs{% endif %}</button>{%- endfor -%}
+    </div>
+    <ul class="bf-rungs">
+      <li data-rung="1"><b>1 club</b><span data-rung-text="1"></span></li>
+      <li data-rung="2"><b>2 clubs</b><span>$50 off</span></li>
+      <li data-rung="3"><b>3 or more</b><span>$100 off + free shipping</span></li>
+    </ul>
+  </div>
+  <figure class="bf-receipt" aria-live="polite">
+    <p class="bf-r-head">Lucky Golf<br><small data-r-date></small></p>
+    <ul class="bf-r-lines" data-r-lines></ul>
+    <p class="bf-r-total"><span>Total</span><b data-r-total></b></p>
+    <p class="bf-r-save" data-r-save></p>
+    <figcaption class="bf-r-foot">It's better to be lucky.</figcaption>
+  </figure>
 </section>
 
-<section class="lg-wrap bf-sec" id="clubs" aria-labelledby="bf-clubs-h">
-  <h2 class="bf-h" id="bf-clubs-h">{{ s.clubs_title }}</h2>
-  <p class="bf-l" data-bf-show="mail list live cm">{{ s.clubs_line }}</p>
-  <div class="bf-cards">
-    {%- for block in section.blocks -%}{%- assign b = block.settings -%}
-      {%- if b.product != blank -%}
-      <div class="bf-card" {{ block.shopify_attributes }}>{% render 'lg-card', product: b.product, name: b.name, line: b.line, finish: b.finish, image: b.image, cut: true, stars: true %}</div>
-      {%- endif -%}
-    {%- endfor -%}
+<section class="lg-wrap bf-sec" id="sets" data-bf-show="mail list live cm" aria-labelledby="bf-sets-h">
+  <h2 class="bf-h" id="bf-sets-h">{{ s.sets_title }}</h2>
+  <p class="bf-l">{{ s.sets_line }}</p>
+  <div class="bf-sets" data-sets></div>
+</section>
+
+<section class="lg-wrap bf-sec" id="build" aria-labelledby="bf-build-h">
+  <div class="bf-build-hd">
+    <div><h2 class="bf-h" id="bf-build-h">{{ s.build_title }}</h2><p class="bf-l">{{ s.build_line }}</p></div>
+    <div class="bf-hands" role="group" aria-label="Hand" data-hands></div>
   </div>
+  <div class="bf-rows" data-rows></div>
 </section>
 
 <section class="lg-wrap bf-sec bf-faq" id="questions" aria-labelledby="bf-q-h">
@@ -111,21 +114,39 @@
 <section class="bf-sign">
   <p class="bf-sign-t">It's better to be lucky.</p>
   <p class="bf-l">{{ s.sign_line }}</p>
-  <a class="lg-btn" href="#clubs">{{ s.hero_btn }}</a>
+  <a class="lg-btn" href="#sets">{{ s.hero_btn }}</a>
 </section>
+
+<div class="bf-bar" data-bf-bar hidden>
+  <div class="bf-bar-in">
+    <div class="bf-bar-txt"><b data-bar-total></b><span data-bar-sub></span></div>
+    <button type="button" class="lg-btn" data-bar-add>{{ s.bar_btn }}</button>
+  </div>
+  <p class="bf-bar-nudge" data-bar-nudge hidden></p>
+</div>
 </div>
 
 <script>
 window.LG_BF = {
-  phases: [
-    ['list', {{ s.list_start | json }}],
-    ['live', {{ s.live_start | json }}],
-    ['cm', {{ s.cm_start | json }}],
-    ['over', {{ s.end | json }}]
-  ],
+  phases: [['list', {{ s.list_start | json }}], ['live', {{ s.live_start | json }}], ['cm', {{ s.cm_start | json }}], ['over', {{ s.end | json }}]],
   end: {{ s.end | json }},
   codes: { mail: {{ s.mail_code | json }}, list: {{ s.list_code | json }} },
-  autoSources: {{ s.auto_sources | json }}
+  autoSources: {{ s.auto_sources | json }},
+  giftsGone: {{ s.gifts_gone | json }},
+  ship: {{ ship | times: 100 }},
+  sets: {{ s.sets | json }},
+  say: { add: {{ s.set_btn | json }}, bar: {{ s.bar_btn | json }} },
+  clubs: [
+    {%- for block in section.blocks -%}{%- assign b = block.settings -%}{%- assign p = b.product -%}
+    {%- if p != blank -%}
+    {%- assign cut = p.metafields.custom.cutout.value -%}
+    { key: {{ b.key | json }}, name: {{ b.name | default: p.title | json }}, line: {{ b.line | json }}, finish: {{ b.finish | json }}, url: {{ p.url | json }},
+      img: {% if b.image != blank %}{{ b.image | image_url: width: 600 | json }}{% elsif cut != blank %}{{ cut | image_url: width: 600 | json }}{% else %}{{ p.featured_image | image_url: width: 600 | json }}{% endif %},
+      opts: {{ p.options | json }},
+      variants: [{%- for v in p.variants -%}{ id: {{ v.id }}, o: {{ v.options | json }}, a: {{ v.available }}, p: {{ v.price }}, img: {% if v.featured_image %}{{ v.featured_image | image_url: width: 600 | json }}{% else %}null{% endif %} }{% unless forloop.last %},{% endunless %}{%- endfor -%}] }{% unless forloop.last %},{% endunless %}
+    {%- endif -%}
+    {%- endfor -%}
+  ]
 };
 </script>
 {{ 'lg-bfcm.css' | asset_url | stylesheet_tag }}
@@ -143,83 +164,86 @@ window.LG_BF = {
     { "type": "text", "id": "live_start", "label": "Black Friday for everyone starts", "default": "2026-11-26T00:00:00-06:00" },
     { "type": "text", "id": "cm_start", "label": "Cyber Monday starts", "default": "2026-11-30T00:00:00-06:00" },
     { "type": "text", "id": "end", "label": "Deal ends", "default": "2026-12-01T00:00:00-06:00" },
-    { "type": "header", "content": "Codes" },
+    { "type": "header", "content": "Codes and gifts" },
     { "type": "text", "id": "mail_code", "label": "Direct mail code", "default": "LUCKYMAIL" },
     { "type": "text", "id": "list_code", "label": "List early access code", "info": "Empty: the list phase shows the mail code." },
-    { "type": "text", "id": "auto_sources", "label": "utm_source values that get the mail code applied for them", "default": "postpilot" },
+    { "type": "text", "id": "auto_sources", "label": "utm_source values that get the code applied for them", "default": "postpilot" },
+    { "type": "checkbox", "id": "gifts_gone", "label": "Towels and divot tools are gone", "default": false, "info": "Tick when stock hits zero: gift copy comes off every phase." },
+    { "type": "text", "id": "gone_deal", "label": "Deal line once gifts are gone", "default": "Gifts are gone. $50 off 2 clubs, $100 off 3 or more still on." },
     { "type": "header", "content": "Hero" },
     { "type": "image_picker", "id": "hero_image", "label": "Hero photo", "info": "Empty: lg-carver-sets-hero.jpg from Files." },
-    { "type": "text", "id": "hero_alt", "label": "Hero photo alt text", "default": "Three Carver 02 wedges on the fringe" },
-    { "type": "text", "id": "hero_btn", "label": "Hero button", "default": "Pick your clubs" },
-    { "type": "text", "id": "clock_label", "label": "Countdown label", "default": "Deal ends in" },
-    { "type": "text", "id": "mail_eyebrow", "label": "Mail: eyebrow", "default": "Postcard early access" },
-    { "type": "text", "id": "mail_heading", "label": "Mail: heading", "default": "Black Friday came by mail" },
-    { "type": "text", "id": "mail_deal", "label": "Mail: deal line", "default": "Free towel and divot tool with any club. $50 off two clubs. $100 off three or more." },
-    { "type": "text", "id": "mail_lede", "label": "Mail: line", "default": "You got the postcard, so you go first. Everyone else waits until Thanksgiving." },
-    { "type": "text", "id": "list_eyebrow", "label": "List: eyebrow", "default": "Early access" },
-    { "type": "text", "id": "list_heading", "label": "List: heading", "default": "You're in early" },
-    { "type": "text", "id": "list_deal", "label": "List: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
-    { "type": "text", "id": "list_lede", "label": "List: line", "default": "Two days before everyone else. First pick of every loft." },
-    { "type": "text", "id": "live_eyebrow", "label": "Black Friday: eyebrow", "default": "Black Friday" },
-    { "type": "text", "id": "live_heading", "label": "Black Friday: heading", "default": "The more you bag, the less you pay" },
-    { "type": "text", "id": "live_deal", "label": "Black Friday: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
-    { "type": "text", "id": "live_lede", "label": "Black Friday: line", "default": "No code. The price drops in your bag." },
-    { "type": "text", "id": "cm_eyebrow", "label": "Cyber Monday: eyebrow", "default": "Cyber Monday" },
-    { "type": "text", "id": "cm_heading", "label": "Cyber Monday: heading", "default": "Last call" },
-    { "type": "text", "id": "cm_deal", "label": "Cyber Monday: deal line", "default": "$50 off two clubs. $100 off three or more. Two or more clubs also get a free towel and divot tool." },
-    { "type": "text", "id": "cm_lede", "label": "Cyber Monday: line", "default": "Ends at midnight Central. After that it's full price until next year." },
-    { "type": "text", "id": "over_eyebrow", "label": "After: eyebrow" },
-    { "type": "text", "id": "over_heading", "label": "After: heading", "default": "That's a wrap" },
+    { "type": "text", "id": "hero_alt", "label": "Hero photo alt text", "default": "Carver 02 wedges on the fringe" },
+    { "type": "text", "id": "hero_btn", "label": "Hero button", "default": "Grab a set" },
+    { "type": "text", "id": "hero_btn2", "label": "Hero second link", "default": "Or build your own" },
+    { "type": "text", "id": "clock_label", "label": "Countdown label", "default": "Ends Cyber Monday in" },
+    { "type": "text", "id": "mail_eyebrow", "label": "Mail: stamp", "default": "Postcard early access" },
+    { "type": "text", "id": "mail_heading", "label": "Mail: big line", "default": "$100 off" },
+    { "type": "text", "id": "mail_heading2", "label": "Mail: second line", "default": "three clubs." },
+    { "type": "text", "id": "mail_deal", "label": "Mail: deal line", "default": "$50 off two. And any club comes with a free towel and divot tool." },
+    { "type": "text", "id": "mail_lede", "label": "Mail: line", "default": "You got the postcard, so you're in a month before everyone else. The code's already in your bag." },
+    { "type": "text", "id": "list_eyebrow", "label": "List: stamp", "default": "Early access · Two days before everyone" },
+    { "type": "text", "id": "list_heading", "label": "List: big line", "default": "$100 off" },
+    { "type": "text", "id": "list_heading2", "label": "List: second line", "default": "three clubs." },
+    { "type": "text", "id": "list_deal", "label": "List: deal line", "default": "$50 off two. Two or more clubs get a free towel and divot tool." },
+    { "type": "text", "id": "list_lede", "label": "List: line", "default": "First pick of every loft before Thanksgiving shows up." },
+    { "type": "text", "id": "live_eyebrow", "label": "Black Friday: stamp", "default": "Black Friday · No code needed" },
+    { "type": "text", "id": "live_heading", "label": "Black Friday: big line", "default": "$100 off" },
+    { "type": "text", "id": "live_heading2", "label": "Black Friday: second line", "default": "three clubs." },
+    { "type": "text", "id": "live_deal", "label": "Black Friday: deal line", "default": "$50 off two. Two or more clubs get a free towel and divot tool." },
+    { "type": "text", "id": "live_lede", "label": "Black Friday: line", "default": "The price drops in your bag. Nothing to type." },
+    { "type": "text", "id": "cm_eyebrow", "label": "Cyber Monday: stamp", "default": "Cyber Monday · Last day" },
+    { "type": "text", "id": "cm_heading", "label": "Cyber Monday: big line", "default": "Last call" },
+    { "type": "text", "id": "cm_heading2", "label": "Cyber Monday: second line", "default": "$100 off three." },
+    { "type": "text", "id": "cm_deal", "label": "Cyber Monday: deal line", "default": "$50 off two. Two or more clubs get a free towel and divot tool." },
+    { "type": "text", "id": "cm_lede", "label": "Cyber Monday: line", "default": "Ends at midnight Central. Then it's full price until next year." },
+    { "type": "text", "id": "over_eyebrow", "label": "After: stamp" },
+    { "type": "text", "id": "over_heading", "label": "After: big line", "default": "That's a wrap" },
+    { "type": "text", "id": "over_heading2", "label": "After: second line" },
     { "type": "text", "id": "over_deal", "label": "After: line", "default": "Black Friday is over. The clubs are still right here." },
     { "type": "text", "id": "over_lede", "label": "After: second line" },
     { "type": "text", "id": "over_btn", "label": "After: button", "default": "See the clubs" },
-    { "type": "header", "content": "Reassurance" },
-    { "type": "text", "id": "trust_days", "label": "Returns", "default": "Sixty days to prove us wrong" },
-    { "type": "text", "id": "trust_ships", "label": "Shipping speed", "default": "Ships in 1 to 2 business days" },
-    { "type": "header", "content": "The deal" },
-    { "type": "checkbox", "id": "gifts_gone", "label": "Towels and divot tools are gone", "default": false, "info": "Tick when stock hits zero: the gift copy comes off every phase and the line below shows instead." },
-    { "type": "text", "id": "gone_deal", "label": "Deal line once gifts are gone", "default": "Gifts are gone. $50 off 2 clubs, $100 off 3 or more still on." },
-    { "type": "text", "id": "ladder_title", "label": "Heading", "default": "The deal" },
-    { "type": "text", "id": "ladder_line", "label": "Line", "default": "Mix any clubs you want. Every club counts." },
-    { "type": "text", "id": "r1_value", "label": "1 club: value", "default": "Free towel + divot tool" },
-    { "type": "text", "id": "r1_small", "label": "1 club: small", "default": "In the box with your club" },
-    { "type": "text", "id": "r2_small", "label": "2 clubs: small", "default": "Plus a free towel and divot tool" },
-    { "type": "text", "id": "r2_small_gone", "label": "2 clubs: small, gifts gone", "default": "Any two clubs" },
-    { "type": "text", "id": "r3_small", "label": "3+ clubs: small", "default": "Plus the towel, divot tool and free shipping" },
-    { "type": "text", "id": "r3_small_gone", "label": "3+ clubs: small, gifts gone", "default": "Plus free shipping" },
-    { "type": "text", "id": "best", "label": "3+ tag", "default": "Best deal" },
-    { "type": "text", "id": "example", "label": "Worked example", "default": "Three Carver 02 Gold wedges: $297, you pay $197, and it ships free." },
-    { "type": "header", "content": "Clubs" },
-    { "type": "text", "id": "clubs_title", "label": "Heading", "default": "Pick your clubs" },
-    { "type": "text", "id": "clubs_line", "label": "Line", "default": "Gold and Black count together. So do the putters and the Stryker." },
+    { "type": "text", "id": "trust_days", "label": "Returns line", "default": "Sixty days to prove us wrong" },
+    { "type": "header", "content": "The math" },
+    { "type": "text", "id": "math_title", "label": "Heading", "default": "Do the math" },
+    { "type": "text", "id": "math_line", "label": "Line", "default": "Mix any clubs you want. Every club counts toward the next rung." },
+    { "type": "header", "content": "Sets" },
+    { "type": "text", "id": "sets_title", "label": "Heading", "default": "Grab a set" },
+    { "type": "text", "id": "sets_line", "label": "Line", "default": "One tap and the whole set's in your bag. Four degrees apart, so every yardage gets its own club." },
+    { "type": "textarea", "id": "sets", "label": "Sets", "default": "The Gapper|For the guy whose 100-yard shot is a guess.|carver:50K:Gold,carver:54K:Gold,carver:58K:Gold\nNight and Day|Gold, Black, Gold. Nobody said they had to match.|carver:52K:Gold,carver:56K:Black,carver:60K:Gold\nBlackout|Three black wedges. Your buddies won't clock them until they're paying up.|carver:52K:Black,carver:56K:Black,carver:60K:Black\nUp and Down|Chip it close, roll it in, act like that was the plan.|carver:54K:Gold,carver:58K:Gold,mallet", "info": "One set per line: name|line|club key:loft:finish, ... Club keys come from the club blocks. A sold-out piece hides the set." },
+    { "type": "text", "id": "set_btn", "label": "Set button", "default": "Put the set in my bag" },
+    { "type": "header", "content": "Build your own" },
+    { "type": "text", "id": "build_title", "label": "Heading", "default": "Build your own" },
+    { "type": "text", "id": "build_line", "label": "Line", "default": "Tap to add. The total at the bottom keeps up with you." },
+    { "type": "text", "id": "bar_btn", "label": "Bottom bar button", "default": "Put them in my bag" },
     { "type": "header", "content": "Questions" },
     { "type": "text", "id": "faq_title", "label": "Heading", "default": "Questions" },
     { "type": "text", "id": "q1", "label": "Q1", "default": "How do I get the deal?" },
-    { "type": "textarea", "id": "a1", "label": "A1", "default": "Put the clubs in your bag. If you scanned the postcard, LUCKYMAIL is already applied. If not, type LUCKYMAIL at checkout and the price drops." },
+    { "type": "textarea", "id": "a1", "label": "A1", "default": "Put the clubs in your bag. If you scanned the postcard, LUCKYMAIL is already on. If not, type LUCKYMAIL at checkout and watch the price drop." },
     { "type": "text", "id": "q2", "label": "Q2", "default": "Which clubs count?" },
-    { "type": "textarea", "id": "a2", "label": "A2", "default": "Every club we sell. Mix lofts, finishes, a putter and the Stryker however you want. Two clubs gets $50 off, three or more gets $100 off." },
+    { "type": "textarea", "id": "a2", "label": "A2", "default": "Every club we make. Mix lofts, Gold and Black, a putter, the Stryker. Two clubs is $50 off, three or more is $100 off." },
     { "type": "text", "id": "q3", "label": "Q3", "default": "Where's my towel and divot tool?" },
-    { "type": "textarea", "id": "a3", "label": "A3", "default": "Postcard orders get one towel and one divot tool with any club. From Nov 24, orders with two or more clubs get them. One set per order, in the box with your clubs, while they last." },
+    { "type": "textarea", "id": "a3", "label": "A3", "default": "In the box with your clubs. Postcard orders get them with any club. From Nov 24 it takes two or more clubs. One set per order, while they last." },
     { "type": "textarea", "id": "a3_gone", "label": "A3 once gifts are gone", "default": "They're all gone. The $50 and $100 off are still on." },
     { "type": "text", "id": "q4", "label": "Q4", "default": "Is shipping free?" },
-    { "type": "textarea", "id": "a4", "label": "A4", "default": "On orders of $[ship] and up. Three Carvers with the deal comes to $197, so that one ships free." },
+    { "type": "textarea", "id": "a4", "label": "A4", "default": "On anything $[ship] and up, so every three-club order ships free." },
     { "type": "text", "id": "q5", "label": "Q5", "default": "Does it stack with other codes?" },
-    { "type": "textarea", "id": "a5", "label": "A5", "default": "No, one code per order. This one beats the others anyway." },
+    { "type": "textarea", "id": "a5", "label": "A5", "default": "One code per order. This one beats the others anyway." },
     { "type": "text", "id": "q6", "label": "Q6", "default": "When does it end?" },
-    { "type": "textarea", "id": "a6", "label": "A6", "default": "Cyber Monday, Nov 30, at midnight Central. Everyone else gets the same deal on Thanksgiving, so going early just gets you first pick of the lofts." },
-    { "type": "text", "id": "q7", "label": "Q7", "default": "What if it doesn't work for me?" },
+    { "type": "textarea", "id": "a6", "label": "A6", "default": "Cyber Monday, Nov 30, at midnight Central." },
+    { "type": "text", "id": "q7", "label": "Q7", "default": "What if it doesn't work out?" },
     { "type": "textarea", "id": "a7", "label": "A7", "default": "Every club gets sixty days from delivery. Talk to us before anything ships back, because club returns need our OK and a few photos first. Return shipping's on you." },
     { "type": "text", "id": "q8", "label": "Q8" },
     { "type": "textarea", "id": "a8", "label": "A8" },
-    { "type": "text", "id": "sign_line", "label": "Sign-off line", "default": "Better still to be early." }
+    { "type": "text", "id": "sign_line", "label": "Sign-off line", "default": "Even better to be early." }
   ],
   "blocks": [
     {
       "type": "club",
-      "name": "Club card",
+      "name": "Club",
       "settings": [
+        { "type": "text", "id": "key", "label": "Key (used in Sets)", "info": "e.g. carver, mallet" },
         { "type": "product", "id": "product", "label": "Product" },
-        { "type": "text", "id": "finish", "label": "Finish (Gold or Black, optional)" },
+        { "type": "text", "id": "finish", "label": "Only this finish (optional)", "info": "Gold or Black: the row shows only that finish." },
         { "type": "text", "id": "name", "label": "Name (optional)" },
         { "type": "text", "id": "line", "label": "Line" },
         { "type": "image_picker", "id": "image", "label": "Photo (optional)" }
