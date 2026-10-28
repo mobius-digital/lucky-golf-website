@@ -151,18 +151,30 @@
   function openSheet(i, name) {
     CUR = SETS[i].map(function (p) { return { club: p.club, opts: p.opts, v: p.v || p.pick || p.opts[0] }; });
     $('[data-sheet-name]').textContent = name;
-    drawHands(); drawSheet();
+    var ln = $('[data-sheet-line]'); if (ln && ln.getAttribute('data-was')) ln.textContent = ln.getAttribute('data-was');
+    sheetMode(false); drawHands(); drawSheet();
     sheet.hidden = false; document.body.classList.add('bf-lock');
     setTimeout(function () { var f = $('select, button', $('[data-sheet-rows]')); if (f) f.focus(); }, 50);
   }
-  function closeSheet() { sheet.hidden = true; document.body.classList.remove('bf-lock'); CUR = null; }
+  function closeSheet() { sheet.hidden = true; document.body.classList.remove('bf-lock'); CUR = null; sheet.classList.remove('is-next'); sheetMode(false); }
+  function sheetMode(next) {
+    ['[data-hands]', '[data-sheet-rows]', '[data-sheet-lines]', '.bf-r-total', '[data-sheet-add]'].forEach(function (q) { var el = $(q, sheet); if (el) el.hidden = next; });
+    var f = $('[data-sheet-form]', sheet); if (f) f.hidden = !next;
+  }
+  function openNext() {
+    var nc = $('[data-next]'); if (!nc) return;
+    $('[data-sheet-name]').textContent = $('.bf-card-name', nc).textContent;
+    var ln = $('[data-sheet-line]'); if (ln) { ln.setAttribute('data-was', ln.getAttribute('data-was') || ln.textContent); ln.textContent = $('.bf-card-line', nc).textContent; }
+    sheetMode(true); sheet.classList.add('is-next'); sheet.hidden = false; document.body.classList.add('bf-lock');
+    setTimeout(function () { var f = $('[data-sheet-form] input', sheet); if (f) f.focus(); }, 50);
+  }
   function drawSheet() {
     if (!CUR) return;
     $('[data-sheet-rows]').innerHTML = CUR.map(function (p, j) {
       var pick = p.opts.length > 1
         ? '<select class="bf-sel" data-sheet-pick="' + j + '" aria-label="Loft">' + p.opts.map(function (v) { return '<option value="' + v.id + '"' + (v.id === p.v.id ? ' selected' : '') + '>' + esc(v.label) + (isLow(v) ? ' · running low' : '') + '</option>'; }).join('') + '</select>'
         : '<span class="bf-fixed">' + esc(p.v.label || p.club.name) + '</span>';
-      return '<div class="bf-sheet-row"><img src="' + esc(p.club.img) + '" alt=""><div><b>' + esc(p.club.name) + '</b>' + (p.club.cover ? '<small>Free head cover</small>' : '') + '</div>' + pick + '<span>' + money(p.v.p) + '</span></div>';
+      return '<div class="bf-sheet-row"><img src="' + esc(p.club.img) + '" alt=""><div><b><a href="' + esc(p.club.url) + '">' + esc(p.club.name) + '</a></b>' + (p.club.cover ? '<small>Free head cover</small>' : '') + '</div>' + pick + '<span>' + money(p.v.p) + '</span></div>';
     }).join('');
     var n = CUR.length, t = CUR.reduce(function (a, p) { return a + p.v.p; }, 0), sv = setSaving(CUR), lines = [];
     if (sv.cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(sv.cut), 'is-cut']);
@@ -205,8 +217,21 @@
   function showTab(t) {
     $$('[data-tab]').forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === t)); });
     $$('[data-rows]').forEach(function (box) { box.hidden = box.getAttribute('data-rows') !== t; });
-    var m = $('[data-meter]'); if (m) m.hidden = t === 'apparel';
   }
+  /* the deals: one wide card at a time; arrows on desktop, the swipe on phones, dots for both */
+  var cars = $('[data-cars]'), track = cars && $('[data-cards]', cars), dots = cars && $('[data-cars-dots]', cars);
+  function carsCards() { return track ? $$('.bf-card', track).filter(function (c) { return !c.hidden && c.offsetParent !== null; }) : []; }
+  function carsIdx() { var cs = carsCards(); if (!cs.length) return 0; var x = track.scrollLeft, best = 0; cs.forEach(function (c, i) { if (Math.abs(c.offsetLeft - x) < Math.abs(cs[best].offsetLeft - x)) best = i; }); return best; }
+  function drawCars() {
+    if (!cars) return;
+    var cs = carsCards(), i = CI < 0 ? carsIdx() : CI;
+    if (dots) dots.innerHTML = cs.map(function (c, j) { return '<i' + (j === i ? ' class="is-on"' : '') + '></i>'; }).join('');
+    var pv = $('[data-cars-prev]', cars), nx = $('[data-cars-next]', cars);
+    if (pv) pv.disabled = i <= 0; if (nx) nx.disabled = i >= cs.length - 1;
+  }
+  var CI = -1;
+  function carsGo(d) { var cs = carsCards(), i = Math.max(0, Math.min(cs.length - 1, (CI < 0 ? carsIdx() : CI) + d)); CI = i; if (cs[i]) track.scrollTo({ left: cs[i].offsetLeft - track.offsetLeft, behavior: 'smooth' }); setTimeout(drawCars, 450); }
+  if (track) { var tmr; track.addEventListener('scroll', function () { clearTimeout(tmr); tmr = setTimeout(function () { CI = -1; drawCars(); }, 160); }, { passive: true }); }
   function drawMeter() {
     var n = TRAY.length;
     $$('[data-m]').forEach(function (li) { var k = +li.getAttribute('data-m'); li.classList.toggle('is-on', n >= k && (k < 3 || n >= 3)); li.classList.toggle('is-next', n + 1 === k); });
@@ -253,6 +278,9 @@
       if (el.classList.contains('is-soon')) { if (listBox) { listBox.hidden = false; listBox.scrollIntoView({ behavior: 'smooth' }); } return; }
       openSheet(+el.getAttribute('data-set'), el.getAttribute('data-name')); return;
     }
+    if (el = e.target.closest('[data-cars-prev]')) { carsGo(-1); return; }
+    if (el = e.target.closest('[data-cars-next]')) { carsGo(1); return; }
+    if (el = e.target.closest('[data-card][data-next]')) { openNext(); return; }
     if (el = e.target.closest('a[data-card].is-soon')) { e.preventDefault(); if (listBox) { listBox.hidden = false; listBox.scrollIntoView({ behavior: 'smooth' }); } return; }
     if (e.target.closest('[data-sheet-close]')) { closeSheet(); return; }
     if (el = e.target.closest('[data-sheet-add]')) { if (CUR) addIds(CUR.map(function (p) { return p.v.id; }), el).then(function () { setTimeout(closeSheet, 1200); }); return; }
@@ -309,5 +337,6 @@
     });
   }).observe(document.body, { childList: true, subtree: true });
 
-  drawHands(); drawCards(); drawRows(); showTab('wedges'); drawBar();
+  drawHands(); drawCards(); drawRows(); showTab('wedges'); drawBar(); drawCars();
+  window.addEventListener('resize', drawCars);
 })();

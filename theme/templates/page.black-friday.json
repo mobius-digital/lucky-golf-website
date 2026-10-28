@@ -27,6 +27,7 @@
             "key": "gapper",
             "status": "Live now",
             "chip": "Most bought",
+            "text_right": true,
             "name": "The Gapper",
             "line": "Three gold Carvers. Every number inside 100 gets a club.",
             "pieces": "carver::Gold,carver::Gold,carver::Gold"

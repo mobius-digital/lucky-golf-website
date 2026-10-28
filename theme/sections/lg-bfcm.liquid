@@ -60,7 +60,7 @@
         <li><b>2 clubs</b><span>{{ s.lad_2 }}</span></li>
         <li><b>3 or more</b><span>{{ s.lad_3 }}</span></li>
       </ol>
-      {%- if s.wedge_line != blank %}<p class="bf-free-wedge">{{ s.wedge_line }}</p>{% endif -%}
+      {%- if s.wedge_line != blank %}<p class="bf-lad-note">{{ s.wedge_line }}</p>{% endif -%}
     </div>
 
     <div class="bf-ticket" data-bf-show="mail list" data-bf-code hidden>
@@ -87,6 +87,7 @@
     <h2 class="bf-h" id="bf-deals-h"><span data-bf-show="mail list">{{ s.deals_title_early }}</span><span data-bf-show="live" hidden>{{ s.deals_title }}</span><span data-bf-show="cm" hidden>{{ s.deals_title_cm }}</span></h2>
     <p class="bf-l">{{ s.deals_line }}</p>
   </div>
+  <div class="bf-cars" data-cars>
   <div class="bf-cards" data-cards>
     {%- for block in cards -%}{%- assign b = block.settings -%}
       {%- assign im_m = 'lg-bf-card-' | append: b.key | append: '-m.jpg' | asset_url -%}
@@ -94,9 +95,9 @@
       {%- assign show = b.phases | default: 'mail list live cm' -%}
       {%- assign soon = b.soon_phases | default: '' -%}
       {%- if b.pieces != blank -%}
-      <button type="button" class="bf-card" data-card data-pieces="{{ b.pieces | escape }}" data-name="{{ b.name | escape }}" data-soon="{{ soon }}" data-bf-show="{{ show }}" {{ block.shopify_attributes }}>
+      <button type="button" class="bf-card{% if b.text_right %} is-right{% endif %}" data-card data-pieces="{{ b.pieces | escape }}" data-name="{{ b.name | escape }}" data-soon="{{ soon }}" data-bf-show="{{ show }}" {{ block.shopify_attributes }}>
       {%- else -%}
-      <a class="bf-card" href="{{ b.link | default: '#shop' }}" data-card data-soon="{{ soon }}" data-bf-show="{{ show }}" {{ block.shopify_attributes }}>
+      <a class="bf-card{% if b.text_right %} is-right{% endif %}" href="{{ b.link | default: '#shop' }}" data-card data-soon="{{ soon }}" data-bf-show="{{ show }}" {{ block.shopify_attributes }}>
       {%- endif -%}
         <picture><source media="(min-width:750px)" srcset="{{ im_d }}"><img src="{{ im_m }}" alt="" loading="{% if forloop.index < 3 %}eager{% else %}lazy{% endif %}" width="942" height="1386"></picture>
         <span class="bf-card-tx">
@@ -117,6 +118,24 @@
         </span>
       {%- if b.pieces != blank %}</button>{% else %}</a>{% endif -%}
     {%- endfor -%}
+    {%- if s.next_on -%}
+    <button type="button" class="bf-card is-next" data-card data-next data-bf-show="mail list live cm">
+      <picture><source media="(min-width:750px)" srcset="{{ 'lg-bf-card-next-d.jpg' | asset_url }}"><img src="{{ 'lg-bf-card-next-m.jpg' | asset_url }}" alt="" loading="lazy" width="942" height="1386"></picture>
+      <span class="bf-card-tx">
+        <span class="bf-card-top"><i class="bf-live is-sm is-soon"><b></b><span>{{ s.next_status }}</span></i></span>
+        <span class="bf-card-bot">
+          <i class="bf-st is-gold">Next</i>
+          <b class="bf-card-name">{{ s.next_title }}</b>
+          <span class="bf-card-line">{{ s.next_line }}</span>
+          <span class="lg-btn bf-card-btn is-soon">{{ s.next_btn }}</span>
+        </span>
+      </span>
+    </button>
+    {%- endif -%}
+  </div>
+  <button type="button" class="bf-arr is-prev" data-cars-prev aria-label="Previous deal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+  <button type="button" class="bf-arr is-next" data-cars-next aria-label="Next deal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+  <div class="bf-dots" data-cars-dots aria-hidden="true"></div>
   </div>
 </section>
 {%- endif -%}
@@ -138,8 +157,6 @@
     <button type="button" role="tab" class="bf-tab" data-tab="wedges" aria-selected="true">Wedges</button>
     <button type="button" role="tab" class="bf-tab" data-tab="putters" aria-selected="false">Putters</button>
     <button type="button" role="tab" class="bf-tab" data-tab="hybrid" aria-selected="false">Hybrid</button>
-    {%- assign polos = section.blocks | where: "type", "polo" -%}
-    {%- if polos.size > 0 %}<button type="button" role="tab" class="bf-tab" data-tab="apparel" aria-selected="false">Apparel</button>{% endif -%}
     <span class="bf-hands" role="group" aria-label="Hand" data-hands></span>
   </div>
   <ol class="bf-meter" data-meter aria-label="What you get as you add clubs">
@@ -150,11 +167,20 @@
   <div class="bf-pcs" data-rows="wedges"></div>
   <div class="bf-pcs" data-rows="putters" hidden></div>
   <div class="bf-pcs" data-rows="hybrid" hidden></div>
-  {%- if polos.size > 0 -%}
-  <div class="bf-pcs" data-rows="apparel" hidden>
+</section>
+
+<section class="lg-wrap bf-sec" id="gear" aria-labelledby="bf-gear-h">
+  {%- assign polos = section.blocks | where: "type", "polo" -%}
+  {%- assign gearp = s.gear_collection.products -%}
+  {%- if polos.size > 0 or gearp.size > 0 -%}
+  <div class="bf-hd">
+    <h2 class="bf-h" id="bf-gear-h">{{ s.gear_title }}</h2>
+    <p class="bf-l">{{ s.gear_line }}</p>
+  </div>
+  <div class="bf-pcs bf-pcs-4">
     {%- for block in polos -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
     <article class="bf-pc" {{ block.shopify_attributes }}>
-      <a class="bf-pc-ph" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy"><i class="bf-st is-gold">Last run</i></a>
+      <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy"><i class="bf-st is-gold">Last run</i></a>
       <div class="bf-pc-bd">
         <h3><a href="{{ p.url }}">{{ p.title | remove: ' Classic Polo' | remove: ' Blade Polo' }}</a> <span><b>${{ s.polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s></span></h3>
         <p>{{ s.polo_line }}</p>
@@ -165,6 +191,19 @@
       </div>
     </article>
     {%- endif -%}{%- endfor -%}
+    {%- for p in gearp limit: 8 -%}
+    <article class="bf-pc">
+      <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy">{% if p.compare_at_price > p.price %}<i class="bf-st is-gold">On sale</i>{% endif %}</a>
+      <div class="bf-pc-bd">
+        <h3><a href="{{ p.url }}">{{ p.title }}</a> <span><b>{{ p.price | money_without_trailing_zeros }}</b>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}</span></h3>
+        <div class="bf-pick">
+          {%- if p.has_only_default_variant -%}<input type="hidden" value="{{ p.selected_or_first_available_variant.id }}">
+          {%- else -%}<select class="bf-sel" aria-label="Option">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>{%- endif -%}
+          {%- if p.available %}<button type="button" class="bf-add" data-polo-add>Add</button>{% else %}<span class="bf-out">Sold out</span>{% endif -%}
+        </div>
+      </div>
+    </article>
+    {%- endfor -%}
   </div>
   {%- endif -%}
 </section>
@@ -190,24 +229,6 @@
     {%- endif -%}
   </div>
 </section>
-
-{%- if s.next_on -%}
-<section class="bf-next" id="next" aria-labelledby="bf-next-h">
-  <div class="lg-wrap bf-next-in">
-    <div>
-      <p class="bf-live is-soon"><i></i>{{ s.next_status }}</p>
-      <h2 class="bf-h" id="bf-next-h">{{ s.next_title }}</h2>
-      <p class="bf-l">{{ s.next_line }}</p>
-    </div>
-    <form class="bf-form" data-bf-form data-source="Driver and irons list" data-list="{{ s.next_list }}" novalidate>
-      <label class="sr" for="bf-next-email">Email</label>
-      <input id="bf-next-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
-      <button type="submit" class="lg-btn">{{ s.next_btn }}</button>
-      <p class="bf-form-msg" data-bf-form-msg hidden></p>
-    </form>
-  </div>
-</section>
-{%- endif -%}
 
 <section class="lg-wrap bf-sec bf-faq" id="questions" aria-labelledby="bf-q-h">
   <div class="bf-hd"><h2 class="bf-h" id="bf-q-h">{{ s.faq_title }}</h2></div>
@@ -257,6 +278,12 @@
     <ul class="bf-r-lines" data-sheet-lines></ul>
     <p class="bf-r-total"><span>Total</span><b data-sheet-total></b></p>
     <button type="button" class="lg-btn lg-btn-block" data-sheet-add>{{ s.set_btn }}</button>
+    <form class="bf-form is-light" data-bf-form data-sheet-form data-source="Driver and irons list" data-list="{{ s.next_list }}" novalidate hidden>
+      <label class="sr" for="bf-next-email">Email</label>
+      <input id="bf-next-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+      <button type="submit" class="lg-btn">{{ s.next_btn }}</button>
+      <p class="bf-form-msg" data-bf-form-msg hidden></p>
+    </form>
   </div>
 </div>
 </div>
@@ -314,9 +341,9 @@ window.LG_BF = {
     { "type": "text", "id": "auto_sources", "label": "utm_source values that get the code applied for them", "default": "postpilot" },
     { "type": "checkbox", "id": "gifts_gone", "label": "Towels and divot tools are gone", "default": false, "info": "Tick when stock hits zero: gift copy comes off every phase." },
     { "type": "text", "id": "gone_deal", "label": "Deal line once gifts are gone", "default": "Gifts are gone. $50 off 2 clubs, $100 off 3 or more still on." },
-    { "type": "number", "id": "towel_worth", "label": "Towel, what it's worth ($)", "default": 25, "info": "Used in 'you save' on the set cards. 0 hides the gift value." },
-    { "type": "number", "id": "divot_worth", "label": "Divot tool, what it's worth ($)", "default": 15 },
-    { "type": "number", "id": "cover_worth", "label": "Putter head cover, what it's worth ($)", "default": 30, "info": "Counted on sets that hold a putter marked 'free cover'." },
+    { "type": "number", "id": "towel_worth", "label": "Towel, what it's worth ($)", "default": 0, "info": "Used in 'you save' on the set cards. 0 hides the gift value." },
+    { "type": "number", "id": "divot_worth", "label": "Divot tool, what it's worth ($)", "default": 0 },
+    { "type": "number", "id": "cover_worth", "label": "Putter head cover, what it's worth ($)", "default": 0, "info": "Counted on sets that hold a putter marked 'free cover'." },
     { "type": "range", "id": "low_at", "label": "Show Running low under this many units", "min": 10, "max": 200, "step": 10, "default": 60 },
     { "type": "header", "content": "Hero" },
     { "type": "image_picker", "id": "hero_image", "label": "Hero photo", "info": "Empty: the night-shoot Carver (lg-bf-hero-2400.jpg in assets)." },
@@ -331,7 +358,7 @@ window.LG_BF = {
     { "type": "text", "id": "lad_1_mail", "label": "Ladder: 1 club, postcard visitors", "default": "Everyday price, towel and divot tool on us." },
     { "type": "text", "id": "lad_2", "label": "Ladder: 2 clubs", "default": "$50 off + free towel + free divot tool." },
     { "type": "text", "id": "lad_3", "label": "Ladder: 3 or more", "default": "$100 off + the gifts + free shipping." },
-    { "type": "text", "id": "wedge_line", "label": "The aside", "default": "That's basically a free wedge." },
+    { "type": "text", "id": "wedge_line", "label": "Line under the ladder", "default": "Three clubs, $100 off. That's near enough a wedge for nothing." },
     { "type": "text", "id": "mail_status", "label": "Mail: status", "default": "Early access · live now" },
     { "type": "text", "id": "mail_heading", "label": "Mail: line one", "default": "Three clubs." },
     { "type": "text", "id": "mail_heading2", "label": "Mail: big line", "default": "$100 off." },
@@ -365,6 +392,10 @@ window.LG_BF = {
     { "type": "text", "id": "shop_title", "label": "Heading", "default": "Build your own" },
     { "type": "text", "id": "shop_line", "label": "Line", "default": "Add two and $50 comes off. Add three and it's $100, shipping free." },
     { "type": "text", "id": "bar_btn", "label": "Bar button", "default": "Put them in my bag" },
+    { "type": "header", "content": "Gear (apparel + accessories, its own section)" },
+    { "type": "text", "id": "gear_title", "label": "Heading", "default": "Gear" },
+    { "type": "text", "id": "gear_line", "label": "Line", "default": "The last polos, and the small stuff that lives in the bag." },
+    { "type": "collection", "id": "gear_collection", "label": "Accessories collection", "info": "Hats, towels, divot tools, head covers. Shows after the polos, up to 8." },
     { "type": "number", "id": "polo_price", "label": "Retired polo price shown", "default": 39, "info": "The products themselves must be repriced in admin before the page goes live, or the bag charges full price." },
     { "type": "text", "id": "polo_line", "label": "Retired polo line", "default": "Last run. Gone when the sizes go." },
     { "type": "header", "content": "Proof" },
@@ -372,7 +403,7 @@ window.LG_BF = {
     { "type": "textarea", "id": "trust", "label": "Trust lines (one per line)", "default": "Sixty-day returns\nThousands of golfers\n4.8 stars from verified buyers\nShips in 1 to 2 business days" },
     { "type": "text", "id": "trust_icons", "label": "Icons, comma separated, same order", "default": "rotate-ccw,badge-check,star,truck" },
     { "type": "header", "content": "Upcoming (driver and irons)" },
-    { "type": "checkbox", "id": "next_on", "label": "Show the upcoming band", "default": true },
+    { "type": "checkbox", "id": "next_on", "label": "Show the driver + irons card in the deals", "default": true },
     { "type": "text", "id": "next_status", "label": "Status", "default": "Coming Jan 6" },
     { "type": "text", "id": "next_title", "label": "Heading", "default": "The driver and the irons." },
     { "type": "text", "id": "next_line", "label": "Line", "default": "Buy anything this Black Friday and $50 comes off them at launch. Get on the list and you hear first." },
@@ -421,6 +452,7 @@ window.LG_BF = {
         { "type": "text", "id": "phases", "label": "Show in phases", "default": "mail list live cm" },
         { "type": "text", "id": "soon_phases", "label": "Phases where it is only coming (status flips, button becomes notify)", "info": "e.g. mail. Empty: never." },
         { "type": "text", "id": "soon_status", "label": "Coming status", "default": "Coming Nov 24" },
+        { "type": "checkbox", "id": "text_right", "label": "Words on the right of the picture", "default": false },
         { "type": "text", "id": "soon_btn", "label": "Coming button", "default": "Tell me when" }
       ]
     },
