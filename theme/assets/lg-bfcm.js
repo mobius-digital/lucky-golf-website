@@ -84,7 +84,9 @@
   var isLow = function (v) { return v.a && v.q > 0 && v.q < cfg.lowAt; };
   var lowRow = function (vs) { var a = vs.filter(function (v) { return v.a; }); return a.length > 0 && a.filter(isLow).length * 2 > a.length; };
   var pieceName = function (v) { return (v.loft ? v.loft.replace(/^(\d+)(\w)$/, '$1° $2') + (v.fin ? ' ' + v.fin : '') + ' ' : '') + v.club.name.replace(/ 02 (Gold|Black)$/, ' 02'); };
-  var clubVariants = function (c, fin) { return c.variants.filter(function (v) { return v.hand === HAND && (!(c.finish || fin) || v.fin.toLowerCase() === (c.finish || fin).toLowerCase()); }); };
+  var CH = {};
+  var handOf = function (c) { return CH[c.key] || HAND; };
+  var clubVariants = function (c, fin, h) { var hh = h || HAND; return c.variants.filter(function (v) { return v.hand === hh && (!(c.finish || fin) || v.fin.toLowerCase() === (c.finish || fin).toLowerCase()); }); };
   var TRAY = [];
   var giftsWorth = function () { return cfg.worth.towel + cfg.worth.divot; };
 
@@ -142,6 +144,15 @@
         if (sv.cover) bits.push('head cover');
         sl.innerHTML = '<b>You save ' + money(sv.total) + '</b>' + (bits.length > 1 ? '<span>' + esc(bits.join(' + ')) + '</span>' : '');
       }
+      var kit = $('[data-card-kit]', card);
+      if (kit) {
+        var cnt = {}, order = [];
+        ps.forEach(function (p) { var nm = p.club.name; if (!cnt[nm]) { cnt[nm] = 0; order.push(nm); } cnt[nm]++; });
+        var chips = order.map(function (nm) { return '<i>' + (cnt[nm] > 1 ? cnt[nm] + ' × ' : '') + esc(nm) + '</i>'; });
+        if (n >= giftMin && !cfg.giftsGone) chips.push('<i class="is-free">Free towel</i>', '<i class="is-free">Free divot tool</i>');
+        if (sv.cover) chips.push('<i class="is-free">Free head cover</i>');
+        kit.innerHTML = chips.join('');
+      }
       var lo = $('[data-card-low]', card); if (lo) lo.hidden = soon || !ps.some(function (p) { return p.v ? isLow(p.v) : lowRow(p.opts); });
     });
   }
@@ -193,7 +204,7 @@
     });
   }
   function cardHtml(c) {
-    var vs = clubVariants(c);
+    var hd = handOf(c), vs = clubVariants(c, null, hd);
     if (!vs.length) return '';
     var price = Math.min.apply(null, vs.map(function (v) { return v.p; }));
     var inTray = TRAY.filter(function (id) { return BY[id].club === c; }).length;
@@ -206,6 +217,7 @@
       + '<div class="bf-pc-bd"><h3><a href="' + esc(c.url) + '">' + esc(c.name) + '</a> <span>' + money(price) + '</span></h3>'
       + (c.stars ? '<i class="bf-stars">' + c.stars + ' ★</i>' : '')
       + (c.line ? '<p>' + esc(c.line) + (c.cover ? ' Cover on us.' : '') + '</p>' : '')
+      + '<div class="bf-hand" role="group" aria-label="Hand">' + [['R', 'Right hand'], ['L', 'Left hand']].map(function (h) { return '<button type="button" data-chand="' + h[0] + '" data-ckey="' + esc(c.key) + '" aria-pressed="' + (hd === h[0]) + '">' + h[1] + '</button>'; }).join('') + '</div>'
       + '<div class="bf-pick">' + pick + (can ? '<button type="button" class="bf-add' + (inTray ? ' is-in' : '') + '" data-add>' + (inTray ? 'Added ×' + inTray : 'Add to set') + '</button>' : '') + '</div></div></article>';
   }
   function drawRows() {
@@ -285,6 +297,9 @@
     if (e.target.closest('[data-sheet-close]')) { closeSheet(); return; }
     if (el = e.target.closest('[data-sheet-add]')) { if (CUR) addIds(CUR.map(function (p) { return p.v.id; }), el).then(function () { setTimeout(closeSheet, 1200); }); return; }
     if (el = e.target.closest('[data-tab]')) { showTab(el.getAttribute('data-tab')); return; }
+    if (el = e.target.closest('[data-chand]')) { CH[el.getAttribute('data-ckey')] = el.getAttribute('data-chand'); drawRows(); return; }
+    if (el = e.target.closest('[data-gtab]')) { var g = el.getAttribute('data-gtab'); $$('[data-gtab]').forEach(function (b) { b.setAttribute('aria-selected', String(b === el)); }); $$('[data-grow]').forEach(function (r) { r.hidden = r.getAttribute('data-grow') !== g; }); return; }
+    if (el = e.target.closest('[data-row-prev],[data-row-next]')) { var tr = $('[data-row-track]', el.closest('[data-grow]')); tr.scrollBy({ left: (el.hasAttribute('data-row-next') ? 1 : -1) * tr.clientWidth * .9, behavior: 'smooth' }); return; }
     if (el = e.target.closest('[data-hand]')) {
       HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {}
       TRAY = []; drawHands(); drawRows(); drawCards(); drawBar();

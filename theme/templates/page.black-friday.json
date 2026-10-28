@@ -12,6 +12,7 @@
             "name": "Eclipse, in black",
             "line": "The Blade and the Mallet, blacked out. First time on sale, and it will sell out.",
             "save_line": "Counts as a club. Cover on us.",
+            "kit": "Mallet or Blade, in black|Free head cover|First look Nov 24",
             "price": "From $229",
             "link": "#shop",
             "btn": "See the putters",
@@ -75,6 +76,7 @@
             "product": "lucky-golf-lgw02-gold",
             "finish": "Gold",
             "name": "Carver 02 Gold",
+            "image": "shopify://shop_images/lg-card-carver-gold.webp",
             "line": "Forged 1020. Spins like it's mad at the ball."
           }
         },
@@ -128,7 +130,7 @@
         "p4": { "type": "polo", "settings": { "product": "contour-classic-polo" } }
       },
       "block_order": ["h1", "h2", "h3", "h4", "h5", "c1", "c2", "c3", "c4", "c5", "p1", "p2", "p3", "p4"],
-      "settings": {}
+      "settings": { "polos_coll": "polos", "hats_coll": "hats", "gear_coll": "gear", "clock_hours": 120 }
     }
   },
   "order": ["main"]

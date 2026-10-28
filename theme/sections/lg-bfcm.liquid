@@ -54,15 +54,6 @@
       </div>
     {%- endfor -%}
 
-    <div class="bf-lad-wrap" data-bf-show="mail list live cm">
-      <ol class="bf-lad" aria-label="The ladder">
-        <li><b>1 club</b><span data-lad-1>{{ s.lad_1 }}</span></li>
-        <li><b>2 clubs</b><span>{{ s.lad_2 }}</span></li>
-        <li><b>3 or more</b><span>{{ s.lad_3 }}</span></li>
-      </ol>
-      {%- if s.wedge_line != blank %}<p class="bf-lad-note">{{ s.wedge_line }}</p>{% endif -%}
-    </div>
-
     <div class="bf-ticket" data-bf-show="mail list" data-bf-code hidden>
       <span class="bf-ticket-l"><small data-code-off>Code at checkout</small><small data-code-on hidden>Already in your bag</small><b data-code-text>{{ s.mail_code }}</b></span>
       <span class="bf-ticket-r" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -76,6 +67,15 @@
       <span data-bf-ends>{{ s.ends_line }}</span>
       <span class="bf-clock" data-bf-clock hidden><span>{{ s.clock_label }}</span> <b data-d>0</b>d <b data-h>00</b>h <b data-m>00</b>m</span>
     </p>
+    <div class="bf-lad-wrap" data-bf-show="mail list live cm">
+      <ol class="bf-lad" aria-label="The ladder">
+        <li><b>1 club</b><span data-lad-1>{{ s.lad_1 }}</span></li>
+        <li><b>2 clubs</b><span>{{ s.lad_2 }}</span></li>
+        <li><b>3 or more</b><span>{{ s.lad_3 }}</span></li>
+      </ol>
+      {%- if s.wedge_line != blank %}<p class="bf-lad-note">{{ s.wedge_line }}</p>{% endif -%}
+    </div>
+
     <div class="bf-go" data-bf-show="over" hidden><a class="lg-btn" href="#shop">{{ s.over_btn }}</a></div>
   </div>
 </section>
@@ -110,6 +110,7 @@
             {%- if b.chip != blank %}<i class="bf-st is-gold">{{ b.chip }}</i>{% endif -%}
             <b class="bf-card-name">{{ b.name }}</b>
             <span class="bf-card-line">{{ b.line }}</span>
+            <span class="bf-kit" data-card-kit>{%- if b.kit != blank -%}{%- assign kit = b.kit | split: '|' -%}{%- for k in kit -%}<i{% if forloop.index > 1 %} class="is-free"{% endif %}>{{ k | strip }}</i>{%- endfor -%}{%- endif -%}</span>
             <span class="bf-card-save" data-card-save>{% if b.save_line != blank %}{{ b.save_line }}{% endif %}</span>
             <span class="bf-card-pr" data-card-price>{% if b.price != blank %}<b>{{ b.price }}</b>{% endif %}</span>
             <span class="lg-btn bf-card-btn" data-card-btn>{{ b.btn | default: s.set_btn }}</span>
@@ -140,10 +141,14 @@
 </section>
 {%- endif -%}
 
-<section class="bf-life" aria-label="The shoot">
-  <div class="bf-life-row">
-    {%- for i in (1..6) -%}{%- assign lf = 'lg-bf-life-' | append: i | append: '.jpg' | asset_url -%}
-    <img src="{{ lf }}" alt="" loading="lazy" width="1400" height="933">
+<section class="bf-life" aria-label="Lucky, on the course and off it">
+  <div class="bf-life-row" data-life>
+    {%- for pass in (1..2) -%}
+    <div class="bf-life-set"{% if pass == 2 %} aria-hidden="true"{% endif %}>
+      {%- for i in (1..18) -%}{%- assign lf = 'lg-bf-strip-' | append: i | append: '.jpg' | asset_url -%}
+      <img src="{{ lf }}" alt="" loading="lazy" height="720">
+      {%- endfor -%}
+    </div>
     {%- endfor -%}
   </div>
 </section>
@@ -157,7 +162,6 @@
     <button type="button" role="tab" class="bf-tab" data-tab="wedges" aria-selected="true">Wedges</button>
     <button type="button" role="tab" class="bf-tab" data-tab="putters" aria-selected="false">Putters</button>
     <button type="button" role="tab" class="bf-tab" data-tab="hybrid" aria-selected="false">Hybrid</button>
-    <span class="bf-hands" role="group" aria-label="Hand" data-hands></span>
   </div>
   <ol class="bf-meter" data-meter aria-label="What you get as you add clubs">
     <li data-m="1"><b>1 club</b><span>Everyday price</span></li>
@@ -169,43 +173,42 @@
   <div class="bf-pcs" data-rows="hybrid" hidden></div>
 </section>
 
+{%- assign polos = section.blocks | where: "type", "polo" -%}
+{%- capture retired -%}{%- for block in polos -%}{{ block.settings.product.handle }},{%- endfor -%}{%- endcapture -%}
+{%- assign g_tabs = 'polos,hats,gear' | split: ',' -%}
 <section class="lg-wrap bf-sec" id="gear" aria-labelledby="bf-gear-h">
-  {%- assign polos = section.blocks | where: "type", "polo" -%}
-  {%- assign gearp = s.gear_collection.products -%}
-  {%- if polos.size > 0 or gearp.size > 0 -%}
   <div class="bf-hd">
     <h2 class="bf-h" id="bf-gear-h">{{ s.gear_title }}</h2>
     <p class="bf-l">{{ s.gear_line }}</p>
   </div>
-  <div class="bf-pcs bf-pcs-4">
-    {%- for block in polos -%}{%- assign p = block.settings.product -%}{%- if p != blank -%}
-    <article class="bf-pc" {{ block.shopify_attributes }}>
-      <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy"><i class="bf-st is-gold">Last run</i></a>
-      <div class="bf-pc-bd">
-        <h3><a href="{{ p.url }}">{{ p.title | remove: ' Classic Polo' | remove: ' Blade Polo' }}</a> <span><b>${{ s.polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s></span></h3>
-        <p>{{ s.polo_line }}</p>
-        <div class="bf-pick">
-          <select class="bf-sel" aria-label="Size">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>
-          <button type="button" class="bf-add" data-polo-add>Add</button>
-        </div>
-      </div>
-    </article>
+  <div class="bf-tabs" role="tablist" aria-label="Gear">
+    {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- if s[ck] != blank -%}
+    <button type="button" role="tab" class="bf-tab" data-gtab="{{ t }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ s[ck].title }}</button>
     {%- endif -%}{%- endfor -%}
-    {%- for p in gearp limit: 8 -%}
-    <article class="bf-pc">
-      <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy">{% if p.compare_at_price > p.price %}<i class="bf-st is-gold">On sale</i>{% endif %}</a>
-      <div class="bf-pc-bd">
-        <h3><a href="{{ p.url }}">{{ p.title }}</a> <span><b>{{ p.price | money_without_trailing_zeros }}</b>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}</span></h3>
-        <div class="bf-pick">
-          {%- if p.has_only_default_variant -%}<input type="hidden" value="{{ p.selected_or_first_available_variant.id }}">
-          {%- else -%}<select class="bf-sel" aria-label="Option">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>{%- endif -%}
-          {%- if p.available %}<button type="button" class="bf-add" data-polo-add>Add</button>{% else %}<span class="bf-out">Sold out</span>{% endif -%}
-        </div>
-      </div>
-    </article>
-    {%- endfor -%}
   </div>
-  {%- endif -%}
+  {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- assign coll = s[ck] -%}{%- if coll != blank -%}
+  <div class="bf-row" data-grow="{{ t }}"{% unless forloop.first %} hidden{% endunless %}>
+    <div class="bf-row-track" data-row-track>
+      {%- for p in coll.products -%}{%- if p.available -%}
+      {%- assign is_ret = false -%}{%- assign hk = p.handle | append: ',' -%}{%- if retired contains hk -%}{%- assign is_ret = true -%}{%- endif -%}
+      <article class="bf-pc bf-gc">
+        <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 700 }}" alt="{{ p.title | escape }}" loading="lazy">{% if is_ret %}<i class="bf-st is-gold">Last run</i>{% elsif p.compare_at_price > p.price %}<i class="bf-st is-gold">On sale</i>{% endif %}</a>
+        <div class="bf-pc-bd">
+          <h3><a href="{{ p.url }}">{{ p.title | remove: ' Classic Polo' | remove: ' Blade Polo' }}</a></h3>
+          <p class="bf-gp">{% if is_ret %}<b>${{ s.polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s>{% else %}<b>{{ p.price | money_without_trailing_zeros }}</b>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}{% endif %}</p>
+          <div class="bf-pick">
+            {%- if p.has_only_default_variant -%}<input type="hidden" value="{{ p.selected_or_first_available_variant.id }}">
+            {%- else -%}<select class="bf-sel" aria-label="{{ p.options.first | default: 'Option' }}">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>{%- endif -%}
+            <button type="button" class="bf-add" data-polo-add>Add</button>
+          </div>
+        </div>
+      </article>
+      {%- endif -%}{%- endfor -%}
+    </div>
+    <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
+  {%- endif -%}{%- endfor -%}
 </section>
 
 <section class="bf-proof" aria-label="Why Lucky">
@@ -394,8 +397,10 @@ window.LG_BF = {
     { "type": "text", "id": "bar_btn", "label": "Bar button", "default": "Put them in my bag" },
     { "type": "header", "content": "Gear (apparel + accessories, its own section)" },
     { "type": "text", "id": "gear_title", "label": "Heading", "default": "Gear" },
-    { "type": "text", "id": "gear_line", "label": "Line", "default": "The last polos, and the small stuff that lives in the bag." },
-    { "type": "collection", "id": "gear_collection", "label": "Accessories collection", "info": "Hats, towels, divot tools, head covers. Shows after the polos, up to 8." },
+    { "type": "text", "id": "gear_line", "label": "Line", "default": "Every polo, every hat, and the small stuff that lives in the bag." },
+    { "type": "collection", "id": "polos_coll", "label": "Tab 1: polos" },
+    { "type": "collection", "id": "hats_coll", "label": "Tab 2: hats" },
+    { "type": "collection", "id": "gear_coll", "label": "Tab 3: gear", "info": "Head covers, grips, gloves. Retired polo blocks below keep their own price here." },
     { "type": "number", "id": "polo_price", "label": "Retired polo price shown", "default": 39, "info": "The products themselves must be repriced in admin before the page goes live, or the bag charges full price." },
     { "type": "text", "id": "polo_line", "label": "Retired polo line", "default": "Last run. Gone when the sizes go." },
     { "type": "header", "content": "Proof" },
@@ -446,6 +451,7 @@ window.LG_BF = {
         { "type": "text", "id": "line", "label": "One line" },
         { "type": "text", "id": "pieces", "label": "Set pieces", "info": "club key[:loft[:finish]], ... e.g. carver:50K:Gold,carver:54K:Gold,carver:58K:Gold or carver::Black,carver::Black,mallet. Empty loft = the golfer picks. Price, saving and button fill themselves." },
         { "type": "text", "id": "save_line", "label": "Saving line (when there are no pieces)" },
+        { "type": "text", "id": "kit", "label": "What's in it (when there are no pieces)", "info": "Chips split by |, e.g. Mallet or Blade, in black|Free head cover" },
         { "type": "text", "id": "price", "label": "Price text (when there are no pieces)" },
         { "type": "text", "id": "link", "label": "Link (when there are no pieces)", "default": "#shop" },
         { "type": "text", "id": "btn", "label": "Button label" },

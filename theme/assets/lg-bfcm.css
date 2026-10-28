@@ -96,10 +96,13 @@ body.bf-lock{overflow:hidden}
 .bf-card.is-soon img{opacity:.85}
 
 /* ---------------------------------------------------------------- the shoot */
-.bf-life{margin-top:70px}
-.bf-life-row{display:flex;gap:10px;overflow-x:auto;padding:0 var(--lg-pad) 6px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.bf-life{margin-top:70px;overflow:hidden}
+.bf-life-row{display:flex;width:max-content;animation:bf-drift 90s linear infinite}
+.bf-life:hover .bf-life-row{animation-play-state:paused}
+.bf-life-set{display:flex;gap:10px;padding-right:10px}
+@keyframes bf-drift{to{transform:translateX(-50%)}}
 .bf-life-row::-webkit-scrollbar{display:none}
-.bf-life-row img{flex:0 0 auto;height:min(44vw,420px);width:auto;max-width:none;border-radius:var(--lg-r-card);scroll-snap-align:start;object-fit:cover}
+.bf-life-row img{flex:0 0 auto;height:min(30vw,360px);width:auto;max-width:none;border-radius:var(--lg-r-card);object-fit:cover}
 
 /* ---------------------------------------------------------------- the shop: tabs, meter, cards */
 .bf-tabs{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:28px}
@@ -228,7 +231,7 @@ body.bf-lock{overflow:hidden}
   .bf-pcs-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .bf-card-btn{width:100%;margin-top:6px}
   .bf-life{margin-top:50px}
-  .bf-life-row img{height:62vw}
+  .bf-life-row img{height:52vw}
   .bf-tabs{justify-content:flex-start;gap:2px;margin:20px calc(var(--lg-pad) * -1) 0;padding:0 var(--lg-pad);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
   .bf-tabs::-webkit-scrollbar{display:none}
   .bf-tab{padding:0 14px;font-size:14px;white-space:nowrap}
@@ -261,4 +264,46 @@ body.bf-lock{overflow:hidden}
   .bf-bar-txt b{font-size:22px}
 }
 @keyframes bf-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
-@media (prefers-reduced-motion:reduce){.bf-pc-ph img,.bf-card img{transition:none}.bf-sheet-in{animation:none}}
+@media (prefers-reduced-motion:reduce){.bf-life{overflow-x:auto}.bf-life-row{animation:none}.bf-pc-ph img,.bf-card img{transition:none}.bf-sheet-in{animation:none}}
+
+/* ---------------------------------------------------------------- round 7 */
+/* what's in the set, on the picture */
+.bf-kit{display:flex;flex-wrap:wrap;gap:6px;max-width:440px}
+.bf-kit:empty{display:none}
+.bf-kit i{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.02em;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:var(--lg-on-dark);backdrop-filter:blur(6px)}
+.bf-kit i.is-free{background:transparent;border-color:rgba(237,210,124,.65);color:#EDD27C}
+/* dropdowns in the gold */
+.bf-sel{border-color:var(--lg-rule);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A97E2A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");transition:border-color .2s,box-shadow .2s}
+.bf-sel:hover{border-color:#C29A2B}
+.bf-sel:focus,.bf-sel:focus-visible{outline:none;border-color:#C29A2B;box-shadow:0 0 0 3px rgba(237,210,124,.45)}
+/* the hand lives on each club card */
+.bf-hand{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px;padding:3px;border-radius:999px;background:var(--lg-tile,#f1f0ea)}
+.bf-hand button{min-height:36px;border:0;border-radius:999px;background:transparent;color:var(--lg-ink-70);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.bf-hand button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page)}
+.bf-hand button:focus-visible{outline:2px solid #C29A2B;outline-offset:1px}
+.bf-pick{padding-top:10px}
+/* gear rows: swipe, arrows on desktop */
+.bf-row{position:relative;margin-top:26px}
+.bf-row-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.bf-row-track::-webkit-scrollbar{display:none}
+.bf-gc{flex:0 0 calc((100% - 48px) / 4);scroll-snap-align:start}
+.bf-gc .bf-pc-ph{aspect-ratio:4/5}
+.bf-gc h3{font-size:20px}
+.bf-gp{margin:6px 0 0;display:flex;gap:8px;align-items:baseline;font-variant-numeric:tabular-nums}
+.bf-gp b{font-size:17px}.bf-gp s{color:var(--lg-ink-64,#6b6b66);font-size:14px}
+.bf-row .bf-arr{top:38%}
+.bf-row .bf-arr.is-prev{left:-14px}.bf-row .bf-arr.is-next{right:-14px}
+/* hero: first look gets the buttons, foil sweeps once */
+.bf-big{background-size:200% 100%;animation:bf-foil 2.4s var(--lg-ease,ease) .3s 1 both}
+@keyframes bf-foil{from{background-position:100% 0}to{background-position:0 0}}
+.bf-go{margin-top:26px}
+.bf-lad-wrap{margin-top:30px}
+@media (max-width:1100px){.bf-gc{flex-basis:calc((100% - 32px) / 3)}}
+@media (max-width:749px){
+  .bf-gc{flex-basis:72%}
+  .bf-row .bf-arr{display:none}
+  .bf-row-track{margin:0 calc(var(--lg-pad) * -1);padding:0 var(--lg-pad) 4px;scroll-padding:0 var(--lg-pad)}
+  .bf-kit{max-width:100%}
+  .bf-kit i{font-size:11px;padding:5px 9px}
+}
+@media (prefers-reduced-motion:reduce){.bf-big{animation:none}}
