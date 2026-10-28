@@ -118,7 +118,7 @@
   }
   function setSaving(ps) {
     var n = ps.length, cut = off(n), gifts = n >= giftMin ? giftsWorth() : 0;
-    var cover = ps.some(function (p) { return p.club.cover; }) ? cfg.worth.cover : 0;
+    var cover = ps.filter(function (p) { return p.club.cover; }).length * cfg.worth.cover;
     return { cut: cut, gifts: gifts, cover: cover, total: cut + gifts + cover };
   }
   var SETS = {};
@@ -159,17 +159,26 @@
 
   /* ---------------------------------------------------------------- the loft sheet */
   var sheet = $('[data-sheet]'), CUR = null;
+  /* each row in the sheet is its own club: finish, hand and loft are picked per row, so a set can mix */
+  var dedupe = function (vs) { var seen = {}; return vs.filter(function (v) { if (seen[v.id]) return false; seen[v.id] = 1; return true; }); };
+  function rowFins(key) { var f = []; CLUBS.forEach(function (c) { if (c.key === key && c.finish && f.indexOf(c.finish) < 0) f.push(c.finish); }); return f; }
+  function rowClub(r) { var cs = CLUBS.filter(function (c) { return c.key === r.key; }); return cs.filter(function (c) { return c.finish && r.fin && c.finish.toLowerCase() === r.fin.toLowerCase(); })[0] || cs[0]; }
+  function rowOpts(r) {
+    var vs = []; CLUBS.forEach(function (c) { if (c.key !== r.key) return; c.variants.forEach(function (v) { if (v.a && v.hand === r.hand && (!r.fin || !v.fin || v.fin.toLowerCase() === r.fin.toLowerCase())) vs.push(v); }); });
+    return dedupe(vs);
+  }
+  function refit(r, loft) { r.club = rowClub(r); r.opts = rowOpts(r); var want = loft || (r.v && r.v.loft); r.v = r.opts.filter(function (v) { return v.loft === want; })[0] || r.opts[0] || null; }
   function openSheet(i, name) {
-    CUR = SETS[i].map(function (p) { return { club: p.club, opts: p.opts, v: p.v || p.pick || p.opts[0] }; });
+    CUR = SETS[i].map(function (p) { var v = p.v || p.pick || p.opts[0]; var r = { key: p.club.key, fin: v.fin || p.club.finish || '', hand: v.hand || HAND, v: v }; refit(r, v.loft); return r; });
     $('[data-sheet-name]').textContent = name;
     var ln = $('[data-sheet-line]'); if (ln && ln.getAttribute('data-was')) ln.textContent = ln.getAttribute('data-was');
-    sheetMode(false); drawHands(); drawSheet();
+    sheetMode(false); drawSheet();
     sheet.hidden = false; document.body.classList.add('bf-lock');
-    setTimeout(function () { var f = $('select, button', $('[data-sheet-rows]')); if (f) f.focus(); }, 50);
+    setTimeout(function () { var f = $('button, select', $('[data-sheet-rows]')); if (f) f.focus(); }, 50);
   }
   function closeSheet() { sheet.hidden = true; document.body.classList.remove('bf-lock'); CUR = null; sheet.classList.remove('is-next'); sheetMode(false); }
   function sheetMode(next) {
-    ['[data-hands]', '[data-sheet-rows]', '[data-sheet-lines]', '.bf-r-total', '[data-sheet-add]'].forEach(function (q) { var el = $(q, sheet); if (el) el.hidden = next; });
+    ['[data-sheet-rows]', '[data-sheet-lines]', '[data-sheet-sum]', '.bf-r-total', '[data-sheet-add]'].forEach(function (q) { var el = $(q, sheet); if (el) el.hidden = next; });
     var f = $('[data-sheet-form]', sheet); if (f) f.hidden = !next;
   }
   function openNext() {
@@ -179,21 +188,41 @@
     sheetMode(true); sheet.classList.add('is-next'); sheet.hidden = false; document.body.classList.add('bf-lock');
     setTimeout(function () { var f = $('[data-sheet-form] input', sheet); if (f) f.focus(); }, 50);
   }
+  function seg(kind, j, pairs, cur) {
+    return '<span class="bf-seg" role="group" aria-label="' + (kind === 'fin' ? 'Finish' : 'Hand') + '">' + pairs.map(function (p) {
+      return '<button type="button" data-sr="' + kind + '" data-j="' + j + '" data-val="' + esc(p[0]) + '" aria-pressed="' + (p[0] === cur) + '">' + esc(p[1]) + '</button>'; }).join('') + '</span>';
+  }
+  var strike = function (c) { return c > 0 ? '<s>' + money(c) + '</s> ' : ''; };
   function drawSheet() {
     if (!CUR) return;
-    $('[data-sheet-rows]').innerHTML = CUR.map(function (p, j) {
-      var pick = p.opts.length > 1
-        ? '<select class="bf-sel" data-sheet-pick="' + j + '" aria-label="Loft">' + p.opts.map(function (v) { return '<option value="' + v.id + '"' + (v.id === p.v.id ? ' selected' : '') + '>' + esc(v.label) + (isLow(v) ? ' · running low' : '') + '</option>'; }).join('') + '</select>'
-        : '<span class="bf-fixed">' + esc(p.v.label || p.club.name) + '</span>';
-      return '<div class="bf-sheet-row"><img src="' + esc(p.club.img) + '" alt=""><div><b><a href="' + esc(p.club.url) + '">' + esc(p.club.name) + '</a></b>' + (p.club.cover ? '<small>Free head cover</small>' : '') + '</div>' + pick + '<span>' + money(p.v.p) + '</span></div>';
+    $('[data-sheet-rows]').innerHTML = CUR.map(function (r, j) {
+      var fins = rowFins(r.key), c = r.club;
+      var loft = !r.v ? '<span class="bf-out">None left in this one</span>'
+        : r.opts.length > 1 ? '<select class="bf-sel" data-sheet-pick="' + j + '" aria-label="Loft">' + r.opts.map(function (v) { return '<option value="' + v.id + '"' + (v.id === r.v.id ? ' selected' : '') + '>' + esc(v.label || v.loft) + (isLow(v) ? ' · running low' : '') + '</option>'; }).join('') + '</select>'
+        : '<span class="bf-fixed">' + esc(r.v.label || 'One loft') + '</span>';
+      return '<div class="bf-sheet-row"><img src="' + esc(c.img) + '" alt=""><div class="bf-sr-main"><b>' + esc(c.name) + '</b>' + (c.cover ? '<small>Free head cover</small>' : '')
+        + '<div class="bf-sr-ctl">' + (fins.length > 1 ? seg('fin', j, fins.map(function (f) { return [f, f]; }), r.fin) : '') + seg('hand', j, [['R', 'Right'], ['L', 'Left']], r.hand) + loft + '</div></div>'
+        + '<span class="bf-sr-p">' + (r.v ? money(r.v.p) : '') + '</span></div>';
     }).join('');
-    var n = CUR.length, t = CUR.reduce(function (a, p) { return a + p.v.p; }, 0), sv = setSaving(CUR), lines = [];
-    if (sv.cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(sv.cut), 'is-cut']);
-    if (!cfg.giftsGone) lines.push(['Towel + divot tool', n >= giftMin ? 'Free' : '2+ clubs', n >= giftMin ? 'is-free' : 'is-dim']);
-    if (CUR.some(function (p) { return p.club.cover; })) lines.push(['Head cover', 'Free', 'is-free']);
-    lines.push(['Shipping', t - sv.cut >= cfg.ship ? 'Free' : 'From $18', t - sv.cut >= cfg.ship ? 'is-free' : 'is-dim']);
-    $('[data-sheet-lines]').innerHTML = lines.map(function (l) { return '<li class="' + l[2] + '"><span>' + esc(l[0]) + '</span><b>' + esc(l[1]) + '</b></li>'; }).join('');
-    $('[data-sheet-total]').textContent = money(t - sv.cut);
+    var rows = CUR.filter(function (r) { return r.v; }), n = rows.length;
+    var t = rows.reduce(function (a, r) { return a + r.v.p; }, 0), cut = off(n);
+    var gifts = n >= giftMin && !cfg.giftsGone, covers = rows.filter(function (r) { return r.club.cover; }).length;
+    var shipFree = t - cut >= cfg.ship, lines = [];
+    lines.push(['Clubs (' + n + ')', money(t), '']);
+    if (cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(cut), 'is-cut']);
+    if (!cfg.giftsGone) {
+      lines.push(['Towel', gifts ? strike(cfg.worth.towel) + 'Free' : 'Free at 2 clubs', gifts ? 'is-free' : 'is-dim']);
+      lines.push(['Divot tool', gifts ? strike(cfg.worth.divot) + 'Free' : 'Free at 2 clubs', gifts ? 'is-free' : 'is-dim']);
+    }
+    if (covers) lines.push(['Head cover' + (covers > 1 ? ' × ' + covers : ''), strike(cfg.worth.cover * covers) + 'Free', 'is-free']);
+    lines.push(['Shipping', shipFree ? strike(cfg.shipCost) + 'Free' : 'From ' + money(cfg.shipCost), shipFree ? 'is-free' : 'is-dim']);
+    $('[data-sheet-lines]').innerHTML = lines.map(function (l) { return '<li class="' + l[2] + '"><span>' + esc(l[0]) + '</span><b>' + l[1] + '</b></li>'; }).join('');
+    var usual = t + (gifts ? cfg.worth.towel + cfg.worth.divot : 0) + cfg.worth.cover * covers + (shipFree ? cfg.shipCost : 0);
+    var today = t - cut;
+    $('[data-sheet-sum]').innerHTML = usual > today ? '<span>Usually <s>' + money(usual) + '</s></span><span class="is-save">You save ' + money(usual - today) + '</span>' : '';
+    $('[data-sheet-total]').textContent = money(today);
+    var add = $('[data-sheet-add]'); if (add) add.disabled = !n;
+    dd(sheet);
   }
 
   /* ---------------------------------------------------------------- the shop: tabs, cards, meter */
@@ -212,7 +241,7 @@
       ? '<select class="bf-sel" data-pick aria-label="Loft">' + vs.map(function (v) { return '<option value="' + v.id + '"' + (v.a ? '' : ' disabled') + '>' + esc(v.label) + (v.a ? (isLow(v) ? ' · running low' : '') : ' · sold out') + '</option>'; }).join('') + '</select>'
       : (vs[0].a ? '<input type="hidden" data-pick value="' + vs[0].id + '">' : '<span class="bf-out">Sold out</span>');
     var can = vs.some(function (v) { return v.a; });
-    return '<article class="bf-pc' + (c.drop ? ' is-drop' : '') + '"><a class="bf-pc-ph" href="' + esc(c.url) + '"><img src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy">'
+    return '<article class="bf-pc' + (c.drop ? ' is-drop' : '') + '"><a class="bf-pc-ph" href="' + esc(c.url) + '"><img src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy">' + (c.img2 ? '<img class="is-alt" src="' + esc(c.img2) + '" alt="" loading="lazy">' : '')
       + (c.drop ? '<i class="bf-st is-on">New</i>' : lowRow(vs) ? '<i class="bf-st is-low">Running low</i>' : '') + '</a>'
       + '<div class="bf-pc-bd"><h3><a href="' + esc(c.url) + '">' + esc(c.name) + '</a> <span>' + money(price) + '</span></h3>'
       + (c.stars ? '<i class="bf-stars">' + c.stars + ' ★</i>' : '')
@@ -225,6 +254,7 @@
       var g = box.getAttribute('data-rows'); if (g === 'apparel') return;
       box.innerHTML = CLUBS.filter(function (c) { return c.drop ? (g === 'putters' && phase !== 'mail') : c.group === g; }).map(cardHtml).join('');
     });
+    dd(page);
   }
   function showTab(t) {
     $$('[data-tab]').forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === t)); });
@@ -284,6 +314,55 @@
   }
   function emptyTray() { TRAY = []; setTimeout(function () { drawRows(); drawBar(); }, 1800); }
 
+  /* ---------------------------------------------------------------- dropdowns: Lucky's own list over the native select */
+  var DDL = null;
+  function dd(root) {
+    $$('select.bf-sel', root || page).forEach(function (sel) {
+      var w = sel.parentNode;
+      if (!w.classList.contains('bf-dd')) {
+        w = document.createElement('span'); w.className = 'bf-dd'; sel.parentNode.insertBefore(w, sel); w.appendChild(sel);
+        sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true');
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'bf-dd-btn'; b.setAttribute('aria-haspopup', 'listbox'); b.setAttribute('aria-expanded', 'false');
+        b.setAttribute('aria-label', sel.getAttribute('aria-label') || 'Choose'); w.appendChild(b);
+      }
+      var o = sel.options[sel.selectedIndex]; w.querySelector('.bf-dd-btn').textContent = o ? o.text : '';
+    });
+  }
+  function ddClose() { if (!DDL) return; var b = DDL._w.querySelector('.bf-dd-btn'); b.setAttribute('aria-expanded', 'false'); DDL.remove(); DDL = null; }
+  function ddOpen(w) {
+    ddClose();
+    var sel = w.querySelector('select'), b = w.querySelector('.bf-dd-btn'), ul = document.createElement('ul');
+    ul.className = 'bf-dd-list'; ul.setAttribute('role', 'listbox'); ul.setAttribute('aria-label', b.getAttribute('aria-label'));
+    [].forEach.call(sel.options, function (o, i) { ul.insertAdjacentHTML('beforeend', '<li role="option" tabindex="-1" data-ddi="' + i + '" aria-selected="' + o.selected + '"' + (o.disabled ? ' aria-disabled="true"' : '') + '>' + esc(o.text) + '</li>'); });
+    document.body.appendChild(ul); DDL = ul; ul._w = w; b.setAttribute('aria-expanded', 'true');
+    if (window.innerWidth >= 750) {
+      var rc = b.getBoundingClientRect(), below = window.innerHeight - rc.bottom;
+      ul.style.left = rc.left + 'px'; ul.style.minWidth = rc.width + 'px';
+      if (below < 280 && rc.top > below) { ul.style.bottom = (window.innerHeight - rc.top + 6) + 'px'; } else { ul.style.top = (rc.bottom + 6) + 'px'; }
+    }
+    var cur = ul.querySelector('[aria-selected="true"]') || ul.firstChild; if (cur) { cur.focus(); cur.scrollIntoView({ block: 'nearest' }); }
+  }
+  function ddPick(li) {
+    if (li.getAttribute('aria-disabled') === 'true') return;
+    var w = DDL._w, sel = w.querySelector('select'); sel.selectedIndex = +li.getAttribute('data-ddi');
+    ddClose(); dd(w.parentNode); sel.dispatchEvent(new Event('change', { bubbles: true })); var b = w.querySelector('.bf-dd-btn'); if (b) b.focus();
+  }
+  document.addEventListener('click', function (e) {
+    var li = e.target.closest('.bf-dd-list [data-ddi]'); if (li && DDL) { ddPick(li); return; }
+    var b = e.target.closest('.bf-dd-btn'); if (b) { var w = b.parentNode; if (DDL && DDL._w === w) ddClose(); else ddOpen(w); return; }
+    if (DDL && !e.target.closest('.bf-dd-list')) ddClose();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!DDL) return;
+    var li = document.activeElement && document.activeElement.closest && document.activeElement.closest('.bf-dd-list [data-ddi]');
+    if (e.key === 'Escape') { e.stopPropagation(); var b = DDL._w.querySelector('.bf-dd-btn'); ddClose(); b.focus(); return; }
+    if (!li) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); var n = e.key === 'ArrowDown' ? li.nextElementSibling : li.previousElementSibling; if (n) n.focus(); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ddPick(li); }
+  }, true);
+  window.addEventListener('scroll', function () { if (DDL && window.innerWidth >= 750) ddClose(); }, { passive: true });
+  window.addEventListener('resize', ddClose);
+
   page.addEventListener('click', function (e) {
     var el;
     if (el = e.target.closest('[data-card][data-set]')) {
@@ -295,7 +374,8 @@
     if (el = e.target.closest('[data-card][data-next]')) { openNext(); return; }
     if (el = e.target.closest('a[data-card].is-soon')) { e.preventDefault(); if (listBox) { listBox.hidden = false; listBox.scrollIntoView({ behavior: 'smooth' }); } return; }
     if (e.target.closest('[data-sheet-close]')) { closeSheet(); return; }
-    if (el = e.target.closest('[data-sheet-add]')) { if (CUR) addIds(CUR.map(function (p) { return p.v.id; }), el).then(function () { setTimeout(closeSheet, 1200); }); return; }
+    if (el = e.target.closest('[data-sr]')) { var r = CUR && CUR[+el.getAttribute('data-j')]; if (r) { r[el.getAttribute('data-sr')] = el.getAttribute('data-val'); refit(r); drawSheet(); } return; }
+    if (el = e.target.closest('[data-sheet-add]')) { if (CUR) addIds(CUR.filter(function (r) { return r.v; }).map(function (r) { return r.v.id; }), el).then(function () { setTimeout(closeSheet, 1200); }); return; }
     if (el = e.target.closest('[data-tab]')) { showTab(el.getAttribute('data-tab')); return; }
     if (el = e.target.closest('[data-chand]')) { CH[el.getAttribute('data-ckey')] = el.getAttribute('data-chand'); drawRows(); return; }
     if (el = e.target.closest('[data-gtab]')) { var g = el.getAttribute('data-gtab'); $$('[data-gtab]').forEach(function (b) { b.setAttribute('aria-selected', String(b === el)); }); $$('[data-grow]').forEach(function (r) { r.hidden = r.getAttribute('data-grow') !== g; }); return; }
@@ -303,7 +383,6 @@
     if (el = e.target.closest('[data-hand]')) {
       HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {}
       TRAY = []; drawHands(); drawRows(); drawCards(); drawBar();
-      if (CUR) { CUR = CUR.map(function (p) { var fresh = piece(p.club.key + ':' + (p.opts.length === 1 ? p.v.loft : '') + ':' + (p.v.fin || '')); return fresh ? { club: fresh.club, opts: fresh.opts, v: fresh.v || fresh.opts[0] } : p; }); drawSheet(); }
       return;
     }
     if (el = e.target.closest('[data-add]')) {
@@ -316,7 +395,7 @@
   });
   page.addEventListener('change', function (e) {
     var sel = e.target.closest('[data-sheet-pick]'); if (!sel || !CUR) return;
-    var p = CUR[+sel.getAttribute('data-sheet-pick')]; p.v = BY[+sel.value] || p.v; drawSheet();
+    var r = CUR[+sel.getAttribute('data-sheet-pick')]; r.v = BY[+sel.value] || r.v; drawSheet();
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && CUR) closeSheet(); });
   if (bar) bar.addEventListener('click', function (e) {
@@ -352,6 +431,6 @@
     });
   }).observe(document.body, { childList: true, subtree: true });
 
-  drawHands(); drawCards(); drawRows(); showTab('wedges'); drawBar(); drawCars();
+  drawHands(); drawCards(); drawRows(); showTab('wedges'); drawBar(); drawCars(); dd(page);
   window.addEventListener('resize', drawCars);
 })();

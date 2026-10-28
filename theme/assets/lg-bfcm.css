@@ -307,3 +307,52 @@ body.bf-lock{overflow:hidden}
   .bf-kit i{font-size:11px;padding:5px 9px}
 }
 @media (prefers-reduced-motion:reduce){.bf-big{animation:none}}
+
+/* ---------------------------------------------------------------- round 8 */
+/* our dropdown: a button that looks like the rest of the page, a list in our type */
+.bf-dd{position:relative;display:block;min-width:0}
+.bf-dd select{position:absolute;inset:0;opacity:0;pointer-events:none;width:100%}
+.bf-dd-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;padding:0 14px;border:1px solid var(--lg-rule);border-radius:var(--lg-r-tag);background:var(--lg-page);color:var(--lg-ink);font:inherit;font-size:var(--lg-fs-sm);font-weight:700;text-align:left;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color .2s,box-shadow .2s}
+.bf-dd-btn::after{content:"";flex:0 0 auto;width:9px;height:9px;margin-top:-4px;border-right:2.5px solid #A97E2A;border-bottom:2.5px solid #A97E2A;transform:rotate(45deg);transition:transform .2s}
+.bf-dd-btn[aria-expanded="true"]::after{transform:rotate(225deg);margin-top:4px}
+.bf-dd-btn:hover,.bf-dd-btn[aria-expanded="true"]{border-color:#C29A2B}
+.bf-dd-btn:focus-visible{outline:none;border-color:#C29A2B;box-shadow:0 0 0 3px rgba(237,210,124,.45)}
+.bf-dd-list{position:fixed;z-index:200;max-height:280px;overflow:auto;margin:0;padding:6px;list-style:none;background:#fbfaf6;border:1px solid #C29A2B;border-radius:10px;box-shadow:0 18px 40px rgba(4,16,10,.28);font-family:var(--lg-body,'Inter'),system-ui,sans-serif;font-size:14px;font-weight:600;color:#151a16}
+.bf-dd-list li{padding:10px 12px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.bf-dd-list li:hover,.bf-dd-list li:focus{outline:none;background:rgba(237,210,124,.28)}
+.bf-dd-list li[aria-selected="true"]{background:#151a16;color:#fbfaf6}
+.bf-dd-list li[aria-selected="true"]::after{content:"";display:inline-block;width:5px;height:10px;margin-left:10px;border-right:2px solid #EDD27C;border-bottom:2px solid #EDD27C;transform:rotate(45deg) translateY(-2px)}
+.bf-dd-list li[aria-disabled="true"]{color:#9a9a92;cursor:default;background:none}
+@media (max-width:749px){
+  .bf-dd-list{left:0;right:0;bottom:0;max-height:60vh;padding:10px 12px calc(14px + env(safe-area-inset-bottom));border-radius:16px 16px 0 0;border:0;border-top:1px solid #C29A2B;box-shadow:0 -20px 50px rgba(4,16,10,.35);animation:bf-up .25s var(--lg-ease,ease)}
+  .bf-dd-list li{padding:14px 12px;font-size:16px}
+}
+/* names in the sheet are words, not links */
+.bf-sheet-row b,.bf-sheet-row b a,.bf-pc-bd h3 a{color:inherit;text-decoration:none}
+.bf-pc-bd h3 a:hover{text-decoration:underline;text-decoration-color:#C29A2B;text-underline-offset:4px}
+/* sheet rows: picture, name, then finish / hand / loft on one line */
+.bf-sheet-row{grid-template-columns:64px minmax(0,1fr) auto;align-items:start;padding:10px}
+.bf-sheet-row img{width:64px;height:64px}
+.bf-sr-main{display:flex;flex-direction:column;gap:6px;min-width:0}
+.bf-sr-main > b{font-size:15px;font-weight:800}
+.bf-sr-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bf-sr-ctl .bf-dd{flex:1 1 120px}
+.bf-sr-ctl .bf-dd-btn{min-height:36px}
+.bf-sr-p{font-weight:800;font-variant-numeric:tabular-nums;padding-top:2px}
+.bf-seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--lg-tile,#f1f0ea)}
+.bf-seg button{min-height:30px;padding:0 12px;border:0;border-radius:999px;background:transparent;color:var(--lg-ink-70);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.bf-seg button[aria-pressed="true"]{background:var(--lg-ink);color:var(--lg-page)}
+.bf-seg button:focus-visible{outline:2px solid #C29A2B;outline-offset:1px}
+/* the receipt: every free thing shows what it would have cost */
+.bf-r-lines s,.bf-r-sum s{color:var(--lg-ink-64,#6b6b66);font-weight:500;margin-right:4px}
+.bf-r-sum{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px;font-size:14px;font-weight:700}
+.bf-r-sum:empty{display:none}
+.bf-r-sum .is-save{padding:4px 10px;border-radius:999px;background:var(--lg-foil);color:var(--lg-ink);font-size:13px}
+.bf-r-total span{font-size:14px}
+[data-sheet-add][disabled]{opacity:.5;pointer-events:none}
+/* hover shows the second photo */
+.bf-pc-ph{position:relative;overflow:hidden}
+.bf-pc-ph .is-alt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;padding:0;opacity:0;transition:opacity .35s var(--lg-ease,ease)}
+@media (hover:hover){.bf-pc:hover .bf-pc-ph .is-alt{opacity:1}}
+.bf-pc-ph .bf-st{z-index:1}
+#accessories{padding-top:56px}

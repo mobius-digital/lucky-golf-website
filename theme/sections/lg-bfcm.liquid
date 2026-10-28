@@ -175,13 +175,13 @@
 
 {%- assign polos = section.blocks | where: "type", "polo" -%}
 {%- capture retired -%}{%- for block in polos -%}{{ block.settings.product.handle }},{%- endfor -%}{%- endcapture -%}
-{%- assign g_tabs = 'polos,hats,gear' | split: ',' -%}
-<section class="lg-wrap bf-sec" id="gear" aria-labelledby="bf-gear-h">
+{%- assign g_tabs = 'polos,hats' | split: ',' -%}
+<section class="lg-wrap bf-sec" id="apparel" aria-labelledby="bf-app-h">
   <div class="bf-hd">
-    <h2 class="bf-h" id="bf-gear-h">{{ s.gear_title }}</h2>
+    <h2 class="bf-h" id="bf-app-h">{{ s.gear_title }}</h2>
     <p class="bf-l">{{ s.gear_line }}</p>
   </div>
-  <div class="bf-tabs" role="tablist" aria-label="Gear">
+  <div class="bf-tabs" role="tablist" aria-label="Apparel">
     {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- if s[ck] != blank -%}
     <button type="button" role="tab" class="bf-tab" data-gtab="{{ t }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ s[ck].title }}</button>
     {%- endif -%}{%- endfor -%}
@@ -189,27 +189,29 @@
   {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- assign coll = s[ck] -%}{%- if coll != blank -%}
   <div class="bf-row" data-grow="{{ t }}"{% unless forloop.first %} hidden{% endunless %}>
     <div class="bf-row-track" data-row-track>
-      {%- for p in coll.products -%}{%- if p.available -%}
-      {%- assign is_ret = false -%}{%- assign hk = p.handle | append: ',' -%}{%- if retired contains hk -%}{%- assign is_ret = true -%}{%- endif -%}
-      <article class="bf-pc bf-gc">
-        <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 700 }}" alt="{{ p.title | escape }}" loading="lazy">{% if is_ret %}<i class="bf-st is-gold">Last run</i>{% elsif p.compare_at_price > p.price %}<i class="bf-st is-gold">On sale</i>{% endif %}</a>
-        <div class="bf-pc-bd">
-          <h3><a href="{{ p.url }}">{{ p.title | remove: ' Classic Polo' | remove: ' Blade Polo' }}</a></h3>
-          <p class="bf-gp">{% if is_ret %}<b>${{ s.polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s>{% else %}<b>{{ p.price | money_without_trailing_zeros }}</b>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}{% endif %}</p>
-          <div class="bf-pick">
-            {%- if p.has_only_default_variant -%}<input type="hidden" value="{{ p.selected_or_first_available_variant.id }}">
-            {%- else -%}<select class="bf-sel" aria-label="{{ p.options.first | default: 'Option' }}">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>{%- endif -%}
-            <button type="button" class="bf-add" data-polo-add>Add</button>
-          </div>
-        </div>
-      </article>
-      {%- endif -%}{%- endfor -%}
+      {%- for p in coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price -%}{%- endif -%}{%- endfor -%}
     </div>
     <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
     <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
   </div>
   {%- endif -%}{%- endfor -%}
 </section>
+
+{%- if s.gear_coll != blank -%}
+<section class="lg-wrap bf-sec" id="accessories" aria-labelledby="bf-acc-h">
+  <div class="bf-hd">
+    <h2 class="bf-h" id="bf-acc-h">{{ s.acc_title }}</h2>
+    <p class="bf-l">{{ s.acc_line }}</p>
+  </div>
+  <div class="bf-row" data-grow="acc">
+    <div class="bf-row-track" data-row-track>
+      {%- for p in s.gear_coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price -%}{%- endif -%}{%- endfor -%}
+    </div>
+    <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
+</section>
+{%- endif -%}
 
 <section class="bf-proof" aria-label="Why Lucky">
   <div class="lg-wrap">
@@ -276,10 +278,10 @@
     <p class="bf-stamp">{{ s.sheet_stamp }}</p>
     <h3 class="bf-h bf-sheet-h" id="bf-sheet-h" data-sheet-name></h3>
     <p class="bf-l" data-sheet-line>{{ s.sheet_line }}</p>
-    <div class="bf-hands" role="group" aria-label="Hand" data-hands></div>
     <div class="bf-sheet-rows" data-sheet-rows></div>
     <ul class="bf-r-lines" data-sheet-lines></ul>
-    <p class="bf-r-total"><span>Total</span><b data-sheet-total></b></p>
+    <div class="bf-r-sum" data-sheet-sum></div>
+    <p class="bf-r-total"><span>Today</span><b data-sheet-total></b></p>
     <button type="button" class="lg-btn lg-btn-block" data-sheet-add>{{ s.set_btn }}</button>
     <form class="bf-form is-light" data-bf-form data-sheet-form data-source="Driver and irons list" data-list="{{ s.next_list }}" novalidate hidden>
       <label class="sr" for="bf-next-email">Email</label>
@@ -300,6 +302,7 @@ window.LG_BF = {
   autoSources: {{ s.auto_sources | json }},
   giftsGone: {{ s.gifts_gone | json }},
   ship: {{ ship | times: 100 }},
+  shipCost: {{ s.ship_cost | default: 18 | times: 100 }},
   lowAt: {{ s.low_at | default: 60 }},
   worth: { towel: {{ s.towel_worth | default: 0 | times: 100 }}, divot: {{ s.divot_worth | default: 0 | times: 100 }}, cover: {{ s.cover_worth | default: 0 | times: 100 }} },
   say: { bar: {{ s.bar_btn | json }}, lad1Mail: {{ s.lad_1_mail | json }}, plusMail: {{ s.plus_line_mail | json }} },
@@ -313,6 +316,7 @@ window.LG_BF = {
     { key: {{ b.key | json }}, drop: {{ isdrop }}, group: {{ b.group | default: 'putters' | json }}, name: {{ b.name | default: p.title | json }}, line: {{ b.line | json }}, finish: {{ b.finish | json }}, url: {{ p.url | json }},
       cover: {{ b.cover | default: false }}, stars: {% if prc >= 10 and prv %}{{ prv | round: 1 }}{% else %}0{% endif %},
       img: {% if b.image != blank %}{{ b.image | image_url: width: 800 | json }}{% elsif cut != blank %}{{ cut | image_url: width: 800 | json }}{% else %}{{ p.featured_image | image_url: width: 800 | json }}{% endif %},
+      img2: {% if p.images.size > 1 %}{{ p.images[1] | image_url: width: 800 | json }}{% else %}""{% endif %},
       opts: {{ p.options | json }},
       variants: [{%- for v in p.variants -%}{ id: {{ v.id }}, o: {{ v.options | json }}, a: {{ v.available }}, q: {{ v.inventory_quantity | default: 0 }}, p: {{ v.price }} }{% unless forloop.last %},{% endunless %}{%- endfor -%}] },
     {%- endif -%}
@@ -400,7 +404,11 @@ window.LG_BF = {
     { "type": "text", "id": "gear_line", "label": "Line", "default": "Every polo, every hat, and the small stuff that lives in the bag." },
     { "type": "collection", "id": "polos_coll", "label": "Tab 1: polos" },
     { "type": "collection", "id": "hats_coll", "label": "Tab 2: hats" },
-    { "type": "collection", "id": "gear_coll", "label": "Tab 3: gear", "info": "Head covers, grips, gloves. Retired polo blocks below keep their own price here." },
+    { "type": "header", "content": "Accessories (its own section)" },
+    { "type": "text", "id": "acc_title", "label": "Heading", "default": "Accessories" },
+    { "type": "text", "id": "acc_line", "label": "Line", "default": "Head covers, gloves and grips. Towels and divot tools join them when they land." },
+    { "type": "collection", "id": "gear_coll", "label": "Accessories collection", "info": "Add towels, divot tools and the new covers to this collection and they show here." },
+    { "type": "number", "id": "ship_cost", "label": "What shipping usually costs ($)", "default": 18, "info": "Shown struck through when the order ships free." },
     { "type": "number", "id": "polo_price", "label": "Retired polo price shown", "default": 39, "info": "The products themselves must be repriced in admin before the page goes live, or the bag charges full price." },
     { "type": "text", "id": "polo_line", "label": "Retired polo line", "default": "Last run. Gone when the sizes go." },
     { "type": "header", "content": "Proof" },
