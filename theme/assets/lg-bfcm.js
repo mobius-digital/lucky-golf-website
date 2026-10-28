@@ -1,7 +1,7 @@
-/* The Black Friday page (sections/lg-bfcm.liquid). Round 3.
+/* The Black Friday page (sections/lg-bfcm.liquid). Round 4.
    Phase from the clock (Central time), the countdown (last 48h only), the mail code applied for postcard visitors,
-   the drop rows, one-tap sets with chips, build-your-own with a receipt that follows the tray, the sticky bar,
-   polo add, the shipping timeline, and the join-the-list form (Klaviyo client API).
+   deal cards that add a whole set, club cards with loft chips that fill a tray, the bar as the receipt,
+   polo add, and the join-the-list form (Klaviyo client API).
    The ladder here only DISPLAYS the price: the real discount is the "Lucky club ladder" function at checkout. */
 (function () {
   var cfg = window.LG_BF, page = document.querySelector('[data-bf-page]');
@@ -80,108 +80,76 @@
   if (q.get('hand')) HAND = /^l/i.test(q.get('hand')) ? 'L' : 'R';
   var isLow = function (v) { return v.a && v.q > 0 && v.q < cfg.lowAt; };
   var low = function (vs) { return vs.some(isLow); };
-  /* a whole row is "running low" only when most of its lofts are */
+  /* a whole card is "running low" only when most of its lofts are */
   var lowRow = function (vs) { var a = vs.filter(function (v) { return v.a; }); return a.length > 0 && a.filter(isLow).length * 2 > a.length; };
   var pieceName = function (v) { return v.loft ? v.loft.replace(/^(\d+)(\w)$/, '$1° $2') + (v.fin ? ' ' + v.fin : '') : v.club.name; };
+  var TRAY = [];
 
-  /* ---------------------------------------------------------------- the receipt (sample when the tray is empty, the tray otherwise) */
-  var TRAY = [], nSel = 3;
-  var dEl = $('[data-r-date]'); if (dEl) dEl.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
-  function receipt() {
-    var box = $('[data-r-lines]'); if (!box) return;
-    var tabs = $('[data-r-tabs]'), addBtn = $('[data-r-add]');
-    var live = TRAY.length > 0, lines = [], sub = 0, n;
-    if (live) {
-      n = TRAY.length;
-      var m = {}; TRAY.forEach(function (id) { m[id] = (m[id] || 0) + 1; });
-      Object.keys(m).forEach(function (id) { var v = BY[id]; sub += v.p * m[id]; lines.push([(m[id] > 1 ? m[id] + ' × ' : '') + v.club.name.replace(/ 02 (Gold|Black)$/, ' 02') + ' ' + pieceName(v).replace(v.club.name, '').trim(), money(v.p * m[id])]); });
-    } else {
-      n = nSel; sub = 9900 * n;
-      lines.push([n + ' × Carver 02 Gold', money(sub)]);
-    }
-    var cut = off(n), gift = n >= giftMin, shipFree = sub - cut >= cfg.ship;
-    if (cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(cut), 'is-cut']);
-    lines.push(['Towel + divot tool', gift ? 'Free' : (cfg.giftsGone ? 'Gone' : '2+ clubs'), gift ? 'is-free' : 'is-dim']);
-    lines.push(['Shipping', shipFree ? 'Free' : 'From $18', shipFree ? 'is-free' : 'is-dim']);
-    box.innerHTML = lines.map(function (l) { return '<li class="' + (l[2] || '') + '"><span>' + esc(l[0]) + '</span><b>' + esc(l[1]) + '</b></li>'; }).join('');
-    $('[data-r-total]').textContent = money(sub - cut);
-    $('[data-r-save]').textContent = n === 1 ? 'Add one more club and $50 comes off.' : n === 2 ? 'One more and it\'s $100 off, shipping free.' : 'You keep ' + money(cut) + '. Buy a sleeve of balls with it.';
-    if (tabs) { tabs.hidden = live; $$('[data-n]', tabs).forEach(function (b) { b.setAttribute('aria-selected', String(+b.getAttribute('data-n') === nSel)); }); }
-    if (addBtn) addBtn.hidden = !live || phase === 'over';
-  }
-  page.addEventListener('click', function (e) { var b = e.target.closest('[data-n]'); if (b) { nSel = +b.getAttribute('data-n'); receipt(); } });
-
-  /* ---------------------------------------------------------------- one-tap sets */
+  /* ---------------------------------------------------------------- deal cards that add a set */
   function resolve(tok) {
     var p = tok.trim().split(':');
     var loft = p[1] ? p[1].toUpperCase() : '', fin = p[2] || '';
     var all = []; CLUBS.forEach(function (x) { if (x.key === p[0]) all = all.concat(x.variants); });
     return all.filter(function (v) { return v.hand === HAND && (!loft || v.loft === loft) && (!fin || v.fin.toLowerCase() === fin.toLowerCase()) && v.a; })[0] || null;
   }
-  var SETS = [];
-  function drawSets() {
-    var box = $('[data-sets]'); if (!box) return;
-    SETS = String(cfg.sets || '').split(/\r?\n/).map(function (line) {
-      var p = line.split('|'); if (p.length < 3) return null;
-      var vs = p[2].split(',').map(resolve);
-      if (vs.some(function (v) { return !v; })) return null;
-      return { name: p[0].trim(), line: p[1].trim(), vs: vs, chip: (p[3] || '').trim() };
-    }).filter(Boolean);
-    box.innerHTML = SETS.map(function (s, i) {
-      var n = s.vs.length, t = s.vs.reduce(function (a, v) { return a + v.p; }, 0), cut = off(n);
-      var pics = s.vs.map(function (v, j) { return '<img src="' + esc(v.img || v.club.img) + '" alt="" loading="lazy" style="--i:' + (j - (n - 1) / 2) + '">'; }).join('');
-      var chips = [];
-      if (s.chip) chips.push('<i class="bf-st is-gold">' + esc(s.chip) + '</i>');
-      if (low(s.vs)) chips.push('<i class="bf-st is-low">Running low</i>');
-      return '<article class="bf-set">'
-        + '<div class="bf-set-ph" aria-hidden="true">' + pics + '<i class="bf-set-tag">Save ' + money(cut) + '</i></div>'
-        + '<div class="bf-set-bd">' + (chips.length ? '<div class="bf-chips-s">' + chips.join('') + '</div>' : '') + '<h3>' + esc(s.name) + '</h3><p>' + esc(s.line) + '</p>'
-        + '<ul>' + s.vs.map(function (v) { return '<li>' + esc(pieceName(v)) + '</li>'; }).join('') + '</ul>'
-        + '<p class="bf-set-pr"><b>' + money(t - cut) + '</b> <s>' + money(t) + '</s>' + (t - cut >= cfg.ship ? ' <small>ships free</small>' : '') + '</p>'
-        + '<button type="button" class="lg-btn lg-btn-block" data-set="' + i + '">' + esc(cfg.say.add) + '</button></div></article>';
-    }).join('');
-    box.closest('section').hidden = box.closest('section').hidden || !SETS.length;
+  var SETS = {};
+  function drawCards() {
+    $$('[data-card]').forEach(function (card, i) {
+      var toks = (card.getAttribute('data-pieces') || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+      if (!toks.length) return;
+      var vs = toks.map(resolve);
+      var pr = $('[data-card-price]', card), ul = $('[data-card-pieces]', card), btn = $('[data-card-add]', card), lo = $('[data-card-low]', card);
+      if (vs.some(function (v) { return !v; })) { card.hidden = true; return; }
+      var n = vs.length, t = vs.reduce(function (a, v) { return a + v.p; }, 0), cut = off(n);
+      SETS[i] = vs; card.setAttribute('data-set', i);
+      if (pr) pr.innerHTML = '<b>' + money(t - cut) + '</b> <s>' + money(t) + '</s>' + (t - cut >= cfg.ship ? '<small>Ships free</small>' : '');
+      if (ul) { ul.innerHTML = vs.map(function (v) { return '<li>' + esc(pieceName(v)) + '</li>'; }).join(''); ul.hidden = false; }
+      if (lo) lo.hidden = !low(vs);
+      if (btn) btn.hidden = phase === 'over';
+    });
   }
 
-  /* ---------------------------------------------------------------- build your own (+ the drop rows) */
+  /* ---------------------------------------------------------------- club cards with loft chips */
   function drawHands() {
     var box = $('[data-hands]'); if (!box) return;
     box.innerHTML = [['R', 'Right hand'], ['L', 'Left hand']].map(function (h) {
       return '<button type="button" class="bf-chip" data-hand="' + h[0] + '" aria-pressed="' + (HAND === h[0]) + '">' + h[1] + '</button>'; }).join('');
   }
-  function rowHtml(c) {
+  function cardHtml(c) {
     var vs = c.variants.filter(function (v) { return v.hand === HAND && (!c.finish || v.fin.toLowerCase() === c.finish.toLowerCase()); });
     if (!vs.length) return '';
     var price = Math.min.apply(null, vs.map(function (v) { return v.p; }));
     var chips = vs.length === 1
-      ? (vs[0].a ? '<button type="button" class="bf-add' + (TRAY.indexOf(vs[0].id) > -1 ? ' is-in' : '') + '" data-add="' + vs[0].id + '">' + (TRAY.indexOf(vs[0].id) > -1 ? 'Added' : 'Add') + '</button>' : '<span class="bf-out">Sold out</span>')
+      ? (vs[0].a ? '<button type="button" class="bf-add' + (TRAY.indexOf(vs[0].id) > -1 ? ' is-in' : '') + '" data-add="' + vs[0].id + '">' + (TRAY.indexOf(vs[0].id) > -1 ? 'In the tray' : 'Add to set') + '</button>' : '<span class="bf-out">Sold out</span>')
       : vs.map(function (v) {
         var inTray = TRAY.filter(function (id) { return id === v.id; }).length;
         return '<button type="button" class="bf-chip' + (inTray ? ' is-in' : '') + '" data-add="' + v.id + '"' + (v.a ? '' : ' disabled aria-disabled="true"') + '>'
           + esc(v.label || 'Add') + (inTray ? ' <i>×' + inTray + '</i>' : '') + '</button>'; }).join('');
-    return '<article class="bf-row"><a class="bf-row-ph" href="' + esc(c.url) + '"><img src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy"></a>'
-      + '<div class="bf-row-bd"><h3><a href="' + esc(c.url) + '">' + esc(c.name) + '</a> <span>' + money(price) + '</span></h3>'
-      + (lowRow(vs) ? '<i class="bf-st is-low">Running low</i>' : '')
+    return '<article class="bf-pc' + (c.drop ? ' is-drop' : '') + '"><a class="bf-pc-ph" href="' + esc(c.url) + '"><img src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy">'
+      + (c.drop ? '<i class="bf-st is-on">New</i>' : lowRow(vs) ? '<i class="bf-st is-low">Running low</i>' : '') + '</a>'
+      + '<div class="bf-pc-bd"><h3><a href="' + esc(c.url) + '">' + esc(c.name) + '</a> <span>' + money(price) + '</span></h3>'
       + (c.line ? '<p>' + esc(c.line) + '</p>' : '')
       + '<div class="bf-chips">' + chips + '</div></div></article>';
   }
   function drawRows() {
-    var box = $('[data-rows]'); if (box) box.innerHTML = CLUBS.filter(function (c) { return !c.drop; }).map(rowHtml).join('');
-    var dbox = $('[data-drop-rows]'); if (dbox) dbox.innerHTML = CLUBS.filter(function (c) { return c.drop; }).map(rowHtml).join('');
+    $$('[data-rows]').forEach(function (box) {
+      var g = box.getAttribute('data-rows');
+      box.innerHTML = CLUBS.filter(function (c) { return c.drop ? (g === 'putters' && phase !== 'mail') : c.group === g; }).map(cardHtml).join('');
+    });
   }
 
-  /* ---------------------------------------------------------------- the bar */
+  /* ---------------------------------------------------------------- the bar is the receipt */
   var bar = document.querySelector('[data-bf-bar]');
   function drawBar() {
-    receipt();
     if (!bar) return;
     var n = TRAY.length;
     bar.hidden = !n || phase === 'over';
+    page.classList.toggle('has-bar', !bar.hidden);
     if (!n) return;
     var t = TRAY.reduce(function (a, id) { return a + BY[id].p; }, 0), cut = off(n);
     $('[data-bar-total]', bar).textContent = money(t - cut);
-    $('[data-bar-sub]', bar).textContent = n + (n === 1 ? ' club' : ' clubs') + (cut ? ' · you save ' + money(cut) : '') + (n >= giftMin && !cfg.giftsGone ? ' · towel + divot free' : '');
-    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'Add 1 more club and save $50.' : n === 2 ? 'Add 1 more: $100 off and free shipping.' : '';
+    $('[data-bar-sub]', bar).textContent = n + (n === 1 ? ' club' : ' clubs') + (cut ? ' · you save ' + money(cut) : '') + (n >= giftMin && !cfg.giftsGone ? ' · towel + divot free' : '') + (t - cut >= cfg.ship ? ' · ships free' : '');
+    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'One more club and $50 comes off.' : n === 2 ? 'One more: $100 off and it ships free.' : '';
     nu.textContent = msg; nu.hidden = !msg;
   }
 
@@ -206,31 +174,20 @@
 
   page.addEventListener('click', function (e) {
     var el;
-    if (el = e.target.closest('[data-set]')) { var s = SETS[+el.getAttribute('data-set')]; if (s) addIds(s.vs.map(function (v) { return v.id; }), el); return; }
+    if (el = e.target.closest('[data-card-add]')) { var s = SETS[+el.closest('[data-set]').getAttribute('data-set')]; if (s) addIds(s.map(function (v) { return v.id; }), el); return; }
     if (el = e.target.closest('[data-polo]')) { addIds([+el.getAttribute('data-polo')], el); return; }
-    if (el = e.target.closest('[data-hand]')) { HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {} TRAY = []; drawHands(); drawRows(); drawSets(); drawBar(); return; }
+    if (el = e.target.closest('[data-hand]')) { HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {} TRAY = []; drawHands(); drawRows(); drawCards(); drawBar(); return; }
     if (el = e.target.closest('[data-add]')) {
       var id = +el.getAttribute('data-add'); if (!BY[id] || !BY[id].a) return;
       var have = TRAY.indexOf(id);
       if (el.classList.contains('is-in') && have > -1) TRAY.splice(have, 1); else if (TRAY.length < 6) TRAY.push(id);
       drawRows(); drawBar(); return;
     }
-    if (el = e.target.closest('[data-r-add]')) { if (TRAY.length) addIds(TRAY.slice(), el).then(emptyTray); return; }
   });
   if (bar) bar.addEventListener('click', function (e) {
     var b = e.target.closest('[data-bar-add]'); if (!b || !TRAY.length) return;
     addIds(TRAY.slice(), b).then(emptyTray);
   });
-
-  /* ---------------------------------------------------------------- shipping timeline: real dates, business days */
-  (function () {
-    var t1 = $('[data-tl-1]'), t2 = $('[data-tl-2]'); if (!t1 || !t2) return;
-    var fmt = function (d) { return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }); };
-    var biz = function (from, n) { var d = new Date(from); while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) n--; } return d; };
-    var now = new Date();
-    t1.textContent = fmt(biz(now, 1)) + ' to ' + fmt(biz(now, 2));
-    t2.textContent = fmt(biz(now, 4)) + ' to ' + fmt(biz(now, 7));
-  })();
 
   /* ---------------------------------------------------------------- join the list (Klaviyo client API, same as the giveaway page) */
   var form = $('[data-bf-form]');
@@ -257,5 +214,5 @@
     });
   }).observe(document.body, { childList: true, subtree: true });
 
-  drawHands(); drawSets(); drawRows(); drawBar();
+  drawHands(); drawCards(); drawRows(); drawBar();
 })();

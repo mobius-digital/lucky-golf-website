@@ -3,20 +3,91 @@
     "main": {
       "type": "lg-bfcm",
       "blocks": {
+        "h1": {
+          "type": "highlight",
+          "settings": {
+            "key": "eclipse",
+            "chip": "New Nov 24",
+            "name": "Eclipse, in black",
+            "line": "First time on sale. Counts as a club.",
+            "price": "From $229",
+            "link": "#putters",
+            "btn": "See the putters",
+            "btn_line": true
+          }
+        },
+        "h2": {
+          "type": "highlight",
+          "settings": {
+            "key": "gapper",
+            "chip": "Most bought",
+            "name": "The Gapper",
+            "line": "50, 54, 58. Every number inside 100 gets a club.",
+            "pieces": "carver:50K:Gold,carver:54K:Gold,carver:58K:Gold"
+          }
+        },
+        "h3": {
+          "type": "highlight",
+          "settings": {
+            "key": "updown",
+            "chip": "Best value",
+            "name": "Up and Down",
+            "line": "Two wedges and the Mallet. Get up, get down.",
+            "pieces": "carver:54K:Gold,carver:58K:Gold,mallet"
+          }
+        },
+        "h4": {
+          "type": "highlight",
+          "settings": {
+            "key": "blackout",
+            "chip": "Black on black",
+            "name": "Blackout",
+            "line": "Three black wedges. Nobody sees it coming.",
+            "pieces": "carver:52K:Black,carver:56K:Black,carver:60K:Black"
+          }
+        },
+        "h5": {
+          "type": "highlight",
+          "settings": {
+            "key": "gifts",
+            "chip": "Free at two clubs",
+            "name": "Towel + divot tool",
+            "line": "In the box with two or more clubs. 400 sets, then they're gone.",
+            "price": "Free",
+            "link": "#wedges",
+            "btn": "Pick two clubs",
+            "btn_line": true
+          }
+        },
+        "h6": {
+          "type": "highlight",
+          "settings": {
+            "key": "polos",
+            "chip": "Last run",
+            "name": "Retired polos",
+            "line": "$39 while the sizes last, then gone for good.",
+            "price": "$39",
+            "link": "#polos",
+            "btn": "See them",
+            "btn_line": true
+          }
+        },
         "c1": {
           "type": "club",
           "settings": {
             "key": "carver",
+            "group": "wedges",
             "product": "lucky-golf-lgw02-gold",
             "finish": "Gold",
             "name": "Carver 02 Gold",
-            "line": "Forged, spins like crazy, and your buddies will try to borrow it."
+            "line": "Forged 1020. Spins like it's mad at the ball."
           }
         },
         "c2": {
           "type": "club",
           "settings": {
             "key": "carver",
+            "group": "wedges",
             "product": "lucky-golf-lgw02-gold",
             "finish": "Black",
             "name": "Carver 02 Black",
@@ -28,66 +99,40 @@
           "type": "club",
           "settings": {
             "key": "mallet",
+            "group": "putters",
             "product": "limited-edition-mallet-putter",
-            "line": "Big head, soft face, gold all over."
+            "name": "Eclipse Mallet",
+            "line": "Big head, stupid soft, lines itself up."
           }
         },
         "c4": {
           "type": "club",
           "settings": {
             "key": "blade",
+            "group": "putters",
             "product": "signature-gold-putters",
-            "line": "Fully milled, and it tells you where you hit it."
+            "name": "Eclipse Blade",
+            "line": "Fully milled. Tells you where you hit it."
           }
         },
         "c5": {
           "type": "club",
           "settings": {
             "key": "stryker",
+            "group": "putters",
             "product": "lucky-striker-hybrid-limited-edition",
-            "line": "Gets it up from lies your 4-iron wants no part of."
+            "name": "Stryker",
+            "line": "Your 4-iron's replacement."
           }
         },
-        "p1": {
-          "type": "polo",
-          "settings": {
-            "product": "marble-classic-polo"
-          }
-        },
-        "p2": {
-          "type": "polo",
-          "settings": {
-            "product": "frost-classic-polo"
-          }
-        },
-        "p3": {
-          "type": "polo",
-          "settings": {
-            "product": "swirl-blade-polo"
-          }
-        },
-        "p4": {
-          "type": "polo",
-          "settings": {
-            "product": "contour-classic-polo"
-          }
-        }
+        "p1": { "type": "polo", "settings": { "product": "marble-classic-polo" } },
+        "p2": { "type": "polo", "settings": { "product": "frost-classic-polo" } },
+        "p3": { "type": "polo", "settings": { "product": "swirl-blade-polo" } },
+        "p4": { "type": "polo", "settings": { "product": "contour-classic-polo" } }
       },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4",
-        "c5",
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ],
+      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "c1", "c2", "c3", "c4", "c5", "p1", "p2", "p3", "p4"],
       "settings": {}
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
