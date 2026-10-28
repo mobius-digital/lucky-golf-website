@@ -1,7 +1,7 @@
-/* The Black Friday page (sections/lg-bfcm.liquid). Round 4.
+/* The Black Friday page (sections/lg-bfcm.liquid). Round 5.
    Phase from the clock (Central time), the countdown (last 48h only), the mail code applied for postcard visitors,
-   deal cards that add a whole set, club cards with loft chips that fill a tray, the bar as the receipt,
-   polo add, and the join-the-list form (Klaviyo client API).
+   deal cards that price a set and open the choose-your-lofts sheet, a tabbed shop whose cards fill a tray, the ladder
+   meter, the bar as the receipt, polo add, and the two list forms (Klaviyo client API).
    The ladder here only DISPLAYS the price: the real discount is the "Lucky club ladder" function at checkout. */
 (function () {
   var cfg = window.LG_BF, page = document.querySelector('[data-bf-page]');
@@ -20,7 +20,10 @@
   page.setAttribute('data-phase', phase);
   $$('[data-bf-show]').forEach(function (el) { el.hidden = el.getAttribute('data-bf-show').split(' ').indexOf(phase) < 0; });
   var giftMin = cfg.giftsGone ? 99 : phase === 'mail' ? 1 : 2;
-  var lad1 = $('[data-lad-1]'); if (lad1 && giftMin === 1) lad1.textContent = cfg.say.lad1Mail;
+  if (giftMin === 1) {
+    var lad1 = $('[data-lad-1]'); if (lad1) lad1.textContent = cfg.say.lad1Mail;
+    $$('[data-bf-gift-at]').forEach(function (el) { el.textContent = cfg.say.plusMail; });
+  }
 
   /* ---------------------------------------------------------------- clock: only inside the last N hours */
   var clock = $('[data-bf-clock]'), ends = $('[data-bf-ends]'), end = Date.parse(cfg.end);
@@ -79,68 +82,140 @@
   try { HAND = localStorage.getItem('lg_hand') === 'L' ? 'L' : 'R'; } catch (e) {}
   if (q.get('hand')) HAND = /^l/i.test(q.get('hand')) ? 'L' : 'R';
   var isLow = function (v) { return v.a && v.q > 0 && v.q < cfg.lowAt; };
-  var low = function (vs) { return vs.some(isLow); };
-  /* a whole card is "running low" only when most of its lofts are */
   var lowRow = function (vs) { var a = vs.filter(function (v) { return v.a; }); return a.length > 0 && a.filter(isLow).length * 2 > a.length; };
-  var pieceName = function (v) { return v.loft ? v.loft.replace(/^(\d+)(\w)$/, '$1° $2') + (v.fin ? ' ' + v.fin : '') : v.club.name; };
+  var pieceName = function (v) { return (v.loft ? v.loft.replace(/^(\d+)(\w)$/, '$1° $2') + (v.fin ? ' ' + v.fin : '') + ' ' : '') + v.club.name.replace(/ 02 (Gold|Black)$/, ' 02'); };
+  var clubVariants = function (c, fin) { return c.variants.filter(function (v) { return v.hand === HAND && (!(c.finish || fin) || v.fin.toLowerCase() === (c.finish || fin).toLowerCase()); }); };
   var TRAY = [];
+  var giftsWorth = function () { return cfg.worth.towel + cfg.worth.divot; };
 
-  /* ---------------------------------------------------------------- deal cards that add a set */
-  function resolve(tok) {
-    var p = tok.trim().split(':');
-    var loft = p[1] ? p[1].toUpperCase() : '', fin = p[2] || '';
-    var all = []; CLUBS.forEach(function (x) { if (x.key === p[0]) all = all.concat(x.variants); });
-    return all.filter(function (v) { return v.hand === HAND && (!loft || v.loft === loft) && (!fin || v.fin.toLowerCase() === fin.toLowerCase()) && v.a; })[0] || null;
+  /* ---------------------------------------------------------------- deal cards: price the set, open the loft sheet */
+  /* a piece = { club, fin, loft, v (fixed variant) | opts (variants to pick from) } */
+  function piece(tok) {
+    var p = tok.trim().split(':'), loft = (p[1] || '').toUpperCase(), fin = p[2] || '';
+    var cs = CLUBS.filter(function (x) { return x.key === p[0] && (!fin || !x.finish || x.finish.toLowerCase() === fin.toLowerCase()); });
+    if (!cs.length) return null;
+    var opts = []; cs.forEach(function (x) { opts = opts.concat(clubVariants(x, fin)); });
+    opts = opts.filter(function (v) { return v.a; });
+    if (!opts.length) return null;
+    if (loft) { var v = opts.filter(function (x) { return x.loft === loft; })[0]; return v ? { club: v.club, v: v, opts: [v] } : null; }
+    return { club: cs[0], v: opts.length === 1 ? opts[0] : null, opts: opts };
+  }
+  /* same wedge three times: start them four degrees apart (50/54/58), not all on the first loft */
+  function spread(ps) {
+    var groups = {};
+    ps.forEach(function (p, j) { if (!p.v && p.opts.length > 1) { var k = p.club.key + '|' + p.opts[0].fin; (groups[k] = groups[k] || []).push(j); } });
+    Object.keys(groups).forEach(function (k) {
+      var idx = groups[k], opts = ps[idx[0]].opts, n = idx.length;
+      var want = n === 3 ? ['50K', '54K', '58K'] : n === 2 ? ['54K', '58K'] : ['56K'];
+      idx.forEach(function (j, i) {
+        var v = opts.filter(function (o) { return o.loft === want[i]; })[0] || opts[Math.min(opts.length - 1, Math.round(i * (opts.length - 1) / Math.max(1, n - 1)))];
+        ps[j].pick = v;
+      });
+    });
+    return ps;
+  }
+  function setSaving(ps) {
+    var n = ps.length, cut = off(n), gifts = n >= giftMin ? giftsWorth() : 0;
+    var cover = ps.some(function (p) { return p.club.cover; }) ? cfg.worth.cover : 0;
+    return { cut: cut, gifts: gifts, cover: cover, total: cut + gifts + cover };
   }
   var SETS = {};
   function drawCards() {
     $$('[data-card]').forEach(function (card, i) {
+      var soon = (card.getAttribute('data-soon') || '').split(' ').indexOf(phase) > -1;
+      var live = $('[data-card-live]', card), soonEl = $('[data-card-soon]', card), btn = $('[data-card-btn]', card), sbtn = $('[data-card-btn-soon]', card);
+      if (live) live.hidden = soon; if (soonEl) soonEl.hidden = !soon; if (btn) btn.hidden = soon; if (sbtn) sbtn.hidden = !soon;
+      card.classList.toggle('is-soon', soon);
       var toks = (card.getAttribute('data-pieces') || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean);
       if (!toks.length) return;
-      var vs = toks.map(resolve);
-      var pr = $('[data-card-price]', card), ul = $('[data-card-pieces]', card), btn = $('[data-card-add]', card), lo = $('[data-card-low]', card);
-      if (vs.some(function (v) { return !v; })) { card.hidden = true; return; }
-      var n = vs.length, t = vs.reduce(function (a, v) { return a + v.p; }, 0), cut = off(n);
-      SETS[i] = vs; card.setAttribute('data-set', i);
-      if (pr) pr.innerHTML = '<b>' + money(t - cut) + '</b> <s>' + money(t) + '</s>' + (t - cut >= cfg.ship ? '<small>Ships free</small>' : '');
-      if (ul) { ul.innerHTML = vs.map(function (v) { return '<li>' + esc(pieceName(v)) + '</li>'; }).join(''); ul.hidden = false; }
-      if (lo) lo.hidden = !low(vs);
-      if (btn) btn.hidden = phase === 'over';
+      var ps = toks.map(piece);
+      if (ps.some(function (p) { return !p; })) { card.hidden = true; return; }
+      ps = spread(ps);
+      SETS[i] = ps; card.setAttribute('data-set', i);
+      var n = ps.length, t = ps.reduce(function (a, p) { return a + (p.v || p.pick || p.opts[0]).p; }, 0);
+      var sv = setSaving(ps);
+      var pr = $('[data-card-price]', card); if (pr) pr.innerHTML = '<b>' + money(t - sv.cut) + '</b><s>' + money(t) + '</s>' + (t - sv.cut >= cfg.ship ? '<em>Ships free</em>' : '');
+      var sl = $('[data-card-save]', card);
+      if (sl) {
+        var bits = [money(sv.cut) + ' off'];
+        if (sv.gifts) bits.push('towel + divot tool'); else if (n >= giftMin && !cfg.giftsGone) bits.push('towel + divot tool');
+        if (sv.cover) bits.push('head cover');
+        sl.innerHTML = '<b>You save ' + money(sv.total) + '</b>' + (bits.length > 1 ? '<span>' + esc(bits.join(' + ')) + '</span>' : '');
+      }
+      var lo = $('[data-card-low]', card); if (lo) lo.hidden = soon || !ps.some(function (p) { return p.v ? isLow(p.v) : lowRow(p.opts); });
     });
   }
 
-  /* ---------------------------------------------------------------- club cards with loft chips */
+  /* ---------------------------------------------------------------- the loft sheet */
+  var sheet = $('[data-sheet]'), CUR = null;
+  function openSheet(i, name) {
+    CUR = SETS[i].map(function (p) { return { club: p.club, opts: p.opts, v: p.v || p.pick || p.opts[0] }; });
+    $('[data-sheet-name]').textContent = name;
+    drawHands(); drawSheet();
+    sheet.hidden = false; document.body.classList.add('bf-lock');
+    setTimeout(function () { var f = $('select, button', $('[data-sheet-rows]')); if (f) f.focus(); }, 50);
+  }
+  function closeSheet() { sheet.hidden = true; document.body.classList.remove('bf-lock'); CUR = null; }
+  function drawSheet() {
+    if (!CUR) return;
+    $('[data-sheet-rows]').innerHTML = CUR.map(function (p, j) {
+      var pick = p.opts.length > 1
+        ? '<select class="bf-sel" data-sheet-pick="' + j + '" aria-label="Loft">' + p.opts.map(function (v) { return '<option value="' + v.id + '"' + (v.id === p.v.id ? ' selected' : '') + '>' + esc(v.label) + (isLow(v) ? ' · running low' : '') + '</option>'; }).join('') + '</select>'
+        : '<span class="bf-fixed">' + esc(p.v.label || p.club.name) + '</span>';
+      return '<div class="bf-sheet-row"><img src="' + esc(p.club.img) + '" alt=""><div><b>' + esc(p.club.name) + '</b>' + (p.club.cover ? '<small>Free head cover</small>' : '') + '</div>' + pick + '<span>' + money(p.v.p) + '</span></div>';
+    }).join('');
+    var n = CUR.length, t = CUR.reduce(function (a, p) { return a + p.v.p; }, 0), sv = setSaving(CUR), lines = [];
+    if (sv.cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(sv.cut), 'is-cut']);
+    if (!cfg.giftsGone) lines.push(['Towel + divot tool', n >= giftMin ? 'Free' : '2+ clubs', n >= giftMin ? 'is-free' : 'is-dim']);
+    if (CUR.some(function (p) { return p.club.cover; })) lines.push(['Head cover', 'Free', 'is-free']);
+    lines.push(['Shipping', t - sv.cut >= cfg.ship ? 'Free' : 'From $18', t - sv.cut >= cfg.ship ? 'is-free' : 'is-dim']);
+    $('[data-sheet-lines]').innerHTML = lines.map(function (l) { return '<li class="' + l[2] + '"><span>' + esc(l[0]) + '</span><b>' + esc(l[1]) + '</b></li>'; }).join('');
+    $('[data-sheet-total]').textContent = money(t - sv.cut);
+  }
+
+  /* ---------------------------------------------------------------- the shop: tabs, cards, meter */
   function drawHands() {
-    var box = $('[data-hands]'); if (!box) return;
-    box.innerHTML = [['R', 'Right hand'], ['L', 'Left hand']].map(function (h) {
-      return '<button type="button" class="bf-chip" data-hand="' + h[0] + '" aria-pressed="' + (HAND === h[0]) + '">' + h[1] + '</button>'; }).join('');
+    $$('[data-hands]').forEach(function (box) {
+      box.innerHTML = [['R', 'Right'], ['L', 'Left']].map(function (h) {
+        return '<button type="button" class="bf-chip" data-hand="' + h[0] + '" aria-pressed="' + (HAND === h[0]) + '">' + h[1] + ' hand</button>'; }).join('');
+    });
   }
   function cardHtml(c) {
-    var vs = c.variants.filter(function (v) { return v.hand === HAND && (!c.finish || v.fin.toLowerCase() === c.finish.toLowerCase()); });
+    var vs = clubVariants(c);
     if (!vs.length) return '';
     var price = Math.min.apply(null, vs.map(function (v) { return v.p; }));
-    var chips = vs.length === 1
-      ? (vs[0].a ? '<button type="button" class="bf-add' + (TRAY.indexOf(vs[0].id) > -1 ? ' is-in' : '') + '" data-add="' + vs[0].id + '">' + (TRAY.indexOf(vs[0].id) > -1 ? 'In the tray' : 'Add to set') + '</button>' : '<span class="bf-out">Sold out</span>')
-      : vs.map(function (v) {
-        var inTray = TRAY.filter(function (id) { return id === v.id; }).length;
-        return '<button type="button" class="bf-chip' + (inTray ? ' is-in' : '') + '" data-add="' + v.id + '"' + (v.a ? '' : ' disabled aria-disabled="true"') + '>'
-          + esc(v.label || 'Add') + (inTray ? ' <i>×' + inTray + '</i>' : '') + '</button>'; }).join('');
+    var inTray = TRAY.filter(function (id) { return BY[id].club === c; }).length;
+    var pick = vs.length > 1
+      ? '<select class="bf-sel" data-pick aria-label="Loft">' + vs.map(function (v) { return '<option value="' + v.id + '"' + (v.a ? '' : ' disabled') + '>' + esc(v.label) + (v.a ? (isLow(v) ? ' · running low' : '') : ' · sold out') + '</option>'; }).join('') + '</select>'
+      : (vs[0].a ? '<input type="hidden" data-pick value="' + vs[0].id + '">' : '<span class="bf-out">Sold out</span>');
+    var can = vs.some(function (v) { return v.a; });
     return '<article class="bf-pc' + (c.drop ? ' is-drop' : '') + '"><a class="bf-pc-ph" href="' + esc(c.url) + '"><img src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy">'
       + (c.drop ? '<i class="bf-st is-on">New</i>' : lowRow(vs) ? '<i class="bf-st is-low">Running low</i>' : '') + '</a>'
       + '<div class="bf-pc-bd"><h3><a href="' + esc(c.url) + '">' + esc(c.name) + '</a> <span>' + money(price) + '</span></h3>'
-      + (c.line ? '<p>' + esc(c.line) + '</p>' : '')
-      + '<div class="bf-chips">' + chips + '</div></div></article>';
+      + (c.stars ? '<i class="bf-stars">' + c.stars + ' ★</i>' : '')
+      + (c.line ? '<p>' + esc(c.line) + (c.cover ? ' Cover on us.' : '') + '</p>' : '')
+      + '<div class="bf-pick">' + pick + (can ? '<button type="button" class="bf-add' + (inTray ? ' is-in' : '') + '" data-add>' + (inTray ? 'Added ×' + inTray : 'Add to set') + '</button>' : '') + '</div></div></article>';
   }
   function drawRows() {
     $$('[data-rows]').forEach(function (box) {
-      var g = box.getAttribute('data-rows');
+      var g = box.getAttribute('data-rows'); if (g === 'apparel') return;
       box.innerHTML = CLUBS.filter(function (c) { return c.drop ? (g === 'putters' && phase !== 'mail') : c.group === g; }).map(cardHtml).join('');
     });
+  }
+  function showTab(t) {
+    $$('[data-tab]').forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === t)); });
+    $$('[data-rows]').forEach(function (box) { box.hidden = box.getAttribute('data-rows') !== t; });
+    var m = $('[data-meter]'); if (m) m.hidden = t === 'apparel';
+  }
+  function drawMeter() {
+    var n = TRAY.length;
+    $$('[data-m]').forEach(function (li) { var k = +li.getAttribute('data-m'); li.classList.toggle('is-on', n >= k && (k < 3 || n >= 3)); li.classList.toggle('is-next', n + 1 === k); });
   }
 
   /* ---------------------------------------------------------------- the bar is the receipt */
   var bar = document.querySelector('[data-bf-bar]');
   function drawBar() {
+    drawMeter();
     if (!bar) return;
     var n = TRAY.length;
     bar.hidden = !n || phase === 'over';
@@ -148,8 +223,8 @@
     if (!n) return;
     var t = TRAY.reduce(function (a, id) { return a + BY[id].p; }, 0), cut = off(n);
     $('[data-bar-total]', bar).textContent = money(t - cut);
-    $('[data-bar-sub]', bar).textContent = n + (n === 1 ? ' club' : ' clubs') + (cut ? ' · you save ' + money(cut) : '') + (n >= giftMin && !cfg.giftsGone ? ' · towel + divot free' : '') + (t - cut >= cfg.ship ? ' · ships free' : '');
-    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'One more club and $50 comes off.' : n === 2 ? 'One more: $100 off and it ships free.' : '';
+    $('[data-bar-sub]', bar).textContent = n + (n === 1 ? ' club' : ' clubs') + (cut ? ' · ' + money(cut) + ' off' : '') + (n >= giftMin && !cfg.giftsGone ? ' · towel + divot free' : '') + (t - cut >= cfg.ship ? ' · ships free' : '');
+    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'One more club: $50 off' + (giftMin === 2 && !cfg.giftsGone ? ', towel and divot tool on us.' : '.') : n === 2 ? 'One more: $100 off and it ships free.' : '';
     nu.textContent = msg; nu.hidden = !msg;
   }
 
@@ -174,36 +249,56 @@
 
   page.addEventListener('click', function (e) {
     var el;
-    if (el = e.target.closest('[data-card-add]')) { var s = SETS[+el.closest('[data-set]').getAttribute('data-set')]; if (s) addIds(s.map(function (v) { return v.id; }), el); return; }
-    if (el = e.target.closest('[data-polo]')) { addIds([+el.getAttribute('data-polo')], el); return; }
-    if (el = e.target.closest('[data-hand]')) { HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {} TRAY = []; drawHands(); drawRows(); drawCards(); drawBar(); return; }
+    if (el = e.target.closest('[data-card][data-set]')) {
+      if (el.classList.contains('is-soon')) { if (listBox) { listBox.hidden = false; listBox.scrollIntoView({ behavior: 'smooth' }); } return; }
+      openSheet(+el.getAttribute('data-set'), el.getAttribute('data-name')); return;
+    }
+    if (el = e.target.closest('a[data-card].is-soon')) { e.preventDefault(); if (listBox) { listBox.hidden = false; listBox.scrollIntoView({ behavior: 'smooth' }); } return; }
+    if (e.target.closest('[data-sheet-close]')) { closeSheet(); return; }
+    if (el = e.target.closest('[data-sheet-add]')) { if (CUR) addIds(CUR.map(function (p) { return p.v.id; }), el).then(function () { setTimeout(closeSheet, 1200); }); return; }
+    if (el = e.target.closest('[data-tab]')) { showTab(el.getAttribute('data-tab')); return; }
+    if (el = e.target.closest('[data-hand]')) {
+      HAND = el.getAttribute('data-hand'); try { localStorage.setItem('lg_hand', HAND); } catch (x) {}
+      TRAY = []; drawHands(); drawRows(); drawCards(); drawBar();
+      if (CUR) { CUR = CUR.map(function (p) { var fresh = piece(p.club.key + ':' + (p.opts.length === 1 ? p.v.loft : '') + ':' + (p.v.fin || '')); return fresh ? { club: fresh.club, opts: fresh.opts, v: fresh.v || fresh.opts[0] } : p; }); drawSheet(); }
+      return;
+    }
     if (el = e.target.closest('[data-add]')) {
-      var id = +el.getAttribute('data-add'); if (!BY[id] || !BY[id].a) return;
-      var have = TRAY.indexOf(id);
-      if (el.classList.contains('is-in') && have > -1) TRAY.splice(have, 1); else if (TRAY.length < 6) TRAY.push(id);
+      var pc = el.closest('.bf-pc'), pk = $('[data-pick]', pc), id = pk ? +pk.value : 0;
+      if (!BY[id] || !BY[id].a) return;
+      if (TRAY.length < 6) TRAY.push(id);
       drawRows(); drawBar(); return;
     }
+    if (el = e.target.closest('[data-polo-add]')) { var sel = $('select', el.closest('.bf-pc')); if (sel && sel.value) addIds([+sel.value], el); return; }
   });
+  page.addEventListener('change', function (e) {
+    var sel = e.target.closest('[data-sheet-pick]'); if (!sel || !CUR) return;
+    var p = CUR[+sel.getAttribute('data-sheet-pick')]; p.v = BY[+sel.value] || p.v; drawSheet();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && CUR) closeSheet(); });
   if (bar) bar.addEventListener('click', function (e) {
     var b = e.target.closest('[data-bar-add]'); if (!b || !TRAY.length) return;
     addIds(TRAY.slice(), b).then(emptyTray);
   });
 
-  /* ---------------------------------------------------------------- join the list (Klaviyo client API, same as the giveaway page) */
-  var form = $('[data-bf-form]');
-  if (form && cfg.klaviyo.key && cfg.klaviyo.list) form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var em = form.querySelector('[name=email]'), msg = $('[data-bf-form-msg]'), email = em.value.trim();
-    var say = function (t) { msg.textContent = t; msg.hidden = !t; };
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('That email looks off. Try it again?'); em.focus(); return; }
-    var btn = form.querySelector('[type=submit]'); btn.disabled = true;
-    fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(cfg.klaviyo.key), {
-      method: 'POST', headers: { 'Content-Type': 'application/vnd.api+json', 'revision': '2025-07-15' },
-      body: JSON.stringify({ data: { type: 'subscription', attributes: { custom_source: 'Black Friday page',
-        profile: { data: { type: 'profile', attributes: { email: email, subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } } } } } },
-        relationships: { list: { data: { type: 'list', id: cfg.klaviyo.list } } } } })
-    }).then(function (r) { if (!r.ok && r.status !== 202) throw r; say('You\'re on it. Watch your inbox.'); em.value = ''; try { if (window.fbq) fbq('track', 'Lead'); } catch (x) {} })
-      .catch(function () { say('That didn\'t go through. Try once more?'); btn.disabled = false; });
+  /* ---------------------------------------------------------------- the lists (Klaviyo client API, same as the giveaway page) */
+  $$('[data-bf-form]').forEach(function (form) {
+    var list = form.getAttribute('data-list') || cfg.klaviyo.list;
+    if (!cfg.klaviyo.key || !list) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var em = form.querySelector('[name=email]'), msg = $('[data-bf-form-msg]', form), email = em.value.trim();
+      var say = function (t) { msg.textContent = t; msg.hidden = !t; };
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('That email looks off. Try it again?'); em.focus(); return; }
+      var btn = form.querySelector('[type=submit]'); btn.disabled = true;
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(cfg.klaviyo.key), {
+        method: 'POST', headers: { 'Content-Type': 'application/vnd.api+json', 'revision': '2025-07-15' },
+        body: JSON.stringify({ data: { type: 'subscription', attributes: { custom_source: form.getAttribute('data-source') || 'Black Friday page',
+          profile: { data: { type: 'profile', attributes: { email: email, subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } } } } } },
+          relationships: { list: { data: { type: 'list', id: list } } } } })
+      }).then(function (r) { if (!r.ok && r.status !== 202) throw r; say('You\'re on it. Watch your inbox.'); em.value = ''; try { if (window.fbq) fbq('track', 'Lead'); } catch (x) {} })
+        .catch(function () { say('That didn\'t go through. Try once more?'); btn.disabled = false; });
+    });
   });
 
   /* Klaviyo's free-shipping pop-up covers the hero for postcard visitors; keep it off this page */
@@ -214,5 +309,5 @@
     });
   }).observe(document.body, { childList: true, subtree: true });
 
-  drawHands(); drawCards(); drawRows(); drawBar();
+  drawHands(); drawCards(); drawRows(); showTab('wedges'); drawBar();
 })();

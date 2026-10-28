@@ -7,69 +7,63 @@
           "type": "highlight",
           "settings": {
             "key": "eclipse",
-            "chip": "New Nov 24",
+            "status": "Live now",
+            "chip": "Limited",
             "name": "Eclipse, in black",
-            "line": "First time on sale. Counts as a club.",
+            "line": "The Blade and the Mallet, blacked out. First time on sale, and it will sell out.",
+            "save_line": "Counts as a club. Cover on us.",
             "price": "From $229",
-            "link": "#putters",
+            "link": "#shop",
             "btn": "See the putters",
-            "btn_line": true
+            "phases": "mail list live cm",
+            "soon_phases": "mail",
+            "soon_status": "Coming Nov 24",
+            "soon_btn": "Tell me when"
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
             "key": "gapper",
+            "status": "Live now",
             "chip": "Most bought",
             "name": "The Gapper",
-            "line": "50, 54, 58. Every number inside 100 gets a club.",
-            "pieces": "carver:50K:Gold,carver:54K:Gold,carver:58K:Gold"
+            "line": "Three gold Carvers. Every number inside 100 gets a club.",
+            "pieces": "carver::Gold,carver::Gold,carver::Gold"
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
             "key": "updown",
+            "status": "Live now",
             "chip": "Best value",
             "name": "Up and Down",
-            "line": "Two wedges and the Mallet. Get up, get down.",
-            "pieces": "carver:54K:Gold,carver:58K:Gold,mallet"
+            "line": "Two Carvers and the Mallet. Get up, get down.",
+            "pieces": "carver::Gold,carver::Gold,mallet"
           }
         },
         "h4": {
           "type": "highlight",
           "settings": {
             "key": "blackout",
+            "status": "Live now",
             "chip": "Black on black",
             "name": "Blackout",
-            "line": "Three black wedges. Nobody sees it coming.",
-            "pieces": "carver:52K:Black,carver:56K:Black,carver:60K:Black"
+            "line": "Three black Carvers. Nobody sees it coming.",
+            "pieces": "carver::Black,carver::Black,carver::Black"
           }
         },
         "h5": {
           "type": "highlight",
           "settings": {
-            "key": "gifts",
-            "chip": "Free at two clubs",
-            "name": "Towel + divot tool",
-            "line": "In the box with two or more clubs. 400 sets, then they're gone.",
-            "price": "Free",
-            "link": "#wedges",
-            "btn": "Pick two clubs",
-            "btn_line": true
-          }
-        },
-        "h6": {
-          "type": "highlight",
-          "settings": {
-            "key": "polos",
-            "chip": "Last run",
-            "name": "Retired polos",
-            "line": "$39 while the sizes last, then gone for good.",
-            "price": "$39",
-            "link": "#polos",
-            "btn": "See them",
-            "btn_line": true
+            "key": "nightshift",
+            "status": "Black Friday only",
+            "chip": "Black Friday only",
+            "name": "Night Shift",
+            "line": "Two black Carvers and the black Mallet.",
+            "pieces": "carver::Black,carver::Black,blackmallet",
+            "phases": "list live cm"
           }
         },
         "c1": {
@@ -102,7 +96,8 @@
             "group": "putters",
             "product": "limited-edition-mallet-putter",
             "name": "Eclipse Mallet",
-            "line": "Big head, stupid soft, lines itself up."
+            "line": "Big head, stupid soft, lines itself up.",
+            "cover": true
           }
         },
         "c4": {
@@ -112,14 +107,15 @@
             "group": "putters",
             "product": "signature-gold-putters",
             "name": "Eclipse Blade",
-            "line": "Fully milled. Tells you where you hit it."
+            "line": "Fully milled. Tells you where you hit it.",
+            "cover": true
           }
         },
         "c5": {
           "type": "club",
           "settings": {
             "key": "stryker",
-            "group": "putters",
+            "group": "hybrid",
             "product": "lucky-striker-hybrid-limited-edition",
             "name": "Stryker",
             "line": "Your 4-iron's replacement."
@@ -130,7 +126,7 @@
         "p3": { "type": "polo", "settings": { "product": "swirl-blade-polo" } },
         "p4": { "type": "polo", "settings": { "product": "contour-classic-polo" } }
       },
-      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "c1", "c2", "c3", "c4", "c5", "p1", "p2", "p3", "p4"],
+      "block_order": ["h1", "h2", "h3", "h4", "h5", "c1", "c2", "c3", "c4", "c5", "p1", "p2", "p3", "p4"],
       "settings": {}
     }
   },
