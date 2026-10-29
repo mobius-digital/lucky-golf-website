@@ -1,12 +1,13 @@
-{%- comment -%} One product card for the BF page's Apparel and Accessories rows. p, retired (comma list of handles), polo_price. {%- endcomment -%}
+{%- comment -%} One product card for the BF page's Apparel and Accessories rows. p, retired (comma list of handles), polo_price, off (percent off everything else). {%- endcomment -%}
+{%- assign off = off | default: 0 -%}{%- assign keep = 100 | minus: off -%}{%- assign sale = p.price | times: keep | divided_by: 100 -%}
 {%- assign is_ret = false -%}{%- assign hk = p.handle | append: ',' -%}{%- if retired contains hk -%}{%- assign is_ret = true -%}{%- endif -%}
 <article class="bf-pc bf-gc">
   <a class="bf-pc-ph is-photo" href="{{ p.url }}"><img src="{{ p.featured_image | image_url: width: 700 }}" alt="{{ p.title | escape }}" loading="lazy">
     {%- if p.images.size > 1 %}<img class="is-alt" src="{{ p.images[1] | image_url: width: 700 }}" alt="" loading="lazy">{% endif -%}
-    {%- if is_ret %}<i class="bf-st is-gold">Last run</i>{% elsif p.compare_at_price > p.price %}<i class="bf-st is-gold">On sale</i>{% endif %}</a>
+    {%- if is_ret %}<i class="bf-st is-gold">Last run</i>{% elsif off > 0 %}<i class="bf-st is-gold">{{ off }}% off</i>{% endif %}</a>
   <div class="bf-pc-bd">
     <h3><a href="{{ p.url }}">{{ p.title | remove: ' Classic Polo' | remove: ' Blade Polo' }}</a></h3>
-    <p class="bf-gp">{% if is_ret %}<b>${{ polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s>{% else %}<b>{{ p.price | money_without_trailing_zeros }}</b>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}{% endif %}</p>
+    <p class="bf-gp">{% if is_ret %}<b>${{ polo_price }}</b> <s>{{ p.price | money_without_trailing_zeros }}</s>{% elsif off > 0 %}<b>{{ sale | money }}</b> <s>{{ p.price | money }}</s>{% else %}<b>{{ p.price | money_without_trailing_zeros }}</b>{% endif %}</p>
     <div class="bf-pick">
       {%- if p.has_only_default_variant -%}<input type="hidden" value="{{ p.selected_or_first_available_variant.id }}">
       {%- else -%}<select class="bf-sel" aria-label="{{ p.options.first | default: 'Option' }}">{%- for v in p.variants -%}<option value="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}{% unless v.available %} · sold out{% endunless %}</option>{%- endfor -%}</select>{%- endif -%}

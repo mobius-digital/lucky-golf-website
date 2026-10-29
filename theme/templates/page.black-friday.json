@@ -29,7 +29,7 @@
             "status": "Live now",
             "chip": "Most bought",
             "name": "The Gapper",
-            "line": "Three gold Carvers. Every number inside 100 gets a club. Swap any of them to black in the next step.",
+            "line": "Three gold Carvers, three lofts. Every shot inside 100 has a club now.",
             "pieces": "carver::Gold,carver::Gold,carver::Gold"
           }
         },
@@ -40,7 +40,7 @@
             "status": "Live now",
             "chip": "Best value",
             "name": "Up and Down",
-            "line": "Two Carvers and the Mallet. Get up, get down.",
+            "line": "Two gold Carvers to get it close, and the Mallet to knock it in.",
             "pieces": "carver::Gold,carver::Gold,mallet"
           }
         },
@@ -51,7 +51,7 @@
             "status": "Live now",
             "chip": "Black on black",
             "name": "Blackout",
-            "line": "Three black Carvers. Nobody sees it coming.",
+            "line": "Three black Carvers. Nobody notices them until the ball's sitting next to the pin.",
             "pieces": "carver::Black,carver::Black,carver::Black"
           }
         },
@@ -62,7 +62,7 @@
             "status": "Live now",
             "chip": "Gold and black",
             "name": "Two-Tone",
-            "line": "Two gold Carvers and a black one in the middle. Swap any of them in the next step.",
+            "line": "Two gold, one black in the middle. Swap them around when you pick lofts.",
             "pieces": "carver::Gold,carver::Black,carver::Gold"
           }
         },
@@ -134,14 +134,78 @@
             "line": "Your 4-iron's replacement."
           }
         },
-        "p1": { "type": "polo", "settings": { "product": "marble-classic-polo" } },
-        "p2": { "type": "polo", "settings": { "product": "frost-classic-polo" } },
-        "p3": { "type": "polo", "settings": { "product": "swirl-blade-polo" } },
-        "p4": { "type": "polo", "settings": { "product": "contour-classic-polo" } }
+        "p1": {
+          "type": "polo",
+          "settings": {
+            "product": "marble-classic-polo"
+          }
+        },
+        "p2": {
+          "type": "polo",
+          "settings": {
+            "product": "frost-classic-polo"
+          }
+        },
+        "p3": {
+          "type": "polo",
+          "settings": {
+            "product": "swirl-blade-polo"
+          }
+        },
+        "p4": {
+          "type": "polo",
+          "settings": {
+            "product": "contour-classic-polo"
+          }
+        }
       },
-      "block_order": ["h1", "h2", "h4", "h6", "h3", "h5", "c1", "c2", "c3", "c4", "c5", "p1", "p2", "p3", "p4"],
-      "settings": { "polos_coll": "polos", "hats_coll": "hats", "gear_coll": "gear", "clock_hours": 120, "gear_title": "Apparel", "gear_line": "Every polo and every hat. The retired polos go for $39 while the sizes last.", "towel_worth": 24.95, "divot_worth": 14.95, "cover_worth": 29.95 }
+      "block_order": [
+        "h1",
+        "h2",
+        "h4",
+        "h6",
+        "h3",
+        "h5",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "polos_coll": "polos",
+        "hats_coll": "hats",
+        "clock_hours": 120,
+        "gear_title": "Apparel",
+        "gear_line": "Every polo and every hat, 25% off. The last-run polos are $39 while the sizes last.",
+        "towel_worth": 24.95,
+        "divot_worth": 14.95,
+        "cover_worth": 29.95,
+        "gear_off": 25,
+        "acc_1": "head-covers",
+        "acc_2": "gloves",
+        "acc_3": "grips",
+        "acc_title": "Accessories",
+        "acc_line": "Head covers, gloves and grips, all 25% off. Towels and divot tools join the party when they land.",
+        "wedge_line": "Three gold Carvers come to $197. That's basically buy two, get one free.",
+        "shop_title": "Build your own",
+        "shop_line": "Mix any clubs you want. The deal climbs as you add.",
+        "deals_line": "Pick a set, pick your lofts, done. Swap gold for black anywhere.",
+        "sheet_line": "Pick a finish, hand and loft for each one. The gifts are already in.",
+        "live_deal": "Our everyday price already beats the big names' Black Friday price. Once a year we beat our own. This is the weekend.",
+        "list_deal": "Our everyday price already beats the big names' Black Friday price. Once a year we beat our own, and you're in two days early.",
+        "mail_deal": "Our everyday price already beats the big names' Black Friday price. You got the postcard, so you get a month on everyone.",
+        "lad_1": "Our everyday price. Already under their sale.",
+        "lad_2": "$50 off, plus a free towel and divot tool.",
+        "lad_3": "$100 off, both gifts, and it ships free."
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

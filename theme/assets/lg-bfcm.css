@@ -356,3 +356,14 @@ body.bf-lock{overflow:hidden}
 @media (hover:hover){.bf-pc:hover .bf-pc-ph .is-alt{opacity:1}}
 .bf-pc-ph .bf-st{z-index:1}
 #accessories{padding-top:56px}
+
+/* ---------------------------------------------------------------- round 9: the builder ladder says what you get */
+.bf-meter{max-width:980px;gap:12px;margin-top:26px}
+.bf-meter li{padding:16px 18px 16px 22px;gap:2px}
+.bf-meter b{font-size:13px;letter-spacing:.08em;color:var(--lg-ink-70)}
+.bf-meter strong{font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;font-size:clamp(28px,3vw,38px);line-height:.95;text-transform:uppercase;color:var(--lg-ink)}
+.bf-meter li[data-m="3"] strong{background-image:var(--lg-foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bf-meter span{font-size:14px;font-weight:700;color:var(--lg-ink)}
+.bf-meter li.is-on strong{color:#1d6b3e}
+@media (max-width:749px){.bf-meter li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:baseline}.bf-meter b{grid-column:1/-1}.bf-meter strong{font-size:28px}}
+.bf-lad-note{font-size:15px;color:var(--lg-on-dark);font-weight:700}

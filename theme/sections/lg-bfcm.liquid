@@ -164,9 +164,9 @@
     <button type="button" role="tab" class="bf-tab" data-tab="hybrid" aria-selected="false">Hybrid</button>
   </div>
   <ol class="bf-meter" data-meter aria-label="What you get as you add clubs">
-    <li data-m="1"><b>1 club</b><span>Everyday price</span></li>
-    <li data-m="2"><b>2 clubs</b><span>$50 off + towel + divot tool</span></li>
-    <li data-m="3"><b>3 or more</b><span>$100 off + gifts + ships free</span></li>
+    <li data-m="1"><b>1 club</b><strong>Everyday price</strong><span>Already under the big names' sale</span></li>
+    <li data-m="2"><b>2 clubs</b><strong>$50 off</strong><span>+ free towel + free divot tool</span></li>
+    <li data-m="3"><b>3 or more</b><strong>$100 off</strong><span>+ both gifts + free shipping</span></li>
   </ol>
   <div class="bf-pcs" data-rows="wedges"></div>
   <div class="bf-pcs" data-rows="putters" hidden></div>
@@ -183,13 +183,13 @@
   </div>
   <div class="bf-tabs" role="tablist" aria-label="Apparel">
     {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- if s[ck] != blank -%}
-    <button type="button" role="tab" class="bf-tab" data-gtab="{{ t }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ s[ck].title }}</button>
+    <button type="button" role="tab" class="bf-tab" data-gtab="{{ t }}" data-gset="app" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ s[ck].title }}</button>
     {%- endif -%}{%- endfor -%}
   </div>
   {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- assign coll = s[ck] -%}{%- if coll != blank -%}
-  <div class="bf-row" data-grow="{{ t }}"{% unless forloop.first %} hidden{% endunless %}>
+  <div class="bf-row" data-grow="{{ t }}" data-gset="app"{% unless forloop.first %} hidden{% endunless %}>
     <div class="bf-row-track" data-row-track>
-      {%- for p in coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price -%}{%- endif -%}{%- endfor -%}
+      {%- for p in coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price, off: s.gear_off -%}{%- endif -%}{%- endfor -%}
     </div>
     <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
     <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
@@ -197,19 +197,28 @@
   {%- endif -%}{%- endfor -%}
 </section>
 
-{%- if s.gear_coll != blank -%}
+{%- assign a_tabs = 'acc_1,acc_2,acc_3,acc_4,acc_5' | split: ',' -%}
+{%- assign a_first = '' -%}{%- for t in a_tabs -%}{%- if s[t] != blank and s[t].products_count > 0 and a_first == '' -%}{%- assign a_first = t -%}{%- endif -%}{%- endfor -%}
+{%- if a_first != '' -%}
 <section class="lg-wrap bf-sec" id="accessories" aria-labelledby="bf-acc-h">
   <div class="bf-hd">
     <h2 class="bf-h" id="bf-acc-h">{{ s.acc_title }}</h2>
     <p class="bf-l">{{ s.acc_line }}</p>
   </div>
-  <div class="bf-row" data-grow="acc">
+  <div class="bf-tabs" role="tablist" aria-label="Accessories">
+    {%- for t in a_tabs -%}{%- if s[t] != blank and s[t].products_count > 0 -%}
+    <button type="button" role="tab" class="bf-tab" data-gtab="{{ t }}" data-gset="acc" aria-selected="{% if t == a_first %}true{% else %}false{% endif %}">{{ s[t].title }}</button>
+    {%- endif -%}{%- endfor -%}
+  </div>
+  {%- for t in a_tabs -%}{%- if s[t] != blank and s[t].products_count > 0 -%}
+  <div class="bf-row" data-grow="{{ t }}" data-gset="acc"{% unless t == a_first %} hidden{% endunless %}>
     <div class="bf-row-track" data-row-track>
-      {%- for p in s.gear_coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price -%}{%- endif -%}{%- endfor -%}
+      {%- for p in s[t].products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price, off: s.gear_off -%}{%- endif -%}{%- endfor -%}
     </div>
     <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
     <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
   </div>
+  {%- endif -%}{%- endfor -%}
 </section>
 {%- endif -%}
 
@@ -407,7 +416,12 @@ window.LG_BF = {
     { "type": "header", "content": "Accessories (its own section)" },
     { "type": "text", "id": "acc_title", "label": "Heading", "default": "Accessories" },
     { "type": "text", "id": "acc_line", "label": "Line", "default": "Head covers, gloves and grips. Towels and divot tools join them when they land." },
-    { "type": "collection", "id": "gear_coll", "label": "Accessories collection", "info": "Add towels, divot tools and the new covers to this collection and they show here." },
+    { "type": "collection", "id": "acc_1", "label": "Accessories tab 1" },
+    { "type": "collection", "id": "acc_2", "label": "Accessories tab 2" },
+    { "type": "collection", "id": "acc_3", "label": "Accessories tab 3" },
+    { "type": "collection", "id": "acc_4", "label": "Accessories tab 4", "info": "Towels: make the collection, drop it here. Empty tabs stay hidden." },
+    { "type": "collection", "id": "acc_5", "label": "Accessories tab 5", "info": "Divot tools." },
+    { "type": "range", "id": "gear_off", "label": "Apparel + accessories: percent off", "min": 0, "max": 50, "step": 5, "default": 25, "info": "Shown on the page only. The matching automatic discount has to exist in Shopify or the bag charges full price." },
     { "type": "number", "id": "ship_cost", "label": "What shipping usually costs ($)", "default": 18, "info": "Shown struck through when the order ships free." },
     { "type": "number", "id": "polo_price", "label": "Retired polo price shown", "default": 39, "info": "The products themselves must be repriced in admin before the page goes live, or the bag charges full price." },
     { "type": "text", "id": "polo_line", "label": "Retired polo line", "default": "Last run. Gone when the sizes go." },
