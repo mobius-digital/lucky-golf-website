@@ -1,0 +1,43 @@
+{%- comment -%} Black Friday 2026 on the homepage: one band above the hero. Before the sale it names the date; during it, the deal. Switches with the offer dates (snippets/lg-cs). {%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="bfh" aria-label="Black Friday">
+  <div class="bfh-ph"><img src="{{ 'lg-bf-hero-2400.jpg' | asset_url }}" srcset="{{ 'lg-bf-hero-1200.jpg' | asset_url }} 1200w, {{ 'lg-bf-hero-2400.jpg' | asset_url }} 2400w" sizes="100vw" alt="" loading="eager" width="2400" height="1350"></div>
+  <div class="lg-wrap bfh-in">
+    <p class="bfh-st" data-cs-show="on"><i></i>{{ s.on_status }}</p>
+    <p class="bfh-st is-soon" data-cs-show="soon"><i></i>{{ s.soon_status }}</p>
+    <h2 class="bfh-h"><span>{{ s.line1 }}</span><b>{{ s.line2 }}</b></h2>
+    <p class="bfh-l">{{ s.gifts }}</p>
+    <a class="lg-btn bfh-btn" href="{{ s.url }}">{{ s.btn }}</a>
+  </div>
+</section>
+<style>
+  .bfh{position:relative;overflow:hidden;isolation:isolate;background:#04100A;color:var(--lg-on-dark,#F4F3F0)}
+  .bfh-ph{position:absolute;inset:0;z-index:-1}
+  .bfh-ph img{width:100%;height:100%;object-fit:cover;object-position:68% 45%}
+  .bfh-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,16,10,.96) 0%,rgba(4,16,10,.82) 40%,rgba(4,16,10,.15) 75%)}
+  .bfh-in{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-top:56px;padding-bottom:56px}
+  .bfh-st{display:inline-flex;align-items:center;gap:8px;margin:0;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .bfh-st i{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+  .bfh-st.is-soon i{background:#EDD27C;box-shadow:0 0 0 4px rgba(237,210,124,.2)}
+  .bfh-h{margin:0;display:flex;flex-direction:column;font-family:var(--lg-font,'Archivo'),sans-serif;font-variation-settings:'wdth' 62;font-weight:800;text-transform:uppercase;line-height:.88}
+  .bfh-h span{font-size:clamp(34px,4.6vw,64px)}
+  .bfh-h b{font-size:clamp(72px,10vw,150px);background-image:var(--lg-foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .bfh-l{margin:0;max-width:44ch;font-size:clamp(16px,1.4vw,19px);font-weight:600}
+  .bfh-btn{min-height:54px;padding:0 30px;background-image:var(--lg-foil);color:var(--lg-ink,#0B1911);border:0}
+  @media (max-width:749px){.bfh-ph::after{background:linear-gradient(180deg,rgba(4,16,10,.25) 0%,rgba(4,16,10,.85) 45%,rgba(4,16,10,.97) 70%)}.bfh-in{padding-top:170px;padding-bottom:36px}.bfh-btn{width:100%}}
+</style>
+{% schema %}
+{
+  "name": "Black Friday band",
+  "settings": [
+    { "type": "text", "id": "on_status", "label": "Status while it runs", "default": "Black Friday · Live now" },
+    { "type": "text", "id": "soon_status", "label": "Status before", "default": "Black Friday · Starts Nov 27" },
+    { "type": "text", "id": "line1", "label": "Line one", "default": "Three clubs." },
+    { "type": "text", "id": "line2", "label": "Big line", "default": "$100 off." },
+    { "type": "text", "id": "gifts", "label": "Gifts line", "default": "Two clubs gets $50 off. Both get a free towel and divot tool, and three ships free." },
+    { "type": "text", "id": "btn", "label": "Button", "default": "See the deals" },
+    { "type": "text", "id": "url", "label": "Link", "default": "/pages/black-friday" }
+  ],
+  "presets": [ { "name": "Black Friday band" } ]
+}
+{% endschema %}

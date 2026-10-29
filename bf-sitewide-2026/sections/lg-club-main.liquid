@@ -1,0 +1,896 @@
+{%- comment -%} editable: theme-editor settings first, club_page fallback {%- endcomment -%}
+{%- comment -%}
+  The club fold: breadcrumb, gallery, buy box, sticky bar and the modals.
+  Live from the product: title, price, variants (hand, loft and grind), stock, reviews.
+  Per club words and photos: the product metafield custom.club_page (json, see tools/theme/club_data.py).
+  Sold out -> "Tell me when it's back" (Klaviyo, data-notify). custom.sold_out_mode = preorder and a
+  variant at 0 that Shopify still sells -> "Pre-order, ships in {month of custom.restock_date}".
+{%- endcomment -%}
+{%- liquid
+  assign c = product.metafields.custom.club_page.value
+  assign s = section.settings
+  assign min = settings.lg_review_min | default: 10
+  assign rc = product.metafields.reviews.rating_count.value | default: 0
+  assign rv = product.metafields.reviews.rating.value.rating
+  assign mode = product.metafields.custom.sold_out_mode.value | default: 'notify' | downcase
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign rd = product.metafields.custom.restock_date.value
+  assign month = ''
+  if rd != blank
+    assign rds = rd | date: '%Y-%m-%d'
+    if rds >= today
+      assign month = rd | date: '%B'
+    endif
+  endif
+  assign hi = -1
+  assign li = -1
+  assign fi = -1
+  for o in product.options_with_values
+    assign on = o.name | downcase
+    if on contains 'hand'
+      assign hi = forloop.index0
+    elsif on contains 'loft'
+      assign li = forloop.index0
+    elsif on contains 'finish'
+      assign fi = forloop.index0
+    endif
+  endfor
+  assign badge = product.metafields.custom.badge.value
+  assign badge_foil = product.metafields.custom.badge_foil.value
+  assign wedge = false
+  if li > -1
+    assign wedge = true
+  endif
+  assign v0 = product.selected_or_first_available_variant
+  assign price = v0.price | money_without_trailing_zeros
+  assign atc = s.p_atc | default: c.atc | default: s.atc
+  assign p_eyebrow = s.p_eyebrow | default: c.eyebrow
+  assign p_h1 = s.p_h1 | default: c.h1 | default: product.title
+  assign p_lede = s.p_lede | default: c.lede | default: product.description | strip_html
+  assign p_tag = s.p_tag | default: c.gallery_tag
+  assign rv0 = s.p_rvl_q | default: c.rvl[0]
+  assign rv1 = s.p_rvl_n | default: c.rvl[1]
+  assign rv2 = s.p_rvl_l | default: c.rvl[2]
+  assign mon_img = product.metafields.custom.club_spec_photo.value | default: product.metafields.custom.cutout.value
+  assign title_plain = product.title
+  comment
+    Carver sets offer (Theme settings > Carver sets offer, snippets/lg-cs): the strip, the set price and the suggested lofts, shown only while it runs
+  endcomment
+  assign cs_here = false
+  assign csp = settings.cs_product | default: all_products['lucky-golf-lgw02-gold']
+  if wedge and settings.cs_on and product.id == csp.id
+    assign cs_here = true
+  endif
+-%}
+<nav class="crumb lg-wrap" aria-label="Breadcrumb"><ol>
+  <li><a href="{{ routes.root_url }}">Home</a></li>
+  {%- if s.crumb_url != blank %}<li><a href="{{ s.crumb_url }}">{{ s.crumb_label }}</a></li>{% endif -%}
+  {%- if wedge and s.crumb2_url != blank %}<li><a href="{{ s.crumb2_url }}">{{ s.crumb2_label }}</a></li>{% endif -%}
+  <li><span aria-current="page">{{ product.title }}</span></li>
+</ol></nav>
+
+<div class="lg-wrap">
+<div class="pdp">
+  <div>
+    <div class="gal" data-gal aria-label="Product images">
+      {%- comment -%} The gallery is the product's own media, in the product's order, with Shopify's alt text:
+        add or reorder photos in the product admin and the page follows. The card cutout (custom.cutout) leads. {%- endcomment -%}
+      {%- assign cut = product.metafields.custom.cutout.value -%}
+      {%- assign tiles = 0 -%}
+      {%- if cut != blank -%}{%- assign tiles = 1 -%}
+        <figure class="cut wide" data-mid="cut" data-zoom="{{ cut | image_url: width: 2000 }}">{{ cut | image_url: width: 1200 | image_tag: alt: product.title, loading: 'eager', widths: '500,800,1200', sizes: '(max-width: 749px) 86vw, 30vw' }}
+          {%- if badge != blank and badge_foil %}<span class="lg-tag is-foil">{{ badge }}</span>{% endif -%}</figure>
+      {%- endif -%}
+      {%- for m in product.media -%}
+        {%- assign alt = m.alt | default: product.title -%}
+        {%- assign lz = 'lazy' -%}{%- if tiles == 0 %}{% assign lz = 'eager' %}{% endif -%}
+        {%- assign tiles = tiles | plus: 1 -%}
+        {%- assign more = '' -%}{%- if tiles > 5 %}{% assign more = ' is-more' %}{% endif -%}
+        {%- comment -%} A photo belongs to a finish when the alt text before its first comma names it
+          ("Carver 02 Black, face on"). A finish with photos of its own shows only those; the rest show the untagged ones. {%- endcomment -%}
+        {%- assign mf = '' -%}
+        {%- if fi > -1 -%}{%- assign ahead = m.alt | split: ',' | first | downcase -%}
+          {%- for fv in product.options_with_values[fi].values -%}{%- assign fvd = fv | downcase -%}{%- if ahead contains fvd %}{% assign mf = fv %}{% endif -%}{%- endfor -%}
+        {%- endif -%}
+        {%- case m.media_type -%}
+          {%- when 'image' -%}
+          <figure class="{% if m.aspect_ratio > 1.2 %}wide{% endif %}{{ more }}" data-mid="{{ m.id }}"{% if mf != blank %} data-fin="{{ mf | escape }}"{% endif %} data-zoom="{{ m | image_url: width: 2000 }}">{{ m | image_url: width: 1200 | image_tag: alt: alt, loading: lz, widths: '500,800,1200,1600', sizes: '(max-width: 749px) 86vw, (max-width: 980px) 50vw, 30vw' }}</figure>
+          {%- when 'video' -%}
+          <figure class="wide is-video{{ more }}"{% if mf != blank %} data-fin="{{ mf | escape }}"{% endif %}>{{ m | video_tag: controls: true, muted: true, playsinline: true, preload: 'metadata', image_size: '1200x' }}</figure>
+          {%- when 'external_video' -%}
+          <figure class="wide is-video{{ more }}"{% if mf != blank %} data-fin="{{ mf | escape }}"{% endif %}>{{ m | external_video_tag }}</figure>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div class="dots" data-dots aria-hidden="true">{%- if cut != blank %}<i></i>{% endif -%}{%- for m in product.media -%}<i></i>{%- endfor -%}</div>
+    {%- if tiles > 5 -%}<button type="button" class="lg-btn-line gal-all" data-gal-all aria-expanded="false" data-tpl="{{ s.gal_all | default: 'See all [n] photos' | escape }}">{{ s.gal_all | default: 'See all [n] photos' | replace: '[n]', tiles }}</button>{%- endif -%}
+  </div>
+
+  <div class="buy" id="buy">
+    {%- if badge != blank and badge_foil != true %}<span class="lg-tag pdp-badge">{{ badge }}</span>{% endif -%}
+    {%- if p_eyebrow != blank %}<p class="lg-eyebrow">{{ p_eyebrow }}</p>{% endif -%}
+    <h1 class="lg-d1">{{ p_h1 | replace: '<em>', '<span class="lg-foil-word">' | replace: '</em>', '</span>' }}</h1>
+    {%- if rc >= min and rv -%}
+      <div class="rvl"><span class="lg-stars" aria-label="{{ rv | times: 10 | floor | divided_by: 10.0 }} out of 5">{% render 'lg-stars' %}</span>
+        {%- if rv0 != blank -%}<a href="#reviews">&ldquo;{{ rv0 }}&rdquo; {{ rv1 }} · {{ rv2 }}</a>{%- else -%}<a href="#reviews">{{ rc }} reviews</a>{%- endif -%}</div>
+    {%- endif -%}
+    <div class="price"><b data-price>{{ price }}</b>{% render 'lg-was', product: product, variant: v0 %}{% if wedge %}<span data-price-note hidden>each</span>{% endif %}</div>
+    <p class="lg-body" data-lede>{{ p_lede }}</p>
+
+    {%- if wedge and fi > -1 -%}
+    {%- comment -%} Finish = a variant option (Carver 02: Gold / Black, 2026-10-08). Name, tag, photo and
+      line per finish: the "Finish" blocks of this section, matched on the option value. {%- endcomment -%}
+    <div class="row"><span class="lg-label">Finish</span></div>
+    <div class="fins2" data-fins role="group" aria-label="Finish">
+      {%- for o in product.options_with_values -%}{%- if forloop.index0 == fi -%}{%- for v in o.values -%}
+        {%- assign fb = nil -%}{%- assign vv = v | downcase | strip -%}
+        {%- for b in section.blocks -%}{%- if b.type == 'finish' -%}{%- assign bv = b.settings.value | downcase | strip -%}{%- if bv == vv %}{% assign fb = b %}{% endif -%}{%- endif -%}{%- endfor -%}
+        <button type="button" class="fin2" data-f="{{ v | escape }}" aria-pressed="false"{% if fb %} {{ fb.shopify_attributes }}{% endif %}>
+          {%- if fb.settings.tag != blank %}<i class="fin2-tag">{{ fb.settings.tag }}</i>{% endif -%}
+          <span class="fin2-ph">{%- if fb.settings.image != blank -%}{{ fb.settings.image | image_url: width: 240 | image_tag: alt: '' }}{%- endif -%}</span>
+          <b>{{ fb.settings.name | default: v }}</b><span class="fin2-x" data-fx></span>
+        </button>
+      {%- endfor -%}{%- endif -%}{%- endfor -%}
+    </div>
+    {%- elsif c.finishes.size > 1 -%}
+    <div class="row"><span class="lg-label">Finish</span></div>
+    <div class="fins">
+      {%- for fi in c.finishes -%}{%- assign fp = all_products[fi.handle] -%}
+      <a class="fin" href="{{ fp.url | default: '#' }}"{% if fi.handle == product.handle %} aria-current="page"{% endif %}><span class="lg-swatch">{%- assign sw = fp.metafields.custom.club_swatch.value | default: fp.metafields.custom.cutout.value -%}{%- if sw != blank %}{{ sw | image_url: width: 144 | image_tag: alt: '' }}{% endif -%}</span><b>{{ fi.label }}</b></a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    {%- if wedge -%}
+    <div class="row"><span class="lg-label">Hand</span></div>
+    <div class="hands2" data-hand role="group" aria-label="Hand"></div>
+    <div class="row" id="lofts"><span class="lg-label">Loft and grind</span><a href="#" data-md-open="md-helper">Help me pick &rarr;</a></div>
+    <p class="pickhint" data-pickhint aria-live="polite">{{ s.pick_hint | default: 'Tap one, or tap a few to build a set.' }}</p>
+    <div class="lofts lofts2" data-lofts role="group" aria-label="Loft and grind"></div>
+    <div class="cs-swap" data-swap hidden aria-live="polite"></div>
+    {%- else -%}
+      {%- comment -%} 2026-10-09 (Cole): same quiet Right / Left boxes as the wedges, always shown; a hand the club isn't made in is struck through. {%- endcomment -%}
+      {%- for o in product.options_with_values -%}{%- assign ishand = false -%}{%- if forloop.index0 == hi %}{% assign ishand = true %}{% endif -%}
+      {%- if o.values.size > 1 or ishand -%}
+        {%- assign ol = o.name -%}{%- if ishand %}{% assign ol = 'Hand' %}{% endif -%}
+        <div class="row"><span class="lg-label">{{ ol }}{% unless ishand %} <span class="m" data-pick="{{ forloop.index0 }}"></span>{% endunless %}</span></div>
+        <div class="lg-chips{% if ishand %} hands2{% endif %}" data-opt="{{ forloop.index0 }}" role="group" aria-label="{{ ol | escape }}">
+          {%- for v in o.values -%}{%- assign vl = v -%}{%- if ishand -%}{%- if v contains 'Left' %}{% assign vl = 'Left' %}{% elsif v contains 'Right' %}{% assign vl = 'Right' %}{% endif -%}{%- endif -%}
+          <button class="lg-chip" type="button" data-v="{{ v | escape }}" aria-label="{{ vl | escape }}{% if ishand %} hand{% endif %}">{{ vl }}</button>
+          {%- endfor -%}
+          {%- if ishand and o.values.size == 1 -%}{%- assign only = o.values.first | downcase -%}
+            {%- if only contains 'right' -%}<button class="lg-chip" type="button" data-v="" data-none data-dead aria-disabled="true" aria-label="Left hand, not made in this club">Left</button>
+            {%- elsif only contains 'left' -%}<button class="lg-chip" type="button" data-v="" data-none data-dead aria-disabled="true" aria-label="Right hand, not made in this club">Right</button>{%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}{%- endfor -%}
+    {%- endif -%}
+
+    {%- comment -%} Carver sets, Vice-style: 1 / 2 / 3 wedge cards with the set price. Tapping one builds the set with in-stock lofts. {%- endcomment -%}
+    {%- if cs_here -%}<div class="cs-pdp" data-cs-show="on"><div class="cs-pdp-hd"><span class="lg-label">{{ settings.cs_strip }}</span><a href="{{ settings.cs_url | default: '/pages/carver-sets' }}">{% if settings.cs_url contains 'black-friday' %}See the deals{% else %}Ready-made sets{% endif %} &rarr;</a></div><div class="cs-pdp-tiles" data-cs-tiles role="group" aria-label="How many wedges"></div></div>{%- elsif settings.cs_on and settings.cs_url contains 'black-friday' -%}<div class="cs-pdp bf-pdp" data-cs-show="on"><div class="cs-pdp-hd"><span class="lg-label">{{ settings.cs_strip }}</span><a href="{{ settings.cs_url }}">See the deals &rarr;</a></div><div class="cs-pdp-tiles"><span class="cs-pdp-t"><span>1 club</span><b>Everyday</b><small>price</small></span><span class="cs-pdp-t"><span>2 clubs</span><b>$50 off</b><small>+ towel + divot</small></span><span class="cs-pdp-t"><i>Best value</i><span>3 or more</span><b>$100 off</b><small>+ gifts, ships free</small></span></div></div>{%- endif -%}
+    {%- if settings.cs_on and settings.cs_url contains 'black-friday' -%}<a class="bf-soon" href="{{ settings.cs_url }}" data-cs-show="soon"><b>Black Friday starts Nov 27.</b> $50 off two clubs, $100 off three, plus a free towel and divot tool. <span>See the deals &rarr;</span></a>{%- endif -%}
+    <form class="cta" method="post" action="{{ routes.cart_add_url }}" data-lg-add data-club-form>
+      <input type="hidden" name="id" value="{{ v0.id }}" data-vid>
+      <input type="hidden" name="properties[Pre-order]" value="" data-preprop disabled>
+      <button class="lg-btn" type="submit" data-atc>{{ atc }} · {{ price }}</button>
+    </form>
+    {%- if cs_here -%}<p class="cs-set" data-cs-set hidden aria-live="polite"></p>{%- endif -%}
+    <div class="trustl"><span class="lg-stock{% unless product.available %} is-out{% endunless %}" data-stockline>{% if product.available %}{{ s.in_stock }}{% else %}Sold out{% endif %}</span><span class="trustl-links">
+      {%- if c.modals -%}<a href="#" data-md-open="md-returns">{{ s.returns_link }}</a><a href="#" data-md-open="md-delivery">{{ s.delivery_link }}</a>
+      {%- else -%}<a href="{{ s.returns_url }}">{{ s.returns_link }}</a><a href="{{ s.ship_url }}">{{ s.ship_link }}</a>{%- endif -%}</span></div>
+
+    {%- assign nd = 0 -%}{%- for k in (1..3) -%}{%- assign kt = 'p_d' | append: k | append: '_t' -%}{%- assign dt = s[kt] | default: c.details[forloop.index0][0] -%}{%- if dt != blank %}{% assign nd = nd | plus: 1 %}{% endif -%}{%- endfor -%}
+    {%- if nd > 0 -%}
+    <div class="lg-faq">
+      {%- for k in (1..3) -%}{%- assign kt = 'p_d' | append: k | append: '_t' -%}{%- assign kb = 'p_d' | append: k | append: '_b' -%}{%- assign dt = s[kt] | default: c.details[forloop.index0][0] -%}{%- assign db = s[kb] | default: c.details[forloop.index0][1] -%}{%- if dt != blank -%}<details class="lg-fq"><summary>{{ dt }}</summary><div class="lg-fq-a"><p>{{ db }}</p></div></details>{%- endif -%}{%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+<div class="stickybar" data-sticky>
+  <span class="sb-ph">{%- if mon_img != blank %}{{ mon_img | image_url: width: 144 | image_tag: alt: '' }}{% endif -%}</span>
+  <div><b data-sticky-name>{{ product.title }}</b><span data-sticky-price>{{ price }}</span></div>
+  <div class="sb-pick" data-sb-pick>
+    {%- if wedge -%}
+    <label><span class="sr">Hand</span><select class="sb-sel" data-sb-hand></select></label>
+    <label><span class="sr">Loft and grind</span><select class="sb-sel" data-sb-loft></select></label>
+    {%- else -%}
+      {%- for o in product.options_with_values -%}{%- if o.values.size > 1 -%}
+      <label><span class="sr">{{ o.name }}</span><select class="sb-sel" data-sb-opt="{{ forloop.index0 }}">{%- for v in o.values -%}<option value="{{ v | escape }}">{{ v }}</option>{%- endfor -%}</select></label>
+      {%- endif -%}{%- endfor -%}
+    {%- endif -%}
+  </div>
+  <a class="sb-change" href="{% if wedge %}#lofts{% else %}#buy{% endif %}" data-sb-change>Change</a>
+  <button class="lg-btn" type="button" data-atc-sticky>{{ atc }}</button>
+</div>
+
+{%- if wedge -%}
+<div class="md" id="md-helper" hidden role="dialog" aria-modal="true" aria-labelledby="md-helper-t"><div class="md-bd" data-md-close></div><div class="md-panel hp">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-helper-t">{{ s.helper_title }}</h2>
+  <p>{{ s.helper_line }}</p>
+  <div data-helper></div>
+</div></div>
+{%- endif -%}
+<div class="md" id="md-notify" hidden role="dialog" aria-modal="true" aria-labelledby="md-notify-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-notify-t">Tell me when it's back</h2>
+  <p data-notify-line>{{ s.notify_line }}</p>
+  <form class="lg-form" data-notify data-variant="{{ v0.id }}" novalidate><label class="sr" for="notify-email">Email</label><input class="lg-input" id="notify-email" type="email" placeholder="you@somewhere.com" autocomplete="email" required><button class="lg-btn-line" type="submit">Tell me</button></form>
+</div></div>
+{%- if rc >= min and c.rv.write -%}
+<div class="md" id="md-write" hidden role="dialog" aria-modal="true" aria-labelledby="md-write-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <h2 class="lg-d3" id="md-write-t">Write a review</h2>
+  <p>{{ s.write_line }}</p>
+  <div class="md-foot"><button type="button" class="lg-btn-line lg-btn-sm" data-md-close>Close</button></div>
+</div></div>
+{%- endif -%}
+
+{%- if c.modals -%}
+<div class="md" id="md-returns" hidden role="dialog" aria-modal="true" aria-labelledby="md-returns-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Refund policy</p>
+  <h2 class="lg-d3" id="md-returns-t">{{ s.returns_link }}</h2>
+  {{ s.returns_body }}
+</div></div>
+<div class="md" id="md-delivery" hidden role="dialog" aria-modal="true" aria-labelledby="md-delivery-t"><div class="md-bd" data-md-close></div><div class="md-panel">
+  <button type="button" class="md-x" data-md-close aria-label="Close">&times;</button>
+  <p class="lg-eyebrow">Delivery</p>
+  <h2 class="lg-d3" id="md-delivery-t">When it shows up</h2>
+  <div class="md-carriers"><span class="lg-tag">USPS</span><span class="lg-tag">UPS</span><span class="lg-tag">FedEx</span></div>
+  {{ s.delivery_body }}
+</div></div>
+{%- endif -%}
+<dialog class="zoom" id="zoom" aria-label="Image"><button type="button" class="md-x" data-zoom-close aria-label="Close" style="position:absolute">&times;</button><img src="" alt=""></dialog>
+
+<script>
+window.LG_CLUB = {
+  title: {{ product.title | json }}, pid: {{ product.id }}, cs: {{ cs_here }},
+  wedge: {{ wedge }}, hi: {{ hi }}, li: {{ li }}, fi: {{ fi }},
+  fins: [{%- for b in section.blocks -%}{%- if b.type == 'finish' -%}{ v: {{ b.settings.value | json }}, n: {{ b.settings.name | json }}, l: {{ b.settings.lede | json }} },{%- endif -%}{%- endfor -%}],
+  fullHint: {{ s.full_hint | default: "That's 3. Tap one to drop it first." | json }},
+  pickLine: {{ s.pick_line | default: 'Pick a loft' | json }},
+  grind: {{ c.grind_default | default: 'K' | json }},
+  sheet: {{ c.spec.sheet | json }}, headg: {{ c.spec.head_g | default: '' | json }},
+  atc: {{ atc | json }}, inStock: {{ s.in_stock | json }},
+  mode: {{ mode | json }}, month: {{ month | json }},
+  free: {{ settings.lg_free_shipping | default: 195 | json }},
+  start: {{ product.selected_variant.id | default: 0 }},
+  variants: [
+    {%- for v in product.variants -%}
+    { id: {{ v.id }}, i: {{ v.featured_media.id | default: 0 }}, o: {{ v.options | json }}, a: {{ v.available }}, q: {{ v.inventory_quantity | default: 0 }}, c: {{ v.inventory_policy | json }}, m: {{ v.inventory_management | json }}, p: {{ v.price }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+};
+</script>
+<script>
+/* The club buy box (templates/product.club.json). Data: window.LG_CLUB, written by the section from
+   the product's live variants. Wedges (a Loft option): hand, loft chips, 1 to 3 wedge sets, the
+   readout and the helper. Everything else: one chip row per option with more than one value. */
+document.addEventListener('DOMContentLoaded', function(){
+  var D = window.LG_CLUB; if (!D) return;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var money = function(c){ return '$' + (c % 100 ? (c / 100).toFixed(2) : Math.round(c / 100)); };
+  var toast = function(m){ if (window.Lucky && Lucky.toast) Lucky.toast(m); };
+  var form = $('[data-club-form]'), vid = $('[data-vid]'), pre = $('[data-preprop]'), btn = $('[data-atc]'), sticky = $('[data-sticky]');
+  var nf = $('#md-notify form[data-notify]');
+  /* a variant's state: in stock, pre-order (at 0, still sold, and the product is set to pre-order) or out */
+  function st(v){
+    if (!v || !v.a) return 'out';
+    if (D.mode === 'preorder' && v.m && v.q <= 0 && v.c === 'continue') return 'pre';
+    return 'in';
+  }
+  var backLine = function(){ return D.month ? 'Back in ' + D.month : 'Sold out'; };
+  var preLine = function(){ return 'Pre-order' + (D.month ? ', ships in ' + D.month : ''); };
+  var flash = false;
+  function openNotify(v, what){
+    if (nf && v) nf.setAttribute('data-variant', v.id);
+    var l = $('[data-notify-line]');
+    if (l){ if (!l.getAttribute('data-default')) l.setAttribute('data-default', l.textContent);
+      /* "on its way back" only with a restock month; with no date it stays the plain line */
+      l.textContent = what && D.month ? 'The ' + what + " is on its way back. Drop your email and you'll get one message when it lands." : l.getAttribute('data-default'); }
+    var m = $('#md-notify'); if (m) m.hidden = false;
+  }
+  if (window.LuckyBag) LuckyBag.onChange(function(){ if (!flash) return; flash = false;
+    btn.setAttribute('data-done', ''); btn.textContent = 'In the bag';
+    setTimeout(function(){ btn.removeAttribute('data-done'); paint(); }, 1600); });
+
+  var paint = function(){};
+
+  if (D.wedge) (function(){
+    /* ---------------------------------------------------------- wedges
+       2026-10-08 (Cole, Takomo's Lumo page): finish cards, then hand, then lofts. Tapping lofts IS the
+       count, up to three; a fourth tap says so instead of swapping. Each loft shows its bounce. */
+    var MAX = 3;
+    var finOf = function(v){ return D.fi > -1 ? v.o[D.fi] : ''; };
+    var handOf = function(v){ return D.hi > -1 ? v.o[D.hi] : ''; };
+    var loftKey = function(raw){ var m = String(raw).match(/(\d+)\s*°?\s*([A-Za-z])?/); return m ? m[1] + (m[2] ? m[2].toUpperCase() : D.grind) : raw; };
+    var FINS = [], HANDS = [], LOFTS = [], seen = {};
+    D.variants.forEach(function(v){
+      var f = finOf(v); if (FINS.indexOf(f) < 0) FINS.push(f);
+      var h = handOf(v); if (HANDS.indexOf(h) < 0) HANDS.push(h);
+      var k = loftKey(v.o[D.li]); if (!seen[k]){ seen[k] = 1; var m = k.match(/^(\d+)(\w)$/); LOFTS.push({ k: k, n: +m[1], g: m[2], label: m[1] + '° ' + m[2] }); }
+    });
+    LOFTS.sort(function(a, b){ return a.n - b.n || (a.g < b.g ? -1 : a.g > b.g ? 1 : 0); });
+    HANDS.sort(function(a, b){ return (/left/i.test(a) ? 1 : 0) - (/left/i.test(b) ? 1 : 0); });
+    var FB = {}; (D.fins || []).forEach(function(b){ if (b && b.v) FB[String(b.v).toLowerCase().trim()] = b; });
+    var fmeta = function(f){ return FB[String(f).toLowerCase().trim()] || {}; };
+    var fname = function(f){ return fmeta(f).n || f; };
+    var handLabel = function(h){ return /left/i.test(h) ? 'Left' : /right/i.test(h) ? 'Right' : h; };
+    var handed = function(){ return /left/i.test(state.hand) ? 'left' : 'right'; };
+    var state = { fin: FINS[0], hand: HANDS[0], picked: [], full: false, swap: null };
+    var CS = function(){ var c = window.LG_CS; return D.cs && c && c.live && c.pid === D.pid ? c : null; };
+    var find = function(k){ return D.variants.filter(function(v){ return finOf(v) === state.fin && handOf(v) === state.hand && loftKey(v.o[D.li]) === k; })[0]; };
+    var handOK = function(h){ return D.variants.some(function(v){ return finOf(v) === state.fin && handOf(v) === h; }); };
+    var dead = function(k){ return st(find(k)) === 'out'; };
+    var nice = function(k){ var l = LOFTS.filter(function(x){ return x.k === k; })[0]; return l ? l.label : k; };
+    var finPrice = function(f){ var p = D.variants.filter(function(v){ return finOf(v) === f; }).map(function(v){ return v.p; }); return p.length ? Math.min.apply(null, p) : 0; };
+    var bounce = function(k){ var m = k.match(/^(\d+)(\w)$/), r = m && ((D.sheet || {})[m[2]] || {})[m[1]]; return r ? r[0] : null; };
+    function firstLive(){ var l = LOFTS.filter(function(x){ return find(x.k) && !dead(x.k); }); return l.length ? l[Math.min(4, l.length - 1)].k : null; }
+    var sv = D.variants.filter(function(v){ return v.id === D.start; })[0];
+    var qf = (location.search.match(/[?&]finish=([^&]+)/) || [])[1];
+    if (qf){ qf = decodeURIComponent(qf.replace(/\+/g, ' ')).toLowerCase(); FINS.forEach(function(f){ if (f.toLowerCase() === qf) state.fin = f; }); }
+    if (sv){ state.fin = finOf(sv); state.hand = handOf(sv); state.picked = [loftKey(sv.o[D.li])]; }
+    else if (find('56' + D.grind) && !dead('56' + D.grind)) state.picked = ['56' + D.grind];
+    else { var f0 = firstLive(); if (f0) state.picked = [f0]; }
+    function isOut(){ return state.picked.length === 1 && dead(state.picked[0]); }
+    /* a variant in another finish, same hand and loft */
+    var inFin = function(f, k){ return D.variants.filter(function(v){ return finOf(v) === f && handOf(v) === state.hand && loftKey(v.o[D.li]) === k; })[0]; };
+    /* the closest in-stock loft in this finish, same grind first, not already picked */
+    function nearest(k){
+      var n = +k.match(/^\d+/)[0], g = k.slice(-1);
+      var c = LOFTS.filter(function(l){ return l.k !== k && find(l.k) && !dead(l.k) && state.picked.indexOf(l.k) < 0; })
+        .sort(function(a, b){ return (a.g !== g) - (b.g !== g) || Math.abs(a.n - n) - Math.abs(b.n - n) || a.n - b.n; });
+      return c.length ? c[0].k : null;
+    }
+    /* Carver sets: the next lofts to make it a set of 3, gapped 4° from what's picked, in stock only */
+    function suggest(){
+      var cs = CS(), p = state.picked; if (!cs || !p.length || p.length >= 3 || isOut()) return [];
+      var nums = p.map(function(k){ return +k.match(/^\d+/)[0]; }), g = p[0].slice(-1), hi = Math.max.apply(null, nums), lo = Math.min.apply(null, nums), out = [];
+      [4, -4, 8, -8, 2, -2, 6, -6].forEach(function(d){ if (out.length >= 3 - p.length) return;
+        var k = ((d > 0 ? hi : lo) + d) + g; if (find(k) && !dead(k) && p.indexOf(k) < 0 && out.indexOf(k) < 0) out.push(k); });
+      return out;
+    }
+    function unit(){ var v = find(state.picked[0]); return v ? v.p : finPrice(state.fin); }
+    var CHECK = '<svg class="lc-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+    /* the gallery follows the finish (2026-10-12): photos tagged with a finish (data-fin, from the alt text) show
+       only under that finish; untagged ones show under finishes with no photos of their own. The finish's own
+       photo (the variants' image) leads, whole club in frame like the cutout; the cutout leads otherwise. */
+    var gal = $('[data-gal]'), cutFig = gal && $('figure[data-mid="cut"]', gal), promoted = null, lead = null, galAll = $('[data-gal-all]');
+    function leadFor(f){
+      if (!gal || f === lead) return; var first = lead === null; lead = f;
+      if (promoted){ promoted.className = promoted.getAttribute('data-cls'); promoted = null; }
+      var figs = [].slice.call(gal.children), own = figs.some(function(x){ return x.getAttribute('data-fin') === f; });
+      figs.forEach(function(x){ var t = x.getAttribute('data-fin'); x.style.display = (own ? t === f : !t) ? '' : 'none'; });
+      var vi = D.variants.filter(function(v){ return finOf(v) === f && v.i; })[0];
+      var fig = vi && $('figure[data-mid="' + vi.i + '"]', gal);
+      if (fig){ fig.setAttribute('data-cls', fig.className); fig.style.display = ''; fig.className = (fig.className.replace('is-more', '') + ' is-lead wide cut').trim(); promoted = fig; if (cutFig) cutFig.style.display = 'none'; }
+      var shown = figs.filter(function(x){ return x.style.display !== 'none' && x !== promoted; });
+      if (promoted) shown.unshift(promoted);
+      shown.forEach(function(x, k){ x.classList.toggle('is-more', k >= 5); });
+      if (galAll){ galAll.textContent = (galAll.getAttribute('data-tpl') || '').replace('[n]', shown.length);
+        if (!gal.classList.contains('is-all')) galAll.hidden = shown.length <= 5; }
+      gal.dispatchEvent(new CustomEvent('lg:gal'));
+      if (!first) gal.scrollLeft = 0;
+    }
+
+    paint = function(){
+      if (!handOK(state.hand)) state.hand = HANDS.filter(handOK)[0] || state.hand;
+      var was = state.picked;
+      state.picked = was.filter(function(k){ return find(k) && (was.length === 1 || !dead(k)); }).slice(0, MAX);
+      var n = state.picked.length;
+      var base = finPrice(FINS[0]);
+      $$('[data-fins] [data-f]').forEach(function(b){ var f = b.getAttribute('data-f'), d = finPrice(f) - base;
+        b.setAttribute('aria-pressed', String(f === state.fin));
+        var x = $('[data-fx]', b); if (x) x.textContent = d > 0 ? '+' + money(d) : ''; });
+      $('[data-hand]').innerHTML = HANDS.map(function(h){ var ok = handOK(h);
+        return '<button class="lg-chip" type="button" data-h="' + esc(h) + '" aria-pressed="' + (h === state.hand) + '"'
+          + (ok ? '' : ' data-dead aria-disabled="true" aria-label="' + esc(handLabel(h)) + ' hand, not made in ' + esc(fname(state.fin)) + '"') + '>' + esc(handLabel(h)) + '</button>'; }).join('');
+      var sug = suggest();
+      $('[data-lofts]').innerHTML = LOFTS.map(function(l){
+        if (!find(l.k)) return '';
+        var d = dead(l.k), on = state.picked.indexOf(l.k) > -1, bo = bounce(l.k), sub = d ? backLine() : bo != null ? bo + '° bounce' : '';
+        return '<button class="lg-chip' + (sug.indexOf(l.k) > -1 ? ' is-sug' : '') + '" type="button" data-l="' + l.k + '" aria-pressed="' + on + '"' + (d ? ' data-dead' : '')
+          + ' aria-label="' + esc(l.label + ' grind' + (sub ? ', ' + sub.toLowerCase() : '')) + '">' + (on ? CHECK : '')
+          + '<span class="lc-l">' + l.n + '°<small>' + l.g + '</small></span>' + (sub ? '<span class="lc-s">' + esc(sub) + '</span>' : '') + '</button>'; }).join('');
+      var hint = $('[data-pickhint]');
+      if (hint){ if (hint.getAttribute('data-default') == null) hint.setAttribute('data-default', hint.textContent);
+        hint.textContent = state.full ? D.fullHint : hint.getAttribute('data-default'); hint.classList.toggle('is-full', state.full);
+        var hcs = CS(); if (hcs && sug.length && !state.full){ var nn = state.picked.length + sug.length;
+          hint.innerHTML = 'Add ' + sug.map(function(k){ return esc(nice(k)); }).join(' and ') + ' and save ' + money(hcs.save(nn)) + '. <button type="button" class="cs-addsug" data-cs-addsug>Add ' + (sug.length > 1 ? 'them' : 'it') + '</button>'; } }
+      var tl = $('[data-cs-tiles]'), tcs = CS();
+      if (tl && tcs){ var uu = finPrice(state.fin), nn2 = Math.min(state.picked.length, 3);
+        tl.innerHTML = [1, 2, 3].map(function(k){ var sv = tcs.save(k);
+          return '<button type="button" class="cs-pdp-t" data-cs-n="' + k + '" aria-pressed="' + (nn2 === k) + '">' + (k === 3 ? '<i>Best value</i>' : '')
+            + '<span>' + k + (k > 1 ? ' wedges' : ' wedge') + '</span><b>' + money(uu * k - sv) + '</b><small>' + (sv ? 'Save ' + money(sv) : '&nbsp;') + '</small></button>'; }).join(''); }
+      var sw = $('[data-swap]');
+      if (sw){ var sk = state.swap, html = '';
+        if (sk && find(sk) && dead(sk)){
+          var f2 = FINS.filter(function(f){ return f !== state.fin && st(inFin(f, sk)) !== 'out'; })[0], v2 = f2 && inFin(f2, sk), nk = (state.picked.indexOf(sk) > -1 || state.picked.length < MAX) ? nearest(sk) : null, many = state.picked.filter(function(x){ return x !== sk; }).length;
+          html = '<b>' + esc(nice(sk) + ' ' + fname(state.fin)) + ' is sold out.</b>'
+            + (f2 ? '<button type="button" class="lg-chip" data-swap-fin="' + esc(f2) + '">' + (many ? 'Make the set ' + esc(fname(f2)) : 'Take it in ' + esc(fname(f2))) + ' · ' + money(v2.p) + '</button>' : '')
+            + (nk ? '<button type="button" class="lg-chip" data-swap-loft="' + nk + '">Take ' + esc(nice(nk)) + ' instead</button>' : '');
+        } else state.swap = null;
+        sw.innerHTML = html; sw.hidden = !html; }
+      var u = unit(), sum = u * n, o = isOut();
+      var pv = find(state.picked[0]), ps = st(pv), anyPre = state.picked.some(function(k){ return st(find(k)) === 'pre'; });
+      $('[data-price-note]').hidden = n < 2;
+      var cs = CS(), setl = $('[data-cs-set]'), cut = cs && !o ? cs.save(n) : 0;
+      if (setl){ setl.hidden = !cs || o || !n;
+        setl.innerHTML = !cs || o || !n ? '' : cut ? '<s>' + money(sum) + '</s> <b>' + money(sum - cut) + '</b> for ' + n + ' wedges, you save ' + money(cut) + (n === 2 ? '. Add one more and save ' + money(cs.t3) + '.' : '.')
+          : 'Add a second wedge and save ' + money(cs.t2) + '.'; }
+      $('[data-price]').textContent = money(u);
+      btn.textContent = !n ? D.pickLine : o ? "Tell me when it's back"
+        : (anyPre ? preLine() : 'Put ' + (n === 2 ? 'both' : n > 1 ? 'all ' + n : 'it') + ' in the bag') + ' · ' + money(sum - cut);
+      btn.setAttribute('aria-disabled', String(!n));
+      var line = $('[data-stockline]');
+      line.classList.toggle('is-out', o);
+      line.textContent = o ? nice(state.picked[0]) + ', ' + handed() + '-handed, ' + (D.month ? 'is back in ' + D.month : 'is sold out')
+        : anyPre ? preLine() : D.inStock;
+      if (pv) vid.value = pv.id;
+      pre.disabled = !(n === 1 && ps === 'pre'); pre.value = 'ships ' + (D.month || 'soon');
+      var le = $('[data-lede]');
+      if (le){ if (le.getAttribute('data-default') == null) le.setAttribute('data-default', le.textContent); le.textContent = fmeta(state.fin).l || le.getAttribute('data-default'); }
+      leadFor(state.fin);
+      $('[data-sticky-name]').textContent = D.title + (FINS.length > 1 ? ' · ' + fname(state.fin) : '') + (n ? ' · ' + state.picked.map(nice).join(', ') : '');
+      $('[data-sticky-price]').textContent = o ? backLine() : money(sum || u) + (n > 1 ? ' · ' + n + ' wedges' : '');
+      $('[data-atc-sticky]').textContent = o ? 'Tell me' : D.atc;
+      sticky.classList.toggle('is-one', n < 2);
+      $('[data-sb-hand]').innerHTML = HANDS.filter(handOK).map(function(h){ return '<option value="' + esc(h) + '"' + (h === state.hand ? ' selected' : '') + '>' + esc(handLabel(h)) + ' hand</option>'; }).join('');
+      $('[data-sb-loft]').innerHTML = LOFTS.filter(function(l){ return find(l.k); }).map(function(l){ return '<option value="' + l.k + '"' + (state.picked[0] === l.k ? ' selected' : '') + '>' + esc(l.label) + (dead(l.k) ? ' · ' + esc(backLine().toLowerCase()) : '') + '</option>'; }).join('');
+    };
+    document.addEventListener('click', function(e){
+      var el;
+      if (el = e.target.closest('[data-fins] [data-f]')){ state.fin = el.getAttribute('data-f'); state.full = false; state.swap = null; paint(); return; }
+      if (el = e.target.closest('[data-cs-n]')){ var want = +el.getAttribute('data-cs-n');
+        if (isOut()) state.picked = [];
+        if (state.picked.length > want) state.picked = state.picked.slice(0, want);
+        var guard = 0; while (state.picked.length < want && guard++ < 4){ var add = suggest(); if (!state.picked.length){ var f1 = firstLive(); if (f1) state.picked = [f1]; continue; } if (!add.length) break; state.picked = state.picked.concat(add).slice(0, want); }
+        state.swap = null; state.full = false; paint();
+        try { if (window.gtag) gtag('event', 'tier_card_select', { tier: want, page: 'product' }); } catch (x) {}
+        return; }
+      if (el = e.target.closest('[data-cs-addsug]')){ state.picked = state.picked.concat(suggest()).slice(0, MAX); state.swap = null; paint(); return; }
+      if (el = e.target.closest('[data-swap-fin]')){ var wk = state.swap; state.fin = el.getAttribute('data-swap-fin'); state.swap = null;
+        if (state.picked.indexOf(wk) < 0) state.picked.push(wk); state.picked = state.picked.slice(0, MAX); state.full = false; paint(); return; }
+      if (el = e.target.closest('[data-swap-loft]')){ var ok = state.swap, nk2 = el.getAttribute('data-swap-loft'), at = state.picked.indexOf(ok); state.swap = null;
+        if (at > -1) state.picked[at] = nk2; else if (state.picked.length < MAX) state.picked.push(nk2); state.full = false; paint(); return; }
+      if (el = e.target.closest('[data-lofts] button')){
+        var k = el.getAttribute('data-l'), i = state.picked.indexOf(k);
+        state.swap = el.hasAttribute('data-dead') ? k : null;
+        if (i > -1){ state.picked.splice(i, 1); state.full = false; state.swap = null; paint(); return; }
+        if (state.picked.length === 1 && dead(state.picked[0])) state.picked = [];
+        /* a sold-out loft never goes in a set: the swap row under the lofts offers the in-stock one */
+        if (el.hasAttribute('data-dead') && state.picked.length){ paint(); return; }
+        if (state.picked.length >= MAX){ state.full = true; paint(); return; }
+        state.picked.push(k); state.full = false; paint(); return;
+      }
+      if (el = e.target.closest('[data-hand] button')){ if (el.hasAttribute('data-dead')) return; state.hand = el.getAttribute('data-h'); state.full = false; paint(); return; }
+    });
+    $('[data-sb-hand]').addEventListener('change', function(){ state.hand = this.value; paint(); });
+    $('[data-sb-loft]').addEventListener('change', function(){ state.picked = [this.value]; state.full = false; paint(); });
+    form.addEventListener('submit', function(e){
+      var n = state.picked.length;
+      if (!n){ e.preventDefault(); e.stopPropagation(); if (window.Lucky) Lucky.jump('lofts'); return; }
+      if (isOut()){ e.preventDefault(); e.stopPropagation(); openNotify(find(state.picked[0]), nice(state.picked[0])); return; }
+      if (n > 1){ e.preventDefault(); e.stopPropagation();
+        var items = state.picked.map(function(k){ var v = find(k), it = { id: v.id, quantity: 1 };
+          if (st(v) === 'pre') it.properties = { 'Pre-order': 'ships ' + (D.month || 'soon') }; return it; });
+        flash = true; LuckyBag.add(items).catch(function(){ flash = false; }); return; }
+      flash = true;
+    });
+    /* the helper */
+    (function(){
+      var box = $('[data-helper]'); if (!box) return; var pw = 46, open = null;
+      var has = function(g){ return LOFTS.some(function(l){ return l.g === g && find(l.k); }); };
+      function calc(){ var b = pw + 6, l = [b, b + 4, b + 8].map(function(x){ return Math.min(60, Math.max(50, Math.round(x / 2) * 2)); }), g = open === 'yes' && has('S') ? 'S' : 'K';
+        if (g === 'S') l = l.map(function(x){ return [52, 56, 60].reduce(function(a, c){ return Math.abs(c - x) < Math.abs(a - x) ? c : a; }); });
+        return { lofts: l.filter(function(x, i, a){ return a.indexOf(x) === i; }), g: g }; }
+      function draw(){ var r = calc();
+        box.innerHTML = '<h4>1 · My pitching wedge is</h4><div class="lg-chips">' + [44, 45, 46, 47, 48].map(function(x){ return '<button class="lg-chip" type="button" data-pw="' + x + '" aria-pressed="' + (x === pw) + '">' + x + '°</button>'; }).join('')
+          + '</div><h4>2 · Do you open the face around the green?</h4><div class="lg-chips"><button class="lg-chip" type="button" data-face="no" aria-pressed="' + (open === 'no') + '">Not really, I set up square</button><button class="lg-chip" type="button" data-face="yes" aria-pressed="' + (open === 'yes') + '">Yes, flops and bunkers</button></div>'
+          + '<div class="rec"><b>' + r.lofts.map(function(l){ return l + '°'; }).join(' · ') + ' · ' + r.g + ' grind</b>'
+          + (open === null ? 'Answer the second one and we\'ll pick the grind. Until then, it\'s the K.' : (r.g === 'K' ? 'The K: set it square and it behaves, in all six lofts.' : 'The S: opens up clean, in the 52, 56 and 60.'))
+          + '</div><div class="md-foot"><button class="lg-btn-line" type="button" data-use>Use these lofts</button></div>'; }
+      box.addEventListener('click', function(e){ var b;
+        if (b = e.target.closest('[data-pw]')){ pw = +b.getAttribute('data-pw'); draw(); return; }
+        if (b = e.target.closest('[data-face]')){ open = b.getAttribute('data-face'); draw(); return; }
+        if (e.target.closest('[data-use]')){ var r = calc(), picks = r.lofts.map(function(l){ return l + r.g; }).filter(function(k){ return find(k) && !dead(k); }).slice(0, MAX);
+          if (!picks.length){ var f = firstLive(); picks = f ? [f] : []; } state.picked = picks; state.full = false; paint();
+          $('#md-helper').hidden = true; if (window.Lucky) Lucky.jump('lofts'); } });
+      draw();
+    })();
+  })();
+  else (function(){
+    /* ---------------------------------------------------------- one chip row per option */
+    var n = (D.variants[0] || { o: [] }).o.length, pick = [];
+    var sv = D.variants.filter(function(v){ return v.id === D.start; })[0] || D.variants.filter(function(v){ return v.a; })[0] || D.variants[0];
+    for (var i = 0; i < n; i++) pick[i] = sv.o[i];
+    var label = function(i, v){ return i === D.hi ? (/left/i.test(v) ? 'Left hand' : /right/i.test(v) ? 'Right hand' : v) : v; };
+    var variant = function(){ return D.variants.filter(function(v){ return v.o.every(function(x, i){ return x === pick[i]; }); })[0]; };
+    $$('[data-opt]').forEach(function(g){ var i = +g.getAttribute('data-opt');
+      $$('button', g).forEach(function(b){ var dv = D.variants.filter(function(v){ return v.o[i] === b.getAttribute('data-v'); });
+        if (dv.every(function(v){ return st(v) === 'out'; })) b.setAttribute('data-dead', ''); }); });
+    paint = function(){
+      $$('[data-opt]').forEach(function(g){ var i = +g.getAttribute('data-opt');
+        $$('button', g).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === pick[i])); });
+        var lb = $('[data-pick="' + i + '"]'); if (lb) lb.textContent = pick[i] ? '· ' + label(i, pick[i]) : '';
+        var sel = $('[data-sb-opt="' + i + '"]'); if (sel) sel.value = pick[i]; });
+      var v = variant(), s = st(v);
+      var line = $('[data-stockline]');
+      line.textContent = s === 'in' ? D.inStock : s === 'pre' ? preLine() : backLine();
+      line.classList.toggle('is-out', s === 'out');
+      btn.textContent = s === 'out' ? "Tell me when it's back" : (s === 'pre' ? preLine() : D.atc) + ' · ' + money(v.p);
+      $('[data-price]').textContent = money((v || D.variants[0]).p);
+      if (v) vid.value = v.id;
+      pre.disabled = s !== 'pre'; pre.value = 'ships ' + (D.month || 'soon');
+      var last = n - 1, many = $$('[data-opt]').length;
+      $('[data-sticky-name]').textContent = D.title + (n && pick[last] ? ' · ' + label(last, pick[last]) : '');
+      $('[data-sticky-price]').textContent = s === 'out' ? backLine() : money(v.p);
+      $('[data-atc-sticky]').textContent = s === 'out' ? 'Tell me' : D.atc;
+      var mon = $('[data-mon-stock]'); if (mon){ mon.textContent = s === 'out' ? backLine() : 'In stock'; mon.parentNode.classList.toggle('is-out', s === 'out'); }
+    };
+    document.addEventListener('click', function(e){ var b = e.target.closest('[data-opt] button'); if (!b || b.hasAttribute('data-none')) return;
+      pick[+b.closest('[data-opt]').getAttribute('data-opt')] = b.getAttribute('data-v'); paint(); });
+    document.addEventListener('change', function(e){ var s = e.target.closest('[data-sb-opt]'); if (!s) return; pick[+s.getAttribute('data-sb-opt')] = s.value; paint(); });
+    form.addEventListener('submit', function(e){
+      var v = variant();
+      if (st(v) === 'out'){ e.preventDefault(); e.stopPropagation(); openNotify(v); return; }
+      flash = true;
+    });
+  })();
+
+  /* the sticky bar: once the real button has scrolled away, until the footer */
+  $('[data-atc-sticky]').addEventListener('click', function(){ if (form.requestSubmit) form.requestSubmit(); else btn.click(); });
+  (function(){
+    var ftr = $('.lg-ftr');
+    function p(){ var on = form.getBoundingClientRect().bottom < 0 && (!ftr || ftr.getBoundingClientRect().top > innerHeight);
+      if (on !== sticky.hasAttribute('data-on')){ sticky.toggleAttribute('data-on', on); if (window.Lucky && Lucky.guide && Lucky.guide.place) Lucky.guide.place(); } }
+    addEventListener('scroll', p, { passive: true }); addEventListener('resize', p); p();
+  })();
+
+  /* gallery dots (phone) */
+  (function(){ var g = $('[data-gal]'), d = $('[data-dots]'); if (!g || !d || !d.children.length) return;
+    var vis = function(){ return [].filter.call(g.children, function(x){ return x.style.display !== 'none'; }).length; };
+    /* more than eight photos: a "1 / 21" counter instead of a row of dots (2026-10-08) */
+    var many = false;
+    function build(){ var n = vis(); many = n > 8; d.classList.toggle('is-count', many); d.innerHTML = many ? '' : new Array(n + 1).join('<i></i>'); mark(); }
+    function mark(){ var n = vis(), i = Math.min(n - 1, Math.round(g.scrollLeft / (g.scrollWidth / n)));
+      if (many) d.textContent = (i + 1) + ' / ' + n; else [].forEach.call(d.children, function(x, k){ x.classList.toggle('on', k === i); }); }
+    build(); g.addEventListener('scroll', mark, { passive: true }); g.addEventListener('lg:gal', build); })();
+
+  /* the gallery shows five; the button opens the rest */
+  var ga = $('[data-gal-all]');
+  if (ga) ga.addEventListener('click', function(){ var g = $('[data-gal]'); g.classList.add('is-all'); ga.setAttribute('aria-expanded', 'true'); ga.hidden = true; });
+
+  /* rails and tabs further down the page */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-railarrows] button');
+    if (b){ var r = $('[data-rail]:not([hidden])'); if (r) r.scrollBy({ left: (b.getAttribute('aria-label') === 'Next' ? 1 : -1) * 520, behavior: 'smooth' }); return; }
+    var m = e.target.closest('[data-moodseg] button');
+    if (m){ var mood = $('#finishes'), k = m.getAttribute('data-m');
+      $$('[data-moodseg] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === m)); });
+      mood.setAttribute('data-metal', k);
+      $$('[data-mh]', mood).forEach(function(h){ h.hidden = h.getAttribute('data-mh') !== k; });
+      $$('[data-rail]', mood).forEach(function(r){ r.hidden = r.getAttribute('data-rail') !== k; }); return; }
+    var t = e.target.closest('[data-spectabs] button');
+    if (t){ $$('[data-spectabs] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === t)); });
+      $$('[data-spectab]').forEach(function(p){ p.hidden = p.getAttribute('data-spectab') !== t.getAttribute('data-tab'); }); return; }
+    var g = e.target.closest('[data-specseg] button');
+    if (g){ $$('[data-specseg] button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === g)); });
+      $$('[data-spec]').forEach(function(tb){ tb.hidden = tb.getAttribute('data-spec') !== g.getAttribute('data-g'); }); }
+  });
+
+  /* reviews: the proximity chart from the live Judge.me histogram, then the latest reviews */
+  var R = window.LG_CLUB_REVIEWS;
+  if (R && $('#prox') && window.Lucky && Lucky.proximity) Lucky.proximity($('#prox'), R.nums ? { counts: R.totals } : { counts: R.totals, nums: false });
+  if (R && $('#jm-list')) (function(){
+    /* Every review, paged live from Judge.me's public widget feed (the page itself only carries the
+       latest 10). No star filter chips (Cole, 2026-10-08): sort + show more. */
+    var sort = 'recent', page = 0, busy = false, done = false;
+    var star = function(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); };
+    var SORTS = { recent: 'sort_by=created_at&sort_dir=desc', high: 'sort_by=rating&sort_dir=desc', low: 'sort_by=rating&sort_dir=asc' };
+    var strip = function(h){ var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').trim(); };
+    function item(r){
+      return '<div class="jm-item"><span class="lg-stars" aria-label="' + r.r + ' out of 5" style="line-height:1;color:var(--lg-star)">' + star(r.r) + '</span>' + (r.t ? '<b>' + esc(r.t) + '</b>' : '') + '<p>' + esc(r.q) + '</p><small>' + esc(r.n) + (r.v ? ' · Verified buyer' : '') + ' · ' + esc(r.d) + '</small></div>'; }
+    function count(){ var n = $$('#jm-list .jm-item').length; $('#jm-count').textContent = 'Showing ' + n + ' of ' + R.total + '.'; $('#jm-more').hidden = done; }
+    function load(reset){
+      if (busy) return; busy = true;
+      if (reset){ page = 0; done = false; $('#jm-list').innerHTML = ''; }
+      var btn = $('#jm-more'); btn.disabled = true; btn.textContent = 'Loading…';
+      var u = 'https://judge.me/reviews/reviews_for_widget?platform=shopify&per_page=10&url=' + R.shop + '&shop_domain=' + R.shop + '&product_id=' + R.pid + '&page=' + (page + 1) + '&' + SORTS[sort];
+      fetch(u).then(function(x){ return x.json(); }).then(function(d){
+        page = d.pagination ? d.pagination.current_page : page + 1;
+        done = !d.pagination || page >= d.pagination.total_pages;
+        $('#jm-list').insertAdjacentHTML('beforeend', (d.reviews || []).map(function(r){
+          return item({ r: r.rating, t: r.title, q: strip(r.body_html), n: r.reviewer_name || 'Anonymous', v: r.verified_buyer, d: (r.created_at || '').slice(0, 10) }); }).join(''));
+      }).catch(function(){
+        /* blocked or offline: fall back to the 10 the page carries */
+        if (!page) $('#jm-list').innerHTML = R.list.map(item).join(''); done = true;
+      }).then(function(){ busy = false; btn.disabled = false; btn.textContent = 'Show more reviews'; count(); });
+    }
+    /* newest first: the 10 the page already carries show at once, Judge.me pages in from page 2 */
+    function first(){ if (sort === 'recent' && R.list.length){ $('#jm-list').innerHTML = R.list.map(item).join(''); page = 1; done = R.total <= R.list.length; count(); } else load(true); }
+    $('#jm-sort').addEventListener('change', function(){ sort = this.value; page = 0; $('#jm-list').innerHTML = ''; first(); });
+    $('#jm-more').addEventListener('click', function(){ load(false); });
+    $('[data-readall]').addEventListener('click', function(){ var jm = $('#jm'), o = !jm.hidden; jm.hidden = o; this.setAttribute('aria-expanded', String(!o)); $('i', this).textContent = o ? '+' : '−'; if (!o && !page) first(); });
+  })();
+
+  paint();
+});
+
+</script>
+
+{% schema %}
+{
+  "name": "Club: buy box",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Breadcrumb"
+    },
+    {
+      "type": "text",
+      "id": "crumb_label",
+      "label": "Crumb",
+      "default": "Clubs"
+    },
+    {
+      "type": "url",
+      "id": "crumb_url",
+      "label": "Crumb link"
+    },
+    {
+      "type": "text",
+      "id": "crumb2_label",
+      "label": "Wedges crumb (wedges only)",
+      "default": "Wedges"
+    },
+    {
+      "type": "url",
+      "id": "crumb2_url",
+      "label": "Wedges crumb link"
+    },
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "paragraph",
+      "content": "The gallery is the product's own media (Products > the club > Media), led by its card cutout. Five show, the rest behind the button."
+    },
+    {
+      "type": "text",
+      "id": "gal_all",
+      "label": "Show-all button ([n] = number of photos)",
+      "default": "See all [n] photos"
+    },
+    {
+      "type": "header",
+      "content": "Buy box"
+    },
+    {
+      "type": "paragraph",
+      "content": "Every club's own words live on the product (metafield custom.club_page); its photos are the metafields Club page photos, Club photo band, Club spec photo and Finish swatch. Price, hands, lofts and stock are live."
+    },
+    {
+      "type": "text",
+      "id": "atc",
+      "label": "Button (if the product has none)",
+      "default": "Put it in the bag"
+    },
+    {
+      "type": "text",
+      "id": "in_stock",
+      "label": "In-stock line",
+      "default": "In stock · ships in 1 to 2 days"
+    },
+    {
+      "type": "text",
+      "id": "pick_hint",
+      "label": "Wedge loft hint",
+      "default": "Tap one, or tap a few to build a set."
+    },
+    {
+      "type": "text",
+      "id": "full_hint",
+      "label": "Wedge hint at three",
+      "default": "That's 3. Tap one to drop it first."
+    },
+    {
+      "type": "text",
+      "id": "pick_line",
+      "label": "Wedge button with no loft picked",
+      "default": "Pick a loft"
+    },
+    {
+      "type": "text",
+      "id": "set_hint",
+      "label": "Wedge set hint",
+      "default": "Two or more and shipping's on us"
+    },
+    {
+      "type": "text",
+      "id": "set1",
+      "label": "1 wedge line",
+      "default": "Just the one"
+    },
+    {
+      "type": "text",
+      "id": "set2",
+      "label": "2 wedges line",
+      "default": "Gap and sand"
+    },
+    {
+      "type": "text",
+      "id": "set3",
+      "label": "3 wedges line",
+      "default": "Gap, sand and lob"
+    },
+    {
+      "type": "text",
+      "id": "returns_link",
+      "label": "Returns link",
+      "default": "Sixty days to make up your mind"
+    },
+    {
+      "type": "url",
+      "id": "returns_url",
+      "label": "Returns page (non-wedges)"
+    },
+    {
+      "type": "text",
+      "id": "delivery_link",
+      "label": "Delivery link (wedges)",
+      "default": "When will it get here?"
+    },
+    {
+      "type": "text",
+      "id": "ship_link",
+      "label": "Shipping link (non-wedges)",
+      "default": "Free shipping at $195"
+    },
+    {
+      "type": "url",
+      "id": "ship_url",
+      "label": "Shipping page"
+    },
+    {
+      "type": "header",
+      "content": "Pop-ups"
+    },
+    {
+      "type": "text",
+      "id": "helper_title",
+      "label": "Loft helper title",
+      "default": "Let's find your lofts"
+    },
+    {
+      "type": "textarea",
+      "id": "helper_line",
+      "label": "Loft helper line",
+      "default": "Two quick questions. Keep four to six degrees between your wedges and each one gets its own yardage, instead of two of them going the same distance."
+    },
+    {
+      "type": "textarea",
+      "id": "notify_line",
+      "label": "Back-in-stock line",
+      "default": "Drop your email. You'll get one message when it's back, and that's it."
+    },
+    {
+      "type": "textarea",
+      "id": "write_line",
+      "label": "Write a review line",
+      "default": "Tell other golfers how it plays: the stars, a few words, and a photo if you've got one. Buy it from us and your review gets the verified badge."
+    },
+    {
+      "type": "richtext",
+      "id": "returns_body",
+      "label": "Returns pop-up"
+    },
+    {
+      "type": "richtext",
+      "id": "delivery_body",
+      "label": "Delivery pop-up"
+    },
+    {
+      "type": "header",
+      "content": "This club's words"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a field empty to use the product's saved copy."
+    },
+    {
+      "type": "text",
+      "id": "p_eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "p_h1",
+      "label": "Title (a word in em tags turns gold)"
+    },
+    {
+      "type": "textarea",
+      "id": "p_lede",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "p_rvl_q",
+      "label": "Review snippet: quote"
+    },
+    {
+      "type": "text",
+      "id": "p_rvl_n",
+      "label": "Review snippet: name"
+    },
+    {
+      "type": "text",
+      "id": "p_rvl_l",
+      "label": "Review snippet: link text"
+    },
+    {
+      "type": "text",
+      "id": "p_tag",
+      "label": "Tag on the first photo"
+    },
+    {
+      "type": "text",
+      "id": "p_atc",
+      "label": "Button label"
+    },
+    {
+      "type": "text",
+      "id": "p_d1_t",
+      "label": "Drop-down 1 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_d1_b",
+      "label": "Drop-down 1 text"
+    },
+    {
+      "type": "text",
+      "id": "p_d2_t",
+      "label": "Drop-down 2 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_d2_b",
+      "label": "Drop-down 2 text"
+    },
+    {
+      "type": "text",
+      "id": "p_d3_t",
+      "label": "Drop-down 3 title"
+    },
+    {
+      "type": "textarea",
+      "id": "p_d3_b",
+      "label": "Drop-down 3 text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "finish",
+      "name": "Finish",
+      "limit": 4,
+      "settings": [
+        { "type": "paragraph", "content": "For a club whose variants have a Finish option. Matched on the option value, so type it exactly as in the product (Gold, Black)." },
+        { "type": "text", "id": "value", "label": "Finish option value", "default": "Gold" },
+        { "type": "text", "id": "name", "label": "Name on the card" },
+        { "type": "text", "id": "tag", "label": "Small tag (e.g. New)" },
+        { "type": "image_picker", "id": "image", "label": "Card photo (the club on a clear background)" },
+        { "type": "textarea", "id": "lede", "label": "Line under the price when this finish is picked" }
+      ]
+    }
+  ]
+}
+{% endschema %}

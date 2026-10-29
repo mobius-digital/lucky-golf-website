@@ -189,7 +189,7 @@
   {%- for t in g_tabs -%}{%- assign ck = t | append: '_coll' -%}{%- assign coll = s[ck] -%}{%- if coll != blank -%}
   <div class="bf-row" data-grow="{{ t }}" data-gset="app"{% unless forloop.first %} hidden{% endunless %}>
     <div class="bf-row-track" data-row-track>
-      {%- for p in coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price, off: s.gear_off -%}{%- endif -%}{%- endfor -%}
+      {%- for p in coll.products -%}{%- if p.available -%}{%- render 'lg-bf-gc', p: p, retired: retired, polo_price: s.polo_price, off: 0, bogo: s.app_bogo -%}{%- endif -%}{%- endfor -%}
     </div>
     <button type="button" class="bf-arr is-prev" data-row-prev aria-label="Back"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
     <button type="button" class="bf-arr is-next" data-row-next aria-label="More"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
@@ -421,7 +421,8 @@ window.LG_BF = {
     { "type": "collection", "id": "acc_3", "label": "Accessories tab 3" },
     { "type": "collection", "id": "acc_4", "label": "Accessories tab 4", "info": "Towels: make the collection, drop it here. Empty tabs stay hidden." },
     { "type": "collection", "id": "acc_5", "label": "Accessories tab 5", "info": "Divot tools." },
-    { "type": "range", "id": "gear_off", "label": "Apparel + accessories: percent off", "min": 0, "max": 50, "step": 5, "default": 25, "info": "Shown on the page only. The matching automatic discount has to exist in Shopify or the bag charges full price." },
+    { "type": "checkbox", "id": "app_bogo", "label": "Apparel: buy one, get one free", "default": true, "info": "Polos and hats, mix and match. Needs a Buy X get Y automatic discount in Shopify." },
+    { "type": "range", "id": "gear_off", "label": "Accessories: percent off", "min": 0, "max": 50, "step": 5, "default": 25, "info": "Shown on the page only. The matching automatic discount has to exist in Shopify or the bag charges full price." },
     { "type": "number", "id": "ship_cost", "label": "What shipping usually costs ($)", "default": 18, "info": "Shown struck through when the order ships free." },
     { "type": "number", "id": "polo_price", "label": "Retired polo price shown", "default": 39, "info": "The products themselves must be repriced in admin before the page goes live, or the bag charges full price." },
     { "type": "text", "id": "polo_line", "label": "Retired polo line", "default": "Last run. Gone when the sizes go." },

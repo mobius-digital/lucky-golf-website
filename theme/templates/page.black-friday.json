@@ -181,7 +181,7 @@
         "hats_coll": "hats",
         "clock_hours": 120,
         "gear_title": "Apparel",
-        "gear_line": "Every polo and every hat, 25% off. The last-run polos are $39 while the sizes last.",
+        "gear_line": "Buy one, get one free on every polo and hat. Mix them however you want. The last-run polos are $39.",
         "towel_worth": 24.95,
         "divot_worth": 14.95,
         "cover_worth": 29.95,
@@ -201,7 +201,8 @@
         "mail_deal": "Our everyday price already beats the big names' Black Friday price. You got the postcard, so you get a month on everyone.",
         "lad_1": "Our everyday price. Already under their sale.",
         "lad_2": "$50 off, plus a free towel and divot tool.",
-        "lad_3": "$100 off, both gifts, and it ships free."
+        "lad_3": "$100 off, both gifts, and it ships free.",
+        "app_bogo": true
       }
     }
   },

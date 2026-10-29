@@ -367,3 +367,9 @@ body.bf-lock{overflow:hidden}
 .bf-meter li.is-on strong{color:#1d6b3e}
 @media (max-width:749px){.bf-meter li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:baseline}.bf-meter b{grid-column:1/-1}.bf-meter strong{font-size:28px}}
 .bf-lad-note{font-size:15px;color:var(--lg-on-dark);font-weight:700}
+
+/* round 10: the hover photo sits on a solid ground so transparent product shots don't show two at once */
+.bf-pc-ph .is-alt{background:var(--lg-tile,#f1f0ea);object-fit:contain}
+.bf-gc .bf-pc-ph .is-alt{object-fit:cover}
+.bf-gc .bf-pc-ph img:first-child{background:var(--lg-tile,#f1f0ea)}
+.bf-bogo{display:block;margin-top:4px;font-size:12.5px;font-weight:700;color:#1d6b3e}

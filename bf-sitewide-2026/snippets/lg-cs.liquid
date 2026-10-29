@@ -1,0 +1,106 @@
+{%- comment -%}
+  The Carver sets offer switch (Theme settings > Carver sets offer). Rendered in <head>, after
+  content_for_header so Shopify.theme is known. It works out, in the visitor's browser, whether the
+  offer is running and puts the answer on <html data-cs="on|soon|over|pre">; every offer piece on the
+  site carries data-cs-show="on" (or soon / over / pre) and CSS hides it otherwise. Cached pages can't
+  show it after the end: the check is the clock, not the page. window.LG_CS holds the numbers.
+  VIP day: on for visitors who came through /discount/CARVERVIP (Shopify's discount_code cookie) or a
+  link with ?vip=1; "soon" for everyone else. Preview (?cs=on|vip|soon|over, or the Preview setting)
+  only works on an unpublished theme.
+{%- endcomment -%}
+{%- liquid
+  assign csp = settings.cs_product | default: all_products['lucky-golf-lgw02-gold']
+  assign cs_url = settings.cs_url | default: '/pages/carver-sets'
+-%}
+<script>
+(function(){
+  var C = window.LG_CS = {
+    on: {{ settings.cs_on | json }}, pid: {{ csp.id | default: 0 }}, handle: {{ csp.handle | json }},
+    vip: Date.parse({{ settings.cs_vip_start | json }}), start: Date.parse({{ settings.cs_start | json }}), end: Date.parse({{ settings.cs_end | json }}),
+    code: {{ settings.cs_vip_code | default: 'CARVERVIP' | json }}, t2: {{ settings.cs_t2 | default: 20 | times: 100 }}, t3: {{ settings.cs_t3 | default: 50 | times: 100 }},
+    ship: {{ settings.cs_ship | json }}, url: {{ cs_url | json }},
+    types: {{ settings.cs_types | default: 'Wedges,Putter,Hybrids' | split: ',' | json }}, bf: {% if cs_url contains 'black-friday' %}true{% else %}false{% endif %},
+    msg: [{{ settings.cs_msg1 | json }}, {{ settings.cs_msg2 | json }}, {{ settings.cs_msg3 | json }}],
+    names: { 'WEDGE TIER 2': '2 wedges, $' + {{ settings.cs_t2 | default: 20 | json }} + ' off', 'WEDGE TIER 3': '3 wedges, $' + {{ settings.cs_t3 | default: 50 | json }} + ' off' }
+  };
+  var main = !(window.Shopify && Shopify.theme && Shopify.theme.role && Shopify.theme.role !== 'main');
+  var force = main ? '' : {{ settings.cs_preview | default: 'live' | json }};
+  try {
+    var q = location.search.match(/[?&]cs=(on|vip|soon|over|pre|live)\b/);
+    if (!main){ if (q) sessionStorage.setItem('lg-cs', q[1]); force = sessionStorage.getItem('lg-cs') || force; }
+    if (/[?&]vip=1\b/.test(location.search)) localStorage.setItem('lg-cs-vip', '1');
+  } catch (e) {}
+  if (force === 'live') force = '';
+  function isVip(){
+    if (force === 'vip') return true;
+    var m = document.cookie.match(/(?:^|;\s*)discount_code=([^;]*)/);
+    if (m && decodeURIComponent(m[1]).toUpperCase() === String(C.code).toUpperCase()) return true;
+    try { return localStorage.getItem('lg-cs-vip') === '1'; } catch (e) { return false; }
+  }
+  function state(){
+    if (force === 'on' || force === 'vip') return 'on';
+    if (force) return force;
+    var t = Date.now();
+    if (!C.on || !C.pid || !(t < C.end)) return 'over';
+    if (t >= C.start) return 'on';
+    if (t >= C.vip) return isVip() ? 'on' : 'soon';
+    return 'pre';
+  }
+  C.preview = !!force;
+  C.check = function(){
+    var s = state(), was = C.state; C.state = s; C.live = s === 'on';
+    document.documentElement.setAttribute('data-cs', s);
+    if (was && was !== s) document.dispatchEvent(new CustomEvent('lg:cs', { detail: C }));
+    return s;
+  };
+  C.check();
+  setInterval(C.check, 15000);
+  /* Black Friday counts every club in the bag; the Carver sets counted only the Carver */
+  C.units = function(cart){ return ((cart && cart.items) || []).reduce(function(a, l){ var club = C.bf ? C.types.indexOf(l.product_type) > -1 : l.product_id === C.pid; return a + (club && !(l.properties && l.properties._lucky_gift) ? l.quantity : 0); }, 0); };
+  C.save = function(n){ return !C.live ? 0 : n >= 3 ? C.t3 : n === 2 ? C.t2 : 0; };
+})();
+</script>
+<style>
+  html:not([data-cs="on"]) [data-cs-show="on"],html:not([data-cs="soon"]) [data-cs-show="soon"],
+  html:not([data-cs="over"]) [data-cs-show="over"],html:not([data-cs="pre"]) [data-cs-show="pre"],
+  html[data-cs="on"] [data-cs-hide="on"]{display:none!important}
+  .cs-badge{display:inline-flex;align-self:flex-start;margin-top:6px;padding:4px 8px;border-radius:var(--lg-r-tag,4px);background-color:transparent;background-image:var(--lg-foil);color:var(--lg-ink,#0B1911);
+    font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1.2;text-transform:none;white-space:nowrap}
+  .lg-bigcard .cs-badge{align-self:center}
+  /* the menu cards: the badge takes the corner tag's place (it was landing under "Best seller", cut off) */
+  .mega .mt .cs-badge{position:absolute;top:0;left:0;z-index:1;margin:0;border-radius:0 0 4px 0;padding:6px 10px;font-size:10.5px}
+  html[data-cs="on"] .mega .mt .mt-tag{display:none}
+  .mn-card .cs-badge{white-space:normal}
+  /* the bar: while the offer runs it's the only line, at every width (Cole 2026-10-21: the three usual lines are boring next to it) */
+  .lg-tick a.cs-tick{color:var(--lg-on-dark,#F4F3F0);font-weight:700}
+  .lg-tick a.cs-tick::after{content:'\2192';margin-left:.6em}
+  html[data-cs="on"] .lg-tick-in a.cs-tick{display:inline-flex!important}
+  html[data-cs="on"] .lg-tick-in a:not(.cs-tick){display:none!important}
+  @media (max-width:980px){ html:not([data-cs="on"]) .lg-tick-in a.cs-tick + a{display:inline-flex} }
+  /* the Carver product page */
+  /* Vice-style tier cards above Add to bag */
+  .cs-pdp{margin:22px 0 0}
+  .cs-pdp-hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  .cs-pdp-hd a{color:var(--lg-ink,#0B1911);font-size:var(--lg-fs-sm,14px);font-weight:600;white-space:nowrap}
+  .cs-pdp-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .cs-pdp-t{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:16px 4px 10px;background:var(--lg-page,#fff);color:var(--lg-ink,#0B1911);
+    border:1px solid var(--lg-rule,#ddd);border-radius:var(--lg-r-tag,4px);font:inherit;cursor:pointer}
+  .cs-pdp-t[aria-pressed="true"]{background:var(--lg-tile,#F4F2EE);border:1.5px solid var(--lg-ink,#0B1911);padding:15.5px 3.5px 9.5px}
+  .cs-pdp-t i{position:absolute;top:-9px;left:50%;transform:translateX(-50%);padding:3px 7px;border-radius:var(--lg-r-tag,4px);background-image:var(--lg-foil);color:var(--lg-ink,#0B1911);
+    font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  .cs-pdp-t span{font-size:var(--lg-fs-xs,12px);font-weight:600}
+  .cs-pdp-t b{font-size:20px;font-variant-numeric:tabular-nums}
+  .cs-pdp-t small{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .cs-pdp + .cta{margin-top:14px}
+  .cs-set{margin:10px 0 0;font-size:var(--lg-fs-sm,14px);color:var(--lg-ink-70,#444)}
+  .cs-set s{color:var(--lg-ink-38,#999)}
+  .cs-set b{color:var(--lg-ink,#0B1911)}
+  .lofts2 .lg-chip.is-sug:not([aria-pressed="true"]){border:1.5px dashed var(--lg-gold,#C9A227)}
+  .cs-addsug{margin-left:4px;padding:0;border:0;background:none;color:var(--lg-ink,#0B1911);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+  .cs-swap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0;padding:12px;border:1px solid var(--lg-rule,#ddd);border-radius:var(--lg-r-tag,4px);font-size:var(--lg-fs-sm,14px)}
+  .cs-swap b{flex:1 0 100%;font-weight:600}
+  .cs-swap .lg-chip{min-height:44px;text-transform:none;letter-spacing:0;border-radius:var(--lg-r-tag,4px)}
+  .cs-bag{margin:0 0 10px;padding:10px 12px;border-radius:var(--lg-r-tag,4px);background:var(--lg-tile,#F4F2EE);color:var(--lg-ink,#0B1911);font-size:var(--lg-fs-sm,14px);font-weight:600;line-height:1.35}
+  .cs-bag a{color:inherit}
+  .cs-bag small{display:block;margin-top:2px;font-weight:400;color:var(--lg-ink-64,#555)}
+</style>

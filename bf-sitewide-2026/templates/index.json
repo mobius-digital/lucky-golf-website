@@ -1,0 +1,507 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lg-hero": {
+      "type": "lg-hero",
+      "settings": {
+        "image": "shopify://shop_images/lg-two-gold-wedges.webp",
+        "focus_x": 42,
+        "focus_y": 55,
+        "focus_mx": 38,
+        "focus_my": 55,
+        "eyebrow": "It's better to be lucky",
+        "heading": "Get used to the <em>attention</em>",
+        "heading_tag": "h1",
+        "lede": "Big-name performance, finished in gold and shipped straight from us to your bag. Honestly, it's a little unfair.",
+        "btn_label": "Shop the clubs",
+        "btn_url": "#families",
+        "stamp": "Carver 02 · Gold or black",
+        "stamp_b": "Six lofts · K and S grind"
+      }
+    },
+    "lg-trust": {
+      "type": "lg-trust",
+      "settings": {},
+      "blocks": {
+        "t1": {
+          "type": "rating",
+          "settings": {
+            "products": [
+              "lucky-golf-lgw02-gold",
+              "signature-gold-putters",
+              "limited-edition-mallet-putter",
+              "lucky-striker-hybrid-limited-edition"
+            ],
+            "text": "[avg] stars from [count] verified reviews",
+            "url": "/pages/reviews"
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping on $195 and up",
+            "url": "/pages/faq-lucky-wedges#shipping"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "rotate-ccw",
+            "text": "Sixty days to prove us wrong",
+            "url": "/pages/faq-lucky-wedges#returns"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    "lg-cards": {
+      "type": "lg-cards",
+      "settings": {
+        "anchor": "families",
+        "eyebrow": "The clubs",
+        "heading": "Pick your <em>club</em>",
+        "heading_tag": "h2",
+        "link_label": "See every club",
+        "link_url": "shopify://collections/lucky-golf-clubs",
+        "cols": "5",
+        "big": true,
+        "warm": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "line": "Forged, spins like crazy, and your buddies will try to borrow it.",
+            "vibe": "Buttery",
+            "tag": "Best seller",
+            "cut": true,
+            "name": "Carver 02 Gold",
+            "finish": "Gold"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-golf-lgw02-gold",
+            "line": "All the spin. None of the spotlight.",
+            "vibe": "Filthy",
+            "cut": true,
+            "name": "Carver 02 Black",
+            "finish": "Black",
+            "image": "shopify://shop_images/lg-card-carver-black.webp"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "product": "signature-gold-putters",
+            "line": "Fully milled, and it tells you where you hit it.",
+            "vibe": "Pure",
+            "cut": true
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "product": "limited-edition-mallet-putter",
+            "line": "Big head, soft face, gold all over.",
+            "vibe": "Smooth",
+            "cut": true
+          }
+        },
+        "c5": {
+          "type": "card",
+          "settings": {
+            "product": "lucky-striker-hybrid-limited-edition",
+            "line": "Gets it up from lies your 4-iron wants no part of.",
+            "vibe": "Flush",
+            "cut": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "lg-split": {
+      "type": "lg-split",
+      "settings": {
+        "image": "shopify://shop_images/lg-black-hat-mallet.webp",
+        "flip": true,
+        "feat": true,
+        "no_top": true,
+        "eyebrow": "On the green",
+        "heading": "Quiet off the face. Loud in the <em>bag.</em>",
+        "heading_tag": "h2",
+        "body": "<p>Catch one off the toe and it still holds its line. Fully milled, solid as anything, and gold all over. Four-footers just got a lot less interesting.</p>",
+        "btn_label": "See the Mallet",
+        "btn_url": "shopify://products/limited-edition-mallet-putter",
+        "link_label": "Prefer a blade?",
+        "link_url": "shopify://products/signature-gold-putters",
+        "stamp": "Eclipse Mallet · 304 stainless · $229"
+      }
+    },
+    "lg-claims": {
+      "type": "lg-claims",
+      "settings": {
+        "anchor": "why",
+        "rule": true,
+        "eyebrow": "Priced honestly",
+        "heading": "You're paying for the <em>club.</em> That's it.",
+        "lede": "",
+        "link_label": "See the side by side",
+        "link_url": "/pages/compare",
+        "contour": true
+      },
+      "blocks": {
+        "k1": {
+          "type": "claim",
+          "settings": {
+            "title": "Sold direct",
+            "text": "No distributor, no store, nobody in the middle taking a cut. It goes from us to your front door."
+          }
+        },
+        "k2": {
+          "type": "claim",
+          "settings": {
+            "title": "No tour contracts",
+            "text": "We don't pay anybody to carry our clubs on TV, so you're not paying for it either."
+          }
+        },
+        "k3": {
+          "type": "claim",
+          "settings": {
+            "title": "Where the money goes",
+            "text": "Into the forging, the milling and the gold. The stuff you actually swing."
+          }
+        }
+      },
+      "block_order": [
+        "k1",
+        "k2",
+        "k3"
+      ]
+    },
+    "lg-finder": {
+      "type": "lg-finder",
+      "settings": {
+        "anchor": "finder",
+        "no_top": true,
+        "eyebrow": "Club finder",
+        "heading": "Where's the round getting away from <em>you?</em>",
+        "heading_tag": "h2",
+        "sub": "",
+        "chips_label": "What to fix",
+        "foot_label": "See every club",
+        "foot_url": "#families"
+      },
+      "blocks": {
+        "f1": {
+          "type": "tab",
+          "settings": {
+            "label": "Around the green",
+            "p1": "lucky-golf-lgw02-gold",
+            "l1": "Pick the K or the S, depending on how you like to chip.",
+            "p2": "lucky-golf-lgw02-gold",
+            "l2": "The K grind, blacked out.",
+            "c2": true,
+            "f2": "Black",
+            "f1": "Gold"
+          }
+        },
+        "f2": {
+          "type": "tab",
+          "settings": {
+            "label": "On the green",
+            "p1": "limited-edition-mallet-putter",
+            "l1": "For anybody done handing back four-footers.",
+            "p2": "signature-gold-putters",
+            "l2": "Tells you exactly where you hit it, whether you wanted to know or not."
+          }
+        },
+        "f3": {
+          "type": "tab",
+          "settings": {
+            "label": "The long ones",
+            "p1": "lucky-striker-hybrid-limited-edition",
+            "l1": "For the long one that has to end up on the green, not near it."
+          }
+        },
+        "f4": {
+          "type": "tab",
+          "settings": {
+            "label": "Just the gold one",
+            "p1": "lucky-golf-lgw02-gold",
+            "l1": "Six lofts, two grinds, one very shiny wedge.",
+            "c1": true,
+            "t1": "Best seller",
+            "p2": "limited-edition-mallet-putter",
+            "l2": "Fully milled and gold. Tap-ins deserve a little drama.",
+            "c2": true
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
+    },
+    "lg-pband": {
+      "type": "lg-pband",
+      "settings": {
+        "label": "Lucky, out on the course"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-swing-black-wedge.webp",
+            "pos": "object-position:30% 40%"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-putt-sunset.webp",
+            "pos": "object-position:55% 60%"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-from-the-cup.webp"
+          }
+        },
+        "b4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lg-walk-off-green.webp"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "lg-reviews-band": {
+      "type": "lg-reviews-band",
+      "settings": {
+        "anchor": "reviews",
+        "bg": "shopify://shop_images/lg-putter-in-hand.webp",
+        "bg_pos": "center 40%",
+        "pull": "You don't even have to take it out of the bag and people ask you about it.",
+        "pull_name": "Michael P.",
+        "pull_product": "lucky-golf-lgw02-gold",
+        "pull_stars": 5,
+        "eyebrow": "Reviews",
+        "heading": "Thousands of golfers bag <em>Lucky</em>",
+        "agg_products": [
+          "lucky-golf-lgw02-gold",
+          "signature-gold-putters",
+          "limited-edition-mallet-putter",
+          "lucky-striker-hybrid-limited-edition"
+        ],
+        "agg_line": "Stars from verified buyers, across every club.",
+        "link_label": "Read every review",
+        "link_url": "/pages/reviews"
+      },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "all of my friends are jealous from the look.And when they stick on the green and come back two feet, there's no doubt their top quality",
+            "name": "Brandon L.",
+            "product": "lucky-golf-lgw02-gold"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "People borrow it in my league- it’s a winner!",
+            "name": "Ray O.",
+            "product": "lucky-golf-lgw02-gold"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "Amazing Putter and looks awesome",
+            "name": "Arthur V.",
+            "product": "limited-edition-mallet-putter"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "quote": "My buddies already named my club “Goldy” because they are jealous of the results!!",
+            "name": "Eric F.",
+            "product": "lucky-golf-lgw02-gold"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "quote": "Played 2 rounds and love swinging and hitting a fairway shot. Best club in my bag now",
+            "name": "John L.L.",
+            "product": "lucky-striker-hybrid-limited-edition"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "quote": "Here is a checklist about the lucky golf LGW02. -Conversation starter ✔️ -shinny✔️ -good looking ✔️ -good feel ✔️ -good for all levels ✔️ These wedges have it all.",
+            "name": "Carter D.",
+            "product": "lucky-golf-lgw02-gold"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ]
+    },
+    "lg-gtiles": {
+      "type": "lg-gtiles",
+      "settings": {
+        "anchor": "gear",
+        "eyebrow": "While you're here",
+        "heading": "Dress for the <em>round</em>",
+        "heading_tag": "h2",
+        "foot": "Apparel and gear get thirty days to come back, unworn and unused.",
+        "foot_label": "Shop all gear",
+        "foot_url": "shopify://collections/most-popular"
+      },
+      "blocks": {
+        "g1": {
+          "type": "tile",
+          "settings": {
+            "collection": "polos",
+            "image": "shopify://shop_images/lg-fit-sunset.webp",
+            "pos": "object-position:52% center",
+            "count": true,
+            "title": "Polos",
+            "text": "Stretchy, UPF 50+, and they don't wrinkle in the bag.",
+            "go": "Shop polos"
+          }
+        },
+        "g2": {
+          "type": "tile",
+          "settings": {
+            "collection": "hats",
+            "image": "shopify://shop_images/lg-two-hats-mallet.webp",
+            "pos": "object-position:45% center",
+            "count": true,
+            "title": "Hats",
+            "text": "Five-panel snapbacks, and at least one matches your polo.",
+            "go": "Shop hats"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2"
+      ]
+    },
+    "lg-split-2": {
+      "type": "lg-split-2",
+      "settings": {
+        "image": "shopify://shop_images/lg-green-read-fit.webp",
+        "pos": "object-position:60% 40%",
+        "flip": false,
+        "text_first": true,
+        "feat": false,
+        "no_top": true,
+        "eyebrow": "Why it says Lucky",
+        "heading": "Golf takes a little luck. We put it on the club.",
+        "heading_tag": "h3",
+        "body": "<p>The cart-path bounce that somehow ends up on the green. The perfect drive that finds a divot. The putt that lips out and then falls anyway. Everybody who plays has a lucky story or two, and a few unlucky ones they'd rather not talk about. We just figured the club should be in on it.</p>"
+      }
+    },
+    "lg-wild": {
+      "type": "lg-wild",
+      "settings": {
+        "anchor": "wild",
+        "no_top": true,
+        "eyebrow": "See it in play",
+        "heading": "Caught in the <em>wild</em>",
+        "sub": "Stuck one close, holed one out, or rattled the flagstick and stayed on the green? Tag @luckygolfofficial and you might end up here.",
+        "limit": 12,
+        "btn_label": "See the whole wall",
+        "btn_url": "/pages/community",
+        "ig": true
+      }
+    },
+    "lg-callout": {
+      "type": "lg-callout",
+      "settings": {
+        "anchor": "trybe",
+        "no_top": true,
+        "eyebrow": "Ambassador program",
+        "heading": "You post it. We run it.",
+        "body": "We put ad money behind the videos that do well. Ask and your first wedge is free, you earn a share of what your ads sell, and there's no follower minimum.",
+        "btn_label": "See how it works",
+        "btn_url": "/pages/become-apart-of-the-team"
+      }
+    },
+    "lg-signoff": {
+      "type": "lg-signoff",
+      "settings": {
+        "eyebrow": "The last word",
+        "heading": "<em>Bag</em> it.",
+        "lede": "It's better to be lucky.",
+        "btn_label": "Find your club",
+        "btn_url": "#families",
+        "btn2_label": "Read our story",
+        "btn2_url": "/pages/about",
+        "trust": "Sixty-day returns\nThousands of golfers\n4.8 stars from verified buyers\nShips in 1 to 2 business days"
+      }
+    },
+    "bf": {
+      "type": "lg-bf-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "bf",
+    "lg-hero",
+    "lg-trust",
+    "lg-cards",
+    "lg-split",
+    "lg-claims",
+    "lg-finder",
+    "lg-pband",
+    "lg-reviews-band",
+    "lg-gtiles",
+    "lg-split-2",
+    "lg-wild",
+    "lg-callout",
+    "lg-signoff"
+  ]
+}
