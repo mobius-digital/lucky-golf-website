@@ -72,6 +72,7 @@
 <div class="lg-wrap">
 <div class="pdp">
   <div>
+    {%- if settings.cs_on and settings.cs_url contains 'black-friday' -%}<a class="bf-ptag" href="{{ settings.cs_url }}" data-cs-show="on"><small>Early Black Friday</small><b>Up to ${{ settings.cs_t3 }} off</b><span>+ free towel + divot tool</span></a>{%- endif -%}
     <div class="gal" data-gal aria-label="Product images">
       {%- comment -%} The gallery is the product's own media, in the product's order, with Shopify's alt text:
         add or reorder photos in the product admin and the page follows. The card cutout (custom.cutout) leads. {%- endcomment -%}
@@ -167,8 +168,13 @@
     {%- endif -%}
 
     {%- comment -%} Carver sets, Vice-style: 1 / 2 / 3 wedge cards with the set price. Tapping one builds the set with in-stock lofts. {%- endcomment -%}
-    {%- if cs_here -%}<div class="cs-pdp" data-cs-show="on"><div class="cs-pdp-hd"><span class="lg-label">{{ settings.cs_strip }}</span><a href="{{ settings.cs_url | default: '/pages/carver-sets' }}">{% if settings.cs_url contains 'black-friday' %}See the deals{% else %}Ready-made sets{% endif %} &rarr;</a></div><div class="cs-pdp-tiles" data-cs-tiles role="group" aria-label="How many wedges"></div></div>{%- elsif settings.cs_on and settings.cs_url contains 'black-friday' -%}<div class="cs-pdp bf-pdp" data-cs-show="on"><div class="cs-pdp-hd"><span class="lg-label">{{ settings.cs_strip }}</span><a href="{{ settings.cs_url }}">See the deals &rarr;</a></div><div class="cs-pdp-tiles"><span class="cs-pdp-t"><span>1 club</span><b>Everyday</b><small>price</small></span><span class="cs-pdp-t"><span>2 clubs</span><b>${{ settings.cs_t2 }} off</b><small>+ towel + divot</small></span><span class="cs-pdp-t"><i>Best value</i><span>3 or more</span><b>${{ settings.cs_t3 }} off</b><small>+ gifts, ships free</small></span></div></div>{%- endif -%}
-    {%- if settings.cs_on and settings.cs_url contains 'black-friday' -%}<a class="bf-soon" href="{{ settings.cs_url }}" data-cs-show="soon"><b>Early Black Friday starts Nov 1.</b> ${{ settings.cs_t2 }} off two clubs, ${{ settings.cs_t3 }} off three, plus a free towel and divot tool. <span>See the deals &rarr;</span></a>{%- endif -%}
+    {%- assign bf_on = false -%}{%- if settings.cs_on and settings.cs_url contains 'black-friday' -%}{%- assign bf_on = true -%}{%- endif -%}
+    {%- if bf_on -%}<div class="cs-pdp bf-deal{% unless cs_here %} bf-pdp{% endunless %}" data-cs-show="on"><div class="bfd-hd"><span class="bfd-k">Early Black Friday</span><a href="{{ settings.cs_url }}">All deals &rarr;</a></div><p class="bfd-h">Mix any clubs. <b>Save up to ${{ settings.cs_t3 }}.</b></p>
+      {%- if cs_here -%}<div class="cs-pdp-tiles" data-cs-tiles role="group" aria-label="How many wedges"></div>
+      {%- else -%}<div class="cs-pdp-tiles"><span class="cs-pdp-t"><span>1 club</span><b>{{ price }}</b><small>&nbsp;</small></span><span class="cs-pdp-t"><span>2 clubs</span><b>${{ settings.cs_t2 }} off</b><small>+ free gifts</small></span><span class="cs-pdp-t"><i>Best value</i><span>3 or more</span><b>${{ settings.cs_t3 }} off</b><small>+ free gifts</small></span></div>{%- endif -%}
+      <div class="bfd-gift"><span class="bfd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 3h10v14l-5 4-5-4z"/><path d="M7 7h10M10 3v3"/></svg><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v8M15 3v8M7 11h10l-1 4a4 4 0 0 1-8 0z"/></svg></span><span><b>Free towel + divot tool</b> with 2 or more clubs</span></div></div>
+    {%- elsif cs_here -%}<div class="cs-pdp" data-cs-show="on"><div class="cs-pdp-hd"><span class="lg-label">{{ settings.cs_strip }}</span><a href="{{ settings.cs_url | default: '/pages/carver-sets' }}">Ready-made sets &rarr;</a></div><div class="cs-pdp-tiles" data-cs-tiles role="group" aria-label="How many wedges"></div></div>{%- endif -%}
+    {%- if bf_on -%}<a class="bf-soon" href="{{ settings.cs_url }}" data-cs-show="soon"><b>Early Black Friday starts Nov 1.</b> ${{ settings.cs_t2 }} off two clubs, ${{ settings.cs_t3 }} off three, plus a free towel and divot tool. <span>See the deals &rarr;</span></a>{%- endif -%}
     <form class="cta" method="post" action="{{ routes.cart_add_url }}" data-lg-add data-club-form>
       <input type="hidden" name="id" value="{{ v0.id }}" data-vid>
       <input type="hidden" name="properties[Pre-order]" value="" data-preprop disabled>
