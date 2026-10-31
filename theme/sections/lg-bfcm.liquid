@@ -24,7 +24,7 @@
   assign jd = carver.metafields.judgeme.review_widget_data.value
   assign hero2400 = 'lg-bf-hero-2400.jpg' | asset_url
   assign hero1200 = 'lg-bf-hero-1200.jpg' | asset_url
-  assign phase_keys = "mail,list,live,cm,over" | split: ","
+  assign phase_keys = "early,mail,list,live,cm,over" | split: ","
   assign trust_lines = s.trust | newline_to_br | split: '<br />'
   assign trust_icons = s.trust_icons | split: ','
 -%}
@@ -41,10 +41,10 @@
   <div class="lg-wrap bf-hero-in">
     {%- for k in phase_keys -%}
       {%- assign st_key = k | append: '_status' -%}{%- assign h_key = k | append: '_heading' -%}{%- assign h2_key = k | append: '_heading2' -%}{%- assign d_key = k | append: '_deal' -%}
-      <div class="bf-ph" data-bf-show="{{ k }}"{% unless k == 'mail' %} hidden{% endunless %}>
+      <div class="bf-ph" data-bf-show="{{ k }}"{% unless k == 'early' %} hidden{% endunless %}>
         {%- if s[st_key] != blank %}<p class="bf-live{% if k == 'cm' %} is-last{% elsif k == 'over' %} is-off{% endif %}"><i></i>{{ s[st_key] }}</p>{% endif -%}
         <div class="bf-h1-row">
-          <{% if k == 'mail' %}h1{% else %}h2{% endif %} class="bf-h1"><span class="bf-big1">{{ s[h_key] }}</span><span class="bf-big">{{ s[h2_key] }}</span></{% if k == 'mail' %}h1{% else %}h2{% endif %}>
+          <{% if k == 'early' %}h1{% else %}h2{% endif %} class="bf-h1"><span class="bf-big1">{{ s[h_key] }}</span><span class="bf-big">{{ s[h2_key] }}</span></{% if k == 'early' %}h1{% else %}h2{% endif %}>
           {%- unless s.gifts_gone or k == 'over' -%}
           <p class="bf-plus"><span>+ free towel</span><span>+ free divot tool</span><small data-bf-gift-at>{{ s.plus_line }}</small></p>
           {%- endunless -%}
@@ -59,21 +59,21 @@
       <span class="bf-ticket-r" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
     </div>
 
-    <div class="bf-go" data-bf-show="mail list live cm">
+    <div class="bf-go" data-bf-show="early mail list live cm">
       <a class="lg-btn" href="#deals">{{ s.hero_btn }}</a>
       <a class="bf-go-2" href="#shop">{{ s.hero_btn2 }}</a>
     </div>
-    <p class="bf-when" data-bf-show="mail list live cm">
+    <p class="bf-when" data-bf-show="early mail list live cm">
       <span data-bf-ends>{{ s.ends_line }}</span>
       <span class="bf-clock" data-bf-clock hidden><span>{{ s.clock_label }}</span> <b data-d>0</b>d <b data-h>00</b>h <b data-m>00</b>m</span>
     </p>
-    <div class="bf-lad-wrap" data-bf-show="mail list live cm">
+    <div class="bf-lad-wrap" data-bf-show="early mail list live cm">
       <ol class="bf-lad" aria-label="The ladder">
         <li><b>1 club</b><span data-lad-1>{{ s.lad_1 }}</span></li>
-        <li><b>2 clubs</b><span>{{ s.lad_2 }}</span></li>
-        <li><b>3 or more</b><span>{{ s.lad_3 }}</span></li>
+        <li><b>2 clubs</b><span data-lad-2>{{ s.lad_2 }}</span></li>
+        <li><b>3 or more</b><span data-lad-3>{{ s.lad_3 }}</span></li>
       </ol>
-      {%- if s.wedge_line != blank %}<p class="bf-lad-note">{{ s.wedge_line }}</p>{% endif -%}
+      {%- if s.wedge_line != blank %}<p class="bf-lad-note" data-lad-note>{{ s.wedge_line }}</p>{% endif -%}
     </div>
 
     <div class="bf-go" data-bf-show="over" hidden><a class="lg-btn" href="#shop">{{ s.over_btn }}</a></div>
@@ -82,9 +82,9 @@
 
 {%- assign cards = section.blocks | where: "type", "highlight" -%}
 {%- if cards.size > 0 -%}
-<section class="lg-wrap bf-sec" id="deals" data-bf-show="mail list live cm" aria-labelledby="bf-deals-h">
+<section class="lg-wrap bf-sec" id="deals" data-bf-show="early mail list live cm" aria-labelledby="bf-deals-h">
   <div class="bf-hd">
-    <h2 class="bf-h" id="bf-deals-h"><span data-bf-show="mail list">{{ s.deals_title_early }}</span><span data-bf-show="live" hidden>{{ s.deals_title }}</span><span data-bf-show="cm" hidden>{{ s.deals_title_cm }}</span></h2>
+    <h2 class="bf-h" id="bf-deals-h"><span data-bf-show="early mail list">{{ s.deals_title_early }}</span><span data-bf-show="live" hidden>{{ s.deals_title }}</span><span data-bf-show="cm" hidden>{{ s.deals_title_cm }}</span></h2>
     <p class="bf-l">{{ s.deals_line }}</p>
   </div>
   <div class="bf-cars" data-cars>
@@ -92,7 +92,7 @@
     {%- for block in cards -%}{%- assign b = block.settings -%}
       {%- assign im_m = 'lg-bf-card-' | append: b.key | append: '-m.jpg' | asset_url -%}
       {%- assign im_d = 'lg-bf-card-' | append: b.key | append: '-d.jpg' | asset_url -%}
-      {%- assign show = b.phases | default: 'mail list live cm' -%}
+      {%- assign show = b.phases | default: 'early mail list live cm' -%}
       {%- assign soon = b.soon_phases | default: '' -%}
       {%- if b.pieces != blank -%}
       <button type="button" class="bf-card{% if b.text_right %} is-right{% endif %}" data-card data-pieces="{{ b.pieces | escape }}" data-name="{{ b.name | escape }}" data-soon="{{ soon }}" data-bf-show="{{ show }}" {{ block.shopify_attributes }}>
@@ -120,7 +120,7 @@
       {%- if b.pieces != blank %}</button>{% else %}</a>{% endif -%}
     {%- endfor -%}
     {%- if s.next_on -%}
-    <button type="button" class="bf-card is-next" data-card data-next data-bf-show="mail list live cm">
+    <button type="button" class="bf-card is-next" data-card data-next data-bf-show="early mail list live cm">
       <picture><source media="(min-width:750px)" srcset="{{ 'lg-bf-card-next-d.jpg' | asset_url }}"><img src="{{ 'lg-bf-card-next-m.jpg' | asset_url }}" alt="" loading="lazy" width="942" height="1386"></picture>
       <span class="bf-card-tx">
         <span class="bf-card-top"><i class="bf-live is-sm is-soon"><b></b><span>{{ s.next_status }}</span></i></span>
@@ -165,8 +165,8 @@
   </div>
   <ol class="bf-meter" data-meter aria-label="What you get as you add clubs">
     <li data-m="1"><b>1 club</b><strong>Everyday price</strong><span>Already under the big names' sale</span></li>
-    <li data-m="2"><b>2 clubs</b><strong>$50 off</strong><span>+ free towel + free divot tool</span></li>
-    <li data-m="3"><b>3 or more</b><strong>$100 off</strong><span>+ both gifts + free shipping</span></li>
+    <li data-m="2"><b>2 clubs</b><strong data-m-amt="2">$50 off</strong><span>+ free towel + free divot tool</span></li>
+    <li data-m="3"><b>3 or more</b><strong data-m-amt="3">$100 off</strong><span>+ both gifts + free shipping</span></li>
   </ol>
   <div class="bf-pcs" data-rows="wedges"></div>
   <div class="bf-pcs" data-rows="putters" hidden></div>
@@ -260,8 +260,8 @@
   <div class="lg-wrap bf-list-in">
     <div>
       <p class="bf-stamp">{{ s.list_stamp }}</p>
-      <h2 class="bf-h" id="bf-list-h"><span data-bf-show="mail">{{ s.list_title_before }}</span><span data-bf-show="list live cm over" hidden>{{ s.list_title_after }}</span></h2>
-      <p class="bf-l"><span data-bf-show="mail">{{ s.list_line_before }}</span><span data-bf-show="list live cm over" hidden>{{ s.list_line_after }}</span></p>
+      <h2 class="bf-h" id="bf-list-h"><span data-bf-show="early mail">{{ s.list_title_before }}</span><span data-bf-show="list live cm over" hidden>{{ s.list_title_after }}</span></h2>
+      <p class="bf-l"><span data-bf-show="early mail">{{ s.list_line_before }}</span><span data-bf-show="list live cm over" hidden>{{ s.list_line_after }}</span></p>
     </div>
     <form class="bf-form" data-bf-form data-source="Black Friday page" novalidate>
       <label class="sr" for="bf-email">Email</label>
@@ -314,7 +314,9 @@ window.LG_BF = {
   shipCost: {{ s.ship_cost | default: 18 | times: 100 }},
   lowAt: {{ s.low_at | default: 60 }},
   worth: { towel: {{ s.towel_worth | default: 0 | times: 100 }}, divot: {{ s.divot_worth | default: 0 | times: 100 }}, cover: {{ s.cover_worth | default: 0 | times: 100 }} },
-  say: { bar: {{ s.bar_btn | json }}, lad1Mail: {{ s.lad_1_mail | json }}, plusMail: {{ s.plus_line_mail | json }} },
+  say: { bar: {{ s.bar_btn | json }}, lad1Mail: {{ s.lad_1_mail | json }}, plusMail: {{ s.plus_line_mail | json }},
+    lad2Early: {{ s.early_lad_2 | json }}, lad3Early: {{ s.early_lad_3 | json }}, noteEarly: {{ s.early_note | json }} },
+  tiers: { early: [{{ s.early_t2 | default: 20 | times: 100 }}, {{ s.early_t3 | default: 50 | times: 100 }}], full: [5000, 10000] },
   klaviyo: { key: {{ settings.lg_klaviyo_public_key | json }}, list: {{ s.klaviyo_list | default: settings.lg_klaviyo_list | json }} },
   clubs: [
     {%- for block in section.blocks -%}{%- if block.type == 'club' or block.type == 'drop' -%}{%- assign b = block.settings -%}{%- assign p = b.product -%}
@@ -375,6 +377,16 @@ window.LG_BF = {
     { "type": "text", "id": "lad_2", "label": "Ladder: 2 clubs", "default": "$50 off + free towel + free divot tool." },
     { "type": "text", "id": "lad_3", "label": "Ladder: 3 or more", "default": "$100 off + the gifts + free shipping." },
     { "type": "text", "id": "wedge_line", "label": "Line under the ladder", "default": "Three clubs, $100 off. That's near enough a wedge for nothing." },
+    { "type": "header", "content": "Early Black Friday (Nov 1 to the list start)" },
+    { "type": "number", "id": "early_t2", "label": "2 clubs: $ off", "default": 20 },
+    { "type": "number", "id": "early_t3", "label": "3 or more: $ off", "default": 50 },
+    { "type": "text", "id": "early_status", "label": "Status", "default": "Early Black Friday · live now" },
+    { "type": "text", "id": "early_heading", "label": "Line one", "default": "Three clubs." },
+    { "type": "text", "id": "early_heading2", "label": "Big line", "default": "$50 off." },
+    { "type": "text", "id": "early_deal", "label": "Framing line", "default": "Early Black Friday. $20 off two clubs, $50 off three or more, through Nov 16." },
+    { "type": "text", "id": "early_lad_2", "label": "Ladder: 2 clubs", "default": "$20 off, plus a free towel and divot tool." },
+    { "type": "text", "id": "early_lad_3", "label": "Ladder: 3 or more", "default": "$50 off, both gifts, and it ships free." },
+    { "type": "text", "id": "early_note", "label": "Line under the ladder", "default": "Ends Nov 16. The big one lands Black Friday." },
     { "type": "text", "id": "mail_status", "label": "Mail: status", "default": "Early access · live now" },
     { "type": "text", "id": "mail_heading", "label": "Mail: line one", "default": "Three clubs." },
     { "type": "text", "id": "mail_heading2", "label": "Mail: big line", "default": "$100 off." },
@@ -478,7 +490,7 @@ window.LG_BF = {
         { "type": "text", "id": "price", "label": "Price text (when there are no pieces)" },
         { "type": "text", "id": "link", "label": "Link (when there are no pieces)", "default": "#shop" },
         { "type": "text", "id": "btn", "label": "Button label" },
-        { "type": "text", "id": "phases", "label": "Show in phases", "default": "mail list live cm" },
+        { "type": "text", "id": "phases", "label": "Show in phases", "default": "early mail list live cm" },
         { "type": "text", "id": "soon_phases", "label": "Phases where it is only coming (status flips, button becomes notify)", "info": "e.g. mail. Empty: never." },
         { "type": "text", "id": "soon_status", "label": "Coming status", "default": "Coming Nov 24" },
         { "type": "checkbox", "id": "text_right", "label": "Words on the right of the picture", "default": false },

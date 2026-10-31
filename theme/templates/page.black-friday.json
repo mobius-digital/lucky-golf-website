@@ -16,8 +16,8 @@
             "price": "From $229",
             "link": "#shop",
             "btn": "See the putters",
-            "phases": "mail list live cm",
-            "soon_phases": "mail",
+            "phases": "early mail list live cm",
+            "soon_phases": "early mail",
             "soon_status": "Coming Nov 24",
             "soon_btn": "Tell me when"
           }
@@ -30,7 +30,8 @@
             "chip": "Most bought",
             "name": "The Gapper",
             "line": "Three gold Carvers, three lofts. Every shot inside 100 has a club now.",
-            "pieces": "carver::Gold,carver::Gold,carver::Gold"
+            "pieces": "carver::Gold,carver::Gold,carver::Gold",
+            "phases": "early mail list live cm"
           }
         },
         "h3": {
@@ -41,7 +42,8 @@
             "chip": "Best value",
             "name": "Up and Down",
             "line": "Two gold Carvers to get it close, and the Mallet to knock it in.",
-            "pieces": "carver::Gold,carver::Gold,mallet"
+            "pieces": "carver::Gold,carver::Gold,mallet",
+            "phases": "early mail list live cm"
           }
         },
         "h4": {
@@ -52,7 +54,8 @@
             "chip": "Black on black",
             "name": "Blackout",
             "line": "Three black Carvers. Nobody notices them until the ball's sitting next to the pin.",
-            "pieces": "carver::Black,carver::Black,carver::Black"
+            "pieces": "carver::Black,carver::Black,carver::Black",
+            "phases": "early mail list live cm"
           }
         },
         "h6": {
@@ -63,7 +66,8 @@
             "chip": "Gold and black",
             "name": "Two-Tone",
             "line": "Two gold, one black in the middle. Swap them around when you pick lofts.",
-            "pieces": "carver::Gold,carver::Black,carver::Gold"
+            "pieces": "carver::Gold,carver::Black,carver::Gold",
+            "phases": "early mail list live cm"
           }
         },
         "h5": {
@@ -182,8 +186,8 @@
         "clock_hours": 120,
         "gear_title": "Apparel",
         "gear_line": "Buy one, get one free on every polo and hat. Mix them however you want. The last-run polos are $39.",
-        "towel_worth": 24.95,
-        "divot_worth": 14.95,
+        "towel_worth": 25,
+        "divot_worth": 12,
         "cover_worth": 29.95,
         "gear_off": 25,
         "acc_1": "head-covers",
@@ -202,7 +206,8 @@
         "lad_1": "Our everyday price. Already under their sale.",
         "lad_2": "$50 off, plus a free towel and divot tool.",
         "lad_3": "$100 off, both gifts, and it ships free.",
-        "app_bogo": true
+        "app_bogo": true,
+        "deals_title_early": "Early Black Friday deals"
       }
     }
   },

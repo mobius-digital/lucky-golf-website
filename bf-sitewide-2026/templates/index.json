@@ -485,7 +485,14 @@
     },
     "bf": {
       "type": "lg-bf-home",
-      "settings": {}
+      "settings": {
+        "on_status": "Early Black Friday · Live now",
+        "soon_status": "Early Black Friday · Starts Nov 1",
+        "line1": "Three clubs.",
+        "line2": "$50 off.",
+        "gifts": "Two clubs get $20 off. Both get a free towel and divot tool. Through Nov 16.",
+        "btn": "See the deals"
+      }
     }
   },
   "order": [

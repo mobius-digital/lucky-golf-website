@@ -1,0 +1,7 @@
+{%- comment -%} The offer badge on a product card, only while the offer runs (snippets/lg-cs). {% render 'lg-cs-badge', product: p %}
+  Black Friday 2026: every club gets it (product type Wedges / Putter / Hybrids); the Carver sets offer only badged the Carver. {%- endcomment -%}
+{%- if settings.cs_on and settings.cs_badge != blank and product != blank -%}
+  {%- assign csp = settings.cs_product | default: all_products['lucky-golf-lgw02-gold'] -%}
+  {%- assign cs_types = settings.cs_types | default: 'Wedges,Putter,Hybrids' | split: ',' -%}
+  {%- if product.id == csp.id or cs_types contains product.type -%}<span class="cs-badge" data-cs-show="on">{{ settings.cs_badge }}</span>{%- endif -%}
+{%- endif -%}

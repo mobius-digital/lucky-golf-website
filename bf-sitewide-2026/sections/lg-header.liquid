@@ -1,0 +1,309 @@
+{%- comment -%}
+  The header: wordmark, the mega menu (one block per menu), search, the bag
+  (Mags) and the phone menu. Desktop and phone read the same blocks.
+  A menu card is a product (live name, price, photo) or a collection with a
+  price line typed in ("From $9.95").
+{%- endcomment -%}
+{%- liquid
+  assign mags_ink = 'lg-mags-bag-ink.webp' | file_url
+  assign mags_light = 'lg-mags-bag-light.webp' | file_url
+-%}
+<header class="lg-hdr">
+  <div class="lg-hdr-in" style="position:relative">
+    <a class="lg-logo" href="{{ routes.root_url }}" aria-label="Lucky Golf home">{% render 'lg-logo' %}</a>
+    <nav class="lg-nav" aria-label="Primary">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' -%}
+          <div class="nv" {{ block.shopify_attributes }}>
+            <button type="button" aria-expanded="false" aria-controls="mega-{{ forloop.index }}">{{ block.settings.label }}</button>
+            <div class="mega" id="mega-{{ forloop.index }}"><div class="mega-in">
+              <div class="mega-intro">
+                <p class="lg-d3">{{ block.settings.title | default: block.settings.label }}</p>
+                <p>{{ block.settings.intro }}</p>
+                {%- if block.settings.all_url != blank -%}<a class="lg-link" href="{{ block.settings.all_url }}">{{ block.settings.all_label }} <span>&rarr;</span></a>{%- endif -%}
+              </div>
+              <div class="mega-cards">
+                {%- for i in (1..3) -%}{% render 'lg-menu-card', b: block, i: i, cls: 'mt' %}{%- endfor -%}
+                {%- if block.settings.all_url != blank -%}{%- assign ap = block.settings.all_image | default: block.settings.photo -%}<a class="mt mt-all" href="{{ block.settings.all_url }}">{%- if ap != blank -%}{{ ap | image_url: width: 640 | image_tag: class: 'mt-bg', loading: 'lazy', alt: '' }}{%- endif -%}<span class="mt-row"><span class="mt-nm">{{ block.settings.all_label }}</span></span><span class="mt-sub">{{ block.settings.all_line }}</span><span class="mt-arrow" aria-hidden="true">&rarr;</span></a>{%- endif -%}
+              </div>
+              {%- if block.settings.photo != blank -%}
+                <a class="mega-ph" href="{{ block.settings.all_url }}">{{ block.settings.photo | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}<span>{{ block.settings.photo_caption }}</span></a>
+              {%- endif -%}
+            </div></div>
+          </div>
+        {%- elsif block.type == 'link' -%}
+          <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <div class="lg-hdr-act">
+      <a class="hdr-search" href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
+      <a class="bagbtn" href="{{ routes.cart_url }}" data-cart-open aria-label="Open bag"><span class="lg-mags"><img class="is-ink" src="{{ mags_ink }}" alt="" width="76" height="76"><img class="is-light" src="{{ mags_light }}" alt="" width="76" height="76"></span><span class="n" data-n="{{ cart.item_count }}" aria-hidden="true">{{ cart.item_count }}</span></a>
+      <button type="button" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span><i></i><i></i><i></i></span></button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Menu">
+    {%- assign first_menu = true -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'menu' -%}
+        <details{% if first_menu %} open{% endif %}><summary>{{ block.settings.label }}</summary>
+          <p class="mn-intro">{{ block.settings.intro }}</p>
+          <div class="mn-grid">{%- for i in (1..3) -%}{% render 'lg-menu-card', b: block, i: i, cls: 'mn' %}{%- endfor -%}</div>
+          {%- if block.settings.all_url != blank -%}<a class="lg-link mn-all" href="{{ block.settings.all_url }}">{{ block.settings.all_label }} <span>&rarr;</span></a>{%- endif -%}
+        </details>
+        {%- assign first_menu = false -%}
+      {%- elsif block.type == 'link' -%}
+        <a class="mn-link" href="{{ block.settings.url }}">{{ block.settings.label }} <span aria-hidden="true">&rarr;</span></a>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if section.settings.m_photo != blank -%}
+      <a class="mn-photo" href="{{ section.settings.m_photo_url }}">{{ section.settings.m_photo | image_url: width: 800 | image_tag: loading: 'lazy', alt: '' }}<span>{{ section.settings.m_photo_line }}</span></a>
+    {%- endif -%}
+    {%- if section.settings.m_links != blank -%}
+      <div class="mn-foot">{%- for l in section.settings.m_links.links -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endfor -%}</div>
+    {%- endif -%}
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "lg-hdr-wrap",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Phone menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "m_photo",
+      "label": "Photo at the bottom"
+    },
+    {
+      "type": "text",
+      "id": "m_photo_line",
+      "label": "Line on the photo",
+      "default": "It's better to be lucky."
+    },
+    {
+      "type": "url",
+      "id": "m_photo_url",
+      "label": "Photo link"
+    },
+    {
+      "type": "link_list",
+      "id": "m_links",
+      "label": "Small links under it"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu with cards",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Menu label",
+          "default": "Wedges"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Panel title"
+        },
+        {
+          "type": "textarea",
+          "id": "intro",
+          "label": "Intro line"
+        },
+        {
+          "type": "url",
+          "id": "all_url",
+          "label": "'See all' link"
+        },
+        {
+          "type": "text",
+          "id": "all_label",
+          "label": "'See all' text",
+          "default": "See all"
+        },
+        {
+          "type": "text",
+          "id": "all_line",
+          "label": "Small line on the 'See all' tile"
+        },
+        {
+          "type": "image_picker",
+          "id": "all_image",
+          "label": "Photo on the 'See all' tile (empty = the panel photo)"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Panel photo"
+        },
+        {
+          "type": "text",
+          "id": "photo_caption",
+          "label": "Photo caption"
+        },
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+        {
+          "type": "product",
+          "id": "p1",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f1",
+          "label": "Card 1 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c1",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n1",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr1",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l1",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i1",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t1",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "header",
+          "content": "Card 2"
+        },
+        {
+          "type": "product",
+          "id": "p2",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f2",
+          "label": "Card 2 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c2",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n2",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr2",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l2",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i2",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t2",
+          "label": "Tag (e.g. Best seller)"
+        },
+        {
+          "type": "header",
+          "content": "Card 3"
+        },
+        {
+          "type": "product",
+          "id": "p3",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "f3",
+          "label": "Card 3 finish (optional, e.g. Black)"
+        },
+        {
+          "type": "collection",
+          "id": "c3",
+          "label": "Or a collection"
+        },
+        {
+          "type": "text",
+          "id": "n3",
+          "label": "Name (leave empty to use the product's)"
+        },
+        {
+          "type": "text",
+          "id": "pr3",
+          "label": "Price text (collections only)"
+        },
+        {
+          "type": "text",
+          "id": "l3",
+          "label": "Line under it"
+        },
+        {
+          "type": "image_picker",
+          "id": "i3",
+          "label": "Card photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "t3",
+          "label": "Tag (e.g. Best seller)"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Plain link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Our Story"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

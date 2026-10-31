@@ -10,16 +10,30 @@
   var $$ = function (s, r) { return [].slice.call((r || page).querySelectorAll(s)); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var money = function (c) { return '$' + (c % 100 ? (c / 100).toFixed(2) : Math.round(c / 100)); };
-  var off = function (n) { return n >= 3 ? 10000 : n === 2 ? 5000 : 0; };
+  var phase = 'mail';
+  var off = function (n) { var t = (cfg.tiers && cfg.tiers[phase === 'early' ? 'early' : 'full']) || [5000, 10000]; return n >= 3 ? t[1] : n === 2 ? t[0] : 0; };
 
   /* ---------------------------------------------------------------- phase */
   var q = new URLSearchParams(location.search);
-  var phase = 'mail';
   cfg.phases.forEach(function (p) { if (p[1] && Date.now() >= Date.parse(p[1])) phase = p[0]; });
+  /* before the list starts, only postcard visitors see the mail deal; everyone else gets Early Black Friday */
+  if (phase === 'mail') {
+    var ck = document.cookie.match(/(?:^|;\s*)discount_code=([^;]*)/), mailCode = String(cfg.codes.mail || '').toUpperCase();
+    var srcs = (cfg.autoSources || '').toLowerCase().split(/[\s,]+/).filter(Boolean), us = (q.get('utm_source') || '').toLowerCase();
+    var isMail = !!q.get('code') || srcs.indexOf(us) > -1 || (ck && decodeURIComponent(ck[1]).toUpperCase() === mailCode);
+    try { if (sessionStorage.getItem('lg_bf_code')) isMail = true; } catch (e) {}
+    if (!isMail) phase = 'early';
+  }
   if (q.get('bf_phase')) phase = q.get('bf_phase');
+  if (window.BF_REVIEW_PHASE) phase = window.BF_REVIEW_PHASE;
   page.setAttribute('data-phase', phase);
   $$('[data-bf-show]').forEach(function (el) { el.hidden = el.getAttribute('data-bf-show').split(' ').indexOf(phase) < 0; });
   var giftMin = cfg.giftsGone ? 99 : phase === 'mail' ? 1 : 2;
+  if (phase === 'early') {
+    var setT = function (q2, t) { var el = $(q2); if (el && t) el.textContent = t; };
+    setT('[data-lad-2]', cfg.say.lad2Early); setT('[data-lad-3]', cfg.say.lad3Early); setT('[data-lad-note]', cfg.say.noteEarly);
+  }
+  $$('[data-m-amt]').forEach(function (el) { el.textContent = money(off(+el.getAttribute('data-m-amt'))) + ' off'; });
   if (giftMin === 1) {
     var lad1 = $('[data-lad-1]'); if (lad1) lad1.textContent = cfg.say.lad1Mail;
     $$('[data-bf-gift-at]').forEach(function (el) { el.textContent = cfg.say.plusMail; });
@@ -291,7 +305,7 @@
     var t = TRAY.reduce(function (a, id) { return a + BY[id].p; }, 0), cut = off(n);
     $('[data-bar-total]', bar).textContent = money(t - cut);
     $('[data-bar-sub]', bar).textContent = n + (n === 1 ? ' club' : ' clubs') + (cut ? ' · ' + money(cut) + ' off' : '') + (n >= giftMin && !cfg.giftsGone ? ' · towel + divot free' : '') + (t - cut >= cfg.ship ? ' · ships free' : '');
-    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'One more club: $50 off' + (giftMin === 2 && !cfg.giftsGone ? ', towel and divot tool on us.' : '.') : n === 2 ? 'One more: $100 off and it ships free.' : '';
+    var nu = $('[data-bar-nudge]', bar), msg = n === 1 ? 'One more club: ' + money(off(2)) + ' off' + (giftMin === 2 && !cfg.giftsGone ? ', towel and divot tool on us.' : '.') : n === 2 ? 'One more: ' + money(off(3)) + ' off and it ships free.' : '';
     nu.textContent = msg; nu.hidden = !msg;
   }
 
