@@ -45,7 +45,7 @@
         {%- if s[st_key] != blank %}<p class="bf-live{% if k == 'cm' %} is-last{% elsif k == 'over' %} is-off{% endif %}"><i></i>{{ s[st_key] }}</p>{% endif -%}
         <div class="bf-h1-row">
           <{% if k == 'early' %}h1{% else %}h2{% endif %} class="bf-h1"><span class="bf-big1">{{ s[h_key] }}</span><span class="bf-big">{{ s[h2_key] }}</span></{% if k == 'early' %}h1{% else %}h2{% endif %}>
-          {%- unless s.gifts_gone or k == 'over' -%}
+          {%- unless s.gifts_gone or k == 'over' or k == 'early' -%}
           <p class="bf-plus"><span>+ free towel</span><span>+ free divot tool</span><small data-bf-gift-at>{{ s.plus_line }}</small></p>
           {%- endunless -%}
         </div>
@@ -165,8 +165,8 @@
   </div>
   <ol class="bf-meter" data-meter aria-label="What you get as you add clubs">
     <li data-m="1"><b>1 club</b><strong>Everyday price</strong><span>Already under the big names' sale</span></li>
-    <li data-m="2"><b>2 clubs</b><strong data-m-amt="2">$50 off</strong><span>+ free towel + free divot tool</span></li>
-    <li data-m="3"><b>3 or more</b><strong data-m-amt="3">$100 off</strong><span>+ both gifts + free shipping</span></li>
+    <li data-m="2"><b>2 clubs</b><strong data-m-amt="2">$50 off</strong><span data-m-gift="2">+ free towel + free divot tool</span></li>
+    <li data-m="3"><b>3 or more</b><strong data-m-amt="3">$100 off</strong><span data-m-gift="3">+ both gifts + free shipping</span></li>
   </ol>
   <div class="bf-pcs" data-rows="wedges"></div>
   <div class="bf-pcs" data-rows="putters" hidden></div>
@@ -203,7 +203,7 @@
 <section class="lg-wrap bf-sec" id="accessories" aria-labelledby="bf-acc-h">
   <div class="bf-hd">
     <h2 class="bf-h" id="bf-acc-h">{{ s.acc_title }}</h2>
-    <p class="bf-l">{{ s.acc_line }}</p>
+    <p class="bf-l" data-acc-line>{{ s.acc_line }}</p>
   </div>
   <div class="bf-tabs" role="tablist" aria-label="Accessories">
     {%- for t in a_tabs -%}{%- if s[t] != blank and s[t].products_count > 0 -%}
@@ -250,7 +250,7 @@
     {%- for i in (1..6) -%}
       {%- assign qk = 'q' | append: i -%}{%- assign ak = 'a' | append: i -%}
       {%- if s[qk] != blank -%}
-      <details class="lg-fq"><summary>{{ s[qk] }}</summary><div class="lg-fq-a"><p>{% if i == 4 and s.gifts_gone %}{{ s.a4_gone }}{% else %}{{ s[ak] | replace: '[ship]', ship | replace: '[std]', s.xmas_std }}{% endif %}</p></div></details>
+      <details class="lg-fq"{% if i == 4 %} data-bf-show="mail list live cm over"{% endif %}><summary>{{ s[qk] }}</summary><div class="lg-fq-a"><p>{% if i == 4 and s.gifts_gone %}{{ s.a4_gone }}{% else %}{{ s[ak] | replace: '[ship]', ship | replace: '[std]', s.xmas_std }}{% endif %}</p></div></details>
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -315,7 +315,8 @@ window.LG_BF = {
   lowAt: {{ s.low_at | default: 60 }},
   worth: { towel: {{ s.towel_worth | default: 0 | times: 100 }}, divot: {{ s.divot_worth | default: 0 | times: 100 }}, cover: {{ s.cover_worth | default: 0 | times: 100 }} },
   say: { bar: {{ s.bar_btn | json }}, lad1Mail: {{ s.lad_1_mail | json }}, plusMail: {{ s.plus_line_mail | json }},
-    lad2Early: {{ s.early_lad_2 | json }}, lad3Early: {{ s.early_lad_3 | json }}, noteEarly: {{ s.early_note | json }} },
+    lad2Early: {{ s.early_lad_2 | json }}, lad3Early: {{ s.early_lad_3 | json }}, noteEarly: {{ s.early_note | json }},
+    meter2Early: {{ s.early_meter_2 | json }}, meter3Early: {{ s.early_meter_3 | json }}, sheetEarly: {{ s.early_sheet_line | json }}, accEarly: {{ s.early_acc_line | json }} },
   tiers: { early: [{{ s.early_t2 | default: 20 | times: 100 }}, {{ s.early_t3 | default: 50 | times: 100 }}], full: [5000, 10000] },
   klaviyo: { key: {{ settings.lg_klaviyo_public_key | json }}, list: {{ s.klaviyo_list | default: settings.lg_klaviyo_list | json }} },
   clubs: [
@@ -383,10 +384,14 @@ window.LG_BF = {
     { "type": "text", "id": "early_status", "label": "Status", "default": "Early Black Friday · live now" },
     { "type": "text", "id": "early_heading", "label": "Line one", "default": "Three clubs." },
     { "type": "text", "id": "early_heading2", "label": "Big line", "default": "$50 off." },
-    { "type": "text", "id": "early_deal", "label": "Framing line", "default": "Early Black Friday. $20 off two clubs, $50 off three or more, through Nov 16." },
-    { "type": "text", "id": "early_lad_2", "label": "Ladder: 2 clubs", "default": "$20 off, plus a free towel and divot tool." },
-    { "type": "text", "id": "early_lad_3", "label": "Ladder: 3 or more", "default": "$50 off, both gifts, and it ships free." },
+    { "type": "text", "id": "early_deal", "label": "Framing line", "default": "$20 off two clubs. $50 off three or more. Through Nov 16." },
+    { "type": "text", "id": "early_lad_2", "label": "Ladder: 2 clubs", "default": "$20 off." },
+    { "type": "text", "id": "early_lad_3", "label": "Ladder: 3 or more", "default": "$50 off, and it ships free." },
     { "type": "text", "id": "early_note", "label": "Line under the ladder", "default": "Ends Nov 16. The big one lands Black Friday." },
+    { "type": "text", "id": "early_meter_2", "label": "Shop meter: under 2 clubs", "default": "Any two clubs" },
+    { "type": "text", "id": "early_meter_3", "label": "Shop meter: under 3 or more", "default": "+ free shipping" },
+    { "type": "text", "id": "early_sheet_line", "label": "Loft sheet line", "default": "Pick a finish, hand and loft for each one." },
+    { "type": "text", "id": "early_acc_line", "label": "Accessories line", "default": "Head covers, gloves and grips, all 25% off." },
     { "type": "text", "id": "mail_status", "label": "Mail: status", "default": "Early access · live now" },
     { "type": "text", "id": "mail_heading", "label": "Mail: line one", "default": "Three clubs." },
     { "type": "text", "id": "mail_heading2", "label": "Mail: big line", "default": "$100 off." },

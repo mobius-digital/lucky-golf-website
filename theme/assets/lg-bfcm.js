@@ -28,10 +28,13 @@
   if (window.BF_REVIEW_PHASE) phase = window.BF_REVIEW_PHASE;
   page.setAttribute('data-phase', phase);
   $$('[data-bf-show]').forEach(function (el) { el.hidden = el.getAttribute('data-bf-show').split(' ').indexOf(phase) < 0; });
-  var giftMin = cfg.giftsGone ? 99 : phase === 'mail' ? 1 : 2;
+  /* no towel or divot tool on Early Black Friday: the gifts belong to the postcard and to Black Friday itself */
+  var noGifts = cfg.giftsGone || phase === 'early';
+  var giftMin = noGifts ? 99 : phase === 'mail' ? 1 : 2;
   if (phase === 'early') {
     var setT = function (q2, t) { var el = $(q2); if (el && t) el.textContent = t; };
     setT('[data-lad-2]', cfg.say.lad2Early); setT('[data-lad-3]', cfg.say.lad3Early); setT('[data-lad-note]', cfg.say.noteEarly);
+    setT('[data-m-gift="2"]', cfg.say.meter2Early); setT('[data-m-gift="3"]', cfg.say.meter3Early); setT('[data-sheet-line]', cfg.say.sheetEarly); setT('[data-acc-line]', cfg.say.accEarly);
   }
   $$('[data-m-amt]').forEach(function (el) { el.textContent = money(off(+el.getAttribute('data-m-amt'))) + ' off'; });
   if (giftMin === 1) {
@@ -224,7 +227,7 @@
     var shipFree = t - cut >= cfg.ship, lines = [];
     lines.push(['Clubs (' + n + ')', money(t), '']);
     if (cut) lines.push(['Black Friday, ' + n + (n >= 3 ? '+' : '') + ' clubs', '−' + money(cut), 'is-cut']);
-    if (!cfg.giftsGone) {
+    if (!noGifts) {
       lines.push(['Towel', gifts ? strike(cfg.worth.towel) + 'Free' : 'Free at 2 clubs', gifts ? 'is-free' : 'is-dim']);
       lines.push(['Divot tool', gifts ? strike(cfg.worth.divot) + 'Free' : 'Free at 2 clubs', gifts ? 'is-free' : 'is-dim']);
     }
